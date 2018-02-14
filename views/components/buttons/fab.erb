@@ -1,0 +1,8 @@
+<!--Affix is not working!-->
+<div class="col-sm-12  text-center" data-spy="affix">
+  <form action="<%= comp.url || 'javascript:void(0);'%>" method="get">
+      <button type="submit" class="btn btn-<%= comp.color %> btn-circle <%if comp.size%>btn-<%=comp.size%><%end%>" aria-label="<%= comp.label %>">
+        <%= erb :"components/buttons/btn_contents", :locals => {:comp => comp} %>
+      </button>
+  </form>
+</div>

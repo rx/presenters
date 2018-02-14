@@ -1,0 +1,9 @@
+<div class="form-group <% if field.error == "" %>has-error<% else %>has-success<% end %>">
+    <label class="control-label" for="<%= field.id %>"><%= field.label %></label>
+    <textarea  id="<%= field.id %>"
+                 name="<%= field.id %>"
+                 <% if field.required %>required <% end %>
+                 <% if field.pattern %> pattern="<%= field.pattern %>"<% end %>
+                 class="form-control" rows="5"><%= field.value %></textarea>
+  <%= erb :"components/fields/_hint_error", :locals => {:field => field} %>
+</div>

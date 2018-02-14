@@ -1,0 +1,3 @@
+<a href="<%=comp.url || 'javascript:void(0);'%>" class="btn btn-<%= comp.color %> <%if comp.size%>btn-<%=comp.size%><%end%>">
+<%= erb :"components/buttons/btn_contents", :locals => {:comp => comp} %>
+</a>

@@ -1,0 +1,33 @@
+<a href="<%= line.url||'#' %>" class="v-list-item-link">
+  <div class="d-flex flex-row mb-3">
+    <div class="pr-3">
+      <% if line.icon %>
+          <i class="fa <%= line.icon %> fa-5x" aria-hidden="true"></i>
+      <% elsif line.image %>
+          <img class="rounded-circle" src="<%= line.image %>" style="width:75px; height:auto" alt="Panda">
+      <% end %>
+    </div>
+
+    <div class="w-100">
+      <div class="d-flex justify-content-between">
+        <h5 class="mb-1"><%= line.attributes[:markdown] ? markdown(line.text) : line.text %></h5>
+        <div>
+          <% if line.detail %>
+          <div class="small text-right"><%= line.detail.text %></div>
+          <% end %>
+          <div class="text-right">
+            <% line.actions.each do |action| %>
+                <%= erb :"components/list/action", :locals => {:action => action} %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <p><%= line.subtitle.attributes[:markdown] ? markdown(line.subtitle.text) : line.subtitle.text %></p>
+    </div>
+  </div>
+</a>
+<div>
+  <% for comp in line.components %>
+      <%= erb :"components/#{comp.type}", :locals => {:comp => comp} %>
+  <% end %>
+</div>
