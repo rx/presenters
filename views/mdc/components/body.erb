@@ -1,5 +1,0 @@
-<% if comp.level == 1 %>
-  <p class="mdc-typography--body1"><%= comp.attributes[:markdown] ? markdown(comp.text) : comp.text %></p>
-<% else %>
-  <aside class="mdc-typography--body2"><%= comp.attributes[:markdown] ? markdown(comp.text) : comp.text %></aside>
-<% end %>
