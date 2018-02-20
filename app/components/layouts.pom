@@ -1,0 +1,53 @@
+Voom::Presenters.define('layouts') do
+  render 'top_nav'
+  render 'component_drawer'
+  render 'footer'
+
+  display 'Layouts'
+
+  header 'Presenters Demo' do
+    menu do
+      item 'about', render: 'about'
+      item 'components', render: 'components'
+      item 'styles', render: 'styles'
+    end
+  end
+
+  footer type: :small do
+    menu 'Stuff' do
+      item 'about', render: 'about'
+      item 'components', render: 'components'
+      item 'styles', render: 'styles'
+    end
+  end
+
+  display 'Grid'
+
+  grid do
+    (1..12).each do |size|
+      column 1, color: 'BDBDBD' do
+        body '1'
+      end
+    end
+  end
+
+  grid do
+    (1..3).each do |size|
+      column 4, color: 'BDBDBD' do
+        body '4'
+      end
+    end
+  end
+
+  grid do
+    column 6, color: 'BDBDBD' do
+      body '6'
+    end
+    column 4, color: 'BDBDBD' do
+      body '4'
+    end
+    column 2, color: 'BDBDBD' do
+      body '2'
+    end
+  end
+end

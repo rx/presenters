@@ -1,56 +1,64 @@
-require_relative 'form/fields'
+require_relative 'hidden_field'
+require_relative 'text_field'
+require_relative 'text_area'
+
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Form < Base
-          attr_reader :actions
+          attr_reader :fields, :actions
 
-          def initialize(**attribs, &block)
-            @fields = {}
+          def initialize(**attribs_, &block)
+            super(type: :form, **attribs_, &block)
+            @fields = []
             @actions = []
-            super(type: :form, **attribs, &block)
-            build_default_fields(**attribs)
+            # build_default_fields(**attribs)
             expand!
           end
 
-          def build_default_fields(**attribs)
-            cmd = command(attribs)
-            return unless cmd
-            trace {cmd.fields.inspect}
-            hints = cmd.hints
-            cmd.fields.each do |f|
-              field(f.name,
-                    label: f.label,
-                    hint: join(hints[f.name],**attribs),
-                    required: f.required,
-                    pattern: f.pattern,
-                    **attribs)
-            end
+          # def build_default_fields(**attribs)
+          #   cmd = command(attribs)
+          #   return unless cmd
+          #   trace {cmd.fields.inspect}
+          #   hints = cmd.hints
+          #   cmd.fields.each do |f|
+          #     field(f.name,
+          #           label: f.label,
+          #           hint: join(hints[f.name],**attribs),
+          #           required: f.required,
+          #           pattern: f.pattern,
+          #           **attribs)
+          #   end
+          # end
+
+          def text_field(**attribs, &block)
+            fields << Components::TextField.new(router: @router, context: @context,
+                                                dependencies: @dependencies,
+                                                helpers: @helpers, **attribs, &block)
           end
 
-          def fields
-            @fields
+          def text_area(**attribs, &block)
+            fields << Components::TextArea.new(router: @router, context: @context,
+                                               dependencies: @dependencies,
+                                               helpers: @helpers, **attribs, &block)
           end
 
-          def field(first_id=nil, id: nil, label: nil, type: :text, **attribs)
-            the_id = first_id||id
-            value = attribs.dig(:context,the_id)
-            _attribs_ = attributes.merge(attribs)
-            @fields[the_id] = Form::Fields.create(type, id: the_id, label: label, value: value,
-                                           router: @router, context: @context, dependencies: @dependencies,
-                                                  helpers: @helpers, **_attribs_)
+          def hidden_field(**attribs, &block)
+            fields << Components::HiddenField.new(router: @router, context: @context,
+                                                  dependencies: @dependencies,
+                                                  helpers: @helpers, **attribs, &block)
           end
 
-          def button(text:, type: :button, **attribs)
-            @actions << Form::Button.new(text: text,
-                                         type: type,
-                                         router: @router, context: @context, dependencies: @dependencies,
-                                         helpers: @helpers,
-                                         **attribs)
 
+          def button(text=nil, **attribs, &block)
+            @actions << Components::Button.new(text: text,
+                                               router: router, context: context,
+                                               dependencies: @dependencies,
+                                               helpers: @helpers, **attribs, &block)
           end
+
         end
       end
     end

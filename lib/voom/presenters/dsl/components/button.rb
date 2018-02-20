@@ -3,17 +3,17 @@ module Voom
     module DSL
       module Components
         class Button < Base
-          attr_accessor :text, :label, :icon, :button_type, :color, :size
+          attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :dialog
 
-          def initialize(**attribs, &block)
-            @label = attribs[:label]
-            @icon = attribs[:icon]
-            @text = attribs[:text]
-            @color = attribs[:color] || :primary
-            @button_type = attribs[:type] || :raised
-            @size = attribs[:size] || (@button_type==:fab ? :lg : nil)
-            attribs[:type] = :button
-            super(**attribs, &block)
+          def initialize(type: nil, **attribs_, &block)
+            @button_type = h(type) || (attribs_[:icon] ? :icon : h(type)) || :flat
+            super(type: :button, **attribs_, &block)
+            @icon = attribs.delete(:icon)
+            @text = attribs.delete(:text)
+            @color = attribs.delete(:color)
+            @disabled = attribs.delete(:disabled) || false
+            @size = attribs.delete(:size)
+            @dialog = attribs.delete(:dialog)
             expand!
           end
         end

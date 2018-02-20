@@ -36,8 +36,6 @@ module Voom
         logger.warn {"Presenters.reset! called. This is a testing only interface."} unless ENV['VOOM_ENV']=='testing'
         trace { ENV.inspect }
       end
-      
-
     end
   end
 end

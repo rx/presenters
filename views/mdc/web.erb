@@ -1,0 +1,22 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title><%= @ui.page_title %></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet"
+            href="https://unpkg.com/material-components-web@latest/dist/material-components-web.css">
+  <!-- Place favicon.ico in the root directory -->
+</head>
+<body class="mdc-typography">
+<%= erb :"layouts/default", locals: {ui: @ui} %>
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.js"></script>
+<script type="text/javascript">
+  window.mdc.autoInit();
+</script>
+</body>
+</html>

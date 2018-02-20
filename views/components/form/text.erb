@@ -1,9 +1,0 @@
-<div class="form-group <% if field.error == "" %>has-error<% else %>has-success<% end %>">
-  <label class="control-label" for="<%= field.id %>"><%= field.label %></label>
-  <input type="text" class="form-control"
-         placeholder="<%= field.hint %>"
-         id="<%= field.id %>"
-         name="<%= field.id %>"
-         value="<%= field.value %>">
-  <%= erb :"components/fields/_hint_error", :locals => {:field => field} %>
-</div>

@@ -12,7 +12,7 @@ module Voom
         set :router, Router
         set :bind, '0.0.0.0'
 
-        get '/pom/:version/:presenter' do
+        get '/pom/:presenter' do
           render_presenter
         end
 
@@ -21,10 +21,10 @@ module Voom
         def render_presenter
           # puts "/presenters/api/#{params[:version]}/#{params[:presenter]}/"
           # puts "Parameters: #{params.inspect}"
-          ui = Voom::Presenters[params[:presenter]].call
-          _ui_ = ui.render(router: router, layout_name: params[:layout], context: symbolize_keys(params))
+          presenter = Voom::Presenters[params[:presenter]].call
+          pom = presenter.render(router: router, context: symbolize_keys(params))
           content_type :json
-          JSON.dump(_ui_.to_hash)
+          JSON.dump(pom.to_hash)
         end
 
         def router

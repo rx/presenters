@@ -1,0 +1,33 @@
+Voom::Presenters.define('tables') do
+  render 'top_nav'
+  render 'component_drawer'
+  render 'footer'
+
+  display 'Tables'
+
+  helpers do
+    def items
+      [
+          OpenStruct.new(material: 'Acrylic (Transparent)', quantity: 50, price: '$2.90'),
+          OpenStruct.new(material: 'Plywood (Birch)', quantity: 10, price: '$1.25'),
+          OpenStruct.new(material: 'Laminate (Gold on Blue)', quantity: 50, price: '$2.35')
+      ]
+    end
+  end
+
+  table selectable: true do
+    header do
+      column 'Material'
+      column 'Quantity'
+      column 'Unit price'
+    end
+
+    items.each do |item|
+      row do
+        column item.material
+        column item.quantity
+        column item.price
+      end
+    end
+  end
+end

@@ -1,0 +1,13 @@
+Voom::Presenters.define 'layouts.default' do
+  header do
+    menu do
+      item 'Top'
+    end
+  end
+  drawer do
+    menu do
+      item 'Left'
+    end
+  end
+end
+

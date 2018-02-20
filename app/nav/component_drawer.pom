@@ -1,0 +1,16 @@
+Voom::Presenters.define('component_drawer') do
+  drawer 'Presenters Demo' do
+    menu do
+      item 'Badges', icon: :home, render: 'badges'
+      item 'Buttons', render: 'buttons'
+      item 'Cards', render: 'cards'
+      item 'Dialogs', render: 'dialogs'
+      item 'Layouts', render: 'layouts'
+      item 'Lists', render: 'lists'
+      item 'Menus', render: 'menus'
+      item 'Toggles', render: 'toggles'
+      item 'Tables', render: 'tables'
+      item 'Text fields', render: 'text-fields'
+    end
+  end
+end

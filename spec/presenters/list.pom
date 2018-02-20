@@ -1,0 +1,14 @@
+Voom::Presenters.define('list') do
+  list do
+    line do
+      subtitle 'subtitle 9000'
+      body 'body 8000'
+      info 'info 7000'
+      action do
+        menu do
+          item 'item1'
+        end
+      end
+    end
+  end
+end

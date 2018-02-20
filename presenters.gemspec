@@ -23,8 +23,9 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'ice_nine'
   spec.add_runtime_dependency 'dry-container'
   spec.add_runtime_dependency 'sinatra'
-  spec.add_runtime_dependency 'rdiscount' # markdown support
-  
+  spec.add_runtime_dependency  'tzinfo'
+  spec.add_runtime_dependency  'tzinfo-data'
+  spec.add_development_dependency 'rack-test'
   spec.add_development_dependency 'pry', '~>0.10.1'
   spec.add_development_dependency 'bundler', '~> 1.13'
   spec.add_development_dependency 'rake', '~> 11.3'

@@ -13,8 +13,9 @@ PATH
     voom-ui (0.0.1)
       dry-container
       ice_nine
-      rdiscount
       sinatra
+      tzinfo
+      tzinfo-data
 
 GEM
   remote: https://rubygems.org/
@@ -57,16 +58,20 @@ GEM
     ice_nine (0.11.2)
     inflecto (0.0.2)
     method_source (0.8.2)
-    mustermann (1.0.1)
+    mini_portile2 (2.3.0)
+    mustermann (1.0.2)
+    nokogiri (1.8.2)
+      mini_portile2 (~> 2.3.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rack (2.0.4)
-    rack-protection (2.0.0)
+    rack-protection (2.0.1)
       rack
+    rack-test (0.8.2)
+      rack (>= 1.0, < 3)
     rake (11.3.0)
-    rdiscount (2.2.0.1)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -76,17 +81,25 @@ GEM
     rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
+    rspec-html-matchers (0.9.1)
+      nokogiri (~> 1)
+      rspec (>= 3.0.0.a, < 4)
     rspec-mocks (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    sinatra (2.0.0)
+    sinatra (2.0.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.0)
+      rack-protection (= 2.0.1)
       tilt (~> 2.0)
     slop (3.6.0)
+    thread_safe (0.3.6)
     tilt (2.0.8)
+    tzinfo (1.2.5)
+      thread_safe (~> 0.1)
+    tzinfo-data (1.2018.3)
+      tzinfo (>= 1.0.0)
 
 PLATFORMS
   ruby
@@ -95,8 +108,10 @@ DEPENDENCIES
   bundler (~> 1.13)
   dry-metadata!
   pry (~> 0.10.1)
+  rack-test
   rake (~> 11.3)
   rspec (~> 3.0)
+  rspec-html-matchers
   voom-ui!
 
 BUNDLED WITH

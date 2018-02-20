@@ -1,0 +1,23 @@
+<% header = ui.header %>
+<% drawer = ui.drawer %>
+<% dialogs = ui.dialogs %>
+<% footer = ui.footer %>
+<div class="mdc-layout mdc-js-layout  <% if header %>mdc-layout--fixed-header<%end%> <% if drawer %>mdc-layout--fixed-drawer<%end%>">
+  <% if header %>
+    <%= erb :"layouts/header", :locals => {:header => header} %>
+  <%end%>
+  <% if drawer %>
+    <%= erb :"layouts/drawer", :locals => {:drawer => drawer} %>
+  <% end %>
+  <main class="mdc-layout__content">
+    <div class="page-content">
+      <%= erb :"components/render", :locals => {:components => ui.components, :scope=> nil} %>
+    </div>
+  </main>
+  <% if dialogs %>
+    <%= erb :"layouts/dialogs", :locals => {:dialogs => dialogs} %>
+  <% end %>
+  <% if footer %>
+    <%= erb :"layouts/footer", :locals => {:footer => footer} %>
+  <%end%>
+</div>

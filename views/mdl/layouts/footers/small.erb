@@ -1,0 +1,14 @@
+<footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">Title</div>
+    <% footer.menus.each do |menu| %>
+      <ul class="mdl-mini-footer__link-list">
+        <% menu.items.each do |item| %>
+          <li><a href="<%= item.url %>"><%= item.text %></a></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</footer>
+
+

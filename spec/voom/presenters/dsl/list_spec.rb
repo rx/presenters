@@ -21,16 +21,20 @@ describe 'dsl' do
         let(:action) {line.actions.first}
 
         it 'text' do
-          expect(action.text).to eq('do it')
+          expect(action.menu.items.first.text).to eq('item1')
         end
       end
 
       it 'subtitle' do
-        expect(line.subtitle.text).to eq('subtitle 9000')
+        expect(line.subtitle).to eq('subtitle 9000')
       end
 
-      it 'detail' do
-        expect(line.detail.text).to eq('detail 8000')
+      it 'body' do
+        expect(line.body).to eq('body 8000')
+      end
+
+      it 'info' do
+        expect(line.info).to eq('info 7000')
       end
     end
   end

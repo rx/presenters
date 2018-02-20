@@ -1,0 +1,8 @@
+<div class="mdl-layout__drawer">
+  <span class="mdl-layout__title"><%= drawer.title %></span>
+  <nav class="mdl-navigation">
+    <% drawer.menu.items.each do |item| %>
+      <a class="mdl-navigation__link" href="<%= item.url %>"><%= item.text %></a>
+    <% end %>
+  </nav>
+</div>

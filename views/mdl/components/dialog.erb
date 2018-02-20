@@ -1,0 +1,35 @@
+<dialog id="<%= comp.id %>" class="mdl-dialog">
+  <% if comp.title %>
+    <h3 class="mdl-dialog__title"><%= comp.title %></h3>
+  <% end %>
+  <div class="mdl-dialog__content">
+    <% comp.components.each do |dcomp| %>
+      <%= erb :"components/#{dcomp.type}", :locals => {:comp => dcomp} %>
+    <% end %>
+  </div>
+  <% if comp.buttons.any? %>
+    <div class="mdl-dialog__actions">
+      <% comp.buttons.each do |button| %>
+        <%= erb :"components/button", :locals => {:comp => button} %>
+      <% end %>
+    </div>
+  <% end %>
+</dialog>
+
+<script>
+    (function () {
+        'use strict';
+        var dialogButton = document.querySelector('.<%= comp.id %>-dialog');
+        var dialog = document.querySelector('#<%= comp.id %>');
+        if (!dialog.showModal) {
+            dialogPolyfill.registerDialog(dialog);
+        }
+        dialogButton.addEventListener('click', function () {
+            dialog.showModal();
+        });
+        dialog.querySelector('button:not([disabled])')
+            .addEventListener('click', function () {
+                dialog.close();
+            });
+    }());
+</script>

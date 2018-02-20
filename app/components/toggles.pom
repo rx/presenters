@@ -1,0 +1,25 @@
+
+Voom::Presenters.define('toggles') do
+  render 'top_nav'
+  render 'component_drawer'
+  
+  display 'Toggles'
+
+  subheading 'CHECKBOX'
+  checkbox
+  checkbox checked: true
+
+  subheading 'RADIO BUTTON'
+  radio_button checked: true
+  radio_button
+
+  subheading 'ICON TOGGLE'
+  icon_toggle :format_bold, checked: true
+  icon_toggle :format_italic
+
+  subheading 'SWITCH'
+  switch checked: true
+  switch 
+
+
+end

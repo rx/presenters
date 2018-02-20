@@ -1,0 +1,7 @@
+<ul class="mdl-list">
+  <% for line in comp.lines %>
+      <%= erb :"components/list/line", :locals => {:line => line} %>
+  <% end %>
+</ul>
+
+

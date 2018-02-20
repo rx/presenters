@@ -1,7 +1,10 @@
 require 'ice_nine'
 require_relative 'definer'
+require_relative 'components/common'
 require_relative 'components/render'
 require 'voom/serializer'
+require 'voom/trace'
+
 
 
 module Voom
@@ -12,77 +15,49 @@ module Voom
         include DependsOn
         include Components::MethodMissing
         include Components::Render
+        include Components::Common
         include Voom::Serializer
+        include Voom::Trace
 
-        attr_reader :router, :context, :content
+        attr_reader :router, :context, :content, :components, :dialogs
         private :context, :router, :content
 
-        def components
-          # return [] if _layout_ && _layout_.content == @components
-          @components
-        end
-
-        def _layout_
-          @_layout_.respond_to?(:call) ? @_layout_.call : @_layout_
-        end
-
-        def load_named_layout(name)
-          return -> {} unless Voom::Presenters.registered?(name)
-          ui = Voom::Presenters[name].call
-          -> {ui.render(router: router, context: context, content: content||@components)._layout_}
-        end
-
-        def initialize(router:, context:, content: nil, layout_name: nil, &block)
+        def initialize(router:, context:, content: nil, &block)
           @router = router
           @context = context
-          @components = []
-          @_layout_ = load_named_layout(layout_name || 'layouts.default')
           @content = content
           @block = block
+          @page_title  = nil
+          @header = nil
+          @drawer = nil
+          @components = []
+          @dialogs = []
+          @footer = nil
         end
 
-        def <<(comp)
-          @components << comp
+        def page_title(title=nil)
+          return @page_title if frozen?
+          @page_title = title
         end
 
-        def heading(text=nil, **options, &block)
-          self << Components::Heading.new(text: text, router: router, context: context,
-                                          dependencies: @dependencies, helpers: @helpers, **options, &block)
+       
+
+        def header(title=nil, **attribs, &block)
+          return @header if frozen?
+          @header = Components::Header.new(title: title, router: @router, context: @context,
+                                           dependencies: @dependencies, helpers: @helpers, **attribs, &block)
         end
 
-        def paragraph(text=nil, **options, &block)
-          self << Components::Paragraph.new(text: text, router: router, context: context,
-                                            dependencies: @dependencies, helpers: @helpers, **options, &block)
+        def drawer(name=nil, **attribs, &block)
+          return @drawer if frozen?
+          @drawer = Components::Drawer.new(name: name, router: @router, context: @context,
+                                           dependencies: @dependencies, helpers: @helpers, **attribs, &block)
         end
 
-        def button(text=nil, **options, &block)
-          self << Components::Button.new(text: text, router: router, context: context,
-                                         dependencies: @dependencies, helpers: @helpers, **options, &block)
-        end
-        
-        def form(id:nil, **options, &block)
-          self << Components::Form.new(id: id, router: router, context: context,
-                                       dependencies: @dependencies, helpers: @helpers, **options, &block)
-        end
-
-        def list(**options, &block)
-          self << Components::List.new(router: router, context: context,
-                                       dependencies: @dependencies, helpers: @helpers, **options, &block)
-        end
-
-        def menu(**options, &block)
-          self << Components::Menu.new(router: router, context: context,
-                                       dependencies: @dependencies, helpers: @helpers, **options, &block)
-        end
-
-        def layout(name=nil, **options, &block)
-          return @_layout_ if frozen?
-          @_layout_ = Components::Layouts::Layout.new(name: name,
-                                                      router: router,
-                                                      context: context,
-                                                      content: content || @components,
-                                                      dependencies: @dependencies, helpers: @helpers, **options, &block) if block
-          @_layout_ = load_named_layout(name) if name && !block
+        def footer(**attribs, &block)
+          return @footer if frozen?
+          @footer = Components::Footer.new(router: @router, context: @context,
+                                           dependencies: @dependencies, helpers: @helpers, **attribs, &block)
         end
 
         def helpers(module_=nil, &block)

@@ -1,0 +1,6 @@
+Voom::Presenters.define('index') do
+  render 'top_nav'
+
+  display 'Home'
+  subheading 'todo'
+end

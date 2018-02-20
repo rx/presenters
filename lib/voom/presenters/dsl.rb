@@ -22,7 +22,7 @@ module Voom
       end
 
       def self.load(directory)
-        files = File.join(directory, '**', '*.rb')
+        files = File.join(directory, '**', '*.pom')
         Dir.glob(files) do |file|
           Kernel.load file
         end
@@ -33,7 +33,7 @@ module Voom
           begin
             register(key, build(definition))
           rescue Exception => e
-            puts "Failed to load presenter #{key}: #{e.inspect}."
+            logger.error {"Failed to load presenter #{key}: #{e.inspect}."}
             raise e
           end
         end

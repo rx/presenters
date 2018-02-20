@@ -67,7 +67,7 @@ module Voom
 
         def build_render_url(render, entity, params)
           return '#' unless render
-          "/presenters/api/v1/#{render}#{entity_uuid(entity)}?#{build_params(params)}"
+          "/#{render}#{entity_uuid(entity)}?#{build_params(params)}"
         end
 
         def build_client_url(render, entity, params)

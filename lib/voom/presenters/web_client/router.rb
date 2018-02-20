@@ -63,12 +63,12 @@ module Voom
 
         def build_command_url(command, entity, params)
           return '' unless command
-          "/api/v1/#{command}?#{build_params(params, entity)}"
+          "/api/#{command}?#{build_params(params, entity)}"
         end
 
         def build_render_url(render, entity, params)
           return '#' unless render
-          "/web/v1/#{render}?#{build_params(params, entity)}"
+          "/#{render}?#{build_params(params, entity)}"
         end
 
         def build_client_url(render, entity, params)

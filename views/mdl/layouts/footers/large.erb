@@ -1,0 +1,27 @@
+<footer class="mdl-mega-footer">
+  <div class="mdl-mega-footer__middle-section">
+
+    <div class="mdl-mega-footer__drop-down-section">
+      <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+      <% footer.menus.each_with_index do |menu, index|
+        next if index == footer.menus.size - 1              %>
+        <h1 class="mdl-mega-footer__heading"><%= menu.title %></h1>
+        <ul class="mdl-mega-footer__link-list">
+          <% menu.items.each do |item| %>
+            <li><a href="<%= item.url %>"><%= item.text %></a></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+    <% menu = footer.menus.last %>
+    <div class="mdl-mega-footer__bottom-section">
+      <div class="mdl-logo"><%=menu.title%></div>
+      <ul class="mdl-mega-footer__link-list">
+        <% menu.items.each do |item| %>
+          <li><a href="<%= item.url %>"><%= item.text %></a></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</footer>

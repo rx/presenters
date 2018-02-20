@@ -13,7 +13,7 @@ describe 'dsl' do
       reset_presenters!
     end
 
-    it 'resolves dependency' do
+    it 'dependency' do
       ui = Voom::Presenters[:depends_on].call.render(router: nil, context: {})
       expect(ui.components.first.text).to eq(text)
     end

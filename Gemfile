@@ -4,3 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'dry-metadata', github: 'voomify/dry-metadata', branch: 'develop'
+
+group :test do
+  gem 'rspec-html-matchers'
+end

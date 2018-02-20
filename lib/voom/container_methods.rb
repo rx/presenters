@@ -23,6 +23,7 @@ module Voom
     def list
       container.keys
     end
+    alias keys list
 
     def container
       config.container

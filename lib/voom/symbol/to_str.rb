@@ -1,12 +1,13 @@
+require 'inflecto'
+
 module Voom
-  # Helper module for converting symbol naming to string naming and other forms.
-  # 'a.b' and :a__b are the same and should be interchangeable. This module maps the symbol form to the string form.
+  # Helper module for converting symbol naming to string.
   # It provides common conversions for variable naming (snake_case) and class naming (class_name)
   module Symbol
-    # Maps symbols with double underscores '__' to dot '.'
+    # Maps symbols to strings
     def sym_to_str(name)
       return name if name.is_a? ::String
-      name.to_s.gsub('__', '.')
+      name.to_s
     end
 
     # Converts a namespaced string or symbol to snake_case

@@ -1,0 +1,9 @@
+<div id="<%=comp.id%>" class="mdl-grid"
+     style="<%= "background-color: ##{comp.color};" if comp.color %>">
+ <% comp.columns.each do |col| %>
+    <div id="<%=col.id%>" class="mdl-cell mdl-cell--<%=col.size%>-col"
+         style="<%= "background-color: ##{col.color};" if col.color %>">
+      <%= erb :"components/render", :locals => {:components => col.components, :scope=> nil} %>
+    </div>
+ <% end %>
+</div>

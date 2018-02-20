@@ -16,8 +16,8 @@ module Voom
           self
         end
 
-        def render(router:, layout_name: nil, context:, content:nil)
-          ui = UserInterface.new(router: router, layout_name: layout_name, context: context, content:content, &@block)
+        def render(router:, context:{}, content:nil)
+          ui = UserInterface.new(router: router, context: context, content:content, &@block)
           ui.render_instance
         end
       end

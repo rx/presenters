@@ -1,0 +1,8 @@
+<form role="form" method="post" action="<%= comp.url %>" id="<%= comp.id %>">
+  <% comp.fields.each do |field|  %>
+    <%= erb :"components/form/#{field.type}", :locals => {:field => field} %>
+  <% end %>
+  <% for action in comp.actions %>
+    <%= erb :"components/actions/#{action.type}", :locals => {:action => action} %>
+  <% end %>
+</form>

@@ -1,0 +1,5 @@
+<% if comp.level==1 %>
+  <p><%= comp.attributes[:markdown] ? markdown(comp.text) : comp.text %></p>
+<% else %>
+  <p style='font-weight: 600;'><%= comp.attributes[:markdown] ? markdown(comp.text) : comp.text %></p>
+<% end %>

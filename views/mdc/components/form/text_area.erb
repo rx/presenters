@@ -1,0 +1,7 @@
+<div class="mdc-textfield mdc-js-textfield<% if field.error %> is-invalid is-dirty<%end%>">
+    <textarea id="<%= field.id %>"
+             value="<%= field.value %>"
+             class="mdc-textfield__input" type="text" rows= "3" ></textarea>
+    <label class="mdc-textfield__label" for="<%= field.id %>"><%= field.label %></label>
+    <span class="mdc-textfield__error <% if field.error %> is-invalid<%end%>" ><%= field.error || field.hint%></span>
+</div>

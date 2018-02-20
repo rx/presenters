@@ -1,0 +1,7 @@
+Voom::Presenters.define('components') do
+  render 'top_nav'
+  render 'component_drawer'
+
+  display 'Components'
+  subheading '<-- Select a component'
+end

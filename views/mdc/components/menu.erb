@@ -1,0 +1,19 @@
+<!-- Left aligned menu below button -->
+<div style="<%= "color: ##{comp.color};" if comp.color%> ">
+<%= erb :"components/button", :locals => {:comp => comp.button} %>
+<ul class="mdc-menu mdc-menu--bottom-<%=comp.side%> mdc-js-menu mdc-js-ripple-effect"
+    for="id-<%=comp.button.id%>">
+  <% items = comp.items
+     items.each_with_index do |item, index|
+       next if item.type==:divider
+       divider = (index < items.size-1) ? items[index+1].type == :divider : false
+  %>
+    <li  class="mdc-menu__item<%= ' mdc-menu__item--full-bleed-divider' if divider%>"
+         <%='disabled' if item.disabled %>>
+      <%unless item.disabled %><a class="mdc-navigation__link" href="<%= item.url %>"><%end%>
+        <%= item.text %>
+      <%unless item.disabled %></a><%end%>
+    </li>
+  <% end %>
+</ul>
+</div>

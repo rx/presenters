@@ -3,44 +3,55 @@ module Voom
     module DSL
       module Components
         class Menu < Base
-          attr_accessor :items
+          attr_accessor :items, :title, :side, :color
 
-          def initialize(**attribs, &block)
+          def initialize(title=nil, **attribs_, &block)
+            super(type: :menu, **attribs_, &block)
+            @title = title
             @items = []
-            super(type: :menu, **attribs, &block)
+            @side = attribs.delete(:side) || :right
+            @color = attribs.delete(:color)
+            @button = Components::Button.new(type: :icon, icon: :more_vert,  router: router, context: context,
+                                             dependencies: @dependencies, helpers: @helpers)
             expand!
           end
 
-          def item(first_text = nil, text: nil, entity: nil, **attribs, &block)
+          def button(text=nil, **options, &block)
+            return @button if frozen?
+            @button = Components::Button.new(text: text, router: router, context: context,
+                                             dependencies: @dependencies, helpers: @helpers, **options, &block)
+          end
+
+          def item(first_text = nil, text: nil, **attribs, &block)
             the_text = first_text || text
             @items << Item.new(text: the_text, router: @router, context: @context,
-                               entity: entity || @entity,
                                dependencies: @dependencies,
                                helpers: @helpers,
                                **attribs, &block)
           end
 
-          def separator( **attribs, &block)
-            @items << Separator.new(router: @router, context: @context,
-                                    dependencies: @dependencies,
-                                    helpers: @helpers,
-                                    **attribs, &block)
+          def divider(**attribs, &block)
+            @items << Divider.new(router: @router, context: @context,
+                                  dependencies: @dependencies,
+                                  helpers: @helpers,
+                                  **attribs, &block)
           end
 
           class Item < Base
-            attr_accessor :text, :icon
+            attr_accessor :text, :icon, :disabled
 
-            def initialize(**attribs, &block)
-              @text = attribs[:text]
-              @icon = attribs[:icon]
-              super(type: :item, **attribs, &block)
+            def initialize(**attribs_, &block)
+              super(type: :item, **attribs_, &block)
+              @text = attribs.delete(:text)
+              @icon = attribs.delete(:icon)
+              @disabled  = attribs.delete(:disabled)
               expand!
             end
           end
 
-          class Separator < Base
+          class Divider < Base
             def initialize(**attribs, &block)
-              super(type: :separator, **attribs, &block)
+              super(type: :divider, **attribs, &block)
             end
           end
 

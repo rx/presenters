@@ -51,7 +51,4 @@ build-iPhoneSimulator/
 
 /.idea/
 .DS_Store
-node_modules
-public/bundle.js
-public/bundle.js.map
-public/fonts
+.env

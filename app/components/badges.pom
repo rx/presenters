@@ -1,0 +1,20 @@
+
+Voom::Presenters.define('badges') do
+
+  render 'top_nav'
+  render 'component_drawer'
+
+  display 'Badges'
+
+  subheading 'Number'
+  badge 1, icon: :account_box
+
+  subheading 'Icon'
+  badge '♥', icon: :account_box
+
+  subheading 'Number'
+  badge 1, text: 'Inbox'
+
+  subheading 'Icon'
+  badge '♥', text: 'Mood'
+end

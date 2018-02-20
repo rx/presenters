@@ -14,10 +14,10 @@ describe 'dsl' do
     let(:form) {pom.components.first}
     describe 'type' do
       it 'text' do
-        expect(form.fields[:firstname].type).to eq(:text)
+        expect(form.fields[0].type).to eq(:text_field)
       end
       it 'hidden' do
-        expect(form.fields[:ssn].type).to eq(:hidden)
+        expect(form.fields[1].type).to eq(:hidden)
       end
       it 'button' do
         expect(form.actions.first.type).to eq(:button)
