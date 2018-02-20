@@ -14,13 +14,13 @@ module Voom
         
         get '/' do
           presenter = Voom::Presenters['index'].call
-          @pom = presenter.render(router: router, context: params)
+          @pom = presenter.expand(router: router, context: params)
           erb :web
         end
 
         get '/:presenter' do
           presenter = Voom::Presenters[params[:presenter]].call
-          @pom = presenter.render(router: router, context: params)
+          @pom = presenter.expand(router: router, context: params)
           erb :web, layout: (request.xhr? ? false : true)
         end
 

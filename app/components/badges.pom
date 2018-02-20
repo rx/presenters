@@ -1,8 +1,8 @@
 
 Voom::Presenters.define('badges') do
 
-  render 'top_nav'
-  render 'component_drawer'
+  attach 'top_nav'
+  attach 'component_drawer'
 
   display 'Badges'
 
@@ -17,4 +17,6 @@ Voom::Presenters.define('badges') do
 
   subheading 'Icon'
   badge '♥', text: 'Mood'
+
+  attach 'code', file: __FILE__
 end

@@ -1,5 +1,5 @@
 require_relative 'method_missing'
-require_relative 'render'
+require_relative 'attach'
 require 'voom/serializer'
 require 'securerandom'
 require 'voom/trace'
@@ -10,7 +10,7 @@ module Voom
       module Components
         class Base
           include Components::MethodMissing
-          include Components::Render
+          include Components::Attach
           include Voom::Serializer
           include LoggerMethods
           include Trace
@@ -18,6 +18,7 @@ module Voom
           attr_reader :id, :type, :attributes, :context, :components, :router
           private :context, :router
 
+          alias params context
           alias attribs attributes
           attr_accessor :type
 
@@ -59,7 +60,7 @@ module Voom
           end
           
           private
-          
+
           def h(text)
             return text unless text.is_a? String
             CGI::escapeHTML(text)

@@ -1,5 +1,5 @@
 Voom::Presenters.define('styles') do
-  render 'top_nav'
+  attach 'top_nav'
 
   display 'Styles'
 
@@ -18,4 +18,6 @@ Voom::Presenters.define('styles') do
 aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
 nulla pariatur.', level: 1
   body 'Body 2 text, calling something out.', level: 2
+
+  attach 'code', file: __FILE__
 end

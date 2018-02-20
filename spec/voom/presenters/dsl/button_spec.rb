@@ -11,7 +11,7 @@ describe 'dsl' do
       reset_presenters!
     end
 
-    let(:pom) {Voom::Presenters['button'].call.render(router: nil, context: {})}
+    let(:pom) {Voom::Presenters['button'].call.expand(router: nil, context: {})}
     let(:button) {pom.components.first}
 
     it 'text' do

@@ -1,0 +1,15 @@
+Voom::Presenters.define('component_menu') do
+  menu side: :left do
+    button icon: :arrow_drop_down
+    item 'Badges', icon: :home, render: 'badges'
+    item 'Buttons', render: 'buttons'
+    item 'Cards', render: 'cards'
+    item 'Dialogs', render: 'dialogs'
+    item 'Layouts', render: 'layouts'
+    item 'Lists', render: 'lists'
+    item 'Menus', render: 'menus'
+    item 'Toggles', render: 'toggles'
+    item 'Tables', render: 'tables'
+    item 'Text fields', render: 'text-fields'
+  end
+end

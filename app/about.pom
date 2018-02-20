@@ -1,8 +1,4 @@
 
 Voom::Presenters.define('about') do
-  page_title  'About Presenters'
-  render 'top_nav'
-  
-  display 'About'
-  subheading 'todo'
+  attach 'index'
 end

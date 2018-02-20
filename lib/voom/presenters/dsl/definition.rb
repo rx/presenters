@@ -16,9 +16,9 @@ module Voom
           self
         end
 
-        def render(router:, context:{}, content:nil)
-          ui = UserInterface.new(router: router, context: context, content:content, &@block)
-          ui.render_instance
+        def expand(router:, context:{}, &attached_block)
+          presenter = UserInterface.new(router: router, context: context, attached_block: attached_block,  &@block)
+          presenter.expand_instance(&attached_block)
         end
       end
     end

@@ -1,7 +1,7 @@
 Voom::Presenters.define('menus') do
-  render 'top_nav'
-  render 'component_drawer'
-  
+  attach 'top_nav'
+  attach 'component_drawer'
+
   display 'Menus'
 
   grid do
@@ -31,35 +31,7 @@ Voom::Presenters.define('menus') do
       end
     end
   end
-
-
-  grid do
-      column 1
-      column 5 do
-        card do
-          background color: '3E4EB8'
-          menu side: :left, color: :fff do
-            item 'Some Action'
-            item 'Another Action'
-            divider
-            item 'Disabled Action', disabled: true
-            item 'Yet Another Action'
-          end
-        end
-      end
-      column 5 do
-        card do
-          background color: '3E4EB8'
-          menu color: :fff do
-            button icon: :arrow_drop_down
-            item 'Some Action'
-            item 'Another Action'
-            divider
-            item 'Disabled Action', disabled: true
-            item 'Yet Another Action'
-          end
-        end
-      end
-    end
+  
+  attach 'code', file: __FILE__
 end
 

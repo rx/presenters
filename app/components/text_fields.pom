@@ -1,6 +1,6 @@
 Voom::Presenters.define('text-fields') do
-  render 'top_nav'
-  render 'component_drawer'
+  attach 'top_nav'
+  attach 'component_drawer'
 
   display 'Text Fields'
 
@@ -33,9 +33,9 @@ Voom::Presenters.define('text-fields') do
       error 'Input is not a the right number!'
     end
   end
-   
+
   subheading 'Multiple line'
-  
+
   form do
     text_area rows: 3 do
       label 'Text lines...'
@@ -45,9 +45,11 @@ Voom::Presenters.define('text-fields') do
 
   subheading 'Hidden'
 
-    form do
-      hidden_field do
-        value 'do it!'
-      end
+  form do
+    hidden_field do
+      value 'do it!'
     end
+  end
+
+  attach 'code', file: __FILE__
 end

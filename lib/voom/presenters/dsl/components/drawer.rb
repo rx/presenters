@@ -19,6 +19,12 @@ module Voom
             @components = [@menu]
           end
 
+          def attach(presenter, content: nil, **params, &block)
+            pom = Voom::Presenters[presenter].call.expand(router: router, context: context.merge(params))
+            @menu = pom.components.first
+            @components = [@menu]
+          end
+
         end
       end
     end

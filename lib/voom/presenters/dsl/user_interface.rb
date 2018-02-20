@@ -1,7 +1,7 @@
 require 'ice_nine'
 require_relative 'definer'
 require_relative 'components/common'
-require_relative 'components/render'
+require_relative 'components/attach'
 require 'voom/serializer'
 require 'voom/trace'
 
@@ -14,18 +14,18 @@ module Voom
         include DSL::Definer
         include DependsOn
         include Components::MethodMissing
-        include Components::Render
+        include Components::Attach
         include Components::Common
         include Voom::Serializer
         include Voom::Trace
 
-        attr_reader :router, :context, :content, :components, :dialogs
-        private :context, :router, :content
+        attr_reader :router, :context, :components, :dialogs
+        private :context, :router
+        alias params context
 
-        def initialize(router:, context:, content: nil, &block)
+        def initialize(router:, context:, attached_block: nil, &block)
           @router = router
           @context = context
-          @content = content
           @block = block
           @page_title  = nil
           @header = nil
@@ -33,14 +33,13 @@ module Voom
           @components = []
           @dialogs = []
           @footer = nil
+          @attached_block = attached_block
         end
 
         def page_title(title=nil)
           return @page_title if frozen?
           @page_title = title
         end
-
-       
 
         def header(title=nil, **attribs, &block)
           return @header if frozen?
@@ -67,12 +66,11 @@ module Voom
           @helpers.module_eval(&block) if block
           extend(@helpers)
         end
-
-        # Called by the definition.render method to evaluate a user interface with a different context
+        
+        # Called by the definition.expand method to evaluate a user interface with a different context
         # This should be made unavailable to the dsl
-        def render_instance
+        def expand_instance
           instance_eval(&@block)
-          yield(self) if block_given?
           deep_freeze
         end
 

@@ -67,8 +67,10 @@ module Voom
           end
 
           def list(**options, &block)
-            self << Components::List.new(router: router, context: context,
-                                         dependencies: @dependencies, helpers: @helpers, **options, &block)
+            self << Components::List.new(router: router,
+                                         context: context,
+                                         dependencies: @dependencies,
+                                         helpers: @helpers, **options, &block)
           end
 
           def menu(**options, &block)
@@ -79,6 +81,11 @@ module Voom
           def table(**options, &block)
             self << Components::Table.new(router: router, context: context,
                                           dependencies: @dependencies, helpers: @helpers, **options, &block)
+          end
+
+          def yield_to
+            trace { self.inspect }
+            instance_eval(&@attached_block)if @attached_block
           end
         end
       end

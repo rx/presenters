@@ -1,6 +1,6 @@
 Voom::Presenters.define('dialogs') do
-  render 'top_nav'
-  render 'component_drawer'
+  attach 'top_nav'
+  attach 'component_drawer'
 
   display 'Dialogs'
 
@@ -13,4 +13,6 @@ Voom::Presenters.define('dialogs') do
     button 'Disabled action', disabled:true
     button 'Close'
   end
+
+  attach 'code', file: __FILE__
 end

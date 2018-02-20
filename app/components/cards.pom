@@ -1,6 +1,6 @@
 Voom::Presenters.define('cards') do
-  render 'top_nav'
-  render 'component_drawer'
+  attach 'top_nav'
+  attach 'component_drawer'
 
   display 'Cards'
 
@@ -54,4 +54,6 @@ Voom::Presenters.define('cards') do
         in the Southern Hemisphere."
     background 'https://www.askideas.com/media/43/The-Sky-Tower-In-Auckland-New-Zealand.jpg'
   end
+
+  attach 'code', file: __FILE__
 end

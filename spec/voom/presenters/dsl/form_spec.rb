@@ -10,7 +10,7 @@ describe 'dsl' do
       reset_presenters!
     end
 
-    let(:pom) {Voom::Presenters[:form1].call.render(router: nil, context: {})}
+    let(:pom) {Voom::Presenters[:form1].call.expand(router: nil, context: {})}
     let(:form) {pom.components.first}
     describe 'type' do
       it 'text' do

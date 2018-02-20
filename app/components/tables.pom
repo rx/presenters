@@ -1,6 +1,6 @@
 Voom::Presenters.define('tables') do
-  render 'top_nav'
-  render 'component_drawer'
+  attach 'top_nav'
+  attach 'component_drawer'
 
   display 'Tables'
 
@@ -29,4 +29,6 @@ Voom::Presenters.define('tables') do
       end
     end
   end
+
+  attach 'code', file: __FILE__
 end

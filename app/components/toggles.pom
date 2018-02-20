@@ -1,7 +1,7 @@
 
 Voom::Presenters.define('toggles') do
-  render 'top_nav'
-  render 'component_drawer'
+  attach 'top_nav'
+  attach 'component_drawer'
   
   display 'Toggles'
 
@@ -19,7 +19,7 @@ Voom::Presenters.define('toggles') do
 
   subheading 'SWITCH'
   switch checked: true
-  switch 
+  switch
 
-
+  attach 'code', file: __FILE__
 end

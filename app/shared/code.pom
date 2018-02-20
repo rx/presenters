@@ -1,0 +1,10 @@
+Voom::Presenters.define('code') do
+  if context[:file]
+    title 'Source:'
+    body <<~CODE
+      ```
+      #{File.read(context[:file])}
+      ```
+    CODE
+  end
+end

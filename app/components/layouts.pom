@@ -1,6 +1,6 @@
 Voom::Presenters.define('layouts') do
-  render 'top_nav'
-  render 'component_drawer'
+  attach 'top_nav'
+  attach 'component_drawer'
 
   display 'Layouts'
 
@@ -49,4 +49,6 @@ Voom::Presenters.define('layouts') do
       body '2'
     end
   end
+
+  attach 'code', file: __FILE__
 end

@@ -19,7 +19,7 @@ describe 'reference' do
       keys = Voom::Presenters.keys
       keys.each do |key|
         presenter = Voom::Presenters[key].call
-        pom = presenter.render(router: router, context: params)
+        pom = presenter.expand(router: router, context: params)
         desc = "'#{key}.pom'\n"
 
         def check_components(comp, attribs, level=0, desc)
