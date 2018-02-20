@@ -1,7 +1,6 @@
 Voom::Presenters.define('layouts') do
   render 'top_nav'
   render 'component_drawer'
-  render 'footer'
 
   display 'Layouts'
 

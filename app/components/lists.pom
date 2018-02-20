@@ -1,7 +1,6 @@
 Voom::Presenters.define('lists') do
   render 'top_nav'
   render 'component_drawer'
-  render 'footer'
 
   helpers do
     def actors

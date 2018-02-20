@@ -1,7 +1,6 @@
 Voom::Presenters.define('tables') do
   render 'top_nav'
   render 'component_drawer'
-  render 'footer'
 
   display 'Tables'
 
