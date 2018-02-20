@@ -11,18 +11,17 @@ module Voom
         set :router_, Router
         set :bind, '0.0.0.0'
         set :views, Proc.new { File.join(root, "views", 'mdl') }
-       
+        
         get '/' do
-          ui = Voom::Presenters['index'].call
-          @ui = ui.render(router: router, context: params)
+          presenter = Voom::Presenters['index'].call
+          @pom = presenter.render(router: router, context: params)
           erb :web
         end
 
         get '/:presenter' do
-          presenter = params[:presenter]
-          ui = Voom::Presenters[presenter].call
-          @ui = ui.render(router: router, context: params)
-          erb :web
+          presenter = Voom::Presenters[params[:presenter]].call
+          @pom = presenter.render(router: router, context: params)
+          erb :web, layout: (request.xhr? ? false : true)
         end
 
         private

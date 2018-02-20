@@ -49,12 +49,12 @@ module Voom
         end
 
         def scrub_params(_params_)
-          _params_.delete('captures')
-          _params_.delete('render')
-          _params_.delete('view')
+          # _params_.delete('captures')
+          # _params_.delete('render')
+          # _params_.delete('view')
+          _params_.delete('presenter')
           # _params_.delete('redirect')
           _params_.delete('action')
-          _params_.delete('naked')
           _params_.delete('errors')
           _params_
         end
@@ -73,7 +73,7 @@ module Voom
 
         def build_client_url(render, entity, params)
           return '#' unless render
-          "#{base_url}/web/#{render}?naked=1&#{build_params(params, entity)}"
+          "#{base_url}/web/#{render}?layout=false&#{build_params(params, entity)}"
         end
 
         def build_params(params, entity)
