@@ -1,7 +1,7 @@
-Voom::Presenters.define('styles') do
-  attach 'top_nav'
+Voom::Presenters.define(:styles) do
+  attach :top_nav
 
-  attach :grid do
+  attach :source_grid, file: __FILE__ do
     display 'Styles'
 
     display 'Typography', level: 4
@@ -19,7 +19,5 @@ Voom::Presenters.define('styles') do
 aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
 nulla pariatur.', level: 1
     body 'Body 2 text, calling something out.', level: 2
-
-    attach 'code', file: __FILE__
   end
 end

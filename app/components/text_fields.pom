@@ -1,6 +1,6 @@
 Voom::Presenters.define('text-fields') do
-  attach 'top_nav'
-  attach 'component_drawer'
+  attach :top_nav
+  attach :component_drawer
 
   attach :grid do
     display 'Text Fields'
@@ -52,6 +52,6 @@ Voom::Presenters.define('text-fields') do
       end
     end
 
-    attach 'code', file: __FILE__
+    attach :code, file: __FILE__
   end
 end

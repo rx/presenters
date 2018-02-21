@@ -1,6 +1,6 @@
-Voom::Presenters.define('buttons') do
-  attach 'top_nav'
-  attach 'component_drawer'
+Voom::Presenters.define(:buttons) do
+  attach :top_nav
+  attach :component_drawer
 
   attach :grid do
     display 'Buttons'
@@ -53,6 +53,6 @@ Voom::Presenters.define('buttons') do
     headline 'Colored'
     button icon: :add, type: :fab, color: :primary, size: :small
 
-    attach 'code', file: __FILE__
+    attach :code, file: __FILE__
   end
 end

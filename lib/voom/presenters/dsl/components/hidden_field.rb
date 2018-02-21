@@ -5,7 +5,8 @@ module Voom
         class HiddenField < Base
 
           def initialize(**attribs_, &block)
-            super(type: :hidden_field, **attribs_, &block)
+            super(type: :hidden_field, context: context,
+                  **attribs_, &block)
             expand!
           end
 

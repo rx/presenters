@@ -34,22 +34,28 @@ module Voom
           # end
 
           def text_field(**attribs, &block)
-            fields << Components::TextField.new(parent: self,  **attribs, &block)
+            fields << Components::TextField.new(parent: self,
+                                                context: context,
+                                                **attribs, &block)
           end
 
           def text_area(**attribs, &block)
-            fields << Components::TextArea.new(parent: self, **attribs, &block)
+            fields << Components::TextArea.new(parent: self,
+                                               context: context,
+                                               **attribs, &block)
           end
 
           def hidden_field(**attribs, &block)
-            fields << Components::HiddenField.new(parent: self, **attribs, &block)
+            fields << Components::HiddenField.new(parent: self,
+                                                  context: context,
+                                                  **attribs, &block)
           end
-
 
           def button(text=nil, **attribs, &block)
-            @actions << Components::Button.new(parent: self, **attribs, &block)
+            @actions << Components::Button.new(parent: self,
+                                               context: context,
+                                               **attribs, &block)
           end
-
         end
       end
     end

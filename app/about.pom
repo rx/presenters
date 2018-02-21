@@ -1,4 +1,0 @@
-
-Voom::Presenters.define('about') do
-  attach 'index'
-end

@@ -1,6 +1,6 @@
-Voom::Presenters.define('tables') do
-  attach 'top_nav'
-  attach 'component_drawer'
+Voom::Presenters.define(:tables) do
+  attach :top_nav
+  attach :component_drawer
 
   helpers do
     def items
@@ -31,6 +31,6 @@ Voom::Presenters.define('tables') do
       end
     end
 
-    attach 'code', file: __FILE__
+    attach :code, file: __FILE__
   end
 end

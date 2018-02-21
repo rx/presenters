@@ -1,6 +1,6 @@
-Voom::Presenters.define('menus') do
-  attach 'top_nav'
-  attach 'component_drawer'
+Voom::Presenters.define(:menus) do
+  attach :top_nav
+  attach :component_drawer
 
   attach :grid do
     display 'Menus'
@@ -33,6 +33,6 @@ Voom::Presenters.define('menus') do
       end
     end
 
-    attach 'code', file: __FILE__
+    attach :code, file: __FILE__
   end
 end

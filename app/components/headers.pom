@@ -1,6 +1,6 @@
-Voom::Presenters.define('headers') do
-  attach 'top_nav'
-  attach 'component_drawer'
+Voom::Presenters.define(:headers) do
+  attach :top_nav
+  attach :component_drawer
 
 
   header 'Presenters Demo' do
@@ -14,6 +14,6 @@ Voom::Presenters.define('headers') do
   attach :grid do
     display 'Headers'
     
-    attach 'code', file: __FILE__
+    attach :code, file: __FILE__
   end
 end

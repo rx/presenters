@@ -19,16 +19,19 @@ module Voom
           end
 
           def heading(text=nil, **options, &block)
-            components << Components::Display.new(parent: self, text: text, **options, &block)
+            components << Components::Display.new(parent: self, text: text, context: context,
+                                                  **options, &block)
           end
 
           def paragraph(text=nil, **options, &block)
-            components << Components::Typography.new(parent: self, text: text, **options, &block)
+            components << Components::Typography.new(parent: self, text: text, context: context,
+                                                     **options, &block)
           end
 
           def button(text=nil, **attribs, &block)
             @buttons << Button.new(parent: self, text: text,
-                                  **attribs, &block)
+                                   context: context,
+                                   **attribs, &block)
           end
         end
       end

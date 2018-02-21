@@ -16,11 +16,15 @@ module Voom
 
           def header(**attribs, &block)
             return @header if locked?
-            @header = Row.new(parent: self, type: :header, **attribs, &block)
+            @header = Row.new(parent: self, type: :header,
+                              context: context,
+                              **attribs, &block)
           end
 
           def row(**attribs, &block)
-            @rows << Row.new(parent: self, type: :row, **attribs, &block)
+            @rows << Row.new(parent: self, type: :row,
+                             context: context,
+                             **attribs, &block)
           end
 
           class Row < Base
@@ -32,7 +36,9 @@ module Voom
             end
 
             def column(value=nil, **attribs, &block)
-              @columns << Column.new(parent: self, value: value, **attribs, &block)
+              @columns << Column.new(parent: self, value: value,
+                                     context: context,
+                                     **attribs, &block)
             end
 
             class Column < Base

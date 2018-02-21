@@ -6,7 +6,9 @@ module Voom
           attr_accessor :title, :image
 
           def initialize(**attribs_, &block)
-            super(type: :header, **attribs_, &block)
+            super(type: :header,
+                  context: context,
+                  **attribs_, &block)
             @title = attribs.delete(:title)
             @image = attribs.delete(:image)
             expand!
@@ -14,7 +16,9 @@ module Voom
 
           def menu(**attribs, &block)
             return @menu if locked?
-            @menu = Menu.new(parent: self, **attribs, &block)
+            @menu = Menu.new(parent: self,
+                             context: context,
+                             **attribs, &block)
           end
 
         end

@@ -1,4 +1,5 @@
-Voom::Presenters.define('code') do
+Voom::Presenters.define(:code) do
+  trace { "code file:#{context[:file].inspect}" }
   if context[:file]
     body ''
     title 'Page Source:'

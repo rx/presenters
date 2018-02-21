@@ -44,21 +44,29 @@ module Voom
 
         def header(title=nil, **attribs, &block)
           return @header if locked?
-          @header = Components::Header.new(parent: self, title: title, **attribs, &block)
+          @header = Components::Header.new(parent: self, title: title,
+                                           context: context,
+                                           **attribs, &block)
         end
 
         def drawer(name=nil, **attribs, &block)
           return @drawer if locked?
-          @drawer = Components::Drawer.new(parent: self, name: name, **attribs, &block)
+          @drawer = Components::Drawer.new(parent: self, name: name,
+                                           context: context,
+                                           **attribs, &block)
         end
 
         def footer(**attribs, &block)
           return @footer if locked?
-          @footer = Components::Footer.new(parent: self, **attribs, &block)
+          @footer = Components::Footer.new(parent: self,
+                                           context: context,
+                                           **attribs, &block)
         end
 
         def dialog(**attributes, &block)
-          @dialogs << Components::Dialog.new(parent: self, **attributes, &block)
+          @dialogs << Components::Dialog.new(parent: self,
+                                             context: context,
+                                             **attributes, &block)
         end
 
 

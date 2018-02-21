@@ -22,7 +22,7 @@ module Voom
 
         def local_render?(render)
           return unless render
-          render.start_with?('#')
+          render.to_s.start_with?('#')
         end
 
         def build_local_render(command, render, entity, context)

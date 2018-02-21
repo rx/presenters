@@ -9,7 +9,8 @@ module Voom
           attr_reader :lines
           def initialize(**attribs, &block)
             @lines = []
-            super(type: :list, **attribs, &block)
+            super(type: :list, context: context,
+                  **attribs, &block)
             expand!
           end
           

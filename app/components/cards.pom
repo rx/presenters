@@ -1,6 +1,6 @@
-Voom::Presenters.define('cards') do
-  attach 'top_nav'
-  attach 'component_drawer'
+Voom::Presenters.define(:cards) do
+  attach :top_nav
+  attach :component_drawer
 
 
   attach :grid do
@@ -57,6 +57,6 @@ Voom::Presenters.define('cards') do
       background 'https://www.askideas.com/media/43/The-Sky-Tower-In-Auckland-New-Zealand.jpg'
     end
 
-    attach 'code', file: __FILE__
+    attach :code, file: __FILE__
   end
 end

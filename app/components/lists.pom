@@ -1,6 +1,6 @@
-Voom::Presenters.define('lists') do
-  attach 'top_nav'
-  attach 'component_drawer'
+Voom::Presenters.define(:lists) do
+  attach :top_nav
+  attach :component_drawer
 
   helpers do
     def actors
@@ -87,6 +87,6 @@ Voom::Presenters.define('lists') do
 #   end
 # end
 
-    attach 'code', file: __FILE__
+    attach :code, file: __FILE__
   end
 end

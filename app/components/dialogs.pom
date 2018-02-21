@@ -1,6 +1,6 @@
-Voom::Presenters.define('dialogs') do
-  attach 'top_nav'
-  attach 'component_drawer'
+Voom::Presenters.define(:dialogs) do
+  attach :top_nav
+  attach :component_drawer
 
   attach :grid do
     display 'Dialogs'
@@ -15,6 +15,6 @@ Voom::Presenters.define('dialogs') do
       button 'Close'
     end
 
-    attach 'code', file: __FILE__
+    attach :code, file: __FILE__
   end
 end

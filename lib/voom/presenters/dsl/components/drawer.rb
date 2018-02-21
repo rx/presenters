@@ -13,7 +13,8 @@ module Voom
 
           def menu(**attribs, &block)
             return @menu if locked?
-            @menu = Menu.new(parent: self, **attribs, &block)
+            @menu = Menu.new(parent: self, context: context,
+                             **attribs, &block)
           end
 
           def attach(presenter, **params, &block)

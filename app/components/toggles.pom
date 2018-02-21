@@ -1,6 +1,6 @@
-Voom::Presenters.define('toggles') do
-  attach 'top_nav'
-  attach 'component_drawer'
+Voom::Presenters.define(:toggles) do
+  attach :top_nav
+  attach :component_drawer
 
   attach :grid do
     display 'Toggles'
@@ -21,6 +21,6 @@ Voom::Presenters.define('toggles') do
     switch checked: true
     switch
 
-    attach 'code', file: __FILE__
+    attach :code, file: __FILE__
   end
 end

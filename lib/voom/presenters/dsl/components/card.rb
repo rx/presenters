@@ -18,6 +18,7 @@ module Voom
           def title(title=nil, **attribs, &block)
             return @title if locked?
             @title = Title.new(parent: self, text: title,
+                               context: context,
                                **attribs, &block)
           end
 
@@ -35,12 +36,14 @@ module Voom
             return @bg_image if locked?
             @bg_image = Background.new(parent: self, image: image,
                                        options: options,
-                                    **attribs, &block)
+                                       context: context,
+                                       **attribs, &block)
           end
 
           def action(**attribs, &block)
             return @action if locked?
             @action = Action.new(parent: self,
+                                 context: context,
                                  **attribs, &block)
           end
 
@@ -48,7 +51,8 @@ module Voom
             return @menu if locked?
             icon = attribs[:icon] || :more_vert
             @menu = Components::Menu.new(parent: self, icon: icon,
-                             **attribs, &block)
+                                         context: context,
+                                         **attribs, &block)
           end
 
           class Background < Base
@@ -84,7 +88,9 @@ module Voom
 
             def button(text=nil, **options, &block)
               return @button if locked?
-              @button = Components::Button.new(parent: self, text: text, **options, &block)
+              @button = Components::Button.new(parent: self, text: text,
+                                               context: context,
+                                               **options, &block)
             end
           end
         end

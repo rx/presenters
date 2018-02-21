@@ -17,17 +17,21 @@ module Voom
 
           def button(text=nil, **options, &block)
             return @button if locked?
-            @button = Components::Button.new(text: text, parent: self, **options, &block)
+            @button = Components::Button.new(text: text, parent: self,
+                                             context: context,
+                                             **options, &block)
           end
 
           def item(first_text = nil, text: nil, **attribs, &block)
             the_text = first_text || text
             @items << Item.new(parent: self, text: the_text, 
+                               context: context,
                                **attribs, &block)
           end
 
           def divider(**attribs, &block)
-            @items << Divider.new(parent: self, 
+            @items << Divider.new(parent: self,
+                                  context: context,
                                   **attribs, &block)
           end
 
