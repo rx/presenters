@@ -42,11 +42,7 @@ module Voom
           def button(text=nil, **attributes, &block)
             self << Components::Button.new(text: text, parent: self, **attributes, &block)
           end
-
-          def dialog(**attributes, &block)
-            @dialogs << Components::Dialog.new(parent: self, **attributes, &block)
-          end
-
+          
           def grid(color: nil, **attributes, &block)
             self << Components::Grid.new(parent: self, color: color, **attributes, &block)
           end

@@ -8,7 +8,7 @@ Voom::Presenters.define('menus') do
     grid do
       column 1
       column 5 do
-        card do
+        card width: 20 do
           background color: '3E4EB8'
           menu side: :left, color: :fff do
             item 'Some Action'
@@ -20,7 +20,7 @@ Voom::Presenters.define('menus') do
         end
       end
       column 5 do
-        card do
+        card width: 20 do
           background color: '3E4EB8'
           menu color: :fff do
             item 'Some Action'

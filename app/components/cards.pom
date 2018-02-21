@@ -7,7 +7,7 @@ Voom::Presenters.define('cards') do
     display 'Cards'
 
     subheading 'Wide'
-    card width: 512, height: 176 do
+    card width: 42, height: 14 do
       title 'Welcome', color: :fff
       text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia... "
       background 'https://getmdl.io/assets/demos/welcome_card.jpg'
@@ -20,7 +20,7 @@ Voom::Presenters.define('cards') do
     end
 
     subheading 'Square'
-    card width: 320, height: 320 do
+    card width: 21, height: 21 do
       title 'Update', color: :fff
       text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis."
       background 'https://getmdl.io/assets/demos/dog.png', options: 'bottom right 15% no-repeat #46B6AC'
@@ -30,12 +30,12 @@ Voom::Presenters.define('cards') do
     end
 
     subheading 'Image'
-    card width: 256, height: 256 do
+    card width: 21, height: 21 do
       background 'https://getmdl.io/assets/demos/image_card.jpg'
     end
 
     subheading 'Event'
-    card width: 256, height: 256 do
+    card width: 21, height: 21 do
       title 'Featured event:
            May 24, 2016
            7-11pm',
@@ -48,7 +48,7 @@ Voom::Presenters.define('cards') do
 
 
     subheading 'Example'
-    card width: 256, height: 512 do
+    card width: 21, height: 42 do
       title 'Auckland Sky Tower
              Auckland, New Zealand'
       text "The Sky Tower is an observation and telecommunications tower located in Auckland,

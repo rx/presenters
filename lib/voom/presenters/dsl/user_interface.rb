@@ -57,6 +57,11 @@ module Voom
           @footer = Components::Footer.new(parent: self, **attribs, &block)
         end
 
+        def dialog(**attributes, &block)
+          @dialogs << Components::Dialog.new(parent: self, **attributes, &block)
+        end
+
+
         def helpers(module_=nil, &block)
           return unless module_ || block
           @parent.helpers(module_, &block) if @parent

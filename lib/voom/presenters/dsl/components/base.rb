@@ -44,6 +44,10 @@ module Voom
             @parent.url(**attributes.merge(context))
           end
 
+          def dialog(**attributes, &block)
+            @parent.dialog(**attributes, &block)
+          end
+
           private
 
           def h(text)
@@ -56,7 +60,7 @@ module Voom
           end
 
           protected
-         
+
           def router
             @parent.send(:router)
           end
