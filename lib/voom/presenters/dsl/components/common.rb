@@ -11,76 +11,61 @@ module Voom
             @components << comp
           end
 
-          def display(text=nil, **options, &block)
-            self << Components::Typography.new(text: text, router: router, context: context,
-                                            dependencies: @dependencies, helpers: @helpers, **options, &block)
+          def display(text=nil, **attributes, &block)
+            self << Components::Typography.new(parent:self, text: text, **attributes, &block)
           end
 
-          def headline(text=nil, **options, &block)
-            self << Components::Typography.new(type: :headline, text: text, router: router, context: context,
-                                             dependencies: @dependencies, helpers: @helpers, **options, &block)
+          def headline(text=nil, **attributes, &block)
+            self << Components::Typography.new(parent:self, type: :headline, text: text,  **attributes, &block)
           end
 
-          def subheading(text=nil, **options, &block)
-            self << Components::Typography.new(type: :subheading, text: text, router: router, context: context,
-                                               dependencies: @dependencies, helpers: @helpers, **options, &block)
+          def subheading(text=nil, **attributes, &block)
+            self << Components::Typography.new(parent:self, type: :subheading, text: text,  **attributes, &block)
           end
 
-          def title(text=nil, **options, &block)
-            self << Components::Title.new(text: text, router: router, context: context,
-                                               dependencies: @dependencies, helpers: @helpers, **options, &block)
+          def title(text=nil, **attributes, &block)
+            self << Components::Title.new(parent:self, text: text, **attributes, &block)
           end
 
-          def body(text=nil, **options, &block)
-            self << Components::Typography.new(type: :body, text: text, router: router, context: context,
-                                              dependencies: @dependencies, helpers: @helpers, **options, &block)
+          def body(text=nil, **attributes, &block)
+            self << Components::Typography.new(parent:self, type: :body, text: text, **attributes, &block)
           end
 
-          def badge(badge=nil, **options, &block)
-            self << Components::Badge.new(badge: badge, router: router, context: context,
-                                          dependencies: @dependencies, helpers: @helpers, **options, &block)
+          def badge(badge=nil, **attributes, &block)
+            self << Components::Badge.new(parent: self, badge: badge, **attributes, &block)
           end
 
-          def card(**options, &block)
-            self << Components::Card.new(router: router, context: context,
-                                         dependencies: @dependencies, helpers: @helpers, **options, &block)
+          def card(**attributes, &block)
+            self << Components::Card.new(parent: self, **attributes, &block)
           end
 
-          def button(text=nil, **options, &block)
-            self << Components::Button.new(text: text, router: router, context: context,
-                                           dependencies: @dependencies, helpers: @helpers, **options, &block)
+          def button(text=nil, **attributes, &block)
+            self << Components::Button.new(text: text, parent: self, **attributes, &block)
           end
 
-          def dialog(**options, &block)
-            @dialogs << Components::Dialog.new(router: router, context: context,
-                                               dependencies: @dependencies, helpers: @helpers, **options, &block)
+          def dialog(**attributes, &block)
+            @dialogs << Components::Dialog.new(parent: self, **attributes, &block)
           end
 
-          def grid(color: nil, **options, &block)
-            self << Components::Grid.new(color: color, router: router, context: context,
-                                         dependencies: @dependencies, helpers: @helpers, **options, &block)
+          def grid(color: nil, **attributes, &block)
+            self << Components::Grid.new(parent: self, color: color, **attributes, &block)
           end
 
-          def form(id: nil, **options, &block)
-            self << Components::Form.new(id: id, router: router, context: context,
-                                         dependencies: @dependencies, helpers: @helpers, **options, &block)
+          def form(id: nil, **attributes, &block)
+            self << Components::Form.new(parent: self, id: id, context: context, **attributes, &block)
           end
 
-          def list(**options, &block)
-            self << Components::List.new(router: router,
-                                         context: context,
-                                         dependencies: @dependencies,
-                                         helpers: @helpers, **options, &block)
+          def list(**attributes, &block)
+            self << Components::List.new(parent: self,
+                                         **attributes, &block)
           end
 
-          def menu(**options, &block)
-            self << Components::Menu.new(router: router, context: context,
-                                         dependencies: @dependencies, helpers: @helpers, **options, &block)
+          def menu(**attributes, &block)
+            self << Components::Menu.new(parent: self, **attributes, &block)
           end
 
-          def table(**options, &block)
-            self << Components::Table.new(router: router, context: context,
-                                          dependencies: @dependencies, helpers: @helpers, **options, &block)
+          def table(**attributes, &block)
+            self << Components::Table.new(parent: self, **attributes, &block)
           end
 
           def yield_to

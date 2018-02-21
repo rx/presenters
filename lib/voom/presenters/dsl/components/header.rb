@@ -13,10 +13,8 @@ module Voom
           end
 
           def menu(**attribs, &block)
-            return @menu if frozen?
-            @menu = Menu.new(router: @router, context: @context,
-                             dependencies: @dependencies,
-                             helpers: @helpers, **attribs, &block)
+            return @menu if locked?
+            @menu = Menu.new(parent: self, **attribs, &block)
           end
 
         end

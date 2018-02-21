@@ -15,20 +15,19 @@ module Voom
           end
 
           def column(size, color: nil, **attribs, &block)
-            @columns << Column.new(size: size, color: color,
-                                   router: @router, context: @context,
-                                   dependencies: @dependencies,
-                                   helpers: @helpers, **attribs, &block)
+            @columns << Column.new(parent: self, size: size, color: color,
+                                   **attribs, &block)
           end
 
           class Column < Base
             include Components::Common
-            attr_accessor :size, :color
+            attr_accessor :size, :color, :components
 
             def initialize(**attribs_, &block)
               super(type: :column, **attribs_, &block)
               @size = attribs.delete(:size) || 1
               @color = attribs.delete(:color)
+              @components = []
               expand!
             end
           end

@@ -5,8 +5,8 @@ module Voom
         class Typography < Base
           attr_accessor :text, :level
 
-          def initialize(**attribs_, &block)
-            super(type: :display, **attribs_, &block)
+          def initialize(parent:, **attribs_, &block)
+            super(type: :display, parent: parent, **attribs_, &block)
             @text = attribs.delete(:text)
             @level = attribs.delete(:level) || 1
             expand!

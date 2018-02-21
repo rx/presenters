@@ -11,29 +11,23 @@ module Voom
             @items = []
             @side = attribs.delete(:side) || :right
             @color = attribs.delete(:color)
-            @button = Components::Button.new(type: :icon, icon: :more_vert,  router: router, context: context,
-                                             dependencies: @dependencies, helpers: @helpers)
+            @button = Components::Button.new(parent: self, type: :icon, icon: :more_vert)
             expand!
           end
 
           def button(text=nil, **options, &block)
-            return @button if frozen?
-            @button = Components::Button.new(text: text, router: router, context: context,
-                                             dependencies: @dependencies, helpers: @helpers, **options, &block)
+            return @button if locked?
+            @button = Components::Button.new(text: text, parent: self, **options, &block)
           end
 
           def item(first_text = nil, text: nil, **attribs, &block)
             the_text = first_text || text
-            @items << Item.new(text: the_text, router: @router, context: @context,
-                               dependencies: @dependencies,
-                               helpers: @helpers,
+            @items << Item.new(parent: self, text: the_text, 
                                **attribs, &block)
           end
 
           def divider(**attribs, &block)
-            @items << Divider.new(router: @router, context: @context,
-                                  dependencies: @dependencies,
-                                  helpers: @helpers,
+            @items << Divider.new(parent: self, 
                                   **attribs, &block)
           end
 

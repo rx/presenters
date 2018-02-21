@@ -13,7 +13,7 @@ describe 'to_hash' do
     Voom::Presenters.list.each do |key|
       puts key
       presenter = Voom::Presenters[key].call
-      pom = presenter.expand(router: router)
+      pom = presenter.expand(router: nil)
       expect(pom.to_hash).not_to eq nil
     end
   end

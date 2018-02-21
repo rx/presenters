@@ -12,17 +12,13 @@ module Voom
           end
 
           def menu(**attribs, &block)
-            return @menu if frozen?
-            @menu = Menu.new(router: @router, context: @context,
-                             dependencies: @dependencies,
-                             helpers: @helpers, **attribs, &block)
-            @components = [@menu]
+            return @menu if locked?
+            @menu = Menu.new(parent: self, **attribs, &block)
           end
 
-          def attach(presenter, content: nil, **params, &block)
-            pom = Voom::Presenters[presenter].call.expand(router: router, context: context.merge(params))
-            @menu = pom.components.first
-            @components = [@menu]
+          def attach(presenter, **params, &block)
+            pom = Voom::Presenters[presenter].call.expand_child(parent: self, context: context.merge(params), &block)
+            @menu = pom.components.select{|i| i.type==:menu}.first
           end
 
         end

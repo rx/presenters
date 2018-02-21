@@ -11,7 +11,7 @@ describe 'dsl' do
       reset_presenters!
     end
 
-    let(:pom) {Voom::Presenters['list'].call.expand(router: nil, context: {})}
+    let(:pom) {Voom::Presenters['list'].call.expand(router: nil)}
     let(:list) {pom.components.first}
 
     describe 'line' do

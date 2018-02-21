@@ -11,7 +11,7 @@ describe 'dsl' do
       reset_presenters!
     end
 
-    let(:pom) {Voom::Presenters['menu'].call.expand(router: nil, context: {})}
+    let(:pom) {Voom::Presenters['menu'].call.expand(router: nil)}
     let(:menu) {pom.components.first}
 
     describe 'items' do

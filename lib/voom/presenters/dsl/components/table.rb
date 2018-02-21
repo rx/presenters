@@ -15,17 +15,12 @@ module Voom
           end
 
           def header(**attribs, &block)
-            return @header if frozen?
-            @header = Row.new(type: :header,
-                              router: @router, context: @context,
-                              dependencies: @dependencies,
-                              helpers: @helpers, **attribs, &block)
+            return @header if locked?
+            @header = Row.new(parent: self, type: :header, **attribs, &block)
           end
 
           def row(**attribs, &block)
-            @rows << Row.new(type: :row, router: @router, context: @context,
-                             dependencies: @dependencies,
-                             helpers: @helpers, **attribs, &block)
+            @rows << Row.new(parent: self, type: :row, **attribs, &block)
           end
 
           class Row < Base
@@ -37,10 +32,7 @@ module Voom
             end
 
             def column(value=nil, **attribs, &block)
-              @columns << Column.new(value: value,
-                                     router: @router, context: @context,
-                                     dependencies: @dependencies,
-                                     helpers: @helpers, **attribs, &block)
+              @columns << Column.new(parent: self, value: value, **attribs, &block)
             end
 
             class Column < Base

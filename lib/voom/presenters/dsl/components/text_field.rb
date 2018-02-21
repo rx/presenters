@@ -13,27 +13,27 @@ module Voom
           end
 
           def label(text=nil)
-            return @label if frozen?
+            return @label if locked?
             @label = text
           end
 
           def value(value=nil)
-            return @value if frozen?
+            return @value if locked?
             @value = value
           end
 
           def pattern(pattern=nil)
-            return @pattern if frozen?
+            return @pattern if locked?
             @pattern = json_regexp(Regexp.new(pattern))
           end
 
           def hint(hint=nil)
-            return @hint if frozen?
+            return @hint if locked?
             @hint = hint
           end
 
           def error(error=nil)
-            return @error if frozen?
+            return @error if locked?
             @error = error
           end
 

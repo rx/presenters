@@ -1,5 +1,4 @@
 require_relative 'method_missing'
-require_relative 'attach'
 require 'voom/serializer'
 require 'securerandom'
 require 'voom/trace'
@@ -12,7 +11,6 @@ module Voom
         # This class provides common base implementation
         class Node
           include Components::MethodMissing
-          include Components::Attach
           include Voom::Serializer
           include LoggerMethods
           include Trace

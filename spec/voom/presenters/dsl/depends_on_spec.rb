@@ -14,7 +14,7 @@ describe 'dsl' do
     end
 
     it 'dependency' do
-      pom = Voom::Presenters[:depends_on].call.expand(router: nil, context: {})
+      pom = Voom::Presenters[:depends_on].call.expand(router: nil)
       expect(pom.components.first.text).to eq(text)
     end
   end

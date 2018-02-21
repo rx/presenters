@@ -23,6 +23,7 @@ describe 'reference' do
         desc = "'#{key}.pom'\n"
 
         def check_components(comp, attribs, level=0, desc)
+          return unless comp.respond_to?(:components)
           comp.components.each_with_index do |comp, index|
             desc += "#{''.ljust(level*4)}index: #{index} type: #{comp.type}"
             return attribs << [desc, comp.to_hash] if comp.attributes.any?

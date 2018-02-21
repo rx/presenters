@@ -1,50 +1,49 @@
 require_relative 'method_missing'
-require_relative 'attach'
-require 'voom/serializer'
+require_relative '../lockable'
+require_relative '../../../serializer'
+require_relative '../../../trace'
+
 require 'securerandom'
-require 'voom/trace'
 
 module Voom
   module Presenters
     module DSL
       module Components
+        # Every object in the POM is a node
+        # This class provides common base implementation
         class Base
+          include Lockable
           include Components::MethodMissing
-          include Components::Attach
+
           include Voom::Serializer
           include LoggerMethods
           include Trace
 
-          attr_reader :id, :type, :attributes, :context, :components, :router
-          private :context, :router
+          attr_reader :type, :id, :attributes, :context
+          private :context
 
           alias params context
           alias attribs attributes
-          attr_accessor :type
 
-          def initialize(id: nil, type:, router:, context:, dependencies:, helpers:, **attributes, &block)
+          def initialize(type:, parent:, id: nil, context: {}, **attributes, &block)
             @id = h(id) || "id-#{SecureRandom.hex}"
             @type = h(type)
-            @router = router
+            @parent = parent
             @context = context
-            @dependencies = dependencies
             @attributes = escape(attributes || {})
             @block = block
-            @helpers = helpers
-            @components = []
-            @url = nil
+            @url = nil # Used by serializer
           end
 
           def expand!
-            extend(@helpers) if @helpers
+            extend(_helpers_) if _helpers_
             instance_eval(&@block) if @block
           end
-          
-          def url
-            return "#" unless @router
-            @router.url(render: @attributes[:render], command: @attributes[:command], context: @context)
+
+          def url(**context)
+            @parent.url(**attributes.merge(context))
           end
-          
+
           private
 
           def h(text)
@@ -55,6 +54,16 @@ module Voom
           def escape(attributes)
             attributes.map {|k, v| [k, h(v)]}.to_h
           end
+
+          protected
+          def _helpers_
+            @parent.send(:_helpers_)
+          end
+
+          def router
+            @parent.send(:router)
+          end
+
         end
       end
     end

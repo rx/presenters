@@ -11,7 +11,7 @@ describe 'dsl' do
     end
 
     it 'text' do
-      ui = Voom::Presenters[:headline].call.expand(router: nil, context: {})
+      ui = Voom::Presenters[:headline].call.expand(router: nil)
       expect(ui.components.first.text).to eq('hello world')
     end
   end

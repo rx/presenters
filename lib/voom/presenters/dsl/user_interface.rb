@@ -1,10 +1,10 @@
 require 'ice_nine'
 require_relative 'definer'
 require_relative 'components/common'
-require_relative 'components/attach'
+require_relative 'invalid_presenter'
+
 require 'voom/serializer'
 require 'voom/trace'
-
 
 
 module Voom
@@ -13,9 +13,10 @@ module Voom
       class UserInterface
         include DSL::Definer
         include DependsOn
+        include Lockable
         include Components::MethodMissing
-        include Components::Attach
         include Components::Common
+
         include Voom::Serializer
         include Voom::Trace
 
@@ -23,11 +24,12 @@ module Voom
         private :context, :router
         alias params context
 
-        def initialize(router:, context:, attached_block: nil, &block)
-          @router = router
+        def initialize(parent: nil, router: nil, context:, attached_block: nil, &block)
+          @parent = parent
+          @router = router || @parent&.send(:router)
           @context = context
           @block = block
-          @page_title  = nil
+          @page_title = nil
           @header = nil
           @drawer = nil
           @components = []
@@ -37,26 +39,24 @@ module Voom
         end
 
         def page_title(title=nil)
-          return @page_title if frozen?
+          return @page_title if locked?
           @page_title = title
         end
 
         def header(title=nil, **attribs, &block)
-          return @header if frozen?
-          @header = Components::Header.new(title: title, router: @router, context: @context,
-                                           dependencies: @dependencies, helpers: @helpers, **attribs, &block)
+          return @header if locked?
+          @header = Components::Header.new(parent: self, title: title, **attribs, &block)
         end
 
         def drawer(name=nil, **attribs, &block)
-          return @drawer if frozen?
-          @drawer = Components::Drawer.new(name: name, router: @router, context: @context,
-                                           dependencies: @dependencies, helpers: @helpers, **attribs, &block)
+          return @drawer if locked?
+          trace { "#{@block.inspect} Setting drawer!"}
+          @drawer = Components::Drawer.new(parent: self, name: name, **attribs, &block)
         end
 
         def footer(**attribs, &block)
-          return @footer if frozen?
-          @footer = Components::Footer.new(router: @router, context: @context,
-                                           dependencies: @dependencies, helpers: @helpers, **attribs, &block)
+          return @footer if locked?
+          @footer = Components::Footer.new(parent: self, **attribs, &block)
         end
 
         def helpers(module_=nil, &block)
@@ -66,30 +66,47 @@ module Voom
           @helpers.module_eval(&block) if block
           extend(@helpers)
         end
-        
+
+
+        def attach(presenter, **context_, &yield_block)
+          pom = Voom::Presenters[presenter].call.expand_child(parent: self, context: context.merge(context_), &yield_block)
+          @header ||= pom.header
+          trace { "#{@block.inspect} Overriding drawer: #{pom.drawer}" }
+          @drawer ||= pom.drawer
+          @footer ||= pom.footer
+          @components += pom.components
+          @dialogs += pom.dialogs if @dialogs
+        end
+
         # Called by the definition.expand method to evaluate a user interface with a different context
         # This should be made unavailable to the dsl
-        def expand_instance
+        def expand_instance(freeze: true, &attached_block)
+          @attached_block = attached_block
           instance_eval(&@block)
-          deep_freeze
+          lock!
+          deep_freeze if freeze
+          self
         end
 
         def url(**context_)
+          return '#' unless @router
           context = context_.dup
           link_to = context.delete(:render)
-          post_to =  context.delete(:command)
+          post_to = context.delete(:command)
           @router.url(render: link_to, command: post_to, context: context)
         end
-        
-        private
 
-        def _helpers_
-          @helpers
-        end
+        private
 
         def deep_freeze
           IceNine.deep_freeze(self)
           self
+        end
+
+        protected
+
+        def _helpers_
+          @helpers
         end
       end
     end

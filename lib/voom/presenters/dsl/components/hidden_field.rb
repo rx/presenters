@@ -10,7 +10,7 @@ module Voom
           end
 
           def value(value=nil)
-            return @value if frozen?
+            return @value if locked?
             @value = value
           end
         end

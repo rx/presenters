@@ -16,47 +16,38 @@ module Voom
           end
 
           def title(title=nil, **attribs, &block)
-            return @title if frozen?
-            @title = Title.new(text: title, router: @router, context: @context,
-                               dependencies: @dependencies,
-                               helpers: @helpers,
+            return @title if locked?
+            @title = Title.new(parent: self, text: title,
                                **attribs, &block)
           end
 
           def text(text=nil)
-            return @text if frozen?
+            return @text if locked?
             @text = text
           end
 
           def image(image=nil)
-            return @image if frozen?
+            return @image if locked?
             @image = image
           end
 
           def background(image=nil, options: 'center / cover', **attribs, &block)
-            return @bg_image if frozen?
-            @bg_image = Background.new(image: image,
+            return @bg_image if locked?
+            @bg_image = Background.new(parent: self, image: image,
                                        options: options,
-                                       router: @router, context: @context,
-                                    dependencies: @dependencies,
-                                    helpers: @helpers,
                                     **attribs, &block)
           end
 
           def action(**attribs, &block)
-            return @action if frozen?
-            @action = Action.new(router: @router, context: @context,
-                                 dependencies: @dependencies,
-                                 helpers: @helpers,
+            return @action if locked?
+            @action = Action.new(parent: self,
                                  **attribs, &block)
           end
 
           def menu(**attribs, &block)
-            return @menu if frozen?
+            return @menu if locked?
             icon = attribs[:icon] || :more_vert
-            @menu = Components::Menu.new(icon: icon, router: @router, context: @context,
-                             dependencies: @dependencies,
-                             helpers: @helpers,
+            @menu = Components::Menu.new(parent: self, icon: icon,
                              **attribs, &block)
           end
 
@@ -92,9 +83,8 @@ module Voom
             end
 
             def button(text=nil, **options, &block)
-              return @button if frozen?
-              @button = Components::Button.new(text: text, router: router, context: context,
-                                               dependencies: @dependencies, helpers: @helpers, **options, &block)
+              return @button if locked?
+              @button = Components::Button.new(parent: self, text: text, **options, &block)
             end
           end
         end

@@ -34,29 +34,20 @@ module Voom
           # end
 
           def text_field(**attribs, &block)
-            fields << Components::TextField.new(router: @router, context: @context,
-                                                dependencies: @dependencies,
-                                                helpers: @helpers, **attribs, &block)
+            fields << Components::TextField.new(parent: self,  **attribs, &block)
           end
 
           def text_area(**attribs, &block)
-            fields << Components::TextArea.new(router: @router, context: @context,
-                                               dependencies: @dependencies,
-                                               helpers: @helpers, **attribs, &block)
+            fields << Components::TextArea.new(parent: self, **attribs, &block)
           end
 
           def hidden_field(**attribs, &block)
-            fields << Components::HiddenField.new(router: @router, context: @context,
-                                                  dependencies: @dependencies,
-                                                  helpers: @helpers, **attribs, &block)
+            fields << Components::HiddenField.new(parent: self, **attribs, &block)
           end
 
 
           def button(text=nil, **attribs, &block)
-            @actions << Components::Button.new(text: text,
-                                               router: router, context: context,
-                                               dependencies: @dependencies,
-                                               helpers: @helpers, **attribs, &block)
+            @actions << Components::Button.new(parent: self, **attribs, &block)
           end
 
         end

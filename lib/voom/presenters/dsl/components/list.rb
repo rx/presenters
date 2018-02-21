@@ -6,20 +6,16 @@ module Voom
       module Components
         class List < Base
 
+          attr_reader :lines
           def initialize(**attribs, &block)
-            @lines = nil
+            @lines = []
             super(type: :list, **attribs, &block)
             expand!
           end
-
-          def lines
-            @components
-          end
-
+          
           def line(first_text = nil, text: nil, **attribs, &block)
             the_text = first_text || text
-            @components << Line.new(text: the_text, router: @router, context: @context,
-                                    dependencies: @dependencies, helpers: @helpers, **attribs, &block)
+            @lines << Line.new(parent:self, text: the_text, **attribs, &block)
           end
 
           class Line < Base
@@ -35,24 +31,22 @@ module Voom
             end
 
             def subtitle(subtitle = nil)
-              return @subtitle if frozen?
+              return @subtitle if locked?
               @subtitle = subtitle
             end
 
             def info(info=nil)
-              return @info if frozen?
+              return @info if locked?
               @info = info
             end
 
             def body(body = nil)
-              return @body if frozen?
+              return @body if locked?
               @body = body
             end
 
             def action(**attribs, &block)
-              @actions << ListAction.new(router: @router, context: @context,
-                                           dependencies: @dependencies,
-                                           helpers: @helpers,
+              @actions << ListAction.new(parent: self,
                                            **attribs, &block)
             end
           end

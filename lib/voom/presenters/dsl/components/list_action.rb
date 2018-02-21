@@ -11,53 +11,40 @@ module Voom
             end
 
             def icon(icon=nil, **attribs, &block)
-              return @icon if frozen?
+              return @icon if locked?
               @action_type = :icon
-              @icon = Icon.new(icon: icon,
-                               router: @router, context: @context,
-                               dependencies: @dependencies,
-                               helpers: @helpers, **attribs, &block)
+              @icon = Icon.new(parent: self, icon: icon, **attribs, &block)
             end
 
 
             def menu(**attribs, &block)
-              return @menu if frozen?
+              return @menu if locked?
               @action_type = :menu
-              @menu = Menu.new(router: @router, context: @context,
-                                                      dependencies: @dependencies,
-                                                      helpers: @helpers, **attribs, &block)
+              @menu = Menu.new(parent: self, **attribs, &block)
             end
             
             def checkbox(**attribs, &block)
-               return @checkbox if frozen?
+               return @checkbox if locked?
                @action_type = :checkbox
-               @checkbox = Checkbox.new(router: @router, context: @context,
-                                        dependencies: @dependencies,
-                                        helpers: @helpers, **attribs, &block)
+               @checkbox = Checkbox.new(parent:self, **attribs, &block)
              end
 
              def radio_button(**attribs, &block)
-               return @radio_button if frozen?
+               return @radio_button if locked?
                @action_type = :radio_button
-               @radio_button = RadioButton.new(router: @router, context: @context,
-                                               dependencies: @dependencies,
-                                               helpers: @helpers, **attribs, &block)
+               @radio_button = RadioButton.new(parent: self, **attribs, &block)
              end
 
              def switch(**attribs, &block)
-               return @switch if frozen?
+               return @switch if locked?
                @action_type = :switch
-               @switch = Switch.new(router: @router, context: @context,
-                                    dependencies: @dependencies,
-                                    helpers: @helpers, **attribs, &block)
+               @switch = Switch.new(parent: self, **attribs, &block)
              end
 
              def icon_toggle(icon=nil, **attribs, &block)
-               return @icon_toggle if frozen?
+               return @icon_toggle if locked?
                @action_type = :icon_toggle
-               @icon_toggle = IconToggle.new(icon: icon, router: @router, context: @context,
-                                    dependencies: @dependencies,
-                                    helpers: @helpers, **attribs, &block)
+               @icon_toggle = IconToggle.new(parent:self, icon: icon, **attribs, &block)
              end
           end
         end

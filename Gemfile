@@ -5,4 +5,5 @@ gemspec
 
 group :test do
   gem 'rspec-html-matchers'
+  gem 'inflecto'
 end
