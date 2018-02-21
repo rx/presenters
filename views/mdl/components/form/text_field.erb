@@ -1,4 +1,5 @@
-<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label<% if field.error %> is-invalid is-dirty<%end%>">
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label<%= ' is-invalid is-dirty' if field.error%>"
+     style="<%= 'width:100%' if field.full_width %>">
   <input id="<%= field.id %>"
          value="<%= field.value %>"
          <%= "pattern='#{field.pattern}'" if field.pattern %>

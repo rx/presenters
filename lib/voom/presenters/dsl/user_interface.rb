@@ -74,7 +74,18 @@ module Voom
           deep_freeze
         end
 
+        def url(**context_)
+          context = context_.dup
+          link_to = context.delete(:render)
+          post_to =  context.delete(:command)
+          @router.url(render: link_to, command: post_to, context: context)
+        end
+        
         private
+
+        def _helpers_
+          @helpers
+        end
 
         def deep_freeze
           IceNine.deep_freeze(self)

@@ -8,44 +8,45 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class Base
+        # Every object in the POM is a node
+        # This class provides common base implementation
+        class Node
           include Components::MethodMissing
           include Components::Attach
           include Voom::Serializer
           include LoggerMethods
           include Trace
 
-          attr_reader :id, :type, :attributes, :context, :components, :router
-          private :context, :router
+          attr_reader :type, :id, :attributes, :context
+          private :context
 
           alias params context
           alias attribs attributes
-          attr_accessor :type
 
-          def initialize(id: nil, type:, router:, context:, dependencies:, helpers:, **attributes, &block)
+          def initialize(type:, parent:, id: nil, context: {}, **attributes, &block)
             @id = h(id) || "id-#{SecureRandom.hex}"
             @type = h(type)
-            @router = router
+            @parent = parent
             @context = context
-            @dependencies = dependencies
             @attributes = escape(attributes || {})
             @block = block
-            @helpers = helpers
-            @components = []
-            @url = nil
+            @url = nil  # Used by serializer
           end
 
           def expand!
-            extend(@helpers) if @helpers
+            extend(_helpers_) if _helpers_
             instance_eval(&@block) if @block
           end
-          
-          def url
-            return "#" unless @router
-            @router.url(render: @attributes[:render], command: @attributes[:command], context: @context)
+
+          def url(**context)
+            @parent.url(**attributes.merge(context))
           end
-          
+
           private
+
+          def _helpers_
+            @parent._helpers_
+          end
 
           def h(text)
             return text unless text.is_a? String

@@ -4,8 +4,8 @@ module Voom
       module Components
         module Attach
           # Render another user_interface definition
-          def attach(presenter, **params, &yield_block)
-            pom = Voom::Presenters[presenter].call.expand(router: router, context: context.merge(params), &yield_block)
+          def attach(presenter, **context_, &yield_block)
+            pom = Voom::Presenters[presenter].call.expand(router: router, context: context.merge(context_), &yield_block)
             @header ||= pom.header
             @drawer ||= pom.drawer
             @footer ||= pom.footer

@@ -3,11 +3,12 @@ module Voom
     module DSL
       module Components
         class TextField < Base
-          attr_reader :required
+          attr_reader :required, :full_width
 
           def initialize(**attribs_, &block)
             super(type: :text_field, **attribs_, &block)
             @required = attribs.delete(:required)
+            @full_width = attribs.delete(:full_width) || false
             expand!
           end
 

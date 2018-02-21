@@ -1,10 +1,17 @@
 Voom::Presenters.define('code') do
   if context[:file]
-    title 'Source:'
-    body <<~CODE
-      ```
-      #{File.read(context[:file])}
-      ```
-    CODE
+    body ''
+    title 'Page Source:'
+    form do
+        source = File.read(context[:file])
+        text_area full_width: true, rows: source.split("\n").size do
+          value  source
+          label 'Source'
+        end
+    end
+    
+    # body do
+    #   code File.read(context[:file])
+    # end
   end
 end

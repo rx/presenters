@@ -1,4 +1,5 @@
-<div class="mdl-textfield mdl-js-textfield<% if field.error %> is-invalid is-dirty<%end%>">
+<div class="mdl-textfield mdl-js-textfield<%= ' is-invalid is-dirty' if field.error%>"
+      style="<%= 'width:100%' if field.full_width %>">
     <textarea id="<%= field.id %>"
              value="<%= field.value %>"
              class="mdl-textfield__input" type="text" rows= "<%= field.rows %>" ><%= field.value %></textarea>
