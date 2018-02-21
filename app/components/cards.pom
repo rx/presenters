@@ -6,11 +6,11 @@ Voom::Presenters.define('cards') do
   attach :grid do
     display 'Cards'
 
-    subheading 'Wide'
+    headline 'Wide'
     card width: 42, height: 14 do
       title 'Welcome', color: :fff
       text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia... "
-      background 'https://getmdl.io/assets/demos/welcome_card.jpg'
+      background 'welcome_card.jpg'
       action do
         button 'Get Started', color: :primary
       end
@@ -19,22 +19,22 @@ Voom::Presenters.define('cards') do
       end
     end
 
-    subheading 'Square'
+    headline 'Square'
     card width: 21, height: 21 do
       title 'Update', color: :fff
       text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis."
-      background 'https://getmdl.io/assets/demos/dog.png', options: 'bottom right 15% no-repeat #46B6AC'
+      background 'dog.png', options: 'bottom right 15% no-repeat #46B6AC'
       action do
         button 'View Updates', color: :primary
       end
     end
 
-    subheading 'Image'
+    headline 'Image'
     card width: 21, height: 21 do
-      background 'https://getmdl.io/assets/demos/image_card.jpg'
+      background 'image_card.jpg'
     end
 
-    subheading 'Event'
+    headline 'Event'
     card width: 21, height: 21 do
       title 'Featured event:
            May 24, 2016
@@ -47,7 +47,7 @@ Voom::Presenters.define('cards') do
     end
 
 
-    subheading 'Example'
+    headline 'Example'
     card width: 21, height: 42 do
       title 'Auckland Sky Tower
              Auckland, New Zealand'

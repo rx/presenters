@@ -1,0 +1,19 @@
+Voom::Presenters.define('footers') do
+  attach 'top_nav'
+  attach 'component_drawer'
+
+
+  footer type: :small do
+    menu 'Stuff' do
+      item 'about', render: 'about'
+      item 'components', render: 'components'
+      item 'styles', render: 'styles'
+    end
+  end
+  
+  attach :grid do
+    display 'Footers'
+
+    attach 'code', file: __FILE__
+  end
+end

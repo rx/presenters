@@ -6,16 +6,16 @@ Voom::Presenters.define('badges') do
   attach :grid do
     display 'Badges'
 
-    subheading 'Number'
+    headline 'Number'
     badge 1, icon: :account_box
 
-    subheading 'Icon'
+    headline 'Icon'
     badge '♥', icon: :account_box
 
-    subheading 'Number'
+    headline 'Number'
     badge 1, text: 'Inbox'
 
-    subheading 'Icon'
+    headline 'Icon'
     badge '♥', text: 'Mood'
 
     attach 'code', file: __FILE__

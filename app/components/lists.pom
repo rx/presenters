@@ -14,7 +14,7 @@ Voom::Presenters.define('lists') do
   attach :grid do
     display 'Lists'
 
-    subheading 'Simple'
+    headline 'Simple'
     list do
       actors.each do |actor|
         line actor.name
@@ -22,7 +22,7 @@ Voom::Presenters.define('lists') do
     end
 
 
-    subheading 'Icons'
+    headline 'Icons'
     list do
       actors.each do |actor|
         line actor.name, icon: :person
@@ -30,7 +30,7 @@ Voom::Presenters.define('lists') do
     end
 
 
-    subheading 'Avatars and actions'
+    headline 'Avatars and actions'
     list do
       actors.each do |actor|
         line actor.name, avatar: :person do
@@ -41,7 +41,7 @@ Voom::Presenters.define('lists') do
       end
     end
 
-    subheading 'Avatars and controls'
+    headline 'Avatars and controls'
     list do
       actors.each_with_index do |actor, index|
         line actor.name, avatar: :person do
@@ -62,7 +62,7 @@ Voom::Presenters.define('lists') do
       end
     end
 
-    subheading 'Two line'
+    headline 'Two line'
 
     list do
       actors.each_with_index do |actor, index|
@@ -76,7 +76,7 @@ Voom::Presenters.define('lists') do
       end
     end
 #
-# subheading 'Three line'
+# headline 'Three line'
 #
 # list do
 #   actors.each do |actor|

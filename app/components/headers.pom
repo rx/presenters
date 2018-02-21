@@ -1,0 +1,19 @@
+Voom::Presenters.define('headers') do
+  attach 'top_nav'
+  attach 'component_drawer'
+
+
+  header 'Presenters Demo' do
+    menu do
+      item 'about2', render: 'about'
+      item 'components2', render: 'components'
+      item 'styles2', render: 'styles'
+    end
+  end
+
+  attach :grid do
+    display 'Headers'
+    
+    attach 'code', file: __FILE__
+  end
+end

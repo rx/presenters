@@ -5,52 +5,52 @@ Voom::Presenters.define('buttons') do
   attach :grid do
     display 'Buttons'
 
-    subheading 'Colored FAB'
+    headline 'Colored FAB'
     button icon: :add, type: :fab, color: :primary
 
-    subheading 'Plain FAB'
+    headline 'Plain FAB'
     button icon: :add, type: :fab
 
-    subheading 'Disabled'
+    headline 'Disabled'
     button icon: :add, type: :fab, disabled: true
 
     # Raised buttons
-    subheading 'Raised Button'
+    headline 'Raised Button'
     button 'Button', type: :raised
 
-    subheading 'Disabled'
+    headline 'Disabled'
     button 'Button', type: :raised, disabled: true
 
 
-    subheading 'Colored button'
+    headline 'Colored button'
     button 'Button', type: :raised, color: :primary
 
-    subheading ' Accent colored'
+    headline ' Accent colored'
     button 'Button', type: :raised, color: :secondary
 
-    subheading 'Flat button'
+    headline 'Flat button'
     button 'Button'
 
-    subheading 'Disabled'
+    headline 'Disabled'
     button 'Button', type: :flat, disabled: true
 
-    subheading 'Primary colored flat'
+    headline 'Primary colored flat'
     button 'Button', type: :flat, color: :primary
 
-    subheading 'Accent colored flat'
+    headline 'Accent colored flat'
     button 'Button', type: :flat, color: :secondary
 
     # Icon Buttons
-    subheading 'Icon button'
+    headline 'Icon button'
     button icon: :mood
-    subheading 'Colored'
+    headline 'Colored'
     button icon: :mood, color: :primary
     button icon: :mood, color: :secondary
 
     # Mini Floating action buttons
-    subheading 'Mini FAB'
+    headline 'Mini FAB'
     button icon: :add, type: :fab, size: :small
-    subheading 'Colored'
+    headline 'Colored'
     button icon: :add, type: :fab, color: :primary, size: :small
 
     attach 'code', file: __FILE__

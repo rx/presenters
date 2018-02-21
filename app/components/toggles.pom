@@ -5,19 +5,19 @@ Voom::Presenters.define('toggles') do
   attach :grid do
     display 'Toggles'
 
-    subheading 'CHECKBOX'
+    headline 'CHECKBOX'
     checkbox
     checkbox checked: true
 
-    subheading 'RADIO BUTTON'
+    headline 'RADIO BUTTON'
     radio_button checked: true
     radio_button
 
-    subheading 'ICON TOGGLE'
+    headline 'ICON TOGGLE'
     icon_toggle :format_bold, checked: true
     icon_toggle :format_italic
 
-    subheading 'SWITCH'
+    headline 'SWITCH'
     switch checked: true
     switch
 

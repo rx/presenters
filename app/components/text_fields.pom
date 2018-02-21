@@ -5,7 +5,7 @@ Voom::Presenters.define('text-fields') do
   attach :grid do
     display 'Text Fields'
 
-    subheading 'Text'
+    headline 'Text'
 
     form do
       text_field do
@@ -13,10 +13,10 @@ Voom::Presenters.define('text-fields') do
       end
     end
 
-    subheading 'Numeric'
+    headline 'Numeric'
 
     # Client side validation with hints
-    subheading 'With Hints'
+    headline 'With Hints'
     form do
       text_field do
         label 'Number...'
@@ -25,7 +25,7 @@ Voom::Presenters.define('text-fields') do
       end
     end
 
-    subheading 'With Errors'
+    headline 'With Errors'
     form do
       text_field do
         label 'Guess a number...'
@@ -35,7 +35,7 @@ Voom::Presenters.define('text-fields') do
       end
     end
 
-    subheading 'Multiple line'
+    headline 'Multiple line'
 
     form do
       text_area rows: 3 do
@@ -44,7 +44,7 @@ Voom::Presenters.define('text-fields') do
     end
 
 
-    subheading 'Hidden'
+    headline 'Hidden'
 
     form do
       hidden_field do
