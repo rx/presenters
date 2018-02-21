@@ -1,0 +1,18 @@
+Voom::Presenters.define(:debug) do
+  if context[:debug]
+    grid do
+      column 1
+      column 11 do
+        trace {"code file:#{context.inspect}"}
+        headline 'Debug Info'
+        title 'Context:'
+        form do
+          text_area full_width: true, rows: context.size do
+            value context.inspect
+            label 'Context'
+          end
+        end
+      end
+    end
+  end
+end

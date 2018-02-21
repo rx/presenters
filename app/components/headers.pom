@@ -5,9 +5,9 @@ Voom::Presenters.define(:headers) do
 
   header 'Presenters Demo' do
     menu do
-      item 'about2', render: :index
-      item 'components2', render: :components
-      item 'styles2', render: :styles
+      item 'about2', link: :index
+      item 'components2', link: :components
+      item 'styles2', link: :styles
     end
   end
 

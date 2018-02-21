@@ -48,7 +48,7 @@ module Voom
           end
 
           def form(id: nil, **attributes, &block)
-            self << Components::Form.new(parent: self, id: id, context: context, context: context, **attributes, &block)
+            self << Components::Form.new(parent: self, id: id, context: context, **attributes, &block)
           end
 
           def list(**attributes, &block)

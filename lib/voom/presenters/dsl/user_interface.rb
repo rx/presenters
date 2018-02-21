@@ -102,7 +102,7 @@ module Voom
         def url(**context_)
           return '#' unless @router
           context = context_.dup
-          link_to = context.delete(:render)
+          link_to = context.delete(:link)
           post_to = context.delete(:command)
           @router.url(render: link_to, command: post_to, context: context)
         end

@@ -6,8 +6,7 @@ Voom::Presenters.define('components') do
     display 'Components'
     subheading 'Select a component'
     attach 'component_menu'
-    
-    attach 'code', file: __FILE__
   end
+  attach :code, file: __FILE__
 
 end

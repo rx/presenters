@@ -1,18 +1,16 @@
 Voom::Presenters.define(:code) do
-  trace { "code file:#{context[:file].inspect}" }
+  trace {"code file:#{context[:file].inspect}"}
   if context[:file]
-    body ''
-    title 'Page Source:'
-    form do
+    attach :grid do
+      body ''
+      title 'Page Source:'
+      form do
         source = File.read(context[:file])
         text_area full_width: true, rows: source.split("\n").size do
-          value  source
+          value source
           label 'Source'
         end
+      end
     end
-    
-    # body do
-    #   code File.read(context[:file])
-    # end
   end
 end

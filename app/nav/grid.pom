@@ -1,8 +1,9 @@
-Voom::Presenters.define('grid') do
+Voom::Presenters.define(:grid) do
   grid do
       column 1
       column 10 do
         yield_to
       end
   end
+  attach :debug
 end

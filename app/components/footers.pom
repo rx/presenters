@@ -5,9 +5,9 @@ Voom::Presenters.define(:footers) do
 
   footer type: :small do
     menu 'Stuff' do
-      item 'about', render: :index
-      item 'components', render: :components
-      item 'styles', render: :styles
+      item 'about', link: :index
+      item 'components', link: :components
+      item 'styles', link: :styles
     end
   end
   
