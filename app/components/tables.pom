@@ -2,8 +2,6 @@ Voom::Presenters.define('tables') do
   attach 'top_nav'
   attach 'component_drawer'
 
-  display 'Tables'
-
   helpers do
     def items
       [
@@ -14,21 +12,25 @@ Voom::Presenters.define('tables') do
     end
   end
 
-  table selectable: true do
-    header do
-      column 'Material'
-      column 'Quantity'
-      column 'Unit price'
-    end
+  attach :grid do
+    display 'Tables'
 
-    items.each do |item|
-      row do
-        column item.material
-        column item.quantity
-        column item.price
+    table selectable: true do
+      header do
+        column 'Material'
+        column 'Quantity'
+        column 'Unit price'
+      end
+
+      items.each do |item|
+        row do
+          column item.material
+          column item.quantity
+          column item.price
+        end
       end
     end
-  end
 
-  attach 'code', file: __FILE__
+    attach 'code', file: __FILE__
+  end
 end

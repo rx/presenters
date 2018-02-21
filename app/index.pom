@@ -1,12 +1,16 @@
-Voom::Presenters.define('index') do
-  attach 'top_nav'
+Voom::Presenters.define(:index) do
+  attach :top_nav
 
-  headline 'Presenters'
-  subheading 'Presenters are to HTML what C is to assembly'
-  body 'A presenter describes a user interface. It is evaluated and a presenter object model (POM) is returned.
-            A client that renders POM can display the given user interface.'
+  attach :grid do
+    headline 'Presenters'
+    subheading 'Presenters are to HTML what C is to assembly'
+    body 'A presenter describes a user interface. It is evaluated and a presenter object model (POM) is returned.
+              A client that renders POM can display the given user interface.'
 
-  subheading 'For example this is the presentation for this page:', level: 2
+    subheading 'For example this is the presentation for this page:', level: 2
 
-  attach 'code', file: __FILE__
+    attach 'code', file: __FILE__
+  end
+
+
 end

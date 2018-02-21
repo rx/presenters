@@ -56,14 +56,19 @@ module Voom
           end
 
           protected
-          def _helpers_
-            @parent.send(:_helpers_)
-          end
-
+         
           def router
             @parent.send(:router)
           end
 
+          def yield_block
+            return @_yield_block_ if @_yield_block_
+            @parent.send(:yield_block)
+          end
+
+          def _helpers_
+            @parent.send(:_helpers_) if @parent
+          end
         end
       end
     end

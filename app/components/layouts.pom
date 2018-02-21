@@ -2,13 +2,12 @@ Voom::Presenters.define('layouts') do
   attach 'top_nav'
   attach 'component_drawer'
 
-  display 'Layouts'
 
   header 'Presenters Demo' do
     menu do
-      item 'about', render: 'about'
-      item 'components', render: 'components'
-      item 'styles', render: 'styles'
+      item 'about2', render: 'about'
+      item 'components2', render: 'components'
+      item 'styles2', render: 'styles'
     end
   end
 
@@ -19,36 +18,39 @@ Voom::Presenters.define('layouts') do
       item 'styles', render: 'styles'
     end
   end
+  attach :grid do
+    display 'Layouts'
 
-  display 'Grid'
+    display 'Grid'
 
-  grid do
-    (1..12).each do |size|
-      column 1, color: 'BDBDBD' do
-        body '1'
+    grid do
+      (1..12).each do |size|
+        column 1, color: 'BDBDBD' do
+          body '1'
+        end
       end
     end
-  end
 
-  grid do
-    (1..3).each do |size|
+    grid do
+      (1..3).each do |size|
+        column 4, color: 'BDBDBD' do
+          body '4'
+        end
+      end
+    end
+
+    grid do
+      column 6, color: 'BDBDBD' do
+        body '6'
+      end
       column 4, color: 'BDBDBD' do
         body '4'
       end
+      column 2, color: 'BDBDBD' do
+        body '2'
+      end
     end
-  end
 
-  grid do
-    column 6, color: 'BDBDBD' do
-      body '6'
-    end
-    column 4, color: 'BDBDBD' do
-      body '4'
-    end
-    column 2, color: 'BDBDBD' do
-      body '2'
-    end
+    attach 'code', file: __FILE__
   end
-
-  attach 'code', file: __FILE__
 end

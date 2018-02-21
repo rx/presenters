@@ -30,6 +30,12 @@ module Voom
               @components = []
               expand!
             end
+
+            def attach(presenter, **context_, &yield_block)
+              @_yield_block_ = yield_block
+              pom = Voom::Presenters[presenter].call.expand_child(parent: self, context: context.merge(context_))
+              @components += pom.components
+            end
           end
         end
       end

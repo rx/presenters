@@ -2,11 +2,14 @@ Voom::Presenters.define('components') do
   attach 'top_nav'
   attach 'component_drawer'
 
-  display 'Components'
-  subheading 'Select a component'
-  attach 'component_menu'
+  attach :grid do
+    display 'Components'
+    subheading 'Select a component'
+    attach 'component_menu'
 
-  subheading 'Source:', level: 2
+    subheading 'Source:', level: 2
 
-  attach 'code', file: __FILE__
+    attach 'code', file: __FILE__
+  end
+
 end

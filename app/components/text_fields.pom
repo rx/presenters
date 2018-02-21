@@ -2,54 +2,56 @@ Voom::Presenters.define('text-fields') do
   attach 'top_nav'
   attach 'component_drawer'
 
-  display 'Text Fields'
+  attach :grid do
+    display 'Text Fields'
 
-  subheading 'Text'
+    subheading 'Text'
 
-  form do
-    text_field do
-      label 'Text...'
+    form do
+      text_field do
+        label 'Text...'
+      end
     end
-  end
 
-  subheading 'Numeric'
+    subheading 'Numeric'
 
-  # Client side validation with hints
-  subheading 'With Hints'
-  form do
-    text_field do
-      label 'Number...'
-      pattern /-?[0-9]*(\.[0-9]+)?/
-      hint 'Input is not a number!'
+    # Client side validation with hints
+    subheading 'With Hints'
+    form do
+      text_field do
+        label 'Number...'
+        pattern /-?[0-9]*(\.[0-9]+)?/
+        hint 'Input is not a number!'
+      end
     end
-  end
 
-  subheading 'With Errors'
-  form do
-    text_field do
-      label 'Guess a number...'
-      pattern /-?[0-9]*(\.[0-9]+)?/
-      value '7'
-      error 'Input is not a the right number!'
+    subheading 'With Errors'
+    form do
+      text_field do
+        label 'Guess a number...'
+        pattern /-?[0-9]*(\.[0-9]+)?/
+        value '7'
+        error 'Input is not a the right number!'
+      end
     end
-  end
 
-  subheading 'Multiple line'
+    subheading 'Multiple line'
 
-  form do
-    text_area rows: 3 do
-      label 'Text lines...'
+    form do
+      text_area rows: 3 do
+        label 'Text lines...'
+      end
     end
-  end
 
 
-  subheading 'Hidden'
+    subheading 'Hidden'
 
-  form do
-    hidden_field do
-      value 'do it!'
+    form do
+      hidden_field do
+        value 'do it!'
+      end
     end
-  end
 
-  attach 'code', file: __FILE__
+    attach 'code', file: __FILE__
+  end
 end

@@ -2,55 +2,57 @@ Voom::Presenters.define('buttons') do
   attach 'top_nav'
   attach 'component_drawer'
 
-  display 'Buttons'
+  attach :grid do
+    display 'Buttons'
 
-  subheading 'Colored FAB'
-  button icon: :add, type: :fab, color: :primary
+    subheading 'Colored FAB'
+    button icon: :add, type: :fab, color: :primary
 
-  subheading 'Plain FAB'
-  button icon: :add, type: :fab
+    subheading 'Plain FAB'
+    button icon: :add, type: :fab
 
-  subheading 'Disabled'
-  button icon: :add, type: :fab, disabled: true
+    subheading 'Disabled'
+    button icon: :add, type: :fab, disabled: true
 
-  # Raised buttons
-  subheading 'Raised Button'
-  button 'Button', type: :raised
+    # Raised buttons
+    subheading 'Raised Button'
+    button 'Button', type: :raised
 
-  subheading 'Disabled'
-  button 'Button', type: :raised, disabled: true
+    subheading 'Disabled'
+    button 'Button', type: :raised, disabled: true
 
 
-  subheading 'Colored button'
-  button 'Button', type: :raised, color: :primary
+    subheading 'Colored button'
+    button 'Button', type: :raised, color: :primary
 
-  subheading ' Accent colored'
-  button 'Button', type: :raised, color: :secondary
+    subheading ' Accent colored'
+    button 'Button', type: :raised, color: :secondary
 
-  subheading 'Flat button'
-  button 'Button'
+    subheading 'Flat button'
+    button 'Button'
 
-  subheading 'Disabled'
-  button 'Button', type: :flat, disabled: true
+    subheading 'Disabled'
+    button 'Button', type: :flat, disabled: true
 
-  subheading 'Primary colored flat'
-  button 'Button', type: :flat, color: :primary
+    subheading 'Primary colored flat'
+    button 'Button', type: :flat, color: :primary
 
-  subheading 'Accent colored flat'
-  button 'Button', type: :flat, color: :secondary
+    subheading 'Accent colored flat'
+    button 'Button', type: :flat, color: :secondary
 
-  # Icon Buttons
-  subheading 'Icon button'
-  button icon: :mood
-  subheading 'Colored'
-  button icon: :mood, color: :primary
-  button icon: :mood, color: :secondary
+    # Icon Buttons
+    subheading 'Icon button'
+    button icon: :mood
+    subheading 'Colored'
+    button icon: :mood, color: :primary
+    button icon: :mood, color: :secondary
 
-  # Mini Floating action buttons
-  subheading 'Mini FAB'
-  button icon: :add, type: :fab, size: :small
-  subheading 'Colored'
-  button icon: :add, type: :fab, color: :primary, size: :small
+    # Mini Floating action buttons
+    subheading 'Mini FAB'
+    button icon: :add, type: :fab, size: :small
+    subheading 'Colored'
+    button icon: :add, type: :fab, color: :primary, size: :small
 
-  attach 'code', file: __FILE__
+    attach 'code', file: __FILE__
+  end
 end

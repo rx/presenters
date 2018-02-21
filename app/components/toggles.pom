@@ -1,25 +1,26 @@
-
 Voom::Presenters.define('toggles') do
   attach 'top_nav'
   attach 'component_drawer'
-  
-  display 'Toggles'
 
-  subheading 'CHECKBOX'
-  checkbox
-  checkbox checked: true
+  attach :grid do
+    display 'Toggles'
 
-  subheading 'RADIO BUTTON'
-  radio_button checked: true
-  radio_button
+    subheading 'CHECKBOX'
+    checkbox
+    checkbox checked: true
 
-  subheading 'ICON TOGGLE'
-  icon_toggle :format_bold, checked: true
-  icon_toggle :format_italic
+    subheading 'RADIO BUTTON'
+    radio_button checked: true
+    radio_button
 
-  subheading 'SWITCH'
-  switch checked: true
-  switch
+    subheading 'ICON TOGGLE'
+    icon_toggle :format_bold, checked: true
+    icon_toggle :format_italic
 
-  attach 'code', file: __FILE__
+    subheading 'SWITCH'
+    switch checked: true
+    switch
+
+    attach 'code', file: __FILE__
+  end
 end

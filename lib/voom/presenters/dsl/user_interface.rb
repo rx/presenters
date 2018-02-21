@@ -24,7 +24,7 @@ module Voom
         private :context, :router
         alias params context
 
-        def initialize(parent: nil, router: nil, context:, attached_block: nil, &block)
+        def initialize(parent: nil, router: nil, context:, &block)
           @parent = parent
           @router = router || @parent&.send(:router)
           @context = context
@@ -35,7 +35,6 @@ module Voom
           @components = []
           @dialogs = []
           @footer = nil
-          @attached_block = attached_block
         end
 
         def page_title(title=nil)
@@ -50,7 +49,6 @@ module Voom
 
         def drawer(name=nil, **attribs, &block)
           return @drawer if locked?
-          trace { "#{@block.inspect} Setting drawer!"}
           @drawer = Components::Drawer.new(parent: self, name: name, **attribs, &block)
         end
 
@@ -61,6 +59,7 @@ module Voom
 
         def helpers(module_=nil, &block)
           return unless module_ || block
+          @parent.helpers(module_, &block) if @parent
           @helpers ||= Module.new
           @helpers.include module_ if module_
           @helpers.module_eval(&block) if block
@@ -69,9 +68,9 @@ module Voom
 
 
         def attach(presenter, **context_, &yield_block)
-          pom = Voom::Presenters[presenter].call.expand_child(parent: self, context: context.merge(context_), &yield_block)
+          @_yield_block_ = yield_block
+          pom = Voom::Presenters[presenter].call.expand_child(parent: self, context: context.merge(context_))
           @header ||= pom.header
-          trace { "#{@block.inspect} Overriding drawer: #{pom.drawer}" }
           @drawer ||= pom.drawer
           @footer ||= pom.footer
           @components += pom.components
@@ -80,8 +79,7 @@ module Voom
 
         # Called by the definition.expand method to evaluate a user interface with a different context
         # This should be made unavailable to the dsl
-        def expand_instance(freeze: true, &attached_block)
-          @attached_block = attached_block
+        def expand_instance(freeze: true)
           instance_eval(&@block)
           lock!
           deep_freeze if freeze
@@ -106,7 +104,13 @@ module Voom
         protected
 
         def _helpers_
-          @helpers
+          return @helpers if @helpers
+          @parent.send(:_helpers_) if @parent
+        end
+
+        def yield_block
+          return @_yield_block_ if @_yield_block_
+          @parent.send(:yield_block) if @parent
         end
       end
     end

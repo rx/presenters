@@ -1,22 +1,23 @@
-
 Voom::Presenters.define('badges') do
 
   attach 'top_nav'
   attach 'component_drawer'
 
-  display 'Badges'
+  attach :grid do
+    display 'Badges'
 
-  subheading 'Number'
-  badge 1, icon: :account_box
+    subheading 'Number'
+    badge 1, icon: :account_box
 
-  subheading 'Icon'
-  badge '♥', icon: :account_box
+    subheading 'Icon'
+    badge '♥', icon: :account_box
 
-  subheading 'Number'
-  badge 1, text: 'Inbox'
+    subheading 'Number'
+    badge 1, text: 'Inbox'
 
-  subheading 'Icon'
-  badge '♥', text: 'Mood'
+    subheading 'Icon'
+    badge '♥', text: 'Mood'
 
-  attach 'code', file: __FILE__
+    attach 'code', file: __FILE__
+  end
 end

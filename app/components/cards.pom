@@ -2,58 +2,61 @@ Voom::Presenters.define('cards') do
   attach 'top_nav'
   attach 'component_drawer'
 
-  display 'Cards'
 
-  subheading 'Wide'
-  card width: 512, height: 176 do
-    title 'Welcome', color: :fff
-    text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia... "
-    background 'https://getmdl.io/assets/demos/welcome_card.jpg'
-    action do
-      button 'Get Started', color: :primary
+  attach :grid do
+    display 'Cards'
+
+    subheading 'Wide'
+    card width: 512, height: 176 do
+      title 'Welcome', color: :fff
+      text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia... "
+      background 'https://getmdl.io/assets/demos/welcome_card.jpg'
+      action do
+        button 'Get Started', color: :primary
+      end
+      menu do
+        button icon: :share
+      end
     end
-    menu do
-      button icon: :share
+
+    subheading 'Square'
+    card width: 320, height: 320 do
+      title 'Update', color: :fff
+      text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis."
+      background 'https://getmdl.io/assets/demos/dog.png', options: 'bottom right 15% no-repeat #46B6AC'
+      action do
+        button 'View Updates', color: :primary
+      end
     end
-  end
 
-  subheading 'Square'
-  card width: 320, height: 320 do
-    title 'Update', color: :fff
-    text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis."
-    background 'https://getmdl.io/assets/demos/dog.png', options: 'bottom right 15% no-repeat #46B6AC'
-    action do
-      button 'View Updates', color: :primary
+    subheading 'Image'
+    card width: 256, height: 256 do
+      background 'https://getmdl.io/assets/demos/image_card.jpg'
     end
-  end
 
-  subheading 'Image'
-   card width: 256, height: 256 do
-     background 'https://getmdl.io/assets/demos/image_card.jpg'
-   end
-
-  subheading 'Event'
-  card width: 256, height: 256 do
-    title 'Featured event:
+    subheading 'Event'
+    card width: 256, height: 256 do
+      title 'Featured event:
            May 24, 2016
            7-11pm',
-          color: :fff, align: :top
-    action do
-      button 'Add to Calendar'
+            color: :fff, align: :top
+      action do
+        button 'Add to Calendar'
+      end
+      background color: '3E4EB8'
     end
-    background color: '3E4EB8'
-  end
 
 
-  subheading 'Example'
-  card width:256, height:512 do
-    title 'Auckland Sky Tower
+    subheading 'Example'
+    card width: 256, height: 512 do
+      title 'Auckland Sky Tower
              Auckland, New Zealand'
-    text "The Sky Tower is an observation and telecommunications tower located in Auckland,
+      text "The Sky Tower is an observation and telecommunications tower located in Auckland,
         New Zealand. It is 328 metres (1,076 ft) tall, making it the tallest man-made structure
         in the Southern Hemisphere."
-    background 'https://www.askideas.com/media/43/The-Sky-Tower-In-Auckland-New-Zealand.jpg'
-  end
+      background 'https://www.askideas.com/media/43/The-Sky-Tower-In-Auckland-New-Zealand.jpg'
+    end
 
-  attach 'code', file: __FILE__
+    attach 'code', file: __FILE__
+  end
 end

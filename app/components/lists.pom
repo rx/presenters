@@ -11,69 +11,70 @@ Voom::Presenters.define('lists') do
     end
   end
 
-  display 'Lists'
+  attach :grid do
+    display 'Lists'
 
-  subheading 'Simple'
-  list do
-    actors.each do |actor|
-      line actor.name
-    end
-  end
-
-
-  subheading 'Icons'
-  list do
-    actors.each do |actor|
-      line actor.name, icon: :person
-    end
-  end
-
-
-  subheading 'Avatars and actions'
-  list do
-    actors.each do |actor|
-      line actor.name, avatar: :person do
-        action do
-          icon :star
-        end
+    subheading 'Simple'
+    list do
+      actors.each do |actor|
+        line actor.name
       end
     end
-  end
 
-  subheading 'Avatars and controls'
-  list do
-    actors.each_with_index do |actor, index|
-      line actor.name, avatar: :person do
-        # type = %i(checkbox) # radio_button switch
-        action do
-          case index%4
-            when 0
-              checkbox
-            when 1
-              radio_button
-            when 2
-              switch
-            when 3
-              icon_toggle :star
+
+    subheading 'Icons'
+    list do
+      actors.each do |actor|
+        line actor.name, icon: :person
+      end
+    end
+
+
+    subheading 'Avatars and actions'
+    list do
+      actors.each do |actor|
+        line actor.name, avatar: :person do
+          action do
+            icon :star
           end
         end
       end
     end
-  end
 
-subheading 'Two line'
-
-list do
-  actors.each_with_index do |actor, index|
-    line actor.name, avatar: :person do
-      info 'actor' if index == 0
-      action do
-        icon_toggle :star
+    subheading 'Avatars and controls'
+    list do
+      actors.each_with_index do |actor, index|
+        line actor.name, avatar: :person do
+          # type = %i(checkbox) # radio_button switch
+          action do
+            case index%4
+              when 0
+                checkbox
+              when 1
+                radio_button
+              when 2
+                switch
+              when 3
+                icon_toggle :star
+            end
+          end
+        end
       end
-      subtitle "#{actor.episodes} episodes"
     end
-  end
-end
+
+    subheading 'Two line'
+
+    list do
+      actors.each_with_index do |actor, index|
+        line actor.name, avatar: :person do
+          info 'actor' if index == 0
+          action do
+            icon_toggle :star
+          end
+          subtitle "#{actor.episodes} episodes"
+        end
+      end
+    end
 #
 # subheading 'Three line'
 #
@@ -86,5 +87,6 @@ end
 #   end
 # end
 
-  attach 'code', file: __FILE__
+    attach 'code', file: __FILE__
+  end
 end

@@ -21,9 +21,9 @@ module Voom
           presenter.expand_instance
         end
 
-        def expand_child(parent:, context: {}, &attached_block)
-          presenter = UserInterface.new(parent: parent, context: context, attached_block: attached_block,  &@block)
-          presenter.expand_instance(freeze: false, &attached_block)
+        def expand_child(parent:, context: {})
+          presenter = UserInterface.new(parent: parent, context: context, &@block)
+          presenter.expand_instance(freeze: false)
         end
       end
     end

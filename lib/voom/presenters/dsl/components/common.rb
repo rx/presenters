@@ -69,8 +69,8 @@ module Voom
           end
 
           def yield_to
-            trace { self.inspect }
-            instance_eval(&@attached_block)if @attached_block
+            trace { "yield_to #{@parent.yield_block}" }
+            instance_eval(&@parent.yield_block)if @parent.yield_block
           end
         end
       end
