@@ -5,17 +5,17 @@ Voom::Presenters.define(:layouts) do
 
   header 'Presenters Demo' do
     menu do
-      item 'about2', render: 'about'
-      item 'components2', render: 'components'
-      item 'styles2', render: 'styles'
+      item 'about2', render: :index
+      item 'components2', render: :components
+      item 'styles2', render: :styles
     end
   end
 
   footer type: :small do
     menu 'Stuff' do
-      item 'about', render: 'about'
-      item 'components', render: 'components'
-      item 'styles', render: 'styles'
+      item 'about', render: :index
+      item 'components', render: :components
+      item 'styles', render: :styles
     end
   end
   attach :grid do
