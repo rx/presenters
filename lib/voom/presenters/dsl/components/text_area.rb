@@ -1,3 +1,5 @@
+require_relative 'text_field'
+
 module Voom
   module Presenters
     module DSL
