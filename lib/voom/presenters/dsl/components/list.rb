@@ -1,4 +1,4 @@
-require_relative 'list_action'
+require_relative 'list_line'
 
 module Voom
   module Presenters
@@ -16,40 +16,7 @@ module Voom
           
           def line(first_text = nil, text: nil, **attribs, &block)
             the_text = first_text || text
-            @lines << Line.new(parent:self, text: the_text, **attribs, &block)
-          end
-
-          class Line < Base
-            attr_accessor :text, :icon, :avatar, :actions
-
-            def initialize(**attribs_, &block)
-              super(type: :line, **attribs_, &block)
-              @text = attribs.delete(:text)
-              @icon = attribs.delete(:icon)
-              @avatar = attribs.delete(:avatar)
-              @actions = []
-              expand!
-            end
-
-            def subtitle(subtitle = nil)
-              return @subtitle if locked?
-              @subtitle = subtitle
-            end
-
-            def info(info=nil)
-              return @info if locked?
-              @info = info
-            end
-
-            def body(body = nil)
-              return @body if locked?
-              @body = body
-            end
-
-            def action(**attribs, &block)
-              @actions << ListAction.new(parent: self,
-                                           **attribs, &block)
-            end
+            @lines << ListLine.new(parent:self, text: the_text, **attribs, &block)
           end
         end
       end

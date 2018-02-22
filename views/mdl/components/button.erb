@@ -1,4 +1,12 @@
-<button id="<%=comp.id%>" class="mdl-button mdl-js-button<% if %i(fab raised icon).include?(comp.button_type) %> mdl-button--<%=comp.button_type%><%end%><% if comp.color==:primary %> mdl-button--colored<%end%><% if comp.color==:secondary %> mdl-button--accent<%end%><% if comp.button_type==:fab && comp.size==:small %> mdl-button--mini-fab<%end%><%= comp.dialog ? " #{comp.dialog}-dialog" : nil %>"<% if comp.disabled%> disabled<%end%>>
-  <%= erb :"components/icon", :locals => {:comp => comp} %>
+<button id="<%=comp.id%>"
+        class="mdl-button mdl-js-button
+         <%= "mdl-button--#{comp.button_type}" if %i(fab raised icon).include?(comp.button_type) %>
+         <%= 'mdl-button--colored' if comp.color==:primary %>
+         <%= 'mdl-button--accent' if comp.color==:secondary %>
+         <%= 'mdl-button--mini-fab' if comp.button_type==:fab && comp.size==:small %>
+         <%= "#{comp.dialog}-dialog" if comp.dialog %>"
+         <%= 'disabled' if comp.disabled %>>
+  <%= erb :"components/icon", :locals => {comp: comp, class_name: nil} %>
   <%= comp.text %>
 </button>
+

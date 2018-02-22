@@ -25,7 +25,9 @@ Voom::Presenters.define(:lists) do
     headline 'Icons'
     list do
       actors.each do |actor|
-        line actor.name, icon: :person
+        line actor.name do
+          icon :person
+        end
       end
     end
 

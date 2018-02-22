@@ -1,1 +1,12 @@
-<% if comp.icon %><i class="material-icons"><%=comp.icon%></i><%end%>
+<% if comp.icon
+     if comp.icon =~ /^fa-/
+       icon_class_name = "fas #{comp.icon}"
+       icon = ''
+     else
+       icon_class_name = "material-icons"
+       icon = comp.icon
+     end
+%>
+  <i class="<%= class_name %> <%= icon_class_name %>"
+     style="<%= "color: #{comp.color};" if comp.color %>"><%=icon%></i>
+<% end %>

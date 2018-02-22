@@ -1,5 +1,5 @@
 <!-- Left aligned menu below button -->
-<div style="<%= "color: ##{comp.color};" if comp.color%> ">
+<div style="<%= "color: #{comp.color};" if comp.color%> ">
 <%= erb :"components/button", :locals => {:comp => comp.button} %>
 <ul class="mdl-menu mdl-menu--bottom-<%=comp.side%> mdl-js-menu mdl-js-ripple-effect"
     for="<%=comp.button.id%>">

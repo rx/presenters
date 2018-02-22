@@ -1,0 +1,31 @@
+Voom::Presenters.define('edit-person') do
+  helpers do
+    def person
+      OpenStruct.new(username: 'Russell', email: 'russell@voomify.com')
+    end
+  end
+
+  header 'Settings'
+
+  drawer 'Settings' do
+    menu do
+      item 'People', icon: :person
+    end
+  end
+
+  grid color: :gainsboro do
+    column 2
+    column 8 do
+      card do
+        icon_toggle :mood
+        icon_toggle :mood_bad
+        icon_toggle :sentiment_satisfied
+        icon_toggle :sentiment_very_satisfied
+        icon_toggle :sentiment_neutral
+        icon_toggle :sentiment_dissatisfied
+        icon_toggle :sentiment_very_dissatisfied
+
+      end
+    end
+  end
+end

@@ -8,7 +8,7 @@ Voom::Presenters.define(:cards) do
 
     headline 'Wide'
     card width: 42, height: 14 do
-      title 'Welcome', color: :fff
+      title 'Welcome', color: :white
       text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia... "
       background 'welcome_card.jpg'
       action do
@@ -21,7 +21,7 @@ Voom::Presenters.define(:cards) do
 
     headline 'Square'
     card width: 21, height: 21 do
-      title 'Update', color: :fff
+      title 'Update', color: :white
       text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis."
       background 'dog.png', options: 'bottom right 15% no-repeat #46B6AC'
       action do
@@ -43,7 +43,7 @@ Voom::Presenters.define(:cards) do
       action do
         button 'Add to Calendar'
       end
-      background color: '3E4EB8'
+      background color: '#3E4EB8'
     end
 
 

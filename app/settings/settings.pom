@@ -1,0 +1,41 @@
+Voom::Presenters.define(:settings) do
+  helpers do
+    def settings
+      OpenStruct.new(username: 'Russell', email: 'russell@voomify.com', domain: 'voomify.com',)
+    end
+  end
+
+  page_title 'Settings'
+  header 'Settings'
+
+  drawer 'Settings' do
+    menu do
+      item 'People', icon: :person
+    end
+  end
+
+  grid color: :gainsboro do
+    column 2
+    column 8 do
+      subheading 'People', level: 1
+      card do
+        list do
+          line settings.username, avatar: :person, separator: true do
+            subtitle settings.email
+            action link: 'edit-person' do
+              icon 'fa-caret-right', color: :black
+            end
+            action do
+              button 'SIGN OUT'
+            end
+
+          end
+
+          line "Managed by #{settings.domain}"    do
+              icon 'fa-building'
+            end
+        end
+      end
+    end
+  end
+end

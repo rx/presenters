@@ -51,7 +51,7 @@ module Voom
 
         def drawer(name=nil, **attribs, &block)
           return @drawer if locked?
-          @drawer = Components::Drawer.new(parent: self, name: name,
+          @drawer = Components::Drawer.new(parent: self, title: name,
                                            context: context,
                                            **attribs, &block)
         end

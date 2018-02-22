@@ -1,17 +1,21 @@
 require_relative 'menu'
+require_relative 'common'
+
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Card < Base
-          attr_accessor :height, :width, :color
+          include Components::Common
+          attr_accessor :height, :width, :color, :components
 
           def initialize(**attribs_, &block)
             super(type: :card, **attribs_, &block)
             @height = attribs.delete(:height)
             @width = attribs.delete(:width)
             @color = attribs.delete(:color)
+            @components = []
             expand!
           end
 
