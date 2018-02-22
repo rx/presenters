@@ -65,7 +65,6 @@ module Voom
           end
 
           def yield_to
-            trace { "yield_to #{@parent.yield_block}" }
             instance_eval(&@parent.yield_block)if @parent.yield_block
           end
         end

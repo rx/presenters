@@ -1,5 +1,4 @@
 Voom::Presenters.define(:code) do
-  trace {"code file:#{context[:file].inspect}"}
   if context[:file]
     attach :grid do
       body ''

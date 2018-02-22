@@ -3,7 +3,6 @@ Voom::Presenters.define(:debug) do
     grid do
       column 1
       column 11 do
-        trace {"code file:#{context.inspect}"}
         headline 'Debug Info'
         title 'Context:'
         form do

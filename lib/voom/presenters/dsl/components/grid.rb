@@ -32,10 +32,8 @@ module Voom
             end
 
             def attach(presenter, **context_, &yield_block)
-              trace { "context: #{context_.inspect}"}
               @_yield_block_ = yield_block
               pom = Voom::Presenters[presenter].call.expand_child(parent: self, context: context.merge(context_))
-              trace {"Column attach:#{presenter}:#{pom.components.inspect}:#{pom.inspect}"}
               @components += pom.components
             end
           end
