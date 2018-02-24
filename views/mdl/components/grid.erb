@@ -1,5 +1,9 @@
+<% @nesting ||= 0
+  @nesting += 1
+%>
 <div id="<%=comp.id%>" class="mdl-grid"
-     style="<%= "background-color: #{comp.color};" if comp.color %>">
+     style="<%= "background-color: #{comp.color};" if comp.color %>
+            <%= 'padding: 0; margin: 0 8px;' if @nesting>1 %>">
  <% comp.columns.each do |col| %>
     <div id="<%=col.id%>" class="mdl-cell mdl-cell--<%=col.size%>-col"
          style="<%= "background-color: #{col.color};" if col.color %>">
@@ -7,3 +11,5 @@
     </div>
  <% end %>
 </div>
+<% @nesting -= 1
+%>

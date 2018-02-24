@@ -1,5 +1,7 @@
 require 'sinatra'
 require 'uri'
+require 'redcarpet'
+
 require_relative '../../presenters'
 require_relative 'router'
 
@@ -12,6 +14,13 @@ module Voom
         set :bind, '0.0.0.0'
         set :views, Proc.new { File.join(root, "views", 'mdl') }
         
+        helpers do
+          def markdown(text)
+            @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
+            @markdown.render(text)
+          end
+        end
+
         get '/' do
           presenter = Voom::Presenters['index'].call
           @pom = presenter.expand(router: router, context: params)

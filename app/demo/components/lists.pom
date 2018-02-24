@@ -17,7 +17,9 @@ Voom::Presenters.define(:lists) do
     headline 'Simple'
     list do
       actors.each do |actor|
-        line actor.name
+        line do
+          text actor.name
+        end
       end
     end
 
@@ -25,7 +27,8 @@ Voom::Presenters.define(:lists) do
     headline 'Icons'
     list do
       actors.each do |actor|
-        line actor.name do
+        line do
+          text actor.name 
           icon :person
         end
       end
@@ -35,7 +38,9 @@ Voom::Presenters.define(:lists) do
     headline 'Avatars and actions'
     list do
       actors.each do |actor|
-        line actor.name, avatar: :person do
+        line do
+          text   actor.name
+          avatar :person
           action do
             icon :star
           end
@@ -46,8 +51,9 @@ Voom::Presenters.define(:lists) do
     headline 'Avatars and controls'
     list do
       actors.each_with_index do |actor, index|
-        line actor.name, avatar: :person do
-          # type = %i(checkbox) # radio_button switch
+        line do
+          text  actor.name
+          avatar :person
           action do
             case index%4
               when 0
@@ -68,7 +74,9 @@ Voom::Presenters.define(:lists) do
 
     list do
       actors.each_with_index do |actor, index|
-        line actor.name, avatar: :person do
+        line  do
+          text actor.name
+          avatar :person
           info 'actor' if index == 0
           action do
             icon_toggle :star

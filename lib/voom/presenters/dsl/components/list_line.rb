@@ -1,25 +1,49 @@
 require_relative 'list_action'
+require_relative 'icon'
+require_relative 'avatar'
+require_relative 'typography'
+require_relative 'mixin_link'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class ListLine < Base
-          attr_accessor :text, :avatar, :actions, :separator
+          include MixinLink
+          attr_accessor :separator, :actions
 
           def initialize(**attribs_, &block)
             super(type: :line, **attribs_, &block)
-            @text = attribs.delete(:text)
-            @icon = attribs.delete(:icon)
-            @avatar = attribs.delete(:avatar)
             @separator = attribs.delete(:separator)
             @actions = []
             expand!
           end
+          
+          def text(text = nil, **attribs, &block)
+            return @text if locked?
+            @text = Components::Typography.new(parent: self, type: :text, text: text, context: context, **attribs, &block)
+          end
 
-          def subtitle(subtitle = nil)
+          def subtitle(subtitle = nil, **attribs, &block)
             return @subtitle if locked?
-            @subtitle = subtitle
+            @subtitle = Components::Typography.new(parent: self, type: :subtitle, text: subtitle, context: context, **attribs, &block)
+          end
+
+          def info(info=nil, **attribs, &block)
+            return @info if locked?
+            @info = Components::Typography.new(parent: self, type: :info, text: info, context: context, **attribs, &block)
+          end
+
+          def body(body = nil, **attribs, &block)
+            return @body if locked?
+            @body = Components::Typography.new(parent: self, type: :body, text: body, context: context, **attribs, &block)
+          end
+
+          def avatar(avatar = nil, **attribs, &block)
+            return @avatar if locked?
+            @avatar = Avatar.new(parent: self, avatar: avatar,
+                                 context: context,
+                                 **attribs, &block)
           end
 
           def icon(icon=nil, **attribs, &block)
@@ -29,16 +53,6 @@ module Voom
                              **attribs, &block)
           end
 
-
-          def info(info=nil)
-            return @info if locked?
-            @info = info
-          end
-
-          def body(body = nil)
-            return @body if locked?
-            @body = body
-          end
 
           def action(**attribs, &block)
             @actions << ListAction.new(parent: self,

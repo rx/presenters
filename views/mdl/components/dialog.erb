@@ -1,6 +1,9 @@
-<dialog id="<%= comp.id %>" class="mdl-dialog">
+<dialog id="<%= comp.id %>" class="mdl-dialog"
+    style="<%= "width: #{comp.width}" if comp.width %>
+           <%= "height: #{comp.height}" if comp.height %>"
+>
   <% if comp.title %>
-    <h3 class="mdl-dialog__title"><%= comp.title %></h3>
+    <h3 class="mdl-dialog__title"><%= comp.title.text %></h3>
   <% end %>
   <div class="mdl-dialog__content">
     <% comp.components.each do |dcomp| %>
@@ -27,9 +30,12 @@
         dialogButton.addEventListener('click', function () {
             dialog.showModal();
         });
-        dialog.querySelector('button:not([disabled])')
-            .addEventListener('click', function () {
+
+        var dialogButtons = dialog.querySelectorAll('button:not([disabled])');
+        for (var i = 0; i != dialogButtons.length; i++) {
+            dialogButtons[i].addEventListener('click', function() {
                 dialog.close();
             });
+          }
     }());
 </script>

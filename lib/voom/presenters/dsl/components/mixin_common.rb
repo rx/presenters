@@ -1,35 +1,15 @@
-require_relative 'switches'
+require_relative 'mixin_append'
+require_relative 'mixin_switches'
+require_relative 'mixin_typography'
 
 module Voom
   module Presenters
     module DSL
       module Components
-        module Common
-          include Switches
-
-          def <<(comp)
-            @components << comp
-          end
-
-          def display(text=nil, **attributes, &block)
-            self << Components::Typography.new(parent:self, text: text, context: context, **attributes, &block)
-          end
-
-          def headline(text=nil, **attributes, &block)
-            self << Components::Typography.new(parent:self, type: :headline, text: text,  context: context, **attributes, &block)
-          end
-
-          def subheading(text=nil, **attributes, &block)
-            self << Components::Typography.new(parent:self, type: :subheading, text: text,  context: context, **attributes, &block)
-          end
-
-          def title(text=nil, **attributes, &block)
-            self << Components::Title.new(parent:self, text: text, context: context, **attributes, &block)
-          end
-
-          def body(text=nil, **attributes, &block)
-            self << Components::Typography.new(parent:self, type: :body, text: text, context: context, **attributes, &block)
-          end
+        module MixinCommon
+          include MixinSwitches
+          include MixinAppend
+          include MixinTypography
 
           def badge(badge=nil, **attributes, &block)
             self << Components::Badge.new(parent: self, badge: badge, context: context, **attributes, &block)
@@ -42,7 +22,7 @@ module Voom
           def button(text=nil, **attributes, &block)
             self << Components::Button.new(text: text, parent: self, context: context, **attributes, &block)
           end
-          
+
           def grid(color: nil, **attributes, &block)
             self << Components::Grid.new(parent: self, color: color, context: context, **attributes, &block)
           end
@@ -62,10 +42,6 @@ module Voom
 
           def table(**attributes, &block)
             self << Components::Table.new(parent: self, context: context, **attributes, &block)
-          end
-
-          def yield_to
-            instance_eval(&@parent.yield_block)if @parent.yield_block
           end
         end
       end

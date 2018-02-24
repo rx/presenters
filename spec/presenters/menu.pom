@@ -1,6 +1,8 @@
 Voom::Presenters.define('menu') do
   menu do
-    item 'item1'
+    item 'item1' do
+      link '#'
+    end
     divider
     item 'item2'
   end

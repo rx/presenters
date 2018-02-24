@@ -1,18 +1,16 @@
+require_relative 'settings'
+
 Voom::Presenters.define(:settings) do
+  helpers Settings
   helpers do
-    def settings
-      OpenStruct.new(username: 'Russell', email: 'russell@voomify.com', domain: 'voomify.com',)
+    def link_to_person
+      link 'edit-person' #, settings.to_h
     end
   end
 
-  page_title 'Settings'
-  header 'Settings'
+  save_settings!
 
-  drawer 'Settings' do
-    menu do
-      item 'People', icon: :person
-    end
-  end
+  attach 'settings-nav'
 
   grid color: :gainsboro do
     column 2
@@ -20,22 +18,40 @@ Voom::Presenters.define(:settings) do
       subheading 'People', level: 1
       card do
         list do
-          line settings.username, avatar: :person, separator: true do
+          line separator: true do
+            link_to_person
+            avatar settings.avatar  ? "settings/#{settings.avatar}.png" : :person
+            text settings.username
             subtitle settings.email
-            action link: 'edit-person' do
-              icon 'fa-caret-right', color: :black
+
+            action do
+              icon 'fa-caret-right', color: :black do
+                link_to_person
+              end
             end
             action do
-              button 'SIGN OUT'
+              button 'SIGN OUT', dialog: :sign_out
             end
-
           end
 
-          line "Managed by #{settings.domain}"    do
-              icon 'fa-building'
-            end
+          line do
+            text "Managed by #{settings.domain}"
+            icon 'fa-building'
+          end
         end
       end
     end
+  end
+
+  dialog id: :sign_out, width: '42rem' do
+    title 'Sign out of Chrome'
+    body 'Because this account is managed by **geotix.com**, your bookmarks, history, passwords, and other settings will be
+          cleared from this device. However, your data will remain stored in your Google Account and can be managed on
+          [Google Dashboard](http://google.com).'
+
+    button 'CLEAR AND SIGN OUT', type: :raised, color: :primary do
+      link
+    end
+    button 'Cancel', id: :cancel
   end
 end

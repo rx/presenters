@@ -14,7 +14,7 @@ module Voom
         def url(command: nil, render: nil, entity: nil, context:)
           _params_ = context.dup
           # if it is a local page command
-          return build_local_render(command, render, entity, _params_) if local_render?(render)
+          # return build_local_render(command, render, entity, _params_) if local_render?(render)
           return build_render_url(render, entity, _params_) unless command
           _params_[:redirect]=build_render_url(render, entity, _params_) if render
           build_command_url(command, entity, _params_)

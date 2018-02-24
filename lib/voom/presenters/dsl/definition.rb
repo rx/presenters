@@ -16,8 +16,9 @@ module Voom
           self
         end
 
-        def expand(router: , context:{})
+        def expand(router: , context:{}, &block)
           presenter = UserInterface.new(router: router, context: context,  &@block)
+          yield(presenter) if block
           presenter.expand_instance
         end
 

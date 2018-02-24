@@ -1,1 +1,9 @@
-<%if line.avatar %><i class="material-icons mdl-list__item-avatar"><%=line.avatar%></i><%end%>
+<% if line.avatar %>
+  <%= erb :"components/link", :locals => {link: line.avatar.link, preamble: true} %>
+  <% if %w(jpg gif png).include?(line.avatar.avatar&.to_s.split('.').last) %>
+    <img class="mdl-list__item-avatar" src="<%= line.avatar.avatar %>"/>
+  <% else %>
+    <i class="material-icons mdl-list__item-avatar"><%= line.avatar.avatar %></i>
+  <% end %>
+  <%= erb :"components/link", :locals => {link: line.avatar.link, preamble: false} %>
+<% end %>

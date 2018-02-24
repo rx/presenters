@@ -1,16 +1,17 @@
+require_relative 'mixin_link'
+
 module Voom
   module Presenters
     module DSL
       module Components
         class Icon < Base
-          attr_accessor :icon, :selected, :disabled, :color
+          include MixinLink
+          attr_accessor :icon, :color
 
           def initialize(**attribs_, &block)
-            super(type: :checkbox, context: context,
+            super(type: :icon, context: context,
                   **attribs_, &block)
             @icon = attribs.delete(:icon)
-            @selected = attribs.delete(:selected) || false
-            @disabled = attribs.delete(:disabled) || false
             @color    = attribs.delete(:color)
             expand!
           end

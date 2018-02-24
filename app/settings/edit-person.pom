@@ -1,30 +1,60 @@
+require_relative 'settings'
+
 Voom::Presenters.define('edit-person') do
+  helpers Settings
   helpers do
-    def person
-      OpenStruct.new(username: 'Russell', email: 'russell@voomify.com')
+
+    alias person settings
+
+    def profile(name)
+      column 1 do
+        card color: :blue, width: '46px', height: '46px', selected: name.to_s==settings.avatar do
+          image "settings/#{name}.png", width: '46px', height: '46px'
+          link 'edit-person', avatar:  name
+        end
+      end
     end
+
   end
 
-  header 'Settings'
-
-  drawer 'Settings' do
-    menu do
-      item 'People', icon: :person
-    end
-  end
+  save_settings!
+  
+  attach 'settings-nav'
 
   grid color: :gainsboro do
     column 2
     column 8 do
       card do
-        icon_toggle :mood
-        icon_toggle :mood_bad
-        icon_toggle :sentiment_satisfied
-        icon_toggle :sentiment_very_satisfied
-        icon_toggle :sentiment_neutral
-        icon_toggle :sentiment_dissatisfied
-        icon_toggle :sentiment_very_dissatisfied
+        title "Edit Person" do
+          button icon: :arrow_back do
+            link :settings #, settings.to_h
+          end
+        end
+        grid do
+          column 12 do
+            form do
+              text_field do
+                label 'Username'
+                value  settings.username
+              end
+            end
+          end
+        end
 
+        grid do
+          column 11 do
+            grid do
+              profile :white
+              profile :teal
+              profile :blue
+              profile :green
+              profile :orange
+              profile :purple
+              profile :red
+              profile :yellow
+            end
+          end
+        end
       end
     end
   end

@@ -1,8 +1,14 @@
+require_relative 'mixin_common'
+require_relative 'mixin_post'
+
 module Voom
   module Presenters
     module DSL
       module Components
         class Button < Base
+          include MixinLink
+          include MixinPost
+
           attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :dialog
 
           def initialize(type: nil, **attribs_, &block)

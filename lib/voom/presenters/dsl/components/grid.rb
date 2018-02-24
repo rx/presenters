@@ -1,4 +1,4 @@
-require_relative 'common'
+require_relative 'mixin_common'
 
 module Voom
   module Presenters
@@ -20,7 +20,7 @@ module Voom
           end
 
           class Column < Base
-            include Components::Common
+            include MixinCommon
             attr_accessor :size, :color, :components
 
             def initialize(**attribs_, &block)

@@ -1,4 +1,4 @@
-<% if comp.icon
+<% if comp && comp.icon
      if comp.icon =~ /^fa-/
        icon_class_name = "fas #{comp.icon}"
        icon = ''
@@ -7,6 +7,9 @@
        icon = comp.icon
      end
 %>
+
+  <%= erb :"components/link", :locals => {link: comp.link, preamble: true} %>
   <i class="<%= class_name %> <%= icon_class_name %>"
      style="<%= "color: #{comp.color};" if comp.color %>"><%=icon%></i>
+  <%= erb :"components/link", :locals => {link: comp.link, preamble: false} %>
 <% end %>

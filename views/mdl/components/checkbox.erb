@@ -1,3 +1,5 @@
+<%= erb :"components/link", :locals => {link: comp.link, preamble: true} %>
 <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="<%=comp.id%>">
   <input type="checkbox" id="<%=comp.id%>" class="mdl-checkbox__input" <%if comp.checked%> checked<%end%><%if comp.disabled%> disabled<%end%>/>
 </label>
+<%= erb :"components/link", :locals => {link: comp.link, preamble: false} %>

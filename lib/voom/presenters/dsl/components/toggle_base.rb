@@ -1,9 +1,14 @@
+require_relative 'mixin_link'
+require_relative 'mixin_post'
+
 module Voom
   module Presenters
     module DSL
       module Components
         # Base class used by toggle classes
         class ToggleBase < Base
+          include MixinLink
+          include MixinPost
           attr_accessor :text, :checked, :value, :disabled
          
           def initialize(**attribs_, &block)

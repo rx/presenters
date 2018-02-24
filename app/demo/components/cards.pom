@@ -7,10 +7,12 @@ Voom::Presenters.define(:cards) do
     display 'Cards'
 
     headline 'Wide'
-    card width: 42, height: 14 do
-      title 'Welcome', color: :white
+    card width: '42rem', height: '14rem' do
+      title 'Welcome', color: :white do
+        background 'demo/welcome_card.jpg'
+      end
       text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia... "
-      background 'welcome_card.jpg'
+
       action do
         button 'Get Started', color: :primary
       end
@@ -20,41 +22,48 @@ Voom::Presenters.define(:cards) do
     end
 
     headline 'Square'
-    card width: 21, height: 21 do
-      title 'Update', color: :white
+    card width: '21rem', height: '21rem' do
+      title 'Update', color: :white do
+        background 'demo/dog.png', options: 'bottom right 15% no-repeat #46B6AC'
+      end
       text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis."
-      background 'dog.png', options: 'bottom right 15% no-repeat #46B6AC'
+
       action do
         button 'View Updates', color: :primary
       end
     end
 
     headline 'Image'
-    card width: 21, height: 21 do
-      background 'image_card.jpg'
+    card width: '21rem', height: '21rem' do
+      title do
+        background 'demo/image_card.jpg'
+      end
     end
 
     headline 'Event'
-    card width: 21, height: 21 do
+    card width: '21rem', height: '21rem' do
       title 'Featured event:
            May 24, 2016
            7-11pm',
-            color: :fff, align: :top
+            color: :fff, align: :top   do
+        background color: '#3E4EB8'
+      end
       action do
         button 'Add to Calendar'
       end
-      background color: '#3E4EB8'
     end
 
 
     headline 'Example'
-    card width: 21, height: 42 do
+    card width: '21rem', height: '42rem' do
       title 'Auckland Sky Tower
-             Auckland, New Zealand'
+             Auckland, New Zealand' do
+        background 'https://www.askideas.com/media/43/The-Sky-Tower-In-Auckland-New-Zealand.jpg'
+      end
       text "The Sky Tower is an observation and telecommunications tower located in Auckland,
         New Zealand. It is 328 metres (1,076 ft) tall, making it the tallest man-made structure
         in the Southern Hemisphere."
-      background 'https://www.askideas.com/media/43/The-Sky-Tower-In-Auckland-New-Zealand.jpg'
+
     end
 
     attach :code, file: __FILE__

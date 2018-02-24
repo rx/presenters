@@ -1,30 +1,39 @@
+require_relative 'mixin_common'
+
 module Voom
   module Presenters
     module DSL
       module Components
         class Dialog < Base
-          attr_accessor :title, :buttons, :components
+          include MixinCommon
+          attr_accessor :width, :height, :buttons, :components
 
-          def initialize(title: nil, **attribs_, &block)
+          def initialize(**attribs_, &block)
             super(type: :dialog, **attribs_, &block)
-            @title = h(title)
+            @width = attribs.delete(:width)
+            @height = attribs.delete(:height)
+
             @buttons = []
             @components=[]
             expand!
           end
 
-          def title(title=nil)
+          def title(title=nil, **options, &block)
             return @title if locked?
-            @title = title
+            @title = Components::Typography.new(parent: self, type: :title,
+                                                text: title, context: context,
+                                                                 **options, &block)
           end
 
           def heading(text=nil, **options, &block)
-            components << Components::Display.new(parent: self, text: text, context: context,
+            components << Components::Typography.new(parent: self, type: :heading,
+                                                     text: text, context: context,
                                                   **options, &block)
           end
 
-          def paragraph(text=nil, **options, &block)
-            components << Components::Typography.new(parent: self, text: text, context: context,
+          def body(text=nil, **options, &block)
+            components << Components::Typography.new(parent: self, type: :body,
+                                                     text: text, context: context,
                                                      **options, &block)
           end
 

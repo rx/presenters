@@ -1,8 +1,12 @@
+require_relative 'mixin_post'
+
 module Voom
   module Presenters
     module DSL
       module Components
         class TextField < Base
+          include MixinPost
+
           attr_reader :required, :full_width
 
           def initialize(**attribs_, &block)

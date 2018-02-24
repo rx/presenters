@@ -32,18 +32,13 @@ module Voom
             @context = context
             @attributes = escape(attributes || {})
             @block = block
-            @url = nil # Used by serializer
           end
 
           def expand!
             extend(_helpers_) if _helpers_
             instance_eval(&@block) if @block
           end
-
-          def url(**context)
-            @parent.url(**attributes.merge(context))
-          end
-
+          
           def dialog(**attributes, &block)
             @parent.dialog(**attributes, &block)
           end

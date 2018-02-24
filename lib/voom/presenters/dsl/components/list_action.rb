@@ -1,3 +1,7 @@
+require_relative 'icon'
+require_relative 'icon_toggle'
+
+
 module Voom
   module Presenters
     module DSL
@@ -50,14 +54,13 @@ module Voom
           def icon_toggle(icon=nil, **attribs, &block)
             return @icon_toggle if locked?
             @action_type = :icon_toggle
-            @icon_toggle = IconToggle.new(parent: self, icon: icon, context: context,
-                                          **attribs, &block)
+            @icon_toggle = IconToggle.new(icon: icon, parent: self, context: context, **attribs, &block)
           end
           
-          def button(text=nil, **attributes, &block)
+          def button(text=nil, **attribs, &block)
             return @button if locked?
             @action_type = :button
-            @button =  Button.new(text: text, parent: self, context: context, **attributes, &block)
+            @button =  Button.new(text: text, parent: self, context: context, **attribs, &block)
           end
         end
       end

@@ -1,0 +1,18 @@
+require_relative '../settings'
+
+Voom::Presenters.define('settings-nav') do
+  helpers Settings
+
+  page_title 'Settings'
+
+  header 'Settings'
+
+  drawer 'Settings' do
+    menu do
+      item 'People' do
+        icon :person
+        link :settings#, settings.to_h
+      end
+    end
+  end
+end

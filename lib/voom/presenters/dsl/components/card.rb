@@ -1,5 +1,6 @@
 require_relative 'menu'
-require_relative 'common'
+require_relative 'mixin_common'
+require_relative 'mixin_link'
 
 
 module Voom
@@ -7,14 +8,17 @@ module Voom
     module DSL
       module Components
         class Card < Base
-          include Components::Common
-          attr_accessor :height, :width, :color, :components
+          include MixinLink
+          include MixinCommon
+
+          attr_accessor :height, :width, :color, :selected, :components
 
           def initialize(**attribs_, &block)
             super(type: :card, **attribs_, &block)
             @height = attribs.delete(:height)
             @width = attribs.delete(:width)
             @color = attribs.delete(:color)
+            @selected = attribs.delete(:selected) || false
             @components = []
             expand!
           end
@@ -31,17 +35,9 @@ module Voom
             @text = text
           end
 
-          def image(image=nil)
+          def image(image=nil, **attribs, &block)
             return @image if locked?
-            @image = image
-          end
-
-          def background(image=nil, options: 'center / cover', **attribs, &block)
-            return @bg_image if locked?
-            @bg_image = Background.new(parent: self, image: image,
-                                       options: options,
-                                       context: context,
-                                       **attribs, &block)
+            @image = Image.new(parent: self, image: image, **attribs, &block)
           end
 
           def action(**attribs, &block)
@@ -81,6 +77,21 @@ module Voom
               @color = attribs.delete(:color)
               @align = attribs.delete(:align) || :bottom
               expand!
+            end
+
+            def button(text=nil, **options, &block)
+              return @button if locked?
+              @button = Components::Button.new(parent: self, text: text,
+                                               context: context,
+                                               **options, &block)
+            end
+
+            def background(image=nil, options: 'center / cover', **attribs, &block)
+              return @bg_image if locked?
+              @bg_image = Background.new(parent: self, image: image,
+                                         options: options,
+                                         context: context,
+                                         **attribs, &block)
             end
           end
 

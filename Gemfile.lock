@@ -4,6 +4,7 @@ PATH
     voom-ui (0.0.1)
       dry-container
       ice_nine
+      redcarpet
       sinatra
       tzinfo
       tzinfo-data
@@ -36,6 +37,7 @@ GEM
     rack-test (0.8.2)
       rack (>= 1.0, < 3)
     rake (11.3.0)
+    redcarpet (3.4.0)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)

@@ -1,1 +1,3 @@
+<%= erb :"components/link", :locals => {link: comp.link, preamble: true} %>
 <div class="mdl-typography--headline"><%= comp.text %></div>
+<%= erb :"components/link", :locals => {link: comp.link, preamble: false} %>

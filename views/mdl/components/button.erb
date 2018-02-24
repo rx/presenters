@@ -1,4 +1,6 @@
-<button id="<%=comp.id%>"
+<% if comp %>
+  <%= erb :"components/link", :locals => {link: comp.link, preamble: true} %>
+  <button id="<%=comp.id%>"
         class="mdl-button mdl-js-button
          <%= "mdl-button--#{comp.button_type}" if %i(fab raised icon).include?(comp.button_type) %>
          <%= 'mdl-button--colored' if comp.color==:primary %>
@@ -9,4 +11,6 @@
   <%= erb :"components/icon", :locals => {comp: comp, class_name: nil} %>
   <%= comp.text %>
 </button>
+  <%= erb :"components/link", :locals => {link: comp.link, preamble: false} %>
+<% end %>
 

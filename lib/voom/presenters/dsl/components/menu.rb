@@ -1,3 +1,5 @@
+require_relative 'mixin_link'
+
 module Voom
   module Presenters
     module DSL
@@ -24,7 +26,7 @@ module Voom
 
           def item(first_text = nil, text: nil, **attribs, &block)
             the_text = first_text || text
-            @items << Item.new(parent: self, text: the_text, 
+            @items << Item.new(parent: self, text: the_text,
                                context: context,
                                **attribs, &block)
           end
@@ -36,14 +38,22 @@ module Voom
           end
 
           class Item < Base
-            attr_accessor :text, :icon, :disabled
+            include MixinLink
+
+            attr_accessor :text, :disabled
 
             def initialize(**attribs_, &block)
               super(type: :item, **attribs_, &block)
               @text = attribs.delete(:text)
-              @icon = attribs.delete(:icon)
-              @disabled  = attribs.delete(:disabled)
+              @disabled = attribs.delete(:disabled)
               expand!
+            end
+
+            def icon(icon=nil, **attribs, &block)
+              return @icon if locked?
+              @icon = Icon.new(parent: self, icon: icon,
+                               context: context,
+                               **attribs, &block)
             end
           end
 

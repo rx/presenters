@@ -1,8 +1,12 @@
+require_relative 'mixin_append'
+
 module Voom
   module Presenters
     module DSL
       module Components
-        module Switches
+        module MixinSwitches
+          include MixinAppend
+
           def checkbox(**attribs, &block)
             self << Checkbox.new(parent: self, **attribs, &block)
           end

@@ -2,9 +2,22 @@ Voom::Presenters.define('top_nav') do
   page_title 'Presenters Demo'
   header 'Presenters Demo' do
     menu do
-      item 'About', link: :index
-      item 'Components', link: :components
-      item 'Styles', link: :styles
+      item 'About' do
+        link :index
+      end
+
+      item 'Components' do
+        link :components
+      end
+
+      item 'Styles' do
+        link :styles
+      end
+
+      item do
+        icon :settings
+        link :settings
+      end
     end
   end
 end

@@ -3,11 +3,13 @@
           <%= 'mdl-list__item--three-line' if line.body%>
           <%= 'vml-list-line-separator' if line.separator%>">
   <span class="mdl-list__item-primary-content">
+    <%= erb :"components/link", :locals => {link: line.link, preamble: true} %>
     <%= erb :"components/list/icon", :locals => {:line => line} %>
     <%= erb :"components/list/avatar", :locals => {:line => line} %>
-    <span><%= line.text %></span>
-    <% if line.subtitle %><span class="mdl-list__item-sub-title"><%=line.subtitle%></span><%end%>
-    <% if line.body %><span class="mdl-list__item-text-body"><%=line.body%></span><%end%>
+    <span><%= line.text&.text %></span>
+    <% if line.subtitle %><span class="mdl-list__item-sub-title"><%=line.subtitle.text%></span><%end%>
+    <% if line.body %><span class="mdl-list__item-text-body"><%=line.body.text%></span><%end%>
+    <%= erb :"components/link", :locals => {link: line.link, preamble: false} %>
   </span>
   <%= erb :"components/list/actions", :locals => {:line => line} %>
 </li>
