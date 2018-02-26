@@ -6,11 +6,4 @@ module Store
   def store
     @@store
   end
-
-  def save!
-  end
-
-  def load(filename='settings.yml')
-    YAML::Store.new(filename)
-  end
 end
