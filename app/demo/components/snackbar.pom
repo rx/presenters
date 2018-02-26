@@ -1,0 +1,12 @@
+Voom::Presenters.define(:snackbar) do
+
+  attach :top_nav
+  attach :component_drawer
+
+  attach :grid do
+    display 'Snackbar'
+    attach :code, file: __FILE__
+  end
+
+  snackbar 'Yo it worked!'
+end

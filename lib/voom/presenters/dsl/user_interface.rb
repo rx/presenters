@@ -1,6 +1,7 @@
 require 'ice_nine'
 require_relative 'definer'
 require_relative 'components/mixin_common'
+require_relative 'components/mixin_helpers'
 require_relative 'invalid_presenter'
 
 require 'voom/serializer'
@@ -16,6 +17,7 @@ module Voom
         include Lockable
         include Components::MethodMissing
         include Components::MixinCommon
+        include Components::MixinHelpers
 
         include Voom::Serializer
         include Voom::Trace
@@ -34,6 +36,7 @@ module Voom
           @drawer = nil
           @components = []
           @dialogs = []
+          @snackbar = nil
           @footer = nil
         end
 
@@ -56,6 +59,14 @@ module Voom
                                            **attribs, &block)
         end
 
+        def snackbar(text=nil, **attribs, &block)
+          return @snackbar if locked?
+          @snackbar = Components::Snackbar.new(parent: self,
+                                               text: text,
+                                           context: context,
+                                           **attribs, &block)
+        end
+
         def footer(**attribs, &block)
           return @footer if locked?
           @footer = Components::Footer.new(parent: self,
@@ -68,17 +79,6 @@ module Voom
                                              context: context,
                                              **attributes, &block)
         end
-
-
-        def helpers(module_=nil, &block)
-          return unless module_ || block
-          @parent.helpers(module_, &block) if @parent
-          @helpers ||= Module.new
-          @helpers.include module_ if module_
-          @helpers.module_eval(&block) if block
-          extend(@helpers)
-        end
-
 
         def attach(presenter, **context_, &yield_block)
           @_yield_block_ = yield_block

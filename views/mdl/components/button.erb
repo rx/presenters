@@ -6,7 +6,8 @@
          <%= 'mdl-button--colored' if comp.color==:primary %>
          <%= 'mdl-button--accent' if comp.color==:secondary %>
          <%= 'mdl-button--mini-fab' if comp.button_type==:fab && comp.size==:small %>
-         <%= "#{comp.dialog}-dialog" if comp.dialog %>"
+         <%= "vml-js-dialog-button" if comp.dialog %>"
+         <%= "data-dialog-id='#{comp.dialog}'" if comp.dialog %>"
          <%= 'disabled' if comp.disabled %>>
   <%= erb :"components/icon", :locals => {comp: comp, class_name: nil} %>
   <%= comp.text %>

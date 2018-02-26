@@ -1,23 +1,2 @@
-<% header = @pom.header %>
-<% drawer = @pom.drawer %>
-<% dialogs = @pom.dialogs %>
-<% footer = @pom.footer %>
-<div class="mdl-layout mdl-js-layout  <% if header %>mdl-layout--fixed-header<%end%> <% if drawer %>mdl-layout--fixed-drawer<%end%>">
-  <% if header %>
-    <%= erb :"body/header", :locals => {:header => header} %>
-  <%end%>
-  <% if drawer %>
-    <%= erb :"body/drawer", :locals => {:drawer => drawer} %>
-  <% end %>
-  <main class="mdl-layout__content">
-    <div class="page-content">
-      <%= erb :"components/render", :locals => {:components => @pom.components, :scope=> nil} %>
-    </div>
-  </main>
-  <% if dialogs %>
-    <%= erb :"body/dialogs", :locals => {:dialogs => dialogs} %>
-  <% end %>
-  <% if footer %>
-    <%= erb :"body/footer", :locals => {:footer => footer} %>
-  <%end%>
-</div>
+<%= erb :"components/render", :locals => {:components => @pom.components, :scope=> nil} %>
+<%= erb :"components/snackbar", :locals => {:snackbar => @pom.snackbar, :scope=> nil} %>

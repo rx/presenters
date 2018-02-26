@@ -1,0 +1,26 @@
+require_relative 'settings'
+
+Voom::Presenters.define('user-avatar') do
+
+  helpers Settings
+  helpers do
+    def profile(name)
+      column 1 do
+        card color: :blue, width: '46px', height: '46px', selected: name.to_s==settings.avatar do
+          image "settings/#{name}.png", width: '46px', height: '46px'
+          link 'user-avatar', avatar: name do
+            replaces :profiles
+          end
+        end
+      end
+    end
+  end
+
+  save_settings!
+
+  grid id: :profiles do
+    %i(white teal blue green orange purple red yellow).each do |color|
+      profile color
+    end
+  end
+end

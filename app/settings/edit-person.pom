@@ -3,22 +3,9 @@ require_relative 'settings'
 Voom::Presenters.define('edit-person') do
   helpers Settings
   helpers do
-
     alias person settings
-
-    def profile(name)
-      column 1 do
-        card color: :blue, width: '46px', height: '46px', selected: name.to_s==settings.avatar do
-          image "settings/#{name}.png", width: '46px', height: '46px'
-          link 'edit-person', avatar:  name
-        end
-      end
-    end
-
   end
 
-  save_settings!
-  
   attach 'settings-nav'
 
   grid color: :gainsboro do
@@ -35,24 +22,14 @@ Voom::Presenters.define('edit-person') do
             form do
               text_field do
                 label 'Username'
-                value  settings.username
+                value settings.username
               end
             end
           end
         end
-
         grid do
           column 11 do
-            grid do
-              profile :white
-              profile :teal
-              profile :blue
-              profile :green
-              profile :orange
-              profile :purple
-              profile :red
-              profile :yellow
-            end
+              attach 'user-avatar'
           end
         end
       end

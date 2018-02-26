@@ -55,6 +55,21 @@ module Voom
                                          **attribs, &block)
           end
 
+          def helpers(module_=nil, &block)
+            return unless module_ || block
+            @parent.helpers(module_, &block) if @parent
+            @helpers ||= Module.new
+            @helpers.include module_ if module_
+            @helpers.module_eval(&block) if block
+            extend(@helpers)
+          end
+
+          def attach(presenter, **context_, &yield_block)
+            @_yield_block_ = yield_block
+            pom = Voom::Presenters[presenter].call.expand_child(parent: self, context: context.merge(context_))
+            @components += pom.components
+          end
+
           class Background < Base
             attr_accessor :image, :options, :color
 

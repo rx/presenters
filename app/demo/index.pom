@@ -2,6 +2,7 @@ Voom::Presenters.define(:index) do
   attach :top_nav
 
   attach :grid do
+    button 'Ajax Button', id: 'ajaxButton'
     headline 'Presenters'
     subheading 'Presenters are to HTML what C is to assembly'
     body 'A presenter describes a user interface. It is evaluated and a presenter object model (POM) is returned.

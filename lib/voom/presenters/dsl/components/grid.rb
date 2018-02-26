@@ -1,10 +1,13 @@
 require_relative 'mixin_common'
+require_relative 'mixin_helpers'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Grid < Base
+          include Components::MixinHelpers
+
           attr_accessor :columns, :color
 
           def initialize(color: nil, **attribs_, &block)
@@ -19,8 +22,16 @@ module Voom
                                    context: context, **attribs, &block)
           end
 
+          def attach(presenter, **context_, &yield_block)
+                        @_yield_block_ = yield_block
+                        pom = Voom::Presenters[presenter].call.expand_child(parent: self, context: context.merge(context_))
+                        @components += pom.components
+                      end
+
           class Column < Base
             include MixinCommon
+            include Components::MixinHelpers
+
             attr_accessor :size, :color, :components
 
             def initialize(**attribs_, &block)
@@ -30,6 +41,7 @@ module Voom
               @components = []
               expand!
             end
+
 
             def attach(presenter, **context_, &yield_block)
               @_yield_block_ = yield_block

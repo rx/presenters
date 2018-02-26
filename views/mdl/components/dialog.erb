@@ -18,24 +18,3 @@
     </div>
   <% end %>
 </dialog>
-
-<script>
-    (function () {
-        'use strict';
-        var dialogButton = document.querySelector('.<%= comp.id %>-dialog');
-        var dialog = document.querySelector('#<%= comp.id %>');
-        if (!dialog.showModal) {
-            dialogPolyfill.registerDialog(dialog);
-        }
-        dialogButton.addEventListener('click', function () {
-            dialog.showModal();
-        });
-
-        var dialogButtons = dialog.querySelectorAll('button:not([disabled])');
-        for (var i = 0; i != dialogButtons.length; i++) {
-            dialogButtons[i].addEventListener('click', function() {
-                dialog.close();
-            });
-          }
-    }());
-</script>

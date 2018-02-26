@@ -26,7 +26,7 @@ module Voom
           alias attribs attributes
 
           def initialize(type:, parent:, id: nil, context: {}, **attributes, &block)
-            @id = h(id) || "id-#{SecureRandom.hex}"
+            @id = h(id) || generate_id
             @type = h(type)
             @parent = parent
             @context = context
@@ -54,6 +54,11 @@ module Voom
             attributes.map {|k, v| [k, h(v)]}.to_h
           end
 
+          def generate_id
+            checksum = Digest::MD5.hexdigest(Marshal::dump(self.to_hash))
+            "id-#{checksum}"
+          end
+
           protected
 
           def router
@@ -68,6 +73,7 @@ module Voom
           def _helpers_
             @parent.send(:_helpers_) if @parent
           end
+
         end
       end
     end

@@ -1,6 +1,12 @@
 <% if link %>
   <% if preamble %>
-    <a href="<%= link.url %>" style="color: unset; text-decoration: none;">
+    <a style="color: unset; text-decoration: none;"
+       <% unless link&.replaces %>
+         href ="<%=link.url%>"
+       <% else %>
+         onclick="new VReplaceElement('<%=link&.replaces%>','<%= link.url %>', '<%="grid_nesting=#{@grid_nesting-1}"%>').call()"
+       <% end %>
+    >
   <% else %>
     </a>
   <% end %>

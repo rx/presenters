@@ -50,6 +50,10 @@ Voom::Presenters.define('component_menu') do
       link :toggles
     end
 
+    item 'Snackbar' do
+      link :snackbar
+    end
+
     item 'Badges' do
       # icon :home
       link :badges
