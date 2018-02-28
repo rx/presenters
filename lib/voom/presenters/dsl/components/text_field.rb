@@ -1,11 +1,11 @@
-require_relative 'mixin_post'
+require_relative 'mixin_modifies'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class TextField < Base
-          include MixinPost
+          include MixinModifies
 
           attr_reader :required, :full_width
 

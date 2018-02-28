@@ -1,4 +1,4 @@
-require_relative 'mixin_post'
+require_relative 'mixin_modifies'
 
 module Voom
   module Presenters
@@ -19,7 +19,7 @@ module Voom
           end
 
           class Action < Base
-            include MixinPost
+            include MixinModifies
             attr_accessor :text
 
             def initialize(**attribs_, &block)

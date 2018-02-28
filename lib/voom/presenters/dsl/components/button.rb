@@ -1,5 +1,5 @@
 require_relative 'mixin_common'
-require_relative 'mixin_post'
+require_relative 'mixin_modifies'
 
 module Voom
   module Presenters
@@ -7,7 +7,7 @@ module Voom
       module Components
         class Button < Base
           include MixinLink
-          include MixinPost
+          include MixinModifies
 
           attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :dialog
 

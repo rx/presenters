@@ -16,31 +16,52 @@ describe Voom::Presenters::WebClient::App do
 
   let(:app) {described_class.new}
 
-  describe 'all pages' do
+  describe 'GET' do
+    describe 'all pages' do
 
-    it "render" do
-      keys = Voom::Presenters.keys
-      keys.each do |key|
-        response = get "/#{key}"
-        puts key
-        puts response.body unless response.status==200
-        puts key
+      it "render" do
+        keys = Voom::Presenters.keys
+        keys.each do |key|
+          response = get "/#{key}"
+          puts key
+          puts response.body unless response.status==200
+          puts key
+          expect(response.status).to eq 200
+        end
+      end
+
+    end
+
+    describe '/' do
+      let(:response) {get "/"}
+      it 'renders' do
         expect(response.status).to eq 200
       end
-    end
 
+      it "content" do
+        expect(response.body).to have_tag(:div, :text => "Presenters")
+      end
+    end
   end
 
-  describe '/' do
+  describe 'POST' do
+    describe 'all pages' do
+         it "render" do
+           keys = Voom::Presenters.keys
+           keys.each do |key|
+             presenter = Voom::Presenters[key].call
+             pom = presenter.expand(router: Voom::Presenters::WebClient::Router.new)
+             pom_json = JSON.dump(pom.to_hash)
+             
+             puts key
+             response = post(key, pom_json,  { "CONTENT_TYPE" => "application/json" })
+             puts response.body unless response.status==200
+             puts key
+             expect(response.status).to eq 200
+           end
+         end
 
-    let(:response){get "/"}
-    it 'renders' do
-      expect(response.status).to eq 200
-    end
-
-    it "content" do
-      expect(response.body).to have_tag(:div, :text => "Presenters")
-    end
+       end
   end
 
 end

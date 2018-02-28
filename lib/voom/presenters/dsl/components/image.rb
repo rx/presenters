@@ -18,6 +18,12 @@ module Voom
             @selected = attribs.delete(:selected)
             expand!
           end
+
+          def url
+            return nil unless image
+            return image if image.start_with?('/') || @image.start_with?('http')
+            @parent.router.url(render: image, context: {})
+          end
         end
       end
     end

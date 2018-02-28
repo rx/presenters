@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'voom/presenters/version'
 
 Gem::Specification.new do |spec|
-  spec.name = 'voom-ui'
+  spec.name = 'voom-presenters'
   spec.version = Voom::Presenters::VERSION
   spec.authors = ['Russell Edens']
   spec.email = ["russell@voomify.com\n"]
 
-  spec.summary = 'Voom UI Gem.'
-  spec.homepage = 'http://github.com/voomify/voom/gems/ui'
+  spec.summary = 'Presenters Gem.'
+  spec.homepage = 'http://github.com/rx/presenters'
   spec.license = 'MIT'
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
@@ -26,7 +26,8 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency  'tzinfo'
   spec.add_runtime_dependency  'tzinfo-data'
   spec.add_runtime_dependency  'redcarpet'
-
+  spec.add_runtime_dependency  'inflecto'
+  
   spec.add_development_dependency 'rack-test'
   spec.add_development_dependency 'pry', '~>0.10.1'
   spec.add_development_dependency 'bundler', '~> 1.13'

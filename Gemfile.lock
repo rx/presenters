@@ -1,9 +1,10 @@
 PATH
   remote: .
   specs:
-    voom-ui (0.0.1)
+    voom-presenters (0.0.1)
       dry-container
       ice_nine
+      inflecto
       redcarpet
       sinatra
       tzinfo
@@ -72,13 +73,12 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.13)
-  inflecto
   pry (~> 0.10.1)
   rack-test
   rake (~> 11.3)
   rspec (~> 3.0)
   rspec-html-matchers
-  voom-ui!
+  voom-presenters!
 
 BUNDLED WITH
    1.16.1

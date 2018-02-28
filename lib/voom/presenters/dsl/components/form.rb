@@ -2,7 +2,7 @@ require_relative 'hidden_field'
 require_relative 'text_field'
 require_relative 'text_area'
 require_relative 'mixin_link'
-require_relative 'mixin_post'
+require_relative 'mixin_modifies'
 
 module Voom
   module Presenters
@@ -10,7 +10,7 @@ module Voom
       module Components
         class Form < Base
           include MixinLink
-          include MixinPost
+          include MixinModifies
 
           attr_reader :fields, :actions
 

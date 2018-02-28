@@ -1,8 +1,12 @@
+require_relative 'mixin_modifies'
+
 module Voom
   module Presenters
     module DSL
       module Components
         class Link < Base
+          include MixinModifies
+
           attr_accessor :target, :params
           
           def initialize(parent:, **params, &block)

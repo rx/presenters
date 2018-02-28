@@ -14,8 +14,8 @@ module Voom
         set :root, File.expand_path('../../../../..', __FILE__)
         set :router_, Router
         set :bind, '0.0.0.0'
-        set :views, Proc.new { File.join(root, "views", 'mdl') }
-        
+        set :views, Proc.new {File.join(root, "views", 'mdl')}
+
         helpers do
           def markdown(text)
             @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
@@ -39,9 +39,17 @@ module Voom
           erb :web, layout: layout
         end
 
+        # Forms engine demo
+        post '/:presenter' do
+          @pom = JSON.parse(request.body.read, object_class: OpenStruct)
+          @grid_nesting = 0
+          erb :web, layout: true
+        end
+
         private
         def router
-          settings.router_.new(base_url: request.base_url)
+          trace {"base_url: #{request.base_url}#{env['SCRIPT_NAME']}"}
+          settings.router_.new(base_url: "#{request.base_url}#{env['SCRIPT_NAME']}")
         end
       end
     end

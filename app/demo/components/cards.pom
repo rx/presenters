@@ -9,7 +9,7 @@ Voom::Presenters.define(:cards) do
     headline 'Wide'
     card width: '42rem', height: '14rem' do
       title 'Welcome', color: :white do
-        background 'demo/welcome_card.jpg'
+        background 'img/demo/welcome_card.jpg'
       end
       text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia... "
 
@@ -24,7 +24,7 @@ Voom::Presenters.define(:cards) do
     headline 'Square'
     card width: '21rem', height: '21rem' do
       title 'Update', color: :white do
-        background 'demo/dog.png', options: 'bottom right 15% no-repeat #46B6AC'
+        background 'img/demo/dog.png', options: 'bottom right 15% no-repeat #46B6AC'
       end
       text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis."
 
@@ -36,7 +36,7 @@ Voom::Presenters.define(:cards) do
     headline 'Image'
     card width: '21rem', height: '21rem' do
       title do
-        background 'demo/image_card.jpg'
+        background 'img/demo/image_card.jpg'
       end
     end
 

@@ -33,7 +33,7 @@ class VSnackbar {
         this.action_fn = action_fn;
     }
 
-    call() {
+    display() {
         'use strict';
         var snackbarContainer = document.querySelector('#snackbar');
         var data = {
@@ -59,7 +59,7 @@ class VReplaceElement {
 
     call() {
         if (!this.httpRequest) {
-            new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').call();
+            new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
             return false;
         }
         var _this_ = this;
@@ -70,7 +70,7 @@ class VReplaceElement {
                     var node_to_replace = document.getElementById(_this_.element_id);
                     node_to_replace.outerHTML = _this_.httpRequest.responseText;
                 } else {
-                    new VSnackbar('There was a problem with the request.').call();
+                    new VSnackbar('There was a problem with the request.').display();
                 }
             }
         };

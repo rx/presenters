@@ -75,7 +75,7 @@ module Voom
 
             def initialize(**attribs_, &block)
               super(type: :background, **attribs_, &block)
-              @image = attribs.delete(:image)
+              @image = Image.new(parent: self, image: attribs.delete(:image), context: context)
               @options = attribs.delete(:options)
               @color = attribs.delete(:color)
               expand!

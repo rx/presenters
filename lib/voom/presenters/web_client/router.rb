@@ -68,7 +68,7 @@ module Voom
 
         def build_render_url(render, entity, params)
           return '#' unless render
-          "/#{render}?#{build_params(params, entity)}"
+          "#{base_url}/#{render}?#{build_params(params, entity)}"
         end
 
         def build_client_url(render, entity, params)
