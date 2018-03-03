@@ -15,7 +15,7 @@ Voom::Presenters.define('user-avatar') do
         end
       end
     end
-  end
+  end                                     
 
   save_settings!
 

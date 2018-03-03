@@ -2,14 +2,14 @@ require_relative 'list_action'
 require_relative 'icon'
 require_relative 'avatar'
 require_relative 'typography'
-require_relative 'mixin_link'
+require_relative 'mixins/link'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class ListLine < Base
-          include MixinLink
+          include Mixins::Link
           attr_accessor :separator, :actions
 
           def initialize(**attribs_, &block)

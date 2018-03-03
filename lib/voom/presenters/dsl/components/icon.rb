@@ -1,11 +1,11 @@
-require_relative 'mixin_link'
+require_relative 'mixins/link'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Icon < Base
-          include MixinLink
+          include Mixins::Link
           attr_accessor :icon, :color
 
           def initialize(**attribs_, &block)

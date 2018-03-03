@@ -1,5 +1,5 @@
-require_relative 'mixin_link'
-require_relative 'mixin_modifies'
+require_relative 'mixins/link'
+require_relative 'mixins/modifies'
 
 module Voom
   module Presenters
@@ -7,8 +7,8 @@ module Voom
       module Components
         # Base class used by toggle classes
         class ToggleBase < Base
-          include MixinLink
-          include MixinModifies
+          include Mixins::Link
+          include Mixins::Modifies
           attr_accessor :text, :checked, :value, :disabled
          
           def initialize(**attribs_, &block)

@@ -1,7 +1,7 @@
 require 'ice_nine'
 require_relative 'definer'
-require_relative 'components/mixin_common'
-require_relative 'components/mixin_helpers'
+require_relative 'components/mixins/common'
+require_relative 'components/mixins/helpers'
 require_relative 'invalid_presenter'
 
 require 'voom/serializer'
@@ -16,8 +16,8 @@ module Voom
         include DependsOn
         include Lockable
         include Components::MethodMissing
-        include Components::MixinCommon
-        include Components::MixinHelpers
+        include Components::Mixins::Common
+        include Components::Mixins::Helpers
 
         include Voom::Serializer
         include Voom::Trace

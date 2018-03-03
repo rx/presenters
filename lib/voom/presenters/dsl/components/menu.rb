@@ -1,4 +1,4 @@
-require_relative 'mixin_link'
+require_relative 'mixins/link'
 
 module Voom
   module Presenters
@@ -38,7 +38,7 @@ module Voom
           end
 
           class Item < Base
-            include MixinLink
+            include Mixins::Link
 
             attr_accessor :text, :disabled
 

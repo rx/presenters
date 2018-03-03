@@ -1,5 +1,5 @@
-require_relative 'mixin_common'
-require_relative 'mixin_link'
+require_relative 'mixins/common'
+require_relative 'mixins/link'
 
 module Voom
   module Presenters
@@ -43,7 +43,7 @@ module Voom
             end
 
             class Column < Base
-              include MixinLink
+              include Mixins::Link
 
               attr_accessor :value, :numeric
               def initialize(**attribs_, &block)

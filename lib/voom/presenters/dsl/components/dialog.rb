@@ -1,11 +1,11 @@
-require_relative 'mixin_common'
+require_relative 'mixins/common'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Dialog < Base
-          include MixinCommon
+          include Mixins::Common
           attr_accessor :width, :height, :buttons, :components
 
           def initialize(**attribs_, &block)

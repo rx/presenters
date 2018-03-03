@@ -4,7 +4,7 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class Link < Base
+        class Event < Base
           include Mixins::Modifies
 
           attr_accessor :target, :params

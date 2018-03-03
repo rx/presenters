@@ -1,11 +1,11 @@
-require_relative 'mixin_link'
+require_relative 'mixins/link'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Avatar < Base
-          include MixinLink
+          include Mixins::Link
           attr_accessor :avatar
 
           def initialize(**attribs_, &block)

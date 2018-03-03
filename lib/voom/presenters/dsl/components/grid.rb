@@ -1,12 +1,12 @@
-require_relative 'mixin_common'
-require_relative 'mixin_helpers'
+require_relative 'mixins/common'
+require_relative 'mixins/helpers'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Grid < Base
-          include Components::MixinHelpers
+          include Mixins::Helpers
 
           attr_accessor :columns, :color
 
@@ -29,8 +29,8 @@ module Voom
                       end
 
           class Column < Base
-            include MixinCommon
-            include Components::MixinHelpers
+            include Mixins::Common
+            include Mixins::Helpers
 
             attr_accessor :size, :color, :components
 

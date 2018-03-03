@@ -2,7 +2,8 @@ module Voom
   module Presenters
     module DSL
       module Components
-        module MixinAppend
+        module Mixins
+        module Append
 
           def <<(comp)
             @components << comp
@@ -15,4 +16,5 @@ module Voom
       end
     end
   end
+end
 end
