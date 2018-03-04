@@ -19,7 +19,8 @@ module Voom
           end
 
           class Action < Base
-            include Mixins::Modifies
+            include Mixins::Event
+
             attr_accessor :text
 
             def initialize(**attribs_, &block)

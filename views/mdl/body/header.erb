@@ -6,7 +6,8 @@
     <% if header.menu %>
       <nav class="mdl-navigation">
         <% header.menu.items.each do |item| %>
-          <a class="mdl-navigation__link" href="<%= item.link&.url %>">
+          <a class="mdl-navigation__link" href="javascript:void(0)"
+             <%=  erb :"components/event", :locals => {event: item.event}%>>
             <%= erb :"components/icon", :locals => {comp: item.icon, class_name: nil} %>
             <%= item.text %>
           </a>

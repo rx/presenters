@@ -13,19 +13,11 @@ Voom::Presenters.define(:menus) do
             background color: '3E4EB8'
           end
           menu side: :left, color: :fff do
-            item 'Some Action' do
-              link '#'
-            end
-            item 'Another Action' do
-              link '#'
-            end
+            item 'Some Action'
+            item 'Another Action'
             divider
-            item 'Disabled Action', disabled: true do
-              link '#'
-            end
-            item 'Yet Another Action' do
-              link '#'
-            end
+            item 'Disabled Action', disabled: true
+            item 'Yet Another Action'
           end
         end
       end
@@ -35,19 +27,11 @@ Voom::Presenters.define(:menus) do
             background color: '3E4EB8'
           end
           menu color: :fff do
-            item 'Some Action' do
-              link '#'
-            end
-            item 'Another Action' do
-              link '#'
-            end
+            item 'Some Action'
+            item 'Another Action'
             divider
-            item 'Disabled Action', disabled: true do
-              link '#'
-            end
-            item 'Yet Another Action' do
-              link '#'
-            end
+            item 'Disabled Action', disabled: true
+            item 'Yet Another Action'
           end
         end
       end

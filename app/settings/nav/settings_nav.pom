@@ -11,7 +11,9 @@ Voom::Presenters.define('settings-nav') do
     menu do
       item 'People' do
         icon :person
-        link :settings#, settings.to_h
+        event :click do
+          loads :settings
+        end
       end
     end
   end

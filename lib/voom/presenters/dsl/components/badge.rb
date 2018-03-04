@@ -1,11 +1,11 @@
-require_relative 'mixins/common'
+require_relative 'mixins/event'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Badge < Base
-          include Mixins::Link
+          include Mixins::Event
           attr_accessor :badge, :icon, :text
 
           def initialize(**attribs_, &block)

@@ -14,7 +14,9 @@ Voom::Presenters.define('edit-person') do
       card do
         title "Edit Person" do
           button icon: :arrow_back do
-            link :settings #, settings.to_h
+            event :click do
+              loads :settings
+            end
           end
         end
         grid do
@@ -29,7 +31,7 @@ Voom::Presenters.define('edit-person') do
         end
         grid do
           column 11 do
-              attach 'user-avatar'
+            attach 'user-avatar'
           end
         end
       end

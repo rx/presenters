@@ -1,11 +1,11 @@
-require_relative 'mixins/link'
+require_relative 'mixins/event'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Typography < Base
-          include Mixins::Link
+          include Mixins::Event
 
           attr_accessor :text, :level, :color
 

@@ -1,4 +1,4 @@
-require_relative 'modifies'
+require_relative '../invokes'
 
 module Voom
   module Presenters
@@ -9,12 +9,12 @@ module Voom
             # Method can be one of :post, :put, :delete or :patch
             def posts(target=nil, **params, &block)
               return @modifies if locked?
-              @modifies = Components::Modifies.new(parent: self, target: target, method: :post, context: params, &block)
+              @modifies = Components::Invokes.new(parent: self, target: target, method: :post, context: params, &block)
             end
 
             def updates(target, **params, &block)
               return @modifies if locked?
-              @modifies = Components::Modifies.new(parent: self, target: target, method: :put, context: params, &block)
+              @modifies = Components::Invokes.new(parent: self, target: target, method: :put, context: params, &block)
             end
 
             def creates(target, **params, &block)
@@ -23,7 +23,7 @@ module Voom
 
             def destroys(target, **params, &block)
               return @modifies if locked?
-              @modifies = Components::Modifies.new(parent: self, target: target, method: :delete, context: params, &block)
+              @modifies = Components::Invokes.new(parent: self, target: target, method: :delete, context: params, &block)
             end
 
           end

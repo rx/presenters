@@ -1,14 +1,14 @@
 require_relative 'mixins/common'
 require_relative 'mixins/modifies'
+require_relative 'mixins/event'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Button < Base
-          include Mixins::Link
-          include Mixins::Modifies
-
+          include Mixins::Event
+          
           attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :dialog
 
           def initialize(type: nil, **attribs_, &block)
@@ -21,6 +21,11 @@ module Voom
             @size = attribs.delete(:size)
             @dialog = attribs.delete(:dialog)
             expand!
+          end
+
+          def event(event=nil, **params, &block)
+            return @event if locked?
+            @event = Components::Event.new(parent: self, event: event, context: params, &block)
           end
         end
       end

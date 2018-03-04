@@ -7,9 +7,7 @@
        icon = comp.icon
      end
 %>
-
-  <%= erb :"components/link", :locals => {link: comp.link, preamble: true} %>
   <i class="<%= class_name %> <%= icon_class_name %>"
-     style="<%= "color: #{comp.color};" if comp.color %>"><%=icon%></i>
-  <%= erb :"components/link", :locals => {link: comp.link, preamble: false} %>
+     style="<%= "color: #{comp.color};" if comp.color %>"
+     <%= erb :"components/event", :locals => {event: comp.event}%>><%=icon%></i>
 <% end %>

@@ -1,7 +1,9 @@
 Voom::Presenters.define('menu') do
   menu do
-    item 'item1' do
-      link '#'
+    item 'home' do
+      event :click do
+        loads :index
+      end
     end
     divider
     item 'item2'

@@ -1,6 +1,6 @@
 require_relative 'menu'
 require_relative 'mixins/common'
-require_relative 'mixins/link'
+require_relative 'mixins/event'
 
 
 module Voom
@@ -8,7 +8,7 @@ module Voom
     module DSL
       module Components
         class Card < Base
-          include Mixins::Link
+          include Mixins::Event
           include Mixins::Common
 
           attr_accessor :height, :width, :color, :selected, :components

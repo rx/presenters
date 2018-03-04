@@ -4,7 +4,9 @@ Voom::Presenters.define(:settings) do
   helpers Settings
   helpers do
     def link_to_person
-      link 'edit-person' #, settings.to_h
+      event :click do
+        loads 'edit-person'
+      end
     end
   end
 
@@ -20,7 +22,7 @@ Voom::Presenters.define(:settings) do
         list do
           line separator: true do
             link_to_person
-            avatar settings.avatar  ? "img/settings/#{settings.avatar}.png" : :person
+            avatar settings.avatar ? "img/settings/#{settings.avatar}.png" : :person
             text settings.username
             subtitle settings.email
 
@@ -50,7 +52,9 @@ Voom::Presenters.define(:settings) do
           [Google Dashboard](http://google.com).'
 
     button 'CLEAR AND SIGN OUT', type: :raised, color: :primary do
-      link
+      event :click do
+        loads :index
+      end
     end
     button 'Cancel', id: :cancel
   end

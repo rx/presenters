@@ -1,11 +1,11 @@
-require_relative 'mixins/link'
+require_relative 'mixins/event'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Image < Base
-          include Mixins::Link
+          include Mixins::Event
 
           attr_accessor :image, :height, :width, :selected
 

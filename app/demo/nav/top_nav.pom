@@ -3,20 +3,29 @@ Voom::Presenters.define('top_nav') do
   header 'Presenters Demo' do
     menu do
       item 'About' do
-        link :index
+        event :click do
+          loads :index
+        end
       end
 
       item 'Components' do
-        link :components
+        event :click do
+          loads :components
+
+        end
       end
 
       item 'Styles' do
-        link :styles
+        event :click do
+          loads :styles
+        end
       end
 
       item do
         icon :settings
-        link :settings
+        event :click do
+          loads :end
+        end
       end
     end
   end

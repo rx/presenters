@@ -1,5 +1,4 @@
 <% if comp %>
-  <%= erb :"components/link", :locals => {link: comp.link, preamble: true} %>
   <button id="<%=comp.id%>"
         class="mdl-button mdl-js-button
          <%= "mdl-button--#{comp.button_type}" if %i(fab raised icon).include?(comp.button_type) %>
@@ -8,10 +7,11 @@
          <%= 'mdl-button--mini-fab' if comp.button_type==:fab && comp.size==:small %>
          <%= "vml-js-dialog-button" if comp.dialog %>"
          <%= "data-dialog-id='#{comp.dialog}'" if comp.dialog %>"
-         <%= 'disabled' if comp.disabled %>>
+         <%= 'disabled' if comp.disabled %>
+        <%= erb :"components/event", :locals => {event: comp.event} unless comp.disabled %>
+  >
   <%= erb :"components/icon", :locals => {comp: comp, class_name: nil} %>
   <%= comp.text %>
 </button>
-  <%= erb :"components/link", :locals => {link: comp.link, preamble: false} %>
 <% end %>
 

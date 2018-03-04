@@ -5,7 +5,7 @@ module Voom
     module DSL
       module Components
         class TextField < Base
-          include Mixins::Modifies
+          include Mixins::Event
 
           attr_reader :required, :full_width
 

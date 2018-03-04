@@ -3,60 +3,88 @@ Voom::Presenters.define('component_menu') do
     button icon: :arrow_drop_down
 
     item 'Cards' do
-      link :cards
+      event :click do
+        loads :cards
+      end
     end
 
     item 'Lists' do
-      link :lists
+      event :click do
+        loads :lists
+      end
     end
 
     item 'Tables' do
-      link :tables
+      event :click do
+        loads :tables
+      end
     end
 
     item 'Text fields' do
-      link 'text-fields'
+      event :click do
+        loads 'text-fields'
+      end
     end
 
     item 'Buttons' do
-      link :buttons
+      event :click do
+        loads :buttons
+      end
     end
 
     item 'Dialogs' do
-      link :dialogs
+      event :click do
+        loads :dialogs
+      end
     end
 
     item 'Layouts' do
-      link :layouts
+      event :click do
+        loads :layouts
+      end
     end
 
     item 'Headers' do
-      link :headers
+      event :click do
+        loads :headers
+      end
     end
 
     item 'Drawers' do
-      link :drawers
+      event :click do
+        loads :drawers
+      end
     end
 
     item 'Footers' do
-      link :footers
+      event :click do
+        loads :footers
+      end
     end
 
     item 'Menus' do
-      link :menus
+      event :click do
+        loads :menus
+      end
     end
 
     item 'Toggles' do
-      link :toggles
+      event :click do
+        loads :toggles
+      end
     end
 
     item 'Snackbar' do
-      link :snackbar
+      event :click do
+        loads :snackbar
+      end
     end
 
     item 'Badges' do
       # icon :home
-      link :badges
+      event :click do
+        loads :badges
+      end
     end
   end
 end

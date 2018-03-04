@@ -8,9 +8,9 @@ Voom::Presenters.define('user-avatar') do
       column 1 do
         card color: :blue, width: '46px', height: '46px', selected: name.to_s==settings.avatar do
           image "img/settings/#{name}.png", width: '46px', height: '46px'
-          link 'user-avatar', avatar: name do
+          event :click do
             updates 'settings/1', avatar: name
-            replaces :profiles
+            replaces :profiles, 'user-avatar', avatar: name
           end
         end
       end

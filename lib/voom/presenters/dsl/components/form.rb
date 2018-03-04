@@ -1,17 +1,15 @@
 require_relative 'hidden_field'
 require_relative 'text_field'
 require_relative 'text_area'
-require_relative 'mixins/link'
-require_relative 'mixins/modifies'
+require_relative 'mixins/event'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Form < Base
-          include Mixins::Link
-          include Mixins::Modifies
-
+          include Mixins::Event
+          
           attr_reader :fields, :actions
 
           def initialize(**attribs_, &block)

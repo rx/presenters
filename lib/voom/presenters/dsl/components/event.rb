@@ -5,26 +5,55 @@ module Voom
     module DSL
       module Components
         class Event < Base
-          include Mixins::Modifies
+          attr_accessor :event, :actions
 
-          attr_accessor :target, :params
-          
-          def initialize(parent:, **params, &block)
-            super(type: :link, parent: parent, &block)
-            @url = nil
-            @replaces = nil
-            @target = params.delete(:target)
-            @params = params[:context]
+          def initialize(**attribs_, &block)
+            super(type: :event, **attribs_, &block)
+            @event = attribs[:event]
+            @actions = []
             expand!
           end
 
-          def url
-            @parent.router.url(render: target, context: params)
+          def loads(presenter, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               action_type: :loads,
+                                               target: nil,
+                                               presenter: presenter,
+                                               params: params, &block)
           end
 
-          def replaces(component_id=nil)
-            return @replaces if locked?
-            @replaces = component_id
+          def replaces(target, presenter, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               action_type: :replaces,
+                                               target: target,
+                                               presenter: presenter,
+                                               params: params, &block)
+          end
+
+          # Method can be one of :post, :put, :delete or :patch
+          def posts(path, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               action_type: :post,
+                                               path: path,
+                                               params: params, &block)
+          end
+
+          def updates(path, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               action_type: :update,
+                                               path: path,
+                                               params: params, &block)
+          end
+
+          def creates(path, **params, &block)
+            posts(path, **params, &block)
+          end
+
+          def deletes(path, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               action_type: :delete,
+                                               path: path,
+                                               params: params, &block)
           end
         end
       end
