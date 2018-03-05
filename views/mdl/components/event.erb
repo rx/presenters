@@ -1,11 +1,11 @@
 <% if event %>
-  on<%= event.event %>="new VEvents(
+  on<%= event.event %>="new VEvents([
   <%
     event.actions.each do |action|
       nesting_params = "grid_nesting=#{@grid_nesting-1}"
-      params = action.params ? "#{action.params}&#{nesting_params}" : nesting_params
+      params = action.params.any? ? "#{action.params}&#{nesting_params}" : nesting_params
   %>
       ['<%=action.action_type%>','<%=action.url%>','<%=action.target%>','<%=params%>'],
   <% end %>
-  ).call()"
+  ]).call()"
 <% end %>

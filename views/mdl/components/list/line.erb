@@ -2,7 +2,8 @@
           <%= 'mdl-list__item--two-line' if line.subtitle%>
           <%= 'mdl-list__item--three-line' if line.body%>
           <%= 'vml-list-line-separator' if line.separator%>">
-  <span class="mdl-list__item-primary-content"
+  <span class="mdl-list__item-primary-content
+               <%= 'mdv-actionable' if line.event %>"
         <%= erb :"components/event", :locals => {event: line.event}%>
   >
     <%= erb :"components/list/icon", :locals => {:line => line} %>

@@ -1,4 +1,5 @@
-<div class="card-<%= comp.id %> mdl-card mdl-shadow--4dp"
+<div class="card-<%= comp.id %> mdl-card mdl-shadow--4dp
+           <%= 'mdv-actionable' if comp.event %>"
      style="<%="width: #{comp.width};" if comp.width%>
             <%="width: 100%;" unless comp.width%>
        <%= "height: #{comp.height};" if comp.width && comp.width == comp.height %>

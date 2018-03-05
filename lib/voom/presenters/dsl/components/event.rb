@@ -1,5 +1,3 @@
-require_relative 'mixins/modifies'
-
 module Voom
   module Presenters
     module DSL

@@ -11,7 +11,6 @@ Voom::Presenters.define('top_nav') do
       item 'Components' do
         event :click do
           loads :components
-
         end
       end
 
@@ -24,7 +23,7 @@ Voom::Presenters.define('top_nav') do
       item do
         icon :settings
         event :click do
-          loads :end
+          loads :settings
         end
       end
     end

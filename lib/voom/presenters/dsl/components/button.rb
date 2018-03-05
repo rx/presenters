@@ -1,5 +1,4 @@
 require_relative 'mixins/common'
-require_relative 'mixins/modifies'
 require_relative 'mixins/event'
 
 module Voom

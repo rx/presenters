@@ -1,5 +1,5 @@
 // Hookup Dialogs
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
     'use strict';
     var docDialogButtons = document.querySelectorAll('.vml-js-dialog-button');
     for (var i = 0; i < docDialogButtons.length; i++) {
@@ -44,6 +44,53 @@ class VSnackbar {
         };
         componentHandler.upgradeElement(snackbarContainer);
         snackbarContainer.MaterialSnackbar.showSnackbar(data);
+    }
+}
+
+class VEvents {
+    //[[type, url, target, params]]
+    constructor(actions) {
+        this.actions = actions.map((action) => {
+            return this.constructor.action_class(action);
+        });
+    }
+
+    call() {
+        this.actions.forEach((element)=>{
+            element.call();
+            // yo!
+        });
+
+    }
+
+    static action_class(action) {
+        var action_type = action[0];
+        var url = action[1];
+        var target = action[2];
+        var params = action[3];
+
+        switch (action_type) {
+            case 'loads':
+                return new VLoadsPage(url);
+            case 'replaces':
+                return new VReplaceElement(target, url, params);
+            case 'post':
+            case 'update':
+            case 'delete':
+            default:
+                console.log('Not implemented: ' + action_type);
+        }
+    }
+
+}
+
+class VLoadsPage {
+    constructor(url) {
+        this.url = url;
+    }
+
+    call() {
+        location.assign(this.url);
     }
 }
 
