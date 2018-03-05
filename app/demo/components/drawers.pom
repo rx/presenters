@@ -1,17 +1,31 @@
 Voom::Presenters.define(:drawers) do
   attach :top_nav
-  
-  drawer  do
+
+  drawer do
     menu do
-      item 'about2', link: :index
-      item 'components2', link: :components
-      item 'styles2', link: :styles
+      item 'About (Drawer)' do
+        event :click do
+          loads :index
+        end
+      end
+
+      item 'Components (Drawer)' do
+        event :click do
+          loads :components
+        end
+      end
+
+      item 'Styles (Drawer)' do
+        event :click do
+          loads :styles
+        end
+      end
     end
   end
 
   attach :grid do
     display 'Drawers'
-    
+
     attach :code, file: __FILE__
   end
 end

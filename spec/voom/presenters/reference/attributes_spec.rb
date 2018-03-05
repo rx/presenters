@@ -17,22 +17,27 @@ describe 'reference' do
 
     it 'empty' do
       keys = Voom::Presenters.keys
-      keys.each do |key|
-        presenter = Voom::Presenters[key].call
+      keys.each do |pkey|
+        presenter = Voom::Presenters[pkey].call
         pom = presenter.expand(router: router, context: params)
-        desc = "'#{key}.pom'\n"
 
-        def check_components(comp, attribs, level=0, desc)
-          return unless comp.respond_to?(:components)
-          comp.components.each_with_index do |comp, index|
-            desc += "#{''.ljust(level*4)}index: #{index} type: #{comp.type}"
-            return attribs << [desc, comp.to_hash] if comp.attributes.any?
-            check_components(comp, attribs, level+1, desc)
-          end
+        def recurse(parent, myHash, presenter)
+          myHash.each {|key, value|
+            if value.is_a?(Hash)
+              recurse(key, value, presenter)
+            elsif key==:attributes
+              puts "'#{presenter}.pom emitted unconsumed attributes'\nCheck: http://localhost:9393/pom/#{presenter}" if value.any?
+              expect(value).to eq([])
+            elsif value.is_a?(Array)
+              value.each do |aval|
+                recurse(key, aval, presenter) if aval.is_a?(Array) || aval.is_a?(Hash)
+              end
+            end
+          }
         end
-        attribs = []
-        check_components(pom, attribs, desc)
-        expect(attribs).to eq([])
+
+        recurse(nil, pom.to_hash, pkey)
+        # expect(attribs).to eq([])
       end
     end
   end

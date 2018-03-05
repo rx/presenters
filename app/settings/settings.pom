@@ -12,9 +12,14 @@ Voom::Presenters.define(:settings) do
 
   save_settings!
 
+  page do
+    title 'Settings'
+    background_color :gainsboro
+  end
+
   attach 'settings-nav'
 
-  grid color: :gainsboro do
+  grid do
     column 2
     column 8 do
       subheading 'People', level: 1

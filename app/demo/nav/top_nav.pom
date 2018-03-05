@@ -1,5 +1,8 @@
 Voom::Presenters.define('top_nav') do
-  page_title 'Presenters Demo'
+  page do
+    title 'Presenters Demo'
+  end
+  
   header 'Presenters Demo' do
     menu do
       item 'About' do

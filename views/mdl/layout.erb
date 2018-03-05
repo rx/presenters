@@ -4,7 +4,7 @@
   <base href="/">
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title><%= @pom.page_title %></title>
+  <title><%= @pom.page.title if @pom.page%></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -37,7 +37,8 @@
   <% if drawer %>
     <%= erb :"body/drawer", :locals => {:drawer => drawer} %>
   <% end %>
-  <main class="mdl-layout__content">
+  <main class="mdl-layout__content"
+        style="<%="background-color:#{@pom.page.background_color}" if @pom.page&.background_color%>">
     <div class="page-content">
       <%= yield %>
     </div>

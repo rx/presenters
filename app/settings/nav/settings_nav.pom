@@ -3,8 +3,9 @@ require_relative '../settings'
 Voom::Presenters.define('settings-nav') do
   helpers Settings
 
-  page_title 'Settings'
-
+  page do
+    title 'Settings'
+  end
   header 'Settings'
 
   drawer 'Settings' do

@@ -14,9 +14,8 @@ module Voom
             expand!
           end
           
-          def line(first_text = nil, text: nil, **attribs, &block)
-            the_text = first_text || text
-            @lines << ListLine.new(parent:self, text: the_text, **attribs, &block)
+          def line(**attribs, &block)
+            @lines << ListLine.new(parent:self, **attribs, &block)
           end
         end
       end

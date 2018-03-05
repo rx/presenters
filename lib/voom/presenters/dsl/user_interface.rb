@@ -40,9 +40,10 @@ module Voom
           @footer = nil
         end
 
-        def page_title(title=nil)
-          return @page_title if locked?
-          @page_title = title
+        def page(title=nil, **attribs, &block)
+          return @page if locked?
+          @page = Components::Page.new(parent: self, context: context,
+                                        **attribs, &block)
         end
 
         def header(title=nil, **attribs, &block)
@@ -63,8 +64,8 @@ module Voom
           return @snackbar if locked?
           @snackbar = Components::Snackbar.new(parent: self,
                                                text: text,
-                                           context: context,
-                                           **attribs, &block)
+                                               context: context,
+                                               **attribs, &block)
         end
 
         def footer(**attribs, &block)

@@ -7,7 +7,7 @@ module Voom
 
           def initialize(**attribs_, &block)
             super(type: :event, **attribs_, &block)
-            @event = attribs[:event]
+            @event = attribs.delete(:event)
             @actions = []
             expand!
           end

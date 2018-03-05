@@ -7,7 +7,7 @@ module Voom
 
           def initialize(**attribs_, &block)
             super(type: :drawer, **attribs_, &block)
-            @title = attribs[:title]
+            @title = attribs.delete(:title)
             expand!
           end
 
