@@ -1,7 +1,7 @@
 <% if line.avatar %>
   <% if %w(jpg gif png).include?(line.avatar.avatar&.to_s.split('.').last) %>
     <img class="mdl-list__item-avatar
-                <%= 'mdv-actionable' if comp.event %>"
+                <%= 'mdv-actionable' if line.avatar.event %>"
          src="<%= line.avatar.avatar %>"
          <%= erb :"components/event", :locals => {event: line.avatar.event}%> />
   <% else %>

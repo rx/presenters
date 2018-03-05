@@ -23,7 +23,6 @@ describe Voom::Presenters::WebClient::App do
         keys = Voom::Presenters.keys
         keys.each do |key|
           response = get "/#{key}"
-          puts key
           puts response.body unless response.status==200
           puts key
           expect(response.status).to eq 200
@@ -53,7 +52,6 @@ describe Voom::Presenters::WebClient::App do
              pom = presenter.expand(router: Voom::Presenters::WebClient::Router.new)
              pom_json = JSON.dump(pom.to_hash)
              
-             puts key
              response = post(key, pom_json,  { "CONTENT_TYPE" => "application/json" })
              puts response.body unless response.status==200
              puts key

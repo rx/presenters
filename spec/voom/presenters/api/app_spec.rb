@@ -20,7 +20,6 @@ describe Voom::Presenters::Api::App do
       keys = Voom::Presenters.keys
       keys.each do |key|
         response = get "/pom/#{key}"
-        puts key
         puts response.body unless response.status==200
         puts key
         expect(response.status).to eq 200
