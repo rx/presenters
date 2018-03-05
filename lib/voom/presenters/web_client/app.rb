@@ -42,8 +42,9 @@ module Voom
         # Forms engine demo
         post '/:presenter' do
           @pom = JSON.parse(request.body.read, object_class: OpenStruct)
+          trace { @pom.inspect }
           @grid_nesting = 0
-          erb :web, layout: true
+          erb :web
         end
 
         private

@@ -39,7 +39,7 @@ module Voom
           @snackbar = nil
           @footer = nil
         end
-
+        
         def page(title=nil, **attribs, &block)
           return @page if locked?
           @page = Components::Page.new(parent: self, context: context,

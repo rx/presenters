@@ -29,7 +29,7 @@ This example downloads the POM of the index page.
 Then posts it to the reference web client. 
 That result is then saved to a file and opened up with a browser.
     
-    curl localhost:9393/pom/index | curl POST localhost:9393/index > $TMPDIR/index.html && open $TMPDIR/index.html
+    curl localhost:9292/pom/index > $TMPDIR/index.json  && curl -d "@$TMPDIR/index.json" -X POST localhost:9292/index > $TMPDIR/index.html && open $TMPDIR/index.html
     
 ## Usage
 
