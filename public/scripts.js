@@ -52,15 +52,15 @@ class VEvents {
     constructor(actions) {
         this.actions = actions.map((action) => {
             return this.constructor.action_class(action);
-        });
+    })
+        ;
     }
 
     call() {
-        this.actions.forEach((element)=>{
+        this.actions.forEach((element) => {
             element.call();
-            // yo!
-        });
-
+    })
+        ;
     }
 
     static action_class(action) {
@@ -75,13 +75,26 @@ class VEvents {
             case 'replaces':
                 return new VReplaceElement(target, url, params);
             case 'post':
+                return new VPost(url, params, 'POST');
             case 'update':
+                return new VPost(url, params, 'PUT');
             case 'delete':
+                return new VPost(url, params, 'DELETE');
             default:
-                console.log('Not implemented: ' + action_type);
+                return new VNotImplemented();
         }
     }
 
+}
+
+class VNotImplemented {
+    constructor(action_type) {
+        this.action_type = action_type;
+    }
+
+    call() {
+        console.log('Not implemented: ' + this.action_type);
+    }
 }
 
 class VLoadsPage {
@@ -121,40 +134,79 @@ class VReplaceElement {
                 }
             }
         };
-        this.httpRequest.open('GET', this.url + '&' + this.params, true);
+        var url = this.url + this.seperator() + this.serialize(this.params);
+        console.log('GET:' + url);
+        this.httpRequest.open('GET', url, true);
         this.httpRequest.setRequestHeader('X-NO-LAYOUT', true);
         this.httpRequest.send();
+    }
+
+    seperator() {
+        return this.url.includes("?") ? '&' : '?';
+    }
+
+    serialize(obj, prefix) {
+        var str = [],
+            p;
+        for (p in obj) {
+            if (obj.hasOwnProperty(p)) {
+                var k = prefix ? prefix + "[" + p + "]" : p,
+                    v = obj[p];
+                str.push((v !== null && typeof v === "object") ?
+                    this.serialize(v, k) :
+                    encodeURIComponent(k) + "=" + encodeURIComponent(v));
+            }
+        }
+        return str.join("&");
     }
 }
 
 
-// TODO Create POST class. There are two variations. One with a form and one without.
-// function sendData(data) {
-//   var XHR = new XMLHttpRequest();
-//   var FD  = new FormData();
-//
-//   // Push our data into our FormData object
-//   for(name in data) {
-//     FD.append(name, data[name]);
-//   }
-//
-//   // Define what happens on successful data submission
-//   XHR.addEventListener('load', function(event) {
-//     alert('Yeah! Data sent and response loaded.');
-//   });
-//
-//   // Define what happens in case of error
-//   XHR.addEventListener('error', function(event) {
-//     alert('Oups! Something went wrong.');
-//   });
-//
-//   // Set up our request
-//   XHR.open('POST', 'https://example.com/cors.php');
-//
-//   // Send our FormData object; HTTP headers are set automatically
-//   XHR.send(FD);
-// }
-//
+// Replaces a given element with the contents of the call to the url.
+// parameters are appended.
+class VPost {
+    constructor(url, params, method) {
+        this.url = url;
+        this.params = params;
+        this.method = method;
+        this.httpRequest = new XMLHttpRequest();
+    }
+
+    call() {
+        if (!this.httpRequest) {
+            new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
+            return false;
+        }
+        var FD = new FormData();
+        var _this_ = this;
+
+        // Push our data into our FormData object
+        for (name in this.params) {
+            FD.append(name, this.params[name]);
+        }
+
+        this.httpRequest.onreadystatechange = function (event) {
+            if (_this_.httpRequest.readyState === XMLHttpRequest.DONE) {
+                if (_this_.httpRequest.status >= 200 && _this_.httpRequest.status < 300) {
+                    new VSnackbar('Yeah! That worked!').display();
+                    console.log(_this_.httpRequest.status +':'+ this.getResponseHeader('content-type')+':'+event.target.responseText);
+                } else {
+                    new VSnackbar('There was a problem with the request.').display();
+                    console.log(_this_.httpRequest.status +':'+this.getResponseHeader('content-type')+':'+event.target.responseText);
+                }
+            }
+        };
+        
+        // Set up our request
+        this.httpRequest.open(this.method, this.url);
+
+        console.log(this.method + ':' + this.url);
+        // Send our FormData object; HTTP headers are set automatically
+        this.httpRequest.send(FD);
+    }
+}
+
+// TODO Create POST that uses the wrapping form
 // window.addEventListener("load", function () {
 //   function sendData() {
 //     var XHR = new XMLHttpRequest();

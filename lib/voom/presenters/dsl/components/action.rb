@@ -16,7 +16,7 @@ module Voom
           end
 
           def url
-            @parent.router.url(render: presenter, context: params)
+            @parent.router.url(render: presenter, command: path, context: params)
           end
         end
       end

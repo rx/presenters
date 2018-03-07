@@ -9,8 +9,8 @@ Voom::Presenters.define('user-avatar') do
         card color: :blue, width: '46px', height: '46px', selected: name.to_s==settings.avatar do
           image "img/settings/#{name}.png", width: '46px', height: '46px'
           event :click do
-            # updates 'settings/1', avatar: name
-            replaces :profiles, 'user-avatar', avatar: name
+            replaces :avatar, 'user-avatar', avatar: name
+            updates 'http://localhost:3000/settings/1', avatar: name
           end
         end
       end
@@ -19,7 +19,7 @@ Voom::Presenters.define('user-avatar') do
 
   save_settings!
 
-  grid id: :profiles do
+  grid id: :avatar do
     %i(white teal blue green orange purple red yellow).each do |color|
       profile color
     end
