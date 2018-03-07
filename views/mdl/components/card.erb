@@ -5,7 +5,7 @@
        <%= "height: #{comp.height};" if comp.width && comp.width == comp.height %>
        <%= "min-height: auto;" %>
        <%= "outline: medium solid rgb(63,81,181);" if comp.selected %>"
-     <%= erb :"components/event", :locals => {event: comp.event}%>
+     <%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.id}%>
 >
   <% if comp.title %>
   <div class="mdl-card__title mdl-card--expand"

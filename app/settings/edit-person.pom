@@ -25,6 +25,10 @@ Voom::Presenters.define('edit-person') do
               text_field do
                 label 'Username'
                 value settings.username
+
+                event :change do
+                  updates 'http://localhost:3000/settings/1'
+                end
               end
             end
           end

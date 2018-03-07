@@ -1,3 +1,4 @@
 <div class="mdl-typography--title
            <%= 'mdv-actionable' if comp.event %>"
-     <%= erb :"components/event", :locals => {event: comp.event}%>><%= comp.text %></div>
+     id="<%=comp.id%>"
+     <%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.id}%>><%= comp.text %></div>

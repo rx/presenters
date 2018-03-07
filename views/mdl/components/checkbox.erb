@@ -2,6 +2,6 @@
   <input type="checkbox" id="<%=comp.id%>"
          class="mdl-checkbox__input"
          <%if comp.checked%> checked<%end%><%if comp.disabled%> disabled<%end%>
-         <%= erb :"components/event", :locals => {event: comp.event}%>
+         <%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.id}%>
   />
 </label>

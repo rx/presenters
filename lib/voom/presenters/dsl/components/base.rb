@@ -26,16 +26,17 @@ module Voom
           alias attribs attributes
 
           def initialize(type:, parent:, id: nil, context: {}, **attributes, &block)
-            @id = h(id) || generate_id
             @type = h(type)
             @parent = parent
             @context = context
             @attributes = escape(attributes || {})
             @block = block
+            @id = h(id)
           end
 
           def expand!
             extend(_helpers_) if _helpers_
+            @id ||= generate_id
             instance_eval(&@block) if @block
           end
           

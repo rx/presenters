@@ -2,11 +2,13 @@
   <% if %w(jpg gif png).include?(line.avatar.avatar&.to_s.split('.').last) %>
     <img class="mdl-list__item-avatar
                 <%= 'mdv-actionable' if line.avatar.event %>"
+         id="<%=line.avatar.id%>"
          src="<%= line.avatar.avatar %>"
-         <%= erb :"components/event", :locals => {event: line.avatar.event}%> />
+         <%= erb :"components/event", :locals => {event: line.avatar.event, parent_id: comp.id}%> />
   <% else %>
     <i class="material-icons mdl-list__item-avatar
               <%= 'mdv-actionable' if line.avatar.event %>"
-       <%= erb :"components/event", :locals => {event: line.avatar.event}%>><%= line.avatar.avatar %></i>
+       id="<%=line.avatar.id%>"
+       <%= erb :"components/event", :locals => {event: line.avatar.event, parent_id: line.avatar.id}%>><%= line.avatar.avatar %></i>
   <% end %>
 <% end %>

@@ -81,20 +81,10 @@ class VEvents {
             case 'delete':
                 return new VPost(url, params, 'DELETE');
             default:
-                return new VNotImplemented();
+                throw action_type + ' is not supported.';
         }
     }
 
-}
-
-class VNotImplemented {
-    constructor(action_type) {
-        this.action_type = action_type;
-    }
-
-    call() {
-        console.log('Not implemented: ' + this.action_type);
-    }
 }
 
 class VLoadsPage {
@@ -107,10 +97,45 @@ class VLoadsPage {
     }
 }
 
+class Base {
+
+    clearErrors() {
+        var errorMessages = document.querySelectorAll('.mdv-error-message');
+
+        for (var i = 0; i < errorMessages.length; i++) {
+            errorMessages[i].remove();
+        }
+    }
+
+    displayError(content_type, response) {
+        var errors = JSON.parse(response);
+        for (var field in errors) {
+            this.prependError(field, errors[field])
+        }
+
+    }
+
+    prependError(div_id, message) {
+        // create a new div element
+        var newDiv = document.createElement("div");
+        newDiv.className = 'mdv-error-message';
+        // and give it some content
+        var newContent = document.createTextNode(message);
+        // add the text node to the newly created div
+        newDiv.appendChild(newContent);
+
+        // add the newly created element and its content into the DOM
+        var currentDiv = document.getElementById(div_id);
+
+        currentDiv.parentElement.insertBefore(newDiv, currentDiv);
+    }
+}
+
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
-class VReplaceElement {
+class VReplaceElement extends Base {
     constructor(element_id, url, params) {
+        super();
         this.element_id = element_id;
         this.url = url;
         this.params = params;
@@ -122,6 +147,7 @@ class VReplaceElement {
             new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
             return false;
         }
+        this.clearErrors();
         var _this_ = this;
 
         this.httpRequest.onreadystatechange = function () {
@@ -164,8 +190,9 @@ class VReplaceElement {
 
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
-class VPost {
-    constructor(url, params, method) {
+class VPost extends Base {
+    constructor(url, params, method, parent) {
+        super();
         this.url = url;
         this.params = params;
         this.method = method;
@@ -177,11 +204,13 @@ class VPost {
             new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
             return false;
         }
+        this.clearErrors();
+
         var FD = new FormData();
         var _this_ = this;
 
         // Push our data into our FormData object
-        for (name in this.params) {
+        for (var name in this.params) {
             FD.append(name, this.params[name]);
         }
 
@@ -189,14 +218,15 @@ class VPost {
             if (_this_.httpRequest.readyState === XMLHttpRequest.DONE) {
                 if (_this_.httpRequest.status >= 200 && _this_.httpRequest.status < 300) {
                     new VSnackbar('Yeah! That worked!').display();
-                    console.log(_this_.httpRequest.status +':'+ this.getResponseHeader('content-type')+':'+event.target.responseText);
+                    console.log(_this_.httpRequest.status + ':' + this.getResponseHeader('content-type') + ':' + event.target.responseText);
                 } else {
                     new VSnackbar('There was a problem with the request.').display();
-                    console.log(_this_.httpRequest.status +':'+this.getResponseHeader('content-type')+':'+event.target.responseText);
+                    console.log(_this_.httpRequest.status + ':' + this.getResponseHeader('content-type') + ':' + event.target.responseText);
+                    _this_.displayError(this.getResponseHeader('content-type'), event.target.responseText);
                 }
             }
         };
-        
+
         // Set up our request
         this.httpRequest.open(this.method, this.url);
 

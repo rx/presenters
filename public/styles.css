@@ -10,3 +10,7 @@
 .mdv-actionable {
     cursor: pointer;
 }
+
+.mdv-error-message {
+    color: #d50000;
+}

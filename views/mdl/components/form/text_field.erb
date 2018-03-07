@@ -3,7 +3,8 @@
   <input id="<%= field.id %>"
          value="<%= field.value %>"
          <%= "pattern='#{field.pattern}'" if field.pattern %>
-         class="mdl-textfield__input" type="text">
+         class="mdl-textfield__input" type="text"
+         <%= erb :"components/event", :locals => {event: field.event, parent_id: field.id} %>>
   <label class="mdl-textfield__label" for="<%= field.id %>"><%= field.label %></label>
   <span class="mdl-textfield__error <% if field.error %> is-invalid<%end%>" ><%= field.error || field.hint%></span>
 </div>

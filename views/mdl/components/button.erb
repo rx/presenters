@@ -8,7 +8,7 @@
          <%= "vml-js-dialog-button" if comp.dialog %>"
          <%= "data-dialog-id='#{comp.dialog}'" if comp.dialog %>"
          <%= 'disabled' if comp.disabled %>
-        <%= erb :"components/event", :locals => {event: comp.event} unless comp.disabled %>>
+        <%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.id} unless comp.disabled %>>
   <%= erb :"components/icon", :locals => {comp: comp, class_name: nil} %>
   <%= comp.text %>
 </button>
