@@ -1,0 +1,12 @@
+<button id="<%= comp.id %>"
+        class="mdc-fab material-icons v-fab--absolute v-js-ripple-button
+          <%= 'mdc-fab--mini' if comp.size==:small %>
+          <%= 'vml-js-dialog-button' if comp.dialog %>"
+        aria-label="<%= inflector.humanize(comp.icon) %>"
+<%= "data-dialog-id='#{comp.dialog}'" if comp.dialog %>"
+<%= 'disabled' if comp.disabled %>
+<%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.id} unless comp.disabled %>>
+<span class="mdc-fab__icon">
+                <%= comp.icon %>
+              </span>
+</button>

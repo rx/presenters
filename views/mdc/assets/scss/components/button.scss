@@ -1,0 +1,9 @@
+.mdc-button.v-secondary-filled-button {
+  @include mdc-button-filled-accessible($mdc-theme-secondary);
+}
+
+
+.mdc-button.v-secondary-text-button {
+  @include mdc-button-ink-color($mdc-theme-secondary);
+  @include mdc-states(secondary);
+}

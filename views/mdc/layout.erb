@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title><%= @pom.page.title if @pom.page%></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!--https://code.getmdl.io/1.3.0/material.blue_grey-orange.min.css-->
+  <!--https://code.getmdl.io/1.3.0/material.indigo-pink.min.css-->
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"/>
+  <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <!-- Place favicon.ico in the root directory -->
+
+  <!--MDC-->
+  <link rel="stylesheet" href="bundle.css">
+  <script src="bundle.js"></script>
+
+</head>
+<body>
+<% header = @pom.header
+   drawer = @pom.drawer
+   dialogs = @pom.dialogs
+   footer = @pom.footer %>
+<div class="mdl-layout mdl-js-layout
+  <% if header %>mdl-layout--fixed-header
+  <% end %>
+  <% if drawer %>mdl-layout--fixed-drawer
+  <% end %>">
+  <% if header %>
+    <%= erb :"body/header", :locals => {:header => header} %>
+  <% end %>
+  <% if drawer %>
+    <%= erb :"body/drawer", :locals => {:drawer => drawer} %>
+  <% end %>
+  <main class="mdl-layout__content"
+        style="<%="background-color:#{@pom.page.background_color}" if @pom.page&.background_color%>">
+    <div class="page-content">
+      <%= yield %>
+    </div>
+  </main>
+  <% if dialogs %>
+    <%= erb :"body/dialogs", :locals => {:dialogs => dialogs} %>
+  <% end %>
+  <%= erb :"body/snackbar" %>
+  <% if footer %>
+    <%= erb :"body/footer", :locals => {:footer => footer} %>
+  <% end %>
+</div>
+
+</body>
+</html>

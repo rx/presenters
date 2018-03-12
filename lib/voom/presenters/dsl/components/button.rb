@@ -7,6 +7,7 @@ module Voom
       module Components
         class Button < Base
           include Mixins::Event
+          BUTTON_TYPES = %i(raised flat fab icon)
           
           attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :dialog
 

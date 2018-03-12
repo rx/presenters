@@ -1,0 +1,19 @@
+.v-fab--absolute {
+  position: fixed;
+  bottom: 1.0rem;
+  right: 1.5rem;
+}
+
+@media(min-width: 1440px) {
+  .v-fab--absolute {
+    top:$header-height+1.5rem;
+    right: 4.5rem;
+  }
+}
+
+@media(min-width: 1920px) {
+  .v-fab--absolute {
+    top:4.57142857rem+1.5rem;   // Need to get the variable for the header height.
+    right: 8.5rem;
+  }
+}

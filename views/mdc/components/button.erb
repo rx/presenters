@@ -1,0 +1,12 @@
+<% if comp %>
+  <% case comp.button_type
+        when :fab %>
+            <%= erb :"components/buttons/fab", :locals => {:comp => comp} %>
+     <% when :icon %>
+            <%= erb :"components/buttons/icon", :locals => {:comp => comp} %>
+    <% else  %>
+            <%= erb :"components/buttons/button", :locals => {:comp => comp} %>
+  <% end %>
+<% end %>
+
+

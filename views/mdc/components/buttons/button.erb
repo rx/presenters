@@ -1,0 +1,13 @@
+<button
+    id="<%= comp.id %>"
+    class="mdc-button v-js-ripple-button
+          <%= 'mdc-button--raised' if comp.button_type == :raised %>
+          <%= 'v-secondary-filled-button' if comp.button_type == :raised && comp.color==:secondary %>
+          <%= 'v-secondary-text-button'   if comp.button_type == :flat && comp.color==:secondary %>
+          <%= 'v-js-dialog-button' if comp.dialog %>"
+    <%= "data-dialog-id='#{comp.dialog}'" if comp.dialog %>"
+    <%= 'disabled' if comp.disabled %>
+    <%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.id} unless comp.disabled %>>
+      <%= erb :"components/icon", :locals => {comp: comp, class_name: 'mdc-button__icon'} %>
+      <%= comp.text %>
+  </button>

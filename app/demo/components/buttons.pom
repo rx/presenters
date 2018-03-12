@@ -4,26 +4,13 @@ Voom::Presenters.define(:buttons) do
 
   attach :grid do
     display 'Buttons'
-
-    headline 'Colored FAB'
-    button icon: :add, type: :fab, color: :primary
-
-    headline 'Plain FAB'
-    button icon: :add, type: :fab
-
-    headline 'Disabled'
-    button icon: :add, type: :fab, disabled: true
-
+    
     # Raised buttons
     headline 'Raised Button'
     button 'Button', type: :raised
 
     headline 'Disabled'
     button 'Button', type: :raised, disabled: true
-
-
-    headline 'Colored button'
-    button 'Button', type: :raised, color: :primary
 
     headline ' Accent colored'
     button 'Button', type: :raised, color: :secondary
@@ -34,9 +21,6 @@ Voom::Presenters.define(:buttons) do
     headline 'Disabled'
     button 'Button', type: :flat, disabled: true
 
-    headline 'Primary colored flat'
-    button 'Button', type: :flat, color: :primary
-
     headline 'Accent colored flat'
     button 'Button', type: :flat, color: :secondary
 
@@ -46,13 +30,7 @@ Voom::Presenters.define(:buttons) do
     headline 'Colored'
     button icon: :mood, color: :primary
     button icon: :mood, color: :secondary
-
-    # Mini Floating action buttons
-    headline 'Mini FAB'
-    button icon: :add, type: :fab, size: :small
-    headline 'Colored'
-    button icon: :add, type: :fab, color: :primary, size: :small
-
+    
     attach :code, file: __FILE__
   end
 end

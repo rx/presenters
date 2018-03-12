@@ -1,0 +1,25 @@
+<div style="<%= "color: #{comp.color};" if comp.color%> ">
+  <%= erb :"components/button", :locals => {:comp => comp.button} %>
+  <ul class="mdl-menu mdl-menu--bottom-<%= comp.side %> mdl-js-menu mdl-js-ripple-effect"
+      for="<%= comp.button.id %>">
+    <% items = comp.items
+       items.each_with_index do |item, index|
+         next if item.type==:divider
+         divider = (index < items.size-1) ? items[index+1].type == :divider : false
+    %>
+      <li class="mdl-menu__item<%= ' mdl-menu__item--full-bleed-divider' if divider %>"
+          <%= 'disabled' if item.disabled %>>
+        <% unless item.disabled %>
+          <a class="mdl-navigation__link"
+             id="<%=item.id%>"
+             href="javascript:void(0)"
+             <%=  erb :"components/event", :locals => {event: item.event, parent_id: item.id}%>>
+        <% end %>
+        <%= item.text %>
+        <% unless item.disabled %>
+          </a>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

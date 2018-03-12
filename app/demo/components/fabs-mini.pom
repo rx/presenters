@@ -1,0 +1,15 @@
+Voom::Presenters.define(:fabs_mini) do
+  attach :top_nav
+  attach :component_drawer
+
+  attach :grid do
+    display 'Float Action Button'
+    
+    # Mini Floating action buttons
+    headline 'Mini FAB'
+    body '*Mini size: Only used to create visual continuity with other screen elements*'
+    button icon: :add, type: :fab, size: :small
+
+    attach :code, file: __FILE__
+  end
+end

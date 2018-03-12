@@ -1,0 +1,13 @@
+Voom::Presenters.define(:fabs) do
+  attach :top_nav
+  attach :component_drawer
+
+  attach :grid do
+    display 'Floating Action Button'
+
+    headline 'FAB'
+    button icon: :add, type: :fab, color: :primary
+    
+    attach :code, file: __FILE__
+  end
+end

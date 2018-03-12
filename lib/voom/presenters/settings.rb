@@ -2,6 +2,10 @@ module Voom
   module Presenters
     extend Dry::Configurable
 
+    setting :presenters do
+      setting :root
+    end
+
     setting :dsl do
       # The definer defines the DSL that is read for presenters
       # If you want to extend or change the DSL, do it with a new definer module

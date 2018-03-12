@@ -32,6 +32,18 @@ Voom::Presenters.define('component_menu') do
       end
     end
 
+    item 'Floating Action Button' do
+          event :click do
+            loads :fabs
+          end
+        end
+
+    item 'Mini Floating Action Button' do
+              event :click do
+                loads :fabs_mini
+              end
+            end
+
     item 'Dialogs' do
       event :click do
         loads :dialogs

@@ -1,0 +1,12 @@
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp<%= ' mdl-data-table--selectable' if comp.selectable %>">
+  <% if comp.header %>
+    <thead>
+      <%= erb :"components/table/header", :locals => {:row=> comp.header} %>
+    </thead>
+  <% end %>
+  <tbody>
+      <% comp.rows.each do |row| %>
+        <%= erb :"components/table/row", :locals => {:row=> row} %>
+      <% end %>   
+  </tbody>
+</table>

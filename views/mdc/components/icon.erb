@@ -1,0 +1,15 @@
+<% if comp && comp.icon
+     if comp.icon =~ /^fa-/
+       icon_class_name = "fas #{comp.icon}"
+       icon = ''
+     else
+       icon_class_name = "material-icons"
+       icon = comp.icon
+     end
+%>
+  <i class="<%= class_name %> <%= icon_class_name %>
+            <%= 'mdv-actionable' if comp.event %>"
+     id="<%=comp.id%>"
+     style="<%= "color: #{comp.color};" if comp.color %>"
+     <%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.id}%>><%=icon%></i>
+<% end %>

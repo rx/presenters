@@ -1,0 +1,5 @@
+<% if comp.level==1 %>
+  <p><%= markdown(comp.text) %></p>
+<% else %>
+  <p style='font-weight: 600;'><%= markdown(comp.text) %></p>
+<% end %>

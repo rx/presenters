@@ -211,7 +211,19 @@ class VPost extends Base {
 
         // Push our data into our FormData object
         for (var name in this.params) {
-            FD.append(name, this.params[name]);
+            if(name != '__parent_id__') {
+                FD.append(name, this.params[name]);
+            }
+        }
+        // Automatically pull values out of edit controls
+        if(this.params.__parent_id__){
+            var parent_element = document.getElementById(this.params.__parent_id__);
+            if(parent_element) {
+                var value = parent_element.value;
+                if (value) {
+                    FD.append(this.params.__parent_id__, value);
+                }
+            }
         }
 
         this.httpRequest.onreadystatechange = function (event) {

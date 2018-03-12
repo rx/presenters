@@ -22,13 +22,6 @@ Voom::Presenters.define('top_nav') do
           loads :styles
         end
       end
-
-      item do
-        icon :settings
-        event :click do
-          loads :settings
-        end
-      end
     end
   end
 end

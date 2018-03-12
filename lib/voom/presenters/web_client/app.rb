@@ -2,9 +2,11 @@ require 'sinatra'
 require 'uri'
 require 'redcarpet'
 require 'voom/trace'
+require "dry/inflector"
 
 require_relative '../../presenters'
 require_relative 'router'
+require_relative 'markdown_render'
 
 module Voom
   module Presenters
@@ -14,12 +16,21 @@ module Voom
         set :root, File.expand_path('../../../../..', __FILE__)
         set :router_, Router
         set :bind, '0.0.0.0'
-        set :views, Proc.new {File.join(root, "views", 'mdl')}
+        set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE']||'mdc')}
+        
+        Voom::Presenters.configure do |config|
+          config.presenters.root = File.join(settings.root, 'app')
+        end
+        Voom::Presenters.boot!
 
         helpers do
           def markdown(text)
-            @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
+            @markdown ||= Redcarpet::Markdown.new(RenderWithoutWrap, extensions = {})
             @markdown.render(text)
+          end
+
+          def inflector
+            @inflector ||= Dry::Inflector.new
           end
         end
 
@@ -52,6 +63,8 @@ module Voom
           trace {"base_url: #{request.base_url}#{env['SCRIPT_NAME']}"}
           settings.router_.new(base_url: "#{request.base_url}#{env['SCRIPT_NAME']}")
         end
+
+
       end
     end
   end
