@@ -1,6 +1,8 @@
 require_relative 'append'
 require_relative 'switches'
 require_relative 'typography'
+require_relative 'grid'
+require_relative 'buttons'
 
 module Voom
   module Presenters
@@ -11,6 +13,8 @@ module Voom
             include Mixins::Switches
             include Mixins::Append
             include Mixins::Typography
+            include Mixins::Grid
+            include Mixins::Buttons
 
             def badge(badge=nil, **attributes, &block)
               self << Components::Badge.new(parent: self, badge: badge, context: context, **attributes, &block)
@@ -18,14 +22,6 @@ module Voom
 
             def card(**attributes, &block)
               self << Components::Card.new(parent: self, context: context, **attributes, &block)
-            end
-
-            def button(text=nil, **attributes, &block)
-              self << Components::Button.new(text: text, parent: self, context: context, **attributes, &block)
-            end
-
-            def grid(color: nil, **attributes, &block)
-              self << Components::Grid.new(parent: self, color: color, context: context, **attributes, &block)
             end
 
             def form(id: nil, **attributes, &block)

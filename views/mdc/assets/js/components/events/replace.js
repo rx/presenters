@@ -9,32 +9,37 @@ export class VReplaceElement extends VBase {
         this.element_id = element_id;
         this.url = url;
         this.params = params;
-        this.httpRequest = new XMLHttpRequest();
     }
 
     call() {
-        if (!this.httpRequest) {
-            new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
-            return false;
-        }
         this.clearErrors();
-        var _this_ = this;
-
-        this.httpRequest.onreadystatechange = function () {
-            if (_this_.httpRequest.readyState === XMLHttpRequest.DONE) {
-                if (_this_.httpRequest.status === 200) {
-                    var node_to_replace = document.getElementById(_this_.element_id);
-                    node_to_replace.outerHTML = _this_.httpRequest.responseText;
-                } else {
-                    new VSnackbar('There was a problem with the request.').display();
-                }
-            }
-        };
+        var httpRequest = new XMLHttpRequest();
+        if (!httpRequest) {
+            throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
+            // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
+        }
+        var elementId = this.element_id;
         var url = this.url + this.seperator() + this.serialize(this.params);
-        console.log('GET:' + url);
-        this.httpRequest.open('GET', url, true);
-        this.httpRequest.setRequestHeader('X-NO-LAYOUT', true);
-        this.httpRequest.send();
+
+        var promiseObj = new Promise(function (resolve, reject) {
+            httpRequest.onreadystatechange = function () {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    console.log(httpRequest.status + ':' + this.getResponseHeader('content-type') + ':' + httpRequest.responseText);
+                    if (httpRequest.status === 200) {
+                        var node_to_replace = document.getElementById(elementId);
+                        node_to_replace.outerHTML = httpRequest.responseText;
+                        resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                    } else {
+                        reject([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                    }
+                }
+            };
+            console.log('GET:' + url);
+            httpRequest.open('GET', url, true);
+            httpRequest.setRequestHeader('X-NO-LAYOUT', true);
+            httpRequest.send();
+        });
+        return promiseObj;
     }
 
     seperator() {

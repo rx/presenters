@@ -17,7 +17,7 @@ describe Voom::Presenters::Api::App do
 
   describe 'all presenters' do
     it "render" do
-      keys = Voom::Presenters.keys
+      keys = Voom::Presenters::App.keys
       keys.each do |key|
         response = get "/pom/#{key}"
         puts response.body unless response.status==200

@@ -1,6 +1,6 @@
 <div class="mdl-typography--subhead
-            <%= 'mdv-actionable' if comp.event %>"
+            <%= 'v-actionable' if comp.event %>"
      id="<%=comp.id%>"
      style="<%='font-size: 13px' if comp.level==1%>"
-     <%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.id}%>>
+     <%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.event_parent_id}%>>
   <%= markdown(comp.text) %></div>

@@ -10,9 +10,9 @@ describe 'to_hash' do
 
 
   it 'exists' do
-    Voom::Presenters.list.each do |key|
+    Voom::Presenters::App.list.each do |key|
       puts key
-      presenter = Voom::Presenters[key].call
+      presenter = Voom::Presenters::App[key].call
       pom = presenter.expand(router: router)
       expect(pom.to_hash).not_to eq nil
     end

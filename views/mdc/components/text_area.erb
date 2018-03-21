@@ -1,0 +1,8 @@
+<div class="mdl-textfield mdl-js-textfield<%= ' is-invalid is-dirty' if comp.error%>"
+      style="<%= 'width:100%' if comp.full_width %>">
+    <textarea id="<%= comp.id %>"
+              name="<%= comp.id %>"
+             class="mdl-textfield__input" type="text" rows= "<%= comp.rows %>" ><%= comp.value %></textarea>
+    <label class="mdl-textfield__label" for="<%= comp.id %>"><%= comp.label %></label>
+    <span class="mdl-textfield__error <% if comp.error %> is-invalid<%end%>" ><%= comp.error || comp.hint%></span>
+</div>

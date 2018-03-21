@@ -1,16 +1,11 @@
-.vml-list-line-separator {
+.v-list-line-separator {
     border-bottom: 1px solid rgba(0, 0, 0, .1);
 }
 
-.mdl-grid.mdv-grid--nesting {
-  padding: 0;
-  margin: 0 -8px;
-}
-
-.mdv-actionable {
+.v-actionable {
     cursor: pointer;
 }
 
-.mdv-error-message {
+.v-error-message {
     color: #d50000;
 }

@@ -3,5 +3,5 @@
          id="<%=comp.id%>"
          class="mdl-switch__input"
          <%if comp.checked%> checked<%end%><%if comp.disabled%> disabled<%end%>
-         <%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.id}%>/>
+         <%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.event_parent_id}%>/>
 </label>

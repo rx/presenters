@@ -2,7 +2,7 @@ require_relative 'symbol/to_str'
 
 module Voom
   module ContainerMethods
-    include Symbol
+    include Voom::Symbol
 
     def registered_keys
       @registered_keys ||= []
@@ -26,7 +26,7 @@ module Voom
     alias keys list
 
     def container
-      config.container
+      @container ||= Dry::Container.new
     end
 
     # This method empties out the container

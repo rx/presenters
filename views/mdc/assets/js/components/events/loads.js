@@ -4,6 +4,12 @@ export class VLoadsPage {
     }
 
     call() {
-        location.assign(this.url);
+        var url = this.url;
+        var promiseObj = new Promise(function (resolve) {
+            console.log("Loading page: " + url);
+            window.location = url;
+            resolve([200, null, null]);
+        });
+        return promiseObj;
     }
 }

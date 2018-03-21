@@ -2,6 +2,10 @@ require_relative 'hidden_field'
 require_relative 'text_field'
 require_relative 'text_area'
 require_relative 'mixins/event'
+require_relative 'mixins/grid'
+require_relative 'mixins/append'
+require_relative 'mixins/text_fields'
+require_relative 'mixins/buttons'
 
 module Voom
   module Presenters
@@ -9,54 +13,17 @@ module Voom
       module Components
         class Form < Base
           include Mixins::Event
-          
-          attr_reader :fields, :actions
+          include Mixins::Append
+          include Mixins::Grid
+          include Mixins::TextFields
+          include Mixins::Buttons
+
+          attr_reader :components
 
           def initialize(**attribs_, &block)
             super(type: :form, **attribs_, &block)
-            @fields = []
-            @actions = []
-            # build_default_fields(**attribs)
+            @components = []
             expand!
-          end
-
-          # def build_default_fields(**attribs)
-          #   cmd = command(attribs)
-          #   return unless cmd
-          #   trace {cmd.fields.inspect}
-          #   hints = cmd.hints
-          #   cmd.fields.each do |f|
-          #     field(f.name,
-          #           label: f.label,
-          #           hint: join(hints[f.name],**attribs),
-          #           required: f.required,
-          #           pattern: f.pattern,
-          #           **attribs)
-          #   end
-          # end
-
-          def text_field(**attribs, &block)
-            fields << Components::TextField.new(parent: self,
-                                                context: context,
-                                                **attribs, &block)
-          end
-
-          def text_area(**attribs, &block)
-            fields << Components::TextArea.new(parent: self,
-                                               context: context,
-                                               **attribs, &block)
-          end
-
-          def hidden_field(**attribs, &block)
-            fields << Components::HiddenField.new(parent: self,
-                                                  context: context,
-                                                  **attribs, &block)
-          end
-
-          def button(text=nil, **attribs, &block)
-            @actions << Components::Button.new(parent: self,
-                                               context: context,
-                                               **attribs, &block)
           end
         end
       end

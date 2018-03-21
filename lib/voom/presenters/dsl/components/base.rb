@@ -1,4 +1,3 @@
-require_relative 'method_missing'
 require_relative '../lockable'
 require_relative '../../../serializer'
 require_relative '../../../trace'
@@ -13,13 +12,12 @@ module Voom
         # This class provides common base implementation
         class Base
           include Lockable
-          include Components::MethodMissing
 
           include Voom::Serializer
           include LoggerMethods
           include Trace
 
-          attr_reader :type, :id, :attributes, :context
+          attr_reader :type, :id, :attributes, :context, :event_parent_id
           private :context
 
           alias params context
@@ -32,6 +30,7 @@ module Voom
             @attributes = escape(attributes || {})
             @block = block
             @id = h(id)
+            @event_parent_id = @id
           end
 
           def expand!
@@ -61,6 +60,11 @@ module Voom
           end
 
           protected
+
+          def parent(for_type)
+            return @parent if @parent.type == for_type
+            @parent.send(:parent, for_type)
+          end
 
           def router
             @parent.send(:router)

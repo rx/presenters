@@ -1,7 +1,0 @@
-<% if snackbar %>
-<script>
-    document.addEventListener("DOMContentLoaded", function(event) {
-        new VSnackbar('<%=snackbar.text%>'<% if snackbar.action %>, '<%=snackbar.action.text%>', function(){ alert('Not implemented!'); }<%end%>).display();
-    });
-</script>
-<% end %>

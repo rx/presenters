@@ -5,12 +5,13 @@ module Voom
         class TextField < Base
           include Mixins::Event
 
-          attr_reader :required, :full_width
+          attr_reader :required, :full_width, :password
 
           def initialize(**attribs_, &block)
             super(type: :text_field, **attribs_, &block)
             @required = attribs.delete(:required)
-            @full_width = attribs.delete(:full_width) || false
+            @full_width = attribs.delete(:full_width) || true
+            @password = attribs.delete(:password)
             expand!
           end
 

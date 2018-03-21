@@ -2,9 +2,9 @@ require 'sinatra'
 require 'uri'
 require 'redcarpet'
 require 'voom/trace'
+require 'voom/presenters/app'
 require "dry/inflector"
 
-require_relative '../../presenters'
 require_relative 'router'
 require_relative 'markdown_render'
 
@@ -18,10 +18,9 @@ module Voom
         set :bind, '0.0.0.0'
         set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE']||'mdc')}
         
-        Voom::Presenters.configure do |config|
-          config.presenters.root = File.join(settings.root, 'app')
-        end
-        Voom::Presenters.boot!
+        # ::Voom::Presenters::Settings.configure do |config|
+        #   config.presenters.root = File.join(settings.root, 'app')
+        # end
 
         helpers do
           def markdown(text)
@@ -35,15 +34,17 @@ module Voom
         end
 
         get '/' do
-          presenter = Voom::Presenters['index'].call
+          presenter = Presenters::App['index'].call
           @grid_nesting = params[:grid_nesting] || 0
           @pom = presenter.expand(router: router, context: params)
           erb :web
         end
 
         get '/:presenter' do
-          presenter = Voom::Presenters[params[:presenter]].call
-          @pom = presenter.expand(router: router, context: params)
+          pass unless Presenters::App.registered?(params[:presenter])
+          presenter = Presenters::App[params[:presenter]].call
+          identities = session[:aaa_identities]
+          @pom = presenter.expand(router: router, context: params.merge(aaa_identities: identities))
           trace {"layout: #{request.env['HTTP_X_NO_LAYOUT']}"}
           @grid_nesting = Integer(params[:grid_nesting] || 0)
           layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
@@ -51,7 +52,7 @@ module Voom
         end
 
         # Forms engine demo
-        post '/:presenter' do
+        post '/__post__/:presenter' do
           @pom = JSON.parse(request.body.read, object_class: OpenStruct)
           trace { @pom.inspect }
           @grid_nesting = 0

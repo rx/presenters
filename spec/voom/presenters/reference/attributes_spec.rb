@@ -16,9 +16,9 @@ describe 'reference' do
     let(:params) {{}}
 
     it 'empty' do
-      keys = Voom::Presenters.keys
+      keys = Voom::Presenters::App.keys
       keys.each do |pkey|
-        presenter = Voom::Presenters[pkey].call
+        presenter = Voom::Presenters::App[pkey].call
         pom = presenter.expand(router: router, context: params)
 
         def recurse(parent, myHash, presenter)

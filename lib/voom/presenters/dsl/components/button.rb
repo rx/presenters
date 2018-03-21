@@ -9,8 +9,8 @@ module Voom
           include Mixins::Event
           BUTTON_TYPES = %i(raised flat fab icon)
           
-          attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :dialog
-
+          attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :dialog, :align
+         
           def initialize(type: nil, **attribs_, &block)
             @button_type = h(type) || (attribs_[:icon] ? :icon : h(type)) || :flat
             super(type: :button, **attribs_, &block)
@@ -20,12 +20,17 @@ module Voom
             @disabled = attribs.delete(:disabled) || false
             @size = attribs.delete(:size)
             @dialog = attribs.delete(:dialog)
+            @align = attribs.delete(:align)
             expand!
           end
 
           def event(event=nil, **params, &block)
             return @event if locked?
             @event = Components::Event.new(parent: self, event: event, context: params, &block)
+          end
+
+          def event_parent_id
+            self.parent(:form)&.id || id
           end
         end
       end

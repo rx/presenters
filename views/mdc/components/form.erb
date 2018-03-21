@@ -1,8 +1,6 @@
-<form role="form" id="<%= comp.id %>">
-  <% comp.fields.each do |field|  %>
-    <%= erb :"components/form/#{field.type}", :locals => {:field => field} %>
-  <% end %>
-  <% for action in comp.actions %>
-    <%= erb :"components/actions/#{action.type}", :locals => {:action => action} %>
-  <% end %>
+<form role="form" id="<%= comp.id %>"
+      style='width: 100%'
+      onsubmit="javascript:void(0);return false;">
+  <div id="errors"></div>
+  <%= erb :"components/render", :locals => {:components => comp.components, :scope=> nil} %>
 </form>

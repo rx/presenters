@@ -6,7 +6,7 @@
          id="<%=item.id%>"
          style="color: unset; text-decoration: none;"
          href="javascript:void(0)"
-                      <%=  erb :"components/event", :locals => {event: item.event, parent_id: item.id}%>>
+                      <%=  erb :"components/event", :locals => {event: item.event, parent_id: item.event_parent_id}%>>
           <%= erb :"components/icon", :locals => {comp: item.icon, class_name: nil} %>
           <%= item.text %>
         </a>

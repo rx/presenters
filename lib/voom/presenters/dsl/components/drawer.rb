@@ -18,7 +18,7 @@ module Voom
           end
 
           def attach(presenter, **params, &block)
-            pom = Voom::Presenters[presenter].call.expand_child(parent: self, context: context.merge(params), &block)
+            pom = Voom::Presenters::App[presenter].call.expand_child(parent: self, context: context.merge(params), &block)
             @menu = pom.components.select{|i| i.type==:menu}.first
           end
 

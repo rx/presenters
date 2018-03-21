@@ -1,0 +1,21 @@
+<div id="<%= comp.id %>"
+     class="mdc-text-field
+            <%= 'mdc-text-field--fullwidth' if comp.full_width %>
+            <%= ' is-invalid is-dirty' if comp.error %>">
+  <input id="<%= comp.id %>-input"
+         name="<%= comp.id %>"
+         type="<%= comp.password ? 'password' : 'text' %>"
+         value="<%= comp.value %>"
+         class="mdc-text-field__input"
+         aria-controls="<%= comp.id %>-input-helper-text"
+         <%= 'required' if comp.required %>
+         <%= 'invalid' if comp.error %>
+         <%= "pattern='#{comp.pattern}'" if comp.pattern %>
+         <%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.event_parent_id} %>>
+  <label class='mdc-floating-label' for="<%= comp.id %>"><%= comp.label %></label>
+  <div class="mdc-line-ripple"></div>
+
+</div>
+<p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text" aria-hidden="true">
+  <%= comp.error || comp.hint %>
+</p>

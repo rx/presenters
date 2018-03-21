@@ -1,13 +1,16 @@
 <% @grid_nesting += 1 %>
-<div id="<%=comp.id%>" class="mdl-grid"
-     style="<%= "background-color: #{comp.color};" if comp.color %>
-            <%= 'padding: 0; margin: 0 8px;' if @grid_nesting>1 %>">
- <% comp.columns.each do |col| %>
-    <div id="<%=col.id%>" class="mdl-cell mdl-cell--<%=col.size%>-col"
-         style="<%= "background-color: #{col.color};" if col.color %>">
-      <%= erb :"components/render", :locals => {:components => col.components, :scope=> nil} %>
-    </div>
- <% end %>
+<div id="<%=comp.id%>"
+     class="mdc-layout-grid
+            <%= 'v-nested_grid' if @grid_nesting>1%>"
+     style="<%= "background-color: #{comp.color};" if comp.color %>">
+  <div class="mdc-layout-grid__inner">
+    <% comp.columns.each do |col| %>
+      <div id="<%=col.id%>" class="mdc-layout-grid__cell mdc-layout-grid__cell--span-<%=col.size%>"
+           style="<%= "background-color: #{col.color};" if col.color %>">
+        <%= erb :"components/render", :locals => {:components => col.components, :scope=> nil} %>
+      </div>
+    <% end %>
+  </div>
 </div>
 <% @grid_nesting -= 1
 %>

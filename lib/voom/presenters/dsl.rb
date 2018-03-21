@@ -18,12 +18,13 @@ module Voom
       end
 
       def self.define(name, &block)
-        registry[name] = Presenters.config.dsl.definition.new(&block)
+        registry[name] = Voom::Presenters::DSL::Definition.new(&block)
       end
 
       def self.load(directory)
         files = File.join(directory, '**', '*.pom')
         Dir.glob(files) do |file|
+          trace {"Loading Presenter: #{file}"}
           Kernel.load file
         end
       end
@@ -48,7 +49,7 @@ module Voom
       private
 
       def self.register(name, definition)
-        return Voom::Presenters.register(name: name, presenter: definition) unless Voom::Presenters.registered?(name)
+        return Voom::Presenters::App.register(name: name, presenter: definition) unless Voom::Presenters::App.registered?(name)
         logger.warn {"Warning attempted to redefine the presenter: #{name}!"}
       end
 

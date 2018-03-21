@@ -13,9 +13,7 @@ module Voom
     module DSL
       class UserInterface
         include DSL::Definer
-        include DependsOn
         include Lockable
-        include Components::MethodMissing
         include Components::Mixins::Common
         include Components::Mixins::Helpers
 
@@ -83,7 +81,7 @@ module Voom
 
         def attach(presenter, **context_, &yield_block)
           @_yield_block_ = yield_block
-          pom = Voom::Presenters[presenter].call.expand_child(parent: self, context: context.merge(context_))
+          pom = Voom::Presenters::App[presenter].call.expand_child(parent: self, context: context.merge(context_))
           @header ||= pom.header
           @drawer ||= pom.drawer
           @footer ||= pom.footer
@@ -108,6 +106,10 @@ module Voom
           @router.url(render: link_to, command: post_to, context: context)
         end
 
+        def type
+          :presenter
+        end
+
         private
 
         def deep_freeze
@@ -117,6 +119,10 @@ module Voom
 
         protected
 
+        def parent(for_type)
+          nil
+        end
+        
         def _helpers_
           return @helpers if @helpers
           @parent.send(:_helpers_) if @parent

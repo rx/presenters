@@ -13,7 +13,7 @@
           <a class="mdl-navigation__link"
              id="<%=item.id%>"
              href="javascript:void(0)"
-             <%=  erb :"components/event", :locals => {event: item.event, parent_id: item.id}%>>
+             <%=  erb :"components/event", :locals => {event: item.event, parent_id: item.event_parent_id}%>>
         <% end %>
         <%= item.text %>
         <% unless item.disabled %>

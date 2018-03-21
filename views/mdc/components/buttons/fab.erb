@@ -5,7 +5,7 @@
         aria-label="<%= inflector.humanize(comp.icon) %>"
 <%= "data-dialog-id='#{comp.dialog}'" if comp.dialog %>"
 <%= 'disabled' if comp.disabled %>
-<%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.id} unless comp.disabled %>>
+<%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.event_parent_id} unless comp.disabled %>>
 <span class="mdc-fab__icon">
                 <%= comp.icon %>
               </span>

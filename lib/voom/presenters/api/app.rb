@@ -21,7 +21,7 @@ module Voom
         def render_presenter
           # puts "/presenters/api/#{params[:version]}/#{params[:presenter]}/"
           # puts "Parameters: #{params.inspect}"
-          presenter = Voom::Presenters[params[:presenter]].call
+          presenter = Voom::Presenters::App[params[:presenter]].call
           pom = presenter.expand(router: router, context: symbolize_keys(params))
           content_type :json
           JSON.dump(pom.to_hash)

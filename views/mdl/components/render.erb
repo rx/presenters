@@ -1,3 +1,0 @@
-<% for comp in components %>
-  <%= erb :"components#{scope ? "/#{scope}" : nil}/#{comp.type}", :locals => {:comp => comp} %>
-<% end %>

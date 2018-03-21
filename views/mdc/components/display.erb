@@ -1,4 +1,4 @@
 <div class="mdl-typography--display-<%=comp.level%>
-       <%= 'mdv-actionable' if comp.event %>"
-     <%= erb :"components/event", :locals => {event: comp.event}%>
+       <%= 'v-actionable' if comp.event %>"
+     <%= erb :"components/event", :locals => {event: comp.event_parent_id}%>
 ><%= markdown(comp.text) %></div>

@@ -21,11 +21,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'ice_nine'
-  spec.add_runtime_dependency 'dry-container'
+  spec.add_runtime_dependency 'dry-container', '~>0.6.0'
+  spec.add_runtime_dependency 'dry-configurable', '~>0.6.1'
+  spec.add_runtime_dependency 'dry-inflector', '~>0.1.1'
   spec.add_runtime_dependency 'sinatra'
   spec.add_runtime_dependency  'tzinfo'
   spec.add_runtime_dependency  'tzinfo-data'
-  spec.add_runtime_dependency  'dry-inflector'
   spec.add_runtime_dependency  'redcarpet'
   
   spec.add_development_dependency 'rack-test'
