@@ -7,3 +7,9 @@ require 'voom/presenters/web_client/app'
 
 use Voom::Presenters::WebClient::App
 run Voom::Presenters::Api::App
+
+Voom::Presenters::Settings.configure do |config|
+  config.presenters.root = File.join(ENV['VOOM_ROOT'], 'app')
+end
+Voom::Presenters::App.boot!
+
