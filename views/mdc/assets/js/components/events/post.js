@@ -50,7 +50,7 @@ export class VPost extends VBase {
             httpRequest.onreadystatechange = function (event) {
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
                     console.log(httpRequest.status + ':' + this.getResponseHeader('content-type') + ':' + httpRequest.responseText);
-                    if (httpRequest.status === 200) {
+                    if (httpRequest.status>=200 && httpRequest.status<300) {
                         resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
                         // new VSnackbar('Yeah! That worked!').display();
                     } else {
