@@ -33,7 +33,7 @@ module Voom
       end
 
       config.to_prepare do
-        RELOADER.execute_if_updated
+        RELOADER.execute
       end
 
       config.after_initialize do
