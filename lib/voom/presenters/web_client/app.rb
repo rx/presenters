@@ -43,8 +43,8 @@ module Voom
         get '/:presenter' do
           pass unless Presenters::App.registered?(params[:presenter])
           presenter = Presenters::App[params[:presenter]].call
-          identities = session[:aaa_identities]
-          @pom = presenter.expand(router: router, context: params.merge(aaa_identities: identities))
+          identity_id = session[:aaa_identity]
+          @pom = presenter.expand(router: router, context: params.merge(aaa_identity: identity_id))
           trace {"layout: #{request.env['HTTP_X_NO_LAYOUT']}"}
           @grid_nesting = Integer(params[:grid_nesting] || 0)
           layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')

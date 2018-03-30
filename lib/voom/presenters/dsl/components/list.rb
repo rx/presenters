@@ -15,7 +15,7 @@ module Voom
           end
           
           def line(**attribs, &block)
-            @lines << ListLine.new(parent:self, **attribs, &block)
+            @lines << ListLine.new(parent:self, context: context, **attribs, &block)
           end
         end
       end

@@ -12,8 +12,8 @@ module Voom
           include Mixins::Event
           attr_accessor :separator, :actions
 
-          def initialize(**attribs_, &block)
-            super(type: :line, **attribs_, &block)
+          def initialize(context:, **attribs_, &block)
+            super(type: :line, context: context, **attribs_, &block)
             @separator = attribs.delete(:separator)
             @actions = []
             expand!

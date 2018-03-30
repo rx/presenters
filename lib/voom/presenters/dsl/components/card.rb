@@ -1,6 +1,7 @@
 require_relative 'menu'
 require_relative 'mixins/common'
 require_relative 'mixins/event'
+require_relative 'mixins/helpers'
 
 
 module Voom
@@ -10,6 +11,8 @@ module Voom
         class Card < Base
           include Mixins::Event
           include Mixins::Common
+          include Mixins::Helpers
+
 
           attr_accessor :height, :width, :color, :selected, :components
 
@@ -53,15 +56,6 @@ module Voom
             @menu = Components::Menu.new(parent: self, icon: icon,
                                          context: context,
                                          **attribs, &block)
-          end
-
-          def helpers(module_=nil, &block)
-            return unless module_ || block
-            @parent.helpers(module_, &block) if @parent
-            @helpers ||= Module.new
-            @helpers.include module_ if module_
-            @helpers.module_eval(&block) if block
-            extend(@helpers)
           end
 
           def attach(presenter, **context_, &yield_block)

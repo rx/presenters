@@ -25,11 +25,26 @@ export class VEvents {
         }
 
         pseries(fnlist)
-          .then(function(results){ console.log('success!' + results);})
-          .catch(function(results){
-              console.log('failure!' + results);
+          .then(function(results){
+              var contentType = results[1];
+              var responseText = results[2];
+              var responseURL = results[3];
+
+              if(contentType.indexOf("text/html") !== -1){
+                  window.location = responseURL;
+               }
+
+          }).catch(function(results){
               new VErrors().displayErrors(results);
           });
+        // Liquid test
+        var engine = Liquid();
+
+        engine
+            .parseAndRender('{{name | capitalize}}', {name: 'alice'})
+            .then(console.log);
+
+
     }
 
     static action_class(action) {

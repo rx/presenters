@@ -1,4 +1,6 @@
 window.dialogPolyfill = require('./dialog-polyfill');
+window.Liquid = require('liquidjs');
+window.componentHandler = require('./material');
 
 import {initButtons} from './components/button';
 import {initDialogs} from './components/dialogs';

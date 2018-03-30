@@ -4,6 +4,7 @@ module Voom
       extend Dry::Configurable
       setting :presenters do
         setting :root, []
+        setting     :helpers, []
       end
     end
   end

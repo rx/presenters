@@ -49,9 +49,9 @@ export class VPost extends VBase {
         var promiseObj = new Promise(function (resolve, reject) {
             httpRequest.onreadystatechange = function (event) {
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                    console.log(httpRequest.status + ':' + this.getResponseHeader('content-type') + ':' + httpRequest.responseText);
+                    console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                     if (httpRequest.status>=200 && httpRequest.status<300) {
-                        resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                        resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText, httpRequest.responseURL]);
                         // new VSnackbar('Yeah! That worked!').display();
                     } else {
                         // new VSnackbar('There was a problem with the request.').display();
