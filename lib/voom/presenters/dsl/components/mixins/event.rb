@@ -8,7 +8,7 @@ module Voom
           module Event
             def event(event=nil, **params, &block)
               return @event if locked?
-              @event = Components::Event.new(parent: self, event: event, context: params, &block)
+              @event = Components::Event.new(parent: self, event: event, context: context.merge(params), &block)
             end
           end
         end

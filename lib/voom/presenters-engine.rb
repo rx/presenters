@@ -16,16 +16,16 @@ end
 module Voom
   module Presenter
     class Railtie < ::Rails::Railtie
-      BOOT = -> (state){
-        Rails.logger.debug("#{state} Presenters")
+      BOOT = ->{
         Voom::Presenters::Settings.configure do |config|
           config.presenters.root = Rails.root.join('app')
+          # config.presenters.deep_freeze = false
         end
         Voom::Presenters::App.boot!
       }
       RELOADER = ActiveSupport::FileUpdateChecker.new([], {"app" => ["pom"]}) do
         Voom::Presenters::App.reset!
-        BOOT.call('Reloading')
+        BOOT.call
       end
 
       initializer 'voom-presenters' do |app|
@@ -34,10 +34,6 @@ module Voom
 
       config.to_prepare do
         RELOADER.execute
-      end
-
-      config.after_initialize do
-        BOOT.call('Loading')
       end
     end
   end

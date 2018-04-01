@@ -55,10 +55,9 @@ module Voom
           end
 
           def generate_id
-            checksum = Digest::MD5.hexdigest(Marshal::dump(self.to_hash))
-            "id-#{checksum}"
+            "id-#{SecureRandom.hex}"
           end
-
+      
           protected
 
           def parent(for_type)

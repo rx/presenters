@@ -10,7 +10,6 @@ module Voom
         def boot!
           logger.warn(no_roots_message) if presenter_paths.empty?
           presenter_paths.each do |load_path|
-            trace {"Loading presenters from #{load_path}"}
             Voom::Presenters::App.load('.', load_path) unless ENV['VOOM_ENV']=='testing'
           end
         end
@@ -42,7 +41,6 @@ module Voom
         def reset!
           super
           Presenters::DSL.reset!
-          logger.warn {"Presenters.reset! called. This is a testing only interface."} unless ENV['VOOM_ENV']=='testing'
         end
 
         private

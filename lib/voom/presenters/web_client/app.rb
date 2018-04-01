@@ -45,7 +45,6 @@ module Voom
           presenter = Presenters::App[params[:presenter]].call
           identity_id = session[:aaa_identity]
           @pom = presenter.expand(router: router, context: params.merge(aaa_identity: identity_id))
-          trace {"layout: #{request.env['HTTP_X_NO_LAYOUT']}"}
           @grid_nesting = Integer(params[:grid_nesting] || 0)
           layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
           erb :web, layout: layout
@@ -54,14 +53,12 @@ module Voom
         # Forms engine demo
         post '/__post__/:presenter' do
           @pom = JSON.parse(request.body.read, object_class: OpenStruct)
-          trace { @pom.inspect }
           @grid_nesting = 0
           erb :web
         end
 
         private
         def router
-          trace {"base_url: #{request.base_url}#{env['SCRIPT_NAME']}"}
           settings.router_.new(base_url: "#{request.base_url}#{env['SCRIPT_NAME']}")
         end
 

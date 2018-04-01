@@ -24,7 +24,6 @@ module Voom
       def self.load(directory)
         files = File.join(directory, '**', '*.pom')
         Dir.glob(files) do |file|
-          trace {"Loading Presenter: #{file}"}
           Kernel.load file
         end
       end

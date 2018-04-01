@@ -113,7 +113,7 @@ module Voom
         private
 
         def deep_freeze
-          IceNine.deep_freeze(self)
+          IceNine.deep_freeze(self) if Presenters::Settings.config.presenters.deep_freeze
           self
         end
 
