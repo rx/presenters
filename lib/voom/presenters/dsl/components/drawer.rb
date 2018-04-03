@@ -1,13 +1,19 @@
+require_relative 'mixins/common'
+
 module Voom
   module Presenters
     module DSL
       module Components
         class Drawer < Base
-          attr_accessor :title
+          include Mixins::Common
+
+          attr_accessor :title, :components
 
           def initialize(**attribs_, &block)
             super(type: :drawer, **attribs_, &block)
             @title = attribs.delete(:title)
+            @components = []
+
             expand!
           end
 

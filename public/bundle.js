@@ -8022,7 +8022,7 @@ var VEvents = exports.VEvents = function () {
                 var responseText = results[2];
                 var responseURL = results[3];
 
-                if (contentType.indexOf("text/html") !== -1) {
+                if (contentType.indexOf("text/html") !== -1 && typeof responseURL !== 'undefined') {
                     window.location = responseURL;
                 }
             }).catch(function (results) {
@@ -8267,7 +8267,7 @@ var VReplaceElement = exports.VReplaceElement = function (_VBase) {
             var promiseObj = new Promise(function (resolve, reject) {
                 httpRequest.onreadystatechange = function () {
                     if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                        console.log(httpRequest.status + ':' + this.getResponseHeader('content-type') + ':' + httpRequest.responseText);
+                        console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                         if (httpRequest.status === 200) {
                             var node_to_replace = document.getElementById(elementId);
                             node_to_replace.outerHTML = httpRequest.responseText;

@@ -37,11 +37,11 @@ module Voom
           @snackbar = nil
           @footer = nil
         end
-        
+
         def page(title=nil, **attribs, &block)
           return @page if locked?
           @page = Components::Page.new(parent: self, context: context,
-                                        **attribs, &block)
+                                       **attribs, &block)
         end
 
         def header(title=nil, **attribs, &block)
@@ -57,7 +57,7 @@ module Voom
                                            context: context,
                                            **attribs, &block)
         end
-
+        
         def snackbar(text=nil, **attribs, &block)
           return @snackbar if locked?
           @snackbar = Components::Snackbar.new(parent: self,
@@ -122,7 +122,7 @@ module Voom
         def parent(for_type)
           nil
         end
-        
+
         def _helpers_
           return @helpers if @helpers
           @parent.send(:_helpers_) if @parent

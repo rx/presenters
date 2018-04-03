@@ -1,5 +1,5 @@
 <tr>
   <% row.columns.each do |col| %>
-    <th class="<%='mdl-data-table__cell--non-numeric' unless col.numeric%>"><%=col.value%></th>
+    <th class="<%='mdl-data-table__cell--non-numeric' unless col.numeric%>"><%=markdown(col.value.to_s) %></th>
   <% end %>
 </tr>

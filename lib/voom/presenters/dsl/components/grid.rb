@@ -1,6 +1,8 @@
 require_relative 'mixins/common'
 require_relative 'mixins/helpers'
 require_relative 'mixins/images'
+require_relative 'mixins/icons'
+require_relative 'mixins/event'
 
 module Voom
   module Presenters
@@ -33,6 +35,8 @@ module Voom
             include Mixins::Common
             include Mixins::Helpers
             include Mixins::Images
+            include Mixins::Icons
+            include Mixins::Event
 
             attr_accessor :size, :color, :components
 

@@ -1,5 +1,7 @@
 <tr>
   <% row.columns.each do |col| %>
-    <td class="<%= 'mdl-data-table__cell--non-numeric' unless col.numeric %>"><%= col.value %></td>
+    <td class="<%= 'mdl-data-table__cell--non-numeric' unless col.numeric %>"
+        <%= erb :"components/event", :locals => {event: col.event, parent_id: col.event_parent_id}%>
+    ><%= markdown(col.value.to_s) %></td>
   <% end %>
 </tr>

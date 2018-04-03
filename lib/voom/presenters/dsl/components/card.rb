@@ -82,7 +82,7 @@ module Voom
 
             def initialize(**attribs_, &block)
               super(type: :title, **attribs_, &block)
-              @text = (attribs.delete(:text)||'').split("\n")
+              @text = Array(attribs.delete(:text)||'').join("\n").split("\n")
               @color = attribs.delete(:color)
               @align = attribs.delete(:align) || :bottom
               expand!

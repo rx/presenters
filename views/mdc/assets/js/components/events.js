@@ -30,7 +30,7 @@ export class VEvents {
               var responseText = results[2];
               var responseURL = results[3];
 
-              if(contentType.indexOf("text/html") !== -1){
+              if(contentType.indexOf("text/html") !== -1 && typeof responseURL !== 'undefined'){
                   window.location = responseURL;
                }
 

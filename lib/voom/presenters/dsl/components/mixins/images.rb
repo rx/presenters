@@ -1,5 +1,3 @@
-require_relative '../event'
-
 module Voom
   module Presenters
     module DSL

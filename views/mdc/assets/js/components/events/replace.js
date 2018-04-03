@@ -24,7 +24,7 @@ export class VReplaceElement extends VBase {
         var promiseObj = new Promise(function (resolve, reject) {
             httpRequest.onreadystatechange = function () {
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                    console.log(httpRequest.status + ':' + this.getResponseHeader('content-type') + ':' + httpRequest.responseText);
+                    console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                     if (httpRequest.status === 200) {
                         var node_to_replace = document.getElementById(elementId);
                         node_to_replace.outerHTML = httpRequest.responseText;
