@@ -66,9 +66,17 @@ module Voom
           "#{command}?#{build_params(params, entity)}"
         end
 
-        def build_render_url(render, entity, params)
-          return '#' unless render
-          "#{base_url}/#{render}?#{build_params(params, entity)}"
+        def build_render_url(render_, entity, params)
+          return '#' unless render_
+          render = render_.to_s
+          seperator = render.start_with?('/') ? '' : '/'
+          url = "#{base_url}#{seperator}#{render}"
+          query_params = build_params(params, entity)
+          if(query_params)
+            query_seperator = render.include?('?') ? '&' : '?'
+            url = "#{url}#{query_seperator}#{query_params}"
+          end
+          url
         end
 
         def build_client_url(render, entity, params)
