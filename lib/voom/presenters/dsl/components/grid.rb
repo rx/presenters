@@ -3,6 +3,7 @@ require_relative 'mixins/helpers'
 require_relative 'mixins/images'
 require_relative 'mixins/icons'
 require_relative 'mixins/event'
+require_relative 'mixins/attaches'
 
 module Voom
   module Presenters
@@ -10,6 +11,7 @@ module Voom
       module Components
         class Grid < Base
           include Mixins::Helpers
+          include Mixins::Attaches
 
           attr_accessor :columns, :color, :padded
 
@@ -22,15 +24,10 @@ module Voom
           end
 
           def column(size, color: nil, **attribs, &block)
-            @columns << Column.new(parent: self, size: size, color: color,
+            attribs = size.respond_to?(:keys) ? attribs.merge(size) : attribs.merge(size: size)
+            @columns << Column.new(parent: self, color: color,
                                    context: context, **attribs, &block)
           end
-
-          def attach(presenter, **context_, &yield_block)
-                        @_yield_block_ = yield_block
-                        pom = Voom::Presenters::App[presenter].call.expand_child(parent: self, context: context.merge(context_))
-                        @components += pom.components
-                      end
 
           class Column < Base
             include Mixins::Common
@@ -38,22 +35,19 @@ module Voom
             include Mixins::Images
             include Mixins::Icons
             include Mixins::Event
+            include Mixins::Attaches
 
-            attr_accessor :size, :color, :components
+            attr_accessor :size, :desktop, :tablet, :phone, :color, :components
 
             def initialize(**attribs_, &block)
               super(type: :column, **attribs_, &block)
               @size = attribs.delete(:size) || 1
+              @desktop = attribs.delete(:desktop)
+              @tablet = attribs.delete(:tablet)
+              @phone = attribs.delete(:phone)
               @color = attribs.delete(:color)
               @components = []
               expand!
-            end
-
-
-            def attach(presenter, **context_, &yield_block)
-              @_yield_block_ = yield_block
-              pom = Voom::Presenters::App[presenter].call.expand_child(parent: self, context: context.merge(context_))
-              @components += pom.components
             end
           end
         end

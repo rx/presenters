@@ -7443,22 +7443,10 @@ iframe.heightSet {
     transform: translateX(calc(0 - 0%)) translateY(-50%) scale(0.923); } }
 
 .v-fab--absolute {
-  position: fixed;
-  top: 6.1rem;
-  right: 1.5rem;
+  position: relative;
+  float: right;
+  margin: 6px -8px -69px;
   z-index: 10; }
-
-@media (min-width: 1440px) {
-  .v-fab--absolute {
-    top: 6.1rem;
-    right: 4.5rem;
-    z-index: 10; } }
-
-@media (min-width: 1920px) {
-  .v-fab--absolute {
-    top: 6.07143rem;
-    right: 8.5rem;
-    z-index: 10; } }
 
 .mdc-button.v-secondary-filled-button:not(:disabled) {
   background-color: #ffab40; }

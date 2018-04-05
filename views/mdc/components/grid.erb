@@ -4,8 +4,13 @@
             <%= 'v-nested_grid' if @grid_nesting>1 && !comp.padded %>"
      style="<%= "background-color: #{comp.color};" if comp.color %>">
   <div class="mdc-layout-grid__inner">
-    <% comp.columns.each do |col| %>
-      <div id="<%=col.id%>" class="mdc-layout-grid__cell mdc-layout-grid__cell--span-<%=col.size%>"
+    <% comp.columns.each do |col|
+        span = "mdc-layout-grid__cell--span-#{col.size}"
+        %i(desktop tablet phone).each do |device|
+          span << " mdc-layout-grid__cell--span-#{col.send(device)}-#{device}" if col.send(device)
+        end
+      %>
+      <div id="<%=col.id%>" class="mdc-layout-grid__cell <%=span%>"
            style="<%= "background-color: #{col.color};" if col.color %>">
         <%= erb :"components/render", :locals => {:components => col.components, :scope=> nil} %>
       </div>

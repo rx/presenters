@@ -4,6 +4,7 @@ require_relative 'typography'
 require_relative 'grid'
 require_relative 'buttons'
 require_relative 'expansion_panels'
+require_relative 'content'
 
 module Voom
   module Presenters
@@ -17,6 +18,7 @@ module Voom
             include Mixins::Grid
             include Mixins::Buttons
             include Mixins::ExpansionPanels
+            include Mixins::Content
 
             def badge(badge=nil, **attributes, &block)
               self << Components::Badge.new(parent: self, badge: badge, context: context, **attributes, &block)

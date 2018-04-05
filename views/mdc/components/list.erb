@@ -2,6 +2,7 @@
   <% for line in comp.lines %>
       <%= erb :"components/list/line", :locals => {:line => line} %>
   <% end %>
+  <%= erb :"components/render", :locals => {:components => comp.components, :scope=> nil} %>
 </ul>
 
 
