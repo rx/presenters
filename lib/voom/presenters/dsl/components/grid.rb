@@ -11,12 +11,13 @@ module Voom
         class Grid < Base
           include Mixins::Helpers
 
-          attr_accessor :columns, :color
+          attr_accessor :columns, :color, :padded
 
           def initialize(color: nil, **attribs_, &block)
             super(type: :grid, **attribs_, &block)
             @columns = []
             @color = h(color)
+            @padded = attribs.delete(:padded)
             expand!
           end
 
