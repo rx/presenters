@@ -4,11 +4,12 @@ import {VBase} from './base';
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
 export class VPost extends VBase {
-    constructor(url, params, method, parent) {
+    constructor(url, params, method, event) {
         super();
         this.url = url;
         this.params = params;
         this.method = method;
+        this.event = event;
     }
 
     call() {
@@ -42,6 +43,7 @@ export class VPost extends VBase {
         var httpRequest = new XMLHttpRequest();
         var method = this.method;
         var url    = this.url;
+        var event  = this.event;
         if (!httpRequest) {
             throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
             // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();

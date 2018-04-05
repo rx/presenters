@@ -1,11 +1,9 @@
   <button id="<%=comp.id%>"
         class="mdl-button mdl-js-button mdl-button--icon
          <%= 'mdl-button--colored' if comp.color==:primary %>
-         <%= 'mdl-button--accent' if comp.color==:secondary %>
-         <%= 'vml-js-dialog-button' if comp.dialog %>"
-         <%= "data-dialog-id='#{comp.dialog}'" if comp.dialog %>"
+         <%= 'mdl-button--accent' if comp.color==:secondary %>"
          <%= 'disabled' if comp.disabled %>
-        <%= erb :'components/event', :locals => {event: comp.event, parent_id: comp.event_parent_id} unless comp.disabled %>>
+        <%= erb :'components/event', :locals => {events: comp.events, parent_id: comp.event_parent_id} unless comp.disabled %>>
     <%= erb :'components/icon', :locals => {comp: comp, class_name: nil} %>
     <%= comp.text %>
 </button>

@@ -36,6 +36,8 @@ module Voom
                                                params: params, &block)
           end
 
+          alias creates posts
+
           def updates(path, **params, &block)
             @actions << Components::Action.new(parent: self,
                                                action_type: :update,
@@ -43,14 +45,17 @@ module Voom
                                                params: params, &block)
           end
 
-          def creates(path, **params, &block)
-            posts(path, **params, &block)
-          end
-
           def deletes(path, **params, &block)
             @actions << Components::Action.new(parent: self,
                                                action_type: :delete,
                                                path: path,
+                                               params: params, &block)
+          end
+
+          def dialog(dialog_id, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               action_type: :dialog,
+                                               target: dialog_id,
                                                params: params, &block)
           end
         end

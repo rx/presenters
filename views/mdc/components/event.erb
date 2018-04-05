@@ -1,17 +1,16 @@
-<% if event %>
-  on<%= event.event %>="new VEvents([
-  <%
-    event.actions.each do |action|
-      additional_params = case action.action_type.to_s
-                            when 'replaces'
-                              "{grid_nesting:#{@grid_nesting-1}}"
-                            when 'update', 'post', 'delete'
-                              "{__parent_id__:'#{parent_id}'}"
-                            else
-                              '{}'
-                          end
-  %>
-    ['<%= action.action_type %>','<%= action.url %>','<%= action.target %>',<%= additional_params %>],
-  <% end %>
-  ]).call()"
+<% if events
+     data_events = events.map do |event|
+       [event.event,
+        event.actions.map do |action|
+          additional_params = case action.action_type.to_s
+                                when 'update', 'post', 'delete'
+                                  {__parent_id__: parent_id}
+                                else
+                                  {}
+                              end
+          [action.action_type, action.url, action.target, additional_params]
+        end
+       ]
+     end %>
+  data-events = <%= data_events.to_json %>
 <% end %>

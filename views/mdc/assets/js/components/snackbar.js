@@ -7,7 +7,6 @@ export class VSnackbar {
     }
 
     display() {
-        'use strict';
         var snackbarContainer = document.querySelector('#snackbar');
         var data = {
             message: this.message,

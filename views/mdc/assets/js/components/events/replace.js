@@ -1,14 +1,16 @@
 import {VSnackbar} from '../snackbar';
 import {VBase} from './base';
+import {initialize} from '../initialize';
 
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
 export class VReplaceElement extends VBase {
-    constructor(element_id, url, params) {
+    constructor(element_id, url, params,event) {
         super();
         this.element_id = element_id;
         this.url = url;
         this.params = params;
+        this.event = event;
     }
 
     call() {
@@ -20,14 +22,17 @@ export class VReplaceElement extends VBase {
         }
         var elementId = this.element_id;
         var url = this.url + this.seperator() + this.serialize(this.params);
+        var event = this.event;
 
         var promiseObj = new Promise(function (resolve, reject) {
             httpRequest.onreadystatechange = function () {
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
                     console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                     if (httpRequest.status === 200) {
-                        var node_to_replace = document.getElementById(elementId);
-                        node_to_replace.outerHTML = httpRequest.responseText;
+                        var nodeToReplace = document.getElementById(elementId);
+                        nodeToReplace.outerHTML = httpRequest.responseText;
+                        var newNode = document.getElementById(elementId);
+                        initialize(newNode);
                         resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
                     } else {
                         reject([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);

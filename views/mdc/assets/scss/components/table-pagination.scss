@@ -1,0 +1,65 @@
+// WIP
+.v-paging {
+    color: rgba(0, 0, 0, 0.54);
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 56px;
+    -webkit-flex-flow: row wrap;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+}
+
+.v-paging > * {
+    -webkit-flex: none;
+        -ms-flex: none;
+            flex: none;
+}
+
+.mdl-list + .v-paging {
+    margin: 0;
+}
+
+.v-paging__per-page {
+    position: relative;
+}
+
+.v-paging__per-page-label {
+    margin-right: 40px;
+}
+
+.v-paging__per-page-value {
+    position: absolute;
+    right: 36px;
+    top: 6px;
+}
+
+.v-paging__per-page + .v-paging__count {
+    margin-left: 24px;
+}
+
+.v-paging .mdl-menu {
+    min-width: 64px;
+}
+
+.v-paging__prev:last-child {
+    margin-right: 44px;
+}
+
+.v-paging__count + .v-paging__prev {
+    margin-left: 24px;
+}
+
+.v-paging__prev + .v-paging__next {
+    margin-left: 12px;
+}
+
+.v-paging__count + .v-paging__next {
+    margin-left: 68px;
+}

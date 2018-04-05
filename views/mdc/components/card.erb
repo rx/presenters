@@ -1,11 +1,11 @@
 <div class="card-<%= comp.id %> mdl-card mdl-shadow--4dp
-           <%= 'v-actionable' if comp.event %>"
+           <%= 'v-actionable' if comp.events %>"
      style="<%="width: #{comp.width};" if comp.width%>
             <%="width: 100%;" unless comp.width%>
        <%= "height: #{comp.height};" if comp.width && comp.width == comp.height %>
        <%= "min-height: auto;" %>
        <%= "outline: medium solid rgb(63,81,181);" if comp.selected %>"
-     <%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.event_parent_id}%>
+     <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%>
 >
   <% if comp.title %>
   <div class="mdl-card__title mdl-card--expand"

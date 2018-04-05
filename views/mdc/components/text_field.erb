@@ -11,7 +11,7 @@
          <%= 'required' if comp.required %>
          <%= 'invalid' if comp.error %>
          <%= "pattern='#{comp.pattern}'" if comp.pattern %>
-         <%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.event_parent_id} %>>
+         <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>>
   <label class='mdc-floating-label' for="<%= comp.id %>"><%= comp.label %></label>
   <div class="mdc-line-ripple"></div>
 

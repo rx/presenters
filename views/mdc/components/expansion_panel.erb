@@ -1,0 +1,10 @@
+<details id = '<%= comp.id %>' class="v-expansion mdc-elevation--z3">
+  <summary class="v-expansion__summary"><span class="v-expansion__header"><%= comp.text&.text %></span><span class="v-expansion__secondary-content"><%=comp.secondary_text&.text%></span></summary>
+  <div class="v-expansion__content">
+    <%= erb :"components/render", :locals => {:components => comp.content.components, :scope=> nil} if comp.content %>
+  </div>
+  <!--<div class="v-expansion__actions">-->
+    <!--<button class="mdc-button mdc-button&#45;&#45;raised mdc-button&#45;&#45;primary v-expansion__action">Save</button>-->
+    <!--<button class="mdc-button v-expansion__action">Cancel</button>-->
+  <!--</div>-->
+</details>

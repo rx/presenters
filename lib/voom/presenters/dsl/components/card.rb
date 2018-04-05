@@ -13,7 +13,6 @@ module Voom
           include Mixins::Common
           include Mixins::Helpers
 
-
           attr_accessor :height, :width, :color, :selected, :components
 
           def initialize(**attribs_, &block)

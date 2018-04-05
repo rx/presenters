@@ -45,7 +45,6 @@ module Voom
           presenter = Presenters::App[params[:presenter]].call
           identity_id = session[:aaa_identity]
           @pom = presenter.expand(router: router, context: params.merge(aaa_identity: identity_id))
-          @grid_nesting = Integer(params[:grid_nesting] || 0)
           layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
           erb :web, layout: layout
         end

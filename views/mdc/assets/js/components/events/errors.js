@@ -31,7 +31,7 @@ export class VErrors {
     }
 
     normalizeErrors(errors) {
-        if (errors.constructor === Object) {
+        if (errors && errors.constructor === Object) {
             return Object.keys(errors).reduce((previous, key) => {
                 previous[key] = this.stringsToArrays(errors[key]);
                 return previous;
@@ -67,7 +67,7 @@ export class VErrors {
             this.prependError('errors', pageErrors);
         } else if (httpStatus === 0) {
             this.prependError('errors', ["Unable to contact server. Please check that you are online and retry."]);
-        } else {
+        } else if (results!==true){
             this.prependError('errors', ["The server returned an unexpected response! Status:" + httpStatus]);
         }
     }

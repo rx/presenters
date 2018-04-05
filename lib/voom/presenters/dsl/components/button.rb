@@ -23,12 +23,7 @@ module Voom
             @align = attribs.delete(:align)
             expand!
           end
-
-          def event(event=nil, **params, &block)
-            return @event if locked?
-            @event = Components::Event.new(parent: self, event: event, context: params, &block)
-          end
-
+          
           def event_parent_id
             self.parent(:form)&.id || id
           end

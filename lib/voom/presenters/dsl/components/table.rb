@@ -28,8 +28,16 @@ module Voom
                              **attribs, &block)
           end
 
+          # WIP
+          # def pagination(**attribs, &block)
+          #   @pagination = Pagination.new(parent: self,
+          #                                context: context,
+          #                                **attribs, &block)
+          # end
+
           class Row < Base
             attr_accessor :columns
+
             def initialize(type:, **attribs_, &block)
               super(type: type, **attribs_, &block)
               @columns = []
@@ -46,6 +54,7 @@ module Voom
               include Mixins::Event
 
               attr_accessor :value, :numeric
+
               def initialize(**attribs_, &block)
                 super(type: :column, **attribs_, &block)
                 @value = attribs.delete(:value)
@@ -56,10 +65,20 @@ module Voom
               private
               def numeric?
                 return true if value.is_a? Numeric
-                (value.to_s.sub(/\D/,'') =~ /^[-+]?[0-9]*\.?[0-9]+$/) != nil
+                (value.to_s.sub(/\D/, '') =~ /^[-+]?[0-9]*\.?[0-9]+$/) != nil
               end
             end
+
           end
+          # class Pagination < Base
+          #   attr_accessor :page_size
+          #
+          #   def initialize(**attribs_, &block)
+          #     super(type: :pagination, **attribs_, &block)
+          #     @page_size = attribs.delete(:page_size)
+          #     expand!
+          #   end
+          # end
         end
       end
     end

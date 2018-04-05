@@ -14,6 +14,12 @@ Voom::Presenters.define('component_menu') do
       end
     end
 
+    item 'Expansion Panels' do
+      event :click do
+        loads :expansion_panels
+      end
+    end
+
     item 'Tables' do
       event :click do
         loads :tables
@@ -33,16 +39,16 @@ Voom::Presenters.define('component_menu') do
     end
 
     item 'Floating Action Button' do
-          event :click do
-            loads :fabs
-          end
-        end
+      event :click do
+        loads :fabs
+      end
+    end
 
     item 'Mini Floating Action Button' do
-              event :click do
-                loads :fabs_mini
-              end
-            end
+      event :click do
+        loads :fabs_mini
+      end
+    end
 
     item 'Dialogs' do
       event :click do

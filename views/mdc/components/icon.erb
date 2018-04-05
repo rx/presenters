@@ -10,9 +10,9 @@
      end
 %>
   <i class="<%= class_name %> <%= icon_class_name %>
-            <%= 'v-actionable' if comp.event %>"
+            <%= 'v-actionable' if comp.events %>"
      id="<%=comp.id%>"
      style="<%= "color: #{comp.color};" if comp.color %>
             <%= "font-size: #{comp.size}" if comp.size %>"
-     <%= erb :"components/event", :locals => {event: comp.event, parent_id: comp.event_parent_id}%>><%=icon%></i>
+     <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%>><%=icon%></i>
 <% end %>
