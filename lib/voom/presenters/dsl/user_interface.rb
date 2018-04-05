@@ -29,7 +29,6 @@ module Voom
           @router = router || @parent&.send(:router)
           @context = context
           @block = block
-          @page_title = nil
           @header = nil
           @drawer = nil
           @components = []

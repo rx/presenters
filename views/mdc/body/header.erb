@@ -1,15 +1,20 @@
-<header class="mdl-layout__header">
+<header id="<%= header.id %>" class="mdl-layout__header">
   <div class="mdl-layout-icon"></div>
   <div class="mdl-layout__header-row">
-    <span class="mdl-layout__title"><%= header.title %></span>
+
+    <span class="mdl-layout__title
+                <%= 'v-actionable' if header.title&.events %>"
+          <%= erb :"components/event", :locals => {events: header.title&.events, parent_id: header.title&.event_parent_id} %>>
+      <%= header.title&.text %>
+    </span>
     <div class="mdl-layout-spacer"></div>
     <% if header.menu %>
       <nav class="mdl-navigation">
         <% header.menu.items.each do |item| %>
           <a class="mdl-navigation__link"
-             id="<%=item.id%>"
+             id="<%= item.id %>"
              href="javascript:void(0)"
-             <%=  erb :"components/event", :locals => {events: item.events, parent_id: item.event_parent_id}%>>
+             <%= erb :"components/event", :locals => {events: item.events, parent_id: item.event_parent_id} %>>
             <%= erb :"components/icon", :locals => {comp: item.icon, class_name: nil} %>
             <%= item.text %>
           </a>

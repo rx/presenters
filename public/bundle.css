@@ -7444,18 +7444,21 @@ iframe.heightSet {
 
 .v-fab--absolute {
   position: fixed;
-  bottom: 1.0rem;
-  right: 1.5rem; }
+  top: 6.1rem;
+  right: 1.5rem;
+  z-index: 10; }
 
 @media (min-width: 1440px) {
   .v-fab--absolute {
     top: 6.1rem;
-    right: 4.5rem; } }
+    right: 4.5rem;
+    z-index: 10; } }
 
 @media (min-width: 1920px) {
   .v-fab--absolute {
     top: 6.07143rem;
-    right: 8.5rem; } }
+    right: 8.5rem;
+    z-index: 10; } }
 
 .mdc-button.v-secondary-filled-button:not(:disabled) {
   background-color: #ffab40; }

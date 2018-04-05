@@ -21,21 +21,19 @@ module Voom
           row1 = query_.first
           if row1
             __columns__ = row1.class.columns
-            card do
-              table selectable: selectable do
-                header do
-                  __columns__.each do |col|
-                    column col.name.titleize unless except.include?(col.name.to_sym)
-                  end
+            table selectable: selectable do
+              header do
+                __columns__.each do |col|
+                  column col.name.titleize unless except.include?(col.name.to_sym)
                 end
+              end
 
-                query_.each do |item_|
-                  row do
-                    __columns__.each do |col|
-                      next if except.include?(col.name.to_sym)
-                      column item_.send(col.name.to_sym) do
-                        self.instance_exec(item_, col.name.to_sym, &block) if block
-                      end
+              query_.each do |item_|
+                row do
+                  __columns__.each do |col|
+                    next if except.include?(col.name.to_sym)
+                    column item_.send(col.name.to_sym) do
+                      self.instance_exec(item_, col.name.to_sym, &block) if block
                     end
                   end
                 end
@@ -46,7 +44,6 @@ module Voom
             icon empty_icon, size: '10rem' if empty_icon
           end
         end
-
       end
     end
   end

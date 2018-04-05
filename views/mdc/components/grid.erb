@@ -1,5 +1,7 @@
+<% @grid_nesting += 1 %>
 <div id="<%=comp.id%>"
-     class="mdc-layout-grid"
+     class="mdc-layout-grid
+            <%= 'v-nested_grid' if @grid_nesting>1%>"
      style="<%= "background-color: #{comp.color};" if comp.color %>">
   <div class="mdc-layout-grid__inner">
     <% comp.columns.each do |col| %>
@@ -10,3 +12,5 @@
     <% end %>
   </div>
 </div>
+<% @grid_nesting -= 1
+%>

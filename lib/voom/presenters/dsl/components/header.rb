@@ -9,7 +9,7 @@ module Voom
             super(type: :header,
                   context: context,
                   **attribs_, &block)
-            @title = attribs.delete(:title)
+            self.title(attribs.delete(:title)) if attribs.key?(:title)
             @image = attribs.delete(:image)
             expand!
           end
@@ -19,6 +19,11 @@ module Voom
             @menu = Menu.new(parent: self,
                              context: context,
                              **attribs, &block)
+          end
+
+          def title(text=nil, **attribs, &block)
+            return @title if locked?
+            @title = Components::Typography.new(parent: self, type: :text, text: text, context: context, **attribs, &block)
           end
 
         end
