@@ -52,10 +52,10 @@ module Voom
                                    **attribs, &block)
             end
 
-            def icon_toggle(**attribs, &block)
+            def icon_toggle(icon=nil, **attribs, &block)
               return @icon_toggle if locked?
               @action_type = :icon_toggle
-              @icon_toggle = IconToggle.new(parent: self, context: context, **attribs, &block)
+              @icon_toggle = IconToggle.new(parent: self, icon: icon, context: context, **attribs, &block)
             end
 
             def button(text=nil, **attribs, &block)
