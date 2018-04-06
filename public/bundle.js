@@ -7971,7 +7971,7 @@ function createEventHandler(actionsData) {
 function initEvents(root) {
     console.log('\tEvents');
 
-    var events = root.querySelectorAll('[data-events]');
+    var events = document.querySelectorAll('[data-events]');
     for (var i = 0; i < events.length; i++) {
         var eventElem = events[i];
         var eventsData = JSON.parse(eventElem.dataset.events);
@@ -7979,7 +7979,10 @@ function initEvents(root) {
             var eventData = eventsData[j];
             var eventName = eventData[0];
             var actionsData = eventData[1];
-            eventElem.addEventListener(eventName, createEventHandler(actionsData));
+            if (!eventElem.eventsHandler) {
+                eventElem.eventsHandler = createEventHandler(actionsData);
+                eventElem.addEventListener(eventName, eventElem.eventsHandler);
+            }
         }
     }
 }
