@@ -1,15 +1,11 @@
-require_relative 'list_action'
-require_relative 'icon'
-require_relative 'avatar'
-require_relative 'typography'
-require_relative 'mixins/event'
 
-module Voom
-  module Presenters
-    module DSL
-      module Components
-        class ListLine < Base
-          include Mixins::Event
+
+module Voom 
+module Presenters 
+module DSL 
+module Components 
+class Line < Base 
+include Mixins::Event
           attr_accessor :separator, :actions
 
           def initialize(context:, **attribs_, &block)
@@ -58,10 +54,8 @@ module Voom
             @actions << ListAction.new(parent: self,
                                        **attribs, &block)
           end
-        end
-      end
-    end
-  end
 end
-
-
+end
+end
+end
+end

@@ -1,0 +1,1 @@
+import {MDCIconToggle} from '@material/icon-toggle';
