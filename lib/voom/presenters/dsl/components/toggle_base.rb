@@ -13,7 +13,7 @@ module Voom
           def initialize(**attribs_, &block)
             super(**attribs_, &block)
             @text = attribs.delete(:text)
-            @checked = attribs.delete(:checked)
+            @checked = attribs.delete(:checked) || false
             @value = attribs.delete(:value)
             @disabled = attribs.delete(:disabled) || false
           end

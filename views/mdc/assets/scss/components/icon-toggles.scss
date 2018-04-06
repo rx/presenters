@@ -1,0 +1,9 @@
+@import "@material/icon-toggle/mdc-icon-toggle";
+
+.v-toggle-icon--off {
+  color: black;
+}
+
+.v-toggle-icon--on {
+  color: $mdc-theme-primary;
+}

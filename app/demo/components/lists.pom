@@ -23,12 +23,31 @@ Voom::Presenters.define(:lists) do
       end
     end
 
+    headline 'Simple with Separators'
+    list do
+      actors.each do |actor|
+        line do
+          text actor.name
+        end
+        separator unless actor == actors.last
+      end
+    end
+
+    headline 'Simple with Selected'
+    list do
+      actors.each do |actor|
+        line selected: actors.first == actor do
+          text actor.name
+        end
+      end
+    end
+
 
     headline 'Icons'
     list do
       actors.each do |actor|
         line do
-          text actor.name 
+          text actor.name
           icon :person
         end
       end
@@ -39,7 +58,7 @@ Voom::Presenters.define(:lists) do
     list do
       actors.each do |actor|
         line do
-          text   actor.name
+          text actor.name
           avatar :person
           action do
             icon :star
@@ -52,7 +71,7 @@ Voom::Presenters.define(:lists) do
     list do
       actors.each_with_index do |actor, index|
         line do
-          text  actor.name
+          text actor.name
           avatar :person
           action do
             case index%4
@@ -74,12 +93,12 @@ Voom::Presenters.define(:lists) do
 
     list do
       actors.each_with_index do |actor, index|
-        line  do
+        line do
           text actor.name
           avatar :person
           info 'actor' if index == 0
           action do
-            icon_toggle :star
+            icon_toggle :star 
           end
           subtitle "#{actor.episodes} episodes"
         end

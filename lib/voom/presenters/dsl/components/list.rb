@@ -1,4 +1,5 @@
-require_relative 'list_line'
+require_relative 'lists/line'
+require_relative 'lists/separator'
 require_relative 'mixins/content'
 require_relative 'mixins/append'
 
@@ -23,7 +24,11 @@ module Voom
           end
           
           def line(**attribs, &block)
-            @lines << ListLine.new(parent:self, context: context, **attribs, &block)
+            @lines << Lists::Line.new(parent:self, context: context, **attribs, &block)
+          end
+
+          def separator(**attribs, &block)
+            @lines << Lists::Separator.new(parent:self, context: context, **attribs, &block)
           end
         end
       end

@@ -1,8 +1,12 @@
-<label class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect mdv-icon-toggle" for="<%=comp.id%>">
-  <input type="checkbox"
-         id="<%=comp.id%>"
-         class="mdl-icon-toggle__input"
-         <%if comp.checked%> checked<%end%><%if comp.disabled%> disabled<%end%>
-         <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%>>
-  <i class="mdl-icon-toggle__label material-icons"><%=comp.icon%></i>
-</label>
+<i class="mdc-icon-toggle material-icons
+       <%= 'mdc-icon-toggle--disabled' if comp.disabled %>"
+   role="button"
+   aria-disabled="<%= comp.disabled %>"
+   aria-pressed="<%= comp.checked %>"
+   data-checked="<%= comp.checked %>"
+   aria-label="" tabindex="0"
+   data-toggle-on='{"label": "", "content": "<%= comp.icon %>" ,"cssClass": "v-toggle-icon--on"}'
+   data-toggle-off='{"label": "", "content": "<%= comp.icon  %>", "cssClass": "v-toggle-icon--off"}'
+   <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>>
+  <%= comp.icon  %>
+</i>

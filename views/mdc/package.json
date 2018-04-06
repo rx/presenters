@@ -3,7 +3,6 @@
     "start": "webpack"
   },
   "devDependencies": {
-    "@material/button": "^0.32.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-es2015": "^6.24.1",
@@ -17,9 +16,12 @@
     "webpack-dev-server": "^2.11.2"
   },
   "dependencies": {
+    "@material/button": "^0.32.0",
     "@material/fab": "^0.32.0",
     "@material/form-field": "^0.33.0",
+    "@material/icon-toggle": "^0.34.1",
     "@material/layout-grid": "^0.24.0",
+    "@material/list": "^0.34.1",
     "@material/ripple": "^0.32.0",
     "@material/select": "^0.32.0",
     "@material/textfield": "^0.33.0",

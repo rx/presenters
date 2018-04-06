@@ -1,10 +1,6 @@
-<span class="mdl-list__item-secondary-content"
-        style="<%='display: inline-block' if line.actions.size >1 %>">
+<span class="mdc-list-item__meta">
   <%= erb :"components/list/info", :locals => {:line => line} %>
-  <% display = line.actions.size >1 ? 'inline-block' : nil
-    line.actions.each do |action| %>
-    <span class="mdl-list__item-secondary-action">
-      <%= erb :"components/list/actions/#{action.action_type}", :locals => {action: action} %>
-    </span>
-  <% end %>
-  </span>
+<% line.actions.each do |action| %>
+    <%= erb :"components/list/actions/#{action.action_type}", :locals => {action: action} %>
+<% end %>
+</span>

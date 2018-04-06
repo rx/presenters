@@ -14,8 +14,8 @@ Voom::Presenters.define(:toggles) do
     radio_button
 
     headline 'ICON TOGGLE'
-    icon_toggle :format_bold, checked: true
-    icon_toggle :format_italic
+    icon_toggle 'format_bold', checked: true 
+    icon_toggle 'format_italic'
 
     headline 'SWITCH'
     switch checked: true

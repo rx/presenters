@@ -1,10 +1,7 @@
-@import "@material/layout-grid/mdc-layout-grid";
+@import "@material/list/mdc-list";
 
-@each $size in map-keys($mdc-layout-grid-columns) {
-  @include mdc-layout-grid-media-query_($size) {
-    $gutter: map-get($mdc-layout-grid-default-gutter, $size);
-    .v-nested_grid {
-      padding: $gutter/2 0 $gutter/2 0;
-    }
-  }
+.v-list--with-avatars {
+  @include mdc-list-item-graphic-ink-color(white);
+  @include mdc-list-item-graphic-fill-color(text-icon-on-background);
 }
+

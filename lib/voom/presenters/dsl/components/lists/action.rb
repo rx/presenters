@@ -1,5 +1,5 @@
-require_relative 'icon'
-require_relative 'icon_toggle'
+require_relative '../icon'
+require_relative '../icon_toggle'
 
 
 module Voom
@@ -52,10 +52,10 @@ module Voom
                                    **attribs, &block)
             end
 
-            def icon_toggle(icon=nil, **attribs, &block)
+            def icon_toggle(**attribs, &block)
               return @icon_toggle if locked?
               @action_type = :icon_toggle
-              @icon_toggle = IconToggle.new(icon: icon, parent: self, context: context, **attribs, &block)
+              @icon_toggle = IconToggle.new(parent: self, context: context, **attribs, &block)
             end
 
             def button(text=nil, **attribs, &block)

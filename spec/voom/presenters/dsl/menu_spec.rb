@@ -17,14 +17,14 @@ describe 'dsl' do
     describe 'items' do
       let(:item1) {menu.items.first}
       let(:item2) {menu.items.last}
-      let(:seperator) {menu.items[1]}
+      let(:separator) {menu.items[1]}
 
       it 'text' do
         expect(item1.text).to eq('home')
         expect(item2.text).to eq('item2')
       end
       it 'separator' do
-        expect(seperator).to_not eq(nil)
+        expect(separator).to_not eq(nil)
       end
     end
 

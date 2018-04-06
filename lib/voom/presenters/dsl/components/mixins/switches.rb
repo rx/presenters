@@ -25,7 +25,9 @@ module Voom
             end
 
             def icon_toggle(icon, **attribs, &block)
-              self << IconToggle.new(parent: self, icon: icon,
+              trace { attribs.inspect }
+              self << IconToggle.new(parent: self,
+                                     icon: icon,
                                      context: context,
                                      **attribs, &block)
             end
