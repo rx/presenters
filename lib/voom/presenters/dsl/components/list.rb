@@ -10,12 +10,13 @@ module Voom
           include Mixins::Content
           include Mixins::Append
           
-          attr_reader :lines
+          attr_reader :lines, :lines_only
           attr_accessor :components
           
-          def initialize(**attribs, &block)
+          def initialize(**attribs_, &block)
             super(type: :list, context: context,
-                  **attribs, &block)
+                  **attribs_, &block)
+            @lines_only = attribs.delete(:lines_only)||false
             @lines = []
             @components = []
             expand!

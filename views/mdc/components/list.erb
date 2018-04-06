@@ -1,8 +1,11 @@
-<ul class="mdl-list">
-  <% for line in comp.lines %>
-      <%= erb :"components/list/line", :locals => {:line => line} %>
-  <% end %>
-  <%= erb :"components/render", :locals => {:components => comp.components, :scope=> nil} %>
-</ul>
-
+<% unless comp.lines_only %>
+  <ul class="mdl-list">
+<% end %>
+<% for line in comp.lines %>
+  <%= erb :"components/list/line", :locals => {:line => line} %>
+<% end %>
+<%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
+<% unless comp.lines_only %>
+  </ul>
+<% end %>
 
