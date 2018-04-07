@@ -35,7 +35,7 @@ module Voom
 
           def expand!
             extend(_helpers_) if _helpers_
-            @id ||= generate_id([])
+            @id ||= generate_id(type)
             instance_eval(&@block) if @block
           end
           
@@ -54,8 +54,8 @@ module Voom
             attributes.map {|k, v| [k, h(v)]}.to_h
           end
 
-          def generate_id(types)
-            @parent.send(:generate_id, types<<type)
+          def generate_id(type)
+            @parent.send(:generate_id, type)
           end
       
           protected

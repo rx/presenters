@@ -17,11 +17,7 @@ module Voom
         set :router_, Router
         set :bind, '0.0.0.0'
         set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE']||'mdc')}
-
-        # ::Voom::Presenters::Settings.configure do |config|
-        #   config.presenters.root = File.join(settings.root, 'app')
-        # end
-
+        
         helpers do
           def markdown(text)
             @markdown ||= Redcarpet::Markdown.new(RenderWithoutWrap, extensions = {})
@@ -47,8 +43,7 @@ module Voom
         get '/:presenter' do
           pass unless Presenters::App.registered?(params[:presenter])
           presenter = Presenters::App[params[:presenter]].call
-          identity_id = session[:aaa_identity]
-          @pom = presenter.expand(router: router, context: params.merge(aaa_identity: identity_id))
+          @pom = presenter.expand(router: router, context: prepare_context)
           @grid_nesting = Integer(params[:grid_nesting] || 0)
           layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
           erb :web, layout: layout
@@ -65,6 +60,12 @@ module Voom
         private
         def router
           settings.router_.new(base_url: "#{request.base_url}#{env['SCRIPT_NAME']}")
+        end
+
+        def prepare_context
+          Presenters::Settings.config.presenters.web_client.prepare_context.reduce(params) do | params, context_proc |
+            context_proc.call(params, session, env)
+          end
         end
       end
     end
