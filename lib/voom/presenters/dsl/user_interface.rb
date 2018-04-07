@@ -56,7 +56,7 @@ module Voom
                                            context: context,
                                            **attribs, &block)
         end
-        
+
         def snackbar(text=nil, **attribs, &block)
           return @snackbar if locked?
           @snackbar = Components::Snackbar.new(parent: self,
@@ -111,6 +111,14 @@ module Voom
 
         private
 
+        def generate_id(types)
+          @presenter_ids ||= {}
+          id = types.reverse.join('-')
+          count = @presenter_ids.fetch(id){0}
+          @presenter_ids["#{id}"] = count + 1
+          [id, count].join('-')
+        end
+        
         def deep_freeze
           IceNine.deep_freeze(self) if Presenters::Settings.config.presenters.deep_freeze
           self

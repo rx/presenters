@@ -17,7 +17,7 @@ module Voom
         set :router_, Router
         set :bind, '0.0.0.0'
         set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE']||'mdc')}
-        
+
         # ::Voom::Presenters::Settings.configure do |config|
         #   config.presenters.root = File.join(settings.root, 'app')
         # end
@@ -30,6 +30,10 @@ module Voom
 
           def inflector
             @inflector ||= Dry::Inflector.new
+          end
+
+          def eq(attrib, value)
+            attrib.to_s == value.to_s
           end
         end
 
@@ -54,15 +58,14 @@ module Voom
         post '/__post__/:presenter' do
           @pom = JSON.parse(request.body.read, object_class: OpenStruct)
           @grid_nesting = Integer(params[:grid_nesting] || 0)
-          erb :web
+          layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
+          erb :web, layout: layout
         end
 
         private
         def router
           settings.router_.new(base_url: "#{request.base_url}#{env['SCRIPT_NAME']}")
         end
-
-
       end
     end
   end

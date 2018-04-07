@@ -16,7 +16,7 @@
     <%= erb :"components/button", :locals => {:comp => comp.title.button, class_name:nil} %>
     <% if comp.title.text.any? %>
       <h2 class="mdl-card__title-text"
-          style="<%= 'align-self: flex-start;' if comp.title&.align == :top%>"
+          style="<%= 'align-self: flex-start;' if eq(comp.title&.align, :top)%>"
       ><%= comp.title.text.map {|line| "#{line}<br/>"}.join %></h2>
     <% end %>
   </div>
@@ -43,7 +43,7 @@
   <% if comp.menu %>
     <div class="mdl-card__menu"
          style="<%= "color: #{comp.title.color};" if comp.title&.color %>
-                <%='left: 16px;' if comp.menu.side==:left%>">
+                <%='left: 16px;' if eq(comp.menu.side, :left)%>">
       <% if comp.menu %>
         <%= erb :"components/menu", :locals => {:comp => comp.menu} %>
       <% end %>

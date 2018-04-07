@@ -9,7 +9,7 @@ module Voom
       # This is the Rest API for voom services/component commands
       class App < Sinatra::Base
         set :root, File.expand_path('../../../..', __FILE__)
-        set :router, Router
+        set :router_, Router
         set :bind, '0.0.0.0'
 
         get '/pom/:presenter' do
@@ -28,7 +28,7 @@ module Voom
         end
 
         def router
-          settings.router.new
+          settings.router_.new(base_url: "#{request.base_url}#{env['SCRIPT_NAME']}")
         end
 
         def symbolize_keys(hash)

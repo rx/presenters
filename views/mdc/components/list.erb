@@ -1,7 +1,7 @@
 <% unless comp.lines_only %>
   <ul class="mdc-list
-            <%= 'mdc-list--two-line' if comp.lines.select{|line| line.type == :line && line.subtitle }.any? %>
-            <%= 'mdc-list--avatar-list v-list--with-avatars' if comp.lines.select{|line| line.type == :line && line.avatar }.any? %>">
+            <%= 'mdc-list--two-line' if comp.lines.select{|line| eq(line.type, :line) && line.subtitle }.any? %>
+            <%= 'mdc-list--avatar-list v-list--with-avatars' if comp.lines.select{|line| eq(line.type, :line) && line.avatar }.any? %>">
 <% end %>
 <% for line in comp.lines %>
   <%= erb :"components/list/#{line.type}", :locals => {:line => line} %>

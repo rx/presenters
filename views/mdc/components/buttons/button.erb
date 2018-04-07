@@ -1,11 +1,11 @@
 <button
     id="<%= comp.id %>"
     class="mdc-button v-js-ripple-button
-          <%= 'mdc-button--raised' if comp.button_type == :raised %>
-          <%= 'v-secondary-filled-button' if comp.button_type == :raised && comp.color==:secondary %>
-          <%= 'v-secondary-text-button'   if comp.button_type == :flat && comp.color==:secondary %>
+          <%= 'mdc-button--raised' if eq(comp.button_type, :raised) %>
+          <%= 'v-secondary-filled-button' if eq(comp.button_type, :raised) && eq(comp.color, :secondary) %>
+          <%= 'v-secondary-text-button'   if eq(comp.button_type, :flat) && eq(comp.color, :secondary) %>
           <%= "v-button-align-#{comp.align}"   if comp.align %>
-           <%= 'v-button-text-align-left'   if comp.align==:left && comp.button_type == :flat %>"
+           <%= 'v-button-text-align-left'   if eq(comp.align,:left) && eq(comp.button_type, :flat) %>"
     <%= 'disabled' if comp.disabled %>
       <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} unless comp.disabled %>>
       <%= erb :"components/icon", :locals => {comp: comp, class_name: 'mdc-button__icon'} %>

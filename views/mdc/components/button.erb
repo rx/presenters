@@ -1,5 +1,5 @@
 <% if comp %>
-  <% case comp.button_type
+  <% case comp.button_type.to_sym
         when :fab %>
             <%= erb :"components/buttons/fab", :locals => {:comp => comp} %>
      <% when :icon %>

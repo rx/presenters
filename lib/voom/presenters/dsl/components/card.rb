@@ -90,8 +90,8 @@ module Voom
             end
 
             def background(image=nil, options: 'center / cover', **attribs, &block)
-              return @bg_image if locked?
-              @bg_image = Background.new(parent: self, image: image,
+              return @background if locked?
+              @background = Background.new(parent: self, image: image,
                                          options: options,
                                          context: context,
                                          **attribs, &block)

@@ -39,11 +39,9 @@ module Voom
             client_command += ',' if index > 0
             url_var = p[/{url\((.*?)\)}/m, 1]
             client_command += build_client_url(url_var.strip, entity, context) if url_var && command.nil?
-            client_command += p.strip if !url_var
+            client_command += p.strip unless url_var
           end
           client_command += ')'
-
-          client_command
         end
 
         def join_errors
@@ -51,10 +49,13 @@ module Voom
         end
 
         def scrub_params(_params_)
-          %i(splat captures service_command view api_version action layout).each do |key|
-            _params_.delete(key)
-          end
-          # puts _params_.inspect
+          # _params_.delete('captures')
+          # _params_.delete('render')
+          # _params_.delete('view')
+          _params_.delete('presenter')
+          # _params_.delete('redirect')
+          _params_.delete('action')
+          _params_.delete('errors')
           _params_
         end
 
@@ -62,24 +63,29 @@ module Voom
 
         def build_command_url(command, entity, params)
           return '' unless command
-          "/api/v1/#{command}#{entity_uuid(entity)}?#{build_params(params)}"
+          "#{command}?#{build_params(params, entity)}"
         end
 
-        def build_render_url(render, entity, params)
-          return '#' unless render
-          "/#{render}#{entity_uuid(entity)}?#{build_params(params)}"
+        def build_render_url(render_, entity, params)
+          return '#' unless render_
+          render = render_.to_s
+          seperator = render.start_with?('/') ? '' : '/'
+          url = "#{base_url}#{seperator}#{render}"
+          query_params = build_params(params, entity)
+          if(query_params)
+            query_seperator = render.include?('?') ? '&' : '?'
+            url = "#{url}#{query_seperator}#{query_params}"
+          end
+          url
         end
 
         def build_client_url(render, entity, params)
           return '#' unless render
-          build_render_url(render, entity, params)
+          "#{base_url}/web/#{render}?layout=false&#{build_params(params, entity)}"
         end
 
-        def entity_uuid(entity)
-          entity ? "/#{entity.id}" : nil
-        end
-
-        def build_params(params)
+        def build_params(params, entity)
+          params = params.merge(entity_key: entity.id) if entity
           Rack::Utils.build_nested_query(scrub_params(params))
         end
       end

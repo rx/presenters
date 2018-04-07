@@ -45,17 +45,19 @@ describe Voom::Presenters::WebClient::App do
 
   describe 'POST' do
     describe 'all pages' do
-         it "render" do
+         it "render from pom" do
            keys = Voom::Presenters::App.keys
            keys.each do |key|
              presenter = Voom::Presenters::App[key].call
-             pom = presenter.expand(router: Voom::Presenters::WebClient::Router.new)
+             pom = presenter.expand(router: Voom::Presenters::WebClient::Router.new(base_url: "http://example.org"))
              pom_json = JSON.dump(pom.to_hash)
              
-             response = post("__post__/#{key}", pom_json,  { "CONTENT_TYPE" => "application/json" })
-             puts response.body unless response.status==200
+             response_pom = post("__post__/#{key}", pom_json,  { "CONTENT_TYPE" => "application/json" })
+             expect(response_pom.status).to eq 200
+             response_get = get "/#{key}"
+             expect(response_get.status).to eq 200
              puts key
-             expect(response.status).to eq 200
+             expect(response_pom.body).to eq(response_get.body )
            end
          end
 

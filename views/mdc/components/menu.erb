@@ -4,8 +4,8 @@
       for="<%= comp.button.id %>">
     <% items = comp.items
        items.each_with_index do |item, index|
-         next if item.type==:divider
-         divider = (index < items.size-1) ? items[index+1].type == :divider : false
+         next if eq(item.type,:divider)
+         divider = (index < items.size-1) ? eq(items[index+1].type, :divider) : false
     %>
       <li class="mdl-menu__item<%= ' mdl-menu__item--full-bleed-divider' if divider %>"
           <%= 'disabled' if item.disabled %>>
