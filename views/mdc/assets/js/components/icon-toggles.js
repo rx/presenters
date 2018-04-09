@@ -1,12 +1,14 @@
 import {MDCIconToggle} from '@material/icon-toggle';
 
-export function initIconToggles(root) {
+export function initIconToggles() {
     console.log('\tIcon Toggles');
 
-    var components = root.querySelectorAll('.mdc-icon-toggle');
+    var components = document.querySelectorAll('.mdc-icon-toggle');
     for (var i = 0; i < components.length; i++) {
         var component = components[i];
-        component.mdcComponent = new MDCIconToggle(component);
+        if (!component.mdcComponent) {
+            component.mdcComponent = new MDCIconToggle(component);
+        }
     }
 }
 

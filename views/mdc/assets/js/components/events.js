@@ -83,7 +83,7 @@ function createEventHandler(actionsData) {
     };
 }
 
-export function initEvents(root) {
+export function initEvents() {
     console.log('\tEvents');
 
     var events = document.querySelectorAll('[data-events]');

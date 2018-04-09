@@ -12,7 +12,7 @@ module Voom
           attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :dialog, :align
          
           def initialize(type: nil, **attribs_, &block)
-            @button_type = h(type) || (attribs_[:icon] ? :icon : h(type)) || :flat
+            @button_type = h(type) || ((attribs_[:icon]&&!attribs_[:text]) ? :icon : nil) || :flat
             super(type: :button, **attribs_, &block)
             @icon = attribs.delete(:icon)
             @text = attribs.delete(:text)

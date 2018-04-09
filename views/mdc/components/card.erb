@@ -14,6 +14,7 @@
             <%= "background: url('#{comp.title.background.image.url}') #{comp.title.background.options};" if comp.title&.background&.image %>
             <%= "background-color: #{comp.title.background.color};" if comp.title&.background&.color %>">
     <%= erb :"components/button", :locals => {:comp => comp.title.button, class_name:nil} %>
+    <%= erb :"components/avatar", :locals => {:comp => comp.title.avatar, class_name:nil} %>
     <% if comp.title.text.any? %>
       <h2 class="mdl-card__title-text"
           style="<%= 'align-self: flex-start;' if eq(comp.title&.align, :top)%>"
@@ -29,14 +30,14 @@
   <% end %>
 
   <% if comp.text %>
-    <div class="mdl-card__supporting-text"><%= comp.text %></div>
+    <div class="mdl-card__supporting-text"><%= comp.text.map {|line| "#{markdown(line)}<br/>"}.join %></div>
   <% end %>
 
 
-  <% if comp.action&.button %>
+  <% if comp.action&.buttons %>
     <div class="mdl-card__actions mdl-card--border">
-      <% if comp.action.button %>
-        <%= erb :"components/button", :locals => {:comp => comp.action.button} %>
+      <% comp.action.buttons.each do |button| %>
+        <%= erb :"components/button", :locals => {:comp => button} %>
       <% end %>
     </div>
   <% end %>

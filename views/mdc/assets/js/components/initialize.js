@@ -1,16 +1,16 @@
 import {initButtons} from './button';
 import {initDialogs} from './dialogs';
-import {initTextFields} from './form-fields';
+import {initTextFields} from './text-fields';
 import {initEvents} from './events';
 import {initLists} from './lists';
 import {initIconToggles} from './icon-toggles';
 
-export function initialize(root){
+export function initialize(){
     console.log('Initializing');
-    initButtons(root);
-    initEvents(root);
-    initDialogs(root);
-    initTextFields(root);
-    initLists(root);
-    initIconToggles(root);
+    initButtons();
+    initEvents();
+    initDialogs();
+    initTextFields();
+    initLists();
+    initIconToggles();
 }

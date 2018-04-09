@@ -60,9 +60,9 @@ Voom::Presenters.define(:cards) do
              Auckland, New Zealand' do
         background 'https://www.askideas.com/media/43/The-Sky-Tower-In-Auckland-New-Zealand.jpg'
       end
-      text "The Sky Tower is an observation and telecommunications tower located in Auckland,
-        New Zealand. It is 328 metres (1,076 ft) tall, making it the tallest man-made structure
-        in the Southern Hemisphere."
+      text ["The Sky Tower is an observation and telecommunications tower located in Auckland,",
+            "New Zealand. It is 328 metres (1,076 ft) tall, making it the tallest man-made structure",
+            "in the Southern Hemisphere."].join(' ')
 
     end
 

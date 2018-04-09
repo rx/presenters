@@ -1,15 +1,17 @@
-<% if line.avatar %>
+<% if line.avatar
+  events = line.avatar.events || line.events
+%>
   <span class="mdc-list-item__graphic">
   <% if %w(jpg gif png).include?(line.avatar.avatar&.to_s.split('.').last) %>
-    <img class="<%= 'v-actionable' if line.avatar.events %>"
+    <img class="<%= 'v-actionable' if events %>"
          id="<%=line.avatar.id%>"
          src="<%= line.avatar.avatar %>"
-         <%= erb :"components/event", :locals => {events: line.avatar.events, parent_id: line.avatar.event_parent_id}%> />
+         <%= erb :"components/event", :locals => {events: events, parent_id: line.avatar.event_parent_id}%> />
   <% else %>
     <i class="material-icons
-              <%= 'v-actionable' if line.avatar.events %>"
+              <%= 'v-actionable' if events %>"
        id="<%=line.avatar.id%>"
-       <%= erb :"components/event", :locals => {events: line.avatar.events, parent_id: line.avatar.event_parent_id}%>><%= line.avatar.avatar %></i>
+       <%= erb :"components/event", :locals => {events: events, parent_id: line.avatar.event_parent_id}%>><%= line.avatar.avatar %></i>
   <% end %>
   </span>
 <% end %>

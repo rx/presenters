@@ -3,6 +3,7 @@ require_relative 'mixins/common'
 require_relative 'mixins/event'
 require_relative 'mixins/helpers'
 require_relative 'mixins/attaches'
+require_relative 'mixins/avatar'
 
 module Voom
   module Presenters
@@ -35,7 +36,7 @@ module Voom
 
           def text(text=nil)
             return @text if locked?
-            @text = text
+            @text = Array(text||'').compact.join("\n").split("\n")
           end
 
           def image(image=nil, **attribs, &block)
@@ -72,11 +73,12 @@ module Voom
 
 
           class Title < Base
+            include Mixins::Avatar
             attr_accessor :text, :color, :align
 
             def initialize(**attribs_, &block)
               super(type: :title, **attribs_, &block)
-              @text = Array(attribs.delete(:text)||'').join("\n").split("\n")
+              @text = Array(attribs.delete(:text)||'').compact.join("\n").split("\n")
               @color = attribs.delete(:color)
               @align = attribs.delete(:align) || :bottom
               expand!
@@ -99,14 +101,15 @@ module Voom
           end
 
           class Action < Base
+            attr_accessor :buttons
             def initialize(**attribs_, &block)
               super(type: :action, **attribs_, &block)
+              @buttons = []
               expand!
             end
 
-            def button(text=nil, **options, &block)
-              return @button if locked?
-              @button = Components::Button.new(parent: self, text: text,
+            def button(text, **options, &block)
+              @buttons << Components::Button.new(parent: self, text: text,
                                                context: context,
                                                **options, &block)
             end

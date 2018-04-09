@@ -1,0 +1,19 @@
+<%
+  if comp
+    events = nil unless local_variables.include? :events
+    events = comp.events || events
+%>
+  <span class="v-avatar">
+  <% if %w(jpg gif png).include?(comp.avatar&.to_s.split('.').last) %>
+    <img class="<%= 'v-actionable' if events %>"
+         id="<%= comp.aid %>"
+         src="<%= comp.avatar %>"
+         <%= erb :"components/event", :locals => {events: events, parent_id: comp.event_parent_id} %> />
+  <% else %>
+    <i class="material-icons
+              <%= 'v-actionable' if events %>"
+       id="<%= comp.id %>"
+       <%= erb :"components/event", :locals => {events: events, parent_id: comp.event_parent_id} %>><%= comp.avatar %></i>
+  <% end %>
+  </span>
+<% end %>
