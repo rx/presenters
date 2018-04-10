@@ -38,7 +38,7 @@ describe Voom::Presenters::WebClient::App do
       end
 
       it "content" do
-        expect(response.body).to have_tag(:div, :text => "Presenters")
+        expect(response.body).to have_tag(:span, :text => /Presenters Demo/)
       end
     end
   end

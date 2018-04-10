@@ -1,5 +1,5 @@
 require_relative 'append'
-require_relative 'switches'
+require_relative 'toggles'
 require_relative 'typography'
 require_relative 'grid'
 require_relative 'buttons'
@@ -12,7 +12,7 @@ module Voom
       module Components
         module Mixins
           module Common
-            include Mixins::Switches
+            include Mixins::Toggles
             include Mixins::Append
             include Mixins::Typography
             include Mixins::Grid

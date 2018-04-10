@@ -20,7 +20,6 @@
 <body>
 <% header = @pom.header
    drawer = @pom.drawer
-   dialogs = @pom.dialogs
    footer = @pom.footer %>
 <div class="mdl-layout mdl-js-layout
   <% if header %>mdl-layout--fixed-header
@@ -39,9 +38,6 @@
       <%= yield %>
     </div>
   </main>
-  <% if dialogs %>
-    <%= erb :"body/dialogs", :locals => {:dialogs => dialogs} %>
-  <% end %>
   <%= erb :"body/snackbar" %>
   <% if footer %>
     <%= erb :"body/footer", :locals => {:footer => footer} %>

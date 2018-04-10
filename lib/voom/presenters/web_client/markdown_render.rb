@@ -1,6 +1,7 @@
 class RenderWithoutWrap < Redcarpet::Render::HTML
     def postprocess(full_document)
-      # Take out paragraph tags
-      Regexp.new(/\A<p>(.*)<\/p>\Z/m).match(full_document)[1] rescue full_document
+      full_document.
+          gsub(/{c:([#\w]\w+)}([^{]+){\/c}/) {|m| "<span style=\"color:#{$1};\">#{$2}</span>" }.
+          gsub(/<p>(.*)<\/p>/){|m| $1 }
     end
   end

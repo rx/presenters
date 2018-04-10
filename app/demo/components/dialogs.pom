@@ -5,7 +5,11 @@ Voom::Presenters.define(:dialogs) do
   attach :grid do
     display 'Dialogs'
 
-    button 'Show Dialog', dialog: :hold_on
+    button 'Show Dialog' do
+      event :click do
+        dialog :hold_on
+      end
+    end
 
     dialog id: :hold_on do
       title "MDL Dialog"

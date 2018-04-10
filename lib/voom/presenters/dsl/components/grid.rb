@@ -4,6 +4,7 @@ require_relative 'mixins/images'
 require_relative 'mixins/icons'
 require_relative 'mixins/event'
 require_relative 'mixins/attaches'
+require_relative 'mixins/dialogs'
 
 module Voom
   module Presenters
@@ -12,7 +13,8 @@ module Voom
         class Grid < Base
           include Mixins::Helpers
           include Mixins::Attaches
-
+          include Mixins::Dialogs
+          
           attr_accessor :columns, :color, :padded
 
           def initialize(color: nil, **attribs_, &block)
@@ -36,6 +38,7 @@ module Voom
             include Mixins::Icons
             include Mixins::Event
             include Mixins::Attaches
+            include Mixins::Dialogs
 
             attr_accessor :size, :desktop, :tablet, :phone, :color, :components
 

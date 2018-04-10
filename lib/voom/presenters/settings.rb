@@ -1,3 +1,7 @@
+
+include Voom::Trace
+trace { "Loading Presenters Settings" }
+
 module Voom
   module Presenters
     class Settings

@@ -1,18 +1,23 @@
-<dialog id="<%= comp.id %>" class="mdl-dialog v-js-dialog"
+<%
+  has_form = comp.components.select{|c| eq(c.type, :form)}.any?
+%>
+<dialog id="<%= comp.id %>"
+        class="mdl-dialog v-js-dialog"
     style="<%= "width: #{comp.width}" if comp.width %>
            <%= "height: #{comp.height}" if comp.height %>"
 >
   <% if comp.title %>
     <h3 class="mdl-dialog__title"><%= comp.title.text %></h3>
   <% end %>
-  <div class="mdl-dialog__content">
+  <div class="mdl-dialog__content
+              <%= 'v-dialog--form' if has_form %>">
     <% comp.components.each do |dcomp| %>
       <%= erb :"components/#{dcomp.type}", :locals => {:comp => dcomp} %>
     <% end %>
   </div>
   <% if comp.buttons.any? %>
     <div class="mdl-dialog__actions">
-      <% comp.buttons.each do |button| %>
+      <% comp.buttons.reverse.each do |button| %>
         <%= erb :"components/button", :locals => {:comp => button} %>
       <% end %>
     </div>

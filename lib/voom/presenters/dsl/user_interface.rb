@@ -2,6 +2,7 @@ require 'ice_nine'
 require_relative 'definer'
 require_relative 'components/mixins/common'
 require_relative 'components/mixins/helpers'
+require_relative 'components/mixins/dialogs'
 require_relative 'invalid_presenter'
 
 require 'voom/serializer'
@@ -16,11 +17,12 @@ module Voom
         include Lockable
         include Components::Mixins::Common
         include Components::Mixins::Helpers
+        include Components::Mixins::Dialogs
 
         include Voom::Serializer
         include Voom::Trace
 
-        attr_reader :router, :context, :components, :dialogs
+        attr_reader :router, :context, :components
         private :context, :router
         alias params context
 
@@ -32,7 +34,6 @@ module Voom
           @header = nil
           @drawer = nil
           @components = []
-          @dialogs = []
           @snackbar = nil
           @footer = nil
         end
@@ -71,13 +72,7 @@ module Voom
                                            context: context,
                                            **attribs, &block)
         end
-
-        def dialog(**attributes, &block)
-          @dialogs << Components::Dialog.new(parent: self,
-                                             context: context,
-                                             **attributes, &block)
-        end
-
+        
         def attach(presenter, **context_, &yield_block)
           @_yield_block_ = yield_block
           pom = Voom::Presenters::App[presenter].call.expand_child(parent: self, context: context.merge(context_))
@@ -85,7 +80,6 @@ module Voom
           @drawer ||= pom.drawer
           @footer ||= pom.footer
           @components += pom.components
-          @dialogs += pom.dialogs if @dialogs
         end
 
         # Called by the definition.expand method to evaluate a user interface with a different context

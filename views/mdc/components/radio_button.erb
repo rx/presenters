@@ -1,8 +1,10 @@
-<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="<%=comp.id%>">
-  <input type="radio"
-         id="<%=comp.id%>"
+<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="<%=comp.id%>-input">
+  <input id="<%= comp.id %>-input"
+           name="<%= comp.id %>"
+         type="radio"
          class="mdl-radio__button"
-         name="options" value="<%=comp.value%>"
+         value="<%=comp.value%>"
          <%if comp.checked%> checked<%end%><%if comp.disabled%> disabled<%end%>
          <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%> />
+  <span class="mdl-radio__label"><%=comp.text%></span>
 </label>

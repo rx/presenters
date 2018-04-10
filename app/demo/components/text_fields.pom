@@ -13,6 +13,15 @@ Voom::Presenters.define('text-fields') do
       end
     end
 
+
+    headline 'Password'
+
+        form do
+          text_field password: true do
+            label 'Password'
+          end
+        end
+
     headline 'Numeric'
 
     # Client side validation with hints

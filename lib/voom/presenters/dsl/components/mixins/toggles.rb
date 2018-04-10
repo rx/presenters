@@ -5,7 +5,7 @@ module Voom
     module DSL
       module Components
         module Mixins
-          module Switches
+          module Toggles
             include Mixins::Append
 
             def checkbox(**attribs, &block)

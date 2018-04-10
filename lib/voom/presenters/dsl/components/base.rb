@@ -38,10 +38,6 @@ module Voom
             @id ||= generate_id(type)
             instance_eval(&@block) if @block
           end
-          
-          def dialog(**attributes, &block)
-            @parent.dialog(**attributes, &block)
-          end
 
           private
 

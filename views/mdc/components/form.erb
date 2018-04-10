@@ -2,5 +2,10 @@
       style='width: 100%'
       onsubmit="javascript:void(0);return false;">
   <div id="errors"></div>
-  <%= erb :"components/render", :locals => {:components => comp.components, :scope=> nil} %>
+  <%= erb :"components/render", :locals => {:components => comp.components.select {|c| !eq(c.type, :button)}, :scope => nil} %>
+  <div class="mdl-dialog__actions">
+    <% comp.components.select {|c| eq(c.type, :button)}.reverse.each do |button| %>
+      <%= erb :"components/button", :locals => {:comp => button} %>
+    <% end %>
+  </div>
 </form>

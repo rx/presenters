@@ -8802,6 +8802,9 @@ a.mdc-list-item {
   display: inline-flex;
   flex-shrink: 0; }
 
+.v-dialog--form {
+  padding-bottom: 0; }
+
 .v-actionable {
   cursor: pointer; }
 

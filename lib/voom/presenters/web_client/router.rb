@@ -63,7 +63,8 @@ module Voom
 
         def build_command_url(command, entity, params)
           return '' unless command
-          "#{command}?#{build_params(params, entity)}"
+          seperator = command.include?('?') ? '&' : '?'
+          "#{command}#{seperator}#{build_params(params, entity)}"
         end
 
         def build_render_url(render_, entity, params)

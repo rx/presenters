@@ -1,3 +1,11 @@
+// This is used to get a proper binding of the actionData
+// https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
+function createDialogHandler(dialog) {
+    return function () {
+        dialog.close();
+    };
+}
+
 export function initDialogs() {
     console.log('\tDialogs');
 
@@ -6,8 +14,8 @@ export function initDialogs() {
         for (var i = 0; i < dialogs.length; i++) {
             var dialog = dialogs[i];
             var dialogButtons = dialog.querySelectorAll('button:not([disabled])');
-            for (var i = 0; i != dialogButtons.length; i++) {
-                var dialogButton = dialogButtons[i];
+            for (var j = 0; j != dialogButtons.length; j++) {
+                var dialogButton = dialogButtons[j];
                 if (!dialogButton.dialog) {
                     dialogButton.dialog = dialog;
                     var buttonEvents = dialogButton.dataset.events;
@@ -15,9 +23,7 @@ export function initDialogs() {
                     // then close the dialog on click, otherwise let the events handlers
                     // take care of the close.
                     if (!buttonEvents) {
-                        dialogButtons[i].addEventListener('click', function () {
-                            dialog.close();
-                        });
+                        dialogButton.addEventListener('click', createDialogHandler(dialog));
                     }
                 }
             }
