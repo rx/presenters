@@ -3,6 +3,7 @@ import {VPost} from './events/post';
 import {VReplaceElement} from './events/replace';
 import {VDialog} from './events/dialog';
 import {VErrors} from './events/errors';
+import {VToggleVisiblity} from './events/toggle_visiblity';
 
 export class VEvents {
     //[[type, url, target, params]]
@@ -68,6 +69,8 @@ export class VEvents {
                 return new VPost(url, params, 'DELETE', event);
             case 'dialog':
                 return new VDialog(target, params, event);
+            case 'toggle_visibility':
+                return new VToggleVisiblity(target, params, event);
             default:
                 throw action_type + ' is not supported.';
         }
@@ -94,7 +97,7 @@ export function initEvents() {
             var eventData = eventsData[j];
             var eventName = eventData[0];
             var actionsData = eventData[1];
-            if(!eventElem.eventsHandler) {
+            if (!eventElem.eventsHandler) {
                 eventElem.eventsHandler = createEventHandler(actionsData);
                 eventElem.addEventListener(eventName, eventElem.eventsHandler);
             }

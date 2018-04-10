@@ -1,5 +1,8 @@
 
-<% class_name = '' unless local_variables.include? :class_name %>
+<% class_name = '' unless local_variables.include? :class_name
+   parent_id = comp.event_parent_id unless local_variables.include? :parent_id
+
+%>
 <% if comp && comp.icon
      if comp.icon =~ /^fa-/
        icon_class_name = "fas #{comp.icon}"
@@ -9,10 +12,13 @@
        icon = comp.icon
      end
 %>
-  <i class="<%= class_name %> <%= icon_class_name %>
+  <i  id="<%=comp.id%>"
+      class="<%= class_name %> <%= icon_class_name %>
             <%= 'v-actionable' if comp.events %>"
-     id="<%=comp.id%>"
      style="<%= "color: #{comp.color};" if comp.color %>
             <%= "font-size: #{comp.size}" if comp.size %>"
-     <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%>><%=icon%></i>
+      <%= 'tabindex="1"' if class_name=='mdc-text-field__icon' && comp.events%>
+     <%= erb :"components/event", :locals => {events: comp.events, parent_id: parent_id}%>>
+    <%=icon%>
+  </i>
 <% end %>

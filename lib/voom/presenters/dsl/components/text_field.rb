@@ -1,3 +1,5 @@
+require_relative 'mixins/event'
+
 module Voom
   module Presenters
     module DSL
@@ -18,6 +20,13 @@ module Voom
           def label(text=nil)
             return @label if locked?
             @label = text
+          end
+
+          def icon(icon=nil, **attribs, &block)
+            return @icon if locked?
+            @icon = Components::Icon.new(parent: self, icon: icon,
+                                         context: context,
+                                         **attribs, &block)
           end
 
           def value(value=nil)

@@ -8805,8 +8805,14 @@ a.mdc-list-item {
 .v-dialog--form {
   padding-bottom: 0; }
 
+form .mdl-switch {
+  padding-bottom: 36px; }
+
 .v-actionable {
   cursor: pointer; }
 
 .v-error-message {
   color: #d50000; }
+
+.v-hidden {
+  display: none; }

@@ -58,6 +58,13 @@ module Voom
                                                target: dialog_id,
                                                params: params, &block)
           end
+
+          def toggle_visiblity(component_id, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               action_type: :toggle_visibility,
+                                               target: component_id,
+                                               params: params, &block)
+          end
         end
       end
     end

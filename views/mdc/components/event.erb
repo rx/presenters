@@ -4,7 +4,7 @@
         event.actions.map do |action|
           additional_params = case action.action_type.to_s
                                 when 'replaces'
-                                  {grid_nesting:@grid_nesting}
+                                  {grid_nesting:@grid_nesting, __parent_id__: parent_id}
                                 when 'update', 'post', 'delete'
                                   {__parent_id__: parent_id}
                                 else

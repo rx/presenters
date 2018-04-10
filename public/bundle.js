@@ -7898,6 +7898,8 @@ var _dialog = __webpack_require__(53);
 
 var _errors = __webpack_require__(23);
 
+var _toggle_visiblity = __webpack_require__(67);
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var VEvents = exports.VEvents = function () {
@@ -7969,6 +7971,8 @@ var VEvents = exports.VEvents = function () {
                     return new _post.VPost(url, params, 'DELETE', event);
                 case 'dialog':
                     return new _dialog.VDialog(target, params, event);
+                case 'toggle_visibility':
+                    return new _toggle_visiblity.VToggleVisiblity(target, params, event);
                 default:
                     throw action_type + ' is not supported.';
             }
@@ -8207,6 +8211,21 @@ var VReplaceElement = exports.VReplaceElement = function (_VBase) {
         key: 'call',
         value: function call() {
             this.clearErrors();
+
+            var parent_element = document.getElementById(this.params.__parent_id__);
+            var FD = null;
+            // Automatically pull values out of input controls
+            if (this.params.__parent_id__) {
+                var parent_element = document.getElementById(this.params.__parent_id__);
+                if (parent_element) {
+                    var value = parent_element.value;
+                    if (value) {
+                        this.params[parent_element.name] = value;
+                        delete this.params.__parent_id__;
+                    }
+                }
+            }
+
             var httpRequest = new XMLHttpRequest();
             if (!httpRequest) {
                 throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
@@ -14945,6 +14964,48 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         widget: false
     });
 })();
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var VToggleVisiblity = exports.VToggleVisiblity = function () {
+    function VToggleVisiblity(targetId, params, event) {
+        _classCallCheck(this, VToggleVisiblity);
+
+        this.targetId = targetId;
+        this.params = params;
+        this.event = event;
+    }
+
+    _createClass(VToggleVisiblity, [{
+        key: "call",
+        value: function call() {
+            var targetId = this.targetId;
+            var promiseObj = new Promise(function (resolve) {
+                console.log("Toggling visiblity on: " + targetId);
+                var elem = document.getElementById(targetId);
+                elem.classList.toggle("v-hidden");
+
+                resolve([200, null, null]);
+            });
+            return promiseObj;
+        }
+    }]);
+
+    return VToggleVisiblity;
+}();
 
 /***/ })
 /******/ ]);

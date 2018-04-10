@@ -1,7 +1,9 @@
 <div id="<%= comp.id %>"
      class="mdc-text-field
+            <%= 'mdc-text-field--with-trailing-icon' if comp.icon %>
             <%= 'mdc-text-field--fullwidth' if comp.full_width %>
-            <%= ' is-invalid is-dirty' if comp.error %>">
+            <%= 'is-invalid is-dirty' if comp.error %>">
+  <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"} %>
   <input id="<%= comp.id %>-input"
          name="<%= comp.id %>"
          type="<%= comp.password ? 'password' : 'text' %>"

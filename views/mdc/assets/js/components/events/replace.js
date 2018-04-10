@@ -5,7 +5,7 @@ import {initialize} from '../initialize';
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
 export class VReplaceElement extends VBase {
-    constructor(element_id, url, params,event) {
+    constructor(element_id, url, params, event) {
         super();
         this.element_id = element_id;
         this.url = url;
@@ -15,6 +15,21 @@ export class VReplaceElement extends VBase {
 
     call() {
         this.clearErrors();
+
+        var parent_element = document.getElementById(this.params.__parent_id__);
+        var FD = null;
+        // Automatically pull values out of input controls
+        if (this.params.__parent_id__) {
+            var parent_element = document.getElementById(this.params.__parent_id__);
+            if (parent_element) {
+                var value = parent_element.value;
+                if (value) {
+                    this.params[parent_element.name] = value;
+                    delete this.params.__parent_id__;
+                }
+            }
+        }
+        
         var httpRequest = new XMLHttpRequest();
         if (!httpRequest) {
             throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');

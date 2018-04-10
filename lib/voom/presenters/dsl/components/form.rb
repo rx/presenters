@@ -7,6 +7,9 @@ require_relative 'mixins/append'
 require_relative 'mixins/text_fields'
 require_relative 'mixins/buttons'
 require_relative 'mixins/toggles'
+require_relative 'mixins/attaches'
+require_relative 'mixins/helpers'
+require_relative 'mixins/expansion_panels'
 
 module Voom
   module Presenters
@@ -19,6 +22,9 @@ module Voom
           include Mixins::TextFields
           include Mixins::Buttons
           include Mixins::Toggles
+          include Mixins::Attaches
+          include Mixins::Helpers
+          include Mixins::ExpansionPanels
 
           attr_reader :components
 
