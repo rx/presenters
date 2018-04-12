@@ -19,7 +19,7 @@ module Voom
           #     context.merge(aaa_identity: identity_id)
           #   }
           # end
-          setting :prepare_context, [->(context, _session, _env) {context.merge(request_id: SecureRandom.hex(8))}]
+          setting :prepare_context, []
         end
       end
     end
