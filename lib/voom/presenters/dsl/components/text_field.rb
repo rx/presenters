@@ -1,11 +1,10 @@
-require_relative 'mixins/event'
+require_relative 'input'
 
 module Voom
   module Presenters
     module DSL
       module Components
-        class TextField < Base
-          include Mixins::Event
+        class TextField < Input
 
           attr_reader :required, :full_width, :password
 

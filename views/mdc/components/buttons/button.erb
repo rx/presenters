@@ -8,6 +8,6 @@
            <%= 'v-button-text-align-left'   if eq(comp.align,:left) && eq(comp.button_type, :flat) %>"
     <%= 'disabled' if comp.disabled %>
       <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} unless comp.disabled %>>
-      <%= erb :"components/icon", :locals => {comp: comp, class_name: 'mdc-button__icon'} %>
+      <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-button__icon'} %>
       <%= comp.text %>
   </button>

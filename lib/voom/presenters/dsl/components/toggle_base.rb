@@ -1,11 +1,12 @@
 require_relative 'mixins/event'
+require_relative 'input'
 
 module Voom
   module Presenters
     module DSL
       module Components
         # Base class used by toggle classes
-        class ToggleBase < Base
+        class ToggleBase < Input
           include Mixins::Event
 
           attr_accessor :text, :checked, :value, :disabled

@@ -104,14 +104,6 @@ module Voom
         end
 
         private
-
-        def generate_id(type)
-          @presenter_ids ||= {}
-          id = [context.fetch(:request_id){nil}, type].compact.join('-')
-          count = @presenter_ids.fetch(id){0}
-          @presenter_ids[id] = count + 1
-          [id, count].join('')
-        end
         
         def deep_freeze
           IceNine.deep_freeze(self) if Presenters::Settings.config.presenters.deep_freeze

@@ -1,7 +1,7 @@
 <form role="form" id="<%= comp.id %>"
       style='width: 100%'
       onsubmit="javascript:void(0);return false;">
-  <div id="errors"></div>
+  <div class="v-errors"></div>
   <%= erb :"components/render", :locals => {:components => comp.components.select {|c| !eq(c.type, :button)}, :scope => nil} %>
   <div class="mdl-dialog__actions">
     <% comp.components.select {|c| eq(c.type, :button)}.reverse.each do |button| %>

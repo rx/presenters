@@ -1,4 +1,8 @@
 export class VErrors {
+    constructor(event) {
+        this.event = event;
+    }
+
     clearErrors() {
         var errorMessages = document.querySelectorAll('.v-error-message');
 
@@ -64,10 +68,14 @@ export class VErrors {
                     }
                 }
             }
-            this.prependError('errors', pageErrors);
+            var errors = this.event.target.closest('form').querySelector('.v-errors');
+            if(!errors){
+                errors = document.querySelector('.v-errors');
+            }
+            this.prependError(null, pageErrors, errors);
         } else if (httpStatus === 0) {
             this.prependError('errors', ["Unable to contact server. Please check that you are online and retry."]);
-        } else if (results!==true){
+        } else if (results !== true) {
             this.prependError('errors', ["The server returned an unexpected response! Status:" + httpStatus]);
         }
     }
@@ -90,7 +98,7 @@ export class VErrors {
 
     // Creates a div before the element with the same id as the error
     // Used to display an error message without their being an input field to attach the error to
-    prependError(div_id, messages) {
+    prependError(divId, messages, errorsDiv) {
         // create a new div element
         var newDiv = document.createElement("div");
         newDiv.className = 'v-error-message';
@@ -100,7 +108,7 @@ export class VErrors {
         newDiv.appendChild(newContent);
 
         // add the newly created element and its content into the DOM
-        var currentDiv = document.getElementById(div_id);
+        var currentDiv = errorsDiv || document.getElementById(divId);
         if (currentDiv) {
             currentDiv.parentElement.insertBefore(newDiv, currentDiv);
             return true;

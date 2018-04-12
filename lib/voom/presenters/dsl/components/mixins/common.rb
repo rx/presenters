@@ -5,6 +5,7 @@ require_relative 'grid'
 require_relative 'buttons'
 require_relative 'expansion_panels'
 require_relative 'content'
+require_relative 'menus'
 
 module Voom
   module Presenters
@@ -19,6 +20,7 @@ module Voom
             include Mixins::Buttons
             include Mixins::ExpansionPanels
             include Mixins::Content
+            include Mixins::Menus
 
             def badge(badge=nil, **attributes, &block)
               self << Components::Badge.new(parent: self, badge: badge, context: context, **attributes, &block)
@@ -35,10 +37,6 @@ module Voom
             def list(**attributes, &block)
               self << Components::List.new(parent: self,
                                            context: context, **attributes, &block)
-            end
-
-            def menu(**attributes, &block)
-              self << Components::Menu.new(parent: self, context: context, **attributes, &block)
             end
 
             def table(**attributes, &block)

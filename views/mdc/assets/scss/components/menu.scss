@@ -1,0 +1,8 @@
+@import "@material/menu/mdc-menu";
+
+.v-menu-link {
+  &:hover, &:visited, &:link, &:active {
+    color: inherit;
+    text-decoration: none;
+  }
+}

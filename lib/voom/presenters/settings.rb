@@ -1,6 +1,5 @@
-
 include Voom::Trace
-trace { "Loading Presenters Settings" }
+trace {"Loading Presenters Settings"}
 
 module Voom
   module Presenters
@@ -8,9 +7,10 @@ module Voom
       extend Dry::Configurable
       setting :presenters do
         setting :root, []
-        setting     :helpers, []
-        setting     :deep_freeze, true
-        setting         :web_client do
+        setting :helpers, []
+        setting :deep_freeze, true
+        setting :id_generator, ->(node) {"id-#{SecureRandom.hex}"}
+        setting :web_client do
           # Add lambda's to modify the context for the presenters
           # For example:
           # Voom::Presenters::Settings.configure do |config|
@@ -19,7 +19,7 @@ module Voom
           #     context.merge(aaa_identity: identity_id)
           #   }
           # end
-          setting :prepare_context, [->(context, _session, _env){ context.merge(request_id: SecureRandom.hex(8)) }]
+          setting :prepare_context, [->(context, _session, _env) {context.merge(request_id: SecureRandom.hex(8))}]
         end
       end
     end

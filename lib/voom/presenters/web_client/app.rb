@@ -31,6 +31,10 @@ module Voom
           def eq(attrib, value)
             attrib.to_s == value.to_s
           end
+
+          def unique_id(comp)
+            "#{comp.id}-#{SecureRandom.hex(4)}"
+          end
         end
 
         get '/' do

@@ -2,6 +2,7 @@
   <ul class="mdc-list
             <%= 'mdc-list--two-line' if comp.lines.select{|line| eq(line.type, :line) && line.subtitle }.any? %>
             <%= 'mdc-list--avatar-list v-list--with-avatars' if comp.lines.select{|line| eq(line.type, :line) && line.avatar }.any? %>">
+    <div class="v-errors"></div>
 <% end %>
 <% for line in comp.lines %>
   <%= erb :"components/list/#{line.type}", :locals => {:line => line} %>
@@ -10,4 +11,5 @@
 <% unless comp.lines_only %>
   </ul>
 <% end %>
+
 

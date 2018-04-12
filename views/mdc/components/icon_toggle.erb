@@ -5,6 +5,7 @@
    aria-pressed="<%= comp.checked %>"
    data-checked="<%= comp.checked %>"
    aria-label="" tabindex="0"
+   data-name="<%= comp.name %>"
    data-toggle-on='{"label": "", "content": "<%= comp.icon %>" ,"cssClass": "v-toggle-icon--on"}'
    data-toggle-off='{"label": "", "content": "<%= comp.icon  %>", "cssClass": "v-toggle-icon--off"}'
    <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>>

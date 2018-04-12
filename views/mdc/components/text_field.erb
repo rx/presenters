@@ -5,7 +5,7 @@
             <%= 'is-invalid is-dirty' if comp.error %>">
   <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"} %>
   <input id="<%= comp.id %>-input"
-         name="<%= comp.id %>"
+         name="<%= comp.name %>"
          type="<%= comp.password ? 'password' : 'text' %>"
          value="<%= comp.value %>"
          class="mdc-text-field__input"

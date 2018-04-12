@@ -14,7 +14,10 @@ module Voom
           def initialize(type: nil, **attribs_, &block)
             @button_type = h(type) || ((attribs_[:icon]&&!attribs_[:text]) ? :icon : nil) || :flat
             super(type: :button, **attribs_, &block)
-            @icon = attribs.delete(:icon)
+            icon = attribs.delete(:icon)
+            @icon = icon ? Icon.new(parent: self, icon: icon,
+                                           context: context,
+                                           **attribs, &block) : nil
             @text = attribs.delete(:text)
             @color = attribs.delete(:color)
             @disabled = attribs.delete(:disabled) || false
@@ -22,10 +25,7 @@ module Voom
             @dialog = attribs.delete(:dialog)
             @align = attribs.delete(:align)
             expand!
-          end
-          
-          def event_parent_id
-            self.parent(:form)&.id || id
+            @event_parent_id = self.parent(:form)&.id || id
           end
         end
       end

@@ -35,7 +35,7 @@ export class VEvents {
         pseries(fnlist)
             .then(function (results) {
                 var contentType = results[1];
-                var responseText = results[2];
+                // var responseText = results[2];
                 var responseURL = results[3];
 
                 if (event.target.dialog) {
@@ -46,7 +46,7 @@ export class VEvents {
                 }
 
             }).catch(function (results) {
-            new VErrors().displayErrors(results);
+            new VErrors(event).displayErrors(results);
         });
     }
 

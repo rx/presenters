@@ -35,6 +35,7 @@
   <main class="mdl-layout__content"
         style="<%="background-color:#{@pom.page.background_color}" if @pom.page&.background_color%>">
     <div class="page-content">
+      <div class="v-errors"></div>
       <%= yield %>
     </div>
   </main>

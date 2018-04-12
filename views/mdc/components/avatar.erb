@@ -10,10 +10,7 @@
          src="<%= comp.avatar %>"
          <%= erb :"components/event", :locals => {events: events, parent_id: comp.event_parent_id} %> />
   <% else %>
-    <i class="material-icons
-              <%= 'v-actionable' if events %>"
-       id="<%= comp.id %>"
-       <%= erb :"components/event", :locals => {events: events, parent_id: comp.event_parent_id} %>><%= comp.avatar %></i>
+    <%= erb :"components/icon", :locals => {comp: comp, icon_name: comp.avatar, parent_id: comp.event_parent_id} %>
   <% end %>
   </span>
 <% end %>

@@ -31,6 +31,7 @@ module Voom
             include Mixins::Event
             include Mixins::Common
             include Mixins::Helpers
+            include Mixins::Attaches
 
             attr_accessor :components
 

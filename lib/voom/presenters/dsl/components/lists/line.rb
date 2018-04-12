@@ -54,10 +54,14 @@ module Voom
                                **attribs, &block)
             end
 
+            def menu(**attributes, &block)
+              return @menu if locked?
+              @menu = Components::Menu.new(parent: self, context: context, **attributes, &block)
+            end
 
             def action(**attribs, &block)
               @actions << Lists::Action.new(parent: self,
-                                         **attribs, &block)
+                                            **attribs, &block)
             end
           end
         end

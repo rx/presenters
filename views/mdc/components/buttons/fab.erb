@@ -5,6 +5,6 @@
         <%= 'disabled' if comp.disabled %>
         <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} unless comp.disabled %>>
   <span class="mdc-fab__icon">
-  <%= comp.icon %>
+  <%= comp.icon.icon %>
   </span>
 </button>
