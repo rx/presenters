@@ -46,6 +46,7 @@ module Voom
           @pom = presenter.expand(router: router, context: prepare_context)
           @grid_nesting = Integer(params[:grid_nesting] || 0)
           layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
+          response.headers['X-Frame-Options'] = 'ALLOWALL' if ENV['ALLOWALL_FRAME_OPTIONS']
           erb :web, layout: layout
         end
 
