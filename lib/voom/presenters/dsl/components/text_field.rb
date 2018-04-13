@@ -48,6 +48,11 @@ module Voom
             @error = error
           end
 
+          def readonly(readonly=nil)
+            return @readonly if locked?
+            @readonly = readonly
+          end
+
           private
           def json_regexp(regexp)
             str = regexp.inspect.
