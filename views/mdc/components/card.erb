@@ -19,7 +19,7 @@
     <% if comp.title.text.any? %>
       <h2 class="mdl-card__title-text"
           style="<%= 'align-self: flex-start;' if eq(comp.title&.align, :top)%>"
-      ><%= comp.title.text.map {|line| "#{line}<br/>"}.join %></h2>
+      ><%= expand_text(comp.title.text) %></h2>
     <% end %>
   </div>
   <% end %>
@@ -31,7 +31,7 @@
   <% end %>
 
   <% if comp.text %>
-    <div class="mdl-card__supporting-text"><%= comp.text.map {|line| "#{markdown(line)}<br/>"}.join %></div>
+    <div class="mdl-card__supporting-text"><%= expand_text(comp.text) %></div>
   <% end %>
 
   <%= erb :"components/render", :locals => {:components => comp.components, :scope=> nil} %>

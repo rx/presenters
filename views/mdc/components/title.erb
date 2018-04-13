@@ -1,5 +1,5 @@
-<div class="mdl-typography--title
+<div class="mdc-typography--title
            <%= 'v-actionable' if comp.events %>"
      id="<%=comp.id%>"
      <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%>>
-  <%= markdown(comp.text) %></div>
+  <%= expand_text(comp.text) %></div>

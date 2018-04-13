@@ -1,5 +1,5 @@
 <div class="mdl-layout__drawer">
-  <span class="mdl-layout__title"><%= drawer.title %></span>
+  <span class="mdl-layout__title mdc-typography--title"><%= expand_text(drawer.title.text) %></span>
   <% if drawer.menu&.items %>
     <nav class="mdl-navigation">
       <% drawer.menu&.items&.each do |item| %>

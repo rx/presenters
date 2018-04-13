@@ -5,6 +5,7 @@ module Voom
     module DSL
       module Components
         class HiddenField < Input
+          attr_reader :name
 
           def initialize(**attribs_, &block)
             super(type: :hidden_field, context: context,

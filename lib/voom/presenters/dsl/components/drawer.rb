@@ -11,7 +11,7 @@ module Voom
 
           def initialize(**attribs_, &block)
             super(type: :drawer, **attribs_, &block)
-            @title = attribs.delete(:title)
+            self.title(attribs.delete(:title)) if attribs.key?(:title)
             @components = []
 
             expand!
@@ -25,7 +25,12 @@ module Voom
 
           def attach(presenter, **params, &block)
             pom = Voom::Presenters::App[presenter].call.expand_child(parent: self, context: context.merge(params), &block)
-            @menu = pom.components.select{|i| i.type==:menu}.first
+            @menu = pom.components.select {|i| i.type==:menu}.first
+          end
+
+          def title(text=nil, **attribs, &block)
+            return @title if locked?
+            @title = Components::Typography.new(parent: self, type: :text, text: text, context: context, **attribs, &block)
           end
 
         end

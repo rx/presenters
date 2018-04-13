@@ -17,7 +17,7 @@ module Voom
         set :router_, Router
         set :bind, '0.0.0.0'
         set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE']||'mdc')}
-        
+
         helpers do
           def markdown(text)
             @markdown ||= Redcarpet::Markdown.new(RenderWithoutWrap, extensions = {})
@@ -34,6 +34,10 @@ module Voom
 
           def unique_id(comp)
             "#{comp.id}-#{SecureRandom.hex(4)}"
+          end
+
+          def expand_text(text)
+            text.map {|line| "#{markdown(line)}<br/>"}.join
           end
         end
 
@@ -67,7 +71,7 @@ module Voom
         end
 
         def prepare_context
-          Presenters::Settings.config.presenters.web_client.prepare_context.reduce(params) do | params, context_proc |
+          Presenters::Settings.config.presenters.web_client.prepare_context.reduce(params) do |params, context_proc|
             context_proc.call(params, session, env)
           end
         end

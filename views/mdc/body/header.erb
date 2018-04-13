@@ -2,10 +2,10 @@
   <div class="mdl-layout-icon"></div>
   <div class="mdl-layout__header-row">
 
-    <span class="mdl-layout__title
+    <span class="mdc-typography--title
                 <%= 'v-actionable' if header.title&.events %>"
           <%= erb :"components/event", :locals => {events: header.title&.events, parent_id: header.title&.event_parent_id} %>>
-      <%= header.title&.text %>
+      <%= expand_text(header.title&.text) %>
     </span>
     <div class="mdl-layout-spacer"></div>
     <% if header.menu %>

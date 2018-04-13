@@ -11,7 +11,7 @@ module Voom
 
           def initialize(parent:, **attribs_, &block)
             super(type: :text, parent: parent, **attribs_, &block)
-            @text = Array(attribs.delete(:text)||'').join("\n")
+            @text = Array(attribs.delete(:text)||'').join("\n").split("\n")
             @level = attribs.delete(:level) || 1
             @color = attribs.delete(:color)
             expand!
