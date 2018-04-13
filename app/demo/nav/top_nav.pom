@@ -2,7 +2,7 @@ Voom::Presenters.define('top_nav') do
   page do
     title 'Presenters Demo'
   end
-  
+
   header 'Presenters Demo' do
     menu do
       item 'About' do
@@ -22,6 +22,13 @@ Voom::Presenters.define('top_nav') do
           loads :styles
         end
       end
+
+      item 'Status' do
+        event :click do
+          loads :component_status
+        end
+      end
+
     end
   end
 end

@@ -1,5 +1,7 @@
 require_relative 'helpers/date'
 require_relative 'helpers/time'
+require_relative 'helpers/inflector'
+
 module Voom
   module Presenters
     module Helpers

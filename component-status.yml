@@ -1,0 +1,209 @@
+---
+-
+    Components: Bottom navigation
+    Implementation: N
+    MDL: N
+    MDC: N
+    Priority: low
+    Completeness: 
+    Notes: 
+-
+    Components: Bottom sheets
+    Implementation: N
+    MDL: N
+    MDC: N
+    Priority: not planned
+    Completeness: 
+    Notes: 
+-
+    Components: Buttons
+    Implementation: MDC
+    MDL: 
+    MDC: 
+    Priority: 
+    Completeness: 3
+    Notes: 
+-
+    Components: "Buttons: Floating Action Button"
+    Implementation: MDC
+    MDL: 
+    MDC: 
+    Priority: 
+    Completeness: 3
+    Notes: 
+-
+    Components: Cards
+    Implementation: MDL
+    MDL: 
+    MDC: Y
+    Priority: 
+    Completeness: 2
+    Notes: 
+-
+    Components: Chips
+    Implementation: N
+    MDL: 
+    MDC: Y
+    Priority: high
+    Completeness: 
+    Notes: 
+-
+    Components: Data tables
+    Implementation: MDL
+    MDL: 
+    MDC: N
+    Priority: 
+    Completeness: 2
+    Notes: 
+-
+    Components: Dialogs
+    Implementation: MDL
+    MDL: 
+    MDC: Y
+    Priority: 
+    Completeness: 3
+    Notes: 
+-
+    Components: Dividers
+    Implementation: N
+    MDL: N
+    MDC: N
+    Priority: not planned
+    Completeness: 
+    Notes: 
+-
+    Components: Expansion panels
+    Implementation: Y
+    MDL: N
+    MDC: N
+    Priority: 
+    Completeness: 2
+    Notes: Custom
+-
+    Components: Grid lists
+    Implementation: N
+    MDL: 
+    MDC: Y
+    Priority: not planned
+    Completeness: 
+    Notes: 
+-
+    Components: Lists
+    Implementation: MDC
+    MDL: 
+    MDC: 
+    Priority: 
+    Completeness: 2
+    Notes: 
+-
+    Components: "Lists: Controls"
+    Implementation: MDL/MDC
+    MDL: 
+    MDC: 
+    Priority: 
+    Completeness: 2
+    Notes: Missing Leave-behinds
+-
+    Components: Menus
+    Implementation: MDC/MDL
+    MDL: 
+    MDC: 
+    Priority: 
+    Completeness: 2
+    Notes: 
+-
+    Components: Pickers
+    Implementation: N
+    MDL: N
+    MDC: N
+    Priority: medium
+    Completeness: 
+    Notes: Need date/time selection
+-
+    Components: Progress & activity
+    Implementation: N
+    MDL: 
+    MDC: Y
+    Priority: medium
+    Completeness: 
+    Notes: 
+-
+    Components: Selection controls/switches
+    Implementation: MDL/MDC
+    MDL: 
+    MDC: Y
+    Priority: 
+    Completeness: 2
+    Notes: 
+-
+    Components: Sliders
+    Implementation: N
+    MDL: 
+    MDC: Y
+    Priority: medium
+    Completeness: 
+    Notes: 
+-
+    Components: Snackbars & toasts
+    Implementation: MDL
+    MDL: 
+    MDC: Y
+    Priority: 
+    Completeness: 2
+    Notes: 
+-
+    Components: Steppers
+    Implementation: N
+    MDL: N
+    MDC: N
+    Priority: medium
+    Completeness: 
+    Notes: 
+-
+    Components: Subheaders
+    Implementation: NA
+    MDL: 
+    MDC: 
+    Priority: not planned
+    Completeness:
+    Notes: This should be doable using typography
+-
+    Components: Tabs
+    Implementation: N
+    MDL: 
+    MDC: Y
+    Priority: medium
+    Completeness: 
+    Notes: 
+-
+    Components: Text fields
+    Implementation: MDC
+    MDL: 
+    MDC: 
+    Priority: high
+    Completeness: 1
+    Notes: Missing select controls
+-
+    Components: Toolbars
+    Implementation: MDL
+    MDL: 
+    MDC: Y
+    Priority: 
+    Completeness: 2
+    Notes: 
+-
+    Components: Tooltips
+    Implementation: N
+    MDL: Y
+    MDC: 
+    Priority:
+    Completeness: 2
+    Notes:  The list icons are not displaying tooltips. Help wanted
+-
+    Components: Widgets
+    Implementation: N
+    MDL: N
+    MDC: N
+    Priority: not planned
+    Completeness: 
+    Notes: 

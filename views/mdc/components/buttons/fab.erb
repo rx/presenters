@@ -8,3 +8,4 @@
   <%= comp.icon.icon %>
   </span>
 </button>
+<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

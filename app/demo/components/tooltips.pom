@@ -1,0 +1,110 @@
+Voom::Presenters.define(:tooltips) do
+  attach :top_nav
+  attach :component_drawer
+
+  attach :grid do
+    display 'Tooltips'
+
+    headline 'Avatars'
+    subheading 'Cards'
+    card do
+      title do
+        avatar 'img/demo/rx.png' do
+          tooltip "Ill be back"
+        end
+      end
+    end
+
+    card do
+      title do
+        avatar :person do
+          tooltip "Ill be back"
+        end
+      end
+    end
+
+    subheading 'Lists (**Help Wanted**)'
+    list do
+      line do
+        text 'Terminator2'
+        avatar 'img/demo/rx.png' do
+          tooltip "I'll be back"
+        end
+      end
+      line do
+        text 'Terminator3'
+        avatar :person do
+          tooltip "I'll be back"
+        end
+      end
+    end
+
+    headline 'Buttons'
+
+    button 'Button', type: :raised do
+      tooltip "Yo\nsmile"
+    end
+    button 'Button' do
+      tooltip "Yo\nsmile"
+    end
+    button icon: :mood do
+      tooltip "Yo\nsmile"
+    end
+
+    headline 'Tables'
+
+    table selectable: true do
+      header do
+        column 'Material'
+        column 'Quantity' do
+          tooltip 'This is the quantity on hand.'
+        end
+        column 'Unit price'
+      end
+
+      row do
+        column 'Caulk'
+        column 99
+        column "$299"
+      end
+    end
+
+
+    headline 'Toggles'
+
+    radio_button do
+      tooltip 'check it'
+    end
+    icon_toggle 'format_italic' do
+      tooltip 'check it'
+    end
+    switch text: 'Help wanted -> (see)' do
+      tooltip 'check it'
+    end
+    checkbox text: 'Help wanted -> (see)' do
+      tooltip 'check it'
+    end
+
+
+    display 'Styles'
+
+    display 'Typography', level: 4 do
+      tooltip 'I do nothing.'
+    end
+
+    headline 'Headline' do
+      tooltip 'I do nothing.'
+    end
+    title 'Title' do
+      tooltip 'I do nothing.'
+    end
+    subheading 'Subheading 2', level: 2 do
+      tooltip 'I do nothing.'
+    end
+    body 'Body 2 text, calling something out.', level: 2 do
+      tooltip 'I do nothing.'
+    end
+
+    attach :code, file: __FILE__
+  end
+end

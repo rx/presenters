@@ -26,15 +26,15 @@ describe 'dsl' do
       end
 
       it 'subtitle' do
-        expect(line.subtitle.text).to eq('subtitle 9000')
+        expect(line.subtitle.text).to eq(['subtitle 9000'])
       end
 
       it 'body' do
-        expect(line.body.text).to eq('body 8000')
+        expect(line.body.text).to eq(['body 8000'])
       end
 
       it 'info' do
-        expect(line.info.text).to eq('info 7000')
+        expect(line.info.text).to eq(['info 7000'])
       end
     end
   end

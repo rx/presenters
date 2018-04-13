@@ -1,11 +1,14 @@
 require_relative 'mixins/common'
 require_relative 'mixins/event'
+require_relative 'mixins/helpers'
+require_relative 'mixins/tooltips'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Table < Base
+          include Mixins::Helpers
           attr_accessor :header, :rows, :selectable
 
           def initialize(**attribs_, &block)
@@ -36,11 +39,13 @@ module Voom
           # end
 
           class Row < Base
-            attr_accessor :columns
+            include Mixins::Helpers
+            attr_accessor :columns, :color
 
             def initialize(type:, **attribs_, &block)
               super(type: type, **attribs_, &block)
               @columns = []
+              @color = attribs.delete(:color)
               expand!
             end
 
@@ -51,14 +56,17 @@ module Voom
             end
 
             class Column < Base
+              include Mixins::Helpers
               include Mixins::Event
+              include Mixins::Tooltips
 
-              attr_accessor :value, :numeric
+              attr_accessor :value, :numeric, :color
 
               def initialize(**attribs_, &block)
                 super(type: :column, **attribs_, &block)
                 @value = attribs.delete(:value)
                 @numeric = attribs.delete(:numeric) || numeric?
+                @color = attribs.delete(:color)
                 expand!
               end
 

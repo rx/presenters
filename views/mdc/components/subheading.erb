@@ -1,6 +1,7 @@
-<div class="mdc-typography--subheading<%=comp.level%>
+<div id="<%= comp.id %>"
+     class="mdc-typography--subheading<%= comp.level %>
             <%= 'v-actionable' if comp.events %>"
-     id="<%=comp.id%>"
-     style="<%='font-size: 13px' if comp.level==1%>"
-     <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%>>
+     style="<%= 'font-size: 13px' if comp.level==1 %>"
+     <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>>
   <%= expand_text(comp.text) %></div>
+<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

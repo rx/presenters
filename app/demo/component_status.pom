@@ -1,0 +1,51 @@
+require 'yaml'
+
+Voom::Presenters.define(:component_status) do
+  helpers Voom::Presenters::Helpers::Inflector
+  attach 'top_nav'
+  attach 'component_drawer'
+  helpers do
+    def status
+      @status ||= YAML::load_file(File.join(__dir__, '../../component-status.yml'))
+    end
+
+    def item_color(item)
+      trace { item.inspect }
+      case item
+        when ->(i){['low','not planned'].include?(i['Priority'])}
+          :lightgray
+        when ->(i){ (i.fetch('Completeness')||0) > 1 }
+          :DarkSeaGreen
+        when 'low'
+          :lightgray
+        when ->(i){i['Priority']=='medium'}
+          :coral
+        when ->(i){i['Priority']=='high'}
+          :lightcoral
+        else
+          nil
+      end
+    end
+  end
+
+  attach :grid do
+    display 'Component Status'
+    table do
+      header do
+        status.first.keys.each do |heading|
+          column inflector.humanize(heading)
+        end
+      end
+
+      status.each do |item|
+        row do
+          status.first.keys.each_with_index do |heading, index|
+            value = item[heading]
+            color = index ==0 ? item_color(item) : nil
+            column value, color: color
+          end
+        end
+      end
+    end
+  end
+end

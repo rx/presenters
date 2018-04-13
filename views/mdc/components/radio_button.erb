@@ -1,4 +1,4 @@
-<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="<%=comp.id%>-input">
+<label id="<%=comp.id%>" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="<%=comp.id%>-input">
   <input id="<%= comp.id %>-input"
            name="<%= comp.name %>"
          type="radio"
@@ -8,3 +8,4 @@
          <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%> />
   <span class="mdl-radio__label"><%=comp.text%></span>
 </label>
+<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id }%>

@@ -1,1 +1,2 @@
-<img src="<%= comp.url %>" height="<%= comp.height %>" width="<%= comp.width %>" border="0" alt="">
+<img id="<%= comp.id %>" src="<%= comp.url %>" height="<%= comp.height %>" width="<%= comp.width %>" border="0" alt="">
+<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

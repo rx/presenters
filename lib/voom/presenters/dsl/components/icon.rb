@@ -1,4 +1,5 @@
 require_relative 'mixins/event'
+require_relative 'mixins/tooltips'
 
 module Voom
   module Presenters
@@ -6,6 +7,7 @@ module Voom
       module Components
         class Icon < Base
           include Mixins::Event
+          include Mixins::Tooltips
           attr_accessor :icon, :color, :size
 
           def initialize(**attribs_, &block)

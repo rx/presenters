@@ -1,4 +1,6 @@
-<div class="mdc-typography--display<%=comp.level%>
+<div id="<%=comp.id%>"
+     class="mdc-typography--display<%=comp.level%>
        <%= 'v-actionable' if comp.events %>"
      <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%>
 ><%= expand_text(comp.text) %></div>
+<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

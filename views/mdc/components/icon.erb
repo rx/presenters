@@ -21,4 +21,5 @@
      <%= erb :"components/event", :locals => {events: comp.events, parent_id: parent_id}%>>
     <%=icon%>
   </i>
+  <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 <% end %>

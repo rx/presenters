@@ -7,4 +7,5 @@
     <%= erb :'components/icon', :locals => {comp: comp.icon} %>
     <%= comp.text %>
 </button>
+<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 

@@ -104,6 +104,13 @@ Voom::Presenters.define('component_menu') do
         loads :badges
       end
     end
+
+    item 'Tooltips' do
+      # icon :home
+      event :click do
+        loads :tooltips
+      end
+    end
   end
 end
 

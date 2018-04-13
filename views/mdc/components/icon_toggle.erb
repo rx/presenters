@@ -1,4 +1,5 @@
-<i class="mdc-icon-toggle material-icons
+<i id="<%= comp.id %>"
+   class="mdc-icon-toggle material-icons
        <%= 'mdc-icon-toggle--disabled' if comp.disabled %>"
    role="button"
    aria-disabled="<%= comp.disabled %>"
@@ -11,3 +12,4 @@
    <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>>
   <%= comp.icon  %>
 </i>
+<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

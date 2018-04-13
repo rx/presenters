@@ -1,1 +1,5 @@
-<p class=".mdc-typography--body-<%=comp.level%>"><%= expand_text(comp.text) %></p>
+<p id="<%=comp.id%>"
+   class=".mdc-typography--body-<%=comp.level%>">
+  <%= expand_text(comp.text) %>
+</p>
+<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
