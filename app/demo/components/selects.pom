@@ -1,0 +1,37 @@
+Voom::Presenters.define(:selects) do
+  attach :top_nav
+  attach :component_drawer
+
+  attach :grid do
+    display 'Select Fields'
+
+    form do
+      select do
+        label 'Text...'
+        option do
+          value 'value1'
+          text 'First value'
+        end
+        option do
+          value 'value2'
+          text 'Second value'
+        end
+      end
+    end
+
+
+    # select_field do
+    #   label 'Text...'
+    #   option do
+    #     value 'value1'
+    #     text 'First value'
+    #   end
+    #   option do
+    #     value 'value2'
+    #     text 'Second value'
+    #   end
+    # end
+    
+    attach :code, file: __FILE__
+  end
+end

@@ -28,13 +28,13 @@ Voom::Presenters.define(:tooltips) do
       line do
         text 'Terminator2'
         avatar 'img/demo/rx.png' do
-          tooltip "I'll be back - not working"
+          tooltip "I'll be back - not working", position: :right
         end
       end
       line do
         text 'Terminator3'
         avatar :person do
-          tooltip "I'll be back - not working"
+          tooltip "I'll be back - not working",  position: :right
         end
       end
     end
@@ -42,13 +42,13 @@ Voom::Presenters.define(:tooltips) do
     headline 'Buttons'
 
     button 'Button', type: :raised do
-      tooltip "Yo\nsmile"
+      tooltip "Yo\nsmile" # position: :left
     end
-    button 'Button', position: :bottom do
-      tooltip "Yo\nsmile"
+    button 'Button'  do
+      tooltip "Yo\nsmile", position: :bottom
     end
     button icon: :mood do
-      tooltip "Yo\nsmile"
+      tooltip "Yo\nsmile", position: :top
     end
 
     headline 'Tables'
@@ -63,7 +63,9 @@ Voom::Presenters.define(:tooltips) do
       end
 
       row do
-        column 'Caulk'
+        column 'Caulk'  do
+          tooltip 'This fixes leaks', position: :right
+        end
         column 99
         column "$299"
       end
@@ -73,15 +75,15 @@ Voom::Presenters.define(:tooltips) do
     headline 'Toggles'
 
     radio_button do
-      tooltip 'check it'
+      tooltip 'select it'
     end
     icon_toggle 'format_italic' do
-      tooltip 'check it'
+      tooltip 'toggle it'
     end
-    switch text: 'Help wanted -> (see)' do
-      tooltip 'check it'
+    switch  do
+      tooltip 'switch it'
     end
-    checkbox text: 'Help wanted -> (see)' do
+    checkbox  do
       tooltip 'check it'
     end
 

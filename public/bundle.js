@@ -60,24 +60,14 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 29);
+/******/ 	return __webpack_require__(__webpack_require__.s = 32);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -98,156 +88,105 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * @template A
  */
-var MDCFoundation = function () {
-  _createClass(MDCFoundation, null, [{
-    key: "cssClasses",
+class MDCFoundation {
+  /** @return enum{cssClasses} */
+  static get cssClasses() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports every
+    // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
+    return {};
+  }
 
-    /** @return enum{cssClasses} */
-    get: function get() {
-      // Classes extending MDCFoundation should implement this method to return an object which exports every
-      // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
-      return {};
-    }
+  /** @return enum{strings} */
+  static get strings() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports all
+    // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
+    return {};
+  }
 
-    /** @return enum{strings} */
+  /** @return enum{numbers} */
+  static get numbers() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports all
+    // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
+    return {};
+  }
 
-  }, {
-    key: "strings",
-    get: function get() {
-      // Classes extending MDCFoundation should implement this method to return an object which exports all
-      // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
-      return {};
-    }
+  /** @return {!Object} */
+  static get defaultAdapter() {
+    // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
+    // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
+    // validation.
+    return {};
+  }
 
-    /** @return enum{numbers} */
-
-  }, {
-    key: "numbers",
-    get: function get() {
-      // Classes extending MDCFoundation should implement this method to return an object which exports all
-      // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
-      return {};
-    }
-
-    /** @return {!Object} */
-
-  }, {
-    key: "defaultAdapter",
-    get: function get() {
-      // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
-      // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
-      // validation.
-      return {};
-    }
-
-    /**
-     * @param {A=} adapter
-     */
-
-  }]);
-
-  function MDCFoundation() {
-    var adapter = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    _classCallCheck(this, MDCFoundation);
-
+  /**
+   * @param {A=} adapter
+   */
+  constructor(adapter = {}) {
     /** @protected {!A} */
     this.adapter_ = adapter;
   }
 
-  _createClass(MDCFoundation, [{
-    key: "init",
-    value: function init() {
-      // Subclasses should override this method to perform initialization routines (registering events, etc.)
-    }
-  }, {
-    key: "destroy",
-    value: function destroy() {
-      // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
-    }
-  }]);
+  init() {
+    // Subclasses should override this method to perform initialization routines (registering events, etc.)
+  }
 
-  return MDCFoundation;
-}();
+  destroy() {
+    // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
+  }
+}
 
-exports.default = MDCFoundation;
+/* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(0);
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Copyright 2016 Google Inc.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *   http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
-
-var _foundation = __webpack_require__(0);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * @template F
  */
-var MDCComponent = function () {
-  _createClass(MDCComponent, null, [{
-    key: 'attachTo',
+class MDCComponent {
+  /**
+   * @param {!Element} root
+   * @return {!MDCComponent}
+   */
+  static attachTo(root) {
+    // Subclasses which extend MDCBase should provide an attachTo() method that takes a root element and
+    // returns an instantiated component with its root set to that element. Also note that in the cases of
+    // subclasses, an explicit foundation class will not have to be passed in; it will simply be initialized
+    // from getDefaultFoundation().
+    return new MDCComponent(root, new __WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */]());
+  }
 
-    /**
-     * @param {!Element} root
-     * @return {!MDCComponent}
-     */
-    value: function attachTo(root) {
-      // Subclasses which extend MDCBase should provide an attachTo() method that takes a root element and
-      // returns an instantiated component with its root set to that element. Also note that in the cases of
-      // subclasses, an explicit foundation class will not have to be passed in; it will simply be initialized
-      // from getDefaultFoundation().
-      return new MDCComponent(root, new _foundation2.default());
-    }
-
-    /**
-     * @param {!Element} root
-     * @param {F=} foundation
-     * @param {...?} args
-     */
-
-  }]);
-
-  function MDCComponent(root) {
-    var foundation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
-
-    _classCallCheck(this, MDCComponent);
-
+  /**
+   * @param {!Element} root
+   * @param {F=} foundation
+   * @param {...?} args
+   */
+  constructor(root, foundation = undefined, ...args) {
     /** @protected {!Element} */
     this.root_ = root;
-
-    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-      args[_key - 2] = arguments[_key];
-    }
-
-    this.initialize.apply(this, args);
+    this.initialize(...args);
     // Note that we initialize foundation here and not within the constructor's default param so that
     // this.root_ is defined and can be used within the foundation class.
     /** @protected {!F} */
@@ -256,110 +195,247 @@ var MDCComponent = function () {
     this.initialSyncWithDOM();
   }
 
-  _createClass(MDCComponent, [{
-    key: 'initialize',
-    value: function initialize() /* ...args */{}
-    // Subclasses can override this to do any additional setup work that would be considered part of a
-    // "constructor". Essentially, it is a hook into the parent constructor before the foundation is
-    // initialized. Any additional arguments besides root and foundation will be passed in here.
+  initialize() /* ...args */{}
+  // Subclasses can override this to do any additional setup work that would be considered part of a
+  // "constructor". Essentially, it is a hook into the parent constructor before the foundation is
+  // initialized. Any additional arguments besides root and foundation will be passed in here.
 
 
-    /**
-     * @return {!F} foundation
-     */
+  /**
+   * @return {!F} foundation
+   */
+  getDefaultFoundation() {
+    // Subclasses must override this method to return a properly configured foundation class for the
+    // component.
+    throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' + 'foundation class');
+  }
 
-  }, {
-    key: 'getDefaultFoundation',
-    value: function getDefaultFoundation() {
-      // Subclasses must override this method to return a properly configured foundation class for the
-      // component.
-      throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' + 'foundation class');
+  initialSyncWithDOM() {
+    // Subclasses should override this method if they need to perform work to synchronize with a host DOM
+    // object. An example of this would be a form control wrapper that needs to synchronize its internal state
+    // to some property or attribute of the host DOM. Please note: this is *not* the place to perform DOM
+    // reads/writes that would cause layout / paint, as this is called synchronously from within the constructor.
+  }
+
+  destroy() {
+    // Subclasses may implement this method to release any resources / deregister any listeners they have
+    // attached. An example of this might be deregistering a resize event from the window object.
+    this.foundation_.destroy();
+  }
+
+  /**
+   * Wrapper method to add an event listener to the component's root element. This is most useful when
+   * listening for custom events.
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  listen(evtType, handler) {
+    this.root_.addEventListener(evtType, handler);
+  }
+
+  /**
+   * Wrapper method to remove an event listener to the component's root element. This is most useful when
+   * unlistening for custom events.
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  unlisten(evtType, handler) {
+    this.root_.removeEventListener(evtType, handler);
+  }
+
+  /**
+   * Fires a cross-browser-compatible custom event from the component root of the given type,
+   * with the given data.
+   * @param {string} evtType
+   * @param {!Object} evtData
+   * @param {boolean=} shouldBubble
+   */
+  emit(evtType, evtData, shouldBubble = false) {
+    let evt;
+    if (typeof CustomEvent === 'function') {
+      evt = new CustomEvent(evtType, {
+        detail: evtData,
+        bubbles: shouldBubble
+      });
+    } else {
+      evt = document.createEvent('CustomEvent');
+      evt.initCustomEvent(evtType, shouldBubble, false, evtData);
     }
-  }, {
-    key: 'initialSyncWithDOM',
-    value: function initialSyncWithDOM() {
-      // Subclasses should override this method if they need to perform work to synchronize with a host DOM
-      // object. An example of this would be a form control wrapper that needs to synchronize its internal state
-      // to some property or attribute of the host DOM. Please note: this is *not* the place to perform DOM
-      // reads/writes that would cause layout / paint, as this is called synchronously from within the constructor.
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      // Subclasses may implement this method to release any resources / deregister any listeners they have
-      // attached. An example of this might be deregistering a resize event from the window object.
-      this.foundation_.destroy();
-    }
 
-    /**
-     * Wrapper method to add an event listener to the component's root element. This is most useful when
-     * listening for custom events.
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
+    this.root_.dispatchEvent(evt);
+  }
+}
 
-  }, {
-    key: 'listen',
-    value: function listen(evtType, handler) {
-      this.root_.addEventListener(evtType, handler);
-    }
-
-    /**
-     * Wrapper method to remove an event listener to the component's root element. This is most useful when
-     * unlistening for custom events.
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: 'unlisten',
-    value: function unlisten(evtType, handler) {
-      this.root_.removeEventListener(evtType, handler);
-    }
-
-    /**
-     * Fires a cross-browser-compatible custom event from the component root of the given type,
-     * with the given data.
-     * @param {string} evtType
-     * @param {!Object} evtData
-     * @param {boolean=} shouldBubble
-     */
-
-  }, {
-    key: 'emit',
-    value: function emit(evtType, evtData) {
-      var shouldBubble = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-      var evt = void 0;
-      if (typeof CustomEvent === 'function') {
-        evt = new CustomEvent(evtType, {
-          detail: evtData,
-          bubbles: shouldBubble
-        });
-      } else {
-        evt = document.createEvent('CustomEvent');
-        evt.initCustomEvent(evtType, shouldBubble, false, evtData);
-      }
-
-      this.root_.dispatchEvent(evt);
-    }
-  }]);
-
-  return MDCComponent;
-}();
-
-exports.default = MDCComponent;
+/* harmony default export */ __webpack_exports__["a"] = (MDCComponent);
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRipple; });
+/* unused harmony export RippleCapableSurface */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(3);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
+/* unused harmony reexport util */
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+
+
+
+
+/**
+ * @extends MDCComponent<!MDCRippleFoundation>
+ */
+class MDCRipple extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /** @param {...?} args */
+  constructor(...args) {
+    super(...args);
+
+    /** @type {boolean} */
+    this.disabled = false;
+
+    /** @private {boolean} */
+    this.unbounded_;
+  }
+
+  /**
+   * @param {!Element} root
+   * @param {{isUnbounded: (boolean|undefined)}=} options
+   * @return {!MDCRipple}
+   */
+  static attachTo(root, { isUnbounded = undefined } = {}) {
+    const ripple = new MDCRipple(root);
+    // Only override unbounded behavior if option is explicitly specified
+    if (isUnbounded !== undefined) {
+      ripple.unbounded = /** @type {boolean} */isUnbounded;
+    }
+    return ripple;
+  }
+
+  /**
+   * @param {!RippleCapableSurface} instance
+   * @return {!MDCRippleAdapter}
+   */
+  static createAdapter(instance) {
+    const MATCHES = __WEBPACK_IMPORTED_MODULE_3__util__["b" /* getMatchesProperty */](HTMLElement.prototype);
+
+    return {
+      browserSupportsCssVars: () => __WEBPACK_IMPORTED_MODULE_3__util__["d" /* supportsCssVariables */](window),
+      isUnbounded: () => instance.unbounded,
+      isSurfaceActive: () => instance.root_[MATCHES](':active'),
+      isSurfaceDisabled: () => instance.disabled,
+      addClass: className => instance.root_.classList.add(className),
+      removeClass: className => instance.root_.classList.remove(className),
+      containsEventTarget: target => instance.root_.contains(target),
+      registerInteractionHandler: (evtType, handler) => instance.root_.addEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
+      deregisterInteractionHandler: (evtType, handler) => instance.root_.removeEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
+      registerDocumentInteractionHandler: (evtType, handler) => document.documentElement.addEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
+      deregisterDocumentInteractionHandler: (evtType, handler) => document.documentElement.removeEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
+      registerResizeHandler: handler => window.addEventListener('resize', handler),
+      deregisterResizeHandler: handler => window.removeEventListener('resize', handler),
+      updateCssVariable: (varName, value) => instance.root_.style.setProperty(varName, value),
+      computeBoundingRect: () => instance.root_.getBoundingClientRect(),
+      getWindowPageOffset: () => ({ x: window.pageXOffset, y: window.pageYOffset })
+    };
+  }
+
+  /** @return {boolean} */
+  get unbounded() {
+    return this.unbounded_;
+  }
+
+  /** @param {boolean} unbounded */
+  set unbounded(unbounded) {
+    this.unbounded_ = Boolean(unbounded);
+    this.setUnbounded_();
+  }
+
+  /**
+   * Closure Compiler throws an access control error when directly accessing a
+   * protected or private property inside a getter/setter, like unbounded above.
+   * By accessing the protected property inside a method, we solve that problem.
+   * That's why this function exists.
+   * @private
+   */
+  setUnbounded_() {
+    this.foundation_.setUnbounded(this.unbounded_);
+  }
+
+  activate() {
+    this.foundation_.activate();
+  }
+
+  deactivate() {
+    this.foundation_.deactivate();
+  }
+
+  layout() {
+    this.foundation_.layout();
+  }
+
+  /** @return {!MDCRippleFoundation} */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */](MDCRipple.createAdapter(this));
+  }
+
+  initialSyncWithDOM() {
+    this.unbounded = 'mdcRippleIsUnbounded' in this.root_.dataset;
+  }
+}
+
+/**
+ * See Material Design spec for more details on when to use ripples.
+ * https://material.io/guidelines/motion/choreography.html#choreography-creation
+ * @record
+ */
+class RippleCapableSurface {}
+
+/** @protected {!Element} */
+RippleCapableSurface.prototype.root_;
+
+/**
+ * Whether or not the ripple bleeds out of the bounds of the element.
+ * @type {boolean|undefined}
+ */
+RippleCapableSurface.prototype.unbounded;
+
+/**
+ * Whether or not the ripple is attached to a disabled component.
+ * @type {boolean|undefined}
+ */
+RippleCapableSurface.prototype.disabled;
+
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return supportsCssVariables; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return applyPassive; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getMatchesProperty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getNormalizedEventCoords; });
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -381,13 +457,13 @@ Object.defineProperty(exports, "__esModule", {
  * Stores result from supportsCssVariables to avoid redundant processing to detect CSS custom variable support.
  * @private {boolean|undefined}
  */
-var supportsCssVariables_ = void 0;
+let supportsCssVariables_;
 
 /**
  * Stores result from applyPassive to avoid redundant processing to detect passive event listener support.
  * @private {boolean|undefined}
  */
-var supportsPassive_ = void 0;
+let supportsPassive_;
 
 /**
  * @param {!Window} windowObj
@@ -396,8 +472,8 @@ var supportsPassive_ = void 0;
 function detectEdgePseudoVarBug(windowObj) {
   // Detect versions of Edge with buggy var() support
   // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11495448/
-  var document = windowObj.document;
-  var node = document.createElement('div');
+  const document = windowObj.document;
+  const node = document.createElement('div');
   node.className = 'mdc-ripple-surface--test-edge-var-bug';
   document.body.appendChild(node);
 
@@ -405,8 +481,8 @@ function detectEdgePseudoVarBug(windowObj) {
   // Additionally, getComputedStyle returns null in iframes with display: "none" in Firefox,
   // but Firefox is known to support CSS custom properties correctly.
   // See: https://bugzilla.mozilla.org/show_bug.cgi?id=548397
-  var computedStyle = windowObj.getComputedStyle(node);
-  var hasPseudoVarBug = computedStyle !== null && computedStyle.borderTopStyle === 'solid';
+  const computedStyle = windowObj.getComputedStyle(node);
+  const hasPseudoVarBug = computedStyle !== null && computedStyle.borderTopStyle === 'solid';
   node.remove();
   return hasPseudoVarBug;
 }
@@ -417,29 +493,32 @@ function detectEdgePseudoVarBug(windowObj) {
  * @return {boolean|undefined}
  */
 
-function supportsCssVariables(windowObj) {
-  var forceRefresh = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
+function supportsCssVariables(windowObj, forceRefresh = false) {
+  let supportsCssVariables = supportsCssVariables_;
   if (typeof supportsCssVariables_ === 'boolean' && !forceRefresh) {
-    return supportsCssVariables_;
+    return supportsCssVariables;
   }
 
-  var supportsFunctionPresent = windowObj.CSS && typeof windowObj.CSS.supports === 'function';
+  const supportsFunctionPresent = windowObj.CSS && typeof windowObj.CSS.supports === 'function';
   if (!supportsFunctionPresent) {
     return;
   }
 
-  var explicitlySupportsCssVars = windowObj.CSS.supports('--css-vars', 'yes');
+  const explicitlySupportsCssVars = windowObj.CSS.supports('--css-vars', 'yes');
   // See: https://bugs.webkit.org/show_bug.cgi?id=154669
   // See: README section on Safari
-  var weAreFeatureDetectingSafari10plus = windowObj.CSS.supports('(--css-vars: yes)') && windowObj.CSS.supports('color', '#00000000');
+  const weAreFeatureDetectingSafari10plus = windowObj.CSS.supports('(--css-vars: yes)') && windowObj.CSS.supports('color', '#00000000');
 
   if (explicitlySupportsCssVars || weAreFeatureDetectingSafari10plus) {
-    supportsCssVariables_ = !detectEdgePseudoVarBug(windowObj);
+    supportsCssVariables = !detectEdgePseudoVarBug(windowObj);
   } else {
-    supportsCssVariables_ = false;
+    supportsCssVariables = false;
   }
-  return supportsCssVariables_;
+
+  if (!forceRefresh) {
+    supportsCssVariables_ = supportsCssVariables;
+  }
+  return supportsCssVariables;
 }
 
 //
@@ -449,12 +528,9 @@ function supportsCssVariables(windowObj) {
  * @param {boolean=} forceRefresh
  * @return {boolean|{passive: boolean}}
  */
-function applyPassive() {
-  var globalObj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window;
-  var forceRefresh = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
+function applyPassive(globalObj = window, forceRefresh = false) {
   if (supportsPassive_ === undefined || forceRefresh) {
-    var isSupported = false;
+    let isSupported = false;
     try {
       globalObj.document.addEventListener('test', null, { get passive() {
           isSupported = true;
@@ -472,9 +548,7 @@ function applyPassive() {
  * @return {!Array<string>}
  */
 function getMatchesProperty(HTMLElementPrototype) {
-  return ['webkitMatchesSelector', 'msMatchesSelector', 'matches'].filter(function (p) {
-    return p in HTMLElementPrototype;
-  }).pop();
+  return ['webkitMatchesSelector', 'msMatchesSelector', 'matches'].filter(p => p in HTMLElementPrototype).pop();
 }
 
 /**
@@ -484,14 +558,12 @@ function getMatchesProperty(HTMLElementPrototype) {
  * @return {!{x: number, y: number}}
  */
 function getNormalizedEventCoords(ev, pageOffset, clientRect) {
-  var x = pageOffset.x,
-      y = pageOffset.y;
+  const { x, y } = pageOffset;
+  const documentX = x + clientRect.left;
+  const documentY = y + clientRect.top;
 
-  var documentX = x + clientRect.left;
-  var documentY = y + clientRect.top;
-
-  var normalizedX = void 0;
-  var normalizedY = void 0;
+  let normalizedX;
+  let normalizedY;
   // Determine touch point relative to the ripple container.
   if (ev.type === 'touchstart') {
     normalizedX = ev.changedTouches[0].pageX - documentX;
@@ -504,364 +576,247 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
   return { x: normalizedX, y: normalizedY };
 }
 
-exports.supportsCssVariables = supportsCssVariables;
-exports.applyPassive = applyPassive;
-exports.getMatchesProperty = getMatchesProperty;
-exports.getNormalizedEventCoords = getNormalizedEventCoords;
+
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(43);
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _foundation = __webpack_require__(0);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _adapter = __webpack_require__(12);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _constants = __webpack_require__(41);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2017 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 /**
  * @extends {MDCFoundation<!MDCTextFieldHelperTextAdapter>}
  * @final
  */
-var MDCTextFieldHelperTextFoundation = function (_MDCFoundation) {
-  _inherits(MDCTextFieldHelperTextFoundation, _MDCFoundation);
+class MDCTextFieldHelperTextFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
 
-  _createClass(MDCTextFieldHelperTextFoundation, null, [{
-    key: 'cssClasses',
+  /** @return enum {string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
+  }
 
-    /** @return enum {string} */
-    get: function get() {
-      return _constants.cssClasses;
-    }
+  /**
+   * {@see MDCTextFieldHelperTextAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCTextFieldHelperTextAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCTextFieldHelperTextAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        hasClass: () => {},
+        setAttr: () => {},
+        removeAttr: () => {},
+        setContent: () => {}
+      }
+    );
+  }
 
-    /** @return enum {string} */
-
-  }, {
-    key: 'strings',
-    get: function get() {
-      return _constants.strings;
-    }
-
-    /**
-     * {@see MDCTextFieldHelperTextAdapter} for typing information on parameters and return
-     * types.
-     * @return {!MDCTextFieldHelperTextAdapter}
-     */
-
-  }, {
-    key: 'defaultAdapter',
-    get: function get() {
-      return (/** @type {!MDCTextFieldHelperTextAdapter} */{
-          addClass: function addClass() {},
-          removeClass: function removeClass() {},
-          hasClass: function hasClass() {},
-          setAttr: function setAttr() {},
-          removeAttr: function removeAttr() {},
-          setContent: function setContent() {}
-        }
-      );
-    }
-
-    /**
-     * @param {!MDCTextFieldHelperTextAdapter} adapter
-     */
-
-  }]);
-
-  function MDCTextFieldHelperTextFoundation(adapter) {
-    _classCallCheck(this, MDCTextFieldHelperTextFoundation);
-
-    return _possibleConstructorReturn(this, (MDCTextFieldHelperTextFoundation.__proto__ || Object.getPrototypeOf(MDCTextFieldHelperTextFoundation)).call(this, Object.assign(MDCTextFieldHelperTextFoundation.defaultAdapter, adapter)));
+  /**
+   * @param {!MDCTextFieldHelperTextAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCTextFieldHelperTextFoundation.defaultAdapter, adapter));
   }
 
   /**
    * Sets the content of the helper text field.
    * @param {string} content
    */
+  setContent(content) {
+    this.adapter_.setContent(content);
+  }
 
+  /** @param {boolean} isPersistent Sets the persistency of the helper text. */
+  setPersistent(isPersistent) {
+    if (isPersistent) {
+      this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_PERSISTENT);
+    } else {
+      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_PERSISTENT);
+    }
+  }
 
-  _createClass(MDCTextFieldHelperTextFoundation, [{
-    key: 'setContent',
-    value: function setContent(content) {
-      this.adapter_.setContent(content);
+  /**
+   * @param {boolean} isValidation True to make the helper text act as an
+   *   error validation message.
+   */
+  setValidation(isValidation) {
+    if (isValidation) {
+      this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_VALIDATION_MSG);
+    } else {
+      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_VALIDATION_MSG);
+    }
+  }
+
+  /** Makes the helper text visible to the screen reader. */
+  showToScreenReader() {
+    this.adapter_.removeAttr(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_HIDDEN);
+  }
+
+  /**
+   * Sets the validity of the helper text based on the input validity.
+   * @param {boolean} inputIsValid
+   */
+  setValidity(inputIsValid) {
+    const helperTextIsPersistent = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_PERSISTENT);
+    const helperTextIsValidationMsg = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_VALIDATION_MSG);
+    const validationMsgNeedsDisplay = helperTextIsValidationMsg && !inputIsValid;
+
+    if (validationMsgNeedsDisplay) {
+      this.adapter_.setAttr(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ROLE, 'alert');
+    } else {
+      this.adapter_.removeAttr(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ROLE);
     }
 
-    /** @param {boolean} isPersistent Sets the persistency of the helper text. */
-
-  }, {
-    key: 'setPersistent',
-    value: function setPersistent(isPersistent) {
-      if (isPersistent) {
-        this.adapter_.addClass(_constants.cssClasses.HELPER_TEXT_PERSISTENT);
-      } else {
-        this.adapter_.removeClass(_constants.cssClasses.HELPER_TEXT_PERSISTENT);
-      }
+    if (!helperTextIsPersistent && !validationMsgNeedsDisplay) {
+      this.hide_();
     }
+  }
 
-    /**
-     * @param {boolean} isValidation True to make the helper text act as an
-     *   error validation message.
-     */
+  /**
+   * Hides the help text from screen readers.
+   * @private
+   */
+  hide_() {
+    this.adapter_.setAttr(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_HIDDEN, 'true');
+  }
+}
 
-  }, {
-    key: 'setValidation',
-    value: function setValidation(isValidation) {
-      if (isValidation) {
-        this.adapter_.addClass(_constants.cssClasses.HELPER_TEXT_VALIDATION_MSG);
-      } else {
-        this.adapter_.removeClass(_constants.cssClasses.HELPER_TEXT_VALIDATION_MSG);
-      }
-    }
-
-    /** Makes the helper text visible to the screen reader. */
-
-  }, {
-    key: 'showToScreenReader',
-    value: function showToScreenReader() {
-      this.adapter_.removeAttr(_constants.strings.ARIA_HIDDEN);
-    }
-
-    /**
-     * Sets the validity of the helper text based on the input validity.
-     * @param {boolean} inputIsValid
-     */
-
-  }, {
-    key: 'setValidity',
-    value: function setValidity(inputIsValid) {
-      var helperTextIsPersistent = this.adapter_.hasClass(_constants.cssClasses.HELPER_TEXT_PERSISTENT);
-      var helperTextIsValidationMsg = this.adapter_.hasClass(_constants.cssClasses.HELPER_TEXT_VALIDATION_MSG);
-      var validationMsgNeedsDisplay = helperTextIsValidationMsg && !inputIsValid;
-
-      if (validationMsgNeedsDisplay) {
-        this.adapter_.setAttr(_constants.strings.ROLE, 'alert');
-      } else {
-        this.adapter_.removeAttr(_constants.strings.ROLE);
-      }
-
-      if (!helperTextIsPersistent && !validationMsgNeedsDisplay) {
-        this.hide_();
-      }
-    }
-
-    /**
-     * Hides the help text from screen readers.
-     * @private
-     */
-
-  }, {
-    key: 'hide_',
-    value: function hide_() {
-      this.adapter_.setAttr(_constants.strings.ARIA_HIDDEN, 'true');
-    }
-  }]);
-
-  return MDCTextFieldHelperTextFoundation;
-}(_foundation2.default);
-
-exports.default = MDCTextFieldHelperTextFoundation;
+/* harmony default export */ __webpack_exports__["a"] = (MDCTextFieldHelperTextFoundation);
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(44);
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _foundation = __webpack_require__(0);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _adapter = __webpack_require__(13);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _constants = __webpack_require__(42);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2017 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 /**
  * @extends {MDCFoundation<!MDCTextFieldIconAdapter>}
  * @final
  */
-var MDCTextFieldIconFoundation = function (_MDCFoundation) {
-  _inherits(MDCTextFieldIconFoundation, _MDCFoundation);
-
-  _createClass(MDCTextFieldIconFoundation, null, [{
-    key: 'strings',
-
-    /** @return enum {string} */
-    get: function get() {
-      return _constants.strings;
-    }
-
-    /**
-     * {@see MDCTextFieldIconAdapter} for typing information on parameters and return
-     * types.
-     * @return {!MDCTextFieldIconAdapter}
-     */
-
-  }, {
-    key: 'defaultAdapter',
-    get: function get() {
-      return (/** @type {!MDCTextFieldIconAdapter} */{
-          setAttr: function setAttr() {},
-          registerInteractionHandler: function registerInteractionHandler() {},
-          deregisterInteractionHandler: function deregisterInteractionHandler() {},
-          notifyIconAction: function notifyIconAction() {}
-        }
-      );
-    }
-
-    /**
-     * @param {!MDCTextFieldIconAdapter} adapter
-     */
-
-  }]);
-
-  function MDCTextFieldIconFoundation(adapter) {
-    _classCallCheck(this, MDCTextFieldIconFoundation);
-
-    /** @private {function(!Event): undefined} */
-    var _this = _possibleConstructorReturn(this, (MDCTextFieldIconFoundation.__proto__ || Object.getPrototypeOf(MDCTextFieldIconFoundation)).call(this, Object.assign(MDCTextFieldIconFoundation.defaultAdapter, adapter)));
-
-    _this.interactionHandler_ = function (evt) {
-      return _this.handleInteraction(evt);
-    };
-    return _this;
+class MDCTextFieldIconFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* strings */];
   }
 
-  _createClass(MDCTextFieldIconFoundation, [{
-    key: 'init',
-    value: function init() {
-      var _this2 = this;
-
-      ['click', 'keydown'].forEach(function (evtType) {
-        _this2.adapter_.registerInteractionHandler(evtType, _this2.interactionHandler_);
-      });
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      var _this3 = this;
-
-      ['click', 'keydown'].forEach(function (evtType) {
-        _this3.adapter_.deregisterInteractionHandler(evtType, _this3.interactionHandler_);
-      });
-    }
-
-    /**
-     * Sets the content of the helper text field.
-     * @param {boolean} disabled
-     */
-
-  }, {
-    key: 'setDisabled',
-    value: function setDisabled(disabled) {
-      if (disabled) {
-        this.adapter_.setAttr('tabindex', '-1');
-      } else {
-        this.adapter_.setAttr('tabindex', '0');
+  /**
+   * {@see MDCTextFieldIconAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCTextFieldIconAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCTextFieldIconAdapter} */{
+        setAttr: () => {},
+        registerInteractionHandler: () => {},
+        deregisterInteractionHandler: () => {},
+        notifyIconAction: () => {}
       }
+    );
+  }
+
+  /**
+   * @param {!MDCTextFieldIconAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCTextFieldIconFoundation.defaultAdapter, adapter));
+
+    /** @private {function(!Event): undefined} */
+    this.interactionHandler_ = evt => this.handleInteraction(evt);
+  }
+
+  init() {
+    ['click', 'keydown'].forEach(evtType => {
+      this.adapter_.registerInteractionHandler(evtType, this.interactionHandler_);
+    });
+  }
+
+  destroy() {
+    ['click', 'keydown'].forEach(evtType => {
+      this.adapter_.deregisterInteractionHandler(evtType, this.interactionHandler_);
+    });
+  }
+
+  /**
+   * Sets the content of the helper text field.
+   * @param {boolean} disabled
+   */
+  setDisabled(disabled) {
+    if (disabled) {
+      this.adapter_.setAttr('tabindex', '-1');
+    } else {
+      this.adapter_.setAttr('tabindex', '0');
     }
+  }
 
-    /**
-     * Handles an interaction event
-     * @param {!Event} evt
-     */
-
-  }, {
-    key: 'handleInteraction',
-    value: function handleInteraction(evt) {
-      if (evt.type === 'click' || evt.key === 'Enter' || evt.keyCode === 13) {
-        this.adapter_.notifyIconAction();
-      }
+  /**
+   * Handles an interaction event
+   * @param {!Event} evt
+   */
+  handleInteraction(evt) {
+    if (evt.type === 'click' || evt.key === 'Enter' || evt.keyCode === 13) {
+      this.adapter_.notifyIconAction();
     }
-  }]);
+  }
+}
 
-  return MDCTextFieldIconFoundation;
-}(_foundation2.default);
-
-exports.default = MDCTextFieldIconFoundation;
+/* harmony default export */ __webpack_exports__["a"] = (MDCTextFieldIconFoundation);
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -882,133 +837,96 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * @template A
  */
-var MDCFoundation = function () {
-  _createClass(MDCFoundation, null, [{
-    key: "cssClasses",
+class MDCFoundation {
+  /** @return enum{cssClasses} */
+  static get cssClasses() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports every
+    // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
+    return {};
+  }
 
-    /** @return enum{cssClasses} */
-    get: function get() {
-      // Classes extending MDCFoundation should implement this method to return an object which exports every
-      // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
-      return {};
-    }
+  /** @return enum{strings} */
+  static get strings() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports all
+    // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
+    return {};
+  }
 
-    /** @return enum{strings} */
+  /** @return enum{numbers} */
+  static get numbers() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports all
+    // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
+    return {};
+  }
 
-  }, {
-    key: "strings",
-    get: function get() {
-      // Classes extending MDCFoundation should implement this method to return an object which exports all
-      // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
-      return {};
-    }
+  /** @return {!Object} */
+  static get defaultAdapter() {
+    // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
+    // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
+    // validation.
+    return {};
+  }
 
-    /** @return enum{numbers} */
-
-  }, {
-    key: "numbers",
-    get: function get() {
-      // Classes extending MDCFoundation should implement this method to return an object which exports all
-      // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
-      return {};
-    }
-
-    /** @return {!Object} */
-
-  }, {
-    key: "defaultAdapter",
-    get: function get() {
-      // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
-      // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
-      // validation.
-      return {};
-    }
-
-    /**
-     * @param {A=} adapter
-     */
-
-  }]);
-
-  function MDCFoundation() {
-    var adapter = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    _classCallCheck(this, MDCFoundation);
-
+  /**
+   * @param {A=} adapter
+   */
+  constructor(adapter = {}) {
     /** @protected {!A} */
     this.adapter_ = adapter;
   }
 
-  _createClass(MDCFoundation, [{
-    key: "init",
-    value: function init() {
-      // Subclasses should override this method to perform initialization routines (registering events, etc.)
-    }
-  }, {
-    key: "destroy",
-    value: function destroy() {
-      // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
-    }
-  }]);
+  init() {
+    // Subclasses should override this method to perform initialization routines (registering events, etc.)
+  }
 
-  return MDCFoundation;
-}();
+  destroy() {
+    // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
+  }
+}
 
-exports.default = MDCFoundation;
+/* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initialize;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialogs__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__text_fields__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__lists__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__icon_toggles__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__menus__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__select__ = __webpack_require__(74);
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.initialize = initialize;
 
-var _button = __webpack_require__(31);
 
-var _dialogs = __webpack_require__(35);
 
-var _textFields = __webpack_require__(36);
 
-var _events = __webpack_require__(51);
 
-var _lists = __webpack_require__(57);
 
-var _iconToggles = __webpack_require__(58);
-
-var _menus = __webpack_require__(66);
 
 function initialize() {
     console.log('Initializing');
-    (0, _button.initButtons)();
-    (0, _events.initEvents)();
-    (0, _dialogs.initDialogs)();
-    (0, _textFields.initTextFields)();
-    (0, _lists.initLists)();
-    (0, _iconToggles.initIconToggles)();
-    (0, _menus.initMenus)();
+    Object(__WEBPACK_IMPORTED_MODULE_0__button__["a" /* initButtons */])();
+    Object(__WEBPACK_IMPORTED_MODULE_3__events__["a" /* initEvents */])();
+    Object(__WEBPACK_IMPORTED_MODULE_1__dialogs__["a" /* initDialogs */])();
+    Object(__WEBPACK_IMPORTED_MODULE_2__text_fields__["a" /* initTextFields */])();
+    Object(__WEBPACK_IMPORTED_MODULE_4__lists__["a" /* initLists */])();
+    Object(__WEBPACK_IMPORTED_MODULE_5__icon_toggles__["a" /* initIconToggles */])();
+    Object(__WEBPACK_IMPORTED_MODULE_6__menus__["a" /* initMenus */])();
+    Object(__WEBPACK_IMPORTED_MODULE_7__select__["a" /* initSelects */])();
     // componentHandler.upgradeAllRegistered();
 }
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -1049,482 +967,85 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *
  * @record
  */
-var MDCRippleAdapter = function () {
-  function MDCRippleAdapter() {
-    _classCallCheck(this, MDCRippleAdapter);
-  }
+class MDCRippleAdapter {
+  /** @return {boolean} */
+  browserSupportsCssVars() {}
 
-  _createClass(MDCRippleAdapter, [{
-    key: "browserSupportsCssVars",
+  /** @return {boolean} */
+  isUnbounded() {}
 
-    /** @return {boolean} */
-    value: function browserSupportsCssVars() {}
+  /** @return {boolean} */
+  isSurfaceActive() {}
 
-    /** @return {boolean} */
+  /** @return {boolean} */
+  isSurfaceDisabled() {}
 
-  }, {
-    key: "isUnbounded",
-    value: function isUnbounded() {}
+  /** @param {string} className */
+  addClass(className) {}
 
-    /** @return {boolean} */
+  /** @param {string} className */
+  removeClass(className) {}
 
-  }, {
-    key: "isSurfaceActive",
-    value: function isSurfaceActive() {}
+  /** @param {!EventTarget} target */
+  containsEventTarget(target) {}
 
-    /** @return {boolean} */
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  registerInteractionHandler(evtType, handler) {}
 
-  }, {
-    key: "isSurfaceDisabled",
-    value: function isSurfaceDisabled() {}
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  deregisterInteractionHandler(evtType, handler) {}
 
-    /** @param {string} className */
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  registerDocumentInteractionHandler(evtType, handler) {}
 
-  }, {
-    key: "addClass",
-    value: function addClass(className) {}
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  deregisterDocumentInteractionHandler(evtType, handler) {}
 
-    /** @param {string} className */
+  /**
+   * @param {!Function} handler
+   */
+  registerResizeHandler(handler) {}
 
-  }, {
-    key: "removeClass",
-    value: function removeClass(className) {}
+  /**
+   * @param {!Function} handler
+   */
+  deregisterResizeHandler(handler) {}
 
-    /** @param {!EventTarget} target */
+  /**
+   * @param {string} varName
+   * @param {?number|string} value
+   */
+  updateCssVariable(varName, value) {}
 
-  }, {
-    key: "containsEventTarget",
-    value: function containsEventTarget(target) {}
+  /** @return {!ClientRect} */
+  computeBoundingRect() {}
 
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "registerInteractionHandler",
-    value: function registerInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "deregisterInteractionHandler",
-    value: function deregisterInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "registerDocumentInteractionHandler",
-    value: function registerDocumentInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "deregisterDocumentInteractionHandler",
-    value: function deregisterDocumentInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "registerResizeHandler",
-    value: function registerResizeHandler(handler) {}
-
-    /**
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "deregisterResizeHandler",
-    value: function deregisterResizeHandler(handler) {}
-
-    /**
-     * @param {string} varName
-     * @param {?number|string} value
-     */
-
-  }, {
-    key: "updateCssVariable",
-    value: function updateCssVariable(varName, value) {}
-
-    /** @return {!ClientRect} */
-
-  }, {
-    key: "computeBoundingRect",
-    value: function computeBoundingRect() {}
-
-    /** @return {{x: number, y: number}} */
-
-  }, {
-    key: "getWindowPageOffset",
-    value: function getWindowPageOffset() {}
-  }]);
-
-  return MDCRippleAdapter;
-}();
-
-exports.default = MDCRippleAdapter;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * Stores result from supportsCssVariables to avoid redundant processing to detect CSS custom variable support.
- * @private {boolean|undefined}
- */
-var supportsCssVariables_ = void 0;
-
-/**
- * Stores result from applyPassive to avoid redundant processing to detect passive event listener support.
- * @private {boolean|undefined}
- */
-var supportsPassive_ = void 0;
-
-/**
- * @param {!Window} windowObj
- * @return {boolean}
- */
-function detectEdgePseudoVarBug(windowObj) {
-  // Detect versions of Edge with buggy var() support
-  // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11495448/
-  var document = windowObj.document;
-  var node = document.createElement('div');
-  node.className = 'mdc-ripple-surface--test-edge-var-bug';
-  document.body.appendChild(node);
-
-  // The bug exists if ::before style ends up propagating to the parent element.
-  // Additionally, getComputedStyle returns null in iframes with display: "none" in Firefox,
-  // but Firefox is known to support CSS custom properties correctly.
-  // See: https://bugzilla.mozilla.org/show_bug.cgi?id=548397
-  var computedStyle = windowObj.getComputedStyle(node);
-  var hasPseudoVarBug = computedStyle !== null && computedStyle.borderTopStyle === 'solid';
-  node.remove();
-  return hasPseudoVarBug;
+  /** @return {{x: number, y: number}} */
+  getWindowPageOffset() {}
 }
 
-/**
- * @param {!Window} windowObj
- * @param {boolean=} forceRefresh
- * @return {boolean|undefined}
- */
-
-function supportsCssVariables(windowObj) {
-  var forceRefresh = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-  if (typeof supportsCssVariables_ === 'boolean' && !forceRefresh) {
-    return supportsCssVariables_;
-  }
-
-  var supportsFunctionPresent = windowObj.CSS && typeof windowObj.CSS.supports === 'function';
-  if (!supportsFunctionPresent) {
-    return;
-  }
-
-  var explicitlySupportsCssVars = windowObj.CSS.supports('--css-vars', 'yes');
-  // See: https://bugs.webkit.org/show_bug.cgi?id=154669
-  // See: README section on Safari
-  var weAreFeatureDetectingSafari10plus = windowObj.CSS.supports('(--css-vars: yes)') && windowObj.CSS.supports('color', '#00000000');
-
-  if (explicitlySupportsCssVars || weAreFeatureDetectingSafari10plus) {
-    supportsCssVariables_ = !detectEdgePseudoVarBug(windowObj);
-  } else {
-    supportsCssVariables_ = false;
-  }
-  return supportsCssVariables_;
-}
-
-//
-/**
- * Determine whether the current browser supports passive event listeners, and if so, use them.
- * @param {!Window=} globalObj
- * @param {boolean=} forceRefresh
- * @return {boolean|{passive: boolean}}
- */
-function applyPassive() {
-  var globalObj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window;
-  var forceRefresh = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-  if (supportsPassive_ === undefined || forceRefresh) {
-    var isSupported = false;
-    try {
-      globalObj.document.addEventListener('test', null, { get passive() {
-          isSupported = true;
-        } });
-    } catch (e) {}
-
-    supportsPassive_ = isSupported;
-  }
-
-  return supportsPassive_ ? { passive: true } : false;
-}
-
-/**
- * @param {!Object} HTMLElementPrototype
- * @return {!Array<string>}
- */
-function getMatchesProperty(HTMLElementPrototype) {
-  return ['webkitMatchesSelector', 'msMatchesSelector', 'matches'].filter(function (p) {
-    return p in HTMLElementPrototype;
-  }).pop();
-}
-
-/**
- * @param {!Event} ev
- * @param {!{x: number, y: number}} pageOffset
- * @param {!ClientRect} clientRect
- * @return {!{x: number, y: number}}
- */
-function getNormalizedEventCoords(ev, pageOffset, clientRect) {
-  var x = pageOffset.x,
-      y = pageOffset.y;
-
-  var documentX = x + clientRect.left;
-  var documentY = y + clientRect.top;
-
-  var normalizedX = void 0;
-  var normalizedY = void 0;
-  // Determine touch point relative to the ripple container.
-  if (ev.type === 'touchstart') {
-    normalizedX = ev.changedTouches[0].pageX - documentX;
-    normalizedY = ev.changedTouches[0].pageY - documentY;
-  } else {
-    normalizedX = ev.pageX - documentX;
-    normalizedY = ev.pageY - documentY;
-  }
-
-  return { x: normalizedX, y: normalizedY };
-}
-
-exports.supportsCssVariables = supportsCssVariables;
-exports.applyPassive = applyPassive;
-exports.getMatchesProperty = getMatchesProperty;
-exports.getNormalizedEventCoords = getNormalizedEventCoords;
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCRippleAdapter);
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* eslint no-unused-vars: [2, {"args": "none"}] */
-
-/**
- * Adapter for MDC Ripple. Provides an interface for managing
- * - classes
- * - dom
- * - CSS variables
- * - position
- * - dimensions
- * - scroll position
- * - event handlers
- * - unbounded, active and disabled states
- *
- * Additionally, provides type information for the adapter to the Closure
- * compiler.
- *
- * Implement this adapter for your framework of choice to delegate updates to
- * the component in your framework of choice. See architecture documentation
- * for more details.
- * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
- *
- * @record
- */
-var MDCRippleAdapter = function () {
-  function MDCRippleAdapter() {
-    _classCallCheck(this, MDCRippleAdapter);
-  }
-
-  _createClass(MDCRippleAdapter, [{
-    key: "browserSupportsCssVars",
-
-    /** @return {boolean} */
-    value: function browserSupportsCssVars() {}
-
-    /** @return {boolean} */
-
-  }, {
-    key: "isUnbounded",
-    value: function isUnbounded() {}
-
-    /** @return {boolean} */
-
-  }, {
-    key: "isSurfaceActive",
-    value: function isSurfaceActive() {}
-
-    /** @return {boolean} */
-
-  }, {
-    key: "isSurfaceDisabled",
-    value: function isSurfaceDisabled() {}
-
-    /** @param {string} className */
-
-  }, {
-    key: "addClass",
-    value: function addClass(className) {}
-
-    /** @param {string} className */
-
-  }, {
-    key: "removeClass",
-    value: function removeClass(className) {}
-
-    /** @param {!EventTarget} target */
-
-  }, {
-    key: "containsEventTarget",
-    value: function containsEventTarget(target) {}
-
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "registerInteractionHandler",
-    value: function registerInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "deregisterInteractionHandler",
-    value: function deregisterInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "registerDocumentInteractionHandler",
-    value: function registerDocumentInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "deregisterDocumentInteractionHandler",
-    value: function deregisterDocumentInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "registerResizeHandler",
-    value: function registerResizeHandler(handler) {}
-
-    /**
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "deregisterResizeHandler",
-    value: function deregisterResizeHandler(handler) {}
-
-    /**
-     * @param {string} varName
-     * @param {?number|string} value
-     */
-
-  }, {
-    key: "updateCssVariable",
-    value: function updateCssVariable(varName, value) {}
-
-    /** @return {!ClientRect} */
-
-  }, {
-    key: "computeBoundingRect",
-    value: function computeBoundingRect() {}
-
-    /** @return {{x: number, y: number}} */
-
-  }, {
-    key: "getWindowPageOffset",
-    value: function getWindowPageOffset() {}
-  }]);
-
-  return MDCRippleAdapter;
-}();
-
-exports.default = MDCRippleAdapter;
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return strings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return numbers; });
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -1543,7 +1064,7 @@ Object.defineProperty(exports, "__esModule", {
  */
 
 /** @enum {string} */
-var strings = {
+const strings = {
   ARIA_CONTROLS: 'aria-controls',
   INPUT_SELECTOR: '.mdc-text-field__input',
   LABEL_SELECTOR: '.mdc-floating-label',
@@ -1553,7 +1074,7 @@ var strings = {
 };
 
 /** @enum {string} */
-var cssClasses = {
+const cssClasses = {
   ROOT: 'mdc-text-field',
   UPGRADED: 'mdc-text-field--upgraded',
   DISABLED: 'mdc-text-field--disabled',
@@ -1565,58 +1086,43 @@ var cssClasses = {
 };
 
 /** @enum {number} */
-var numbers = {
+const numbers = {
   LABEL_SCALE: 0.75,
   DENSE_LABEL_SCALE: 0.923
 };
 
-exports.cssClasses = cssClasses;
-exports.strings = strings;
-exports.numbers = numbers;
+
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.FoundationMapType = exports.NativeInputType = exports.MDCTextFieldAdapter = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Copyright 2017 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+/* unused harmony export MDCTextFieldAdapter */
+/* unused harmony export NativeInputType */
+/* unused harmony export FoundationMapType */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helper_text_foundation__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_foundation__ = __webpack_require__(5);
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 /* eslint-disable no-unused-vars */
 
 
-var _foundation = __webpack_require__(3);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _foundation3 = __webpack_require__(4);
-
-var _foundation4 = _interopRequireDefault(_foundation3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /* eslint no-unused-vars: [2, {"args": "none"}] */
 
@@ -1631,7 +1137,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *   },
  * }}
  */
-var NativeInputType = void 0;
+let NativeInputType;
 
 /**
  * @typedef {{
@@ -1639,7 +1145,7 @@ var NativeInputType = void 0;
  *   icon: (!MDCTextFieldIconFoundation|undefined),
  * }}
  */
-var FoundationMapType = void 0;
+let FoundationMapType;
 
 /**
  * Adapter for MDC Text Field.
@@ -1651,241 +1157,164 @@ var FoundationMapType = void 0;
  *
  * @record
  */
+class MDCTextFieldAdapter {
+  /**
+   * Adds a class to the root Element.
+   * @param {string} className
+   */
+  addClass(className) {}
 
-var MDCTextFieldAdapter = function () {
-  function MDCTextFieldAdapter() {
-    _classCallCheck(this, MDCTextFieldAdapter);
-  }
+  /**
+   * Removes a class from the root Element.
+   * @param {string} className
+   */
+  removeClass(className) {}
 
-  _createClass(MDCTextFieldAdapter, [{
-    key: 'addClass',
+  /**
+   * Returns true if the root element contains the given class name.
+   * @param {string} className
+   * @return {boolean}
+   */
+  hasClass(className) {}
 
-    /**
-     * Adds a class to the root Element.
-     * @param {string} className
-     */
-    value: function addClass(className) {}
+  /**
+   * Registers an event handler on the root element for a given event.
+   * @param {string} type
+   * @param {function(!Event): undefined} handler
+   */
+  registerTextFieldInteractionHandler(type, handler) {}
 
-    /**
-     * Removes a class from the root Element.
-     * @param {string} className
-     */
+  /**
+   * Deregisters an event handler on the root element for a given event.
+   * @param {string} type
+   * @param {function(!Event): undefined} handler
+   */
+  deregisterTextFieldInteractionHandler(type, handler) {}
 
-  }, {
-    key: 'removeClass',
-    value: function removeClass(className) {}
+  /**
+   * Registers an event listener on the native input element for a given event.
+   * @param {string} evtType
+   * @param {function(!Event): undefined} handler
+   */
+  registerInputInteractionHandler(evtType, handler) {}
 
-    /**
-     * Returns true if the root element contains the given class name.
-     * @param {string} className
-     * @return {boolean}
-     */
+  /**
+   * Deregisters an event listener on the native input element for a given event.
+   * @param {string} evtType
+   * @param {function(!Event): undefined} handler
+   */
+  deregisterInputInteractionHandler(evtType, handler) {}
 
-  }, {
-    key: 'hasClass',
-    value: function hasClass(className) {}
+  /**
+   * Registers a validation attribute change listener on the input element.
+   * @param {function(!Array): undefined} handler
+   * @return {!MutationObserver}
+   */
+  registerValidationAttributeChangeHandler(handler) {}
 
-    /**
-     * Registers an event handler on the root element for a given event.
-     * @param {string} type
-     * @param {function(!Event): undefined} handler
-     */
+  /**
+   * Disconnects a validation attribute observer on the input element.
+   * @param {!MutationObserver} observer
+   */
+  deregisterValidationAttributeChangeHandler(observer) {}
 
-  }, {
-    key: 'registerTextFieldInteractionHandler',
-    value: function registerTextFieldInteractionHandler(type, handler) {}
+  /**
+   * Returns an object representing the native text input element, with a
+   * similar API shape. The object returned should include the value, disabled
+   * and badInput properties, as well as the checkValidity() function. We never
+   * alter the value within our code, however we do update the disabled
+   * property, so if you choose to duck-type the return value for this method
+   * in your implementation it's important to keep this in mind. Also note that
+   * this method can return null, which the foundation will handle gracefully.
+   * @return {?Element|?NativeInputType}
+   */
+  getNativeInput() {}
 
-    /**
-     * Deregisters an event handler on the root element for a given event.
-     * @param {string} type
-     * @param {function(!Event): undefined} handler
-     */
+  /**
+   * Returns true if the textfield is focused.
+   * We achieve this via `document.activeElement === this.root_`.
+   * @return {boolean}
+   */
+  isFocused() {}
 
-  }, {
-    key: 'deregisterTextFieldInteractionHandler',
-    value: function deregisterTextFieldInteractionHandler(type, handler) {}
+  /**
+   * Returns true if the direction of the root element is set to RTL.
+   * @return {boolean}
+   */
+  isRtl() {}
 
-    /**
-     * Registers an event listener on the native input element for a given event.
-     * @param {string} evtType
-     * @param {function(!Event): undefined} handler
-     */
+  /**
+   * Activates the line ripple.
+   */
+  activateLineRipple() {}
 
-  }, {
-    key: 'registerInputInteractionHandler',
-    value: function registerInputInteractionHandler(evtType, handler) {}
+  /**
+   * Deactivates the line ripple.
+   */
+  deactivateLineRipple() {}
 
-    /**
-     * Deregisters an event listener on the native input element for a given event.
-     * @param {string} evtType
-     * @param {function(!Event): undefined} handler
-     */
+  /**
+   * Sets the transform origin of the line ripple.
+   * @param {number} normalizedX
+   */
+  setLineRippleTransformOrigin(normalizedX) {}
 
-  }, {
-    key: 'deregisterInputInteractionHandler',
-    value: function deregisterInputInteractionHandler(evtType, handler) {}
+  /**
+   * Only implement if label exists.
+   * Shakes label if shouldShake is true.
+   * @param {boolean} shouldShake
+   */
+  shakeLabel(shouldShake) {}
 
-    /**
-     * Registers a validation attribute change listener on the input element.
-     * @param {function(!Array): undefined} handler
-     * @return {!MutationObserver}
-     */
+  /**
+   * Only implement if label exists.
+   * Floats the label above the input element if shouldFloat is true.
+   * @param {boolean} shouldFloat
+   */
+  floatLabel(shouldFloat) {}
 
-  }, {
-    key: 'registerValidationAttributeChangeHandler',
-    value: function registerValidationAttributeChangeHandler(handler) {}
+  /**
+   * Returns true if label element exists, false if it doesn't.
+   * @return {boolean}
+   */
+  hasLabel() {}
 
-    /**
-     * Disconnects a validation attribute observer on the input element.
-     * @param {!MutationObserver} observer
-     */
+  /**
+   * Only implement if label exists.
+   * Returns width of label in pixels.
+   * @return {number}
+   */
+  getLabelWidth() {}
 
-  }, {
-    key: 'deregisterValidationAttributeChangeHandler',
-    value: function deregisterValidationAttributeChangeHandler(observer) {}
+  /**
+   * Returns true if outline element exists, false if it doesn't.
+   * @return {boolean}
+   */
+  hasOutline() {}
 
-    /**
-     * Returns an object representing the native text input element, with a
-     * similar API shape. The object returned should include the value, disabled
-     * and badInput properties, as well as the checkValidity() function. We never
-     * alter the value within our code, however we do update the disabled
-     * property, so if you choose to duck-type the return value for this method
-     * in your implementation it's important to keep this in mind. Also note that
-     * this method can return null, which the foundation will handle gracefully.
-     * @return {?Element|?NativeInputType}
-     */
+  /**
+   * Only implement if outline element exists.
+   * Updates SVG Path and outline element based on the
+   * label element width and RTL context.
+   * @param {number} labelWidth
+   * @param {boolean=} isRtl
+   */
+  notchOutline(labelWidth, isRtl) {}
 
-  }, {
-    key: 'getNativeInput',
-    value: function getNativeInput() {}
+  /**
+   * Only implement if outline element exists.
+   * Closes notch in outline element.
+   */
+  closeOutline() {}
+}
 
-    /**
-     * Returns true if the textfield is focused.
-     * We achieve this via `document.activeElement === this.root_`.
-     * @return {boolean}
-     */
 
-  }, {
-    key: 'isFocused',
-    value: function isFocused() {}
-
-    /**
-     * Returns true if the direction of the root element is set to RTL.
-     * @return {boolean}
-     */
-
-  }, {
-    key: 'isRtl',
-    value: function isRtl() {}
-
-    /**
-     * Activates the line ripple.
-     */
-
-  }, {
-    key: 'activateLineRipple',
-    value: function activateLineRipple() {}
-
-    /**
-     * Deactivates the line ripple.
-     */
-
-  }, {
-    key: 'deactivateLineRipple',
-    value: function deactivateLineRipple() {}
-
-    /**
-     * Sets the transform origin of the line ripple.
-     * @param {number} normalizedX
-     */
-
-  }, {
-    key: 'setLineRippleTransformOrigin',
-    value: function setLineRippleTransformOrigin(normalizedX) {}
-
-    /**
-     * Only implement if label exists.
-     * Shakes label if shouldShake is true.
-     * @param {boolean} shouldShake
-     */
-
-  }, {
-    key: 'shakeLabel',
-    value: function shakeLabel(shouldShake) {}
-
-    /**
-     * Only implement if label exists.
-     * Floats the label above the input element if shouldFloat is true.
-     * @param {boolean} shouldFloat
-     */
-
-  }, {
-    key: 'floatLabel',
-    value: function floatLabel(shouldFloat) {}
-
-    /**
-     * Returns true if label element exists, false if it doesn't.
-     * @return {boolean}
-     */
-
-  }, {
-    key: 'hasLabel',
-    value: function hasLabel() {}
-
-    /**
-     * Only implement if label exists.
-     * Returns width of label in pixels.
-     * @return {number}
-     */
-
-  }, {
-    key: 'getLabelWidth',
-    value: function getLabelWidth() {}
-
-    /**
-     * Returns true if outline element exists, false if it doesn't.
-     * @return {boolean}
-     */
-
-  }, {
-    key: 'hasOutline',
-    value: function hasOutline() {}
-
-    /**
-     * Only implement if outline element exists.
-     * Updates SVG Path on outline element based on the
-     * label element width and RTL context.
-     * @param {number} labelWidth
-     * @param {boolean} isRtl
-     */
-
-  }, {
-    key: 'updateOutlinePath',
-    value: function updateOutlinePath(labelWidth, isRtl) {}
-  }]);
-
-  return MDCTextFieldAdapter;
-}();
-
-exports.MDCTextFieldAdapter = MDCTextFieldAdapter;
-exports.NativeInputType = NativeInputType;
-exports.FoundationMapType = FoundationMapType;
 
 /***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -1915,88 +1344,53 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *
  * @record
  */
-var MDCTextFieldHelperTextAdapter = function () {
-  function MDCTextFieldHelperTextAdapter() {
-    _classCallCheck(this, MDCTextFieldHelperTextAdapter);
-  }
+class MDCTextFieldHelperTextAdapter {
+  /**
+   * Adds a class to the helper text element.
+   * @param {string} className
+   */
+  addClass(className) {}
 
-  _createClass(MDCTextFieldHelperTextAdapter, [{
-    key: "addClass",
+  /**
+   * Removes a class from the helper text element.
+   * @param {string} className
+   */
+  removeClass(className) {}
 
-    /**
-     * Adds a class to the helper text element.
-     * @param {string} className
-     */
-    value: function addClass(className) {}
+  /**
+   * Returns whether or not the helper text element contains the given class.
+   * @param {string} className
+   * @return {boolean}
+   */
+  hasClass(className) {}
 
-    /**
-     * Removes a class from the helper text element.
-     * @param {string} className
-     */
+  /**
+   * Sets an attribute with a given value on the helper text element.
+   * @param {string} attr
+   * @param {string} value
+   */
+  setAttr(attr, value) {}
 
-  }, {
-    key: "removeClass",
-    value: function removeClass(className) {}
+  /**
+   * Removes an attribute from the helper text element.
+   * @param {string} attr
+   */
+  removeAttr(attr) {}
 
-    /**
-     * Returns whether or not the helper text element contains the given class.
-     * @param {string} className
-     * @return {boolean}
-     */
+  /**
+   * Sets the text content for the helper text element.
+   * @param {string} content
+   */
+  setContent(content) {}
+}
 
-  }, {
-    key: "hasClass",
-    value: function hasClass(className) {}
-
-    /**
-     * Sets an attribute with a given value on the helper text element.
-     * @param {string} attr
-     * @param {string} value
-     */
-
-  }, {
-    key: "setAttr",
-    value: function setAttr(attr, value) {}
-
-    /**
-     * Removes an attribute from the helper text element.
-     * @param {string} attr
-     */
-
-  }, {
-    key: "removeAttr",
-    value: function removeAttr(attr) {}
-
-    /**
-     * Sets the text content for the helper text element.
-     * @param {string} content
-     */
-
-  }, {
-    key: "setContent",
-    value: function setContent(content) {}
-  }]);
-
-  return MDCTextFieldHelperTextAdapter;
-}();
-
-exports.default = MDCTextFieldHelperTextAdapter;
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCTextFieldHelperTextAdapter);
 
 /***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 12 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -2026,242 +1420,158 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *
  * @record
  */
-var MDCTextFieldIconAdapter = function () {
-  function MDCTextFieldIconAdapter() {
-    _classCallCheck(this, MDCTextFieldIconAdapter);
-  }
+class MDCTextFieldIconAdapter {
+  /**
+   * Sets an attribute on the icon element.
+   * @param {string} attr
+   * @param {string} value
+   */
+  setAttr(attr, value) {}
 
-  _createClass(MDCTextFieldIconAdapter, [{
-    key: "setAttr",
+  /**
+   * Registers an event listener on the icon element for a given event.
+   * @param {string} evtType
+   * @param {function(!Event): undefined} handler
+   */
+  registerInteractionHandler(evtType, handler) {}
 
-    /**
-     * Sets an attribute on the icon element.
-     * @param {string} attr
-     * @param {string} value
-     */
-    value: function setAttr(attr, value) {}
+  /**
+   * Deregisters an event listener on the icon element for a given event.
+   * @param {string} evtType
+   * @param {function(!Event): undefined} handler
+   */
+  deregisterInteractionHandler(evtType, handler) {}
 
-    /**
-     * Registers an event listener on the icon element for a given event.
-     * @param {string} evtType
-     * @param {function(!Event): undefined} handler
-     */
+  /**
+   * Emits a custom event "MDCTextField:icon" denoting a user has clicked the icon.
+   */
+  notifyIconAction() {}
+}
 
-  }, {
-    key: "registerInteractionHandler",
-    value: function registerInteractionHandler(evtType, handler) {}
-
-    /**
-     * Deregisters an event listener on the icon element for a given event.
-     * @param {string} evtType
-     * @param {function(!Event): undefined} handler
-     */
-
-  }, {
-    key: "deregisterInteractionHandler",
-    value: function deregisterInteractionHandler(evtType, handler) {}
-
-    /**
-     * Emits a custom event "MDCTextField:icon" denoting a user has clicked the icon.
-     */
-
-  }, {
-    key: "notifyIconAction",
-    value: function notifyIconAction() {}
-  }]);
-
-  return MDCTextFieldIconAdapter;
-}();
-
-exports.default = MDCTextFieldIconAdapter;
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCTextFieldIconAdapter);
 
 /***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(46);
+/**
+ * @license
+ * Copyright 2018 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _foundation = __webpack_require__(0);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _adapter = __webpack_require__(15);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _constants = __webpack_require__(44);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2018 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 /**
  * @extends {MDCFoundation<!MDCLineRippleAdapter>}
  * @final
  */
-var MDCLineRippleFoundation = function (_MDCFoundation) {
-  _inherits(MDCLineRippleFoundation, _MDCFoundation);
-
-  _createClass(MDCLineRippleFoundation, null, [{
-    key: 'cssClasses',
-
-    /** @return enum {string} */
-    get: function get() {
-      return _constants.cssClasses;
-    }
-
-    /**
-     * {@see MDCLineRippleAdapter} for typing information on parameters and return
-     * types.
-     * @return {!MDCLineRippleAdapter}
-     */
-
-  }, {
-    key: 'defaultAdapter',
-    get: function get() {
-      return (/** @type {!MDCLineRippleAdapter} */{
-          addClass: function addClass() {},
-          removeClass: function removeClass() {},
-          hasClass: function hasClass() {},
-          setAttr: function setAttr() {},
-          registerEventHandler: function registerEventHandler() {},
-          deregisterEventHandler: function deregisterEventHandler() {}
-        }
-      );
-    }
-
-    /**
-     * @param {!MDCLineRippleAdapter=} adapter
-     */
-
-  }]);
-
-  function MDCLineRippleFoundation() {
-    var adapter = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : /** @type {!MDCLineRippleAdapter} */{};
-
-    _classCallCheck(this, MDCLineRippleFoundation);
-
-    /** @private {function(!Event): undefined} */
-    var _this = _possibleConstructorReturn(this, (MDCLineRippleFoundation.__proto__ || Object.getPrototypeOf(MDCLineRippleFoundation)).call(this, Object.assign(MDCLineRippleFoundation.defaultAdapter, adapter)));
-
-    _this.transitionEndHandler_ = function (evt) {
-      return _this.handleTransitionEnd(evt);
-    };
-    return _this;
+class MDCLineRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
   }
 
-  _createClass(MDCLineRippleFoundation, [{
-    key: 'init',
-    value: function init() {
-      this.adapter_.registerEventHandler('transitionend', this.transitionEndHandler_);
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      this.adapter_.deregisterEventHandler('transitionend', this.transitionEndHandler_);
-    }
+  /**
+   * {@see MDCLineRippleAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCLineRippleAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCLineRippleAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        hasClass: () => {},
+        setStyle: () => {},
+        registerEventHandler: () => {},
+        deregisterEventHandler: () => {}
+      }
+    );
+  }
 
-    /**
-     * Activates the line ripple
-     */
+  /**
+   * @param {!MDCLineRippleAdapter=} adapter
+   */
+  constructor(adapter = /** @type {!MDCLineRippleAdapter} */{}) {
+    super(Object.assign(MDCLineRippleFoundation.defaultAdapter, adapter));
 
-  }, {
-    key: 'activate',
-    value: function activate() {
-      this.adapter_.removeClass(_constants.cssClasses.LINE_RIPPLE_DEACTIVATING);
-      this.adapter_.addClass(_constants.cssClasses.LINE_RIPPLE_ACTIVE);
-    }
+    /** @private {function(!Event): undefined} */
+    this.transitionEndHandler_ = evt => this.handleTransitionEnd(evt);
+  }
 
-    /**
-     * Sets the center of the ripple animation to the given X coordinate.
-     * @param {!number} xCoordinate
-     */
+  init() {
+    this.adapter_.registerEventHandler('transitionend', this.transitionEndHandler_);
+  }
 
-  }, {
-    key: 'setRippleCenter',
-    value: function setRippleCenter(xCoordinate) {
-      var attributeString = 'transform-origin: ' + xCoordinate + 'px center';
+  destroy() {
+    this.adapter_.deregisterEventHandler('transitionend', this.transitionEndHandler_);
+  }
 
-      this.adapter_.setAttr('style', attributeString);
-    }
+  /**
+   * Activates the line ripple
+   */
+  activate() {
+    this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_ACTIVE);
+  }
 
-    /**
-     * Deactivates the line ripple
-     */
+  /**
+   * Sets the center of the ripple animation to the given X coordinate.
+   * @param {!number} xCoordinate
+   */
+  setRippleCenter(xCoordinate) {
+    this.adapter_.setStyle('transform-origin', `${xCoordinate}px center`);
+  }
 
-  }, {
-    key: 'deactivate',
-    value: function deactivate() {
-      this.adapter_.addClass(_constants.cssClasses.LINE_RIPPLE_DEACTIVATING);
-    }
+  /**
+   * Deactivates the line ripple
+   */
+  deactivate() {
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
+  }
 
-    /**
-     * Handles a transition end event
-     * @param {!Event} evt
-     */
+  /**
+   * Handles a transition end event
+   * @param {!Event} evt
+   */
+  handleTransitionEnd(evt) {
+    // Wait for the line ripple to be either transparent or opaque
+    // before emitting the animation end event
+    const isDeactivating = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
 
-  }, {
-    key: 'handleTransitionEnd',
-    value: function handleTransitionEnd(evt) {
-      // Wait for the line ripple to be either transparent or opaque
-      // before emitting the animation end event
-      var isDeactivating = this.adapter_.hasClass(_constants.cssClasses.LINE_RIPPLE_DEACTIVATING);
-
-      if (evt.propertyName === 'opacity') {
-        if (isDeactivating) {
-          this.adapter_.removeClass(_constants.cssClasses.LINE_RIPPLE_ACTIVE);
-          this.adapter_.removeClass(_constants.cssClasses.LINE_RIPPLE_DEACTIVATING);
-        }
+    if (evt.propertyName === 'opacity') {
+      if (isDeactivating) {
+        this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_ACTIVE);
+        this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
       }
     }
-  }]);
+  }
+}
 
-  return MDCLineRippleFoundation;
-}(_foundation2.default);
-
-exports.default = MDCLineRippleFoundation;
+/* harmony default export */ __webpack_exports__["a"] = (MDCLineRippleFoundation);
 
 /***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * @license
  * Copyright 2018 Google Inc. All Rights Reserved.
@@ -2291,266 +1601,175 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *
  * @record
  */
-var MDCLineRippleAdapter = function () {
-  function MDCLineRippleAdapter() {
-    _classCallCheck(this, MDCLineRippleAdapter);
-  }
+class MDCLineRippleAdapter {
+  /**
+   * Adds a class to the line ripple element.
+   * @param {string} className
+   */
+  addClass(className) {}
 
-  _createClass(MDCLineRippleAdapter, [{
-    key: "addClass",
+  /**
+   * Removes a class from the line ripple element.
+   * @param {string} className
+   */
+  removeClass(className) {}
 
-    /**
-     * Adds a class to the line ripple element.
-     * @param {string} className
-     */
-    value: function addClass(className) {}
+  /**
+   * @param {string} className
+   * @return {boolean}
+   */
+  hasClass(className) {}
 
-    /**
-     * Removes a class from the line ripple element.
-     * @param {string} className
-     */
+  /**
+   * Sets the style property with propertyName to value on the root element.
+   * @param {string} propertyName
+   * @param {string} value
+   */
+  setStyle(propertyName, value) {}
 
-  }, {
-    key: "removeClass",
-    value: function removeClass(className) {}
+  /**
+   * Registers an event listener on the line ripple element for a given event.
+   * @param {string} evtType
+   * @param {function(!Event): undefined} handler
+   */
+  registerEventHandler(evtType, handler) {}
 
-    /**
-     * @param {string} className
-     * @return {boolean}
-     */
+  /**
+   * Deregisters an event listener on the line ripple element for a given event.
+   * @param {string} evtType
+   * @param {function(!Event): undefined} handler
+   */
+  deregisterEventHandler(evtType, handler) {}
+}
 
-  }, {
-    key: "hasClass",
-    value: function hasClass(className) {}
-
-    /**
-     * Sets an attribute with a given value on the line ripple element.
-     * @param {string} attr
-     * @param {string} value
-     */
-
-  }, {
-    key: "setAttr",
-    value: function setAttr(attr, value) {}
-
-    /**
-     * Registers an event listener on the line ripple element for a given event.
-     * @param {string} evtType
-     * @param {function(!Event): undefined} handler
-     */
-
-  }, {
-    key: "registerEventHandler",
-    value: function registerEventHandler(evtType, handler) {}
-
-    /**
-     * Deregisters an event listener on the line ripple element for a given event.
-     * @param {string} evtType
-     * @param {function(!Event): undefined} handler
-     */
-
-  }, {
-    key: "deregisterEventHandler",
-    value: function deregisterEventHandler(evtType, handler) {}
-  }]);
-
-  return MDCLineRippleAdapter;
-}();
-
-exports.default = MDCLineRippleAdapter;
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCLineRippleAdapter);
 
 /***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(47);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _foundation = __webpack_require__(0);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _adapter = __webpack_require__(17);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _constants = __webpack_require__(45);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2016 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 /**
  * @extends {MDCFoundation<!MDCFloatingLabelAdapter>}
  * @final
  */
-var MDCFloatingLabelFoundation = function (_MDCFoundation) {
-  _inherits(MDCFloatingLabelFoundation, _MDCFoundation);
-
-  _createClass(MDCFloatingLabelFoundation, null, [{
-    key: 'cssClasses',
-
-    /** @return enum {string} */
-    get: function get() {
-      return _constants.cssClasses;
-    }
-
-    /**
-     * {@see MDCFloatingLabelAdapter} for typing information on parameters and return
-     * types.
-     * @return {!MDCFloatingLabelAdapter}
-     */
-
-  }, {
-    key: 'defaultAdapter',
-    get: function get() {
-      return (/** @type {!MDCFloatingLabelAdapter} */{
-          addClass: function addClass() {},
-          removeClass: function removeClass() {},
-          getWidth: function getWidth() {},
-          registerInteractionHandler: function registerInteractionHandler() {},
-          deregisterInteractionHandler: function deregisterInteractionHandler() {}
-        }
-      );
-    }
-
-    /**
-     * @param {!MDCFloatingLabelAdapter} adapter
-     */
-
-  }]);
-
-  function MDCFloatingLabelFoundation(adapter) {
-    _classCallCheck(this, MDCFloatingLabelFoundation);
-
-    /** @private {function(!Event): undefined} */
-    var _this = _possibleConstructorReturn(this, (MDCFloatingLabelFoundation.__proto__ || Object.getPrototypeOf(MDCFloatingLabelFoundation)).call(this, Object.assign(MDCFloatingLabelFoundation.defaultAdapter, adapter)));
-
-    _this.shakeAnimationEndHandler_ = function () {
-      return _this.handleShakeAnimationEnd_();
-    };
-    return _this;
+class MDCFloatingLabelFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
   }
 
-  _createClass(MDCFloatingLabelFoundation, [{
-    key: 'init',
-    value: function init() {
-      this.adapter_.registerInteractionHandler('animationend', this.shakeAnimationEndHandler_);
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      this.adapter_.deregisterInteractionHandler('animationend', this.shakeAnimationEndHandler_);
-    }
-
-    /**
-     * Returns the width of the label element.
-     * @return {number}
-     */
-
-  }, {
-    key: 'getWidth',
-    value: function getWidth() {
-      return this.adapter_.getWidth();
-    }
-
-    /**
-     * Styles the label to produce the label shake for errors.
-     * @param {boolean} shouldShake adds shake class if true,
-     * otherwise removes shake class.
-     */
-
-  }, {
-    key: 'shake',
-    value: function shake(shouldShake) {
-      var LABEL_SHAKE = MDCFloatingLabelFoundation.cssClasses.LABEL_SHAKE;
-
-      if (shouldShake) {
-        this.adapter_.addClass(LABEL_SHAKE);
-      } else {
-        this.adapter_.removeClass(LABEL_SHAKE);
+  /**
+   * {@see MDCFloatingLabelAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCFloatingLabelAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCFloatingLabelAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        getWidth: () => {},
+        registerInteractionHandler: () => {},
+        deregisterInteractionHandler: () => {}
       }
-    }
+    );
+  }
 
-    /**
-     * Styles the label to float or dock.
-     * @param {boolean} shouldFloat adds float class if true, otherwise remove
-     * float and shake class to dock label.
-     */
+  /**
+   * @param {!MDCFloatingLabelAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCFloatingLabelFoundation.defaultAdapter, adapter));
 
-  }, {
-    key: 'float',
-    value: function float(shouldFloat) {
-      var _MDCFloatingLabelFoun = MDCFloatingLabelFoundation.cssClasses,
-          LABEL_FLOAT_ABOVE = _MDCFloatingLabelFoun.LABEL_FLOAT_ABOVE,
-          LABEL_SHAKE = _MDCFloatingLabelFoun.LABEL_SHAKE;
+    /** @private {function(!Event): undefined} */
+    this.shakeAnimationEndHandler_ = () => this.handleShakeAnimationEnd_();
+  }
 
-      if (shouldFloat) {
-        this.adapter_.addClass(LABEL_FLOAT_ABOVE);
-      } else {
-        this.adapter_.removeClass(LABEL_FLOAT_ABOVE);
-        this.adapter_.removeClass(LABEL_SHAKE);
-      }
-    }
+  init() {
+    this.adapter_.registerInteractionHandler('animationend', this.shakeAnimationEndHandler_);
+  }
 
-    /**
-     * Handles an interaction event on the root element.
-     */
+  destroy() {
+    this.adapter_.deregisterInteractionHandler('animationend', this.shakeAnimationEndHandler_);
+  }
 
-  }, {
-    key: 'handleShakeAnimationEnd_',
-    value: function handleShakeAnimationEnd_() {
-      var LABEL_SHAKE = MDCFloatingLabelFoundation.cssClasses.LABEL_SHAKE;
+  /**
+   * Returns the width of the label element.
+   * @return {number}
+   */
+  getWidth() {
+    return this.adapter_.getWidth();
+  }
 
+  /**
+   * Styles the label to produce the label shake for errors.
+   * @param {boolean} shouldShake adds shake class if true,
+   * otherwise removes shake class.
+   */
+  shake(shouldShake) {
+    const { LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
+    if (shouldShake) {
+      this.adapter_.addClass(LABEL_SHAKE);
+    } else {
       this.adapter_.removeClass(LABEL_SHAKE);
     }
-  }]);
+  }
 
-  return MDCFloatingLabelFoundation;
-}(_foundation2.default);
+  /**
+   * Styles the label to float or dock.
+   * @param {boolean} shouldFloat adds float class if true, otherwise remove
+   * float and shake class to dock label.
+   */
+  float(shouldFloat) {
+    const { LABEL_FLOAT_ABOVE, LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
+    if (shouldFloat) {
+      this.adapter_.addClass(LABEL_FLOAT_ABOVE);
+    } else {
+      this.adapter_.removeClass(LABEL_FLOAT_ABOVE);
+      this.adapter_.removeClass(LABEL_SHAKE);
+    }
+  }
 
-exports.default = MDCFloatingLabelFoundation;
+  /**
+   * Handles an interaction event on the root element.
+   */
+  handleShakeAnimationEnd_() {
+    const { LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
+    this.adapter_.removeClass(LABEL_SHAKE);
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCFloatingLabelFoundation);
 
 /***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -2580,153 +1799,128 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *
  * @record
  */
-var MDCFloatingLabelAdapter = function () {
-  function MDCFloatingLabelAdapter() {
-    _classCallCheck(this, MDCFloatingLabelAdapter);
-  }
+class MDCFloatingLabelAdapter {
+  /**
+   * Adds a class to the label element.
+   * @param {string} className
+   */
+  addClass(className) {}
 
-  _createClass(MDCFloatingLabelAdapter, [{
-    key: "addClass",
+  /**
+   * Removes a class from the label element.
+   * @param {string} className
+   */
+  removeClass(className) {}
 
-    /**
-     * Adds a class to the label element.
-     * @param {string} className
-     */
-    value: function addClass(className) {}
+  /**
+   * Returns the width of the label element.
+   * @return {number}
+   */
+  getWidth() {}
 
-    /**
-     * Removes a class from the label element.
-     * @param {string} className
-     */
+  /**
+   * Registers an event listener on the root element for a given event.
+   * @param {string} evtType
+   * @param {function(!Event): undefined} handler
+   */
+  registerInteractionHandler(evtType, handler) {}
 
-  }, {
-    key: "removeClass",
-    value: function removeClass(className) {}
+  /**
+   * Deregisters an event listener on the root element for a given event.
+   * @param {string} evtType
+   * @param {function(!Event): undefined} handler
+   */
+  deregisterInteractionHandler(evtType, handler) {}
+}
 
-    /**
-     * Returns the width of the label element.
-     * @return {number}
-     */
-
-  }, {
-    key: "getWidth",
-    value: function getWidth() {}
-
-    /**
-     * Registers an event listener on the root element for a given event.
-     * @param {string} evtType
-     * @param {function(!Event): undefined} handler
-     */
-
-  }, {
-    key: "registerInteractionHandler",
-    value: function registerInteractionHandler(evtType, handler) {}
-
-    /**
-     * Deregisters an event listener on the root element for a given event.
-     * @param {string} evtType
-     * @param {function(!Event): undefined} handler
-     */
-
-  }, {
-    key: "deregisterInteractionHandler",
-    value: function deregisterInteractionHandler(evtType, handler) {}
-  }]);
-
-  return MDCFloatingLabelAdapter;
-}();
-
-exports.default = MDCFloatingLabelAdapter;
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCFloatingLabelAdapter);
 
 /***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(19);
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _foundation = __webpack_require__(0);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _adapter = __webpack_require__(19);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _constants = __webpack_require__(20);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2017 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 /**
  * @extends {MDCFoundation<!MDCNotchedOutlineAdapter>}
  * @final
  */
-var MDCNotchedOutlineFoundation = function (_MDCFoundation) {
-  _inherits(MDCNotchedOutlineFoundation, _MDCFoundation);
+class MDCNotchedOutlineFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
+  }
 
-  _createClass(MDCNotchedOutlineFoundation, null, [{
-    key: 'strings',
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
 
-    /** @return enum {string} */
-    get: function get() {
-      return _constants.strings;
-    }
+  /**
+   * {@see MDCNotchedOutlineAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCNotchedOutlineAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCNotchedOutlineAdapter} */{
+        getWidth: () => {},
+        getHeight: () => {},
+        addClass: () => {},
+        removeClass: () => {},
+        setOutlinePathAttr: () => {},
+        getIdleOutlineStyleValue: () => {}
+      }
+    );
+  }
 
-    /**
-     * {@see MDCNotchedOutlineAdapter} for typing information on parameters and return
-     * types.
-     * @return {!MDCNotchedOutlineAdapter}
-     */
+  /**
+   * @param {!MDCNotchedOutlineAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCNotchedOutlineFoundation.defaultAdapter, adapter));
+  }
 
-  }, {
-    key: 'defaultAdapter',
-    get: function get() {
-      return (/** @type {!MDCNotchedOutlineAdapter} */{
-          getWidth: function getWidth() {},
-          getHeight: function getHeight() {},
-          setOutlinePathAttr: function setOutlinePathAttr() {},
-          getIdleOutlineStyleValue: function getIdleOutlineStyleValue() {}
-        }
-      );
-    }
+  /**
+   * Adds the outline notched selector and updates the notch width
+   * calculated based off of notchWidth and isRtl.
+   * @param {number} notchWidth
+   * @param {boolean=} isRtl
+   */
+  notch(notchWidth, isRtl = false) {
+    const { OUTLINE_NOTCHED } = MDCNotchedOutlineFoundation.cssClasses;
+    this.adapter_.addClass(OUTLINE_NOTCHED);
+    this.updateSvgPath_(notchWidth, isRtl);
+  }
 
-    /**
-     * @param {!MDCNotchedOutlineAdapter} adapter
-     */
-
-  }]);
-
-  function MDCNotchedOutlineFoundation(adapter) {
-    _classCallCheck(this, MDCNotchedOutlineFoundation);
-
-    return _possibleConstructorReturn(this, (MDCNotchedOutlineFoundation.__proto__ || Object.getPrototypeOf(MDCNotchedOutlineFoundation)).call(this, Object.assign(MDCNotchedOutlineFoundation.defaultAdapter, adapter)));
+  /**
+   * Removes notched outline selector to close the notch in the outline.
+   */
+  closeNotch() {
+    const { OUTLINE_NOTCHED } = MDCNotchedOutlineFoundation.cssClasses;
+    this.adapter_.removeClass(OUTLINE_NOTCHED);
   }
 
   /**
@@ -2734,57 +1928,39 @@ var MDCNotchedOutlineFoundation = function (_MDCFoundation) {
    * and the RTL context.
    * @param {number} notchWidth
    * @param {boolean=} isRtl
+   * @private
    */
+  updateSvgPath_(notchWidth, isRtl) {
+    // Fall back to reading a specific corner's style because Firefox doesn't report the style on border-radius.
+    const radiusStyleValue = this.adapter_.getIdleOutlineStyleValue('border-radius') || this.adapter_.getIdleOutlineStyleValue('border-top-left-radius');
+    const radius = parseFloat(radiusStyleValue);
+    const width = this.adapter_.getWidth();
+    const height = this.adapter_.getHeight();
+    const cornerWidth = radius + 1.2;
+    const leadingStrokeLength = Math.abs(11 - cornerWidth);
+    const paddedNotchWidth = notchWidth + 8;
 
+    // The right, bottom, and left sides of the outline follow the same SVG path.
+    const pathMiddle = 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + radius + 'v' + (height - 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + radius + 'h' + (-width + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + -radius + 'v' + (-height + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + -radius;
 
-  _createClass(MDCNotchedOutlineFoundation, [{
-    key: 'updateSvgPath',
-    value: function updateSvgPath(notchWidth) {
-      var isRtl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-      // Fall back to reading a specific corner's style because Firefox doesn't report the style on border-radius.
-      var radiusStyleValue = this.adapter_.getIdleOutlineStyleValue('border-radius') || this.adapter_.getIdleOutlineStyleValue('border-top-left-radius');
-      var radius = parseFloat(radiusStyleValue);
-      var width = this.adapter_.getWidth();
-      var height = this.adapter_.getHeight();
-      var cornerWidth = radius + 1.2;
-      var leadingStrokeLength = Math.abs(11 - cornerWidth);
-      var paddedNotchWidth = notchWidth + 8;
-
-      // The right, bottom, and left sides of the outline follow the same SVG path.
-      var pathMiddle = 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + radius + 'v' + (height - 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + radius + 'h' + (-width + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + -radius + 'v' + (-height + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + -radius;
-
-      var path = void 0;
-      if (!isRtl) {
-        path = 'M' + (cornerWidth + leadingStrokeLength + paddedNotchWidth) + ',' + 1 + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength) + pathMiddle + 'h' + leadingStrokeLength;
-      } else {
-        path = 'M' + (width - cornerWidth - leadingStrokeLength) + ',' + 1 + 'h' + leadingStrokeLength + pathMiddle + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength);
-      }
-
-      this.adapter_.setOutlinePathAttr(path);
+    let path;
+    if (!isRtl) {
+      path = 'M' + (cornerWidth + leadingStrokeLength + paddedNotchWidth) + ',' + 1 + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength) + pathMiddle + 'h' + leadingStrokeLength;
+    } else {
+      path = 'M' + (width - cornerWidth - leadingStrokeLength) + ',' + 1 + 'h' + leadingStrokeLength + pathMiddle + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength);
     }
-  }]);
 
-  return MDCNotchedOutlineFoundation;
-}(_foundation2.default);
+    this.adapter_.setOutlinePathAttr(path);
+  }
+}
 
-exports.default = MDCNotchedOutlineFoundation;
+/* harmony default export */ __webpack_exports__["a"] = (MDCNotchedOutlineFoundation);
 
 /***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 18 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -2814,65 +1990,55 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *
  * @record
  */
-var MDCNotchedOutlineAdapter = function () {
-  function MDCNotchedOutlineAdapter() {
-    _classCallCheck(this, MDCNotchedOutlineAdapter);
-  }
+class MDCNotchedOutlineAdapter {
+  /**
+   * Returns the width of the root element.
+   * @return {number}
+   */
+  getWidth() {}
 
-  _createClass(MDCNotchedOutlineAdapter, [{
-    key: "getWidth",
+  /**
+   * Returns the height of the root element.
+   * @return {number}
+   */
+  getHeight() {}
 
-    /**
-     * Returns the width of the root element.
-     * @return {number}
-     */
-    value: function getWidth() {}
+  /**
+   * Adds a class to the root element.
+   * @param {string} className
+   */
+  addClass(className) {}
 
-    /**
-     * Returns the height of the root element.
-     * @return {number}
-     */
+  /**
+   * Removes a class from the root element.
+   * @param {string} className
+   */
+  removeClass(className) {}
 
-  }, {
-    key: "getHeight",
-    value: function getHeight() {}
+  /**
+   * Sets the "d" attribute of the outline element's SVG path.
+   * @param {string} value
+   */
+  setOutlinePathAttr(value) {}
 
-    /**
-     * Sets the "d" attribute of the outline element's SVG path.
-     * @param {string} value
-     */
+  /**
+   * Returns the idle outline element's computed style value of the given css property `propertyName`.
+   * We achieve this via `getComputedStyle(...).getPropertyValue(propertyName)`.
+   * @param {string} propertyName
+   * @return {string}
+   */
+  getIdleOutlineStyleValue(propertyName) {}
+}
 
-  }, {
-    key: "setOutlinePathAttr",
-    value: function setOutlinePathAttr(value) {}
-
-    /**
-     * Returns the idle outline element's computed style value of the given css property `propertyName`.
-     * We achieve this via `getComputedStyle(...).getPropertyValue(propertyName)`.
-     * @param {string} propertyName
-     * @return {string}
-     */
-
-  }, {
-    key: "getIdleOutlineStyleValue",
-    value: function getIdleOutlineStyleValue(propertyName) {}
-  }]);
-
-  return MDCNotchedOutlineAdapter;
-}();
-
-exports.default = MDCNotchedOutlineAdapter;
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCNotchedOutlineAdapter);
 
 /***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 19 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return strings; });
 /**
  * @license
  * Copyright 2018 Google Inc. All Rights Reserved.
@@ -2891,318 +2057,235 @@ Object.defineProperty(exports, "__esModule", {
  */
 
 /** @enum {string} */
-var strings = {
+const strings = {
   PATH_SELECTOR: '.mdc-notched-outline__path',
   IDLE_OUTLINE_SELECTOR: '.mdc-notched-outline__idle'
 };
 
-exports.strings = strings;
+/** @enum {string} */
+const cssClasses = {
+  OUTLINE_NOTCHED: 'mdc-notched-outline--notched'
+};
+
+
 
 /***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 // This class displays a page level message
-var VSnackbar = exports.VSnackbar = function () {
-    function VSnackbar(message, action_text, action_fn) {
-        _classCallCheck(this, VSnackbar);
-
+class VSnackbar {
+    constructor(message, action_text, action_fn) {
         this.message = message;
         this.action_text = action_text;
         this.action_fn = action_fn;
     }
 
-    _createClass(VSnackbar, [{
-        key: 'display',
-        value: function display() {
-            var snackbarContainer = document.querySelector('#snackbar');
-            var data = {
-                message: this.message,
-                timeout: 2000,
-                actionHandler: this.action_fn,
-                actionText: this.action_text
-            };
-            componentHandler.upgradeElement(snackbarContainer);
-            snackbarContainer.MaterialSnackbar.showSnackbar(data);
-        }
-    }]);
+    display() {
+        var snackbarContainer = document.querySelector('#snackbar');
+        var data = {
+            message: this.message,
+            timeout: 2000,
+            actionHandler: this.action_fn,
+            actionText: this.action_text
+        };
+        componentHandler.upgradeElement(snackbarContainer);
+        snackbarContainer.MaterialSnackbar.showSnackbar(data);
+    }
+}
+/* unused harmony export VSnackbar */
 
-    return VSnackbar;
-}();
+
+/***/ }),
+/* 21 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors__ = __webpack_require__(22);
+
+class VBase {
+    clearErrors() {
+        new __WEBPACK_IMPORTED_MODULE_0__errors__["a" /* VErrors */]().clearErrors();
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VBase;
+
 
 /***/ }),
 /* 22 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.VBase = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _errors = __webpack_require__(23);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var VBase = exports.VBase = function () {
-    function VBase() {
-        _classCallCheck(this, VBase);
-    }
-
-    _createClass(VBase, [{
-        key: 'clearErrors',
-        value: function clearErrors() {
-            new _errors.VErrors().clearErrors();
-        }
-    }]);
-
-    return VBase;
-}();
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var VErrors = exports.VErrors = function () {
-    function VErrors(event) {
-        _classCallCheck(this, VErrors);
-
+class VErrors {
+    constructor(event) {
         this.event = event;
     }
 
-    _createClass(VErrors, [{
-        key: 'clearErrors',
-        value: function clearErrors() {
-            var errorMessages = document.querySelectorAll('.v-error-message');
+    clearErrors() {
+        var errorMessages = document.querySelectorAll('.v-error-message');
 
-            for (var i = 0; i < errorMessages.length; i++) {
-                errorMessages[i].remove();
-            }
+        for (var i = 0; i < errorMessages.length; i++) {
+            errorMessages[i].remove();
         }
+    }
 
-        // Rails errors
-        // {
-        //   "name": [
-        //     "Requires name"
-        //   ]
-        // }
+    // Rails errors
+    // {
+    //   "name": [
+    //     "Requires name"
+    //   ]
+    // }
 
-        // Validation errors
-        // { :email => ["must be filled"] }
+    // Validation errors
+    // { :email => ["must be filled"] }
 
-        // Custom errors
-        // { :email => "must be filled" }
+    // Custom errors
+    // { :email => "must be filled" }
 
-        // Exceptions
-        // {exception: 'Something bad happened' }
+    // Exceptions
+    // {exception: 'Something bad happened' }
 
-    }, {
-        key: 'stringsToArrays',
-        value: function stringsToArrays(value) {
-            if (Array.isArray(value) || value.constructor === Object) {
-                return value;
-            }
-            return new Array(value);
+    stringsToArrays(value) {
+        if (Array.isArray(value) || value.constructor === Object) {
+            return value;
         }
-    }, {
-        key: 'normalizeErrors',
-        value: function normalizeErrors(errors) {
-            var _this = this;
+        return new Array(value);
+    }
 
-            if (errors && errors.constructor === Object) {
-                return Object.keys(errors).reduce(function (previous, key) {
-                    previous[key] = _this.stringsToArrays(errors[key]);
-                    return previous;
-                }, {});
-            }
-            return [];
+    normalizeErrors(errors) {
+        if (errors && errors.constructor === Object) {
+            return Object.keys(errors).reduce((previous, key) => {
+                previous[key] = this.stringsToArrays(errors[key]);
+                return previous;
+            }, {});
         }
+        return [];
+    }
 
-        // [http_status, content_type, resultText]
+    // [http_status, content_type, resultText]
+    displayErrors(results) {
+        var httpStatus = results[0];
+        var contentType = results[1];
+        var resultText = results[2];
 
-    }, {
-        key: 'displayErrors',
-        value: function displayErrors(results) {
-            var httpStatus = results[0];
-            var contentType = results[1];
-            var resultText = results[2];
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+            var response = JSON.parse(resultText);
+            var pageErrors = Object.values(this.normalizeErrors(response)).reduce(function (previous, value) {
+                if (Array.isArray(value)) {
+                    previous.push(value.join('<br/>'));
+                }
+                return previous;
+            }, []);
+            var fieldErrors = this.normalizeErrors(response.errors);
 
-            if (contentType && contentType.indexOf("application/json") !== -1) {
-                var response = JSON.parse(resultText);
-                var pageErrors = Object.values(this.normalizeErrors(response)).reduce(function (previous, value) {
-                    if (Array.isArray(value)) {
-                        previous.push(value.join('<br/>'));
-                    }
-                    return previous;
-                }, []);
-                var fieldErrors = this.normalizeErrors(response.errors);
-
-                for (var field in fieldErrors) {
-                    if (!this.displayInputError(field, fieldErrors[field])) {
-                        if (!this.prependError(field, fieldErrors[field])) {
-                            // Collect errors that can't be displayed at the field level
-                            pageErrors.push(fieldErrors[field].join('<br/>'));
-                        }
+            for (var field in fieldErrors) {
+                if (!this.displayInputError(field, fieldErrors[field])) {
+                    if (!this.prependError(field, fieldErrors[field])) {
+                        // Collect errors that can't be displayed at the field level
+                        pageErrors.push(fieldErrors[field].join('<br/>'));
                     }
                 }
-                var errors = this.event.target.closest('form').querySelector('.v-errors');
-                if (!errors) {
-                    errors = document.querySelector('.v-errors');
-                }
-                this.prependError(null, pageErrors, errors);
-            } else if (httpStatus === 0) {
-                this.prependError('errors', ["Unable to contact server. Please check that you are online and retry."]);
-            } else if (results !== true) {
-                this.prependError('errors', ["The server returned an unexpected response! Status:" + httpStatus]);
             }
-        }
-
-        // Sets the helper text on the field
-        // Returns true if it was able to set the error on the control
-
-    }, {
-        key: 'displayInputError',
-        value: function displayInputError(divId, messages) {
-            var currentEl = document.getElementById(divId);
-            if (currentEl && currentEl.mdcComponent) {
-                currentEl.mdcComponent.helperTextContent = messages.join(', ');
-                var helperText = document.getElementById(divId + '-input-helper-text');
-                helperText.classList.add('mdc-text-field--invalid', 'mdc-text-field-helper-text--validation-msg', 'mdc-text-field-helper-text--persistent');
-                currentEl.mdcComponent.valid = false;
-                return true;
+            var errors = this.event.target.closest('form').querySelector('.v-errors');
+            if (!errors) {
+                errors = document.querySelector('.v-errors');
             }
-            return false;
+            this.prependError(null, pageErrors, errors);
+        } else if (httpStatus === 0) {
+            this.prependError('errors', ["Unable to contact server. Please check that you are online and retry."]);
+        } else if (results !== true) {
+            this.prependError('errors', ["The server returned an unexpected response! Status:" + httpStatus]);
         }
+    }
 
-        // Creates a div before the element with the same id as the error
-        // Used to display an error message without their being an input field to attach the error to
-
-    }, {
-        key: 'prependError',
-        value: function prependError(divId, messages, errorsDiv) {
-            // create a new div element
-            var newDiv = document.createElement("div");
-            newDiv.className = 'v-error-message';
-            // and give it some content
-            var newContent = document.createTextNode(messages.join('<br/>'));
-            // add the text node to the newly created div
-            newDiv.appendChild(newContent);
-
-            // add the newly created element and its content into the DOM
-            var currentDiv = errorsDiv || document.getElementById(divId);
-            if (currentDiv) {
-                currentDiv.parentElement.insertBefore(newDiv, currentDiv);
-                return true;
-            }
-            return false;
+    // Sets the helper text on the field
+    // Returns true if it was able to set the error on the control
+    displayInputError(divId, messages) {
+        var currentEl = document.getElementById(divId);
+        if (currentEl && currentEl.mdcComponent) {
+            currentEl.mdcComponent.helperTextContent = messages.join(', ');
+            var helperText = document.getElementById(divId + '-input-helper-text');
+            helperText.classList.add('mdc-text-field--invalid', 'mdc-text-field-helper-text--validation-msg', 'mdc-text-field-helper-text--persistent');
+            currentEl.mdcComponent.valid = false;
+            return true;
         }
-    }]);
+        return false;
+    }
 
-    return VErrors;
-}();
+    // Creates a div before the element with the same id as the error
+    // Used to display an error message without their being an input field to attach the error to
+    prependError(divId, messages, errorsDiv) {
+        // create a new div element
+        var newDiv = document.createElement("div");
+        newDiv.className = 'v-error-message';
+        // and give it some content
+        var newContent = document.createTextNode(messages.join('<br/>'));
+        // add the text node to the newly created div
+        newDiv.appendChild(newContent);
+
+        // add the newly created element and its content into the DOM
+        var currentDiv = errorsDiv || document.getElementById(divId);
+        if (currentDiv) {
+            currentDiv.parentElement.insertBefore(newDiv, currentDiv);
+            return true;
+        }
+        return false;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VErrors;
+
 
 /***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(6);
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Copyright 2016 Google Inc.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *   http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
-
-var _foundation = __webpack_require__(5);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * @template F
  */
-var MDCComponent = function () {
-  _createClass(MDCComponent, null, [{
-    key: 'attachTo',
+class MDCComponent {
+  /**
+   * @param {!Element} root
+   * @return {!MDCComponent}
+   */
+  static attachTo(root) {
+    // Subclasses which extend MDCBase should provide an attachTo() method that takes a root element and
+    // returns an instantiated component with its root set to that element. Also note that in the cases of
+    // subclasses, an explicit foundation class will not have to be passed in; it will simply be initialized
+    // from getDefaultFoundation().
+    return new MDCComponent(root, new __WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */]());
+  }
 
-    /**
-     * @param {!Element} root
-     * @return {!MDCComponent}
-     */
-    value: function attachTo(root) {
-      // Subclasses which extend MDCBase should provide an attachTo() method that takes a root element and
-      // returns an instantiated component with its root set to that element. Also note that in the cases of
-      // subclasses, an explicit foundation class will not have to be passed in; it will simply be initialized
-      // from getDefaultFoundation().
-      return new MDCComponent(root, new _foundation2.default());
-    }
-
-    /**
-     * @param {!Element} root
-     * @param {F=} foundation
-     * @param {...?} args
-     */
-
-  }]);
-
-  function MDCComponent(root) {
-    var foundation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
-
-    _classCallCheck(this, MDCComponent);
-
+  /**
+   * @param {!Element} root
+   * @param {F=} foundation
+   * @param {...?} args
+   */
+  constructor(root, foundation = undefined, ...args) {
     /** @protected {!Element} */
     this.root_ = root;
-
-    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-      args[_key - 2] = arguments[_key];
-    }
-
-    this.initialize.apply(this, args);
+    this.initialize(...args);
     // Note that we initialize foundation here and not within the constructor's default param so that
     // this.root_ is defined and can be used within the foundation class.
     /** @protected {!F} */
@@ -3211,115 +2294,84 @@ var MDCComponent = function () {
     this.initialSyncWithDOM();
   }
 
-  _createClass(MDCComponent, [{
-    key: 'initialize',
-    value: function initialize() /* ...args */{}
-    // Subclasses can override this to do any additional setup work that would be considered part of a
-    // "constructor". Essentially, it is a hook into the parent constructor before the foundation is
-    // initialized. Any additional arguments besides root and foundation will be passed in here.
+  initialize() /* ...args */{}
+  // Subclasses can override this to do any additional setup work that would be considered part of a
+  // "constructor". Essentially, it is a hook into the parent constructor before the foundation is
+  // initialized. Any additional arguments besides root and foundation will be passed in here.
 
 
-    /**
-     * @return {!F} foundation
-     */
+  /**
+   * @return {!F} foundation
+   */
+  getDefaultFoundation() {
+    // Subclasses must override this method to return a properly configured foundation class for the
+    // component.
+    throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' + 'foundation class');
+  }
 
-  }, {
-    key: 'getDefaultFoundation',
-    value: function getDefaultFoundation() {
-      // Subclasses must override this method to return a properly configured foundation class for the
-      // component.
-      throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' + 'foundation class');
+  initialSyncWithDOM() {
+    // Subclasses should override this method if they need to perform work to synchronize with a host DOM
+    // object. An example of this would be a form control wrapper that needs to synchronize its internal state
+    // to some property or attribute of the host DOM. Please note: this is *not* the place to perform DOM
+    // reads/writes that would cause layout / paint, as this is called synchronously from within the constructor.
+  }
+
+  destroy() {
+    // Subclasses may implement this method to release any resources / deregister any listeners they have
+    // attached. An example of this might be deregistering a resize event from the window object.
+    this.foundation_.destroy();
+  }
+
+  /**
+   * Wrapper method to add an event listener to the component's root element. This is most useful when
+   * listening for custom events.
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  listen(evtType, handler) {
+    this.root_.addEventListener(evtType, handler);
+  }
+
+  /**
+   * Wrapper method to remove an event listener to the component's root element. This is most useful when
+   * unlistening for custom events.
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  unlisten(evtType, handler) {
+    this.root_.removeEventListener(evtType, handler);
+  }
+
+  /**
+   * Fires a cross-browser-compatible custom event from the component root of the given type,
+   * with the given data.
+   * @param {string} evtType
+   * @param {!Object} evtData
+   * @param {boolean=} shouldBubble
+   */
+  emit(evtType, evtData, shouldBubble = false) {
+    let evt;
+    if (typeof CustomEvent === 'function') {
+      evt = new CustomEvent(evtType, {
+        detail: evtData,
+        bubbles: shouldBubble
+      });
+    } else {
+      evt = document.createEvent('CustomEvent');
+      evt.initCustomEvent(evtType, shouldBubble, false, evtData);
     }
-  }, {
-    key: 'initialSyncWithDOM',
-    value: function initialSyncWithDOM() {
-      // Subclasses should override this method if they need to perform work to synchronize with a host DOM
-      // object. An example of this would be a form control wrapper that needs to synchronize its internal state
-      // to some property or attribute of the host DOM. Please note: this is *not* the place to perform DOM
-      // reads/writes that would cause layout / paint, as this is called synchronously from within the constructor.
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      // Subclasses may implement this method to release any resources / deregister any listeners they have
-      // attached. An example of this might be deregistering a resize event from the window object.
-      this.foundation_.destroy();
-    }
 
-    /**
-     * Wrapper method to add an event listener to the component's root element. This is most useful when
-     * listening for custom events.
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
+    this.root_.dispatchEvent(evt);
+  }
+}
 
-  }, {
-    key: 'listen',
-    value: function listen(evtType, handler) {
-      this.root_.addEventListener(evtType, handler);
-    }
-
-    /**
-     * Wrapper method to remove an event listener to the component's root element. This is most useful when
-     * unlistening for custom events.
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: 'unlisten',
-    value: function unlisten(evtType, handler) {
-      this.root_.removeEventListener(evtType, handler);
-    }
-
-    /**
-     * Fires a cross-browser-compatible custom event from the component root of the given type,
-     * with the given data.
-     * @param {string} evtType
-     * @param {!Object} evtData
-     * @param {boolean=} shouldBubble
-     */
-
-  }, {
-    key: 'emit',
-    value: function emit(evtType, evtData) {
-      var shouldBubble = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-      var evt = void 0;
-      if (typeof CustomEvent === 'function') {
-        evt = new CustomEvent(evtType, {
-          detail: evtData,
-          bubbles: shouldBubble
-        });
-      } else {
-        evt = document.createEvent('CustomEvent');
-        evt.initCustomEvent(evtType, shouldBubble, false, evtData);
-      }
-
-      this.root_.dispatchEvent(evt);
-    }
-  }]);
-
-  return MDCComponent;
-}();
-
-exports.default = MDCComponent;
+/* harmony default export */ __webpack_exports__["a"] = (MDCComponent);
 
 /***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 24 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -3360,142 +2412,86 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *
  * @record
  */
-var MDCRippleAdapter = function () {
-  function MDCRippleAdapter() {
-    _classCallCheck(this, MDCRippleAdapter);
-  }
+class MDCRippleAdapter {
+  /** @return {boolean} */
+  browserSupportsCssVars() {}
 
-  _createClass(MDCRippleAdapter, [{
-    key: "browserSupportsCssVars",
+  /** @return {boolean} */
+  isUnbounded() {}
 
-    /** @return {boolean} */
-    value: function browserSupportsCssVars() {}
+  /** @return {boolean} */
+  isSurfaceActive() {}
 
-    /** @return {boolean} */
+  /** @return {boolean} */
+  isSurfaceDisabled() {}
 
-  }, {
-    key: "isUnbounded",
-    value: function isUnbounded() {}
+  /** @param {string} className */
+  addClass(className) {}
 
-    /** @return {boolean} */
+  /** @param {string} className */
+  removeClass(className) {}
 
-  }, {
-    key: "isSurfaceActive",
-    value: function isSurfaceActive() {}
+  /** @param {!EventTarget} target */
+  containsEventTarget(target) {}
 
-    /** @return {boolean} */
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  registerInteractionHandler(evtType, handler) {}
 
-  }, {
-    key: "isSurfaceDisabled",
-    value: function isSurfaceDisabled() {}
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  deregisterInteractionHandler(evtType, handler) {}
 
-    /** @param {string} className */
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  registerDocumentInteractionHandler(evtType, handler) {}
 
-  }, {
-    key: "addClass",
-    value: function addClass(className) {}
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  deregisterDocumentInteractionHandler(evtType, handler) {}
 
-    /** @param {string} className */
+  /**
+   * @param {!Function} handler
+   */
+  registerResizeHandler(handler) {}
 
-  }, {
-    key: "removeClass",
-    value: function removeClass(className) {}
+  /**
+   * @param {!Function} handler
+   */
+  deregisterResizeHandler(handler) {}
 
-    /** @param {!EventTarget} target */
+  /**
+   * @param {string} varName
+   * @param {?number|string} value
+   */
+  updateCssVariable(varName, value) {}
 
-  }, {
-    key: "containsEventTarget",
-    value: function containsEventTarget(target) {}
+  /** @return {!ClientRect} */
+  computeBoundingRect() {}
 
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
+  /** @return {{x: number, y: number}} */
+  getWindowPageOffset() {}
+}
 
-  }, {
-    key: "registerInteractionHandler",
-    value: function registerInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "deregisterInteractionHandler",
-    value: function deregisterInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "registerDocumentInteractionHandler",
-    value: function registerDocumentInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "deregisterDocumentInteractionHandler",
-    value: function deregisterDocumentInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "registerResizeHandler",
-    value: function registerResizeHandler(handler) {}
-
-    /**
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "deregisterResizeHandler",
-    value: function deregisterResizeHandler(handler) {}
-
-    /**
-     * @param {string} varName
-     * @param {?number|string} value
-     */
-
-  }, {
-    key: "updateCssVariable",
-    value: function updateCssVariable(varName, value) {}
-
-    /** @return {!ClientRect} */
-
-  }, {
-    key: "computeBoundingRect",
-    value: function computeBoundingRect() {}
-
-    /** @return {{x: number, y: number}} */
-
-  }, {
-    key: "getWindowPageOffset",
-    value: function getWindowPageOffset() {}
-  }]);
-
-  return MDCRippleAdapter;
-}();
-
-exports.default = MDCRippleAdapter;
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCRippleAdapter);
 
 /***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 25 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return supportsCssVariables; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return applyPassive; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getMatchesProperty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getNormalizedEventCoords; });
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -3517,13 +2513,13 @@ Object.defineProperty(exports, "__esModule", {
  * Stores result from supportsCssVariables to avoid redundant processing to detect CSS custom variable support.
  * @private {boolean|undefined}
  */
-var supportsCssVariables_ = void 0;
+let supportsCssVariables_;
 
 /**
  * Stores result from applyPassive to avoid redundant processing to detect passive event listener support.
  * @private {boolean|undefined}
  */
-var supportsPassive_ = void 0;
+let supportsPassive_;
 
 /**
  * @param {!Window} windowObj
@@ -3532,8 +2528,8 @@ var supportsPassive_ = void 0;
 function detectEdgePseudoVarBug(windowObj) {
   // Detect versions of Edge with buggy var() support
   // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11495448/
-  var document = windowObj.document;
-  var node = document.createElement('div');
+  const document = windowObj.document;
+  const node = document.createElement('div');
   node.className = 'mdc-ripple-surface--test-edge-var-bug';
   document.body.appendChild(node);
 
@@ -3541,8 +2537,8 @@ function detectEdgePseudoVarBug(windowObj) {
   // Additionally, getComputedStyle returns null in iframes with display: "none" in Firefox,
   // but Firefox is known to support CSS custom properties correctly.
   // See: https://bugzilla.mozilla.org/show_bug.cgi?id=548397
-  var computedStyle = windowObj.getComputedStyle(node);
-  var hasPseudoVarBug = computedStyle !== null && computedStyle.borderTopStyle === 'solid';
+  const computedStyle = windowObj.getComputedStyle(node);
+  const hasPseudoVarBug = computedStyle !== null && computedStyle.borderTopStyle === 'solid';
   node.remove();
   return hasPseudoVarBug;
 }
@@ -3553,23 +2549,21 @@ function detectEdgePseudoVarBug(windowObj) {
  * @return {boolean|undefined}
  */
 
-function supportsCssVariables(windowObj) {
-  var forceRefresh = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-  var supportsCssVariables = supportsCssVariables_;
+function supportsCssVariables(windowObj, forceRefresh = false) {
+  let supportsCssVariables = supportsCssVariables_;
   if (typeof supportsCssVariables_ === 'boolean' && !forceRefresh) {
     return supportsCssVariables;
   }
 
-  var supportsFunctionPresent = windowObj.CSS && typeof windowObj.CSS.supports === 'function';
+  const supportsFunctionPresent = windowObj.CSS && typeof windowObj.CSS.supports === 'function';
   if (!supportsFunctionPresent) {
     return;
   }
 
-  var explicitlySupportsCssVars = windowObj.CSS.supports('--css-vars', 'yes');
+  const explicitlySupportsCssVars = windowObj.CSS.supports('--css-vars', 'yes');
   // See: https://bugs.webkit.org/show_bug.cgi?id=154669
   // See: README section on Safari
-  var weAreFeatureDetectingSafari10plus = windowObj.CSS.supports('(--css-vars: yes)') && windowObj.CSS.supports('color', '#00000000');
+  const weAreFeatureDetectingSafari10plus = windowObj.CSS.supports('(--css-vars: yes)') && windowObj.CSS.supports('color', '#00000000');
 
   if (explicitlySupportsCssVars || weAreFeatureDetectingSafari10plus) {
     supportsCssVariables = !detectEdgePseudoVarBug(windowObj);
@@ -3590,12 +2584,9 @@ function supportsCssVariables(windowObj) {
  * @param {boolean=} forceRefresh
  * @return {boolean|{passive: boolean}}
  */
-function applyPassive() {
-  var globalObj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window;
-  var forceRefresh = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
+function applyPassive(globalObj = window, forceRefresh = false) {
   if (supportsPassive_ === undefined || forceRefresh) {
-    var isSupported = false;
+    let isSupported = false;
     try {
       globalObj.document.addEventListener('test', null, { get passive() {
           isSupported = true;
@@ -3613,9 +2604,7 @@ function applyPassive() {
  * @return {!Array<string>}
  */
 function getMatchesProperty(HTMLElementPrototype) {
-  return ['webkitMatchesSelector', 'msMatchesSelector', 'matches'].filter(function (p) {
-    return p in HTMLElementPrototype;
-  }).pop();
+  return ['webkitMatchesSelector', 'msMatchesSelector', 'matches'].filter(p => p in HTMLElementPrototype).pop();
 }
 
 /**
@@ -3625,14 +2614,12 @@ function getMatchesProperty(HTMLElementPrototype) {
  * @return {!{x: number, y: number}}
  */
 function getNormalizedEventCoords(ev, pageOffset, clientRect) {
-  var x = pageOffset.x,
-      y = pageOffset.y;
+  const { x, y } = pageOffset;
+  const documentX = x + clientRect.left;
+  const documentY = y + clientRect.top;
 
-  var documentX = x + clientRect.left;
-  var documentY = y + clientRect.top;
-
-  var normalizedX = void 0;
-  var normalizedY = void 0;
+  let normalizedX;
+  let normalizedY;
   // Determine touch point relative to the ripple container.
   if (ev.type === 'touchstart') {
     normalizedX = ev.changedTouches[0].pageX - documentX;
@@ -3645,26 +2632,13 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
   return { x: normalizedX, y: normalizedY };
 }
 
-exports.supportsCssVariables = supportsCssVariables;
-exports.applyPassive = applyPassive;
-exports.getMatchesProperty = getMatchesProperty;
-exports.getNormalizedEventCoords = getNormalizedEventCoords;
+
 
 /***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 26 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -3685,90 +2659,65 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * @template A
  */
-var MDCFoundation = function () {
-  _createClass(MDCFoundation, null, [{
-    key: "cssClasses",
+class MDCFoundation {
+  /** @return enum{cssClasses} */
+  static get cssClasses() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports every
+    // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
+    return {};
+  }
 
-    /** @return enum{cssClasses} */
-    get: function get() {
-      // Classes extending MDCFoundation should implement this method to return an object which exports every
-      // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
-      return {};
-    }
+  /** @return enum{strings} */
+  static get strings() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports all
+    // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
+    return {};
+  }
 
-    /** @return enum{strings} */
+  /** @return enum{numbers} */
+  static get numbers() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports all
+    // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
+    return {};
+  }
 
-  }, {
-    key: "strings",
-    get: function get() {
-      // Classes extending MDCFoundation should implement this method to return an object which exports all
-      // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
-      return {};
-    }
+  /** @return {!Object} */
+  static get defaultAdapter() {
+    // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
+    // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
+    // validation.
+    return {};
+  }
 
-    /** @return enum{numbers} */
-
-  }, {
-    key: "numbers",
-    get: function get() {
-      // Classes extending MDCFoundation should implement this method to return an object which exports all
-      // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
-      return {};
-    }
-
-    /** @return {!Object} */
-
-  }, {
-    key: "defaultAdapter",
-    get: function get() {
-      // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
-      // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
-      // validation.
-      return {};
-    }
-
-    /**
-     * @param {A=} adapter
-     */
-
-  }]);
-
-  function MDCFoundation() {
-    var adapter = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    _classCallCheck(this, MDCFoundation);
-
+  /**
+   * @param {A=} adapter
+   */
+  constructor(adapter = {}) {
     /** @protected {!A} */
     this.adapter_ = adapter;
   }
 
-  _createClass(MDCFoundation, [{
-    key: "init",
-    value: function init() {
-      // Subclasses should override this method to perform initialization routines (registering events, etc.)
-    }
-  }, {
-    key: "destroy",
-    value: function destroy() {
-      // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
-    }
-  }]);
+  init() {
+    // Subclasses should override this method to perform initialization routines (registering events, etc.)
+  }
 
-  return MDCFoundation;
-}();
+  destroy() {
+    // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
+  }
+}
 
-exports.default = MDCFoundation;
+/* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
 
 /***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 27 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return cssClasses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return strings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return numbers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CornerBit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Corner; });
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -3787,7 +2736,7 @@ Object.defineProperty(exports, "__esModule", {
  */
 
 /** @enum {string} */
-var cssClasses = {
+const cssClasses = {
   ROOT: 'mdc-menu',
   OPEN: 'mdc-menu--open',
   ANIMATING_OPEN: 'mdc-menu--animating-open',
@@ -3796,7 +2745,7 @@ var cssClasses = {
 };
 
 /** @enum {string} */
-var strings = {
+const strings = {
   ITEMS_SELECTOR: '.mdc-menu__items',
   SELECTED_EVENT: 'MDCMenu:selected',
   CANCEL_EVENT: 'MDCMenu:cancel',
@@ -3804,7 +2753,7 @@ var strings = {
 };
 
 /** @enum {number} */
-var numbers = {
+const numbers = {
   // Amount of time to wait before triggering a selected event on the menu. Note that this time
   // will most likely be bumped up once interactive lists are supported to allow for the ripple to
   // animate before closing the menu
@@ -3825,7 +2774,7 @@ var numbers = {
  * Enum for bits in the {@see Corner) bitmap.
  * @enum {number}
  */
-var CornerBit = {
+const CornerBit = {
   BOTTOM: 1,
   CENTER: 2,
   RIGHT: 4,
@@ -3841,7 +2790,7 @@ var CornerBit = {
  *
  * @enum {number}
  */
-var Corner = {
+const Corner = {
   TOP_LEFT: 0,
   TOP_RIGHT: CornerBit.RIGHT,
   BOTTOM_LEFT: CornerBit.BOTTOM,
@@ -3852,5345 +2801,44 @@ var Corner = {
   BOTTOM_END: CornerBit.BOTTOM | CornerBit.RIGHT | CornerBit.FLIP_RTL
 };
 
-exports.cssClasses = cssClasses;
-exports.strings = strings;
-exports.numbers = numbers;
-exports.CornerBit = CornerBit;
-exports.Corner = Corner;
+
+
+/***/ }),
+/* 28 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component__ = __webpack_require__(1);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__foundation__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__component__["a"]; });
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
 
 /***/ }),
 /* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(30);
-
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-var _initialize = __webpack_require__(6);
-
-window.dialogPolyfill = __webpack_require__(72);
-window.componentHandler = __webpack_require__(75);
-
-document.addEventListener("DOMContentLoaded", function (event) {
-    (0, _initialize.initialize)();
-});
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.initButtons = initButtons;
-
-var _ripple = __webpack_require__(32);
-
-function initButtons() {
-    console.log('\tButtons');
-
-    var rippleButtons = document.querySelectorAll('.v-js-ripple-button');
-    if (rippleButtons) {
-        for (var i = 0; i < rippleButtons.length; i++) {
-            var button = rippleButtons[i];
-            if (!button.mdcComponent) {
-                button.mdcComponent = new _ripple.MDCRipple(button);
-            }
-        }
-    }
-}
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.util = exports.RippleCapableSurface = exports.MDCRippleFoundation = exports.MDCRipple = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _component = __webpack_require__(1);
-
-var _component2 = _interopRequireDefault(_component);
-
-var _adapter = __webpack_require__(7);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _foundation = __webpack_require__(33);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _util = __webpack_require__(8);
-
-var util = _interopRequireWildcard(_util);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2016 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/**
- * @extends MDCComponent<!MDCRippleFoundation>
- */
-var MDCRipple = function (_MDCComponent) {
-  _inherits(MDCRipple, _MDCComponent);
-
-  /** @param {...?} args */
-  function MDCRipple() {
-    var _ref;
-
-    _classCallCheck(this, MDCRipple);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    /** @type {boolean} */
-    var _this = _possibleConstructorReturn(this, (_ref = MDCRipple.__proto__ || Object.getPrototypeOf(MDCRipple)).call.apply(_ref, [this].concat(args)));
-
-    _this.disabled = false;
-
-    /** @private {boolean} */
-    _this.unbounded_;
-    return _this;
-  }
-
-  /**
-   * @param {!Element} root
-   * @param {{isUnbounded: (boolean|undefined)}=} options
-   * @return {!MDCRipple}
-   */
-
-
-  _createClass(MDCRipple, [{
-    key: 'setUnbounded_',
-
-
-    /**
-     * Closure Compiler throws an access control error when directly accessing a
-     * protected or private property inside a getter/setter, like unbounded above.
-     * By accessing the protected property inside a method, we solve that problem.
-     * That's why this function exists.
-     * @private
-     */
-    value: function setUnbounded_() {
-      this.foundation_.setUnbounded(this.unbounded_);
-    }
-  }, {
-    key: 'activate',
-    value: function activate() {
-      this.foundation_.activate();
-    }
-  }, {
-    key: 'deactivate',
-    value: function deactivate() {
-      this.foundation_.deactivate();
-    }
-  }, {
-    key: 'layout',
-    value: function layout() {
-      this.foundation_.layout();
-    }
-
-    /** @return {!MDCRippleFoundation} */
-
-  }, {
-    key: 'getDefaultFoundation',
-    value: function getDefaultFoundation() {
-      return new _foundation2.default(MDCRipple.createAdapter(this));
-    }
-  }, {
-    key: 'initialSyncWithDOM',
-    value: function initialSyncWithDOM() {
-      this.unbounded = 'mdcRippleIsUnbounded' in this.root_.dataset;
-    }
-  }, {
-    key: 'unbounded',
-
-
-    /** @return {boolean} */
-    get: function get() {
-      return this.unbounded_;
-    }
-
-    /** @param {boolean} unbounded */
-    ,
-    set: function set(unbounded) {
-      this.unbounded_ = Boolean(unbounded);
-      this.setUnbounded_();
-    }
-  }], [{
-    key: 'attachTo',
-    value: function attachTo(root) {
-      var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-          _ref2$isUnbounded = _ref2.isUnbounded,
-          isUnbounded = _ref2$isUnbounded === undefined ? undefined : _ref2$isUnbounded;
-
-      var ripple = new MDCRipple(root);
-      // Only override unbounded behavior if option is explicitly specified
-      if (isUnbounded !== undefined) {
-        ripple.unbounded = /** @type {boolean} */isUnbounded;
-      }
-      return ripple;
-    }
-
-    /**
-     * @param {!RippleCapableSurface} instance
-     * @return {!MDCRippleAdapter}
-     */
-
-  }, {
-    key: 'createAdapter',
-    value: function createAdapter(instance) {
-      var MATCHES = util.getMatchesProperty(HTMLElement.prototype);
-
-      return {
-        browserSupportsCssVars: function browserSupportsCssVars() {
-          return util.supportsCssVariables(window);
-        },
-        isUnbounded: function isUnbounded() {
-          return instance.unbounded;
-        },
-        isSurfaceActive: function isSurfaceActive() {
-          return instance.root_[MATCHES](':active');
-        },
-        isSurfaceDisabled: function isSurfaceDisabled() {
-          return instance.disabled;
-        },
-        addClass: function addClass(className) {
-          return instance.root_.classList.add(className);
-        },
-        removeClass: function removeClass(className) {
-          return instance.root_.classList.remove(className);
-        },
-        containsEventTarget: function containsEventTarget(target) {
-          return instance.root_.contains(target);
-        },
-        registerInteractionHandler: function registerInteractionHandler(evtType, handler) {
-          return instance.root_.addEventListener(evtType, handler, util.applyPassive());
-        },
-        deregisterInteractionHandler: function deregisterInteractionHandler(evtType, handler) {
-          return instance.root_.removeEventListener(evtType, handler, util.applyPassive());
-        },
-        registerDocumentInteractionHandler: function registerDocumentInteractionHandler(evtType, handler) {
-          return document.documentElement.addEventListener(evtType, handler, util.applyPassive());
-        },
-        deregisterDocumentInteractionHandler: function deregisterDocumentInteractionHandler(evtType, handler) {
-          return document.documentElement.removeEventListener(evtType, handler, util.applyPassive());
-        },
-        registerResizeHandler: function registerResizeHandler(handler) {
-          return window.addEventListener('resize', handler);
-        },
-        deregisterResizeHandler: function deregisterResizeHandler(handler) {
-          return window.removeEventListener('resize', handler);
-        },
-        updateCssVariable: function updateCssVariable(varName, value) {
-          return instance.root_.style.setProperty(varName, value);
-        },
-        computeBoundingRect: function computeBoundingRect() {
-          return instance.root_.getBoundingClientRect();
-        },
-        getWindowPageOffset: function getWindowPageOffset() {
-          return { x: window.pageXOffset, y: window.pageYOffset };
-        }
-      };
-    }
-  }]);
-
-  return MDCRipple;
-}(_component2.default);
-
-/**
- * See Material Design spec for more details on when to use ripples.
- * https://material.io/guidelines/motion/choreography.html#choreography-creation
- * @record
- */
-
-
-var RippleCapableSurface = function RippleCapableSurface() {
-  _classCallCheck(this, RippleCapableSurface);
-};
-
-/** @protected {!Element} */
-
-
-RippleCapableSurface.prototype.root_;
-
-/**
- * Whether or not the ripple bleeds out of the bounds of the element.
- * @type {boolean|undefined}
- */
-RippleCapableSurface.prototype.unbounded;
-
-/**
- * Whether or not the ripple is attached to a disabled component.
- * @type {boolean|undefined}
- */
-RippleCapableSurface.prototype.disabled;
-
-exports.MDCRipple = MDCRipple;
-exports.MDCRippleFoundation = _foundation2.default;
-exports.RippleCapableSurface = RippleCapableSurface;
-exports.util = util;
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _foundation = __webpack_require__(0);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _adapter = __webpack_require__(7);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _constants = __webpack_require__(34);
-
-var _util = __webpack_require__(8);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2016 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/**
- * @typedef {!{
- *   isActivated: (boolean|undefined),
- *   hasDeactivationUXRun: (boolean|undefined),
- *   wasActivatedByPointer: (boolean|undefined),
- *   wasElementMadeActive: (boolean|undefined),
- *   activationEvent: Event,
- *   isProgrammatic: (boolean|undefined)
- * }}
- */
-var ActivationStateType = void 0;
-
-/**
- * @typedef {!{
- *   activate: (string|undefined),
- *   deactivate: (string|undefined),
- *   focus: (string|undefined),
- *   blur: (string|undefined)
- * }}
- */
-var ListenerInfoType = void 0;
-
-/**
- * @typedef {!{
- *   activate: function(!Event),
- *   deactivate: function(!Event),
- *   focus: function(),
- *   blur: function()
- * }}
- */
-var ListenersType = void 0;
-
-/**
- * @typedef {!{
- *   x: number,
- *   y: number
- * }}
- */
-var PointType = void 0;
-
-// Activation events registered on the root element of each instance for activation
-var ACTIVATION_EVENT_TYPES = ['touchstart', 'pointerdown', 'mousedown', 'keydown'];
-
-// Deactivation events registered on documentElement when a pointer-related down event occurs
-var POINTER_DEACTIVATION_EVENT_TYPES = ['touchend', 'pointerup', 'mouseup'];
-
-// Tracks activations that have occurred on the current frame, to avoid simultaneous nested activations
-/** @type {!Array<!EventTarget>} */
-var activatedTargets = [];
-
-/**
- * @extends {MDCFoundation<!MDCRippleAdapter>}
- */
-
-var MDCRippleFoundation = function (_MDCFoundation) {
-  _inherits(MDCRippleFoundation, _MDCFoundation);
-
-  _createClass(MDCRippleFoundation, null, [{
-    key: 'cssClasses',
-    get: function get() {
-      return _constants.cssClasses;
-    }
-  }, {
-    key: 'strings',
-    get: function get() {
-      return _constants.strings;
-    }
-  }, {
-    key: 'numbers',
-    get: function get() {
-      return _constants.numbers;
-    }
-  }, {
-    key: 'defaultAdapter',
-    get: function get() {
-      return {
-        browserSupportsCssVars: function browserSupportsCssVars() /* boolean - cached */{},
-        isUnbounded: function isUnbounded() /* boolean */{},
-        isSurfaceActive: function isSurfaceActive() /* boolean */{},
-        isSurfaceDisabled: function isSurfaceDisabled() /* boolean */{},
-        addClass: function addClass() /* className: string */{},
-        removeClass: function removeClass() /* className: string */{},
-        containsEventTarget: function containsEventTarget() /* target: !EventTarget */{},
-        registerInteractionHandler: function registerInteractionHandler() /* evtType: string, handler: EventListener */{},
-        deregisterInteractionHandler: function deregisterInteractionHandler() /* evtType: string, handler: EventListener */{},
-        registerDocumentInteractionHandler: function registerDocumentInteractionHandler() /* evtType: string, handler: EventListener */{},
-        deregisterDocumentInteractionHandler: function deregisterDocumentInteractionHandler() /* evtType: string, handler: EventListener */{},
-        registerResizeHandler: function registerResizeHandler() /* handler: EventListener */{},
-        deregisterResizeHandler: function deregisterResizeHandler() /* handler: EventListener */{},
-        updateCssVariable: function updateCssVariable() /* varName: string, value: string */{},
-        computeBoundingRect: function computeBoundingRect() /* ClientRect */{},
-        getWindowPageOffset: function getWindowPageOffset() /* {x: number, y: number} */{}
-      };
-    }
-  }]);
-
-  function MDCRippleFoundation(adapter) {
-    _classCallCheck(this, MDCRippleFoundation);
-
-    /** @private {number} */
-    var _this = _possibleConstructorReturn(this, (MDCRippleFoundation.__proto__ || Object.getPrototypeOf(MDCRippleFoundation)).call(this, Object.assign(MDCRippleFoundation.defaultAdapter, adapter)));
-
-    _this.layoutFrame_ = 0;
-
-    /** @private {!ClientRect} */
-    _this.frame_ = /** @type {!ClientRect} */{ width: 0, height: 0 };
-
-    /** @private {!ActivationStateType} */
-    _this.activationState_ = _this.defaultActivationState_();
-
-    /** @private {number} */
-    _this.initialSize_ = 0;
-
-    /** @private {number} */
-    _this.maxRadius_ = 0;
-
-    /** @private {function(!Event)} */
-    _this.activateHandler_ = function (e) {
-      return _this.activate_(e);
-    };
-
-    /** @private {function(!Event)} */
-    _this.deactivateHandler_ = function (e) {
-      return _this.deactivate_(e);
-    };
-
-    /** @private {function(?Event=)} */
-    _this.focusHandler_ = function () {
-      return requestAnimationFrame(function () {
-        return _this.adapter_.addClass(MDCRippleFoundation.cssClasses.BG_FOCUSED);
-      });
-    };
-
-    /** @private {function(?Event=)} */
-    _this.blurHandler_ = function () {
-      return requestAnimationFrame(function () {
-        return _this.adapter_.removeClass(MDCRippleFoundation.cssClasses.BG_FOCUSED);
-      });
-    };
-
-    /** @private {!Function} */
-    _this.resizeHandler_ = function () {
-      return _this.layout();
-    };
-
-    /** @private {!{left: number, top:number}} */
-    _this.unboundedCoords_ = {
-      left: 0,
-      top: 0
-    };
-
-    /** @private {number} */
-    _this.fgScale_ = 0;
-
-    /** @private {number} */
-    _this.activationTimer_ = 0;
-
-    /** @private {number} */
-    _this.fgDeactivationRemovalTimer_ = 0;
-
-    /** @private {boolean} */
-    _this.activationAnimationHasEnded_ = false;
-
-    /** @private {!Function} */
-    _this.activationTimerCallback_ = function () {
-      _this.activationAnimationHasEnded_ = true;
-      _this.runDeactivationUXLogicIfReady_();
-    };
-
-    /** @private {?Event} */
-    _this.previousActivationEvent_ = null;
-    return _this;
-  }
-
-  /**
-   * We compute this property so that we are not querying information about the client
-   * until the point in time where the foundation requests it. This prevents scenarios where
-   * client-side feature-detection may happen too early, such as when components are rendered on the server
-   * and then initialized at mount time on the client.
-   * @return {boolean}
-   * @private
-   */
-
-
-  _createClass(MDCRippleFoundation, [{
-    key: 'isSupported_',
-    value: function isSupported_() {
-      return this.adapter_.browserSupportsCssVars();
-    }
-
-    /**
-     * @return {!ActivationStateType}
-     */
-
-  }, {
-    key: 'defaultActivationState_',
-    value: function defaultActivationState_() {
-      return {
-        isActivated: false,
-        hasDeactivationUXRun: false,
-        wasActivatedByPointer: false,
-        wasElementMadeActive: false,
-        activationEvent: null,
-        isProgrammatic: false
-      };
-    }
-  }, {
-    key: 'init',
-    value: function init() {
-      var _this2 = this;
-
-      if (!this.isSupported_()) {
-        return;
-      }
-      this.registerRootHandlers_();
-
-      var _MDCRippleFoundation$ = MDCRippleFoundation.cssClasses,
-          ROOT = _MDCRippleFoundation$.ROOT,
-          UNBOUNDED = _MDCRippleFoundation$.UNBOUNDED;
-
-      requestAnimationFrame(function () {
-        _this2.adapter_.addClass(ROOT);
-        if (_this2.adapter_.isUnbounded()) {
-          _this2.adapter_.addClass(UNBOUNDED);
-        }
-        _this2.layoutInternal_();
-      });
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      var _this3 = this;
-
-      if (!this.isSupported_()) {
-        return;
-      }
-      this.deregisterRootHandlers_();
-      this.deregisterDeactivationHandlers_();
-
-      var _MDCRippleFoundation$2 = MDCRippleFoundation.cssClasses,
-          ROOT = _MDCRippleFoundation$2.ROOT,
-          UNBOUNDED = _MDCRippleFoundation$2.UNBOUNDED;
-
-      requestAnimationFrame(function () {
-        _this3.adapter_.removeClass(ROOT);
-        _this3.adapter_.removeClass(UNBOUNDED);
-        _this3.removeCssVars_();
-      });
-    }
-
-    /** @private */
-
-  }, {
-    key: 'registerRootHandlers_',
-    value: function registerRootHandlers_() {
-      var _this4 = this;
-
-      ACTIVATION_EVENT_TYPES.forEach(function (type) {
-        _this4.adapter_.registerInteractionHandler(type, _this4.activateHandler_);
-      });
-      this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
-      this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
-      this.adapter_.registerResizeHandler(this.resizeHandler_);
-    }
-
-    /**
-     * @param {!Event} e
-     * @private
-     */
-
-  }, {
-    key: 'registerDeactivationHandlers_',
-    value: function registerDeactivationHandlers_(e) {
-      var _this5 = this;
-
-      if (e.type === 'keydown') {
-        this.adapter_.registerInteractionHandler('keyup', this.deactivateHandler_);
-      } else {
-        POINTER_DEACTIVATION_EVENT_TYPES.forEach(function (type) {
-          _this5.adapter_.registerDocumentInteractionHandler(type, _this5.deactivateHandler_);
-        });
-      }
-    }
-
-    /** @private */
-
-  }, {
-    key: 'deregisterRootHandlers_',
-    value: function deregisterRootHandlers_() {
-      var _this6 = this;
-
-      ACTIVATION_EVENT_TYPES.forEach(function (type) {
-        _this6.adapter_.deregisterInteractionHandler(type, _this6.activateHandler_);
-      });
-      this.adapter_.deregisterInteractionHandler('focus', this.focusHandler_);
-      this.adapter_.deregisterInteractionHandler('blur', this.blurHandler_);
-      this.adapter_.deregisterResizeHandler(this.resizeHandler_);
-    }
-
-    /** @private */
-
-  }, {
-    key: 'deregisterDeactivationHandlers_',
-    value: function deregisterDeactivationHandlers_() {
-      var _this7 = this;
-
-      this.adapter_.deregisterInteractionHandler('keyup', this.deactivateHandler_);
-      POINTER_DEACTIVATION_EVENT_TYPES.forEach(function (type) {
-        _this7.adapter_.deregisterDocumentInteractionHandler(type, _this7.deactivateHandler_);
-      });
-    }
-
-    /** @private */
-
-  }, {
-    key: 'removeCssVars_',
-    value: function removeCssVars_() {
-      var _this8 = this;
-
-      var strings = MDCRippleFoundation.strings;
-
-      Object.keys(strings).forEach(function (k) {
-        if (k.indexOf('VAR_') === 0) {
-          _this8.adapter_.updateCssVariable(strings[k], null);
-        }
-      });
-    }
-
-    /**
-     * @param {?Event} e
-     * @private
-     */
-
-  }, {
-    key: 'activate_',
-    value: function activate_(e) {
-      var _this9 = this;
-
-      if (this.adapter_.isSurfaceDisabled()) {
-        return;
-      }
-
-      var activationState = this.activationState_;
-      if (activationState.isActivated) {
-        return;
-      }
-
-      // Avoid reacting to follow-on events fired by touch device after an already-processed user interaction
-      var previousActivationEvent = this.previousActivationEvent_;
-      var isSameInteraction = previousActivationEvent && e && previousActivationEvent.type !== e.type;
-      if (isSameInteraction) {
-        return;
-      }
-
-      activationState.isActivated = true;
-      activationState.isProgrammatic = e === null;
-      activationState.activationEvent = e;
-      activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : e.type === 'mousedown' || e.type === 'touchstart' || e.type === 'pointerdown';
-
-      var hasActivatedChild = e && activatedTargets.length > 0 && activatedTargets.some(function (target) {
-        return _this9.adapter_.containsEventTarget(target);
-      });
-      if (hasActivatedChild) {
-        // Immediately reset activation state, while preserving logic that prevents touch follow-on events
-        this.resetActivationState_();
-        return;
-      }
-
-      if (e) {
-        activatedTargets.push( /** @type {!EventTarget} */e.target);
-        this.registerDeactivationHandlers_(e);
-      }
-
-      requestAnimationFrame(function () {
-        // This needs to be wrapped in an rAF call b/c web browsers
-        // report active states inconsistently when they're called within
-        // event handling code:
-        // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
-        // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
-        activationState.wasElementMadeActive = e && e.type === 'keydown' ? _this9.adapter_.isSurfaceActive() : true;
-        if (activationState.wasElementMadeActive) {
-          _this9.animateActivation_();
-        } else {
-          // Reset activation state immediately if element was not made active.
-          _this9.activationState_ = _this9.defaultActivationState_();
-        }
-
-        // Reset array on next frame after the current event has had a chance to bubble to prevent ancestor ripples
-        activatedTargets = [];
-      });
-    }
-
-    /**
-     * @param {?Event=} event Optional event containing position information.
-     */
-
-  }, {
-    key: 'activate',
-    value: function activate() {
-      var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-      this.activate_(event);
-    }
-
-    /** @private */
-
-  }, {
-    key: 'animateActivation_',
-    value: function animateActivation_() {
-      var _this10 = this;
-
-      var _MDCRippleFoundation$3 = MDCRippleFoundation.strings,
-          VAR_FG_TRANSLATE_START = _MDCRippleFoundation$3.VAR_FG_TRANSLATE_START,
-          VAR_FG_TRANSLATE_END = _MDCRippleFoundation$3.VAR_FG_TRANSLATE_END;
-      var _MDCRippleFoundation$4 = MDCRippleFoundation.cssClasses,
-          FG_DEACTIVATION = _MDCRippleFoundation$4.FG_DEACTIVATION,
-          FG_ACTIVATION = _MDCRippleFoundation$4.FG_ACTIVATION;
-      var DEACTIVATION_TIMEOUT_MS = MDCRippleFoundation.numbers.DEACTIVATION_TIMEOUT_MS;
-
-
-      var translateStart = '';
-      var translateEnd = '';
-
-      if (!this.adapter_.isUnbounded()) {
-        var _getFgTranslationCoor = this.getFgTranslationCoordinates_(),
-            startPoint = _getFgTranslationCoor.startPoint,
-            endPoint = _getFgTranslationCoor.endPoint;
-
-        translateStart = startPoint.x + 'px, ' + startPoint.y + 'px';
-        translateEnd = endPoint.x + 'px, ' + endPoint.y + 'px';
-      }
-
-      this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_START, translateStart);
-      this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_END, translateEnd);
-      // Cancel any ongoing activation/deactivation animations
-      clearTimeout(this.activationTimer_);
-      clearTimeout(this.fgDeactivationRemovalTimer_);
-      this.rmBoundedActivationClasses_();
-      this.adapter_.removeClass(FG_DEACTIVATION);
-
-      // Force layout in order to re-trigger the animation.
-      this.adapter_.computeBoundingRect();
-      this.adapter_.addClass(FG_ACTIVATION);
-      this.activationTimer_ = setTimeout(function () {
-        return _this10.activationTimerCallback_();
-      }, DEACTIVATION_TIMEOUT_MS);
-    }
-
-    /**
-     * @private
-     * @return {{startPoint: PointType, endPoint: PointType}}
-     */
-
-  }, {
-    key: 'getFgTranslationCoordinates_',
-    value: function getFgTranslationCoordinates_() {
-      var _activationState_ = this.activationState_,
-          activationEvent = _activationState_.activationEvent,
-          wasActivatedByPointer = _activationState_.wasActivatedByPointer;
-
-
-      var startPoint = void 0;
-      if (wasActivatedByPointer) {
-        startPoint = (0, _util.getNormalizedEventCoords)(
-        /** @type {!Event} */activationEvent, this.adapter_.getWindowPageOffset(), this.adapter_.computeBoundingRect());
-      } else {
-        startPoint = {
-          x: this.frame_.width / 2,
-          y: this.frame_.height / 2
-        };
-      }
-      // Center the element around the start point.
-      startPoint = {
-        x: startPoint.x - this.initialSize_ / 2,
-        y: startPoint.y - this.initialSize_ / 2
-      };
-
-      var endPoint = {
-        x: this.frame_.width / 2 - this.initialSize_ / 2,
-        y: this.frame_.height / 2 - this.initialSize_ / 2
-      };
-
-      return { startPoint: startPoint, endPoint: endPoint };
-    }
-
-    /** @private */
-
-  }, {
-    key: 'runDeactivationUXLogicIfReady_',
-    value: function runDeactivationUXLogicIfReady_() {
-      var _this11 = this;
-
-      // This method is called both when a pointing device is released, and when the activation animation ends.
-      // The deactivation animation should only run after both of those occur.
-      var FG_DEACTIVATION = MDCRippleFoundation.cssClasses.FG_DEACTIVATION;
-      var _activationState_2 = this.activationState_,
-          hasDeactivationUXRun = _activationState_2.hasDeactivationUXRun,
-          isActivated = _activationState_2.isActivated;
-
-      var activationHasEnded = hasDeactivationUXRun || !isActivated;
-
-      if (activationHasEnded && this.activationAnimationHasEnded_) {
-        this.rmBoundedActivationClasses_();
-        this.adapter_.addClass(FG_DEACTIVATION);
-        this.fgDeactivationRemovalTimer_ = setTimeout(function () {
-          _this11.adapter_.removeClass(FG_DEACTIVATION);
-        }, _constants.numbers.FG_DEACTIVATION_MS);
-      }
-    }
-
-    /** @private */
-
-  }, {
-    key: 'rmBoundedActivationClasses_',
-    value: function rmBoundedActivationClasses_() {
-      var FG_ACTIVATION = MDCRippleFoundation.cssClasses.FG_ACTIVATION;
-
-      this.adapter_.removeClass(FG_ACTIVATION);
-      this.activationAnimationHasEnded_ = false;
-      this.adapter_.computeBoundingRect();
-    }
-  }, {
-    key: 'resetActivationState_',
-    value: function resetActivationState_() {
-      var _this12 = this;
-
-      this.previousActivationEvent_ = this.activationState_.activationEvent;
-      this.activationState_ = this.defaultActivationState_();
-      // Touch devices may fire additional events for the same interaction within a short time.
-      // Store the previous event until it's safe to assume that subsequent events are for new interactions.
-      setTimeout(function () {
-        return _this12.previousActivationEvent_ = null;
-      }, MDCRippleFoundation.numbers.TAP_DELAY_MS);
-    }
-
-    /**
-     * @param {?Event} e
-     * @private
-     */
-
-  }, {
-    key: 'deactivate_',
-    value: function deactivate_(e) {
-      var _this13 = this;
-
-      var activationState = this.activationState_;
-      // This can happen in scenarios such as when you have a keyup event that blurs the element.
-      if (!activationState.isActivated) {
-        return;
-      }
-
-      var state = /** @type {!ActivationStateType} */Object.assign({}, activationState);
-
-      if (activationState.isProgrammatic) {
-        var evtObject = null;
-        requestAnimationFrame(function () {
-          return _this13.animateDeactivation_(evtObject, state);
-        });
-        this.resetActivationState_();
-      } else {
-        this.deregisterDeactivationHandlers_();
-        requestAnimationFrame(function () {
-          _this13.activationState_.hasDeactivationUXRun = true;
-          _this13.animateDeactivation_(e, state);
-          _this13.resetActivationState_();
-        });
-      }
-    }
-
-    /**
-     * @param {?Event=} event Optional event containing position information.
-     */
-
-  }, {
-    key: 'deactivate',
-    value: function deactivate() {
-      var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-      this.deactivate_(event);
-    }
-
-    /**
-     * @param {Event} e
-     * @param {!ActivationStateType} options
-     * @private
-     */
-
-  }, {
-    key: 'animateDeactivation_',
-    value: function animateDeactivation_(e, _ref) {
-      var wasActivatedByPointer = _ref.wasActivatedByPointer,
-          wasElementMadeActive = _ref.wasElementMadeActive;
-
-      if (wasActivatedByPointer || wasElementMadeActive) {
-        this.runDeactivationUXLogicIfReady_();
-      }
-    }
-  }, {
-    key: 'layout',
-    value: function layout() {
-      var _this14 = this;
-
-      if (this.layoutFrame_) {
-        cancelAnimationFrame(this.layoutFrame_);
-      }
-      this.layoutFrame_ = requestAnimationFrame(function () {
-        _this14.layoutInternal_();
-        _this14.layoutFrame_ = 0;
-      });
-    }
-
-    /** @private */
-
-  }, {
-    key: 'layoutInternal_',
-    value: function layoutInternal_() {
-      var _this15 = this;
-
-      this.frame_ = this.adapter_.computeBoundingRect();
-      var maxDim = Math.max(this.frame_.height, this.frame_.width);
-
-      // Surface diameter is treated differently for unbounded vs. bounded ripples.
-      // Unbounded ripple diameter is calculated smaller since the surface is expected to already be padded appropriately
-      // to extend the hitbox, and the ripple is expected to meet the edges of the padded hitbox (which is typically
-      // square). Bounded ripples, on the other hand, are fully expected to expand beyond the surface's longest diameter
-      // (calculated based on the diagonal plus a constant padding), and are clipped at the surface's border via
-      // `overflow: hidden`.
-      var getBoundedRadius = function getBoundedRadius() {
-        var hypotenuse = Math.sqrt(Math.pow(_this15.frame_.width, 2) + Math.pow(_this15.frame_.height, 2));
-        return hypotenuse + MDCRippleFoundation.numbers.PADDING;
-      };
-
-      this.maxRadius_ = this.adapter_.isUnbounded() ? maxDim : getBoundedRadius();
-
-      // Ripple is sized as a fraction of the largest dimension of the surface, then scales up using a CSS scale transform
-      this.initialSize_ = maxDim * MDCRippleFoundation.numbers.INITIAL_ORIGIN_SCALE;
-      this.fgScale_ = this.maxRadius_ / this.initialSize_;
-
-      this.updateLayoutCssVars_();
-    }
-
-    /** @private */
-
-  }, {
-    key: 'updateLayoutCssVars_',
-    value: function updateLayoutCssVars_() {
-      var _MDCRippleFoundation$5 = MDCRippleFoundation.strings,
-          VAR_FG_SIZE = _MDCRippleFoundation$5.VAR_FG_SIZE,
-          VAR_LEFT = _MDCRippleFoundation$5.VAR_LEFT,
-          VAR_TOP = _MDCRippleFoundation$5.VAR_TOP,
-          VAR_FG_SCALE = _MDCRippleFoundation$5.VAR_FG_SCALE;
-
-
-      this.adapter_.updateCssVariable(VAR_FG_SIZE, this.initialSize_ + 'px');
-      this.adapter_.updateCssVariable(VAR_FG_SCALE, this.fgScale_);
-
-      if (this.adapter_.isUnbounded()) {
-        this.unboundedCoords_ = {
-          left: Math.round(this.frame_.width / 2 - this.initialSize_ / 2),
-          top: Math.round(this.frame_.height / 2 - this.initialSize_ / 2)
-        };
-
-        this.adapter_.updateCssVariable(VAR_LEFT, this.unboundedCoords_.left + 'px');
-        this.adapter_.updateCssVariable(VAR_TOP, this.unboundedCoords_.top + 'px');
-      }
-    }
-
-    /** @param {boolean} unbounded */
-
-  }, {
-    key: 'setUnbounded',
-    value: function setUnbounded(unbounded) {
-      var UNBOUNDED = MDCRippleFoundation.cssClasses.UNBOUNDED;
-
-      if (unbounded) {
-        this.adapter_.addClass(UNBOUNDED);
-      } else {
-        this.adapter_.removeClass(UNBOUNDED);
-      }
-    }
-  }]);
-
-  return MDCRippleFoundation;
-}(_foundation2.default);
-
-exports.default = MDCRippleFoundation;
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-var cssClasses = {
-  // Ripple is a special case where the "root" component is really a "mixin" of sorts,
-  // given that it's an 'upgrade' to an existing component. That being said it is the root
-  // CSS class that all other CSS classes derive from.
-  ROOT: 'mdc-ripple-upgraded',
-  UNBOUNDED: 'mdc-ripple-upgraded--unbounded',
-  BG_FOCUSED: 'mdc-ripple-upgraded--background-focused',
-  FG_ACTIVATION: 'mdc-ripple-upgraded--foreground-activation',
-  FG_DEACTIVATION: 'mdc-ripple-upgraded--foreground-deactivation'
-};
-
-var strings = {
-  VAR_LEFT: '--mdc-ripple-left',
-  VAR_TOP: '--mdc-ripple-top',
-  VAR_FG_SIZE: '--mdc-ripple-fg-size',
-  VAR_FG_SCALE: '--mdc-ripple-fg-scale',
-  VAR_FG_TRANSLATE_START: '--mdc-ripple-fg-translate-start',
-  VAR_FG_TRANSLATE_END: '--mdc-ripple-fg-translate-end'
-};
-
-var numbers = {
-  PADDING: 10,
-  INITIAL_ORIGIN_SCALE: 0.6,
-  DEACTIVATION_TIMEOUT_MS: 225, // Corresponds to $mdc-ripple-translate-duration (i.e. activation animation duration)
-  FG_DEACTIVATION_MS: 150, // Corresponds to $mdc-ripple-fade-out-duration (i.e. deactivation animation duration)
-  TAP_DELAY_MS: 300 // Delay between touch and simulated mouse events on touch devices
-};
-
-exports.cssClasses = cssClasses;
-exports.strings = strings;
-exports.numbers = numbers;
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.initDialogs = initDialogs;
-// This is used to get a proper binding of the actionData
-// https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
-function createDialogHandler(dialog) {
-    return function () {
-        dialog.close();
-    };
-}
-
-function initDialogs() {
-    console.log('\tDialogs');
-
-    var dialogs = document.querySelectorAll('.v-js-dialog');
-    if (dialogs) {
-        for (var i = 0; i < dialogs.length; i++) {
-            var dialog = dialogs[i];
-            var dialogButtons = dialog.querySelectorAll('button:not([disabled])');
-            for (var j = 0; j != dialogButtons.length; j++) {
-                var dialogButton = dialogButtons[j];
-                if (!dialogButton.dialog) {
-                    dialogButton.dialog = dialog;
-                    var buttonEvents = dialogButton.dataset.events;
-                    // If the dialog button does not have any events tied to it,
-                    // then close the dialog on click, otherwise let the events handlers
-                    // take care of the close.
-                    if (!buttonEvents) {
-                        dialogButton.addEventListener('click', createDialogHandler(dialog));
-                    }
-                }
-            }
-        }
-    }
-}
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.initTextFields = initTextFields;
-
-var _textfield = __webpack_require__(37);
-
-function initTextFields() {
-    console.log('\tTextFields');
-
-    var textFields = document.querySelectorAll('.mdc-text-field');
-    for (var i = 0; i < textFields.length; i++) {
-        var textField = textFields[i];
-        if (!textField.mdcComponent) {
-            textField.mdcComponent = new _textfield.MDCTextField(textField);
-        }
-    }
-}
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MDCTextFieldIconFoundation = exports.MDCTextFieldIcon = exports.MDCTextFieldHelperTextFoundation = exports.MDCTextFieldHelperText = exports.MDCTextFieldFoundation = exports.MDCTextField = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _component = __webpack_require__(1);
-
-var _component2 = _interopRequireDefault(_component);
-
-var _index = __webpack_require__(38);
-
-var _util = __webpack_require__(2);
-
-var _constants = __webpack_require__(10);
-
-var _adapter = __webpack_require__(11);
-
-var _foundation = __webpack_require__(43);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _index2 = __webpack_require__(46);
-
-var _index3 = __webpack_require__(47);
-
-var _index4 = __webpack_require__(48);
-
-var _index5 = __webpack_require__(49);
-
-var _index6 = __webpack_require__(50);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2016 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/* eslint-disable no-unused-vars */
-
-/* eslint-enable no-unused-vars */
-
-/* eslint-disable no-unused-vars */
-
-
-/* eslint-enable no-unused-vars */
-
-/**
- * @extends {MDCComponent<!MDCTextFieldFoundation>}
- * @final
- */
-var MDCTextField = function (_MDCComponent) {
-  _inherits(MDCTextField, _MDCComponent);
-
-  /**
-   * @param {...?} args
-   */
-  function MDCTextField() {
-    var _ref;
-
-    _classCallCheck(this, MDCTextField);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    /** @private {?Element} */
-    var _this = _possibleConstructorReturn(this, (_ref = MDCTextField.__proto__ || Object.getPrototypeOf(MDCTextField)).call.apply(_ref, [this].concat(args)));
-
-    _this.input_;
-    /** @type {?MDCRipple} */
-    _this.ripple;
-    /** @private {?MDCLineRipple} */
-    _this.lineRipple_;
-    /** @private {?MDCTextFieldHelperText} */
-    _this.helperText_;
-    /** @private {?MDCTextFieldIcon} */
-    _this.icon_;
-    /** @private {?MDCFloatingLabel} */
-    _this.label_;
-    /** @private {?MDCNotchedOutline} */
-    _this.outline_;
-    return _this;
-  }
-
-  /**
-   * @param {!Element} root
-   * @return {!MDCTextField}
-   */
-
-
-  _createClass(MDCTextField, [{
-    key: 'initialize',
-
-
-    /**
-     * @param {(function(!Element): !MDCRipple)=} rippleFactory A function which
-     * creates a new MDCRipple.
-     * @param {(function(!Element): !MDCLineRipple)=} lineRippleFactory A function which
-     * creates a new MDCLineRipple.
-     * @param {(function(!Element): !MDCTextFieldHelperText)=} helperTextFactory A function which
-     * creates a new MDCTextFieldHelperText.
-     * @param {(function(!Element): !MDCTextFieldIcon)=} iconFactory A function which
-     * creates a new MDCTextFieldIcon.
-     * @param {(function(!Element): !MDCFloatingLabel)=} labelFactory A function which
-     * creates a new MDCFloatingLabel.
-     * @param {(function(!Element): !MDCNotchedOutline)=} outlineFactory A function which
-     * creates a new MDCNotchedOutline.
-     */
-    value: function initialize() {
-      var rippleFactory = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function (el, foundation) {
-        return new _index.MDCRipple(el, foundation);
-      };
-      var lineRippleFactory = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (el) {
-        return new _index2.MDCLineRipple(el);
-      };
-      var helperTextFactory = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function (el) {
-        return new _index3.MDCTextFieldHelperText(el);
-      };
-      var iconFactory = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : function (el) {
-        return new _index4.MDCTextFieldIcon(el);
-      };
-
-      var _this2 = this;
-
-      var labelFactory = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : function (el) {
-        return new _index5.MDCFloatingLabel(el);
-      };
-      var outlineFactory = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : function (el) {
-        return new _index6.MDCNotchedOutline(el);
-      };
-
-      this.input_ = this.root_.querySelector(_constants.strings.INPUT_SELECTOR);
-      var labelElement = this.root_.querySelector(_constants.strings.LABEL_SELECTOR);
-      if (labelElement) {
-        this.label_ = labelFactory(labelElement);
-      }
-      var lineRippleElement = this.root_.querySelector(_constants.strings.BOTTOM_LINE_SELECTOR);
-      if (lineRippleElement) {
-        this.lineRipple_ = lineRippleFactory(lineRippleElement);
-      }
-      var outlineElement = this.root_.querySelector(_constants.strings.OUTLINE_SELECTOR);
-      if (outlineElement) {
-        this.outline_ = outlineFactory(outlineElement);
-      }
-      if (this.input_.hasAttribute(_constants.strings.ARIA_CONTROLS)) {
-        var helperTextElement = document.getElementById(this.input_.getAttribute(_constants.strings.ARIA_CONTROLS));
-        if (helperTextElement) {
-          this.helperText_ = helperTextFactory(helperTextElement);
-        }
-      }
-      var iconElement = this.root_.querySelector(_constants.strings.ICON_SELECTOR);
-      if (iconElement) {
-        this.icon_ = iconFactory(iconElement);
-      }
-
-      this.ripple = null;
-      if (this.root_.classList.contains(_constants.cssClasses.BOX) || this.root_.classList.contains(_constants.cssClasses.OUTLINED)) {
-        // For outlined text fields, the ripple is instantiated on the outline element instead of the root element
-        // to clip the ripple at the outline while still allowing the label to be visible beyond the outline.
-        var rippleCapableSurface = outlineElement ? this.outline_ : this;
-        var rippleRoot = outlineElement ? outlineElement : this.root_;
-        var MATCHES = (0, _util.getMatchesProperty)(HTMLElement.prototype);
-        var adapter = Object.assign(_index.MDCRipple.createAdapter( /** @type {!RippleCapableSurface} */rippleCapableSurface), {
-          isSurfaceActive: function isSurfaceActive() {
-            return _this2.input_[MATCHES](':active');
-          },
-          registerInteractionHandler: function registerInteractionHandler(type, handler) {
-            return _this2.input_.addEventListener(type, handler);
-          },
-          deregisterInteractionHandler: function deregisterInteractionHandler(type, handler) {
-            return _this2.input_.removeEventListener(type, handler);
-          }
-        });
-        var foundation = new _index.MDCRippleFoundation(adapter);
-        this.ripple = rippleFactory(rippleRoot, foundation);
-      }
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      if (this.ripple) {
-        this.ripple.destroy();
-      }
-      if (this.lineRipple_) {
-        this.lineRipple_.destroy();
-      }
-      if (this.helperText_) {
-        this.helperText_.destroy();
-      }
-      if (this.icon_) {
-        this.icon_.destroy();
-      }
-      if (this.label_) {
-        this.label_.destroy();
-      }
-      if (this.outline_) {
-        this.outline_.destroy();
-      }
-      _get(MDCTextField.prototype.__proto__ || Object.getPrototypeOf(MDCTextField.prototype), 'destroy', this).call(this);
-    }
-
-    /**
-     * Initiliazes the Text Field's internal state based on the environment's
-     * state.
-     */
-
-  }, {
-    key: 'initialSyncWithDom',
-    value: function initialSyncWithDom() {
-      this.disabled = this.input_.disabled;
-    }
-
-    /**
-     * @return {string} The value of the input.
-     */
-
-  }, {
-    key: 'layout',
-
-
-    /**
-     * Recomputes the outline SVG path for the outline element, and recomputes
-     * all dimensions and positions for the ripple element.
-     */
-    value: function layout() {
-      this.foundation_.updateOutline();
-      if (this.ripple) {
-        this.ripple.layout();
-      }
-    }
-
-    /**
-     * @return {!MDCTextFieldFoundation}
-     */
-
-  }, {
-    key: 'getDefaultFoundation',
-    value: function getDefaultFoundation() {
-      var _this3 = this;
-
-      return new _foundation2.default(
-      /** @type {!MDCTextFieldAdapter} */Object.assign({
-        addClass: function addClass(className) {
-          return _this3.root_.classList.add(className);
-        },
-        removeClass: function removeClass(className) {
-          return _this3.root_.classList.remove(className);
-        },
-        hasClass: function hasClass(className) {
-          return _this3.root_.classList.contains(className);
-        },
-        registerTextFieldInteractionHandler: function registerTextFieldInteractionHandler(evtType, handler) {
-          return _this3.root_.addEventListener(evtType, handler);
-        },
-        deregisterTextFieldInteractionHandler: function deregisterTextFieldInteractionHandler(evtType, handler) {
-          return _this3.root_.removeEventListener(evtType, handler);
-        },
-        registerValidationAttributeChangeHandler: function registerValidationAttributeChangeHandler(handler) {
-          var observer = new MutationObserver(handler);
-          var targetNode = _this3.root_.querySelector(_constants.strings.INPUT_SELECTOR);
-          var config = { attributes: true };
-          observer.observe(targetNode, config);
-          return observer;
-        },
-        deregisterValidationAttributeChangeHandler: function deregisterValidationAttributeChangeHandler(observer) {
-          return observer.disconnect();
-        },
-        isFocused: function isFocused() {
-          return document.activeElement === _this3.root_.querySelector(_constants.strings.INPUT_SELECTOR);
-        },
-        isRtl: function isRtl() {
-          return window.getComputedStyle(_this3.root_).getPropertyValue('direction') === 'rtl';
-        }
-      }, this.getInputAdapterMethods_(), this.getLabelAdapterMethods_(), this.getLineRippleAdapterMethods_(), this.getOutlineAdapterMethods_()), this.getFoundationMap_());
-    }
-
-    /**
-     * @return {!{
-     *   shakeLabel: function(boolean): undefined,
-     *   floatLabel: function(boolean): undefined,
-     *   hasLabel: function(): boolean,
-     *   getLabelWidth: function(): number,
-     * }}
-     */
-
-  }, {
-    key: 'getLabelAdapterMethods_',
-    value: function getLabelAdapterMethods_() {
-      var _this4 = this;
-
-      return {
-        shakeLabel: function shakeLabel(shouldShake) {
-          return _this4.label_.shake(shouldShake);
-        },
-        floatLabel: function floatLabel(shouldFloat) {
-          return _this4.label_.float(shouldFloat);
-        },
-        hasLabel: function hasLabel() {
-          return !!_this4.label_;
-        },
-        getLabelWidth: function getLabelWidth() {
-          return _this4.label_.getWidth();
-        }
-      };
-    }
-
-    /**
-     * @return {!{
-     *   activateLineRipple: function(): undefined,
-     *   deactivateLineRipple: function(): undefined,
-     *   setLineRippleTransformOrigin: function(!number): undefined,
-     * }}
-     */
-
-  }, {
-    key: 'getLineRippleAdapterMethods_',
-    value: function getLineRippleAdapterMethods_() {
-      var _this5 = this;
-
-      return {
-        activateLineRipple: function activateLineRipple() {
-          if (_this5.lineRipple_) {
-            _this5.lineRipple_.activate();
-          }
-        },
-        deactivateLineRipple: function deactivateLineRipple() {
-          if (_this5.lineRipple_) {
-            _this5.lineRipple_.deactivate();
-          }
-        },
-        setLineRippleTransformOrigin: function setLineRippleTransformOrigin(normalizedX) {
-          if (_this5.lineRipple_) {
-            _this5.lineRipple_.setRippleCenter(normalizedX);
-          }
-        }
-      };
-    }
-
-    /**
-     * @return {!{
-     *   hasOutline: function(): boolean,
-     *   updateOutlinePath: function(number, boolean): undefined,
-     * }}
-     */
-
-  }, {
-    key: 'getOutlineAdapterMethods_',
-    value: function getOutlineAdapterMethods_() {
-      var _this6 = this;
-
-      return {
-        hasOutline: function hasOutline() {
-          return !!_this6.outline_;
-        },
-        updateOutlinePath: function updateOutlinePath(labelWidth, isRtl) {
-          return _this6.outline_.updateSvgPath(labelWidth, isRtl);
-        }
-      };
-    }
-
-    /**
-     * @return {!{
-     *   registerInputInteractionHandler: function(string, function()): undefined,
-     *   deregisterInputInteractionHandler: function(string, function()): undefined,
-     *   getNativeInput: function(): ?Element,
-     * }}
-     */
-
-  }, {
-    key: 'getInputAdapterMethods_',
-    value: function getInputAdapterMethods_() {
-      var _this7 = this;
-
-      return {
-        registerInputInteractionHandler: function registerInputInteractionHandler(evtType, handler) {
-          return _this7.input_.addEventListener(evtType, handler);
-        },
-        deregisterInputInteractionHandler: function deregisterInputInteractionHandler(evtType, handler) {
-          return _this7.input_.removeEventListener(evtType, handler);
-        },
-        getNativeInput: function getNativeInput() {
-          return _this7.input_;
-        }
-      };
-    }
-
-    /**
-     * Returns a map of all subcomponents to subfoundations.
-     * @return {!FoundationMapType}
-     */
-
-  }, {
-    key: 'getFoundationMap_',
-    value: function getFoundationMap_() {
-      return {
-        helperText: this.helperText_ ? this.helperText_.foundation : undefined,
-        icon: this.icon_ ? this.icon_.foundation : undefined
-      };
-    }
-  }, {
-    key: 'value',
-    get: function get() {
-      return this.foundation_.getValue();
-    }
-
-    /**
-     * @param {string} value The value to set on the input.
-     */
-    ,
-    set: function set(value) {
-      this.foundation_.setValue(value);
-    }
-
-    /**
-     * @return {boolean} True if the Text Field is disabled.
-     */
-
-  }, {
-    key: 'disabled',
-    get: function get() {
-      return this.foundation_.isDisabled();
-    }
-
-    /**
-     * @param {boolean} disabled Sets the Text Field disabled or enabled.
-     */
-    ,
-    set: function set(disabled) {
-      this.foundation_.setDisabled(disabled);
-    }
-
-    /**
-     * @return {boolean} valid True if the Text Field is valid.
-     */
-
-  }, {
-    key: 'valid',
-    get: function get() {
-      return this.foundation_.isValid();
-    }
-
-    /**
-     * @param {boolean} valid Sets the Text Field valid or invalid.
-     */
-    ,
-    set: function set(valid) {
-      this.foundation_.setValid(valid);
-    }
-
-    /**
-     * @return {boolean} True if the Text Field is required.
-     */
-
-  }, {
-    key: 'required',
-    get: function get() {
-      return this.input_.required;
-    }
-
-    /**
-     * @param {boolean} required Sets the Text Field to required.
-     */
-    ,
-    set: function set(required) {
-      this.input_.required = required;
-    }
-
-    /**
-     * @return {string} The input element's validation pattern.
-     */
-
-  }, {
-    key: 'pattern',
-    get: function get() {
-      return this.input_.pattern;
-    }
-
-    /**
-     * @param {string} pattern Sets the input element's validation pattern.
-     */
-    ,
-    set: function set(pattern) {
-      this.input_.pattern = pattern;
-    }
-
-    /**
-     * @return {number} The input element's minLength.
-     */
-
-  }, {
-    key: 'minLength',
-    get: function get() {
-      return this.input_.minLength;
-    }
-
-    /**
-     * @param {number} minLength Sets the input element's minLength.
-     */
-    ,
-    set: function set(minLength) {
-      this.input_.minLength = minLength;
-    }
-
-    /**
-     * @return {number} The input element's maxLength.
-     */
-
-  }, {
-    key: 'maxLength',
-    get: function get() {
-      return this.input_.maxLength;
-    }
-
-    /**
-     * @param {number} maxLength Sets the input element's maxLength.
-     */
-    ,
-    set: function set(maxLength) {
-      // Chrome throws exception if maxLength is set < 0
-      if (maxLength < 0) {
-        this.input_.removeAttribute('maxLength');
-      } else {
-        this.input_.maxLength = maxLength;
-      }
-    }
-
-    /**
-     * @return {string} The input element's min.
-     */
-
-  }, {
-    key: 'min',
-    get: function get() {
-      return this.input_.min;
-    }
-
-    /**
-     * @param {string} min Sets the input element's min.
-     */
-    ,
-    set: function set(min) {
-      this.input_.min = min;
-    }
-
-    /**
-     * @return {string} The input element's max.
-     */
-
-  }, {
-    key: 'max',
-    get: function get() {
-      return this.input_.max;
-    }
-
-    /**
-     * @param {string} max Sets the input element's max.
-     */
-    ,
-    set: function set(max) {
-      this.input_.max = max;
-    }
-
-    /**
-     * @return {string} The input element's step.
-     */
-
-  }, {
-    key: 'step',
-    get: function get() {
-      return this.input_.step;
-    }
-
-    /**
-     * @param {string} step Sets the input element's step.
-     */
-    ,
-    set: function set(step) {
-      this.input_.step = step;
-    }
-
-    /**
-     * Sets the helper text element content.
-     * @param {string} content
-     */
-
-  }, {
-    key: 'helperTextContent',
-    set: function set(content) {
-      this.foundation_.setHelperTextContent(content);
-    }
-  }], [{
-    key: 'attachTo',
-    value: function attachTo(root) {
-      return new MDCTextField(root);
-    }
-  }]);
-
-  return MDCTextField;
-}(_component2.default);
-
-exports.MDCTextField = MDCTextField;
-exports.MDCTextFieldFoundation = _foundation2.default;
-exports.MDCTextFieldHelperText = _index3.MDCTextFieldHelperText;
-exports.MDCTextFieldHelperTextFoundation = _index3.MDCTextFieldHelperTextFoundation;
-exports.MDCTextFieldIcon = _index4.MDCTextFieldIcon;
-exports.MDCTextFieldIconFoundation = _index4.MDCTextFieldIconFoundation;
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.util = exports.RippleCapableSurface = exports.MDCRippleFoundation = exports.MDCRipple = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _component = __webpack_require__(1);
-
-var _component2 = _interopRequireDefault(_component);
-
-var _adapter = __webpack_require__(9);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _foundation = __webpack_require__(39);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _util = __webpack_require__(2);
-
-var util = _interopRequireWildcard(_util);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2016 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/**
- * @extends MDCComponent<!MDCRippleFoundation>
- */
-var MDCRipple = function (_MDCComponent) {
-  _inherits(MDCRipple, _MDCComponent);
-
-  /** @param {...?} args */
-  function MDCRipple() {
-    var _ref;
-
-    _classCallCheck(this, MDCRipple);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    /** @type {boolean} */
-    var _this = _possibleConstructorReturn(this, (_ref = MDCRipple.__proto__ || Object.getPrototypeOf(MDCRipple)).call.apply(_ref, [this].concat(args)));
-
-    _this.disabled = false;
-
-    /** @private {boolean} */
-    _this.unbounded_;
-    return _this;
-  }
-
-  /**
-   * @param {!Element} root
-   * @param {{isUnbounded: (boolean|undefined)}=} options
-   * @return {!MDCRipple}
-   */
-
-
-  _createClass(MDCRipple, [{
-    key: 'setUnbounded_',
-
-
-    /**
-     * Closure Compiler throws an access control error when directly accessing a
-     * protected or private property inside a getter/setter, like unbounded above.
-     * By accessing the protected property inside a method, we solve that problem.
-     * That's why this function exists.
-     * @private
-     */
-    value: function setUnbounded_() {
-      this.foundation_.setUnbounded(this.unbounded_);
-    }
-  }, {
-    key: 'activate',
-    value: function activate() {
-      this.foundation_.activate();
-    }
-  }, {
-    key: 'deactivate',
-    value: function deactivate() {
-      this.foundation_.deactivate();
-    }
-  }, {
-    key: 'layout',
-    value: function layout() {
-      this.foundation_.layout();
-    }
-
-    /** @return {!MDCRippleFoundation} */
-
-  }, {
-    key: 'getDefaultFoundation',
-    value: function getDefaultFoundation() {
-      return new _foundation2.default(MDCRipple.createAdapter(this));
-    }
-  }, {
-    key: 'initialSyncWithDOM',
-    value: function initialSyncWithDOM() {
-      this.unbounded = 'mdcRippleIsUnbounded' in this.root_.dataset;
-    }
-  }, {
-    key: 'unbounded',
-
-
-    /** @return {boolean} */
-    get: function get() {
-      return this.unbounded_;
-    }
-
-    /** @param {boolean} unbounded */
-    ,
-    set: function set(unbounded) {
-      this.unbounded_ = Boolean(unbounded);
-      this.setUnbounded_();
-    }
-  }], [{
-    key: 'attachTo',
-    value: function attachTo(root) {
-      var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-          _ref2$isUnbounded = _ref2.isUnbounded,
-          isUnbounded = _ref2$isUnbounded === undefined ? undefined : _ref2$isUnbounded;
-
-      var ripple = new MDCRipple(root);
-      // Only override unbounded behavior if option is explicitly specified
-      if (isUnbounded !== undefined) {
-        ripple.unbounded = /** @type {boolean} */isUnbounded;
-      }
-      return ripple;
-    }
-
-    /**
-     * @param {!RippleCapableSurface} instance
-     * @return {!MDCRippleAdapter}
-     */
-
-  }, {
-    key: 'createAdapter',
-    value: function createAdapter(instance) {
-      var MATCHES = util.getMatchesProperty(HTMLElement.prototype);
-
-      return {
-        browserSupportsCssVars: function browserSupportsCssVars() {
-          return util.supportsCssVariables(window);
-        },
-        isUnbounded: function isUnbounded() {
-          return instance.unbounded;
-        },
-        isSurfaceActive: function isSurfaceActive() {
-          return instance.root_[MATCHES](':active');
-        },
-        isSurfaceDisabled: function isSurfaceDisabled() {
-          return instance.disabled;
-        },
-        addClass: function addClass(className) {
-          return instance.root_.classList.add(className);
-        },
-        removeClass: function removeClass(className) {
-          return instance.root_.classList.remove(className);
-        },
-        containsEventTarget: function containsEventTarget(target) {
-          return instance.root_.contains(target);
-        },
-        registerInteractionHandler: function registerInteractionHandler(evtType, handler) {
-          return instance.root_.addEventListener(evtType, handler, util.applyPassive());
-        },
-        deregisterInteractionHandler: function deregisterInteractionHandler(evtType, handler) {
-          return instance.root_.removeEventListener(evtType, handler, util.applyPassive());
-        },
-        registerDocumentInteractionHandler: function registerDocumentInteractionHandler(evtType, handler) {
-          return document.documentElement.addEventListener(evtType, handler, util.applyPassive());
-        },
-        deregisterDocumentInteractionHandler: function deregisterDocumentInteractionHandler(evtType, handler) {
-          return document.documentElement.removeEventListener(evtType, handler, util.applyPassive());
-        },
-        registerResizeHandler: function registerResizeHandler(handler) {
-          return window.addEventListener('resize', handler);
-        },
-        deregisterResizeHandler: function deregisterResizeHandler(handler) {
-          return window.removeEventListener('resize', handler);
-        },
-        updateCssVariable: function updateCssVariable(varName, value) {
-          return instance.root_.style.setProperty(varName, value);
-        },
-        computeBoundingRect: function computeBoundingRect() {
-          return instance.root_.getBoundingClientRect();
-        },
-        getWindowPageOffset: function getWindowPageOffset() {
-          return { x: window.pageXOffset, y: window.pageYOffset };
-        }
-      };
-    }
-  }]);
-
-  return MDCRipple;
-}(_component2.default);
-
-/**
- * See Material Design spec for more details on when to use ripples.
- * https://material.io/guidelines/motion/choreography.html#choreography-creation
- * @record
- */
-
-
-var RippleCapableSurface = function RippleCapableSurface() {
-  _classCallCheck(this, RippleCapableSurface);
-};
-
-/** @protected {!Element} */
-
-
-RippleCapableSurface.prototype.root_;
-
-/**
- * Whether or not the ripple bleeds out of the bounds of the element.
- * @type {boolean|undefined}
- */
-RippleCapableSurface.prototype.unbounded;
-
-/**
- * Whether or not the ripple is attached to a disabled component.
- * @type {boolean|undefined}
- */
-RippleCapableSurface.prototype.disabled;
-
-exports.MDCRipple = MDCRipple;
-exports.MDCRippleFoundation = _foundation2.default;
-exports.RippleCapableSurface = RippleCapableSurface;
-exports.util = util;
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _foundation = __webpack_require__(0);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _adapter = __webpack_require__(9);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _constants = __webpack_require__(40);
-
-var _util = __webpack_require__(2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2016 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/**
- * @typedef {!{
- *   isActivated: (boolean|undefined),
- *   hasDeactivationUXRun: (boolean|undefined),
- *   wasActivatedByPointer: (boolean|undefined),
- *   wasElementMadeActive: (boolean|undefined),
- *   activationEvent: Event,
- *   isProgrammatic: (boolean|undefined)
- * }}
- */
-var ActivationStateType = void 0;
-
-/**
- * @typedef {!{
- *   activate: (string|undefined),
- *   deactivate: (string|undefined),
- *   focus: (string|undefined),
- *   blur: (string|undefined)
- * }}
- */
-var ListenerInfoType = void 0;
-
-/**
- * @typedef {!{
- *   activate: function(!Event),
- *   deactivate: function(!Event),
- *   focus: function(),
- *   blur: function()
- * }}
- */
-var ListenersType = void 0;
-
-/**
- * @typedef {!{
- *   x: number,
- *   y: number
- * }}
- */
-var PointType = void 0;
-
-// Activation events registered on the root element of each instance for activation
-var ACTIVATION_EVENT_TYPES = ['touchstart', 'pointerdown', 'mousedown', 'keydown'];
-
-// Deactivation events registered on documentElement when a pointer-related down event occurs
-var POINTER_DEACTIVATION_EVENT_TYPES = ['touchend', 'pointerup', 'mouseup'];
-
-// Tracks activations that have occurred on the current frame, to avoid simultaneous nested activations
-/** @type {!Array<!EventTarget>} */
-var activatedTargets = [];
-
-/**
- * @extends {MDCFoundation<!MDCRippleAdapter>}
- */
-
-var MDCRippleFoundation = function (_MDCFoundation) {
-  _inherits(MDCRippleFoundation, _MDCFoundation);
-
-  _createClass(MDCRippleFoundation, null, [{
-    key: 'cssClasses',
-    get: function get() {
-      return _constants.cssClasses;
-    }
-  }, {
-    key: 'strings',
-    get: function get() {
-      return _constants.strings;
-    }
-  }, {
-    key: 'numbers',
-    get: function get() {
-      return _constants.numbers;
-    }
-  }, {
-    key: 'defaultAdapter',
-    get: function get() {
-      return {
-        browserSupportsCssVars: function browserSupportsCssVars() /* boolean - cached */{},
-        isUnbounded: function isUnbounded() /* boolean */{},
-        isSurfaceActive: function isSurfaceActive() /* boolean */{},
-        isSurfaceDisabled: function isSurfaceDisabled() /* boolean */{},
-        addClass: function addClass() /* className: string */{},
-        removeClass: function removeClass() /* className: string */{},
-        containsEventTarget: function containsEventTarget() /* target: !EventTarget */{},
-        registerInteractionHandler: function registerInteractionHandler() /* evtType: string, handler: EventListener */{},
-        deregisterInteractionHandler: function deregisterInteractionHandler() /* evtType: string, handler: EventListener */{},
-        registerDocumentInteractionHandler: function registerDocumentInteractionHandler() /* evtType: string, handler: EventListener */{},
-        deregisterDocumentInteractionHandler: function deregisterDocumentInteractionHandler() /* evtType: string, handler: EventListener */{},
-        registerResizeHandler: function registerResizeHandler() /* handler: EventListener */{},
-        deregisterResizeHandler: function deregisterResizeHandler() /* handler: EventListener */{},
-        updateCssVariable: function updateCssVariable() /* varName: string, value: string */{},
-        computeBoundingRect: function computeBoundingRect() /* ClientRect */{},
-        getWindowPageOffset: function getWindowPageOffset() /* {x: number, y: number} */{}
-      };
-    }
-  }]);
-
-  function MDCRippleFoundation(adapter) {
-    _classCallCheck(this, MDCRippleFoundation);
-
-    /** @private {number} */
-    var _this = _possibleConstructorReturn(this, (MDCRippleFoundation.__proto__ || Object.getPrototypeOf(MDCRippleFoundation)).call(this, Object.assign(MDCRippleFoundation.defaultAdapter, adapter)));
-
-    _this.layoutFrame_ = 0;
-
-    /** @private {!ClientRect} */
-    _this.frame_ = /** @type {!ClientRect} */{ width: 0, height: 0 };
-
-    /** @private {!ActivationStateType} */
-    _this.activationState_ = _this.defaultActivationState_();
-
-    /** @private {number} */
-    _this.initialSize_ = 0;
-
-    /** @private {number} */
-    _this.maxRadius_ = 0;
-
-    /** @private {function(!Event)} */
-    _this.activateHandler_ = function (e) {
-      return _this.activate_(e);
-    };
-
-    /** @private {function(!Event)} */
-    _this.deactivateHandler_ = function (e) {
-      return _this.deactivate_(e);
-    };
-
-    /** @private {function(?Event=)} */
-    _this.focusHandler_ = function () {
-      return requestAnimationFrame(function () {
-        return _this.adapter_.addClass(MDCRippleFoundation.cssClasses.BG_FOCUSED);
-      });
-    };
-
-    /** @private {function(?Event=)} */
-    _this.blurHandler_ = function () {
-      return requestAnimationFrame(function () {
-        return _this.adapter_.removeClass(MDCRippleFoundation.cssClasses.BG_FOCUSED);
-      });
-    };
-
-    /** @private {!Function} */
-    _this.resizeHandler_ = function () {
-      return _this.layout();
-    };
-
-    /** @private {!{left: number, top:number}} */
-    _this.unboundedCoords_ = {
-      left: 0,
-      top: 0
-    };
-
-    /** @private {number} */
-    _this.fgScale_ = 0;
-
-    /** @private {number} */
-    _this.activationTimer_ = 0;
-
-    /** @private {number} */
-    _this.fgDeactivationRemovalTimer_ = 0;
-
-    /** @private {boolean} */
-    _this.activationAnimationHasEnded_ = false;
-
-    /** @private {!Function} */
-    _this.activationTimerCallback_ = function () {
-      _this.activationAnimationHasEnded_ = true;
-      _this.runDeactivationUXLogicIfReady_();
-    };
-
-    /** @private {?Event} */
-    _this.previousActivationEvent_ = null;
-    return _this;
-  }
-
-  /**
-   * We compute this property so that we are not querying information about the client
-   * until the point in time where the foundation requests it. This prevents scenarios where
-   * client-side feature-detection may happen too early, such as when components are rendered on the server
-   * and then initialized at mount time on the client.
-   * @return {boolean}
-   * @private
-   */
-
-
-  _createClass(MDCRippleFoundation, [{
-    key: 'isSupported_',
-    value: function isSupported_() {
-      return this.adapter_.browserSupportsCssVars();
-    }
-
-    /**
-     * @return {!ActivationStateType}
-     */
-
-  }, {
-    key: 'defaultActivationState_',
-    value: function defaultActivationState_() {
-      return {
-        isActivated: false,
-        hasDeactivationUXRun: false,
-        wasActivatedByPointer: false,
-        wasElementMadeActive: false,
-        activationEvent: null,
-        isProgrammatic: false
-      };
-    }
-  }, {
-    key: 'init',
-    value: function init() {
-      var _this2 = this;
-
-      if (!this.isSupported_()) {
-        return;
-      }
-      this.registerRootHandlers_();
-
-      var _MDCRippleFoundation$ = MDCRippleFoundation.cssClasses,
-          ROOT = _MDCRippleFoundation$.ROOT,
-          UNBOUNDED = _MDCRippleFoundation$.UNBOUNDED;
-
-      requestAnimationFrame(function () {
-        _this2.adapter_.addClass(ROOT);
-        if (_this2.adapter_.isUnbounded()) {
-          _this2.adapter_.addClass(UNBOUNDED);
-        }
-        _this2.layoutInternal_();
-      });
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      var _this3 = this;
-
-      if (!this.isSupported_()) {
-        return;
-      }
-      this.deregisterRootHandlers_();
-      this.deregisterDeactivationHandlers_();
-
-      var _MDCRippleFoundation$2 = MDCRippleFoundation.cssClasses,
-          ROOT = _MDCRippleFoundation$2.ROOT,
-          UNBOUNDED = _MDCRippleFoundation$2.UNBOUNDED;
-
-      requestAnimationFrame(function () {
-        _this3.adapter_.removeClass(ROOT);
-        _this3.adapter_.removeClass(UNBOUNDED);
-        _this3.removeCssVars_();
-      });
-    }
-
-    /** @private */
-
-  }, {
-    key: 'registerRootHandlers_',
-    value: function registerRootHandlers_() {
-      var _this4 = this;
-
-      ACTIVATION_EVENT_TYPES.forEach(function (type) {
-        _this4.adapter_.registerInteractionHandler(type, _this4.activateHandler_);
-      });
-      this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
-      this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
-      this.adapter_.registerResizeHandler(this.resizeHandler_);
-    }
-
-    /**
-     * @param {!Event} e
-     * @private
-     */
-
-  }, {
-    key: 'registerDeactivationHandlers_',
-    value: function registerDeactivationHandlers_(e) {
-      var _this5 = this;
-
-      if (e.type === 'keydown') {
-        this.adapter_.registerInteractionHandler('keyup', this.deactivateHandler_);
-      } else {
-        POINTER_DEACTIVATION_EVENT_TYPES.forEach(function (type) {
-          _this5.adapter_.registerDocumentInteractionHandler(type, _this5.deactivateHandler_);
-        });
-      }
-    }
-
-    /** @private */
-
-  }, {
-    key: 'deregisterRootHandlers_',
-    value: function deregisterRootHandlers_() {
-      var _this6 = this;
-
-      ACTIVATION_EVENT_TYPES.forEach(function (type) {
-        _this6.adapter_.deregisterInteractionHandler(type, _this6.activateHandler_);
-      });
-      this.adapter_.deregisterInteractionHandler('focus', this.focusHandler_);
-      this.adapter_.deregisterInteractionHandler('blur', this.blurHandler_);
-      this.adapter_.deregisterResizeHandler(this.resizeHandler_);
-    }
-
-    /** @private */
-
-  }, {
-    key: 'deregisterDeactivationHandlers_',
-    value: function deregisterDeactivationHandlers_() {
-      var _this7 = this;
-
-      this.adapter_.deregisterInteractionHandler('keyup', this.deactivateHandler_);
-      POINTER_DEACTIVATION_EVENT_TYPES.forEach(function (type) {
-        _this7.adapter_.deregisterDocumentInteractionHandler(type, _this7.deactivateHandler_);
-      });
-    }
-
-    /** @private */
-
-  }, {
-    key: 'removeCssVars_',
-    value: function removeCssVars_() {
-      var _this8 = this;
-
-      var strings = MDCRippleFoundation.strings;
-
-      Object.keys(strings).forEach(function (k) {
-        if (k.indexOf('VAR_') === 0) {
-          _this8.adapter_.updateCssVariable(strings[k], null);
-        }
-      });
-    }
-
-    /**
-     * @param {?Event} e
-     * @private
-     */
-
-  }, {
-    key: 'activate_',
-    value: function activate_(e) {
-      var _this9 = this;
-
-      if (this.adapter_.isSurfaceDisabled()) {
-        return;
-      }
-
-      var activationState = this.activationState_;
-      if (activationState.isActivated) {
-        return;
-      }
-
-      // Avoid reacting to follow-on events fired by touch device after an already-processed user interaction
-      var previousActivationEvent = this.previousActivationEvent_;
-      var isSameInteraction = previousActivationEvent && e && previousActivationEvent.type !== e.type;
-      if (isSameInteraction) {
-        return;
-      }
-
-      activationState.isActivated = true;
-      activationState.isProgrammatic = e === null;
-      activationState.activationEvent = e;
-      activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : e.type === 'mousedown' || e.type === 'touchstart' || e.type === 'pointerdown';
-
-      var hasActivatedChild = e && activatedTargets.length > 0 && activatedTargets.some(function (target) {
-        return _this9.adapter_.containsEventTarget(target);
-      });
-      if (hasActivatedChild) {
-        // Immediately reset activation state, while preserving logic that prevents touch follow-on events
-        this.resetActivationState_();
-        return;
-      }
-
-      if (e) {
-        activatedTargets.push( /** @type {!EventTarget} */e.target);
-        this.registerDeactivationHandlers_(e);
-      }
-
-      requestAnimationFrame(function () {
-        // This needs to be wrapped in an rAF call b/c web browsers
-        // report active states inconsistently when they're called within
-        // event handling code:
-        // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
-        // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
-        activationState.wasElementMadeActive = e && e.type === 'keydown' ? _this9.adapter_.isSurfaceActive() : true;
-        if (activationState.wasElementMadeActive) {
-          _this9.animateActivation_();
-        } else {
-          // Reset activation state immediately if element was not made active.
-          _this9.activationState_ = _this9.defaultActivationState_();
-        }
-
-        // Reset array on next frame after the current event has had a chance to bubble to prevent ancestor ripples
-        activatedTargets = [];
-      });
-    }
-
-    /**
-     * @param {?Event=} event Optional event containing position information.
-     */
-
-  }, {
-    key: 'activate',
-    value: function activate() {
-      var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-      this.activate_(event);
-    }
-
-    /** @private */
-
-  }, {
-    key: 'animateActivation_',
-    value: function animateActivation_() {
-      var _this10 = this;
-
-      var _MDCRippleFoundation$3 = MDCRippleFoundation.strings,
-          VAR_FG_TRANSLATE_START = _MDCRippleFoundation$3.VAR_FG_TRANSLATE_START,
-          VAR_FG_TRANSLATE_END = _MDCRippleFoundation$3.VAR_FG_TRANSLATE_END;
-      var _MDCRippleFoundation$4 = MDCRippleFoundation.cssClasses,
-          FG_DEACTIVATION = _MDCRippleFoundation$4.FG_DEACTIVATION,
-          FG_ACTIVATION = _MDCRippleFoundation$4.FG_ACTIVATION;
-      var DEACTIVATION_TIMEOUT_MS = MDCRippleFoundation.numbers.DEACTIVATION_TIMEOUT_MS;
-
-
-      var translateStart = '';
-      var translateEnd = '';
-
-      if (!this.adapter_.isUnbounded()) {
-        var _getFgTranslationCoor = this.getFgTranslationCoordinates_(),
-            startPoint = _getFgTranslationCoor.startPoint,
-            endPoint = _getFgTranslationCoor.endPoint;
-
-        translateStart = startPoint.x + 'px, ' + startPoint.y + 'px';
-        translateEnd = endPoint.x + 'px, ' + endPoint.y + 'px';
-      }
-
-      this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_START, translateStart);
-      this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_END, translateEnd);
-      // Cancel any ongoing activation/deactivation animations
-      clearTimeout(this.activationTimer_);
-      clearTimeout(this.fgDeactivationRemovalTimer_);
-      this.rmBoundedActivationClasses_();
-      this.adapter_.removeClass(FG_DEACTIVATION);
-
-      // Force layout in order to re-trigger the animation.
-      this.adapter_.computeBoundingRect();
-      this.adapter_.addClass(FG_ACTIVATION);
-      this.activationTimer_ = setTimeout(function () {
-        return _this10.activationTimerCallback_();
-      }, DEACTIVATION_TIMEOUT_MS);
-    }
-
-    /**
-     * @private
-     * @return {{startPoint: PointType, endPoint: PointType}}
-     */
-
-  }, {
-    key: 'getFgTranslationCoordinates_',
-    value: function getFgTranslationCoordinates_() {
-      var _activationState_ = this.activationState_,
-          activationEvent = _activationState_.activationEvent,
-          wasActivatedByPointer = _activationState_.wasActivatedByPointer;
-
-
-      var startPoint = void 0;
-      if (wasActivatedByPointer) {
-        startPoint = (0, _util.getNormalizedEventCoords)(
-        /** @type {!Event} */activationEvent, this.adapter_.getWindowPageOffset(), this.adapter_.computeBoundingRect());
-      } else {
-        startPoint = {
-          x: this.frame_.width / 2,
-          y: this.frame_.height / 2
-        };
-      }
-      // Center the element around the start point.
-      startPoint = {
-        x: startPoint.x - this.initialSize_ / 2,
-        y: startPoint.y - this.initialSize_ / 2
-      };
-
-      var endPoint = {
-        x: this.frame_.width / 2 - this.initialSize_ / 2,
-        y: this.frame_.height / 2 - this.initialSize_ / 2
-      };
-
-      return { startPoint: startPoint, endPoint: endPoint };
-    }
-
-    /** @private */
-
-  }, {
-    key: 'runDeactivationUXLogicIfReady_',
-    value: function runDeactivationUXLogicIfReady_() {
-      var _this11 = this;
-
-      // This method is called both when a pointing device is released, and when the activation animation ends.
-      // The deactivation animation should only run after both of those occur.
-      var FG_DEACTIVATION = MDCRippleFoundation.cssClasses.FG_DEACTIVATION;
-      var _activationState_2 = this.activationState_,
-          hasDeactivationUXRun = _activationState_2.hasDeactivationUXRun,
-          isActivated = _activationState_2.isActivated;
-
-      var activationHasEnded = hasDeactivationUXRun || !isActivated;
-
-      if (activationHasEnded && this.activationAnimationHasEnded_) {
-        this.rmBoundedActivationClasses_();
-        this.adapter_.addClass(FG_DEACTIVATION);
-        this.fgDeactivationRemovalTimer_ = setTimeout(function () {
-          _this11.adapter_.removeClass(FG_DEACTIVATION);
-        }, _constants.numbers.FG_DEACTIVATION_MS);
-      }
-    }
-
-    /** @private */
-
-  }, {
-    key: 'rmBoundedActivationClasses_',
-    value: function rmBoundedActivationClasses_() {
-      var FG_ACTIVATION = MDCRippleFoundation.cssClasses.FG_ACTIVATION;
-
-      this.adapter_.removeClass(FG_ACTIVATION);
-      this.activationAnimationHasEnded_ = false;
-      this.adapter_.computeBoundingRect();
-    }
-  }, {
-    key: 'resetActivationState_',
-    value: function resetActivationState_() {
-      var _this12 = this;
-
-      this.previousActivationEvent_ = this.activationState_.activationEvent;
-      this.activationState_ = this.defaultActivationState_();
-      // Touch devices may fire additional events for the same interaction within a short time.
-      // Store the previous event until it's safe to assume that subsequent events are for new interactions.
-      setTimeout(function () {
-        return _this12.previousActivationEvent_ = null;
-      }, MDCRippleFoundation.numbers.TAP_DELAY_MS);
-    }
-
-    /**
-     * @param {?Event} e
-     * @private
-     */
-
-  }, {
-    key: 'deactivate_',
-    value: function deactivate_(e) {
-      var _this13 = this;
-
-      var activationState = this.activationState_;
-      // This can happen in scenarios such as when you have a keyup event that blurs the element.
-      if (!activationState.isActivated) {
-        return;
-      }
-
-      var state = /** @type {!ActivationStateType} */Object.assign({}, activationState);
-
-      if (activationState.isProgrammatic) {
-        var evtObject = null;
-        requestAnimationFrame(function () {
-          return _this13.animateDeactivation_(evtObject, state);
-        });
-        this.resetActivationState_();
-      } else {
-        this.deregisterDeactivationHandlers_();
-        requestAnimationFrame(function () {
-          _this13.activationState_.hasDeactivationUXRun = true;
-          _this13.animateDeactivation_(e, state);
-          _this13.resetActivationState_();
-        });
-      }
-    }
-
-    /**
-     * @param {?Event=} event Optional event containing position information.
-     */
-
-  }, {
-    key: 'deactivate',
-    value: function deactivate() {
-      var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-      this.deactivate_(event);
-    }
-
-    /**
-     * @param {Event} e
-     * @param {!ActivationStateType} options
-     * @private
-     */
-
-  }, {
-    key: 'animateDeactivation_',
-    value: function animateDeactivation_(e, _ref) {
-      var wasActivatedByPointer = _ref.wasActivatedByPointer,
-          wasElementMadeActive = _ref.wasElementMadeActive;
-
-      if (wasActivatedByPointer || wasElementMadeActive) {
-        this.runDeactivationUXLogicIfReady_();
-      }
-    }
-  }, {
-    key: 'layout',
-    value: function layout() {
-      var _this14 = this;
-
-      if (this.layoutFrame_) {
-        cancelAnimationFrame(this.layoutFrame_);
-      }
-      this.layoutFrame_ = requestAnimationFrame(function () {
-        _this14.layoutInternal_();
-        _this14.layoutFrame_ = 0;
-      });
-    }
-
-    /** @private */
-
-  }, {
-    key: 'layoutInternal_',
-    value: function layoutInternal_() {
-      var _this15 = this;
-
-      this.frame_ = this.adapter_.computeBoundingRect();
-      var maxDim = Math.max(this.frame_.height, this.frame_.width);
-
-      // Surface diameter is treated differently for unbounded vs. bounded ripples.
-      // Unbounded ripple diameter is calculated smaller since the surface is expected to already be padded appropriately
-      // to extend the hitbox, and the ripple is expected to meet the edges of the padded hitbox (which is typically
-      // square). Bounded ripples, on the other hand, are fully expected to expand beyond the surface's longest diameter
-      // (calculated based on the diagonal plus a constant padding), and are clipped at the surface's border via
-      // `overflow: hidden`.
-      var getBoundedRadius = function getBoundedRadius() {
-        var hypotenuse = Math.sqrt(Math.pow(_this15.frame_.width, 2) + Math.pow(_this15.frame_.height, 2));
-        return hypotenuse + MDCRippleFoundation.numbers.PADDING;
-      };
-
-      this.maxRadius_ = this.adapter_.isUnbounded() ? maxDim : getBoundedRadius();
-
-      // Ripple is sized as a fraction of the largest dimension of the surface, then scales up using a CSS scale transform
-      this.initialSize_ = maxDim * MDCRippleFoundation.numbers.INITIAL_ORIGIN_SCALE;
-      this.fgScale_ = this.maxRadius_ / this.initialSize_;
-
-      this.updateLayoutCssVars_();
-    }
-
-    /** @private */
-
-  }, {
-    key: 'updateLayoutCssVars_',
-    value: function updateLayoutCssVars_() {
-      var _MDCRippleFoundation$5 = MDCRippleFoundation.strings,
-          VAR_FG_SIZE = _MDCRippleFoundation$5.VAR_FG_SIZE,
-          VAR_LEFT = _MDCRippleFoundation$5.VAR_LEFT,
-          VAR_TOP = _MDCRippleFoundation$5.VAR_TOP,
-          VAR_FG_SCALE = _MDCRippleFoundation$5.VAR_FG_SCALE;
-
-
-      this.adapter_.updateCssVariable(VAR_FG_SIZE, this.initialSize_ + 'px');
-      this.adapter_.updateCssVariable(VAR_FG_SCALE, this.fgScale_);
-
-      if (this.adapter_.isUnbounded()) {
-        this.unboundedCoords_ = {
-          left: Math.round(this.frame_.width / 2 - this.initialSize_ / 2),
-          top: Math.round(this.frame_.height / 2 - this.initialSize_ / 2)
-        };
-
-        this.adapter_.updateCssVariable(VAR_LEFT, this.unboundedCoords_.left + 'px');
-        this.adapter_.updateCssVariable(VAR_TOP, this.unboundedCoords_.top + 'px');
-      }
-    }
-
-    /** @param {boolean} unbounded */
-
-  }, {
-    key: 'setUnbounded',
-    value: function setUnbounded(unbounded) {
-      var UNBOUNDED = MDCRippleFoundation.cssClasses.UNBOUNDED;
-
-      if (unbounded) {
-        this.adapter_.addClass(UNBOUNDED);
-      } else {
-        this.adapter_.removeClass(UNBOUNDED);
-      }
-    }
-  }]);
-
-  return MDCRippleFoundation;
-}(_foundation2.default);
-
-exports.default = MDCRippleFoundation;
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-var cssClasses = {
-  // Ripple is a special case where the "root" component is really a "mixin" of sorts,
-  // given that it's an 'upgrade' to an existing component. That being said it is the root
-  // CSS class that all other CSS classes derive from.
-  ROOT: 'mdc-ripple-upgraded',
-  UNBOUNDED: 'mdc-ripple-upgraded--unbounded',
-  BG_FOCUSED: 'mdc-ripple-upgraded--background-focused',
-  FG_ACTIVATION: 'mdc-ripple-upgraded--foreground-activation',
-  FG_DEACTIVATION: 'mdc-ripple-upgraded--foreground-deactivation'
-};
-
-var strings = {
-  VAR_LEFT: '--mdc-ripple-left',
-  VAR_TOP: '--mdc-ripple-top',
-  VAR_FG_SIZE: '--mdc-ripple-fg-size',
-  VAR_FG_SCALE: '--mdc-ripple-fg-scale',
-  VAR_FG_TRANSLATE_START: '--mdc-ripple-fg-translate-start',
-  VAR_FG_TRANSLATE_END: '--mdc-ripple-fg-translate-end'
-};
-
-var numbers = {
-  PADDING: 10,
-  INITIAL_ORIGIN_SCALE: 0.6,
-  DEACTIVATION_TIMEOUT_MS: 225, // Corresponds to $mdc-ripple-translate-duration (i.e. activation animation duration)
-  FG_DEACTIVATION_MS: 150, // Corresponds to $mdc-ripple-fade-out-duration (i.e. deactivation animation duration)
-  TAP_DELAY_MS: 300 // Delay between touch and simulated mouse events on touch devices
-};
-
-exports.cssClasses = cssClasses;
-exports.strings = strings;
-exports.numbers = numbers;
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/** @enum {string} */
-var strings = {
-  ARIA_HIDDEN: 'aria-hidden',
-  ROLE: 'role'
-};
-
-/** @enum {string} */
-var cssClasses = {
-  HELPER_TEXT_PERSISTENT: 'mdc-text-field-helper-text--persistent',
-  HELPER_TEXT_VALIDATION_MSG: 'mdc-text-field-helper-text--validation-msg'
-};
-
-exports.strings = strings;
-exports.cssClasses = cssClasses;
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/** @enum {string} */
-var strings = {
-  ICON_EVENT: 'MDCTextField:icon'
-};
-
-exports.strings = strings;
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _foundation = __webpack_require__(0);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _adapter = __webpack_require__(11);
-
-var _foundation3 = __webpack_require__(14);
-
-var _foundation4 = _interopRequireDefault(_foundation3);
-
-var _foundation5 = __webpack_require__(3);
-
-var _foundation6 = _interopRequireDefault(_foundation5);
-
-var _foundation7 = __webpack_require__(4);
-
-var _foundation8 = _interopRequireDefault(_foundation7);
-
-var _foundation9 = __webpack_require__(16);
-
-var _foundation10 = _interopRequireDefault(_foundation9);
-
-var _foundation11 = __webpack_require__(18);
-
-var _foundation12 = _interopRequireDefault(_foundation11);
-
-var _constants = __webpack_require__(10);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2016 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/* eslint-disable no-unused-vars */
-
-/* eslint-enable no-unused-vars */
-
-
-// whitelist based off of https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
-// under section: `Validation-related attributes`
-var VALIDATION_ATTR_WHITELIST = ['pattern', 'min', 'max', 'required', 'step', 'minlength', 'maxlength'];
-
-/**
- * @extends {MDCFoundation<!MDCTextFieldAdapter>}
- * @final
- */
-
-var MDCTextFieldFoundation = function (_MDCFoundation) {
-  _inherits(MDCTextFieldFoundation, _MDCFoundation);
-
-  _createClass(MDCTextFieldFoundation, [{
-    key: 'shouldShake',
-
-
-    /** @return {boolean} */
-    get: function get() {
-      return !this.isValid() && !this.isFocused_;
-    }
-
-    /** @return {boolean} */
-
-  }, {
-    key: 'shouldFloat',
-    get: function get() {
-      return !this.isBadInput_() && (!!this.getValue() || this.isFocused_);
-    }
-
-    /**
-     * {@see MDCTextFieldAdapter} for typing information on parameters and return
-     * types.
-     * @return {!MDCTextFieldAdapter}
-     */
-
-  }], [{
-    key: 'cssClasses',
-
-    /** @return enum {string} */
-    get: function get() {
-      return _constants.cssClasses;
-    }
-
-    /** @return enum {string} */
-
-  }, {
-    key: 'strings',
-    get: function get() {
-      return _constants.strings;
-    }
-
-    /** @return enum {string} */
-
-  }, {
-    key: 'numbers',
-    get: function get() {
-      return _constants.numbers;
-    }
-  }, {
-    key: 'defaultAdapter',
-    get: function get() {
-      return (/** @type {!MDCTextFieldAdapter} */{
-          addClass: function addClass() {},
-          removeClass: function removeClass() {},
-          hasClass: function hasClass() {},
-          registerTextFieldInteractionHandler: function registerTextFieldInteractionHandler() {},
-          deregisterTextFieldInteractionHandler: function deregisterTextFieldInteractionHandler() {},
-          registerInputInteractionHandler: function registerInputInteractionHandler() {},
-          deregisterInputInteractionHandler: function deregisterInputInteractionHandler() {},
-          registerValidationAttributeChangeHandler: function registerValidationAttributeChangeHandler() {},
-          deregisterValidationAttributeChangeHandler: function deregisterValidationAttributeChangeHandler() {},
-          getNativeInput: function getNativeInput() {},
-          isFocused: function isFocused() {},
-          isRtl: function isRtl() {},
-          activateLineRipple: function activateLineRipple() {},
-          deactivateLineRipple: function deactivateLineRipple() {},
-          setLineRippleTransformOrigin: function setLineRippleTransformOrigin() {},
-          shakeLabel: function shakeLabel() {},
-          floatLabel: function floatLabel() {},
-          hasLabel: function hasLabel() {},
-          getLabelWidth: function getLabelWidth() {},
-          hasOutline: function hasOutline() {},
-          updateOutlinePath: function updateOutlinePath() {}
-        }
-      );
-    }
-
-    /**
-     * @param {!MDCTextFieldAdapter} adapter
-     * @param {!FoundationMapType=} foundationMap Map from subcomponent names to their subfoundations.
-     */
-
-  }]);
-
-  function MDCTextFieldFoundation(adapter) {
-    var foundationMap = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : /** @type {!FoundationMapType} */{};
-
-    _classCallCheck(this, MDCTextFieldFoundation);
-
-    /** @type {!MDCTextFieldHelperTextFoundation|undefined} */
-    var _this = _possibleConstructorReturn(this, (MDCTextFieldFoundation.__proto__ || Object.getPrototypeOf(MDCTextFieldFoundation)).call(this, Object.assign(MDCTextFieldFoundation.defaultAdapter, adapter)));
-
-    _this.helperText_ = foundationMap.helperText;
-    /** @type {!MDCTextFieldIconFoundation|undefined} */
-    _this.icon_ = foundationMap.icon;
-
-    /** @private {boolean} */
-    _this.isFocused_ = false;
-    /** @private {boolean} */
-    _this.receivedUserInput_ = false;
-    /** @private {boolean} */
-    _this.useCustomValidityChecking_ = false;
-    /** @private {boolean} */
-    _this.isValid_ = true;
-    /** @private {function(): undefined} */
-    _this.inputFocusHandler_ = function () {
-      return _this.activateFocus();
-    };
-    /** @private {function(): undefined} */
-    _this.inputBlurHandler_ = function () {
-      return _this.deactivateFocus();
-    };
-    /** @private {function(): undefined} */
-    _this.inputInputHandler_ = function () {
-      return _this.autoCompleteFocus();
-    };
-    /** @private {function(!Event): undefined} */
-    _this.setPointerXOffset_ = function (evt) {
-      return _this.setTransformOrigin(evt);
-    };
-    /** @private {function(!Event): undefined} */
-    _this.textFieldInteractionHandler_ = function () {
-      return _this.handleTextFieldInteraction();
-    };
-    /** @private {function(!Array): undefined} */
-    _this.validationAttributeChangeHandler_ = function (mutations) {
-      return _this.handleValidationAttributeMutation_(mutations);
-    };
-    /** @private {!MutationObserver} */
-    _this.validationObserver_;
-    return _this;
-  }
-
-  _createClass(MDCTextFieldFoundation, [{
-    key: 'init',
-    value: function init() {
-      var _this2 = this;
-
-      this.adapter_.addClass(MDCTextFieldFoundation.cssClasses.UPGRADED);
-      // Ensure label does not collide with any pre-filled value.
-      if (this.adapter_.hasLabel() && this.getValue()) {
-        this.adapter_.floatLabel(this.shouldFloat);
-      }
-
-      if (this.adapter_.isFocused()) {
-        this.inputFocusHandler_();
-      }
-
-      this.adapter_.registerInputInteractionHandler('focus', this.inputFocusHandler_);
-      this.adapter_.registerInputInteractionHandler('blur', this.inputBlurHandler_);
-      this.adapter_.registerInputInteractionHandler('input', this.inputInputHandler_);
-      ['mousedown', 'touchstart'].forEach(function (evtType) {
-        _this2.adapter_.registerInputInteractionHandler(evtType, _this2.setPointerXOffset_);
-      });
-      ['click', 'keydown'].forEach(function (evtType) {
-        _this2.adapter_.registerTextFieldInteractionHandler(evtType, _this2.textFieldInteractionHandler_);
-      });
-      this.validationObserver_ = this.adapter_.registerValidationAttributeChangeHandler(this.validationAttributeChangeHandler_);
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      var _this3 = this;
-
-      this.adapter_.removeClass(MDCTextFieldFoundation.cssClasses.UPGRADED);
-      this.adapter_.deregisterInputInteractionHandler('focus', this.inputFocusHandler_);
-      this.adapter_.deregisterInputInteractionHandler('blur', this.inputBlurHandler_);
-      this.adapter_.deregisterInputInteractionHandler('input', this.inputInputHandler_);
-      ['mousedown', 'touchstart'].forEach(function (evtType) {
-        _this3.adapter_.deregisterInputInteractionHandler(evtType, _this3.setPointerXOffset_);
-      });
-      ['click', 'keydown'].forEach(function (evtType) {
-        _this3.adapter_.deregisterTextFieldInteractionHandler(evtType, _this3.textFieldInteractionHandler_);
-      });
-      this.adapter_.deregisterValidationAttributeChangeHandler(this.validationObserver_);
-    }
-
-    /**
-     * Handles user interactions with the Text Field.
-     */
-
-  }, {
-    key: 'handleTextFieldInteraction',
-    value: function handleTextFieldInteraction() {
-      if (this.adapter_.getNativeInput().disabled) {
-        return;
-      }
-      this.receivedUserInput_ = true;
-    }
-
-    /**
-     * Handles validation attribute changes
-     * @param {Array<MutationRecord>} mutationsList
-     * @private
-     */
-
-  }, {
-    key: 'handleValidationAttributeMutation_',
-    value: function handleValidationAttributeMutation_(mutationsList) {
-      var _this4 = this;
-
-      mutationsList.some(function (mutation) {
-        if (VALIDATION_ATTR_WHITELIST.indexOf(mutation.attributeName) > -1) {
-          _this4.styleValidity_(true);
-          return true;
-        }
-      });
-    }
-
-    /**
-     * Updates the focus outline for outlined text fields.
-     */
-
-  }, {
-    key: 'updateOutline',
-    value: function updateOutline() {
-      if (!this.adapter_.hasOutline() || !this.adapter_.hasLabel()) {
-        return;
-      }
-
-      var isDense = this.adapter_.hasClass(_constants.cssClasses.DENSE);
-      var labelScale = isDense ? _constants.numbers.DENSE_LABEL_SCALE : _constants.numbers.LABEL_SCALE;
-      var labelWidth = this.adapter_.getLabelWidth() * labelScale;
-      var isRtl = this.adapter_.isRtl();
-      this.adapter_.updateOutlinePath(labelWidth, isRtl);
-    }
-
-    /**
-     * Activates the text field focus state.
-     */
-
-  }, {
-    key: 'activateFocus',
-    value: function activateFocus() {
-      this.isFocused_ = true;
-      this.styleFocused_(this.isFocused_);
-      this.adapter_.activateLineRipple();
-      this.updateOutline();
-      if (this.adapter_.hasLabel()) {
-        this.adapter_.shakeLabel(this.shouldShake);
-        this.adapter_.floatLabel(this.shouldFloat);
-      }
-      if (this.helperText_) {
-        this.helperText_.showToScreenReader();
-      }
-    }
-
-    /**
-     * Sets the line ripple's transform origin, so that the line ripple activate
-     * animation will animate out from the user's click location.
-     * @param {!Event} evt
-     */
-
-  }, {
-    key: 'setTransformOrigin',
-    value: function setTransformOrigin(evt) {
-      var targetClientRect = evt.target.getBoundingClientRect();
-      var evtCoords = { x: evt.clientX, y: evt.clientY };
-      var normalizedX = evtCoords.x - targetClientRect.left;
-      this.adapter_.setLineRippleTransformOrigin(normalizedX);
-    }
-
-    /**
-     * Activates the Text Field's focus state in cases when the input value
-     * changes without user input (e.g. programatically).
-     */
-
-  }, {
-    key: 'autoCompleteFocus',
-    value: function autoCompleteFocus() {
-      if (!this.receivedUserInput_) {
-        this.activateFocus();
-      }
-    }
-
-    /**
-     * Deactivates the Text Field's focus state.
-     */
-
-  }, {
-    key: 'deactivateFocus',
-    value: function deactivateFocus() {
-      this.isFocused_ = false;
-      this.adapter_.deactivateLineRipple();
-      var input = this.getNativeInput_();
-      var shouldRemoveLabelFloat = !input.value && !this.isBadInput_();
-      var isValid = this.isValid();
-      this.styleValidity_(isValid);
-      this.styleFocused_(this.isFocused_);
-      if (this.adapter_.hasLabel()) {
-        this.adapter_.shakeLabel(this.shouldShake);
-        this.adapter_.floatLabel(this.shouldFloat);
-      }
-      if (shouldRemoveLabelFloat) {
-        this.receivedUserInput_ = false;
-      }
-    }
-
-    /**
-     * @return {string} The value of the input Element.
-     */
-
-  }, {
-    key: 'getValue',
-    value: function getValue() {
-      return this.getNativeInput_().value;
-    }
-
-    /**
-     * @param {string} value The value to set on the input Element.
-     */
-
-  }, {
-    key: 'setValue',
-    value: function setValue(value) {
-      this.getNativeInput_().value = value;
-      var isValid = this.isValid();
-      this.styleValidity_(isValid);
-      if (this.adapter_.hasLabel()) {
-        this.adapter_.shakeLabel(this.shouldShake);
-        this.adapter_.floatLabel(this.shouldFloat);
-      }
-    }
-
-    /**
-     * @return {boolean} If a custom validity is set, returns that value.
-     *     Otherwise, returns the result of native validity checks.
-     */
-
-  }, {
-    key: 'isValid',
-    value: function isValid() {
-      return this.useCustomValidityChecking_ ? this.isValid_ : this.isNativeInputValid_();
-    }
-
-    /**
-     * @param {boolean} isValid Sets the validity state of the Text Field.
-     */
-
-  }, {
-    key: 'setValid',
-    value: function setValid(isValid) {
-      this.useCustomValidityChecking_ = true;
-      this.isValid_ = isValid;
-      // Retrieve from the getter to ensure correct logic is applied.
-      isValid = this.isValid();
-      this.styleValidity_(isValid);
-      if (this.adapter_.hasLabel()) {
-        this.adapter_.shakeLabel(this.shouldShake);
-      }
-    }
-
-    /**
-     * @return {boolean} True if the Text Field is disabled.
-     */
-
-  }, {
-    key: 'isDisabled',
-    value: function isDisabled() {
-      return this.getNativeInput_().disabled;
-    }
-
-    /**
-     * @param {boolean} disabled Sets the text-field disabled or enabled.
-     */
-
-  }, {
-    key: 'setDisabled',
-    value: function setDisabled(disabled) {
-      this.getNativeInput_().disabled = disabled;
-      this.styleDisabled_(disabled);
-    }
-
-    /**
-     * @param {string} content Sets the content of the helper text.
-     */
-
-  }, {
-    key: 'setHelperTextContent',
-    value: function setHelperTextContent(content) {
-      if (this.helperText_) {
-        this.helperText_.setContent(content);
-      }
-    }
-
-    /**
-     * @return {boolean} True if the Text Field input fails in converting the
-     *     user-supplied value.
-     * @private
-     */
-
-  }, {
-    key: 'isBadInput_',
-    value: function isBadInput_() {
-      return this.getNativeInput_().validity.badInput;
-    }
-
-    /**
-     * @return {boolean} The result of native validity checking
-     *     (ValidityState.valid).
-     */
-
-  }, {
-    key: 'isNativeInputValid_',
-    value: function isNativeInputValid_() {
-      return this.getNativeInput_().validity.valid;
-    }
-
-    /**
-     * Styles the component based on the validity state.
-     * @param {boolean} isValid
-     * @private
-     */
-
-  }, {
-    key: 'styleValidity_',
-    value: function styleValidity_(isValid) {
-      var INVALID = MDCTextFieldFoundation.cssClasses.INVALID;
-
-      if (isValid) {
-        this.adapter_.removeClass(INVALID);
-      } else {
-        this.adapter_.addClass(INVALID);
-      }
-      if (this.helperText_) {
-        this.helperText_.setValidity(isValid);
-      }
-    }
-
-    /**
-     * Styles the component based on the focused state.
-     * @param {boolean} isFocused
-     * @private
-     */
-
-  }, {
-    key: 'styleFocused_',
-    value: function styleFocused_(isFocused) {
-      var FOCUSED = MDCTextFieldFoundation.cssClasses.FOCUSED;
-
-      if (isFocused) {
-        this.adapter_.addClass(FOCUSED);
-      } else {
-        this.adapter_.removeClass(FOCUSED);
-      }
-    }
-
-    /**
-     * Styles the component based on the disabled state.
-     * @param {boolean} isDisabled
-     * @private
-     */
-
-  }, {
-    key: 'styleDisabled_',
-    value: function styleDisabled_(isDisabled) {
-      var _MDCTextFieldFoundati = MDCTextFieldFoundation.cssClasses,
-          DISABLED = _MDCTextFieldFoundati.DISABLED,
-          INVALID = _MDCTextFieldFoundati.INVALID;
-
-      if (isDisabled) {
-        this.adapter_.addClass(DISABLED);
-        this.adapter_.removeClass(INVALID);
-      } else {
-        this.adapter_.removeClass(DISABLED);
-      }
-      if (this.icon_) {
-        this.icon_.setDisabled(isDisabled);
-      }
-    }
-
-    /**
-     * @return {!Element|!NativeInputType} The native text input from the
-     * host environment, or a dummy if none exists.
-     * @private
-     */
-
-  }, {
-    key: 'getNativeInput_',
-    value: function getNativeInput_() {
-      return this.adapter_.getNativeInput() ||
-      /** @type {!NativeInputType} */{
-        value: '',
-        disabled: false,
-        validity: {
-          badInput: false,
-          valid: true
-        }
-      };
-    }
-  }]);
-
-  return MDCTextFieldFoundation;
-}(_foundation2.default);
-
-exports.default = MDCTextFieldFoundation;
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * @license
- * Copyright 2018 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/** @enum {string} */
-var cssClasses = {
-  LINE_RIPPLE_ACTIVE: 'mdc-line-ripple--active',
-  LINE_RIPPLE_DEACTIVATING: 'mdc-line-ripple--deactivating'
-};
-
-exports.cssClasses = cssClasses;
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/** @enum {string} */
-var cssClasses = {
-  LABEL_FLOAT_ABOVE: 'mdc-floating-label--float-above',
-  LABEL_SHAKE: 'mdc-floating-label--shake'
-};
-
-exports.cssClasses = cssClasses;
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MDCLineRippleFoundation = exports.MDCLineRipple = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _component = __webpack_require__(1);
-
-var _component2 = _interopRequireDefault(_component);
-
-var _adapter = __webpack_require__(15);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _foundation = __webpack_require__(14);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2018 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/**
- * @extends {MDCComponent<!MDCLineRippleFoundation>}
- * @final
- */
-var MDCLineRipple = function (_MDCComponent) {
-  _inherits(MDCLineRipple, _MDCComponent);
-
-  function MDCLineRipple() {
-    _classCallCheck(this, MDCLineRipple);
-
-    return _possibleConstructorReturn(this, (MDCLineRipple.__proto__ || Object.getPrototypeOf(MDCLineRipple)).apply(this, arguments));
-  }
-
-  _createClass(MDCLineRipple, [{
-    key: 'activate',
-
-
-    /**
-     * Activates the line ripple
-     */
-    value: function activate() {
-      this.foundation_.activate();
-    }
-
-    /**
-     * Deactivates the line ripple
-     */
-
-  }, {
-    key: 'deactivate',
-    value: function deactivate() {
-      this.foundation_.deactivate();
-    }
-
-    /**
-     * Sets the transform origin given a user's click location. The `rippleCenter` is the
-     * x-coordinate of the middle of the ripple.
-     * @param {!number} xCoordinate
-     */
-
-  }, {
-    key: 'setRippleCenter',
-    value: function setRippleCenter(xCoordinate) {
-      this.foundation_.setRippleCenter(xCoordinate);
-    }
-
-    /**
-     * @return {!MDCLineRippleFoundation}
-     */
-
-  }, {
-    key: 'getDefaultFoundation',
-    value: function getDefaultFoundation() {
-      var _this2 = this;
-
-      return new _foundation2.default( /** @type {!MDCLineRippleAdapter} */Object.assign({
-        addClass: function addClass(className) {
-          return _this2.root_.classList.add(className);
-        },
-        removeClass: function removeClass(className) {
-          return _this2.root_.classList.remove(className);
-        },
-        hasClass: function hasClass(className) {
-          return _this2.root_.classList.contains(className);
-        },
-        setAttr: function setAttr(attr, value) {
-          return _this2.root_.setAttribute(attr, value);
-        },
-        registerEventHandler: function registerEventHandler(evtType, handler) {
-          return _this2.root_.addEventListener(evtType, handler);
-        },
-        deregisterEventHandler: function deregisterEventHandler(evtType, handler) {
-          return _this2.root_.removeEventListener(evtType, handler);
-        }
-      }));
-    }
-  }], [{
-    key: 'attachTo',
-
-    /**
-     * @param {!Element} root
-     * @return {!MDCLineRipple}
-     */
-    value: function attachTo(root) {
-      return new MDCLineRipple(root);
-    }
-  }]);
-
-  return MDCLineRipple;
-}(_component2.default);
-
-exports.MDCLineRipple = MDCLineRipple;
-exports.MDCLineRippleFoundation = _foundation2.default;
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MDCTextFieldHelperTextFoundation = exports.MDCTextFieldHelperText = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _component = __webpack_require__(1);
-
-var _component2 = _interopRequireDefault(_component);
-
-var _adapter = __webpack_require__(12);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _foundation = __webpack_require__(3);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2017 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/**
- * @extends {MDCComponent<!MDCTextFieldHelperTextFoundation>}
- * @final
- */
-var MDCTextFieldHelperText = function (_MDCComponent) {
-  _inherits(MDCTextFieldHelperText, _MDCComponent);
-
-  function MDCTextFieldHelperText() {
-    _classCallCheck(this, MDCTextFieldHelperText);
-
-    return _possibleConstructorReturn(this, (MDCTextFieldHelperText.__proto__ || Object.getPrototypeOf(MDCTextFieldHelperText)).apply(this, arguments));
-  }
-
-  _createClass(MDCTextFieldHelperText, [{
-    key: 'getDefaultFoundation',
-
-
-    /**
-     * @return {!MDCTextFieldHelperTextFoundation}
-     */
-    value: function getDefaultFoundation() {
-      var _this2 = this;
-
-      return new _foundation2.default( /** @type {!MDCTextFieldHelperTextAdapter} */Object.assign({
-        addClass: function addClass(className) {
-          return _this2.root_.classList.add(className);
-        },
-        removeClass: function removeClass(className) {
-          return _this2.root_.classList.remove(className);
-        },
-        hasClass: function hasClass(className) {
-          return _this2.root_.classList.contains(className);
-        },
-        setAttr: function setAttr(attr, value) {
-          return _this2.root_.setAttribute(attr, value);
-        },
-        removeAttr: function removeAttr(attr) {
-          return _this2.root_.removeAttribute(attr);
-        },
-        setContent: function setContent(content) {
-          _this2.root_.textContent = content;
-        }
-      }));
-    }
-  }, {
-    key: 'foundation',
-
-
-    /**
-     * @return {!MDCTextFieldHelperTextFoundation}
-     */
-    get: function get() {
-      return this.foundation_;
-    }
-  }], [{
-    key: 'attachTo',
-
-    /**
-     * @param {!Element} root
-     * @return {!MDCTextFieldHelperText}
-     */
-    value: function attachTo(root) {
-      return new MDCTextFieldHelperText(root);
-    }
-  }]);
-
-  return MDCTextFieldHelperText;
-}(_component2.default);
-
-exports.MDCTextFieldHelperText = MDCTextFieldHelperText;
-exports.MDCTextFieldHelperTextFoundation = _foundation2.default;
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MDCTextFieldIconFoundation = exports.MDCTextFieldIcon = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _component = __webpack_require__(1);
-
-var _component2 = _interopRequireDefault(_component);
-
-var _adapter = __webpack_require__(13);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _foundation = __webpack_require__(4);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2017 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/**
- * @extends {MDCComponent<!MDCTextFieldIconFoundation>}
- * @final
- */
-var MDCTextFieldIcon = function (_MDCComponent) {
-  _inherits(MDCTextFieldIcon, _MDCComponent);
-
-  function MDCTextFieldIcon() {
-    _classCallCheck(this, MDCTextFieldIcon);
-
-    return _possibleConstructorReturn(this, (MDCTextFieldIcon.__proto__ || Object.getPrototypeOf(MDCTextFieldIcon)).apply(this, arguments));
-  }
-
-  _createClass(MDCTextFieldIcon, [{
-    key: 'getDefaultFoundation',
-
-
-    /**
-     * @return {!MDCTextFieldIconFoundation}
-     */
-    value: function getDefaultFoundation() {
-      var _this2 = this;
-
-      return new _foundation2.default( /** @type {!MDCTextFieldIconAdapter} */Object.assign({
-        setAttr: function setAttr(attr, value) {
-          return _this2.root_.setAttribute(attr, value);
-        },
-        registerInteractionHandler: function registerInteractionHandler(evtType, handler) {
-          return _this2.root_.addEventListener(evtType, handler);
-        },
-        deregisterInteractionHandler: function deregisterInteractionHandler(evtType, handler) {
-          return _this2.root_.removeEventListener(evtType, handler);
-        },
-        notifyIconAction: function notifyIconAction() {
-          return _this2.emit(_foundation2.default.strings.ICON_EVENT, {} /* evtData */, true /* shouldBubble */);
-        }
-      }));
-    }
-  }, {
-    key: 'foundation',
-
-
-    /**
-     * @return {!MDCTextFieldIconFoundation}
-     */
-    get: function get() {
-      return this.foundation_;
-    }
-  }], [{
-    key: 'attachTo',
-
-    /**
-     * @param {!Element} root
-     * @return {!MDCTextFieldIcon}
-     */
-    value: function attachTo(root) {
-      return new MDCTextFieldIcon(root);
-    }
-  }]);
-
-  return MDCTextFieldIcon;
-}(_component2.default);
-
-exports.MDCTextFieldIcon = MDCTextFieldIcon;
-exports.MDCTextFieldIconFoundation = _foundation2.default;
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MDCFloatingLabelFoundation = exports.MDCFloatingLabel = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _component = __webpack_require__(1);
-
-var _component2 = _interopRequireDefault(_component);
-
-var _adapter = __webpack_require__(17);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _foundation = __webpack_require__(16);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2016 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/**
- * @extends {MDCComponent<!MDCFloatingLabelFoundation>}
- * @final
- */
-var MDCFloatingLabel = function (_MDCComponent) {
-  _inherits(MDCFloatingLabel, _MDCComponent);
-
-  function MDCFloatingLabel() {
-    _classCallCheck(this, MDCFloatingLabel);
-
-    return _possibleConstructorReturn(this, (MDCFloatingLabel.__proto__ || Object.getPrototypeOf(MDCFloatingLabel)).apply(this, arguments));
-  }
-
-  _createClass(MDCFloatingLabel, [{
-    key: 'shake',
-
-
-    /**
-     * Styles the label to produce the label shake for errors.
-     * @param {boolean} shouldShake styles the label to shake by adding shake class
-     * if true, otherwise will stop shaking by removing shake class.
-     */
-    value: function shake(shouldShake) {
-      this.foundation_.shake(shouldShake);
-    }
-
-    /**
-     * Styles label to float/dock.
-     * @param {boolean} shouldFloat styles the label to float by adding float class
-     * if true, otherwise docks the label by removing the float class.
-     */
-
-  }, {
-    key: 'float',
-    value: function float(shouldFloat) {
-      this.foundation_.float(shouldFloat);
-    }
-
-    /**
-     * @return {number}
-     */
-
-  }, {
-    key: 'getWidth',
-    value: function getWidth() {
-      return this.foundation_.getWidth();
-    }
-
-    /**
-     * @return {!MDCFloatingLabelFoundation}
-     */
-
-  }, {
-    key: 'getDefaultFoundation',
-    value: function getDefaultFoundation() {
-      var _this2 = this;
-
-      return new _foundation2.default({
-        addClass: function addClass(className) {
-          return _this2.root_.classList.add(className);
-        },
-        removeClass: function removeClass(className) {
-          return _this2.root_.classList.remove(className);
-        },
-        getWidth: function getWidth() {
-          return _this2.root_.offsetWidth;
-        },
-        registerInteractionHandler: function registerInteractionHandler(evtType, handler) {
-          return _this2.root_.addEventListener(evtType, handler);
-        },
-        deregisterInteractionHandler: function deregisterInteractionHandler(evtType, handler) {
-          return _this2.root_.removeEventListener(evtType, handler);
-        }
-      });
-    }
-  }], [{
-    key: 'attachTo',
-
-    /**
-     * @param {!Element} root
-     * @return {!MDCFloatingLabel}
-     */
-    value: function attachTo(root) {
-      return new MDCFloatingLabel(root);
-    }
-  }]);
-
-  return MDCFloatingLabel;
-}(_component2.default);
-
-exports.MDCFloatingLabel = MDCFloatingLabel;
-exports.MDCFloatingLabelFoundation = _foundation2.default;
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MDCNotchedOutlineFoundation = exports.MDCNotchedOutline = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _component = __webpack_require__(1);
-
-var _component2 = _interopRequireDefault(_component);
-
-var _adapter = __webpack_require__(19);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _foundation = __webpack_require__(18);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _constants = __webpack_require__(20);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2017 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/**
- * @extends {MDCComponent<!MDCNotchedOutlineFoundation>}
- * @final
- */
-var MDCNotchedOutline = function (_MDCComponent) {
-  _inherits(MDCNotchedOutline, _MDCComponent);
-
-  function MDCNotchedOutline() {
-    _classCallCheck(this, MDCNotchedOutline);
-
-    return _possibleConstructorReturn(this, (MDCNotchedOutline.__proto__ || Object.getPrototypeOf(MDCNotchedOutline)).apply(this, arguments));
-  }
-
-  _createClass(MDCNotchedOutline, [{
-    key: 'updateSvgPath',
-
-
-    /**
-      * Updates the SVG path of the outline element based on the
-      * notch element width and the RTL context.
-      * @param {number} notchWidth The notch width in the outline.
-      * @param {boolean=} isRtl Determines if outline is rtl. If rtl is true, notch
-      * will be right justified in outline path, otherwise left justified.
-      */
-    value: function updateSvgPath(notchWidth, isRtl) {
-      this.foundation_.updateSvgPath(notchWidth, isRtl);
-    }
-
-    /**
-     * @return {!MDCNotchedOutlineFoundation}
-     */
-
-  }, {
-    key: 'getDefaultFoundation',
-    value: function getDefaultFoundation() {
-      var _this2 = this;
-
-      return new _foundation2.default({
-        getWidth: function getWidth() {
-          return _this2.root_.offsetWidth;
-        },
-        getHeight: function getHeight() {
-          return _this2.root_.offsetHeight;
-        },
-        setOutlinePathAttr: function setOutlinePathAttr(value) {
-          var path = _this2.root_.querySelector(_constants.strings.PATH_SELECTOR);
-          path.setAttribute('d', value);
-        },
-        getIdleOutlineStyleValue: function getIdleOutlineStyleValue(propertyName) {
-          var idleOutlineElement = _this2.root_.parentNode.querySelector(_constants.strings.IDLE_OUTLINE_SELECTOR);
-          return window.getComputedStyle(idleOutlineElement).getPropertyValue(propertyName);
-        }
-      });
-    }
-  }], [{
-    key: 'attachTo',
-
-    /**
-     * @param {!Element} root
-     * @return {!MDCNotchedOutline}
-     */
-    value: function attachTo(root) {
-      return new MDCNotchedOutline(root);
-    }
-  }]);
-
-  return MDCNotchedOutline;
-}(_component2.default);
-
-exports.MDCNotchedOutline = MDCNotchedOutline;
-exports.MDCNotchedOutlineFoundation = _foundation2.default;
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.VEvents = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-exports.initEvents = initEvents;
-
-var _loads = __webpack_require__(52);
-
-var _post = __webpack_require__(53);
-
-var _replace = __webpack_require__(54);
-
-var _dialog = __webpack_require__(55);
-
-var _errors = __webpack_require__(23);
-
-var _toggle_visiblity = __webpack_require__(56);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var VEvents = exports.VEvents = function () {
-    //[[type, url, target, params]]
-    function VEvents(actions, event) {
-        var _this = this;
-
-        _classCallCheck(this, VEvents);
-
-        this.event = event;
-        this.actions = actions.map(function (action) {
-            return _this.constructor.action_class(action, event);
-        });
-    }
-
-    _createClass(VEvents, [{
-        key: 'call',
-        value: function call() {
-            // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
-            var fnlist = this.actions.map(function (action) {
-                return function () {
-                    return Promise.resolve(action.call());
-                };
-            });
-
-            // Execute a list of Promise return functions in series
-            function pseries(list) {
-                var p = Promise.resolve();
-                return list.reduce(function (pacc, fn) {
-                    return pacc = pacc.then(fn);
-                }, p);
-            }
-
-            var event = this.event;
-
-            pseries(fnlist).then(function (results) {
-                var contentType = results[1];
-                // var responseText = results[2];
-                var responseURL = results[3];
-
-                if (event.target.dialog) {
-                    event.target.dialog.close();
-                }
-                if (contentType && contentType.indexOf("text/html") !== -1 && typeof responseURL !== 'undefined') {
-                    window.location = responseURL;
-                }
-            }).catch(function (results) {
-                new _errors.VErrors(event).displayErrors(results);
-            });
-        }
-    }], [{
-        key: 'action_class',
-        value: function action_class(action, event) {
-            var action_type = action[0];
-            var url = action[1];
-            var target = action[2];
-            var params = action[3];
-
-            switch (action_type) {
-                case 'loads':
-                    return new _loads.VLoadsPage(url);
-                case 'replaces':
-                    return new _replace.VReplaceElement(target, url, params, event);
-                case 'post':
-                    return new _post.VPost(url, params, 'POST', event);
-                case 'update':
-                    return new _post.VPost(url, params, 'PUT', event);
-                case 'delete':
-                    return new _post.VPost(url, params, 'DELETE', event);
-                case 'dialog':
-                    return new _dialog.VDialog(target, params, event);
-                case 'toggle_visibility':
-                    return new _toggle_visiblity.VToggleVisiblity(target, params, event);
-                default:
-                    throw action_type + ' is not supported.';
-            }
-        }
-    }]);
-
-    return VEvents;
-}();
-
-// This is used to get a proper binding of the actionData
-// https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
-
-
-function createEventHandler(actionsData) {
-    return function (event) {
-        new VEvents(actionsData, event).call();
-    };
-}
-
-function initEvents() {
-    console.log('\tEvents');
-
-    var events = document.querySelectorAll('[data-events]');
-    for (var i = 0; i < events.length; i++) {
-        var eventElem = events[i];
-        var eventsData = JSON.parse(eventElem.dataset.events);
-        for (var j = 0; j < eventsData.length; j++) {
-            var eventData = eventsData[j];
-            var eventName = eventData[0];
-            var actionsData = eventData[1];
-            if (!eventElem.eventsHandler) {
-                eventElem.eventsHandler = createEventHandler(actionsData);
-                eventElem.addEventListener(eventName, eventElem.eventsHandler);
-            }
-        }
-    }
-}
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var VLoadsPage = exports.VLoadsPage = function () {
-    function VLoadsPage(url) {
-        _classCallCheck(this, VLoadsPage);
-
-        this.url = url;
-    }
-
-    _createClass(VLoadsPage, [{
-        key: "call",
-        value: function call() {
-            var url = this.url;
-            var promiseObj = new Promise(function (resolve) {
-                console.log("Loading page: " + url);
-                window.location = url;
-                resolve([200, null, null]);
-            });
-            return promiseObj;
-        }
-    }]);
-
-    return VLoadsPage;
-}();
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.VPost = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _snackbar = __webpack_require__(21);
-
-var _base = __webpack_require__(22);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// Replaces a given element with the contents of the call to the url.
-// parameters are appended.
-var VPost = exports.VPost = function (_VBase) {
-    _inherits(VPost, _VBase);
-
-    function VPost(url, params, method, event) {
-        _classCallCheck(this, VPost);
-
-        var _this = _possibleConstructorReturn(this, (VPost.__proto__ || Object.getPrototypeOf(VPost)).call(this));
-
-        _this.url = url;
-        _this.params = params;
-        _this.method = method;
-        _this.event = event;
-        return _this;
-    }
-
-    _createClass(VPost, [{
-        key: 'call',
-        value: function call() {
-            this.clearErrors();
-
-            var parent_element = document.getElementById(this.params.__parent_id__);
-            var FD = null;
-            if (this.isForm(parent_element)) {
-                FD = new FormData(parent_element);
-            } else {
-                FD = new FormData();
-                // Automatically pull values out of input controls
-                if (this.params.__parent_id__) {
-                    var parent_element = document.getElementById(this.params.__parent_id__);
-                    if (parent_element) {
-                        var value = parent_element.value;
-                        if (value) {
-                            FD.append(this.params.__parent_id__, value);
-                        }
-                    }
-                }
-            }
-
-            // Push our params into our FormData object
-            for (var name in this.params) {
-                if (name != '__parent_id__') {
-                    FD.append(name, this.params[name]);
-                }
-            }
-
-            var httpRequest = new XMLHttpRequest();
-            var method = this.method;
-            var url = this.url;
-            var event = this.event;
-            if (!httpRequest) {
-                throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
-                // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
-            }
-            var promiseObj = new Promise(function (resolve, reject) {
-                httpRequest.onreadystatechange = function (event) {
-                    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                        console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
-                        if (httpRequest.status >= 200 && httpRequest.status < 300) {
-                            resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText, httpRequest.responseURL]);
-                            // new VSnackbar('Yeah! That worked!').display();
-                        } else {
-                            // new VSnackbar('There was a problem with the request.').display();
-                            reject([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
-                            // _this_.displayError(this.getResponseHeader('content-type'), event.target.responseText);
-                        }
-                    }
-                };
-
-                // Set up our request
-                httpRequest.open(method, url);
-
-                console.log(method + ':' + url);
-                // Send our FormData object; HTTP headers are set automatically
-                httpRequest.send(FD);
-            });
-            return promiseObj;
-        }
-    }, {
-        key: 'isForm',
-        value: function isForm(parent_element) {
-            return parent_element && parent_element.elements;
-        }
-    }]);
-
-    return VPost;
-}(_base.VBase);
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.VReplaceElement = undefined;
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _snackbar = __webpack_require__(21);
-
-var _base = __webpack_require__(22);
-
-var _initialize = __webpack_require__(6);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// Replaces a given element with the contents of the call to the url.
-// parameters are appended.
-var VReplaceElement = exports.VReplaceElement = function (_VBase) {
-    _inherits(VReplaceElement, _VBase);
-
-    function VReplaceElement(element_id, url, params, event) {
-        _classCallCheck(this, VReplaceElement);
-
-        var _this = _possibleConstructorReturn(this, (VReplaceElement.__proto__ || Object.getPrototypeOf(VReplaceElement)).call(this));
-
-        _this.element_id = element_id;
-        _this.url = url;
-        _this.params = params;
-        _this.event = event;
-        return _this;
-    }
-
-    _createClass(VReplaceElement, [{
-        key: 'call',
-        value: function call() {
-            this.clearErrors();
-
-            var parent_element = document.getElementById(this.params.__parent_id__);
-            var FD = null;
-            // Automatically pull values out of input controls
-            if (this.params.__parent_id__) {
-                var parent_element = document.getElementById(this.params.__parent_id__);
-                if (parent_element) {
-                    var value = parent_element.value;
-                    if (value) {
-                        this.params[parent_element.name] = value;
-                        delete this.params.__parent_id__;
-                    }
-                }
-            }
-
-            var httpRequest = new XMLHttpRequest();
-            if (!httpRequest) {
-                throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
-                // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
-            }
-            var elementId = this.element_id;
-            var url = this.url + this.seperator() + this.serialize(this.params);
-            var event = this.event;
-
-            var promiseObj = new Promise(function (resolve, reject) {
-                httpRequest.onreadystatechange = function () {
-                    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                        console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
-                        if (httpRequest.status === 200) {
-                            var nodeToReplace = document.getElementById(elementId);
-                            nodeToReplace.outerHTML = httpRequest.responseText;
-                            var newNode = document.getElementById(elementId);
-                            (0, _initialize.initialize)(newNode);
-                            resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
-                        } else {
-                            reject([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
-                        }
-                    }
-                };
-                console.log('GET:' + url);
-                httpRequest.open('GET', url, true);
-                httpRequest.setRequestHeader('X-NO-LAYOUT', true);
-                httpRequest.send();
-            });
-            return promiseObj;
-        }
-    }, {
-        key: 'seperator',
-        value: function seperator() {
-            return this.url.includes("?") ? '&' : '?';
-        }
-    }, {
-        key: 'serialize',
-        value: function serialize(obj, prefix) {
-            var str = [],
-                p;
-            for (p in obj) {
-                if (obj.hasOwnProperty(p)) {
-                    var k = prefix ? prefix + "[" + p + "]" : p,
-                        v = obj[p];
-                    str.push(v !== null && (typeof v === 'undefined' ? 'undefined' : _typeof(v)) === "object" ? this.serialize(v, k) : encodeURIComponent(k) + "=" + encodeURIComponent(v));
-                }
-            }
-            return str.join("&");
-        }
-    }]);
-
-    return VReplaceElement;
-}(_base.VBase);
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var VDialog = exports.VDialog = function () {
-    function VDialog(dialogId, params, event) {
-        _classCallCheck(this, VDialog);
-
-        this.dialogId = dialogId;
-        this.params = params;
-        this.event = event;
-    }
-
-    _createClass(VDialog, [{
-        key: "call",
-        value: function call() {
-            var dialog = document.querySelector('#' + this.dialogId);
-            if (dialog) {
-                if (!dialog.showModal) {
-                    dialogPolyfill.registerDialog(dialog);
-                }
-
-                dialog.showModal();
-            } else {
-                console.error("Unable to find dialog with id: " + this.dialogId + ". Usually this means you forgot to attach it to the currently rendered page.");
-            }
-            var promiseObj = new Promise(function (resolve) {
-                resolve(true);
-            });
-            return promiseObj;
-        }
-    }]);
-
-    return VDialog;
-}();
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var VToggleVisiblity = exports.VToggleVisiblity = function () {
-    function VToggleVisiblity(targetId, params, event) {
-        _classCallCheck(this, VToggleVisiblity);
-
-        this.targetId = targetId;
-        this.params = params;
-        this.event = event;
-    }
-
-    _createClass(VToggleVisiblity, [{
-        key: "call",
-        value: function call() {
-            var targetId = this.targetId;
-            var promiseObj = new Promise(function (resolve) {
-                console.log("Toggling visiblity on: " + targetId);
-                var elem = document.getElementById(targetId);
-                elem.classList.toggle("v-hidden");
-
-                resolve([200, null, null]);
-            });
-            return promiseObj;
-        }
-    }]);
-
-    return VToggleVisiblity;
-}();
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.initLists = initLists;
-function initLists() {
-    console.log('\tLists');
-    // Put any initialization code you need here
-}
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.initIconToggles = initIconToggles;
-
-var _iconToggle = __webpack_require__(59);
-
-function initIconToggles() {
-    console.log('\tIcon Toggles');
-
-    var components = document.querySelectorAll('.mdc-icon-toggle');
-    for (var i = 0; i < components.length; i++) {
-        var component = components[i];
-        if (!component.mdcComponent) {
-            component.mdcComponent = new _iconToggle.MDCIconToggle(component);
-        }
-    }
-}
-
-// TODO: Add event handler
-// var addToFavorites = document.getElementById('add-to-favorites');
-//         var favoritedStatus = document.getElementById('favorited-status');
-//         addToFavorites.addEventListener('MDCIconToggle:change', function(evt) {
-//           var newStatus = evt.detail.isOn ? 'yes' : 'no';
-//           favoritedStatus.textContent = newStatus;
-//         });
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MDCIconToggleFoundation = exports.MDCIconToggle = undefined;
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _component = __webpack_require__(24);
-
-var _component2 = _interopRequireDefault(_component);
-
-var _foundation = __webpack_require__(60);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _index = __webpack_require__(63);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2016 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/**
- * @extends {MDCComponent<!MDCIconToggleFoundation>}
- */
-var MDCIconToggle = function (_MDCComponent) {
-  _inherits(MDCIconToggle, _MDCComponent);
-
-  _createClass(MDCIconToggle, null, [{
-    key: 'attachTo',
-    value: function attachTo(root) {
-      return new MDCIconToggle(root);
-    }
-  }]);
-
-  function MDCIconToggle() {
-    var _ref;
-
-    _classCallCheck(this, MDCIconToggle);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    /** @private {!MDCRipple} */
-    var _this = _possibleConstructorReturn(this, (_ref = MDCIconToggle.__proto__ || Object.getPrototypeOf(MDCIconToggle)).call.apply(_ref, [this].concat(args)));
-
-    _this.ripple_ = _this.initRipple_();
-    return _this;
-  }
-
-  /** @return {!Element} */
-
-
-  _createClass(MDCIconToggle, [{
-    key: 'initRipple_',
-
-
-    /**
-     * @return {!MDCRipple}
-     * @private
-     */
-    value: function initRipple_() {
-      var _this2 = this;
-
-      var adapter = Object.assign(_index.MDCRipple.createAdapter(this), {
-        isUnbounded: function isUnbounded() {
-          return true;
-        },
-        isSurfaceActive: function isSurfaceActive() {
-          return _this2.foundation_.isKeyboardActivated();
-        }
-      });
-      var foundation = new _index.MDCRippleFoundation(adapter);
-      return new _index.MDCRipple(this.root_, foundation);
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      this.ripple_.destroy();
-      _get(MDCIconToggle.prototype.__proto__ || Object.getPrototypeOf(MDCIconToggle.prototype), 'destroy', this).call(this);
-    }
-
-    /** @return {!MDCIconToggleFoundation} */
-
-  }, {
-    key: 'getDefaultFoundation',
-    value: function getDefaultFoundation() {
-      var _this3 = this;
-
-      return new _foundation2.default({
-        addClass: function addClass(className) {
-          return _this3.iconEl_.classList.add(className);
-        },
-        removeClass: function removeClass(className) {
-          return _this3.iconEl_.classList.remove(className);
-        },
-        registerInteractionHandler: function registerInteractionHandler(type, handler) {
-          return _this3.root_.addEventListener(type, handler);
-        },
-        deregisterInteractionHandler: function deregisterInteractionHandler(type, handler) {
-          return _this3.root_.removeEventListener(type, handler);
-        },
-        setText: function setText(text) {
-          return _this3.iconEl_.textContent = text;
-        },
-        getTabIndex: function getTabIndex() {
-          return (/* number */_this3.root_.tabIndex
-          );
-        },
-        setTabIndex: function setTabIndex(tabIndex) {
-          return _this3.root_.tabIndex = tabIndex;
-        },
-        getAttr: function getAttr(name, value) {
-          return _this3.root_.getAttribute(name, value);
-        },
-        setAttr: function setAttr(name, value) {
-          return _this3.root_.setAttribute(name, value);
-        },
-        rmAttr: function rmAttr(name) {
-          return _this3.root_.removeAttribute(name);
-        },
-        notifyChange: function notifyChange(evtData) {
-          return _this3.emit(_foundation2.default.strings.CHANGE_EVENT, evtData);
-        }
-      });
-    }
-  }, {
-    key: 'initialSyncWithDOM',
-    value: function initialSyncWithDOM() {
-      this.on = this.root_.getAttribute(_foundation2.default.strings.ARIA_PRESSED) === 'true';
-      this.disabled = this.root_.getAttribute(_foundation2.default.strings.ARIA_DISABLED) === 'true';
-    }
-
-    /** @return {!MDCRipple} */
-
-  }, {
-    key: 'refreshToggleData',
-    value: function refreshToggleData() {
-      this.foundation_.refreshToggleData();
-    }
-  }, {
-    key: 'iconEl_',
-    get: function get() {
-      var sel = this.root_.dataset['iconInnerSelector'];
-
-      return sel ?
-      /** @type {!Element} */this.root_.querySelector(sel) : this.root_;
-    }
-  }, {
-    key: 'ripple',
-    get: function get() {
-      return this.ripple_;
-    }
-
-    /** @return {boolean} */
-
-  }, {
-    key: 'on',
-    get: function get() {
-      return this.foundation_.isOn();
-    }
-
-    /** @param {boolean} isOn */
-    ,
-    set: function set(isOn) {
-      this.foundation_.toggle(isOn);
-    }
-
-    /** @return {boolean} */
-
-  }, {
-    key: 'disabled',
-    get: function get() {
-      return this.foundation_.isDisabled();
-    }
-
-    /** @param {boolean} isDisabled */
-    ,
-    set: function set(isDisabled) {
-      this.foundation_.setDisabled(isDisabled);
-    }
-  }]);
-
-  return MDCIconToggle;
-}(_component2.default);
-
-exports.MDCIconToggle = MDCIconToggle;
-exports.MDCIconToggleFoundation = _foundation2.default;
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _foundation = __webpack_require__(5);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _adapter = __webpack_require__(61);
-
-var _constants = __webpack_require__(62);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2016 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/* eslint-disable no-unused-vars */
-
-
-/**
- * @extends {MDCFoundation<!MDCIconToggleAdapter>}
- */
-var MDCIconToggleFoundation = function (_MDCFoundation) {
-  _inherits(MDCIconToggleFoundation, _MDCFoundation);
-
-  _createClass(MDCIconToggleFoundation, null, [{
-    key: 'cssClasses',
-    get: function get() {
-      return _constants.cssClasses;
-    }
-  }, {
-    key: 'strings',
-    get: function get() {
-      return _constants.strings;
-    }
-  }, {
-    key: 'defaultAdapter',
-    get: function get() {
-      return {
-        addClass: function addClass() /* className: string */{},
-        removeClass: function removeClass() /* className: string */{},
-        registerInteractionHandler: function registerInteractionHandler() /* type: string, handler: EventListener */{},
-        deregisterInteractionHandler: function deregisterInteractionHandler() /* type: string, handler: EventListener */{},
-        setText: function setText() /* text: string */{},
-        getTabIndex: function getTabIndex() {
-          return (/* number */0
-          );
-        },
-        setTabIndex: function setTabIndex() /* tabIndex: number */{},
-        getAttr: function getAttr() {
-          return (/* name: string */ /* string */''
-          );
-        },
-        setAttr: function setAttr() /* name: string, value: string */{},
-        rmAttr: function rmAttr() /* name: string */{},
-        notifyChange: function notifyChange() /* evtData: IconToggleEvent */{}
-      };
-    }
-  }]);
-
-  function MDCIconToggleFoundation(adapter) {
-    _classCallCheck(this, MDCIconToggleFoundation);
-
-    /** @private {boolean} */
-    var _this = _possibleConstructorReturn(this, (MDCIconToggleFoundation.__proto__ || Object.getPrototypeOf(MDCIconToggleFoundation)).call(this, Object.assign(MDCIconToggleFoundation.defaultAdapter, adapter)));
-
-    _this.on_ = false;
-
-    /** @private {boolean} */
-    _this.disabled_ = false;
-
-    /** @private {number} */
-    _this.savedTabIndex_ = -1;
-
-    /** @private {?IconToggleState} */
-    _this.toggleOnData_ = null;
-
-    /** @private {?IconToggleState} */
-    _this.toggleOffData_ = null;
-
-    _this.clickHandler_ = /** @private {!EventListener} */function () {
-      return _this.toggleFromEvt_();
-    };
-
-    /** @private {boolean} */
-    _this.isHandlingKeydown_ = false;
-
-    _this.keydownHandler_ = /** @private {!EventListener} */function ( /** @type {!KeyboardKey} */evt) {
-      if (isSpace(evt)) {
-        _this.isHandlingKeydown_ = true;
-        return evt.preventDefault();
-      }
-    };
-
-    _this.keyupHandler_ = /** @private {!EventListener} */function ( /** @type {!KeyboardKey} */evt) {
-      if (isSpace(evt)) {
-        _this.isHandlingKeydown_ = false;
-        _this.toggleFromEvt_();
-      }
-    };
-    return _this;
-  }
-
-  _createClass(MDCIconToggleFoundation, [{
-    key: 'init',
-    value: function init() {
-      this.refreshToggleData();
-      this.savedTabIndex_ = this.adapter_.getTabIndex();
-      this.adapter_.registerInteractionHandler('click', this.clickHandler_);
-      this.adapter_.registerInteractionHandler('keydown', this.keydownHandler_);
-      this.adapter_.registerInteractionHandler('keyup', this.keyupHandler_);
-    }
-  }, {
-    key: 'refreshToggleData',
-    value: function refreshToggleData() {
-      var _MDCIconToggleFoundat = MDCIconToggleFoundation.strings,
-          DATA_TOGGLE_ON = _MDCIconToggleFoundat.DATA_TOGGLE_ON,
-          DATA_TOGGLE_OFF = _MDCIconToggleFoundat.DATA_TOGGLE_OFF;
-
-      this.toggleOnData_ = this.parseJsonDataAttr_(DATA_TOGGLE_ON);
-      this.toggleOffData_ = this.parseJsonDataAttr_(DATA_TOGGLE_OFF);
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      this.adapter_.deregisterInteractionHandler('click', this.clickHandler_);
-      this.adapter_.deregisterInteractionHandler('keydown', this.keydownHandler_);
-      this.adapter_.deregisterInteractionHandler('keyup', this.keyupHandler_);
-    }
-
-    /** @private */
-
-  }, {
-    key: 'toggleFromEvt_',
-    value: function toggleFromEvt_() {
-      this.toggle();
-      var isOn = this.on_;
-
-      this.adapter_.notifyChange( /** @type {!IconToggleEvent} */{ isOn: isOn });
-    }
-
-    /** @return {boolean} */
-
-  }, {
-    key: 'isOn',
-    value: function isOn() {
-      return this.on_;
-    }
-
-    /** @param {boolean=} isOn */
-
-  }, {
-    key: 'toggle',
-    value: function toggle() {
-      var isOn = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : !this.on_;
-
-      this.on_ = isOn;
-
-      var _MDCIconToggleFoundat2 = MDCIconToggleFoundation.strings,
-          ARIA_LABEL = _MDCIconToggleFoundat2.ARIA_LABEL,
-          ARIA_PRESSED = _MDCIconToggleFoundat2.ARIA_PRESSED;
-
-
-      if (this.on_) {
-        this.adapter_.setAttr(ARIA_PRESSED, 'true');
-      } else {
-        this.adapter_.setAttr(ARIA_PRESSED, 'false');
-      }
-
-      var _ref = this.on_ ? this.toggleOffData_ : this.toggleOnData_,
-          classToRemove = _ref.cssClass;
-
-      if (classToRemove) {
-        this.adapter_.removeClass(classToRemove);
-      }
-
-      var _ref2 = this.on_ ? this.toggleOnData_ : this.toggleOffData_,
-          content = _ref2.content,
-          label = _ref2.label,
-          cssClass = _ref2.cssClass;
-
-      if (cssClass) {
-        this.adapter_.addClass(cssClass);
-      }
-      if (content) {
-        this.adapter_.setText(content);
-      }
-      if (label) {
-        this.adapter_.setAttr(ARIA_LABEL, label);
-      }
-    }
-
-    /**
-     * @param {string} dataAttr
-     * @return {!IconToggleState}
-     */
-
-  }, {
-    key: 'parseJsonDataAttr_',
-    value: function parseJsonDataAttr_(dataAttr) {
-      var val = this.adapter_.getAttr(dataAttr);
-      if (!val) {
-        return {};
-      }
-      return (/** @type {!IconToggleState} */JSON.parse(val)
-      );
-    }
-
-    /** @return {boolean} */
-
-  }, {
-    key: 'isDisabled',
-    value: function isDisabled() {
-      return this.disabled_;
-    }
-
-    /** @param {boolean} isDisabled */
-
-  }, {
-    key: 'setDisabled',
-    value: function setDisabled(isDisabled) {
-      this.disabled_ = isDisabled;
-
-      var DISABLED = MDCIconToggleFoundation.cssClasses.DISABLED;
-      var ARIA_DISABLED = MDCIconToggleFoundation.strings.ARIA_DISABLED;
-
-
-      if (this.disabled_) {
-        this.savedTabIndex_ = this.adapter_.getTabIndex();
-        this.adapter_.setTabIndex(-1);
-        this.adapter_.setAttr(ARIA_DISABLED, 'true');
-        this.adapter_.addClass(DISABLED);
-      } else {
-        this.adapter_.setTabIndex(this.savedTabIndex_);
-        this.adapter_.rmAttr(ARIA_DISABLED);
-        this.adapter_.removeClass(DISABLED);
-      }
-    }
-
-    /** @return {boolean} */
-
-  }, {
-    key: 'isKeyboardActivated',
-    value: function isKeyboardActivated() {
-      return this.isHandlingKeydown_;
-    }
-  }]);
-
-  return MDCIconToggleFoundation;
-}(_foundation2.default);
-
-/**
- * @typedef {!{
- *   key: string,
- *   keyCode: number
- * }}
- */
-
-
-var KeyboardKey = void 0;
-
-/**
- * @param {!KeyboardKey} keyboardKey
- * @return {boolean}
- */
-function isSpace(keyboardKey) {
-  return keyboardKey.key === 'Space' || keyboardKey.keyCode === 32;
-}
-
-/** @record */
-
-var IconToggleState = function IconToggleState() {
-  _classCallCheck(this, IconToggleState);
-};
-
-/**
- * The aria-label value of the icon toggle, or undefined if there is no aria-label.
- * @export {string|undefined}
- */
-
-
-IconToggleState.prototype.label;
-
-/**
- * The text for the icon toggle, or undefined if there is no text.
- * @export {string|undefined}
- */
-IconToggleState.prototype.content;
-
-/**
- * The CSS class to add to the icon toggle, or undefined if there is no CSS class.
- * @export {string|undefined}
- */
-IconToggleState.prototype.cssClass;
-
-exports.default = MDCIconToggleFoundation;
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -9211,2797 +2859,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /* eslint no-unused-vars: [2, {"args": "none"}] */
 
 /**
- * Adapter for MDC Icon Toggle. Provides an interface for managing
- * - classes
- * - dom
- * - inner text
- * - event handlers
- * - event dispatch
+ * Adapter for MDC Select Bottom Line.
  *
- * Additionally, provides type information for the adapter to the Closure
- * compiler.
- *
- * Implement this adapter for your framework of choice to delegate updates to
- * the component in your framework of choice. See architecture documentation
- * for more details.
- * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
+ * Defines the shape of the adapter expected by the foundation. Implement this
+ * adapter to integrate the Select label into your framework. See
+ * https://github.com/material-components/material-components-web/blob/master/docs/authoring-components.md
+ * for more information.
  *
  * @record
  */
-
-var MDCIconToggleAdapter = function () {
-  function MDCIconToggleAdapter() {
-    _classCallCheck(this, MDCIconToggleAdapter);
-  }
-
-  _createClass(MDCIconToggleAdapter, [{
-    key: "addClass",
-
-    /** @param {string} className */
-    value: function addClass(className) {}
-
-    /** @param {string} className */
-
-  }, {
-    key: "removeClass",
-    value: function removeClass(className) {}
-
-    /**
-     * @param {string} type
-     * @param {!EventListener} handler
-     */
-
-  }, {
-    key: "registerInteractionHandler",
-    value: function registerInteractionHandler(type, handler) {}
-
-    /**
-     * @param {string} type
-     * @param {!EventListener} handler
-     */
-
-  }, {
-    key: "deregisterInteractionHandler",
-    value: function deregisterInteractionHandler(type, handler) {}
-
-    /** @param {string} text */
-
-  }, {
-    key: "setText",
-    value: function setText(text) {}
-
-    /** @return {number} */
-
-  }, {
-    key: "getTabIndex",
-    value: function getTabIndex() {}
-
-    /** @param {number} tabIndex */
-
-  }, {
-    key: "setTabIndex",
-    value: function setTabIndex(tabIndex) {}
-
-    /**
-     * @param {string} name
-     * @return {string}
-     */
-
-  }, {
-    key: "getAttr",
-    value: function getAttr(name) {}
-
-    /**
-     * @param {string} name
-     * @param {string} value
-     */
-
-  }, {
-    key: "setAttr",
-    value: function setAttr(name, value) {}
-
-    /** @param {string} name */
-
-  }, {
-    key: "rmAttr",
-    value: function rmAttr(name) {}
-
-    /** @param {!IconToggleEvent} evtData */
-
-  }, {
-    key: "notifyChange",
-    value: function notifyChange(evtData) {}
-  }]);
-
-  return MDCIconToggleAdapter;
-}();
-
-/**
- * @typedef {!{
- *   isOn: boolean,
- * }}
- */
-
-
-var IconToggleEvent = void 0;
-
-exports.MDCIconToggleAdapter = MDCIconToggleAdapter;
-exports.IconToggleEvent = IconToggleEvent;
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/** @enum {string} */
-var cssClasses = {
-  ROOT: 'mdc-icon-toggle',
-  DISABLED: 'mdc-icon-toggle--disabled'
-};
-
-/** @enum {string} */
-var strings = {
-  DATA_TOGGLE_ON: 'data-toggle-on',
-  DATA_TOGGLE_OFF: 'data-toggle-off',
-  ARIA_PRESSED: 'aria-pressed',
-  ARIA_DISABLED: 'aria-disabled',
-  ARIA_LABEL: 'aria-label',
-  CHANGE_EVENT: 'MDCIconToggle:change'
-};
-
-exports.cssClasses = cssClasses;
-exports.strings = strings;
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.util = exports.RippleCapableSurface = exports.MDCRippleFoundation = exports.MDCRipple = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _component = __webpack_require__(24);
-
-var _component2 = _interopRequireDefault(_component);
-
-var _adapter = __webpack_require__(25);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _foundation = __webpack_require__(64);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _util = __webpack_require__(26);
-
-var util = _interopRequireWildcard(_util);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2016 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/**
- * @extends MDCComponent<!MDCRippleFoundation>
- */
-var MDCRipple = function (_MDCComponent) {
-  _inherits(MDCRipple, _MDCComponent);
-
-  /** @param {...?} args */
-  function MDCRipple() {
-    var _ref;
-
-    _classCallCheck(this, MDCRipple);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    /** @type {boolean} */
-    var _this = _possibleConstructorReturn(this, (_ref = MDCRipple.__proto__ || Object.getPrototypeOf(MDCRipple)).call.apply(_ref, [this].concat(args)));
-
-    _this.disabled = false;
-
-    /** @private {boolean} */
-    _this.unbounded_;
-    return _this;
-  }
+class MDCSelectBottomLineAdapter {
+  /**
+   * Adds a class to the bottom line element.
+   * @param {string} className
+   */
+  addClass(className) {}
 
   /**
-   * @param {!Element} root
-   * @param {{isUnbounded: (boolean|undefined)}=} options
-   * @return {!MDCRipple}
+   * Removes a class from the bottom line element.
+   * @param {string} className
    */
+  removeClass(className) {}
+}
 
-
-  _createClass(MDCRipple, [{
-    key: 'setUnbounded_',
-
-
-    /**
-     * Closure Compiler throws an access control error when directly accessing a
-     * protected or private property inside a getter/setter, like unbounded above.
-     * By accessing the protected property inside a method, we solve that problem.
-     * That's why this function exists.
-     * @private
-     */
-    value: function setUnbounded_() {
-      this.foundation_.setUnbounded(this.unbounded_);
-    }
-  }, {
-    key: 'activate',
-    value: function activate() {
-      this.foundation_.activate();
-    }
-  }, {
-    key: 'deactivate',
-    value: function deactivate() {
-      this.foundation_.deactivate();
-    }
-  }, {
-    key: 'layout',
-    value: function layout() {
-      this.foundation_.layout();
-    }
-
-    /** @return {!MDCRippleFoundation} */
-
-  }, {
-    key: 'getDefaultFoundation',
-    value: function getDefaultFoundation() {
-      return new _foundation2.default(MDCRipple.createAdapter(this));
-    }
-  }, {
-    key: 'initialSyncWithDOM',
-    value: function initialSyncWithDOM() {
-      this.unbounded = 'mdcRippleIsUnbounded' in this.root_.dataset;
-    }
-  }, {
-    key: 'unbounded',
-
-
-    /** @return {boolean} */
-    get: function get() {
-      return this.unbounded_;
-    }
-
-    /** @param {boolean} unbounded */
-    ,
-    set: function set(unbounded) {
-      this.unbounded_ = Boolean(unbounded);
-      this.setUnbounded_();
-    }
-  }], [{
-    key: 'attachTo',
-    value: function attachTo(root) {
-      var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-          _ref2$isUnbounded = _ref2.isUnbounded,
-          isUnbounded = _ref2$isUnbounded === undefined ? undefined : _ref2$isUnbounded;
-
-      var ripple = new MDCRipple(root);
-      // Only override unbounded behavior if option is explicitly specified
-      if (isUnbounded !== undefined) {
-        ripple.unbounded = /** @type {boolean} */isUnbounded;
-      }
-      return ripple;
-    }
-
-    /**
-     * @param {!RippleCapableSurface} instance
-     * @return {!MDCRippleAdapter}
-     */
-
-  }, {
-    key: 'createAdapter',
-    value: function createAdapter(instance) {
-      var MATCHES = util.getMatchesProperty(HTMLElement.prototype);
-
-      return {
-        browserSupportsCssVars: function browserSupportsCssVars() {
-          return util.supportsCssVariables(window);
-        },
-        isUnbounded: function isUnbounded() {
-          return instance.unbounded;
-        },
-        isSurfaceActive: function isSurfaceActive() {
-          return instance.root_[MATCHES](':active');
-        },
-        isSurfaceDisabled: function isSurfaceDisabled() {
-          return instance.disabled;
-        },
-        addClass: function addClass(className) {
-          return instance.root_.classList.add(className);
-        },
-        removeClass: function removeClass(className) {
-          return instance.root_.classList.remove(className);
-        },
-        containsEventTarget: function containsEventTarget(target) {
-          return instance.root_.contains(target);
-        },
-        registerInteractionHandler: function registerInteractionHandler(evtType, handler) {
-          return instance.root_.addEventListener(evtType, handler, util.applyPassive());
-        },
-        deregisterInteractionHandler: function deregisterInteractionHandler(evtType, handler) {
-          return instance.root_.removeEventListener(evtType, handler, util.applyPassive());
-        },
-        registerDocumentInteractionHandler: function registerDocumentInteractionHandler(evtType, handler) {
-          return document.documentElement.addEventListener(evtType, handler, util.applyPassive());
-        },
-        deregisterDocumentInteractionHandler: function deregisterDocumentInteractionHandler(evtType, handler) {
-          return document.documentElement.removeEventListener(evtType, handler, util.applyPassive());
-        },
-        registerResizeHandler: function registerResizeHandler(handler) {
-          return window.addEventListener('resize', handler);
-        },
-        deregisterResizeHandler: function deregisterResizeHandler(handler) {
-          return window.removeEventListener('resize', handler);
-        },
-        updateCssVariable: function updateCssVariable(varName, value) {
-          return instance.root_.style.setProperty(varName, value);
-        },
-        computeBoundingRect: function computeBoundingRect() {
-          return instance.root_.getBoundingClientRect();
-        },
-        getWindowPageOffset: function getWindowPageOffset() {
-          return { x: window.pageXOffset, y: window.pageYOffset };
-        }
-      };
-    }
-  }]);
-
-  return MDCRipple;
-}(_component2.default);
-
-/**
- * See Material Design spec for more details on when to use ripples.
- * https://material.io/guidelines/motion/choreography.html#choreography-creation
- * @record
- */
-
-
-var RippleCapableSurface = function RippleCapableSurface() {
-  _classCallCheck(this, RippleCapableSurface);
-};
-
-/** @protected {!Element} */
-
-
-RippleCapableSurface.prototype.root_;
-
-/**
- * Whether or not the ripple bleeds out of the bounds of the element.
- * @type {boolean|undefined}
- */
-RippleCapableSurface.prototype.unbounded;
-
-/**
- * Whether or not the ripple is attached to a disabled component.
- * @type {boolean|undefined}
- */
-RippleCapableSurface.prototype.disabled;
-
-exports.MDCRipple = MDCRipple;
-exports.MDCRippleFoundation = _foundation2.default;
-exports.RippleCapableSurface = RippleCapableSurface;
-exports.util = util;
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCSelectBottomLineAdapter);
 
 /***/ }),
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 30 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _foundation = __webpack_require__(5);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _adapter = __webpack_require__(25);
-
-var _adapter2 = _interopRequireDefault(_adapter);
-
-var _constants = __webpack_require__(65);
-
-var _util = __webpack_require__(26);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2016 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/**
- * @typedef {!{
- *   isActivated: (boolean|undefined),
- *   hasDeactivationUXRun: (boolean|undefined),
- *   wasActivatedByPointer: (boolean|undefined),
- *   wasElementMadeActive: (boolean|undefined),
- *   activationEvent: Event,
- *   isProgrammatic: (boolean|undefined)
- * }}
- */
-var ActivationStateType = void 0;
-
-/**
- * @typedef {!{
- *   activate: (string|undefined),
- *   deactivate: (string|undefined),
- *   focus: (string|undefined),
- *   blur: (string|undefined)
- * }}
- */
-var ListenerInfoType = void 0;
-
-/**
- * @typedef {!{
- *   activate: function(!Event),
- *   deactivate: function(!Event),
- *   focus: function(),
- *   blur: function()
- * }}
- */
-var ListenersType = void 0;
-
-/**
- * @typedef {!{
- *   x: number,
- *   y: number
- * }}
- */
-var PointType = void 0;
-
-// Activation events registered on the root element of each instance for activation
-var ACTIVATION_EVENT_TYPES = ['touchstart', 'pointerdown', 'mousedown', 'keydown'];
-
-// Deactivation events registered on documentElement when a pointer-related down event occurs
-var POINTER_DEACTIVATION_EVENT_TYPES = ['touchend', 'pointerup', 'mouseup'];
-
-// Tracks activations that have occurred on the current frame, to avoid simultaneous nested activations
-/** @type {!Array<!EventTarget>} */
-var activatedTargets = [];
-
-/**
- * @extends {MDCFoundation<!MDCRippleAdapter>}
- */
-
-var MDCRippleFoundation = function (_MDCFoundation) {
-  _inherits(MDCRippleFoundation, _MDCFoundation);
-
-  _createClass(MDCRippleFoundation, null, [{
-    key: 'cssClasses',
-    get: function get() {
-      return _constants.cssClasses;
-    }
-  }, {
-    key: 'strings',
-    get: function get() {
-      return _constants.strings;
-    }
-  }, {
-    key: 'numbers',
-    get: function get() {
-      return _constants.numbers;
-    }
-  }, {
-    key: 'defaultAdapter',
-    get: function get() {
-      return {
-        browserSupportsCssVars: function browserSupportsCssVars() /* boolean - cached */{},
-        isUnbounded: function isUnbounded() /* boolean */{},
-        isSurfaceActive: function isSurfaceActive() /* boolean */{},
-        isSurfaceDisabled: function isSurfaceDisabled() /* boolean */{},
-        addClass: function addClass() /* className: string */{},
-        removeClass: function removeClass() /* className: string */{},
-        containsEventTarget: function containsEventTarget() /* target: !EventTarget */{},
-        registerInteractionHandler: function registerInteractionHandler() /* evtType: string, handler: EventListener */{},
-        deregisterInteractionHandler: function deregisterInteractionHandler() /* evtType: string, handler: EventListener */{},
-        registerDocumentInteractionHandler: function registerDocumentInteractionHandler() /* evtType: string, handler: EventListener */{},
-        deregisterDocumentInteractionHandler: function deregisterDocumentInteractionHandler() /* evtType: string, handler: EventListener */{},
-        registerResizeHandler: function registerResizeHandler() /* handler: EventListener */{},
-        deregisterResizeHandler: function deregisterResizeHandler() /* handler: EventListener */{},
-        updateCssVariable: function updateCssVariable() /* varName: string, value: string */{},
-        computeBoundingRect: function computeBoundingRect() /* ClientRect */{},
-        getWindowPageOffset: function getWindowPageOffset() /* {x: number, y: number} */{}
-      };
-    }
-  }]);
-
-  function MDCRippleFoundation(adapter) {
-    _classCallCheck(this, MDCRippleFoundation);
-
-    /** @private {number} */
-    var _this = _possibleConstructorReturn(this, (MDCRippleFoundation.__proto__ || Object.getPrototypeOf(MDCRippleFoundation)).call(this, Object.assign(MDCRippleFoundation.defaultAdapter, adapter)));
-
-    _this.layoutFrame_ = 0;
-
-    /** @private {!ClientRect} */
-    _this.frame_ = /** @type {!ClientRect} */{ width: 0, height: 0 };
-
-    /** @private {!ActivationStateType} */
-    _this.activationState_ = _this.defaultActivationState_();
-
-    /** @private {number} */
-    _this.initialSize_ = 0;
-
-    /** @private {number} */
-    _this.maxRadius_ = 0;
-
-    /** @private {function(!Event)} */
-    _this.activateHandler_ = function (e) {
-      return _this.activate_(e);
-    };
-
-    /** @private {function(!Event)} */
-    _this.deactivateHandler_ = function (e) {
-      return _this.deactivate_(e);
-    };
-
-    /** @private {function(?Event=)} */
-    _this.focusHandler_ = function () {
-      return requestAnimationFrame(function () {
-        return _this.adapter_.addClass(MDCRippleFoundation.cssClasses.BG_FOCUSED);
-      });
-    };
-
-    /** @private {function(?Event=)} */
-    _this.blurHandler_ = function () {
-      return requestAnimationFrame(function () {
-        return _this.adapter_.removeClass(MDCRippleFoundation.cssClasses.BG_FOCUSED);
-      });
-    };
-
-    /** @private {!Function} */
-    _this.resizeHandler_ = function () {
-      return _this.layout();
-    };
-
-    /** @private {!{left: number, top:number}} */
-    _this.unboundedCoords_ = {
-      left: 0,
-      top: 0
-    };
-
-    /** @private {number} */
-    _this.fgScale_ = 0;
-
-    /** @private {number} */
-    _this.activationTimer_ = 0;
-
-    /** @private {number} */
-    _this.fgDeactivationRemovalTimer_ = 0;
-
-    /** @private {boolean} */
-    _this.activationAnimationHasEnded_ = false;
-
-    /** @private {!Function} */
-    _this.activationTimerCallback_ = function () {
-      _this.activationAnimationHasEnded_ = true;
-      _this.runDeactivationUXLogicIfReady_();
-    };
-
-    /** @private {?Event} */
-    _this.previousActivationEvent_ = null;
-    return _this;
-  }
-
-  /**
-   * We compute this property so that we are not querying information about the client
-   * until the point in time where the foundation requests it. This prevents scenarios where
-   * client-side feature-detection may happen too early, such as when components are rendered on the server
-   * and then initialized at mount time on the client.
-   * @return {boolean}
-   * @private
-   */
-
-
-  _createClass(MDCRippleFoundation, [{
-    key: 'isSupported_',
-    value: function isSupported_() {
-      return this.adapter_.browserSupportsCssVars();
-    }
-
-    /**
-     * @return {!ActivationStateType}
-     */
-
-  }, {
-    key: 'defaultActivationState_',
-    value: function defaultActivationState_() {
-      return {
-        isActivated: false,
-        hasDeactivationUXRun: false,
-        wasActivatedByPointer: false,
-        wasElementMadeActive: false,
-        activationEvent: null,
-        isProgrammatic: false
-      };
-    }
-  }, {
-    key: 'init',
-    value: function init() {
-      var _this2 = this;
-
-      if (!this.isSupported_()) {
-        return;
-      }
-      this.registerRootHandlers_();
-
-      var _MDCRippleFoundation$ = MDCRippleFoundation.cssClasses,
-          ROOT = _MDCRippleFoundation$.ROOT,
-          UNBOUNDED = _MDCRippleFoundation$.UNBOUNDED;
-
-      requestAnimationFrame(function () {
-        _this2.adapter_.addClass(ROOT);
-        if (_this2.adapter_.isUnbounded()) {
-          _this2.adapter_.addClass(UNBOUNDED);
-        }
-        _this2.layoutInternal_();
-      });
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      var _this3 = this;
-
-      if (!this.isSupported_()) {
-        return;
-      }
-
-      if (this.activationTimer_) {
-        clearTimeout(this.activationTimer_);
-        this.activationTimer_ = 0;
-        var FG_ACTIVATION = MDCRippleFoundation.cssClasses.FG_ACTIVATION;
-
-        this.adapter_.removeClass(FG_ACTIVATION);
-      }
-
-      this.deregisterRootHandlers_();
-      this.deregisterDeactivationHandlers_();
-
-      var _MDCRippleFoundation$2 = MDCRippleFoundation.cssClasses,
-          ROOT = _MDCRippleFoundation$2.ROOT,
-          UNBOUNDED = _MDCRippleFoundation$2.UNBOUNDED;
-
-      requestAnimationFrame(function () {
-        _this3.adapter_.removeClass(ROOT);
-        _this3.adapter_.removeClass(UNBOUNDED);
-        _this3.removeCssVars_();
-      });
-    }
-
-    /** @private */
-
-  }, {
-    key: 'registerRootHandlers_',
-    value: function registerRootHandlers_() {
-      var _this4 = this;
-
-      ACTIVATION_EVENT_TYPES.forEach(function (type) {
-        _this4.adapter_.registerInteractionHandler(type, _this4.activateHandler_);
-      });
-      this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
-      this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
-      this.adapter_.registerResizeHandler(this.resizeHandler_);
-    }
-
-    /**
-     * @param {!Event} e
-     * @private
-     */
-
-  }, {
-    key: 'registerDeactivationHandlers_',
-    value: function registerDeactivationHandlers_(e) {
-      var _this5 = this;
-
-      if (e.type === 'keydown') {
-        this.adapter_.registerInteractionHandler('keyup', this.deactivateHandler_);
-      } else {
-        POINTER_DEACTIVATION_EVENT_TYPES.forEach(function (type) {
-          _this5.adapter_.registerDocumentInteractionHandler(type, _this5.deactivateHandler_);
-        });
-      }
-    }
-
-    /** @private */
-
-  }, {
-    key: 'deregisterRootHandlers_',
-    value: function deregisterRootHandlers_() {
-      var _this6 = this;
-
-      ACTIVATION_EVENT_TYPES.forEach(function (type) {
-        _this6.adapter_.deregisterInteractionHandler(type, _this6.activateHandler_);
-      });
-      this.adapter_.deregisterInteractionHandler('focus', this.focusHandler_);
-      this.adapter_.deregisterInteractionHandler('blur', this.blurHandler_);
-      this.adapter_.deregisterResizeHandler(this.resizeHandler_);
-    }
-
-    /** @private */
-
-  }, {
-    key: 'deregisterDeactivationHandlers_',
-    value: function deregisterDeactivationHandlers_() {
-      var _this7 = this;
-
-      this.adapter_.deregisterInteractionHandler('keyup', this.deactivateHandler_);
-      POINTER_DEACTIVATION_EVENT_TYPES.forEach(function (type) {
-        _this7.adapter_.deregisterDocumentInteractionHandler(type, _this7.deactivateHandler_);
-      });
-    }
-
-    /** @private */
-
-  }, {
-    key: 'removeCssVars_',
-    value: function removeCssVars_() {
-      var _this8 = this;
-
-      var strings = MDCRippleFoundation.strings;
-
-      Object.keys(strings).forEach(function (k) {
-        if (k.indexOf('VAR_') === 0) {
-          _this8.adapter_.updateCssVariable(strings[k], null);
-        }
-      });
-    }
-
-    /**
-     * @param {?Event} e
-     * @private
-     */
-
-  }, {
-    key: 'activate_',
-    value: function activate_(e) {
-      var _this9 = this;
-
-      if (this.adapter_.isSurfaceDisabled()) {
-        return;
-      }
-
-      var activationState = this.activationState_;
-      if (activationState.isActivated) {
-        return;
-      }
-
-      // Avoid reacting to follow-on events fired by touch device after an already-processed user interaction
-      var previousActivationEvent = this.previousActivationEvent_;
-      var isSameInteraction = previousActivationEvent && e && previousActivationEvent.type !== e.type;
-      if (isSameInteraction) {
-        return;
-      }
-
-      activationState.isActivated = true;
-      activationState.isProgrammatic = e === null;
-      activationState.activationEvent = e;
-      activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : e.type === 'mousedown' || e.type === 'touchstart' || e.type === 'pointerdown';
-
-      var hasActivatedChild = e && activatedTargets.length > 0 && activatedTargets.some(function (target) {
-        return _this9.adapter_.containsEventTarget(target);
-      });
-      if (hasActivatedChild) {
-        // Immediately reset activation state, while preserving logic that prevents touch follow-on events
-        this.resetActivationState_();
-        return;
-      }
-
-      if (e) {
-        activatedTargets.push( /** @type {!EventTarget} */e.target);
-        this.registerDeactivationHandlers_(e);
-      }
-
-      requestAnimationFrame(function () {
-        // This needs to be wrapped in an rAF call b/c web browsers
-        // report active states inconsistently when they're called within
-        // event handling code:
-        // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
-        // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
-        activationState.wasElementMadeActive = e && e.type === 'keydown' ? _this9.adapter_.isSurfaceActive() : true;
-        if (activationState.wasElementMadeActive) {
-          _this9.animateActivation_();
-        } else {
-          // Reset activation state immediately if element was not made active.
-          _this9.activationState_ = _this9.defaultActivationState_();
-        }
-
-        // Reset array on next frame after the current event has had a chance to bubble to prevent ancestor ripples
-        activatedTargets = [];
-      });
-    }
-
-    /**
-     * @param {?Event=} event Optional event containing position information.
-     */
-
-  }, {
-    key: 'activate',
-    value: function activate() {
-      var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-      this.activate_(event);
-    }
-
-    /** @private */
-
-  }, {
-    key: 'animateActivation_',
-    value: function animateActivation_() {
-      var _this10 = this;
-
-      var _MDCRippleFoundation$3 = MDCRippleFoundation.strings,
-          VAR_FG_TRANSLATE_START = _MDCRippleFoundation$3.VAR_FG_TRANSLATE_START,
-          VAR_FG_TRANSLATE_END = _MDCRippleFoundation$3.VAR_FG_TRANSLATE_END;
-      var _MDCRippleFoundation$4 = MDCRippleFoundation.cssClasses,
-          FG_DEACTIVATION = _MDCRippleFoundation$4.FG_DEACTIVATION,
-          FG_ACTIVATION = _MDCRippleFoundation$4.FG_ACTIVATION;
-      var DEACTIVATION_TIMEOUT_MS = MDCRippleFoundation.numbers.DEACTIVATION_TIMEOUT_MS;
-
-
-      var translateStart = '';
-      var translateEnd = '';
-
-      if (!this.adapter_.isUnbounded()) {
-        var _getFgTranslationCoor = this.getFgTranslationCoordinates_(),
-            startPoint = _getFgTranslationCoor.startPoint,
-            endPoint = _getFgTranslationCoor.endPoint;
-
-        translateStart = startPoint.x + 'px, ' + startPoint.y + 'px';
-        translateEnd = endPoint.x + 'px, ' + endPoint.y + 'px';
-      }
-
-      this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_START, translateStart);
-      this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_END, translateEnd);
-      // Cancel any ongoing activation/deactivation animations
-      clearTimeout(this.activationTimer_);
-      clearTimeout(this.fgDeactivationRemovalTimer_);
-      this.rmBoundedActivationClasses_();
-      this.adapter_.removeClass(FG_DEACTIVATION);
-
-      // Force layout in order to re-trigger the animation.
-      this.adapter_.computeBoundingRect();
-      this.adapter_.addClass(FG_ACTIVATION);
-      this.activationTimer_ = setTimeout(function () {
-        return _this10.activationTimerCallback_();
-      }, DEACTIVATION_TIMEOUT_MS);
-    }
-
-    /**
-     * @private
-     * @return {{startPoint: PointType, endPoint: PointType}}
-     */
-
-  }, {
-    key: 'getFgTranslationCoordinates_',
-    value: function getFgTranslationCoordinates_() {
-      var _activationState_ = this.activationState_,
-          activationEvent = _activationState_.activationEvent,
-          wasActivatedByPointer = _activationState_.wasActivatedByPointer;
-
-
-      var startPoint = void 0;
-      if (wasActivatedByPointer) {
-        startPoint = (0, _util.getNormalizedEventCoords)(
-        /** @type {!Event} */activationEvent, this.adapter_.getWindowPageOffset(), this.adapter_.computeBoundingRect());
-      } else {
-        startPoint = {
-          x: this.frame_.width / 2,
-          y: this.frame_.height / 2
-        };
-      }
-      // Center the element around the start point.
-      startPoint = {
-        x: startPoint.x - this.initialSize_ / 2,
-        y: startPoint.y - this.initialSize_ / 2
-      };
-
-      var endPoint = {
-        x: this.frame_.width / 2 - this.initialSize_ / 2,
-        y: this.frame_.height / 2 - this.initialSize_ / 2
-      };
-
-      return { startPoint: startPoint, endPoint: endPoint };
-    }
-
-    /** @private */
-
-  }, {
-    key: 'runDeactivationUXLogicIfReady_',
-    value: function runDeactivationUXLogicIfReady_() {
-      var _this11 = this;
-
-      // This method is called both when a pointing device is released, and when the activation animation ends.
-      // The deactivation animation should only run after both of those occur.
-      var FG_DEACTIVATION = MDCRippleFoundation.cssClasses.FG_DEACTIVATION;
-      var _activationState_2 = this.activationState_,
-          hasDeactivationUXRun = _activationState_2.hasDeactivationUXRun,
-          isActivated = _activationState_2.isActivated;
-
-      var activationHasEnded = hasDeactivationUXRun || !isActivated;
-
-      if (activationHasEnded && this.activationAnimationHasEnded_) {
-        this.rmBoundedActivationClasses_();
-        this.adapter_.addClass(FG_DEACTIVATION);
-        this.fgDeactivationRemovalTimer_ = setTimeout(function () {
-          _this11.adapter_.removeClass(FG_DEACTIVATION);
-        }, _constants.numbers.FG_DEACTIVATION_MS);
-      }
-    }
-
-    /** @private */
-
-  }, {
-    key: 'rmBoundedActivationClasses_',
-    value: function rmBoundedActivationClasses_() {
-      var FG_ACTIVATION = MDCRippleFoundation.cssClasses.FG_ACTIVATION;
-
-      this.adapter_.removeClass(FG_ACTIVATION);
-      this.activationAnimationHasEnded_ = false;
-      this.adapter_.computeBoundingRect();
-    }
-  }, {
-    key: 'resetActivationState_',
-    value: function resetActivationState_() {
-      var _this12 = this;
-
-      this.previousActivationEvent_ = this.activationState_.activationEvent;
-      this.activationState_ = this.defaultActivationState_();
-      // Touch devices may fire additional events for the same interaction within a short time.
-      // Store the previous event until it's safe to assume that subsequent events are for new interactions.
-      setTimeout(function () {
-        return _this12.previousActivationEvent_ = null;
-      }, MDCRippleFoundation.numbers.TAP_DELAY_MS);
-    }
-
-    /**
-     * @param {?Event} e
-     * @private
-     */
-
-  }, {
-    key: 'deactivate_',
-    value: function deactivate_(e) {
-      var _this13 = this;
-
-      var activationState = this.activationState_;
-      // This can happen in scenarios such as when you have a keyup event that blurs the element.
-      if (!activationState.isActivated) {
-        return;
-      }
-
-      var state = /** @type {!ActivationStateType} */Object.assign({}, activationState);
-
-      if (activationState.isProgrammatic) {
-        var evtObject = null;
-        requestAnimationFrame(function () {
-          return _this13.animateDeactivation_(evtObject, state);
-        });
-        this.resetActivationState_();
-      } else {
-        this.deregisterDeactivationHandlers_();
-        requestAnimationFrame(function () {
-          _this13.activationState_.hasDeactivationUXRun = true;
-          _this13.animateDeactivation_(e, state);
-          _this13.resetActivationState_();
-        });
-      }
-    }
-
-    /**
-     * @param {?Event=} event Optional event containing position information.
-     */
-
-  }, {
-    key: 'deactivate',
-    value: function deactivate() {
-      var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-      this.deactivate_(event);
-    }
-
-    /**
-     * @param {Event} e
-     * @param {!ActivationStateType} options
-     * @private
-     */
-
-  }, {
-    key: 'animateDeactivation_',
-    value: function animateDeactivation_(e, _ref) {
-      var wasActivatedByPointer = _ref.wasActivatedByPointer,
-          wasElementMadeActive = _ref.wasElementMadeActive;
-
-      if (wasActivatedByPointer || wasElementMadeActive) {
-        this.runDeactivationUXLogicIfReady_();
-      }
-    }
-  }, {
-    key: 'layout',
-    value: function layout() {
-      var _this14 = this;
-
-      if (this.layoutFrame_) {
-        cancelAnimationFrame(this.layoutFrame_);
-      }
-      this.layoutFrame_ = requestAnimationFrame(function () {
-        _this14.layoutInternal_();
-        _this14.layoutFrame_ = 0;
-      });
-    }
-
-    /** @private */
-
-  }, {
-    key: 'layoutInternal_',
-    value: function layoutInternal_() {
-      var _this15 = this;
-
-      this.frame_ = this.adapter_.computeBoundingRect();
-      var maxDim = Math.max(this.frame_.height, this.frame_.width);
-
-      // Surface diameter is treated differently for unbounded vs. bounded ripples.
-      // Unbounded ripple diameter is calculated smaller since the surface is expected to already be padded appropriately
-      // to extend the hitbox, and the ripple is expected to meet the edges of the padded hitbox (which is typically
-      // square). Bounded ripples, on the other hand, are fully expected to expand beyond the surface's longest diameter
-      // (calculated based on the diagonal plus a constant padding), and are clipped at the surface's border via
-      // `overflow: hidden`.
-      var getBoundedRadius = function getBoundedRadius() {
-        var hypotenuse = Math.sqrt(Math.pow(_this15.frame_.width, 2) + Math.pow(_this15.frame_.height, 2));
-        return hypotenuse + MDCRippleFoundation.numbers.PADDING;
-      };
-
-      this.maxRadius_ = this.adapter_.isUnbounded() ? maxDim : getBoundedRadius();
-
-      // Ripple is sized as a fraction of the largest dimension of the surface, then scales up using a CSS scale transform
-      this.initialSize_ = maxDim * MDCRippleFoundation.numbers.INITIAL_ORIGIN_SCALE;
-      this.fgScale_ = this.maxRadius_ / this.initialSize_;
-
-      this.updateLayoutCssVars_();
-    }
-
-    /** @private */
-
-  }, {
-    key: 'updateLayoutCssVars_',
-    value: function updateLayoutCssVars_() {
-      var _MDCRippleFoundation$5 = MDCRippleFoundation.strings,
-          VAR_FG_SIZE = _MDCRippleFoundation$5.VAR_FG_SIZE,
-          VAR_LEFT = _MDCRippleFoundation$5.VAR_LEFT,
-          VAR_TOP = _MDCRippleFoundation$5.VAR_TOP,
-          VAR_FG_SCALE = _MDCRippleFoundation$5.VAR_FG_SCALE;
-
-
-      this.adapter_.updateCssVariable(VAR_FG_SIZE, this.initialSize_ + 'px');
-      this.adapter_.updateCssVariable(VAR_FG_SCALE, this.fgScale_);
-
-      if (this.adapter_.isUnbounded()) {
-        this.unboundedCoords_ = {
-          left: Math.round(this.frame_.width / 2 - this.initialSize_ / 2),
-          top: Math.round(this.frame_.height / 2 - this.initialSize_ / 2)
-        };
-
-        this.adapter_.updateCssVariable(VAR_LEFT, this.unboundedCoords_.left + 'px');
-        this.adapter_.updateCssVariable(VAR_TOP, this.unboundedCoords_.top + 'px');
-      }
-    }
-
-    /** @param {boolean} unbounded */
-
-  }, {
-    key: 'setUnbounded',
-    value: function setUnbounded(unbounded) {
-      var UNBOUNDED = MDCRippleFoundation.cssClasses.UNBOUNDED;
-
-      if (unbounded) {
-        this.adapter_.addClass(UNBOUNDED);
-      } else {
-        this.adapter_.removeClass(UNBOUNDED);
-      }
-    }
-  }]);
-
-  return MDCRippleFoundation;
-}(_foundation2.default);
-
-exports.default = MDCRippleFoundation;
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 /**
  * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-var cssClasses = {
-  // Ripple is a special case where the "root" component is really a "mixin" of sorts,
-  // given that it's an 'upgrade' to an existing component. That being said it is the root
-  // CSS class that all other CSS classes derive from.
-  ROOT: 'mdc-ripple-upgraded',
-  UNBOUNDED: 'mdc-ripple-upgraded--unbounded',
-  BG_FOCUSED: 'mdc-ripple-upgraded--background-focused',
-  FG_ACTIVATION: 'mdc-ripple-upgraded--foreground-activation',
-  FG_DEACTIVATION: 'mdc-ripple-upgraded--foreground-deactivation'
-};
-
-var strings = {
-  VAR_LEFT: '--mdc-ripple-left',
-  VAR_TOP: '--mdc-ripple-top',
-  VAR_FG_SIZE: '--mdc-ripple-fg-size',
-  VAR_FG_SCALE: '--mdc-ripple-fg-scale',
-  VAR_FG_TRANSLATE_START: '--mdc-ripple-fg-translate-start',
-  VAR_FG_TRANSLATE_END: '--mdc-ripple-fg-translate-end'
-};
-
-var numbers = {
-  PADDING: 10,
-  INITIAL_ORIGIN_SCALE: 0.6,
-  DEACTIVATION_TIMEOUT_MS: 225, // Corresponds to $mdc-ripple-translate-duration (i.e. activation animation duration)
-  FG_DEACTIVATION_MS: 150, // Corresponds to $mdc-ripple-fade-out-duration (i.e. deactivation animation duration)
-  TAP_DELAY_MS: 300 // Delay between touch and simulated mouse events on touch devices
-};
-
-exports.cssClasses = cssClasses;
-exports.strings = strings;
-exports.numbers = numbers;
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.initMenus = initMenus;
-
-var _menu = __webpack_require__(67);
-
-function createMenuHandler(menu) {
-    return function () {
-        menu.open = !menu.open;
-    };
-}
-
-function initMenus() {
-    console.log('\tMenus');
-
-    var components = document.querySelectorAll('.v-menu');
-    if (components) {
-        for (var i = 0; i < components.length; i++) {
-            var component = components[i];
-            if (!component.mdcComponent) {
-                component.mdcComponent = new _menu.MDCMenu(component);
-                var anchor = component.closest('.mdc-menu-anchor').querySelector('.v-menu-click');
-                anchor.addEventListener('click', createMenuHandler(component.mdcComponent));
-            }
-        }
-    }
-}
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CornerBit = exports.Corner = exports.AnchorMargin = exports.MDCMenu = exports.MDCMenuFoundation = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _component = __webpack_require__(68);
-
-var _component2 = _interopRequireDefault(_component);
-
-var _util = __webpack_require__(69);
-
-var _foundation = __webpack_require__(70);
-
-var _constants = __webpack_require__(28);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Copyright 2016 Google Inc. All Rights Reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/**
- * @extends MDCComponent<!MDCMenuFoundation>
- */
-var MDCMenu = function (_MDCComponent) {
-  _inherits(MDCMenu, _MDCComponent);
-
-  /** @param {...?} args */
-  function MDCMenu() {
-    var _ref;
-
-    _classCallCheck(this, MDCMenu);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    /** @private {!Element} */
-    var _this = _possibleConstructorReturn(this, (_ref = MDCMenu.__proto__ || Object.getPrototypeOf(MDCMenu)).call.apply(_ref, [this].concat(args)));
-
-    _this.previousFocus_;
-    return _this;
-  }
-
-  /**
-   * @param {!Element} root
-   * @return {!MDCMenu}
-   */
-
-
-  _createClass(MDCMenu, [{
-    key: 'show',
-
-
-    /** @param {{focusIndex: ?number}=} options */
-    value: function show() {
-      var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          _ref2$focusIndex = _ref2.focusIndex,
-          focusIndex = _ref2$focusIndex === undefined ? null : _ref2$focusIndex;
-
-      this.foundation_.open({ focusIndex: focusIndex });
-    }
-  }, {
-    key: 'hide',
-    value: function hide() {
-      this.foundation_.close();
-    }
-
-    /**
-     * @param {Corner} corner Default anchor corner alignment of top-left
-     *     menu corner.
-     */
-
-  }, {
-    key: 'setAnchorCorner',
-    value: function setAnchorCorner(corner) {
-      this.foundation_.setAnchorCorner(corner);
-    }
-
-    /**
-     * @param {AnchorMargin} margin
-     */
-
-  }, {
-    key: 'setAnchorMargin',
-    value: function setAnchorMargin(margin) {
-      this.foundation_.setAnchorMargin(margin);
-    }
-
-    /**
-     * Return the item container element inside the component.
-     * @return {?Element}
-     */
-
-  }, {
-    key: 'getOptionByIndex',
-
-
-    /**
-     * Return the item within the menu that is selected.
-     * @param {number} index
-     * @return {?Element}
-     */
-    value: function getOptionByIndex(index) {
-      var items = this.items;
-
-      if (index < items.length) {
-        return this.items[index];
-      } else {
-        return null;
-      }
-    }
-
-    /** @param {number} index */
-
-  }, {
-    key: 'getDefaultFoundation',
-
-
-    /** @return {!MDCMenuFoundation} */
-    value: function getDefaultFoundation() {
-      var _this2 = this;
-
-      return new _foundation.MDCMenuFoundation({
-        addClass: function addClass(className) {
-          return _this2.root_.classList.add(className);
-        },
-        removeClass: function removeClass(className) {
-          return _this2.root_.classList.remove(className);
-        },
-        hasClass: function hasClass(className) {
-          return _this2.root_.classList.contains(className);
-        },
-        hasNecessaryDom: function hasNecessaryDom() {
-          return Boolean(_this2.itemsContainer_);
-        },
-        getAttributeForEventTarget: function getAttributeForEventTarget(target, attributeName) {
-          return target.getAttribute(attributeName);
-        },
-        getInnerDimensions: function getInnerDimensions() {
-          var itemsContainer = _this2.itemsContainer_;
-
-          return { width: itemsContainer.offsetWidth, height: itemsContainer.offsetHeight };
-        },
-        hasAnchor: function hasAnchor() {
-          return _this2.root_.parentElement && _this2.root_.parentElement.classList.contains('mdc-menu-anchor');
-        },
-        getAnchorDimensions: function getAnchorDimensions() {
-          return _this2.root_.parentElement.getBoundingClientRect();
-        },
-        getWindowDimensions: function getWindowDimensions() {
-          return { width: window.innerWidth, height: window.innerHeight };
-        },
-        getNumberOfItems: function getNumberOfItems() {
-          return _this2.items.length;
-        },
-        registerInteractionHandler: function registerInteractionHandler(type, handler) {
-          return _this2.root_.addEventListener(type, handler);
-        },
-        deregisterInteractionHandler: function deregisterInteractionHandler(type, handler) {
-          return _this2.root_.removeEventListener(type, handler);
-        },
-        registerBodyClickHandler: function registerBodyClickHandler(handler) {
-          return document.body.addEventListener('click', handler);
-        },
-        deregisterBodyClickHandler: function deregisterBodyClickHandler(handler) {
-          return document.body.removeEventListener('click', handler);
-        },
-        getIndexForEventTarget: function getIndexForEventTarget(target) {
-          return _this2.items.indexOf(target);
-        },
-        notifySelected: function notifySelected(evtData) {
-          return _this2.emit(_foundation.MDCMenuFoundation.strings.SELECTED_EVENT, {
-            index: evtData.index,
-            item: _this2.items[evtData.index]
-          });
-        },
-        notifyCancel: function notifyCancel() {
-          return _this2.emit(_foundation.MDCMenuFoundation.strings.CANCEL_EVENT, {});
-        },
-        saveFocus: function saveFocus() {
-          _this2.previousFocus_ = document.activeElement;
-        },
-        restoreFocus: function restoreFocus() {
-          if (_this2.previousFocus_) {
-            _this2.previousFocus_.focus();
-          }
-        },
-        isFocused: function isFocused() {
-          return document.activeElement === _this2.root_;
-        },
-        focus: function focus() {
-          return _this2.root_.focus();
-        },
-        getFocusedItemIndex: function getFocusedItemIndex() {
-          return _this2.items.indexOf(document.activeElement);
-        },
-        focusItemAtIndex: function focusItemAtIndex(index) {
-          return _this2.items[index].focus();
-        },
-        isRtl: function isRtl() {
-          return getComputedStyle(_this2.root_).getPropertyValue('direction') === 'rtl';
-        },
-        setTransformOrigin: function setTransformOrigin(origin) {
-          _this2.root_.style[(0, _util.getTransformPropertyName)(window) + '-origin'] = origin;
-        },
-        setPosition: function setPosition(position) {
-          _this2.root_.style.left = 'left' in position ? position.left : null;
-          _this2.root_.style.right = 'right' in position ? position.right : null;
-          _this2.root_.style.top = 'top' in position ? position.top : null;
-          _this2.root_.style.bottom = 'bottom' in position ? position.bottom : null;
-        },
-        setMaxHeight: function setMaxHeight(height) {
-          _this2.root_.style.maxHeight = height;
-        },
-        setAttrForOptionAtIndex: function setAttrForOptionAtIndex(index, attr, value) {
-          return _this2.items[index].setAttribute(attr, value);
-        },
-        rmAttrForOptionAtIndex: function rmAttrForOptionAtIndex(index, attr) {
-          return _this2.items[index].removeAttribute(attr);
-        },
-        addClassForOptionAtIndex: function addClassForOptionAtIndex(index, className) {
-          return _this2.items[index].classList.add(className);
-        },
-        rmClassForOptionAtIndex: function rmClassForOptionAtIndex(index, className) {
-          return _this2.items[index].classList.remove(className);
-        }
-      });
-    }
-  }, {
-    key: 'open',
-
-
-    /** @return {boolean} */
-    get: function get() {
-      return this.foundation_.isOpen();
-    }
-
-    /** @param {boolean} value */
-    ,
-    set: function set(value) {
-      if (value) {
-        this.foundation_.open();
-      } else {
-        this.foundation_.close();
-      }
-    }
-  }, {
-    key: 'itemsContainer_',
-    get: function get() {
-      return this.root_.querySelector(_foundation.MDCMenuFoundation.strings.ITEMS_SELECTOR);
-    }
-
-    /**
-     * Return the items within the menu. Note that this only contains the set of elements within
-     * the items container that are proper list items, and not supplemental / presentational DOM
-     * elements.
-     * @return {!Array<!Element>}
-     */
-
-  }, {
-    key: 'items',
-    get: function get() {
-      var itemsContainer = this.itemsContainer_;
-
-      return [].slice.call(itemsContainer.querySelectorAll('.mdc-list-item[role]'));
-    }
-  }, {
-    key: 'selectedItemIndex',
-    set: function set(index) {
-      this.foundation_.setSelectedIndex(index);
-    }
-
-    /** @return {number} */
-    ,
-    get: function get() {
-      return this.foundation_.getSelectedIndex();
-    }
-
-    /** @param {!boolean} rememberSelection */
-
-  }, {
-    key: 'rememberSelection',
-    set: function set(rememberSelection) {
-      this.foundation_.setRememberSelection(rememberSelection);
-    }
-
-    /** @param {boolean} quickOpen */
-
-  }, {
-    key: 'quickOpen',
-    set: function set(quickOpen) {
-      this.foundation_.setQuickOpen(quickOpen);
-    }
-  }], [{
-    key: 'attachTo',
-    value: function attachTo(root) {
-      return new MDCMenu(root);
-    }
-  }]);
-
-  return MDCMenu;
-}(_component2.default);
-
-exports.MDCMenuFoundation = _foundation.MDCMenuFoundation;
-exports.MDCMenu = MDCMenu;
-exports.AnchorMargin = _foundation.AnchorMargin;
-exports.Corner = _constants.Corner;
-exports.CornerBit = _constants.CornerBit;
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Copyright 2016 Google Inc.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Licensed under the Apache License, Version 2.0 (the "License");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * you may not use this file except in compliance with the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * You may obtain a copy of the License at
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *   http://www.apache.org/licenses/LICENSE-2.0
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Unless required by applicable law or agreed to in writing, software
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * distributed under the License is distributed on an "AS IS" BASIS,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * See the License for the specific language governing permissions and
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * limitations under the License.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
-
-var _foundation = __webpack_require__(27);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * @template F
- */
-var MDCComponent = function () {
-  _createClass(MDCComponent, null, [{
-    key: 'attachTo',
-
-    /**
-     * @param {!Element} root
-     * @return {!MDCComponent}
-     */
-    value: function attachTo(root) {
-      // Subclasses which extend MDCBase should provide an attachTo() method that takes a root element and
-      // returns an instantiated component with its root set to that element. Also note that in the cases of
-      // subclasses, an explicit foundation class will not have to be passed in; it will simply be initialized
-      // from getDefaultFoundation().
-      return new MDCComponent(root, new _foundation2.default());
-    }
-
-    /**
-     * @param {!Element} root
-     * @param {F=} foundation
-     * @param {...?} args
-     */
-
-  }]);
-
-  function MDCComponent(root) {
-    var foundation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
-
-    _classCallCheck(this, MDCComponent);
-
-    /** @protected {!Element} */
-    this.root_ = root;
-
-    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-      args[_key - 2] = arguments[_key];
-    }
-
-    this.initialize.apply(this, args);
-    // Note that we initialize foundation here and not within the constructor's default param so that
-    // this.root_ is defined and can be used within the foundation class.
-    /** @protected {!F} */
-    this.foundation_ = foundation === undefined ? this.getDefaultFoundation() : foundation;
-    this.foundation_.init();
-    this.initialSyncWithDOM();
-  }
-
-  _createClass(MDCComponent, [{
-    key: 'initialize',
-    value: function initialize() /* ...args */{}
-    // Subclasses can override this to do any additional setup work that would be considered part of a
-    // "constructor". Essentially, it is a hook into the parent constructor before the foundation is
-    // initialized. Any additional arguments besides root and foundation will be passed in here.
-
-
-    /**
-     * @return {!F} foundation
-     */
-
-  }, {
-    key: 'getDefaultFoundation',
-    value: function getDefaultFoundation() {
-      // Subclasses must override this method to return a properly configured foundation class for the
-      // component.
-      throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' + 'foundation class');
-    }
-  }, {
-    key: 'initialSyncWithDOM',
-    value: function initialSyncWithDOM() {
-      // Subclasses should override this method if they need to perform work to synchronize with a host DOM
-      // object. An example of this would be a form control wrapper that needs to synchronize its internal state
-      // to some property or attribute of the host DOM. Please note: this is *not* the place to perform DOM
-      // reads/writes that would cause layout / paint, as this is called synchronously from within the constructor.
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      // Subclasses may implement this method to release any resources / deregister any listeners they have
-      // attached. An example of this might be deregistering a resize event from the window object.
-      this.foundation_.destroy();
-    }
-
-    /**
-     * Wrapper method to add an event listener to the component's root element. This is most useful when
-     * listening for custom events.
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: 'listen',
-    value: function listen(evtType, handler) {
-      this.root_.addEventListener(evtType, handler);
-    }
-
-    /**
-     * Wrapper method to remove an event listener to the component's root element. This is most useful when
-     * unlistening for custom events.
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: 'unlisten',
-    value: function unlisten(evtType, handler) {
-      this.root_.removeEventListener(evtType, handler);
-    }
-
-    /**
-     * Fires a cross-browser-compatible custom event from the component root of the given type,
-     * with the given data.
-     * @param {string} evtType
-     * @param {!Object} evtData
-     * @param {boolean=} shouldBubble
-     */
-
-  }, {
-    key: 'emit',
-    value: function emit(evtType, evtData) {
-      var shouldBubble = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-      var evt = void 0;
-      if (typeof CustomEvent === 'function') {
-        evt = new CustomEvent(evtType, {
-          detail: evtData,
-          bubbles: shouldBubble
-        });
-      } else {
-        evt = document.createEvent('CustomEvent');
-        evt.initCustomEvent(evtType, shouldBubble, false, evtData);
-      }
-
-      this.root_.dispatchEvent(evt);
-    }
-  }]);
-
-  return MDCComponent;
-}();
-
-exports.default = MDCComponent;
-
-/***/ }),
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/** @type {string|undefined} */
-var storedTransformPropertyName_ = void 0;
-
-/**
- * Returns the name of the correct transform property to use on the current browser.
- * @param {!Window} globalObj
- * @param {boolean=} forceRefresh
- * @return {string}
- */
-function getTransformPropertyName(globalObj) {
-  var forceRefresh = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-  if (storedTransformPropertyName_ === undefined || forceRefresh) {
-    var el = globalObj.document.createElement('div');
-    var transformPropertyName = 'transform' in el.style ? 'transform' : 'webkitTransform';
-    storedTransformPropertyName_ = transformPropertyName;
-  }
-
-  return storedTransformPropertyName_;
-}
-
-/**
- * Clamps a value between the minimum and the maximum, returning the clamped value.
- * @param {number} value
- * @param {number} min
- * @param {number} max
- * @return {number}
- */
-function clamp(value) {
-  var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-  var max = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-
-  return Math.min(max, Math.max(min, value));
-}
-
-/**
- * Returns the easing value to apply at time t, for a given cubic bezier curve.
- * Control points P0 and P3 are assumed to be (0,0) and (1,1), respectively.
- * Parameters are as follows:
- * - time: The current time in the animation, scaled between 0 and 1.
- * - x1: The x value of control point P1.
- * - y1: The y value of control point P1.
- * - x2: The x value of control point P2.
- * - y2: The y value of control point P2.
- * @param {number} time
- * @param {number} x1
- * @param {number} y1
- * @param {number} x2
- * @param {number} y2
- * @return {number}
- */
-function bezierProgress(time, x1, y1, x2, y2) {
-  return getBezierCoordinate_(solvePositionFromXValue_(time, x1, x2), y1, y2);
-}
-
-/**
- * Compute a single coordinate at a position point between 0 and 1.
- * c1 and c2 are the matching coordinate on control points P1 and P2, respectively.
- * Control points P0 and P3 are assumed to be (0,0) and (1,1), respectively.
- * Adapted from https://github.com/google/closure-library/blob/master/closure/goog/math/bezier.js.
- * @param {number} t
- * @param {number} c1
- * @param {number} c2
- * @return {number}
- */
-function getBezierCoordinate_(t, c1, c2) {
-  // Special case start and end.
-  if (t === 0 || t === 1) {
-    return t;
-  }
-
-  // Step one - from 4 points to 3
-  var ic0 = t * c1;
-  var ic1 = c1 + t * (c2 - c1);
-  var ic2 = c2 + t * (1 - c2);
-
-  // Step two - from 3 points to 2
-  ic0 += t * (ic1 - ic0);
-  ic1 += t * (ic2 - ic1);
-
-  // Final step - last point
-  return ic0 + t * (ic1 - ic0);
-}
-
-/**
- * Project a point onto the Bezier curve, from a given X. Calculates the position t along the curve.
- * Adapted from https://github.com/google/closure-library/blob/master/closure/goog/math/bezier.js.
- * @param {number} xVal
- * @param {number} x1
- * @param {number} x2
- * @return {number}
- */
-function solvePositionFromXValue_(xVal, x1, x2) {
-  var EPSILON = 1e-6;
-  var MAX_ITERATIONS = 8;
-
-  if (xVal <= 0) {
-    return 0;
-  } else if (xVal >= 1) {
-    return 1;
-  }
-
-  // Initial estimate of t using linear interpolation.
-  var t = xVal;
-
-  // Try gradient descent to solve for t. If it works, it is very fast.
-  var tMin = 0;
-  var tMax = 1;
-  var value = 0;
-  for (var i = 0; i < MAX_ITERATIONS; i++) {
-    value = getBezierCoordinate_(t, x1, x2);
-    var derivative = (getBezierCoordinate_(t + EPSILON, x1, x2) - value) / EPSILON;
-    if (Math.abs(value - xVal) < EPSILON) {
-      return t;
-    } else if (Math.abs(derivative) < EPSILON) {
-      break;
-    } else {
-      if (value < xVal) {
-        tMin = t;
-      } else {
-        tMax = t;
-      }
-      t -= (value - xVal) / derivative;
-    }
-  }
-
-  // If the gradient descent got stuck in a local minimum, e.g. because
-  // the derivative was close to 0, use a Dichotomy refinement instead.
-  // We limit the number of interations to 8.
-  for (var _i = 0; Math.abs(value - xVal) > EPSILON && _i < MAX_ITERATIONS; _i++) {
-    if (value < xVal) {
-      tMin = t;
-      t = (t + tMax) / 2;
-    } else {
-      tMax = t;
-      t = (t + tMin) / 2;
-    }
-    value = getBezierCoordinate_(t, x1, x2);
-  }
-  return t;
-}
-
-exports.getTransformPropertyName = getTransformPropertyName;
-exports.clamp = clamp;
-exports.bezierProgress = bezierProgress;
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AnchorMargin = exports.MDCMenuFoundation = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _foundation = __webpack_require__(27);
-
-var _foundation2 = _interopRequireDefault(_foundation);
-
-var _adapter = __webpack_require__(71);
-
-var _constants = __webpack_require__(28);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * @typedef {{
- *   top: number,
- *   right: number,
- *   bottom: number,
- *   left: number
- * }}
- */
-var AnchorMargin = void 0;
-
-/* eslint-disable no-unused-vars */
-/**
- * @typedef {{
- *   viewport: { width: number, height: number },
- *   viewportDistance: {top: number, right: number, bottom: number, left: number},
- *   anchorHeight: number,
- *   anchorWidth: number,
- *   menuHeight: number,
- *   menuWidth: number,
- * }}
- */
-var AutoLayoutMeasurements = void 0;
-/* eslint-enable no-unused-vars */
-
-/**
- * @extends {MDCFoundation<!MDCMenuAdapter>}
- */
-var MDCMenuFoundation = function (_MDCFoundation) {
-  _inherits(MDCMenuFoundation, _MDCFoundation);
-
-  _createClass(MDCMenuFoundation, null, [{
-    key: 'cssClasses',
-
-    /** @return enum{cssClasses} */
-    get: function get() {
-      return _constants.cssClasses;
-    }
-
-    /** @return enum{strings} */
-
-  }, {
-    key: 'strings',
-    get: function get() {
-      return _constants.strings;
-    }
-
-    /** @return enum{numbers} */
-
-  }, {
-    key: 'numbers',
-    get: function get() {
-      return _constants.numbers;
-    }
-
-    /** @return enum{number} */
-
-  }, {
-    key: 'Corner',
-    get: function get() {
-      return _constants.Corner;
-    }
-
-    /**
-     * {@see MDCMenuAdapter} for typing information on parameters and return
-     * types.
-     * @return {!MDCMenuAdapter}
-     */
-
-  }, {
-    key: 'defaultAdapter',
-    get: function get() {
-      return (/** @type {!MDCMenuAdapter} */{
-          addClass: function addClass() {},
-          removeClass: function removeClass() {},
-          hasClass: function hasClass() {
-            return false;
-          },
-          hasNecessaryDom: function hasNecessaryDom() {
-            return false;
-          },
-          getAttributeForEventTarget: function getAttributeForEventTarget() {},
-          getInnerDimensions: function getInnerDimensions() {
-            return {};
-          },
-          hasAnchor: function hasAnchor() {
-            return false;
-          },
-          getAnchorDimensions: function getAnchorDimensions() {
-            return {};
-          },
-          getWindowDimensions: function getWindowDimensions() {
-            return {};
-          },
-          getNumberOfItems: function getNumberOfItems() {
-            return 0;
-          },
-          registerInteractionHandler: function registerInteractionHandler() {},
-          deregisterInteractionHandler: function deregisterInteractionHandler() {},
-          registerBodyClickHandler: function registerBodyClickHandler() {},
-          deregisterBodyClickHandler: function deregisterBodyClickHandler() {},
-          getIndexForEventTarget: function getIndexForEventTarget() {
-            return 0;
-          },
-          notifySelected: function notifySelected() {},
-          notifyCancel: function notifyCancel() {},
-          saveFocus: function saveFocus() {},
-          restoreFocus: function restoreFocus() {},
-          isFocused: function isFocused() {
-            return false;
-          },
-          focus: function focus() {},
-          getFocusedItemIndex: function getFocusedItemIndex() {
-            return -1;
-          },
-          focusItemAtIndex: function focusItemAtIndex() {},
-          isRtl: function isRtl() {
-            return false;
-          },
-          setTransformOrigin: function setTransformOrigin() {},
-          setPosition: function setPosition() {},
-          setMaxHeight: function setMaxHeight() {},
-          setAttrForOptionAtIndex: function setAttrForOptionAtIndex() {},
-          rmAttrForOptionAtIndex: function rmAttrForOptionAtIndex() {},
-          addClassForOptionAtIndex: function addClassForOptionAtIndex() {},
-          rmClassForOptionAtIndex: function rmClassForOptionAtIndex() {}
-        }
-      );
-    }
-
-    /** @param {!MDCMenuAdapter} adapter */
-
-  }]);
-
-  function MDCMenuFoundation(adapter) {
-    _classCallCheck(this, MDCMenuFoundation);
-
-    /** @private {function(!Event)} */
-    var _this = _possibleConstructorReturn(this, (MDCMenuFoundation.__proto__ || Object.getPrototypeOf(MDCMenuFoundation)).call(this, Object.assign(MDCMenuFoundation.defaultAdapter, adapter)));
-
-    _this.clickHandler_ = function (evt) {
-      return _this.handlePossibleSelected_(evt);
-    };
-    /** @private {function(!Event)} */
-    _this.keydownHandler_ = function (evt) {
-      return _this.handleKeyboardDown_(evt);
-    };
-    /** @private {function(!Event)} */
-    _this.keyupHandler_ = function (evt) {
-      return _this.handleKeyboardUp_(evt);
-    };
-    /** @private {function(!Event)} */
-    _this.documentClickHandler_ = function (evt) {
-      return _this.handleDocumentClick_(evt);
-    };
-    /** @private {boolean} */
-    _this.isOpen_ = false;
-    /** @private {number} */
-    _this.openAnimationEndTimerId_ = 0;
-    /** @private {number} */
-    _this.closeAnimationEndTimerId_ = 0;
-    /** @private {number} */
-    _this.selectedTriggerTimerId_ = 0;
-    /** @private {number} */
-    _this.animationRequestId_ = 0;
-    /** @private {!{ width: number, height: number }} */
-    _this.dimensions_;
-    /** @private {number} */
-    _this.itemHeight_;
-    /** @private {Corner} */
-    _this.anchorCorner_ = _constants.Corner.TOP_START;
-    /** @private {AnchorMargin} */
-    _this.anchorMargin_ = { top: 0, right: 0, bottom: 0, left: 0 };
-    /** @private {?AutoLayoutMeasurements} */
-    _this.measures_ = null;
-    /** @private {number} */
-    _this.selectedIndex_ = -1;
-    /** @private {boolean} */
-    _this.rememberSelection_ = false;
-    /** @private {boolean} */
-    _this.quickOpen_ = false;
-
-    // A keyup event on the menu needs to have a corresponding keydown
-    // event on the menu. If the user opens the menu with a keydown event on a
-    // button, the menu will only get the key up event causing buggy behavior with selected elements.
-    /** @private {boolean} */
-    _this.keyDownWithinMenu_ = false;
-    return _this;
-  }
-
-  _createClass(MDCMenuFoundation, [{
-    key: 'init',
-    value: function init() {
-      var _MDCMenuFoundation$cs = MDCMenuFoundation.cssClasses,
-          ROOT = _MDCMenuFoundation$cs.ROOT,
-          OPEN = _MDCMenuFoundation$cs.OPEN;
-
-
-      if (!this.adapter_.hasClass(ROOT)) {
-        throw new Error(ROOT + ' class required in root element.');
-      }
-
-      if (!this.adapter_.hasNecessaryDom()) {
-        throw new Error('Required DOM nodes missing in ' + ROOT + ' component.');
-      }
-
-      if (this.adapter_.hasClass(OPEN)) {
-        this.isOpen_ = true;
-      }
-
-      this.adapter_.registerInteractionHandler('click', this.clickHandler_);
-      this.adapter_.registerInteractionHandler('keyup', this.keyupHandler_);
-      this.adapter_.registerInteractionHandler('keydown', this.keydownHandler_);
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      clearTimeout(this.selectedTriggerTimerId_);
-      clearTimeout(this.openAnimationEndTimerId_);
-      clearTimeout(this.closeAnimationEndTimerId_);
-      // Cancel any currently running animations.
-      cancelAnimationFrame(this.animationRequestId_);
-      this.adapter_.deregisterInteractionHandler('click', this.clickHandler_);
-      this.adapter_.deregisterInteractionHandler('keyup', this.keyupHandler_);
-      this.adapter_.deregisterInteractionHandler('keydown', this.keydownHandler_);
-      this.adapter_.deregisterBodyClickHandler(this.documentClickHandler_);
-    }
-
-    /**
-     * @param {!Corner} corner Default anchor corner alignment of top-left menu corner.
-     */
-
-  }, {
-    key: 'setAnchorCorner',
-    value: function setAnchorCorner(corner) {
-      this.anchorCorner_ = corner;
-    }
-
-    /**
-     * @param {!AnchorMargin} margin 4-plet of margins from anchor.
-     */
-
-  }, {
-    key: 'setAnchorMargin',
-    value: function setAnchorMargin(margin) {
-      this.anchorMargin_.top = typeof margin.top === 'number' ? margin.top : 0;
-      this.anchorMargin_.right = typeof margin.right === 'number' ? margin.right : 0;
-      this.anchorMargin_.bottom = typeof margin.bottom === 'number' ? margin.bottom : 0;
-      this.anchorMargin_.left = typeof margin.left === 'number' ? margin.left : 0;
-    }
-
-    /** @param {boolean} rememberSelection */
-
-  }, {
-    key: 'setRememberSelection',
-    value: function setRememberSelection(rememberSelection) {
-      this.rememberSelection_ = rememberSelection;
-      this.setSelectedIndex(-1);
-    }
-
-    /** @param {boolean} quickOpen */
-
-  }, {
-    key: 'setQuickOpen',
-    value: function setQuickOpen(quickOpen) {
-      this.quickOpen_ = quickOpen;
-    }
-
-    /**
-     * @param {?number} focusIndex
-     * @private
-     */
-
-  }, {
-    key: 'focusOnOpen_',
-    value: function focusOnOpen_(focusIndex) {
-      if (focusIndex === null) {
-        // If this instance of MDCMenu remembers selections, and the user has
-        // made a selection, then focus the last selected item
-        if (this.rememberSelection_ && this.selectedIndex_ >= 0) {
-          this.adapter_.focusItemAtIndex(this.selectedIndex_);
-          return;
-        }
-
-        this.adapter_.focus();
-        // If that doesn't work, focus first item instead.
-        if (!this.adapter_.isFocused()) {
-          this.adapter_.focusItemAtIndex(0);
-        }
-      } else {
-        this.adapter_.focusItemAtIndex(focusIndex);
-      }
-    }
-
-    /**
-     * Handle clicks and cancel the menu if not a child list-item
-     * @param {!Event} evt
-     * @private
-     */
-
-  }, {
-    key: 'handleDocumentClick_',
-    value: function handleDocumentClick_(evt) {
-      var el = evt.target;
-
-      while (el && el !== document.documentElement) {
-        if (this.adapter_.getIndexForEventTarget(el) !== -1) {
-          return;
-        }
-        el = el.parentNode;
-      }
-
-      this.adapter_.notifyCancel();
-      this.close(evt);
-    }
-  }, {
-    key: 'handleKeyboardDown_',
-
-
-    /**
-     * Handle keys that we want to repeat on hold (tab and arrows).
-     * @param {!Event} evt
-     * @return {boolean}
-     * @private
-     */
-    value: function handleKeyboardDown_(evt) {
-      // Do nothing if Alt, Ctrl or Meta are pressed.
-      if (evt.altKey || evt.ctrlKey || evt.metaKey) {
-        return true;
-      }
-
-      var keyCode = evt.keyCode,
-          key = evt.key,
-          shiftKey = evt.shiftKey;
-
-      var isTab = key === 'Tab' || keyCode === 9;
-      var isArrowUp = key === 'ArrowUp' || keyCode === 38;
-      var isArrowDown = key === 'ArrowDown' || keyCode === 40;
-      var isSpace = key === 'Space' || keyCode === 32;
-      var isEnter = key === 'Enter' || keyCode === 13;
-      // The menu needs to know if the keydown event was triggered on the menu
-      this.keyDownWithinMenu_ = isEnter || isSpace;
-
-      var focusedItemIndex = this.adapter_.getFocusedItemIndex();
-      var lastItemIndex = this.adapter_.getNumberOfItems() - 1;
-
-      if (shiftKey && isTab && focusedItemIndex === 0) {
-        this.adapter_.focusItemAtIndex(lastItemIndex);
-        evt.preventDefault();
-        return false;
-      }
-
-      if (!shiftKey && isTab && focusedItemIndex === lastItemIndex) {
-        this.adapter_.focusItemAtIndex(0);
-        evt.preventDefault();
-        return false;
-      }
-
-      // Ensure Arrow{Up,Down} and space do not cause inadvertent scrolling
-      if (isArrowUp || isArrowDown || isSpace) {
-        evt.preventDefault();
-      }
-
-      if (isArrowUp) {
-        if (focusedItemIndex === 0 || this.adapter_.isFocused()) {
-          this.adapter_.focusItemAtIndex(lastItemIndex);
-        } else {
-          this.adapter_.focusItemAtIndex(focusedItemIndex - 1);
-        }
-      } else if (isArrowDown) {
-        if (focusedItemIndex === lastItemIndex || this.adapter_.isFocused()) {
-          this.adapter_.focusItemAtIndex(0);
-        } else {
-          this.adapter_.focusItemAtIndex(focusedItemIndex + 1);
-        }
-      }
-
-      return true;
-    }
-
-    /**
-     * Handle keys that we don't want to repeat on hold (Enter, Space, Escape).
-     * @param {!Event} evt
-     * @return {boolean}
-     * @private
-     */
-
-  }, {
-    key: 'handleKeyboardUp_',
-    value: function handleKeyboardUp_(evt) {
-      // Do nothing if Alt, Ctrl or Meta are pressed.
-      if (evt.altKey || evt.ctrlKey || evt.metaKey) {
-        return true;
-      }
-
-      var keyCode = evt.keyCode,
-          key = evt.key;
-
-      var isEnter = key === 'Enter' || keyCode === 13;
-      var isSpace = key === 'Space' || keyCode === 32;
-      var isEscape = key === 'Escape' || keyCode === 27;
-
-      if (isEnter || isSpace) {
-        // If the keydown event didn't occur on the menu, then it should
-        // disregard the possible selected event.
-        if (this.keyDownWithinMenu_) {
-          this.handlePossibleSelected_(evt);
-        }
-        this.keyDownWithinMenu_ = false;
-      }
-
-      if (isEscape) {
-        this.adapter_.notifyCancel();
-        this.close();
-      }
-
-      return true;
-    }
-
-    /**
-     * @param {!Event} evt
-     * @private
-     */
-
-  }, {
-    key: 'handlePossibleSelected_',
-    value: function handlePossibleSelected_(evt) {
-      var _this2 = this;
-
-      if (this.adapter_.getAttributeForEventTarget(evt.target, _constants.strings.ARIA_DISABLED_ATTR) === 'true') {
-        return;
-      }
-      var targetIndex = this.adapter_.getIndexForEventTarget(evt.target);
-      if (targetIndex < 0) {
-        return;
-      }
-      // Debounce multiple selections
-      if (this.selectedTriggerTimerId_) {
-        return;
-      }
-      this.selectedTriggerTimerId_ = setTimeout(function () {
-        _this2.selectedTriggerTimerId_ = 0;
-        _this2.close();
-        if (_this2.rememberSelection_) {
-          _this2.setSelectedIndex(targetIndex);
-        }
-        _this2.adapter_.notifySelected({ index: targetIndex });
-      }, _constants.numbers.SELECTED_TRIGGER_DELAY);
-    }
-
-    /**
-     * @return {AutoLayoutMeasurements} Measurements used to position menu popup.
-     */
-
-  }, {
-    key: 'getAutoLayoutMeasurements_',
-    value: function getAutoLayoutMeasurements_() {
-      var anchorRect = this.adapter_.getAnchorDimensions();
-      var viewport = this.adapter_.getWindowDimensions();
-
-      return {
-        viewport: viewport,
-        viewportDistance: {
-          top: anchorRect.top,
-          right: viewport.width - anchorRect.right,
-          left: anchorRect.left,
-          bottom: viewport.height - anchorRect.bottom
-        },
-        anchorHeight: anchorRect.height,
-        anchorWidth: anchorRect.width,
-        menuHeight: this.dimensions_.height,
-        menuWidth: this.dimensions_.width
-      };
-    }
-
-    /**
-     * Computes the corner of the anchor from which to animate and position the menu.
-     * @return {Corner}
-     * @private
-     */
-
-  }, {
-    key: 'getOriginCorner_',
-    value: function getOriginCorner_() {
-      // Defaults: open from the top left.
-      var corner = _constants.Corner.TOP_LEFT;
-
-      var _measures_ = this.measures_,
-          viewportDistance = _measures_.viewportDistance,
-          anchorHeight = _measures_.anchorHeight,
-          anchorWidth = _measures_.anchorWidth,
-          menuHeight = _measures_.menuHeight,
-          menuWidth = _measures_.menuWidth;
-
-      var isBottomAligned = Boolean(this.anchorCorner_ & _constants.CornerBit.BOTTOM);
-      var availableTop = isBottomAligned ? viewportDistance.top + anchorHeight + this.anchorMargin_.bottom : viewportDistance.top + this.anchorMargin_.top;
-      var availableBottom = isBottomAligned ? viewportDistance.bottom - this.anchorMargin_.bottom : viewportDistance.bottom + anchorHeight - this.anchorMargin_.top;
-
-      var topOverflow = menuHeight - availableTop;
-      var bottomOverflow = menuHeight - availableBottom;
-      if (bottomOverflow > 0 && topOverflow < bottomOverflow) {
-        corner |= _constants.CornerBit.BOTTOM;
-      }
-
-      var isRtl = this.adapter_.isRtl();
-      var isFlipRtl = Boolean(this.anchorCorner_ & _constants.CornerBit.FLIP_RTL);
-      var avoidHorizontalOverlap = Boolean(this.anchorCorner_ & _constants.CornerBit.RIGHT);
-      var isAlignedRight = avoidHorizontalOverlap && !isRtl || !avoidHorizontalOverlap && isFlipRtl && isRtl;
-      var availableLeft = isAlignedRight ? viewportDistance.left + anchorWidth + this.anchorMargin_.right : viewportDistance.left + this.anchorMargin_.left;
-      var availableRight = isAlignedRight ? viewportDistance.right - this.anchorMargin_.right : viewportDistance.right + anchorWidth - this.anchorMargin_.left;
-
-      var leftOverflow = menuWidth - availableLeft;
-      var rightOverflow = menuWidth - availableRight;
-
-      if (leftOverflow < 0 && isAlignedRight && isRtl || avoidHorizontalOverlap && !isAlignedRight && leftOverflow < 0 || rightOverflow > 0 && leftOverflow < rightOverflow) {
-        corner |= _constants.CornerBit.RIGHT;
-      }
-
-      return corner;
-    }
-
-    /**
-     * @param {Corner} corner Origin corner of the menu.
-     * @return {number} Horizontal offset of menu origin corner from corresponding anchor corner.
-     * @private
-     */
-
-  }, {
-    key: 'getHorizontalOriginOffset_',
-    value: function getHorizontalOriginOffset_(corner) {
-      var anchorWidth = this.measures_.anchorWidth;
-
-      var isRightAligned = Boolean(corner & _constants.CornerBit.RIGHT);
-      var avoidHorizontalOverlap = Boolean(this.anchorCorner_ & _constants.CornerBit.RIGHT);
-      var x = 0;
-      if (isRightAligned) {
-        var rightOffset = avoidHorizontalOverlap ? anchorWidth - this.anchorMargin_.left : this.anchorMargin_.right;
-        x = rightOffset;
-      } else {
-        var leftOffset = avoidHorizontalOverlap ? anchorWidth - this.anchorMargin_.right : this.anchorMargin_.left;
-        x = leftOffset;
-      }
-      return x;
-    }
-
-    /**
-     * @param {Corner} corner Origin corner of the menu.
-     * @return {number} Vertical offset of menu origin corner from corresponding anchor corner.
-     * @private
-     */
-
-  }, {
-    key: 'getVerticalOriginOffset_',
-    value: function getVerticalOriginOffset_(corner) {
-      var _measures_2 = this.measures_,
-          viewport = _measures_2.viewport,
-          viewportDistance = _measures_2.viewportDistance,
-          anchorHeight = _measures_2.anchorHeight,
-          menuHeight = _measures_2.menuHeight;
-
-      var isBottomAligned = Boolean(corner & _constants.CornerBit.BOTTOM);
-      var MARGIN_TO_EDGE = MDCMenuFoundation.numbers.MARGIN_TO_EDGE;
-
-      var avoidVerticalOverlap = Boolean(this.anchorCorner_ & _constants.CornerBit.BOTTOM);
-      var canOverlapVertically = !avoidVerticalOverlap;
-      var y = 0;
-
-      if (isBottomAligned) {
-        y = avoidVerticalOverlap ? anchorHeight - this.anchorMargin_.top : -this.anchorMargin_.bottom;
-        // adjust for when menu can overlap anchor, but too tall to be aligned to bottom
-        // anchor corner. Bottom margin is ignored in such cases.
-        if (canOverlapVertically && menuHeight > viewportDistance.top + anchorHeight) {
-          y = -(Math.min(menuHeight, viewport.height - MARGIN_TO_EDGE) - (viewportDistance.top + anchorHeight));
-        }
-      } else {
-        y = avoidVerticalOverlap ? anchorHeight + this.anchorMargin_.bottom : this.anchorMargin_.top;
-        // adjust for when menu can overlap anchor, but too tall to be aligned to top
-        // anchor corners. Top margin is ignored in that case.
-        if (canOverlapVertically && menuHeight > viewportDistance.bottom + anchorHeight) {
-          y = -(Math.min(menuHeight, viewport.height - MARGIN_TO_EDGE) - (viewportDistance.bottom + anchorHeight));
-        }
-      }
-      return y;
-    }
-
-    /**
-     * @param {Corner} corner Origin corner of the menu.
-     * @return {number} Maximum height of the menu, based on available space. 0 indicates should not be set.
-     * @private
-     */
-
-  }, {
-    key: 'getMenuMaxHeight_',
-    value: function getMenuMaxHeight_(corner) {
-      var maxHeight = 0;
-      var viewportDistance = this.measures_.viewportDistance;
-
-      var isBottomAligned = Boolean(corner & _constants.CornerBit.BOTTOM);
-
-      // When maximum height is not specified, it is handled from css.
-      if (this.anchorCorner_ & _constants.CornerBit.BOTTOM) {
-        if (isBottomAligned) {
-          maxHeight = viewportDistance.top + this.anchorMargin_.top;
-        } else {
-          maxHeight = viewportDistance.bottom - this.anchorMargin_.bottom;
-        }
-      }
-
-      return maxHeight;
-    }
-
-    /** @private */
-
-  }, {
-    key: 'autoPosition_',
-    value: function autoPosition_() {
-      var _position;
-
-      if (!this.adapter_.hasAnchor()) {
-        return;
-      }
-
-      // Compute measurements for autoposition methods reuse.
-      this.measures_ = this.getAutoLayoutMeasurements_();
-
-      var corner = this.getOriginCorner_();
-      var maxMenuHeight = this.getMenuMaxHeight_(corner);
-      var verticalAlignment = corner & _constants.CornerBit.BOTTOM ? 'bottom' : 'top';
-      var horizontalAlignment = corner & _constants.CornerBit.RIGHT ? 'right' : 'left';
-      var horizontalOffset = this.getHorizontalOriginOffset_(corner);
-      var verticalOffset = this.getVerticalOriginOffset_(corner);
-      var position = (_position = {}, _defineProperty(_position, horizontalAlignment, horizontalOffset ? horizontalOffset + 'px' : '0'), _defineProperty(_position, verticalAlignment, verticalOffset ? verticalOffset + 'px' : '0'), _position);
-      var _measures_3 = this.measures_,
-          anchorWidth = _measures_3.anchorWidth,
-          menuHeight = _measures_3.menuHeight,
-          menuWidth = _measures_3.menuWidth;
-      // Center align when anchor width is comparable or greater than menu, otherwise keep corner.
-
-      if (anchorWidth / menuWidth > _constants.numbers.ANCHOR_TO_MENU_WIDTH_RATIO) {
-        horizontalAlignment = 'center';
-      }
-
-      // Adjust vertical origin when menu is positioned with significant offset from anchor. This is done so that
-      // scale animation is "anchored" on the anchor.
-      if (!(this.anchorCorner_ & _constants.CornerBit.BOTTOM) && Math.abs(verticalOffset / menuHeight) > _constants.numbers.OFFSET_TO_MENU_HEIGHT_RATIO) {
-        var verticalOffsetPercent = Math.abs(verticalOffset / menuHeight) * 100;
-        var originPercent = corner & _constants.CornerBit.BOTTOM ? 100 - verticalOffsetPercent : verticalOffsetPercent;
-        verticalAlignment = Math.round(originPercent * 100) / 100 + '%';
-      }
-
-      this.adapter_.setTransformOrigin(horizontalAlignment + ' ' + verticalAlignment);
-      this.adapter_.setPosition(position);
-      this.adapter_.setMaxHeight(maxMenuHeight ? maxMenuHeight + 'px' : '');
-
-      // Clear measures after positioning is complete.
-      this.measures_ = null;
-    }
-
-    /**
-     * Open the menu.
-     * @param {{focusIndex: ?number}=} options
-     */
-
-  }, {
-    key: 'open',
-    value: function open() {
-      var _this3 = this;
-
-      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          _ref$focusIndex = _ref.focusIndex,
-          focusIndex = _ref$focusIndex === undefined ? null : _ref$focusIndex;
-
-      this.adapter_.saveFocus();
-
-      if (!this.quickOpen_) {
-        this.adapter_.addClass(MDCMenuFoundation.cssClasses.ANIMATING_OPEN);
-      }
-
-      this.animationRequestId_ = requestAnimationFrame(function () {
-        _this3.dimensions_ = _this3.adapter_.getInnerDimensions();
-        _this3.autoPosition_();
-        _this3.adapter_.addClass(MDCMenuFoundation.cssClasses.OPEN);
-        _this3.focusOnOpen_(focusIndex);
-        _this3.adapter_.registerBodyClickHandler(_this3.documentClickHandler_);
-        if (!_this3.quickOpen_) {
-          _this3.openAnimationEndTimerId_ = setTimeout(function () {
-            _this3.openAnimationEndTimerId_ = 0;
-            _this3.adapter_.removeClass(MDCMenuFoundation.cssClasses.ANIMATING_OPEN);
-          }, _constants.numbers.TRANSITION_OPEN_DURATION);
-        }
-      });
-      this.isOpen_ = true;
-    }
-
-    /**
-     * Closes the menu.
-     * @param {Event=} evt
-     */
-
-  }, {
-    key: 'close',
-    value: function close() {
-      var _this4 = this;
-
-      var evt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-      var targetIsDisabled = evt ? this.adapter_.getAttributeForEventTarget(evt.target, _constants.strings.ARIA_DISABLED_ATTR) === 'true' : false;
-
-      if (targetIsDisabled) {
-        return;
-      }
-
-      this.adapter_.deregisterBodyClickHandler(this.documentClickHandler_);
-
-      if (!this.quickOpen_) {
-        this.adapter_.addClass(MDCMenuFoundation.cssClasses.ANIMATING_CLOSED);
-      }
-
-      requestAnimationFrame(function () {
-        _this4.adapter_.removeClass(MDCMenuFoundation.cssClasses.OPEN);
-        if (!_this4.quickOpen_) {
-          _this4.closeAnimationEndTimerId_ = setTimeout(function () {
-            _this4.closeAnimationEndTimerId_ = 0;
-            _this4.adapter_.removeClass(MDCMenuFoundation.cssClasses.ANIMATING_CLOSED);
-          }, _constants.numbers.TRANSITION_CLOSE_DURATION);
-        }
-      });
-      this.isOpen_ = false;
-      this.adapter_.restoreFocus();
-    }
-
-    /** @return {boolean} */
-
-  }, {
-    key: 'isOpen',
-    value: function isOpen() {
-      return this.isOpen_;
-    }
-
-    /** @return {number} */
-
-  }, {
-    key: 'getSelectedIndex',
-    value: function getSelectedIndex() {
-      return this.selectedIndex_;
-    }
-
-    /**
-     * @param {number} index Index of the item to set as selected.
-     */
-
-  }, {
-    key: 'setSelectedIndex',
-    value: function setSelectedIndex(index) {
-      if (index === this.selectedIndex_) {
-        return;
-      }
-
-      var prevSelectedIndex = this.selectedIndex_;
-      if (prevSelectedIndex >= 0) {
-        this.adapter_.rmAttrForOptionAtIndex(prevSelectedIndex, 'aria-selected');
-        this.adapter_.rmClassForOptionAtIndex(prevSelectedIndex, _constants.cssClasses.SELECTED_LIST_ITEM);
-      }
-
-      this.selectedIndex_ = index >= 0 && index < this.adapter_.getNumberOfItems() ? index : -1;
-      if (this.selectedIndex_ >= 0) {
-        this.adapter_.setAttrForOptionAtIndex(this.selectedIndex_, 'aria-selected', 'true');
-        this.adapter_.addClassForOptionAtIndex(this.selectedIndex_, _constants.cssClasses.SELECTED_LIST_ITEM);
-      }
-    }
-  }]);
-
-  return MDCMenuFoundation;
-}(_foundation2.default);
-
-exports.MDCMenuFoundation = MDCMenuFoundation;
-exports.AnchorMargin = AnchorMargin;
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
+ * Copyright 2017 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12019,257 +2909,107 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /* eslint no-unused-vars: [2, {"args": "none"}] */
 
 /**
- * Adapter for MDC Menu. Provides an interface for managing
- * - classes
- * - dom
- * - focus
- * - position
- * - dimensions
- * - event handlers
+ * Adapter for MDC Select Label.
  *
- * Additionally, provides type information for the adapter to the Closure
- * compiler.
- *
- * Implement this adapter for your framework of choice to delegate updates to
- * the component in your framework of choice. See architecture documentation
- * for more details.
- * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
+ * Defines the shape of the adapter expected by the foundation. Implement this
+ * adapter to integrate the Select label into your framework. See
+ * https://github.com/material-components/material-components-web/blob/master/docs/authoring-components.md
+ * for more information.
  *
  * @record
  */
-var MDCMenuAdapter = function () {
-  function MDCMenuAdapter() {
-    _classCallCheck(this, MDCMenuAdapter);
-  }
+class MDCSelectLabelAdapter {
+  /**
+   * Adds a class to the label element.
+   * @param {string} className
+   */
+  addClass(className) {}
 
-  _createClass(MDCMenuAdapter, [{
-    key: "addClass",
+  /**
+   * Removes a class from the label element.
+   * @param {string} className
+   */
+  removeClass(className) {}
+}
 
-    /** @param {string} className */
-    value: function addClass(className) {}
-
-    /** @param {string} className */
-
-  }, {
-    key: "removeClass",
-    value: function removeClass(className) {}
-
-    /**
-     * @param {string} className
-     * @return {boolean}
-     */
-
-  }, {
-    key: "hasClass",
-    value: function hasClass(className) {}
-
-    /** @return {boolean} */
-
-  }, {
-    key: "hasNecessaryDom",
-    value: function hasNecessaryDom() {}
-
-    /**
-     * @param {EventTarget} target
-     * @param {string} attributeName
-     * @return {string}
-     */
-
-  }, {
-    key: "getAttributeForEventTarget",
-    value: function getAttributeForEventTarget(target, attributeName) {}
-
-    /** @return {{ width: number, height: number }} */
-
-  }, {
-    key: "getInnerDimensions",
-    value: function getInnerDimensions() {}
-
-    /** @return {boolean} */
-
-  }, {
-    key: "hasAnchor",
-    value: function hasAnchor() {}
-
-    /** @return {{width: number, height: number, top: number, right: number, bottom: number, left: number}} */
-
-  }, {
-    key: "getAnchorDimensions",
-    value: function getAnchorDimensions() {}
-
-    /** @return {{ width: number, height: number }} */
-
-  }, {
-    key: "getWindowDimensions",
-    value: function getWindowDimensions() {}
-
-    /** @return {number} */
-
-  }, {
-    key: "getNumberOfItems",
-    value: function getNumberOfItems() {}
-
-    /**
-     * @param {string} type
-     * @param {function(!Event)} handler
-     */
-
-  }, {
-    key: "registerInteractionHandler",
-    value: function registerInteractionHandler(type, handler) {}
-
-    /**
-     * @param {string} type
-     * @param {function(!Event)} handler
-     */
-
-  }, {
-    key: "deregisterInteractionHandler",
-    value: function deregisterInteractionHandler(type, handler) {}
-
-    /** @param {function(!Event)} handler */
-
-  }, {
-    key: "registerBodyClickHandler",
-    value: function registerBodyClickHandler(handler) {}
-
-    /** @param {function(!Event)} handler */
-
-  }, {
-    key: "deregisterBodyClickHandler",
-    value: function deregisterBodyClickHandler(handler) {}
-
-    /**
-     * @param {EventTarget} target
-     * @return {number}
-     */
-
-  }, {
-    key: "getIndexForEventTarget",
-    value: function getIndexForEventTarget(target) {}
-
-    /** @param {{index: number}} evtData */
-
-  }, {
-    key: "notifySelected",
-    value: function notifySelected(evtData) {}
-  }, {
-    key: "notifyCancel",
-    value: function notifyCancel() {}
-  }, {
-    key: "saveFocus",
-    value: function saveFocus() {}
-  }, {
-    key: "restoreFocus",
-    value: function restoreFocus() {}
-
-    /** @return {boolean} */
-
-  }, {
-    key: "isFocused",
-    value: function isFocused() {}
-  }, {
-    key: "focus",
-    value: function focus() {}
-
-    /** @return {number} */
-
-  }, {
-    key: "getFocusedItemIndex",
-    value: function getFocusedItemIndex() /* number */{}
-
-    /** @param {number} index */
-
-  }, {
-    key: "focusItemAtIndex",
-    value: function focusItemAtIndex(index) {}
-
-    /** @return {boolean} */
-
-  }, {
-    key: "isRtl",
-    value: function isRtl() {}
-
-    /** @param {string} origin */
-
-  }, {
-    key: "setTransformOrigin",
-    value: function setTransformOrigin(origin) {}
-
-    /** @param {{
-    *   top: (string|undefined),
-    *   right: (string|undefined),
-    *   bottom: (string|undefined),
-    *   left: (string|undefined)
-    * }} position */
-
-  }, {
-    key: "setPosition",
-    value: function setPosition(position) {}
-
-    /** @param {string} height */
-
-  }, {
-    key: "setMaxHeight",
-    value: function setMaxHeight(height) {}
-
-    /**
-     * @param {number} index
-     * @param {string} attr
-     * @param {string} value
-     */
-
-  }, {
-    key: "setAttrForOptionAtIndex",
-    value: function setAttrForOptionAtIndex(index, attr, value) {}
-
-    /**
-     * @param {number} index
-     * @param {string} attr
-     */
-
-  }, {
-    key: "rmAttrForOptionAtIndex",
-    value: function rmAttrForOptionAtIndex(index, attr) {}
-
-    /**
-     * @param {number} index
-     * @param {string} className
-     */
-
-  }, {
-    key: "addClassForOptionAtIndex",
-    value: function addClassForOptionAtIndex(index, className) {}
-
-    /**
-     * @param {number} index
-     * @param {string} className
-     */
-
-  }, {
-    key: "rmClassForOptionAtIndex",
-    value: function rmClassForOptionAtIndex(index, className) {}
-  }]);
-
-  return MDCMenuAdapter;
-}();
-
-exports.MDCMenuAdapter = MDCMenuAdapter;
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCSelectLabelAdapter);
 
 /***/ }),
-/* 72 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 31 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_RESULT__;
+/**
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+const cssClasses = {
+  BOX: 'mdc-select--box',
+  DISABLED: 'mdc-select--disabled',
+  ROOT: 'mdc-select',
+  IS_CHANGING: 'mdc-select--is-changing'
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = cssClasses;
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-(function () {
+const numbers = {
+  FLOAT_NATIVE_CONTROL_TRANSITION_TIME_MS: 125
+};
+/* harmony export (immutable) */ __webpack_exports__["b"] = numbers;
+
+
+const strings = {
+  CHANGE_EVENT: 'MDCSelect:change',
+  BOTTOM_LINE_SELECTOR: '.mdc-select__bottom-line',
+  LABEL_SELECTOR: '.mdc-select__label',
+  NATIVE_CONTROL_SELECTOR: '.mdc-select__native-control'
+};
+/* harmony export (immutable) */ __webpack_exports__["c"] = strings;
+
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(33);
+
+
+/***/ }),
+/* 33 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_initialize__ = __webpack_require__(7);
+window.dialogPolyfill = __webpack_require__(34);
+window.componentHandler = __webpack_require__(36);
+
+
+
+document.addEventListener("DOMContentLoaded", function (event) {
+    Object(__WEBPACK_IMPORTED_MODULE_0__components_initialize__["a" /* initialize */])();
+});
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_RESULT__;(function () {
 
   // nb. This is for IE10 and lower _only_.
   var supportCustomEvent = window.CustomEvent;
-  if (!supportCustomEvent || (typeof supportCustomEvent === 'undefined' ? 'undefined' : _typeof(supportCustomEvent)) === 'object') {
+  if (!supportCustomEvent || typeof supportCustomEvent === 'object') {
     supportCustomEvent = function CustomEvent(event, x) {
       x = x || {};
       var ev = document.createEvent('CustomEvent');
@@ -12286,7 +3026,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   function createsStackingContext(el) {
     while (el && el !== document.body) {
       var s = window.getComputedStyle(el);
-      var invalid = function invalid(k, ok) {
+      var invalid = function (k, ok) {
         return !(s[k] === undefined || s[k] === ok);
       };
       if (s.opacity < 1 || invalid('zIndex', 'auto') || invalid('transform', 'none') || invalid('mixBlendMode', 'normal') || invalid('filter', 'none') || invalid('perspective', 'none') || s['isolation'] === 'isolate' || s.position === 'fixed' || s.webkitOverflowScrolling === 'touch') {
@@ -12387,7 +3127,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         removed = false;
       }.bind(this);
       var timeout;
-      var delayModel = function delayModel(ev) {
+      var delayModel = function (ev) {
         if (ev.target !== dialog) {
           return;
         } // not for a child element
@@ -12424,7 +3164,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * a modal dialog may no longer be tenable, e.g., when the dialog is no
      * longer open or is no longer part of the DOM.
      */
-    maybeHideModal: function maybeHideModal() {
+    maybeHideModal: function () {
       if (this.dialog_.hasAttribute('open') && document.body.contains(this.dialog_)) {
         return;
       }
@@ -12434,7 +3174,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     /**
      * Remove this dialog from the modal top layer, leaving it as a non-modal.
      */
-    downgradeModal: function downgradeModal() {
+    downgradeModal: function () {
       if (!this.openAsModal_) {
         return;
       }
@@ -12457,7 +3197,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     /**
      * @param {boolean} value whether to open or close this dialog
      */
-    setOpen: function setOpen(value) {
+    setOpen: function (value) {
       if (value) {
         this.dialog_.hasAttribute('open') || this.dialog_.setAttribute('open', '');
       } else {
@@ -12472,7 +3212,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      *
      * @param {!Event} e to redirect
      */
-    backdropClick_: function backdropClick_(e) {
+    backdropClick_: function (e) {
       if (!this.dialog_.hasAttribute('tabindex')) {
         // Clicking on the backdrop should move the implicit cursor, even if dialog cannot be
         // focused. Create a fake thing to focus on. If the backdrop was _before_ the dialog, this
@@ -12496,7 +3236,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * Focuses on the first focusable element within the dialog. This will always blur the current
      * focus, even if nothing within the dialog is found.
      */
-    focus_: function focus_() {
+    focus_: function () {
       // Find element with `autofocus` attribute, or fall back to the first form/tabindex control.
       var target = this.dialog_.querySelector('[autofocus]:not([disabled])');
       if (!target && this.dialog_.tabIndex >= 0) {
@@ -12523,7 +3263,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * @param {number} dialogZ
      * @param {number} backdropZ
      */
-    updateZIndex: function updateZIndex(dialogZ, backdropZ) {
+    updateZIndex: function (dialogZ, backdropZ) {
       if (dialogZ < backdropZ) {
         throw new Error('dialogZ should never be < backdropZ');
       }
@@ -12534,7 +3274,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     /**
      * Shows the dialog. If the dialog is already open, this does nothing.
      */
-    show: function show() {
+    show: function () {
       if (!this.dialog_.open) {
         this.setOpen(true);
         this.focus_();
@@ -12544,7 +3284,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     /**
      * Show this dialog modally.
      */
-    showModal: function showModal() {
+    showModal: function () {
       if (this.dialog_.hasAttribute('open')) {
         throw new Error('Failed to execute \'showModal\' on dialog: The element is already open, and therefore cannot be opened modally.');
       }
@@ -12583,7 +3323,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      *
      * @param {string=} opt_returnValue to use as the returnValue
      */
-    close: function close(opt_returnValue) {
+    close: function (opt_returnValue) {
       if (!this.dialog_.hasAttribute('open')) {
         throw new Error('Failed to execute \'close\' on dialog: The element does not have an \'open\' attribute, and therefore cannot be closed.');
       }
@@ -12967,7 +3707,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * submit event and give us a chance to respond.
      */
     var nativeFormSubmit = HTMLFormElement.prototype.submit;
-    var replacementFormSubmit = function replacementFormSubmit() {
+    var replacementFormSubmit = function () {
       if (!isFormMethodDialog(this)) {
         return nativeFormSubmit.call(this);
       }
@@ -13007,13 +3747,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   dialogPolyfill['forceRegisterDialog'] = dialogPolyfill.forceRegisterDialog;
   dialogPolyfill['registerDialog'] = dialogPolyfill.registerDialog;
 
-  if ("function" === 'function' && 'amd' in __webpack_require__(74)) {
+  if ("function" === 'function' && 'amd' in __webpack_require__(35)) {
     // AMD support
     !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
       return dialogPolyfill;
     }).call(exports, __webpack_require__, exports, module),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else if (( false ? 'undefined' : _typeof(module)) === 'object' && _typeof(module['exports']) === 'object') {
+  } else if (typeof module === 'object' && typeof module['exports'] === 'object') {
     // CommonJS support
     module['exports'] = dialogPolyfill;
   } else {
@@ -13021,40 +3761,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     window['dialogPolyfill'] = dialogPolyfill;
   }
 })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(73)(module)))
 
 /***/ }),
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (module) {
-	if (!module.webpackPolyfill) {
-		module.deprecate = function () {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if (!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function get() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function get() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-/***/ }),
-/* 74 */
+/* 35 */
 /***/ (function(module, exports) {
 
 module.exports = function() {
@@ -13063,13 +3772,8 @@ module.exports = function() {
 
 
 /***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+/* 36 */
+/***/ (function(module, exports) {
 
 ;(function () {
     "use strict";
@@ -13113,7 +3817,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          * @param {string=} optCssClass the name of the CSS class elements of this
          * type will have.
          */
-        upgradeDom: function upgradeDom(optJsClass, optCssClass) {},
+        upgradeDom: function (optJsClass, optCssClass) {},
         /**
          * Upgrades a specific element rather than all in the DOM.
          *
@@ -13121,19 +3825,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          * @param {string=} optJsClass Optional name of the class we want to upgrade
          * the element to.
          */
-        upgradeElement: function upgradeElement(element, optJsClass) {},
+        upgradeElement: function (element, optJsClass) {},
         /**
          * Upgrades a specific list of elements rather than all in the DOM.
          *
          * @param {!Element|!Array<!Element>|!NodeList|!HTMLCollection} elements
          * The elements we wish to upgrade.
          */
-        upgradeElements: function upgradeElements(elements) {},
+        upgradeElements: function (elements) {},
         /**
          * Upgrades all registered components found in the current DOM. This is
          * automatically called on window load.
          */
-        upgradeAllRegistered: function upgradeAllRegistered() {},
+        upgradeAllRegistered: function () {},
         /**
          * Allows user to be alerted to any upgrades that are performed for a given
          * component type
@@ -13144,19 +3848,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          * upgrade. This function should expect 1 parameter - the HTMLElement which
          * got upgraded.
          */
-        registerUpgradedCallback: function registerUpgradedCallback(jsClass, callback) {},
+        registerUpgradedCallback: function (jsClass, callback) {},
         /**
          * Registers a class for future use and attempts to upgrade existing DOM.
          *
          * @param {componentHandler.ComponentConfigPublic} config the registration configuration
          */
-        register: function register(config) {},
+        register: function (config) {},
         /**
          * Downgrade either a given node, an array of nodes, or a NodeList.
          *
          * @param {!Node|!Array<!Node>|!NodeList} nodes
          */
-        downgradeElements: function downgradeElements(nodes) {}
+        downgradeElements: function (nodes) {}
     };
 
     componentHandler = function () {
@@ -13279,7 +3983,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          */
         function upgradeElementInternal(element, optJsClass) {
             // Verify argument type.
-            if (!((typeof element === 'undefined' ? 'undefined' : _typeof(element)) === 'object' && element instanceof Element)) {
+            if (!(typeof element === 'object' && element instanceof Element)) {
                 throw new Error('Invalid argument provided to upgrade MDL element.');
             }
             // Allow upgrade to be canceled by canceling emitted event.
@@ -13462,7 +4166,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
              * Auxiliary function to downgrade a single node.
              * @param  {!Node} node the node to be downgraded
              */
-            var downgradeNode = function downgradeNode(node) {
+            var downgradeNode = function (node) {
                 createdComponents_.filter(function (item) {
                     return item.element_ === node;
                 }).forEach(deconstructComponentInternal);
@@ -17044,6 +7748,5848 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         widget: false
     });
 })();
+
+/***/ }),
+/* 37 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initButtons;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple__ = __webpack_require__(2);
+
+
+function initButtons() {
+    console.log('\tButtons');
+
+    var rippleButtons = document.querySelectorAll('.v-js-ripple-button');
+    if (rippleButtons) {
+        for (var i = 0; i < rippleButtons.length; i++) {
+            var button = rippleButtons[i];
+            if (!button.mdcComponent) {
+                button.mdcComponent = new __WEBPACK_IMPORTED_MODULE_0__material_ripple__["a" /* MDCRipple */](button);
+            }
+        }
+    }
+}
+
+/***/ }),
+/* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(3);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @typedef {!{
+ *   isActivated: (boolean|undefined),
+ *   hasDeactivationUXRun: (boolean|undefined),
+ *   wasActivatedByPointer: (boolean|undefined),
+ *   wasElementMadeActive: (boolean|undefined),
+ *   activationEvent: Event,
+ *   isProgrammatic: (boolean|undefined)
+ * }}
+ */
+let ActivationStateType;
+
+/**
+ * @typedef {!{
+ *   activate: (string|undefined),
+ *   deactivate: (string|undefined),
+ *   focus: (string|undefined),
+ *   blur: (string|undefined)
+ * }}
+ */
+let ListenerInfoType;
+
+/**
+ * @typedef {!{
+ *   activate: function(!Event),
+ *   deactivate: function(!Event),
+ *   focus: function(),
+ *   blur: function()
+ * }}
+ */
+let ListenersType;
+
+/**
+ * @typedef {!{
+ *   x: number,
+ *   y: number
+ * }}
+ */
+let PointType;
+
+// Activation events registered on the root element of each instance for activation
+const ACTIVATION_EVENT_TYPES = ['touchstart', 'pointerdown', 'mousedown', 'keydown'];
+
+// Deactivation events registered on documentElement when a pointer-related down event occurs
+const POINTER_DEACTIVATION_EVENT_TYPES = ['touchend', 'pointerup', 'mouseup'];
+
+// Tracks activations that have occurred on the current frame, to avoid simultaneous nested activations
+/** @type {!Array<!EventTarget>} */
+let activatedTargets = [];
+
+/**
+ * @extends {MDCFoundation<!MDCRippleAdapter>}
+ */
+class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */];
+  }
+
+  static get numbers() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */];
+  }
+
+  static get defaultAdapter() {
+    return {
+      browserSupportsCssVars: () => /* boolean - cached */{},
+      isUnbounded: () => /* boolean */{},
+      isSurfaceActive: () => /* boolean */{},
+      isSurfaceDisabled: () => /* boolean */{},
+      addClass: () => /* className: string */{},
+      removeClass: () => /* className: string */{},
+      containsEventTarget: () => /* target: !EventTarget */{},
+      registerInteractionHandler: () => /* evtType: string, handler: EventListener */{},
+      deregisterInteractionHandler: () => /* evtType: string, handler: EventListener */{},
+      registerDocumentInteractionHandler: () => /* evtType: string, handler: EventListener */{},
+      deregisterDocumentInteractionHandler: () => /* evtType: string, handler: EventListener */{},
+      registerResizeHandler: () => /* handler: EventListener */{},
+      deregisterResizeHandler: () => /* handler: EventListener */{},
+      updateCssVariable: () => /* varName: string, value: string */{},
+      computeBoundingRect: () => /* ClientRect */{},
+      getWindowPageOffset: () => /* {x: number, y: number} */{}
+    };
+  }
+
+  constructor(adapter) {
+    super(Object.assign(MDCRippleFoundation.defaultAdapter, adapter));
+
+    /** @private {number} */
+    this.layoutFrame_ = 0;
+
+    /** @private {!ClientRect} */
+    this.frame_ = /** @type {!ClientRect} */{ width: 0, height: 0 };
+
+    /** @private {!ActivationStateType} */
+    this.activationState_ = this.defaultActivationState_();
+
+    /** @private {number} */
+    this.initialSize_ = 0;
+
+    /** @private {number} */
+    this.maxRadius_ = 0;
+
+    /** @private {function(!Event)} */
+    this.activateHandler_ = e => this.activate_(e);
+
+    /** @private {function(!Event)} */
+    this.deactivateHandler_ = e => this.deactivate_(e);
+
+    /** @private {function(?Event=)} */
+    this.focusHandler_ = () => requestAnimationFrame(() => this.adapter_.addClass(MDCRippleFoundation.cssClasses.BG_FOCUSED));
+
+    /** @private {function(?Event=)} */
+    this.blurHandler_ = () => requestAnimationFrame(() => this.adapter_.removeClass(MDCRippleFoundation.cssClasses.BG_FOCUSED));
+
+    /** @private {!Function} */
+    this.resizeHandler_ = () => this.layout();
+
+    /** @private {!{left: number, top:number}} */
+    this.unboundedCoords_ = {
+      left: 0,
+      top: 0
+    };
+
+    /** @private {number} */
+    this.fgScale_ = 0;
+
+    /** @private {number} */
+    this.activationTimer_ = 0;
+
+    /** @private {number} */
+    this.fgDeactivationRemovalTimer_ = 0;
+
+    /** @private {boolean} */
+    this.activationAnimationHasEnded_ = false;
+
+    /** @private {!Function} */
+    this.activationTimerCallback_ = () => {
+      this.activationAnimationHasEnded_ = true;
+      this.runDeactivationUXLogicIfReady_();
+    };
+
+    /** @private {?Event} */
+    this.previousActivationEvent_ = null;
+  }
+
+  /**
+   * We compute this property so that we are not querying information about the client
+   * until the point in time where the foundation requests it. This prevents scenarios where
+   * client-side feature-detection may happen too early, such as when components are rendered on the server
+   * and then initialized at mount time on the client.
+   * @return {boolean}
+   * @private
+   */
+  isSupported_() {
+    return this.adapter_.browserSupportsCssVars();
+  }
+
+  /**
+   * @return {!ActivationStateType}
+   */
+  defaultActivationState_() {
+    return {
+      isActivated: false,
+      hasDeactivationUXRun: false,
+      wasActivatedByPointer: false,
+      wasElementMadeActive: false,
+      activationEvent: null,
+      isProgrammatic: false
+    };
+  }
+
+  init() {
+    if (!this.isSupported_()) {
+      return;
+    }
+    this.registerRootHandlers_();
+
+    const { ROOT, UNBOUNDED } = MDCRippleFoundation.cssClasses;
+    requestAnimationFrame(() => {
+      this.adapter_.addClass(ROOT);
+      if (this.adapter_.isUnbounded()) {
+        this.adapter_.addClass(UNBOUNDED);
+      }
+      this.layoutInternal_();
+    });
+  }
+
+  destroy() {
+    if (!this.isSupported_()) {
+      return;
+    }
+
+    if (this.activationTimer_) {
+      clearTimeout(this.activationTimer_);
+      this.activationTimer_ = 0;
+      const { FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
+      this.adapter_.removeClass(FG_ACTIVATION);
+    }
+
+    this.deregisterRootHandlers_();
+    this.deregisterDeactivationHandlers_();
+
+    const { ROOT, UNBOUNDED } = MDCRippleFoundation.cssClasses;
+    requestAnimationFrame(() => {
+      this.adapter_.removeClass(ROOT);
+      this.adapter_.removeClass(UNBOUNDED);
+      this.removeCssVars_();
+    });
+  }
+
+  /** @private */
+  registerRootHandlers_() {
+    ACTIVATION_EVENT_TYPES.forEach(type => {
+      this.adapter_.registerInteractionHandler(type, this.activateHandler_);
+    });
+    this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
+    this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
+    this.adapter_.registerResizeHandler(this.resizeHandler_);
+  }
+
+  /**
+   * @param {!Event} e
+   * @private
+   */
+  registerDeactivationHandlers_(e) {
+    if (e.type === 'keydown') {
+      this.adapter_.registerInteractionHandler('keyup', this.deactivateHandler_);
+    } else {
+      POINTER_DEACTIVATION_EVENT_TYPES.forEach(type => {
+        this.adapter_.registerDocumentInteractionHandler(type, this.deactivateHandler_);
+      });
+    }
+  }
+
+  /** @private */
+  deregisterRootHandlers_() {
+    ACTIVATION_EVENT_TYPES.forEach(type => {
+      this.adapter_.deregisterInteractionHandler(type, this.activateHandler_);
+    });
+    this.adapter_.deregisterInteractionHandler('focus', this.focusHandler_);
+    this.adapter_.deregisterInteractionHandler('blur', this.blurHandler_);
+    this.adapter_.deregisterResizeHandler(this.resizeHandler_);
+  }
+
+  /** @private */
+  deregisterDeactivationHandlers_() {
+    this.adapter_.deregisterInteractionHandler('keyup', this.deactivateHandler_);
+    POINTER_DEACTIVATION_EVENT_TYPES.forEach(type => {
+      this.adapter_.deregisterDocumentInteractionHandler(type, this.deactivateHandler_);
+    });
+  }
+
+  /** @private */
+  removeCssVars_() {
+    const { strings } = MDCRippleFoundation;
+    Object.keys(strings).forEach(k => {
+      if (k.indexOf('VAR_') === 0) {
+        this.adapter_.updateCssVariable(strings[k], null);
+      }
+    });
+  }
+
+  /**
+   * @param {?Event} e
+   * @private
+   */
+  activate_(e) {
+    if (this.adapter_.isSurfaceDisabled()) {
+      return;
+    }
+
+    const activationState = this.activationState_;
+    if (activationState.isActivated) {
+      return;
+    }
+
+    // Avoid reacting to follow-on events fired by touch device after an already-processed user interaction
+    const previousActivationEvent = this.previousActivationEvent_;
+    const isSameInteraction = previousActivationEvent && e && previousActivationEvent.type !== e.type;
+    if (isSameInteraction) {
+      return;
+    }
+
+    activationState.isActivated = true;
+    activationState.isProgrammatic = e === null;
+    activationState.activationEvent = e;
+    activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : e.type === 'mousedown' || e.type === 'touchstart' || e.type === 'pointerdown';
+
+    const hasActivatedChild = e && activatedTargets.length > 0 && activatedTargets.some(target => this.adapter_.containsEventTarget(target));
+    if (hasActivatedChild) {
+      // Immediately reset activation state, while preserving logic that prevents touch follow-on events
+      this.resetActivationState_();
+      return;
+    }
+
+    if (e) {
+      activatedTargets.push( /** @type {!EventTarget} */e.target);
+      this.registerDeactivationHandlers_(e);
+    }
+
+    requestAnimationFrame(() => {
+      // This needs to be wrapped in an rAF call b/c web browsers
+      // report active states inconsistently when they're called within
+      // event handling code:
+      // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
+      // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
+      activationState.wasElementMadeActive = e && e.type === 'keydown' ? this.adapter_.isSurfaceActive() : true;
+      if (activationState.wasElementMadeActive) {
+        this.animateActivation_();
+      } else {
+        // Reset activation state immediately if element was not made active.
+        this.activationState_ = this.defaultActivationState_();
+      }
+
+      // Reset array on next frame after the current event has had a chance to bubble to prevent ancestor ripples
+      activatedTargets = [];
+    });
+  }
+
+  /**
+   * @param {?Event=} event Optional event containing position information.
+   */
+  activate(event = null) {
+    this.activate_(event);
+  }
+
+  /** @private */
+  animateActivation_() {
+    const { VAR_FG_TRANSLATE_START, VAR_FG_TRANSLATE_END } = MDCRippleFoundation.strings;
+    const { FG_DEACTIVATION, FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
+    const { DEACTIVATION_TIMEOUT_MS } = MDCRippleFoundation.numbers;
+
+    let translateStart = '';
+    let translateEnd = '';
+
+    if (!this.adapter_.isUnbounded()) {
+      const { startPoint, endPoint } = this.getFgTranslationCoordinates_();
+      translateStart = `${startPoint.x}px, ${startPoint.y}px`;
+      translateEnd = `${endPoint.x}px, ${endPoint.y}px`;
+    }
+
+    this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_START, translateStart);
+    this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_END, translateEnd);
+    // Cancel any ongoing activation/deactivation animations
+    clearTimeout(this.activationTimer_);
+    clearTimeout(this.fgDeactivationRemovalTimer_);
+    this.rmBoundedActivationClasses_();
+    this.adapter_.removeClass(FG_DEACTIVATION);
+
+    // Force layout in order to re-trigger the animation.
+    this.adapter_.computeBoundingRect();
+    this.adapter_.addClass(FG_ACTIVATION);
+    this.activationTimer_ = setTimeout(() => this.activationTimerCallback_(), DEACTIVATION_TIMEOUT_MS);
+  }
+
+  /**
+   * @private
+   * @return {{startPoint: PointType, endPoint: PointType}}
+   */
+  getFgTranslationCoordinates_() {
+    const { activationEvent, wasActivatedByPointer } = this.activationState_;
+
+    let startPoint;
+    if (wasActivatedByPointer) {
+      startPoint = Object(__WEBPACK_IMPORTED_MODULE_3__util__["c" /* getNormalizedEventCoords */])(
+      /** @type {!Event} */activationEvent, this.adapter_.getWindowPageOffset(), this.adapter_.computeBoundingRect());
+    } else {
+      startPoint = {
+        x: this.frame_.width / 2,
+        y: this.frame_.height / 2
+      };
+    }
+    // Center the element around the start point.
+    startPoint = {
+      x: startPoint.x - this.initialSize_ / 2,
+      y: startPoint.y - this.initialSize_ / 2
+    };
+
+    const endPoint = {
+      x: this.frame_.width / 2 - this.initialSize_ / 2,
+      y: this.frame_.height / 2 - this.initialSize_ / 2
+    };
+
+    return { startPoint, endPoint };
+  }
+
+  /** @private */
+  runDeactivationUXLogicIfReady_() {
+    // This method is called both when a pointing device is released, and when the activation animation ends.
+    // The deactivation animation should only run after both of those occur.
+    const { FG_DEACTIVATION } = MDCRippleFoundation.cssClasses;
+    const { hasDeactivationUXRun, isActivated } = this.activationState_;
+    const activationHasEnded = hasDeactivationUXRun || !isActivated;
+
+    if (activationHasEnded && this.activationAnimationHasEnded_) {
+      this.rmBoundedActivationClasses_();
+      this.adapter_.addClass(FG_DEACTIVATION);
+      this.fgDeactivationRemovalTimer_ = setTimeout(() => {
+        this.adapter_.removeClass(FG_DEACTIVATION);
+      }, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].FG_DEACTIVATION_MS);
+    }
+  }
+
+  /** @private */
+  rmBoundedActivationClasses_() {
+    const { FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
+    this.adapter_.removeClass(FG_ACTIVATION);
+    this.activationAnimationHasEnded_ = false;
+    this.adapter_.computeBoundingRect();
+  }
+
+  resetActivationState_() {
+    this.previousActivationEvent_ = this.activationState_.activationEvent;
+    this.activationState_ = this.defaultActivationState_();
+    // Touch devices may fire additional events for the same interaction within a short time.
+    // Store the previous event until it's safe to assume that subsequent events are for new interactions.
+    setTimeout(() => this.previousActivationEvent_ = null, MDCRippleFoundation.numbers.TAP_DELAY_MS);
+  }
+
+  /**
+   * @param {?Event} e
+   * @private
+   */
+  deactivate_(e) {
+    const activationState = this.activationState_;
+    // This can happen in scenarios such as when you have a keyup event that blurs the element.
+    if (!activationState.isActivated) {
+      return;
+    }
+
+    const state = /** @type {!ActivationStateType} */Object.assign({}, activationState);
+
+    if (activationState.isProgrammatic) {
+      const evtObject = null;
+      requestAnimationFrame(() => this.animateDeactivation_(evtObject, state));
+      this.resetActivationState_();
+    } else {
+      this.deregisterDeactivationHandlers_();
+      requestAnimationFrame(() => {
+        this.activationState_.hasDeactivationUXRun = true;
+        this.animateDeactivation_(e, state);
+        this.resetActivationState_();
+      });
+    }
+  }
+
+  /**
+   * @param {?Event=} event Optional event containing position information.
+   */
+  deactivate(event = null) {
+    this.deactivate_(event);
+  }
+
+  /**
+   * @param {Event} e
+   * @param {!ActivationStateType} options
+   * @private
+   */
+  animateDeactivation_(e, { wasActivatedByPointer, wasElementMadeActive }) {
+    if (wasActivatedByPointer || wasElementMadeActive) {
+      this.runDeactivationUXLogicIfReady_();
+    }
+  }
+
+  layout() {
+    if (this.layoutFrame_) {
+      cancelAnimationFrame(this.layoutFrame_);
+    }
+    this.layoutFrame_ = requestAnimationFrame(() => {
+      this.layoutInternal_();
+      this.layoutFrame_ = 0;
+    });
+  }
+
+  /** @private */
+  layoutInternal_() {
+    this.frame_ = this.adapter_.computeBoundingRect();
+    const maxDim = Math.max(this.frame_.height, this.frame_.width);
+
+    // Surface diameter is treated differently for unbounded vs. bounded ripples.
+    // Unbounded ripple diameter is calculated smaller since the surface is expected to already be padded appropriately
+    // to extend the hitbox, and the ripple is expected to meet the edges of the padded hitbox (which is typically
+    // square). Bounded ripples, on the other hand, are fully expected to expand beyond the surface's longest diameter
+    // (calculated based on the diagonal plus a constant padding), and are clipped at the surface's border via
+    // `overflow: hidden`.
+    const getBoundedRadius = () => {
+      const hypotenuse = Math.sqrt(Math.pow(this.frame_.width, 2) + Math.pow(this.frame_.height, 2));
+      return hypotenuse + MDCRippleFoundation.numbers.PADDING;
+    };
+
+    this.maxRadius_ = this.adapter_.isUnbounded() ? maxDim : getBoundedRadius();
+
+    // Ripple is sized as a fraction of the largest dimension of the surface, then scales up using a CSS scale transform
+    this.initialSize_ = maxDim * MDCRippleFoundation.numbers.INITIAL_ORIGIN_SCALE;
+    this.fgScale_ = this.maxRadius_ / this.initialSize_;
+
+    this.updateLayoutCssVars_();
+  }
+
+  /** @private */
+  updateLayoutCssVars_() {
+    const {
+      VAR_FG_SIZE, VAR_LEFT, VAR_TOP, VAR_FG_SCALE
+    } = MDCRippleFoundation.strings;
+
+    this.adapter_.updateCssVariable(VAR_FG_SIZE, `${this.initialSize_}px`);
+    this.adapter_.updateCssVariable(VAR_FG_SCALE, this.fgScale_);
+
+    if (this.adapter_.isUnbounded()) {
+      this.unboundedCoords_ = {
+        left: Math.round(this.frame_.width / 2 - this.initialSize_ / 2),
+        top: Math.round(this.frame_.height / 2 - this.initialSize_ / 2)
+      };
+
+      this.adapter_.updateCssVariable(VAR_LEFT, `${this.unboundedCoords_.left}px`);
+      this.adapter_.updateCssVariable(VAR_TOP, `${this.unboundedCoords_.top}px`);
+    }
+  }
+
+  /** @param {boolean} unbounded */
+  setUnbounded(unbounded) {
+    const { UNBOUNDED } = MDCRippleFoundation.cssClasses;
+    if (unbounded) {
+      this.adapter_.addClass(UNBOUNDED);
+    } else {
+      this.adapter_.removeClass(UNBOUNDED);
+    }
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCRippleFoundation);
+
+/***/ }),
+/* 39 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return strings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return numbers; });
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+const cssClasses = {
+  // Ripple is a special case where the "root" component is really a "mixin" of sorts,
+  // given that it's an 'upgrade' to an existing component. That being said it is the root
+  // CSS class that all other CSS classes derive from.
+  ROOT: 'mdc-ripple-upgraded',
+  UNBOUNDED: 'mdc-ripple-upgraded--unbounded',
+  BG_FOCUSED: 'mdc-ripple-upgraded--background-focused',
+  FG_ACTIVATION: 'mdc-ripple-upgraded--foreground-activation',
+  FG_DEACTIVATION: 'mdc-ripple-upgraded--foreground-deactivation'
+};
+
+const strings = {
+  VAR_LEFT: '--mdc-ripple-left',
+  VAR_TOP: '--mdc-ripple-top',
+  VAR_FG_SIZE: '--mdc-ripple-fg-size',
+  VAR_FG_SCALE: '--mdc-ripple-fg-scale',
+  VAR_FG_TRANSLATE_START: '--mdc-ripple-fg-translate-start',
+  VAR_FG_TRANSLATE_END: '--mdc-ripple-fg-translate-end'
+};
+
+const numbers = {
+  PADDING: 10,
+  INITIAL_ORIGIN_SCALE: 0.6,
+  DEACTIVATION_TIMEOUT_MS: 225, // Corresponds to $mdc-ripple-translate-duration (i.e. activation animation duration)
+  FG_DEACTIVATION_MS: 150, // Corresponds to $mdc-ripple-fade-out-duration (i.e. deactivation animation duration)
+  TAP_DELAY_MS: 300 // Delay between touch and simulated mouse events on touch devices
+};
+
+
+
+/***/ }),
+/* 40 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initDialogs;
+// This is used to get a proper binding of the actionData
+// https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
+function createDialogHandler(dialog) {
+    return function () {
+        dialog.close();
+    };
+}
+
+function initDialogs() {
+    console.log('\tDialogs');
+
+    var dialogs = document.querySelectorAll('.v-js-dialog');
+    if (dialogs) {
+        for (var i = 0; i < dialogs.length; i++) {
+            var dialog = dialogs[i];
+            var dialogButtons = dialog.querySelectorAll('button:not([disabled])');
+            for (var j = 0; j != dialogButtons.length; j++) {
+                var dialogButton = dialogButtons[j];
+                if (!dialogButton.dialog) {
+                    dialogButton.dialog = dialog;
+                    var buttonEvents = dialogButton.dataset.events;
+                    // If the dialog button does not have any events tied to it,
+                    // then close the dialog on click, otherwise let the events handlers
+                    // take care of the close.
+                    if (!buttonEvents) {
+                        dialogButton.addEventListener('click', createDialogHandler(dialog));
+                    }
+                }
+            }
+        }
+    }
+}
+
+/***/ }),
+/* 41 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initTextFields;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_textfield__ = __webpack_require__(42);
+
+
+function initTextFields() {
+    console.log('\tTextFields');
+
+    var textFields = document.querySelectorAll('.mdc-text-field');
+    for (var i = 0; i < textFields.length; i++) {
+        var textField = textFields[i];
+        if (!textField.mdcComponent) {
+            textField.mdcComponent = new __WEBPACK_IMPORTED_MODULE_0__material_textfield__["a" /* MDCTextField */](textField);
+        }
+    }
+}
+
+/***/ }),
+/* 42 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextField; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_util__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__adapter__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_line_ripple_index__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__helper_text_index__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__icon_index__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__material_floating_label_index__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__material_notched_outline_index__ = __webpack_require__(52);
+/* unused harmony reexport MDCTextFieldFoundation */
+/* unused harmony reexport MDCTextFieldHelperText */
+/* unused harmony reexport MDCTextFieldHelperTextFoundation */
+/* unused harmony reexport MDCTextFieldIcon */
+/* unused harmony reexport MDCTextFieldIconFoundation */
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+/* eslint-disable no-unused-vars */
+
+/* eslint-enable no-unused-vars */
+
+
+
+
+
+/* eslint-disable no-unused-vars */
+
+
+
+
+
+/* eslint-enable no-unused-vars */
+
+/**
+ * @extends {MDCComponent<!MDCTextFieldFoundation>}
+ * @final
+ */
+class MDCTextField extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /**
+   * @param {...?} args
+   */
+  constructor(...args) {
+    super(...args);
+    /** @private {?Element} */
+    this.input_;
+    /** @type {?MDCRipple} */
+    this.ripple;
+    /** @private {?MDCLineRipple} */
+    this.lineRipple_;
+    /** @private {?MDCTextFieldHelperText} */
+    this.helperText_;
+    /** @private {?MDCTextFieldIcon} */
+    this.icon_;
+    /** @private {?MDCFloatingLabel} */
+    this.label_;
+    /** @private {?MDCNotchedOutline} */
+    this.outline_;
+  }
+
+  /**
+   * @param {!Element} root
+   * @return {!MDCTextField}
+   */
+  static attachTo(root) {
+    return new MDCTextField(root);
+  }
+
+  /**
+   * @param {(function(!Element): !MDCRipple)=} rippleFactory A function which
+   * creates a new MDCRipple.
+   * @param {(function(!Element): !MDCLineRipple)=} lineRippleFactory A function which
+   * creates a new MDCLineRipple.
+   * @param {(function(!Element): !MDCTextFieldHelperText)=} helperTextFactory A function which
+   * creates a new MDCTextFieldHelperText.
+   * @param {(function(!Element): !MDCTextFieldIcon)=} iconFactory A function which
+   * creates a new MDCTextFieldIcon.
+   * @param {(function(!Element): !MDCFloatingLabel)=} labelFactory A function which
+   * creates a new MDCFloatingLabel.
+   * @param {(function(!Element): !MDCNotchedOutline)=} outlineFactory A function which
+   * creates a new MDCNotchedOutline.
+   */
+  initialize(rippleFactory = (el, foundation) => new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["a" /* MDCRipple */](el, foundation), lineRippleFactory = el => new __WEBPACK_IMPORTED_MODULE_6__material_line_ripple_index__["a" /* MDCLineRipple */](el), helperTextFactory = el => new __WEBPACK_IMPORTED_MODULE_7__helper_text_index__["a" /* MDCTextFieldHelperText */](el), iconFactory = el => new __WEBPACK_IMPORTED_MODULE_8__icon_index__["a" /* MDCTextFieldIcon */](el), labelFactory = el => new __WEBPACK_IMPORTED_MODULE_9__material_floating_label_index__["a" /* MDCFloatingLabel */](el), outlineFactory = el => new __WEBPACK_IMPORTED_MODULE_10__material_notched_outline_index__["a" /* MDCNotchedOutline */](el)) {
+    this.input_ = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].INPUT_SELECTOR);
+    const labelElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].LABEL_SELECTOR);
+    if (labelElement) {
+      this.label_ = labelFactory(labelElement);
+    }
+    const lineRippleElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].BOTTOM_LINE_SELECTOR);
+    if (lineRippleElement) {
+      this.lineRipple_ = lineRippleFactory(lineRippleElement);
+    }
+    const outlineElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].OUTLINE_SELECTOR);
+    if (outlineElement) {
+      this.outline_ = outlineFactory(outlineElement);
+    }
+    if (this.input_.hasAttribute(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ARIA_CONTROLS)) {
+      const helperTextElement = document.getElementById(this.input_.getAttribute(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ARIA_CONTROLS));
+      if (helperTextElement) {
+        this.helperText_ = helperTextFactory(helperTextElement);
+      }
+    }
+    const iconElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ICON_SELECTOR);
+    if (iconElement) {
+      this.icon_ = iconFactory(iconElement);
+    }
+
+    this.ripple = null;
+    if (this.root_.classList.contains(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].BOX)) {
+      const MATCHES = Object(__WEBPACK_IMPORTED_MODULE_2__material_ripple_util__["b" /* getMatchesProperty */])(HTMLElement.prototype);
+      const adapter = Object.assign(__WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["a" /* MDCRipple */].createAdapter( /** @type {!RippleCapableSurface} */this), {
+        isSurfaceActive: () => this.input_[MATCHES](':active'),
+        registerInteractionHandler: (type, handler) => this.input_.addEventListener(type, handler),
+        deregisterInteractionHandler: (type, handler) => this.input_.removeEventListener(type, handler)
+      });
+      const foundation = new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["b" /* MDCRippleFoundation */](adapter);
+      this.ripple = rippleFactory(this.root_, foundation);
+    }
+  }
+
+  destroy() {
+    if (this.ripple) {
+      this.ripple.destroy();
+    }
+    if (this.lineRipple_) {
+      this.lineRipple_.destroy();
+    }
+    if (this.helperText_) {
+      this.helperText_.destroy();
+    }
+    if (this.icon_) {
+      this.icon_.destroy();
+    }
+    if (this.label_) {
+      this.label_.destroy();
+    }
+    if (this.outline_) {
+      this.outline_.destroy();
+    }
+    super.destroy();
+  }
+
+  /**
+   * Initiliazes the Text Field's internal state based on the environment's
+   * state.
+   */
+  initialSyncWithDom() {
+    this.disabled = this.input_.disabled;
+  }
+
+  /**
+   * @return {string} The value of the input.
+   */
+  get value() {
+    return this.foundation_.getValue();
+  }
+
+  /**
+   * @param {string} value The value to set on the input.
+   */
+  set value(value) {
+    this.foundation_.setValue(value);
+  }
+
+  /**
+   * @return {boolean} True if the Text Field is disabled.
+   */
+  get disabled() {
+    return this.foundation_.isDisabled();
+  }
+
+  /**
+   * @param {boolean} disabled Sets the Text Field disabled or enabled.
+   */
+  set disabled(disabled) {
+    this.foundation_.setDisabled(disabled);
+  }
+
+  /**
+   * @return {boolean} valid True if the Text Field is valid.
+   */
+  get valid() {
+    return this.foundation_.isValid();
+  }
+
+  /**
+   * @param {boolean} valid Sets the Text Field valid or invalid.
+   */
+  set valid(valid) {
+    this.foundation_.setValid(valid);
+  }
+
+  /**
+   * @return {boolean} True if the Text Field is required.
+   */
+  get required() {
+    return this.input_.required;
+  }
+
+  /**
+   * @param {boolean} required Sets the Text Field to required.
+   */
+  set required(required) {
+    this.input_.required = required;
+  }
+
+  /**
+   * @return {string} The input element's validation pattern.
+   */
+  get pattern() {
+    return this.input_.pattern;
+  }
+
+  /**
+   * @param {string} pattern Sets the input element's validation pattern.
+   */
+  set pattern(pattern) {
+    this.input_.pattern = pattern;
+  }
+
+  /**
+   * @return {number} The input element's minLength.
+   */
+  get minLength() {
+    return this.input_.minLength;
+  }
+
+  /**
+   * @param {number} minLength Sets the input element's minLength.
+   */
+  set minLength(minLength) {
+    this.input_.minLength = minLength;
+  }
+
+  /**
+   * @return {number} The input element's maxLength.
+   */
+  get maxLength() {
+    return this.input_.maxLength;
+  }
+
+  /**
+   * @param {number} maxLength Sets the input element's maxLength.
+   */
+  set maxLength(maxLength) {
+    // Chrome throws exception if maxLength is set < 0
+    if (maxLength < 0) {
+      this.input_.removeAttribute('maxLength');
+    } else {
+      this.input_.maxLength = maxLength;
+    }
+  }
+
+  /**
+   * @return {string} The input element's min.
+   */
+  get min() {
+    return this.input_.min;
+  }
+
+  /**
+   * @param {string} min Sets the input element's min.
+   */
+  set min(min) {
+    this.input_.min = min;
+  }
+
+  /**
+   * @return {string} The input element's max.
+   */
+  get max() {
+    return this.input_.max;
+  }
+
+  /**
+   * @param {string} max Sets the input element's max.
+   */
+  set max(max) {
+    this.input_.max = max;
+  }
+
+  /**
+   * @return {string} The input element's step.
+   */
+  get step() {
+    return this.input_.step;
+  }
+
+  /**
+   * @param {string} step Sets the input element's step.
+   */
+  set step(step) {
+    this.input_.step = step;
+  }
+
+  /**
+   * Sets the helper text element content.
+   * @param {string} content
+   */
+  set helperTextContent(content) {
+    this.foundation_.setHelperTextContent(content);
+  }
+
+  /**
+   * Recomputes the outline SVG path for the outline element, and recomputes
+   * all dimensions and positions for the ripple element.
+   */
+  layout() {
+    const openNotch = this.foundation_.shouldFloat;
+    this.foundation_.notchOutline(openNotch);
+    if (this.ripple) {
+      this.ripple.layout();
+    }
+  }
+
+  /**
+   * @return {!MDCTextFieldFoundation}
+   */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_5__foundation__["a" /* default */](
+    /** @type {!MDCTextFieldAdapter} */Object.assign({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className),
+      hasClass: className => this.root_.classList.contains(className),
+      registerTextFieldInteractionHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
+      deregisterTextFieldInteractionHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler),
+      registerValidationAttributeChangeHandler: handler => {
+        const observer = new MutationObserver(handler);
+        const targetNode = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].INPUT_SELECTOR);
+        const config = { attributes: true };
+        observer.observe(targetNode, config);
+        return observer;
+      },
+      deregisterValidationAttributeChangeHandler: observer => observer.disconnect(),
+      isFocused: () => {
+        return document.activeElement === this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].INPUT_SELECTOR);
+      },
+      isRtl: () => window.getComputedStyle(this.root_).getPropertyValue('direction') === 'rtl'
+    }, this.getInputAdapterMethods_(), this.getLabelAdapterMethods_(), this.getLineRippleAdapterMethods_(), this.getOutlineAdapterMethods_()), this.getFoundationMap_());
+  }
+
+  /**
+   * @return {!{
+   *   shakeLabel: function(boolean): undefined,
+   *   floatLabel: function(boolean): undefined,
+   *   hasLabel: function(): boolean,
+   *   getLabelWidth: function(): number,
+   * }}
+   */
+  getLabelAdapterMethods_() {
+    return {
+      shakeLabel: shouldShake => this.label_.shake(shouldShake),
+      floatLabel: shouldFloat => this.label_.float(shouldFloat),
+      hasLabel: () => !!this.label_,
+      getLabelWidth: () => this.label_.getWidth()
+    };
+  }
+
+  /**
+   * @return {!{
+   *   activateLineRipple: function(): undefined,
+   *   deactivateLineRipple: function(): undefined,
+   *   setLineRippleTransformOrigin: function(!number): undefined,
+   * }}
+   */
+  getLineRippleAdapterMethods_() {
+    return {
+      activateLineRipple: () => {
+        if (this.lineRipple_) {
+          this.lineRipple_.activate();
+        }
+      },
+      deactivateLineRipple: () => {
+        if (this.lineRipple_) {
+          this.lineRipple_.deactivate();
+        }
+      },
+      setLineRippleTransformOrigin: normalizedX => {
+        if (this.lineRipple_) {
+          this.lineRipple_.setRippleCenter(normalizedX);
+        }
+      }
+    };
+  }
+
+  /**
+   * @return {!{
+   *   notchOutline: function(number, boolean): undefined,
+   *   hasOutline: function(): boolean,
+   * }}
+   */
+  getOutlineAdapterMethods_() {
+    return {
+      notchOutline: (labelWidth, isRtl) => this.outline_.notch(labelWidth, isRtl),
+      closeOutline: () => this.outline_.closeNotch(),
+      hasOutline: () => !!this.outline_
+    };
+  }
+
+  /**
+   * @return {!{
+   *   registerInputInteractionHandler: function(string, function()): undefined,
+   *   deregisterInputInteractionHandler: function(string, function()): undefined,
+   *   getNativeInput: function(): ?Element,
+   * }}
+   */
+  getInputAdapterMethods_() {
+    return {
+      registerInputInteractionHandler: (evtType, handler) => this.input_.addEventListener(evtType, handler),
+      deregisterInputInteractionHandler: (evtType, handler) => this.input_.removeEventListener(evtType, handler),
+      getNativeInput: () => this.input_
+    };
+  }
+
+  /**
+   * Returns a map of all subcomponents to subfoundations.
+   * @return {!FoundationMapType}
+   */
+  getFoundationMap_() {
+    return {
+      helperText: this.helperText_ ? this.helperText_.foundation : undefined,
+      icon: this.icon_ ? this.icon_.foundation : undefined
+    };
+  }
+}
+
+
+
+/***/ }),
+/* 43 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return strings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/** @enum {string} */
+const strings = {
+  ARIA_HIDDEN: 'aria-hidden',
+  ROLE: 'role'
+};
+
+/** @enum {string} */
+const cssClasses = {
+  HELPER_TEXT_PERSISTENT: 'mdc-text-field-helper-text--persistent',
+  HELPER_TEXT_VALIDATION_MSG: 'mdc-text-field-helper-text--validation-msg'
+};
+
+
+
+/***/ }),
+/* 44 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return strings; });
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/** @enum {string} */
+const strings = {
+  ICON_EVENT: 'MDCTextField:icon'
+};
+
+
+
+/***/ }),
+/* 45 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_line_ripple_foundation__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__helper_text_foundation__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icon_foundation__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_floating_label_foundation__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_notched_outline_foundation__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__constants__ = __webpack_require__(9);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+/* eslint-disable no-unused-vars */
+
+
+
+
+
+/* eslint-enable no-unused-vars */
+
+
+// whitelist based off of https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
+// under section: `Validation-related attributes`
+const VALIDATION_ATTR_WHITELIST = ['pattern', 'min', 'max', 'required', 'step', 'minlength', 'maxlength'];
+
+/**
+ * @extends {MDCFoundation<!MDCTextFieldAdapter>}
+ * @final
+ */
+class MDCTextFieldFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_7__constants__["a" /* cssClasses */];
+  }
+
+  /** @return enum {string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_7__constants__["c" /* strings */];
+  }
+
+  /** @return enum {string} */
+  static get numbers() {
+    return __WEBPACK_IMPORTED_MODULE_7__constants__["b" /* numbers */];
+  }
+
+  /** @return {boolean} */
+  get shouldShake() {
+    return !this.isValid() && !this.isFocused_;
+  }
+
+  /** @return {boolean} */
+  get shouldFloat() {
+    return !this.isBadInput_() && (!!this.getValue() || this.isFocused_);
+  }
+
+  /**
+   * {@see MDCTextFieldAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCTextFieldAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCTextFieldAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        hasClass: () => {},
+        registerTextFieldInteractionHandler: () => {},
+        deregisterTextFieldInteractionHandler: () => {},
+        registerInputInteractionHandler: () => {},
+        deregisterInputInteractionHandler: () => {},
+        registerValidationAttributeChangeHandler: () => {},
+        deregisterValidationAttributeChangeHandler: () => {},
+        getNativeInput: () => {},
+        isFocused: () => {},
+        isRtl: () => {},
+        activateLineRipple: () => {},
+        deactivateLineRipple: () => {},
+        setLineRippleTransformOrigin: () => {},
+        shakeLabel: () => {},
+        floatLabel: () => {},
+        hasLabel: () => {},
+        getLabelWidth: () => {},
+        hasOutline: () => {},
+        notchOutline: () => {},
+        closeOutline: () => {}
+      }
+    );
+  }
+
+  /**
+   * @param {!MDCTextFieldAdapter} adapter
+   * @param {!FoundationMapType=} foundationMap Map from subcomponent names to their subfoundations.
+   */
+  constructor(adapter, foundationMap = /** @type {!FoundationMapType} */{}) {
+    super(Object.assign(MDCTextFieldFoundation.defaultAdapter, adapter));
+
+    /** @type {!MDCTextFieldHelperTextFoundation|undefined} */
+    this.helperText_ = foundationMap.helperText;
+    /** @type {!MDCTextFieldIconFoundation|undefined} */
+    this.icon_ = foundationMap.icon;
+
+    /** @private {boolean} */
+    this.isFocused_ = false;
+    /** @private {boolean} */
+    this.receivedUserInput_ = false;
+    /** @private {boolean} */
+    this.useCustomValidityChecking_ = false;
+    /** @private {boolean} */
+    this.isValid_ = true;
+    /** @private {function(): undefined} */
+    this.inputFocusHandler_ = () => this.activateFocus();
+    /** @private {function(): undefined} */
+    this.inputBlurHandler_ = () => this.deactivateFocus();
+    /** @private {function(): undefined} */
+    this.inputInputHandler_ = () => this.autoCompleteFocus();
+    /** @private {function(!Event): undefined} */
+    this.setPointerXOffset_ = evt => this.setTransformOrigin(evt);
+    /** @private {function(!Event): undefined} */
+    this.textFieldInteractionHandler_ = () => this.handleTextFieldInteraction();
+    /** @private {function(!Array): undefined} */
+    this.validationAttributeChangeHandler_ = mutations => this.handleValidationAttributeMutation_(mutations);
+    /** @private {!MutationObserver} */
+    this.validationObserver_;
+  }
+
+  init() {
+    this.adapter_.addClass(MDCTextFieldFoundation.cssClasses.UPGRADED);
+    // Ensure label does not collide with any pre-filled value.
+    if (this.adapter_.hasLabel() && this.getValue()) {
+      this.adapter_.floatLabel(this.shouldFloat);
+      this.notchOutline(this.shouldFloat);
+    }
+
+    if (this.adapter_.isFocused()) {
+      this.inputFocusHandler_();
+    }
+
+    this.adapter_.registerInputInteractionHandler('focus', this.inputFocusHandler_);
+    this.adapter_.registerInputInteractionHandler('blur', this.inputBlurHandler_);
+    this.adapter_.registerInputInteractionHandler('input', this.inputInputHandler_);
+    ['mousedown', 'touchstart'].forEach(evtType => {
+      this.adapter_.registerInputInteractionHandler(evtType, this.setPointerXOffset_);
+    });
+    ['click', 'keydown'].forEach(evtType => {
+      this.adapter_.registerTextFieldInteractionHandler(evtType, this.textFieldInteractionHandler_);
+    });
+    this.validationObserver_ = this.adapter_.registerValidationAttributeChangeHandler(this.validationAttributeChangeHandler_);
+  }
+
+  destroy() {
+    this.adapter_.removeClass(MDCTextFieldFoundation.cssClasses.UPGRADED);
+    this.adapter_.deregisterInputInteractionHandler('focus', this.inputFocusHandler_);
+    this.adapter_.deregisterInputInteractionHandler('blur', this.inputBlurHandler_);
+    this.adapter_.deregisterInputInteractionHandler('input', this.inputInputHandler_);
+    ['mousedown', 'touchstart'].forEach(evtType => {
+      this.adapter_.deregisterInputInteractionHandler(evtType, this.setPointerXOffset_);
+    });
+    ['click', 'keydown'].forEach(evtType => {
+      this.adapter_.deregisterTextFieldInteractionHandler(evtType, this.textFieldInteractionHandler_);
+    });
+    this.adapter_.deregisterValidationAttributeChangeHandler(this.validationObserver_);
+  }
+
+  /**
+   * Handles user interactions with the Text Field.
+   */
+  handleTextFieldInteraction() {
+    if (this.adapter_.getNativeInput().disabled) {
+      return;
+    }
+    this.receivedUserInput_ = true;
+  }
+
+  /**
+   * Handles validation attribute changes
+   * @param {Array<MutationRecord>} mutationsList
+   * @private
+   */
+  handleValidationAttributeMutation_(mutationsList) {
+    mutationsList.some(mutation => {
+      if (VALIDATION_ATTR_WHITELIST.indexOf(mutation.attributeName) > -1) {
+        this.styleValidity_(true);
+        return true;
+      }
+    });
+  }
+
+  /**
+   * Opens/closes the notched outline.
+   * @param {boolean} openNotch
+   */
+  notchOutline(openNotch) {
+    if (!this.adapter_.hasOutline() || !this.adapter_.hasLabel()) {
+      return;
+    }
+
+    if (openNotch) {
+      const isDense = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_7__constants__["a" /* cssClasses */].DENSE);
+      const labelScale = isDense ? __WEBPACK_IMPORTED_MODULE_7__constants__["b" /* numbers */].DENSE_LABEL_SCALE : __WEBPACK_IMPORTED_MODULE_7__constants__["b" /* numbers */].LABEL_SCALE;
+      const labelWidth = this.adapter_.getLabelWidth() * labelScale;
+      const isRtl = this.adapter_.isRtl();
+      this.adapter_.notchOutline(labelWidth, isRtl);
+    } else {
+      this.adapter_.closeOutline();
+    }
+  }
+
+  /**
+   * Activates the text field focus state.
+   */
+  activateFocus() {
+    this.isFocused_ = true;
+    this.styleFocused_(this.isFocused_);
+    this.adapter_.activateLineRipple();
+    this.notchOutline(this.shouldFloat);
+    if (this.adapter_.hasLabel()) {
+      this.adapter_.shakeLabel(this.shouldShake);
+      this.adapter_.floatLabel(this.shouldFloat);
+    }
+    if (this.helperText_) {
+      this.helperText_.showToScreenReader();
+    }
+  }
+
+  /**
+   * Sets the line ripple's transform origin, so that the line ripple activate
+   * animation will animate out from the user's click location.
+   * @param {!Event} evt
+   */
+  setTransformOrigin(evt) {
+    const targetClientRect = evt.target.getBoundingClientRect();
+    const evtCoords = { x: evt.clientX, y: evt.clientY };
+    const normalizedX = evtCoords.x - targetClientRect.left;
+    this.adapter_.setLineRippleTransformOrigin(normalizedX);
+  }
+
+  /**
+   * Activates the Text Field's focus state in cases when the input value
+   * changes without user input (e.g. programatically).
+   */
+  autoCompleteFocus() {
+    if (!this.receivedUserInput_) {
+      this.activateFocus();
+    }
+  }
+
+  /**
+   * Deactivates the Text Field's focus state.
+   */
+  deactivateFocus() {
+    this.isFocused_ = false;
+    this.adapter_.deactivateLineRipple();
+    const input = this.getNativeInput_();
+    const shouldRemoveLabelFloat = !input.value && !this.isBadInput_();
+    const isValid = this.isValid();
+    this.styleValidity_(isValid);
+    this.styleFocused_(this.isFocused_);
+    if (this.adapter_.hasLabel()) {
+      this.adapter_.shakeLabel(this.shouldShake);
+      this.adapter_.floatLabel(this.shouldFloat);
+      this.notchOutline(this.shouldFloat);
+    }
+    if (shouldRemoveLabelFloat) {
+      this.receivedUserInput_ = false;
+    }
+  }
+
+  /**
+   * @return {string} The value of the input Element.
+   */
+  getValue() {
+    return this.getNativeInput_().value;
+  }
+
+  /**
+   * @param {string} value The value to set on the input Element.
+   */
+  setValue(value) {
+    this.getNativeInput_().value = value;
+    const isValid = this.isValid();
+    this.styleValidity_(isValid);
+    if (this.adapter_.hasLabel()) {
+      this.adapter_.shakeLabel(this.shouldShake);
+      this.adapter_.floatLabel(this.shouldFloat);
+      this.notchOutline(this.shouldFloat);
+    }
+  }
+
+  /**
+   * @return {boolean} If a custom validity is set, returns that value.
+   *     Otherwise, returns the result of native validity checks.
+   */
+  isValid() {
+    return this.useCustomValidityChecking_ ? this.isValid_ : this.isNativeInputValid_();
+  }
+
+  /**
+   * @param {boolean} isValid Sets the validity state of the Text Field.
+   */
+  setValid(isValid) {
+    this.useCustomValidityChecking_ = true;
+    this.isValid_ = isValid;
+    // Retrieve from the getter to ensure correct logic is applied.
+    isValid = this.isValid();
+    this.styleValidity_(isValid);
+    if (this.adapter_.hasLabel()) {
+      this.adapter_.shakeLabel(this.shouldShake);
+    }
+  }
+
+  /**
+   * @return {boolean} True if the Text Field is disabled.
+   */
+  isDisabled() {
+    return this.getNativeInput_().disabled;
+  }
+
+  /**
+   * @param {boolean} disabled Sets the text-field disabled or enabled.
+   */
+  setDisabled(disabled) {
+    this.getNativeInput_().disabled = disabled;
+    this.styleDisabled_(disabled);
+  }
+
+  /**
+   * @param {string} content Sets the content of the helper text.
+   */
+  setHelperTextContent(content) {
+    if (this.helperText_) {
+      this.helperText_.setContent(content);
+    }
+  }
+
+  /**
+   * @return {boolean} True if the Text Field input fails in converting the
+   *     user-supplied value.
+   * @private
+   */
+  isBadInput_() {
+    return this.getNativeInput_().validity.badInput;
+  }
+
+  /**
+   * @return {boolean} The result of native validity checking
+   *     (ValidityState.valid).
+   */
+  isNativeInputValid_() {
+    return this.getNativeInput_().validity.valid;
+  }
+
+  /**
+   * Styles the component based on the validity state.
+   * @param {boolean} isValid
+   * @private
+   */
+  styleValidity_(isValid) {
+    const { INVALID } = MDCTextFieldFoundation.cssClasses;
+    if (isValid) {
+      this.adapter_.removeClass(INVALID);
+    } else {
+      this.adapter_.addClass(INVALID);
+    }
+    if (this.helperText_) {
+      this.helperText_.setValidity(isValid);
+    }
+  }
+
+  /**
+   * Styles the component based on the focused state.
+   * @param {boolean} isFocused
+   * @private
+   */
+  styleFocused_(isFocused) {
+    const { FOCUSED } = MDCTextFieldFoundation.cssClasses;
+    if (isFocused) {
+      this.adapter_.addClass(FOCUSED);
+    } else {
+      this.adapter_.removeClass(FOCUSED);
+    }
+  }
+
+  /**
+   * Styles the component based on the disabled state.
+   * @param {boolean} isDisabled
+   * @private
+   */
+  styleDisabled_(isDisabled) {
+    const { DISABLED, INVALID } = MDCTextFieldFoundation.cssClasses;
+    if (isDisabled) {
+      this.adapter_.addClass(DISABLED);
+      this.adapter_.removeClass(INVALID);
+    } else {
+      this.adapter_.removeClass(DISABLED);
+    }
+    if (this.icon_) {
+      this.icon_.setDisabled(isDisabled);
+    }
+  }
+
+  /**
+   * @return {!Element|!NativeInputType} The native text input from the
+   * host environment, or a dummy if none exists.
+   * @private
+   */
+  getNativeInput_() {
+    return this.adapter_.getNativeInput() ||
+    /** @type {!NativeInputType} */{
+      value: '',
+      disabled: false,
+      validity: {
+        badInput: false,
+        valid: true
+      }
+    };
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCTextFieldFoundation);
+
+/***/ }),
+/* 46 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/**
+ * @license
+ * Copyright 2018 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/** @enum {string} */
+const cssClasses = {
+  LINE_RIPPLE_ACTIVE: 'mdc-line-ripple--active',
+  LINE_RIPPLE_DEACTIVATING: 'mdc-line-ripple--deactivating'
+};
+
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/** @enum {string} */
+const cssClasses = {
+  LABEL_FLOAT_ABOVE: 'mdc-floating-label--float-above',
+  LABEL_SHAKE: 'mdc-floating-label--shake'
+};
+
+
+
+/***/ }),
+/* 48 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCLineRipple; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(13);
+/* unused harmony reexport MDCLineRippleFoundation */
+/**
+ * @license
+ * Copyright 2018 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @extends {MDCComponent<!MDCLineRippleFoundation>}
+ * @final
+ */
+class MDCLineRipple extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /**
+   * @param {!Element} root
+   * @return {!MDCLineRipple}
+   */
+  static attachTo(root) {
+    return new MDCLineRipple(root);
+  }
+
+  /**
+   * Activates the line ripple
+   */
+  activate() {
+    this.foundation_.activate();
+  }
+
+  /**
+   * Deactivates the line ripple
+   */
+  deactivate() {
+    this.foundation_.deactivate();
+  }
+
+  /**
+   * Sets the transform origin given a user's click location. The `rippleCenter` is the
+   * x-coordinate of the middle of the ripple.
+   * @param {!number} xCoordinate
+   */
+  setRippleCenter(xCoordinate) {
+    this.foundation_.setRippleCenter(xCoordinate);
+  }
+
+  /**
+   * @return {!MDCLineRippleFoundation}
+   */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]( /** @type {!MDCLineRippleAdapter} */Object.assign({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className),
+      hasClass: className => this.root_.classList.contains(className),
+      setStyle: (propertyName, value) => this.root_.style[propertyName] = value,
+      registerEventHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
+      deregisterEventHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler)
+    }));
+  }
+}
+
+
+
+/***/ }),
+/* 49 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextFieldHelperText; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(4);
+/* unused harmony reexport MDCTextFieldHelperTextFoundation */
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @extends {MDCComponent<!MDCTextFieldHelperTextFoundation>}
+ * @final
+ */
+class MDCTextFieldHelperText extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /**
+   * @param {!Element} root
+   * @return {!MDCTextFieldHelperText}
+   */
+  static attachTo(root) {
+    return new MDCTextFieldHelperText(root);
+  }
+
+  /**
+   * @return {!MDCTextFieldHelperTextFoundation}
+   */
+  get foundation() {
+    return this.foundation_;
+  }
+
+  /**
+   * @return {!MDCTextFieldHelperTextFoundation}
+   */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]( /** @type {!MDCTextFieldHelperTextAdapter} */Object.assign({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className),
+      hasClass: className => this.root_.classList.contains(className),
+      setAttr: (attr, value) => this.root_.setAttribute(attr, value),
+      removeAttr: attr => this.root_.removeAttribute(attr),
+      setContent: content => {
+        this.root_.textContent = content;
+      }
+    }));
+  }
+}
+
+
+
+/***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextFieldIcon; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(5);
+/* unused harmony reexport MDCTextFieldIconFoundation */
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @extends {MDCComponent<!MDCTextFieldIconFoundation>}
+ * @final
+ */
+class MDCTextFieldIcon extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /**
+   * @param {!Element} root
+   * @return {!MDCTextFieldIcon}
+   */
+  static attachTo(root) {
+    return new MDCTextFieldIcon(root);
+  }
+
+  /**
+   * @return {!MDCTextFieldIconFoundation}
+   */
+  get foundation() {
+    return this.foundation_;
+  }
+
+  /**
+   * @return {!MDCTextFieldIconFoundation}
+   */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]( /** @type {!MDCTextFieldIconAdapter} */Object.assign({
+      setAttr: (attr, value) => this.root_.setAttribute(attr, value),
+      registerInteractionHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
+      deregisterInteractionHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler),
+      notifyIconAction: () => this.emit(__WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */].strings.ICON_EVENT, {} /* evtData */, true /* shouldBubble */)
+    }));
+  }
+}
+
+
+
+/***/ }),
+/* 51 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCFloatingLabel; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(15);
+/* unused harmony reexport MDCFloatingLabelFoundation */
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCComponent<!MDCFloatingLabelFoundation>}
+ * @final
+ */
+class MDCFloatingLabel extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /**
+   * @param {!Element} root
+   * @return {!MDCFloatingLabel}
+   */
+  static attachTo(root) {
+    return new MDCFloatingLabel(root);
+  }
+
+  /**
+   * Styles the label to produce the label shake for errors.
+   * @param {boolean} shouldShake styles the label to shake by adding shake class
+   * if true, otherwise will stop shaking by removing shake class.
+   */
+  shake(shouldShake) {
+    this.foundation_.shake(shouldShake);
+  }
+
+  /**
+   * Styles label to float/dock.
+   * @param {boolean} shouldFloat styles the label to float by adding float class
+   * if true, otherwise docks the label by removing the float class.
+   */
+  float(shouldFloat) {
+    this.foundation_.float(shouldFloat);
+  }
+
+  /**
+   * @return {number}
+   */
+  getWidth() {
+    return this.foundation_.getWidth();
+  }
+
+  /**
+   * @return {!MDCFloatingLabelFoundation}
+   */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className),
+      getWidth: () => this.root_.offsetWidth,
+      registerInteractionHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
+      deregisterInteractionHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler)
+    });
+  }
+}
+
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCNotchedOutline; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(19);
+/* unused harmony reexport MDCNotchedOutlineFoundation */
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+
+/**
+ * @extends {MDCComponent<!MDCNotchedOutlineFoundation>}
+ * @final
+ */
+class MDCNotchedOutline extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /**
+   * @param {!Element} root
+   * @return {!MDCNotchedOutline}
+   */
+  static attachTo(root) {
+    return new MDCNotchedOutline(root);
+  }
+
+  /**
+    * Updates outline selectors and SVG path to open notch.
+    * @param {number} notchWidth The notch width in the outline.
+    * @param {boolean=} isRtl Determines if outline is rtl. If rtl is true, notch
+    * will be right justified in outline path, otherwise left justified.
+    */
+  notch(notchWidth, isRtl) {
+    this.foundation_.notch(notchWidth, isRtl);
+  }
+
+  /**
+   * Updates the outline selectors to close notch and return it to idle state.
+   */
+  closeNotch() {
+    this.foundation_.closeNotch();
+  }
+
+  /**
+   * @return {!MDCNotchedOutlineFoundation}
+   */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
+      getWidth: () => this.root_.offsetWidth,
+      getHeight: () => this.root_.offsetHeight,
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className),
+      setOutlinePathAttr: value => {
+        const path = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["b" /* strings */].PATH_SELECTOR);
+        path.setAttribute('d', value);
+      },
+      getIdleOutlineStyleValue: propertyName => {
+        const idleOutlineElement = this.root_.parentNode.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["b" /* strings */].IDLE_OUTLINE_SELECTOR);
+        return window.getComputedStyle(idleOutlineElement).getPropertyValue(propertyName);
+      }
+    });
+  }
+}
+
+
+
+/***/ }),
+/* 53 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initEvents;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_loads__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_post__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replace__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_dialog__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events_errors__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visiblity__ = __webpack_require__(58);
+
+
+
+
+
+
+
+class VEvents {
+    //[[type, url, target, params]]
+    constructor(actions, event) {
+        this.event = event;
+        this.actions = actions.map(action => {
+            return this.constructor.action_class(action, event);
+        });
+    }
+
+    call() {
+        // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
+        var fnlist = this.actions.map(action => {
+            return function () {
+                return Promise.resolve(action.call());
+            };
+        });
+
+        // Execute a list of Promise return functions in series
+        function pseries(list) {
+            var p = Promise.resolve();
+            return list.reduce(function (pacc, fn) {
+                return pacc = pacc.then(fn);
+            }, p);
+        }
+
+        var event = this.event;
+
+        pseries(fnlist).then(function (results) {
+            var contentType = results[1];
+            // var responseText = results[2];
+            var responseURL = results[3];
+
+            if (event.target.dialog) {
+                event.target.dialog.close();
+            }
+            if (contentType && contentType.indexOf("text/html") !== -1 && typeof responseURL !== 'undefined') {
+                window.location = responseURL;
+            }
+        }).catch(function (results) {
+            new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](event).displayErrors(results);
+        });
+    }
+
+    static action_class(action, event) {
+        var action_type = action[0];
+        var url = action[1];
+        var target = action[2];
+        var params = action[3];
+
+        switch (action_type) {
+            case 'loads':
+                return new __WEBPACK_IMPORTED_MODULE_0__events_loads__["a" /* VLoadsPage */](url);
+            case 'replaces':
+                return new __WEBPACK_IMPORTED_MODULE_2__events_replace__["a" /* VReplaceElement */](target, url, params, event);
+            case 'post':
+                return new __WEBPACK_IMPORTED_MODULE_1__events_post__["a" /* VPost */](url, params, 'POST', event);
+            case 'update':
+                return new __WEBPACK_IMPORTED_MODULE_1__events_post__["a" /* VPost */](url, params, 'PUT', event);
+            case 'delete':
+                return new __WEBPACK_IMPORTED_MODULE_1__events_post__["a" /* VPost */](url, params, 'DELETE', event);
+            case 'dialog':
+                return new __WEBPACK_IMPORTED_MODULE_3__events_dialog__["a" /* VDialog */](target, params, event);
+            case 'toggle_visibility':
+                return new __WEBPACK_IMPORTED_MODULE_5__events_toggle_visiblity__["a" /* VToggleVisiblity */](target, params, event);
+            default:
+                throw action_type + ' is not supported.';
+        }
+    }
+
+}
+/* unused harmony export VEvents */
+
+
+// This is used to get a proper binding of the actionData
+// https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
+function createEventHandler(actionsData) {
+    return function (event) {
+        new VEvents(actionsData, event).call();
+    };
+}
+
+function initEvents() {
+    console.log('\tEvents');
+
+    var events = document.querySelectorAll('[data-events]');
+    for (var i = 0; i < events.length; i++) {
+        var eventElem = events[i];
+        var eventsData = JSON.parse(eventElem.dataset.events);
+        for (var j = 0; j < eventsData.length; j++) {
+            var eventData = eventsData[j];
+            var eventName = eventData[0];
+            var actionsData = eventData[1];
+            if (!eventElem.eventsHandler) {
+                eventElem.eventsHandler = createEventHandler(actionsData);
+                eventElem.addEventListener(eventName, eventElem.eventsHandler);
+            }
+        }
+    }
+}
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+class VLoadsPage {
+    constructor(url) {
+        this.url = url;
+    }
+
+    call() {
+        var url = this.url;
+        var promiseObj = new Promise(function (resolve) {
+            console.log("Loading page: " + url);
+            window.location = url;
+            resolve([200, null, null]);
+        });
+        return promiseObj;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VLoadsPage;
+
+
+/***/ }),
+/* 55 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(21);
+
+
+
+// Replaces a given element with the contents of the call to the url.
+// parameters are appended.
+class VPost extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
+    constructor(url, params, method, event) {
+        super();
+        this.url = url;
+        this.params = params;
+        this.method = method;
+        this.event = event;
+    }
+
+    call() {
+        this.clearErrors();
+
+        var parent_element = document.getElementById(this.params.__parent_id__);
+        var FD = null;
+        if (this.isForm(parent_element)) {
+            FD = new FormData(parent_element);
+        } else {
+            FD = new FormData();
+            // Automatically pull values out of input controls
+            if (this.params.__parent_id__) {
+                var parent_element = document.getElementById(this.params.__parent_id__);
+                if (parent_element) {
+                    var value = parent_element.value;
+                    if (value) {
+                        FD.append(this.params.__parent_id__, value);
+                    }
+                }
+            }
+        }
+
+        // Push our params into our FormData object
+        for (var name in this.params) {
+            if (name != '__parent_id__') {
+                FD.append(name, this.params[name]);
+            }
+        }
+
+        var httpRequest = new XMLHttpRequest();
+        var method = this.method;
+        var url = this.url;
+        var event = this.event;
+        if (!httpRequest) {
+            throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
+            // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
+        }
+        var promiseObj = new Promise(function (resolve, reject) {
+            httpRequest.onreadystatechange = function (event) {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
+                    if (httpRequest.status >= 200 && httpRequest.status < 300) {
+                        resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText, httpRequest.responseURL]);
+                        // new VSnackbar('Yeah! That worked!').display();
+                    } else {
+                        // new VSnackbar('There was a problem with the request.').display();
+                        reject([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                        // _this_.displayError(this.getResponseHeader('content-type'), event.target.responseText);
+                    }
+                }
+            };
+
+            // Set up our request
+            httpRequest.open(method, url);
+
+            console.log(method + ':' + url);
+            // Send our FormData object; HTTP headers are set automatically
+            httpRequest.send(FD);
+        });
+        return promiseObj;
+    }
+
+    isForm(parent_element) {
+        return parent_element && parent_element.elements;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VPost;
+
+
+/***/ }),
+/* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(7);
+
+
+
+
+// Replaces a given element with the contents of the call to the url.
+// parameters are appended.
+class VReplaceElement extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
+    constructor(element_id, url, params, event) {
+        super();
+        this.element_id = element_id;
+        this.url = url;
+        this.params = params;
+        this.event = event;
+    }
+
+    call() {
+        this.clearErrors();
+
+        var parent_element = document.getElementById(this.params.__parent_id__);
+        var FD = null;
+        // Automatically pull values out of input controls
+        if (this.params.__parent_id__) {
+            var parent_element = document.getElementById(this.params.__parent_id__);
+            if (parent_element) {
+                var value = parent_element.value;
+                if (value) {
+                    this.params[parent_element.name] = value;
+                    delete this.params.__parent_id__;
+                }
+            }
+        }
+
+        var httpRequest = new XMLHttpRequest();
+        if (!httpRequest) {
+            throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
+            // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
+        }
+        var elementId = this.element_id;
+        var url = this.url + this.seperator() + this.serialize(this.params);
+        var event = this.event;
+
+        var promiseObj = new Promise(function (resolve, reject) {
+            httpRequest.onreadystatechange = function () {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
+                    if (httpRequest.status === 200) {
+                        var nodeToReplace = document.getElementById(elementId);
+                        nodeToReplace.outerHTML = httpRequest.responseText;
+                        var newNode = document.getElementById(elementId);
+                        Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["a" /* initialize */])(newNode);
+                        resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                    } else {
+                        reject([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                    }
+                }
+            };
+            console.log('GET:' + url);
+            httpRequest.open('GET', url, true);
+            httpRequest.setRequestHeader('X-NO-LAYOUT', true);
+            httpRequest.send();
+        });
+        return promiseObj;
+    }
+
+    seperator() {
+        return this.url.includes("?") ? '&' : '?';
+    }
+
+    serialize(obj, prefix) {
+        var str = [],
+            p;
+        for (p in obj) {
+            if (obj.hasOwnProperty(p)) {
+                var k = prefix ? prefix + "[" + p + "]" : p,
+                    v = obj[p];
+                str.push(v !== null && typeof v === "object" ? this.serialize(v, k) : encodeURIComponent(k) + "=" + encodeURIComponent(v));
+            }
+        }
+        return str.join("&");
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VReplaceElement;
+
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+class VDialog {
+    constructor(dialogId, params, event) {
+        this.dialogId = dialogId;
+        this.params = params;
+        this.event = event;
+    }
+
+    call() {
+        var dialog = document.querySelector('#' + this.dialogId);
+        if (dialog) {
+            if (!dialog.showModal) {
+                dialogPolyfill.registerDialog(dialog);
+            }
+
+            dialog.showModal();
+        } else {
+            console.error("Unable to find dialog with id: " + this.dialogId + ". Usually this means you forgot to attach it to the currently rendered page.");
+        }
+        var promiseObj = new Promise(function (resolve) {
+            resolve(true);
+        });
+        return promiseObj;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VDialog;
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+class VToggleVisiblity {
+    constructor(targetId, params, event) {
+        this.targetId = targetId;
+        this.params = params;
+        this.event = event;
+    }
+
+    call() {
+        var targetId = this.targetId;
+        var promiseObj = new Promise(function (resolve) {
+            console.log("Toggling visiblity on: " + targetId);
+            var elem = document.getElementById(targetId);
+            elem.classList.toggle("v-hidden");
+
+            resolve([200, null, null]);
+        });
+        return promiseObj;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VToggleVisiblity;
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initLists;
+function initLists() {
+    console.log('\tLists');
+    // Put any initialization code you need here
+}
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initIconToggles;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_icon_toggle__ = __webpack_require__(61);
+
+
+function initIconToggles() {
+    console.log('\tIcon Toggles');
+
+    var components = document.querySelectorAll('.mdc-icon-toggle');
+    for (var i = 0; i < components.length; i++) {
+        var component = components[i];
+        if (!component.mdcComponent) {
+            component.mdcComponent = new __WEBPACK_IMPORTED_MODULE_0__material_icon_toggle__["a" /* MDCIconToggle */](component);
+        }
+    }
+}
+
+// TODO: Add event handler
+// var addToFavorites = document.getElementById('add-to-favorites');
+//         var favoritedStatus = document.getElementById('favorited-status');
+//         addToFavorites.addEventListener('MDCIconToggle:change', function(evt) {
+//           var newStatus = evt.detail.isOn ? 'yes' : 'no';
+//           favoritedStatus.textContent = newStatus;
+//         });
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCIconToggle; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__ = __webpack_require__(65);
+/* unused harmony reexport MDCIconToggleFoundation */
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCComponent<!MDCIconToggleFoundation>}
+ */
+class MDCIconToggle extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  static attachTo(root) {
+    return new MDCIconToggle(root);
+  }
+
+  constructor(...args) {
+    super(...args);
+
+    /** @private {!MDCRipple} */
+    this.ripple_ = this.initRipple_();
+  }
+
+  /** @return {!Element} */
+  get iconEl_() {
+    const { 'iconInnerSelector': sel } = this.root_.dataset;
+    return sel ?
+    /** @type {!Element} */this.root_.querySelector(sel) : this.root_;
+  }
+
+  /**
+   * @return {!MDCRipple}
+   * @private
+   */
+  initRipple_() {
+    const adapter = Object.assign(__WEBPACK_IMPORTED_MODULE_2__material_ripple_index__["a" /* MDCRipple */].createAdapter(this), {
+      isUnbounded: () => true,
+      isSurfaceActive: () => this.foundation_.isKeyboardActivated()
+    });
+    const foundation = new __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__["b" /* MDCRippleFoundation */](adapter);
+    return new __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__["a" /* MDCRipple */](this.root_, foundation);
+  }
+
+  destroy() {
+    this.ripple_.destroy();
+    super.destroy();
+  }
+
+  /** @return {!MDCIconToggleFoundation} */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */]({
+      addClass: className => this.iconEl_.classList.add(className),
+      removeClass: className => this.iconEl_.classList.remove(className),
+      registerInteractionHandler: (type, handler) => this.root_.addEventListener(type, handler),
+      deregisterInteractionHandler: (type, handler) => this.root_.removeEventListener(type, handler),
+      setText: text => this.iconEl_.textContent = text,
+      getTabIndex: () => /* number */this.root_.tabIndex,
+      setTabIndex: tabIndex => this.root_.tabIndex = tabIndex,
+      getAttr: (name, value) => this.root_.getAttribute(name, value),
+      setAttr: (name, value) => this.root_.setAttribute(name, value),
+      rmAttr: name => this.root_.removeAttribute(name),
+      notifyChange: evtData => this.emit(__WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings.CHANGE_EVENT, evtData)
+    });
+  }
+
+  initialSyncWithDOM() {
+    this.on = this.root_.getAttribute(__WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings.ARIA_PRESSED) === 'true';
+    this.disabled = this.root_.getAttribute(__WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings.ARIA_DISABLED) === 'true';
+  }
+
+  /** @return {!MDCRipple} */
+  get ripple() {
+    return this.ripple_;
+  }
+
+  /** @return {boolean} */
+  get on() {
+    return this.foundation_.isOn();
+  }
+
+  /** @param {boolean} isOn */
+  set on(isOn) {
+    this.foundation_.toggle(isOn);
+  }
+
+  /** @return {boolean} */
+  get disabled() {
+    return this.foundation_.isDisabled();
+  }
+
+  /** @param {boolean} isDisabled */
+  set disabled(isDisabled) {
+    this.foundation_.setDisabled(isDisabled);
+  }
+
+  refreshToggleData() {
+    this.foundation_.refreshToggleData();
+  }
+}
+
+
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(64);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+/* eslint-disable no-unused-vars */
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCIconToggleAdapter>}
+ */
+class MDCIconToggleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
+  }
+
+  static get defaultAdapter() {
+    return {
+      addClass: () => /* className: string */{},
+      removeClass: () => /* className: string */{},
+      registerInteractionHandler: () => /* type: string, handler: EventListener */{},
+      deregisterInteractionHandler: () => /* type: string, handler: EventListener */{},
+      setText: () => /* text: string */{},
+      getTabIndex: () => /* number */0,
+      setTabIndex: () => /* tabIndex: number */{},
+      getAttr: () => /* name: string */ /* string */'',
+      setAttr: () => /* name: string, value: string */{},
+      rmAttr: () => /* name: string */{},
+      notifyChange: () => /* evtData: IconToggleEvent */{}
+    };
+  }
+
+  constructor(adapter) {
+    super(Object.assign(MDCIconToggleFoundation.defaultAdapter, adapter));
+
+    /** @private {boolean} */
+    this.on_ = false;
+
+    /** @private {boolean} */
+    this.disabled_ = false;
+
+    /** @private {number} */
+    this.savedTabIndex_ = -1;
+
+    /** @private {?IconToggleState} */
+    this.toggleOnData_ = null;
+
+    /** @private {?IconToggleState} */
+    this.toggleOffData_ = null;
+
+    this.clickHandler_ = /** @private {!EventListener} */() => this.toggleFromEvt_();
+
+    /** @private {boolean} */
+    this.isHandlingKeydown_ = false;
+
+    this.keydownHandler_ = /** @private {!EventListener} */ /** @type {!KeyboardKey} */evt => {
+      if (isSpace(evt)) {
+        this.isHandlingKeydown_ = true;
+        return evt.preventDefault();
+      }
+    };
+
+    this.keyupHandler_ = /** @private {!EventListener} */ /** @type {!KeyboardKey} */evt => {
+      if (isSpace(evt)) {
+        this.isHandlingKeydown_ = false;
+        this.toggleFromEvt_();
+      }
+    };
+  }
+
+  init() {
+    this.refreshToggleData();
+    this.savedTabIndex_ = this.adapter_.getTabIndex();
+    this.adapter_.registerInteractionHandler('click', this.clickHandler_);
+    this.adapter_.registerInteractionHandler('keydown', this.keydownHandler_);
+    this.adapter_.registerInteractionHandler('keyup', this.keyupHandler_);
+  }
+
+  refreshToggleData() {
+    const { DATA_TOGGLE_ON, DATA_TOGGLE_OFF } = MDCIconToggleFoundation.strings;
+    this.toggleOnData_ = this.parseJsonDataAttr_(DATA_TOGGLE_ON);
+    this.toggleOffData_ = this.parseJsonDataAttr_(DATA_TOGGLE_OFF);
+  }
+
+  destroy() {
+    this.adapter_.deregisterInteractionHandler('click', this.clickHandler_);
+    this.adapter_.deregisterInteractionHandler('keydown', this.keydownHandler_);
+    this.adapter_.deregisterInteractionHandler('keyup', this.keyupHandler_);
+  }
+
+  /** @private */
+  toggleFromEvt_() {
+    this.toggle();
+    const { on_: isOn } = this;
+    this.adapter_.notifyChange( /** @type {!IconToggleEvent} */{ isOn });
+  }
+
+  /** @return {boolean} */
+  isOn() {
+    return this.on_;
+  }
+
+  /** @param {boolean=} isOn */
+  toggle(isOn = !this.on_) {
+    this.on_ = isOn;
+
+    const { ARIA_LABEL, ARIA_PRESSED } = MDCIconToggleFoundation.strings;
+
+    if (this.on_) {
+      this.adapter_.setAttr(ARIA_PRESSED, 'true');
+    } else {
+      this.adapter_.setAttr(ARIA_PRESSED, 'false');
+    }
+
+    const { cssClass: classToRemove } = this.on_ ? this.toggleOffData_ : this.toggleOnData_;
+
+    if (classToRemove) {
+      this.adapter_.removeClass(classToRemove);
+    }
+
+    const { content, label, cssClass } = this.on_ ? this.toggleOnData_ : this.toggleOffData_;
+
+    if (cssClass) {
+      this.adapter_.addClass(cssClass);
+    }
+    if (content) {
+      this.adapter_.setText(content);
+    }
+    if (label) {
+      this.adapter_.setAttr(ARIA_LABEL, label);
+    }
+  }
+
+  /**
+   * @param {string} dataAttr
+   * @return {!IconToggleState}
+   */
+  parseJsonDataAttr_(dataAttr) {
+    const val = this.adapter_.getAttr(dataAttr);
+    if (!val) {
+      return {};
+    }
+    return (/** @type {!IconToggleState} */JSON.parse(val)
+    );
+  }
+
+  /** @return {boolean} */
+  isDisabled() {
+    return this.disabled_;
+  }
+
+  /** @param {boolean} isDisabled */
+  setDisabled(isDisabled) {
+    this.disabled_ = isDisabled;
+
+    const { DISABLED } = MDCIconToggleFoundation.cssClasses;
+    const { ARIA_DISABLED } = MDCIconToggleFoundation.strings;
+
+    if (this.disabled_) {
+      this.savedTabIndex_ = this.adapter_.getTabIndex();
+      this.adapter_.setTabIndex(-1);
+      this.adapter_.setAttr(ARIA_DISABLED, 'true');
+      this.adapter_.addClass(DISABLED);
+    } else {
+      this.adapter_.setTabIndex(this.savedTabIndex_);
+      this.adapter_.rmAttr(ARIA_DISABLED);
+      this.adapter_.removeClass(DISABLED);
+    }
+  }
+
+  /** @return {boolean} */
+  isKeyboardActivated() {
+    return this.isHandlingKeydown_;
+  }
+}
+
+/**
+ * @typedef {!{
+ *   key: string,
+ *   keyCode: number
+ * }}
+ */
+let KeyboardKey;
+
+/**
+ * @param {!KeyboardKey} keyboardKey
+ * @return {boolean}
+ */
+function isSpace(keyboardKey) {
+  return keyboardKey.key === 'Space' || keyboardKey.keyCode === 32;
+}
+
+/** @record */
+class IconToggleState {}
+
+/**
+ * The aria-label value of the icon toggle, or undefined if there is no aria-label.
+ * @export {string|undefined}
+ */
+IconToggleState.prototype.label;
+
+/**
+ * The text for the icon toggle, or undefined if there is no text.
+ * @export {string|undefined}
+ */
+IconToggleState.prototype.content;
+
+/**
+ * The CSS class to add to the icon toggle, or undefined if there is no CSS class.
+ * @export {string|undefined}
+ */
+IconToggleState.prototype.cssClass;
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCIconToggleFoundation);
+
+/***/ }),
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export MDCIconToggleAdapter */
+/* unused harmony export IconToggleEvent */
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* eslint no-unused-vars: [2, {"args": "none"}] */
+
+/**
+ * Adapter for MDC Icon Toggle. Provides an interface for managing
+ * - classes
+ * - dom
+ * - inner text
+ * - event handlers
+ * - event dispatch
+ *
+ * Additionally, provides type information for the adapter to the Closure
+ * compiler.
+ *
+ * Implement this adapter for your framework of choice to delegate updates to
+ * the component in your framework of choice. See architecture documentation
+ * for more details.
+ * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
+ *
+ * @record
+ */
+
+class MDCIconToggleAdapter {
+  /** @param {string} className */
+  addClass(className) {}
+
+  /** @param {string} className */
+  removeClass(className) {}
+
+  /**
+   * @param {string} type
+   * @param {!EventListener} handler
+   */
+  registerInteractionHandler(type, handler) {}
+
+  /**
+   * @param {string} type
+   * @param {!EventListener} handler
+   */
+  deregisterInteractionHandler(type, handler) {}
+
+  /** @param {string} text */
+  setText(text) {}
+
+  /** @return {number} */
+  getTabIndex() {}
+
+  /** @param {number} tabIndex */
+  setTabIndex(tabIndex) {}
+
+  /**
+   * @param {string} name
+   * @return {string}
+   */
+  getAttr(name) {}
+
+  /**
+   * @param {string} name
+   * @param {string} value
+   */
+  setAttr(name, value) {}
+
+  /** @param {string} name */
+  rmAttr(name) {}
+
+  /** @param {!IconToggleEvent} evtData */
+  notifyChange(evtData) {}
+}
+
+/**
+ * @typedef {!{
+ *   isOn: boolean,
+ * }}
+ */
+let IconToggleEvent;
+
+
+
+/***/ }),
+/* 64 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return strings; });
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/** @enum {string} */
+const cssClasses = {
+  ROOT: 'mdc-icon-toggle',
+  DISABLED: 'mdc-icon-toggle--disabled'
+};
+
+/** @enum {string} */
+const strings = {
+  DATA_TOGGLE_ON: 'data-toggle-on',
+  DATA_TOGGLE_OFF: 'data-toggle-off',
+  ARIA_PRESSED: 'aria-pressed',
+  ARIA_DISABLED: 'aria-disabled',
+  ARIA_LABEL: 'aria-label',
+  CHANGE_EVENT: 'MDCIconToggle:change'
+};
+
+
+
+/***/ }),
+/* 65 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRipple; });
+/* unused harmony export RippleCapableSurface */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(25);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
+/* unused harmony reexport util */
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @extends MDCComponent<!MDCRippleFoundation>
+ */
+class MDCRipple extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /** @param {...?} args */
+  constructor(...args) {
+    super(...args);
+
+    /** @type {boolean} */
+    this.disabled = false;
+
+    /** @private {boolean} */
+    this.unbounded_;
+  }
+
+  /**
+   * @param {!Element} root
+   * @param {{isUnbounded: (boolean|undefined)}=} options
+   * @return {!MDCRipple}
+   */
+  static attachTo(root, { isUnbounded = undefined } = {}) {
+    const ripple = new MDCRipple(root);
+    // Only override unbounded behavior if option is explicitly specified
+    if (isUnbounded !== undefined) {
+      ripple.unbounded = /** @type {boolean} */isUnbounded;
+    }
+    return ripple;
+  }
+
+  /**
+   * @param {!RippleCapableSurface} instance
+   * @return {!MDCRippleAdapter}
+   */
+  static createAdapter(instance) {
+    const MATCHES = __WEBPACK_IMPORTED_MODULE_3__util__["b" /* getMatchesProperty */](HTMLElement.prototype);
+
+    return {
+      browserSupportsCssVars: () => __WEBPACK_IMPORTED_MODULE_3__util__["d" /* supportsCssVariables */](window),
+      isUnbounded: () => instance.unbounded,
+      isSurfaceActive: () => instance.root_[MATCHES](':active'),
+      isSurfaceDisabled: () => instance.disabled,
+      addClass: className => instance.root_.classList.add(className),
+      removeClass: className => instance.root_.classList.remove(className),
+      containsEventTarget: target => instance.root_.contains(target),
+      registerInteractionHandler: (evtType, handler) => instance.root_.addEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
+      deregisterInteractionHandler: (evtType, handler) => instance.root_.removeEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
+      registerDocumentInteractionHandler: (evtType, handler) => document.documentElement.addEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
+      deregisterDocumentInteractionHandler: (evtType, handler) => document.documentElement.removeEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
+      registerResizeHandler: handler => window.addEventListener('resize', handler),
+      deregisterResizeHandler: handler => window.removeEventListener('resize', handler),
+      updateCssVariable: (varName, value) => instance.root_.style.setProperty(varName, value),
+      computeBoundingRect: () => instance.root_.getBoundingClientRect(),
+      getWindowPageOffset: () => ({ x: window.pageXOffset, y: window.pageYOffset })
+    };
+  }
+
+  /** @return {boolean} */
+  get unbounded() {
+    return this.unbounded_;
+  }
+
+  /** @param {boolean} unbounded */
+  set unbounded(unbounded) {
+    this.unbounded_ = Boolean(unbounded);
+    this.setUnbounded_();
+  }
+
+  /**
+   * Closure Compiler throws an access control error when directly accessing a
+   * protected or private property inside a getter/setter, like unbounded above.
+   * By accessing the protected property inside a method, we solve that problem.
+   * That's why this function exists.
+   * @private
+   */
+  setUnbounded_() {
+    this.foundation_.setUnbounded(this.unbounded_);
+  }
+
+  activate() {
+    this.foundation_.activate();
+  }
+
+  deactivate() {
+    this.foundation_.deactivate();
+  }
+
+  layout() {
+    this.foundation_.layout();
+  }
+
+  /** @return {!MDCRippleFoundation} */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */](MDCRipple.createAdapter(this));
+  }
+
+  initialSyncWithDOM() {
+    this.unbounded = 'mdcRippleIsUnbounded' in this.root_.dataset;
+  }
+}
+
+/**
+ * See Material Design spec for more details on when to use ripples.
+ * https://material.io/guidelines/motion/choreography.html#choreography-creation
+ * @record
+ */
+class RippleCapableSurface {}
+
+/** @protected {!Element} */
+RippleCapableSurface.prototype.root_;
+
+/**
+ * Whether or not the ripple bleeds out of the bounds of the element.
+ * @type {boolean|undefined}
+ */
+RippleCapableSurface.prototype.unbounded;
+
+/**
+ * Whether or not the ripple is attached to a disabled component.
+ * @type {boolean|undefined}
+ */
+RippleCapableSurface.prototype.disabled;
+
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(25);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @typedef {!{
+ *   isActivated: (boolean|undefined),
+ *   hasDeactivationUXRun: (boolean|undefined),
+ *   wasActivatedByPointer: (boolean|undefined),
+ *   wasElementMadeActive: (boolean|undefined),
+ *   activationEvent: Event,
+ *   isProgrammatic: (boolean|undefined)
+ * }}
+ */
+let ActivationStateType;
+
+/**
+ * @typedef {!{
+ *   activate: (string|undefined),
+ *   deactivate: (string|undefined),
+ *   focus: (string|undefined),
+ *   blur: (string|undefined)
+ * }}
+ */
+let ListenerInfoType;
+
+/**
+ * @typedef {!{
+ *   activate: function(!Event),
+ *   deactivate: function(!Event),
+ *   focus: function(),
+ *   blur: function()
+ * }}
+ */
+let ListenersType;
+
+/**
+ * @typedef {!{
+ *   x: number,
+ *   y: number
+ * }}
+ */
+let PointType;
+
+// Activation events registered on the root element of each instance for activation
+const ACTIVATION_EVENT_TYPES = ['touchstart', 'pointerdown', 'mousedown', 'keydown'];
+
+// Deactivation events registered on documentElement when a pointer-related down event occurs
+const POINTER_DEACTIVATION_EVENT_TYPES = ['touchend', 'pointerup', 'mouseup'];
+
+// Tracks activations that have occurred on the current frame, to avoid simultaneous nested activations
+/** @type {!Array<!EventTarget>} */
+let activatedTargets = [];
+
+/**
+ * @extends {MDCFoundation<!MDCRippleAdapter>}
+ */
+class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */];
+  }
+
+  static get numbers() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */];
+  }
+
+  static get defaultAdapter() {
+    return {
+      browserSupportsCssVars: () => /* boolean - cached */{},
+      isUnbounded: () => /* boolean */{},
+      isSurfaceActive: () => /* boolean */{},
+      isSurfaceDisabled: () => /* boolean */{},
+      addClass: () => /* className: string */{},
+      removeClass: () => /* className: string */{},
+      containsEventTarget: () => /* target: !EventTarget */{},
+      registerInteractionHandler: () => /* evtType: string, handler: EventListener */{},
+      deregisterInteractionHandler: () => /* evtType: string, handler: EventListener */{},
+      registerDocumentInteractionHandler: () => /* evtType: string, handler: EventListener */{},
+      deregisterDocumentInteractionHandler: () => /* evtType: string, handler: EventListener */{},
+      registerResizeHandler: () => /* handler: EventListener */{},
+      deregisterResizeHandler: () => /* handler: EventListener */{},
+      updateCssVariable: () => /* varName: string, value: string */{},
+      computeBoundingRect: () => /* ClientRect */{},
+      getWindowPageOffset: () => /* {x: number, y: number} */{}
+    };
+  }
+
+  constructor(adapter) {
+    super(Object.assign(MDCRippleFoundation.defaultAdapter, adapter));
+
+    /** @private {number} */
+    this.layoutFrame_ = 0;
+
+    /** @private {!ClientRect} */
+    this.frame_ = /** @type {!ClientRect} */{ width: 0, height: 0 };
+
+    /** @private {!ActivationStateType} */
+    this.activationState_ = this.defaultActivationState_();
+
+    /** @private {number} */
+    this.initialSize_ = 0;
+
+    /** @private {number} */
+    this.maxRadius_ = 0;
+
+    /** @private {function(!Event)} */
+    this.activateHandler_ = e => this.activate_(e);
+
+    /** @private {function(!Event)} */
+    this.deactivateHandler_ = e => this.deactivate_(e);
+
+    /** @private {function(?Event=)} */
+    this.focusHandler_ = () => requestAnimationFrame(() => this.adapter_.addClass(MDCRippleFoundation.cssClasses.BG_FOCUSED));
+
+    /** @private {function(?Event=)} */
+    this.blurHandler_ = () => requestAnimationFrame(() => this.adapter_.removeClass(MDCRippleFoundation.cssClasses.BG_FOCUSED));
+
+    /** @private {!Function} */
+    this.resizeHandler_ = () => this.layout();
+
+    /** @private {!{left: number, top:number}} */
+    this.unboundedCoords_ = {
+      left: 0,
+      top: 0
+    };
+
+    /** @private {number} */
+    this.fgScale_ = 0;
+
+    /** @private {number} */
+    this.activationTimer_ = 0;
+
+    /** @private {number} */
+    this.fgDeactivationRemovalTimer_ = 0;
+
+    /** @private {boolean} */
+    this.activationAnimationHasEnded_ = false;
+
+    /** @private {!Function} */
+    this.activationTimerCallback_ = () => {
+      this.activationAnimationHasEnded_ = true;
+      this.runDeactivationUXLogicIfReady_();
+    };
+
+    /** @private {?Event} */
+    this.previousActivationEvent_ = null;
+  }
+
+  /**
+   * We compute this property so that we are not querying information about the client
+   * until the point in time where the foundation requests it. This prevents scenarios where
+   * client-side feature-detection may happen too early, such as when components are rendered on the server
+   * and then initialized at mount time on the client.
+   * @return {boolean}
+   * @private
+   */
+  isSupported_() {
+    return this.adapter_.browserSupportsCssVars();
+  }
+
+  /**
+   * @return {!ActivationStateType}
+   */
+  defaultActivationState_() {
+    return {
+      isActivated: false,
+      hasDeactivationUXRun: false,
+      wasActivatedByPointer: false,
+      wasElementMadeActive: false,
+      activationEvent: null,
+      isProgrammatic: false
+    };
+  }
+
+  init() {
+    if (!this.isSupported_()) {
+      return;
+    }
+    this.registerRootHandlers_();
+
+    const { ROOT, UNBOUNDED } = MDCRippleFoundation.cssClasses;
+    requestAnimationFrame(() => {
+      this.adapter_.addClass(ROOT);
+      if (this.adapter_.isUnbounded()) {
+        this.adapter_.addClass(UNBOUNDED);
+      }
+      this.layoutInternal_();
+    });
+  }
+
+  destroy() {
+    if (!this.isSupported_()) {
+      return;
+    }
+
+    if (this.activationTimer_) {
+      clearTimeout(this.activationTimer_);
+      this.activationTimer_ = 0;
+      const { FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
+      this.adapter_.removeClass(FG_ACTIVATION);
+    }
+
+    this.deregisterRootHandlers_();
+    this.deregisterDeactivationHandlers_();
+
+    const { ROOT, UNBOUNDED } = MDCRippleFoundation.cssClasses;
+    requestAnimationFrame(() => {
+      this.adapter_.removeClass(ROOT);
+      this.adapter_.removeClass(UNBOUNDED);
+      this.removeCssVars_();
+    });
+  }
+
+  /** @private */
+  registerRootHandlers_() {
+    ACTIVATION_EVENT_TYPES.forEach(type => {
+      this.adapter_.registerInteractionHandler(type, this.activateHandler_);
+    });
+    this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
+    this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
+    this.adapter_.registerResizeHandler(this.resizeHandler_);
+  }
+
+  /**
+   * @param {!Event} e
+   * @private
+   */
+  registerDeactivationHandlers_(e) {
+    if (e.type === 'keydown') {
+      this.adapter_.registerInteractionHandler('keyup', this.deactivateHandler_);
+    } else {
+      POINTER_DEACTIVATION_EVENT_TYPES.forEach(type => {
+        this.adapter_.registerDocumentInteractionHandler(type, this.deactivateHandler_);
+      });
+    }
+  }
+
+  /** @private */
+  deregisterRootHandlers_() {
+    ACTIVATION_EVENT_TYPES.forEach(type => {
+      this.adapter_.deregisterInteractionHandler(type, this.activateHandler_);
+    });
+    this.adapter_.deregisterInteractionHandler('focus', this.focusHandler_);
+    this.adapter_.deregisterInteractionHandler('blur', this.blurHandler_);
+    this.adapter_.deregisterResizeHandler(this.resizeHandler_);
+  }
+
+  /** @private */
+  deregisterDeactivationHandlers_() {
+    this.adapter_.deregisterInteractionHandler('keyup', this.deactivateHandler_);
+    POINTER_DEACTIVATION_EVENT_TYPES.forEach(type => {
+      this.adapter_.deregisterDocumentInteractionHandler(type, this.deactivateHandler_);
+    });
+  }
+
+  /** @private */
+  removeCssVars_() {
+    const { strings } = MDCRippleFoundation;
+    Object.keys(strings).forEach(k => {
+      if (k.indexOf('VAR_') === 0) {
+        this.adapter_.updateCssVariable(strings[k], null);
+      }
+    });
+  }
+
+  /**
+   * @param {?Event} e
+   * @private
+   */
+  activate_(e) {
+    if (this.adapter_.isSurfaceDisabled()) {
+      return;
+    }
+
+    const activationState = this.activationState_;
+    if (activationState.isActivated) {
+      return;
+    }
+
+    // Avoid reacting to follow-on events fired by touch device after an already-processed user interaction
+    const previousActivationEvent = this.previousActivationEvent_;
+    const isSameInteraction = previousActivationEvent && e && previousActivationEvent.type !== e.type;
+    if (isSameInteraction) {
+      return;
+    }
+
+    activationState.isActivated = true;
+    activationState.isProgrammatic = e === null;
+    activationState.activationEvent = e;
+    activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : e.type === 'mousedown' || e.type === 'touchstart' || e.type === 'pointerdown';
+
+    const hasActivatedChild = e && activatedTargets.length > 0 && activatedTargets.some(target => this.adapter_.containsEventTarget(target));
+    if (hasActivatedChild) {
+      // Immediately reset activation state, while preserving logic that prevents touch follow-on events
+      this.resetActivationState_();
+      return;
+    }
+
+    if (e) {
+      activatedTargets.push( /** @type {!EventTarget} */e.target);
+      this.registerDeactivationHandlers_(e);
+    }
+
+    requestAnimationFrame(() => {
+      // This needs to be wrapped in an rAF call b/c web browsers
+      // report active states inconsistently when they're called within
+      // event handling code:
+      // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
+      // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
+      activationState.wasElementMadeActive = e && e.type === 'keydown' ? this.adapter_.isSurfaceActive() : true;
+      if (activationState.wasElementMadeActive) {
+        this.animateActivation_();
+      } else {
+        // Reset activation state immediately if element was not made active.
+        this.activationState_ = this.defaultActivationState_();
+      }
+
+      // Reset array on next frame after the current event has had a chance to bubble to prevent ancestor ripples
+      activatedTargets = [];
+    });
+  }
+
+  /**
+   * @param {?Event=} event Optional event containing position information.
+   */
+  activate(event = null) {
+    this.activate_(event);
+  }
+
+  /** @private */
+  animateActivation_() {
+    const { VAR_FG_TRANSLATE_START, VAR_FG_TRANSLATE_END } = MDCRippleFoundation.strings;
+    const { FG_DEACTIVATION, FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
+    const { DEACTIVATION_TIMEOUT_MS } = MDCRippleFoundation.numbers;
+
+    let translateStart = '';
+    let translateEnd = '';
+
+    if (!this.adapter_.isUnbounded()) {
+      const { startPoint, endPoint } = this.getFgTranslationCoordinates_();
+      translateStart = `${startPoint.x}px, ${startPoint.y}px`;
+      translateEnd = `${endPoint.x}px, ${endPoint.y}px`;
+    }
+
+    this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_START, translateStart);
+    this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_END, translateEnd);
+    // Cancel any ongoing activation/deactivation animations
+    clearTimeout(this.activationTimer_);
+    clearTimeout(this.fgDeactivationRemovalTimer_);
+    this.rmBoundedActivationClasses_();
+    this.adapter_.removeClass(FG_DEACTIVATION);
+
+    // Force layout in order to re-trigger the animation.
+    this.adapter_.computeBoundingRect();
+    this.adapter_.addClass(FG_ACTIVATION);
+    this.activationTimer_ = setTimeout(() => this.activationTimerCallback_(), DEACTIVATION_TIMEOUT_MS);
+  }
+
+  /**
+   * @private
+   * @return {{startPoint: PointType, endPoint: PointType}}
+   */
+  getFgTranslationCoordinates_() {
+    const { activationEvent, wasActivatedByPointer } = this.activationState_;
+
+    let startPoint;
+    if (wasActivatedByPointer) {
+      startPoint = Object(__WEBPACK_IMPORTED_MODULE_3__util__["c" /* getNormalizedEventCoords */])(
+      /** @type {!Event} */activationEvent, this.adapter_.getWindowPageOffset(), this.adapter_.computeBoundingRect());
+    } else {
+      startPoint = {
+        x: this.frame_.width / 2,
+        y: this.frame_.height / 2
+      };
+    }
+    // Center the element around the start point.
+    startPoint = {
+      x: startPoint.x - this.initialSize_ / 2,
+      y: startPoint.y - this.initialSize_ / 2
+    };
+
+    const endPoint = {
+      x: this.frame_.width / 2 - this.initialSize_ / 2,
+      y: this.frame_.height / 2 - this.initialSize_ / 2
+    };
+
+    return { startPoint, endPoint };
+  }
+
+  /** @private */
+  runDeactivationUXLogicIfReady_() {
+    // This method is called both when a pointing device is released, and when the activation animation ends.
+    // The deactivation animation should only run after both of those occur.
+    const { FG_DEACTIVATION } = MDCRippleFoundation.cssClasses;
+    const { hasDeactivationUXRun, isActivated } = this.activationState_;
+    const activationHasEnded = hasDeactivationUXRun || !isActivated;
+
+    if (activationHasEnded && this.activationAnimationHasEnded_) {
+      this.rmBoundedActivationClasses_();
+      this.adapter_.addClass(FG_DEACTIVATION);
+      this.fgDeactivationRemovalTimer_ = setTimeout(() => {
+        this.adapter_.removeClass(FG_DEACTIVATION);
+      }, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].FG_DEACTIVATION_MS);
+    }
+  }
+
+  /** @private */
+  rmBoundedActivationClasses_() {
+    const { FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
+    this.adapter_.removeClass(FG_ACTIVATION);
+    this.activationAnimationHasEnded_ = false;
+    this.adapter_.computeBoundingRect();
+  }
+
+  resetActivationState_() {
+    this.previousActivationEvent_ = this.activationState_.activationEvent;
+    this.activationState_ = this.defaultActivationState_();
+    // Touch devices may fire additional events for the same interaction within a short time.
+    // Store the previous event until it's safe to assume that subsequent events are for new interactions.
+    setTimeout(() => this.previousActivationEvent_ = null, MDCRippleFoundation.numbers.TAP_DELAY_MS);
+  }
+
+  /**
+   * @param {?Event} e
+   * @private
+   */
+  deactivate_(e) {
+    const activationState = this.activationState_;
+    // This can happen in scenarios such as when you have a keyup event that blurs the element.
+    if (!activationState.isActivated) {
+      return;
+    }
+
+    const state = /** @type {!ActivationStateType} */Object.assign({}, activationState);
+
+    if (activationState.isProgrammatic) {
+      const evtObject = null;
+      requestAnimationFrame(() => this.animateDeactivation_(evtObject, state));
+      this.resetActivationState_();
+    } else {
+      this.deregisterDeactivationHandlers_();
+      requestAnimationFrame(() => {
+        this.activationState_.hasDeactivationUXRun = true;
+        this.animateDeactivation_(e, state);
+        this.resetActivationState_();
+      });
+    }
+  }
+
+  /**
+   * @param {?Event=} event Optional event containing position information.
+   */
+  deactivate(event = null) {
+    this.deactivate_(event);
+  }
+
+  /**
+   * @param {Event} e
+   * @param {!ActivationStateType} options
+   * @private
+   */
+  animateDeactivation_(e, { wasActivatedByPointer, wasElementMadeActive }) {
+    if (wasActivatedByPointer || wasElementMadeActive) {
+      this.runDeactivationUXLogicIfReady_();
+    }
+  }
+
+  layout() {
+    if (this.layoutFrame_) {
+      cancelAnimationFrame(this.layoutFrame_);
+    }
+    this.layoutFrame_ = requestAnimationFrame(() => {
+      this.layoutInternal_();
+      this.layoutFrame_ = 0;
+    });
+  }
+
+  /** @private */
+  layoutInternal_() {
+    this.frame_ = this.adapter_.computeBoundingRect();
+    const maxDim = Math.max(this.frame_.height, this.frame_.width);
+
+    // Surface diameter is treated differently for unbounded vs. bounded ripples.
+    // Unbounded ripple diameter is calculated smaller since the surface is expected to already be padded appropriately
+    // to extend the hitbox, and the ripple is expected to meet the edges of the padded hitbox (which is typically
+    // square). Bounded ripples, on the other hand, are fully expected to expand beyond the surface's longest diameter
+    // (calculated based on the diagonal plus a constant padding), and are clipped at the surface's border via
+    // `overflow: hidden`.
+    const getBoundedRadius = () => {
+      const hypotenuse = Math.sqrt(Math.pow(this.frame_.width, 2) + Math.pow(this.frame_.height, 2));
+      return hypotenuse + MDCRippleFoundation.numbers.PADDING;
+    };
+
+    this.maxRadius_ = this.adapter_.isUnbounded() ? maxDim : getBoundedRadius();
+
+    // Ripple is sized as a fraction of the largest dimension of the surface, then scales up using a CSS scale transform
+    this.initialSize_ = maxDim * MDCRippleFoundation.numbers.INITIAL_ORIGIN_SCALE;
+    this.fgScale_ = this.maxRadius_ / this.initialSize_;
+
+    this.updateLayoutCssVars_();
+  }
+
+  /** @private */
+  updateLayoutCssVars_() {
+    const {
+      VAR_FG_SIZE, VAR_LEFT, VAR_TOP, VAR_FG_SCALE
+    } = MDCRippleFoundation.strings;
+
+    this.adapter_.updateCssVariable(VAR_FG_SIZE, `${this.initialSize_}px`);
+    this.adapter_.updateCssVariable(VAR_FG_SCALE, this.fgScale_);
+
+    if (this.adapter_.isUnbounded()) {
+      this.unboundedCoords_ = {
+        left: Math.round(this.frame_.width / 2 - this.initialSize_ / 2),
+        top: Math.round(this.frame_.height / 2 - this.initialSize_ / 2)
+      };
+
+      this.adapter_.updateCssVariable(VAR_LEFT, `${this.unboundedCoords_.left}px`);
+      this.adapter_.updateCssVariable(VAR_TOP, `${this.unboundedCoords_.top}px`);
+    }
+  }
+
+  /** @param {boolean} unbounded */
+  setUnbounded(unbounded) {
+    const { UNBOUNDED } = MDCRippleFoundation.cssClasses;
+    if (unbounded) {
+      this.adapter_.addClass(UNBOUNDED);
+    } else {
+      this.adapter_.removeClass(UNBOUNDED);
+    }
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCRippleFoundation);
+
+/***/ }),
+/* 67 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return strings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return numbers; });
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+const cssClasses = {
+  // Ripple is a special case where the "root" component is really a "mixin" of sorts,
+  // given that it's an 'upgrade' to an existing component. That being said it is the root
+  // CSS class that all other CSS classes derive from.
+  ROOT: 'mdc-ripple-upgraded',
+  UNBOUNDED: 'mdc-ripple-upgraded--unbounded',
+  BG_FOCUSED: 'mdc-ripple-upgraded--background-focused',
+  FG_ACTIVATION: 'mdc-ripple-upgraded--foreground-activation',
+  FG_DEACTIVATION: 'mdc-ripple-upgraded--foreground-deactivation'
+};
+
+const strings = {
+  VAR_LEFT: '--mdc-ripple-left',
+  VAR_TOP: '--mdc-ripple-top',
+  VAR_FG_SIZE: '--mdc-ripple-fg-size',
+  VAR_FG_SCALE: '--mdc-ripple-fg-scale',
+  VAR_FG_TRANSLATE_START: '--mdc-ripple-fg-translate-start',
+  VAR_FG_TRANSLATE_END: '--mdc-ripple-fg-translate-end'
+};
+
+const numbers = {
+  PADDING: 10,
+  INITIAL_ORIGIN_SCALE: 0.6,
+  DEACTIVATION_TIMEOUT_MS: 225, // Corresponds to $mdc-ripple-translate-duration (i.e. activation animation duration)
+  FG_DEACTIVATION_MS: 150, // Corresponds to $mdc-ripple-fade-out-duration (i.e. deactivation animation duration)
+  TAP_DELAY_MS: 300 // Delay between touch and simulated mouse events on touch devices
+};
+
+
+
+/***/ }),
+/* 68 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initMenus;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_menu__ = __webpack_require__(69);
+
+
+function createMenuHandler(menu) {
+    return function () {
+        menu.open = !menu.open;
+    };
+}
+
+function initMenus() {
+    console.log('\tMenus');
+
+    var components = document.querySelectorAll('.v-menu');
+    if (components) {
+        for (var i = 0; i < components.length; i++) {
+            var component = components[i];
+            if (!component.mdcComponent) {
+                component.mdcComponent = new __WEBPACK_IMPORTED_MODULE_0__material_menu__["a" /* MDCMenu */](component);
+                var anchor = component.closest('.mdc-menu-anchor').querySelector('.v-menu-click');
+                anchor.addEventListener('click', createMenuHandler(component.mdcComponent));
+            }
+        }
+    }
+}
+
+/***/ }),
+/* 69 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCMenu; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(27);
+/* unused harmony reexport MDCMenuFoundation */
+/* unused harmony reexport AnchorMargin */
+/* unused harmony reexport Corner */
+/* unused harmony reexport CornerBit */
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @extends MDCComponent<!MDCMenuFoundation>
+ */
+class MDCMenu extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /** @param {...?} args */
+  constructor(...args) {
+    super(...args);
+    /** @private {!Element} */
+    this.previousFocus_;
+  }
+
+  /**
+   * @param {!Element} root
+   * @return {!MDCMenu}
+   */
+  static attachTo(root) {
+    return new MDCMenu(root);
+  }
+
+  /** @return {boolean} */
+  get open() {
+    return this.foundation_.isOpen();
+  }
+
+  /** @param {boolean} value */
+  set open(value) {
+    if (value) {
+      this.foundation_.open();
+    } else {
+      this.foundation_.close();
+    }
+  }
+
+  /** @param {{focusIndex: ?number}=} options */
+  show({ focusIndex = null } = {}) {
+    this.foundation_.open({ focusIndex: focusIndex });
+  }
+
+  hide() {
+    this.foundation_.close();
+  }
+
+  /**
+   * @param {Corner} corner Default anchor corner alignment of top-left
+   *     menu corner.
+   */
+  setAnchorCorner(corner) {
+    this.foundation_.setAnchorCorner(corner);
+  }
+
+  /**
+   * @param {AnchorMargin} margin
+   */
+  setAnchorMargin(margin) {
+    this.foundation_.setAnchorMargin(margin);
+  }
+
+  /**
+   * Return the item container element inside the component.
+   * @return {?Element}
+   */
+  get itemsContainer_() {
+    return this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* MDCMenuFoundation */].strings.ITEMS_SELECTOR);
+  }
+
+  /**
+   * Return the items within the menu. Note that this only contains the set of elements within
+   * the items container that are proper list items, and not supplemental / presentational DOM
+   * elements.
+   * @return {!Array<!Element>}
+   */
+  get items() {
+    const { itemsContainer_: itemsContainer } = this;
+    return [].slice.call(itemsContainer.querySelectorAll('.mdc-list-item[role]'));
+  }
+
+  /**
+   * Return the item within the menu that is selected.
+   * @param {number} index
+   * @return {?Element}
+   */
+  getOptionByIndex(index) {
+    const items = this.items;
+
+    if (index < items.length) {
+      return this.items[index];
+    } else {
+      return null;
+    }
+  }
+
+  /** @param {number} index */
+  set selectedItemIndex(index) {
+    this.foundation_.setSelectedIndex(index);
+  }
+
+  /** @return {number} */
+  get selectedItemIndex() {
+    return this.foundation_.getSelectedIndex();
+  }
+
+  /** @param {!boolean} rememberSelection */
+  set rememberSelection(rememberSelection) {
+    this.foundation_.setRememberSelection(rememberSelection);
+  }
+
+  /** @param {boolean} quickOpen */
+  set quickOpen(quickOpen) {
+    this.foundation_.setQuickOpen(quickOpen);
+  }
+
+  /** @return {!MDCMenuFoundation} */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* MDCMenuFoundation */]({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className),
+      hasClass: className => this.root_.classList.contains(className),
+      hasNecessaryDom: () => Boolean(this.itemsContainer_),
+      getAttributeForEventTarget: (target, attributeName) => target.getAttribute(attributeName),
+      getInnerDimensions: () => {
+        const { itemsContainer_: itemsContainer } = this;
+        return { width: itemsContainer.offsetWidth, height: itemsContainer.offsetHeight };
+      },
+      hasAnchor: () => this.root_.parentElement && this.root_.parentElement.classList.contains('mdc-menu-anchor'),
+      getAnchorDimensions: () => this.root_.parentElement.getBoundingClientRect(),
+      getWindowDimensions: () => {
+        return { width: window.innerWidth, height: window.innerHeight };
+      },
+      getNumberOfItems: () => this.items.length,
+      registerInteractionHandler: (type, handler) => this.root_.addEventListener(type, handler),
+      deregisterInteractionHandler: (type, handler) => this.root_.removeEventListener(type, handler),
+      registerBodyClickHandler: handler => document.body.addEventListener('click', handler),
+      deregisterBodyClickHandler: handler => document.body.removeEventListener('click', handler),
+      getIndexForEventTarget: target => this.items.indexOf(target),
+      notifySelected: evtData => this.emit(__WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* MDCMenuFoundation */].strings.SELECTED_EVENT, {
+        index: evtData.index,
+        item: this.items[evtData.index]
+      }),
+      notifyCancel: () => this.emit(__WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* MDCMenuFoundation */].strings.CANCEL_EVENT, {}),
+      saveFocus: () => {
+        this.previousFocus_ = document.activeElement;
+      },
+      restoreFocus: () => {
+        if (this.previousFocus_) {
+          this.previousFocus_.focus();
+        }
+      },
+      isFocused: () => document.activeElement === this.root_,
+      focus: () => this.root_.focus(),
+      getFocusedItemIndex: () => this.items.indexOf(document.activeElement),
+      focusItemAtIndex: index => this.items[index].focus(),
+      isRtl: () => getComputedStyle(this.root_).getPropertyValue('direction') === 'rtl',
+      setTransformOrigin: origin => {
+        this.root_.style[`${Object(__WEBPACK_IMPORTED_MODULE_1__util__["a" /* getTransformPropertyName */])(window)}-origin`] = origin;
+      },
+      setPosition: position => {
+        this.root_.style.left = 'left' in position ? position.left : null;
+        this.root_.style.right = 'right' in position ? position.right : null;
+        this.root_.style.top = 'top' in position ? position.top : null;
+        this.root_.style.bottom = 'bottom' in position ? position.bottom : null;
+      },
+      setMaxHeight: height => {
+        this.root_.style.maxHeight = height;
+      },
+      setAttrForOptionAtIndex: (index, attr, value) => this.items[index].setAttribute(attr, value),
+      rmAttrForOptionAtIndex: (index, attr) => this.items[index].removeAttribute(attr),
+      addClassForOptionAtIndex: (index, className) => this.items[index].classList.add(className),
+      rmClassForOptionAtIndex: (index, className) => this.items[index].classList.remove(className)
+    });
+  }
+}
+
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(26);
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+/**
+ * @template F
+ */
+class MDCComponent {
+  /**
+   * @param {!Element} root
+   * @return {!MDCComponent}
+   */
+  static attachTo(root) {
+    // Subclasses which extend MDCBase should provide an attachTo() method that takes a root element and
+    // returns an instantiated component with its root set to that element. Also note that in the cases of
+    // subclasses, an explicit foundation class will not have to be passed in; it will simply be initialized
+    // from getDefaultFoundation().
+    return new MDCComponent(root, new __WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */]());
+  }
+
+  /**
+   * @param {!Element} root
+   * @param {F=} foundation
+   * @param {...?} args
+   */
+  constructor(root, foundation = undefined, ...args) {
+    /** @protected {!Element} */
+    this.root_ = root;
+    this.initialize(...args);
+    // Note that we initialize foundation here and not within the constructor's default param so that
+    // this.root_ is defined and can be used within the foundation class.
+    /** @protected {!F} */
+    this.foundation_ = foundation === undefined ? this.getDefaultFoundation() : foundation;
+    this.foundation_.init();
+    this.initialSyncWithDOM();
+  }
+
+  initialize() /* ...args */{}
+  // Subclasses can override this to do any additional setup work that would be considered part of a
+  // "constructor". Essentially, it is a hook into the parent constructor before the foundation is
+  // initialized. Any additional arguments besides root and foundation will be passed in here.
+
+
+  /**
+   * @return {!F} foundation
+   */
+  getDefaultFoundation() {
+    // Subclasses must override this method to return a properly configured foundation class for the
+    // component.
+    throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' + 'foundation class');
+  }
+
+  initialSyncWithDOM() {
+    // Subclasses should override this method if they need to perform work to synchronize with a host DOM
+    // object. An example of this would be a form control wrapper that needs to synchronize its internal state
+    // to some property or attribute of the host DOM. Please note: this is *not* the place to perform DOM
+    // reads/writes that would cause layout / paint, as this is called synchronously from within the constructor.
+  }
+
+  destroy() {
+    // Subclasses may implement this method to release any resources / deregister any listeners they have
+    // attached. An example of this might be deregistering a resize event from the window object.
+    this.foundation_.destroy();
+  }
+
+  /**
+   * Wrapper method to add an event listener to the component's root element. This is most useful when
+   * listening for custom events.
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  listen(evtType, handler) {
+    this.root_.addEventListener(evtType, handler);
+  }
+
+  /**
+   * Wrapper method to remove an event listener to the component's root element. This is most useful when
+   * unlistening for custom events.
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  unlisten(evtType, handler) {
+    this.root_.removeEventListener(evtType, handler);
+  }
+
+  /**
+   * Fires a cross-browser-compatible custom event from the component root of the given type,
+   * with the given data.
+   * @param {string} evtType
+   * @param {!Object} evtData
+   * @param {boolean=} shouldBubble
+   */
+  emit(evtType, evtData, shouldBubble = false) {
+    let evt;
+    if (typeof CustomEvent === 'function') {
+      evt = new CustomEvent(evtType, {
+        detail: evtData,
+        bubbles: shouldBubble
+      });
+    } else {
+      evt = document.createEvent('CustomEvent');
+      evt.initCustomEvent(evtType, shouldBubble, false, evtData);
+    }
+
+    this.root_.dispatchEvent(evt);
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCComponent);
+
+/***/ }),
+/* 71 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getTransformPropertyName; });
+/* unused harmony export clamp */
+/* unused harmony export bezierProgress */
+/**
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/** @type {string|undefined} */
+let storedTransformPropertyName_;
+
+/**
+ * Returns the name of the correct transform property to use on the current browser.
+ * @param {!Window} globalObj
+ * @param {boolean=} forceRefresh
+ * @return {string}
+ */
+function getTransformPropertyName(globalObj, forceRefresh = false) {
+  if (storedTransformPropertyName_ === undefined || forceRefresh) {
+    const el = globalObj.document.createElement('div');
+    const transformPropertyName = 'transform' in el.style ? 'transform' : 'webkitTransform';
+    storedTransformPropertyName_ = transformPropertyName;
+  }
+
+  return storedTransformPropertyName_;
+}
+
+/**
+ * Clamps a value between the minimum and the maximum, returning the clamped value.
+ * @param {number} value
+ * @param {number} min
+ * @param {number} max
+ * @return {number}
+ */
+function clamp(value, min = 0, max = 1) {
+  return Math.min(max, Math.max(min, value));
+}
+
+/**
+ * Returns the easing value to apply at time t, for a given cubic bezier curve.
+ * Control points P0 and P3 are assumed to be (0,0) and (1,1), respectively.
+ * Parameters are as follows:
+ * - time: The current time in the animation, scaled between 0 and 1.
+ * - x1: The x value of control point P1.
+ * - y1: The y value of control point P1.
+ * - x2: The x value of control point P2.
+ * - y2: The y value of control point P2.
+ * @param {number} time
+ * @param {number} x1
+ * @param {number} y1
+ * @param {number} x2
+ * @param {number} y2
+ * @return {number}
+ */
+function bezierProgress(time, x1, y1, x2, y2) {
+  return getBezierCoordinate_(solvePositionFromXValue_(time, x1, x2), y1, y2);
+}
+
+/**
+ * Compute a single coordinate at a position point between 0 and 1.
+ * c1 and c2 are the matching coordinate on control points P1 and P2, respectively.
+ * Control points P0 and P3 are assumed to be (0,0) and (1,1), respectively.
+ * Adapted from https://github.com/google/closure-library/blob/master/closure/goog/math/bezier.js.
+ * @param {number} t
+ * @param {number} c1
+ * @param {number} c2
+ * @return {number}
+ */
+function getBezierCoordinate_(t, c1, c2) {
+  // Special case start and end.
+  if (t === 0 || t === 1) {
+    return t;
+  }
+
+  // Step one - from 4 points to 3
+  let ic0 = t * c1;
+  let ic1 = c1 + t * (c2 - c1);
+  const ic2 = c2 + t * (1 - c2);
+
+  // Step two - from 3 points to 2
+  ic0 += t * (ic1 - ic0);
+  ic1 += t * (ic2 - ic1);
+
+  // Final step - last point
+  return ic0 + t * (ic1 - ic0);
+}
+
+/**
+ * Project a point onto the Bezier curve, from a given X. Calculates the position t along the curve.
+ * Adapted from https://github.com/google/closure-library/blob/master/closure/goog/math/bezier.js.
+ * @param {number} xVal
+ * @param {number} x1
+ * @param {number} x2
+ * @return {number}
+ */
+function solvePositionFromXValue_(xVal, x1, x2) {
+  const EPSILON = 1e-6;
+  const MAX_ITERATIONS = 8;
+
+  if (xVal <= 0) {
+    return 0;
+  } else if (xVal >= 1) {
+    return 1;
+  }
+
+  // Initial estimate of t using linear interpolation.
+  let t = xVal;
+
+  // Try gradient descent to solve for t. If it works, it is very fast.
+  let tMin = 0;
+  let tMax = 1;
+  let value = 0;
+  for (let i = 0; i < MAX_ITERATIONS; i++) {
+    value = getBezierCoordinate_(t, x1, x2);
+    const derivative = (getBezierCoordinate_(t + EPSILON, x1, x2) - value) / EPSILON;
+    if (Math.abs(value - xVal) < EPSILON) {
+      return t;
+    } else if (Math.abs(derivative) < EPSILON) {
+      break;
+    } else {
+      if (value < xVal) {
+        tMin = t;
+      } else {
+        tMax = t;
+      }
+      t -= (value - xVal) / derivative;
+    }
+  }
+
+  // If the gradient descent got stuck in a local minimum, e.g. because
+  // the derivative was close to 0, use a Dichotomy refinement instead.
+  // We limit the number of interations to 8.
+  for (let i = 0; Math.abs(value - xVal) > EPSILON && i < MAX_ITERATIONS; i++) {
+    if (value < xVal) {
+      tMin = t;
+      t = (t + tMax) / 2;
+    } else {
+      tMax = t;
+      t = (t + tMin) / 2;
+    }
+    value = getBezierCoordinate_(t, x1, x2);
+  }
+  return t;
+}
+
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCMenuFoundation; });
+/* unused harmony export AnchorMargin */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(27);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @typedef {{
+ *   top: number,
+ *   right: number,
+ *   bottom: number,
+ *   left: number
+ * }}
+ */
+let AnchorMargin;
+
+/* eslint-disable no-unused-vars */
+/**
+ * @typedef {{
+ *   viewport: { width: number, height: number },
+ *   viewportDistance: {top: number, right: number, bottom: number, left: number},
+ *   anchorHeight: number,
+ *   anchorWidth: number,
+ *   menuHeight: number,
+ *   menuWidth: number,
+ * }}
+ */
+let AutoLayoutMeasurements;
+/* eslint-enable no-unused-vars */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCMenuAdapter>}
+ */
+class MDCMenuFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum{cssClasses} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* cssClasses */];
+  }
+
+  /** @return enum{strings} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["e" /* strings */];
+  }
+
+  /** @return enum{numbers} */
+  static get numbers() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */];
+  }
+
+  /** @return enum{number} */
+  static get Corner() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* Corner */];
+  }
+
+  /**
+   * {@see MDCMenuAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCMenuAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCMenuAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        hasClass: () => false,
+        hasNecessaryDom: () => false,
+        getAttributeForEventTarget: () => {},
+        getInnerDimensions: () => ({}),
+        hasAnchor: () => false,
+        getAnchorDimensions: () => ({}),
+        getWindowDimensions: () => ({}),
+        getNumberOfItems: () => 0,
+        registerInteractionHandler: () => {},
+        deregisterInteractionHandler: () => {},
+        registerBodyClickHandler: () => {},
+        deregisterBodyClickHandler: () => {},
+        getIndexForEventTarget: () => 0,
+        notifySelected: () => {},
+        notifyCancel: () => {},
+        saveFocus: () => {},
+        restoreFocus: () => {},
+        isFocused: () => false,
+        focus: () => {},
+        getFocusedItemIndex: () => -1,
+        focusItemAtIndex: () => {},
+        isRtl: () => false,
+        setTransformOrigin: () => {},
+        setPosition: () => {},
+        setMaxHeight: () => {},
+        setAttrForOptionAtIndex: () => {},
+        rmAttrForOptionAtIndex: () => {},
+        addClassForOptionAtIndex: () => {},
+        rmClassForOptionAtIndex: () => {}
+      }
+    );
+  }
+
+  /** @param {!MDCMenuAdapter} adapter */
+  constructor(adapter) {
+    super(Object.assign(MDCMenuFoundation.defaultAdapter, adapter));
+
+    /** @private {function(!Event)} */
+    this.clickHandler_ = evt => this.handlePossibleSelected_(evt);
+    /** @private {function(!Event)} */
+    this.keydownHandler_ = evt => this.handleKeyboardDown_(evt);
+    /** @private {function(!Event)} */
+    this.keyupHandler_ = evt => this.handleKeyboardUp_(evt);
+    /** @private {function(!Event)} */
+    this.documentClickHandler_ = evt => this.handleDocumentClick_(evt);
+    /** @private {boolean} */
+    this.isOpen_ = false;
+    /** @private {number} */
+    this.openAnimationEndTimerId_ = 0;
+    /** @private {number} */
+    this.closeAnimationEndTimerId_ = 0;
+    /** @private {number} */
+    this.selectedTriggerTimerId_ = 0;
+    /** @private {number} */
+    this.animationRequestId_ = 0;
+    /** @private {!{ width: number, height: number }} */
+    this.dimensions_;
+    /** @private {number} */
+    this.itemHeight_;
+    /** @private {Corner} */
+    this.anchorCorner_ = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* Corner */].TOP_START;
+    /** @private {AnchorMargin} */
+    this.anchorMargin_ = { top: 0, right: 0, bottom: 0, left: 0 };
+    /** @private {?AutoLayoutMeasurements} */
+    this.measures_ = null;
+    /** @private {number} */
+    this.selectedIndex_ = -1;
+    /** @private {boolean} */
+    this.rememberSelection_ = false;
+    /** @private {boolean} */
+    this.quickOpen_ = false;
+
+    // A keyup event on the menu needs to have a corresponding keydown
+    // event on the menu. If the user opens the menu with a keydown event on a
+    // button, the menu will only get the key up event causing buggy behavior with selected elements.
+    /** @private {boolean} */
+    this.keyDownWithinMenu_ = false;
+  }
+
+  init() {
+    const { ROOT, OPEN } = MDCMenuFoundation.cssClasses;
+
+    if (!this.adapter_.hasClass(ROOT)) {
+      throw new Error(`${ROOT} class required in root element.`);
+    }
+
+    if (!this.adapter_.hasNecessaryDom()) {
+      throw new Error(`Required DOM nodes missing in ${ROOT} component.`);
+    }
+
+    if (this.adapter_.hasClass(OPEN)) {
+      this.isOpen_ = true;
+    }
+
+    this.adapter_.registerInteractionHandler('click', this.clickHandler_);
+    this.adapter_.registerInteractionHandler('keyup', this.keyupHandler_);
+    this.adapter_.registerInteractionHandler('keydown', this.keydownHandler_);
+  }
+
+  destroy() {
+    clearTimeout(this.selectedTriggerTimerId_);
+    clearTimeout(this.openAnimationEndTimerId_);
+    clearTimeout(this.closeAnimationEndTimerId_);
+    // Cancel any currently running animations.
+    cancelAnimationFrame(this.animationRequestId_);
+    this.adapter_.deregisterInteractionHandler('click', this.clickHandler_);
+    this.adapter_.deregisterInteractionHandler('keyup', this.keyupHandler_);
+    this.adapter_.deregisterInteractionHandler('keydown', this.keydownHandler_);
+    this.adapter_.deregisterBodyClickHandler(this.documentClickHandler_);
+  }
+
+  /**
+   * @param {!Corner} corner Default anchor corner alignment of top-left menu corner.
+   */
+  setAnchorCorner(corner) {
+    this.anchorCorner_ = corner;
+  }
+
+  /**
+   * @param {!AnchorMargin} margin 4-plet of margins from anchor.
+   */
+  setAnchorMargin(margin) {
+    this.anchorMargin_.top = typeof margin.top === 'number' ? margin.top : 0;
+    this.anchorMargin_.right = typeof margin.right === 'number' ? margin.right : 0;
+    this.anchorMargin_.bottom = typeof margin.bottom === 'number' ? margin.bottom : 0;
+    this.anchorMargin_.left = typeof margin.left === 'number' ? margin.left : 0;
+  }
+
+  /** @param {boolean} rememberSelection */
+  setRememberSelection(rememberSelection) {
+    this.rememberSelection_ = rememberSelection;
+    this.setSelectedIndex(-1);
+  }
+
+  /** @param {boolean} quickOpen */
+  setQuickOpen(quickOpen) {
+    this.quickOpen_ = quickOpen;
+  }
+
+  /**
+   * @param {?number} focusIndex
+   * @private
+   */
+  focusOnOpen_(focusIndex) {
+    if (focusIndex === null) {
+      // If this instance of MDCMenu remembers selections, and the user has
+      // made a selection, then focus the last selected item
+      if (this.rememberSelection_ && this.selectedIndex_ >= 0) {
+        this.adapter_.focusItemAtIndex(this.selectedIndex_);
+        return;
+      }
+
+      this.adapter_.focus();
+      // If that doesn't work, focus first item instead.
+      if (!this.adapter_.isFocused()) {
+        this.adapter_.focusItemAtIndex(0);
+      }
+    } else {
+      this.adapter_.focusItemAtIndex(focusIndex);
+    }
+  }
+
+  /**
+   * Handle clicks and cancel the menu if not a child list-item
+   * @param {!Event} evt
+   * @private
+   */
+  handleDocumentClick_(evt) {
+    let el = evt.target;
+
+    while (el && el !== document.documentElement) {
+      if (this.adapter_.getIndexForEventTarget(el) !== -1) {
+        return;
+      }
+      el = el.parentNode;
+    }
+
+    this.adapter_.notifyCancel();
+    this.close(evt);
+  }
+
+  /**
+   * Handle keys that we want to repeat on hold (tab and arrows).
+   * @param {!Event} evt
+   * @return {boolean}
+   * @private
+   */
+  handleKeyboardDown_(evt) {
+    // Do nothing if Alt, Ctrl or Meta are pressed.
+    if (evt.altKey || evt.ctrlKey || evt.metaKey) {
+      return true;
+    }
+
+    const { keyCode, key, shiftKey } = evt;
+    const isTab = key === 'Tab' || keyCode === 9;
+    const isArrowUp = key === 'ArrowUp' || keyCode === 38;
+    const isArrowDown = key === 'ArrowDown' || keyCode === 40;
+    const isSpace = key === 'Space' || keyCode === 32;
+    const isEnter = key === 'Enter' || keyCode === 13;
+    // The menu needs to know if the keydown event was triggered on the menu
+    this.keyDownWithinMenu_ = isEnter || isSpace;
+
+    const focusedItemIndex = this.adapter_.getFocusedItemIndex();
+    const lastItemIndex = this.adapter_.getNumberOfItems() - 1;
+
+    if (shiftKey && isTab && focusedItemIndex === 0) {
+      this.adapter_.focusItemAtIndex(lastItemIndex);
+      evt.preventDefault();
+      return false;
+    }
+
+    if (!shiftKey && isTab && focusedItemIndex === lastItemIndex) {
+      this.adapter_.focusItemAtIndex(0);
+      evt.preventDefault();
+      return false;
+    }
+
+    // Ensure Arrow{Up,Down} and space do not cause inadvertent scrolling
+    if (isArrowUp || isArrowDown || isSpace) {
+      evt.preventDefault();
+    }
+
+    if (isArrowUp) {
+      if (focusedItemIndex === 0 || this.adapter_.isFocused()) {
+        this.adapter_.focusItemAtIndex(lastItemIndex);
+      } else {
+        this.adapter_.focusItemAtIndex(focusedItemIndex - 1);
+      }
+    } else if (isArrowDown) {
+      if (focusedItemIndex === lastItemIndex || this.adapter_.isFocused()) {
+        this.adapter_.focusItemAtIndex(0);
+      } else {
+        this.adapter_.focusItemAtIndex(focusedItemIndex + 1);
+      }
+    }
+
+    return true;
+  }
+
+  /**
+   * Handle keys that we don't want to repeat on hold (Enter, Space, Escape).
+   * @param {!Event} evt
+   * @return {boolean}
+   * @private
+   */
+  handleKeyboardUp_(evt) {
+    // Do nothing if Alt, Ctrl or Meta are pressed.
+    if (evt.altKey || evt.ctrlKey || evt.metaKey) {
+      return true;
+    }
+
+    const { keyCode, key } = evt;
+    const isEnter = key === 'Enter' || keyCode === 13;
+    const isSpace = key === 'Space' || keyCode === 32;
+    const isEscape = key === 'Escape' || keyCode === 27;
+
+    if (isEnter || isSpace) {
+      // If the keydown event didn't occur on the menu, then it should
+      // disregard the possible selected event.
+      if (this.keyDownWithinMenu_) {
+        this.handlePossibleSelected_(evt);
+      }
+      this.keyDownWithinMenu_ = false;
+    }
+
+    if (isEscape) {
+      this.adapter_.notifyCancel();
+      this.close();
+    }
+
+    return true;
+  }
+
+  /**
+   * @param {!Event} evt
+   * @private
+   */
+  handlePossibleSelected_(evt) {
+    if (this.adapter_.getAttributeForEventTarget(evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["e" /* strings */].ARIA_DISABLED_ATTR) === 'true') {
+      return;
+    }
+    const targetIndex = this.adapter_.getIndexForEventTarget(evt.target);
+    if (targetIndex < 0) {
+      return;
+    }
+    // Debounce multiple selections
+    if (this.selectedTriggerTimerId_) {
+      return;
+    }
+    this.selectedTriggerTimerId_ = setTimeout(() => {
+      this.selectedTriggerTimerId_ = 0;
+      this.close();
+      if (this.rememberSelection_) {
+        this.setSelectedIndex(targetIndex);
+      }
+      this.adapter_.notifySelected({ index: targetIndex });
+    }, __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */].SELECTED_TRIGGER_DELAY);
+  }
+
+  /**
+   * @return {AutoLayoutMeasurements} Measurements used to position menu popup.
+   */
+  getAutoLayoutMeasurements_() {
+    const anchorRect = this.adapter_.getAnchorDimensions();
+    const viewport = this.adapter_.getWindowDimensions();
+
+    return {
+      viewport: viewport,
+      viewportDistance: {
+        top: anchorRect.top,
+        right: viewport.width - anchorRect.right,
+        left: anchorRect.left,
+        bottom: viewport.height - anchorRect.bottom
+      },
+      anchorHeight: anchorRect.height,
+      anchorWidth: anchorRect.width,
+      menuHeight: this.dimensions_.height,
+      menuWidth: this.dimensions_.width
+    };
+  }
+
+  /**
+   * Computes the corner of the anchor from which to animate and position the menu.
+   * @return {Corner}
+   * @private
+   */
+  getOriginCorner_() {
+    // Defaults: open from the top left.
+    let corner = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* Corner */].TOP_LEFT;
+
+    const { viewportDistance, anchorHeight, anchorWidth, menuHeight, menuWidth } = this.measures_;
+    const isBottomAligned = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM);
+    const availableTop = isBottomAligned ? viewportDistance.top + anchorHeight + this.anchorMargin_.bottom : viewportDistance.top + this.anchorMargin_.top;
+    const availableBottom = isBottomAligned ? viewportDistance.bottom - this.anchorMargin_.bottom : viewportDistance.bottom + anchorHeight - this.anchorMargin_.top;
+
+    const topOverflow = menuHeight - availableTop;
+    const bottomOverflow = menuHeight - availableBottom;
+    if (bottomOverflow > 0 && topOverflow < bottomOverflow) {
+      corner |= __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM;
+    }
+
+    const isRtl = this.adapter_.isRtl();
+    const isFlipRtl = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].FLIP_RTL);
+    const avoidHorizontalOverlap = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT);
+    const isAlignedRight = avoidHorizontalOverlap && !isRtl || !avoidHorizontalOverlap && isFlipRtl && isRtl;
+    const availableLeft = isAlignedRight ? viewportDistance.left + anchorWidth + this.anchorMargin_.right : viewportDistance.left + this.anchorMargin_.left;
+    const availableRight = isAlignedRight ? viewportDistance.right - this.anchorMargin_.right : viewportDistance.right + anchorWidth - this.anchorMargin_.left;
+
+    const leftOverflow = menuWidth - availableLeft;
+    const rightOverflow = menuWidth - availableRight;
+
+    if (leftOverflow < 0 && isAlignedRight && isRtl || avoidHorizontalOverlap && !isAlignedRight && leftOverflow < 0 || rightOverflow > 0 && leftOverflow < rightOverflow) {
+      corner |= __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT;
+    }
+
+    return corner;
+  }
+
+  /**
+   * @param {Corner} corner Origin corner of the menu.
+   * @return {number} Horizontal offset of menu origin corner from corresponding anchor corner.
+   * @private
+   */
+  getHorizontalOriginOffset_(corner) {
+    const { anchorWidth } = this.measures_;
+    const isRightAligned = Boolean(corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT);
+    const avoidHorizontalOverlap = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT);
+    let x = 0;
+    if (isRightAligned) {
+      const rightOffset = avoidHorizontalOverlap ? anchorWidth - this.anchorMargin_.left : this.anchorMargin_.right;
+      x = rightOffset;
+    } else {
+      const leftOffset = avoidHorizontalOverlap ? anchorWidth - this.anchorMargin_.right : this.anchorMargin_.left;
+      x = leftOffset;
+    }
+    return x;
+  }
+
+  /**
+   * @param {Corner} corner Origin corner of the menu.
+   * @return {number} Vertical offset of menu origin corner from corresponding anchor corner.
+   * @private
+   */
+  getVerticalOriginOffset_(corner) {
+    const { viewport, viewportDistance, anchorHeight, menuHeight } = this.measures_;
+    const isBottomAligned = Boolean(corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM);
+    const { MARGIN_TO_EDGE } = MDCMenuFoundation.numbers;
+    const avoidVerticalOverlap = Boolean(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM);
+    const canOverlapVertically = !avoidVerticalOverlap;
+    let y = 0;
+
+    if (isBottomAligned) {
+      y = avoidVerticalOverlap ? anchorHeight - this.anchorMargin_.top : -this.anchorMargin_.bottom;
+      // adjust for when menu can overlap anchor, but too tall to be aligned to bottom
+      // anchor corner. Bottom margin is ignored in such cases.
+      if (canOverlapVertically && menuHeight > viewportDistance.top + anchorHeight) {
+        y = -(Math.min(menuHeight, viewport.height - MARGIN_TO_EDGE) - (viewportDistance.top + anchorHeight));
+      }
+    } else {
+      y = avoidVerticalOverlap ? anchorHeight + this.anchorMargin_.bottom : this.anchorMargin_.top;
+      // adjust for when menu can overlap anchor, but too tall to be aligned to top
+      // anchor corners. Top margin is ignored in that case.
+      if (canOverlapVertically && menuHeight > viewportDistance.bottom + anchorHeight) {
+        y = -(Math.min(menuHeight, viewport.height - MARGIN_TO_EDGE) - (viewportDistance.bottom + anchorHeight));
+      }
+    }
+    return y;
+  }
+
+  /**
+   * @param {Corner} corner Origin corner of the menu.
+   * @return {number} Maximum height of the menu, based on available space. 0 indicates should not be set.
+   * @private
+   */
+  getMenuMaxHeight_(corner) {
+    let maxHeight = 0;
+    const { viewportDistance } = this.measures_;
+    const isBottomAligned = Boolean(corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM);
+
+    // When maximum height is not specified, it is handled from css.
+    if (this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM) {
+      if (isBottomAligned) {
+        maxHeight = viewportDistance.top + this.anchorMargin_.top;
+      } else {
+        maxHeight = viewportDistance.bottom - this.anchorMargin_.bottom;
+      }
+    }
+
+    return maxHeight;
+  }
+
+  /** @private */
+  autoPosition_() {
+    if (!this.adapter_.hasAnchor()) {
+      return;
+    }
+
+    // Compute measurements for autoposition methods reuse.
+    this.measures_ = this.getAutoLayoutMeasurements_();
+
+    const corner = this.getOriginCorner_();
+    const maxMenuHeight = this.getMenuMaxHeight_(corner);
+    let verticalAlignment = corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM ? 'bottom' : 'top';
+    let horizontalAlignment = corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].RIGHT ? 'right' : 'left';
+    const horizontalOffset = this.getHorizontalOriginOffset_(corner);
+    const verticalOffset = this.getVerticalOriginOffset_(corner);
+    const position = {
+      [horizontalAlignment]: horizontalOffset ? horizontalOffset + 'px' : '0',
+      [verticalAlignment]: verticalOffset ? verticalOffset + 'px' : '0'
+    };
+    const { anchorWidth, menuHeight, menuWidth } = this.measures_;
+    // Center align when anchor width is comparable or greater than menu, otherwise keep corner.
+    if (anchorWidth / menuWidth > __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */].ANCHOR_TO_MENU_WIDTH_RATIO) {
+      horizontalAlignment = 'center';
+    }
+
+    // Adjust vertical origin when menu is positioned with significant offset from anchor. This is done so that
+    // scale animation is "anchored" on the anchor.
+    if (!(this.anchorCorner_ & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM) && Math.abs(verticalOffset / menuHeight) > __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */].OFFSET_TO_MENU_HEIGHT_RATIO) {
+      const verticalOffsetPercent = Math.abs(verticalOffset / menuHeight) * 100;
+      const originPercent = corner & __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* CornerBit */].BOTTOM ? 100 - verticalOffsetPercent : verticalOffsetPercent;
+      verticalAlignment = Math.round(originPercent * 100) / 100 + '%';
+    }
+
+    this.adapter_.setTransformOrigin(`${horizontalAlignment} ${verticalAlignment}`);
+    this.adapter_.setPosition(position);
+    this.adapter_.setMaxHeight(maxMenuHeight ? maxMenuHeight + 'px' : '');
+
+    // Clear measures after positioning is complete.
+    this.measures_ = null;
+  }
+
+  /**
+   * Open the menu.
+   * @param {{focusIndex: ?number}=} options
+   */
+  open({ focusIndex = null } = {}) {
+    this.adapter_.saveFocus();
+
+    if (!this.quickOpen_) {
+      this.adapter_.addClass(MDCMenuFoundation.cssClasses.ANIMATING_OPEN);
+    }
+
+    this.animationRequestId_ = requestAnimationFrame(() => {
+      this.dimensions_ = this.adapter_.getInnerDimensions();
+      this.autoPosition_();
+      this.adapter_.addClass(MDCMenuFoundation.cssClasses.OPEN);
+      this.focusOnOpen_(focusIndex);
+      this.adapter_.registerBodyClickHandler(this.documentClickHandler_);
+      if (!this.quickOpen_) {
+        this.openAnimationEndTimerId_ = setTimeout(() => {
+          this.openAnimationEndTimerId_ = 0;
+          this.adapter_.removeClass(MDCMenuFoundation.cssClasses.ANIMATING_OPEN);
+        }, __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */].TRANSITION_OPEN_DURATION);
+      }
+    });
+    this.isOpen_ = true;
+  }
+
+  /**
+   * Closes the menu.
+   * @param {Event=} evt
+   */
+  close(evt = null) {
+    const targetIsDisabled = evt ? this.adapter_.getAttributeForEventTarget(evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["e" /* strings */].ARIA_DISABLED_ATTR) === 'true' : false;
+
+    if (targetIsDisabled) {
+      return;
+    }
+
+    this.adapter_.deregisterBodyClickHandler(this.documentClickHandler_);
+
+    if (!this.quickOpen_) {
+      this.adapter_.addClass(MDCMenuFoundation.cssClasses.ANIMATING_CLOSED);
+    }
+
+    requestAnimationFrame(() => {
+      this.adapter_.removeClass(MDCMenuFoundation.cssClasses.OPEN);
+      if (!this.quickOpen_) {
+        this.closeAnimationEndTimerId_ = setTimeout(() => {
+          this.closeAnimationEndTimerId_ = 0;
+          this.adapter_.removeClass(MDCMenuFoundation.cssClasses.ANIMATING_CLOSED);
+        }, __WEBPACK_IMPORTED_MODULE_2__constants__["d" /* numbers */].TRANSITION_CLOSE_DURATION);
+      }
+    });
+    this.isOpen_ = false;
+    this.adapter_.restoreFocus();
+  }
+
+  /** @return {boolean} */
+  isOpen() {
+    return this.isOpen_;
+  }
+
+  /** @return {number} */
+  getSelectedIndex() {
+    return this.selectedIndex_;
+  }
+
+  /**
+   * @param {number} index Index of the item to set as selected.
+   */
+  setSelectedIndex(index) {
+    if (index === this.selectedIndex_) {
+      return;
+    }
+
+    const prevSelectedIndex = this.selectedIndex_;
+    if (prevSelectedIndex >= 0) {
+      this.adapter_.rmAttrForOptionAtIndex(prevSelectedIndex, 'aria-selected');
+      this.adapter_.rmClassForOptionAtIndex(prevSelectedIndex, __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* cssClasses */].SELECTED_LIST_ITEM);
+    }
+
+    this.selectedIndex_ = index >= 0 && index < this.adapter_.getNumberOfItems() ? index : -1;
+    if (this.selectedIndex_ >= 0) {
+      this.adapter_.setAttrForOptionAtIndex(this.selectedIndex_, 'aria-selected', 'true');
+      this.adapter_.addClassForOptionAtIndex(this.selectedIndex_, __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* cssClasses */].SELECTED_LIST_ITEM);
+    }
+  }
+}
+
+
+
+/***/ }),
+/* 73 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export MDCMenuAdapter */
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* eslint no-unused-vars: [2, {"args": "none"}] */
+
+/**
+ * Adapter for MDC Menu. Provides an interface for managing
+ * - classes
+ * - dom
+ * - focus
+ * - position
+ * - dimensions
+ * - event handlers
+ *
+ * Additionally, provides type information for the adapter to the Closure
+ * compiler.
+ *
+ * Implement this adapter for your framework of choice to delegate updates to
+ * the component in your framework of choice. See architecture documentation
+ * for more details.
+ * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
+ *
+ * @record
+ */
+class MDCMenuAdapter {
+  /** @param {string} className */
+  addClass(className) {}
+
+  /** @param {string} className */
+  removeClass(className) {}
+
+  /**
+   * @param {string} className
+   * @return {boolean}
+   */
+  hasClass(className) {}
+
+  /** @return {boolean} */
+  hasNecessaryDom() {}
+
+  /**
+   * @param {EventTarget} target
+   * @param {string} attributeName
+   * @return {string}
+   */
+  getAttributeForEventTarget(target, attributeName) {}
+
+  /** @return {{ width: number, height: number }} */
+  getInnerDimensions() {}
+
+  /** @return {boolean} */
+  hasAnchor() {}
+
+  /** @return {{width: number, height: number, top: number, right: number, bottom: number, left: number}} */
+  getAnchorDimensions() {}
+
+  /** @return {{ width: number, height: number }} */
+  getWindowDimensions() {}
+
+  /** @return {number} */
+  getNumberOfItems() {}
+
+  /**
+   * @param {string} type
+   * @param {function(!Event)} handler
+   */
+  registerInteractionHandler(type, handler) {}
+
+  /**
+   * @param {string} type
+   * @param {function(!Event)} handler
+   */
+  deregisterInteractionHandler(type, handler) {}
+
+  /** @param {function(!Event)} handler */
+  registerBodyClickHandler(handler) {}
+
+  /** @param {function(!Event)} handler */
+  deregisterBodyClickHandler(handler) {}
+
+  /**
+   * @param {EventTarget} target
+   * @return {number}
+   */
+  getIndexForEventTarget(target) {}
+
+  /** @param {{index: number}} evtData */
+  notifySelected(evtData) {}
+
+  notifyCancel() {}
+
+  saveFocus() {}
+
+  restoreFocus() {}
+
+  /** @return {boolean} */
+  isFocused() {}
+
+  focus() {}
+
+  /** @return {number} */
+  getFocusedItemIndex() /* number */{}
+
+  /** @param {number} index */
+  focusItemAtIndex(index) {}
+
+  /** @return {boolean} */
+  isRtl() {}
+
+  /** @param {string} origin */
+  setTransformOrigin(origin) {}
+
+  /** @param {{
+  *   top: (string|undefined),
+  *   right: (string|undefined),
+  *   bottom: (string|undefined),
+  *   left: (string|undefined)
+  * }} position */
+  setPosition(position) {}
+
+  /** @param {string} height */
+  setMaxHeight(height) {}
+
+  /**
+   * @param {number} index
+   * @param {string} attr
+   * @param {string} value
+   */
+  setAttrForOptionAtIndex(index, attr, value) {}
+
+  /**
+   * @param {number} index
+   * @param {string} attr
+   */
+  rmAttrForOptionAtIndex(index, attr) {}
+
+  /**
+   * @param {number} index
+   * @param {string} className
+   */
+  addClassForOptionAtIndex(index, className) {}
+
+  /**
+   * @param {number} index
+   * @param {string} className
+   */
+  rmClassForOptionAtIndex(index, className) {}
+}
+
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initSelects;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select__ = __webpack_require__(75);
+
+
+function initSelects() {
+    console.log('\tSelects');
+    var components = document.querySelectorAll('.mdc-select');
+    for (var i = 0; i < components.length; i++) {
+        var component = components[i];
+        if (!component.mdcComponent) {
+            component.mdcComponent = __WEBPACK_IMPORTED_MODULE_0__material_select__["a" /* MDCSelect */].attachTo(component);
+        }
+    }
+}
+
+// mdc.select.MDCSelect.attachTo(document.getElementById('hero-js-select'));
+//        mdc.select.MDCSelect.attachTo(document.getElementById('js-pre-selected'));
+//        mdc.select.MDCSelect.attachTo(document.getElementById('optgroup-js-select'));
+//
+//        var root = document.getElementById('js-select');
+//        var nativeSelect = root.querySelector('.mdc-select__native-control');
+//        var boxCurrentlySelected = document.getElementById('currently-selected');
+//        var select = new mdc.select.MDCSelect(root);
+//        var boxDemoWrapper = document.getElementById('demo-wrapper');
+//        var rtlCb = document.getElementById('rtl');
+//        var alternateColorsCb = document.getElementById('alternate-colors');
+//        var disabledCb = document.getElementById('disabled');
+//        var setSelectedButton = document.getElementById('set-selected-index-zero-button');
+//        var setValueMeatButton = document.getElementById('set-value-meat-button');
+//        function updateSelectedTextContent() {
+//          var item = nativeSelect.selectedOptions[0];
+//          var index = nativeSelect.selectedIndex;
+//          if (item) {
+//            boxCurrentlySelected.textContent = '"' + item.textContent + '" at index ' + index +
+//              ' with value "' + nativeSelect.value + '"';
+//          }
+//        }
+//        root.addEventListener('change', function() {
+//          updateSelectedTextContent();
+//        });
+//        rtlCb.addEventListener('change', function() {
+//          if (rtlCb.checked) {
+//            boxDemoWrapper.setAttribute('dir', 'rtl');
+//          } else {
+//            boxDemoWrapper.removeAttribute('dir');
+//          }
+//        });
+//        alternateColorsCb.addEventListener('change', function() {
+//          root.classList[alternateColorsCb.checked ? 'add' : 'remove']('demo-select-custom-colors');
+//        });
+//        disabledCb.addEventListener('change', function() {
+//          select.disabled = disabledCb.checked;
+//        });
+//        setSelectedButton.addEventListener('click', function() {
+//          select.selectedIndex = 0;
+//          updateSelectedTextContent();
+//        });
+//        setValueMeatButton.addEventListener('click', function() {
+//          select.value = 'meat';
+//          updateSelectedTextContent();
+//        });
+
+/***/ }),
+/* 75 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bottom_line_index__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__label_index__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__constants__ = __webpack_require__(31);
+/* unused harmony reexport MDCSelectFoundation */
+/**
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+
+
+
+
+
+class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /* MDCComponent */] {
+  static attachTo(root) {
+    return new MDCSelect(root);
+  }
+
+  get value() {
+    return this.nativeControl_.value;
+  }
+
+  set value(value) {
+    this.foundation_.setValue(value);
+  }
+
+  get selectedIndex() {
+    return this.nativeControl_.selectedIndex;
+  }
+
+  set selectedIndex(selectedIndex) {
+    this.foundation_.setSelectedIndex(selectedIndex);
+  }
+
+  get disabled() {
+    return this.nativeControl_.disabled;
+  }
+
+  set disabled(disabled) {
+    this.foundation_.setDisabled(disabled);
+  }
+
+  initialize(labelFactory = el => new __WEBPACK_IMPORTED_MODULE_3__label_index__["a" /* MDCSelectLabel */](el), bottomLineFactory = el => new __WEBPACK_IMPORTED_MODULE_2__bottom_line_index__["a" /* MDCSelectBottomLine */](el)) {
+    this.nativeControl_ = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_5__constants__["c" /* strings */].NATIVE_CONTROL_SELECTOR);
+    const labelElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_5__constants__["c" /* strings */].LABEL_SELECTOR);
+    if (labelElement) {
+      this.label_ = labelFactory(labelElement);
+    }
+    const bottomLineElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_5__constants__["c" /* strings */].BOTTOM_LINE_SELECTOR);
+    if (bottomLineElement) {
+      this.bottomLine_ = bottomLineFactory(bottomLineElement);
+    }
+
+    if (this.root_.classList.contains(__WEBPACK_IMPORTED_MODULE_5__constants__["a" /* cssClasses */].BOX)) {
+      this.ripple = this.initRipple_();
+    }
+  }
+
+  initRipple_() {
+    const adapter = Object.assign(__WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["a" /* MDCRipple */].createAdapter(this), {
+      registerInteractionHandler: (type, handler) => this.nativeControl_.addEventListener(type, handler),
+      deregisterInteractionHandler: (type, handler) => this.nativeControl_.removeEventListener(type, handler)
+    });
+    const foundation = new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["b" /* MDCRippleFoundation */](adapter);
+    return new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["a" /* MDCRipple */](this.root_, foundation);
+  }
+
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */]({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className),
+      floatLabel: value => {
+        if (this.label_) {
+          this.label_.float(value);
+        }
+      },
+      activateBottomLine: () => {
+        if (this.bottomLine_) {
+          this.bottomLine_.activate();
+        }
+      },
+      deactivateBottomLine: () => {
+        if (this.bottomLine_) {
+          this.bottomLine_.deactivate();
+        }
+      },
+      setDisabled: disabled => this.nativeControl_.disabled = disabled,
+      registerInteractionHandler: (type, handler) => this.nativeControl_.addEventListener(type, handler),
+      deregisterInteractionHandler: (type, handler) => this.nativeControl_.removeEventListener(type, handler),
+      getSelectedIndex: () => this.nativeControl_.selectedIndex,
+      setSelectedIndex: index => this.nativeControl_.selectedIndex = index,
+      getValue: () => this.nativeControl_.value,
+      setValue: value => this.nativeControl_.value = value
+    });
+  }
+
+  initialSyncWithDOM() {
+    // needed to sync floating label
+    this.selectedIndex = this.nativeControl_.selectedIndex;
+
+    if (this.nativeControl_.disabled) {
+      this.disabled = true;
+    }
+  }
+
+  destroy() {
+    if (this.ripple) {
+      this.ripple.destroy();
+    }
+    super.destroy();
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = MDCSelect;
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCSelectBottomLine; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(77);
+/* unused harmony reexport MDCSelectBottomLineFoundation */
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @extends {MDCComponent<!MDCSelectBottomLineFoundation>}
+ * @final
+ */
+class MDCSelectBottomLine extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /**
+   * @param {!Element} root
+   * @return {!MDCSelectBottomLine}
+   */
+  static attachTo(root) {
+    return new MDCSelectBottomLine(root);
+  }
+
+  /**
+   * Activates the bottom line active class
+   */
+  activate() {
+    this.foundation_.activate();
+  }
+
+  /**
+   * Deactivates the bottom line active class
+   */
+  deactivate() {
+    this.foundation_.deactivate();
+  }
+
+  /**
+   * @return {!MDCSelectBottomLineFoundation}
+   */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className)
+    });
+  }
+}
+
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(78);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCSelectBottomLineAdapter>}
+ * @final
+ */
+class MDCSelectBottomLineFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  /**
+   * {@see MDCSelectBottomLineAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCSelectBottomLineAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCSelectBottomLineAdapter} */{
+        addClass: () => {},
+        removeClass: () => {}
+      }
+    );
+  }
+
+  /**
+   * Adds the active class to bottom line
+   */
+  activate() {
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].BOTTOM_LINE_ACTIVE);
+  }
+
+  /**
+   * Removes the active class from the bottom line
+   */
+  deactivate() {
+    this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].BOTTOM_LINE_ACTIVE);
+  }
+
+  /**
+   * @param {!MDCSelectBottomLineAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCSelectBottomLineFoundation.defaultAdapter, adapter));
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCSelectBottomLineFoundation);
+
+/***/ }),
+/* 78 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+const cssClasses = {
+  BOTTOM_LINE_ACTIVE: 'mdc-select__bottom-line--active'
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = cssClasses;
+
+
+/***/ }),
+/* 79 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCSelectLabel; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(80);
+/* unused harmony reexport MDCSelectLabelFoundation */
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @extends {MDCComponent<!MDCSelectLabelFoundation>}
+ * @final
+ */
+class MDCSelectLabel extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /**
+   * @param {!Element} root
+   * @return {!MDCSelectLabel}
+   */
+  static attachTo(root) {
+    return new MDCSelectLabel(root);
+  }
+
+  /**
+   * Styles the label to float or defloat as necessary.
+   * @param {string} value The value of the input.
+   */
+  float(value) {
+    this.foundation_.styleFloat(value);
+  }
+
+  /**
+   * @return {!MDCSelectLabelFoundation}
+   */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className)
+    });
+  }
+}
+
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(81);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCSelectLabelAdapter>}
+ * @final
+ */
+class MDCSelectLabelFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  /**
+   * {@see MDCSelectLabelAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCSelectLabelAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCSelectLabelAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        getWidth: () => {}
+      }
+    );
+  }
+
+  /**
+   * @param {!MDCSelectLabelAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCSelectLabelFoundation.defaultAdapter, adapter));
+  }
+
+  /**
+   * Styles the label to float or defloat as necessary.
+   * @param {string} value The value of the input.
+   */
+  styleFloat(value) {
+    const { LABEL_FLOAT_ABOVE } = MDCSelectLabelFoundation.cssClasses;
+    if (!!value) {
+      this.adapter_.addClass(LABEL_FLOAT_ABOVE);
+    } else {
+      this.adapter_.removeClass(LABEL_FLOAT_ABOVE);
+    }
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCSelectLabelFoundation);
+
+/***/ }),
+/* 81 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const cssClasses = {
+  LABEL_FLOAT_ABOVE: 'mdc-select__label--float-above'
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = cssClasses;
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(31);
+/**
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+class MDCSelectFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["b" /* MDCFoundation */] {
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* cssClasses */];
+  }
+
+  static get numbers() {
+    return __WEBPACK_IMPORTED_MODULE_1__constants__["b" /* numbers */];
+  }
+
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_1__constants__["c" /* strings */];
+  }
+
+  static get defaultAdapter() {
+    return {
+      addClass: () => /* className: string */{},
+      removeClass: () => /* className: string */{},
+      floatLabel: () => /* value: boolean */{},
+      activateBottomLine: () => {},
+      deactivateBottomLine: () => {},
+      registerInteractionHandler: () => /* type: string, handler: EventListener */{},
+      deregisterInteractionHandler: () => /* type: string, handler: EventListener */{},
+      getSelectedIndex: () => /* number */-1,
+      setSelectedIndex: () => /* index: number */{},
+      setDisabled: () => /* disabled: boolean */{},
+      getValue: () => /* string */'',
+      setValue: () => /* value: string */{}
+    };
+  }
+
+  constructor(adapter) {
+    super(Object.assign(MDCSelectFoundation.defaultAdapter, adapter));
+
+    this.focusHandler_ = evt => this.handleFocus_(evt);
+    this.blurHandler_ = evt => this.handleBlur_(evt);
+    this.selectionHandler_ = evt => this.handleSelect_(evt);
+  }
+
+  init() {
+    this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
+    this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
+    this.adapter_.registerInteractionHandler('change', this.selectionHandler_);
+  }
+
+  destroy() {
+    this.adapter_.deregisterInteractionHandler('focus', this.focusHandler_);
+    this.adapter_.deregisterInteractionHandler('blur', this.blurHandler_);
+    this.adapter_.deregisterInteractionHandler('change', this.selectionHandler_);
+  }
+
+  setSelectedIndex(index) {
+    const { IS_CHANGING } = MDCSelectFoundation.cssClasses;
+    const { FLOAT_NATIVE_CONTROL_TRANSITION_TIME_MS } = MDCSelectFoundation.numbers;
+
+    this.adapter_.setSelectedIndex(index);
+    this.adapter_.addClass(IS_CHANGING);
+    const optionHasValue = this.adapter_.getValue().length > 0;
+
+    this.adapter_.floatLabel(optionHasValue);
+
+    setTimeout(() => {
+      this.adapter_.removeClass(IS_CHANGING);
+    }, FLOAT_NATIVE_CONTROL_TRANSITION_TIME_MS);
+  }
+
+  setValue(value) {
+    this.adapter_.setValue(value);
+    this.setSelectedIndex(this.adapter_.getSelectedIndex());
+  }
+
+  setDisabled(disabled) {
+    const { DISABLED } = MDCSelectFoundation.cssClasses;
+    this.adapter_.setDisabled(disabled);
+    if (disabled) {
+      this.adapter_.addClass(DISABLED);
+    } else {
+      this.adapter_.removeClass(DISABLED);
+    }
+  }
+
+  handleFocus_() {
+    this.adapter_.activateBottomLine();
+  }
+
+  handleBlur_() {
+    this.adapter_.deactivateBottomLine();
+  }
+
+  handleSelect_() {
+    this.setSelectedIndex(this.adapter_.getSelectedIndex());
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = MDCSelectFoundation;
+
 
 /***/ })
 /******/ ]);

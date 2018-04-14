@@ -15,7 +15,7 @@ module Voom
             @side = attribs.delete(:side) || :right
             @color = attribs.delete(:color)
             icon = attribs.delete(:icon) || :more_vert
-            @button = Components::Button.new(parent: self, type: :icon, icon: icon)
+            @button = Components::Button.new(parent: self, type: :icon, icon: icon, context: context)
             expand!
           end
 

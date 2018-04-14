@@ -3,31 +3,31 @@
     "start": "webpack"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-es2015": "^6.24.1",
     "css-loader": "^0.28.10",
-    "extract-loader": "^1.0.2",
-    "file-loader": "^1.1.11",
+    "extract-loader": "^2.0.1",
     "l": "^0.6.0",
-    "node-sass": "^4.7.2",
-    "sass-loader": "^6.0.7",
-    "webpack": "^3.11.0",
-    "webpack-dev-server": "^2.11.2"
+    "node-sass": "^4.7.2"
   },
   "dependencies": {
-    "@material/button": "^0.32.0",
-    "@material/fab": "^0.32.0",
-    "@material/form-field": "^0.33.0",
+    "@material/button": "^0.34.1",
+    "@material/fab": "^0.34.1",
+    "@material/form-field": "^0.34.1",
     "@material/icon-toggle": "^0.34.1",
-    "@material/layout-grid": "^0.24.0",
+    "@material/layout-grid": "^0.34.0",
     "@material/list": "^0.34.1",
     "@material/menu": "^0.34.0",
-    "@material/ripple": "^0.32.0",
-    "@material/select": "^0.32.0",
-    "@material/textfield": "^0.33.0",
-    "@material/toolbar": "^0.33.0",
+    "@material/ripple": "^0.34.1",
+    "@material/select": "^0.34.1",
+    "@material/textfield": "^0.34.1",
+    "@material/toolbar": "^0.34.1",
     "@material/typography": "^0.34.0",
-    "material-design-lite": "^1.3.0"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "file-loader": "^1.1.11",
+    "material-design-lite": "^1.3.0",
+    "npm-check-updates": "^2.14.1",
+    "sass-loader": "^7.0.1"
   }
 }

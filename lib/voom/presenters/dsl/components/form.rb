@@ -5,6 +5,7 @@ require_relative 'mixins/event'
 require_relative 'mixins/grid'
 require_relative 'mixins/append'
 require_relative 'mixins/text_fields'
+require_relative 'mixins/selects'
 require_relative 'mixins/buttons'
 require_relative 'mixins/toggles'
 require_relative 'mixins/attaches'
@@ -20,6 +21,7 @@ module Voom
           include Mixins::Append
           include Mixins::Grid
           include Mixins::TextFields
+          include Mixins::Selects
           include Mixins::Buttons
           include Mixins::Toggles
           include Mixins::Attaches
