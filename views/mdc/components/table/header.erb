@@ -1,7 +1,7 @@
 <tr>
   <% row.columns.each do |col| %>
     <th id="<%=col.id%>"
-        class="<%='mdl-data-table__cell--non-numeric' unless col.numeric%>"><%=markdown(col.value.to_s) %></th>
+        class="<%='mdl-data-table__cell--non-numeric' unless col.numeric%>"><%=expand_text(col.value&.text)%></th>
     <%= erb :"components/tooltip", :locals => {comp: col.tooltip, parent_id: col.id} %>
   <% end %>
 </tr>

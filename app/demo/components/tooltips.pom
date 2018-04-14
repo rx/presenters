@@ -10,7 +10,7 @@ Voom::Presenters.define(:tooltips) do
     card do
       title do
         avatar 'img/demo/rx.png' do
-          tooltip "Ill be back"
+          tooltip "Ill be back", position: :right
         end
       end
     end
@@ -18,7 +18,7 @@ Voom::Presenters.define(:tooltips) do
     card do
       title do
         avatar :person do
-          tooltip "Ill be back"
+          tooltip "Ill be back", position: :right
         end
       end
     end
@@ -28,13 +28,13 @@ Voom::Presenters.define(:tooltips) do
       line do
         text 'Terminator2'
         avatar 'img/demo/rx.png' do
-          tooltip "I'll be back"
+          tooltip "I'll be back - not working"
         end
       end
       line do
         text 'Terminator3'
         avatar :person do
-          tooltip "I'll be back"
+          tooltip "I'll be back - not working"
         end
       end
     end
@@ -44,7 +44,7 @@ Voom::Presenters.define(:tooltips) do
     button 'Button', type: :raised do
       tooltip "Yo\nsmile"
     end
-    button 'Button' do
+    button 'Button', position: :bottom do
       tooltip "Yo\nsmile"
     end
     button icon: :mood do
@@ -57,7 +57,7 @@ Voom::Presenters.define(:tooltips) do
       header do
         column 'Material'
         column 'Quantity' do
-          tooltip 'This is the quantity on hand.'
+          tooltip 'This is the quantity on hand.', position: :top
         end
         column 'Unit price'
       end

@@ -198,7 +198,9 @@
     MDC: 
     Priority:
     Completeness: 2
-    Notes:  The list icons are not displaying tooltips. Help wanted
+    Notes: |
+           The list icons are not displaying tooltips.
+           **Help wanted**
 -
     Components: Widgets
     Implementation: N

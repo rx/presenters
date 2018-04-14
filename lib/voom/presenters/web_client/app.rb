@@ -37,7 +37,7 @@ module Voom
           end
 
           def expand_text(text)
-            text.map {|line| "#{markdown(line)}<br/>"}.join
+            (text||[]).map {|line| "#{markdown(line)}<br/>"}.join
           end
         end
 

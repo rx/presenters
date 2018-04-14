@@ -60,18 +60,25 @@ module Voom
               include Mixins::Event
               include Mixins::Tooltips
 
-              attr_accessor :value, :numeric, :color
+              attr_accessor :numeric, :color
 
               def initialize(**attribs_, &block)
                 super(type: :column, **attribs_, &block)
-                @value = attribs.delete(:value)
-                @numeric = attribs.delete(:numeric) || numeric?
+                value = attribs.delete(:value)
+                @numeric = attribs.delete(:numeric) || numeric?(value)
+                self.value(value) if value
+
                 @color = attribs.delete(:color)
                 expand!
               end
 
+              def value(value=nil, **attribs, &block)
+                return @value if locked?
+                @value = Components::Typography.new(parent: self, type: :text, text: value, context: context, **attribs, &block)
+              end
+
               private
-              def numeric?
+              def numeric?(value)
                 return true if value.is_a? Numeric
                 (value.to_s.sub(/\D/, '') =~ /^[-+]?[0-9]*\.?[0-9]+$/) != nil
               end

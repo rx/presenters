@@ -1,5 +1,5 @@
 <% if comp %>
-<div class="mdl-tooltip mdl-tooltip--left" for="<%=parent_id%>">
+<div class="mdl-tooltip mdl-tooltip--<%=comp.position%>" for="<%=parent_id%>">
   <%=expand_text(comp.text.text)%>
 </div>
 <% end %>

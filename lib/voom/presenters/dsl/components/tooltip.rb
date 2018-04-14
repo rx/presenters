@@ -3,12 +3,13 @@ module Voom
     module DSL
       module Components
         class Tooltip < Base
-          attr_accessor :text
+          attr_reader :position
 
           def initialize(**attribs_, &block)
             super(type: :tooltip,
                   context: context,
                   **attribs_, &block)
+            @position = attribs.delete(:position) || :left
             self.text(attribs.delete(:text)) if attribs.key?(:text)
             expand!
           end
