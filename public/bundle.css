@@ -9694,6 +9694,18 @@ a.mdc-list-item {
   .mdc-select--disabled .mdc-select__bottom-line {
     display: none; }
 
+.mdc-select__native-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-bottom: 1px solid;
+  border-radius: 0; }
+
+select {
+  text-transform: none;
+  font-size: 14px;
+  line-height: 1.15;
+  margin: 0; }
+
 .v-expansion {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
   .v-expansion__summary {
