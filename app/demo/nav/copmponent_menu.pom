@@ -31,6 +31,12 @@ Voom::Presenters.define('component_menu') do
         loads 'text-fields'
       end
     end
+    
+    item 'Select fields' do
+      event :click do
+        loads 'selects'
+      end
+    end
 
     item 'Buttons' do
       event :click do
