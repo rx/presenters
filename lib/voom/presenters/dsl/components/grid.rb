@@ -5,6 +5,7 @@ require_relative 'mixins/icons'
 require_relative 'mixins/event'
 require_relative 'mixins/attaches'
 require_relative 'mixins/dialogs'
+require_relative 'mixins/chips'
 
 module Voom
   module Presenters
@@ -39,8 +40,9 @@ module Voom
             include Mixins::Event
             include Mixins::Attaches
             include Mixins::Dialogs
+            include Mixins::Chips
 
-            attr_accessor :size, :desktop, :tablet, :phone, :color, :components
+            attr_reader :size, :desktop, :tablet, :phone, :color, :components
 
             def initialize(**attribs_, &block)
               super(type: :column, **attribs_, &block)

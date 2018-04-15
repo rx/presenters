@@ -1,7 +1,7 @@
 require_relative 'append'
 require_relative 'toggles'
 require_relative 'typography'
-require_relative 'grid'
+require_relative 'grids'
 require_relative 'buttons'
 require_relative 'expansion_panels'
 require_relative 'content'
@@ -16,7 +16,7 @@ module Voom
             include Mixins::Toggles
             include Mixins::Append
             include Mixins::Typography
-            include Mixins::Grid
+            include Mixins::Grids
             include Mixins::Buttons
             include Mixins::ExpansionPanels
             include Mixins::Content

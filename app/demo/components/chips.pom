@@ -1,0 +1,16 @@
+Voom::Presenters.define(:chips) do
+  attach :top_nav
+  attach :component_drawer
+
+  attach :grid do
+    display 'Chps'
+
+    grid do
+      column 12 do
+        chip 'Hi'
+      end
+    end
+    
+    attach :code, file: __FILE__
+  end
+end

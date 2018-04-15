@@ -5,7 +5,8 @@ import {initEvents} from './events';
 import {initLists} from './lists';
 import {initIconToggles} from './icon-toggles';
 import {initMenus} from './menus';
-import {initSelects} from './select';
+import {initSelects} from './selects';
+import {initChips} from './chips';
 
 export function initialize(){
     console.log('Initializing');
@@ -17,5 +18,6 @@ export function initialize(){
     initIconToggles();
     initMenus();
     initSelects();
+    initChips();
     // componentHandler.upgradeAllRegistered();
 }

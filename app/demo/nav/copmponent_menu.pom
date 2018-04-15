@@ -31,7 +31,7 @@ Voom::Presenters.define('component_menu') do
         loads 'text-fields'
       end
     end
-    
+
     item 'Select fields' do
       event :click do
         loads 'selects'
@@ -97,6 +97,13 @@ Voom::Presenters.define('component_menu') do
         loads :toggles
       end
     end
+
+    item 'Chips' do
+      event :click do
+        loads :chips
+      end
+    end
+
 
     item 'Snackbar' do
       event :click do

@@ -3,7 +3,7 @@ module Voom
     module DSL
       module Components
         module Mixins
-          module Grid
+          module Grids
             def grid(color: nil, **attributes, &block)
               self << Components::Grid.new(parent: self, color: color, context: context, **attributes, &block)
             end

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@material/button": "^0.34.1",
+    "@material/chips": "^0.34.1",
     "@material/fab": "^0.34.1",
     "@material/form-field": "^0.34.1",
     "@material/icon-toggle": "^0.34.1",

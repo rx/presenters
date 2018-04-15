@@ -2,7 +2,7 @@ require_relative 'hidden_field'
 require_relative 'text_field'
 require_relative 'text_area'
 require_relative 'mixins/event'
-require_relative 'mixins/grid'
+require_relative 'mixins/grids'
 require_relative 'mixins/append'
 require_relative 'mixins/text_fields'
 require_relative 'mixins/selects'
@@ -19,7 +19,7 @@ module Voom
         class Form < Base
           include Mixins::Event
           include Mixins::Append
-          include Mixins::Grid
+          include Mixins::Grids
           include Mixins::TextFields
           include Mixins::Selects
           include Mixins::Buttons
