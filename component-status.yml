@@ -136,6 +136,14 @@
     Completeness: 2
     Notes: 
 -
+    Components: Select fields
+    Implementation: MDC
+    MDL:
+    MDC:
+    Priority: 
+    Completeness: 2
+    Notes:
+-
     Components: Sliders
     Implementation: N
     MDL: 
@@ -181,8 +189,8 @@
     MDL: 
     MDC: 
     Priority: high
-    Completeness: 1
-    Notes: Missing select controls
+    Completeness: 2
+    Notes:
 -
     Components: Toolbars
     Implementation: MDL
