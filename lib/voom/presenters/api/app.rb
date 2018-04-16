@@ -16,6 +16,13 @@ module Voom
           render_presenter
         end
 
+        get '/rpom/:presenter' do
+          presenter = Voom::Presenters::App[params[:presenter]].call
+          pom = presenter.expand(router: router, context: symbolize_keys(params))
+          content_type :text
+          pom.to_hash.inspect
+        end
+
         private
 
         def render_presenter

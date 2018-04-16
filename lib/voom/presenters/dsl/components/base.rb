@@ -27,7 +27,7 @@ module Voom
             @type = h(type)
             @parent = parent
             @context = context
-            @attributes = escape(attributes || {})
+            @attributes = escape(attributes)
             @block = block
             @id = h(id) || generate_id
             @event_parent_id = @id

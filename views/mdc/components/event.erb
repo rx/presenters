@@ -8,7 +8,7 @@
                                 when 'update', 'post', 'delete'
                                   {__parent_id__: parent_id}
                                 when 'snackbar'
-                                  action.params
+                                  {text: action.params[:text]}
                                 else
                                   {}
                               end

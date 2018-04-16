@@ -1,7 +1,15 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require 'voom/console'
+ENV['VOOM_ROOT'] =  File.expand_path(__dir__)
+libdir = File.join(ENV['VOOM_ROOT'], 'lib')
+$:.unshift(libdir) unless $:.include?(libdir)
+require 'voom-presenters'
+
+Voom::Presenters::Settings.configure do |config|
+  config.presenters.root = File.join(ENV['VOOM_ROOT'], 'app')
+end
+Voom::Presenters::App.boot!
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
