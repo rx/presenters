@@ -201,11 +201,11 @@
     Notes: 
 -
     Components: Tooltips
-    Implementation: N
-    MDL: Y
+    Implementation: MDL
+    MDL: 
     MDC: 
     Priority:
-    Completeness: 2
+    Completeness: 1
     Notes: |
            The list icons are not displaying tooltips.
            **Help wanted**

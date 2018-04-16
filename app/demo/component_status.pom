@@ -16,11 +16,13 @@ Voom::Presenters.define(:component_status) do
           :lightgray
         when ->(i) {(i.fetch('Completeness')||0) > 1}
           :DarkSeaGreen
+        when ->(i) {(i.fetch('Completeness')||0)==1}
+          :LightYellow
         when ->(i) {['medium', 'high'].include?(i['Priority']) && i['MDC']=='N' && i['MDL']=='N'}
           :lightcoral
         when ->(i) {i['Priority']=='medium'}
           :coral
-        when ->(i) {i['Priority']=='high'}
+        when ->(i) {i['Priority']=='now'}
           :CornflowerBlue
         else
           nil
@@ -29,7 +31,8 @@ Voom::Presenters.define(:component_status) do
 
     def key
       items = [{'Completeness' => 2, text: 'Available'},
-               {'Priority' => 'high', 'Completeness'=>0, 'MDC' => nil, 'MDL' => nil, text: 'In progress'},
+               {'Priority' => 'high', 'Completeness'=>1, 'MDC' => nil, 'MDL' => nil, text: 'Available with caveats'},
+               {'Priority' => 'now', 'Completeness'=>0, 'MDC' => nil, 'MDL' => nil, text: 'In progress'},
                {'Priority' => 'medium', 'Completeness'=>0, 'MDC' => nil, 'MDL' => nil, text: 'Up Next'},
                 {'Priority' => 'medium', 'Completeness'=>0, 'MDC' => 'N', 'MDL' => 'N', text: 'Implementation needed'},
                {'Priority' => 'low', 'Completeness'=>0, 'MDC' => 'N', 'MDL' => 'N', text: 'Not Planned'},
