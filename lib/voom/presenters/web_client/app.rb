@@ -20,7 +20,7 @@ module Voom
 
         helpers do
           def markdown(text)
-            @markdown ||= Redcarpet::Markdown.new(RenderWithoutWrap, extensions = {})
+            @markdown ||= Redcarpet::Markdown.new(CustomRender, extensions = {})
             @markdown.render(text)
           end
 

@@ -101,8 +101,8 @@
     MDL: 
     MDC: 
     Priority: 
-    Completeness: 2
-    Notes: Missing Leave-behinds
+    Completeness: 1
+    Notes: Missing Leave-behinds, MDL controls don't update on replace.
 -
     Components: Menus
     Implementation: MDC/MDL
