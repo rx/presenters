@@ -16,6 +16,13 @@ module Voom
             def initialize(context:, **attribs_, &block)
               super(type: :line, context: context, **attribs_, &block)
               @selected = attribs.delete(:selected)
+              self.text(attribs.delete(:text)) if attribs.key?(:text)
+              self.subtitle(attribs.delete(:subtitle)) if attribs.key?(:subtitle)
+              self.info(attribs.delete(:info)) if attribs.key?(:info)
+              self.body(attribs.delete(:body)) if attribs.key?(:body)
+              self.avatar(attribs.delete(:avatar)) if attribs.key?(:avatar)
+              self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
+
               @actions = []
               expand!
             end

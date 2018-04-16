@@ -11,7 +11,7 @@ module Voom
           include Mixins::Tooltips
           BUTTON_TYPES = %i(raised flat fab icon)
 
-          attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :dialog, :align
+          attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :align
 
           def initialize(type: nil, **attribs_, &block)
             @button_type = h(type) || ((attribs_[:icon]&&!attribs_[:text]) ? :icon : nil) || :flat
@@ -21,7 +21,6 @@ module Voom
             @color = attribs.delete(:color)
             @disabled = attribs.delete(:disabled) || false
             @size = attribs.delete(:size)
-            @dialog = attribs.delete(:dialog)
             @align = attribs.delete(:align)
             expand!
             @event_parent_id = self.parent(:form)&.id || id

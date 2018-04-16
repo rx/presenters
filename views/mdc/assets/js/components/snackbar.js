@@ -14,7 +14,7 @@ export class VSnackbar {
             actionHandler: this.action_fn,
             actionText: this.action_text
         };
-        componentHandler.upgradeElement(snackbarContainer);
+        // window.componentHandler.upgradeElement(snackbarContainer);
         snackbarContainer.MaterialSnackbar.showSnackbar(data);
     }
 }

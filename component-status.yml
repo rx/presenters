@@ -41,11 +41,11 @@
     Notes: 
 -
     Components: Chips
-    Implementation: N
+    Implementation: MDC
     MDL: 
-    MDC: Y
-    Priority: high
-    Completeness: 
+    MDC:
+    Priority:
+    Completeness: 2
     Notes: 
 -
     Components: Data tables

@@ -4,8 +4,8 @@ module Voom
       module Components
         module Mixins
           module ExpansionPanels
-            def expansion_panel(**attributes, &block)
-              self << Components::ExpansionPanel.new(parent: self, context: context, **attributes, &block)
+            def expansion_panel(text=nil, **attributes, &block)
+              self << Components::ExpansionPanel.new(parent: self, text: text, context: context, **attributes, &block)
             end
           end
         end

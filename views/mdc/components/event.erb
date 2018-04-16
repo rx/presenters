@@ -7,6 +7,8 @@
                                   {grid_nesting:@grid_nesting, __parent_id__: parent_id}
                                 when 'update', 'post', 'delete'
                                   {__parent_id__: parent_id}
+                                when 'snackbar'
+                                  action.params
                                 else
                                   {}
                               end
@@ -14,5 +16,5 @@
         end
        ]
      end %>
-  data-events = <%= data_events.to_json %>
+  data-events = '<%= data_events.to_json %>'
 <% end %>

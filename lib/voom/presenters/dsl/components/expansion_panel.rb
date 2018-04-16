@@ -9,6 +9,8 @@ module Voom
 
           def initialize(**attribs_, &block)
             super(type: :expansion_panel, **attribs_, &block)
+            self.text(attribs.delete(:text)) if attribs.key?(:text)
+            self.secondary_text(attribs.delete(:secondary_text)) if attribs.key?(:secondary_text)
             expand!
           end
 

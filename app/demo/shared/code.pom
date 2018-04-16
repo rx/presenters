@@ -1,13 +1,18 @@
 Voom::Presenters.define(:code) do
   if context[:file]
-    attach :grid do
-      body ''
-      title 'Page Source:'
-      form do
-        source = File.read(context[:file])
-        text_area full_width: true, rows: source.split("\n").size do
-          value source
-          label 'Source'
+    grid do
+      column 12 do
+        body ''
+        expansion_panel 'Show Source' do
+          content do
+            form do
+              source = File.read(context[:file])
+              text_area full_width: true, rows: source.split("\n").size do
+                value source
+                label 'Source'
+              end
+            end
+          end
         end
       end
     end

@@ -51,6 +51,11 @@ Voom::Presenters.define(:tooltips) do
       tooltip "Yo\nsmile", position: :top
     end
 
+    headline 'Chips'
+    chip 'Hover over me' do
+      tooltip 'I have this tip!'
+    end
+
     headline 'Tables'
 
     table selectable: true do

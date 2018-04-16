@@ -9,28 +9,39 @@ Voom::Presenters.define(:buttons) do
     headline 'Raised Button'
     button 'Button', type: :raised
 
-    headline 'Disabled'
+    subheading 'Disabled'
     button 'Button', type: :raised, disabled: true
 
-    headline ' Accent colored'
+    subheading ' Accent colored'
     button 'Button', type: :raised, color: :secondary
 
     headline 'Flat button'
     button 'Button'
 
-    headline 'Disabled'
+    subheading 'Disabled'
     button 'Button', type: :flat, disabled: true
 
-    headline 'Accent colored flat'
+    subheading 'Accent colored flat'
     button 'Button', type: :flat, color: :secondary
+
+    subheading 'Aligned'
+    grid do
+      column 3 do
+        button 'Right-Not Aligned'
+        button 'Right', align: :right
+      end
+    end
 
     # Icon Buttons
     headline 'Icon button'
     button icon: :mood
-    headline 'Colored'
+    subheading 'Colored'
     button icon: :mood, color: :primary
     button icon: :mood, color: :secondary
-    
+
+    subheading 'with text'
+    button "I'm happy", icon: :mood
+
     attach :code, file: __FILE__
   end
 end

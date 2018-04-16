@@ -65,6 +65,12 @@ module Voom
                                                target: component_id,
                                                params: params, &block)
           end
+
+          def snackbar(text, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               action_type: :snackbar,
+                                               params: params.merge(text: text), &block)
+          end
         end
       end
     end

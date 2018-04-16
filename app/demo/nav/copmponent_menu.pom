@@ -1,128 +1,15 @@
 Voom::Presenters.define('component_menu') do
+  helpers Voom::Presenters::Helpers::Inflector
   menu side: :left do
     button icon: :arrow_drop_down
 
-    item 'Cards' do
-      event :click do
-        loads :cards
-      end
-    end
-
-    item 'Lists' do
-      event :click do
-        loads :lists
-      end
-    end
-
-    item 'Expansion Panels' do
-      event :click do
-        loads :expansion_panels
-      end
-    end
-
-    item 'Tables' do
-      event :click do
-        loads :tables
-      end
-    end
-
-    item 'Text fields' do
-      event :click do
-        loads 'text-fields'
-      end
-    end
-
-    item 'Select fields' do
-      event :click do
-        loads 'selects'
-      end
-    end
-
-    item 'Buttons' do
-      event :click do
-        loads :buttons
-      end
-    end
-
-    item 'Floating Action Button' do
-      event :click do
-        loads :fabs
-      end
-    end
-
-    item 'Mini Floating Action Button' do
-      event :click do
-        loads :fabs_mini
-      end
-    end
-
-    item 'Dialogs' do
-      event :click do
-        loads :dialogs
-      end
-    end
-
-    item 'Layouts' do
-      event :click do
-        loads :layouts
-      end
-    end
-
-    item 'Headers' do
-      event :click do
-        loads :headers
-      end
-    end
-
-    item 'Drawers' do
-      event :click do
-        loads :drawers
-      end
-    end
-
-    item 'Footers' do
-      event :click do
-        loads :footers
-      end
-    end
-
-    item 'Menus' do
-      event :click do
-        loads :menus
-      end
-    end
-
-    item 'Toggles' do
-      event :click do
-        loads :toggles
-      end
-    end
-
-    item 'Chips' do
-      event :click do
-        loads :chips
-      end
-    end
-
-
-    item 'Snackbar' do
-      event :click do
-        loads :snackbar
-      end
-    end
-
-    item 'Badges' do
-      # icon :home
-      event :click do
-        loads :badges
-      end
-    end
-
-    item 'Tooltips' do
-      # icon :home
-      event :click do
-        loads :tooltips
-      end
+    %i(cards lists expansion_panels tables text-fields selects buttons fabs fabs_mini dialogs layouts headers drawers
+       footers menus toggles chips snackbar badges tooltips).sort.each do |comp|
+      item titleize(comp) do
+            event :click do
+              loads comp
+            end
+          end
     end
   end
 end

@@ -276,7 +276,7 @@ class MDCComponent {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRipple; });
 /* unused harmony export RippleCapableSurface */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(3);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
@@ -584,7 +584,7 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(47);
 /**
  * @license
@@ -717,7 +717,7 @@ class MDCTextFieldHelperTextFoundation extends __WEBPACK_IMPORTED_MODULE_0__mate
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(48);
 /**
  * @license
@@ -817,6 +817,34 @@ class MDCTextFieldIconFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_b
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+// This class displays a page level message
+class VSnackbar {
+    constructor(message, action_text, action_fn) {
+        this.message = message;
+        this.action_text = action_text;
+        this.action_fn = action_fn;
+    }
+
+    display() {
+        var snackbarContainer = document.querySelector('#snackbar');
+        var data = {
+            message: this.message,
+            timeout: 2000,
+            actionHandler: this.action_fn,
+            actionText: this.action_text
+        };
+        // window.componentHandler.upgradeElement(snackbarContainer);
+        snackbarContainer.MaterialSnackbar.showSnackbar(data);
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VSnackbar;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -887,7 +915,7 @@ class MDCFoundation {
 /* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -895,7 +923,7 @@ class MDCFoundation {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(34);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__foundation__["a"]; });
 /**
@@ -1006,7 +1034,7 @@ class MDCChip extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1015,11 +1043,11 @@ class MDCChip extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialogs__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__text_fields__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__lists__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__icon_toggles__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__menus__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__selects__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__chips__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__lists__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__icon_toggles__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__menus__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__selects__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__chips__ = __webpack_require__(88);
 
 
 
@@ -1045,7 +1073,7 @@ function initialize() {
 }
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1161,7 +1189,7 @@ class MDCRippleAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCRippleAdapter);
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1216,7 +1244,7 @@ const numbers = {
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1433,7 +1461,7 @@ class MDCTextFieldAdapter {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1509,7 +1537,7 @@ class MDCTextFieldHelperTextAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCTextFieldHelperTextAdapter);
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1573,12 +1601,12 @@ class MDCTextFieldIconAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCTextFieldIconAdapter);
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(50);
 /**
  * @license
@@ -1690,7 +1718,7 @@ class MDCLineRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base
 /* harmony default export */ __webpack_exports__["a"] = (MDCLineRippleFoundation);
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1767,12 +1795,12 @@ class MDCLineRippleAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCLineRippleAdapter);
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(51);
 /**
  * @license
@@ -1888,7 +1916,7 @@ class MDCFloatingLabelFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_b
 /* harmony default export */ __webpack_exports__["a"] = (MDCFloatingLabelFoundation);
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1958,13 +1986,13 @@ class MDCFloatingLabelAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCFloatingLabelAdapter);
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(21);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -2079,7 +2107,7 @@ class MDCNotchedOutlineFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_
 /* harmony default export */ __webpack_exports__["a"] = (MDCNotchedOutlineFoundation);
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2155,7 +2183,7 @@ class MDCNotchedOutlineAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCNotchedOutlineAdapter);
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2189,34 +2217,6 @@ const cssClasses = {
   OUTLINE_NOTCHED: 'mdc-notched-outline--notched'
 };
 
-
-
-/***/ }),
-/* 21 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// This class displays a page level message
-class VSnackbar {
-    constructor(message, action_text, action_fn) {
-        this.message = message;
-        this.action_text = action_text;
-        this.action_fn = action_fn;
-    }
-
-    display() {
-        var snackbarContainer = document.querySelector('#snackbar');
-        var data = {
-            message: this.message,
-            timeout: 2000,
-            actionHandler: this.action_fn,
-            actionText: this.action_text
-        };
-        componentHandler.upgradeElement(snackbarContainer);
-        snackbarContainer.MaterialSnackbar.showSnackbar(data);
-    }
-}
-/* unused harmony export VSnackbar */
 
 
 /***/ }),
@@ -2363,7 +2363,7 @@ class VErrors {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(7);
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -3331,7 +3331,7 @@ module.exports = __webpack_require__(37);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_initialize__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_initialize__ = __webpack_require__(9);
 window.dialogPolyfill = __webpack_require__(38);
 window.componentHandler = __webpack_require__(40);
 
@@ -8118,7 +8118,7 @@ function initButtons() {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(3);
 /**
@@ -8802,8 +8802,8 @@ function initTextFields() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_util__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__adapter__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__adapter__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_line_ripple_index__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__helper_text_index__ = __webpack_require__(53);
@@ -9317,13 +9317,13 @@ const strings = {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_line_ripple_foundation__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_line_ripple_foundation__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__helper_text_foundation__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icon_foundation__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_floating_label_foundation__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_notched_outline_foundation__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__constants__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_floating_label_foundation__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_notched_outline_foundation__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__constants__ = __webpack_require__(11);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -9819,8 +9819,8 @@ const cssClasses = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCLineRipple; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(15);
 /* unused harmony reexport MDCLineRippleFoundation */
 /**
  * @license
@@ -9904,7 +9904,7 @@ class MDCLineRipple extends __WEBPACK_IMPORTED_MODULE_0__material_base_component
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextFieldHelperText; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(4);
 /* unused harmony reexport MDCTextFieldHelperTextFoundation */
 /**
@@ -9975,7 +9975,7 @@ class MDCTextFieldHelperText extends __WEBPACK_IMPORTED_MODULE_0__material_base_
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextFieldIcon; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(5);
 /* unused harmony reexport MDCTextFieldIconFoundation */
 /**
@@ -10042,8 +10042,8 @@ class MDCTextFieldIcon extends __WEBPACK_IMPORTED_MODULE_0__material_base_compon
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCFloatingLabel; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(17);
 /* unused harmony reexport MDCFloatingLabelFoundation */
 /**
  * @license
@@ -10127,9 +10127,9 @@ class MDCFloatingLabel extends __WEBPACK_IMPORTED_MODULE_0__material_base_compon
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCNotchedOutline; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(21);
 /* unused harmony reexport MDCNotchedOutlineFoundation */
 /**
  * @license
@@ -10219,6 +10219,8 @@ class MDCNotchedOutline extends __WEBPACK_IMPORTED_MODULE_0__material_base_compo
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_dialog__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events_errors__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visiblity__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__events_snackbar_js__ = __webpack_require__(63);
+
 
 
 
@@ -10290,6 +10292,8 @@ class VEvents {
                 return new __WEBPACK_IMPORTED_MODULE_3__events_dialog__["a" /* VDialog */](target, params, event);
             case 'toggle_visibility':
                 return new __WEBPACK_IMPORTED_MODULE_5__events_toggle_visiblity__["a" /* VToggleVisiblity */](target, params, event);
+            case 'snackbar':
+                return new __WEBPACK_IMPORTED_MODULE_6__events_snackbar_js__["a" /* VSnackbarEvent */](params, event);
             default:
                 throw action_type + ' is not supported.';
         }
@@ -10354,7 +10358,7 @@ class VLoadsPage {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(22);
 
 
@@ -10443,9 +10447,9 @@ class VPost extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(9);
 
 
 
@@ -10594,6 +10598,33 @@ class VToggleVisiblity {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar_js__ = __webpack_require__(6);
+
+
+class VSnackbarEvent {
+    constructor(params, event) {
+        this.params = params;
+        this.event = event;
+    }
+
+    call() {
+        var message = this.params.text;
+        var promiseObj = new Promise(function (resolve) {
+            console.log("Showing snackbar");
+            new __WEBPACK_IMPORTED_MODULE_0__snackbar_js__["a" /* VSnackbar */](message).display();
+            resolve([200, null, null]);
+        });
+        return promiseObj;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VSnackbarEvent;
+
+
+/***/ }),
+/* 64 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initLists;
 function initLists() {
     console.log('\tLists');
@@ -10601,12 +10632,12 @@ function initLists() {
 }
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initIconToggles;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_icon_toggle__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_icon_toggle__ = __webpack_require__(66);
 
 
 function initIconToggles() {
@@ -10630,14 +10661,14 @@ function initIconToggles() {
 //         });
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCIconToggle; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__ = __webpack_require__(70);
 /* unused harmony reexport MDCIconToggleFoundation */
 /**
  * @license
@@ -10755,13 +10786,13 @@ class MDCIconToggle extends __WEBPACK_IMPORTED_MODULE_0__material_base_component
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(69);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -10996,7 +11027,7 @@ IconToggleState.prototype.cssClass;
 /* harmony default export */ __webpack_exports__["a"] = (MDCIconToggleFoundation);
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11097,7 +11128,7 @@ let IconToggleEvent;
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11139,7 +11170,7 @@ const strings = {
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11147,7 +11178,7 @@ const strings = {
 /* unused harmony export RippleCapableSurface */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(26);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
 /* unused harmony reexport util */
@@ -11298,13 +11329,13 @@ RippleCapableSurface.prototype.disabled;
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(26);
 /**
  * @license
@@ -11864,7 +11895,7 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
 /* harmony default export */ __webpack_exports__["a"] = (MDCRippleFoundation);
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11919,12 +11950,12 @@ const numbers = {
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initMenus;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_menu__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_menu__ = __webpack_require__(74);
 
 
 function createMenuHandler(menu) {
@@ -11950,14 +11981,14 @@ function initMenus() {
 }
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCMenu; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(28);
 /* unused harmony reexport MDCMenuFoundation */
 /* unused harmony reexport AnchorMargin */
@@ -12160,7 +12191,7 @@ class MDCMenu extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12291,7 +12322,7 @@ class MDCComponent {
 /* harmony default export */ __webpack_exports__["a"] = (MDCComponent);
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12454,14 +12485,14 @@ function solvePositionFromXValue_(xVal, x1, x2) {
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCMenuFoundation; });
 /* unused harmony export AnchorMargin */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(78);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(28);
 /**
  * @license
@@ -13105,7 +13136,7 @@ class MDCMenuFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_found
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13276,12 +13307,12 @@ class MDCMenuAdapter {
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSelects;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select__ = __webpack_require__(80);
 
 
 function initSelects() {
@@ -13343,15 +13374,15 @@ function initSelects() {
 //        });
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bottom_line_index__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__label_index__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bottom_line_index__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__label_index__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__constants__ = __webpack_require__(32);
 /* unused harmony reexport MDCSelectFoundation */
 /**
@@ -13483,14 +13514,14 @@ class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCSelectBottomLine; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(82);
 /* unused harmony reexport MDCSelectBottomLineFoundation */
 /**
  * @license
@@ -13555,13 +13586,13 @@ class MDCSelectBottomLine extends __WEBPACK_IMPORTED_MODULE_0__material_base_com
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(83);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -13631,7 +13662,7 @@ class MDCSelectBottomLineFoundation extends __WEBPACK_IMPORTED_MODULE_0__materia
 /* harmony default export */ __webpack_exports__["a"] = (MDCSelectBottomLineFoundation);
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13658,14 +13689,14 @@ const cssClasses = {
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCSelectLabel; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(85);
 /* unused harmony reexport MDCSelectLabelFoundation */
 /**
  * @license
@@ -13724,13 +13755,13 @@ class MDCSelectLabel extends __WEBPACK_IMPORTED_MODULE_0__material_base_componen
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(86);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -13800,7 +13831,7 @@ class MDCSelectLabelFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_bas
 /* harmony default export */ __webpack_exports__["a"] = (MDCSelectLabelFoundation);
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13811,7 +13842,7 @@ const cssClasses = {
 
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13932,12 +13963,12 @@ class MDCSelectFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_ind
 
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initChips;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips__ = __webpack_require__(89);
 
 
 function initChips() {
@@ -13952,12 +13983,12 @@ function initChips() {
 }
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chip_index__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chip_set_index__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chip_index__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chip_set_index__ = __webpack_require__(91);
 /* unused harmony reexport MDCChipFoundation */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__chip_index__["a"]; });
 /* unused harmony reexport MDCChipSetFoundation */
@@ -13984,7 +14015,7 @@ function initChips() {
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14138,15 +14169,15 @@ class MDCChipFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_found
 /* harmony default export */ __webpack_exports__["a"] = (MDCChipFoundation);
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export MDCChipSet */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chip_index__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chip_index__ = __webpack_require__(8);
 /* unused harmony reexport MDCChipSetFoundation */
 /**
  * @license
@@ -14233,14 +14264,14 @@ class MDCChipSet extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__[
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chip_index__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chip_index__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(93);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -14349,7 +14380,7 @@ class MDCChipSetFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fo
 /* harmony default export */ __webpack_exports__["a"] = (MDCChipSetFoundation);
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

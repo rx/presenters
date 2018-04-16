@@ -4,6 +4,7 @@ import {VReplaceElement} from './events/replace';
 import {VDialog} from './events/dialog';
 import {VErrors} from './events/errors';
 import {VToggleVisiblity} from './events/toggle_visiblity';
+import {VSnackbarEvent} from './events/snackbar.js';
 
 export class VEvents {
     //[[type, url, target, params]]
@@ -71,6 +72,8 @@ export class VEvents {
                 return new VDialog(target, params, event);
             case 'toggle_visibility':
                 return new VToggleVisiblity(target, params, event);
+            case 'snackbar':
+                return new VSnackbarEvent(params, event);
             default:
                 throw action_type + ' is not supported.';
         }

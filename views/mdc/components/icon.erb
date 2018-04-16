@@ -1,6 +1,6 @@
-
 <% class_name = '' unless local_variables.include? :class_name
    parent_id = comp.event_parent_id unless local_variables.include? :parent_id
+   events = comp.events unless local_variables.include? :events
 %>
 <% if comp
      icon_name = comp.icon  unless locals.include? :icon_name
@@ -18,7 +18,7 @@
      style="<%= "color: #{comp.color};" if comp.color %>
             <%= "font-size: #{comp.size}" if comp.size %>"
       <%= 'tabindex="1"' if class_name=='mdc-text-field__icon' && comp.events%>
-     <%= erb :"components/event", :locals => {events: comp.events, parent_id: parent_id}%>>
+     <%= erb :"components/event", :locals => {events: events, parent_id: parent_id}%>>
     <%=icon%>
   </i>
   <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

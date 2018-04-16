@@ -23,6 +23,9 @@ module Voom
             @width = attribs.delete(:width)
             @color = attribs.delete(:color)
             @selected = attribs.delete(:selected) || false
+            self.text(attribs.delete(:text)) if attribs.key?(:text)
+            self.title(attribs.delete(:title)) if attribs.key?(:title)
+            self.image(attribs.delete(:image)) if attribs.key?(:image)
             @components = []
             expand!
           end
