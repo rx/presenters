@@ -16,6 +16,9 @@ Voom::Presenters.define(:selects) do
           value 'value2'
           text 'Second value'
         end
+        event :change do
+          snackbar 'item changed'
+        end
       end
     end
     

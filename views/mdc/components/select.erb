@@ -1,13 +1,17 @@
-<div class="mdc-select">
-  <select class="mdc-select__native-control">
-    <% comp.options.each do |option| %>
-      <option value="<%= option.value %>"
-              <%= 'disabled' if option.disabled %>
-              <%= 'selected' if option.selected %>>
-        <%= option.text %>
-      </option>
-    <% end %>
-  </select>
-  <div class="mdc-select__label"><%= comp.label %></div>
-  <div class="mdc-select__bottom-line"></div>
-</div>
+<% if comp %>
+  <div class="mdc-select">
+    <select id="<%= comp.id %>" class="mdc-select__native-control"
+            <%= erb(:"components/event", locals: {events: comp.events,
+                                                  parent_id: comp.id}) %>>
+      <% comp.options.each do |option| %>
+        <option value="<%= option.value %>"
+                <%= 'disabled' if option.disabled %>
+                <%= 'selected' if option.selected %>>
+          <%= option.text %>
+        </option>
+      <% end %>
+    </select>
+    <div class="mdc-select__label"><%= comp.label %></div>
+    <div class="mdc-select__bottom-line"></div>
+  </div>
+<% end %>
