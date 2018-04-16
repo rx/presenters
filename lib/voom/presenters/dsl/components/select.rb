@@ -1,4 +1,5 @@
 require_relative 'input'
+require_relative 'mixins/helpers'
 
 module Voom
   module Presenters
