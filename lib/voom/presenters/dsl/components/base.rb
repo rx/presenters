@@ -17,20 +17,19 @@ module Voom
           include LoggerMethods
           include Trace
 
-          attr_reader :type, :id, :attributes, :context, :event_parent_id
+          attr_reader :type, :id, :attributes, :context
           private :context
 
           alias params context
           alias attribs attributes
 
           def initialize(type:, parent:, id: nil, context: {}, **attributes, &block)
+            @id = h(id) || generate_id
             @type = h(type)
             @parent = parent
             @context = context
             @attributes = escape(attributes)
             @block = block
-            @id = h(id) || generate_id
-            @event_parent_id = @id
           end
 
           def expand!

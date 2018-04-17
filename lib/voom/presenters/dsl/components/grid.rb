@@ -32,12 +32,11 @@ module Voom
                                    context: context, **attribs, &block)
           end
 
-          class Column < Base
+          class Column < EventBase
             include Mixins::Common
             include Mixins::Helpers
             include Mixins::Images
             include Mixins::Icons
-            include Mixins::Event
             include Mixins::Attaches
             include Mixins::Dialogs
             include Mixins::Chips

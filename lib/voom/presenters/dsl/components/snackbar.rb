@@ -16,9 +16,7 @@ module Voom
             @action = Action.new(parent: self, text: text, context: params, &block)
           end
 
-          class Action < Base
-            include Mixins::Event
-
+          class Action < EventBase
             attr_accessor :text
 
             def initialize(**attribs_, &block)

@@ -7,7 +7,6 @@ module Voom
     module DSL
       module Components
         class Icon < IconBase
-          include Mixins::Event
           include Mixins::Tooltips
 
           def initialize(**attribs_, &block)

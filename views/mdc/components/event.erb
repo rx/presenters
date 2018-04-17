@@ -2,17 +2,21 @@
      data_events = events.map do |event|
        [event.event,
         event.actions.map do |action|
-          additional_params = case action.action_type.to_s
-                                when 'replaces'
+          params = case action.action_type.to_s
+                                when 'replaces' then
                                   {grid_nesting:@grid_nesting, __parent_id__: parent_id}
-                                when 'update', 'post', 'delete'
+                                when 'update', 'post', 'delete' then
                                   {__parent_id__: parent_id}
-                                when 'snackbar'
+                                when 'snackbar' then
                                   {text: action.params[:text]}
+                                when 'loads' then
+                                  {}
+                                when 'replaces', 'toggle_visiblity', 'dialog' then
+                                  {target: action.target}
                                 else
                                   {}
                               end
-          [action.action_type, action.url, action.target, additional_params]
+          [action.action_type, action.url, params[:target], params]
         end
        ]
      end %>

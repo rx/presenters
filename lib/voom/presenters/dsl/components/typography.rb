@@ -5,8 +5,7 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class Typography < Base
-          include Mixins::Event
+        class Typography < EventBase
           include Mixins::Tooltips
 
           attr_accessor :text, :level, :color

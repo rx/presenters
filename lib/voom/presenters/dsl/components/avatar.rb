@@ -5,8 +5,7 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class Avatar < Base
-          include Mixins::Event
+        class Avatar < EventBase
           include Mixins::Tooltips
 
           attr_accessor :avatar, :color, :size

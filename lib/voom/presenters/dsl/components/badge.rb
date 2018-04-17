@@ -4,8 +4,7 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class Badge < Base
-          include Mixins::Event
+        class Badge < EventBase
           attr_accessor :badge, :icon, :text
 
           def initialize(**attribs_, &block)

@@ -9,8 +9,7 @@ module Voom
     module DSL
       module Components
         module Lists
-          class Line < Base
-            include Mixins::Event
+          class Line < EventBase
             attr_accessor :actions, :selected
 
             def initialize(context:, **attribs_, &block)

@@ -1,20 +1,17 @@
 require_relative 'mixins/event'
-require_relative 'mixins/tooltips'
 
 module Voom
   module Presenters
     module DSL
       module Components
-        class IconBase < EventBase
-          include Mixins::Tooltips
-          attr_reader :icon, :color, :size
+        class EventBase < Base
+          include Mixins::Event
+          attr_reader :event_parent_id
 
           def initialize(**attribs_, &block)
             super(type: :icon, context: context,
                   **attribs_, &block)
-            @icon = attribs.delete(:icon)
-            @color    = attribs.delete(:color)
-            @size    = attribs.delete(:size)
+            @event_parent_id = @id
           end
         end
       end

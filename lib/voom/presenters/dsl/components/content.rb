@@ -9,8 +9,7 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class Content < Base
-          include Mixins::Event
+        class Content < EventBase
           include Mixins::Common
           include Mixins::Helpers
           include Mixins::Attaches

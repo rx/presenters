@@ -16,8 +16,7 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class Form < Base
-          include Mixins::Event
+        class Form < EventBase
           include Mixins::Append
           include Mixins::Grids
           include Mixins::TextFields

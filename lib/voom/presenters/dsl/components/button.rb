@@ -6,8 +6,7 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class Button < Base
-          include Mixins::Event
+        class Button < EventBase
           include Mixins::Tooltips
           BUTTON_TYPES = %i(raised flat fab icon)
 

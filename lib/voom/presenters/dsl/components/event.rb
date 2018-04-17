@@ -1,3 +1,5 @@
+require_relative 'actions/loads'
+
 module Voom
   module Presenters
     module DSL
@@ -12,12 +14,11 @@ module Voom
             expand!
           end
 
-          def loads(presenter, **params, &block)
-            @actions << Components::Action.new(parent: self,
-                                               action_type: :loads,
-                                               target: nil,
-                                               presenter: presenter,
-                                               params: params, &block)
+          def loads(presenter=nil, path: nil, **params, &block)
+            @actions << Components::Actions::Loads.new(parent: self,
+                                                       presenter: presenter,
+                                                       path: path,
+                                                       params: params, &block)
           end
 
           def replaces(target, presenter, **params, &block)

@@ -2,8 +2,7 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class ExpansionPanel < Base
-          include Mixins::Event
+        class ExpansionPanel < EventBase
           include Mixins::Common
           include Mixins::Helpers
 
@@ -29,8 +28,7 @@ module Voom
             @content = Content.new(parent: self, context: context, **attribs, &block)
           end
 
-          class Content < Base
-            include Mixins::Event
+          class Content < EventBase
             include Mixins::Common
             include Mixins::Helpers
             include Mixins::Attaches

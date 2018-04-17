@@ -12,7 +12,7 @@ module Voom
         set :router_, Router
         set :bind, '0.0.0.0'
 
-        get '/pom/:presenter' do
+        get '/:presenter.pom' do
           render_presenter
         end
         

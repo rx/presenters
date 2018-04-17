@@ -6,8 +6,7 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class Chip < Base
-          include Mixins::Event
+        class Chip < EventBase
           include Mixins::Tooltips
 
           attr_reader :icons

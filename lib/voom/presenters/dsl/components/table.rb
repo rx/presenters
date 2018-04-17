@@ -55,9 +55,8 @@ module Voom
                                      **attribs, &block)
             end
 
-            class Column < Base
+            class Column < EventBase
               include Mixins::Helpers
-              include Mixins::Event
               include Mixins::Tooltips
 
               attr_accessor :numeric, :color

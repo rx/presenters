@@ -9,8 +9,7 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class Card < Base
-          include Mixins::Event
+        class Card < EventBase
           include Mixins::Common
           include Mixins::Helpers
           include Mixins::Attaches

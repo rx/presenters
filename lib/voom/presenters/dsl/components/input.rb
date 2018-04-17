@@ -4,8 +4,7 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class Input < Base
-          include Mixins::Event
+        class Input < EventBase
           attr_reader :name
 
           def initialize(**attribs_, &block)

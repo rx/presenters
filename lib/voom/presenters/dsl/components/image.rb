@@ -5,8 +5,7 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class Image < Base
-          include Mixins::Event
+        class Image < EventBase
           include Mixins::Tooltips
 
           attr_accessor :image, :height, :width, :selected, :url

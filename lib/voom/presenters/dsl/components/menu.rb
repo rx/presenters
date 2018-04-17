@@ -39,8 +39,7 @@ module Voom
                                   **attribs, &block)
           end
 
-          class Item < Base
-            include Mixins::Event
+          class Item < EventBase
             include Mixins::Tooltips
 
             attr_accessor :text, :disabled
