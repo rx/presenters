@@ -3,20 +3,24 @@ module Voom
     module DSL
       module Components
         class Action < Base
-          attr_accessor :target, :presenter, :path, :params, :action_type
-         
-          def initialize(action_type:, **attribs_, &block)
-            super(type: :action, **attribs_, &block)
-            @target = attribs.delete(:target)
-            @presenter = attribs.delete(:presenter)
-            @path = attribs.delete(:path)
-            @params = attribs.delete(:params)
-            @action_type = action_type
+          attr_accessor :params
+
+          def initialize(type:, **attribs_, &block)
+            super(type: type, **attribs_, &block)
+            @params = attribs.delete(:params){{}}.merge(extract_params!(:path, :presenter, :target))
             @url = nil
           end
 
           def url
-            @parent.router.url(render: presenter, command: path, context: params)
+            @parent.router.url(render: params[:presenter], command: params[:path], context: params.select{|x| ![:presenter, :path, :target].include?(x)})
+          end
+
+          private
+          def extract_params!(*keys)
+            keys.map do |key|
+              value = attribs.delete(key)
+              value ? [key, value] : nil
+            end.compact.to_h
           end
         end
       end

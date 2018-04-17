@@ -1,0 +1,6 @@
+Voom::Presenters.define(:replace_text) do
+
+  content id: :replace_me do
+    display context['text'] ? "#{context['text']} on #{Time.now}" : "Orignal text"
+  end
+end

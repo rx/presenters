@@ -4,7 +4,7 @@
      first_chip = !eq(components[index-1]&.type, :chip)
      last_chip = !eq(components[index+1]&.type, :chip)
 
-     child_events = !(leading_icon&.events || trailing_icon&.events || comp.text&.events).nil?
+     child_events = (leading_icon&.events || trailing_icon&.events || comp.text&.events||[]).any?
 %>
   <% if first_chip %>
     <div class="mdc-chip-set">
@@ -23,7 +23,7 @@
       <%= expand_text(comp.text&.text) %></div>
     <%= erb(:"components/icon", locals: {comp: trailing_icon,
                                          class_name: 'mdc-chip__icon mdc-chip__icon--trailing',
-                                         events: child_events ? (trailing_icon&.events || comp.events) : nil}) %>
+                                         events: trailing_icon&.events || comp.events }) %>
   </div>
   <% if last_chip %>
     </div>

@@ -1,0 +1,71 @@
+Voom::Presenters.define(:events) do
+  attach :top_nav
+
+  attach :source_grid, file: __FILE__ do
+    heading 'Events'
+
+    subheading 'Dialog'
+    button 'dialog' do
+      event :click do
+        dialog :my_dialog
+      end
+    end
+    attach :show_dialog
+
+    subheading 'Replaces'
+    button 'replaces' do
+      event :click do
+        replaces :replace_me, :replace_text, text: "I was replaced"
+      end
+    end
+    attach :replace_text
+
+    subheading 'Toggle Visibility'
+    button 'toggle visiblity' do
+      event :click do
+        toggle_visiblity :toggle_me
+      end
+    end
+    heading 'Sometimes I appear', id: :toggle_me
+
+    subheading 'Snackbar'
+    button 'snackbar' do
+      event :click do
+        snackbar 'I want a snack!'
+      end
+    end
+
+    subheading context['reloaded'] ? "Reloaded" : 'Loads'
+    button 'loads' do
+      event :click do
+        loads :events, reloaded: true
+      end
+    end
+    heading context['reloaded'] ? "Reloaded" : 'Loaded'
+
+    subheading 'Update'
+    body 'issues a PUT to the passed path'
+    button 'updates' do
+      event :click do
+        updates 'updatepath', {optional: :params}
+      end
+    end
+
+    subheading 'Delete'
+    body 'issues a DELETE to the passed path'
+    button 'deletes' do
+      event :click do
+        deletes 'deletepath', {optional: :params}
+      end
+    end
+
+    subheading 'Posts'
+    body "issues a POST to the passed path\nAlias: creates"
+    button 'posts' do
+      event :click do
+        posts  'postpath', {optional: :params}
+      end
+    end
+
+  end
+end
