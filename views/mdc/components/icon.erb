@@ -1,9 +1,9 @@
 <% class_name = '' unless local_variables.include? :class_name
    parent_id = comp.event_parent_id unless local_variables.include? :parent_id
-   events = comp.events unless local_variables.include? :events
 %>
 <% if comp
      icon_name = comp.icon  unless locals.include? :icon_name
+     events = comp.events unless locals.include? :events
      if icon_name =~ /^fa-/
        icon_class_name = "fas #{icon_name}"
        icon = ''
