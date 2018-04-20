@@ -32,21 +32,25 @@ export class VTextField {
         return true;
     }
 
+    value(){
+        return this.input.value;
+    }
+
     // Called when ever a form that contains this field is submitted
-    prepareSubmit(formData, inForm) {
+    prepareSubmit(form, params) {
         var optionSelected = this.optionSelected();
         if (optionSelected) {
             var key = optionSelected.dataset.key;
             if (key) {
                 var name = this.input.name;
                 var id = name + '_id';
-                formData.append(id, key);
+                params.push([id, key]);
                 console.log("TextField prepareSubmit added:" + id + '=' + key);
             }
         }
         // The input is not contained in a form element, add the input value
-        if (!inForm) {
-            formData.append(this.input.name, this.input.value);
+        if (!form) {
+            params.push([this.input.name, this.input.value]);
         }
     }
 

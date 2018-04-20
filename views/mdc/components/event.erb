@@ -4,7 +4,7 @@
         event.actions.map do |action|
           additional_options = case action.type.to_s
                                 when 'replaces' then
-                                  {grid_nesting:@grid_nesting}
+                                  {grid_nesting:@grid_nesting, __parent_id__: parent_id}
                                 when 'update', 'post', 'delete', 'autocomplete' then
                                   {__parent_id__: parent_id}
                                 else

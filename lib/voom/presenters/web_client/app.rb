@@ -51,8 +51,8 @@ module Voom
         get '/:_presenter_' do
           pass unless Presenters::App.registered?(params[:_presenter_])
           presenter = Presenters::App[params[:_presenter_]].call
-          @pom = presenter.expand(router: router, context: prepare_context)
           @grid_nesting = Integer(params[:grid_nesting] || 0)
+          @pom = presenter.expand(router: router, context: prepare_context)
           layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
           response.headers['X-Frame-Options'] = 'ALLOWALL' if ENV['ALLOWALL_FRAME_OPTIONS']
           erb :web, layout: layout
@@ -82,7 +82,7 @@ module Voom
         end
 
         def scrub_context(params, _session, _env)
-         %i(splat captures _presenter_).each do |key|
+         %i(splat captures _presenter_ grid_nesting).each do |key|
            params.delete(key)
          end
          params

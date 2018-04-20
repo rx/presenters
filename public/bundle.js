@@ -2242,6 +2242,29 @@ class VBase {
     parentElement() {
         return document.getElementById(this.options.__parent_id__);
     }
+
+    extractInputValues() {
+        var params = [];
+        // Let input component push parameters
+        var vComp = this.component();
+        if (vComp) {
+            vComp.prepareSubmit(null, params);
+        }
+        return this.paramsArrayToHash(params);
+    }
+
+    component() {
+        return this.parentElement().vComponent;
+    }
+
+    paramsArrayToHash(params) {
+        var results = {};
+        // Map params to object/hash
+        for (let param of params) {
+            results[param[0]] = param[1];
+        }
+        return results;
+    }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = VBase;
 
@@ -9069,21 +9092,25 @@ class VTextField {
         return true;
     }
 
+    value() {
+        return this.input.value;
+    }
+
     // Called when ever a form that contains this field is submitted
-    prepareSubmit(formData, inForm) {
+    prepareSubmit(form, params) {
         var optionSelected = this.optionSelected();
         if (optionSelected) {
             var key = optionSelected.dataset.key;
             if (key) {
                 var name = this.input.name;
                 var id = name + '_id';
-                formData.append(id, key);
+                params.push([id, key]);
                 console.log("TextField prepareSubmit added:" + id + '=' + key);
             }
         }
         // The input is not contained in a form element, add the input value
-        if (!inForm) {
-            formData.append(this.input.name, this.input.value);
+        if (!form) {
+            params.push([this.input.name, this.input.value]);
         }
     }
 
@@ -10524,8 +10551,8 @@ class MDCNotchedOutline extends __WEBPACK_IMPORTED_MODULE_0__material_base_compo
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initEvents;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_loads__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_post__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replace__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_posts__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replaces__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_dialog__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events_errors__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visiblity__ = __webpack_require__(63);
@@ -10591,15 +10618,15 @@ class VEvents {
 
         switch (action_type) {
             case 'loads':
-                return new __WEBPACK_IMPORTED_MODULE_0__events_loads__["a" /* VLoadsPage */](options, url);
+                return new __WEBPACK_IMPORTED_MODULE_0__events_loads__["a" /* VLoads */](options, url);
             case 'replaces':
-                return new __WEBPACK_IMPORTED_MODULE_2__events_replace__["a" /* VReplaceElement */](options, url, params, event);
+                return new __WEBPACK_IMPORTED_MODULE_2__events_replaces__["a" /* VReplaces */](options, url, params, event);
             case 'post':
-                return new __WEBPACK_IMPORTED_MODULE_1__events_post__["a" /* VPost */](options, url, params, 'POST', event);
+                return new __WEBPACK_IMPORTED_MODULE_1__events_posts__["a" /* VPosts */](options, url, params, 'POST', event);
             case 'update':
-                return new __WEBPACK_IMPORTED_MODULE_1__events_post__["a" /* VPost */](options, url, params, 'PUT', event);
+                return new __WEBPACK_IMPORTED_MODULE_1__events_posts__["a" /* VPosts */](options, url, params, 'PUT', event);
             case 'delete':
-                return new __WEBPACK_IMPORTED_MODULE_1__events_post__["a" /* VPost */](options, url, params, 'DELETE', event);
+                return new __WEBPACK_IMPORTED_MODULE_1__events_posts__["a" /* VPosts */](options, url, params, 'DELETE', event);
             case 'dialog':
                 return new __WEBPACK_IMPORTED_MODULE_3__events_dialog__["a" /* VDialog */](options, params, event);
             case 'toggle_visibility':
@@ -10636,9 +10663,11 @@ function initEvents() {
             var eventData = eventsData[j];
             var eventName = eventData[0];
             var actionsData = eventData[1];
-            if (typeof eventElem.eventsHandler == 'undefined' || !eventElem.eventsHandler[eventName]) {
-                var eventHandler = createEventHandler(actionsData);
+            if (typeof eventElem.eventsHandler === 'undefined') {
                 eventElem.eventsHandler = {};
+            }
+            if (!eventElem.eventsHandler[eventName]) {
+                var eventHandler = createEventHandler(actionsData);
                 eventElem.eventsHandler[eventName] = eventHandler;
                 eventElem.addEventListener(eventName, eventHandler);
             }
@@ -10651,7 +10680,7 @@ function initEvents() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-class VLoadsPage {
+class VLoads {
     constructor(options, url) {
         this.options = options;
         this.url = url;
@@ -10667,225 +10696,12 @@ class VLoadsPage {
         return promiseObj;
     }
 }
-/* harmony export (immutable) */ __webpack_exports__["a"] = VLoadsPage;
+/* harmony export (immutable) */ __webpack_exports__["a"] = VLoads;
 
 
 /***/ }),
-/* 60 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(22);
-
-
-
-// Replaces a given element with the contents of the call to the url.
-// parameters are appended.
-class VPost extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
-    constructor(options, url, params, method, event) {
-        super(options);
-        this.url = url;
-        this.params = params;
-        this.method = method;
-        this.event = event;
-    }
-
-    inputs() {
-        if (this.isForm()) {
-            return this.parentElement().querySelectorAll('input');
-        } else {
-            return [this.parentElement()];
-        }
-    }
-
-    call() {
-        this.clearErrors();
-
-        var FD = null;
-        var form = this.form();
-        if (form) {
-            FD = new FormData(form);
-        } else {
-            FD = new FormData();
-        }
-
-        // Push params from presenter into FormData object
-        for (var name in this.params) {
-            if (name != '__parent_id__') {
-                FD.append(name, this.params[name]);
-            }
-        }
-
-        // Prepare Form Data
-        // needs https://www.npmjs.com/package/formdata-polyfill
-        for (var input of this.inputs()) {
-            if (input.vComponent) {
-                input.vComponent.prepareSubmit(form);
-            }
-        }
-
-        // Validate Input
-        // needs https://www.npmjs.com/package/formdata-polyfill
-        var errors = [];
-        for (var input of this.inputs()) {
-            if (input.vComponent) {
-                var result = input.vComponent.validate(FD);
-                if (result !== true) {
-                    errors.push(result);
-                }
-            }
-        }
-        var promiseObj;
-
-        if (errors.length > 0) {
-            promiseObj = new Promise(function (_, reject) {
-                reject([400, 'v/errors', errors]);
-            });
-        } else {
-            var httpRequest = new XMLHttpRequest();
-            var method = this.method;
-            var url = this.url;
-            var event = this.event;
-            if (!httpRequest) {
-                throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
-                // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
-            }
-            promiseObj = new Promise(function (resolve, reject) {
-                httpRequest.onreadystatechange = function (event) {
-                    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                        console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
-                        if (httpRequest.status >= 200 && httpRequest.status < 300) {
-                            resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText, httpRequest.responseURL]);
-                            // new VSnackbar('Yeah! That worked!').display();
-                        } else {
-                            // new VSnackbar('There was a problem with the request.').display();
-                            reject([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
-                            // _this_.displayError(this.getResponseHeader('content-type'), event.target.responseText);
-                        }
-                    }
-                };
-
-                // Set up our request
-                httpRequest.open(method, url);
-
-                console.log(method + ':' + url);
-                // Send our FormData object; HTTP headers are set automatically
-                httpRequest.send(FD);
-            });
-        }
-        return promiseObj;
-    }
-
-    isForm() {
-        var parentElement = this.parentElement();
-        return parentElement && parentElement.elements;
-    }
-
-    form() {
-        if (this.isForm()) {
-            return this.parentElement();
-        }
-        return null;
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = VPost;
-
-
-/***/ }),
-/* 61 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(9);
-
-
-
-
-// Replaces a given element with the contents of the call to the url.
-// parameters are appended.
-class VReplaceElement extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
-    constructor(options, url, params, event) {
-        super(options);
-        this.element_id = options.target;
-        this.url = url;
-        this.params = params;
-        this.event = event;
-    }
-
-    input() {
-        return this.parentElement();
-    }
-
-    prepareSubmit() {
-        var input = this.input();
-        if (input && input.vComponent) {
-            return input.vComponent.prepareSubmit();
-        }
-        return [];
-    }
-
-    call() {
-        this.clearErrors();
-
-        var params = this.prepareSubmit();
-        // Automatically pull values out of input controls
-
-        var httpRequest = new XMLHttpRequest();
-        if (!httpRequest) {
-            throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
-            // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
-        }
-        var elementId = this.element_id;
-        var url = this.url + this.seperator() + this.serialize(this.params);
-        var event = this.event;
-
-        var promiseObj = new Promise(function (resolve, reject) {
-            httpRequest.onreadystatechange = function () {
-                if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                    console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
-                    if (httpRequest.status === 200) {
-                        var nodeToReplace = document.getElementById(elementId);
-                        nodeToReplace.outerHTML = httpRequest.responseText;
-                        var newNode = document.getElementById(elementId);
-                        Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["a" /* initialize */])(newNode);
-                        resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
-                    } else {
-                        reject([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
-                    }
-                }
-            };
-            console.log('GET:' + url);
-            httpRequest.open('GET', url, true);
-            httpRequest.setRequestHeader('X-NO-LAYOUT', true);
-            httpRequest.send();
-        });
-        return promiseObj;
-    }
-
-    seperator() {
-        return this.url.includes("?") ? '&' : '?';
-    }
-
-    serialize(obj, prefix) {
-        var str = [],
-            p;
-        for (p in obj) {
-            if (obj.hasOwnProperty(p)) {
-                var k = prefix ? prefix + "[" + p + "]" : p,
-                    v = obj[p];
-                str.push(v !== null && typeof v === "object" ? this.serialize(v, k) : encodeURIComponent(k) + "=" + encodeURIComponent(v));
-            }
-        }
-        return str.join("&");
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = VReplaceElement;
-
-
-/***/ }),
+/* 60 */,
+/* 61 */,
 /* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11024,38 +10840,22 @@ class VAutoComplete extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */]
         this.getData(this.populateOptions);
     }
 
-    parentElement() {
-        return document.getElementById(this.params.__parent_id__);
-    }
-
     dataList() {
         return document.getElementById(this.element_id);
     }
 
-    extractInputValue() {
-        var parentElement = this.parentElement();
-        var results = {};
-        // Automatically pull values out of input controls
-        if (this.params.__parent_id__) {
-            if (parentElement) {
-                var value = parentElement.value;
-                if (value) {
-                    results[parentElement.name] = value;
-                }
-            }
-        }
-        return results;
-    }
-
     getData(funcProcessData) {
+        var comp = this.component();
+        if (comp.value().length < 2) {
+            return;
+        }
         var httpRequest = new XMLHttpRequest();
         if (!httpRequest) {
             throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
             // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
         }
         var dataList = this.dataList();
-        var params = this.extractInputValue();
-        var url = this.url + this.seperator() + this.serialize(params);
+        var url = this.url + this.seperator() + this.serialize(this.params) + this.serialize(this.extractInputValues());
         // var event = this.event;
 
         httpRequest.onreadystatechange = function () {
@@ -14710,6 +14510,213 @@ const cssClasses = {
 function initCards() {
     console.log('\tCards');
 }
+
+/***/ }),
+/* 96 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(9);
+
+
+
+
+// Replaces a given element with the contents of the call to the url.
+// parameters are appended.
+class VReplaces extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
+    constructor(options, url, params, event) {
+        super(options);
+        this.element_id = options.target;
+        this.url = url;
+        this.params = params;
+        this.event = event;
+    }
+
+    call() {
+        this.clearErrors();
+
+        var httpRequest = new XMLHttpRequest();
+        if (!httpRequest) {
+            throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
+            // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
+        }
+        var elementId = this.element_id;
+        var url = this.url + this.seperator() + this.serialize(this.params) + this.serialize(this.extractInputValues()) + this.seperator() + this.encodeQueryParam('grid_nesting', this.options.grid_nesting);
+
+        var promiseObj = new Promise(function (resolve, reject) {
+            httpRequest.onreadystatechange = function () {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
+                    if (httpRequest.status === 200) {
+                        var nodeToReplace = document.getElementById(elementId);
+                        nodeToReplace.outerHTML = httpRequest.responseText;
+                        var newNode = document.getElementById(elementId);
+                        Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["a" /* initialize */])(newNode);
+                        resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                    } else {
+                        reject([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                    }
+                }
+            };
+            console.log('GET:' + url);
+            httpRequest.open('GET', url, true);
+            httpRequest.setRequestHeader('X-NO-LAYOUT', true);
+            httpRequest.send();
+        });
+        return promiseObj;
+    }
+
+    seperator() {
+        return this.url.includes("?") ? '&' : '?';
+    }
+
+    serialize(obj, prefix) {
+        var str = [],
+            p;
+        for (p in obj) {
+            if (obj.hasOwnProperty(p)) {
+                var k = prefix ? prefix + "[" + p + "]" : p,
+                    v = obj[p];
+                str.push(v !== null && typeof v === "object" ? this.serialize(v, k) : this.encodeQueryParam(k, v));
+            }
+        }
+        return str.join("&");
+    }
+
+    encodeQueryParam(k, v) {
+        return encodeURIComponent(k) + "=" + encodeURIComponent(v);
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VReplaces;
+
+
+/***/ }),
+/* 97 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(22);
+
+
+
+// Replaces a given element with the contents of the call to the url.
+// parameters are appended.
+class VPosts extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
+    constructor(options, url, params, method, event) {
+        super(options);
+        this.url = url;
+        this.params = params;
+        this.method = method;
+        this.event = event;
+    }
+
+    inputs() {
+        if (this.isForm()) {
+            return this.parentElement().querySelectorAll('input');
+        } else {
+            return [this.parentElement()];
+        }
+    }
+
+    call() {
+        this.clearErrors();
+
+        var FD = null;
+        var form = this.form();
+        if (form) {
+            FD = new FormData(form);
+        } else {
+            FD = new FormData();
+        }
+
+        var params = [];
+
+        // Add params from presenter
+        for (var name in this.params) {
+            params.push([name, this.params[name]]);
+        }
+
+        // Let each input component push parameters
+        for (var input of this.inputs()) {
+            if (input.vComponent) {
+                input.vComponent.prepareSubmit(form, params);
+            }
+        }
+
+        // Let each input component validate itself
+        var errors = [];
+        for (let input of this.inputs()) {
+            if (input.vComponent) {
+                var result = input.vComponent.validate(form, params);
+                if (result !== true) {
+                    errors.push(result);
+                }
+            }
+        }
+
+        // Build Form data
+        for (let param of params) {
+            FD.append(param[0], param[1]);
+        }
+
+        var promiseObj;
+
+        if (errors.length > 0) {
+            promiseObj = new Promise(function (_, reject) {
+                reject([400, 'v/errors', errors]);
+            });
+        } else {
+            var httpRequest = new XMLHttpRequest();
+            var method = this.method;
+            var url = this.url;
+            var event = this.event;
+            if (!httpRequest) {
+                throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
+                // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
+            }
+            promiseObj = new Promise(function (resolve, reject) {
+                httpRequest.onreadystatechange = function (event) {
+                    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                        console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
+                        if (httpRequest.status >= 200 && httpRequest.status < 300) {
+                            resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText, httpRequest.responseURL]);
+                            // new VSnackbar('Yeah! That worked!').display();
+                        } else {
+                            // new VSnackbar('There was a problem with the request.').display();
+                            reject([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                            // _this_.displayError(this.getResponseHeader('content-type'), event.target.responseText);
+                        }
+                    }
+                };
+
+                // Set up our request
+                httpRequest.open(method, url);
+
+                console.log(method + ':' + url);
+                // Send our FormData object; HTTP headers are set automatically
+                httpRequest.send(FD);
+            });
+        }
+        return promiseObj;
+    }
+
+    isForm() {
+        var parentElement = this.parentElement();
+        return parentElement && parentElement.elements;
+    }
+
+    form() {
+        if (this.isForm()) {
+            return this.parentElement();
+        }
+        return null;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VPosts;
+
 
 /***/ })
 /******/ ]);

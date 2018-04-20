@@ -3,6 +3,24 @@ Voom::Presenters.define(:search) do
 
   attach :source_grid, file: __FILE__ do
     heading 'Search'
-    attach :search_field
+
+    content id: :search_field do
+      text_field name: :search, full_width: false do
+        label 'Find waldo'
+        # icon :close do
+        #   event :click do
+        #     replaces :search_field, :search_field
+        #   end
+        # end
+        event :input do
+          autocomplete '/_search_'
+        end
+        event :change do
+          replaces :search_results, :search_results
+        end
+      end
+    end
+    attach :search_results
   end
+
 end

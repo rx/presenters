@@ -1,4 +1,4 @@
-export class VLoadsPage {
+export class VLoads {
     constructor(options, url) {
         this.options = options;
         this.url = url;

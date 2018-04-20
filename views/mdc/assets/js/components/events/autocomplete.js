@@ -42,38 +42,22 @@ export class VAutoComplete extends VBase {
         this.getData(this.populateOptions);
     }
 
-    parentElement() {
-        return document.getElementById(this.params.__parent_id__);
-    }
-
     dataList() {
         return document.getElementById(this.element_id);
     }
 
-    extractInputValue() {
-        var parentElement = this.parentElement();
-        var results = {}
-        // Automatically pull values out of input controls
-        if (this.params.__parent_id__) {
-            if (parentElement) {
-                var value = parentElement.value;
-                if (value) {
-                    results[parentElement.name] = value;
-                }
-            }
-        }
-        return results;
-    }
-
     getData(funcProcessData) {
+        var comp = this.component();
+        if(comp.value().length < 2){
+            return;
+        }
         var httpRequest = new XMLHttpRequest();
         if (!httpRequest) {
             throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
             // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
         }
         var dataList = this.dataList();
-        var params = this.extractInputValue();
-        var url = this.url + this.seperator() + this.serialize(params);
+        var url = this.url + this.seperator() +  this.serialize(this.params) + this.serialize(this.extractInputValues());
         // var event = this.event;
 
         httpRequest.onreadystatechange = function () {
@@ -96,9 +80,9 @@ export class VAutoComplete extends VBase {
         dataList.innerHTML = "";
 
         response.forEach(function (item) {
-            var value=item;
+            var value = item;
             var key = null;
-            if(Array.isArray(item)){
+            if (Array.isArray(item)) {
                 value = item[0];
                 key = item[1];
             }

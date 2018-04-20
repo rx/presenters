@@ -3,7 +3,7 @@ import {VBase} from './base';
 
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
-export class VPost extends VBase {
+export class VPosts extends VBase {
     constructor(options, url, params, method, event) {
         super(options);
         this.url = url;
@@ -31,32 +31,36 @@ export class VPost extends VBase {
             FD = new FormData();
         }
 
-        // Push params from presenter into FormData object
+        var params = [];
+
+        // Add params from presenter
         for (var name in this.params) {
-            if (name != '__parent_id__') {
-                FD.append(name, this.params[name]);
-            }
+            params.push([name, this.params[name]]);
         }
 
-        // Prepare Form Data
-        // needs https://www.npmjs.com/package/formdata-polyfill
+        // Let each input component push parameters
         for (var input of this.inputs()) {
             if (input.vComponent) {
-                input.vComponent.prepareSubmit(form);
+                input.vComponent.prepareSubmit(form, params);
             }
         }
 
-        // Validate Input
-        // needs https://www.npmjs.com/package/formdata-polyfill
+        // Let each input component validate itself
         var errors = [];
-        for (var input of this.inputs()) {
+        for (let input of this.inputs()) {
             if (input.vComponent) {
-                var result = input.vComponent.validate(FD);
+                var result = input.vComponent.validate(form, params);
                 if (result !== true) {
                     errors.push(result);
                 }
             }
         }
+
+        // Build Form data
+        for(let param of params){
+            FD.append(param[0], param[1]);
+        }
+        
         var promiseObj;
 
         if (errors.length > 0) {

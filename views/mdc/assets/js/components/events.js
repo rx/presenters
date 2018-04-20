@@ -1,6 +1,6 @@
-import {VLoadsPage} from './events/loads';
-import {VPost} from './events/post';
-import {VReplaceElement} from './events/replace';
+import {VLoads} from './events/loads';
+import {VPosts} from './events/posts';
+import {VReplaces} from './events/replaces';
 import {VDialog} from './events/dialog';
 import {VErrors} from './events/errors';
 import {VToggleVisiblity} from './events/toggle_visiblity';
@@ -60,15 +60,15 @@ export class VEvents {
 
         switch (action_type) {
             case 'loads':
-                return new VLoadsPage(options, url);
+                return new VLoads(options, url);
             case 'replaces':
-                return new VReplaceElement(options, url, params, event);
+                return new VReplaces(options, url, params, event);
             case 'post':
-                return new VPost(options, url, params, 'POST', event);
+                return new VPosts(options, url, params, 'POST', event);
             case 'update':
-                return new VPost(options, url, params, 'PUT', event);
+                return new VPosts(options, url, params, 'PUT', event);
             case 'delete':
-                return new VPost(options, url, params, 'DELETE', event);
+                return new VPosts(options, url, params, 'DELETE', event);
             case 'dialog':
                 return new VDialog(options, params, event);
             case 'toggle_visibility':
@@ -103,10 +103,11 @@ export function initEvents() {
             var eventData = eventsData[j];
             var eventName = eventData[0];
             var actionsData = eventData[1];
-            if (typeof eventElem.eventsHandler == 'undefined' ||
-                !eventElem.eventsHandler[eventName]) {
-                var eventHandler = createEventHandler(actionsData);
+            if (typeof eventElem.eventsHandler === 'undefined') {
                 eventElem.eventsHandler = {};
+            }
+            if (!eventElem.eventsHandler[eventName]) {
+                var eventHandler = createEventHandler(actionsData);
                 eventElem.eventsHandler[eventName] = eventHandler;
                 eventElem.addEventListener(eventName, eventHandler);
             }
