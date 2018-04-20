@@ -9920,6 +9920,14 @@ select {
   .mdc-chip-set .mdc-chip {
     margin: 4px; }
 
+.mdc-chip__icon.v-icon-position-left {
+  float: none;
+  padding-right: 0; }
+
+.mdc-chip__icon.v-icon-position-right {
+  float: none;
+  padding-left: 0; }
+
 /**
  * The css property used for elevation. In most cases this should not be changed. It is exposed
  * as a variable for abstraction / easy use when needing to reference the property directly, for

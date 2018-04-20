@@ -1,6 +1,6 @@
 <% if comp
-     leading_icon = comp.icons.select {|i| eq(i.position, :left)}.first
-     trailing_icon = comp.icons.select {|i| eq(i.position, :right)}.first
+     leading_icon = comp.icons.select {|i| i.position.select{|p| eq(p, :left)}.any?}.first
+     trailing_icon = comp.icons.select {|i| i.position.select{|p| eq(p, :right)}.any?}.first
      first_chip = !eq(components[index-1]&.type, :chip)
      last_chip = !eq(components[index+1]&.type, :chip)
 
