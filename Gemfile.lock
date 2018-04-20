@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     voom-presenters (0.0.1)
-      dry-configurable (~> 0.6.1)
+      dry-configurable (~> 0.7.0)
       dry-container (~> 0.6.0)
       dry-inflector (~> 0.1.1)
       ice_nine
@@ -17,7 +17,7 @@ GEM
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
     diff-lcs (1.2.5)
-    dry-configurable (0.6.1)
+    dry-configurable (0.7.0)
       concurrent-ruby (~> 1.0)
     dry-container (0.6.0)
       concurrent-ruby (~> 1.0)

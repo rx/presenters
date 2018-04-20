@@ -1,1 +1,11 @@
 @import "@material/chips/mdc-chips";
+
+.mdc-chip__primary {
+  background-color: $mdc-theme-primary;
+}
+
+.mdc-chip__secondary {
+  background-color: $mdc-theme-secondary;
+}
+
+.mdc-chip__default {}

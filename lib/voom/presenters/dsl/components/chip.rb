@@ -10,7 +10,7 @@ module Voom
           include Mixins::Event
           include Mixins::Tooltips
 
-          attr_reader :icons
+          attr_reader :icons, :color
           def initialize(**attribs_, &block)
             super(type: :chip,
                   context: context,
@@ -18,6 +18,7 @@ module Voom
             @icons = []
             self.text(attribs.delete(:text)) if attribs.key?(:text)
             self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
+            @color = attribs.delete(:color)
             expand!
           end
 
