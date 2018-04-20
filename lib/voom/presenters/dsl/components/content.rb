@@ -15,13 +15,13 @@ module Voom
           include Mixins::Attaches
           include Mixins::TextFields
 
-          attr_reader :hidden
-          attr_accessor :components
-
+          attr_reader :hidden, :components, :shows_errors
+         
           def initialize(**attribs_, &block)
             super(type: :content, **attribs_, &block)
             @components = []
-            @hidden = attribs.delete(:hidden) || false
+            @hidden = attribs.delete(:hidden){false}
+            @shows_errors = attribs.delete(:shows_errors){true}
             expand!
           end
         end

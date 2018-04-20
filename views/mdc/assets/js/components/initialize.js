@@ -7,6 +7,7 @@ import {initIconToggles} from './icon-toggles';
 import {initMenus} from './menus';
 import {initSelects} from './selects';
 import {initChips} from './chips';
+import {initCards} from './cards';
 
 export function initialize(){
     console.log('Initializing');
@@ -19,5 +20,6 @@ export function initialize(){
     initMenus();
     initSelects();
     initChips();
+    initCards();
     // componentHandler.upgradeAllRegistered();
 }

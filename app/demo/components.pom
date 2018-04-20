@@ -4,8 +4,13 @@ Voom::Presenters.define('components') do
 
   attach :grid do
     display 'Components'
-    subheading 'Select a component'
-    attach 'component_menu'
+    grid do
+      column 12 do
+        icon :keyboard_backspace, position: :left
+        subheading 'Select a component'
+      end
+    end
+
   end
   attach :code, file: __FILE__
 

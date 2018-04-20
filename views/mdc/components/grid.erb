@@ -4,7 +4,6 @@
             <%= 'v-nested_grid' if @grid_nesting>1 && !comp.padded %>"
      style="<%= "background-color: #{comp.color};" if comp.color %>">
   <% unless @grid_nesting>1 %>
-    <div class="v-errors"></div>
   <% end %>
 
   <div class="mdc-layout-grid__inner">

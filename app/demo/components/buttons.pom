@@ -27,8 +27,9 @@ Voom::Presenters.define(:buttons) do
     subheading 'Aligned'
     grid do
       column 3 do
-        button 'Right-Not Aligned'
-        button 'Right', align: :right
+        button 'Not Aligned'
+        button 'Right', position: :right
+        button 'Left', position: :left
       end
     end
 

@@ -5,30 +5,31 @@ import {initialize} from '../initialize';
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
 export class VReplaceElement extends VBase {
-    constructor(element_id, url, params, event) {
-        super();
-        this.element_id = element_id;
+    constructor(options, url, params, event) {
+        super(options);
+        this.element_id = options.target;
         this.url = url;
         this.params = params;
         this.event = event;
     }
 
+    input(){
+        return this.parentElement();
+    }
+
+    prepareSubmit(){
+        var input = this.input();
+        if (input && input.vComponent) {
+            return input.vComponent.prepareSubmit();
+        }
+        return [];
+    }
+
     call() {
         this.clearErrors();
 
-        var parent_element = document.getElementById(this.params.__parent_id__);
-        var FD = null;
+        var params = this.prepareSubmit();
         // Automatically pull values out of input controls
-        if (this.params.__parent_id__) {
-            var parent_element = document.getElementById(this.params.__parent_id__);
-            if (parent_element) {
-                var value = parent_element.value;
-                if (value) {
-                    this.params[parent_element.name] = value;
-                    delete this.params.__parent_id__;
-                }
-            }
-        }
         
         var httpRequest = new XMLHttpRequest();
         if (!httpRequest) {

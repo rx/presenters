@@ -3,24 +3,28 @@ module Voom
     module DSL
       module Components
         class Action < Base
-          attr_accessor :params
+          # Options are used by the actions
+          # Params are passed by the user
+          attr_reader :params, :options
 
           def initialize(type:, **attribs_, &block)
             super(type: type, **attribs_, &block)
-            @params = attribs.delete(:params){{}}.merge(extract_params!(:path, :presenter, :target))
+            @options = {}
+            extract_options!
+            @params = attribs.delete(:params) {{}}
             @url = nil
           end
 
           def url
-            @parent.router.url(render: params[:presenter], command: params[:path], context: params.select{|x| ![:presenter, :path, :target].include?(x)})
+            @parent.router.url(render: options[:presenter], command: options[:path], context: params)
           end
 
           private
-          def extract_params!(*keys)
-            keys.map do |key|
-              value = attribs.delete(key)
-              value ? [key, value] : nil
-            end.compact.to_h
+          def extract_options!
+            %i(path presenter target).each do |option|
+              optionValue = attribs.delete(option)
+              @options.merge!({option => optionValue}) if optionValue
+            end
           end
         end
       end

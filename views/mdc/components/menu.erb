@@ -1,25 +1,29 @@
-<div style="<%= "color: #{comp.color};" if comp.color%> ">
-  <%= erb :"components/button", :locals => {:comp => comp.button} %>
-  <ul class="mdl-menu mdl-menu--bottom-<%= comp.side %> mdl-js-menu mdl-js-ripple-effect"
-      for="<%= comp.button.id %>">
-    <% items = comp.items
-       items.each_with_index do |item, index|
-         next if eq(item.type,:divider)
-         divider = (index < items.size-1) ? eq(items[index+1].type, :divider) : false
-    %>
-      <li class="mdl-menu__item<%= ' mdl-menu__item--full-bleed-divider' if divider %>"
-          <%= 'disabled' if item.disabled %>>
-        <% unless item.disabled %>
-          <a class="mdl-navigation__link"
-             id="<%=item.id%>"
-             href="javascript:void(0)"
-             <%=  erb :"components/event", :locals => {events: item.events, parent_id: item.event_parent_id}%>>
+<% if comp %>
+  <div id="<%= comp.id %>"
+       class="mdc-menu v-menu
+              <%='mdc-menu--open' if comp.open %>"
+       style="position: absolute;" tabindex="-1"
+       <%= "data-right-offset=9999" if eq(comp.position, :right) %>>
+    <ul class="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
+      <% comp.items.each do |item| %>
+        <% unless eq(item.type, :divider) %>
+          <li class="mdc-list-item" role="menuitem" tabindex="0"
+              <%= 'disabled' if item.disabled %>>
+            <% unless item.disabled %>
+              <a class="v-menu-link"
+                 id="<%= item.id %>"
+                 href="javascript:void(0)"
+                 <%= erb :"components/event", :locals => {events: item.events, parent_id: item.event_parent_id} %>>
+            <% end %>
+            <%= item.text %>
+            <% unless item.disabled %>
+              </a>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="mdc-list-divider" role="separator"></li>
         <% end %>
-        <%= item.text %>
-        <% unless item.disabled %>
-          </a>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-</div>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

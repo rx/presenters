@@ -1,5 +1,12 @@
+<% class_name = '' unless local_variables.include? :class_name
+   position_classes = comp.position.map {|p| "v-button-fab-position-#{p}"}.join(' ')
+%>
+
+<% if comp.menu %>
+  <div class="mdc-menu-anchor" %>
+<% end %>
 <button id="<%= comp.id %>"
-        class="mdc-fab material-icons v-fab--absolute v-js-ripple-button
+        class="mdc-fab material-icons v-fab--absolute v-js-ripple-button <%= class_name %> <%= position_classes %>
           <%= 'mdc-fab--mini' if eq(comp.size, :small) %>"
         aria-label="<%= inflector.humanize(comp.icon.icon) %>"
         <%= 'disabled' if comp.disabled %>
@@ -9,3 +16,7 @@
   </span>
 </button>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+<%= erb :"components/menu", :locals => {comp: comp.menu, parent_id: comp.id} %>
+<% if comp.menu %>
+  </div>
+<% end %>

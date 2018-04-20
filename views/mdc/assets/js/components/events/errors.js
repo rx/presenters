@@ -46,37 +46,59 @@ export class VErrors {
 
     // [http_status, content_type, resultText]
     displayErrors(results) {
+        if (Array.isArray(results)) {
+            this.displayStdErrors(results);
+        } else if (results.constructor === Object) {
+            if (results.message) {
+                this.prependErrors([results.message]);
+            }
+        } else {
+            console.error("Unable to display Errors! ", results);
+        }
+    }
+
+    displayStdErrors(results) {
         var httpStatus = results[0];
         var contentType = results[1];
         var resultText = results[2];
 
-        if (contentType && contentType.indexOf("application/json") !== -1) {
-            var response = JSON.parse(resultText);
-            var pageErrors = Object.values(this.normalizeErrors(response)).reduce(function (previous, value) {
-                if (Array.isArray(value)) {
-                    previous.push(value.join('<br/>'));
-                }
-                return previous;
-            }, []);
-            var fieldErrors = this.normalizeErrors(response.errors);
+        var responseErrors = null;
 
-            for (var field in fieldErrors) {
-                if (!this.displayInputError(field, fieldErrors[field])) {
-                    if (!this.prependError(field, fieldErrors[field])) {
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+            responseErrors = JSON.parse(resultText);
+        } else if (contentType && contentType.indexOf("v/errors") !== -1) {
+            responseErrors = resultText;
+        }
+
+        if (responseErrors) {
+            if (!Array.isArray(responseErrors)) {
+                responseErrors = [responseErrors];
+            }
+            for (var response in responseErrors) {
+                var pageErrors = Object.values(this.normalizeErrors(response)).reduce(function (previous, value) {
+                    if (Array.isArray(value)) {
+                        previous.push(value.join('<br/>'));
+                    }
+                    return previous;
+                }, []);
+                var fieldErrors = this.normalizeErrors(response.errors);
+
+                for (var field in fieldErrors) {
+                    if (!this.displayInputError(field, fieldErrors[field])) {
                         // Collect errors that can't be displayed at the field level
                         pageErrors.push(fieldErrors[field].join('<br/>'));
                     }
                 }
+                var errors = this.event.target.closest('form').querySelector('.v-errors');
+                if (!errors) {
+                    errors = document.querySelector('.v-errors');
+                }
+                this.prependErrors(pageErrors);
             }
-            var errors = this.event.target.closest('form').querySelector('.v-errors');
-            if(!errors){
-                errors = document.querySelector('.v-errors');
-            }
-            this.prependError(null, pageErrors, errors);
         } else if (httpStatus === 0) {
-            this.prependError('errors', ["Unable to contact server. Please check that you are online and retry."]);
+            this.prependErrors(["Unable to contact server. Please check that you are online and retry."]);
         } else if (results !== true) {
-            this.prependError('errors', ["The server returned an unexpected response! Status:" + httpStatus]);
+            this.prependErrors(["The server returned an unexpected response! Status:" + httpStatus]);
         }
     }
 
@@ -98,7 +120,8 @@ export class VErrors {
 
     // Creates a div before the element with the same id as the error
     // Used to display an error message without their being an input field to attach the error to
-    prependError(divId, messages, errorsDiv) {
+    prependErrors(messages) {
+        var errorsDiv = this.findNearestErrorDiv();
         // create a new div element
         var newDiv = document.createElement("div");
         newDiv.className = 'v-error-message';
@@ -108,11 +131,22 @@ export class VErrors {
         newDiv.appendChild(newContent);
 
         // add the newly created element and its content into the DOM
-        var currentDiv = errorsDiv || document.getElementById(divId);
-        if (currentDiv) {
-            currentDiv.parentElement.insertBefore(newDiv, currentDiv);
+        if (errorsDiv) {
+            errorsDiv.parentElement.insertBefore(newDiv, errorsDiv);
             return true;
+        } else {
+            console.error("Unable to display Errors! ", messages);
         }
         return false;
+    }
+
+    findNearestErrorDiv() {
+        var errorsDiv=null;
+        var currentDiv = this.event.target;
+        while(!errorsDiv){
+            currentDiv = currentDiv.closest('.v-has-errors');
+            errorsDiv = currentDiv.querySelector('.v-errors');
+        }
+        return errorsDiv;
     }
 }

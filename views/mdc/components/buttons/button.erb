@@ -1,14 +1,20 @@
+<% class_name = '' unless local_variables.include? :class_name
+   position_classes = comp.position.map {|p| "v-button-position-#{p}"}.join(' ')
+   text_align = comp.position.select {|p| eq(p, :left)}.any? && eq(comp.button_type, :flat)%>
+
 <button
 id="<%= comp.id %>"
-class="mdc-button v-js-ripple-button
+class="mdc-button v-js-ripple-button <%=class_name%>
           <%= 'mdc-button--raised' if eq(comp.button_type, :raised) %>
           <%= 'v-secondary-filled-button' if eq(comp.button_type, :raised) && eq(comp.color, :secondary) %>
           <%= 'v-secondary-text-button' if eq(comp.button_type, :flat) && eq(comp.color, :secondary) %>
-          <%= "v-button-align-#{comp.align}" if comp.align %>
-           <%= 'v-button-text-align-left' if eq(comp.align, :left) && eq(comp.button_type, :flat) %>"
+          <%=  position_classes %>
+           <%= "v-button-text-align-left" if text_align %>
+          <%= 'mdc-menu-anchor v-menu-click' if comp.menu%>"
 <%= 'disabled' if comp.disabled %>
 <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} unless comp.disabled %>>
   <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-button__icon'} %>
   <%= comp.text %>
+  <%= erb :"components/menu", :locals => {comp: comp.menu, parent_id: comp.id} %>
 </button>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

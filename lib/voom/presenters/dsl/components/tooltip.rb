@@ -9,7 +9,7 @@ module Voom
             super(type: :tooltip,
                   context: context,
                   **attribs_, &block)
-            @position = attribs.delete(:position) || :left
+            @position = attribs.delete(:position){ :left }
             self.text(attribs.delete(:text)) if attribs.key?(:text)
             expand!
           end

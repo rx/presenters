@@ -23,8 +23,8 @@ module Voom
             expand!
           end
           
-          def line(**attribs, &block)
-            @lines << Lists::Line.new(parent:self, context: context, **attribs, &block)
+          def line(text=nil, **attribs, &block)
+            @lines << Lists::Line.new(parent:self, context: context, text: text, **attribs, &block)
           end
 
           def separator(**attribs, &block)

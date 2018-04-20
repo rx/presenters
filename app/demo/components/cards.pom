@@ -7,64 +7,69 @@ Voom::Presenters.define(:cards) do
     display 'Cards'
 
     headline 'Wide'
-    card width: '42rem', height: '14rem' do
-      title 'Welcome', color: :white do
-        background 'img/demo/welcome_card.jpg'
+    card width: '512px' do
+      media do
+        image 'img/demo/welcome_card.jpg', width: 512, height: 176
+        title 'Welcome', color: :white, position: :bottom
       end
       text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia... "
-
-      action do
+      
+      actions do
         button 'Get Started', color: :primary
-      end
-      menu do
-        button icon: :share
+        button icon: :share_icon do
+          menu do
+            item 'Share with mom'
+          end
+        end
       end
     end
 
     headline 'Square'
-    card width: '21rem', height: '21rem' do
-      title 'Update', color: :white do
-        background 'img/demo/dog.png', options: 'bottom right 15% no-repeat #46B6AC'
+    card width: '330px' do
+      media height: '200px', color: '#46B6AC' do
+        image 'img/demo/dog.png', position: [:bottom, :right]
+        title 'Update', color: :white, position: :bottom
       end
       text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis."
 
-      action do
+      actions do
         button 'View Updates', color: :primary
       end
     end
 
     headline 'Image'
-    card width: '21rem', height: '21rem' do
-      title do
-        background 'img/demo/image_card.jpg'
+    card width: '330px'do
+      media do
+        image 'img/demo/image_card.jpg', width: 330, height: 330
+        title 'image.jpg', position: :bottom, color: :white
       end
     end
 
     headline 'Event'
-    card width: '21rem', height: '21rem' do
-      title 'Featured event:
-           May 24, 2016
-           7-11pm',
-            color: :fff, align: :top   do
-        background color: '#3E4EB8'
+    card width: '330px' do
+      media height: '230px', color: :MidnightBlue do
+        title ['Featured event:',
+               "May 24, 2016",
+               "7-11pm"],
+              color: :white, position: :top
       end
-      action do
+      actions do
         button 'Add to Calendar'
+        button icon: :event
       end
     end
 
-
-    headline 'Example'
-    card width: '21rem', height: '42rem' do
-      title 'Auckland Sky Tower
-             Auckland, New Zealand' do
-        background 'https://www.askideas.com/media/43/The-Sky-Tower-In-Auckland-New-Zealand.jpg'
-      end
-      text ["The Sky Tower is an observation and telecommunications tower located in Auckland,",
-            "New Zealand. It is 328 metres (1,076 ft) tall, making it the tallest man-made structure",
-            "in the Southern Hemisphere."].join(' ')
-
-    end
+    #
+    # headline 'Example'
+    # card width: '21rem', height: '42rem' do
+    #   title ['Auckland Sky Tower',
+    #          'Auckland, New Zealand'] do
+    #     background 'https://www.askideas.com/media/43/The-Sky-Tower-In-Auckland-New-Zealand.jpg'
+    #   end
+    #   text ["The Sky Tower is an observation and telecommunications tower located in Auckland,",
+    #         "New Zealand. It is 328 metres (1,076 ft) tall, making it the tallest man-made structure",
+    #         "in the Southern Hemisphere."].join(' ')
+    # end
 
     attach :code, file: __FILE__
   end

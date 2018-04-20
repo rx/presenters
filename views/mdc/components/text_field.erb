@@ -14,9 +14,12 @@
          <%= 'invalid' if comp.error %>
          <%= "pattern='#{comp.pattern}'" if comp.pattern %>
          <%= 'readonly' if comp.readonly %>
-         <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>>
+         list="<%= comp.id %>-list"
+         <%= erb :"components/event", :locals => {events: comp.events, parent_id:  "#{comp.id}-input"} %>>
   <label class='mdc-floating-label' for="<%= comp.id %>"><%= comp.label %></label>
   <div class="mdc-line-ripple"></div>
+  <datalist id="<%= comp.id %>-list">
+  </datalist>
 
 </div>
 <p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text" aria-hidden="true">

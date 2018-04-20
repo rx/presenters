@@ -6,8 +6,60 @@ export function initTextFields() {
     var textFields = document.querySelectorAll('.mdc-text-field');
     for (var i = 0; i < textFields.length; i++) {
         var textField = textFields[i];
-        if(!textField.mdcComponent) {
-            textField.mdcComponent = new MDCTextField(textField);
+        if (!textField.vComponent) {
+            var vTextField = new VTextField(textField, new MDCTextField(textField));
+            var input = textField.querySelector('input');
+            input.vComponent = vTextField;
+            textField.vComponent = vTextField;
         }
+    }
+}
+
+export class VTextField {
+    constructor(element, mdcComponent) {
+        this.element = element;
+        this.input = element.querySelector('input');
+        this.mdcComponent = mdcComponent;
+    }
+
+    // Called whenever a form is about to be submitted.
+    // returns true on success
+    // returns on failure return an error object that can be processed by VErrors:
+    //    { email: ["email must be filled", "email must be from your domain"] }
+    //    { :page: ["must be filled"] }
+    validate(formData) {
+        console.log("TextField validate", formData);
+        return true;
+    }
+
+    // Called when ever a form that contains this field is submitted
+    prepareSubmit(formData, inForm) {
+        var optionSelected = this.optionSelected();
+        if (optionSelected) {
+            var key = optionSelected.dataset.key;
+            if (key) {
+                var name = this.input.name;
+                var id = name + '_id';
+                formData.append(id, key);
+                console.log("TextField prepareSubmit added:" + id + '=' + key);
+            }
+        }
+        // The input is not contained in a form element, add the input value
+        if (!inForm) {
+            formData.append(this.input.name, this.input.value);
+        }
+    }
+
+    optionSelected() {
+        var dataList = this.element.querySelector('datalist');
+        var parentElement = this.input;
+
+        // If we find the input inside our list, we submit the form
+        for (var element of dataList.children) {
+            if (element.value === parentElement.value) {
+                return element;
+            }
+        }
+        return null;
     }
 }

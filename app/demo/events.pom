@@ -43,29 +43,42 @@ Voom::Presenters.define(:events) do
     end
     heading context['reloaded'] ? "Reloaded" : 'Loaded'
 
+    title "A Note on errors:"
+    body ['These will display an error. Errors are displayed in four locations.',
+            '1. Field/input level errors will display on the field/input.',
+            '2. By default all content blocks will display errors. Use `show_errors=false` to turn this off on a block',
+            '3. At the top of all forms.',
+            '4. At the top of the page'], level:2
+
     subheading 'Update'
     body 'issues a PUT to the passed path'
-    button 'updates' do
-      event :click do
-        updates 'updatepath', {optional: :params}
+    content do
+      button 'updates' do
+        event :click do
+          updates 'updatepath', {optional: :params}
+        end
       end
     end
 
     subheading 'Delete'
     body 'issues a DELETE to the passed path'
-    button 'deletes' do
-      event :click do
-        deletes 'deletepath', {optional: :params}
+    content do
+      button 'deletes' do
+        event :click do
+          deletes 'deletepath', {optional: :params}
+        end
+      end
+      subheading 'Posts'
+      body "issues a POST to the passed path\nAlias: creates"
+      content shows_errors: false do
+        button 'posts' do
+          event :click do
+            posts 'postpath', {optional: :params}
+          end
+        end
       end
     end
 
-    subheading 'Posts'
-    body "issues a POST to the passed path\nAlias: creates"
-    button 'posts' do
-      event :click do
-        posts  'postpath', {optional: :params}
-      end
-    end
 
   end
 end

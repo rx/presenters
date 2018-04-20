@@ -4,7 +4,8 @@ import {VReplaceElement} from './events/replace';
 import {VDialog} from './events/dialog';
 import {VErrors} from './events/errors';
 import {VToggleVisiblity} from './events/toggle_visiblity';
-import {VSnackbarEvent} from './events/snackbar.js';
+import {VSnackbarEvent} from './events/snackbar';
+import {VAutoComplete} from './events/autocomplete';
 
 export class VEvents {
     //[[type, url, target, params]]
@@ -54,26 +55,28 @@ export class VEvents {
     static action_class(action, event) {
         var action_type = action[0];
         var url = action[1];
-        var target = action[2];
+        var options = action[2];
         var params = action[3];
 
         switch (action_type) {
             case 'loads':
-                return new VLoadsPage(url);
+                return new VLoadsPage(options, url);
             case 'replaces':
-                return new VReplaceElement(target, url, params, event);
+                return new VReplaceElement(options, url, params, event);
             case 'post':
-                return new VPost(url, params, 'POST', event);
+                return new VPost(options, url, params, 'POST', event);
             case 'update':
-                return new VPost(url, params, 'PUT', event);
+                return new VPost(options, url, params, 'PUT', event);
             case 'delete':
-                return new VPost(url, params, 'DELETE', event);
+                return new VPost(options, url, params, 'DELETE', event);
             case 'dialog':
-                return new VDialog(target, params, event);
+                return new VDialog(options, params, event);
             case 'toggle_visibility':
-                return new VToggleVisiblity(target, params, event);
+                return new VToggleVisiblity(options, params, event);
             case 'snackbar':
-                return new VSnackbarEvent(params, event);
+                return new VSnackbarEvent(options, params, event);
+            case 'autocomplete':
+                return new VAutoComplete(options, url, params, event);
             default:
                 throw action_type + ' is not supported.';
         }
@@ -100,9 +103,12 @@ export function initEvents() {
             var eventData = eventsData[j];
             var eventName = eventData[0];
             var actionsData = eventData[1];
-            if (!eventElem.eventsHandler) {
-                eventElem.eventsHandler = createEventHandler(actionsData);
-                eventElem.addEventListener(eventName, eventElem.eventsHandler);
+            if (typeof eventElem.eventsHandler == 'undefined' ||
+                !eventElem.eventsHandler[eventName]) {
+                var eventHandler = createEventHandler(actionsData);
+                eventElem.eventsHandler = {};
+                eventElem.eventsHandler[eventName] = eventHandler;
+                eventElem.addEventListener(eventName, eventHandler);
             }
         }
     }

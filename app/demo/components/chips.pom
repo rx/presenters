@@ -9,76 +9,76 @@ Voom::Presenters.define(:chips) do
     chip 'Chip 2'
     chip 'Chip 3'
 
-    subheading 'leading icon'
-    chip 'Jane Smith', icon: :face
-
-    subheading 'trailing icon'
-    chip 'Jane Smith' do
-      icon :more_vert, position: :right
-    end
-
-    subheading 'leading and trailing icon'
-    chip 'Jane Smith' do
-      icon :face, position: :left
-      icon :more_vert, position: :right
-    end
-    heading 'Events'
-
-    chip 'Jane Smith' do
-      icon :face, position: :left
-      icon :more_vert, position: :right
-      event :click do
-        snackbar 'chip clicked!'
-      end
-    end
-
-    chip do
-      text 'Jane Smith' do
-        event :click do
-          snackbar 'text clicked'
-        end
-      end
-      icon :face, position: :left
-      icon :more_vert, position: :right
-      event :click do
-        snackbar 'chip clicked!'
-      end
-    end
-
-    chip do
-      text 'Jane Smith' do
-        event :click do
-          snackbar 'text clicked'
-        end
-      end
-      icon :face, position: :left do
-        event :click do
-          snackbar 'left icon clicked'
-        end
-      end
-      icon :more_vert, position: :right
-      event :click do
-        snackbar 'chip clicked!'
-      end
-    end
-
-    chip do
-      text 'Jane Smith' do
-        event :click do
-          snackbar 'text clicked'
-        end
-      end
-      icon :face, position: :left do
-        event :click do
-          snackbar 'left icon clicked'
-        end
-      end
-      icon :more_vert, position: :right do
-        event :click do
-          snackbar 'right icon clicked'
-        end
-      end
-    end
+    # subheading 'leading icon'
+    # chip 'Jane Smith', icon: :face
+    #
+    # subheading 'trailing icon'
+    # chip 'Jane Smith' do
+    #   icon :more_vert, position: :right
+    # end
+    #
+    # subheading 'leading and trailing icon'
+    # chip 'Jane Smith' do
+    #   icon :face, position: :left
+    #   icon :more_vert, position: :right
+    # end
+    # heading 'Events'
+    #
+    # chip 'Jane Smith' do
+    #   icon :face, position: :left
+    #   icon :more_vert, position: :right
+    #   event :click do
+    #     snackbar 'chip clicked!'
+    #   end
+    # end
+    #
+    # chip do
+    #   text 'Jane Smith' do
+    #     event :click do
+    #       snackbar 'text clicked'
+    #     end
+    #   end
+    #   icon :face, position: :left
+    #   icon :more_vert, position: :right
+    #   event :click do
+    #     snackbar 'chip clicked!'
+    #   end
+    # end
+    #
+    # chip do
+    #   text 'Jane Smith' do
+    #     event :click do
+    #       snackbar 'text clicked'
+    #     end
+    #   end
+    #   icon :face, position: :left do
+    #     event :click do
+    #       snackbar 'left icon clicked'
+    #     end
+    #   end
+    #   icon :more_vert, position: :right
+    #   event :click do
+    #     snackbar 'chip clicked!'
+    #   end
+    # end
+    #
+    # chip do
+    #   text 'Jane Smith' do
+    #     event :click do
+    #       snackbar 'text clicked'
+    #     end
+    #   end
+    #   icon :face, position: :left do
+    #     event :click do
+    #       snackbar 'left icon clicked'
+    #     end
+    #   end
+    #   icon :more_vert, position: :right do
+    #     event :click do
+    #       snackbar 'right icon clicked'
+    #     end
+    #   end
+    # end
 
 
     attach :code, file: __FILE__

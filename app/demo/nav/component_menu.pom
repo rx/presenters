@@ -1,16 +1,15 @@
 Voom::Presenters.define('component_menu') do
   helpers Voom::Presenters::Helpers::Inflector
   menu side: :left do
-    button icon: :arrow_drop_down
-
     %i(cards lists expansion_panels tables text-fields selects buttons fabs fabs_mini dialogs layouts headers drawers
-       footers menus toggles chips snackbar badges tooltips).sort.each do |comp|
+         footers menus toggles chips snackbar badges tooltips).sort.each do |comp|
       item titleize(comp) do
-            event :click do
-              loads comp
-            end
-          end
+        event :click do
+          loads comp
+        end
+      end
     end
   end
 end
+
 

@@ -8,7 +8,7 @@ module Voom
         class Avatar < EventBase
           include Mixins::Tooltips
 
-          attr_accessor :avatar, :color, :size
+          attr_accessor :avatar, :color, :size, :position
 
           def initialize(**attribs_, &block)
             super(type: :avatar, context: context,
@@ -16,6 +16,7 @@ module Voom
             @avatar = attribs.delete(:avatar)
             @color = attribs.delete(:color)
             @size = attribs.delete(:size)
+            @position    = Array(attribs.delete(:position)).compact
             expand!
           end
         end

@@ -37,7 +37,7 @@ module Voom
           end
 
           def expand_text(text)
-            (text||[]).map {|line| "#{markdown(line)}<br/>"}.join
+            markdown((text||[]).map {|line| "#{line}<br/>"}.join)
           end
         end
 
@@ -48,9 +48,9 @@ module Voom
           erb :web
         end
 
-        get '/:presenter' do
-          pass unless Presenters::App.registered?(params[:presenter])
-          presenter = Presenters::App[params[:presenter]].call
+        get '/:_presenter_' do
+          pass unless Presenters::App.registered?(params[:_presenter_])
+          presenter = Presenters::App[params[:_presenter_]].call
           @pom = presenter.expand(router: router, context: prepare_context)
           @grid_nesting = Integer(params[:grid_nesting] || 0)
           layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
@@ -72,9 +72,20 @@ module Voom
         end
 
         def prepare_context
-          Presenters::Settings.config.presenters.web_client.prepare_context.reduce(params) do |params, context_proc|
+          prepare_context = Presenters::Settings.config.presenters.web_client.prepare_context.dup
+          prepare_context.push(method(:scrub_context))
+          context = params.dup
+          prepare_context.reduce(context) do |params, context_proc|
             context_proc.call(params, session, env)
           end
+          context
+        end
+
+        def scrub_context(params, _session, _env)
+         %i(splat captures _presenter_).each do |key|
+           params.delete(key)
+         end
+         params
         end
       end
     end

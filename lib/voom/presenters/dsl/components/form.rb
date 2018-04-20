@@ -21,8 +21,8 @@ module Voom
           include Mixins::Grids
           include Mixins::TextFields
           include Mixins::Selects
-          include Mixins::Buttons
           include Mixins::Toggles
+          include Mixins::Buttons
           include Mixins::Attaches
           include Mixins::Helpers
           include Mixins::ExpansionPanels

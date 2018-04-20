@@ -1,0 +1,48 @@
+@import "@material/card/mdc-card";
+
+.v-card {
+  position: relative;
+
+}
+
+.v-card-media {
+  position: relative;
+}
+
+.v-card-content {
+  padding: 10px 10px 0px 10px;
+}
+
+.v-card-title {
+  padding: 10px 10px 0px 10px;
+}
+
+.v-card-title-position-left {
+  position: absolute;
+  left: 0;
+}
+
+.v-card-title-position-top {
+  position: absolute;
+  top: 0;
+}
+
+.v-card-title-position-right {
+  position: absolute;
+  right: 0;
+}
+
+.v-card-title-position-bottom {
+  position: absolute;
+  bottom: 0;
+
+}
+
+//.v-card-overflow-menu {
+//  position: absolute;
+//  right: 16px;
+//  top: 16px;
+//}
+
+.v-card-media-image, .v-card-media-avatar {
+}

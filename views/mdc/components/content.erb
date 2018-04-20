@@ -1,4 +1,9 @@
-<div id="<%=comp.id%>"
-     class="<%= 'v-hidden' if comp.hidden %>">
-  <%= erb :"components/render", :locals => {:components => comp.components, :scope=> nil} %>
+<div id="<%= comp.id %>"
+     class="v-content
+            <%= 'v-hidden' if comp.hidden %>
+            <%= 'v-has-errors' if comp.shows_errors %>">
+  <% if comp.shows_errors %>
+    <div class="v-errors"></div>
+  <% end %>
+  <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
 </div>

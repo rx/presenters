@@ -1,2 +1,7 @@
-<img id="<%= comp.id %>" src="<%= comp.url %>" height="<%= comp.height %>" width="<%= comp.width %>" border="0" alt="">
+<% if comp
+     position_classes = comp.position.map {|p| "v-image-position-#{p}"}.join(' ') %>
+<img id="<%= comp.id %>"
+     class="v-image <%=position_classes%>"
+     src="<%= comp.url %>" height="<%= comp.height %>" width="<%= comp.width %>" border="0" alt="">
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+<% end %>

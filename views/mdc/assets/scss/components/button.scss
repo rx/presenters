@@ -10,7 +10,7 @@
   @include mdc-states(secondary);
 }
 
-.v-button-align-left {
+.v-button-position-left {
   float: left;
 }
 
@@ -18,6 +18,30 @@
  padding-left: 0;
 }
 
-.v-button-align-right {
+.v-button-position-right {
   float: right;
 }
+
+
+v-card-title-position-left {
+  position: absolute;
+  left: 0;
+}
+
+.v-button-icon-position-top {
+  position: absolute;
+  top: 0;
+}
+
+.v-button-icon-position-right {
+  position: absolute;
+  right: 0;
+}
+
+.v-button-icon-position-bottom {
+  position: absolute;
+  bottom: 0;
+
+}
+
+

@@ -1,0 +1,18 @@
+require_relative 'helpers/search'
+
+Voom::Presenters.define(:search_results) do
+  helpers do
+  end
+
+  grid do
+    column 12 do
+      display 'Search Results'
+      subheading ' '
+      list do
+        context.map {|k, v| "#{k}: #{v}"}.each do |param|
+          line param
+        end
+      end
+    end
+  end
+end

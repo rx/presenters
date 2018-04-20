@@ -1,10 +1,11 @@
 import {VSnackbar} from '../snackbar.js';
 
 export class VSnackbarEvent {
-    constructor(params, event) {
-            this.params = params;
-            this.event = event;
-        }
+    constructor(options, params, event) {
+        this.options = options;
+        this.params = params;
+        this.event = event;
+    }
 
     call() {
         var message = this.params.text;

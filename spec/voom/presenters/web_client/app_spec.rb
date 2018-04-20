@@ -67,6 +67,7 @@ describe Voom::Presenters::WebClient::App do
           pom_json = JSON.dump(pom.to_hash)
           @ids.clear
           response_pom = post("__post__/#{key}", pom_json, {"CONTENT_TYPE" => "application/json"})
+          puts response_pom.body unless response_pom.status==200
           expect(response_pom.status).to eq 200
 
           @ids.clear

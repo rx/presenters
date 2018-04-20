@@ -8,7 +8,7 @@ Voom::Presenters.define(:tooltips) do
     headline 'Avatars'
     subheading 'Cards'
     card do
-      title do
+      media do
         avatar 'img/demo/rx.png' do
           tooltip "Ill be back", position: :right
         end
@@ -16,7 +16,7 @@ Voom::Presenters.define(:tooltips) do
     end
 
     card do
-      title do
+      media do
         avatar :person do
           tooltip "Ill be back", position: :right
         end
@@ -34,7 +34,7 @@ Voom::Presenters.define(:tooltips) do
       line do
         text 'Terminator3'
         avatar :person do
-          tooltip "I'll be back - not working",  position: :right
+          tooltip "I'll be back - not working", position: :right
         end
       end
     end
@@ -44,7 +44,7 @@ Voom::Presenters.define(:tooltips) do
     button 'Button', type: :raised do
       tooltip "Yo\nsmile" # position: :left
     end
-    button 'Button'  do
+    button 'Button' do
       tooltip "Yo\nsmile", position: :bottom
     end
     button icon: :mood do
@@ -68,7 +68,7 @@ Voom::Presenters.define(:tooltips) do
       end
 
       row do
-        column 'Caulk'  do
+        column 'Caulk' do
           tooltip 'This fixes leaks', position: :right
         end
         column 99
@@ -85,10 +85,10 @@ Voom::Presenters.define(:tooltips) do
     icon_toggle 'format_italic' do
       tooltip 'toggle it'
     end
-    switch  do
+    switch do
       tooltip 'switch it'
     end
-    checkbox  do
+    checkbox do
       tooltip 'check it'
     end
 

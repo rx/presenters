@@ -1,11 +1,16 @@
-<% if comp %>
+<% class_name = '' unless local_variables.include? :class_name
+%>
+<% if comp
+     position_classes = comp.position.map {|p| "v-button-position-#{p}"}.join(' ')
+     class_name= "#{class_name} #{position_classes}"
+%>
   <% case comp.button_type.to_sym
         when :fab %>
-            <%= erb :"components/buttons/fab", :locals => {:comp => comp} %>
+            <%= erb :"components/buttons/fab", :locals => {:comp => comp, class_name: class_name} %>
      <% when :icon %>
-            <%= erb :"components/buttons/icon", :locals => {:comp => comp} %>
+            <%= erb :"components/buttons/icon", :locals => {:comp => comp, class_name: class_name} %>
     <% else  %>
-            <%= erb :"components/buttons/button", :locals => {:comp => comp} %>
+            <%= erb :"components/buttons/button", :locals => {:comp => comp, class_name: class_name} %>
   <% end %>
 <% end %>
 

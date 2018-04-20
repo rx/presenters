@@ -1,11 +1,13 @@
 <%
   if comp
-    events = nil unless local_variables.include? :events
+    events = nil unless locals.include? :events
     events = comp.events || events
-    class_name = 'v-avatar' unless local_variables.include? :class_name
+    class_name = 'v-avatar' unless locals.include? :class_name
+    position = comp.position||[] unless locals.include? :position
+    position_classes = position.map {|p| "v-avatar-position-#{p}"}.join(' ')
 %>
   <% if %w(jpg gif png).include?(comp.avatar&.to_s.split('.').last) %>
-    <span class="<%=class_name%>">
+    <span class="<%=class_name%> <%=position_classes%>">
     <img id="<%= comp.id %>"
          class="v-avatar
                <%= 'v-actionable' if events %>"
@@ -14,8 +16,8 @@
       <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
     </span>
   <% else %>
-    <span class="v-avatar">
-    <%= erb :"components/icon", :locals => {comp: comp, icon_name: comp.avatar, parent_id: comp.event_parent_id} %>
+    <span class="v-avatar <%=position_classes%>">
+    <%= erb :"components/icon", :locals => {comp: comp, icon_name: comp.avatar, parent_id: comp.event_parent_id, position: []} %>
     </span>
   <% end %>
 

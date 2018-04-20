@@ -8,13 +8,14 @@ module Voom
         class Typography < EventBase
           include Mixins::Tooltips
 
-          attr_accessor :text, :level, :color
+          attr_accessor :text, :level, :color, :position
 
           def initialize(parent:, **attribs_, &block)
             super(type: :text, parent: parent, **attribs_, &block)
             @text = Array(attribs.delete(:text)||'').join("\n").split("\n")
-            @level = attribs.delete(:level) || 1
+            @level = attribs.delete(:level){1}
             @color = attribs.delete(:color)
+            @position = Array(attribs.delete(:position)).compact
             expand!
           end
         end

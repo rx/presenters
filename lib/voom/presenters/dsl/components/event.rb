@@ -71,6 +71,14 @@ module Voom
                                                type: :snackbar,
                                                params: params.merge(text: text), &block)
           end
+
+          def autocomplete(path, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               type: :autocomplete,
+                                               path: path,
+                                               target: "#{parent(:text_field).id}-list",
+                                               params: params, &block)
+          end
         end
       end
     end

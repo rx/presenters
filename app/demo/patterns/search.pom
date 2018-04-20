@@ -1,0 +1,8 @@
+Voom::Presenters.define(:search) do
+  attach :top_nav
+
+  attach :source_grid, file: __FILE__ do
+    heading 'Search'
+    attach :search_field
+  end
+end

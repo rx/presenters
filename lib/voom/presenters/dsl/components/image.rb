@@ -8,7 +8,7 @@ module Voom
         class Image < EventBase
           include Mixins::Tooltips
 
-          attr_accessor :image, :height, :width, :selected, :url
+          attr_accessor :image, :height, :width, :position, :selected, :url
 
           def initialize(**attribs_, &block)
             super(type: :image, context: context,
@@ -16,6 +16,7 @@ module Voom
             @image = attribs.delete(:image)
             @height = attribs.delete(:height)
             @width = attribs.delete(:width)
+            @position = Array(attribs.delete(:position)).compact
             @selected = attribs.delete(:selected)
             @url = build_url
             expand!

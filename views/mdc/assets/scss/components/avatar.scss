@@ -11,9 +11,31 @@
   flex-shrink: 0;
 }
 
-.mdl-card__title {
+.v-card-media {
   .v-avatar {
     background-color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
-    margin-right: 16px;
+    margin-right: 8px;
+    margin: 8px;
   }
+  .v-avatar + .v-card-title {
+    margin-top: 8px;
+  }
+}
+
+.v-avatar-position-left {
+  float:left;
+}
+
+.v-avatar-position-top {
+  position: absolute;
+  top: 0;
+}
+
+.v-avatar-position-right {
+  float:right;
+}
+
+.v-avatar-position-bottom {
+  position: absolute;
+  bottom: 0;
 }

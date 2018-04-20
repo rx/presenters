@@ -1,1 +1,25 @@
 @import "@material/typography/mdc-typography";
+
+.v-typography-position-left {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.v-typography-position-top {
+  position: absolute;
+  top: 0;
+}
+
+.v-typography-position-right {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.v-typography-position-bottom {
+  position: absolute;
+  bottom: 0;
+
+}
+

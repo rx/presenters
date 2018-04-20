@@ -1,8 +1,11 @@
 import {MDCMenu} from '@material/menu';
+import {Corner} from '@material/menu';
 
 
-function createMenuHandler(menu) {
+function createMenuHandler(menu, element) {
     return function () {
+        var offset = parseInt(element.dataset.rightOffset);
+        menu.setAnchorMargin({left: offset});
         menu.open = !menu.open;
     };
 }
@@ -17,7 +20,7 @@ export function initMenus() {
             if (!component.mdcComponent) {
                 component.mdcComponent = new MDCMenu(component);
                 var anchor = component.closest('.mdc-menu-anchor').querySelector('.v-menu-click');
-                anchor.addEventListener('click', createMenuHandler(component.mdcComponent));
+                anchor.addEventListener('click', createMenuHandler(component.mdcComponent, component));
             }
         }
     }

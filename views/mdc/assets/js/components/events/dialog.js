@@ -1,6 +1,6 @@
 export class VDialog {
-    constructor(dialogId, params, event) {
-        this.dialogId = dialogId;
+    constructor(options, params, event) {
+        this.dialogId = options.target;
         this.params = params;
         this.event = event;
     }

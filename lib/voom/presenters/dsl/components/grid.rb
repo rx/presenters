@@ -40,6 +40,9 @@ module Voom
             include Mixins::Attaches
             include Mixins::Dialogs
             include Mixins::Chips
+            include Mixins::TextFields
+            include Mixins::Selects
+            include Mixins::Toggles
 
             attr_reader :size, :desktop, :tablet, :phone, :color, :components
 

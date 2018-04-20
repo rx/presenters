@@ -1,57 +1,45 @@
-<div class="card-<%= comp.id %> mdl-card mdl-shadow--4dp
+<div class="card-<%= comp.id %> mdc-card v-card
            <%= 'v-actionable' if comp.events %>"
-     style="<%="width: #{comp.width};" if comp.width%>
-            <%="width: 100%;" unless comp.width%>
-       <%= "height: #{comp.height};" if comp.width && comp.width == comp.height %>
-       <%= "min-height: auto;" %>
+     style="<%= "width: #{comp.width};" if comp.width%>
+            <%= "height: #{comp.height};" if comp.height%>
        <%= "outline: medium solid rgb(63,81,181);" if comp.selected %>"
-     <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%>
+     <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>
 >
-  <div class="v-errors"></div>
-  <% if comp.title %>
-  <div class="mdl-card__title mdl-card--expand"
-     style="<%= "color: #{comp.title.color};" if comp.title&.color%>
-            <%= "height: #{comp.height};" if comp.height && comp.width != comp.height%>
-            <%= "background: url('#{comp.title.background.image.url}') #{comp.title.background.options};" if comp.title&.background&.image %>
-            <%= "background-color: #{comp.title.background.color};" if comp.title&.background&.color %>">
-    <%= erb :"components/button", :locals => {:comp => comp.title.button, class_name:nil} %>
-    <%= erb :"components/avatar", :locals => {:comp => comp.title.avatar, class_name:nil} %>
-    <% if comp.title.text.any? %>
-      <h2 class="mdl-card__title-text"
-          style="<%= 'align-self: flex-start;' if eq(comp.title&.align, :top)%>"
-      ><%= expand_text(comp.title.text) %></h2>
-    <% end %>
-  </div>
-  <% end %>
-
-  <% if comp.image %>
-    <div class="mdl-card__media">
-      <%= erb :"components/image", :locals => {:comp => comp.image} %>
+  <% if comp.media %>
+    <div class="mdc-card__media v-card-media
+                <%= 'mdc-card__media--square' if false && comp.media.width == comp.media.height %>"
+         style="<%= "width: #{comp.media.width};" if comp.media.width%>
+                <%= "height: #{comp.media.height};" if comp.media.height  %>
+           <%= "background-color: #{comp.media.color};" if comp.media.color %>">
+      <%= erb :"components/image", :locals => {:comp => comp.media.image, class_name: 'v-card-media-image'} %>
+      <%= erb :"components/avatar", :locals => {:comp => comp.media.avatar, class_name: 'v-card-media-avatar'} %>
+      <%= erb :"components/title", :locals => {:comp => comp.media.title, class_name: "v-card-title"} %>
     </div>
   <% end %>
 
-  <% if comp.text %>
-    <div class="mdl-card__supporting-text"><%= expand_text(comp.text) %></div>
-  <% end %>
-
-  <%= erb :"components/render", :locals => {:components => comp.components, :scope=> nil} %>
-
-  <% if comp.action&.buttons %>
-    <div class="mdl-card__actions mdl-card--border">
-      <% comp.action.buttons.each do |button| %>
-        <%= erb :"components/button", :locals => {:comp => button} %>
-      <% end %>
+  <% if comp.components.any? %>
+    <div class="v-card-content">
+      <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
     </div>
   <% end %>
-  <% if comp.menu %>
-    <div class="mdl-card__menu"
-         style="<%= "color: #{comp.title.color};" if comp.title&.color %>
-                <%='left: 16px;' if eq(comp.menu.side, :left)%>">
-      <% if comp.menu %>
-        <%= erb :"components/menu", :locals => {:comp => comp.menu} %>
-      <% end %>
 
+  <% if comp.actions&.buttons
+       action_buttons = comp.actions.buttons.select {|b| !eq(b.button_type, :icon)}
+       action_icons = comp.actions.buttons.select {|b| eq(b.button_type, :icon)}
+  %>
+    <div class="mdc-card__actions">
+      <div class="mdc-card__action-buttons">
+        <% action_buttons.each do |button| %>
+          <%= erb :"components/button", :locals => {:comp => button, class_name: 'mdc-card__action mdc-card__action--button'} %>
+        <% end %>
+      </div>
+      <div class="mdc-card__action-icons">
+        <% action_icons.each do |button| %>
+          <%= erb :"components/button", :locals => {:comp => button, class_name: 'mdc-card__action mdc-card__action--icon'} %>
+        <% end %>
+      </div>
     </div>
   <% end %>
+  <%#= erb :"components/button", :locals => {:comp => comp.overflow_menu, class_name: 'v-card-overflow-menu'} %>
 </div>
 

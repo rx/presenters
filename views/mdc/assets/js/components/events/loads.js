@@ -1,5 +1,6 @@
 export class VLoadsPage {
-    constructor(url) {
+    constructor(options, url) {
+        this.options = options;
         this.url = url;
     }
 

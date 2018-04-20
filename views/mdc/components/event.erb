@@ -2,23 +2,15 @@
      data_events = events.map do |event|
        [event.event,
         event.actions.map do |action|
-          params = case action.type.to_s
+          additional_options = case action.type.to_s
                                 when 'replaces' then
-                                  {grid_nesting:@grid_nesting,
-                                   target: action.params[:target],
-                                   presenter: action.params[:presenter]}
-                                when 'update', 'post', 'delete' then
+                                  {grid_nesting:@grid_nesting}
+                                when 'update', 'post', 'delete', 'autocomplete' then
                                   {__parent_id__: parent_id}
-                                when 'snackbar' then
-                                  {text: action.params[:text]}
-                                when 'loads' then
-                                  {}
-                                when 'replaces', 'toggle_visibility', 'dialog' then
-                                  {target: action.params[:target]}
                                 else
                                   {}
                               end
-          [action.type, action.url, params[:target], params]
+          [action.type, action.url, action.options.to_h.merge(additional_options), action.params.to_h]
         end
        ]
      end %>

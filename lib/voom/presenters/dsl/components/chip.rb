@@ -37,7 +37,7 @@ module Voom
             def initialize(**attribs_, &block)
               super(context: context,
                     **attribs_, &block)
-              @position = attribs.delete(:position) || :left
+              @position = attribs.delete(:position){ :left }
               expand!
             end
           end

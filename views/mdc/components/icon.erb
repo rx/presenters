@@ -2,8 +2,11 @@
    parent_id = comp.event_parent_id unless local_variables.include? :parent_id
 %>
 <% if comp
-     icon_name = comp.icon  unless locals.include? :icon_name
+     icon_name = comp.icon unless locals.include? :icon_name
      events = comp.events unless locals.include? :events
+     position = comp.position||[] unless locals.include? :position
+     position_classes = position.map {|p| "v-icon-position-#{p}"}.join(' ')
+     class_name= "#{class_name} #{position_classes}"
      if icon_name =~ /^fa-/
        icon_class_name = "fas #{icon_name}"
        icon = ''
@@ -12,14 +15,14 @@
        icon = icon_name
      end
 %>
-  <i  id="<%=comp.id%>"
-      class="<%= class_name %> <%= icon_class_name %>
+  <i id="<%= comp.id %>"
+     class="<%= class_name %> <%= icon_class_name %>
             <%= 'v-actionable' if comp.events %>"
      style="<%= "color: #{comp.color};" if comp.color %>
-            <%= "font-size: #{comp.size}" if comp.size %>"
-      <%= 'tabindex="1"' if class_name=='mdc-text-field__icon' && comp.events%>
-     <%= erb :"components/event", :locals => {events: events, parent_id: parent_id}%>>
-    <%=icon%>
+       <%= "font-size: #{comp.size}" if comp.size %>"
+     <%= 'tabindex="1"' if class_name.include?('mdc-text-field__icon') && comp.events %>
+     <%= erb :"components/event", :locals => {events: events, parent_id: parent_id} %>>
+    <%= icon %>
   </i>
   <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 <% end %>
