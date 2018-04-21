@@ -5,6 +5,7 @@ require_relative 'mixins/event'
 require_relative 'mixins/helpers'
 require_relative 'mixins/attaches'
 require_relative 'mixins/avatar'
+require_relative 'mixins/text_fields'
 
 module Voom
   module Presenters
@@ -14,6 +15,7 @@ module Voom
           include Mixins::Common
           include Mixins::Helpers
           include Mixins::Attaches
+          include Mixins::TextFields
 
           attr_reader :height, :width, :selected, :components
 

@@ -8,11 +8,11 @@ import {initMenus} from './menus';
 import {initSelects} from './selects';
 import {initChips} from './chips';
 import {initCards} from './cards';
+import {initForms} from './forms';
 
 export function initialize(){
     console.log('Initializing');
     initButtons();
-    initEvents();
     initDialogs();
     initTextFields();
     initLists();
@@ -21,5 +21,8 @@ export function initialize(){
     initSelects();
     initChips();
     initCards();
+    initForms();
+    // This needs to be last, because it relies on the components installed above.
+    initEvents();
     // componentHandler.upgradeAllRegistered();
 }

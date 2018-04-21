@@ -1,8 +1,9 @@
 <form role="form"
       id="<%= comp.id %>"
-      class="v-has-errors"
+      class="v-has-errors v-form"
       style='width: 100%'
-      onsubmit="javascript:void(0);return false;">
+      onsubmit="javascript:void(0);return false;"
+      <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.id} %>>
   <div class="v-errors"></div>
   <%= erb :"components/render", :locals => {:components => comp.components.select {|c| !eq(c.type, :button)}, :scope => nil} %>
   <div class="mdl-dialog__actions">

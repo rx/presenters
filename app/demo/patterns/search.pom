@@ -16,11 +16,11 @@ Voom::Presenters.define(:search) do
           autocomplete '/_search_'
         end
         event :change do
-          replaces :search_results, :search_results
+          replaces :context_list, :context_list, title: 'Search Results'
         end
       end
     end
-    attach :search_results
+    attach :context_list, title: 'Search Results'
   end
 
 end

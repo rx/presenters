@@ -19,14 +19,14 @@ export class VEvents {
     call() {
         // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
         var fnlist = this.actions.map((action) => {
-            return function () {
-                return Promise.resolve(action.call());
+            return function (results) {
+                return Promise.resolve(action.call(results));
             };
         });
 
         // Execute a list of Promise return functions in series
         function pseries(list) {
-            var p = Promise.resolve();
+            var p = Promise.resolve([]);
             return list.reduce(function (pacc, fn) {
                 return pacc = pacc.then(fn);
             }, p);
@@ -36,9 +36,9 @@ export class VEvents {
 
         pseries(fnlist)
             .then(function (results) {
-                var contentType = results[1];
-                // var responseText = results[2];
-                var responseURL = results[3];
+                var result = results.pop();
+                var contentType = result.contentType;
+                var responseURL = result.responseURL;
 
                 if (event.target.dialog) {
                     event.target.dialog.close();
@@ -48,7 +48,8 @@ export class VEvents {
                 }
 
             }).catch(function (results) {
-            new VErrors(event).displayErrors(results);
+            var result = results.pop();
+            new VErrors(event).displayErrors(result);
         });
     }
 
@@ -60,7 +61,7 @@ export class VEvents {
 
         switch (action_type) {
             case 'loads':
-                return new VLoads(options, url);
+                return new VLoads(options, url, params, event);
             case 'replaces':
                 return new VReplaces(options, url, params, event);
             case 'post':
@@ -103,13 +104,19 @@ export function initEvents() {
             var eventData = eventsData[j];
             var eventName = eventData[0];
             var actionsData = eventData[1];
-            if (typeof eventElem.eventsHandler === 'undefined') {
-                eventElem.eventsHandler = {};
-            }
-            if (!eventElem.eventsHandler[eventName]) {
-                var eventHandler = createEventHandler(actionsData);
-                eventElem.eventsHandler[eventName] = eventHandler;
-                eventElem.addEventListener(eventName, eventHandler);
+            var eventHandler = createEventHandler(actionsData);
+            // Delegate to the component if possible
+            if (eventElem.vComponent && eventElem.vComponent.initEventListener) {
+                eventElem.vComponent.initEventListener(eventName, eventHandler);
+            } else {
+                if (typeof eventElem.eventsHandler === 'undefined') {
+                    eventElem.eventsHandler = {};
+                }
+                if (!eventElem.eventsHandler[eventName]) {
+                    // Delegate to the component if possible
+                    eventElem.eventsHandler[eventName] = eventHandler;
+                    eventElem.addEventListener(eventName, eventHandler);
+                }
             }
         }
     }

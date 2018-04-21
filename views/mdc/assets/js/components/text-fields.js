@@ -1,4 +1,6 @@
 import {MDCTextField} from '@material/textfield';
+import {VBaseComponent} from './base-component';
+import {eventHandlerMixin} from './mixins/event-handler';
 
 export function initTextFields() {
     console.log('\tTextFields');
@@ -15,9 +17,9 @@ export function initTextFields() {
     }
 }
 
-export class VTextField {
+export class VTextField extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
-        this.element = element;
+        super(element);
         this.input = element.querySelector('input');
         this.mdcComponent = mdcComponent;
     }
@@ -36,7 +38,7 @@ export class VTextField {
         return this.input.value;
     }
 
-    // Called when ever a form that contains this field is submitted
+    // Called to collect data for submission
     prepareSubmit(form, params) {
         var optionSelected = this.optionSelected();
         if (optionSelected) {
@@ -48,7 +50,7 @@ export class VTextField {
                 console.log("TextField prepareSubmit added:" + id + '=' + key);
             }
         }
-        // The input is not contained in a form element, add the input value
+        // On actual post/submit the form is passed and we are not expected to return our value
         if (!form) {
             params.push([this.input.name, this.input.value]);
         }

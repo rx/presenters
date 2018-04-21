@@ -45,22 +45,10 @@ export class VErrors {
     }
 
     // [http_status, content_type, resultText]
-    displayErrors(results) {
-        if (Array.isArray(results)) {
-            this.displayStdErrors(results);
-        } else if (results.constructor === Object) {
-            if (results.message) {
-                this.prependErrors([results.message]);
-            }
-        } else {
-            console.error("Unable to display Errors! ", results);
-        }
-    }
-
-    displayStdErrors(results) {
-        var httpStatus = results[0];
-        var contentType = results[1];
-        var resultText = results[2];
+    displayErrors(result) {
+        var httpStatus = result.statusCode;
+        var contentType = result.contentType;
+        var resultText = result.content;
 
         var responseErrors = null;
 
@@ -97,7 +85,7 @@ export class VErrors {
             }
         } else if (httpStatus === 0) {
             this.prependErrors(["Unable to contact server. Please check that you are online and retry."]);
-        } else if (results !== true) {
+        } else  {
             this.prependErrors(["The server returned an unexpected response! Status:" + httpStatus]);
         }
     }

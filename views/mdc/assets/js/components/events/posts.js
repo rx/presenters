@@ -11,17 +11,22 @@ export class VPosts extends VBase {
         this.method = method;
         this.event = event;
     }
-    
-    inputs() {
-        if(this.isForm()) {
-            return this.parentElement().querySelectorAll('input');
-        }else{
-            return [this.parentElement()];
-        }
-    }
 
-    call() {
+    call(results) {
         this.clearErrors();
+        var errors = this.validate();
+        if (errors.length > 0) {
+            return new Promise(function (_, reject) {
+                results.push({
+                    action: 'posts',
+                    method: this.method,
+                    statusCode: 400,
+                    contentType: 'v/errors',
+                    content: errors
+                });
+                reject(results);
+            });
+        }
 
         var FD = null;
         var form = this.form();
@@ -30,76 +35,54 @@ export class VPosts extends VBase {
         } else {
             FD = new FormData();
         }
-
-        var params = [];
-
         // Add params from presenter
         for (var name in this.params) {
-            params.push([name, this.params[name]]);
+            FD.append(name, this.params[name]);
         }
 
-        // Let each input component push parameters
-        for (var input of this.inputs()) {
-            if (input.vComponent) {
-                input.vComponent.prepareSubmit(form, params);
-            }
+        var inputValues = this.inputValues(form);
+        for (var input of inputValues) {
+            FD.append(input[0], input[1]);
         }
 
-        // Let each input component validate itself
-        var errors = [];
-        for (let input of this.inputs()) {
-            if (input.vComponent) {
-                var result = input.vComponent.validate(form, params);
-                if (result !== true) {
-                    errors.push(result);
-                }
-            }
+        var httpRequest = new XMLHttpRequest();
+        var method = this.method;
+        var url = this.url;
+        if (!httpRequest) {
+            throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
         }
-
-        // Build Form data
-        for(let param of params){
-            FD.append(param[0], param[1]);
-        }
-        
-        var promiseObj;
-
-        if (errors.length > 0) {
-            promiseObj = new Promise(function (_, reject) {
-                reject([400, 'v/errors', errors]);
-            });
-        } else {
-            var httpRequest = new XMLHttpRequest();
-            var method = this.method;
-            var url = this.url;
-            var event = this.event;
-            if (!httpRequest) {
-                throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
-                // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
-            }
-            promiseObj = new Promise(function (resolve, reject) {
-                httpRequest.onreadystatechange = function (event) {
-                    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                        console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
-                        if (httpRequest.status >= 200 && httpRequest.status < 300) {
-                            resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText, httpRequest.responseURL]);
-                            // new VSnackbar('Yeah! That worked!').display();
-                        } else {
-                            // new VSnackbar('There was a problem with the request.').display();
-                            reject([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
-                            // _this_.displayError(this.getResponseHeader('content-type'), event.target.responseText);
-                        }
+        return new Promise(function (resolve, reject) {
+            httpRequest.onreadystatechange = function (event) {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
+                    if (httpRequest.status >= 200 && httpRequest.status < 300) {
+                        results.push({
+                            action: 'posts',
+                            method: this.method,
+                            statusCode: httpRequest.status,
+                            contentType: this.getResponseHeader('content-type'),
+                            content: httpRequest.responseText,
+                            responseURL: httpRequest.responseURL
+                        });
+                        resolve(results);
+                    } else {
+                        results.push({
+                            action: 'posts',
+                            method: this.method,
+                            statusCode: httpRequest.status,
+                            contentType: this.getResponseHeader('content-type'),
+                            content: httpRequest.responseText
+                        });
+                        reject(results);
                     }
-                };
-
-                // Set up our request
-                httpRequest.open(method, url);
-
-                console.log(method + ':' + url);
-                // Send our FormData object; HTTP headers are set automatically
-                httpRequest.send(FD);
-            });
-        }
-        return promiseObj;
+                }
+            };
+            // Set up our request
+            httpRequest.open(method, url);
+            console.log(method + ':' + url);
+            // Send our FormData object; HTTP headers are set automatically
+            httpRequest.send(FD);
+        });
     }
 
     isForm() {

@@ -5,14 +5,14 @@ export class VToggleVisiblity  {
         this.event = event;
     }
 
-    call() {
+    call(results) {
         var targetId = this.targetId;
         var promiseObj = new Promise(function (resolve) {
             console.log("Toggling visiblity on: " + targetId);
             var elem = document.getElementById(targetId);
             elem.classList.toggle("v-hidden");
-
-            resolve([200, null, null]);
+            results.push({action:'toggle_visiblity', statusCode: 200});
+            resolve(results);
         });
         return promiseObj;
     }

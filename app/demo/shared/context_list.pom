@@ -1,0 +1,25 @@
+Voom::Presenters.define(:context_list) do
+  helpers do
+    def title
+      context.fetch(:title){'Context'}
+    end
+
+    def scrubbed_context
+      scrubbed_keys = context.fetch(:exclude){ %w{title file} }
+      context.select{|k,_| !scrubbed_keys.include?(k) }
+    end
+  end
+  content id: :context_list do
+    grid do
+      column 12 do
+        display title
+        subheading "#{Time.now}"
+        list do
+          scrubbed_context.map {|k, v| "#{k}: #{v}"}.each do |param|
+            line param
+          end
+        end
+      end
+    end
+  end
+end

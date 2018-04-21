@@ -1049,6 +1049,8 @@ class MDCChip extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__selects__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__chips__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__cards__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__forms__ = __webpack_require__(101);
+
 
 
 
@@ -1063,7 +1065,6 @@ class MDCChip extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
 function initialize() {
     console.log('Initializing');
     Object(__WEBPACK_IMPORTED_MODULE_0__button__["a" /* initButtons */])();
-    Object(__WEBPACK_IMPORTED_MODULE_3__events__["a" /* initEvents */])();
     Object(__WEBPACK_IMPORTED_MODULE_1__dialogs__["a" /* initDialogs */])();
     Object(__WEBPACK_IMPORTED_MODULE_2__text_fields__["a" /* initTextFields */])();
     Object(__WEBPACK_IMPORTED_MODULE_4__lists__["a" /* initLists */])();
@@ -1072,6 +1073,9 @@ function initialize() {
     Object(__WEBPACK_IMPORTED_MODULE_7__selects__["a" /* initSelects */])();
     Object(__WEBPACK_IMPORTED_MODULE_8__chips__["a" /* initChips */])();
     Object(__WEBPACK_IMPORTED_MODULE_9__cards__["a" /* initCards */])();
+    Object(__WEBPACK_IMPORTED_MODULE_10__forms__["a" /* initForms */])();
+    // This needs to be last, because it relies on the components installed above.
+    Object(__WEBPACK_IMPORTED_MODULE_3__events__["a" /* initEvents */])();
     // componentHandler.upgradeAllRegistered();
 }
 
@@ -2228,10 +2232,13 @@ const cssClasses = {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_urls__ = __webpack_require__(98);
 
 
-class VBase {
+
+class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
     constructor(options) {
+        super();
         this.options = options;
     }
 
@@ -2243,27 +2250,27 @@ class VBase {
         return document.getElementById(this.options.__parent_id__);
     }
 
-    extractInputValues() {
+    inputValues(form) {
         var params = [];
         // Let input component push parameters
         var vComp = this.component();
         if (vComp) {
-            vComp.prepareSubmit(null, params);
+            vComp.prepareSubmit(form, params);
         }
-        return this.paramsArrayToHash(params);
+        return params;
     }
 
     component() {
         return this.parentElement().vComponent;
     }
 
-    paramsArrayToHash(params) {
-        var results = {};
-        // Map params to object/hash
-        for (let param of params) {
-            results[param[0]] = param[1];
+    validate() {
+        var errors = [];
+        var comp = this.component();
+        if (comp) {
+            errors = comp.validate();
         }
-        return results;
+        return errors;
     }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = VBase;
@@ -2321,22 +2328,10 @@ class VErrors {
     }
 
     // [http_status, content_type, resultText]
-    displayErrors(results) {
-        if (Array.isArray(results)) {
-            this.displayStdErrors(results);
-        } else if (results.constructor === Object) {
-            if (results.message) {
-                this.prependErrors([results.message]);
-            }
-        } else {
-            console.error("Unable to display Errors! ", results);
-        }
-    }
-
-    displayStdErrors(results) {
-        var httpStatus = results[0];
-        var contentType = results[1];
-        var resultText = results[2];
+    displayErrors(result) {
+        var httpStatus = result.statusCode;
+        var contentType = result.contentType;
+        var resultText = result.content;
 
         var responseErrors = null;
 
@@ -2373,7 +2368,7 @@ class VErrors {
             }
         } else if (httpStatus === 0) {
             this.prependErrors(["Unable to contact server. Please check that you are online and retry."]);
-        } else if (results !== true) {
+        } else {
             this.prependErrors(["The server returned an unexpected response! Status:" + httpStatus]);
         }
     }
@@ -3613,7 +3608,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_initialize__ = __webpack_require__(9);
 window.dialogPolyfill = __webpack_require__(39);
 window.componentHandler = __webpack_require__(41);
-
 
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -9058,6 +9052,10 @@ function initDialogs() {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initTextFields;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_textfield__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(99);
+
+
 
 
 function initTextFields() {
@@ -9075,9 +9073,9 @@ function initTextFields() {
     }
 }
 
-class VTextField {
+class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]) {
     constructor(element, mdcComponent) {
-        this.element = element;
+        super(element);
         this.input = element.querySelector('input');
         this.mdcComponent = mdcComponent;
     }
@@ -9096,7 +9094,7 @@ class VTextField {
         return this.input.value;
     }
 
-    // Called when ever a form that contains this field is submitted
+    // Called to collect data for submission
     prepareSubmit(form, params) {
         var optionSelected = this.optionSelected();
         if (optionSelected) {
@@ -9108,7 +9106,7 @@ class VTextField {
                 console.log("TextField prepareSubmit added:" + id + '=' + key);
             }
         }
-        // The input is not contained in a form element, add the input value
+        // On actual post/submit the form is passed and we are not expected to return our value
         if (!form) {
             params.push([this.input.name, this.input.value]);
         }
@@ -10579,14 +10577,14 @@ class VEvents {
     call() {
         // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
         var fnlist = this.actions.map(action => {
-            return function () {
-                return Promise.resolve(action.call());
+            return function (results) {
+                return Promise.resolve(action.call(results));
             };
         });
 
         // Execute a list of Promise return functions in series
         function pseries(list) {
-            var p = Promise.resolve();
+            var p = Promise.resolve([]);
             return list.reduce(function (pacc, fn) {
                 return pacc = pacc.then(fn);
             }, p);
@@ -10595,9 +10593,9 @@ class VEvents {
         var event = this.event;
 
         pseries(fnlist).then(function (results) {
-            var contentType = results[1];
-            // var responseText = results[2];
-            var responseURL = results[3];
+            var result = results.pop();
+            var contentType = result.contentType;
+            var responseURL = result.responseURL;
 
             if (event.target.dialog) {
                 event.target.dialog.close();
@@ -10606,7 +10604,8 @@ class VEvents {
                 window.location = responseURL;
             }
         }).catch(function (results) {
-            new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](event).displayErrors(results);
+            var result = results.pop();
+            new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](event).displayErrors(result);
         });
     }
 
@@ -10618,7 +10617,7 @@ class VEvents {
 
         switch (action_type) {
             case 'loads':
-                return new __WEBPACK_IMPORTED_MODULE_0__events_loads__["a" /* VLoads */](options, url);
+                return new __WEBPACK_IMPORTED_MODULE_0__events_loads__["a" /* VLoads */](options, url, params, event);
             case 'replaces':
                 return new __WEBPACK_IMPORTED_MODULE_2__events_replaces__["a" /* VReplaces */](options, url, params, event);
             case 'post':
@@ -10663,13 +10662,19 @@ function initEvents() {
             var eventData = eventsData[j];
             var eventName = eventData[0];
             var actionsData = eventData[1];
-            if (typeof eventElem.eventsHandler === 'undefined') {
-                eventElem.eventsHandler = {};
-            }
-            if (!eventElem.eventsHandler[eventName]) {
-                var eventHandler = createEventHandler(actionsData);
-                eventElem.eventsHandler[eventName] = eventHandler;
-                eventElem.addEventListener(eventName, eventHandler);
+            var eventHandler = createEventHandler(actionsData);
+            // Delegate to the component if possible
+            if (eventElem.vComponent && eventElem.vComponent.initEventListener) {
+                eventElem.vComponent.initEventListener(eventName, eventHandler);
+            } else {
+                if (typeof eventElem.eventsHandler === 'undefined') {
+                    eventElem.eventsHandler = {};
+                }
+                if (!eventElem.eventsHandler[eventName]) {
+                    // Delegate to the component if possible
+                    eventElem.eventsHandler[eventName] = eventHandler;
+                    eventElem.addEventListener(eventName, eventHandler);
+                }
             }
         }
     }
@@ -10680,18 +10685,25 @@ function initEvents() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-class VLoads {
-    constructor(options, url) {
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_urls__ = __webpack_require__(98);
+
+
+class VLoads extends __WEBPACK_IMPORTED_MODULE_0__utils_urls__["a" /* VUrls */] {
+    constructor(options, url, params, event) {
+        super();
         this.options = options;
+        this.params = params;
         this.url = url;
+        this.event = event;
     }
 
-    call() {
-        var url = this.url;
+    call(results) {
+        var url = this.buildURL(this.url, this.params);
         var promiseObj = new Promise(function (resolve) {
             console.log("Loading page: " + url);
+            results.push({ action: 'loads', statusCode: 200 });
+            resolve(results);
             window.location = url;
-            resolve([200, null, null]);
         });
         return promiseObj;
     }
@@ -10713,7 +10725,7 @@ class VDialog {
         this.event = event;
     }
 
-    call() {
+    call(results) {
         var dialog = document.querySelector('#' + this.dialogId);
         if (dialog) {
             if (!dialog.showModal) {
@@ -10725,7 +10737,8 @@ class VDialog {
             console.error("Unable to find dialog with id: " + this.dialogId + ". Usually this means you forgot to attach it to the currently rendered page.");
         }
         var promiseObj = new Promise(function (resolve) {
-            resolve(true);
+            results.push({ action: 'dialog', statusCode: 200 });
+            resolve(results);
         });
         return promiseObj;
     }
@@ -10745,14 +10758,14 @@ class VToggleVisiblity {
         this.event = event;
     }
 
-    call() {
+    call(results) {
         var targetId = this.targetId;
         var promiseObj = new Promise(function (resolve) {
             console.log("Toggling visiblity on: " + targetId);
             var elem = document.getElementById(targetId);
             elem.classList.toggle("v-hidden");
-
-            resolve([200, null, null]);
+            results.push({ action: 'toggle_visiblity', statusCode: 200 });
+            resolve(results);
         });
         return promiseObj;
     }
@@ -10775,12 +10788,13 @@ class VSnackbarEvent {
         this.event = event;
     }
 
-    call() {
+    call(results) {
         var message = this.params.text;
         var promiseObj = new Promise(function (resolve) {
             console.log("Showing snackbar");
             new __WEBPACK_IMPORTED_MODULE_0__snackbar_js__["a" /* VSnackbar */](message).display();
-            resolve([200, null, null]);
+            results.push({ action: 'snackbar', statusCode: 200 });
+            resolve(results);
         });
         return promiseObj;
     }
@@ -10812,7 +10826,7 @@ class VAutoComplete extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */]
         this.event = event;
     }
 
-    call() {
+    call(results) {
         // Clear the timeout if it has already been set.
         // This will prevent the previous task from executing
         // if it has been less than <MILLISECONDS>
@@ -10822,7 +10836,8 @@ class VAutoComplete extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */]
             clearTimeout(parentElement.vTimeout);
             // Make a new timeout
             parentElement.vTimeout = setTimeout(updateElement, 500);
-            resolve([200, null, null]);
+            results.push({ action: 'autocomplete', statusCode: 200 });
+            resolve(results);
         });
         return promiseObj;
     }
@@ -10855,8 +10870,7 @@ class VAutoComplete extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */]
             // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
         }
         var dataList = this.dataList();
-        var url = this.url + this.seperator() + this.serialize(this.params) + this.serialize(this.extractInputValues());
-        // var event = this.event;
+        var url = this.buildURL(this.url, this.params, this.inputValues());
 
         httpRequest.onreadystatechange = function () {
             if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -10890,23 +10904,6 @@ class VAutoComplete extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */]
             option.dataset.key = key;
             dataList.appendChild(option);
         });
-    }
-
-    seperator() {
-        return this.url.includes("?") ? '&' : '?';
-    }
-
-    serialize(obj, prefix) {
-        var str = [],
-            p;
-        for (p in obj) {
-            if (obj.hasOwnProperty(p)) {
-                var k = prefix ? prefix + "[" + p + "]" : p,
-                    v = obj[p];
-                str.push(v !== null && typeof v === "object" ? this.serialize(v, k) : encodeURIComponent(k) + "=" + encodeURIComponent(v));
-            }
-        }
-        return str.join("&");
     }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = VAutoComplete;
@@ -13398,6 +13395,10 @@ class MDCMenuAdapter {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSelects;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(99);
+
+
 
 
 function initSelects() {
@@ -13411,52 +13412,9 @@ function initSelects() {
     }
 }
 
-// mdc.select.MDCSelect.attachTo(document.getElementById('hero-js-select'));
-//        mdc.select.MDCSelect.attachTo(document.getElementById('js-pre-selected'));
-//        mdc.select.MDCSelect.attachTo(document.getElementById('optgroup-js-select'));
-//
-//        var root = document.getElementById('js-select');
-//        var nativeSelect = root.querySelector('.mdc-select__native-control');
-//        var boxCurrentlySelected = document.getElementById('currently-selected');
-//        var select = new mdc.select.MDCSelect(root);
-//        var boxDemoWrapper = document.getElementById('demo-wrapper');
-//        var rtlCb = document.getElementById('rtl');
-//        var alternateColorsCb = document.getElementById('alternate-colors');
-//        var disabledCb = document.getElementById('disabled');
-//        var setSelectedButton = document.getElementById('set-selected-index-zero-button');
-//        var setValueMeatButton = document.getElementById('set-value-meat-button');
-//        function updateSelectedTextContent() {
-//          var item = nativeSelect.selectedOptions[0];
-//          var index = nativeSelect.selectedIndex;
-//          if (item) {
-//            boxCurrentlySelected.textContent = '"' + item.textContent + '" at index ' + index +
-//              ' with value "' + nativeSelect.value + '"';
-//          }
-//        }
-//        root.addEventListener('change', function() {
-//          updateSelectedTextContent();
-//        });
-//        rtlCb.addEventListener('change', function() {
-//          if (rtlCb.checked) {
-//            boxDemoWrapper.setAttribute('dir', 'rtl');
-//          } else {
-//            boxDemoWrapper.removeAttribute('dir');
-//          }
-//        });
-//        alternateColorsCb.addEventListener('change', function() {
-//          root.classList[alternateColorsCb.checked ? 'add' : 'remove']('demo-select-custom-colors');
-//        });
-//        disabledCb.addEventListener('change', function() {
-//          select.disabled = disabledCb.checked;
-//        });
-//        setSelectedButton.addEventListener('click', function() {
-//          select.selectedIndex = 0;
-//          updateSelectedTextContent();
-//        });
-//        setValueMeatButton.addEventListener('click', function() {
-//          select.value = 'meat';
-//          updateSelectedTextContent();
-//        });
+class VSelect extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]) {}
+/* unused harmony export VSelect */
+
 
 /***/ }),
 /* 81 */
@@ -14534,16 +14492,15 @@ class VReplaces extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
         this.event = event;
     }
 
-    call() {
+    call(results) {
         this.clearErrors();
 
         var httpRequest = new XMLHttpRequest();
         if (!httpRequest) {
             throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
-            // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
         }
         var elementId = this.element_id;
-        var url = this.url + this.seperator() + this.serialize(this.params) + this.serialize(this.extractInputValues()) + this.seperator() + this.encodeQueryParam('grid_nesting', this.options.grid_nesting);
+        var url = this.buildURL(this.url, this.params, this.inputValues(), [['grid_nesting', this.options.grid_nesting]]);
 
         var promiseObj = new Promise(function (resolve, reject) {
             httpRequest.onreadystatechange = function () {
@@ -14554,9 +14511,11 @@ class VReplaces extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
                         nodeToReplace.outerHTML = httpRequest.responseText;
                         var newNode = document.getElementById(elementId);
                         Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["a" /* initialize */])(newNode);
-                        resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                        results.push([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                        resolve(results);
                     } else {
-                        reject([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                        results.push([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                        reject(results);
                     }
                 }
             };
@@ -14566,27 +14525,6 @@ class VReplaces extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
             httpRequest.send();
         });
         return promiseObj;
-    }
-
-    seperator() {
-        return this.url.includes("?") ? '&' : '?';
-    }
-
-    serialize(obj, prefix) {
-        var str = [],
-            p;
-        for (p in obj) {
-            if (obj.hasOwnProperty(p)) {
-                var k = prefix ? prefix + "[" + p + "]" : p,
-                    v = obj[p];
-                str.push(v !== null && typeof v === "object" ? this.serialize(v, k) : this.encodeQueryParam(k, v));
-            }
-        }
-        return str.join("&");
-    }
-
-    encodeQueryParam(k, v) {
-        return encodeURIComponent(k) + "=" + encodeURIComponent(v);
     }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = VReplaces;
@@ -14613,16 +14551,21 @@ class VPosts extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
         this.event = event;
     }
 
-    inputs() {
-        if (this.isForm()) {
-            return this.parentElement().querySelectorAll('input');
-        } else {
-            return [this.parentElement()];
-        }
-    }
-
-    call() {
+    call(results) {
         this.clearErrors();
+        var errors = this.validate();
+        if (errors.length > 0) {
+            return new Promise(function (_, reject) {
+                results.push({
+                    action: 'posts',
+                    method: this.method,
+                    statusCode: 400,
+                    contentType: 'v/errors',
+                    content: errors
+                });
+                reject(results);
+            });
+        }
 
         var FD = null;
         var form = this.form();
@@ -14631,76 +14574,54 @@ class VPosts extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
         } else {
             FD = new FormData();
         }
-
-        var params = [];
-
         // Add params from presenter
         for (var name in this.params) {
-            params.push([name, this.params[name]]);
+            FD.append(name, this.params[name]);
         }
 
-        // Let each input component push parameters
-        for (var input of this.inputs()) {
-            if (input.vComponent) {
-                input.vComponent.prepareSubmit(form, params);
-            }
+        var inputValues = this.inputValues(form);
+        for (var input of inputValues) {
+            FD.append(input[0], input[1]);
         }
 
-        // Let each input component validate itself
-        var errors = [];
-        for (let input of this.inputs()) {
-            if (input.vComponent) {
-                var result = input.vComponent.validate(form, params);
-                if (result !== true) {
-                    errors.push(result);
-                }
-            }
+        var httpRequest = new XMLHttpRequest();
+        var method = this.method;
+        var url = this.url;
+        if (!httpRequest) {
+            throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
         }
-
-        // Build Form data
-        for (let param of params) {
-            FD.append(param[0], param[1]);
-        }
-
-        var promiseObj;
-
-        if (errors.length > 0) {
-            promiseObj = new Promise(function (_, reject) {
-                reject([400, 'v/errors', errors]);
-            });
-        } else {
-            var httpRequest = new XMLHttpRequest();
-            var method = this.method;
-            var url = this.url;
-            var event = this.event;
-            if (!httpRequest) {
-                throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
-                // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
-            }
-            promiseObj = new Promise(function (resolve, reject) {
-                httpRequest.onreadystatechange = function (event) {
-                    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                        console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
-                        if (httpRequest.status >= 200 && httpRequest.status < 300) {
-                            resolve([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText, httpRequest.responseURL]);
-                            // new VSnackbar('Yeah! That worked!').display();
-                        } else {
-                            // new VSnackbar('There was a problem with the request.').display();
-                            reject([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
-                            // _this_.displayError(this.getResponseHeader('content-type'), event.target.responseText);
-                        }
+        return new Promise(function (resolve, reject) {
+            httpRequest.onreadystatechange = function (event) {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
+                    if (httpRequest.status >= 200 && httpRequest.status < 300) {
+                        results.push({
+                            action: 'posts',
+                            method: this.method,
+                            statusCode: httpRequest.status,
+                            contentType: this.getResponseHeader('content-type'),
+                            content: httpRequest.responseText,
+                            responseURL: httpRequest.responseURL
+                        });
+                        resolve(results);
+                    } else {
+                        results.push({
+                            action: 'posts',
+                            method: this.method,
+                            statusCode: httpRequest.status,
+                            contentType: this.getResponseHeader('content-type'),
+                            content: httpRequest.responseText
+                        });
+                        reject(results);
                     }
-                };
-
-                // Set up our request
-                httpRequest.open(method, url);
-
-                console.log(method + ':' + url);
-                // Send our FormData object; HTTP headers are set automatically
-                httpRequest.send(FD);
-            });
-        }
-        return promiseObj;
+                }
+            };
+            // Set up our request
+            httpRequest.open(method, url);
+            console.log(method + ':' + url);
+            // Send our FormData object; HTTP headers are set automatically
+            httpRequest.send(FD);
+        });
     }
 
     isForm() {
@@ -14716,6 +14637,165 @@ class VPosts extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
     }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = VPosts;
+
+
+/***/ }),
+/* 98 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+class VUrls {
+
+    paramsArrayToHash(params) {
+        var results = {};
+        // Map params to object/hash
+        for (let param of params) {
+            results[param[0]] = param[1];
+        }
+        return results;
+    }
+
+    buildURL(baseUrl) {
+        var url = baseUrl;
+        for (var i = 1; i < arguments.length; i++) {
+            var args = arguments[i];
+            if (Array.isArray(args)) {
+                for (let arg of args) {
+                    url += this.seperator(url) + this.encodeQueryParam(arg[0], arg[1]);
+                }
+            } else if (typeof args === 'object') {
+                url += this.seperator(url) + this.serialize(arguments[i]);
+            } else {
+                url += this.seperator(url) + args;
+            }
+        }
+        return url;
+    }
+
+    seperator(url) {
+        if (url.endsWith('?')) {
+            return '';
+        }
+        return url.includes("?") ? '&' : '?';
+    }
+
+    serialize(obj, prefix) {
+        var str = [],
+            p;
+        for (p in obj) {
+            if (obj.hasOwnProperty(p)) {
+                var k = prefix ? prefix + "[" + p + "]" : p,
+                    v = obj[p];
+                str.push(v !== null && typeof v === "object" ? this.serialize(v, k) : this.encodeQueryParam(k, v));
+            }
+        }
+        return str.join("&");
+    }
+
+    encodeQueryParam(k, v) {
+        return encodeURIComponent(k) + "=" + encodeURIComponent(v);
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VUrls;
+
+
+/***/ }),
+/* 99 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return eventHandlerMixin; });
+let eventHandlerMixin = Base => class extends Base {
+    // idempotent event handling initialization
+    initEventListener(eventName, eventHandler) {
+        if (typeof this.eventsHandler === 'undefined') {
+            this.eventsHandler = {};
+        }
+        if (!this.eventsHandler[eventName]) {
+            // Delegate to the component if possible
+            this.eventsHandler[eventName] = eventHandler;
+            this.element.addEventListener(eventName, eventHandler);
+        }
+    }
+};
+
+/***/ }),
+/* 100 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+class VBaseComponent {
+    constructor(element) {
+        this.element = element;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VBaseComponent;
+
+
+/***/ }),
+/* 101 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initForms;
+function initForms() {
+    console.log('\tForms');
+
+    var components = document.querySelectorAll('.v-form');
+    for (var i = 0; i < components.length; i++) {
+        var component = components[i];
+        if (!component.vComponent) {
+            component.vComponent = new VForm(component);
+        }
+    }
+}
+
+class VForm {
+    constructor(element) {
+        this.element = element;
+    }
+
+    // Called whenever a form is about to be submitted.
+    // returns true on success
+    // returns on failure return an error object that can be processed by VErrors:
+    //    { email: ["email must be filled", "email must be from your domain"] }
+    //    { :page: ["must be filled"] }
+    validate(form, params) {
+        console.log("Form validate", form, params);
+        var errors = [];
+        for (let input of this.inputs()) {
+            if (input.vComponent) {
+                var result = input.vComponent.validate(form, params);
+                if (result !== true) {
+                    errors.push(result);
+                }
+            }
+        }
+        return errors;
+    }
+
+    inputs() {
+        return this.element.querySelectorAll('input');
+    }
+
+    // Called to collect data for submission
+    prepareSubmit(form, params) {
+        for (let input of this.inputs()) {
+            if (input.vComponent) {
+                input.vComponent.prepareSubmit(form, params);
+            }
+        }
+    }
+
+    initEventListener(eventName, eventHandler) {
+        for (let input of this.inputs()) {
+            if (input.vComponent && input.vComponent.initEventListener) {
+                input.vComponent.initEventListener(eventName, eventHandler);
+            }
+        }
+    }
+}
+/* unused harmony export VForm */
 
 
 /***/ })

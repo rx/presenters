@@ -14,7 +14,7 @@ export class VAutoComplete extends VBase {
         this.event = event;
     }
 
-    call() {
+    call(results) {
         // Clear the timeout if it has already been set.
         // This will prevent the previous task from executing
         // if it has been less than <MILLISECONDS>
@@ -24,7 +24,8 @@ export class VAutoComplete extends VBase {
             clearTimeout(parentElement.vTimeout);
             // Make a new timeout
             parentElement.vTimeout = setTimeout(updateElement, 500);
-            resolve([200, null, null]);
+            results.push({action:'autocomplete', statusCode: 200});
+            resolve(results);
         });
         return promiseObj;
     }
@@ -57,8 +58,7 @@ export class VAutoComplete extends VBase {
             // new VSnackbar('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.').display();
         }
         var dataList = this.dataList();
-        var url = this.url + this.seperator() +  this.serialize(this.params) + this.serialize(this.extractInputValues());
-        // var event = this.event;
+        var url = this.buildURL(this.url, this.params, this.inputValues());
 
         httpRequest.onreadystatechange = function () {
             if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -92,25 +92,5 @@ export class VAutoComplete extends VBase {
             option.dataset.key = key;
             dataList.appendChild(option);
         });
-    }
-
-
-    seperator() {
-        return this.url.includes("?") ? '&' : '?';
-    }
-
-    serialize(obj, prefix) {
-        var str = [],
-            p;
-        for (p in obj) {
-            if (obj.hasOwnProperty(p)) {
-                var k = prefix ? prefix + "[" + p + "]" : p,
-                    v = obj[p];
-                str.push((v !== null && typeof v === "object") ?
-                    this.serialize(v, k) :
-                    encodeURIComponent(k) + "=" + encodeURIComponent(v));
-            }
-        }
-        return str.join("&");
     }
 }

@@ -1,7 +1,9 @@
 import {VErrors} from './errors';
+import {VUrls} from '../../utils/urls';
 
-export class VBase {
+export class VBase extends VUrls {
     constructor(options) {
+        super();
         this.options = options;
     }
 
@@ -13,26 +15,26 @@ export class VBase {
         return document.getElementById(this.options.__parent_id__);
     }
 
-    extractInputValues() {
+    inputValues(form) {
         var params = [];
         // Let input component push parameters
         var vComp = this.component();
         if (vComp) {
-            vComp.prepareSubmit(null, params);
+            vComp.prepareSubmit(form, params);
         }
-        return this.paramsArrayToHash(params);
+        return params;
     }
 
-    component(){
-        return  this.parentElement().vComponent;
+    component() {
+        return this.parentElement().vComponent;
     }
 
-    paramsArrayToHash(params) {
-        var results = {};
-        // Map params to object/hash
-        for (let param of params) {
-            results[param[0]] = param[1];
+    validate() {
+        var errors = [];
+        var comp = this.component();
+        if (comp) {
+            errors = comp.validate();
         }
-        return results;
+        return errors;
     }
 }

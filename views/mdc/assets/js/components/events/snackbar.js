@@ -7,12 +7,13 @@ export class VSnackbarEvent {
         this.event = event;
     }
 
-    call() {
+    call(results) {
         var message = this.params.text;
         var promiseObj = new Promise(function (resolve) {
             console.log("Showing snackbar");
             new VSnackbar(message).display();
-            resolve([200, null, null]);
+            results.push({action:'snackbar', statusCode: 200});
+            resolve(results);
         });
         return promiseObj;
     }

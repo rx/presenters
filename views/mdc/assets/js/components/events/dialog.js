@@ -5,7 +5,7 @@ export class VDialog {
         this.event = event;
     }
 
-    call() {
+    call(results) {
         var dialog = document.querySelector('#' + this.dialogId);
         if(dialog) {
             if (!dialog.showModal) {
@@ -17,7 +17,8 @@ export class VDialog {
             console.error("Unable to find dialog with id: "+this.dialogId+". Usually this means you forgot to attach it to the currently rendered page.");
         }
         var promiseObj = new Promise(function (resolve) {
-            resolve(true);
+            results.push({action:'dialog', statusCode: 200});
+            resolve(results);
         });
         return promiseObj;
     }
