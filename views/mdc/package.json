@@ -3,7 +3,8 @@
     "start": "webpack"
   },
   "devDependencies": {
-    "css-loader": "^0.28.10",
+    "@material/button": "^0.34.1",
+    "css-loader": "^0.28.11",
     "extract-loader": "^2.0.1",
     "l": "^0.6.0",
     "node-sass": "^4.7.2",

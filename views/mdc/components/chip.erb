@@ -10,7 +10,10 @@
     <div class="mdc-chip-set">
   <% end %>
   <div id="<%= comp.id %>"
-       class="mdc-chip" tabindex="0"
+       class="mdc-chip
+              <%= 'mdc-chip__primary' if eq(comp.color, :primary) %>
+              <%= 'mdc-chip__secondary' if eq(comp.color, :secondary) %>
+              <%= 'mdc-chip__default' if eq(comp.color, :default) %>" tabindex="0"
        <%= erb(:"components/event", locals: {events: comp.events,
                                              parent_id: comp.id}) unless child_events %>>
     <%= erb(:"components/icon", :locals => {comp: leading_icon,

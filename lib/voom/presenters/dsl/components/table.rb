@@ -2,6 +2,7 @@ require_relative 'mixins/common'
 require_relative 'mixins/event'
 require_relative 'mixins/helpers'
 require_relative 'mixins/tooltips'
+require_relative 'mixins/chips'
 
 module Voom
   module Presenters
@@ -58,16 +59,17 @@ module Voom
             class Column < EventBase
               include Mixins::Helpers
               include Mixins::Tooltips
+              include Mixins::Chips
 
-              attr_accessor :numeric, :color
+              attr_accessor :numeric, :color, :components
 
               def initialize(**attribs_, &block)
                 super(type: :column, **attribs_, &block)
                 value = attribs.delete(:value)
                 @numeric = attribs.delete(:numeric) || numeric?(value)
                 self.value(value) if value
-
                 @color = attribs.delete(:color)
+                @components = []
                 expand!
               end
 
