@@ -133,8 +133,8 @@
     MDL: 
     MDC: Y
     Priority: 
-    Completeness: 2
-    Notes: 
+    Completeness: 1
+    Notes: The checkboxes and radio buttons from MDL need to be ported.
 -
     Components: Select fields
     Implementation: MDC
