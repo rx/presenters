@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     voom-presenters (0.0.1)
-      dry-configurable (~> 0.7.0)
+      dry-configurable
       dry-container (~> 0.6.0)
       dry-inflector (~> 0.1.1)
       ice_nine

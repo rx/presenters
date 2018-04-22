@@ -2438,7 +2438,7 @@ class VErrors {
             if (!Array.isArray(responseErrors)) {
                 responseErrors = [responseErrors];
             }
-            for (var response in responseErrors) {
+            for (var response of responseErrors) {
                 var pageErrors = Object.values(this.normalizeErrors(response)).reduce(function (previous, value) {
                     if (Array.isArray(value)) {
                         previous.push(value.join('<br/>'));
@@ -2447,7 +2447,7 @@ class VErrors {
                 }, []);
                 var fieldErrors = this.normalizeErrors(response.errors);
 
-                for (var field in fieldErrors) {
+                for (var field of fieldErrors) {
                     if (!this.displayInputError(field, fieldErrors[field])) {
                         // Collect errors that can't be displayed at the field level
                         pageErrors.push(fieldErrors[field].join('<br/>'));
