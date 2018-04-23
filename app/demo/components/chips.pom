@@ -6,8 +6,11 @@ Voom::Presenters.define(:chips) do
     heading 'Chips'
 
     chip 'Chip 1'
-    chip 'Chip 2'
-    chip 'Chip 3'
+    chip 'Chip 1', color: :primary
+    chip 'Chip 2', color: :secondary
+    chip color: :hotpink do
+      text 'Chip 3', color: :white
+    end
 
     subheading 'leading icon'
     chip 'Jane Smith', icon: :face

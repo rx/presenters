@@ -11,19 +11,16 @@
   <% end %>
   <div id="<%= comp.id %>"
        class="mdc-chip
-              <%= 'mdc-chip__primary' if eq(comp.color, :primary) %>
-              <%= 'mdc-chip__secondary' if eq(comp.color, :secondary) %>
-              <%= 'mdc-chip__default' if eq(comp.color, :default) %>" tabindex="0"
+              <%= 'v-chip__primary' if eq(comp.color, :primary) %>
+              <%= 'v-chip__secondary' if eq(comp.color, :secondary) %>"
+       style = "<%= "background-color: #{comp.color};" unless %w(primary secondary).include?(comp.color.to_s) %>"
+       tabindex="0"
        <%= erb(:"components/event", locals: {events: comp.events,
                                              parent_id: comp.id}) unless child_events %>>
     <%= erb(:"components/icon", :locals => {comp: leading_icon,
                                             class_name: 'mdc-chip__icon mdc-chip__icon--leading',
                                             events: child_events ? (leading_icon&.events || comp.events) : nil}) %>
-    <div id="<%= comp.id %>-text"
-         class="mdc-chip__text"
-         <%= erb(:"components/event", locals: {events: comp.text&.events || comp.events,
-                                               parent_id: "#{comp.id}-text"}) if child_events %>>
-      <%= expand_text(comp.text&.text) %></div>
+    <%= erb :"components/typography", :locals => {comp: comp.text, type: 'chip-text', class_name: 'mdc-chip__text'} %>
     <%= erb(:"components/icon", locals: {comp: trailing_icon,
                                          class_name: 'mdc-chip__icon mdc-chip__icon--trailing',
                                          events: trailing_icon&.events || comp.events }) %>

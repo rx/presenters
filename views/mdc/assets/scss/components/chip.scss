@@ -20,13 +20,11 @@
   //bottom: 0;
 }
 
-
-.mdc-chip__primary {
+.v-chip__primary {
   background-color: $mdc-theme-primary;
+  @include mdc-button-ink-color(text-primary-on-dark);
 }
 
-.mdc-chip__secondary {
+.v-chip__secondary {
   background-color: $mdc-theme-secondary;
 }
-
-.mdc-chip__default {}

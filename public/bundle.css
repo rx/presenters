@@ -9928,10 +9928,14 @@ select {
   float: none;
   padding-left: 0; }
 
-.mdc-chip__primary {
+.v-chip__primary {
   background-color: #607d8b; }
+  .v-chip__primary:not(:disabled) {
+    color: white;
+    /* @alternate */
+    color: var(--mdc-theme-text-primary-on-dark, white); }
 
-.mdc-chip__secondary {
+.v-chip__secondary {
   background-color: #ffab40; }
 
 /**
