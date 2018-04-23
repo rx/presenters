@@ -1,66 +1,57 @@
-Voom::Presenters.define('text-fields') do
+require_relative '../helpers/source_grid'
+
+Voom::Presenters.define(:text_fields) do
+  helpers Demo::Helpers::SourceGrid
   attach :top_nav
   attach :component_drawer
 
-  attach :grid do
+  source_grid do
     display 'Text Fields'
 
     headline 'Text'
 
-    form do
-      text_field do
-        label 'Text...'
-      end
+    text_field name: :text do
+      label 'Text...'
     end
-
 
     headline 'Password'
 
-        form do
-          text_field password: true do
-            label 'Password'
-          end
-        end
+    text_field name: :password, password: true do
+      label 'Password'
+    end
 
     headline 'Numeric'
 
     # Client side validation with hints
     headline 'With Hints'
-    form do
-      text_field do
-        label 'Number...'
-        pattern /-?[0-9]*(\.[0-9]+)?/
-        hint 'Input is not a number!'
-      end
+    text_field name: :numeric do
+      label 'Number...'
+      pattern /-?[0-9]*(\.[0-9]+)?/
+      hint 'Input is not a number!'
     end
 
     headline 'With Errors'
-    form do
-      text_field do
-        label 'Guess a number...'
-        pattern /-?[0-9]*(\.[0-9]+)?/
-        value '7'
-        error 'Input is not a the right number!'
-      end
+    text_field name: :guess_me do
+      label 'Guess a number...'
+      pattern /-?[0-9]*(\.[0-9]+)?/
+      value '7'
+      error 'Input is not a the right number!'
     end
 
-    headline 'Multiple line'
-
-    form do
-      text_area rows: 3 do
-        label 'Text lines...'
+    card do
+      display 'Field Level Events'
+      heading 'Text Fields'
+      body 'This demonstrates that a change event will submit the  field value to the event action. '\
+                 'This works with posts and replace actions'
+      text_field name: :myfield do
+        label 'Data to post'
+        event :change do
+          replaces :context_list, :context_list
+        end
       end
+      attach :context_list
     end
-
-
-    headline 'Hidden'
-
-    form do
-      hidden_field do
-        value 'do it!'
-      end
-    end
-
+    
     attach :code, file: __FILE__
   end
 end

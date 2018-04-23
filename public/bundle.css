@@ -10533,6 +10533,15 @@ form .mdl-switch {
   position: absolute;
   bottom: 0; }
 
+.v-icon__fa {
+  font-size: 24px; }
+
+.v-icon__primary {
+  color: #607d8b; }
+
+.v-icon__secondary {
+  color: #ffab40; }
+
 .v-actionable {
   cursor: pointer; }
 

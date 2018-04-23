@@ -18,7 +18,6 @@ module Voom
           include Trace
 
           attr_reader :type, :id, :attributes, :context
-          private :context
 
           alias params context
           alias attribs attributes

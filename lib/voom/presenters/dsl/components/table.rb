@@ -1,6 +1,5 @@
 require_relative 'mixins/common'
 require_relative 'mixins/event'
-require_relative 'mixins/helpers'
 require_relative 'mixins/tooltips'
 require_relative 'mixins/chips'
 
@@ -9,7 +8,6 @@ module Voom
     module DSL
       module Components
         class Table < Base
-          include Mixins::Helpers
           attr_accessor :header, :rows, :selectable
 
           def initialize(**attribs_, &block)
@@ -40,7 +38,6 @@ module Voom
           # end
 
           class Row < Base
-            include Mixins::Helpers
             attr_accessor :columns, :color
 
             def initialize(type:, **attribs_, &block)
@@ -57,7 +54,6 @@ module Voom
             end
 
             class Column < EventBase
-              include Mixins::Helpers
               include Mixins::Tooltips
               include Mixins::Chips
 

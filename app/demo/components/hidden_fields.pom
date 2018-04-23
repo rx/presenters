@@ -1,0 +1,20 @@
+require_relative '../helpers/source_grid'
+
+Voom::Presenters.define(:hidden_fields) do
+  helpers Demo::Helpers::SourceGrid
+  
+  attach :top_nav
+  attach :component_drawer
+
+  source_grid do
+    headline 'Hidden'
+
+    form do
+      hidden_field name: :idoit_id do
+        value 'do it!'
+      end
+    end
+
+    attach :code, file: __FILE__
+  end
+end

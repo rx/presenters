@@ -9,8 +9,8 @@ module Voom
               @components << comp
             end
 
-            def yield_to
-              instance_eval(&@parent.yield_block) if @parent.yield_block
+            def yield_to(&block)
+              instance_eval(&block) if block
             end
           end
         end

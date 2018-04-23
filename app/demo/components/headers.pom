@@ -1,4 +1,8 @@
+require_relative '../helpers/source_grid'
+
 Voom::Presenters.define(:headers) do
+  helpers Demo::Helpers::SourceGrid
+  
   attach :top_nav
   attach :component_drawer
 
@@ -25,7 +29,7 @@ Voom::Presenters.define(:headers) do
     end
   end
 
-  attach :grid do
+  source_grid do
     display 'Headers'
     
     attach :code, file: __FILE__

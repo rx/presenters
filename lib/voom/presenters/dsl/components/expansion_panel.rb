@@ -4,7 +4,6 @@ module Voom
       module Components
         class ExpansionPanel < EventBase
           include Mixins::Common
-          include Mixins::Helpers
 
           def initialize(**attribs_, &block)
             super(type: :expansion_panel, **attribs_, &block)
@@ -30,7 +29,6 @@ module Voom
 
           class Content < EventBase
             include Mixins::Common
-            include Mixins::Helpers
             include Mixins::Attaches
 
             attr_accessor :components

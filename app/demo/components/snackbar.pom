@@ -1,9 +1,11 @@
-Voom::Presenters.define(:snackbar) do
+require_relative '../helpers/source_grid'
 
+Voom::Presenters.define(:snackbar) do
+  helpers Demo::Helpers::SourceGrid
   attach :top_nav
   attach :component_drawer
 
-  attach :grid do
+  source_grid do
     display 'Snackbar'
     attach :code, file: __FILE__
   end

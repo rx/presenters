@@ -1,8 +1,11 @@
+require_relative '../helpers/source_grid'
+
 Voom::Presenters.define(:chips) do
+  helpers Demo::Helpers::SourceGrid
   attach :top_nav
   attach :component_drawer
 
-  attach :grid do
+  source_grid do
     heading 'Chips'
 
     chip 'Chip 1'
@@ -82,7 +85,6 @@ Voom::Presenters.define(:chips) do
         end
       end
     end
-
 
     attach :code, file: __FILE__
   end

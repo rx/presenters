@@ -1,4 +1,7 @@
+require_relative '../helpers/source_grid'
+
 Voom::Presenters.define(:lists) do
+  helpers Demo::Helpers::SourceGrid
   attach :top_nav
   attach :component_drawer
 
@@ -11,7 +14,7 @@ Voom::Presenters.define(:lists) do
     end
   end
 
-  attach :grid do
+  source_grid do
     display 'Lists'
 
     headline 'Simple'

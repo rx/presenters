@@ -9,7 +9,6 @@ require_relative 'mixins/selects'
 require_relative 'mixins/buttons'
 require_relative 'mixins/toggles'
 require_relative 'mixins/attaches'
-require_relative 'mixins/helpers'
 require_relative 'mixins/expansion_panels'
 
 module Voom
@@ -24,7 +23,6 @@ module Voom
           include Mixins::Toggles
           include Mixins::Buttons
           include Mixins::Attaches
-          include Mixins::Helpers
           include Mixins::ExpansionPanels
 
           attr_reader :components

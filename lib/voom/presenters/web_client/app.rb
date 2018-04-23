@@ -39,6 +39,16 @@ module Voom
           def expand_text(text)
             markdown((text||[]).map {|line| "#{line}<br/>"}.join)
           end
+
+          def color_classname(comp)
+            return "v-#{comp.type}__primary" if eq(comp.color, :primary)
+            "v-#{comp.type}__secondary" if eq(comp.color, :secondary)
+          end
+
+          def color_style(comp, affects=nil)
+            "#{affects}color: #{comp.color};" unless %w(primary secondary).include?(comp.color.to_s)
+          end
+
         end
 
         get '/' do

@@ -36,6 +36,7 @@ module Voom
           @components = []
           @snackbar = nil
           @footer = nil
+          add_global_helpers
         end
 
         def page(title=nil, **attribs, &block)
@@ -72,7 +73,7 @@ module Voom
                                            context: context,
                                            **attribs, &block)
         end
-        
+
         def attach(presenter, **context_, &yield_block)
           @_yield_block_ = yield_block
           pom = Voom::Presenters::App[presenter].call.expand_child(parent: self, context: context.merge(context_))
@@ -104,13 +105,13 @@ module Voom
         end
 
         private
-        
+
         def deep_freeze
           IceNine.deep_freeze(self) if Presenters::Settings.config.presenters.deep_freeze
           self
         end
 
-        protected
+        private
 
         def parent(for_type)
           nil
@@ -118,13 +119,19 @@ module Voom
 
         def _helpers_
           return @helpers if @helpers
-          @parent.send(:_helpers_) if @parent
         end
 
         def yield_block
           return @_yield_block_ if @_yield_block_
           @parent.send(:yield_block) if @parent
         end
+
+        def add_global_helpers
+          Presenters::Settings.config.presenters.helpers.each do |helper|
+            self.helpers(helper)
+          end
+        end
+
       end
     end
   end

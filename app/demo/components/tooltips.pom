@@ -1,8 +1,11 @@
+require_relative '../helpers/source_grid'
+
 Voom::Presenters.define(:tooltips) do
+  helpers Demo::Helpers::SourceGrid
   attach :top_nav
   attach :component_drawer
 
-  attach :grid do
+  source_grid do
     display 'Tooltips'
 
     headline 'Avatars'

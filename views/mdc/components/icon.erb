@@ -7,8 +7,9 @@
      position = comp.position||[] unless locals.include? :position
      position_classes = position.map {|p| "v-icon-position-#{p}"}.join(' ')
      class_name= "#{class_name} #{position_classes}"
-     if icon_name =~ /^fa-/
-       icon_class_name = "fas #{icon_name}"
+     if icon_name =~ /^(fa[srlb]\s)*fa-/
+       icon_class_name = "#{icon_name} v-icon__fa"
+       icon_class_name = "fas #{icon_class_name}" unless icon_class_name=~ /^(fas)|(fal)|(fab)/
        icon = ''
      else
        icon_class_name = "material-icons"
@@ -17,9 +18,10 @@
 %>
   <i id="<%= comp.id %>"
      class="<%= class_name %> <%= icon_class_name %>
-            <%= 'v-actionable' if comp.events %>"
-     style="<%= "color: #{comp.color};" if comp.color %>
-       <%= "font-size: #{comp.size}" if comp.size %>"
+            <%= 'v-actionable' if comp.events %>
+            <%= color_classname(comp) %>"
+       style = "<%= color_style(comp) %>
+                <%= "font-size: #{comp.size}" if comp.size %>"
      <%= 'tabindex="1"' if class_name.include?('mdc-text-field__icon') && comp.events %>
      <%= erb :"components/event", :locals => {events: events, parent_id: parent_id} %>>
     <%= icon %>

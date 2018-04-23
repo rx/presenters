@@ -1,4 +1,7 @@
+require_relative '../helpers/source_grid'
+
 Voom::Presenters.define(:tables) do
+  helpers Demo::Helpers::SourceGrid
   attach :top_nav
   attach :component_drawer
 
@@ -12,7 +15,7 @@ Voom::Presenters.define(:tables) do
     end
   end
 
-  attach :grid do
+  source_grid do
     display 'Tables'
 
     table selectable: true do

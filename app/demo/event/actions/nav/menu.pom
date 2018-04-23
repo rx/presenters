@@ -1,0 +1,18 @@
+Voom::Presenters.define(:event_actions_menu) do
+  helpers Voom::Presenters::Helpers::Inflector
+  menu side: :left do
+    item 'Back', icon: :back
+    event :click do
+      loads :events
+    end
+  end
+  %i(dialog).sort.each do |action|
+    item titleize(action) do
+      event :click do
+        loads "trigger_#{action}"
+      end
+    end
+  end
+end
+
+

@@ -1,5 +1,4 @@
 require_relative 'mixins/common'
-require_relative 'mixins/helpers'
 require_relative 'mixins/images'
 require_relative 'mixins/icons'
 require_relative 'mixins/event'
@@ -12,7 +11,6 @@ module Voom
     module DSL
       module Components
         class Grid < Base
-          include Mixins::Helpers
           include Mixins::Attaches
           include Mixins::Dialogs
           
@@ -34,7 +32,6 @@ module Voom
 
           class Column < EventBase
             include Mixins::Common
-            include Mixins::Helpers
             include Mixins::Images
             include Mixins::Icons
             include Mixins::Attaches

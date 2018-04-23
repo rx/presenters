@@ -1,0 +1,19 @@
+Voom::Presenters.define(:helpers_in_components) do
+  helpers do
+    def small_card
+      card do
+        yield
+      end
+    end
+
+  end
+
+  grid do
+    column 1 do
+      small_card do
+        icon :smile
+      end
+    end
+  end
+end
+

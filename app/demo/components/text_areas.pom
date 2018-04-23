@@ -1,0 +1,19 @@
+require_relative '../helpers/source_grid'
+
+Voom::Presenters.define(:text_areas) do
+  helpers Demo::Helpers::SourceGrid
+  attach :top_nav
+  attach :component_drawer
+
+  source_grid do
+    display 'Text Areas'
+
+    headline 'Multiple line'
+
+    text_area name: :notes, rows: 3 do
+      label 'Text lines...'
+    end
+
+    attach :code, file: __FILE__
+  end
+end

@@ -1,0 +1,5 @@
+Voom::Presenters.define(:event_actions_drawer) do
+  drawer 'Presenters Demo' do
+    attach :event_actions_menu
+  end
+end

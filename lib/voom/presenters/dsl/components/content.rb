@@ -1,7 +1,6 @@
 require_relative 'menu'
 require_relative 'mixins/common'
 require_relative 'mixins/event'
-require_relative 'mixins/helpers'
 require_relative 'mixins/attaches'
 require_relative 'mixins/text_fields'
 
@@ -11,7 +10,6 @@ module Voom
       module Components
         class Content < EventBase
           include Mixins::Common
-          include Mixins::Helpers
           include Mixins::Attaches
           include Mixins::TextFields
 

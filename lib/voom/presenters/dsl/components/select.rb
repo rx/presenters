@@ -1,5 +1,4 @@
 require_relative 'input'
-require_relative 'mixins/helpers'
 
 module Voom
   module Presenters
@@ -36,8 +35,6 @@ module Voom
           end
 
           class Option < Base
-            include Mixins::Helpers
-
             attr_reader :selected, :disabled
 
             def initialize(**attribs_, &block)

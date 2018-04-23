@@ -2,10 +2,10 @@ require_relative 'menu'
 require_relative 'typography'
 require_relative 'mixins/common'
 require_relative 'mixins/event'
-require_relative 'mixins/helpers'
 require_relative 'mixins/attaches'
 require_relative 'mixins/avatar'
 require_relative 'mixins/text_fields'
+require_relative 'mixins/icons'
 
 module Voom
   module Presenters
@@ -13,9 +13,9 @@ module Voom
       module Components
         class Card < EventBase
           include Mixins::Common
-          include Mixins::Helpers
           include Mixins::Attaches
           include Mixins::TextFields
+          include Mixins::Icons
 
           attr_reader :height, :width, :selected, :components
 
