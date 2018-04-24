@@ -68,13 +68,19 @@ Voom::Presenters.define(:icons) do
           end
         end
         column 1 do
-                  small_card do
-                    icon :face, position: [:top, :right]
-                  end
-                end
+          small_card do
+            icon :face, position: [:top, :right]
+          end
+        end
+        column 1 do
+          small_card do
+            icon :face, position: [:bottom, :right]
+          end
+        end
       end
 
-      heading 'Events'
+      headline 'Events'
+      body 'Icons can be bound to events. For example the `click` event.'
 
       icon :face, position: :left do
         event :click do

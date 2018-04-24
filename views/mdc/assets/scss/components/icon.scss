@@ -5,19 +5,18 @@
 }
 
 .v-icon-position-top {
-  position: absolute;
   top: 0;
 }
 
 .v-icon-position-right {
   float:right;
   padding-left: 16px;
+  right: 8px;
 }
 
 .v-icon-position-bottom {
   position: absolute;
-  bottom: 0;
-
+  bottom: 8px;
 }
 
 .v-icon__fa{
