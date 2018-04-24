@@ -29,12 +29,13 @@ describe Voom::Presenters::WebClient::App do
         keys = Voom::Presenters::App.keys
         keys.each do |key|
           response = get "/#{key}"
-          puts response.body unless response.status==200
-          puts key
+          unless response.status==200
+            get = write_file(response.body, 'response_get.html')
+            puts "#{key}: #{get}"
+          end
           expect(response.status).to eq 200
         end
       end
-
     end
 
     describe '/' do
