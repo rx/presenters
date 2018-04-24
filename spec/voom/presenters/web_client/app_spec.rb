@@ -5,6 +5,12 @@ require 'rack/test'
 describe Voom::Presenters::WebClient::App do
   include Rack::Test::Methods
 
+  require 'tmpdir'
+  def write_file(contents, basename)
+    filename = File.join(Dir.tmpdir, basename)
+    File.open(filename, 'w') { |file| file.write(contents) }
+    filename
+  end
 
   before do
     load_presenters('.', app_dir)
@@ -62,19 +68,22 @@ describe Voom::Presenters::WebClient::App do
         keys.each do |key|
           @ids.clear
           presenter = Voom::Presenters::App[key].call
-          pom = presenter.expand(router: Voom::Presenters::WebClient::Router.new(base_url: "http://example.org"), context:{'testing'=>true})
+          pom = presenter.expand(router: Voom::Presenters::WebClient::Router.new(base_url: "http://example.org"), context: {'testing'=>true})
 
           pom_json = JSON.dump(pom.to_hash)
           @ids.clear
           response_pom = post("__post__/#{key}", pom_json, {"CONTENT_TYPE" => "application/json"})
-          puts response_pom.body unless response_pom.status==200
           expect(response_pom.status).to eq 200
 
           @ids.clear
-          response_get = get "/#{key}"
+          response_get = get "/#{key}", 'testing'=>true
           expect(response_get.status).to eq 200
           puts key
-          expect(response_pom.body).to eq(response_get.body)
+
+          pom = write_file(response_pom.body, 'response_pom.html')
+          get = write_file(response_get.body, 'response_get.html')
+
+          expect(response_pom.body).to eq(response_get.body), "#{pom}\n#{get}"
         end
       end
 
