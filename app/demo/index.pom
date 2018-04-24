@@ -1,11 +1,11 @@
 require_relative 'helpers/source_grid'
 
 Voom::Presenters.define(:index) do
-  attach :top_nav
   helpers Demo::Helpers::SourceGrid
+  attach :top_nav
 
   source_grid do
-    headline 'Presenters'
+    headline 'Presenters', id: :headline
     subheading 'Presenters are to HTML what C is to assembly'
     body ['A presenter describes a user interface. It is evaluated and a presenter object model (POM) is returned.',
           'A client that renders POM can display the given user interface.']

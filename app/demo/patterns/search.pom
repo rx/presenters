@@ -1,7 +1,8 @@
 Voom::Presenters.define(:search) do
+  helpers Demo::Helpers::SourceGrid
   attach :top_nav
 
-  attach :source_grid, file: __FILE__ do
+  source_grid do
     heading 'Search'
 
     content id: :search_field do

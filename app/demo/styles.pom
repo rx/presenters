@@ -4,7 +4,7 @@ Voom::Presenters.define(:styles) do
   helpers Demo::Helpers::SourceGrid
   attach :top_nav
 
-  attach :source_grid, file: __FILE__ do
+  source_grid do
     display 'Styles'
 
     # heading is an alias for display

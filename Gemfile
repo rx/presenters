@@ -5,4 +5,7 @@ gemspec
 
 group :test do
   gem 'rspec-html-matchers'
+  gem 'watir', '~> 6.10.3'
+  gem "webdrivers", "~> 3.0"
+  gem 'watir-rspec'
 end
