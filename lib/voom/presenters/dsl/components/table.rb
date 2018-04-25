@@ -2,6 +2,7 @@ require_relative 'mixins/common'
 require_relative 'mixins/event'
 require_relative 'mixins/tooltips'
 require_relative 'mixins/chips'
+require_relative 'mixins/selects'
 
 module Voom
   module Presenters
@@ -56,6 +57,7 @@ module Voom
             class Column < EventBase
               include Mixins::Tooltips
               include Mixins::Chips
+              include Mixins::Selects
 
               attr_accessor :numeric, :color, :components
 
