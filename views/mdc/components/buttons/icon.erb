@@ -10,6 +10,7 @@
          <%= 'mdl-button--colored' if eq(comp.color, :primary) %>
          <%= 'mdl-button--accent' if eq(comp.color, :secondary) %>
          <%= 'v-menu-click' if comp.menu%>"
+        style = "<%= color_style(comp) %>"
         <%= 'disabled' if comp.disabled %>
         <%= erb :'components/event', :locals => {events: comp.events, parent_id: comp.event_parent_id} unless comp.disabled %>>
   <%= erb :'components/icon', :locals => {comp: comp.icon} %>

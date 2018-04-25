@@ -19,8 +19,12 @@ export function initMenus() {
             var component = components[i];
             if (!component.mdcComponent) {
                 component.mdcComponent = new MDCMenu(component);
-                var anchor = component.closest('.mdc-menu-anchor').querySelector('.v-menu-click');
-                anchor.addEventListener('click', createMenuHandler(component.mdcComponent, component));
+                var anchor = component.closest('.mdc-menu-anchor');
+                if (anchor) {
+                    var menulink = anchor.querySelector('.v-menu-click');
+                    menulink.addEventListener('click', createMenuHandler(component.mdcComponent, component));
+                }
+
             }
         }
     }

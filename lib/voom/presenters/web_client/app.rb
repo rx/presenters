@@ -46,7 +46,7 @@ module Voom
           end
 
           def color_style(comp, affects=nil)
-            "#{affects}color: #{comp.color};" unless %w(primary secondary).include?(comp.color.to_s)
+            "#{affects}color: #{comp.color};" unless %w(primary secondary).include?(comp.color.to_s) || comp.color.nil?
           end
 
         end

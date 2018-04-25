@@ -73,6 +73,11 @@ module Voom
               return @image if locked?
               @image = Image.new(parent: self, image: image, context: context, **attribs, &block)
             end
+
+            def button(icon=nil, **attributes, &block)
+              return @button if locked?
+              @button = Components::Button.new(icon: icon, position:[:top, :right], parent: self, context: context, **attributes, &block)
+            end
           end
 
           def text(text=nil, **attribs, &block)

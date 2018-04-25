@@ -14,16 +14,16 @@ Voom::Presenters.define(:cards) do
       media do
         image 'img/demo/welcome_card.jpg', width: 512, height: 176
         title 'Welcome', color: :white, position: :bottom
-      end
-      text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia... "
-      
-      actions do
-        button 'Get Started', color: :primary
-        button icon: :share_icon do
+        button icon: :share_icon, color: :white do
           menu do
             item 'Share with mom'
           end
         end
+      end
+      text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia... "
+
+      actions do
+        button 'Get Started', color: :primary
       end
     end
 
@@ -41,7 +41,7 @@ Voom::Presenters.define(:cards) do
     end
 
     headline 'Image'
-    card width: '330px'do
+    card width: '330px' do
       media do
         image 'img/demo/image_card.jpg', width: 330, height: 330
         title 'image.jpg', position: :bottom, color: :white
