@@ -7,6 +7,7 @@ require "dry/inflector"
 
 require_relative 'router'
 require_relative 'markdown_render'
+require_relative '../errors/unprocessable'
 
 module Voom
   module Presenters
@@ -52,20 +53,15 @@ module Voom
         end
 
         get '/' do
+          pass unless Presenters::App.registered?(params['index'])
           presenter = Presenters::App['index'].call
-          @grid_nesting = params[:grid_nesting] || 0
-          @pom = presenter.expand(router: router, context: params)
-          erb :web
+          render_presenter(presenter)
         end
 
         get '/:_presenter_' do
           pass unless Presenters::App.registered?(params[:_presenter_])
           presenter = Presenters::App[params[:_presenter_]].call
-          @grid_nesting = Integer(params[:grid_nesting] || 0)
-          @pom = presenter.expand(router: router, context: prepare_context)
-          layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
-          response.headers['X-Frame-Options'] = 'ALLOWALL' if ENV['ALLOWALL_FRAME_OPTIONS']
-          erb :web, layout: layout
+          render_presenter(presenter)
         end
 
         # Forms engine demo
@@ -77,6 +73,22 @@ module Voom
         end
 
         private
+
+        def render_presenter(presenter)
+          @grid_nesting = params[:grid_nesting] || 0
+
+          begin
+            @pom = presenter.expand(router: router, context: prepare_context)
+            layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
+            response.headers['X-Frame-Options'] = 'ALLOWALL' if ENV['ALLOWALL_FRAME_OPTIONS']
+            erb :web, layout: layout
+          rescue Errors::Unprocessable => e
+            content_type :json
+            status 422
+            JSON.dump({error: e.message})
+          end
+        end
+
         def router
           settings.router_.new(base_url: "#{request.base_url}#{env['SCRIPT_NAME']}")
         end
@@ -92,10 +104,10 @@ module Voom
         end
 
         def scrub_context(params, _session, _env)
-         %i(splat captures _presenter_ grid_nesting).each do |key|
-           params.delete(key)
-         end
-         params
+          %i(splat captures _presenter_ grid_nesting).each do |key|
+            params.delete(key)
+          end
+          params
         end
       end
     end

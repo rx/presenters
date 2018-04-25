@@ -1,6 +1,10 @@
-<% if comp %>
+<% if comp
+  float_label = comp.options.select{|o| o.selected }.any?
+%>
   <div class="mdc-select">
-    <select id="<%= comp.id %>" class="mdc-select__native-control"
+    <select id="<%= comp.id %>"
+            name="<%= comp.name%>"
+            class="mdc-select__native-control"
             <%= erb(:"components/event", locals: {events: comp.events,
                                                   parent_id: comp.id}) %>>
       <% comp.options.each do |option| %>
@@ -11,7 +15,8 @@
         </option>
       <% end %>
     </select>
-    <div class="mdc-select__label"><%= comp.label %></div>
+    <div class="mdc-select__label
+               <%= 'mdc-floating-label--float-above' if float_label%>"><%= comp.label %></div>
     <div class="mdc-select__bottom-line"></div>
   </div>
 <% end %>

@@ -71,7 +71,7 @@ export class VErrors {
                 }, []);
                 var fieldErrors = this.normalizeErrors(response.errors);
 
-                for (var field of fieldErrors) {
+                for (var field in fieldErrors) {
                     if (!this.displayInputError(field, fieldErrors[field])) {
                         // Collect errors that can't be displayed at the field level
                         pageErrors.push(fieldErrors[field].join('<br/>'));

@@ -2447,7 +2447,7 @@ class VErrors {
                 }, []);
                 var fieldErrors = this.normalizeErrors(response.errors);
 
-                for (var field of fieldErrors) {
+                for (var field in fieldErrors) {
                     if (!this.displayInputError(field, fieldErrors[field])) {
                         // Collect errors that can't be displayed at the field level
                         pageErrors.push(fieldErrors[field].join('<br/>'));
@@ -10955,10 +10955,21 @@ class VReplaces extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
                         nodeToReplace.outerHTML = httpRequest.responseText;
                         var newNode = document.getElementById(elementId);
                         Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["a" /* initialize */])(newNode);
-                        results.push([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+
+                        results.push({
+                            action: 'replaces',
+                            statusCode: httpRequest.status,
+                            contentType: this.getResponseHeader('content-type'),
+                            content: httpRequest.responseText
+                        });
                         resolve(results);
                     } else {
-                        results.push([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                        results.push({
+                            action: 'replaces',
+                            statusCode: httpRequest.status,
+                            contentType: this.getResponseHeader('content-type'),
+                            content: httpRequest.responseText
+                        });
                         reject(results);
                     }
                 }
@@ -13670,7 +13681,7 @@ function initSelects() {
     var components = document.querySelectorAll('.mdc-select');
     for (var i = 0; i < components.length; i++) {
         var component = components[i];
-        if (!component.mdcComponent) {
+        if (!component.vComponent) {
             let vSelect = new VSelect(component, __WEBPACK_IMPORTED_MODULE_0__material_select__["a" /* MDCSelect */].attachTo(component));
             component.vComponent = vSelect;
             var selectInput = component.querySelector('select');

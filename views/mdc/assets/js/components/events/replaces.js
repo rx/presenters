@@ -15,14 +15,14 @@ export class VReplaces extends VBase {
 
     call(results) {
         this.clearErrors();
-        
+
         var httpRequest = new XMLHttpRequest();
         if (!httpRequest) {
             throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
         }
         var elementId = this.element_id;
         var url = this.buildURL(this.url, this.params, this.inputValues(), [['grid_nesting', this.options.grid_nesting]]);
-        
+
         var promiseObj = new Promise(function (resolve, reject) {
             httpRequest.onreadystatechange = function () {
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -32,10 +32,21 @@ export class VReplaces extends VBase {
                         nodeToReplace.outerHTML = httpRequest.responseText;
                         var newNode = document.getElementById(elementId);
                         initialize(newNode);
-                        results.push([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+
+                        results.push({
+                            action: 'replaces',
+                            statusCode: httpRequest.status,
+                            contentType: this.getResponseHeader('content-type'),
+                            content: httpRequest.responseText
+                        });
                         resolve(results);
                     } else {
-                        results.push([httpRequest.status, this.getResponseHeader('content-type'), httpRequest.responseText]);
+                        results.push({
+                            action: 'replaces',
+                            statusCode: httpRequest.status,
+                            contentType: this.getResponseHeader('content-type'),
+                            content: httpRequest.responseText
+                        });
                         reject(results);
                     }
                 }
