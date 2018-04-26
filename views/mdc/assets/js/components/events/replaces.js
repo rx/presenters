@@ -29,17 +29,30 @@ export class VReplaces extends VBase {
                     console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                     if (httpRequest.status === 200) {
                         var nodeToReplace = document.getElementById(elementId);
-                        nodeToReplace.outerHTML = httpRequest.responseText;
-                        var newNode = document.getElementById(elementId);
-                        initialize(newNode);
+                        if (!nodeToReplace) {
+                            let msg = 'Unable to located node: \'' + elementId + '\'' +
+                                ' This usually the result of issuing a replaces action and specifying a element id that does not currently exist on the page.';
+                            console.error(msg);
+                            results.push({
+                                action: 'replaces',
+                                statusCode: 500,
+                                contentType: 'v/errors',
+                                content: {exception: msg}
+                            });
+                            reject(results);
+                        } else {
+                            nodeToReplace.outerHTML = httpRequest.responseText;
+                            var newNode = document.getElementById(elementId);
+                            initialize(newNode);
 
-                        results.push({
-                            action: 'replaces',
-                            statusCode: httpRequest.status,
-                            contentType: this.getResponseHeader('content-type'),
-                            content: httpRequest.responseText
-                        });
-                        resolve(results);
+                            results.push({
+                                action: 'replaces',
+                                statusCode: httpRequest.status,
+                                contentType: this.getResponseHeader('content-type'),
+                                content: httpRequest.responseText
+                            });
+                            resolve(results);
+                        }
                     } else {
                         results.push({
                             action: 'replaces',
