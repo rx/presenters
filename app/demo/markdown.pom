@@ -1,0 +1,73 @@
+require_relative 'helpers/source_grid'
+
+Voom::Presenters.define(:markdown) do
+  helpers Demo::Helpers::SourceGrid
+  attach :top_nav
+
+  source_grid do
+    heading 'Markdown'
+
+    body 'Markdown on all text elements is supported.',
+         'It uses [redcarpet](https://github.com/vmg/redcarpet) with the Safe render.'
+    title 'Line breaks'
+    body 'Passing multiple text strings', 'creates line breaks'
+    body ['Arrays of  text strings is the same', 'it creates line breaks']
+    body "You can also do line breaks with two line feeds\n\nThis is on another line"
+    body "You can also do line breaks with two carriage returns\r\rThis is on another line"
+    body 'Line two carriage returns in a single string does the same thing
+
+         This is on another line'
+    body "Line two carriage returns in a double quoted string does the same thing\n\n\tThis is also another line"
+    body "A single line feed does not add a line\nThis is on the same line."
+    body "A single carriage return does not add a line\rThis is on the same line."
+    body "A carriage return followed by a line feed.\r\nDoes not break up the line."
+    title 'Escaping HTML'
+    body '<h1>HTML is escaped</h1>'
+    body '<script>console.log("so are script tags")</script>'
+    title 'Lists'
+    body '1. Item 1', '2. Item 2'
+
+    title 'Full Sample'
+    body <<-HEREDOC
+# Markdown Sample
+
+----
+## what is Markdown?
+see [Wikipedia](http://en.wikipedia.org/wiki/Markdown)
+
+> Markdown is a lightweight markup language, originally created by John Gruber and Aaron Swartz allowing people "to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML)".
+
+----
+## markdown quick reference
+# headers
+
+*emphasis*
+
+**strong** 
+
+* list
+
+>block quote
+
+`code inline`
+
+```ruby
+  require 'redcarpet'
+  markdown = Redcarpet.new("Hello World!")
+  puts markdown.to_html
+```
+[links](http://wikipedia.org)
+
+----
+## changelog
+* 17-Feb-2013 re-design
+
+----
+## thanks
+* [markdown-js](https://github.com/evilstreak/markdown-js)
+
+    HEREDOC
+
+
+  end
+end

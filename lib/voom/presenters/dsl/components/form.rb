@@ -27,10 +27,11 @@ module Voom
           include Mixins::ExpansionPanels
           include Mixins::Content
 
-          attr_reader :components
+          attr_reader :components, :shows_errors
 
           def initialize(**attribs_, &block)
             super(type: :form, **attribs_, &block)
+            @shows_errors = attribs.delete(:shows_errors){true}
             @components = []
             expand!
           end

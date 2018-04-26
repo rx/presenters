@@ -28,7 +28,7 @@ module Voom
             @menu = pom.components.select {|i| i.type==:menu}.first
           end
 
-          def title(text=nil, **attribs, &block)
+          def title(*text, **attribs, &block)
             return @title if locked?
             @title = Components::Typography.new(parent: self, type: :text, text: text, context: context, **attribs, &block)
           end

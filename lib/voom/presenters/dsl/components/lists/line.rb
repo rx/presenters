@@ -26,24 +26,24 @@ module Voom
               expand!
             end
 
-            def text(text = nil, **attribs, &block)
+            def text(*text, **attribs, &block)
               return @text if locked?
               @text = Components::Typography.new(parent: self, type: :text, text: text, context: context, **attribs, &block)
             end
 
-            def subtitle(subtitle = nil, **attribs, &block)
+            def subtitle(*text, **attribs, &block)
               return @subtitle if locked?
-              @subtitle = Components::Typography.new(parent: self, type: :subtitle, text: subtitle, context: context, **attribs, &block)
+              @subtitle = Components::Typography.new(parent: self, type: :subtitle, text: text, context: context, **attribs, &block)
             end
 
-            def info(info=nil, **attribs, &block)
+            def info(*text, **attribs, &block)
               return @info if locked?
-              @info = Components::Typography.new(parent: self, type: :info, text: info, context: context, **attribs, &block)
+              @info = Components::Typography.new(parent: self, type: :info, text: text, context: context, **attribs, &block)
             end
 
-            def body(body = nil, **attribs, &block)
+            def body(*text, **attribs, &block)
               return @body if locked?
-              @body = Components::Typography.new(parent: self, type: :body, text: body, context: context, **attribs, &block)
+              @body = Components::Typography.new(parent: self, type: :body, text: text, context: context, **attribs, &block)
             end
 
             def avatar(avatar = nil, **attribs, &block)

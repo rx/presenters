@@ -21,7 +21,20 @@ module Voom
 
         helpers do
           def markdown(text)
-            @markdown ||= Redcarpet::Markdown.new(CustomRender, extensions = {})
+            unless @markdown
+              renderer = CustomRender.new(hard_wrap: false, filter_html: true)
+              options = {
+                  autolink: true,
+                  no_intra_emphasis: true,
+                  fenced_code_blocks: true,
+                  lax_html_blocks: true,
+                  strikethrough: true,
+                  superscript: true,
+                  disable_indented_code_blocks: true
+              }
+              @markdown = Redcarpet::Markdown.new(renderer, options)
+            end
+
             @markdown.render(text)
           end
 
@@ -38,7 +51,7 @@ module Voom
           end
 
           def expand_text(text)
-            markdown((text||[]).map {|line| "#{line}<br/>"}.join)
+            markdown((text||[]).join("\n\n"))
           end
 
           def color_classname(comp)

@@ -21,7 +21,7 @@ module Voom
             super(type: :content, **attribs_, &block)
             @components = []
             @hidden = attribs.delete(:hidden){false}
-            @shows_errors = attribs.delete(:shows_errors){true}
+            @shows_errors = attribs.delete(:shows_errors){false}
             expand!
           end
         end

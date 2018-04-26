@@ -17,7 +17,8 @@ module Voom
           include Mixins::TextFields
           include Mixins::Icons
 
-          attr_reader :height, :width, :selected, :components
+          attr_reader :height, :width, :selected, :components, :shows_errors
+
 
           def initialize(**attribs_, &block)
             super(type: :card, **attribs_, &block)
@@ -25,6 +26,8 @@ module Voom
             @width = attribs.delete(:width)
             @selected = attribs.delete(:selected) {false}
             self.text(attribs.delete(:text)) if attribs.key?(:text)
+            @shows_errors = attribs.delete(:shows_errors){true}
+
             @components = []
             expand!
           end
@@ -60,7 +63,7 @@ module Voom
               expand!
             end
 
-            def title(title=nil, **attribs, &block)
+            def title(*title, **attribs, &block)
               return @title if locked?
               @title = Typography.new(type: :title,
                                       parent: self,
@@ -80,7 +83,7 @@ module Voom
             end
           end
 
-          def text(text=nil, **attribs, &block)
+          def text(*text, **attribs, &block)
             self << Typography.new(type: :body,
                                    parent: self, text: text, context: context, **attribs, &block)
           end

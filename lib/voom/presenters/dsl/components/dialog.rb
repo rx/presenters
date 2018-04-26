@@ -6,32 +6,33 @@ module Voom
       module Components
         class Dialog < Base
           include Mixins::Common
-          attr_accessor :width, :height, :buttons, :components
+          attr_accessor :width, :height, :buttons, :components, :shows_errors
 
           def initialize(**attribs_, &block)
             super(type: :dialog, **attribs_, &block)
             @width = attribs.delete(:width)
             @height = attribs.delete(:height)
+            @shows_errors = attribs.delete(:shows_errors){true}
 
             @buttons = []
             @components=[]
             expand!
           end
 
-          def title(title=nil, **options, &block)
+          def title(*title, **options, &block)
             return @title if locked?
             @title = Components::Typography.new(parent: self, type: :title,
                                                 text: title, context: context,
                                                                  **options, &block)
           end
 
-          def heading(text=nil, **options, &block)
+          def heading(*text, **options, &block)
             components << Components::Typography.new(parent: self, type: :heading,
                                                      text: text, context: context,
                                                   **options, &block)
           end
 
-          def body(text=nil, **options, &block)
+          def body(*text, **options, &block)
             components << Components::Typography.new(parent: self, type: :body,
                                                      text: text, context: context,
                                                      **options, &block)

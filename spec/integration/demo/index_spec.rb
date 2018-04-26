@@ -1,7 +1,9 @@
 require "watir_helper"
 
-describe "Demo Index" do
-  before { goto "http://localhost:9292" }
+describe "Demo Index", :integration do
+  before do
+    goto "http://localhost:9292"
+  end
 
   it "has heading" do
     expect(div(id: "headline")).to be_present

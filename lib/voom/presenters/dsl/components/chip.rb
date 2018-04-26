@@ -21,7 +21,7 @@ module Voom
             expand!
           end
 
-          def text(text=nil, **attribs, &block)
+          def text(*text, **attribs, &block)
             return @text if locked?
             @text = Components::Typography.new(parent: self, type: :text, text: text, context: context, **attribs, &block)
           end

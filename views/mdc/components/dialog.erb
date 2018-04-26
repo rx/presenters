@@ -9,6 +9,7 @@
   <% if comp.title %>
     <h3 class="mdl-dialog__title"><%= expand_text(comp.title.text) %></h3>
   <% end %>
+  <div class="v-errors">
   <div class="mdl-dialog__content
               <%= 'v-dialog--form' if has_form %>">
     <% comp.components.each do |dcomp| %>
@@ -22,4 +23,5 @@
       <% end %>
     </div>
   <% end %>
+  </div>
 </dialog>

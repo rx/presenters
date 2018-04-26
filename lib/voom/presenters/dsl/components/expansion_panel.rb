@@ -12,12 +12,12 @@ module Voom
             expand!
           end
 
-          def text(text = nil, **attribs, &block)
+          def text(*text, **attribs, &block)
             return @text if locked?
             @text = Components::Typography.new(parent: self, type: :text, text: text, context: context, **attribs, &block)
           end
 
-          def secondary_text(text = nil, **attribs, &block)
+          def secondary_text(*text, **attribs, &block)
             return @secondary_text if locked?
             @secondary_text = Components::Typography.new(parent: self, type: :text, text: text, context: context, **attribs, &block)
           end

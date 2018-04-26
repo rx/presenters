@@ -69,7 +69,7 @@ module Voom
                 expand!
               end
 
-              def value(value=nil, **attribs, &block)
+              def value(*value, **attribs, &block)
                 return @value if locked?
                 @value = Components::Typography.new(parent: self, type: :text, text: value, context: context, **attribs, &block)
               end

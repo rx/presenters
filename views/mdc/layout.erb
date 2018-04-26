@@ -4,7 +4,7 @@
   <base href="/">
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title><%= @pom.page.title if @pom.page%></title>
+  <title><%= @pom.page.title if @pom.page %></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -13,8 +13,8 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <!-- Place favicon.ico in the root directory -->
   <!--MDC-->
-  <link rel="stylesheet" href="<%=env['SCRIPT_NAME']%>/bundle.css">
-  <script src="<%=env['SCRIPT_NAME']%>/bundle.js"></script>
+  <link rel="stylesheet" href="<%= env['SCRIPT_NAME'] %>/bundle.css">
+  <script src="<%= env['SCRIPT_NAME'] %>/bundle.js"></script>
 
 </head>
 <body class="mdc-typography">
@@ -33,10 +33,11 @@
     <%= erb :"body/drawer", :locals => {:drawer => drawer} %>
   <% end %>
   <main class="mdl-layout__content"
-        style="<%="background-color:#{@pom.page.background_color}" if @pom.page&.background_color%>">
-    <div class="page-content v-has-errors">
-      <div class="v-errors"></div>
-      <%= yield %>
+        style="<%= "background-color:#{@pom.page.background_color}" if @pom.page&.background_color %>">
+    <div class="page-content">
+      <div class="v-errors">
+        <%= yield %>
+      </div>
     </div>
   </main>
   <%= erb :"body/snackbar" %>

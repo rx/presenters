@@ -11,12 +11,13 @@ RSpec.configure do |config|
   config.add_formatter(Watir::RSpec::HtmlFormatter)
 
   # Open up the browser for each example.
-  config.before :all do
+  config.before :all, :integration do
+    skip 'Server was not started. To run integration tests run `rackup` in the root director.'  unless system("ps aux | grep tcp://localhost:929[2]")
     @browser = Watir::Browser.new
   end
 
   # Close that browser after each example.
-  config.after :all do
+  config.after :all, :integration do
     @browser.close if @browser
   end
 

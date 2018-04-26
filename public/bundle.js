@@ -2447,15 +2447,11 @@ class VErrors {
                 }, []);
                 var fieldErrors = this.normalizeErrors(response.errors);
 
-                for (var field in fieldErrors) {
+                for (var field of fieldErrors) {
                     if (!this.displayInputError(field, fieldErrors[field])) {
                         // Collect errors that can't be displayed at the field level
                         pageErrors.push(fieldErrors[field].join('<br/>'));
                     }
-                }
-                var errors = this.event.target.closest('form').querySelector('.v-errors');
-                if (!errors) {
-                    errors = document.querySelector('.v-errors');
                 }
                 this.prependErrors(pageErrors);
             }
@@ -2503,11 +2499,12 @@ class VErrors {
     }
 
     findNearestErrorDiv() {
-        var errorsDiv = null;
-        var currentDiv = this.event.target;
-        while (!errorsDiv) {
-            currentDiv = currentDiv.closest('.v-has-errors');
-            errorsDiv = currentDiv.querySelector('.v-errors');
+        let errorsDiv = null;
+        const currentDiv = this.event.target;
+        if (currentDiv) {
+            errorsDiv = currentDiv.closest('.v-errors');
+        } else {
+            errorsDiv = document.querySelector('.v-errors');
         }
         return errorsDiv;
     }
