@@ -70,6 +70,7 @@ module Voom
         def build_render_url(render_, entity, params)
           return '#' unless render_
           render = render_.to_s
+          return render if render.start_with?('http')
           seperator = render.start_with?('/') ? '' : '/'
           url = "#{base_url}#{seperator}#{render}"
           query_params = build_params(params, entity)

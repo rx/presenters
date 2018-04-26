@@ -3,6 +3,7 @@ require_relative 'mixins/event'
 require_relative 'mixins/tooltips'
 require_relative 'mixins/chips'
 require_relative 'mixins/selects'
+require_relative 'mixins/icons'
 
 module Voom
   module Presenters
@@ -58,6 +59,7 @@ module Voom
               include Mixins::Tooltips
               include Mixins::Chips
               include Mixins::Selects
+              include Mixins::Icons
 
               attr_accessor :numeric, :color, :components
 
