@@ -12,7 +12,7 @@ module Voom
 
           def initialize(parent:, **attribs_, &block)
             super(type: :text, parent: parent, **attribs_, &block)
-            @text = Array(attribs.delete(:text)||'').join("\n\n").split("\n\n")
+            @text = Array(attribs.delete(:text)||'').flatten.join("\n\n").split("\n\n")
             @level = attribs.delete(:level){1}
             @color = attribs.delete(:color)
             @position = Array(attribs.delete(:position)).compact

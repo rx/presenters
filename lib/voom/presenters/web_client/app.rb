@@ -24,7 +24,7 @@ module Voom
             unless @markdown
               renderer = CustomRender.new(hard_wrap: false, filter_html: true)
               options = {
-                  autolink: true,
+                  autolink: false,
                   no_intra_emphasis: true,
                   fenced_code_blocks: true,
                   lax_html_blocks: true,
@@ -51,7 +51,7 @@ module Voom
           end
 
           def expand_text(text)
-            markdown((text||[]).join("\n\n"))
+            self.markdown(Array(text).join("\n\n"))#.gsub("\n\n", "<br/>")
           end
 
           def color_classname(comp)
