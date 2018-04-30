@@ -1,4 +1,5 @@
-<div class="card-<%= comp.id %> mdc-card v-card
+<div id="<%=comp.id%>"
+    class="card-<%= comp.id %> mdc-card v-card
            <%= 'v-actionable' if comp.events %>"
      style="<%= "width: #{comp.width};" if comp.width%>
          <%= "height: #{comp.height};" if comp.height%>

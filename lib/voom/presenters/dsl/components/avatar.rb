@@ -1,3 +1,4 @@
+require_relative 'event_base'
 require_relative 'mixins/event'
 require_relative 'mixins/tooltips'
 

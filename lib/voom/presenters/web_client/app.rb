@@ -66,7 +66,7 @@ module Voom
         end
 
         get '/' do
-          pass unless Presenters::App.registered?(params['index'])
+          pass unless Presenters::App.registered?('index')
           presenter = Presenters::App['index'].call
           render_presenter(presenter)
         end
