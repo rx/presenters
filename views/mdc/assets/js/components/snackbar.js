@@ -1,20 +1,32 @@
+import {MDCSnackbar, MDCSnackbarFoundation} from '@material/snackbar';
+
 // This class displays a page level message
 export class VSnackbar {
-    constructor(message, action_text, action_fn) {
-        this.message = message;
-        this.action_text = action_text;
-        this.action_fn = action_fn;
+    constructor(element, snackbar) {
+        this.element = element;
+        this.snackbar = snackbar;
     }
 
-    display() {
-        var snackbarContainer = document.querySelector('#snackbar');
-        var data = {
-            message: this.message,
-            timeout: 2000,
-            actionHandler: this.action_fn,
-            actionText: this.action_text
+    display(message) {
+        const dataObj = {
+          message: message,
+          // actionText: 'Undo',
+          // actionHandler: function () {
+          //   console.log('my undo function');
+          // }
         };
-        // window.componentHandler.upgradeElement(snackbarContainer);
-        snackbarContainer.MaterialSnackbar.showSnackbar(data);
+        this.snackbar.show(dataObj);
+    }
+}
+
+export function initSnackbar() {
+    console.log('\tSnackbar');
+    var components = document.querySelectorAll('.mdc-snackbar');
+    for (var i = 0; i < components.length; i++) {
+        var component = components[i];
+        if (!component.vComponent) {
+            let vSnackbar= new VSnackbar(component, MDCSnackbar.attachTo(component));
+            component.vComponent = vSnackbar;
+        }
     }
 }

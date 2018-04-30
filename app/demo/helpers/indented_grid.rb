@@ -1,7 +1,7 @@
 module Demo
   module Helpers
-    module SourceGrid
-      def source_grid(&block)
+    module IndentedGrid
+      def indented_grid(&block)
         grid do
           column 1
           column 10 do

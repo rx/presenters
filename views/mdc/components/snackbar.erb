@@ -1,7 +1,17 @@
-<% if snackbar %>
-<script>
-    document.addEventListener("DOMContentLoaded", function(event) {
-        new VSnackbar('<%=snackbar.text%>'<% if snackbar.action %>, '<%=snackbar.action.text%>', function(){ alert('Not implemented!'); }<%end%>).display();
-    });
-</script>
+<% if comp
+     data_events =
+         [['after_init',
+           [['snackbar', nil, {}, {text: comp.text}]],
+           {once: true}
+          ]]
+%>
+  <div id="<%=comp.id%>"
+       class="v-snackbar"
+       aria-hidden="true"
+       data-events='<%= data_events.to_json %>'>
+    <div class="mdc-snackbar__text"></div>
+    <div class="mdc-snackbar__action-wrapper">
+      <button type="button" class="mdc-snackbar__action-button"></button>
+    </div>
+  </div>
 <% end %>

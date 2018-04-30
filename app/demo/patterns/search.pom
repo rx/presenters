@@ -1,8 +1,8 @@
 Voom::Presenters.define(:search) do
-  helpers Demo::Helpers::SourceGrid
+  helpers Demo::Helpers::IndentedGrid
   attach :top_nav
 
-  source_grid do
+  indented_grid do
     heading 'Search'
 
     content id: :search_field do

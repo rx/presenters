@@ -11,8 +11,8 @@
                                   {}
                               end
           [action.type, action.url, action.options.to_h.merge(additional_options), action.params.to_h]
-        end
-       ]
+        end,
+       {once: false}]
      end %>
   data-events = '<%= data_events.to_json %>'
 <% end %>

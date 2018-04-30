@@ -1,7 +1,7 @@
-require_relative '../helpers/source_grid'
+require_relative '../helpers/indented_grid'
 
 Voom::Presenters.define(:footers) do
-  helpers Demo::Helpers::SourceGrid
+  helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
 
@@ -28,7 +28,7 @@ Voom::Presenters.define(:footers) do
     end
   end
 
-  source_grid do
+  indented_grid do
     display 'Footers'
 
     attach :code, file: __FILE__

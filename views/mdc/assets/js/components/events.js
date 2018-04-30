@@ -103,6 +103,7 @@ export function initEvents() {
         for (var j = 0; j < eventsData.length; j++) {
             var eventData = eventsData[j];
             var eventName = eventData[0];
+            var eventOptions = eventData[2];
             var actionsData = eventData[1];
             var eventHandler = createEventHandler(actionsData);
             // Delegate to the component if possible
@@ -115,8 +116,26 @@ export function initEvents() {
                 if (!eventElem.eventsHandler[eventName]) {
                     // Delegate to the component if possible
                     eventElem.eventsHandler[eventName] = eventHandler;
-                    eventElem.addEventListener(eventName, eventHandler);
+                    eventElem.addEventListener(eventName, eventHandler, eventOptions);
                 }
+            }
+        }
+    }
+    fireAfterLoad();
+}
+
+function fireAfterLoad() {
+    var events = document.querySelectorAll('[data-events]');
+    for (var i = 0; i < events.length; i++) {
+        var eventElem = events[i];
+        var eventsData = JSON.parse(eventElem.dataset.events);
+        for (var j = 0; j < eventsData.length; j++) {
+            var eventData = eventsData[j];
+            var eventName = eventData[0];
+            if(eventName==='after_init') {
+                var event = new Event('after_init');
+                // Dispatch the event.
+                eventElem.dispatchEvent(event);
             }
         }
     }

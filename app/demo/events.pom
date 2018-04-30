@@ -1,12 +1,12 @@
-require_relative 'helpers/source_grid'
+require_relative 'helpers/indented_grid'
 
 Voom::Presenters.define(:events) do
-  helpers Demo::Helpers::SourceGrid
+  helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :events_drawer
 
 
-  source_grid do
+  indented_grid do
     heading 'Events'
     body 'Events are able to be attached to most components. ',
          'Common examples include `click` and `change` events. ',

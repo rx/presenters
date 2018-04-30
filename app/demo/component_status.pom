@@ -1,9 +1,9 @@
 require 'yaml'
-require_relative 'helpers/source_grid'
+require_relative 'helpers/indented_grid'
 
 Voom::Presenters.define(:component_status) do
   helpers Voom::Presenters::Helpers::Inflector
-  helpers Demo::Helpers::SourceGrid
+  helpers Demo::Helpers::IndentedGrid
 
   attach 'top_nav'
   attach 'component_drawer'
@@ -52,7 +52,7 @@ Voom::Presenters.define(:component_status) do
     end
   end
 
-  source_grid do
+  indented_grid do
     display 'Component Status'
     key
     table do

@@ -3,6 +3,7 @@ require_relative 'definer'
 require_relative 'components/mixins/common'
 require_relative 'components/mixins/helpers'
 require_relative 'components/mixins/dialogs'
+require_relative 'components/mixins/snackbars'
 require_relative 'invalid_presenter'
 
 require 'voom/serializer'
@@ -18,6 +19,7 @@ module Voom
         include Components::Mixins::Common
         include Components::Mixins::Helpers
         include Components::Mixins::Dialogs
+        include Components::Mixins::Snackbars
 
         include Voom::Serializer
         include Voom::Trace
@@ -34,7 +36,6 @@ module Voom
           @header = nil
           @drawer = nil
           @components = []
-          @snackbar = nil
           @footer = nil
           add_global_helpers
         end
@@ -59,13 +60,7 @@ module Voom
                                            **attribs, &block)
         end
 
-        def snackbar(text=nil, **attribs, &block)
-          return @snackbar if locked?
-          @snackbar = Components::Snackbar.new(parent: self,
-                                               text: text,
-                                               context: context,
-                                               **attribs, &block)
-        end
+
 
         def footer(**attribs, &block)
           return @footer if locked?

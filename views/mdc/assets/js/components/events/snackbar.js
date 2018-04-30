@@ -5,13 +5,16 @@ export class VSnackbarEvent {
         this.options = options;
         this.params = params;
         this.event = event;
+        let snackbarElem = document.querySelector('.mdc-snackbar');
+        this.snackbar = snackbarElem.vComponent;
     }
 
     call(results) {
-        var message = this.params.text;
-        var promiseObj = new Promise(function (resolve) {
+        let message = this.params.text;
+        let snackbar = this.snackbar;
+        let promiseObj = new Promise(function (resolve) {
             console.log("Showing snackbar");
-            new VSnackbar(message).display();
+            snackbar.display(message);
             results.push({action:'snackbar', statusCode: 200});
             resolve(results);
         });

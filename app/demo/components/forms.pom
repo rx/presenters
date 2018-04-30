@@ -1,8 +1,9 @@
-require_relative '../helpers/source_grid'
+require_relative '../helpers/indented_grid'
 
 Voom::Presenters.define(:forms) do
-  helpers Demo::Helpers::SourceGrid
+  helpers Demo::Helpers::IndentedGrid
   attach :top_nav
+  attach :component_drawer
 
   grid do
     column 1

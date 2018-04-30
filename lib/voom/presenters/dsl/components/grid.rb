@@ -5,6 +5,7 @@ require_relative 'mixins/event'
 require_relative 'mixins/attaches'
 require_relative 'mixins/dialogs'
 require_relative 'mixins/chips'
+require_relative 'mixins/snackbars'
 
 module Voom
   module Presenters
@@ -13,6 +14,7 @@ module Voom
         class Grid < Base
           include Mixins::Attaches
           include Mixins::Dialogs
+          include Mixins::Snackbars
           
           attr_accessor :columns, :color, :padded
 
@@ -40,7 +42,8 @@ module Voom
             include Mixins::TextFields
             include Mixins::Selects
             include Mixins::Toggles
-
+            include Mixins::Snackbars
+            
             attr_reader :size, :desktop, :tablet, :phone, :color, :components
 
             def initialize(**attribs_, &block)
