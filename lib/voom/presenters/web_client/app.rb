@@ -88,7 +88,7 @@ module Voom
         private
 
         def render_presenter(presenter)
-          @grid_nesting = params[:grid_nesting] || 0
+          @grid_nesting = Integer(params[:grid_nesting] || 0)
 
           begin
             @pom = presenter.expand(router: router, context: prepare_context)
