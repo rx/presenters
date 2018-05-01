@@ -1,4 +1,4 @@
-Voom::Presenters.define(:search) do
+Voom::Presenters.define(:autocomplete) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
 
