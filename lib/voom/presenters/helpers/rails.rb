@@ -5,6 +5,7 @@ if defined?(Rails)
       module Helpers
         module Rails
           include ActionView::Helpers::AssetUrlHelper
+          include Voom::Presenters::Helpers::Currency
 
           def default_url_options
             {}
