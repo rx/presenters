@@ -487,6 +487,8 @@ function initSnackbar() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__cards__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__forms__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__snackbar__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__checkboxes__ = __webpack_require__(99);
+
 
 
 
@@ -513,6 +515,7 @@ function initialize() {
     Object(__WEBPACK_IMPORTED_MODULE_9__cards__["a" /* initCards */])();
     Object(__WEBPACK_IMPORTED_MODULE_10__forms__["a" /* initForms */])();
     Object(__WEBPACK_IMPORTED_MODULE_11__snackbar__["a" /* initSnackbar */])();
+    Object(__WEBPACK_IMPORTED_MODULE_12__checkboxes__["a" /* initCheckboxes */])();
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_3__events__["a" /* initEvents */])();
     // componentHandler.upgradeAllRegistered();
@@ -14208,6 +14211,694 @@ class VForm {
     }
 }
 /* unused harmony export VForm */
+
+
+/***/ }),
+/* 98 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export MDCSelectionControlState */
+/* unused harmony export MDCSelectionControl */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple_index__ = __webpack_require__(2);
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* eslint-disable no-unused-vars */
+
+/* eslint-enable no-unused-vars */
+
+/**
+ * @typedef {!{
+ *   checked: boolean,
+ *   indeterminate: boolean,
+ *   disabled: boolean,
+ *   value: ?string
+ * }}
+ */
+let MDCSelectionControlState;
+
+/**
+ * @record
+ */
+class MDCSelectionControl {
+  /** @return {?MDCRipple} */
+  get ripple() {}
+}
+
+
+
+/***/ }),
+/* 99 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initCheckboxes;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_checkbox__ = __webpack_require__(100);
+
+
+function initCheckboxes() {
+    console.log('\tCheckboxes');
+
+    var components = document.querySelectorAll('.mdc-checkbox');
+    if (components) {
+        for (var i = 0; i < components.length; i++) {
+            var component = components[i];
+            if (!component.mdcComponent) {
+                component.mdcComponent = __WEBPACK_IMPORTED_MODULE_0__material_checkbox__["a" /* MDCCheckbox */].attachTo(component);
+            }
+        }
+    }
+}
+
+/***/ }),
+/* 100 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCCheckbox; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_animation_index__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_selection_control_index__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ripple_index__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ripple_util__ = __webpack_require__(5);
+/* unused harmony reexport MDCCheckboxFoundation */
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+/* eslint-disable no-unused-vars */
+
+/* eslint-enable no-unused-vars */
+
+
+
+
+/**
+ * @extends MDCComponent<!MDCCheckboxFoundation>
+ * @implements {MDCSelectionControl}
+ */
+class MDCCheckbox extends __WEBPACK_IMPORTED_MODULE_1__material_base_component__["a" /* default */] {
+  static attachTo(root) {
+    return new MDCCheckbox(root);
+  }
+
+  /**
+   * Returns the state of the native control element, or null if the native control element is not present.
+   * @return {?MDCSelectionControlState}
+   * @private
+   */
+  get nativeCb_() {
+    const { NATIVE_CONTROL_SELECTOR } = __WEBPACK_IMPORTED_MODULE_3__foundation__["a" /* default */].strings;
+    const cbEl = /** @type {?MDCSelectionControlState} */this.root_.querySelector(NATIVE_CONTROL_SELECTOR);
+    return cbEl;
+  }
+
+  constructor(...args) {
+    super(...args);
+
+    /** @private {!MDCRipple} */
+    this.ripple_ = this.initRipple_();
+  }
+
+  /**
+   * @return {!MDCRipple}
+   * @private
+   */
+  initRipple_() {
+    const MATCHES = Object(__WEBPACK_IMPORTED_MODULE_5__material_ripple_util__["b" /* getMatchesProperty */])(HTMLElement.prototype);
+    const adapter = Object.assign(__WEBPACK_IMPORTED_MODULE_4__material_ripple_index__["a" /* MDCRipple */].createAdapter(this), {
+      isUnbounded: () => true,
+      isSurfaceActive: () => this.nativeCb_[MATCHES](':active'),
+      registerInteractionHandler: (type, handler) => this.nativeCb_.addEventListener(type, handler),
+      deregisterInteractionHandler: (type, handler) => this.nativeCb_.removeEventListener(type, handler)
+    });
+    const foundation = new __WEBPACK_IMPORTED_MODULE_4__material_ripple_index__["b" /* MDCRippleFoundation */](adapter);
+    return new __WEBPACK_IMPORTED_MODULE_4__material_ripple_index__["a" /* MDCRipple */](this.root_, foundation);
+  }
+
+  /** @return {!MDCCheckboxFoundation} */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_3__foundation__["a" /* default */]({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className),
+      registerAnimationEndHandler: handler => this.root_.addEventListener(Object(__WEBPACK_IMPORTED_MODULE_0__material_animation_index__["a" /* getCorrectEventName */])(window, 'animationend'), handler),
+      deregisterAnimationEndHandler: handler => this.root_.removeEventListener(Object(__WEBPACK_IMPORTED_MODULE_0__material_animation_index__["a" /* getCorrectEventName */])(window, 'animationend'), handler),
+      registerChangeHandler: handler => this.nativeCb_.addEventListener('change', handler),
+      deregisterChangeHandler: handler => this.nativeCb_.removeEventListener('change', handler),
+      getNativeControl: () => this.nativeCb_,
+      forceLayout: () => this.root_.offsetWidth,
+      isAttachedToDOM: () => Boolean(this.root_.parentNode)
+    });
+  }
+
+  /** @return {!MDCRipple} */
+  get ripple() {
+    return this.ripple_;
+  }
+
+  /** @return {boolean} */
+  get checked() {
+    return this.foundation_.isChecked();
+  }
+
+  /** @param {boolean} checked */
+  set checked(checked) {
+    this.foundation_.setChecked(checked);
+  }
+
+  /** @return {boolean} */
+  get indeterminate() {
+    return this.foundation_.isIndeterminate();
+  }
+
+  /** @param {boolean} indeterminate */
+  set indeterminate(indeterminate) {
+    this.foundation_.setIndeterminate(indeterminate);
+  }
+
+  /** @return {boolean} */
+  get disabled() {
+    return this.foundation_.isDisabled();
+  }
+
+  /** @param {boolean} disabled */
+  set disabled(disabled) {
+    this.foundation_.setDisabled(disabled);
+  }
+
+  /** @return {?string} */
+  get value() {
+    return this.foundation_.getValue();
+  }
+
+  /** @param {?string} value */
+  set value(value) {
+    this.foundation_.setValue(value);
+  }
+
+  destroy() {
+    this.ripple_.destroy();
+    super.destroy();
+  }
+}
+
+
+
+/***/ }),
+/* 101 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(103);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+/* eslint-disable no-unused-vars */
+
+
+/* eslint-enable no-unused-vars */
+
+
+/** @const {!Array<string>} */
+const CB_PROTO_PROPS = ['checked', 'indeterminate'];
+
+/**
+ * @extends {MDCFoundation<!MDCCheckboxAdapter>}
+ */
+class MDCCheckboxFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {cssClasses} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */];
+  }
+
+  /** @return enum {strings} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */];
+  }
+
+  /** @return enum {numbers} */
+  static get numbers() {
+    return __WEBPACK_IMPORTED_MODULE_3__constants__["b" /* numbers */];
+  }
+
+  /** @return {!MDCCheckboxAdapter} */
+  static get defaultAdapter() {
+    return (/** @type {!MDCCheckboxAdapter} */{
+        addClass: () => /* className: string */{},
+        removeClass: () => /* className: string */{},
+        setNativeControlAttr: () => {},
+        removeNativeControlAttr: () => {},
+        registerAnimationEndHandler: () => /* handler: EventListener */{},
+        deregisterAnimationEndHandler: () => /* handler: EventListener */{},
+        registerChangeHandler: () => /* handler: EventListener */{},
+        deregisterChangeHandler: () => /* handler: EventListener */{},
+        getNativeControl: () => /* !MDCSelectionControlState */{},
+        forceLayout: () => {},
+        isAttachedToDOM: () => /* boolean */{}
+      }
+    );
+  }
+
+  constructor(adapter) {
+    super(Object.assign(MDCCheckboxFoundation.defaultAdapter, adapter));
+
+    /** @private {string} */
+    this.currentCheckState_ = __WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].TRANSITION_STATE_INIT;
+
+    /** @private {string} */
+    this.currentAnimationClass_ = '';
+
+    /** @private {number} */
+    this.animEndLatchTimer_ = 0;
+
+    this.animEndHandler_ = /** @private {!EventListener} */() => this.handleAnimationEnd();
+
+    this.changeHandler_ = /** @private {!EventListener} */() => this.handleChange();
+  }
+
+  init() {
+    this.currentCheckState_ = this.determineCheckState_(this.getNativeControl_());
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].UPGRADED);
+    this.adapter_.registerChangeHandler(this.changeHandler_);
+    this.installPropertyChangeHooks_();
+  }
+
+  destroy() {
+    this.adapter_.deregisterChangeHandler(this.changeHandler_);
+    this.uninstallPropertyChangeHooks_();
+  }
+
+  /** @return {boolean} */
+  isChecked() {
+    return this.getNativeControl_().checked;
+  }
+
+  /** @param {boolean} checked */
+  setChecked(checked) {
+    this.getNativeControl_().checked = checked;
+  }
+
+  /** @return {boolean} */
+  isIndeterminate() {
+    return this.getNativeControl_().indeterminate;
+  }
+
+  /** @param {boolean} indeterminate */
+  setIndeterminate(indeterminate) {
+    this.getNativeControl_().indeterminate = indeterminate;
+  }
+
+  /** @return {boolean} */
+  isDisabled() {
+    return this.getNativeControl_().disabled;
+  }
+
+  /** @param {boolean} disabled */
+  setDisabled(disabled) {
+    this.getNativeControl_().disabled = disabled;
+    if (disabled) {
+      this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].DISABLED);
+    } else {
+      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].DISABLED);
+    }
+  }
+
+  /** @return {?string} */
+  getValue() {
+    return this.getNativeControl_().value;
+  }
+
+  /** @param {?string} value */
+  setValue(value) {
+    this.getNativeControl_().value = value;
+  }
+
+  /**
+   * Handles the animationend event for the checkbox
+   */
+  handleAnimationEnd() {
+    clearTimeout(this.animEndLatchTimer_);
+    this.animEndLatchTimer_ = setTimeout(() => {
+      this.adapter_.removeClass(this.currentAnimationClass_);
+      this.adapter_.deregisterAnimationEndHandler(this.animEndHandler_);
+    }, __WEBPACK_IMPORTED_MODULE_3__constants__["b" /* numbers */].ANIM_END_LATCH_MS);
+  }
+
+  /**
+   * Handles the change event for the checkbox
+   */
+  handleChange() {
+    this.transitionCheckState_();
+  }
+
+  /** @private */
+  installPropertyChangeHooks_() {
+    const nativeCb = this.getNativeControl_();
+    const cbProto = Object.getPrototypeOf(nativeCb);
+
+    CB_PROTO_PROPS.forEach(controlState => {
+      const desc = Object.getOwnPropertyDescriptor(cbProto, controlState);
+      // We have to check for this descriptor, since some browsers (Safari) don't support its return.
+      // See: https://bugs.webkit.org/show_bug.cgi?id=49739
+      if (validDescriptor(desc)) {
+        const nativeCbDesc = /** @type {!ObjectPropertyDescriptor} */{
+          get: desc.get,
+          set: state => {
+            desc.set.call(nativeCb, state);
+            this.transitionCheckState_();
+          },
+          configurable: desc.configurable,
+          enumerable: desc.enumerable
+        };
+        Object.defineProperty(nativeCb, controlState, nativeCbDesc);
+      }
+    });
+  }
+
+  /** @private */
+  uninstallPropertyChangeHooks_() {
+    const nativeCb = this.getNativeControl_();
+    const cbProto = Object.getPrototypeOf(nativeCb);
+
+    CB_PROTO_PROPS.forEach(controlState => {
+      const desc = /** @type {!ObjectPropertyDescriptor} */Object.getOwnPropertyDescriptor(cbProto, controlState);
+      if (validDescriptor(desc)) {
+        Object.defineProperty(nativeCb, controlState, desc);
+      }
+    });
+  }
+
+  /** @private */
+  transitionCheckState_() {
+    const nativeCb = this.adapter_.getNativeControl();
+    if (!nativeCb) {
+      return;
+    }
+    const oldState = this.currentCheckState_;
+    const newState = this.determineCheckState_(nativeCb);
+    if (oldState === newState) {
+      return;
+    }
+
+    // Ensure aria-checked is set to mixed if checkbox is in indeterminate state.
+    if (this.isIndeterminate()) {
+      this.adapter_.setNativeControlAttr(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ARIA_CHECKED_ATTR, __WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ARIA_CHECKED_INDETERMINATE_VALUE);
+    } else {
+      this.adapter_.removeNativeControlAttr(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ARIA_CHECKED_ATTR);
+    }
+
+    // Check to ensure that there isn't a previously existing animation class, in case for example
+    // the user interacted with the checkbox before the animation was finished.
+    if (this.currentAnimationClass_.length > 0) {
+      clearTimeout(this.animEndLatchTimer_);
+      this.adapter_.forceLayout();
+      this.adapter_.removeClass(this.currentAnimationClass_);
+    }
+
+    this.currentAnimationClass_ = this.getTransitionAnimationClass_(oldState, newState);
+    this.currentCheckState_ = newState;
+
+    // Check for parentNode so that animations are only run when the element is attached
+    // to the DOM.
+    if (this.adapter_.isAttachedToDOM() && this.currentAnimationClass_.length > 0) {
+      this.adapter_.addClass(this.currentAnimationClass_);
+      this.adapter_.registerAnimationEndHandler(this.animEndHandler_);
+    }
+  }
+
+  /**
+   * @param {!MDCSelectionControlState} nativeCb
+   * @return {string}
+   * @private
+   */
+  determineCheckState_(nativeCb) {
+    const {
+      TRANSITION_STATE_INDETERMINATE,
+      TRANSITION_STATE_CHECKED,
+      TRANSITION_STATE_UNCHECKED
+    } = __WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */];
+
+    if (nativeCb.indeterminate) {
+      return TRANSITION_STATE_INDETERMINATE;
+    }
+    return nativeCb.checked ? TRANSITION_STATE_CHECKED : TRANSITION_STATE_UNCHECKED;
+  }
+
+  /**
+   * @param {string} oldState
+   * @param {string} newState
+   * @return {string}
+   */
+  getTransitionAnimationClass_(oldState, newState) {
+    const {
+      TRANSITION_STATE_INIT,
+      TRANSITION_STATE_CHECKED,
+      TRANSITION_STATE_UNCHECKED
+    } = __WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */];
+
+    const {
+      ANIM_UNCHECKED_CHECKED,
+      ANIM_UNCHECKED_INDETERMINATE,
+      ANIM_CHECKED_UNCHECKED,
+      ANIM_CHECKED_INDETERMINATE,
+      ANIM_INDETERMINATE_CHECKED,
+      ANIM_INDETERMINATE_UNCHECKED
+    } = MDCCheckboxFoundation.cssClasses;
+
+    switch (oldState) {
+      case TRANSITION_STATE_INIT:
+        if (newState === TRANSITION_STATE_UNCHECKED) {
+          return '';
+        }
+      // fallthrough
+      case TRANSITION_STATE_UNCHECKED:
+        return newState === TRANSITION_STATE_CHECKED ? ANIM_UNCHECKED_CHECKED : ANIM_UNCHECKED_INDETERMINATE;
+      case TRANSITION_STATE_CHECKED:
+        return newState === TRANSITION_STATE_UNCHECKED ? ANIM_CHECKED_UNCHECKED : ANIM_CHECKED_INDETERMINATE;
+      // TRANSITION_STATE_INDETERMINATE
+      default:
+        return newState === TRANSITION_STATE_CHECKED ? ANIM_INDETERMINATE_CHECKED : ANIM_INDETERMINATE_UNCHECKED;
+    }
+  }
+
+  /**
+   * @return {!MDCSelectionControlState}
+   * @private
+   */
+  getNativeControl_() {
+    return this.adapter_.getNativeControl() || {
+      checked: false,
+      indeterminate: false,
+      disabled: false,
+      value: null
+    };
+  }
+}
+
+/**
+ * @param {ObjectPropertyDescriptor|undefined} inputPropDesc
+ * @return {boolean}
+ */
+function validDescriptor(inputPropDesc) {
+  return !!inputPropDesc && typeof inputPropDesc.set === 'function';
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCCheckboxFoundation);
+
+/***/ }),
+/* 102 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_selection_control_index__ = __webpack_require__(98);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* eslint-disable no-unused-vars */
+
+
+/* eslint no-unused-vars: [2, {"args": "none"}] */
+
+/**
+ * Adapter for MDC Checkbox. Provides an interface for managing
+ * - classes
+ * - dom
+ * - event handlers
+ *
+ * Additionally, provides type information for the adapter to the Closure
+ * compiler.
+ *
+ * Implement this adapter for your framework of choice to delegate updates to
+ * the component in your framework of choice. See architecture documentation
+ * for more details.
+ * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
+ *
+ * @record
+ */
+class MDCCheckboxAdapter {
+  /** @param {string} className */
+  addClass(className) {}
+
+  /** @param {string} className */
+  removeClass(className) {}
+
+  /**
+   * Sets an attribute with a given value on the input element.
+   * @param {string} attr
+   * @param {string} value
+   */
+  setNativeControlAttr(attr, value) {}
+
+  /**
+   * Removes an attribute from the input element.
+   * @param {string} attr
+   */
+  removeNativeControlAttr(attr) {}
+
+  /** @param {!EventListener} handler */
+  registerAnimationEndHandler(handler) {}
+
+  /** @param {!EventListener} handler */
+  deregisterAnimationEndHandler(handler) {}
+
+  /** @param {!EventListener} handler */
+  registerChangeHandler(handler) {}
+
+  /** @param {!EventListener} handler */
+  deregisterChangeHandler(handler) {}
+
+  /** @return {!MDCSelectionControlState} */
+  getNativeControl() {}
+
+  forceLayout() {}
+
+  /** @return {boolean} */
+  isAttachedToDOM() {}
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCCheckboxAdapter);
+
+/***/ }),
+/* 103 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return strings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return numbers; });
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/** @const {string} */
+const ROOT = 'mdc-checkbox';
+
+/** @enum {string} */
+const cssClasses = {
+  UPGRADED: 'mdc-checkbox--upgraded',
+  CHECKED: 'mdc-checkbox--checked',
+  INDETERMINATE: 'mdc-checkbox--indeterminate',
+  DISABLED: 'mdc-checkbox--disabled',
+  ANIM_UNCHECKED_CHECKED: 'mdc-checkbox--anim-unchecked-checked',
+  ANIM_UNCHECKED_INDETERMINATE: 'mdc-checkbox--anim-unchecked-indeterminate',
+  ANIM_CHECKED_UNCHECKED: 'mdc-checkbox--anim-checked-unchecked',
+  ANIM_CHECKED_INDETERMINATE: 'mdc-checkbox--anim-checked-indeterminate',
+  ANIM_INDETERMINATE_CHECKED: 'mdc-checkbox--anim-indeterminate-checked',
+  ANIM_INDETERMINATE_UNCHECKED: 'mdc-checkbox--anim-indeterminate-unchecked'
+};
+
+/** @enum {string} */
+const strings = {
+  NATIVE_CONTROL_SELECTOR: `.${ROOT}__native-control`,
+  TRANSITION_STATE_INIT: 'init',
+  TRANSITION_STATE_CHECKED: 'checked',
+  TRANSITION_STATE_UNCHECKED: 'unchecked',
+  TRANSITION_STATE_INDETERMINATE: 'indeterminate',
+  ARIA_CHECKED_ATTR: 'aria-checked',
+  ARIA_CHECKED_INDETERMINATE_VALUE: 'mixed'
+};
+
+/** @enum {number} */
+const numbers = {
+  ANIM_END_LATCH_MS: 250
+};
+
 
 
 /***/ })

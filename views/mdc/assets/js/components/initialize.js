@@ -10,6 +10,7 @@ import {initChips} from './chips';
 import {initCards} from './cards';
 import {initForms} from './forms';
 import {initSnackbar} from './snackbar';
+import {initCheckboxes} from './checkboxes';
 
 export function initialize(){
     console.log('Initializing');
@@ -24,6 +25,7 @@ export function initialize(){
     initCards();
     initForms();
     initSnackbar();
+    initCheckboxes();
     // This needs to be last, because it relies on the components installed above.
     initEvents();
     // componentHandler.upgradeAllRegistered();

@@ -1,10 +1,20 @@
-<label  id="<%=comp.id%>"
-        class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="<%=comp.id%>">
-  <input type="checkbox" id="<%=comp.id%>"
-         class="mdl-checkbox__input"
-         <%if comp.checked%> checked<%end%><%if comp.disabled%> disabled<%end%>
-         <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%>
-  />
-  <span class="mdl-checkbox__label"><%=comp.text%></span>
-</label>
+<div class="mdc-checkbox">
+  <input type="checkbox"
+         id="<%=comp.id%>"
+         class="mdc-checkbox__native-control"
+         <% if comp.checked %> checked <% end %><% if comp.disabled %> disabled <% end %>
+         <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>
+    />
+  <div class="mdc-checkbox__background">
+    <svg class="mdc-checkbox__checkmark"
+         viewBox="0 0 24 24">
+      <path class="mdc-checkbox__checkmark-path"
+            fill="none"
+            stroke="white"
+            d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+    </svg>
+    <div class="mdc-checkbox__mixedmark"></div>
+  </div>
+</div>
+<label id="<%=comp.id%>" for="<%=comp.id%>"><%=comp.text%></label>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id }%>
