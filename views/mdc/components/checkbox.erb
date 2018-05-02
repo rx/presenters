@@ -1,6 +1,8 @@
 <div class="mdc-checkbox">
   <input type="checkbox"
          id="<%=comp.id%>"
+         name="<%=comp.name%>"
+         value="<%=comp.value%>"
          class="mdc-checkbox__native-control"
          <% if comp.checked %> checked <% end %><% if comp.disabled %> disabled <% end %>
          <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>
@@ -16,5 +18,5 @@
     <div class="mdc-checkbox__mixedmark"></div>
   </div>
 </div>
-<label id="<%=comp.id%>" for="<%=comp.id%>"><%=comp.text%></label>
+<label class="v-checkbox__label" id="<%=comp.id%>" for="<%=comp.id%>"><%=comp.text%></label>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id }%>

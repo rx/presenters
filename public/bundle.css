@@ -7148,6 +7148,9 @@ v-card-title-position-left {
   transform: scaleX(1) rotate(0deg);
   opacity: 1; }
 
+.v-checkbox__label {
+  line-height: 40px; }
+
 :root {
   --mdc-layout-grid-margin-desktop: 24px;
   --mdc-layout-grid-gutter-desktop: 24px;
