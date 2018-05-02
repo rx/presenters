@@ -1,5 +1,6 @@
 if defined?(Rails)
-
+  require_relative 'currency'
+  
   module Voom
     module Presenters
       module Helpers
