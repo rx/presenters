@@ -21,6 +21,7 @@ module Voom
               self.body(attribs.delete(:body)) if attribs.key?(:body)
               self.avatar(attribs.delete(:avatar)) if attribs.key?(:avatar)
               self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
+              self.checkbox(attribs.delete(:ccheckbox)) if attribs.key?(:checkbox)
 
               @actions = []
               expand!
@@ -58,6 +59,11 @@ module Voom
               @icon = Icon.new(parent: self, icon: icon,
                                context: context,
                                **attribs, &block)
+            end
+
+            def checkbox(**attributes, &block)
+              return @checkbox if locked?
+              @checkbox = Components::Checkbox.new(parent: self, context: context, **attributes, &block)
             end
 
             def menu(**attributes, &block)

@@ -1,7 +1,9 @@
 @import "@material/list/mdc-list";
+@import "@material/theme/mixins";
 
-.v-list--with-avatars {
-  @include mdc-list-item-graphic-ink-color(white);
-  @include mdc-list-item-graphic-fill-color(text-icon-on-background);
+.v-list-item--with-avatar {
+  @include mdc-theme-prop(color, white);
+  @include mdc-theme-prop(background-color, text-icon-on-background);
 }
+
 

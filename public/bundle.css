@@ -9395,10 +9395,8 @@ a.mdc-list-item {
   /* @alternate */
   color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87)); }
 
-.v-list--with-avatars .mdc-list-item__graphic {
-  color: white; }
-
-.v-list--with-avatars .mdc-list-item__graphic {
+.v-list-item--with-avatar {
+  color: white;
   background-color: rgba(0, 0, 0, 0.38);
   /* @alternate */
   background-color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38)); }

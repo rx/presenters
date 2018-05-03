@@ -5,6 +5,7 @@
           <%= 'mdc-list-item--selected' if line.selected %>
           <%= 'v-menu-click' if line.menu && line.actions.empty?%>"
     id="<%= line.id %>">
+  <%= erb :"components/list/checkbox", :locals => {:line => line} %>
   <%= erb :"components/list/icon", :locals => {:line => line} %>
   <%= erb :"components/list/avatar", :locals => {:line => line} %>
   <span class="mdc-list-item__text

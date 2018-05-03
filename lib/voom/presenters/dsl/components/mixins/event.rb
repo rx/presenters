@@ -9,7 +9,7 @@ module Voom
             attr_reader :events
             def event(event, **params, &block)
               @events ||= []
-              @events << Components::Event.new(parent: self, event: event, context: context.merge(params), &block)
+              @events << Components::Event.new(parent: self, event: event, context: context&.merge(params), &block)
             end
           end
         end
