@@ -7,6 +7,8 @@ import {VToggleVisiblity} from './events/toggle_visiblity';
 import {VSnackbarEvent} from './events/snackbar';
 import {VAutoComplete} from './events/autocomplete';
 import {VSelects} from './events/selects';
+import {VNavigates} from './events/navigates';
+
 
 export class VEvents {
     //[[type, url, target, params]]
@@ -81,6 +83,8 @@ export class VEvents {
                 return new VAutoComplete(options, url, params, event);
             case 'selects':
                 return new VSelects(options, params, event);
+            case 'navigates':
+                return new VNavigates(options, params, event);
             default:
                 throw action_type + ' is not supported.';
         }
