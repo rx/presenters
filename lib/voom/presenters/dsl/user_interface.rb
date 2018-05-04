@@ -20,6 +20,7 @@ module Voom
         include Components::Mixins::Helpers
         include Components::Mixins::Dialogs
         include Components::Mixins::Snackbars
+        include Components::Mixins::Icons
 
         include Voom::Serializer
         include Voom::Trace

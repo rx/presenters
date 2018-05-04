@@ -86,6 +86,14 @@ module Voom
                                                target: "#{parent(:text_field).id}-list",
                                                params: params, &block)
           end
+
+          def navigates(direction, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               type: :navigates,
+                                               direction: direction,
+                                               params: params, &block)
+          end
+          alias navigate navigates
         end
       end
     end
