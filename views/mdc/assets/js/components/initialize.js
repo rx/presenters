@@ -12,6 +12,7 @@ import {initForms} from './forms';
 import {initSnackbar} from './snackbar';
 import {initCheckboxes} from './checkboxes';
 import {initDateTime} from './date-time';
+import {initSwitches} from './switches';
 
 export function initialize(){
     console.log('Initializing');
@@ -28,6 +29,7 @@ export function initialize(){
     initSnackbar();
     initCheckboxes();
     initDateTime();
+    initSwitches();
     // This needs to be last, because it relies on the components installed above.
     initEvents();
     // componentHandler.upgradeAllRegistered();

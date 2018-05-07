@@ -640,6 +640,8 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__snackbar__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__checkboxes__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__date_time__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__switches__ = __webpack_require__(116);
+
 
 
 
@@ -670,6 +672,7 @@ function initialize() {
     Object(__WEBPACK_IMPORTED_MODULE_11__snackbar__["a" /* initSnackbar */])();
     Object(__WEBPACK_IMPORTED_MODULE_12__checkboxes__["a" /* initCheckboxes */])();
     Object(__WEBPACK_IMPORTED_MODULE_13__date_time__["a" /* initDateTime */])();
+    Object(__WEBPACK_IMPORTED_MODULE_14__switches__["a" /* initSwitches */])();
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_3__events__["a" /* initEvents */])();
     // componentHandler.upgradeAllRegistered();
@@ -16451,6 +16454,53 @@ const numbers = {
 function initDateTime() {
     console.log('\tDateTime');
 }
+
+/***/ }),
+/* 116 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initSwitches;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(25);
+
+
+
+function initSwitches() {
+    console.log('\tSwitches');
+
+    let components = document.querySelectorAll('.v-switch');
+    if (components) {
+        for (let i = 0; i < components.length; i++) {
+            let component = components[i];
+            if (!component.vComponent) {
+                let input = component.querySelector('input');
+                let vSwitch = new VSwitch(component, input);
+                component.vComponent = vSwitch;
+                input.vComponent = vSwitch;
+            }
+        }
+    }
+}
+
+class VSwitch extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]) {
+    constructor(element, input) {
+        super(element);
+        this.input = input;
+    }
+
+    validate(_formData) {
+        return true;
+    }
+
+    prepareSubmit(form, params) {
+        if (!form) {
+            params.push([this.input.name, this.input.value]);
+        }
+    }
+}
+/* unused harmony export VSwitch */
+
 
 /***/ })
 /******/ ]);
