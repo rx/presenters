@@ -8,4 +8,5 @@ group :test do
   gem 'watir', '~> 6.10.3'
   gem "webdrivers", "~> 3.0"
   gem 'watir-rspec'
+  gem 'rspec_junit_formatter'
 end
