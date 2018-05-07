@@ -20,17 +20,17 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'ice_nine'
-  spec.add_runtime_dependency 'dry-container', '~>0.6.0'
-  spec.add_runtime_dependency 'dry-configurable'
-  spec.add_runtime_dependency 'dry-inflector', '~>0.1.1'
-  spec.add_runtime_dependency 'sinatra'
-  spec.add_runtime_dependency  'tzinfo'
-  spec.add_runtime_dependency  'tzinfo-data'
-  spec.add_runtime_dependency  'redcarpet'
+  spec.add_runtime_dependency 'ice_nine', '~>0.11'
+  spec.add_runtime_dependency 'dry-container', '~>0.6'
+  spec.add_runtime_dependency 'dry-configurable', '>0.1', '<= 7.0'
+  spec.add_runtime_dependency 'dry-inflector', '~>0.1'
+  spec.add_runtime_dependency 'sinatra', '>=1.4', '< 3.0'
+  spec.add_runtime_dependency  'tzinfo', '~>1.2'
+  spec.add_runtime_dependency  'tzinfo-data', '~>1.2018'
+  spec.add_runtime_dependency  'redcarpet', '~>3.4'
   
-  spec.add_development_dependency 'rack-test'
-  spec.add_development_dependency 'pry', '~>0.10.1'
+  spec.add_development_dependency 'rack-test', '~>0.8'
+  spec.add_development_dependency 'pry', '~>0.10'
   spec.add_development_dependency 'bundler', '~> 1.13'
   spec.add_development_dependency 'rake', '~> 11.3'
   spec.add_development_dependency 'rspec', '~> 3.0'
