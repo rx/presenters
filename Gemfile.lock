@@ -95,7 +95,7 @@ DEPENDENCIES
   pry (~> 0.10)
   rack-test (~> 0.8)
   rake (~> 11.3)
-  rspec (~> 3.0)
+  rspec
   rspec-html-matchers
   rspec_junit_formatter
   voom-presenters!
