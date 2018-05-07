@@ -1,3 +1,5 @@
+require_relative 'mixins/common'
+
 module Voom
   module Presenters
     module DSL
