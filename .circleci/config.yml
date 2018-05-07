@@ -36,6 +36,11 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
+      - run:
+          name: 'start integration testing server'
+          command: |
+            rackup
+          background: true
 
       # run tests!
       - run:
