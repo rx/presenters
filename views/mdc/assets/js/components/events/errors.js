@@ -71,10 +71,10 @@ export class VErrors {
                 }, []);
                 var fieldErrors = this.normalizeErrors(response.errors);
 
-                for (var field of fieldErrors) {
+                for (var field in fieldErrors) {
                     if (!this.displayInputError(field, fieldErrors[field])) {
                         // Collect errors that can't be displayed at the field level
-                        pageErrors.push(fieldErrors[field].join('<br/>'));
+                        pageErrors.push(fieldErrors[field]);
                     }
                 }
                 this.prependErrors(pageErrors);
@@ -110,9 +110,14 @@ export class VErrors {
         var newDiv = document.createElement("div");
         newDiv.className = 'v-error-message';
         // and give it some content
-        var newContent = document.createTextNode(messages.join('<br/>'));
-        // add the text node to the newly created div
-        newDiv.appendChild(newContent);
+
+        for (var message of messages) {
+            var newContent = document.createTextNode(message);
+            newDiv.appendChild(newContent);
+            let br = document.createElement('br');
+            // add the text node to the newly created div
+            newDiv.appendChild(br);
+        }
 
         // add the newly created element and its content into the DOM
         if (errorsDiv) {

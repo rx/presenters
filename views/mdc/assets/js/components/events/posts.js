@@ -14,12 +14,13 @@ export class VPosts extends VBase {
 
     call(results) {
         this.clearErrors();
-        var errors = this.validate();
+        let errors = this.validate();
+        let method = this.method;
         if (errors.length > 0) {
             return new Promise(function (_, reject) {
                 results.push({
                     action: 'posts',
-                    method: this.method,
+                    method: method,
                     statusCode: 400,
                     contentType: 'v/errors',
                     content: errors
@@ -46,7 +47,6 @@ export class VPosts extends VBase {
         }
 
         var httpRequest = new XMLHttpRequest();
-        var method = this.method;
         var url = this.url;
         if (!httpRequest) {
             throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');

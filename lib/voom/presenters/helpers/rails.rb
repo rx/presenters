@@ -1,6 +1,6 @@
 if defined?(Rails)
   require_relative 'currency'
-  
+
   module Voom
     module Presenters
       module Helpers
@@ -14,8 +14,13 @@ if defined?(Rails)
 
           def presenters_path(presenter, **params)
             path = voom_presenters_web_client_app_path(params)
-            # replace last / with the presenter
-            path.reverse.sub('/', "/#{presenter}".reverse).reverse
+            if path.include?('?')
+              path = path.sub('?', "#{presenter}?")
+            else
+              path = "#{path}/" unless path.end_with?('/')
+              # replace last / with the presenter
+              path.reverse.sub('/', "/#{presenter}".reverse).reverse
+            end
           end
 
           def table_for(query_,

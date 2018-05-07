@@ -11,6 +11,7 @@ import {initCards} from './cards';
 import {initForms} from './forms';
 import {initSnackbar} from './snackbar';
 import {initCheckboxes} from './checkboxes';
+import {initDateTime} from './date-time';
 
 export function initialize(){
     console.log('Initializing');
@@ -26,6 +27,7 @@ export function initialize(){
     initForms();
     initSnackbar();
     initCheckboxes();
+    initDateTime();
     // This needs to be last, because it relies on the components installed above.
     initEvents();
     // componentHandler.upgradeAllRegistered();

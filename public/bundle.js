@@ -639,6 +639,8 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__forms__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__snackbar__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__checkboxes__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__date_time__ = __webpack_require__(115);
+
 
 
 
@@ -667,6 +669,7 @@ function initialize() {
     Object(__WEBPACK_IMPORTED_MODULE_10__forms__["a" /* initForms */])();
     Object(__WEBPACK_IMPORTED_MODULE_11__snackbar__["a" /* initSnackbar */])();
     Object(__WEBPACK_IMPORTED_MODULE_12__checkboxes__["a" /* initCheckboxes */])();
+    Object(__WEBPACK_IMPORTED_MODULE_13__date_time__["a" /* initDateTime */])();
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_3__events__["a" /* initEvents */])();
     // componentHandler.upgradeAllRegistered();
@@ -941,7 +944,8 @@ class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
     }
 
     component() {
-        return this.parentElement().vComponent;
+        let parent = this.parentElement();
+        return parent ? this.parentElement().vComponent : null;
     }
 
     validate() {
@@ -2771,10 +2775,10 @@ class VErrors {
                 }, []);
                 var fieldErrors = this.normalizeErrors(response.errors);
 
-                for (var field of fieldErrors) {
+                for (var field in fieldErrors) {
                     if (!this.displayInputError(field, fieldErrors[field])) {
                         // Collect errors that can't be displayed at the field level
-                        pageErrors.push(fieldErrors[field].join('<br/>'));
+                        pageErrors.push(fieldErrors[field]);
                     }
                 }
                 this.prependErrors(pageErrors);
@@ -2808,9 +2812,14 @@ class VErrors {
         var newDiv = document.createElement("div");
         newDiv.className = 'v-error-message';
         // and give it some content
-        var newContent = document.createTextNode(messages.join('<br/>'));
-        // add the text node to the newly created div
-        newDiv.appendChild(newContent);
+
+        for (var message of messages) {
+            var newContent = document.createTextNode(message);
+            newDiv.appendChild(newContent);
+            let br = document.createElement('br');
+            // add the text node to the newly created div
+            newDiv.appendChild(br);
+        }
 
         // add the newly created element and its content into the DOM
         if (errorsDiv) {
@@ -9501,7 +9510,13 @@ class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handle
     //    { :page: ["must be filled"] }
     validate(formData) {
         console.log("TextField validate", formData);
-        return true;
+        let isValid = this.input.checkValidity();
+        if (isValid) {
+            return true;
+        }
+        let errorMessage = {};
+        errorMessage[this.input.id] = [this.input.validationMessage];
+        return errorMessage;
     }
 
     value() {
@@ -11175,12 +11190,13 @@ class VPosts extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
 
     call(results) {
         this.clearErrors();
-        var errors = this.validate();
+        let errors = this.validate();
+        let method = this.method;
         if (errors.length > 0) {
             return new Promise(function (_, reject) {
                 results.push({
                     action: 'posts',
-                    method: this.method,
+                    method: method,
                     statusCode: 400,
                     contentType: 'v/errors',
                     content: errors
@@ -11207,7 +11223,6 @@ class VPosts extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
         }
 
         var httpRequest = new XMLHttpRequest();
-        var method = this.method;
         var url = this.url;
         if (!httpRequest) {
             throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
@@ -16426,6 +16441,16 @@ const numbers = {
 };
 
 
+
+/***/ }),
+/* 115 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initDateTime;
+function initDateTime() {
+    console.log('\tDateTime');
+}
 
 /***/ })
 /******/ ]);
