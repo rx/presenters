@@ -1,3 +1,5 @@
+require_relative 'toggle_base'
+
 module Voom
   module Presenters
     module DSL
