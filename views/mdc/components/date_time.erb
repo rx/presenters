@@ -1,3 +1,6 @@
+<%
+    time_val = comp.value ? comp.value.strftime("%Y-%m-%dT%H:%M:%S.%L") : nil
+%>
 <div id="<%= comp.id %>"
      class="mdc-text-field
             <%= 'mdc-text-field--with-trailing-icon' if comp.icon %>
@@ -7,7 +10,7 @@
   <input id="<%= comp.id %>-input"
          name="<%= comp.name %>"
          type="datetime-local"
-         value="<%= comp.value.strftime("%Y-%m-%dT%H:%M:%S.%L") %>"
+         value="<%= time_val %>"
          class="mdc-text-field__input"
          aria-controls="<%= comp.id %>-input-helper-text"
          <%= 'required' if comp.required %>
