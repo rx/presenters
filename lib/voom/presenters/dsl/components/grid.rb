@@ -6,6 +6,7 @@ require_relative 'mixins/attaches'
 require_relative 'mixins/dialogs'
 require_relative 'mixins/chips'
 require_relative 'mixins/snackbars'
+require_relative 'mixins/selects'
 
 module Voom
   module Presenters
