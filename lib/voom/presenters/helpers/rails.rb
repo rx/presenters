@@ -15,12 +15,13 @@ if defined?(Rails)
           def presenters_path(presenter, **params)
             path = voom_presenters_web_client_app_path(params)
             if path.include?('?')
-              path = path.sub('?', "#{presenter}?")
+              path = path.sub('?', "/#{presenter}?")
             else
               path = "#{path}/" unless path.end_with?('/')
               # replace last / with the presenter
-              path.reverse.sub('/', "/#{presenter}".reverse).reverse
+              path = path.reverse.sub('/', "/#{presenter}".reverse).reverse
             end
+            path
           end
 
           def table_for(query_,
