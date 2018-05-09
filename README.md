@@ -30,6 +30,12 @@ Then posts it to the reference web client.
 That result is then saved to a file and opened up with a browser.
     
     curl localhost:9292/pom/index > $TMPDIR/index.json  && curl -d "@$TMPDIR/index.json" -X POST localhost:9292/index > $TMPDIR/index.html && open $TMPDIR/index.html
+
+## Status
+This project is in a pre-beta status. It is changing frequently as the first user interfaces are being built with it.
+Any use should be for internal use only until the status becomes beta.
+
+[![CircleCI](https://circleci.com/gh/rx/presenters.svg?style=svg)](https://circleci.com/gh/rx/presenters)
     
 ## Usage
 
