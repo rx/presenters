@@ -37,6 +37,7 @@ Any use should be for internal use only until the status becomes beta.
 
 [![CircleCI](https://circleci.com/gh/rx/presenters.svg?style=svg)](https://circleci.com/gh/rx/presenters)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8fcea717485230e60f27/maintainability)](https://codeclimate.com/github/rx/presenters/maintainability)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=plastic)](https://raw.githubusercontent.com/rx/presenters/master/LICENSE)
     
 ## Usage
 
