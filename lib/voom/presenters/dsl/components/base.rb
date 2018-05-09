@@ -1,7 +1,7 @@
 require_relative '../lockable'
 require_relative '../../../serializer'
 require_relative '../../../trace'
-
+require_relative 'mixins/yield_to'
 require 'securerandom'
 
 module Voom
@@ -16,6 +16,7 @@ module Voom
           include Voom::Serializer
           include LoggerMethods
           include Trace
+          include Mixins::YieldTo
 
           attr_reader :type, :id, :attributes, :context
 

@@ -11,6 +11,7 @@ require_relative 'mixins/toggles'
 require_relative 'mixins/attaches'
 require_relative 'mixins/expansion_panels'
 require_relative 'mixins/content'
+require_relative 'mixins/typography'
 
 module Voom
   module Presenters
@@ -26,6 +27,7 @@ module Voom
           include Mixins::Attaches
           include Mixins::ExpansionPanels
           include Mixins::Content
+          include Mixins::Typography
 
           attr_reader :components, :shows_errors
 

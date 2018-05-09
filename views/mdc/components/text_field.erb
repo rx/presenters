@@ -25,3 +25,4 @@
 <p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text" aria-hidden="true">
   <%= comp.error || comp.hint %>
 </p>
+<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

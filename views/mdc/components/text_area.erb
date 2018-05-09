@@ -3,6 +3,8 @@
     <textarea id="<%= comp.id %>"
               name="<%= comp.name %>"
              class="mdl-textfield__input" type="text" rows= "<%= comp.rows %>" ><%= comp.value %></textarea>
-    <label class="mdl-textfield__label" for="<%= comp.id %>"><%= comp.label %></label>
+    <label class="mdl-textfield__label" for="<%= comp.id %>"><%= expand_text(comp.label) %></label>
     <span class="mdl-textfield__error <% if comp.error %> is-invalid<%end%>" ><%= comp.error || comp.hint%></span>
 </div>
+<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+

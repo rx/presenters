@@ -19,4 +19,5 @@
                <%= 'mdc-floating-label--float-above' if float_label%>"><%= comp.label %></div>
     <div class="mdc-select__bottom-line"></div>
   </div>
+  <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 <% end %>
