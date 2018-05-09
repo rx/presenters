@@ -19,6 +19,7 @@ GEM
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     dry-configurable (0.7.0)
       concurrent-ruby (~> 1.0)
     dry-container (0.6.0)
@@ -27,6 +28,7 @@ GEM
     dry-inflector (0.1.2)
     ffi (1.9.23)
     ice_nine (0.11.2)
+    json (2.1.0)
     method_source (0.8.2)
     mini_portile2 (2.3.0)
     mustermann (1.0.2)
@@ -65,6 +67,11 @@ GEM
     selenium-webdriver (3.11.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    simplecov (0.15.1)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     sinatra (2.0.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -98,6 +105,7 @@ DEPENDENCIES
   rspec
   rspec-html-matchers
   rspec_junit_formatter
+  simplecov
   voom-presenters!
   watir (~> 6.10.3)
   watir-rspec

@@ -1,4 +1,13 @@
 #!/usr/bin/env ruby
+if ENV['VOOM_ENV']=='integration_testing'
+  require 'simplecov'
+  if ENV['CIRCLE_ARTIFACTS']
+    dir = File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
+    SimpleCov.coverage_dir(dir)
+  end
+  SimpleCov.start
+end
+
 ENV['VOOM_ROOT'] = File.expand_path(__dir__)
 libdir = File.join(ENV['VOOM_ROOT'], 'lib')
 $:.unshift(libdir) unless $:.include?(libdir)

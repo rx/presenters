@@ -10,4 +10,5 @@ group :test do
   gem "webdrivers", "~> 3.0"
   gem 'watir-rspec'
   gem 'rspec_junit_formatter'
+  gem 'simplecov', require: false
 end
