@@ -36,6 +36,7 @@ This project is in a pre-beta status. It is changing frequently as the first use
 Any use should be for internal use only until the status becomes beta.
 
 [![CircleCI](https://circleci.com/gh/rx/presenters.svg?style=svg)](https://circleci.com/gh/rx/presenters)
+[![Coverage Status](https://coveralls.io/repos/github/rx/presenters/badge.svg?branch=master)](https://coveralls.io/github/rx/presenters?branch=master)
     
 ## Usage
 
