@@ -1,0 +1,19 @@
+Voom::Presenters.define(:dialog_action) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :events_drawer
+  
+  indented_grid do
+    heading 'Dialog'
+    body 'A dialog event displays a, you guessed it, dialog.'
+
+    title 'Dialog'
+    button 'dialog' do
+      event :click do
+        dialog :my_dialog
+      end
+    end
+    attach :show_dialog
+  end
+  attach :code, file: __FILE__
+end

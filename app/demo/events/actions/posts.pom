@@ -1,0 +1,23 @@
+Voom::Presenters.define(:posts_action) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :events_drawer
+
+  indented_grid do
+    heading 'Posts'
+    body 'Issues a POST to a given url',
+         'Generally used to create a restful resource or issue a command.'
+    body '*Note: Will generate a 404.*'
+
+    title 'Posts'
+    body "issues a POST to the passed path\nAlias: creates"
+    content shows_errors: false do
+      button 'posts' do
+        event :click do
+          posts 'postpath', {optional: :params}
+        end
+      end
+    end
+  end
+  attach :code, file: __FILE__
+end

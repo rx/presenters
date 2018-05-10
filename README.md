@@ -9,6 +9,10 @@ A POM client can fully render user interface from POM.
 
 ## Demo
 
+[Demo](https://powerful-bastion-96181.herokuapp.com)
+
+Or to run locally:
+
     git clone git@github.com:rx/presenters.git
     cd presenters/
     bundle install

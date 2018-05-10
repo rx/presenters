@@ -1,0 +1,19 @@
+Voom::Presenters.define(:snackbar_action) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :events_drawer
+
+  indented_grid do
+    heading 'Snackbar'
+    body 'Displays the snackbar at the bottom of the screen.',
+         'Useful for inplace editing notifications of success'
+
+    subheading 'Snackbar'
+    button 'snackbar' do
+      event :click do
+        snackbar 'I want a snack!'
+      end
+    end
+  end
+  attach :code, file: __FILE__
+end

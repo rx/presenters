@@ -1,0 +1,24 @@
+Voom::Presenters.define(:updates_action) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :events_drawer
+
+  indented_grid do
+    heading 'Updates'
+    body 'Issues a PUT to a given url',
+         'Generally used to update a restful resource.'
+    body '*Note: Will generate a 404.*'
+    
+    title 'Updates'
+    body 'issues a PUT to the passed path'
+    content do
+      button 'updates' do
+        event :click do
+          # This goes nowhere
+          updates 'updatepath', {optional: :params}
+        end
+      end
+    end
+  end
+  attach :code, file: __FILE__
+end
