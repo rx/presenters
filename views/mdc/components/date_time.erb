@@ -2,17 +2,18 @@
     time_val = comp.value ? comp.value.strftime("%Y-%m-%dT%H:%M:%S.%L") : nil
 %>
 <div id="<%= comp.id %>"
-     class="mdc-text-field
+     class="mdc-text-field v-datetime
             <%= 'mdc-text-field--with-trailing-icon' if comp.icon %>
             <%= 'mdc-text-field--fullwidth' if comp.full_width %>
             <%= 'is-invalid is-dirty' if comp.error %>">
   <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"} %>
   <input id="<%= comp.id %>-input"
          name="<%= comp.name %>"
-         type="datetime-local"
+         type="text"
          value="<%= time_val %>"
          class="mdc-text-field__input"
          aria-controls="<%= comp.id %>-input-helper-text"
+         data-input
          <%= 'required' if comp.required %>
          <%= 'invalid' if comp.error %>
          <%= "pattern='#{comp.pattern}'" if comp.pattern %>
@@ -29,4 +30,4 @@
   <%= comp.error || comp.hint %>
 </p>
 
-<div class="v-datetime"></div>
+
