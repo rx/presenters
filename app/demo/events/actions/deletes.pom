@@ -1,0 +1,24 @@
+Voom::Presenters.define(:deletes_action) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :events_drawer
+
+  indented_grid do
+    heading 'Deletes'
+    body 'Issues a DEL to a given url',
+         'Generally used to destroy/delete a restful resource.'
+    body '*Note: Will generate a 404.*'
+
+    title 'Deletes'
+    body 'issues a DELETE to the passed path'
+    content do
+      button 'deletes' do
+        event :click do
+          # Will generate an error
+          deletes 'deletepath', {optional: :params}
+        end
+      end
+    end
+  end
+  attach :code, file: __FILE__
+end

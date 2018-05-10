@@ -1,0 +1,24 @@
+Voom::Presenters.define(:form_level_events) do
+  helpers Demo::Helpers::IndentedGrid
+
+  attach :top_nav
+  attach :events_drawer
+
+  indented_grid do
+    display 'Posts in Form'
+    body 'This demonstrates that a change event on **ANY** form input will send all the form inputs to the event action. '\
+             'This works with posts and replace actions'
+    form do
+      text_field name: :myfield do
+        label 'Data to post'
+      end
+      text_field name: :myfield2 do
+        label 'More Data to post'
+      end
+      event :change do
+        replaces :context_list, :context_list
+      end
+    end
+    attach :context_list
+  end
+end

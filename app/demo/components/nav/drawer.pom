@@ -1,5 +1,5 @@
 Voom::Presenters.define(:component_drawer) do
-  drawer 'Presenters Demo' do
+  drawer 'Components' do
     attach :component_menu
   end
 end

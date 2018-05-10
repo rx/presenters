@@ -1,0 +1,21 @@
+Voom::Presenters.define(:toggle_visibility_action) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :events_drawer
+
+  indented_grid do
+    heading 'Toggle Visibility'
+    body 'Allows you to toggle visiblity of content on and off on events.',
+         'Takes the id of the element to toggle.',
+         "Optionally takes :on or :off to force visiblity."
+
+    subheading 'Toggle Visibility'
+    button 'toggle visiblity' do
+      event :click do
+        toggle_visiblity :toggle_me
+      end
+    end
+    heading 'Sometimes I appear', id: :toggle_me
+  end
+  attach :code, file: __FILE__
+end

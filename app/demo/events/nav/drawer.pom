@@ -1,0 +1,21 @@
+Voom::Presenters.define(:events_drawer) do
+  helpers Voom::Presenters::Helpers::Inflector
+  drawer 'Events' do
+    menu do
+      %i(field_level_events form_level_events).sort.each do |comp|
+        item titleize(comp) do
+          event :click do
+            loads comp
+          end
+        end
+      end
+      %i(dialog autocomplete replaces toggle_visibility snackbar updates deletes posts).sort.each do |comp|
+        item titleize(comp) do
+          event :click do
+            loads "#{comp}_action"
+          end
+        end
+      end
+    end
+  end
+end
