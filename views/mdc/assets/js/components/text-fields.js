@@ -18,7 +18,7 @@ export class VTextField extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element);
         this.input = element.querySelector('input');
-        this.input.vComponent = self;
+        this.input.vComponent = this;
         this.mdcComponent = mdcComponent;
     }
 

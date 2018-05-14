@@ -8690,6 +8690,9 @@ v-card-title-position-left {
   100% {
     transform: translateX(calc(0 - 0%)) translateY(-50%) scale(0.923); } }
 
+.mdc-text-field__input .v-text-field {
+  padding: inherit; }
+
 /**
  * Creates a rule that will be applied when an MDC Web component is within the context of an RTL layout.
  *
@@ -12062,6 +12065,19 @@ span.flatpickr-weekday {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); } }
+
+.mdc-text-field__icon.v-datetime--clear {
+  right: 15px;
+  left: initial; }
+
+.v-datetime.mdc-text-field--fullwidth:not(.mdc-text-field--textarea) .mdc-text-field__input {
+  padding-right: 48px; }
+  .v-datetime.mdc-text-field--fullwidth:not(.mdc-text-field--textarea) .mdc-text-field__input .mdc-text-field--with-leading-icon {
+    padding-left: 48px; }
+
+.v-datetime.mdc-text-field--fullwidth:not(.mdc-text-field--textarea).mdc-text-field--with-leading-icon .mdc-text-field__input {
+  padding-right: 48px;
+  padding-left: 48px; }
 
 .v-actionable {
   cursor: pointer; }

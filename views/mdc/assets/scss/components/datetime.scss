@@ -1,1 +1,19 @@
 @import "vendor/flatpickr.min";
+
+.mdc-text-field__icon.v-datetime--clear {
+  right: 15px;
+  left: initial;
+}
+
+// Fixes the follwing bug: https://github.com/material-components/material-components-web/issues/2044
+.v-datetime.mdc-text-field--fullwidth:not(.mdc-text-field--textarea) .mdc-text-field__input {
+  padding-right: 48px;
+  .mdc-text-field--with-leading-icon {
+    padding-left: 48px;
+  }
+}
+
+.v-datetime.mdc-text-field--fullwidth:not(.mdc-text-field--textarea).mdc-text-field--with-leading-icon  .mdc-text-field__input {
+  padding-right: 48px;
+  padding-left: 48px;
+}

@@ -21,12 +21,6 @@ module Voom
                                                   context: context,
                                                   **attribs, &block)
             end
-
-            def datetime_field(**attribs, &block)
-              self << Components::DateTime.new(parent: self,
-                                                  context: context,
-                                                  **attribs, &block)
-            end
           end
         end
       end

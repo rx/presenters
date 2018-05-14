@@ -12,6 +12,7 @@ require_relative 'mixins/attaches'
 require_relative 'mixins/expansion_panels'
 require_relative 'mixins/content'
 require_relative 'mixins/typography'
+require_relative 'mixins/date_time_fields'
 
 module Voom
   module Presenters
@@ -21,6 +22,7 @@ module Voom
           include Mixins::Append
           include Mixins::Grids
           include Mixins::TextFields
+          include Mixins::DateTimeFields
           include Mixins::Selects
           include Mixins::Toggles
           include Mixins::Buttons

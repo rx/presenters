@@ -1,5 +1,5 @@
 <div id="<%= comp.id %>"
-     class="mdc-text-field
+     class="mdc-text-field v-text-field
             <%= 'mdc-text-field--with-trailing-icon' if comp.icon %>
             <%= 'mdc-text-field--fullwidth' if comp.full_width %>
             <%= 'is-invalid is-dirty' if comp.error %>">
@@ -8,7 +8,8 @@
          name="<%= comp.name %>"
          type="<%= comp.password ? 'password' : 'text' %>"
          value="<%= comp.value %>"
-         class="mdc-text-field__input"
+         class="mdc-text-field__input
+            <%= 'mdc-text-field--trailing' if comp.icon %>"
          aria-controls="<%= comp.id %>-input-helper-text"
          <%= 'required' if comp.required %>
          <%= 'invalid' if comp.error %>

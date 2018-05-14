@@ -1,4 +1,5 @@
 <% class_name = '' unless local_variables.include? :class_name
+   data = nil unless local_variables.include? :data
 %>
 <% if comp
      parent_id = comp.event_parent_id unless locals.include? :parent_id
@@ -20,6 +21,7 @@
      class="<%= class_name %> <%= icon_class_name %>
             <%= 'v-actionable' if comp.events %>
             <%= color_classname(comp) %>"
+      <%= "data-#{data}" if data %>
        style = "<%= color_style(comp) %>
                 <%= "font-size: #{comp.size}" if comp.size %>"
      <%= 'tabindex="1"' if class_name.include?('mdc-text-field__icon') && comp.events %>

@@ -1,6 +1,6 @@
 import {initButtons} from './button';
 import {initDialogs} from './dialogs';
-import {initDateTime} from './date-time';
+import {initDateTime} from './datetime';
 import {initTextFields} from './text-fields';
 import {initEvents} from './events';
 import {initLists} from './lists';

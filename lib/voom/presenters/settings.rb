@@ -29,6 +29,19 @@ module Voom
           # end
           setting :prepare_context, []
         end
+        setting :components do
+          setting :defaults do
+            setting :datetime do
+              setting "format", 'Y-m-d H:i'
+            end
+            setting :date do
+              setting "format", 'Y-m-d'
+            end
+            setting :time do
+              setting "format", 'H:i'
+            end
+          end
+        end
       end
     end
   end

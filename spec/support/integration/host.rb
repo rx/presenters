@@ -1,6 +1,6 @@
 module Support
   module Host
-    HOSTS = ['localhost:9292','127.0.0.1:9393']
+    HOSTS = ['localhost:9292']
 
     def host
       ENV.fetch('INTEGRATION_HOST') do

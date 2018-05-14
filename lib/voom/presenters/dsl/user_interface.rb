@@ -5,6 +5,7 @@ require_relative 'components/mixins/helpers'
 require_relative 'components/mixins/dialogs'
 require_relative 'components/mixins/snackbars'
 require_relative 'components/mixins/text_fields'
+require_relative 'components/mixins/date_time_fields'
 require_relative 'invalid_presenter'
 
 require 'voom/serializer'
@@ -23,6 +24,8 @@ module Voom
         include Components::Mixins::Snackbars
         include Components::Mixins::Icons
         include Components::Mixins::TextFields
+        include Components::Mixins::DateTimeFields
+
 
         include Voom::Serializer
         include Voom::Trace

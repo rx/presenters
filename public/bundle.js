@@ -648,7 +648,7 @@ let eventHandlerMixin = Base => class extends Base {
 /* harmony export (immutable) */ __webpack_exports__["a"] = initialize;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialogs__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__date_time__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datetime__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text_fields__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lists__ = __webpack_require__(81);
@@ -681,7 +681,7 @@ function initialize() {
     console.log('Initializing');
     Object(__WEBPACK_IMPORTED_MODULE_0__button__["a" /* initButtons */])();
     Object(__WEBPACK_IMPORTED_MODULE_1__dialogs__["a" /* initDialogs */])();
-    Object(__WEBPACK_IMPORTED_MODULE_2__date_time__["a" /* initDateTime */])(); // MUST BE BEFORE initTextFields
+    Object(__WEBPACK_IMPORTED_MODULE_2__datetime__["a" /* initDateTime */])(); // MUST BE BEFORE initTextFields
     Object(__WEBPACK_IMPORTED_MODULE_3__text_fields__["b" /* initTextFields */])();
     Object(__WEBPACK_IMPORTED_MODULE_5__lists__["a" /* initLists */])();
     Object(__WEBPACK_IMPORTED_MODULE_6__icon_toggles__["a" /* initIconToggles */])();
@@ -970,9 +970,9 @@ class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
     }
 
     inputValues(form) {
-        var params = [];
+        let params = [];
         // Let input component push parameters
-        var vComp = this.component();
+        let vComp = this.component();
         if (vComp) {
             vComp.prepareSubmit(form, params);
         }
@@ -981,12 +981,12 @@ class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
 
     component() {
         let parent = this.parentElement();
-        return parent ? this.parentElement().vComponent : null;
+        return parent ? parent.vComponent : null;
     }
 
     validate() {
-        var errors = [];
-        var comp = this.component();
+        let errors = [];
+        let comp = this.component();
         if (comp) {
             errors = comp.validate();
         }
@@ -1383,7 +1383,7 @@ class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handle
     constructor(element, mdcComponent) {
         super(element);
         this.input = element.querySelector('input');
-        this.input.vComponent = self;
+        this.input.vComponent = this;
         this.mdcComponent = mdcComponent;
     }
 
@@ -10009,42 +10009,7 @@ function initDialogs() {
 }
 
 /***/ }),
-/* 55 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = initDateTime;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_flatpickr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__text_fields__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_textfield__ = __webpack_require__(16);
-
-
-
-
-
-function initDateTime() {
-    console.log('\tDateTime');
-    let components = document.querySelectorAll('.v-datetime');
-    for (let i = 0; i < components.length; i++) {
-        let component = components[i];
-        if (!component.vComponent) {
-            component.vComponent = new VDateTime(component, new __WEBPACK_IMPORTED_MODULE_3__material_textfield__["a" /* MDCTextField */](component));
-        }
-    }
-}
-
-class VDateTime extends __WEBPACK_IMPORTED_MODULE_2__text_fields__["a" /* VTextField */] {
-    constructor(element, mdcComponent) {
-        super(element, mdcComponent);
-        __WEBPACK_IMPORTED_MODULE_0_flatpickr___default()(element, {});
-    }
-}
-/* unused harmony export VDateTime */
-
-
-/***/ }),
+/* 55 */,
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18655,6 +18620,50 @@ class VSwitch extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__
     }
 }
 /* unused harmony export VSwitch */
+
+
+/***/ }),
+/* 118 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initDateTime;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_flatpickr__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__text_fields__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_textfield__ = __webpack_require__(16);
+
+
+
+
+function initDateTime() {
+    console.log('\tDateTime');
+    let components = document.querySelectorAll('.v-datetime');
+    for (let i = 0; i < components.length; i++) {
+        let component = components[i];
+        if (!component.vComponent) {
+            component.vComponent = new VDateTime(component, new __WEBPACK_IMPORTED_MODULE_2__material_textfield__["a" /* MDCTextField */](component));
+        }
+    }
+}
+
+class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextField */] {
+    constructor(element, mdcComponent) {
+        super(element, mdcComponent);
+        let config = JSON.parse(element.dataset.config);
+        config.altInput = true;
+        let type = element.dataset.type;
+
+        if (type === 'datetime') {
+            config.enableTime = true;
+        } else if (type === 'time') {
+            config.enableTime = true;
+            config.noCalendar = true;
+        }
+        __WEBPACK_IMPORTED_MODULE_0_flatpickr___default()(this.input, config);
+    }
+}
+/* unused harmony export VDateTime */
 
 
 /***/ })

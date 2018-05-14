@@ -1,0 +1,57 @@
+require 'date'
+
+Voom::Presenters.define(:time_fields) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :component_drawer
+
+  indented_grid do
+    display 'Time Field'
+    body <<~DOC
+      A time field separates user display format from the value format.  
+      
+      The default time user display format can be configured globally using the following:      
+      
+      ````
+      Voom::Presenters::Settings.configure do |config|
+        config.presenters.components.defaults.time.format = 'H:i'
+      end
+      ````
+            
+      The value format for date times can be the following:
+
+      * Ruby Time/DateTime objects.
+      * Chronologically Time Strings, e.g., HH:MM
+    DOC
+    grid do
+      column 6 do
+        time_field name: :skydive_at,
+                       format: 'H:i' do
+          label 'Select your time to skydive'
+          icon :event
+          event :change do
+            replaces :context_list, :context_list, hide_time: true
+          end
+        end
+      end
+      column 6 do
+        attach :context_list, hide_time: true
+      end
+    end
+    grid do
+      column 6 do
+        title 'Min Time'
+        time_field min_time: "9:00"
+
+        title 'Max Time'
+        time_field max_time: "20:00"
+
+        title 'Range'
+        time_field min_time: "9:00"
+        time_field max_time: "20:00"
+      end
+    end
+
+  end
+  attach :code, file: __FILE__
+end
