@@ -1,0 +1,22 @@
+<li class="mdc-list-item
+           v-list-item--header
+           <%= 'v-list-item--selectable-header' if line.selectable %>"
+    id="<%= line.id %>">
+  <%= erb :"components/checkbox", :locals => {:comp => line.checkbox} if line.checkbox %>
+  <span class="mdc-list-item__text">
+    <%= expand_text(line.text&.text) %>
+
+    <% if line.subtitle %>
+      <span class="mdc-list-item__secondary-text">
+        <%= expand_text(line.subtitle.text) %>
+      </span>
+    <% end %>
+
+    <% if line.body %>
+      <span class="mdc-list-item__secondary-text">
+        <%= expand_text(line.body.text) %>
+      </span>
+    <% end %>
+  </span>
+</li>
+<li role="separator" class="mdc-list-divider"></li>

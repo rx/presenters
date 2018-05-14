@@ -66,13 +66,6 @@ module Voom
                                                params: params, &block)
           end
 
-          def selects(input_name=nil, **params, &block)
-            @actions << Components::Action.new(parent: self,
-                                               type: :selects,
-                                               target: input_name,
-                                               params: params, &block)
-          end
-
           def snackbar(text, **params, &block)
             @actions << Components::Action.new(parent: self,
                                                type: :snackbar,

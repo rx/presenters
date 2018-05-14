@@ -9401,6 +9401,9 @@ a.mdc-list-item {
   /* @alternate */
   background-color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38)); }
 
+.v-list-item--header {
+  background-color: #F5F5F5; }
+
 /** postcss-bem-linter: define icon-toggle */
 .mdc-icon-toggle {
   --mdc-ripple-fg-size: 0;

@@ -10424,8 +10424,6 @@ class MDCNotchedOutline extends __WEBPACK_IMPORTED_MODULE_0__material_base_compo
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visiblity__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__events_snackbar__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_autocomplete__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_selects__ = __webpack_require__(104);
-
 
 
 
@@ -10504,8 +10502,6 @@ class VEvents {
                 return new __WEBPACK_IMPORTED_MODULE_6__events_snackbar__["a" /* VSnackbarEvent */](options, params, event);
             case 'autocomplete':
                 return new __WEBPACK_IMPORTED_MODULE_7__events_autocomplete__["a" /* VAutoComplete */](options, url, params, event);
-            case 'selects':
-                return new __WEBPACK_IMPORTED_MODULE_8__events_selects__["a" /* VSelects */](options, params, event);
             default:
                 throw action_type + ' is not supported.';
         }
@@ -11530,9 +11526,58 @@ class VAutoComplete extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */]
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initLists;
+
+
+function createSelectAllHandler(target, listElements) {
+    return function () {
+        if (target.checked) {
+            for (let i = 0; i < listElements.length; i++) {
+                listElements[i].checked = true;
+            }
+        } else {
+            for (let i = 0; i < listElements.length; i++) {
+                listElements[i].checked = false;
+            }
+        }
+    };
+}
+
+function createListItemSelectHandler(listElements, selectAll) {
+    return function () {
+        let checked = 0;
+        let unchecked = 0;
+        for (let i = 0; i < listElements.length; i++) {
+            listElements[i].checked ? checked++ : unchecked++;
+        }
+        if (checked && unchecked) {
+            selectAll.indeterminate = true;
+        }
+        if (checked && !unchecked) {
+            selectAll.indeterminate = false;
+            selectAll.checked = true;
+        }
+        if (!checked && unchecked) {
+            selectAll.indeterminate = false;
+            selectAll.checked = false;
+        }
+    };
+}
+
 function initLists() {
     console.log('\tLists');
-    // Put any initialization code you need here
+    let components = document.querySelectorAll('.mdc-list');
+    if (components) {
+        for (let i = 0; i < components.length; i++) {
+            let selectAllLineItem = components[i].querySelector('.v-checkbox--select-control');
+            let selectableLineItems = components[i].querySelectorAll('.v-list-item--selectable-checkbox');
+            if (selectAllLineItem && selectableLineItems) {
+                selectAllLineItem.addEventListener('change', createSelectAllHandler(selectAllLineItem, selectableLineItems));
+                for (let j = 0; j < selectableLineItems.length; j++) {
+                    selectableLineItems[j].addEventListener('change', createListItemSelectHandler(selectableLineItems, selectAllLineItem));
+                }
+            }
+        }
+    }
 }
 
 /***/ }),
@@ -14903,42 +14948,6 @@ const numbers = {
   ANIM_END_LATCH_MS: 250
 };
 
-
-
-/***/ }),
-/* 104 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-class VSelects {
-    constructor(options, params, event) {
-        this.target = options.target;
-        this.params = params;
-        this.event = event;
-    }
-
-    call(results) {
-        let targetFields = document.querySelectorAll('input[name="' + this.target + '"]');
-        let checked = this.event.target.checked;
-        new Promise(function (resolve) {
-            if (targetFields) {
-                if (checked) {
-                    for (let i = 0; i < targetFields.length; i++) {
-                        console.log(i);
-                        targetFields[i].checked = true;
-                    }
-                } else {
-                    for (let i = 0; i < targetFields.length; i++) {
-                        targetFields[i].checked = false;
-                    }
-                }
-            }
-            results.push({ action: 'selects', statusCode: 200 });
-            resolve(results);
-        });
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = VSelects;
 
 
 /***/ })

@@ -3,7 +3,8 @@
 <% end %>
 <li class="mdc-list-item
           <%= 'mdc-list-item--selected' if line.selected %>
-          <%= 'v-menu-click' if line.menu && line.actions.empty?%>"
+          <%= 'v-menu-click' if line.menu && line.actions.empty?%>
+          <%= 'v-list-item--selectable' if line.selectable %>"
     id="<%= line.id %>">
   <%= erb :"components/list/checkbox", :locals => {:line => line} %>
   <%= erb :"components/list/icon", :locals => {:line => line} %>

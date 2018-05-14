@@ -10,18 +10,20 @@ module Voom
       module Components
         module Lists
           class Line < EventBase
-            attr_accessor :actions, :selected
+            attr_accessor :actions, :selected, :selectable
 
             def initialize(context:, **attribs_, &block)
               super(type: :line, context: context, **attribs_, &block)
-              @selected = attribs.delete(:selected)
+              @selected = attribs.delete(:selected) || false
+              @selectable = attribs.delete(:selectable) || false
               self.text(attribs.delete(:text)) if attribs.key?(:text)
               self.subtitle(attribs.delete(:subtitle)) if attribs.key?(:subtitle)
               self.info(attribs.delete(:info)) if attribs.key?(:info)
               self.body(attribs.delete(:body)) if attribs.key?(:body)
               self.avatar(attribs.delete(:avatar)) if attribs.key?(:avatar)
               self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
-              self.checkbox(attribs.delete(:ccheckbox)) if attribs.key?(:checkbox)
+              self.checkbox(attribs.delete(:checkbox)) if attribs.key?(:checkbox) && !@selectable
+              self.checkbox(attribs.slice(:name, :value).merge(class_name: 'v-list-item--selectable-checkbox')) if @selectable
 
               @actions = []
               expand!

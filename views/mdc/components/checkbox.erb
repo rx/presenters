@@ -3,7 +3,8 @@
          id="<%=comp.id%>"
          name="<%=comp.name%>"
          value="<%=comp.value%>"
-         class="mdc-checkbox__native-control"
+         class="mdc-checkbox__native-control
+               <%= comp.class_name %>"
          <% if comp.checked %> checked <% end %><% if comp.disabled %> disabled <% end %>
          <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>
     />
