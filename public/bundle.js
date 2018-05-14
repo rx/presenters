@@ -639,6 +639,10 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__forms__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__snackbar__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__checkboxes__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__date_time__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__switches__ = __webpack_require__(107);
+
+
 
 
 
@@ -667,6 +671,8 @@ function initialize() {
     Object(__WEBPACK_IMPORTED_MODULE_10__forms__["a" /* initForms */])();
     Object(__WEBPACK_IMPORTED_MODULE_11__snackbar__["a" /* initSnackbar */])();
     Object(__WEBPACK_IMPORTED_MODULE_12__checkboxes__["a" /* initCheckboxes */])();
+    Object(__WEBPACK_IMPORTED_MODULE_13__date_time__["a" /* initDateTime */])();
+    Object(__WEBPACK_IMPORTED_MODULE_14__switches__["a" /* initSwitches */])();
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_3__events__["a" /* initEvents */])();
     // componentHandler.upgradeAllRegistered();
@@ -941,7 +947,8 @@ class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
     }
 
     component() {
-        return this.parentElement().vComponent;
+        let parent = this.parentElement();
+        return parent ? this.parentElement().vComponent : null;
     }
 
     validate() {
@@ -2697,10 +2704,10 @@ class VErrors {
                 }, []);
                 var fieldErrors = this.normalizeErrors(response.errors);
 
-                for (var field of fieldErrors) {
+                for (var field in fieldErrors) {
                     if (!this.displayInputError(field, fieldErrors[field])) {
                         // Collect errors that can't be displayed at the field level
-                        pageErrors.push(fieldErrors[field].join('<br/>'));
+                        pageErrors.push(fieldErrors[field]);
                     }
                 }
                 this.prependErrors(pageErrors);
@@ -2734,9 +2741,14 @@ class VErrors {
         var newDiv = document.createElement("div");
         newDiv.className = 'v-error-message';
         // and give it some content
-        var newContent = document.createTextNode(messages.join('<br/>'));
-        // add the text node to the newly created div
-        newDiv.appendChild(newContent);
+
+        for (var message of messages) {
+            var newContent = document.createTextNode(message);
+            newDiv.appendChild(newContent);
+            let br = document.createElement('br');
+            // add the text node to the newly created div
+            newDiv.appendChild(br);
+        }
 
         // add the newly created element and its content into the DOM
         if (errorsDiv) {
@@ -8955,7 +8967,13 @@ class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handle
     //    { :page: ["must be filled"] }
     validate(formData) {
         console.log("TextField validate", formData);
-        return true;
+        let isValid = this.input.checkValidity();
+        if (isValid) {
+            return true;
+        }
+        let errorMessage = {};
+        errorMessage[this.input.id] = [this.input.validationMessage];
+        return errorMessage;
     }
 
     value() {
@@ -10424,6 +10442,8 @@ class MDCNotchedOutline extends __WEBPACK_IMPORTED_MODULE_0__material_base_compo
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visiblity__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__events_snackbar__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_autocomplete__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_navigates__ = __webpack_require__(105);
+
 
 
 
@@ -10502,6 +10522,8 @@ class VEvents {
                 return new __WEBPACK_IMPORTED_MODULE_6__events_snackbar__["a" /* VSnackbarEvent */](options, params, event);
             case 'autocomplete':
                 return new __WEBPACK_IMPORTED_MODULE_7__events_autocomplete__["a" /* VAutoComplete */](options, url, params, event);
+            case 'navigates':
+                return new __WEBPACK_IMPORTED_MODULE_8__events_navigates__["a" /* VNavigates */](options, params, event);
             default:
                 throw action_type + ' is not supported.';
         }
@@ -10621,12 +10643,13 @@ class VPosts extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
 
     call(results) {
         this.clearErrors();
-        var errors = this.validate();
+        let errors = this.validate();
+        let method = this.method;
         if (errors.length > 0) {
             return new Promise(function (_, reject) {
                 results.push({
                     action: 'posts',
-                    method: this.method,
+                    method: method,
                     statusCode: 400,
                     contentType: 'v/errors',
                     content: errors
@@ -10653,7 +10676,6 @@ class VPosts extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
         }
 
         var httpRequest = new XMLHttpRequest();
-        var method = this.method;
         var url = this.url;
         if (!httpRequest) {
             throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
@@ -14288,7 +14310,7 @@ class VForm {
     }
 
     inputs() {
-        return this.element.querySelectorAll('input');
+        return this.element.elements;
     }
 
     // Called to collect data for submission
@@ -14948,6 +14970,89 @@ const numbers = {
   ANIM_END_LATCH_MS: 250
 };
 
+
+
+/***/ }),
+/* 104 */,
+/* 105 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+class VNavigates {
+    constructor(options, params, event) {
+        this.target = options.target;
+        this.params = params;
+        this.event = event;
+    }
+
+    call(results) {
+        var promiseObj = new Promise(function (resolve) {
+            console.log("Navigating back");
+            results.push({ action: 'navigates', statusCode: 200 });
+            history.back();
+            resolve(results);
+        });
+        return promiseObj;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VNavigates;
+
+
+/***/ }),
+/* 106 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initDateTime;
+function initDateTime() {
+    console.log('\tDateTime');
+}
+
+/***/ }),
+/* 107 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initSwitches;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(24);
+
+
+
+function initSwitches() {
+    console.log('\tSwitches');
+
+    let components = document.querySelectorAll('.v-switch');
+    if (components) {
+        for (let i = 0; i < components.length; i++) {
+            let component = components[i];
+            if (!component.vComponent) {
+                let input = component.querySelector('input');
+                let vSwitch = new VSwitch(component, input);
+                component.vComponent = vSwitch;
+                input.vComponent = vSwitch;
+            }
+        }
+    }
+}
+
+class VSwitch extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]) {
+    constructor(element, input) {
+        super(element);
+        this.input = input;
+    }
+
+    validate(_formData) {
+        return true;
+    }
+
+    prepareSubmit(form, params) {
+        if (!form) {
+            params.push([this.input.name, this.input.value]);
+        }
+    }
+}
+/* unused harmony export VSwitch */
 
 
 /***/ })

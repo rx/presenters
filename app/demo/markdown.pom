@@ -62,12 +62,6 @@ see [Wikipedia](http://en.wikipedia.org/wiki/Markdown)
 ## changelog
 * 17-Feb-2013 re-design
 
-----
-## thanks
-* [markdown-js](https://github.com/evilstreak/markdown-js)
-
-    HEREDOC
-
-
+HEREDOC
   end
 end

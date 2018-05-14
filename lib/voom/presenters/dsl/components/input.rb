@@ -1,10 +1,12 @@
 require_relative 'mixins/event'
+require_relative 'mixins/tooltips'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Input < EventBase
+          include Mixins::Tooltips
           attr_reader :name
 
           def initialize(**attribs_, &block)

@@ -1,0 +1,19 @@
+Voom::Presenters.define(:toggle_visibility_action) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :events_drawer
+
+  indented_grid do
+    heading 'Loads'
+    body 'Loads a new presenter, replacing the whole page.'
+
+    subheading context['reloaded'] ? "Reloaded" : 'Loads'
+    button 'loads' do
+      event :click do
+        loads :events, reloaded: true
+      end
+    end
+    heading context['reloaded'] ? "Reloaded" : 'Loaded'
+  end
+  attach :code, file: __FILE__
+end

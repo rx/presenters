@@ -26,7 +26,8 @@ export class VBase extends VUrls {
     }
 
     component() {
-        return this.parentElement().vComponent;
+        let parent = this.parentElement();
+        return parent ? this.parentElement().vComponent : null;
     }
 
     validate() {

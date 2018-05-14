@@ -1,6 +1,5 @@
 require_relative 'mixins/event'
 require_relative 'input'
-require_relative 'mixins/tooltips'
 
 module Voom
   module Presenters
@@ -8,8 +7,6 @@ module Voom
       module Components
         # Base class used by toggle classes
         class ToggleBase < Input
-          include Mixins::Tooltips
-
           attr_accessor :text, :checked, :value, :disabled
          
           def initialize(**attribs_, &block)

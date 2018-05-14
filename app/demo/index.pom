@@ -7,13 +7,20 @@ Voom::Presenters.define(:index) do
   indented_grid do
     headline 'Presenters', id: :headline
     subheading 'Presenters are to HTML what C is to assembly'
-    body ['A presenter describes a user interface. It is evaluated and a presenter object model (POM) is returned.',
+
+    body ['A presenter describes a user interface using a ruby DSL.',
+          'The presenter is evaluated and a presenter object model (POM) is generated.',
           'A client that renders POM can display the given user interface.']
 
-    subheading 'For example this is the presentation for this page:', level: 2
+    body 'To get started checkout the components and events.'
 
-    attach 'code', file: __FILE__
+    subheading 'For example this is the presenter dsl for this page:', level: 2
+
+    source = File.read(__FILE__)
+    body <<~HEREDOC
+      ```
+        #{source}  
+      ```
+    HEREDOC
   end
-
-
 end

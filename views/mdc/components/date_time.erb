@@ -1,0 +1,30 @@
+<%
+    time_val = comp.value ? comp.value.strftime("%Y-%m-%dT%H:%M:%S.%L") : nil
+%>
+<div id="<%= comp.id %>"
+     class="mdc-text-field
+            <%= 'mdc-text-field--with-trailing-icon' if comp.icon %>
+            <%= 'mdc-text-field--fullwidth' if comp.full_width %>
+            <%= 'is-invalid is-dirty' if comp.error %>">
+  <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"} %>
+  <input id="<%= comp.id %>-input"
+         name="<%= comp.name %>"
+         type="datetime-local"
+         value="<%= time_val %>"
+         class="mdc-text-field__input"
+         aria-controls="<%= comp.id %>-input-helper-text"
+         <%= 'required' if comp.required %>
+         <%= 'invalid' if comp.error %>
+         <%= "pattern='#{comp.pattern}'" if comp.pattern %>
+         <%= 'readonly' if comp.readonly %>
+         list="<%= comp.id %>-list"
+         <%= erb :"components/event", :locals => {events: comp.events, parent_id:  "#{comp.id}-input"} %>>
+  <label class='mdc-floating-label mdc-floating-label--float-above' for="<%= comp.id %>"><%= comp.label %></label>
+  <div class="mdc-line-ripple"></div>
+  <datalist id="<%= comp.id %>-list">
+  </datalist>
+
+</div>
+<p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text" aria-hidden="true">
+  <%= comp.error || comp.hint %>
+</p>

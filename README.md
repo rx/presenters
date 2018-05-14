@@ -9,6 +9,10 @@ A POM client can fully render user interface from POM.
 
 ## Demo
 
+[Demo](https://powerful-bastion-96181.herokuapp.com)
+
+Or to run locally:
+
     git clone git@github.com:rx/presenters.git
     cd presenters/
     bundle install
@@ -30,6 +34,14 @@ Then posts it to the reference web client.
 That result is then saved to a file and opened up with a browser.
     
     curl localhost:9292/pom/index > $TMPDIR/index.json  && curl -d "@$TMPDIR/index.json" -X POST localhost:9292/index > $TMPDIR/index.html && open $TMPDIR/index.html
+
+## Status
+This project is in a pre-beta status. It is changing frequently as the first user interfaces are being built with it.
+Any use should be for internal use only until the status becomes beta.
+
+[![CircleCI](https://circleci.com/gh/rx/presenters.svg?style=svg)](https://circleci.com/gh/rx/presenters)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8fcea717485230e60f27/maintainability)](https://codeclimate.com/github/rx/presenters/maintainability)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=plastic)](https://raw.githubusercontent.com/rx/presenters/master/LICENSE)
     
 ## Usage
 

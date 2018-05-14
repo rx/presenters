@@ -31,7 +31,13 @@ export class VTextField extends eventHandlerMixin(VBaseComponent) {
     //    { :page: ["must be filled"] }
     validate(formData) {
         console.log("TextField validate", formData);
-        return true;
+        let isValid = this.input.checkValidity();
+        if(isValid) {
+            return true;
+        }
+        let errorMessage = {};
+        errorMessage[this.input.id] =  [this.input.validationMessage];
+        return errorMessage;
     }
 
     value(){

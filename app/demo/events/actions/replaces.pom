@@ -1,0 +1,21 @@
+Voom::Presenters.define(:replaces_action) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :events_drawer
+
+  indented_grid do
+    heading 'Replaces'
+    body 'Replaces will replace content on the page with another presenter.',
+         'It takes the id of what to replace, usually a content block. And the presenter to replace it with.',
+         "You pass parameters to it as the last argument."
+
+    subheading 'Replaces'
+    button 'replaces' do
+      event :click do
+        replaces :replace_me, :replace_text, text: "I was replaced"
+      end
+    end
+    attach :replace_text
+  end
+  attach :code, file: __FILE__
+end

@@ -4,6 +4,7 @@ require_relative 'components/mixins/common'
 require_relative 'components/mixins/helpers'
 require_relative 'components/mixins/dialogs'
 require_relative 'components/mixins/snackbars'
+require_relative 'components/mixins/text_fields'
 require_relative 'invalid_presenter'
 
 require 'voom/serializer'
@@ -20,6 +21,8 @@ module Voom
         include Components::Mixins::Helpers
         include Components::Mixins::Dialogs
         include Components::Mixins::Snackbars
+        include Components::Mixins::Icons
+        include Components::Mixins::TextFields
 
         include Voom::Serializer
         include Voom::Trace

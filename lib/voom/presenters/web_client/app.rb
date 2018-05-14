@@ -103,7 +103,7 @@ module Voom
         end
 
         def router
-          settings.router_.new(base_url: "#{request.base_url}#{env['SCRIPT_NAME']}")
+          settings.router_.new(base_url: "#{request.script_name}")
         end
 
         def prepare_context

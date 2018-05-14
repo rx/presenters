@@ -69,7 +69,7 @@ describe Voom::Presenters::WebClient::App do
         keys.each do |key|
           @ids.clear
           presenter = Voom::Presenters::App[key].call
-          pom = presenter.expand(router: Voom::Presenters::WebClient::Router.new(base_url: "http://example.org"), context: {'testing'=>true})
+          pom = presenter.expand(router: Voom::Presenters::WebClient::Router.new(base_url: ""), context: {'testing'=>true})
 
           pom_json = JSON.dump(pom.to_hash)
           @ids.clear
