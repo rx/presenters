@@ -10,10 +10,11 @@ module Voom
           def initialize(**attribs_, &block)
             super(**attribs_, &block)
             @config = {}
-            merge_config(:format, true)
+            map_config(:format, :alt_format, true)
             merge_config(:disable)
             merge_config(:enable)
             merge_config(:mode)
+            merge_config(:time_24hr, true)
 
             clear_icon(:clear) do
               event :click do
@@ -25,13 +26,19 @@ module Voom
           def clear_icon(icon=nil, **attribs, &block)
             return @clear_icon if locked?
             @clear_icon = icon ? Components::Icon.new(parent: self, icon: icon,
-                                                           context: context,
-                                                           **attribs, &block) : nil
+                                                      context: context,
+                                                      **attribs, &block) : nil
           end
+
           private
           def merge_config(attrib, default=false)
-            attrib_value = attribs.delete(attrib){default ? default(attrib) : nil}
+            attrib_value = attribs.delete(attrib) {default ? default(attrib) : nil}
             @config.merge!({attrib => attrib_value}) if attrib_value
+          end
+
+          def map_config(attrib, new_attrib, default=false)
+            attrib_value = attribs.delete(attrib) {default ? default(attrib) : nil}
+            @config.merge!({new_attrib => attrib_value}) if attrib_value
           end
         end
       end

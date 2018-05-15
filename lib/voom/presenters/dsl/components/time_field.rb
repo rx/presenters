@@ -9,9 +9,8 @@ module Voom
 
           def initialize(**attribs_, &block)
             super(type: :time, **attribs_, &block)
-            @config = {}
-            merge_config(:min_time)
-            merge_config(:max_time)
+            map_config(:min_time, :min_date)
+            map_config(:max_time, :max_date)
             expand!
           end
         end

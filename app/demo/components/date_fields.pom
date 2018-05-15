@@ -10,7 +10,7 @@ Voom::Presenters.define(:date_fields) do
     body <<~DOC
       A date separates user display format from the value format.  
       
-      The default date user display format can be configured globally using the following:      
+      The default date user display [format](/formatting_tokens#date) can be configured globally using the following:      
       
       ````
       Voom::Presenters::Settings.configure do |config|

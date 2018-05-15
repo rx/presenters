@@ -32,13 +32,14 @@ module Voom
         setting :components do
           setting :defaults do
             setting :datetime do
-              setting "format", 'Y-m-d H:i'
+              setting :format, 'F j, Y h:i K'
             end
             setting :date do
-              setting "format", 'Y-m-d'
+              setting :format, 'F j, Y'
             end
             setting :time do
-              setting "format", 'H:i'
+              setting :format, 'h:i K'
+              setting :time_24hr, false
             end
           end
         end

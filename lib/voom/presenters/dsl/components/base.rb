@@ -74,7 +74,7 @@ module Voom
 
 
           def default(key)
-            Settings.config.presenters.components.defaults&.public_send(type)&.public_send(:format)
+            Settings.config.presenters.components.defaults&.public_send(type)&.public_send(key)
           end
 
         end

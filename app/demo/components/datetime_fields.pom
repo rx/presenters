@@ -10,7 +10,7 @@ Voom::Presenters.define(:datetime_fields) do
     body <<~DOC
       A date time separates user display format from the value format.  
       
-      The default date time user display format can be configured globally using the following:      
+      The default date time user display [format](/formatting_tokens#date) can be configured globally using the following:      
       
       ````
       Voom::Presenters::Settings.configure do |config|
@@ -27,7 +27,7 @@ Voom::Presenters.define(:datetime_fields) do
     grid do
       column 6 do
         datetime_field name: :skydive_at,
-                       format: 'F j, Y H:i' do
+                       format: 'F j, Y h:i' do
           label 'Select your date and time to skydive'
           icon :event
           event :change do
@@ -96,6 +96,8 @@ Voom::Presenters.define(:datetime_fields) do
         title 'Range'
         datetime_field mode: :range
 
+        title '24 hour time'
+        datetime_field time_24hr: true, format: 'H:i'
       end
     end
 
