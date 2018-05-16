@@ -14,7 +14,6 @@ module Voom
             merge_config(:disable)
             merge_config(:enable)
             merge_config(:mode)
-            merge_config(:time_24hr, true)
 
             clear_icon(:clear) do
               event :click do

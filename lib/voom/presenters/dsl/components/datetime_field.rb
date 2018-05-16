@@ -13,6 +13,8 @@ module Voom
             merge_config(:max_date)
             merge_config(:min_time)
             merge_config(:max_time)
+            merge_config(:time_24hr, true)
+
             expand!
           end
         end
