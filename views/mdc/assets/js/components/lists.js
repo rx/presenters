@@ -34,23 +34,29 @@ function createListItemSelectHandler(component, listElements, selectAll) {
 }
 
 function toggleSelectTotalHeader(component, count, show = false) {
-    updateSelectionCount(component, count);
-    if (show === false) {
-        component.querySelector('#list-item-select-all-header').classList.add('hidden');
-    } else {
-        component.querySelector('#list-item-select-all-header').classList.remove('hidden');
+    if (component.dataset.totalLines > 0) {
+        updateSelectionCount(component, count);
+        if (show === false) {
+            component.querySelector('#list-item-select-all-header').classList.add('hidden');
+        } else {
+            component.querySelector('#list-item-select-all-header').classList.remove('hidden');
+        }
     }
 }
 
 function toggleSelectTotalInput(component, selectTotal = false) {
-    component.querySelector('#select-total').checked = selectTotal
-    component.querySelector('#list-item-select-all-toggle-on').classList.add('hidden');
-    component.querySelector('#list-item-select-all-toggle-off').classList.add('hidden');
-    component.querySelector('#list-item-select-all-toggle-' + (selectTotal ? 'on' : 'off')).classList.remove('hidden');
+    if (component.dataset.totalLines > 0) {
+        component.querySelector('#select-total').checked = selectTotal
+        component.querySelector('#list-item-select-all-toggle-on').classList.add('hidden');
+        component.querySelector('#list-item-select-all-toggle-off').classList.add('hidden');
+        component.querySelector('#list-item-select-all-toggle-' + (selectTotal ? 'on' : 'off')).classList.remove('hidden');
+    }
 }
 
 function updateSelectionCount(component, count) {
-    component.querySelector('#page-selection-count').innerHTML = count;
+    if (component.dataset.totalLines > 0) {
+        component.querySelector('#page-selection-count').innerHTML = count;
+    }
 }
 
 export function initLists() {
