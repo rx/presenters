@@ -65,7 +65,12 @@ module Voom
 
             def checkbox(**attributes, &block)
               return @checkbox if locked?
-              @checkbox = Components::Checkbox.new(parent: self, context: context, **attributes, &block)
+              field_name = @selectable ? "#{attributes.delete(:name)}[]" : attributes.delete(:name)
+              @checkbox = Components::Checkbox.new(parent: self,
+                                                   context: context,
+                                                   name: field_name,
+                                                   **attributes,
+                                                   &block)
             end
 
             def menu(**attributes, &block)

@@ -1,58 +1,81 @@
 
-
-function createSelectAllHandler(target, listElements) {
+function createSelectAllHandler(component, target, listElements) {
     return function() {
-        if (target.checked) {
-            for (let i = 0; i < listElements.length; i++) {
-                listElements[i].checked = true;
-            }
+        for (let element of listElements) {
+            element.checked = target.checked;
         }
-        else {
-            for (let i = 0; i < listElements.length; i++) {
-                listElements[i].checked = false;
-            }
+        if (component.dataset.totalLines > listElements.length) {
+            toggleSelectTotalHeader(component, listElements.length, target.checked);
         }
-
     }
 }
 
-function createListItemSelectHandler(listElements, selectAll) {
+function createSelectTotalSetHandler(component) {
+    return function(event) {
+        event.preventDefault();
+        if (component.dataset.totalLines > 0) {
+            toggleSelectTotalInput(component, !component.querySelector('#select-total').checked);
+        }
+    }
+}
+
+function createListItemSelectHandler(component, listElements, selectAll) {
     return function() {
         let checked = 0;
         let unchecked = 0;
-        for (let i = 0; i < listElements.length; i++) {
-            listElements[i].checked ? checked++ : unchecked++;
+        toggleSelectTotalInput(component, false); // Clear select total results whenever a list item selection is modified
+        for (let element of listElements) {
+            element.checked ? checked++ : unchecked++;
         }
-        if (checked && unchecked) {
-            selectAll.indeterminate = true;
-        }
-        if (checked && !unchecked) {
-            selectAll.indeterminate = false;
-            selectAll.checked = true;
-        }
-        if (!checked && unchecked) {
-            selectAll.indeterminate = false;
-            selectAll.checked = false;
-        }
+        selectAll.indeterminate = (checked && unchecked);
+        selectAll.checked = (checked && !unchecked);
+        toggleSelectTotalHeader(component, listElements.length, true);
     }
 }
 
+function toggleSelectTotalHeader(component, count, show = false) {
+    updateSelectionCount(component, count);
+    if (show === false) {
+        component.querySelector('#list-item-select-all-header').classList.add('hidden');
+    } else {
+        component.querySelector('#list-item-select-all-header').classList.remove('hidden');
+    }
+}
 
+function toggleSelectTotalInput(component, selectTotal = false) {
+    component.querySelector('#select-total').checked = selectTotal
+    component.querySelector('#list-item-select-all-toggle-on').classList.add('hidden');
+    component.querySelector('#list-item-select-all-toggle-off').classList.add('hidden');
+    component.querySelector('#list-item-select-all-toggle-' + (selectTotal ? 'on' : 'off')).classList.remove('hidden');
+}
+
+function updateSelectionCount(component, count) {
+    component.querySelector('#page-selection-count').innerHTML = count;
+}
 
 export function initLists() {
     console.log('\tLists');
     let components = document.querySelectorAll('.mdc-list');
     if (components) {
-        for (let i = 0; i < components.length; i++) {
-            let selectAllLineItem = components[i].querySelector('.v-checkbox--select-control');
-            let selectableLineItems = components[i].querySelectorAll('.v-list-item--selectable-checkbox');
+        for (let component of components) {
+            let selectAllLineItem = component.querySelector('.v-checkbox--select-control');
+            let selectableLineItems = component.querySelectorAll('.v-list-item--selectable-checkbox');
             if (selectAllLineItem && selectableLineItems) {
-                selectAllLineItem.addEventListener('change', createSelectAllHandler(selectAllLineItem, selectableLineItems));
-                for (let j = 0; j < selectableLineItems.length; j++) {
-                    selectableLineItems[j].addEventListener('change', createListItemSelectHandler(selectableLineItems, selectAllLineItem));
+
+                for (let element of component.querySelectorAll('.toggle-total-set')) {
+                    // Clone and replace element to prevent duplicate event handlers when additional records are loaded/paged
+                    let new_element = element.cloneNode(true);
+                    element.parentNode.replaceChild(new_element, element);
+                    new_element.addEventListener('click', createSelectTotalSetHandler(component));
                 }
+
+                selectAllLineItem.addEventListener('change', createSelectAllHandler(component, selectAllLineItem, selectableLineItems));
+
+                for (let element of selectableLineItems) {
+                    element.addEventListener('change', createListItemSelectHandler(component, selectableLineItems, selectAllLineItem));
+                }
+                updateSelectionCount(component, selectableLineItems.length);
             }
         }
     }
 }
-

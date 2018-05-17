@@ -9404,6 +9404,11 @@ a.mdc-list-item {
 .v-list-item--header {
   background-color: #F5F5F5; }
 
+#list-item-select-all-header {
+  height: 45px; }
+  #list-item-select-all-header > span {
+    margin: auto; }
+
 /** postcss-bem-linter: define icon-toggle */
 .mdc-icon-toggle {
   --mdc-ripple-fg-size: 0;

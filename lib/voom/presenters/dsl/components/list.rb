@@ -11,7 +11,7 @@ module Voom
           include Mixins::Content
           include Mixins::Append
           
-          attr_reader :lines, :lines_only, :selectable
+          attr_reader :lines, :lines_only, :selectable, :total_lines
           attr_accessor :components
           
           def initialize(**attribs_, &block)
@@ -21,7 +21,8 @@ module Voom
             @selectable = attribs.delete(:selectable) || false
             @lines = []
             @components = []
-            add_select_control!(attribs.fetch(:select_control_label) { 'Select All' })
+            @total_lines = attribs.delete(:total_lines) || 0
+            add_select_control!( attribs.fetch(:select_control_label) { 'Select All' } )
             expand!
           end
 
@@ -29,6 +30,7 @@ module Voom
             return unless @selectable && !@lines_only
             @lines << Lists::Header.new(parent: self,
                                         context: context,
+                                        total_lines: @total_lines,
                                         checkbox: {text: text, class_name: 'v-checkbox--select-control'})
           end
 
