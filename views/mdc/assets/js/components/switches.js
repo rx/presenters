@@ -30,7 +30,7 @@ export class VSwitch extends eventHandlerMixin(VBaseComponent) {
 
     prepareSubmit(form, params) {
         if (!form) {
-            params.push([this.input.name, this.input.value]);
+            params.push([this.input.name, this.input.checked]);
         }
     }
 }

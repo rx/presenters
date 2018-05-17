@@ -24,7 +24,7 @@ export class VForm {
         console.log("Form validate", form, params);
         var errors = [];
         for (let input of this.inputs()) {
-            if (input.vComponent) {
+            if (input.vComponent && input.vComponent.validate) {
                 var result = input.vComponent.validate(form, params);
                 if (result !== true) {
                     errors.push(result);
@@ -41,7 +41,7 @@ export class VForm {
     // Called to collect data for submission
     prepareSubmit(form, params) {
         for (let input of this.inputs()) {
-            if (input.vComponent) {
+            if (input.vComponent && input.vComponent.prepareSubmit) {
                 input.vComponent.prepareSubmit(form, params);
             }
         }

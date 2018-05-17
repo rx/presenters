@@ -17,13 +17,40 @@ Voom::Presenters.define(:toggles) do
     radio_button
 
     headline 'ICON TOGGLE'
-    icon_toggle 'format_bold', checked: true 
+    icon_toggle 'format_bold', checked: true
     icon_toggle 'format_italic'
 
     headline 'SWITCH'
     switch checked: true
     switch
 
+    grid do
+      column 6 do
+        display 'Field Level Events'
+        heading 'Text Fields'
+        body 'This demonstrates that a change event will submit the  field value to the event action. '\
+                 'This works with posts and replace actions'
+        switch name: :myfield do
+          event :change do
+            replaces :context_list, :context_list
+          end
+        end
+       
+        display 'Posts in Form'
+        body 'This demonstrates that a change event on **ANY** form input will send all the form inputs to the event action. '\
+                 'This works with posts and replace actions'
+        form do
+          switch name: :myfield
+          switch name: :myfield2
+          event :change do
+            replaces :context_list, :context_list
+          end
+        end
+      end
+      column 6 do
+        attach :context_list
+      end
+    end
     attach :code, file: __FILE__
   end
 end

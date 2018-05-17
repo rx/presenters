@@ -1,1 +1,8 @@
 @import "@material/textfield/mdc-text-field";
+
+
+.mdc-text-field__input {
+  .v-text-field {
+    padding: inherit;
+  }
+}

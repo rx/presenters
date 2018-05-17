@@ -1,0 +1,125 @@
+Voom::Presenters.define(:formatting_tokens) do
+  helpers Demo::Helpers::IndentedGrid
+  indented_grid do
+    display 'Date Formatting Tokens', id: :date
+    table do
+      header do
+        column 'Character'
+        column 'Description'
+        column 'Example'
+      end
+      row do
+        column 'd'
+        column 'Day of the month, 2 digits with leading zeros'
+        column '01 to 31'
+      end
+      row do
+        column 'D'
+        column 'A textual representation of a day'
+        column 'Mon through Sun'
+      end
+      row do
+        column "l (lowercase 'L')"
+        column 'A full textual representation of the day of the week'
+        column 'Sunday through Saturday'
+      end
+
+      row do
+        column 'j'
+        column 'Day of the month without leading zeros'
+        column '1 to 31'
+      end
+      row do
+        column 'J'
+        column 'Day of the month without leading zeros and ordinal suffix'
+        column '1st, 2nd, to 31st'
+      end
+      row do
+        column 'w'
+        column 'Numeric representation of the day of the week'
+        column '0 (for Sunday) through 6 (for Saturday)'
+      end
+      row do
+        column 'F'
+        column 'A full textual representation of a month'
+        column 'January through December'
+      end
+      row do
+        column 'm'
+        column 'Numeric representation of a month, with leading zero'
+        column '01 through 12'
+      end
+      row do
+        column 'n'
+        column 'Numeric representation of a month, without leading zeros'
+        column '1 through 12'
+      end
+      row do
+        column 'M'
+        column 'A short textual representation of a month'
+        column 'Jan through Dec'
+      end
+      row do
+        column 'U'
+        column 'The number of seconds since the Unix Epoch'
+        column '1413704993', numeric: false
+      end
+
+      row do
+        column 'y'
+        column 'A two digit representation of a year'
+        column '99 or 03'
+      end
+
+      row do
+        column 'Y'
+        column 'A full numeric representation of a year, 4 digits'
+        column '1999 or 2003'
+      end
+      row do
+        column 'Z'
+        column 'ISO Date format'
+        column '2017-03-04T01:23:43.000Z'
+      end
+    end
+
+    display 'Time Formatting Tokens', id: :time
+    table do
+      header do
+        column 'Character '
+        column 'Description'
+        column 'Example'
+      end
+      row do
+        column 'H'
+        column 'Hours (24 hours)'
+        column '00 to 23'
+      end
+      row do
+        column 'h'
+        column 'Hours'
+        column '1 to 12'
+      end
+      row do
+        column 'i'
+        column 'Minutes'
+        column '00 to 59'
+      end
+      row do
+        column 'S'
+        column 'Seconds, 2 digits'
+        column '00 to 59'
+      end
+      row do
+        column 's'
+        column 'Seconds'
+        column '0, 1 to 59'
+      end
+      row do
+        column 'K'
+        column 'AM/PM'
+        column 'AM or PM'
+      end
+    end
+  end
+end

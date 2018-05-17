@@ -28,40 +28,39 @@ Voom::Presenters.define(:markdown) do
     body '1. Item 1', '2. Item 2'
 
     title 'Full Sample'
-    body <<-HEREDOC
-# Markdown Sample
-
-----
-## what is Markdown?
-see [Wikipedia](http://en.wikipedia.org/wiki/Markdown)
-
-> Markdown is a lightweight markup language, originally created by John Gruber and Aaron Swartz allowing people "to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML)".
-
-----
-## markdown quick reference
-# headers
-
-*emphasis*
-
-**strong** 
-
-* list
-
->block quote
-
-`code inline`
-
-```ruby
-  require 'redcarpet'
-  markdown = Redcarpet.new("Hello World!")
-  puts markdown.to_html
-```
-[links](http://wikipedia.org)
-
-----
-## changelog
-* 17-Feb-2013 re-design
-
-HEREDOC
+    body <<~HEREDOC
+      # Markdown Sample
+      
+      ----
+      ## what is Markdown?
+      see [Wikipedia](http://en.wikipedia.org/wiki/Markdown)
+      
+      > Markdown is a lightweight markup language, originally created by John Gruber and Aaron Swartz allowing people "to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML)".
+      
+      ----
+      ## markdown quick reference
+      # headers
+      
+      *emphasis*
+      
+      **strong** 
+      
+      * list
+      
+      >block quote
+      
+      `code inline`
+      
+      ```ruby
+        require 'redcarpet'
+        markdown = Redcarpet.new("Hello World!")
+        puts markdown.to_html
+      ```
+      [links](http://wikipedia.org)
+      
+      ----
+      ## changelog
+      * 17-Feb-2013 re-design
+    HEREDOC
   end
 end

@@ -16,9 +16,9 @@ export class VBase extends VUrls {
     }
 
     inputValues(form) {
-        var params = [];
+        let params = [];
         // Let input component push parameters
-        var vComp = this.component();
+        let vComp = this.component();
         if (vComp) {
             vComp.prepareSubmit(form, params);
         }
@@ -27,12 +27,12 @@ export class VBase extends VUrls {
 
     component() {
         let parent = this.parentElement();
-        return parent ? this.parentElement().vComponent : null;
+        return parent ? parent.vComponent : null;
     }
 
     validate() {
-        var errors = [];
-        var comp = this.component();
+        let errors = [];
+        let comp = this.component();
         if (comp) {
             errors = comp.validate();
         }

@@ -1,0 +1,96 @@
+require 'date'
+
+Voom::Presenters.define(:date_fields) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :component_drawer
+
+  indented_grid do
+    display 'Date Fields'
+    body <<~DOC
+      A date separates user display format from the value format.  
+      
+      The default date user display [format](/formatting_tokens#date) can be configured globally using the following:      
+      
+      ````
+      Voom::Presenters::Settings.configure do |config|
+        config.presenters.components.defaults.date.format = 'F j, Y'
+      end
+      ````
+            
+      The value format for date times can be the following:
+
+      * Ruby Time/DateTime objects.
+      * ISO/Chronologically Date Strings, e.g. "2017-02-26"
+    DOC
+    grid do
+      column 6 do
+        date_field name: :skydive_at,
+                       format: 'F j, Y' do
+          label 'Select your date to skydive'
+          icon :event
+          event :change do
+            replaces :context_list, :context_list, hide_time: true
+          end
+        end
+      end
+      column 6 do
+        attach :context_list, hide_time: true
+      end
+    end
+    grid do
+      column 6 do
+        title 'Min Date'
+        date_field min_date: "2020-01-01"
+
+        title 'Max Date'
+        date_field max_date: "2017-12-15"
+
+        title 'Min Date (today)'
+        date_field min_date: :today
+
+        title 'Min (today), Max (14 days from now)'
+        date_field min_date: :today, max_date: DateTime.now.next_day(14) # Or in rails Time.now + 14.days
+
+        title 'Disabling specific dates'
+        date_field disable: ["2025-01-30", "2025-02-21", "2025-03-08", DateTime.new(2025, 4, 9)]
+
+        title 'Disable range of dates'
+        date_field disable: [
+            {
+                from: "2025-04-01",
+                to: "2025-05-01"
+            },
+            {
+                from: "2025-09-01",
+                to: "2025-12-01"
+            }
+        ]
+
+        title 'Enabling specific dates'
+        date_field enable: [
+            {
+                from: "2025-04-01",
+                to: "2025-05-01"
+            },
+            {
+                from: "2025-09-01",
+                to: "2025-12-01"
+            }
+        ]
+        title 'Selecting multiple dates'
+        date_field mode: :multiple
+
+        title 'Preloading multiple dates'
+        date_field mode: :multiple do
+          value ["2016-10-20", "2016-11-04"]
+        end
+
+        title 'Range'
+        date_field mode: :range
+      end
+    end
+
+  end
+  attach :code, file: __FILE__
+end

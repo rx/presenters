@@ -66,7 +66,7 @@ module Voom
               def initialize(**attribs_, &block)
                 super(type: :column, **attribs_, &block)
                 value = attribs.delete(:value)
-                @numeric = attribs.delete(:numeric) || numeric?(value)
+                @numeric = attribs.delete(:numeric){numeric?(value)}
                 self.value(value) if value
                 @color = attribs.delete(:color)
                 @components = []

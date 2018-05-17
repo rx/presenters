@@ -63,6 +63,14 @@ module Voom
             "#{affects}color: #{comp.color};" unless %w(primary secondary).include?(comp.color.to_s) || comp.color.nil?
           end
 
+          def snake_to_camel(hash, except:[])
+            Hash[hash.map{ |k, v|
+              next [k,v] if except.include?(k)
+              newKey = k.to_s.split('_').collect(&:capitalize).join
+              newKey[0] = newKey[0].downcase
+              [newKey, v] }
+            ]
+          end
         end
 
         get '/' do

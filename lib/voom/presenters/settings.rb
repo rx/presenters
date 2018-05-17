@@ -29,6 +29,21 @@ module Voom
           # end
           setting :prepare_context, []
         end
+        setting :components do
+          setting :defaults do
+            setting :datetime do
+              setting :format, 'F j, Y h:i K'
+              setting :time_24hr, false
+            end
+            setting :date do
+              setting :format, 'F j, Y'
+            end
+            setting :time do
+              setting :format, 'h:i K'
+              setting :time_24hr, false
+            end
+          end
+        end
       end
     end
   end

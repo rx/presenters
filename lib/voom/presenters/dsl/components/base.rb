@@ -72,6 +72,11 @@ module Voom
             @parent.send(:_helpers_) if @parent
           end
 
+
+          def default(key)
+            Settings.config.presenters.components.defaults&.public_send(type)&.public_send(key)
+          end
+
         end
       end
     end

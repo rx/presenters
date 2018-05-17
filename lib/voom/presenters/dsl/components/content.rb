@@ -5,6 +5,7 @@ require_relative 'mixins/attaches'
 require_relative 'mixins/text_fields'
 require_relative 'mixins/selects'
 require_relative 'mixins/snackbars'
+require_relative 'mixins/date_time_fields'
 
 module Voom
   module Presenters
@@ -14,6 +15,7 @@ module Voom
           include Mixins::Common
           include Mixins::Attaches
           include Mixins::TextFields
+          include Mixins::DateTimeFields
           include Mixins::Selects
           include Mixins::Snackbars
 

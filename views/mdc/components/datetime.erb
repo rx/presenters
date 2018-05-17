@@ -1,0 +1,35 @@
+<%
+  time_val = comp.value ? Array(comp.value).map{ |v| v.respond_to?(:strftime) ? v.strftime("%Y-%m-%dT%H:%M:%S.%L") : v}.join(', ') : nil
+%>
+<div id="<%= comp.id %>"
+      class="mdc-text-field v-datetime
+            <%= comp.icon ? 'mdc-text-field--with-leading-icon' : 'mdc-text-field--with-trailing-icon' %>
+            <%= 'mdc-text-field--fullwidth' if comp.full_width %>
+            <%= 'is-invalid is-dirty' if comp.error %>"
+     data-config='<%= snake_to_camel(comp.config, except: %i(time_24hr)).to_json %>'
+     data-type='<%= comp.type %>'>
+  <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-text-field__icon',
+                                          parent_id: "#{comp.id}-input"} %>
+  <input id="<%= comp.id %>-input"
+         name="<%= comp.name %>"
+         type="text"
+         value="<%= time_val %>"
+         class="mdc-text-field__input"
+         aria-controls="<%= comp.id %>-input-helper-text"
+         data-input
+         <%= 'required' if comp.required %>
+         <%= 'invalid' if comp.error %>
+         <%= "pattern='#{comp.pattern}'" if comp.pattern %>
+         <%= 'readonly' if comp.readonly %>
+         list="<%= comp.id %>-list"
+         <%= erb :"components/event", :locals => {events: comp.events, parent_id: "#{comp.id}-input"} %>>
+  <label class='mdc-floating-label mdc-floating-label--float-above' for="<%= comp.id %>"><%= comp.label %></label>
+  <div class="mdc-line-ripple"></div>
+  <datalist id="<%= comp.id %>-list">
+  </datalist>
+  <%= erb :"components/icon", :locals => {comp: comp.clear_icon, class_name: 'v-datetime--clear mdc-text-field__icon',
+                                          parent_id: "#{comp.id}-input"} %>
+</div>
+<p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text" aria-hidden="true">
+  <%= comp.error || comp.hint %>
+</p>

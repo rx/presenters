@@ -9,10 +9,7 @@ export function initTextFields() {
     for (var i = 0; i < textFields.length; i++) {
         var textField = textFields[i];
         if (!textField.vComponent) {
-            var vTextField = new VTextField(textField, new MDCTextField(textField));
-            var input = textField.querySelector('input');
-            input.vComponent = vTextField;
-            textField.vComponent = vTextField;
+            textField.vComponent = new VTextField(textField, new MDCTextField(textField));
         }
     }
 }
@@ -21,6 +18,7 @@ export class VTextField extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element);
         this.input = element.querySelector('input');
+        this.input.vComponent = this;
         this.mdcComponent = mdcComponent;
     }
 
