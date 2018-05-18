@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 46);
+/******/ 	return __webpack_require__(__webpack_require__.s = 41);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -276,8 +276,8 @@ class MDCComponent {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRipple; });
 /* unused harmony export RippleCapableSurface */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(4);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
 /* unused harmony reexport util */
@@ -433,7 +433,7 @@ RippleCapableSurface.prototype.disabled;
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSnackbar;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_snackbar__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_snackbar__ = __webpack_require__(65);
 
 
 // This class displays a page level message
@@ -626,21 +626,21 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initialize;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialogs__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datetime__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text_fields__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lists__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__icon_toggles__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__menus__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__selects__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__chips__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__cards__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__forms__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialogs__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datetime__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text_fields__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lists__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__icon_toggles__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__menus__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__selects__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__chips__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__cards__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__forms__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__snackbar__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__checkboxes__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__switches__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__checkboxes__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__switches__ = __webpack_require__(108);
 
 
 
@@ -684,8 +684,8 @@ function initialize() {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(52);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -817,8 +817,8 @@ class MDCTextFieldHelperTextFoundation extends __WEBPACK_IMPORTED_MODULE_0__mate
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(53);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -950,8 +950,8 @@ let eventHandlerMixin = Base => class extends Base {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_urls__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_urls__ = __webpack_require__(27);
 
 
 
@@ -1001,86 +1001,12 @@ class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * @template A
- */
-class MDCFoundation {
-  /** @return enum{cssClasses} */
-  static get cssClasses() {
-    // Classes extending MDCFoundation should implement this method to return an object which exports every
-    // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
-    return {};
-  }
-
-  /** @return enum{strings} */
-  static get strings() {
-    // Classes extending MDCFoundation should implement this method to return an object which exports all
-    // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
-    return {};
-  }
-
-  /** @return enum{numbers} */
-  static get numbers() {
-    // Classes extending MDCFoundation should implement this method to return an object which exports all
-    // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
-    return {};
-  }
-
-  /** @return {!Object} */
-  static get defaultAdapter() {
-    // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
-    // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
-    // validation.
-    return {};
-  }
-
-  /**
-   * @param {A=} adapter
-   */
-  constructor(adapter = {}) {
-    /** @protected {!A} */
-    this.adapter_ = adapter;
-  }
-
-  init() {
-    // Subclasses should override this method to perform initialization routines (registering events, etc.)
-  }
-
-  destroy() {
-    // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
-
-/***/ }),
-/* 12 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCChip; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(39);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__foundation__["a"]; });
 /**
  * @license
@@ -1190,7 +1116,7 @@ class MDCChip extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
 
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1239,7 +1165,7 @@ class MDCSelectionControl {
 
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1355,12 +1281,12 @@ class MDCRippleAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCRippleAdapter);
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["b"] = initTextFields;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_textfield__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_textfield__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(9);
 
@@ -1442,7 +1368,7 @@ class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handle
 
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1450,14 +1376,14 @@ class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handle
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_util__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__adapter__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_line_ripple_index__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__helper_text_index__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__icon_index__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__material_floating_label_index__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__material_notched_outline_index__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__adapter__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_line_ripple_index__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__helper_text_index__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__icon_index__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__material_floating_label_index__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__material_notched_outline_index__ = __webpack_require__(61);
 /* unused harmony reexport MDCTextFieldFoundation */
 /* unused harmony reexport MDCTextFieldHelperText */
 /* unused harmony reexport MDCTextFieldHelperTextFoundation */
@@ -1892,7 +1818,7 @@ class MDCTextField extends __WEBPACK_IMPORTED_MODULE_0__material_base_component_
 
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1947,7 +1873,7 @@ const numbers = {
 
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2164,7 +2090,7 @@ class MDCTextFieldAdapter {
 
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2240,7 +2166,7 @@ class MDCTextFieldHelperTextAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCTextFieldHelperTextAdapter);
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2304,13 +2230,13 @@ class MDCTextFieldIconAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCTextFieldIconAdapter);
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(55);
 /**
  * @license
  * Copyright 2018 Google Inc. All Rights Reserved.
@@ -2421,7 +2347,7 @@ class MDCLineRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base
 /* harmony default export */ __webpack_exports__["a"] = (MDCLineRippleFoundation);
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2498,13 +2424,13 @@ class MDCLineRippleAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCLineRippleAdapter);
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(56);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -2619,7 +2545,7 @@ class MDCFloatingLabelFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_b
 /* harmony default export */ __webpack_exports__["a"] = (MDCFloatingLabelFoundation);
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2689,13 +2615,13 @@ class MDCFloatingLabelAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCFloatingLabelAdapter);
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(26);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -2810,7 +2736,7 @@ class MDCNotchedOutlineFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_
 /* harmony default export */ __webpack_exports__["a"] = (MDCNotchedOutlineFoundation);
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2886,7 +2812,7 @@ class MDCNotchedOutlineAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCNotchedOutlineAdapter);
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2923,7 +2849,7 @@ const cssClasses = {
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2983,12 +2909,12 @@ class VUrls {
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component__ = __webpack_require__(66);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__foundation__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__component__["a"]; });
 /**
@@ -3014,7 +2940,7 @@ class VUrls {
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3088,7 +3014,7 @@ class MDCFoundation {
 /* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3238,7 +3164,7 @@ function getCorrectPropertyName(windowObj, eventType) {
 
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3386,413 +3312,15 @@ class VErrors {
 
 
 /***/ }),
-/* 33 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(11);
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-/**
- * @template F
- */
-class MDCComponent {
-  /**
-   * @param {!Element} root
-   * @return {!MDCComponent}
-   */
-  static attachTo(root) {
-    // Subclasses which extend MDCBase should provide an attachTo() method that takes a root element and
-    // returns an instantiated component with its root set to that element. Also note that in the cases of
-    // subclasses, an explicit foundation class will not have to be passed in; it will simply be initialized
-    // from getDefaultFoundation().
-    return new MDCComponent(root, new __WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */]());
-  }
-
-  /**
-   * @param {!Element} root
-   * @param {F=} foundation
-   * @param {...?} args
-   */
-  constructor(root, foundation = undefined, ...args) {
-    /** @protected {!Element} */
-    this.root_ = root;
-    this.initialize(...args);
-    // Note that we initialize foundation here and not within the constructor's default param so that
-    // this.root_ is defined and can be used within the foundation class.
-    /** @protected {!F} */
-    this.foundation_ = foundation === undefined ? this.getDefaultFoundation() : foundation;
-    this.foundation_.init();
-    this.initialSyncWithDOM();
-  }
-
-  initialize() /* ...args */{}
-  // Subclasses can override this to do any additional setup work that would be considered part of a
-  // "constructor". Essentially, it is a hook into the parent constructor before the foundation is
-  // initialized. Any additional arguments besides root and foundation will be passed in here.
-
-
-  /**
-   * @return {!F} foundation
-   */
-  getDefaultFoundation() {
-    // Subclasses must override this method to return a properly configured foundation class for the
-    // component.
-    throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' + 'foundation class');
-  }
-
-  initialSyncWithDOM() {
-    // Subclasses should override this method if they need to perform work to synchronize with a host DOM
-    // object. An example of this would be a form control wrapper that needs to synchronize its internal state
-    // to some property or attribute of the host DOM. Please note: this is *not* the place to perform DOM
-    // reads/writes that would cause layout / paint, as this is called synchronously from within the constructor.
-  }
-
-  destroy() {
-    // Subclasses may implement this method to release any resources / deregister any listeners they have
-    // attached. An example of this might be deregistering a resize event from the window object.
-    this.foundation_.destroy();
-  }
-
-  /**
-   * Wrapper method to add an event listener to the component's root element. This is most useful when
-   * listening for custom events.
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  listen(evtType, handler) {
-    this.root_.addEventListener(evtType, handler);
-  }
-
-  /**
-   * Wrapper method to remove an event listener to the component's root element. This is most useful when
-   * unlistening for custom events.
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  unlisten(evtType, handler) {
-    this.root_.removeEventListener(evtType, handler);
-  }
-
-  /**
-   * Fires a cross-browser-compatible custom event from the component root of the given type,
-   * with the given data.
-   * @param {string} evtType
-   * @param {!Object} evtData
-   * @param {boolean=} shouldBubble
-   */
-  emit(evtType, evtData, shouldBubble = false) {
-    let evt;
-    if (typeof CustomEvent === 'function') {
-      evt = new CustomEvent(evtType, {
-        detail: evtData,
-        bubbles: shouldBubble
-      });
-    } else {
-      evt = document.createEvent('CustomEvent');
-      evt.initCustomEvent(evtType, shouldBubble, false, evtData);
-    }
-
-    this.root_.dispatchEvent(evt);
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCComponent);
-
-/***/ }),
-/* 34 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* eslint no-unused-vars: [2, {"args": "none"}] */
-
-/**
- * Adapter for MDC Ripple. Provides an interface for managing
- * - classes
- * - dom
- * - CSS variables
- * - position
- * - dimensions
- * - scroll position
- * - event handlers
- * - unbounded, active and disabled states
- *
- * Additionally, provides type information for the adapter to the Closure
- * compiler.
- *
- * Implement this adapter for your framework of choice to delegate updates to
- * the component in your framework of choice. See architecture documentation
- * for more details.
- * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
- *
- * @record
- */
-class MDCRippleAdapter {
-  /** @return {boolean} */
-  browserSupportsCssVars() {}
-
-  /** @return {boolean} */
-  isUnbounded() {}
-
-  /** @return {boolean} */
-  isSurfaceActive() {}
-
-  /** @return {boolean} */
-  isSurfaceDisabled() {}
-
-  /** @param {string} className */
-  addClass(className) {}
-
-  /** @param {string} className */
-  removeClass(className) {}
-
-  /** @param {!EventTarget} target */
-  containsEventTarget(target) {}
-
-  /**
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  registerInteractionHandler(evtType, handler) {}
-
-  /**
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  deregisterInteractionHandler(evtType, handler) {}
-
-  /**
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  registerDocumentInteractionHandler(evtType, handler) {}
-
-  /**
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  deregisterDocumentInteractionHandler(evtType, handler) {}
-
-  /**
-   * @param {!Function} handler
-   */
-  registerResizeHandler(handler) {}
-
-  /**
-   * @param {!Function} handler
-   */
-  deregisterResizeHandler(handler) {}
-
-  /**
-   * @param {string} varName
-   * @param {?number|string} value
-   */
-  updateCssVariable(varName, value) {}
-
-  /** @return {!ClientRect} */
-  computeBoundingRect() {}
-
-  /** @return {{x: number, y: number}} */
-  getWindowPageOffset() {}
-}
-
-/* unused harmony default export */ var _unused_webpack_default_export = (MDCRippleAdapter);
-
-/***/ }),
-/* 35 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return supportsCssVariables; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return applyPassive; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getMatchesProperty; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getNormalizedEventCoords; });
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * Stores result from supportsCssVariables to avoid redundant processing to detect CSS custom variable support.
- * @private {boolean|undefined}
- */
-let supportsCssVariables_;
-
-/**
- * Stores result from applyPassive to avoid redundant processing to detect passive event listener support.
- * @private {boolean|undefined}
- */
-let supportsPassive_;
-
-/**
- * @param {!Window} windowObj
- * @return {boolean}
- */
-function detectEdgePseudoVarBug(windowObj) {
-  // Detect versions of Edge with buggy var() support
-  // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11495448/
-  const document = windowObj.document;
-  const node = document.createElement('div');
-  node.className = 'mdc-ripple-surface--test-edge-var-bug';
-  document.body.appendChild(node);
-
-  // The bug exists if ::before style ends up propagating to the parent element.
-  // Additionally, getComputedStyle returns null in iframes with display: "none" in Firefox,
-  // but Firefox is known to support CSS custom properties correctly.
-  // See: https://bugzilla.mozilla.org/show_bug.cgi?id=548397
-  const computedStyle = windowObj.getComputedStyle(node);
-  const hasPseudoVarBug = computedStyle !== null && computedStyle.borderTopStyle === 'solid';
-  node.remove();
-  return hasPseudoVarBug;
-}
-
-/**
- * @param {!Window} windowObj
- * @param {boolean=} forceRefresh
- * @return {boolean|undefined}
- */
-
-function supportsCssVariables(windowObj, forceRefresh = false) {
-  let supportsCssVariables = supportsCssVariables_;
-  if (typeof supportsCssVariables_ === 'boolean' && !forceRefresh) {
-    return supportsCssVariables;
-  }
-
-  const supportsFunctionPresent = windowObj.CSS && typeof windowObj.CSS.supports === 'function';
-  if (!supportsFunctionPresent) {
-    return;
-  }
-
-  const explicitlySupportsCssVars = windowObj.CSS.supports('--css-vars', 'yes');
-  // See: https://bugs.webkit.org/show_bug.cgi?id=154669
-  // See: README section on Safari
-  const weAreFeatureDetectingSafari10plus = windowObj.CSS.supports('(--css-vars: yes)') && windowObj.CSS.supports('color', '#00000000');
-
-  if (explicitlySupportsCssVars || weAreFeatureDetectingSafari10plus) {
-    supportsCssVariables = !detectEdgePseudoVarBug(windowObj);
-  } else {
-    supportsCssVariables = false;
-  }
-
-  if (!forceRefresh) {
-    supportsCssVariables_ = supportsCssVariables;
-  }
-  return supportsCssVariables;
-}
-
-//
-/**
- * Determine whether the current browser supports passive event listeners, and if so, use them.
- * @param {!Window=} globalObj
- * @param {boolean=} forceRefresh
- * @return {boolean|{passive: boolean}}
- */
-function applyPassive(globalObj = window, forceRefresh = false) {
-  if (supportsPassive_ === undefined || forceRefresh) {
-    let isSupported = false;
-    try {
-      globalObj.document.addEventListener('test', null, { get passive() {
-          isSupported = true;
-        } });
-    } catch (e) {}
-
-    supportsPassive_ = isSupported;
-  }
-
-  return supportsPassive_ ? { passive: true } : false;
-}
-
-/**
- * @param {!Object} HTMLElementPrototype
- * @return {!Array<string>}
- */
-function getMatchesProperty(HTMLElementPrototype) {
-  return ['webkitMatchesSelector', 'msMatchesSelector', 'matches'].filter(p => p in HTMLElementPrototype).pop();
-}
-
-/**
- * @param {!Event} ev
- * @param {!{x: number, y: number}} pageOffset
- * @param {!ClientRect} clientRect
- * @return {!{x: number, y: number}}
- */
-function getNormalizedEventCoords(ev, pageOffset, clientRect) {
-  const { x, y } = pageOffset;
-  const documentX = x + clientRect.left;
-  const documentY = y + clientRect.top;
-
-  let normalizedX;
-  let normalizedY;
-  // Determine touch point relative to the ripple container.
-  if (ev.type === 'touchstart') {
-    normalizedX = ev.changedTouches[0].pageX - documentX;
-    normalizedY = ev.changedTouches[0].pageY - documentY;
-  } else {
-    normalizedX = ev.pageX - documentX;
-    normalizedY = ev.pageY - documentY;
-  }
-
-  return { x: normalizedX, y: normalizedY };
-}
-
-
-
-/***/ }),
-/* 36 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCMenu; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(92);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(33);
 /* unused harmony reexport MDCMenuFoundation */
 /* unused harmony reexport AnchorMargin */
 /* unused harmony reexport Corner */
@@ -3994,81 +3522,7 @@ class MDCMenu extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
 
 
 /***/ }),
-/* 37 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * @template A
- */
-class MDCFoundation {
-  /** @return enum{cssClasses} */
-  static get cssClasses() {
-    // Classes extending MDCFoundation should implement this method to return an object which exports every
-    // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
-    return {};
-  }
-
-  /** @return enum{strings} */
-  static get strings() {
-    // Classes extending MDCFoundation should implement this method to return an object which exports all
-    // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
-    return {};
-  }
-
-  /** @return enum{numbers} */
-  static get numbers() {
-    // Classes extending MDCFoundation should implement this method to return an object which exports all
-    // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
-    return {};
-  }
-
-  /** @return {!Object} */
-  static get defaultAdapter() {
-    // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
-    // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
-    // validation.
-    return {};
-  }
-
-  /**
-   * @param {A=} adapter
-   */
-  constructor(adapter = {}) {
-    /** @protected {!A} */
-    this.adapter_ = adapter;
-  }
-
-  init() {
-    // Subclasses should override this method to perform initialization routines (registering events, etc.)
-  }
-
-  destroy() {
-    // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
-
-/***/ }),
-/* 38 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4163,7 +3617,7 @@ const Corner = {
 
 
 /***/ }),
-/* 39 */
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4194,7 +3648,7 @@ const Corner = {
 
 
 /***/ }),
-/* 40 */
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4244,7 +3698,7 @@ class MDCSelectBottomLineAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCSelectBottomLineAdapter);
 
 /***/ }),
-/* 41 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4294,7 +3748,7 @@ class MDCSelectLabelAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCSelectLabelAdapter);
 
 /***/ }),
-/* 42 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4338,7 +3792,7 @@ const strings = {
 
 
 /***/ }),
-/* 43 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4455,7 +3909,7 @@ class MDCChipAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCChipAdapter);
 
 /***/ }),
-/* 44 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4497,7 +3951,7 @@ const cssClasses = {
 
 
 /***/ }),
-/* 45 */
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4556,21 +4010,21 @@ class MDCChipSetAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCChipSetAdapter);
 
 /***/ }),
-/* 46 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(47);
+module.exports = __webpack_require__(42);
 
 
 /***/ }),
-/* 47 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_initialize__ = __webpack_require__(5);
-window.dialogPolyfill = __webpack_require__(48);
-window.componentHandler = __webpack_require__(50);
+window.dialogPolyfill = __webpack_require__(43);
+window.componentHandler = __webpack_require__(45);
 
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -4578,7 +4032,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 /***/ }),
-/* 48 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;(function () {
@@ -5323,7 +4777,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;(function () {
   dialogPolyfill['forceRegisterDialog'] = dialogPolyfill.forceRegisterDialog;
   dialogPolyfill['registerDialog'] = dialogPolyfill.registerDialog;
 
-  if ("function" === 'function' && 'amd' in __webpack_require__(49)) {
+  if ("function" === 'function' && 'amd' in __webpack_require__(44)) {
     // AMD support
     !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
       return dialogPolyfill;
@@ -5339,7 +4793,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;(function () {
 })();
 
 /***/ }),
-/* 49 */
+/* 44 */
 /***/ (function(module, exports) {
 
 module.exports = function() {
@@ -5348,7 +4802,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 50 */
+/* 45 */
 /***/ (function(module, exports) {
 
 ;(function () {
@@ -9326,7 +8780,7 @@ module.exports = function() {
 })();
 
 /***/ }),
-/* 51 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9349,13 +8803,13 @@ function initButtons() {
 }
 
 /***/ }),
-/* 52 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(4);
 /**
  * @license
@@ -9915,7 +9369,7 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
 /* harmony default export */ __webpack_exports__["a"] = (MDCRippleFoundation);
 
 /***/ }),
-/* 53 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9970,7 +9424,7 @@ const numbers = {
 
 
 /***/ }),
-/* 54 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10009,15 +9463,15 @@ function initDialogs() {
 }
 
 /***/ }),
-/* 55 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initDateTime;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_flatpickr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__text_fields__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_textfield__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__text_fields__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_textfield__ = __webpack_require__(15);
 
 
 
@@ -10053,10 +9507,10 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
 
 /***/ }),
-/* 56 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* flatpickr v4.4.6, @license MIT */
+/* flatpickr v4.5.0, @license MIT */
 (function (global, factory) {
    true ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : global.flatpickr = factory();
 })(this, function () {
@@ -10351,7 +9805,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
         }
       }
 
-      if (!(parsedDate instanceof Date)) {
+      if (!(parsedDate instanceof Date && !isNaN(parsedDate.getTime()))) {
         config.errorHandler(new Error("Invalid date provided: " + date_orig));
         return undefined;
       }
@@ -10508,20 +9962,6 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
     };
   }
 
-  if (typeof window.requestAnimationFrame !== "function") {
-    var vendors = ["ms", "moz", "webkit", "o"];
-
-    for (var x = 0, length = vendors.length; x < length && !window.requestAnimationFrame; ++x) {
-      window.requestAnimationFrame = window[vendors[x] + "RequestAnimationFrame"];
-    }
-
-    if (typeof window.requestAnimationFrame !== "function") {
-      window.requestAnimationFrame = function (cb) {
-        return setTimeout(cb, 16);
-      };
-    }
-  }
-
   var DEBOUNCED_CHANGE_MS = 300;
 
   function FlatpickrInstance(element, instanceConfig) {
@@ -10536,6 +9976,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
     self._handlers = [];
     self._bind = bind;
     self._setHoursFromDate = setHoursFromDate;
+    self._positionCalendar = positionCalendar;
     self.changeMonth = changeMonth;
     self.changeYear = changeYear;
     self.clear = clear;
@@ -10621,17 +10062,11 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
     function updateTime(e) {
       if (self.selectedDates.length === 0) return;
-      timeWrapper(e);
+      if (e !== undefined && e.type !== "blur") timeWrapper(e);
+      setHoursFromInputs();
+      updateValue();
 
-      if (e.type !== "input") {
-        setHoursFromInputs();
-        updateValue();
-      } else {
-        setTimeout(function () {
-          setHoursFromInputs();
-          updateValue();
-        }, DEBOUNCED_CHANGE_MS);
-      }
+      self._debouncedChange();
     }
 
     function ampm2military(hour, amPM) {
@@ -10654,7 +10089,11 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
       var hours = (parseInt(self.hourElement.value.slice(-2), 10) || 0) % 24,
           minutes = (parseInt(self.minuteElement.value, 10) || 0) % 60,
           seconds = self.secondElement !== undefined ? (parseInt(self.secondElement.value, 10) || 0) % 60 : 0;
-      if (self.amPM !== undefined) hours = ampm2military(hours, self.amPM.textContent);
+
+      if (self.amPM !== undefined) {
+        hours = ampm2military(hours, self.amPM.textContent);
+      }
+
       var limitMinHours = self.config.minTime !== undefined || self.config.minDate && self.minDateHasTime && self.latestSelectedDateObj && compareDates(self.latestSelectedDateObj, self.config.minDate, true) === 0;
       var limitMaxHours = self.config.maxTime !== undefined || self.config.maxDate && self.maxDateHasTime && self.latestSelectedDateObj && compareDates(self.latestSelectedDateObj, self.config.maxDate, true) === 0;
 
@@ -10678,6 +10117,30 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
     function setHoursFromDate(dateObj) {
       var date = dateObj || self.latestSelectedDateObj;
       if (date) setHours(date.getHours(), date.getMinutes(), date.getSeconds());
+    }
+
+    function setDefaultHours() {
+      var hours = self.config.defaultHour;
+      var minutes = self.config.defaultMinute;
+      var seconds = self.config.defaultSeconds;
+
+      if (self.config.minDate !== undefined) {
+        var min_hr = self.config.minDate.getHours();
+        var min_minutes = self.config.minDate.getMinutes();
+        hours = Math.max(hours, min_hr);
+        if (hours === min_hr) minutes = Math.max(min_minutes, minutes);
+        if (hours === min_hr && minutes === min_minutes) seconds = self.config.minDate.getSeconds();
+      }
+
+      if (self.config.maxDate !== undefined) {
+        var max_hr = self.config.maxDate.getHours();
+        var max_minutes = self.config.maxDate.getMinutes();
+        hours = Math.min(hours, max_hr);
+        if (hours === max_hr) minutes = Math.min(max_minutes, minutes);
+        if (hours === max_hr && minutes === max_minutes) seconds = self.config.maxDate.getSeconds();
+      }
+
+      setHours(hours, minutes, seconds);
     }
 
     function setHours(hours, minutes, seconds) {
@@ -10770,11 +10233,11 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
           return e.target.select();
         };
 
-        bind(self.timeContainer, ["input", "increment"], updateTime);
-        bind(self.timeContainer, "mousedown", onClick(timeIncrement));
-        bind(self.timeContainer, ["input", "increment"], self._debouncedChange, {
-          passive: true
+        bind(self.timeContainer, ["increment"], updateTime);
+        bind(self.timeContainer, "blur", updateTime, {
+          capture: true
         });
+        bind(self.timeContainer, "mousedown", onClick(timeIncrement));
         bind([self.hourElement, self.minuteElement], ["focus", "click"], selText);
         if (self.secondElement !== undefined) bind(self.secondElement, "focus", function () {
           return self.secondElement && self.secondElement.select();
@@ -11216,7 +10679,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
       self.showTimeInput = false;
 
       if (self.config.enableTime === true) {
-        if (self.config.minDate !== undefined) setHoursFromDate(self.config.minDate);else setHours(self.config.defaultHour, self.config.defaultMinute, self.config.defaultSeconds);
+        setDefaultHours();
       }
 
       self.redraw();
@@ -11343,7 +10806,6 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
     function onKeyDown(e) {
       var isInput = e.target === self._input;
-      var calendarElem = isCalendarElem(e.target);
       var allowInput = self.config.allowInput;
       var allowKeydown = self.isOpen && (!allowInput || !isInput);
       var allowInlineKeydown = self.config.inline && isInput && !allowInput;
@@ -11353,12 +10815,12 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
           self.setDate(self._input.value, true, e.target === self.altInput ? self.config.altFormat : self.config.dateFormat);
           return e.target.blur();
         } else self.open();
-      } else if (calendarElem || allowKeydown || allowInlineKeydown) {
+      } else if (isCalendarElem(e.target) || allowKeydown || allowInlineKeydown) {
         var isTimeObj = !!self.timeContainer && self.timeContainer.contains(e.target);
 
         switch (e.keyCode) {
           case 13:
-            if (isTimeObj) updateValue();else selectDate(e);
+            if (isTimeObj) updateTime();else selectDate(e);
             break;
 
           case 27:
@@ -11413,19 +10875,18 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
           case 9:
             if (!isTimeObj) break;
+            var elems = [self.hourElement, self.minuteElement, self.secondElement, self.amPM].filter(function (x) {
+              return x;
+            });
+            var i = elems.indexOf(e.target);
 
-            if (e.target === self.hourElement) {
-              e.preventDefault();
-              self.minuteElement.select();
-            } else if (e.target === self.minuteElement && (self.secondElement || self.amPM)) {
-              e.preventDefault();
-              if (self.secondElement !== undefined) self.secondElement.focus();else if (self.amPM !== undefined) {
+            if (i !== -1) {
+              var target = elems[i + (e.shiftKey ? -1 : 1)];
+
+              if (target !== undefined) {
                 e.preventDefault();
-                self.amPM.focus();
+                target.focus();
               }
-            } else if (e.target === self.secondElement && self.amPM) {
-              e.preventDefault();
-              self.amPM.focus();
             }
 
             break;
@@ -11547,8 +11008,8 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
       if (self.config.enableTime === true && self.config.noCalendar === true) {
         if (self.selectedDates.length === 0) {
-          self.setDate(self.config.minDate !== undefined ? new Date(self.config.minDate.getTime()) : new Date().setHours(self.config.defaultHour, self.config.defaultMinute, self.config.defaultSeconds, 0), false);
-          setHoursFromInputs();
+          self.setDate(self.config.minDate !== undefined ? new Date(self.config.minDate.getTime()) : new Date(), false);
+          setDefaultHours();
           updateValue();
         }
 
@@ -11775,7 +11236,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
       updateNavigationCurrentMonth();
       buildDays();
-      if (self.config.minDate && self.minDateHasTime && self.config.enableTime && compareDates(selectedDate, self.config.minDate) === 0) setHoursFromDate(self.config.minDate);
+      setDefaultHours();
       updateValue();
       if (self.config.enableTime) setTimeout(function () {
         return self.showTimeInput = true;
@@ -11864,7 +11325,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
         format = self.config.dateFormat;
       }
 
-      if (date !== 0 && !date) return self.clear(triggerChange);
+      if (date !== 0 && !date || date instanceof Array && date.length === 0) return self.clear(triggerChange);
       setSelectedDate(date, format);
       self.showTimeInput = self.selectedDates.length > 0;
       self.latestSelectedDateObj = self.selectedDates[0];
@@ -11893,7 +11354,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
     function setupDates() {
       self.selectedDates = [];
       self.now = self.parseDate(self.config.now) || new Date();
-      var preloadedDate = self.config.defaultDate || self.input.value;
+      var preloadedDate = self.config.defaultDate || (self.input.placeholder.length > 0 && self.input.value === self.input.placeholder ? null : self.input.value);
       if (preloadedDate) setSelectedDate(preloadedDate, self.config.dateFormat);
       var initialDate = self.selectedDates.length > 0 ? self.selectedDates[0] : self.config.minDate && self.config.minDate.getTime() > self.now.getTime() ? self.config.minDate : self.config.maxDate && self.config.maxDate.getTime() < self.now.getTime() ? self.config.maxDate : self.now;
       self.currentYear = initialDate.getFullYear();
@@ -11936,7 +11397,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
         self.altInput.required = self.input.required;
         self.altInput.tabIndex = self.input.tabIndex;
         self.altInput.type = "text";
-        self.input.type = "hidden";
+        self.input.setAttribute("type", "hidden");
         if (!self.config.static && self.input.parentNode) self.input.parentNode.insertBefore(self.altInput, self.input.nextSibling);
       }
 
@@ -12184,7 +11645,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 });
 
 /***/ }),
-/* 57 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12222,7 +11683,7 @@ const cssClasses = {
 
 
 /***/ }),
-/* 58 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12252,18 +11713,18 @@ const strings = {
 
 
 /***/ }),
-/* 59 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_line_ripple_foundation__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_line_ripple_foundation__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__helper_text_foundation__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icon_foundation__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_floating_label_foundation__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_notched_outline_foundation__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__constants__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_floating_label_foundation__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_notched_outline_foundation__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__constants__ = __webpack_require__(16);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -12691,7 +12152,7 @@ class MDCTextFieldFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_
 /* harmony default export */ __webpack_exports__["a"] = (MDCTextFieldFoundation);
 
 /***/ }),
-/* 60 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12722,7 +12183,7 @@ const cssClasses = {
 
 
 /***/ }),
-/* 61 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12753,14 +12214,14 @@ const cssClasses = {
 
 
 /***/ }),
-/* 62 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCLineRipple; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(20);
 /* unused harmony reexport MDCLineRippleFoundation */
 /**
  * @license
@@ -12838,13 +12299,13 @@ class MDCLineRipple extends __WEBPACK_IMPORTED_MODULE_0__material_base_component
 
 
 /***/ }),
-/* 63 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextFieldHelperText; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(6);
 /* unused harmony reexport MDCTextFieldHelperTextFoundation */
 /**
@@ -12909,13 +12370,13 @@ class MDCTextFieldHelperText extends __WEBPACK_IMPORTED_MODULE_0__material_base_
 
 
 /***/ }),
-/* 64 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextFieldIcon; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(7);
 /* unused harmony reexport MDCTextFieldIconFoundation */
 /**
@@ -12976,14 +12437,14 @@ class MDCTextFieldIcon extends __WEBPACK_IMPORTED_MODULE_0__material_base_compon
 
 
 /***/ }),
-/* 65 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCFloatingLabel; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(22);
 /* unused harmony reexport MDCFloatingLabelFoundation */
 /**
  * @license
@@ -13061,15 +12522,15 @@ class MDCFloatingLabel extends __WEBPACK_IMPORTED_MODULE_0__material_base_compon
 
 
 /***/ }),
-/* 66 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCNotchedOutline; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(26);
 /* unused harmony reexport MDCNotchedOutlineFoundation */
 /**
  * @license
@@ -13148,21 +12609,21 @@ class MDCNotchedOutline extends __WEBPACK_IMPORTED_MODULE_0__material_base_compo
 
 
 /***/ }),
-/* 67 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initEvents;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_loads__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_posts__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replaces__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_dialog__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events_errors__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visiblity__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__events_snackbar__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_autocomplete__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_selects__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__events_navigates__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_loads__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_posts__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replaces__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_dialog__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events_errors__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visibility__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__events_snackbar__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_autocomplete__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_selects__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__events_navigates__ = __webpack_require__(75);
 
 
 
@@ -13238,7 +12699,7 @@ class VEvents {
             case 'dialog':
                 return new __WEBPACK_IMPORTED_MODULE_3__events_dialog__["a" /* VDialog */](options, params, event);
             case 'toggle_visibility':
-                return new __WEBPACK_IMPORTED_MODULE_5__events_toggle_visiblity__["a" /* VToggleVisiblity */](options, params, event);
+                return new __WEBPACK_IMPORTED_MODULE_5__events_toggle_visibility__["a" /* VToggleVisibility */](options, params, event);
             case 'snackbar':
                 return new __WEBPACK_IMPORTED_MODULE_6__events_snackbar__["a" /* VSnackbarEvent */](options, params, event);
             case 'autocomplete':
@@ -13313,11 +12774,11 @@ function fireAfterLoad() {
 }
 
 /***/ }),
-/* 68 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_urls__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_urls__ = __webpack_require__(27);
 
 
 class VLoads extends __WEBPACK_IMPORTED_MODULE_0__utils_urls__["a" /* VUrls */] {
@@ -13344,7 +12805,7 @@ class VLoads extends __WEBPACK_IMPORTED_MODULE_0__utils_urls__["a" /* VUrls */] 
 
 
 /***/ }),
-/* 69 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13453,13 +12914,13 @@ class VPosts extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
 
 
 /***/ }),
-/* 70 */
+/* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_animation_index__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_animation_index__ = __webpack_require__(30);
 /* unused harmony reexport MDCSnackbarFoundation */
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -13543,11 +13004,11 @@ class MDCSnackbar extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a"
 
 
 /***/ }),
-/* 71 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(29);
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -13674,12 +13135,12 @@ class MDCComponent {
 /* harmony default export */ __webpack_exports__["a"] = (MDCComponent);
 
 /***/ }),
-/* 72 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(68);
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
  *
@@ -13928,7 +13389,7 @@ class MDCSnackbarFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_i
 
 
 /***/ }),
-/* 73 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13976,7 +13437,7 @@ const numbers = {
 
 
 /***/ }),
-/* 74 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14067,7 +13528,7 @@ class VReplaces extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
 
 
 /***/ }),
-/* 75 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14100,11 +13561,11 @@ class VDialog {
 
 
 /***/ }),
-/* 76 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-class VToggleVisiblity {
+class VToggleVisibility {
     constructor(options, params, event) {
         this.targetId = options.target;
         this.params = params;
@@ -14114,20 +13575,20 @@ class VToggleVisiblity {
     call(results) {
         var targetId = this.targetId;
         var promiseObj = new Promise(function (resolve) {
-            console.log("Toggling visiblity on: " + targetId);
+            console.log("Toggling visibility on: " + targetId);
             var elem = document.getElementById(targetId);
             elem.classList.toggle("v-hidden");
-            results.push({ action: 'toggle_visiblity', statusCode: 200 });
+            results.push({ action: 'toggle_visibility', statusCode: 200 });
             resolve(results);
         });
         return promiseObj;
     }
 }
-/* harmony export (immutable) */ __webpack_exports__["a"] = VToggleVisiblity;
+/* harmony export (immutable) */ __webpack_exports__["a"] = VToggleVisibility;
 
 
 /***/ }),
-/* 77 */
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14159,7 +13620,7 @@ class VSnackbarEvent {
 
 
 /***/ }),
-/* 78 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14266,7 +13727,7 @@ class VAutoComplete extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */]
 
 
 /***/ }),
-/* 79 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14302,7 +13763,7 @@ class VSelects {
 
 
 /***/ }),
-/* 80 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14327,7 +13788,7 @@ class VNavigates {
 
 
 /***/ }),
-/* 81 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14338,12 +13799,12 @@ function initLists() {
 }
 
 /***/ }),
-/* 82 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initIconToggles;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_icon_toggle__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_icon_toggle__ = __webpack_require__(78);
 
 
 function initIconToggles() {
@@ -14367,14 +13828,14 @@ function initIconToggles() {
 //         });
 
 /***/ }),
-/* 83 */
+/* 78 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCIconToggle; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__ = __webpack_require__(2);
 /* unused harmony reexport MDCIconToggleFoundation */
 /**
  * @license
@@ -14492,13 +13953,13 @@ class MDCIconToggle extends __WEBPACK_IMPORTED_MODULE_0__material_base_component
 
 
 /***/ }),
-/* 84 */
+/* 79 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(81);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -14733,7 +14194,7 @@ IconToggleState.prototype.cssClass;
 /* harmony default export */ __webpack_exports__["a"] = (MDCIconToggleFoundation);
 
 /***/ }),
-/* 85 */
+/* 80 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14834,7 +14295,7 @@ let IconToggleEvent;
 
 
 /***/ }),
-/* 86 */
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14876,792 +14337,12 @@ const strings = {
 
 
 /***/ }),
-/* 87 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRipple; });
-/* unused harmony export RippleCapableSurface */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(35);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
-/* unused harmony reexport util */
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-
-/**
- * @extends MDCComponent<!MDCRippleFoundation>
- */
-class MDCRipple extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
-  /** @param {...?} args */
-  constructor(...args) {
-    super(...args);
-
-    /** @type {boolean} */
-    this.disabled = false;
-
-    /** @private {boolean} */
-    this.unbounded_;
-  }
-
-  /**
-   * @param {!Element} root
-   * @param {{isUnbounded: (boolean|undefined)}=} options
-   * @return {!MDCRipple}
-   */
-  static attachTo(root, { isUnbounded = undefined } = {}) {
-    const ripple = new MDCRipple(root);
-    // Only override unbounded behavior if option is explicitly specified
-    if (isUnbounded !== undefined) {
-      ripple.unbounded = /** @type {boolean} */isUnbounded;
-    }
-    return ripple;
-  }
-
-  /**
-   * @param {!RippleCapableSurface} instance
-   * @return {!MDCRippleAdapter}
-   */
-  static createAdapter(instance) {
-    const MATCHES = __WEBPACK_IMPORTED_MODULE_3__util__["b" /* getMatchesProperty */](HTMLElement.prototype);
-
-    return {
-      browserSupportsCssVars: () => __WEBPACK_IMPORTED_MODULE_3__util__["d" /* supportsCssVariables */](window),
-      isUnbounded: () => instance.unbounded,
-      isSurfaceActive: () => instance.root_[MATCHES](':active'),
-      isSurfaceDisabled: () => instance.disabled,
-      addClass: className => instance.root_.classList.add(className),
-      removeClass: className => instance.root_.classList.remove(className),
-      containsEventTarget: target => instance.root_.contains(target),
-      registerInteractionHandler: (evtType, handler) => instance.root_.addEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
-      deregisterInteractionHandler: (evtType, handler) => instance.root_.removeEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
-      registerDocumentInteractionHandler: (evtType, handler) => document.documentElement.addEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
-      deregisterDocumentInteractionHandler: (evtType, handler) => document.documentElement.removeEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
-      registerResizeHandler: handler => window.addEventListener('resize', handler),
-      deregisterResizeHandler: handler => window.removeEventListener('resize', handler),
-      updateCssVariable: (varName, value) => instance.root_.style.setProperty(varName, value),
-      computeBoundingRect: () => instance.root_.getBoundingClientRect(),
-      getWindowPageOffset: () => ({ x: window.pageXOffset, y: window.pageYOffset })
-    };
-  }
-
-  /** @return {boolean} */
-  get unbounded() {
-    return this.unbounded_;
-  }
-
-  /** @param {boolean} unbounded */
-  set unbounded(unbounded) {
-    this.unbounded_ = Boolean(unbounded);
-    this.setUnbounded_();
-  }
-
-  /**
-   * Closure Compiler throws an access control error when directly accessing a
-   * protected or private property inside a getter/setter, like unbounded above.
-   * By accessing the protected property inside a method, we solve that problem.
-   * That's why this function exists.
-   * @private
-   */
-  setUnbounded_() {
-    this.foundation_.setUnbounded(this.unbounded_);
-  }
-
-  activate() {
-    this.foundation_.activate();
-  }
-
-  deactivate() {
-    this.foundation_.deactivate();
-  }
-
-  layout() {
-    this.foundation_.layout();
-  }
-
-  /** @return {!MDCRippleFoundation} */
-  getDefaultFoundation() {
-    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */](MDCRipple.createAdapter(this));
-  }
-
-  initialSyncWithDOM() {
-    this.unbounded = 'mdcRippleIsUnbounded' in this.root_.dataset;
-  }
-}
-
-/**
- * See Material Design spec for more details on when to use ripples.
- * https://material.io/guidelines/motion/choreography.html#choreography-creation
- * @record
- */
-class RippleCapableSurface {}
-
-/** @protected {!Element} */
-RippleCapableSurface.prototype.root_;
-
-/**
- * Whether or not the ripple bleeds out of the bounds of the element.
- * @type {boolean|undefined}
- */
-RippleCapableSurface.prototype.unbounded;
-
-/**
- * Whether or not the ripple is attached to a disabled component.
- * @type {boolean|undefined}
- */
-RippleCapableSurface.prototype.disabled;
-
-
-
-/***/ }),
-/* 88 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(35);
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-
-/**
- * @typedef {!{
- *   isActivated: (boolean|undefined),
- *   hasDeactivationUXRun: (boolean|undefined),
- *   wasActivatedByPointer: (boolean|undefined),
- *   wasElementMadeActive: (boolean|undefined),
- *   activationEvent: Event,
- *   isProgrammatic: (boolean|undefined)
- * }}
- */
-let ActivationStateType;
-
-/**
- * @typedef {!{
- *   activate: (string|undefined),
- *   deactivate: (string|undefined),
- *   focus: (string|undefined),
- *   blur: (string|undefined)
- * }}
- */
-let ListenerInfoType;
-
-/**
- * @typedef {!{
- *   activate: function(!Event),
- *   deactivate: function(!Event),
- *   focus: function(),
- *   blur: function()
- * }}
- */
-let ListenersType;
-
-/**
- * @typedef {!{
- *   x: number,
- *   y: number
- * }}
- */
-let PointType;
-
-// Activation events registered on the root element of each instance for activation
-const ACTIVATION_EVENT_TYPES = ['touchstart', 'pointerdown', 'mousedown', 'keydown'];
-
-// Deactivation events registered on documentElement when a pointer-related down event occurs
-const POINTER_DEACTIVATION_EVENT_TYPES = ['touchend', 'pointerup', 'mouseup'];
-
-// Tracks activations that have occurred on the current frame, to avoid simultaneous nested activations
-/** @type {!Array<!EventTarget>} */
-let activatedTargets = [];
-
-/**
- * @extends {MDCFoundation<!MDCRippleAdapter>}
- */
-class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
-  }
-
-  static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */];
-  }
-
-  static get numbers() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */];
-  }
-
-  static get defaultAdapter() {
-    return {
-      browserSupportsCssVars: () => /* boolean - cached */{},
-      isUnbounded: () => /* boolean */{},
-      isSurfaceActive: () => /* boolean */{},
-      isSurfaceDisabled: () => /* boolean */{},
-      addClass: () => /* className: string */{},
-      removeClass: () => /* className: string */{},
-      containsEventTarget: () => /* target: !EventTarget */{},
-      registerInteractionHandler: () => /* evtType: string, handler: EventListener */{},
-      deregisterInteractionHandler: () => /* evtType: string, handler: EventListener */{},
-      registerDocumentInteractionHandler: () => /* evtType: string, handler: EventListener */{},
-      deregisterDocumentInteractionHandler: () => /* evtType: string, handler: EventListener */{},
-      registerResizeHandler: () => /* handler: EventListener */{},
-      deregisterResizeHandler: () => /* handler: EventListener */{},
-      updateCssVariable: () => /* varName: string, value: string */{},
-      computeBoundingRect: () => /* ClientRect */{},
-      getWindowPageOffset: () => /* {x: number, y: number} */{}
-    };
-  }
-
-  constructor(adapter) {
-    super(Object.assign(MDCRippleFoundation.defaultAdapter, adapter));
-
-    /** @private {number} */
-    this.layoutFrame_ = 0;
-
-    /** @private {!ClientRect} */
-    this.frame_ = /** @type {!ClientRect} */{ width: 0, height: 0 };
-
-    /** @private {!ActivationStateType} */
-    this.activationState_ = this.defaultActivationState_();
-
-    /** @private {number} */
-    this.initialSize_ = 0;
-
-    /** @private {number} */
-    this.maxRadius_ = 0;
-
-    /** @private {function(!Event)} */
-    this.activateHandler_ = e => this.activate_(e);
-
-    /** @private {function(!Event)} */
-    this.deactivateHandler_ = e => this.deactivate_(e);
-
-    /** @private {function(?Event=)} */
-    this.focusHandler_ = () => requestAnimationFrame(() => this.adapter_.addClass(MDCRippleFoundation.cssClasses.BG_FOCUSED));
-
-    /** @private {function(?Event=)} */
-    this.blurHandler_ = () => requestAnimationFrame(() => this.adapter_.removeClass(MDCRippleFoundation.cssClasses.BG_FOCUSED));
-
-    /** @private {!Function} */
-    this.resizeHandler_ = () => this.layout();
-
-    /** @private {!{left: number, top:number}} */
-    this.unboundedCoords_ = {
-      left: 0,
-      top: 0
-    };
-
-    /** @private {number} */
-    this.fgScale_ = 0;
-
-    /** @private {number} */
-    this.activationTimer_ = 0;
-
-    /** @private {number} */
-    this.fgDeactivationRemovalTimer_ = 0;
-
-    /** @private {boolean} */
-    this.activationAnimationHasEnded_ = false;
-
-    /** @private {!Function} */
-    this.activationTimerCallback_ = () => {
-      this.activationAnimationHasEnded_ = true;
-      this.runDeactivationUXLogicIfReady_();
-    };
-
-    /** @private {?Event} */
-    this.previousActivationEvent_ = null;
-  }
-
-  /**
-   * We compute this property so that we are not querying information about the client
-   * until the point in time where the foundation requests it. This prevents scenarios where
-   * client-side feature-detection may happen too early, such as when components are rendered on the server
-   * and then initialized at mount time on the client.
-   * @return {boolean}
-   * @private
-   */
-  isSupported_() {
-    return this.adapter_.browserSupportsCssVars();
-  }
-
-  /**
-   * @return {!ActivationStateType}
-   */
-  defaultActivationState_() {
-    return {
-      isActivated: false,
-      hasDeactivationUXRun: false,
-      wasActivatedByPointer: false,
-      wasElementMadeActive: false,
-      activationEvent: null,
-      isProgrammatic: false
-    };
-  }
-
-  init() {
-    if (!this.isSupported_()) {
-      return;
-    }
-    this.registerRootHandlers_();
-
-    const { ROOT, UNBOUNDED } = MDCRippleFoundation.cssClasses;
-    requestAnimationFrame(() => {
-      this.adapter_.addClass(ROOT);
-      if (this.adapter_.isUnbounded()) {
-        this.adapter_.addClass(UNBOUNDED);
-      }
-      this.layoutInternal_();
-    });
-  }
-
-  destroy() {
-    if (!this.isSupported_()) {
-      return;
-    }
-
-    if (this.activationTimer_) {
-      clearTimeout(this.activationTimer_);
-      this.activationTimer_ = 0;
-      const { FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
-      this.adapter_.removeClass(FG_ACTIVATION);
-    }
-
-    this.deregisterRootHandlers_();
-    this.deregisterDeactivationHandlers_();
-
-    const { ROOT, UNBOUNDED } = MDCRippleFoundation.cssClasses;
-    requestAnimationFrame(() => {
-      this.adapter_.removeClass(ROOT);
-      this.adapter_.removeClass(UNBOUNDED);
-      this.removeCssVars_();
-    });
-  }
-
-  /** @private */
-  registerRootHandlers_() {
-    ACTIVATION_EVENT_TYPES.forEach(type => {
-      this.adapter_.registerInteractionHandler(type, this.activateHandler_);
-    });
-    this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
-    this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
-    this.adapter_.registerResizeHandler(this.resizeHandler_);
-  }
-
-  /**
-   * @param {!Event} e
-   * @private
-   */
-  registerDeactivationHandlers_(e) {
-    if (e.type === 'keydown') {
-      this.adapter_.registerInteractionHandler('keyup', this.deactivateHandler_);
-    } else {
-      POINTER_DEACTIVATION_EVENT_TYPES.forEach(type => {
-        this.adapter_.registerDocumentInteractionHandler(type, this.deactivateHandler_);
-      });
-    }
-  }
-
-  /** @private */
-  deregisterRootHandlers_() {
-    ACTIVATION_EVENT_TYPES.forEach(type => {
-      this.adapter_.deregisterInteractionHandler(type, this.activateHandler_);
-    });
-    this.adapter_.deregisterInteractionHandler('focus', this.focusHandler_);
-    this.adapter_.deregisterInteractionHandler('blur', this.blurHandler_);
-    this.adapter_.deregisterResizeHandler(this.resizeHandler_);
-  }
-
-  /** @private */
-  deregisterDeactivationHandlers_() {
-    this.adapter_.deregisterInteractionHandler('keyup', this.deactivateHandler_);
-    POINTER_DEACTIVATION_EVENT_TYPES.forEach(type => {
-      this.adapter_.deregisterDocumentInteractionHandler(type, this.deactivateHandler_);
-    });
-  }
-
-  /** @private */
-  removeCssVars_() {
-    const { strings } = MDCRippleFoundation;
-    Object.keys(strings).forEach(k => {
-      if (k.indexOf('VAR_') === 0) {
-        this.adapter_.updateCssVariable(strings[k], null);
-      }
-    });
-  }
-
-  /**
-   * @param {?Event} e
-   * @private
-   */
-  activate_(e) {
-    if (this.adapter_.isSurfaceDisabled()) {
-      return;
-    }
-
-    const activationState = this.activationState_;
-    if (activationState.isActivated) {
-      return;
-    }
-
-    // Avoid reacting to follow-on events fired by touch device after an already-processed user interaction
-    const previousActivationEvent = this.previousActivationEvent_;
-    const isSameInteraction = previousActivationEvent && e && previousActivationEvent.type !== e.type;
-    if (isSameInteraction) {
-      return;
-    }
-
-    activationState.isActivated = true;
-    activationState.isProgrammatic = e === null;
-    activationState.activationEvent = e;
-    activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : e.type === 'mousedown' || e.type === 'touchstart' || e.type === 'pointerdown';
-
-    const hasActivatedChild = e && activatedTargets.length > 0 && activatedTargets.some(target => this.adapter_.containsEventTarget(target));
-    if (hasActivatedChild) {
-      // Immediately reset activation state, while preserving logic that prevents touch follow-on events
-      this.resetActivationState_();
-      return;
-    }
-
-    if (e) {
-      activatedTargets.push( /** @type {!EventTarget} */e.target);
-      this.registerDeactivationHandlers_(e);
-    }
-
-    requestAnimationFrame(() => {
-      // This needs to be wrapped in an rAF call b/c web browsers
-      // report active states inconsistently when they're called within
-      // event handling code:
-      // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
-      // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
-      activationState.wasElementMadeActive = e && e.type === 'keydown' ? this.adapter_.isSurfaceActive() : true;
-      if (activationState.wasElementMadeActive) {
-        this.animateActivation_();
-      } else {
-        // Reset activation state immediately if element was not made active.
-        this.activationState_ = this.defaultActivationState_();
-      }
-
-      // Reset array on next frame after the current event has had a chance to bubble to prevent ancestor ripples
-      activatedTargets = [];
-    });
-  }
-
-  /**
-   * @param {?Event=} event Optional event containing position information.
-   */
-  activate(event = null) {
-    this.activate_(event);
-  }
-
-  /** @private */
-  animateActivation_() {
-    const { VAR_FG_TRANSLATE_START, VAR_FG_TRANSLATE_END } = MDCRippleFoundation.strings;
-    const { FG_DEACTIVATION, FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
-    const { DEACTIVATION_TIMEOUT_MS } = MDCRippleFoundation.numbers;
-
-    let translateStart = '';
-    let translateEnd = '';
-
-    if (!this.adapter_.isUnbounded()) {
-      const { startPoint, endPoint } = this.getFgTranslationCoordinates_();
-      translateStart = `${startPoint.x}px, ${startPoint.y}px`;
-      translateEnd = `${endPoint.x}px, ${endPoint.y}px`;
-    }
-
-    this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_START, translateStart);
-    this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_END, translateEnd);
-    // Cancel any ongoing activation/deactivation animations
-    clearTimeout(this.activationTimer_);
-    clearTimeout(this.fgDeactivationRemovalTimer_);
-    this.rmBoundedActivationClasses_();
-    this.adapter_.removeClass(FG_DEACTIVATION);
-
-    // Force layout in order to re-trigger the animation.
-    this.adapter_.computeBoundingRect();
-    this.adapter_.addClass(FG_ACTIVATION);
-    this.activationTimer_ = setTimeout(() => this.activationTimerCallback_(), DEACTIVATION_TIMEOUT_MS);
-  }
-
-  /**
-   * @private
-   * @return {{startPoint: PointType, endPoint: PointType}}
-   */
-  getFgTranslationCoordinates_() {
-    const { activationEvent, wasActivatedByPointer } = this.activationState_;
-
-    let startPoint;
-    if (wasActivatedByPointer) {
-      startPoint = Object(__WEBPACK_IMPORTED_MODULE_3__util__["c" /* getNormalizedEventCoords */])(
-      /** @type {!Event} */activationEvent, this.adapter_.getWindowPageOffset(), this.adapter_.computeBoundingRect());
-    } else {
-      startPoint = {
-        x: this.frame_.width / 2,
-        y: this.frame_.height / 2
-      };
-    }
-    // Center the element around the start point.
-    startPoint = {
-      x: startPoint.x - this.initialSize_ / 2,
-      y: startPoint.y - this.initialSize_ / 2
-    };
-
-    const endPoint = {
-      x: this.frame_.width / 2 - this.initialSize_ / 2,
-      y: this.frame_.height / 2 - this.initialSize_ / 2
-    };
-
-    return { startPoint, endPoint };
-  }
-
-  /** @private */
-  runDeactivationUXLogicIfReady_() {
-    // This method is called both when a pointing device is released, and when the activation animation ends.
-    // The deactivation animation should only run after both of those occur.
-    const { FG_DEACTIVATION } = MDCRippleFoundation.cssClasses;
-    const { hasDeactivationUXRun, isActivated } = this.activationState_;
-    const activationHasEnded = hasDeactivationUXRun || !isActivated;
-
-    if (activationHasEnded && this.activationAnimationHasEnded_) {
-      this.rmBoundedActivationClasses_();
-      this.adapter_.addClass(FG_DEACTIVATION);
-      this.fgDeactivationRemovalTimer_ = setTimeout(() => {
-        this.adapter_.removeClass(FG_DEACTIVATION);
-      }, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].FG_DEACTIVATION_MS);
-    }
-  }
-
-  /** @private */
-  rmBoundedActivationClasses_() {
-    const { FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
-    this.adapter_.removeClass(FG_ACTIVATION);
-    this.activationAnimationHasEnded_ = false;
-    this.adapter_.computeBoundingRect();
-  }
-
-  resetActivationState_() {
-    this.previousActivationEvent_ = this.activationState_.activationEvent;
-    this.activationState_ = this.defaultActivationState_();
-    // Touch devices may fire additional events for the same interaction within a short time.
-    // Store the previous event until it's safe to assume that subsequent events are for new interactions.
-    setTimeout(() => this.previousActivationEvent_ = null, MDCRippleFoundation.numbers.TAP_DELAY_MS);
-  }
-
-  /**
-   * @param {?Event} e
-   * @private
-   */
-  deactivate_(e) {
-    const activationState = this.activationState_;
-    // This can happen in scenarios such as when you have a keyup event that blurs the element.
-    if (!activationState.isActivated) {
-      return;
-    }
-
-    const state = /** @type {!ActivationStateType} */Object.assign({}, activationState);
-
-    if (activationState.isProgrammatic) {
-      const evtObject = null;
-      requestAnimationFrame(() => this.animateDeactivation_(evtObject, state));
-      this.resetActivationState_();
-    } else {
-      this.deregisterDeactivationHandlers_();
-      requestAnimationFrame(() => {
-        this.activationState_.hasDeactivationUXRun = true;
-        this.animateDeactivation_(e, state);
-        this.resetActivationState_();
-      });
-    }
-  }
-
-  /**
-   * @param {?Event=} event Optional event containing position information.
-   */
-  deactivate(event = null) {
-    this.deactivate_(event);
-  }
-
-  /**
-   * @param {Event} e
-   * @param {!ActivationStateType} options
-   * @private
-   */
-  animateDeactivation_(e, { wasActivatedByPointer, wasElementMadeActive }) {
-    if (wasActivatedByPointer || wasElementMadeActive) {
-      this.runDeactivationUXLogicIfReady_();
-    }
-  }
-
-  layout() {
-    if (this.layoutFrame_) {
-      cancelAnimationFrame(this.layoutFrame_);
-    }
-    this.layoutFrame_ = requestAnimationFrame(() => {
-      this.layoutInternal_();
-      this.layoutFrame_ = 0;
-    });
-  }
-
-  /** @private */
-  layoutInternal_() {
-    this.frame_ = this.adapter_.computeBoundingRect();
-    const maxDim = Math.max(this.frame_.height, this.frame_.width);
-
-    // Surface diameter is treated differently for unbounded vs. bounded ripples.
-    // Unbounded ripple diameter is calculated smaller since the surface is expected to already be padded appropriately
-    // to extend the hitbox, and the ripple is expected to meet the edges of the padded hitbox (which is typically
-    // square). Bounded ripples, on the other hand, are fully expected to expand beyond the surface's longest diameter
-    // (calculated based on the diagonal plus a constant padding), and are clipped at the surface's border via
-    // `overflow: hidden`.
-    const getBoundedRadius = () => {
-      const hypotenuse = Math.sqrt(Math.pow(this.frame_.width, 2) + Math.pow(this.frame_.height, 2));
-      return hypotenuse + MDCRippleFoundation.numbers.PADDING;
-    };
-
-    this.maxRadius_ = this.adapter_.isUnbounded() ? maxDim : getBoundedRadius();
-
-    // Ripple is sized as a fraction of the largest dimension of the surface, then scales up using a CSS scale transform
-    this.initialSize_ = maxDim * MDCRippleFoundation.numbers.INITIAL_ORIGIN_SCALE;
-    this.fgScale_ = this.maxRadius_ / this.initialSize_;
-
-    this.updateLayoutCssVars_();
-  }
-
-  /** @private */
-  updateLayoutCssVars_() {
-    const {
-      VAR_FG_SIZE, VAR_LEFT, VAR_TOP, VAR_FG_SCALE
-    } = MDCRippleFoundation.strings;
-
-    this.adapter_.updateCssVariable(VAR_FG_SIZE, `${this.initialSize_}px`);
-    this.adapter_.updateCssVariable(VAR_FG_SCALE, this.fgScale_);
-
-    if (this.adapter_.isUnbounded()) {
-      this.unboundedCoords_ = {
-        left: Math.round(this.frame_.width / 2 - this.initialSize_ / 2),
-        top: Math.round(this.frame_.height / 2 - this.initialSize_ / 2)
-      };
-
-      this.adapter_.updateCssVariable(VAR_LEFT, `${this.unboundedCoords_.left}px`);
-      this.adapter_.updateCssVariable(VAR_TOP, `${this.unboundedCoords_.top}px`);
-    }
-  }
-
-  /** @param {boolean} unbounded */
-  setUnbounded(unbounded) {
-    const { UNBOUNDED } = MDCRippleFoundation.cssClasses;
-    if (unbounded) {
-      this.adapter_.addClass(UNBOUNDED);
-    } else {
-      this.adapter_.removeClass(UNBOUNDED);
-    }
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCRippleFoundation);
-
-/***/ }),
-/* 89 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return strings; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return numbers; });
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-const cssClasses = {
-  // Ripple is a special case where the "root" component is really a "mixin" of sorts,
-  // given that it's an 'upgrade' to an existing component. That being said it is the root
-  // CSS class that all other CSS classes derive from.
-  ROOT: 'mdc-ripple-upgraded',
-  UNBOUNDED: 'mdc-ripple-upgraded--unbounded',
-  BG_FOCUSED: 'mdc-ripple-upgraded--background-focused',
-  FG_ACTIVATION: 'mdc-ripple-upgraded--foreground-activation',
-  FG_DEACTIVATION: 'mdc-ripple-upgraded--foreground-deactivation'
-};
-
-const strings = {
-  VAR_LEFT: '--mdc-ripple-left',
-  VAR_TOP: '--mdc-ripple-top',
-  VAR_FG_SIZE: '--mdc-ripple-fg-size',
-  VAR_FG_SCALE: '--mdc-ripple-fg-scale',
-  VAR_FG_TRANSLATE_START: '--mdc-ripple-fg-translate-start',
-  VAR_FG_TRANSLATE_END: '--mdc-ripple-fg-translate-end'
-};
-
-const numbers = {
-  PADDING: 10,
-  INITIAL_ORIGIN_SCALE: 0.6,
-  DEACTIVATION_TIMEOUT_MS: 225, // Corresponds to $mdc-ripple-translate-duration (i.e. activation animation duration)
-  FG_DEACTIVATION_MS: 150, // Corresponds to $mdc-ripple-fade-out-duration (i.e. deactivation animation duration)
-  TAP_DELAY_MS: 300 // Delay between touch and simulated mouse events on touch devices
-};
-
-
-
-/***/ }),
-/* 90 */
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initMenus;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_menu__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_menu__ = __webpack_require__(32);
 
 
 
@@ -15693,138 +14374,7 @@ function initMenus() {
 }
 
 /***/ }),
-/* 91 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(37);
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-/**
- * @template F
- */
-class MDCComponent {
-  /**
-   * @param {!Element} root
-   * @return {!MDCComponent}
-   */
-  static attachTo(root) {
-    // Subclasses which extend MDCBase should provide an attachTo() method that takes a root element and
-    // returns an instantiated component with its root set to that element. Also note that in the cases of
-    // subclasses, an explicit foundation class will not have to be passed in; it will simply be initialized
-    // from getDefaultFoundation().
-    return new MDCComponent(root, new __WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */]());
-  }
-
-  /**
-   * @param {!Element} root
-   * @param {F=} foundation
-   * @param {...?} args
-   */
-  constructor(root, foundation = undefined, ...args) {
-    /** @protected {!Element} */
-    this.root_ = root;
-    this.initialize(...args);
-    // Note that we initialize foundation here and not within the constructor's default param so that
-    // this.root_ is defined and can be used within the foundation class.
-    /** @protected {!F} */
-    this.foundation_ = foundation === undefined ? this.getDefaultFoundation() : foundation;
-    this.foundation_.init();
-    this.initialSyncWithDOM();
-  }
-
-  initialize() /* ...args */{}
-  // Subclasses can override this to do any additional setup work that would be considered part of a
-  // "constructor". Essentially, it is a hook into the parent constructor before the foundation is
-  // initialized. Any additional arguments besides root and foundation will be passed in here.
-
-
-  /**
-   * @return {!F} foundation
-   */
-  getDefaultFoundation() {
-    // Subclasses must override this method to return a properly configured foundation class for the
-    // component.
-    throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' + 'foundation class');
-  }
-
-  initialSyncWithDOM() {
-    // Subclasses should override this method if they need to perform work to synchronize with a host DOM
-    // object. An example of this would be a form control wrapper that needs to synchronize its internal state
-    // to some property or attribute of the host DOM. Please note: this is *not* the place to perform DOM
-    // reads/writes that would cause layout / paint, as this is called synchronously from within the constructor.
-  }
-
-  destroy() {
-    // Subclasses may implement this method to release any resources / deregister any listeners they have
-    // attached. An example of this might be deregistering a resize event from the window object.
-    this.foundation_.destroy();
-  }
-
-  /**
-   * Wrapper method to add an event listener to the component's root element. This is most useful when
-   * listening for custom events.
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  listen(evtType, handler) {
-    this.root_.addEventListener(evtType, handler);
-  }
-
-  /**
-   * Wrapper method to remove an event listener to the component's root element. This is most useful when
-   * unlistening for custom events.
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  unlisten(evtType, handler) {
-    this.root_.removeEventListener(evtType, handler);
-  }
-
-  /**
-   * Fires a cross-browser-compatible custom event from the component root of the given type,
-   * with the given data.
-   * @param {string} evtType
-   * @param {!Object} evtData
-   * @param {boolean=} shouldBubble
-   */
-  emit(evtType, evtData, shouldBubble = false) {
-    let evt;
-    if (typeof CustomEvent === 'function') {
-      evt = new CustomEvent(evtType, {
-        detail: evtData,
-        bubbles: shouldBubble
-      });
-    } else {
-      evt = document.createEvent('CustomEvent');
-      evt.initCustomEvent(evtType, shouldBubble, false, evtData);
-    }
-
-    this.root_.dispatchEvent(evt);
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCComponent);
-
-/***/ }),
-/* 92 */
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15987,15 +14537,15 @@ function solvePositionFromXValue_(xVal, x1, x2) {
 
 
 /***/ }),
-/* 93 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCMenuFoundation; });
 /* unused harmony export AnchorMargin */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(33);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -16638,7 +15188,7 @@ class MDCMenuFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_found
 
 
 /***/ }),
-/* 94 */
+/* 85 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16809,12 +15359,12 @@ class MDCMenuAdapter {
 
 
 /***/ }),
-/* 95 */
+/* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSelects;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(9);
 
@@ -16861,16 +15411,16 @@ class VSelect extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__
 
 
 /***/ }),
-/* 96 */
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bottom_line_index__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__label_index__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__constants__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bottom_line_index__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__label_index__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__constants__ = __webpack_require__(37);
 /* unused harmony reexport MDCSelectFoundation */
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -17001,14 +15551,14 @@ class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /
 
 
 /***/ }),
-/* 97 */
+/* 88 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCSelectBottomLine; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(89);
 /* unused harmony reexport MDCSelectBottomLineFoundation */
 /**
  * @license
@@ -17073,13 +15623,13 @@ class MDCSelectBottomLine extends __WEBPACK_IMPORTED_MODULE_0__material_base_com
 
 
 /***/ }),
-/* 98 */
+/* 89 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(90);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -17149,7 +15699,7 @@ class MDCSelectBottomLineFoundation extends __WEBPACK_IMPORTED_MODULE_0__materia
 /* harmony default export */ __webpack_exports__["a"] = (MDCSelectBottomLineFoundation);
 
 /***/ }),
-/* 99 */
+/* 90 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17176,14 +15726,14 @@ const cssClasses = {
 
 
 /***/ }),
-/* 100 */
+/* 91 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCSelectLabel; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(92);
 /* unused harmony reexport MDCSelectLabelFoundation */
 /**
  * @license
@@ -17242,13 +15792,13 @@ class MDCSelectLabel extends __WEBPACK_IMPORTED_MODULE_0__material_base_componen
 
 
 /***/ }),
-/* 101 */
+/* 92 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(93);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -17318,7 +15868,7 @@ class MDCSelectLabelFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_bas
 /* harmony default export */ __webpack_exports__["a"] = (MDCSelectLabelFoundation);
 
 /***/ }),
-/* 102 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17329,12 +15879,12 @@ const cssClasses = {
 
 
 /***/ }),
-/* 103 */
+/* 94 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(37);
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
  *
@@ -17450,12 +16000,12 @@ class MDCSelectFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_ind
 
 
 /***/ }),
-/* 104 */
+/* 95 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initChips;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips__ = __webpack_require__(96);
 
 
 function initChips() {
@@ -17470,12 +16020,12 @@ function initChips() {
 }
 
 /***/ }),
-/* 105 */
+/* 96 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chip_index__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chip_set_index__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chip_index__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chip_set_index__ = __webpack_require__(98);
 /* unused harmony reexport MDCChipFoundation */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__chip_index__["a"]; });
 /* unused harmony reexport MDCChipSetFoundation */
@@ -17502,13 +16052,13 @@ function initChips() {
 
 
 /***/ }),
-/* 106 */
+/* 97 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(39);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -17656,15 +16206,15 @@ class MDCChipFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_found
 /* harmony default export */ __webpack_exports__["a"] = (MDCChipFoundation);
 
 /***/ }),
-/* 107 */
+/* 98 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export MDCChipSet */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chip_index__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chip_index__ = __webpack_require__(11);
 /* unused harmony reexport MDCChipSetFoundation */
 /**
  * @license
@@ -17751,14 +16301,14 @@ class MDCChipSet extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__[
 
 
 /***/ }),
-/* 108 */
+/* 99 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chip_index__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chip_index__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(100);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -17867,7 +16417,7 @@ class MDCChipSetFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fo
 /* harmony default export */ __webpack_exports__["a"] = (MDCChipSetFoundation);
 
 /***/ }),
-/* 109 */
+/* 100 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17904,7 +16454,7 @@ const cssClasses = {
 
 
 /***/ }),
-/* 110 */
+/* 101 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17914,7 +16464,7 @@ function initCards() {
 }
 
 /***/ }),
-/* 111 */
+/* 102 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17980,12 +16530,12 @@ class VForm {
 
 
 /***/ }),
-/* 112 */
+/* 103 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initCheckboxes;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_checkbox__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_checkbox__ = __webpack_require__(104);
 
 
 function initCheckboxes() {
@@ -18003,15 +16553,15 @@ function initCheckboxes() {
 }
 
 /***/ }),
-/* 113 */
+/* 104 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCCheckbox; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_animation_index__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_animation_index__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_selection_control_index__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_selection_control_index__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ripple_index__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ripple_util__ = __webpack_require__(4);
 /* unused harmony reexport MDCCheckboxFoundation */
@@ -18153,14 +16703,14 @@ class MDCCheckbox extends __WEBPACK_IMPORTED_MODULE_1__material_base_component__
 
 
 /***/ }),
-/* 114 */
+/* 105 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(107);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -18472,11 +17022,11 @@ function validDescriptor(inputPropDesc) {
 /* harmony default export */ __webpack_exports__["a"] = (MDCCheckboxFoundation);
 
 /***/ }),
-/* 115 */
+/* 106 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_selection_control_index__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_selection_control_index__ = __webpack_require__(12);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -18559,7 +17109,7 @@ class MDCCheckboxAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCCheckboxAdapter);
 
 /***/ }),
-/* 116 */
+/* 107 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18619,7 +17169,7 @@ const numbers = {
 
 
 /***/ }),
-/* 117 */
+/* 108 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

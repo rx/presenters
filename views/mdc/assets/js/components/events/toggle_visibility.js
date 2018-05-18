@@ -1,4 +1,4 @@
-export class VToggleVisiblity  {
+export class VToggleVisibility  {
     constructor(options, params, event) {
         this.targetId = options.target;
         this.params = params;
@@ -8,10 +8,10 @@ export class VToggleVisiblity  {
     call(results) {
         var targetId = this.targetId;
         var promiseObj = new Promise(function (resolve) {
-            console.log("Toggling visiblity on: " + targetId);
+            console.log("Toggling visibility on: " + targetId);
             var elem = document.getElementById(targetId);
             elem.classList.toggle("v-hidden");
-            results.push({action:'toggle_visiblity', statusCode: 200});
+            results.push({action:'toggle_visibility', statusCode: 200});
             resolve(results);
         });
         return promiseObj;
