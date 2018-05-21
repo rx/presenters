@@ -3,7 +3,7 @@ import {VPosts} from './events/posts';
 import {VReplaces} from './events/replaces';
 import {VDialog} from './events/dialog';
 import {VErrors} from './events/errors';
-import {VToggleVisiblity} from './events/toggle_visiblity';
+import {VToggleVisibility} from './events/toggle_visibility';
 import {VSnackbarEvent} from './events/snackbar';
 import {VAutoComplete} from './events/autocomplete';
 import {VSelects} from './events/selects';
@@ -76,7 +76,7 @@ export class VEvents {
             case 'dialog':
                 return new VDialog(options, params, event);
             case 'toggle_visibility':
-                return new VToggleVisiblity(options, params, event);
+                return new VToggleVisibility(options, params, event);
             case 'snackbar':
                 return new VSnackbarEvent(options, params, event);
             case 'autocomplete':
