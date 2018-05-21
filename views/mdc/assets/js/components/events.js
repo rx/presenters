@@ -8,7 +8,7 @@ import {VSnackbarEvent} from './events/snackbar';
 import {VAutoComplete} from './events/autocomplete';
 import {VSelects} from './events/selects';
 import {VNavigates} from './events/navigates';
-
+import {VClears} from './events/clears';
 
 export class VEvents {
     //[[type, url, target, params]]
@@ -85,6 +85,8 @@ export class VEvents {
                 return new VSelects(options, params, event);
             case 'navigates':
                 return new VNavigates(options, params, event);
+            case 'clear':
+                return new VClears(options, params, event);
             default:
                 throw action_type + ' is not supported.';
         }
@@ -139,7 +141,7 @@ function fireAfterLoad() {
         for (var j = 0; j < eventsData.length; j++) {
             var eventData = eventsData[j];
             var eventName = eventData[0];
-            if(eventName==='after_init') {
+            if (eventName === 'after_init') {
                 var event = new Event('after_init');
                 // Dispatch the event.
                 eventElem.dispatchEvent(event);

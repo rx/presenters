@@ -72,4 +72,12 @@ export class VTextField extends eventHandlerMixin(VBaseComponent) {
         }
         return null;
     }
+
+    clear(){
+        this.setValue('');
+    }
+
+    setValue(value){
+        this.input.value = value;
+    }
 }

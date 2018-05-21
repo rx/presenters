@@ -27,7 +27,8 @@ Voom::Presenters.define(:datetime_fields) do
     grid do
       column 6 do
         datetime_field name: :skydive_at,
-                       format: 'F j, Y h:i' do
+                       format: 'F j, Y h:i K' do
+          value Time.now
           label 'Select your date and time to skydive'
           icon :event
           event :change do
