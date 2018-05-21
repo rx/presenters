@@ -12619,7 +12619,7 @@ class MDCNotchedOutline extends __WEBPACK_IMPORTED_MODULE_0__material_base_compo
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replaces__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_dialog__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events_errors__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visiblity__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visibility__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__events_snackbar__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_autocomplete__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_navigates__ = __webpack_require__(74);
@@ -12697,7 +12697,7 @@ class VEvents {
             case 'dialog':
                 return new __WEBPACK_IMPORTED_MODULE_3__events_dialog__["a" /* VDialog */](options, params, event);
             case 'toggle_visibility':
-                return new __WEBPACK_IMPORTED_MODULE_5__events_toggle_visiblity__["a" /* VToggleVisiblity */](options, params, event);
+                return new __WEBPACK_IMPORTED_MODULE_5__events_toggle_visibility__["a" /* VToggleVisibility */](options, params, event);
             case 'snackbar':
                 return new __WEBPACK_IMPORTED_MODULE_6__events_snackbar__["a" /* VSnackbarEvent */](options, params, event);
             case 'autocomplete':
@@ -13561,7 +13561,7 @@ class VDialog {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-class VToggleVisiblity {
+class VToggleVisibility {
     constructor(options, params, event) {
         this.targetId = options.target;
         this.params = params;
@@ -13571,16 +13571,16 @@ class VToggleVisiblity {
     call(results) {
         var targetId = this.targetId;
         var promiseObj = new Promise(function (resolve) {
-            console.log("Toggling visiblity on: " + targetId);
+            console.log("Toggling visibility on: " + targetId);
             var elem = document.getElementById(targetId);
             elem.classList.toggle("v-hidden");
-            results.push({ action: 'toggle_visiblity', statusCode: 200 });
+            results.push({ action: 'toggle_visibility', statusCode: 200 });
             resolve(results);
         });
         return promiseObj;
     }
 }
-/* harmony export (immutable) */ __webpack_exports__["a"] = VToggleVisiblity;
+/* harmony export (immutable) */ __webpack_exports__["a"] = VToggleVisibility;
 
 
 /***/ }),

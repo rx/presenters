@@ -24,9 +24,9 @@ Voom::Presenters.define(:trigger_dialog) do
       attach :replace_text
 
       subheading 'Toggle Visibility'
-      button 'toggle visiblity' do
+      button 'toggle visibility' do
         event :click do
-          toggle_visiblity :toggle_me
+          toggle_visibility :toggle_me
         end
       end
       heading 'Sometimes I appear', id: :toggle_me
