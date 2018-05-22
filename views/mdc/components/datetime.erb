@@ -1,12 +1,12 @@
 <%
-  time_val = comp.value ? Array([comp.value]).map{ |v| v.respond_to?(:strftime) ? v.strftime("%Y-%m-%dT%H:%M:%S.%L") : v}.join(', ') : nil
+  time_val = comp.value ? Array([comp.value]).join(', ') : nil
 %>
 <div id="<%= comp.id %>"
       class="mdc-text-field v-datetime
             <%= comp.icon ? 'mdc-text-field--with-leading-icon' : 'mdc-text-field--with-trailing-icon' %>
             <%= 'mdc-text-field--fullwidth' if comp.full_width %>
             <%= 'is-invalid is-dirty' if comp.error %>"
-     data-config='<%= snake_to_camel(comp.config, except: %i(time_24hr)).to_json %>'
+     data-config='<%= snake_to_camel(to_hash(comp.config), except: %i(time_24hr)).to_json %>'
      data-type='<%= comp.type %>'>
   <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-text-field__icon',
                                           parent_id: "#{comp.id}-input"} %>

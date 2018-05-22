@@ -74,15 +74,15 @@ describe Voom::Presenters::WebClient::App do
           pom_json = JSON.dump(pom.to_hash)
           @ids.clear
           response_pom = post("__post__/#{key}", pom_json, {"CONTENT_TYPE" => "application/json"})
-          expect(response_pom.status).to eq 200
+          pom = write_file(response_pom.body, 'response_pom.html')
+          expect(response_pom.status).to eq(200),pom
 
           @ids.clear
           response_get = get "/#{key}", 'testing'=>true
-          expect(response_get.status).to eq 200
+          get = write_file(response_get.body, 'response_get.html')
+          expect(response_get.status).to eq(200),get
           puts key
 
-          pom = write_file(response_pom.body, 'response_pom.html')
-          get = write_file(response_get.body, 'response_get.html')
 
           expect(response_pom.body).to eq(response_get.body), "#{pom}\n#{get}"
         end

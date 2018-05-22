@@ -51,7 +51,7 @@ module Voom
           end
 
           def expand_text(text)
-            self.markdown(Array(text).join("\n\n"))#.gsub("\n\n", "<br/>")
+            self.markdown(Array(text).join("\n\n")) #.gsub("\n\n", "<br/>")
           end
 
           def color_classname(comp)
@@ -63,14 +63,32 @@ module Voom
             "#{affects}color: #{comp.color};" unless %w(primary secondary).include?(comp.color.to_s) || comp.color.nil?
           end
 
-          def snake_to_camel(hash, except:[])
-            Hash[hash.map{ |k, v|
-              next [k,v] if except.include?(k)
+          def snake_to_camel(hash, except: [])
+            Hash[hash.map {|k, v|
+              next [k, v] if except.include?(k)
               newKey = k.to_s.split('_').collect(&:capitalize).join
               newKey[0] = newKey[0].downcase
-              [newKey, v] }
+              [newKey, v]}
             ]
           end
+
+          def to_hash(ostruct_or_hash)
+            {}.tap do |h|
+              ostruct_or_hash.to_h.each {|key, value| h[key.to_sym] = transform(value)}
+            end
+          end
+
+          def transform(thing)
+            case thing
+              when OpenStruct
+                to_hash(thing)
+              when Array
+                thing.map {|v| transform(v)}
+              else
+                thing
+            end
+          end
+
         end
 
         get '/' do
