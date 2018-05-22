@@ -73,6 +73,20 @@ module Voom
                                                params: params, &block)
           end
 
+          def show(component_id, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               type: :toggle_visibility,
+                                               target: component_id,
+                                               params: params.merge(action: :show), &block)
+          end
+
+          def hide(component_id, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               type: :toggle_visibility,
+                                               target: component_id,
+                                               params: params.merge(action: :hide), &block)
+          end
+
           def snackbar(text, **params, &block)
             @actions << Components::Action.new(parent: self,
                                                type: :snackbar,
