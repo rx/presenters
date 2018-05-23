@@ -8,10 +8,13 @@ module Voom
         class ExpansionPanel < EventBase
           include Mixins::Common
 
+          attr_accessor :open
+
           def initialize(**attribs_, &block)
             super(type: :expansion_panel, **attribs_, &block)
             self.text(attribs.delete(:text)) if attribs.key?(:text)
             self.secondary_text(attribs.delete(:secondary_text)) if attribs.key?(:secondary_text)
+            @open = attribs.delete(:open) || false
             expand!
           end
 

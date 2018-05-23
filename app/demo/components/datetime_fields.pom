@@ -27,7 +27,8 @@ Voom::Presenters.define(:datetime_fields) do
     grid do
       column 6 do
         datetime_field name: :skydive_at,
-                       format: 'F j, Y h:i' do
+                       format: 'F j, Y h:i K' do
+          value Time.new(2019, 10, 31)
           label 'Select your date and time to skydive'
           icon :event
           event :change do
@@ -50,8 +51,8 @@ Voom::Presenters.define(:datetime_fields) do
         title 'Min Date (today)'
         datetime_field min_date: :today
 
-        title 'Min (today), Max (14 days from now)'
-        datetime_field min_date: :today, max_date: DateTime.now.next_day(14) # Or in rails Time.now + 14.days
+        title 'Min (today), Max (Halloween 2025)'
+        datetime_field min_date: :today, max_date: Time.new(2025, 10, 31) # Or in rails Time.now + 14.days
 
         title 'Disabling specific dates'
         datetime_field disable: ["2025-01-30", "2025-02-21", "2025-03-08", DateTime.new(2025, 4, 9)]

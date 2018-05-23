@@ -22,13 +22,17 @@ export class VDateTime extends VTextField {
         config.altInput = true;
         let type = element.dataset.type;
 
-        if(type==='datetime'){
+        if (type === 'datetime') {
             config.enableTime = true;
-        }else if(type==='time'){
-            config.enableTime=true;
-            config.noCalendar=true;
+        } else if (type === 'time') {
+            config.enableTime = true;
+            config.noCalendar = true;
         }
-        flatpickr(this.input, config);
+        this.fp = flatpickr(this.input, config);
+    }
+
+    clear() {
+        this.fp.clear();
     }
 }
 

@@ -15,9 +15,10 @@ module Voom
             merge_config(:enable)
             merge_config(:mode)
 
+            my_id = self.id
             clear_icon(:clear) do
               event :click do
-                snackbar 'Clicked'
+                clear my_id
               end
             end
           end

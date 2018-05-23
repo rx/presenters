@@ -54,4 +54,12 @@ export class VForm {
             }
         }
     }
+
+    clear() {
+        for (const input of this.inputs()) {
+            if (input.vComponent && input.vComponent.clear) {
+                input.vComponent.clear();
+            }
+        }
+    }
 }

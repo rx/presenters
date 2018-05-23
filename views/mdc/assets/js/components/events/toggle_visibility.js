@@ -6,11 +6,18 @@ export class VToggleVisibility  {
     }
 
     call(results) {
-        var targetId = this.targetId;
-        var promiseObj = new Promise(function (resolve) {
+        let targetId = this.targetId;
+        let action = this.params.action;
+        let promiseObj = new Promise(function (resolve) {
             console.log("Toggling visibility on: " + targetId);
-            var elem = document.getElementById(targetId);
-            elem.classList.toggle("v-hidden");
+            let elem = document.getElementById(targetId);
+            if (action === 'show') {
+                elem.classList.remove("v-hidden");
+            } else if (action === 'hide') {
+                elem.classList.add("v-hidden");
+            } else {
+                elem.classList.toggle("v-hidden");
+            }
             results.push({action:'toggle_visibility', statusCode: 200});
             resolve(results);
         });

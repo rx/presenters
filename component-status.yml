@@ -29,8 +29,8 @@
     MDL: 
     MDC: 
     Priority: 
-    Completeness: 3
-    Notes: 
+    Completeness: 2
+    Notes: Needs absolute placement so a scroll does not hide the FAB.
 -
     Components: Cards
     Implementation: MDL
@@ -60,9 +60,9 @@
     Implementation: MDL
     MDL: 
     MDC: Y
-    Priority: 
-    Completeness: 3
-    Notes: 
+    Priority: High
+    Completeness: 1
+    Notes: Current implementation from MDL and polyfil does not work on iOS/Safari. Port to MDC.
 -
     Components: Dividers
     Implementation: N
@@ -113,12 +113,12 @@
     Notes: 
 -
     Components: Pickers
-    Implementation: N
+    Implementation: Flatpickr
     MDL: N
     MDC: N
     Priority: medium
-    Completeness: 
-    Notes: Need date/time selection
+    Completeness: 3
+    Notes: Date, time, datetime are supported.
 -
     Components: Progress & activity
     Implementation: N
@@ -134,7 +134,7 @@
     MDC: Y
     Priority: 
     Completeness: 1
-    Notes: The checkboxes and radio buttons from MDL need to be ported.
+    Notes: The checkboxes and radio buttons from MDL need to be ported to MDC.
 -
     Components: Select fields
     Implementation: MDC
@@ -214,6 +214,6 @@
     Implementation: N
     MDL: N
     MDC: N
-    Priority: not planned
+    Priority: medium
     Completeness: 
-    Notes: 
+    Notes: Need extension/plugin design with ace editor and charts as available plugins.

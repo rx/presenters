@@ -66,6 +66,20 @@ module Voom
                                                params: params, &block)
           end
 
+          def show(component_id, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               type: :toggle_visibility,
+                                               target: component_id,
+                                               params: params.merge(action: :show), &block)
+          end
+
+          def hide(component_id, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               type: :toggle_visibility,
+                                               target: component_id,
+                                               params: params.merge(action: :hide), &block)
+          end
+
           def snackbar(text, **params, &block)
             @actions << Components::Action.new(parent: self,
                                                type: :snackbar,
@@ -84,9 +98,21 @@ module Voom
             @actions << Components::Action.new(parent: self,
                                                type: :navigates,
                                                direction: direction,
-                                               params: params, &block)
+                                               params: params.merge(direction: direction), &block)
           end
+
           alias navigate navigates
+
+          # Clears or blanks out a control or form.
+          # Takes either an id or a list of ids.
+          # If the id is that of a form then all the clearable inputs on the form will be cleared.
+          def clear(*ids, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               type: :clear,
+                                               params: params.merge(ids: ids), &block)
+          end
+
+          alias clears clear
         end
       end
     end
