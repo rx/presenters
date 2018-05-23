@@ -1,5 +1,6 @@
 require_relative 'lists/line'
 require_relative 'lists/separator'
+require_relative 'lists/header'
 require_relative 'mixins/content'
 require_relative 'mixins/append'
 
@@ -31,7 +32,7 @@ module Voom
             @lines << Lists::Header.new(parent: self,
                                         context: context,
                                         total_lines: @total_lines,
-                                        checkbox: {text: text, class_name: 'v-checkbox--select-control'})
+                                        checkbox: {text: text})
           end
 
           def line(text=nil, **attribs, &block)

@@ -13784,7 +13784,7 @@ function createListItemSelectHandler(component, listElements, selectAll) {
         }
         selectAll.indeterminate = checked && unchecked;
         selectAll.checked = checked && !unchecked;
-        toggleSelectTotalHeader(component, listElements.length, true);
+        toggleSelectTotalHeader(component, listElements.length, Boolean(checked) && !Boolean(unchecked));
     };
 }
 

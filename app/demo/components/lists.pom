@@ -119,6 +119,17 @@ Voom::Presenters.define(:lists) do
 #   end
 # end
 
+    headline 'Selectable List'
+    list selectable: true do
+      actors.each do |actor|
+        line do
+          text actor.name
+          avatar :person
+          subtitle "#{actor.episodes} episodes"
+        end
+      end
+    end
+
     attach :code, file: __FILE__
   end
 end
