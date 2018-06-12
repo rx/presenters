@@ -22,4 +22,10 @@
       </nav>
     <% end %>
   </div>
+  <% if header.page_title.text.present? %>
+    <h1>
+      <%= erb :"components/icon", :locals => {comp: header.page_title.icon, class_name: nil} %>
+      <%= expand_text(header.page_title.text) %>
+    </h1>
+  <% end %>
 </header>

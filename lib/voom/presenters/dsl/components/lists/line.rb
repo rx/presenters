@@ -82,6 +82,7 @@ module Voom
               @actions << Lists::Action.new(parent: self,
                                             **attribs, &block)
             end
+            #alias actions action
           end
         end
       end

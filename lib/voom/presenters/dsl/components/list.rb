@@ -3,6 +3,7 @@ require_relative 'lists/separator'
 require_relative 'lists/header'
 require_relative 'mixins/content'
 require_relative 'mixins/append'
+require_relative 'mixins/attaches'
 
 module Voom
   module Presenters
@@ -11,6 +12,7 @@ module Voom
         class List < Base
           include Mixins::Content
           include Mixins::Append
+          include Mixins::Attaches
           
           attr_reader :lines, :lines_only, :selectable, :total_lines
           attr_accessor :components

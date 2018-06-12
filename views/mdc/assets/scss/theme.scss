@@ -1,5 +1,52 @@
-$mdc-theme-primary: rgb(96,125,139);
-$mdc-theme-secondary: rgb(255,171,64);
+$mdc-theme-primary: #5488b2;
+$mdc-theme-secondary: #E58D36;
 $mdc-theme-background: #fff;
 
 $v-theme-error-message: #d50000;
+
+$v-header-background: #263138;
+$v-header-color: #839098;
+
+$v-drawer-background: #37424a;
+$v-drawer-color: #71818c;
+
+$v-title-background: #EBF0F4;
+
+.mdl-layout__header {
+  background-color: $v-title-background;
+  .mdl-layout__header-row {
+    background-color: $v-header-background;
+    color: $v-header-color;
+  }
+  .mdl-layout__drawer-button {
+    background-color: $v-drawer-background;
+  }
+  h1 {
+    padding-left: 24px;
+    color: $v-drawer-color;
+    font-size: 30px;
+    i {
+      font-size: 30px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.mdl-layout__drawer {
+  background-color: $v-drawer-background;
+  border-right: 1px solid $v-drawer-background;
+  color: $v-drawer-color;
+  .mdl-navigation {
+    .mdl-navigation__link {
+      color: $v-drawer-color;
+      &.v-menu-item__selected {
+        color: lighten($v-drawer-color, 20%);
+        font-weight: bold;
+      }
+      &:hover {
+        background-color: $v-drawer-background;
+        color: lighten($v-drawer-color, 20%);
+      }
+    }
+  }
+}
