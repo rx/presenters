@@ -6,4 +6,15 @@
   @include mdc-theme-prop(background-color, text-icon-on-background);
 }
 
+.v-list-item--header {
+  background-color: #F5F5F5;
+}
+
+#list-item-select-all-header {
+  height: 45px;
+  > span {
+    margin: auto;
+  }
+}
+
 

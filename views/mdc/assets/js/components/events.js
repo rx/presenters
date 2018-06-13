@@ -6,7 +6,6 @@ import {VErrors} from './events/errors';
 import {VToggleVisibility} from './events/toggle_visibility';
 import {VSnackbarEvent} from './events/snackbar';
 import {VAutoComplete} from './events/autocomplete';
-import {VSelects} from './events/selects';
 import {VNavigates} from './events/navigates';
 import {VClears} from './events/clears';
 
@@ -81,8 +80,6 @@ export class VEvents {
                 return new VSnackbarEvent(options, params, event);
             case 'autocomplete':
                 return new VAutoComplete(options, url, params, event);
-            case 'selects':
-                return new VSelects(options, params, event);
             case 'navigates':
                 return new VNavigates(options, params, event);
             case 'clear':

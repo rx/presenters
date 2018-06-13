@@ -10,8 +10,8 @@ module Voom
           def initialize(**attribs_, &block)
             super(type: :icon_toggle, context: context, **attribs_, &block)
             @icon = attribs.delete(:icon)
-            @selected = attribs.delete(:selected) || false
-            @disabled = attribs.delete(:disabled) || false
+            @selected = attribs.delete(:selected) { false }
+            @disabled = attribs.delete(:disabled) { false }
             expand!
           end
         end

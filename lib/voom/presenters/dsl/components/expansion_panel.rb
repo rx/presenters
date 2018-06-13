@@ -14,7 +14,7 @@ module Voom
             super(type: :expansion_panel, **attribs_, &block)
             self.text(attribs.delete(:text)) if attribs.key?(:text)
             self.secondary_text(attribs.delete(:secondary_text)) if attribs.key?(:secondary_text)
-            @open = attribs.delete(:open) || false
+            @open = attribs.delete(:open) { false }
             expand!
           end
 

@@ -10,18 +10,20 @@ module Voom
       module Components
         module Lists
           class Line < EventBase
-            attr_accessor :actions, :selected
+            attr_accessor :selected, :selectable
 
             def initialize(context:, **attribs_, &block)
               super(type: :line, context: context, **attribs_, &block)
-              @selected = attribs.delete(:selected)
+              @selected = attribs.delete(:selected) { false }
+              @selectable = attribs.delete(:selectable) { false }
               self.text(attribs.delete(:text)) if attribs.key?(:text)
               self.subtitle(attribs.delete(:subtitle)) if attribs.key?(:subtitle)
               self.info(attribs.delete(:info)) if attribs.key?(:info)
               self.body(attribs.delete(:body)) if attribs.key?(:body)
               self.avatar(attribs.delete(:avatar)) if attribs.key?(:avatar)
               self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
-              self.checkbox(attribs.delete(:ccheckbox)) if attribs.key?(:checkbox)
+              self.checkbox(attribs.delete(:checkbox)) if attribs.key?(:checkbox) && !@selectable
+              self.checkbox(attribs.slice(:name, :value)) if @selectable
 
               @actions = []
               expand!
@@ -63,7 +65,12 @@ module Voom
 
             def checkbox(**attributes, &block)
               return @checkbox if locked?
-              @checkbox = Components::Checkbox.new(parent: self, context: context, **attributes, &block)
+              field_name = @selectable ? "#{attributes.delete(:name)}[]" : attributes.delete(:name)
+              @checkbox = Components::Checkbox.new(parent: self,
+                                                   context: context,
+                                                   name: field_name,
+                                                   **attributes,
+                                                   &block)
             end
 
             def menu(**attributes, &block)
@@ -71,10 +78,13 @@ module Voom
               @menu = Components::Menu.new(parent: self, context: context, **attributes, &block)
             end
 
-            def action(**attribs, &block)
+            def actions(**attribs, &block)
+              return @actions if locked?
               @actions << Lists::Action.new(parent: self,
                                             **attribs, &block)
             end
+            alias action actions
+
           end
         end
       end

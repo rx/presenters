@@ -8,6 +8,10 @@ Voom::Presenters.define(:headers) do
 
 
   header 'Presenters Demo' do
+    page_title 'Page about headers' do
+          icon :subtitles
+        end
+
     menu do
       item 'About (Header)' do
               event :click do
@@ -28,6 +32,7 @@ Voom::Presenters.define(:headers) do
             end
     end
   end
+
 
   indented_grid do
     display 'Headers'

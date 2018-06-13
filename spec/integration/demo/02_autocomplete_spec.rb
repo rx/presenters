@@ -2,7 +2,7 @@ require "watir_helper"
 
 describe "Demo - Autocomplete", :integration do
   before do
-    goto "#{host}/autocomplete"
+    goto "#{host}/autocomplete_action"
   end
   after do
     print_js_errors
