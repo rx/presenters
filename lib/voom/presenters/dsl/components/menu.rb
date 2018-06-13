@@ -36,12 +36,13 @@ module Voom
           class Item < EventBase
             include Mixins::Tooltips
 
-            attr_accessor :text, :disabled
+            attr_accessor :text, :disabled, :selected
 
             def initialize(**attribs_, &block)
               super(type: :item, **attribs_, &block)
               @text = attribs.delete(:text)
               @disabled = attribs.delete(:disabled)
+              @selected = attribs.delete(:selected) { false }
               expand!
             end
 

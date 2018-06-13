@@ -17,7 +17,6 @@ module Voom
               self << Components::Typography.new(parent: self, type: :headline, text: text, context: context, **attributes, &block)
             end
 
-
             def title(*text, **attributes, &block)
               self << Components::Typography.new(parent: self, type: :title, text: text, context: context, **attributes, &block)
             end

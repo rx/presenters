@@ -61,7 +61,7 @@ module Voom
             def button(text=nil, **attribs, &block)
               return @button if locked?
               @action_type = :button
-              @button = Button.new(text: text, parent: self, context: context, **attribs, &block)
+              @button = Components::Button.new(text: text, parent: self, context: context, **attribs, &block)
             end
           end
         end

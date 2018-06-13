@@ -66,13 +66,6 @@ module Voom
                                                params: params, &block)
           end
 
-          def selects(input_name=nil, **params, &block)
-            @actions << Components::Action.new(parent: self,
-                                               type: :selects,
-                                               target: input_name,
-                                               params: params, &block)
-          end
-
           def show(component_id, **params, &block)
             @actions << Components::Action.new(parent: self,
                                                type: :toggle_visibility,

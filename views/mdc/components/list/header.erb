@@ -1,0 +1,35 @@
+<li class="mdc-list-item
+           v-list-item--header
+           v-list-item--selectable-header"
+    id="<%= line.id %>">
+  <%= erb :"components/checkbox", :locals => {:comp => line.checkbox, :class_name => 'v-checkbox--select-control'} if line.checkbox %>
+  <span class="mdc-list-item__text">
+    <%= expand_text(line.text&.text) %>
+
+    <% if line.subtitle %>
+      <span class="mdc-list-item__secondary-text">
+        <%= expand_text(line.subtitle.text) %>
+      </span>
+    <% end %>
+
+    <% if line.body %>
+      <span class="mdc-list-item__secondary-text">
+        <%= expand_text(line.body.text) %>
+      </span>
+    <% end %>
+  </span>
+</li>
+
+<% if line.total_lines > 0 %>
+  <li class="mdc-list-item hidden" id="list-item-select-all-header">
+    <input type="checkbox" name="all" value="true" id="select-total" style="display: none;" />
+    <span class="mdc-list-item__secondary-text" id="list-item-select-all-toggle-off">
+      All <span id="page-selection-count">10</span> records on this page are selected. <a href="#" class="toggle-total-set" data-select="on">Select all <%= line.total_lines %> records.</a>
+    </span>
+    <span class="mdc-list-item__secondary-text hidden" id="list-item-select-all-toggle-on">
+      All <%= line.total_lines %> records selected. <a href="#" class="toggle-total-set" data-select="off">Clear selection</a>
+    </span>
+  </li>
+<% end %>
+
+<li role="separator" class="mdc-list-divider"></li>

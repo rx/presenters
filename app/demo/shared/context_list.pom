@@ -5,7 +5,7 @@ Voom::Presenters.define(:context_list) do
     end
 
     def time
-      Time.now unless context.fetch(:hide_time) {false}
+      Time.now unless context.fetch(:hide_time) {true}
     end
 
     def scrubbed_context

@@ -1,5 +1,4 @@
 require_relative 'mixins/common'
-require_relative 'mixins/event'
 require_relative 'mixins/tooltips'
 
 module Voom
@@ -8,6 +7,7 @@ module Voom
       module Components
         class Button < EventBase
           include Mixins::Tooltips
+
           BUTTON_TYPES = %i(raised flat fab icon)
 
           attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :position
@@ -18,7 +18,7 @@ module Voom
             self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
             @text = attribs.delete(:text)
             @color = attribs.delete(:color)
-            @disabled = attribs.delete(:disabled) || false
+            @disabled = attribs.delete(:disabled) { false }
             @size = attribs.delete(:size)
             @position = Array(attribs.delete(:position)).compact
             expand!

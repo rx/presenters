@@ -30,12 +30,12 @@ Voom::Presenters.define(:time_fields) do
           label 'Select your time to skydive'
           icon :event
           event :change do
-            replaces :context_list, :context_list, hide_time: true
+            replaces :context_list, :context_list
           end
         end
       end
       column 6 do
-        attach :context_list, hide_time: true
+        attach :context_list
       end
     end
     grid do
