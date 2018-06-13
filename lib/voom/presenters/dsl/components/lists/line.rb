@@ -10,7 +10,7 @@ module Voom
       module Components
         module Lists
           class Line < EventBase
-            attr_accessor :actions, :selected, :selectable
+            attr_accessor :selected, :selectable
 
             def initialize(context:, **attribs_, &block)
               super(type: :line, context: context, **attribs_, &block)
@@ -78,11 +78,13 @@ module Voom
               @menu = Components::Menu.new(parent: self, context: context, **attributes, &block)
             end
 
-            def action(**attribs, &block)
+            def actions(**attribs, &block)
+              return @actions if locked?
               @actions << Lists::Action.new(parent: self,
                                             **attribs, &block)
             end
-            #alias actions action
+            alias action actions
+
           end
         end
       end
