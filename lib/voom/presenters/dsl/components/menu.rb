@@ -42,7 +42,7 @@ module Voom
               super(type: :item, **attribs_, &block)
               @text = attribs.delete(:text)
               @disabled = attribs.delete(:disabled)
-              @selected = attribs.delete(:selected) || false
+              @selected = attribs.delete(:selected) { false }
               expand!
             end
 

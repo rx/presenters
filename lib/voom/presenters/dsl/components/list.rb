@@ -20,8 +20,8 @@ module Voom
           def initialize(**attribs_, &block)
             super(type: :list, context: context,
                   **attribs_, &block)
-            @lines_only = attribs.delete(:lines_only) || false
-            @selectable = attribs.delete(:selectable) || false
+            @lines_only = attribs.delete(:lines_only) { false }
+            @selectable = attribs.delete(:selectable) { false }
             @lines = []
             @components = []
             @total_lines = attribs.delete(:total_lines) || 0

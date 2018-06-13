@@ -18,7 +18,7 @@ module Voom
             self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
             @text = attribs.delete(:text)
             @color = attribs.delete(:color)
-            @disabled = attribs.delete(:disabled) || false
+            @disabled = attribs.delete(:disabled) { false }
             @size = attribs.delete(:size)
             @position = Array(attribs.delete(:position)).compact
             expand!

@@ -14,8 +14,8 @@ module Voom
 
             def initialize(context:, **attribs_, &block)
               super(type: :line, context: context, **attribs_, &block)
-              @selected = attribs.delete(:selected) || false
-              @selectable = attribs.delete(:selectable) || false
+              @selected = attribs.delete(:selected) { false }
+              @selectable = attribs.delete(:selectable) { false }
               self.text(attribs.delete(:text)) if attribs.key?(:text)
               self.subtitle(attribs.delete(:subtitle)) if attribs.key?(:subtitle)
               self.info(attribs.delete(:info)) if attribs.key?(:info)
