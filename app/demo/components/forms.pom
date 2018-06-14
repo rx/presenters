@@ -4,6 +4,7 @@ Voom::Presenters.define(:forms) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
+  page_title 'Forms'
 
   grid do
     column 1

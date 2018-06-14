@@ -4,9 +4,9 @@ Voom::Presenters.define(:fabs) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
+  page_title 'Floating Action Button'
 
   indented_grid do
-    display 'Floating Action Button'
 
     headline 'FAB'
     button icon: :add, type: :fab, color: :primary

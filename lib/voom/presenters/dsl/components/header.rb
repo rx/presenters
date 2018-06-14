@@ -26,32 +26,16 @@ module Voom
                              **attribs, &block)
           end
 
+          def nav(**attribs, &block)
+            return @nav if locked?
+            @nav = Components::Menu.new(parent: self,
+                                         context: context,
+                                         **attribs, &block)
+          end
+
           def title(*text, **attribs, &block)
             return @title if locked?
             @title = Components::Typography.new(parent: self, type: :text, text: text, context: context, **attribs, &block)
-          end
-
-          def page_title(*text, **attribs, &block)
-            return @page_title if locked?
-            @page_title = PageTitle.new(parent: self, text: text, context: context, **attribs, &block)
-          end
-
-          class PageTitle < Base
-
-            attr_accessor :text
-
-            def initialize(**attribs_, &block)
-              super(type: :page_title, **attribs_, &block)
-              @text = attribs.delete(:text)
-              expand!
-            end
-
-            def icon(icon=nil, **attribs, &block)
-              return @icon if locked?
-              @icon = Icon.new(parent: self, icon: icon,
-                               context: context,
-                               **attribs, &block)
-            end
           end
 
         end

@@ -4,6 +4,7 @@ Voom::Presenters.define(:snackbar) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
+  page_title 'Snackbar'
 
   indented_grid do
     title 'On Page'

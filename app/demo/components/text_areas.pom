@@ -4,10 +4,9 @@ Voom::Presenters.define(:text_areas) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
+  page_title 'Text Areas'
 
   indented_grid do
-    display 'Text Areas'
-
     headline 'Multiple line'
 
     text_area name: :notes, rows: 3 do

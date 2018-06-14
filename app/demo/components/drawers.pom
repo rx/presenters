@@ -3,6 +3,7 @@ require_relative '../helpers/indented_grid'
 Voom::Presenters.define(:drawers) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
+  page_title 'Drawers'
 
   drawer do
     menu do

@@ -18,6 +18,13 @@ module Voom
             @position = Array(attribs.delete(:position)).compact
             expand!
           end
+
+          def icon(icon=nil, **attribs, &block)
+            return @icon if locked?
+            @icon = Components::Icon.new(parent: self, icon: icon,
+                                         context: context,
+                                         **attribs, &block)
+          end
         end
       end
     end

@@ -4,6 +4,7 @@ Voom::Presenters.define(:tables) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
+  page_title 'Tables'
 
   helpers do
     def items
@@ -16,8 +17,6 @@ Voom::Presenters.define(:tables) do
   end
 
   indented_grid do
-    display 'Tables'
-
     table selectable: true do
       header do
         column 'Material'

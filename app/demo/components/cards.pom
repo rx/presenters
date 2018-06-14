@@ -4,11 +4,9 @@ Voom::Presenters.define(:cards) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
-
+  page_title 'Cards'
 
   indented_grid do
-    display 'Cards'
-
     headline 'Wide'
     card width: '512px' do
       media do

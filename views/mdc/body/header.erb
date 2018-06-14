@@ -8,6 +8,19 @@
       <%= expand_text(header.title&.text) %>
     </span>
     <div class="mdl-layout-spacer"></div>
+    <% if header.nav %>
+      <nav class="mdl-navigation">
+       <% header.nav.items.each do |item| %>
+         <a class="mdl-navigation__link"
+            id="<%= item.id %>"
+            href="javascript:void(0)"
+            <%= erb :"components/event", :locals => {events: item.events, parent_id: item.event_parent_id} %>>
+            <%= erb :"components/icon", :locals => {comp: item.icon, class_name: nil} %>
+            <%= item.text %>
+          </a>
+        <% end %>
+      </nav>
+    <% end %>
     <% if header.button %>
       <%= erb :"components/button", :locals => {comp: header.button, parent_id: header.id} %>
     <% end %>
@@ -15,10 +28,4 @@
       <%= erb :"components/menu", :locals => {comp: header.menu, parent_id: header.id} %>
     <% end %>
   </div>
-  <% if header.page_title&.text || header.page_title&.icon%>
-    <h1>
-      <%= erb :"components/icon", :locals => {comp: header.page_title.icon, class_name: nil} if header.page_title&.icon%>
-      <%= expand_text(header.page_title.text) if header.page_title&.text %>
-    </h1>
-  <% end %>
 </header>

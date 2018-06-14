@@ -4,9 +4,9 @@ Voom::Presenters.define(:menus) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
+  page_title 'Menus'
 
   indented_grid do
-    display 'Menus'
 
     grid do
       column 1

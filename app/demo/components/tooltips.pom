@@ -4,10 +4,9 @@ Voom::Presenters.define(:tooltips) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
-
+  page_title 'Tooltips'
+  
   indented_grid do
-    display 'Tooltips'
-
     headline 'Avatars'
     subheading 'Cards'
     card do

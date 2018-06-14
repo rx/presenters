@@ -5,8 +5,9 @@ Voom::Presenters.define(:badges) do
 
   attach :top_nav
   attach :component_drawer
+  page_title 'Badges'
   indented_grid do
-    display 'Badges'
+
 
     headline 'Number'
     badge 1, icon: :account_box

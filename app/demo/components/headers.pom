@@ -8,11 +8,7 @@ Voom::Presenters.define(:headers) do
 
 
   header 'Presenters Demo' do
-    page_title 'Page about headers' do
-          icon :subtitles
-        end
-
-    menu do
+    nav do
       item 'About (Header)' do
               event :click do
                 loads :index
@@ -31,6 +27,9 @@ Voom::Presenters.define(:headers) do
               end
             end
     end
+  end
+  page_title 'Page about headers' do
+    icon :subtitles
   end
 
 

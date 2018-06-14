@@ -1,6 +1,7 @@
 Voom::Presenters.define(:icons) do
   attach :top_nav
   attach :component_drawer
+  page_title 'Icons'
 
   helpers do
     def small_card(&block)
@@ -13,7 +14,6 @@ Voom::Presenters.define(:icons) do
   grid do
     column 1
     column 10 do
-      display 'Icons'
       body 'An icon is commonly used on a menu, button, chip, list or card. They can be used standalone as well.'
 
       headline 'Plain'

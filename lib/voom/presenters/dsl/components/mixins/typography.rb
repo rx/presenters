@@ -21,6 +21,10 @@ module Voom
               self << Components::Typography.new(parent: self, type: :title, text: text, context: context, **attributes, &block)
             end
 
+            def page_title(*text, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :page_title, text: text, context: context, level: 1, **attributes, &block)
+            end
+
             def subheading(*text, **attributes, &block)
               self << Components::Typography.new(parent: self, type: :subheading, text: text, context: context, **attributes, &block)
             end

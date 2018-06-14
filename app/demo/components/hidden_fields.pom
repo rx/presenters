@@ -5,10 +5,8 @@ Voom::Presenters.define(:hidden_fields) do
   
   attach :top_nav
   attach :component_drawer
-
+  page_title 'Hidden'
   indented_grid do
-    headline 'Hidden'
-
     form do
       hidden_field name: :idoit_id do
         value 'do it!'

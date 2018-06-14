@@ -4,10 +4,9 @@ Voom::Presenters.define(:dialogs) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
+  page_title 'Dialogs'
 
   indented_grid do
-    display 'Dialogs'
-
     button 'Show Dialog' do
       event :click do
         dialog :hold_on

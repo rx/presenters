@@ -4,10 +4,9 @@ Voom::Presenters.define(:fabs_mini) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
+  page_title 'Float Action Button'
 
   indented_grid do
-    display 'Float Action Button'
-    
     # Mini Floating action buttons
     headline 'Mini FAB'
     body '*Mini size: Only used to create visual continuity with other screen elements*'

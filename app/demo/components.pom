@@ -4,9 +4,9 @@ Voom::Presenters.define('components') do
   helpers Demo::Helpers::IndentedGrid
   attach 'top_nav'
   attach 'component_drawer'
+  page_title 'Components'
 
   indented_grid do
-    display 'Components'
     grid do
       column 12 do
         icon 'fa-hand-point-left', position: :left

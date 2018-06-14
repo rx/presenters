@@ -4,9 +4,10 @@ Voom::Presenters.define(:buttons) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
+  page_title 'Buttons'
 
   indented_grid do
-    display 'Buttons'
+
     
     # Raised buttons
     headline 'Raised Button'
@@ -45,6 +46,17 @@ Voom::Presenters.define(:buttons) do
 
     subheading 'with text'
     button "I'm happy", icon: :mood
+
+    headline 'Image button'
+    button type: :image do
+      image 'http://geotix.com/application/files/3514/5564/7308/MyNorthTicketsLogo.png'
+    end
+
+    subheading 'with icon'
+    button type: :image do
+      image 'http://geotix.com/application/files/3514/5564/7308/MyNorthTicketsLogo.png'
+      icon :link
+    end
 
     attach :code, file: __FILE__
   end

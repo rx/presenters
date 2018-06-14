@@ -5942,13 +5942,16 @@ iframe.heightSet {
     color: #839098; }
   .mdl-layout__header .mdl-layout__drawer-button {
     background-color: #37424a; }
-  .mdl-layout__header h1 {
-    padding-left: 24px;
-    color: #71818c;
-    font-size: 30px; }
-    .mdl-layout__header h1 i {
-      font-size: 30px;
-      vertical-align: middle; }
+
+h1.v-page-title {
+  background-color: #EBF0F4;
+  color: #71818c;
+  margin: 0px;
+  padding: 24px;
+  font-size: 30px; }
+  h1.v-page-title i {
+    font-size: 30px;
+    vertical-align: middle; }
 
 .mdl-layout__drawer {
   background-color: #37424a;

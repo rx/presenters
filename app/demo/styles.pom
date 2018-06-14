@@ -3,6 +3,9 @@ require_relative 'helpers/indented_grid'
 Voom::Presenters.define(:styles) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
+  page_title 'Page Title' do
+    icon :settings
+  end
 
   indented_grid do
     display 'Styles'

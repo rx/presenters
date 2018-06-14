@@ -4,10 +4,9 @@ Voom::Presenters.define(:chips) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
+  page_title 'Chips'
 
   indented_grid do
-    heading 'Chips'
-
     chip 'Chip 1'
     chip 'Chip 1', color: :primary
     chip 'Chip 2', color: :secondary

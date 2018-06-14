@@ -4,7 +4,7 @@ Voom::Presenters.define(:lists) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
-
+  page_title 'Lists'
   helpers do
     def actors
       [OpenStruct.new(name: "<strong>Bryan Cranston</strong>", episodes: 62, body: 'Bryan Cranston played the role of Walter in Breaking Bad. He is also known for playing Hal in Malcom in the Middle.'),
@@ -15,7 +15,6 @@ Voom::Presenters.define(:lists) do
   end
 
   indented_grid do
-    display 'Lists'
 
     headline 'Simple'
     list do

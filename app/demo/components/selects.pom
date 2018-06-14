@@ -4,10 +4,9 @@ Voom::Presenters.define(:selects) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
+  page_title 'Select Fields'
 
   indented_grid do
-    display 'Select Fields'
-
     form do
       select do
         label 'Text...'

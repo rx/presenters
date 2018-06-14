@@ -5,9 +5,9 @@ Voom::Presenters.define(:layouts) do
   
   attach :top_nav
   attach :component_drawer
+  page_title 'Layouts'
 
   indented_grid do
-    display 'Layouts'
 
     display 'Grid'
 

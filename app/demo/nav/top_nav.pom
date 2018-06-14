@@ -4,7 +4,7 @@ Voom::Presenters.define('top_nav') do
   end
 
   header 'Presenters Demo' do
-    menu do
+    nav do
       item 'About' do
         event :click do
           loads :index
