@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby `cat .ruby-version`
 # Specify your gem's dependencies in voom-console.gemspec
 gemspec
 
