@@ -4,14 +4,23 @@
      position_classes = comp.position.map {|p| "v-button-position-#{p}"}.join(' ')
      class_name= "#{class_name} #{position_classes}"
 %>
+  <% if comp.menu %>
+    <div class="mdc-menu-anchor" %>
+  <% end %>
   <% case comp.button_type.to_sym
         when :fab %>
             <%= erb :"components/buttons/fab", :locals => {:comp => comp, class_name: class_name} %>
      <% when :icon %>
             <%= erb :"components/buttons/icon", :locals => {:comp => comp, class_name: class_name} %>
+    <% when :image %>
+            <%= erb :"components/buttons/image", :locals => {:comp => comp, class_name: class_name} %>
     <% else  %>
             <%= erb :"components/buttons/button", :locals => {:comp => comp, class_name: class_name} %>
   <% end %>
+  <% if comp.menu %>
+    </div>
+  <% end %>
 <% end %>
+
 
 

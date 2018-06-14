@@ -3796,14 +3796,14 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCMenu; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MDCMenu; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(38);
 /* unused harmony reexport MDCMenuFoundation */
 /* unused harmony reexport AnchorMargin */
-/* unused harmony reexport Corner */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__constants__["a"]; });
 /* unused harmony reexport CornerBit */
 /**
  * @license
@@ -15766,8 +15766,10 @@ const numbers = {
 
 function createMenuHandler(menu, element) {
     return function () {
-        var offset = parseInt(element.dataset.rightOffset);
+        let offset = parseInt(element.dataset.rightOffset);
+        let placement = element.dataset.placement === 'contextual' ? __WEBPACK_IMPORTED_MODULE_0__material_menu__["a" /* Corner */].TOP_LEFT : __WEBPACK_IMPORTED_MODULE_0__material_menu__["a" /* Corner */].BOTTOM_LEFT;
         menu.setAnchorMargin({ left: offset });
+        menu.setAnchorCorner(placement);
         menu.open = !menu.open;
     };
 }
@@ -15780,7 +15782,7 @@ function initMenus() {
         for (var i = 0; i < components.length; i++) {
             var component = components[i];
             if (!component.mdcComponent) {
-                component.mdcComponent = new __WEBPACK_IMPORTED_MODULE_0__material_menu__["a" /* MDCMenu */](component);
+                component.mdcComponent = new __WEBPACK_IMPORTED_MODULE_0__material_menu__["b" /* MDCMenu */](component);
                 var anchor = component.closest('.mdc-menu-anchor');
                 if (anchor) {
                     var menulink = anchor.querySelector('.v-menu-click');

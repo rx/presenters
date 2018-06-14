@@ -6565,6 +6565,20 @@ iframe.heightSet {
   font-size: .8125rem;
   line-height: 32px; }
 
+.v-button-image {
+  width: 150px;
+  height: 45px;
+  background-color: #fff !important;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position-x: 18%;
+  background-position-y: center;
+  border-radius: 10px; }
+  .v-button-image > i {
+    position: absolute;
+    margin-right: 0 !important;
+    color: #263138; }
+
 .mdc-button.v-secondary-filled-button:not(:disabled) {
   background-color: #E58D36; }
 

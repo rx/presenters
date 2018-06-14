@@ -1,5 +1,21 @@
 @import "@material/button/mdc-button";
 
+.v-button-image {
+  width: 150px;
+  height: 45px;
+  background-color: $mdc-theme-background !important;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position-x: 18%;
+  background-position-y: center;
+  border-radius: 10px;
+  > i {
+    position: absolute;
+    margin-right: 0 !important;
+    color: $v-header-background;
+  }
+}
+
 .mdc-button.v-secondary-filled-button {
   @include mdc-button-filled-accessible($mdc-theme-secondary);
 }

@@ -1,4 +1,4 @@
-<div id="<%= comp.id %>" class="mdc-menu v-menu" style="position: absolute;" tabindex="-1">
+<div id="<%= comp.id %>" class="mdc-menu v-menu" data-placement="contextual" style="position: absolute;" tabindex="-1">
   <ul class="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
     <% comp.items.each do |item| %>
       <% unless eq(item.type, :divider) %>

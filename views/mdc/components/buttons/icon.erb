@@ -2,9 +2,6 @@
    position_classes = comp.position.map {|p| "v-button-icon-position-#{p}"}.join(' ')
 %>
 
-<% if comp.menu %>
-  <div class="mdc-menu-anchor" %>
-<% end %>
 <button id="<%= comp.id %>"
         class="mdl-button mdl-js-button mdl-button--icon  <%=class_name%> <%= position_classes %>
          <%= 'mdl-button--colored' if eq(comp.color, :primary) %>
@@ -18,7 +15,3 @@
 </button>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 <%= erb :"components/menu", :locals => {comp: comp.menu, parent_id: comp.id} %>
-
-<% if comp.menu %>
-  </div>
-<% end %>

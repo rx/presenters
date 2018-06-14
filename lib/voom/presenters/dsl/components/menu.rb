@@ -1,18 +1,21 @@
 require_relative 'mixins/event'
 require_relative 'mixins/tooltips'
+require_relative 'mixins/attaches'
+require_relative 'mixins/buttons'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Menu < Base
-          attr_accessor :items, :title, :position, :color, :open
+          attr_accessor :items, :title, :position, :placement, :color, :open
 
           def initialize(title=nil, **attribs_, &block)
             super(type: :menu, **attribs_, &block)
             @title = title
             @items = []
             @position = attribs.delete(:position) || :left
+            @placement = attribs.delete(:placement) || :default
             @color = attribs.delete(:color)
             @open = attributes.delete(:open){false}
             expand!
@@ -29,6 +32,13 @@ module Voom
             @items << Divider.new(parent: self,
                                   context: context,
                                   **attribs, &block)
+          end
+
+          def label(**attribs, &block)
+            return @label if locked?
+            @label = Label.new(parent: self,
+                               context: context,
+                               **attribs, &block)
           end
 
           private
@@ -51,6 +61,12 @@ module Voom
               @icon = Icon.new(parent: self, icon: icon,
                                context: context,
                                **attribs, &block)
+            end
+          end
+
+          class Label < Item
+            def initialize(**attribs, &block)
+              super(type: :label, **attribs, &block)
             end
           end
 

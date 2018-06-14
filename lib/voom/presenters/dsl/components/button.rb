@@ -33,6 +33,11 @@ module Voom
 
           end
 
+          def image(image=nil, **attribs, &block)
+            return @image if locked?
+            @image = Components::Image.new(parent: self, image: image, context: context, **attribs, &block)
+          end
+
           def menu(**attributes, &block)
             return @menu if locked?
             @menu = Components::Menu.new(parent: self, position: menu_position, context: context, **attributes, &block)

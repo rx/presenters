@@ -14,9 +14,14 @@ module Voom
             expand!
           end
 
+          def button(icon=nil, **attributes, &block)
+            return @button if locked?
+            @button = Components::Button.new(icon: icon, position:[:top, :right], parent: self, context: context, **attributes, &block)
+          end
+
           def menu(**attribs, &block)
             return @menu if locked?
-            @menu = Menu.new(parent: self,
+            @menu = Components::Menu.new(parent: self,
                              context: context,
                              **attribs, &block)
           end
