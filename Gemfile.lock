@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    voom-presenters (0.1.9)
+    voom-presenters (0.1.10)
       dry-configurable (> 0.1, <= 7.0)
       dry-container (~> 0.6)
       dry-inflector (~> 0.1)
