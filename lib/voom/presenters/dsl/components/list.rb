@@ -18,8 +18,7 @@ module Voom
           attr_accessor :components
           
           def initialize(**attribs_, &block)
-            super(type: :list, context: context,
-                  **attribs_, &block)
+            super(type: :list, **attribs_, &block)
             @lines_only = attribs.delete(:lines_only) { false }
             @selectable = attribs.delete(:selectable) { false }
             @lines = []
