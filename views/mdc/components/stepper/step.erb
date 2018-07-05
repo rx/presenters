@@ -1,0 +1,20 @@
+<li class="mdl-step">
+  <span class="mdl-step__label">
+    <span class="mdl-step__title">
+      <span class="mdl-step__title-text"><%=comp.label%></span>
+      <span class="mdl-step__title-message"></span>
+    </span>
+  </span>
+
+  <div class="mdl-step__content">
+    <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
+  </div>
+
+    <div class="mdl-step__actions">
+      <% if comp.actions&.buttons %>
+        <% comp.actions.buttons.each do |button| %>
+          <%= erb :"components/button", :locals => {:comp => button, class_name: 'mdc-card__action mdc-card__action--button'} %>
+        <% end %>
+      <% end %>
+    </div>
+</li>

@@ -13,6 +13,7 @@ import {initForms} from './forms';
 import {initSnackbar} from './snackbar';
 import {initCheckboxes} from './checkboxes';
 import {initSwitches} from './switches';
+import {initSteppers} from './steppers';
 
 export function initialize(){
     console.log('Initializing');
@@ -30,6 +31,7 @@ export function initialize(){
     initSnackbar();
     initCheckboxes();
     initSwitches();
+    initSteppers();
     // This needs to be last, because it relies on the components installed above.
     initEvents();
     // componentHandler.upgradeAllRegistered();

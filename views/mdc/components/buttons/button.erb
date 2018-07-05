@@ -12,6 +12,7 @@ class="mdc-button v-js-ripple-button <%=class_name%>
           <%=  position_classes %>
            <%= "v-button-text-align-left" if text_align %>
           <%= 'v-menu-click' if comp.menu%>"
+<%= comp.data_attributes if comp.data_attributes %>
 <%= 'disabled' if comp.disabled %>
 <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} unless comp.disabled %>>
   <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-button__icon'} %>

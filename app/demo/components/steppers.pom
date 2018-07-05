@@ -1,0 +1,95 @@
+require_relative '../helpers/indented_grid'
+
+Voom::Presenters.define(:steppers) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :component_drawer
+  page_title 'Stepper'
+
+  indented_grid do
+
+    title 'Horizontal Stepper'
+    stepper horizontal: true do
+      step label: 'Step 1' do
+        heading 'Make a choice:'
+        form do
+          select do
+            option do
+              value 'value1'
+              text 'First value'
+            end
+            option do
+              value 'value2'
+              text 'Second value'
+            end
+            event :change do
+              snackbar 'item changed'
+            end
+          end
+        end
+
+        actions do
+          button 'Continue', color: :primary, data_attributes: 'data-stepper-next'
+          button 'Cancel', color: :primary, data_attributes: 'data-stepper-cancel'
+        end
+
+      end
+
+      step label: 'Middle Step'  do
+        actions do
+          button 'Continue', color: :primary, data_attributes: 'data-stepper-next'
+          button 'Back', color: :primary, data_attributes: 'data-stepper-back'
+          button 'Cancel', color: :primary, data_attributes: 'data-stepper-cancel'
+        end
+      end
+
+      step label: 'Final Step'  do
+        actions do
+          button 'Continue', color: :primary, data_attributes: 'data-stepper-next'
+          button 'Back', color: :primary, data_attributes: 'data-stepper-back'
+          button 'Cancel', color: :primary, data_attributes: 'data-stepper-cancel'
+        end
+      end
+    end
+    
+    title 'Vertical Stepper'
+    stepper do
+      step label: 'Step 1'  do
+        actions do
+          button 'Continue', color: :primary, data_attributes: 'data-stepper-next'
+          button 'Cancel', color: :primary, data_attributes: 'data-stepper-cancel'
+        end
+      end
+      step label: 'Step 2'  do
+
+        heading 'Hey Now!'
+        form do
+          select do
+            label 'Text...'
+            option do
+              value 'value1'
+              text 'First value'
+            end
+            option do
+              value 'value2'
+              text 'Second value'
+            end
+            event :change do
+              snackbar 'item changed'
+            end
+          end
+        end
+
+
+        actions do
+          button 'Continue', color: :primary, data_attributes: 'data-stepper-next'
+          button 'Back', color: :primary, data_attributes: 'data-stepper-back'
+          button 'Cancel', color: :primary, data_attributes: 'data-stepper-cancel'
+        end
+      end
+    end
+
+  end
+
+  attach :code, file: __FILE__
+end

@@ -9,6 +9,7 @@ require_relative 'mixins/snackbars'
 require_relative 'mixins/selects'
 require_relative 'mixins/text_fields'
 require_relative 'mixins/date_time_fields'
+require_relative 'mixins/steppers'
 
 module Voom
   module Presenters
@@ -47,7 +48,8 @@ module Voom
             include Mixins::Selects
             include Mixins::Toggles
             include Mixins::Snackbars
-            
+            include Mixins::Steppers
+
             attr_reader :size, :desktop, :tablet, :phone, :color, :components
 
             def initialize(**attribs_, &block)
