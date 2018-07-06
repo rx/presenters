@@ -14307,6 +14307,8 @@ class MDCNotchedOutline extends __WEBPACK_IMPORTED_MODULE_0__material_base_compo
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_autocomplete__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_navigates__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__events_clears__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__events_stepper__ = __webpack_require__(120);
+
 
 
 
@@ -14391,6 +14393,8 @@ class VEvents {
                 return new __WEBPACK_IMPORTED_MODULE_8__events_navigates__["a" /* VNavigates */](options, params, event);
             case 'clear':
                 return new __WEBPACK_IMPORTED_MODULE_9__events_clears__["a" /* VClears */](options, params, event);
+            case 'stepper':
+                return new __WEBPACK_IMPORTED_MODULE_10__events_stepper__["a" /* VStepperEvent */](options, params, event);
             default:
                 throw action_type + ' is not supported.';
         }
@@ -19919,18 +19923,6 @@ class VSwitch extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__
 
 function initSteppers() {
     console.log('\tStepper');
-    // if (typeof componentHandler !== 'undefined') { // MDL is loaded?
-    //     //componentHandler.upgradeDom();
-    //
-    //     let components = document.querySelectorAll('ul.mdl-stepper');
-    //     for (let component of components) {
-    //         let Stepper = component.MaterialStepper;
-    //         createContinueClickHandlers(component.querySelectorAll('[data-stepper-continue]'), Stepper);
-    //         createBackClickHandlers(component.querySelectorAll('[data-stepper-back]'), Stepper);
-    //         createSkipClickHandlers(component.querySelectorAll('[data-stepper-skip]'), Stepper);
-    //     }
-    // }
-
     let components = document.querySelectorAll('ul.mdl-stepper');
     for (let i = 0; i < components.length; i++) {
         let component = components[i];
@@ -19947,40 +19939,66 @@ class VStepper extends Object(__WEBPACK_IMPORTED_MODULE_0__mixins_event_handler_
         if (typeof componentHandler !== 'undefined') {
             // MDL is loaded?
             componentHandler.upgradeElement(element);
-
-            let Stepper = element.MaterialStepper;
-            createContinueClickHandlers(element.querySelectorAll('[data-stepper-next]'), Stepper);
-            createBackClickHandlers(element.querySelectorAll('[data-stepper-back]'), Stepper);
-            createSkipClickHandlers(element.querySelectorAll('[data-stepper-skip]'), Stepper);
+            this.stepper = element.MaterialStepper;
         }
     }
+
+    navigate(nav_action) {
+        if (nav_action === 'continue' || nav_action === 'next') {
+            this.next_step();
+        } else if (nav_action === 'back') {
+            this.back_step();
+        } else if (nav_action === 'skip') {
+            this.skip_step();
+        }
+    }
+
+    next_step() {
+        this.stepper.next();
+    }
+    back_step() {
+        this.stepper.back();
+    }
+    skip_step() {
+        this.stepper.skip();
+    }
+
 }
 /* unused harmony export VStepper */
 
 
-function createContinueClickHandlers(nextButtons, Stepper) {
-    for (let next of nextButtons) {
-        next.addEventListener('click', () => {
-            Stepper.next();
-        });
-    }
-}
+/***/ }),
+/* 120 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-function createBackClickHandlers(backButtons, Stepper) {
-    for (let back of backButtons) {
-        back.addEventListener('click', () => {
-            Stepper.back();
-        });
-    }
-}
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base__ = __webpack_require__(10);
 
-function createSkipClickHandlers(skipButtons, Stepper) {
-    for (let skip of skipButtons) {
-        skip.addEventListener('click', () => {
-            Stepper.skip();
+
+class VStepperEvent extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* VBase */] {
+
+    constructor(options, params, event) {
+        super(options);
+        this.params = params;
+        this.event = event;
+    }
+
+    call(results) {
+        let parentElem = document.getElementById(this.params.stepper_id);
+        let component = parentElem.vComponent;
+        let nav_action = this.params.navigate;
+
+        let promiseObj = new Promise(function (resolve) {
+            console.log("Stepping: " + nav_action);
+            component.navigate(nav_action);
+            results.push({ action: 'stepper', statusCode: 200 });
+            resolve(results);
         });
+        return promiseObj;
     }
 }
+/* harmony export (immutable) */ __webpack_exports__["a"] = VStepperEvent;
+
 
 /***/ })
 /******/ ]);

@@ -114,9 +114,9 @@ module Voom
           alias clears clear
 
           def stepper(navigate, **params, &block)
-            @actions << Components::Action.new(parent: parent(:stepper),
+            @actions << Components::Action.new(parent: self,
                                                type: :stepper,
-                                               params: params.merge(navigate: navigate), &block)
+                                               params: params.merge(navigate: navigate, stepper_id: parent(:stepper).id), &block)
           end
         end
       end

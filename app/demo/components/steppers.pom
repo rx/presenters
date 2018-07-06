@@ -9,7 +9,7 @@ Voom::Presenters.define(:steppers) do
   indented_grid do
 
     title 'Horizontal Stepper'
-    stepper do
+    stepper id: :my_stepper_id do
       step id: :step1 do
         label 'Step 1'
         heading 'Make a choice:'

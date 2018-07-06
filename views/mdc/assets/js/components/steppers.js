@@ -18,35 +18,31 @@ export class VStepper extends eventHandlerMixin(VBaseComponent) {
 
         if (typeof componentHandler !== 'undefined') { // MDL is loaded?
             componentHandler.upgradeElement(element);
-
-            let Stepper = element.MaterialStepper;
-            createContinueClickHandlers(element.querySelectorAll('[data-stepper-next]'), Stepper);
-            createBackClickHandlers(element.querySelectorAll('[data-stepper-back]'), Stepper);
-            createSkipClickHandlers(element.querySelectorAll('[data-stepper-skip]'), Stepper);
+            this.stepper = element.MaterialStepper;
         }
     }
+
+    navigate(nav_action){
+        if(nav_action === 'continue' || nav_action === 'next') {
+            this.next_step();
+        }
+        else if(nav_action === 'back'){
+            this.back_step();
+        }
+        else if(nav_action === 'skip'){
+            this.skip_step();
+        }
+    }
+
+    next_step() {
+        this.stepper.next();
+    }
+    back_step() {
+        this.stepper.back();
+    }
+    skip_step() {
+        this.stepper.skip();
+    }
+
 }
 
-function createContinueClickHandlers(nextButtons, Stepper) {
-    for (let next of nextButtons) {
-        next.addEventListener('click', () => {
-            Stepper.next();
-        });
-    }
-}
-
-function createBackClickHandlers(backButtons, Stepper) {
-    for (let back of backButtons) {
-        back.addEventListener('click', () => {
-            Stepper.back();
-        });
-    }
-}
-
-function createSkipClickHandlers(skipButtons, Stepper) {
-    for (let skip of skipButtons) {
-        skip.addEventListener('click', () => {
-            Stepper.skip();
-        });
-    }
-}

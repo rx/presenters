@@ -8,6 +8,7 @@ import {VSnackbarEvent} from './events/snackbar';
 import {VAutoComplete} from './events/autocomplete';
 import {VNavigates} from './events/navigates';
 import {VClears} from './events/clears';
+import {VStepperEvent} from './events/stepper';
 
 export class VEvents {
     //[[type, url, target, params]]
@@ -84,6 +85,8 @@ export class VEvents {
                 return new VNavigates(options, params, event);
             case 'clear':
                 return new VClears(options, params, event);
+            case 'stepper':
+                return new VStepperEvent(options, params, event);
             default:
                 throw action_type + ' is not supported.';
         }

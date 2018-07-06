@@ -24,7 +24,7 @@ module Voom
             super(type: :stepper, context: context, **attribs_, &block)
             @orientation = attribs.delete(:orientation) {:horizontal}
             raise_parameter_validation "Invalid Orientation Type specified: #{orientation}" unless VALID_ORIENTATIONS.include? orientation
-            @linear = attribs.delete(:linear) {false}
+            @linear = attribs.delete(:linear) {true}
             @steps = []
             expand!
           end
@@ -51,10 +51,12 @@ module Voom
             include Mixins::Toggles
             include Mixins::Snackbars
 
-            attr_accessor :components
+            attr_accessor :components, :editable, :optional
 
             def initialize(context:, **attribs_, &block)
               super(type: :step, context: context, **attribs_, &block)
+              @editable = attribs.delete(:editable) {true}
+              @optional = attribs.delete(:optional) {false}
               @components = []
               expand!
             end
@@ -81,29 +83,35 @@ module Voom
               end
 
               def continue(text = 'Continue', **options, &block)
-                button(text, 'data-stepper-next', **options, &block)
+                button(text, :next, **options, &block)
               end
               alias :next :continue
 
               def back(text = 'Back', **options, &block)
-                button(text, 'data-stepper-back', **options, &block)
+                button(text, :back, **options, &block)
               end
 
               def skip(text = 'Skip', **options, &block)
-                button(text,'data-stepper-skip', **options, &block)
+                button(text,:skip, **options, &block)
               end
 
               def cancel(text = 'Cancel', **options, &block)
-                button(text,'data-stepper-cancel', **options, &block)
+                button(text,:cancel, **options, &block)
               end
-              alias :close :cancel
 
               private
               def button(text = nil, stepper_type, **options, &block)
-                @buttons << Components::Button.new(parent: self, text: text,
-                                                   data_attributes: stepper_type,
+                btn = Components::Button.new(parent: self, text: text,
+                                                   data_attributes: "data-stepper-#{stepper_type}",
                                                    context: context,
                                                    **options, &block)
+
+                btn.instance_eval do
+                  event :click do
+                    stepper stepper_type
+                  end
+                end
+                @buttons << btn
               end
             end
 

@@ -1,7 +1,10 @@
-<li class="mdl-step">
+<li class="mdl-step
+      <%= 'mdl-step--editable' if comp.editable %>
+      <%= 'mdl-step--optional' if comp.optional %>
+    ">
   <span class="mdl-step__label">
     <span class="mdl-step__title">
-      <span class="mdl-step__title-text"><%=comp.label%></span>
+      <span class="mdl-step__title-text"><%= comp.label %></span>
       <span class="mdl-step__title-message"></span>
     </span>
   </span>
@@ -10,11 +13,11 @@
     <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
   </div>
 
-    <div class="mdl-step__actions">
-      <% if comp.actions&.buttons %>
-        <% comp.actions.buttons.each do |button| %>
-          <%= erb :"components/button", :locals => {:comp => button, class_name: 'mdc-card__action mdc-card__action--button'} %>
-        <% end %>
+  <div class="mdl-step__actions">
+    <% if comp.actions&.buttons %>
+      <% comp.actions.buttons.each do |button| %>
+        <%= erb :"components/button", :locals => {:comp => button, class_name: 'mdc-card__action mdc-card__action--button'} %>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 </li>
