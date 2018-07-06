@@ -3,18 +3,6 @@ import {VBaseComponent} from "./base-component";
 
 export function initSteppers() {
     console.log('\tStepper');
-    // if (typeof componentHandler !== 'undefined') { // MDL is loaded?
-    //     //componentHandler.upgradeDom();
-    //
-    //     let components = document.querySelectorAll('ul.mdl-stepper');
-    //     for (let component of components) {
-    //         let Stepper = component.MaterialStepper;
-    //         createContinueClickHandlers(component.querySelectorAll('[data-stepper-continue]'), Stepper);
-    //         createBackClickHandlers(component.querySelectorAll('[data-stepper-back]'), Stepper);
-    //         createSkipClickHandlers(component.querySelectorAll('[data-stepper-skip]'), Stepper);
-    //     }
-    // }
-
     let components = document.querySelectorAll('ul.mdl-stepper');
     for (let i = 0; i < components.length; i++) {
         let component = components[i];
