@@ -9,87 +9,140 @@ Voom::Presenters.define(:steppers) do
   indented_grid do
 
     title 'Horizontal Stepper'
-    stepper horizontal: true do
-      step label: 'Step 1' do
+    stepper do
+      step id: :step1 do
+        label 'Step 1'
         heading 'Make a choice:'
-        form do
-          select do
-            option do
-              value 'value1'
-              text 'First value'
-            end
-            option do
-              value 'value2'
-              text 'Second value'
-            end
-            event :change do
-              snackbar 'item changed'
-            end
+        select name: :step_type do
+          option do
+            value ''
+            text 'Select something...'
+          end
+          option do
+            value 'type1'
+            text 'Step 2 Variation 1'
+          end
+          option do
+            value 'type2'
+            text 'Step 2 Variation 2'
+          end
+          event :change do
+            replaces :step2_content, :step2_form
+
+            # What I really want to happen here is:
+            # 1) Replace the content of step 2 with whatever the :step2_form POM returns (that's working)
+            # 2) Get the parent element, grab it's MaterialStepper and call .next()
+
           end
         end
 
         actions do
-          button 'Continue', color: :primary, data_attributes: 'data-stepper-next'
-          button 'Cancel', color: :primary, data_attributes: 'data-stepper-cancel'
+          cancel do
+            event :click do
+              snackbar 'I want a snack!'
+            end
+          end
         end
 
       end
 
-      step label: 'Middle Step'  do
+      step id: :step2 do
+        label 'Middle Step'
+        attach :step2_form
         actions do
-          button 'Continue', color: :primary, data_attributes: 'data-stepper-next'
-          button 'Back', color: :primary, data_attributes: 'data-stepper-back'
-          button 'Cancel', color: :primary, data_attributes: 'data-stepper-cancel'
+          continue
+          back
+          cancel
         end
       end
 
-      step label: 'Final Step'  do
+      step id: :step3 do
+        label 'Final Step'
         actions do
-          button 'Continue', color: :primary, data_attributes: 'data-stepper-next'
-          button 'Back', color: :primary, data_attributes: 'data-stepper-back'
-          button 'Cancel', color: :primary, data_attributes: 'data-stepper-cancel'
+          continue
+          back
+          cancel
         end
       end
     end
-    
+
     title 'Vertical Stepper'
-    stepper do
-      step label: 'Step 1'  do
+
+    stepper orientation: :vertical do
+      step id: :step1 do
+        label 'Step 1'
+        heading 'Look at me:'
+        text_area
+
         actions do
-          button 'Continue', color: :primary, data_attributes: 'data-stepper-next'
-          button 'Cancel', color: :primary, data_attributes: 'data-stepper-cancel'
+          continue
+          cancel
         end
       end
-      step label: 'Step 2'  do
-
+      step id: :step2 do
+        label 'Step 2'
         heading 'Hey Now!'
-        form do
-          select do
-            label 'Text...'
-            option do
-              value 'value1'
-              text 'First value'
-            end
-            option do
-              value 'value2'
-              text 'Second value'
-            end
-            event :change do
-              snackbar 'item changed'
-            end
+        select do
+          label 'Text...'
+          option do
+            value 'value1'
+            text 'First value'
+          end
+          option do
+            value 'value2'
+            text 'Second value'
+          end
+          event :change do
+            snackbar 'item changed'
           end
         end
 
 
         actions do
-          button 'Continue', color: :primary, data_attributes: 'data-stepper-next'
-          button 'Back', color: :primary, data_attributes: 'data-stepper-back'
-          button 'Cancel', color: :primary, data_attributes: 'data-stepper-cancel'
+          continue
+          back
+          cancel
         end
       end
+
+      step id: :step3 do
+        label 'Step 3'
+
+        heading 'Finally:'
+        text_field name: :numeric do
+          label 'Number...'
+          pattern /-?[0-9]*(\.[0-9]+)?/
+          hint 'Input is not a number!'
+        end
+
+        actions do
+          continue
+          back
+          cancel
+        end
+      end
+
+
     end
 
   end
 
   attach :code, file: __FILE__
 end
+
+Voom::Presenters.define(:step2_form) do
+  content id: :step2_content do
+    type = context.fetch('step_type') {nil}
+    attach "step2_#{type}_form" if type
+  end
+end
+
+Voom::Presenters.define(:step2_type1_form) do
+  heading 'Form of Type1'
+end
+
+Voom::Presenters.define(:step2_type2_form) do
+  heading 'Form of Type2'
+end
+
+
