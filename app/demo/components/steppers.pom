@@ -28,7 +28,7 @@ Voom::Presenters.define(:steppers) do
           end
           event :change do
             replaces :step2_content, :step2_form
-
+            stepper :continue # This should call the stepper.next() method.
             # What I really want to happen here is:
             # 1) Replace the content of step 2 with whatever the :step2_form POM returns (that's working)
             # 2) Get the parent element, grab it's MaterialStepper and call .next()
@@ -37,9 +37,9 @@ Voom::Presenters.define(:steppers) do
         end
 
         actions do
-          cancel do
+          continue do
             event :click do
-              snackbar 'I want a snack!'
+              posts 'to_nowhere_fails'  # stepper should NOT advance
             end
           end
         end

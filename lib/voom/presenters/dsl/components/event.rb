@@ -97,7 +97,6 @@ module Voom
           def navigates(direction, **params, &block)
             @actions << Components::Action.new(parent: self,
                                                type: :navigates,
-                                               direction: direction,
                                                params: params.merge(direction: direction), &block)
           end
 
@@ -113,6 +112,12 @@ module Voom
           end
 
           alias clears clear
+
+          def stepper(navigate, **params, &block)
+            @actions << Components::Action.new(parent: parent(:stepper),
+                                               type: :stepper,
+                                               params: params.merge(navigate: navigate), &block)
+          end
         end
       end
     end
