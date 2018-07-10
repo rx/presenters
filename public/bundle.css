@@ -11348,6 +11348,9 @@ select {
 .v-snackbar {
   display: none; }
 
+.mdc-snackbar {
+  z-index: 9999; }
+
 .v-expansion {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
   .v-expansion__summary {
