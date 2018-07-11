@@ -8,6 +8,7 @@ require_relative 'mixins/text_fields'
 require_relative 'mixins/icons'
 require_relative 'mixins/snackbars'
 require_relative 'mixins/date_time_fields'
+require_relative 'mixins/chips'
 
 module Voom
   module Presenters
@@ -20,6 +21,7 @@ module Voom
           include Mixins::DateTimeFields
           include Mixins::Icons
           include Mixins::Snackbars
+          include Mixins::Chips
 
           attr_reader :height, :width, :selected, :components, :shows_errors
 

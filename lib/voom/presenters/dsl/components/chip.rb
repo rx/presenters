@@ -32,6 +32,11 @@ module Voom
                                **attribs, &block)
           end
 
+          def menu(**attributes, &block)
+            return @menu if locked?
+            @menu = Components::Menu.new(parent: self, context: context, **attributes, &block)
+          end
+          
           class Icon < Components::IconBase
 
             def initialize(**attribs_, &block)

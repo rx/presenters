@@ -12,8 +12,8 @@ module Voom
           class Line < EventBase
             attr_accessor :selected, :selectable
 
-            def initialize(context:, **attribs_, &block)
-              super(type: :line, context: context, **attribs_, &block)
+            def initialize(**attribs_, &block)
+              super(type: :line, **attribs_, &block)
               @selected = attribs.delete(:selected) { false }
               @selectable = attribs.delete(:selectable) { false }
               self.text(attribs.delete(:text)) if attribs.key?(:text)
@@ -81,6 +81,7 @@ module Voom
             def actions(**attribs, &block)
               return @actions if locked?
               @actions << Lists::Action.new(parent: self,
+                                            context: context,
                                             **attribs, &block)
             end
             alias action actions
