@@ -29,7 +29,14 @@ Voom::Presenters.define(:layouts) do
 
     grid do
       column 6, color: :lightgray do
-        body '6'
+        body '6 wide with sub-grid of 12'
+        grid do
+          (1..12).each do |size|
+            column 1, color:  :white do
+              body '1'
+            end
+          end
+        end
       end
       column 4, color: :lightgray do
         body '4'

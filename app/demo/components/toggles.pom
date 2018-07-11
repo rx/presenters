@@ -12,8 +12,8 @@ Voom::Presenters.define(:toggles) do
     checkbox checked: true
 
     headline 'RADIO BUTTON'
-    radio_button checked: true
-    radio_button
+    radio_button name: :radio, value: 'one', checked: true, text: "One"
+    radio_button name: :radio, value: 'two', text: "Two"
 
     headline 'ICON TOGGLE'
     icon_toggle 'format_bold', checked: true

@@ -51,12 +51,13 @@ module Voom
             include Mixins::Toggles
             include Mixins::Snackbars
 
-            attr_accessor :components, :editable, :optional
+            attr_accessor :components, :editable, :optional, :selected
 
             def initialize(context:, **attribs_, &block)
               super(type: :step, context: context, **attribs_, &block)
               @editable = attribs.delete(:editable) {true}
               @optional = attribs.delete(:optional) {false}
+              @selected = attribs.delete(:selected) {false}
               @components = []
               expand!
             end
