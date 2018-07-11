@@ -3,12 +3,10 @@
 %>
 <div id="<%= comp.id %>"
      class=" v-datetime mdc-text-field mdc-text-field--outlined
-            <%= 'mdc-text-field--with-trailing-icon' if comp.icon %>
+            <%= 'mdc-text-field--with-trailing-icon' if comp.clear_icon %>
             <%= 'is-invalid is-dirty' if comp.error %>"
      data-config='<%= snake_to_camel(to_hash(comp.config), except: %i(time_24hr)).to_json %>'
      data-type='<%= comp.type %>'>
-  <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-text-field__icon',
-                                          parent_id: "#{comp.id}-input"} %>
   <input id="<%= comp.id %>-input"
          name="<%= comp.name %>"
          type="text"
@@ -23,6 +21,7 @@
          list="<%= comp.id %>-list"
          <%= erb :"components/event", :locals => {events: comp.events, parent_id:  "#{comp.id}-input"} %>>
   <label for="<%= comp.id %>-input" class="mdc-floating-label"><%= comp.label %></label>
+  <%= erb :"components/icon", :locals => {comp: comp.clear_icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"} %>
   <div class="mdc-notched-outline">
     <svg>
       <path class="mdc-notched-outline__path"/>

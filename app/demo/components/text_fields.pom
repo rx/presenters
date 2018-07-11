@@ -26,7 +26,7 @@ Voom::Presenters.define(:text_fields) do
     text_field name: :numeric do
       label 'Number...'
       pattern /-?[0-9]*(\.[0-9]+)?/
-      hint 'Input is not a number!'
+      hint 'Input should be a number!'
     end
 
     headline 'With Errors'
@@ -34,7 +34,20 @@ Voom::Presenters.define(:text_fields) do
       label 'Guess a number...'
       pattern /-?[0-9]*(\.[0-9]+)?/
       value '7'
-      error 'Input is not a the right number!'
+      error 'Input is not the right number!'
+    end
+
+
+    headline 'With Leading Icon'
+    text_field name: :numeric do
+      label 'Amount'
+      icon :attach_money, position: :left
+    end
+
+    headline 'With Trailing Icon'
+    text_field name: :numeric do
+      label 'Name'
+      icon :face, position: :right
     end
 
     card do
