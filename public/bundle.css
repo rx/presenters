@@ -11348,6 +11348,9 @@ select {
 .v-snackbar {
   display: none; }
 
+.mdc-snackbar {
+    z-index: 9999; }
+
 /**
  * mdl-stepper - A Material Design Lite Stepper component polyfill.
  * @version v1.1.6
