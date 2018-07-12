@@ -11,7 +11,15 @@ Voom::Presenters.define(:text_areas) do
 
     text_area name: :notes, rows: 3 do
       label 'Text lines...'
+      hint 'Default behavior is full width'
     end
+
+
+    text_area name: :notes, rows: 5, cols: 60, full_width: false do
+      label 'Five by Sixty'
+      hint 'Or specify using rows and columns'
+    end
+
 
     attach :code, file: __FILE__
   end
