@@ -14,6 +14,7 @@ import {initSnackbar} from './snackbar';
 import {initCheckboxes} from './checkboxes';
 import {initSwitches} from './switches';
 import {initSteppers} from './steppers';
+import {initRadios} from './radios';
 
 export function initialize(){
     console.log('Initializing');
@@ -32,7 +33,7 @@ export function initialize(){
     initCheckboxes();
     initSwitches();
     initSteppers();
+    initRadios();
     // This needs to be last, because it relies on the components installed above.
     initEvents();
-    // componentHandler.upgradeAllRegistered();
 }
