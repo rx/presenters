@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-gem bump
+gem bump -v ${1:-next}
 
