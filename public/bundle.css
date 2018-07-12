@@ -12216,7 +12216,11 @@ i:focus.v-datetime--clear {
   cursor: pointer; }
 
 .v-error-message {
-  color: #d50000; }
+  color: #d50000;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #d50000;
+  font-weight: bold; }
 
 .v-hidden {
   display: none; }
