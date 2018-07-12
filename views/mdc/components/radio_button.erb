@@ -1,12 +1,16 @@
-<label id="<%=comp.id%>" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="<%=comp.id%>-input">
-  <input id="<%= comp.id %>-input"
+<div class="mdc-form-field">
+  <div class="mdc-radio v-radio">
+    <input class="mdc-radio__native-control"
+           type="radio"
+           id="<%= comp.id %>-input"
            name="<%= comp.name %>"
-         type="radio"
-         class="mdl-radio__button"
-         value="<%=comp.value%>"
-         <%if comp.checked%> checked<%end%><%if comp.disabled%> disabled<%end%>
-         <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%> />
-  <span class="mdl-radio__label"><%=comp.text%></span>
-</label>
-<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id }%>
-
+           <%if comp.checked%> checked<%end%><%if comp.disabled%> disabled<%end%>
+           <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%> >
+    <div class="mdc-radio__background">
+      <div class="mdc-radio__outer-circle"></div>
+      <div class="mdc-radio__inner-circle"></div>
+    </div>
+  </div>
+  <label for="<%=comp.id%>-input"><%=comp.text%></label>
+  <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id }%>
+</div>
