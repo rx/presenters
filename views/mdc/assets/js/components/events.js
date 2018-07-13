@@ -51,6 +51,8 @@ export class VEvents {
                 }
 
             }).catch(function (results) {
+                console.log("If you got here it may not be what you think:", results);
+
             var result = results.pop();
             new VErrors(event).displayErrors(result);
         });
