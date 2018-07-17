@@ -13343,11 +13343,12 @@ class VLoads extends __WEBPACK_IMPORTED_MODULE_0__utils_urls__["a" /* VUrls */] 
 
     call(results) {
         var url = this.buildURL(this.url, this.params);
+        var newWindow = this.options['target'] === '_blank';
         var promiseObj = new Promise(function (resolve) {
             console.log("Loading page: " + url);
             results.push({ action: 'loads', statusCode: 200 });
             resolve(results);
-            window.location = url;
+            newWindow ? window.open(url) : window.location = url;
         });
         return promiseObj;
     }
