@@ -101,9 +101,9 @@ module Voom
               end
 
               private
+
               def button(text = nil, stepper_type, **options, &block)
-                btn = Components::Button.new(parent: self, text: text,
-                                                   data_attributes: "data-stepper-#{stepper_type}",
+                btn = StepperButton.new(stepper_type, parent: self, text: text,
                                                    context: context,
                                                    **options, &block)
 
@@ -114,6 +114,16 @@ module Voom
                 end
                 @buttons << btn
               end
+
+              class StepperButton < Components::Button
+                attr_reader :stepper_type
+                def initialize(stepper_type, **attribs_, &block)
+                  @stepper_type = stepper_type
+                  super(**attribs_, &block)
+                end
+              end
+
+
             end
 
           end

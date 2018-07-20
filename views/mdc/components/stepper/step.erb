@@ -11,14 +11,28 @@
   </span>
 
   <div class="mdl-step__content">
-    <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
+    <form role="form"
+          id="<%= comp.id %>-form"
+          class="v-has-errors v-form"
+          style='width: 100%'
+          onsubmit="javascript:void(0);return false;"
+          <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.id} %>>
+
+            <%= erb :"components/render", :locals => {:components => comp.components.select {|c| !eq(c.type, :button)}, :scope => nil} %>
+
+    </form>
   </div>
 
   <div class="mdl-step__actions">
     <% if comp.actions&.buttons %>
       <% comp.actions.buttons.each do |button| %>
-        <%= erb :"components/button", :locals => {:comp => button, class_name: 'mdc-card__action mdc-card__action--button'} %>
+        <%= erb :"components/button", :locals => {:comp => button,
+                                                  class_name: 'mdc-card__action mdc-card__action--button',
+                                                  data_attributes: "data-stepper-#{button.stepper_type}",
+                                                  event_parent_id: "#{comp.id}-form" }
+        %>
       <% end %>
     <% end %>
   </div>
+
 </li>

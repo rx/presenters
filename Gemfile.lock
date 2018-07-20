@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    voom-presenters (0.1.11.pre1)
+    voom-presenters (0.1.13.pre2)
       dry-configurable (> 0.1, <= 7.0)
       dry-container (~> 0.6)
       dry-inflector (~> 0.1)
@@ -115,4 +115,4 @@ RUBY VERSION
    ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
