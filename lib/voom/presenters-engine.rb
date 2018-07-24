@@ -19,7 +19,7 @@ module Voom
       BOOT = ->{
         Voom::Presenters::Settings.configure do |config|
           config.presenters.root = Rails.root.join('app')
-          # config.presenters.deep_freeze = false
+          config.presenters.deep_freeze = false
         end
         Voom::Presenters::App.boot!
       }
@@ -33,7 +33,8 @@ module Voom
       end
 
       config.to_prepare do
-        RELOADER.execute
+        RELOADER.execute_if_updated
+        BOOT.call
       end
     end
   end

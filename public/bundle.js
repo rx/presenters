@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 41);
+/******/ 	return __webpack_require__(__webpack_require__.s = 46);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -277,8 +277,8 @@ class MDCComponent {
 /* unused harmony export RippleCapableSurface */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(4);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
 /* unused harmony reexport util */
 /**
@@ -432,90 +432,8 @@ RippleCapableSurface.prototype.disabled;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export MDCSelectionControlState */
-/* unused harmony export MDCSelectionControl */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple_index__ = __webpack_require__(2);
-/**
- * @license
- * Copyright 2017 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* eslint-disable no-unused-vars */
-
-/* eslint-enable no-unused-vars */
-
-/**
- * @typedef {{
- *   checked: boolean,
- *   indeterminate: boolean,
- *   disabled: boolean,
- *   value: ?string
- * }}
- */
-let MDCSelectionControlState;
-
-/**
- * @record
- */
-class MDCSelectionControl {
-  /** @return {?MDCRipple} */
-  get ripple() {}
-}
-
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-class VBaseComponent {
-    constructor(element) {
-        this.element = element;
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = VBaseComponent;
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return eventHandlerMixin; });
-let eventHandlerMixin = Base => class extends Base {
-    // idempotent event handling initialization
-    initEventListener(eventName, eventHandler) {
-        if (typeof this.eventsHandler === 'undefined') {
-            this.eventsHandler = {};
-        }
-        if (!this.eventsHandler[eventName]) {
-            // Delegate to the component if possible
-            this.eventsHandler[eventName] = eventHandler;
-            this.element.addEventListener(eventName, eventHandler);
-        }
-    }
-};
-
-/***/ }),
-/* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSnackbar;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_snackbar__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_snackbar__ = __webpack_require__(70);
 
 
 // This class displays a page level message
@@ -552,7 +470,7 @@ function initSnackbar() {
 }
 
 /***/ }),
-/* 7 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -677,9 +595,9 @@ function getMatchesProperty(HTMLElementPrototype) {
 
 /**
  * @param {!Event} ev
- * @param {{x: number, y: number}} pageOffset
+ * @param {!{x: number, y: number}} pageOffset
  * @param {!ClientRect} clientRect
- * @return {{x: number, y: number}}
+ * @return {!{x: number, y: number}}
  */
 function getNormalizedEventCoords(ev, pageOffset, clientRect) {
   const { x, y } = pageOffset;
@@ -703,112 +621,26 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
 
 
 /***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component__ = __webpack_require__(1);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__foundation__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__component__["a"]; });
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_urls__ = __webpack_require__(28);
-
-
-
-class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
-    constructor(options) {
-        super();
-        this.options = options;
-    }
-
-    clearErrors() {
-        new __WEBPACK_IMPORTED_MODULE_0__errors__["a" /* VErrors */]().clearErrors();
-    }
-
-    parentElement() {
-        return document.getElementById(this.options.__parent_id__);
-    }
-
-    inputValues(form) {
-        let params = [];
-        // Let input component push parameters
-        let vComp = this.component();
-        if (vComp) {
-            vComp.prepareSubmit(form, params);
-        }
-        return params;
-    }
-
-    component() {
-        let parent = this.parentElement();
-        return parent ? parent.vComponent : null;
-    }
-
-    validate() {
-        let errors = [];
-        let comp = this.component();
-        if (comp) {
-            errors = comp.validate();
-        }
-        return errors;
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = VBase;
-
-
-/***/ }),
-/* 10 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initialize;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialogs__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datetime__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialogs__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datetime__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text_fields__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lists__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__icon_toggles__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__menus__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__selects__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__chips__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__cards__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__forms__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__snackbar__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__checkboxes__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__switches__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__steppers__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__radios__ = __webpack_require__(40);
-
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lists__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__icon_toggles__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__menus__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__selects__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__chips__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__cards__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__forms__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__snackbar__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__checkboxes__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__switches__ = __webpack_require__(117);
 
 
 
@@ -841,20 +673,19 @@ function initialize() {
     Object(__WEBPACK_IMPORTED_MODULE_12__snackbar__["a" /* initSnackbar */])();
     Object(__WEBPACK_IMPORTED_MODULE_13__checkboxes__["a" /* initCheckboxes */])();
     Object(__WEBPACK_IMPORTED_MODULE_14__switches__["a" /* initSwitches */])();
-    Object(__WEBPACK_IMPORTED_MODULE_15__steppers__["a" /* initSteppers */])();
-    Object(__WEBPACK_IMPORTED_MODULE_16__radios__["a" /* initRadios */])();
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_4__events__["a" /* initEvents */])();
+    // componentHandler.upgradeAllRegistered();
 }
 
 /***/ }),
-/* 11 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(57);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -981,13 +812,13 @@ class MDCTextFieldHelperTextFoundation extends __WEBPACK_IMPORTED_MODULE_0__mate
 /* harmony default export */ __webpack_exports__["a"] = (MDCTextFieldHelperTextFoundation);
 
 /***/ }),
-/* 12 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(58);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -1026,10 +857,7 @@ class MDCTextFieldIconFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_b
    */
   static get defaultAdapter() {
     return (/** @type {!MDCTextFieldIconAdapter} */{
-        getAttr: () => {},
         setAttr: () => {},
-        removeAttr: () => {},
-        setContent: () => {},
         registerInteractionHandler: () => {},
         deregisterInteractionHandler: () => {},
         notifyIconAction: () => {}
@@ -1043,16 +871,11 @@ class MDCTextFieldIconFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_b
   constructor(adapter) {
     super(Object.assign(MDCTextFieldIconFoundation.defaultAdapter, adapter));
 
-    /** @private {string?} */
-    this.savedTabIndex_ = null;
-
     /** @private {function(!Event): undefined} */
     this.interactionHandler_ = evt => this.handleInteraction(evt);
   }
 
   init() {
-    this.savedTabIndex_ = this.adapter_.getAttr('tabindex');
-
     ['click', 'keydown'].forEach(evtType => {
       this.adapter_.registerInteractionHandler(evtType, this.interactionHandler_);
     });
@@ -1064,29 +887,16 @@ class MDCTextFieldIconFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_b
     });
   }
 
-  /** @param {boolean} disabled */
+  /**
+   * Sets the content of the helper text field.
+   * @param {boolean} disabled
+   */
   setDisabled(disabled) {
-    if (!this.savedTabIndex_) {
-      return;
-    }
-
     if (disabled) {
       this.adapter_.setAttr('tabindex', '-1');
-      this.adapter_.removeAttr('role');
     } else {
-      this.adapter_.setAttr('tabindex', this.savedTabIndex_);
-      this.adapter_.setAttr('role', __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* strings */].ICON_ROLE);
+      this.adapter_.setAttr('tabindex', '0');
     }
-  }
-
-  /** @param {string} label */
-  setAriaLabel(label) {
-    this.adapter_.setAttr('aria-label', label);
-  }
-
-  /** @param {string} content */
-  setContent(content) {
-    this.adapter_.setContent(content);
   }
 
   /**
@@ -1103,15 +913,175 @@ class MDCTextFieldIconFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_b
 /* harmony default export */ __webpack_exports__["a"] = (MDCTextFieldIconFoundation);
 
 /***/ }),
-/* 13 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCChipFoundation; });
-/* unused harmony export MDCChipInteractionEventType */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(36);
+class VBaseComponent {
+    constructor(element) {
+        this.element = element;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VBaseComponent;
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return eventHandlerMixin; });
+let eventHandlerMixin = Base => class extends Base {
+    // idempotent event handling initialization
+    initEventListener(eventName, eventHandler) {
+        if (typeof this.eventsHandler === 'undefined') {
+            this.eventsHandler = {};
+        }
+        if (!this.eventsHandler[eventName]) {
+            // Delegate to the component if possible
+            this.eventsHandler[eventName] = eventHandler;
+            this.element.addEventListener(eventName, eventHandler);
+        }
+    }
+};
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_urls__ = __webpack_require__(28);
+
+
+
+class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
+    constructor(options) {
+        super();
+        this.options = options;
+    }
+
+    clearErrors() {
+        new __WEBPACK_IMPORTED_MODULE_0__errors__["a" /* VErrors */]().clearErrors();
+    }
+
+    parentElement() {
+        return document.getElementById(this.options.__parent_id__);
+    }
+
+    inputValues(form) {
+        let params = [];
+        // Let input component push parameters
+        let vComp = this.component();
+        if (vComp) {
+            vComp.prepareSubmit(form, params);
+        }
+        return params;
+    }
+
+    component() {
+        let parent = this.parentElement();
+        return parent ? parent.vComponent : null;
+    }
+
+    validate() {
+        let errors = [];
+        let comp = this.component();
+        if (comp) {
+            errors = comp.validate();
+        }
+        return errors;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VBase;
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @template A
+ */
+class MDCFoundation {
+  /** @return enum{cssClasses} */
+  static get cssClasses() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports every
+    // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
+    return {};
+  }
+
+  /** @return enum{strings} */
+  static get strings() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports all
+    // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
+    return {};
+  }
+
+  /** @return enum{numbers} */
+  static get numbers() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports all
+    // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
+    return {};
+  }
+
+  /** @return {!Object} */
+  static get defaultAdapter() {
+    // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
+    // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
+    // validation.
+    return {};
+  }
+
+  /**
+   * @param {A=} adapter
+   */
+  constructor(adapter = {}) {
+    /** @protected {!A} */
+    this.adapter_ = adapter;
+  }
+
+  init() {
+    // Subclasses should override this method to perform initialization routines (registering events, etc.)
+  }
+
+  destroy() {
+    // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
+
+/***/ }),
+/* 12 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCChip; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(44);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__foundation__["a"]; });
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -1133,202 +1103,138 @@ class MDCTextFieldIconFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_b
 
 
 
+
+
+
 /**
- * @extends {MDCFoundation<!MDCChipAdapter>}
+ * @extends {MDCComponent<!MDCChipFoundation>}
  * @final
  */
-class MDCChipFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum {string} */
-  static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
-  }
+class MDCChip extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /**
+   * @param {...?} args
+   */
+  constructor(...args) {
+    super(...args);
 
-  /** @return enum {string} */
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+    /** @private {?Element} */
+    this.leadingIcon_ = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].LEADING_ICON_SELECTOR);
+    /** @private {!MDCRipple} */
+    this.ripple_ = new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["a" /* MDCRipple */](this.root_);
   }
 
   /**
-   * {@see MDCChipAdapter} for typing information on parameters and return
-   * types.
-   * @return {!MDCChipAdapter}
+   * @param {!Element} root
+   * @return {!MDCChip}
    */
-  static get defaultAdapter() {
-    return (/** @type {!MDCChipAdapter} */{
-        addClass: () => {},
-        removeClass: () => {},
-        hasClass: () => {},
-        addClassToLeadingIcon: () => {},
-        removeClassFromLeadingIcon: () => {},
-        eventTargetHasClass: () => {},
-        registerEventHandler: () => {},
-        deregisterEventHandler: () => {},
-        registerTrailingIconInteractionHandler: () => {},
-        deregisterTrailingIconInteractionHandler: () => {},
-        notifyInteraction: () => {},
-        notifyTrailingIconInteraction: () => {},
-        notifyRemoval: () => {},
-        getComputedStyleValue: () => {},
-        setStyleProperty: () => {}
-      }
-    );
-  }
-
-  /**
-   * @param {!MDCChipAdapter} adapter
-   */
-  constructor(adapter) {
-    super(Object.assign(MDCChipFoundation.defaultAdapter, adapter));
-
-    /**
-     * Whether a trailing icon click should immediately trigger exit/removal of the chip.
-     * @private {boolean}
-     * */
-    this.shouldRemoveOnTrailingIconClick_ = true;
-    /** @private {function(!Event): undefined} */
-    this.interactionHandler_ = evt => this.handleInteraction(evt);
-    /** @private {function(!Event): undefined} */
-    this.transitionEndHandler_ = evt => this.handleTransitionEnd(evt);
-    /** @private {function(!Event): undefined} */
-    this.trailingIconInteractionHandler_ = evt => this.handleTrailingIconInteraction(evt);
-  }
-
-  init() {
-    ['click', 'keydown'].forEach(evtType => {
-      this.adapter_.registerEventHandler(evtType, this.interactionHandler_);
-    });
-    this.adapter_.registerEventHandler('transitionend', this.transitionEndHandler_);
-    ['click', 'keydown', 'touchstart', 'pointerdown', 'mousedown'].forEach(evtType => {
-      this.adapter_.registerTrailingIconInteractionHandler(evtType, this.trailingIconInteractionHandler_);
-    });
+  static attachTo(root) {
+    return new MDCChip(root);
   }
 
   destroy() {
-    ['click', 'keydown'].forEach(evtType => {
-      this.adapter_.deregisterEventHandler(evtType, this.interactionHandler_);
-    });
-    this.adapter_.deregisterEventHandler('transitionend', this.transitionEndHandler_);
-    ['click', 'keydown', 'touchstart', 'pointerdown', 'mousedown'].forEach(evtType => {
-      this.adapter_.deregisterTrailingIconInteractionHandler(evtType, this.trailingIconInteractionHandler_);
-    });
+    this.ripple_.destroy();
+    super.destroy();
   }
 
   /**
-   * @return {boolean}
+   * Toggles selected state of the chip.
    */
-  isSelected() {
-    return this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED);
+  toggleSelected() {
+    this.foundation_.toggleSelected();
   }
 
   /**
-   * @param {boolean} selected
+   * @return {!MDCChipFoundation}
    */
-  setSelected(selected) {
-    if (selected) {
-      this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED);
-    } else {
-      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED);
-    }
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_3__foundation__["a" /* default */]( /** @type {!MDCChipAdapter} */Object.assign({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className),
+      hasClass: className => this.root_.classList.contains(className),
+      addClassToLeadingIcon: className => {
+        if (this.leadingIcon_) {
+          this.leadingIcon_.classList.add(className);
+        }
+      },
+      removeClassFromLeadingIcon: className => {
+        if (this.leadingIcon_) {
+          this.leadingIcon_.classList.remove(className);
+        }
+      },
+      eventTargetHasClass: (target, className) => target.classList.contains(className),
+      registerEventHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
+      deregisterEventHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler),
+      registerTrailingIconInteractionHandler: (evtType, handler) => {
+        const trailingIconEl = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].TRAILING_ICON_SELECTOR);
+        if (trailingIconEl) {
+          trailingIconEl.addEventListener(evtType, handler);
+        }
+      },
+      deregisterTrailingIconInteractionHandler: (evtType, handler) => {
+        const trailingIconEl = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].TRAILING_ICON_SELECTOR);
+        if (trailingIconEl) {
+          trailingIconEl.removeEventListener(evtType, handler);
+        }
+      },
+      notifyInteraction: () => this.emit(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].INTERACTION_EVENT, { chip: this }, true /* shouldBubble */),
+      notifyTrailingIconInteraction: () => this.emit(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].TRAILING_ICON_INTERACTION_EVENT, { chip: this }, true /* shouldBubble */)
+    }));
   }
 
-  /**
-   * @return {boolean}
-   */
-  getShouldRemoveOnTrailingIconClick() {
-    return this.shouldRemoveOnTrailingIconClick_;
-  }
-
-  /**
-   * @param {boolean} shouldRemove
-   */
-  setShouldRemoveOnTrailingIconClick(shouldRemove) {
-    this.shouldRemoveOnTrailingIconClick_ = shouldRemove;
-  }
-
-  /**
-   * Begins the exit animation which leads to removal of the chip.
-   */
-  beginExit() {
-    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CHIP_EXIT);
-  }
-
-  /**
-   * Handles an interaction event on the root element.
-   * @param {!Event} evt
-   */
-  handleInteraction(evt) {
-    if (evt.type === 'click' || evt.key === 'Enter' || evt.keyCode === 13) {
-      this.adapter_.notifyInteraction();
-    }
-  }
-
-  /**
-   * Handles a transition end event on the root element.
-   * @param {!Event} evt
-   */
-  handleTransitionEnd(evt) {
-    // Handle transition end event on the chip when it is about to be removed.
-    if (this.adapter_.eventTargetHasClass( /** @type {!EventTarget} */evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CHIP_EXIT)) {
-      if (evt.propertyName === 'width') {
-        this.adapter_.notifyRemoval();
-      } else if (evt.propertyName === 'opacity') {
-        // See: https://css-tricks.com/using-css-transitions-auto-dimensions/#article-header-id-5
-        const chipWidth = this.adapter_.getComputedStyleValue('width');
-
-        // On the next frame (once we get the computed width), explicitly set the chip's width
-        // to its current pixel width, so we aren't transitioning out of 'auto'.
-        requestAnimationFrame(() => {
-          this.adapter_.setStyleProperty('width', chipWidth);
-
-          // To mitigate jitter, start transitioning padding and margin before width.
-          this.adapter_.setStyleProperty('padding', '0');
-          this.adapter_.setStyleProperty('margin', '0');
-
-          // On the next frame (once width is explicitly set), transition width to 0.
-          requestAnimationFrame(() => {
-            this.adapter_.setStyleProperty('width', '0');
-          });
-        });
-      }
-      return;
-    }
-
-    // Handle a transition end event on the leading icon or checkmark, since the transition end event bubbles.
-    if (evt.propertyName !== 'opacity') {
-      return;
-    }
-    if (this.adapter_.eventTargetHasClass( /** @type {!EventTarget} */evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LEADING_ICON) && this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED)) {
-      this.adapter_.addClassToLeadingIcon(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HIDDEN_LEADING_ICON);
-    } else if (this.adapter_.eventTargetHasClass( /** @type {!EventTarget} */evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CHECKMARK) && !this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED)) {
-      this.adapter_.removeClassFromLeadingIcon(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HIDDEN_LEADING_ICON);
-    }
-  }
-
-  /**
-   * Handles an interaction event on the trailing icon element. This is used to
-   * prevent the ripple from activating on interaction with the trailing icon.
-   * @param {!Event} evt
-   */
-  handleTrailingIconInteraction(evt) {
-    evt.stopPropagation();
-    if (evt.type === 'click' || evt.key === 'Enter' || evt.keyCode === 13) {
-      this.adapter_.notifyTrailingIconInteraction();
-      if (this.shouldRemoveOnTrailingIconClick_) {
-        this.beginExit();
-      }
-    }
+  /** @return {!MDCRipple} */
+  get ripple() {
+    return this.ripple_;
   }
 }
 
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export MDCSelectionControlState */
+/* unused harmony export MDCSelectionControl */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple_index__ = __webpack_require__(2);
 /**
- * @typedef {{
- *   detail: {
- *     chip: {foundation: !MDCChipFoundation},
- *   },
- *   bubbles: boolean,
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* eslint-disable no-unused-vars */
+
+/* eslint-enable no-unused-vars */
+
+/**
+ * @typedef {!{
+ *   checked: boolean,
+ *   indeterminate: boolean,
+ *   disabled: boolean,
+ *   value: ?string
  * }}
  */
-let MDCChipInteractionEventType;
+let MDCSelectionControlState;
+
+/**
+ * @record
+ */
+class MDCSelectionControl {
+  /** @return {?MDCRipple} */
+  get ripple() {}
+}
 
 
 
@@ -1455,8 +1361,8 @@ class MDCRippleAdapter {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["b"] = initTextFields;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_textfield__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(9);
 
 
 
@@ -1477,9 +1383,6 @@ class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handle
     constructor(element, mdcComponent) {
         super(element);
         this.input = element.querySelector('input');
-        if (this.input == null) {
-            this.input = element.querySelector('textarea');
-        }
         this.input.vComponent = this;
         this.mdcComponent = mdcComponent;
     }
@@ -1554,15 +1457,15 @@ class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handle
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextField; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_util__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_util__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__adapter__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_line_ripple_index__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__helper_text_index__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__icon_index__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__material_floating_label_index__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__material_notched_outline_index__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_line_ripple_index__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__helper_text_index__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__icon_index__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__material_floating_label_index__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__material_notched_outline_index__ = __webpack_require__(66);
 /* unused harmony reexport MDCTextFieldFoundation */
 /* unused harmony reexport MDCTextFieldHelperText */
 /* unused harmony reexport MDCTextFieldHelperTextFoundation */
@@ -1651,32 +1554,32 @@ class MDCTextField extends __WEBPACK_IMPORTED_MODULE_0__material_base_component_
    * creates a new MDCNotchedOutline.
    */
   initialize(rippleFactory = (el, foundation) => new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["a" /* MDCRipple */](el, foundation), lineRippleFactory = el => new __WEBPACK_IMPORTED_MODULE_6__material_line_ripple_index__["a" /* MDCLineRipple */](el), helperTextFactory = el => new __WEBPACK_IMPORTED_MODULE_7__helper_text_index__["a" /* MDCTextFieldHelperText */](el), iconFactory = el => new __WEBPACK_IMPORTED_MODULE_8__icon_index__["a" /* MDCTextFieldIcon */](el), labelFactory = el => new __WEBPACK_IMPORTED_MODULE_9__material_floating_label_index__["a" /* MDCFloatingLabel */](el), outlineFactory = el => new __WEBPACK_IMPORTED_MODULE_10__material_notched_outline_index__["a" /* MDCNotchedOutline */](el)) {
-    this.input_ = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["d" /* strings */].INPUT_SELECTOR);
-    const labelElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["d" /* strings */].LABEL_SELECTOR);
+    this.input_ = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].INPUT_SELECTOR);
+    const labelElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].LABEL_SELECTOR);
     if (labelElement) {
       this.label_ = labelFactory(labelElement);
     }
-    const lineRippleElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["d" /* strings */].LINE_RIPPLE_SELECTOR);
+    const lineRippleElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].BOTTOM_LINE_SELECTOR);
     if (lineRippleElement) {
       this.lineRipple_ = lineRippleFactory(lineRippleElement);
     }
-    const outlineElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["d" /* strings */].OUTLINE_SELECTOR);
+    const outlineElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].OUTLINE_SELECTOR);
     if (outlineElement) {
       this.outline_ = outlineFactory(outlineElement);
     }
-    if (this.input_.hasAttribute(__WEBPACK_IMPORTED_MODULE_3__constants__["d" /* strings */].ARIA_CONTROLS)) {
-      const helperTextElement = document.getElementById(this.input_.getAttribute(__WEBPACK_IMPORTED_MODULE_3__constants__["d" /* strings */].ARIA_CONTROLS));
+    if (this.input_.hasAttribute(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ARIA_CONTROLS)) {
+      const helperTextElement = document.getElementById(this.input_.getAttribute(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ARIA_CONTROLS));
       if (helperTextElement) {
         this.helperText_ = helperTextFactory(helperTextElement);
       }
     }
-    const iconElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["d" /* strings */].ICON_SELECTOR);
+    const iconElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ICON_SELECTOR);
     if (iconElement) {
       this.icon_ = iconFactory(iconElement);
     }
 
     this.ripple = null;
-    if (this.root_.classList.contains(__WEBPACK_IMPORTED_MODULE_3__constants__["b" /* cssClasses */].BOX)) {
+    if (this.root_.classList.contains(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].BOX)) {
       const MATCHES = Object(__WEBPACK_IMPORTED_MODULE_2__material_ripple_util__["b" /* getMatchesProperty */])(HTMLElement.prototype);
       const adapter = Object.assign(__WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["a" /* MDCRipple */].createAdapter( /** @type {!RippleCapableSurface} */this), {
         isSurfaceActive: () => this.input_[MATCHES](':active'),
@@ -1872,27 +1775,15 @@ class MDCTextField extends __WEBPACK_IMPORTED_MODULE_0__material_base_component_
   }
 
   /**
-   * Sets the aria label of the icon.
-   * @param {string} label
-   */
-  set iconAriaLabel(label) {
-    this.foundation_.setIconAriaLabel(label);
-  }
-
-  /**
-   * Sets the text content of the icon.
-   * @param {string} content
-   */
-  set iconContent(content) {
-    this.foundation_.setIconContent(content);
-  }
-
-  /**
-   * Recomputes the outline SVG path for the outline element.
+   * Recomputes the outline SVG path for the outline element, and recomputes
+   * all dimensions and positions for the ripple element.
    */
   layout() {
     const openNotch = this.foundation_.shouldFloat;
     this.foundation_.notchOutline(openNotch);
+    if (this.ripple) {
+      this.ripple.layout();
+    }
   }
 
   /**
@@ -1907,16 +1798,15 @@ class MDCTextField extends __WEBPACK_IMPORTED_MODULE_0__material_base_component_
       registerTextFieldInteractionHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
       deregisterTextFieldInteractionHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler),
       registerValidationAttributeChangeHandler: handler => {
-        const getAttributesList = mutationsList => mutationsList.map(mutation => mutation.attributeName);
-        const observer = new MutationObserver(mutationsList => handler(getAttributesList(mutationsList)));
-        const targetNode = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["d" /* strings */].INPUT_SELECTOR);
+        const observer = new MutationObserver(handler);
+        const targetNode = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].INPUT_SELECTOR);
         const config = { attributes: true };
         observer.observe(targetNode, config);
         return observer;
       },
       deregisterValidationAttributeChangeHandler: observer => observer.disconnect(),
       isFocused: () => {
-        return document.activeElement === this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["d" /* strings */].INPUT_SELECTOR);
+        return document.activeElement === this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].INPUT_SELECTOR);
       },
       isRtl: () => window.getComputedStyle(this.root_).getPropertyValue('direction') === 'rtl'
     }, this.getInputAdapterMethods_(), this.getLabelAdapterMethods_(), this.getLineRippleAdapterMethods_(), this.getOutlineAdapterMethods_()), this.getFoundationMap_());
@@ -1943,7 +1833,7 @@ class MDCTextField extends __WEBPACK_IMPORTED_MODULE_0__material_base_component_
    * @return {!{
    *   activateLineRipple: function(): undefined,
    *   deactivateLineRipple: function(): undefined,
-   *   setLineRippleTransformOrigin: function(number): undefined,
+   *   setLineRippleTransformOrigin: function(!number): undefined,
    * }}
    */
   getLineRippleAdapterMethods_() {
@@ -2014,10 +1904,9 @@ class MDCTextField extends __WEBPACK_IMPORTED_MODULE_0__material_base_component_
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return cssClasses; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return strings; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return numbers; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VALIDATION_ATTR_WHITELIST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return strings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return numbers; });
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -2042,7 +1931,7 @@ const strings = {
   LABEL_SELECTOR: '.mdc-floating-label',
   ICON_SELECTOR: '.mdc-text-field__icon',
   OUTLINE_SELECTOR: '.mdc-notched-outline',
-  LINE_RIPPLE_SELECTOR: '.mdc-line-ripple'
+  BOTTOM_LINE_SELECTOR: '.mdc-line-ripple'
 };
 
 /** @enum {string} */
@@ -2063,10 +1952,6 @@ const numbers = {
   DENSE_LABEL_SCALE: 0.923
 };
 
-// whitelist based off of https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
-// under section: `Validation-related attributes`
-const VALIDATION_ATTR_WHITELIST = ['pattern', 'min', 'max', 'required', 'step', 'minlength', 'maxlength'];
-
 
 
 /***/ }),
@@ -2077,8 +1962,8 @@ const VALIDATION_ATTR_WHITELIST = ['pattern', 'min', 'max', 'required', 'step', 
 /* unused harmony export MDCTextFieldAdapter */
 /* unused harmony export NativeInputType */
 /* unused harmony export FoundationMapType */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helper_text_foundation__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_foundation__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helper_text_foundation__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_foundation__ = __webpack_require__(7);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -2183,8 +2068,7 @@ class MDCTextFieldAdapter {
 
   /**
    * Registers a validation attribute change listener on the input element.
-   * Handler accepts list of attribute names.
-   * @param {function(!Array<string>): undefined} handler
+   * @param {function(!Array): undefined} handler
    * @return {!MutationObserver}
    */
   registerValidationAttributeChangeHandler(handler) {}
@@ -2399,30 +2283,11 @@ class MDCTextFieldHelperTextAdapter {
  */
 class MDCTextFieldIconAdapter {
   /**
-   * Gets the value of an attribute on the icon element.
-   * @param {string} attr
-   * @return {string}
-   */
-  getAttr(attr) {}
-
-  /**
    * Sets an attribute on the icon element.
    * @param {string} attr
    * @param {string} value
    */
   setAttr(attr, value) {}
-
-  /**
-   * Removes an attribute from the icon element.
-   * @param {string} attr
-   */
-  removeAttr(attr) {}
-
-  /**
-   * Sets the text content of the icon element.
-   * @param {string} content
-   */
-  setContent(content) {}
 
   /**
    * Registers an event listener on the icon element for a given event.
@@ -2451,11 +2316,9 @@ class MDCTextFieldIconAdapter {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCLineRipple; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(56);
-/* unused harmony reexport MDCLineRippleFoundation */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(60);
 /**
  * @license
  * Copyright 2018 Google Inc. All Rights Reserved.
@@ -2477,59 +2340,93 @@ class MDCTextFieldIconAdapter {
 
 
 
-
 /**
- * @extends {MDCComponent<!MDCLineRippleFoundation>}
+ * @extends {MDCFoundation<!MDCLineRippleAdapter>}
  * @final
  */
-class MDCLineRipple extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+class MDCLineRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
   /**
-   * @param {!Element} root
-   * @return {!MDCLineRipple}
+   * {@see MDCLineRippleAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCLineRippleAdapter}
    */
-  static attachTo(root) {
-    return new MDCLineRipple(root);
+  static get defaultAdapter() {
+    return (/** @type {!MDCLineRippleAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        hasClass: () => {},
+        setStyle: () => {},
+        registerEventHandler: () => {},
+        deregisterEventHandler: () => {}
+      }
+    );
+  }
+
+  /**
+   * @param {!MDCLineRippleAdapter=} adapter
+   */
+  constructor(adapter = /** @type {!MDCLineRippleAdapter} */{}) {
+    super(Object.assign(MDCLineRippleFoundation.defaultAdapter, adapter));
+
+    /** @private {function(!Event): undefined} */
+    this.transitionEndHandler_ = evt => this.handleTransitionEnd(evt);
+  }
+
+  init() {
+    this.adapter_.registerEventHandler('transitionend', this.transitionEndHandler_);
+  }
+
+  destroy() {
+    this.adapter_.deregisterEventHandler('transitionend', this.transitionEndHandler_);
   }
 
   /**
    * Activates the line ripple
    */
   activate() {
-    this.foundation_.activate();
+    this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_ACTIVE);
+  }
+
+  /**
+   * Sets the center of the ripple animation to the given X coordinate.
+   * @param {!number} xCoordinate
+   */
+  setRippleCenter(xCoordinate) {
+    this.adapter_.setStyle('transform-origin', `${xCoordinate}px center`);
   }
 
   /**
    * Deactivates the line ripple
    */
   deactivate() {
-    this.foundation_.deactivate();
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
   }
 
   /**
-   * Sets the transform origin given a user's click location. The `rippleCenter` is the
-   * x-coordinate of the middle of the ripple.
-   * @param {number} xCoordinate
+   * Handles a transition end event
+   * @param {!Event} evt
    */
-  setRippleCenter(xCoordinate) {
-    this.foundation_.setRippleCenter(xCoordinate);
-  }
+  handleTransitionEnd(evt) {
+    // Wait for the line ripple to be either transparent or opaque
+    // before emitting the animation end event
+    const isDeactivating = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
 
-  /**
-   * @return {!MDCLineRippleFoundation}
-   */
-  getDefaultFoundation() {
-    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]( /** @type {!MDCLineRippleAdapter} */Object.assign({
-      addClass: className => this.root_.classList.add(className),
-      removeClass: className => this.root_.classList.remove(className),
-      hasClass: className => this.root_.classList.contains(className),
-      setStyle: (propertyName, value) => this.root_.style[propertyName] = value,
-      registerEventHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
-      deregisterEventHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler)
-    }));
+    if (evt.propertyName === 'opacity') {
+      if (isDeactivating) {
+        this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_ACTIVE);
+        this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
+      }
+    }
   }
 }
 
-
+/* harmony default export */ __webpack_exports__["a"] = (MDCLineRippleFoundation);
 
 /***/ }),
 /* 22 */
@@ -2613,11 +2510,9 @@ class MDCLineRippleAdapter {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCFloatingLabel; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(60);
-/* unused harmony reexport MDCFloatingLabelFoundation */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(61);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -2640,58 +2535,96 @@ class MDCLineRippleAdapter {
 
 
 /**
- * @extends {MDCComponent<!MDCFloatingLabelFoundation>}
+ * @extends {MDCFoundation<!MDCFloatingLabelAdapter>}
  * @final
  */
-class MDCFloatingLabel extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+class MDCFloatingLabelFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
   /**
-   * @param {!Element} root
-   * @return {!MDCFloatingLabel}
+   * {@see MDCFloatingLabelAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCFloatingLabelAdapter}
    */
-  static attachTo(root) {
-    return new MDCFloatingLabel(root);
+  static get defaultAdapter() {
+    return (/** @type {!MDCFloatingLabelAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        getWidth: () => {},
+        registerInteractionHandler: () => {},
+        deregisterInteractionHandler: () => {}
+      }
+    );
+  }
+
+  /**
+   * @param {!MDCFloatingLabelAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCFloatingLabelFoundation.defaultAdapter, adapter));
+
+    /** @private {function(!Event): undefined} */
+    this.shakeAnimationEndHandler_ = () => this.handleShakeAnimationEnd_();
+  }
+
+  init() {
+    this.adapter_.registerInteractionHandler('animationend', this.shakeAnimationEndHandler_);
+  }
+
+  destroy() {
+    this.adapter_.deregisterInteractionHandler('animationend', this.shakeAnimationEndHandler_);
+  }
+
+  /**
+   * Returns the width of the label element.
+   * @return {number}
+   */
+  getWidth() {
+    return this.adapter_.getWidth();
   }
 
   /**
    * Styles the label to produce the label shake for errors.
-   * @param {boolean} shouldShake styles the label to shake by adding shake class
-   * if true, otherwise will stop shaking by removing shake class.
+   * @param {boolean} shouldShake adds shake class if true,
+   * otherwise removes shake class.
    */
   shake(shouldShake) {
-    this.foundation_.shake(shouldShake);
+    const { LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
+    if (shouldShake) {
+      this.adapter_.addClass(LABEL_SHAKE);
+    } else {
+      this.adapter_.removeClass(LABEL_SHAKE);
+    }
   }
 
   /**
-   * Styles label to float/dock.
-   * @param {boolean} shouldFloat styles the label to float by adding float class
-   * if true, otherwise docks the label by removing the float class.
+   * Styles the label to float or dock.
+   * @param {boolean} shouldFloat adds float class if true, otherwise remove
+   * float and shake class to dock label.
    */
   float(shouldFloat) {
-    this.foundation_.float(shouldFloat);
+    const { LABEL_FLOAT_ABOVE, LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
+    if (shouldFloat) {
+      this.adapter_.addClass(LABEL_FLOAT_ABOVE);
+    } else {
+      this.adapter_.removeClass(LABEL_FLOAT_ABOVE);
+      this.adapter_.removeClass(LABEL_SHAKE);
+    }
   }
 
   /**
-   * @return {number}
+   * Handles an interaction event on the root element.
    */
-  getWidth() {
-    return this.foundation_.getWidth();
-  }
-
-  /**
-   * @return {!MDCFloatingLabelFoundation}
-   */
-  getDefaultFoundation() {
-    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
-      addClass: className => this.root_.classList.add(className),
-      removeClass: className => this.root_.classList.remove(className),
-      getWidth: () => this.root_.offsetWidth,
-      registerInteractionHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
-      deregisterInteractionHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler)
-    });
+  handleShakeAnimationEnd_() {
+    const { LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
+    this.adapter_.removeClass(LABEL_SHAKE);
   }
 }
 
-
+/* harmony default export */ __webpack_exports__["a"] = (MDCFloatingLabelFoundation);
 
 /***/ }),
 /* 24 */
@@ -2768,12 +2701,9 @@ class MDCFloatingLabelAdapter {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCNotchedOutline; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(27);
-/* unused harmony reexport MDCNotchedOutlineFoundation */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(27);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -2795,60 +2725,97 @@ class MDCFloatingLabelAdapter {
 
 
 
-
-
 /**
- * @extends {MDCComponent<!MDCNotchedOutlineFoundation>}
+ * @extends {MDCFoundation<!MDCNotchedOutlineAdapter>}
  * @final
  */
-class MDCNotchedOutline extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+class MDCNotchedOutlineFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
+  }
+
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
   /**
-   * @param {!Element} root
-   * @return {!MDCNotchedOutline}
+   * {@see MDCNotchedOutlineAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCNotchedOutlineAdapter}
    */
-  static attachTo(root) {
-    return new MDCNotchedOutline(root);
+  static get defaultAdapter() {
+    return (/** @type {!MDCNotchedOutlineAdapter} */{
+        getWidth: () => {},
+        getHeight: () => {},
+        addClass: () => {},
+        removeClass: () => {},
+        setOutlinePathAttr: () => {},
+        getIdleOutlineStyleValue: () => {}
+      }
+    );
   }
 
   /**
-    * Updates outline selectors and SVG path to open notch.
-    * @param {number} notchWidth The notch width in the outline.
-    * @param {boolean=} isRtl Determines if outline is rtl. If rtl is true, notch
-    * will be right justified in outline path, otherwise left justified.
-    */
-  notch(notchWidth, isRtl) {
-    this.foundation_.notch(notchWidth, isRtl);
+   * @param {!MDCNotchedOutlineAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCNotchedOutlineFoundation.defaultAdapter, adapter));
   }
 
   /**
-   * Updates the outline selectors to close notch and return it to idle state.
+   * Adds the outline notched selector and updates the notch width
+   * calculated based off of notchWidth and isRtl.
+   * @param {number} notchWidth
+   * @param {boolean=} isRtl
+   */
+  notch(notchWidth, isRtl = false) {
+    const { OUTLINE_NOTCHED } = MDCNotchedOutlineFoundation.cssClasses;
+    this.adapter_.addClass(OUTLINE_NOTCHED);
+    this.updateSvgPath_(notchWidth, isRtl);
+  }
+
+  /**
+   * Removes notched outline selector to close the notch in the outline.
    */
   closeNotch() {
-    this.foundation_.closeNotch();
+    const { OUTLINE_NOTCHED } = MDCNotchedOutlineFoundation.cssClasses;
+    this.adapter_.removeClass(OUTLINE_NOTCHED);
   }
 
   /**
-   * @return {!MDCNotchedOutlineFoundation}
+   * Updates the SVG path of the focus outline element based on the notchWidth
+   * and the RTL context.
+   * @param {number} notchWidth
+   * @param {boolean=} isRtl
+   * @private
    */
-  getDefaultFoundation() {
-    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
-      getWidth: () => this.root_.offsetWidth,
-      getHeight: () => this.root_.offsetHeight,
-      addClass: className => this.root_.classList.add(className),
-      removeClass: className => this.root_.classList.remove(className),
-      setOutlinePathAttr: value => {
-        const path = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["b" /* strings */].PATH_SELECTOR);
-        path.setAttribute('d', value);
-      },
-      getIdleOutlineStyleValue: propertyName => {
-        const idleOutlineElement = this.root_.parentNode.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["b" /* strings */].IDLE_OUTLINE_SELECTOR);
-        return window.getComputedStyle(idleOutlineElement).getPropertyValue(propertyName);
-      }
-    });
+  updateSvgPath_(notchWidth, isRtl) {
+    // Fall back to reading a specific corner's style because Firefox doesn't report the style on border-radius.
+    const radiusStyleValue = this.adapter_.getIdleOutlineStyleValue('border-radius') || this.adapter_.getIdleOutlineStyleValue('border-top-left-radius');
+    const radius = parseFloat(radiusStyleValue);
+    const width = this.adapter_.getWidth();
+    const height = this.adapter_.getHeight();
+    const cornerWidth = radius + 1.2;
+    const leadingStrokeLength = Math.abs(11 - cornerWidth);
+    const paddedNotchWidth = notchWidth + 8;
+
+    // The right, bottom, and left sides of the outline follow the same SVG path.
+    const pathMiddle = 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + radius + 'v' + (height - 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + radius + 'h' + (-width + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + -radius + 'v' + (-height + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + -radius;
+
+    let path;
+    if (!isRtl) {
+      path = 'M' + (cornerWidth + leadingStrokeLength + paddedNotchWidth) + ',' + 1 + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength) + pathMiddle + 'h' + leadingStrokeLength;
+    } else {
+      path = 'M' + (width - cornerWidth - leadingStrokeLength) + ',' + 1 + 'h' + leadingStrokeLength + pathMiddle + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength);
+    }
+
+    this.adapter_.setOutlinePathAttr(path);
   }
 }
 
-
+/* harmony default export */ __webpack_exports__["a"] = (MDCNotchedOutlineFoundation);
 
 /***/ }),
 /* 26 */
@@ -3028,6 +2995,111 @@ class VUrls {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component__ = __webpack_require__(71);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__foundation__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__component__["a"]; });
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @template A
+ */
+class MDCFoundation {
+  /** @return enum{cssClasses} */
+  static get cssClasses() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports every
+    // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
+    return {};
+  }
+
+  /** @return enum{strings} */
+  static get strings() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports all
+    // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
+    return {};
+  }
+
+  /** @return enum{numbers} */
+  static get numbers() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports all
+    // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
+    return {};
+  }
+
+  /** @return {!Object} */
+  static get defaultAdapter() {
+    // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
+    // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
+    // validation.
+    return {};
+  }
+
+  /**
+   * @param {A=} adapter
+   */
+  constructor(adapter = {}) {
+    /** @protected {!A} */
+    this.adapter_ = adapter;
+  }
+
+  init() {
+    // Subclasses should override this method to perform initialization routines (registering events, etc.)
+  }
+
+  destroy() {
+    // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
+
+/***/ }),
+/* 31 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* unused harmony export transformStyleProperties */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getCorrectEventName; });
 /* unused harmony export getCorrectPropertyName */
@@ -3174,7 +3246,7 @@ function getCorrectPropertyName(windowObj, eventType) {
 
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3322,15 +3394,413 @@ class VErrors {
 
 
 /***/ }),
-/* 31 */
+/* 33 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(11);
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+/**
+ * @template F
+ */
+class MDCComponent {
+  /**
+   * @param {!Element} root
+   * @return {!MDCComponent}
+   */
+  static attachTo(root) {
+    // Subclasses which extend MDCBase should provide an attachTo() method that takes a root element and
+    // returns an instantiated component with its root set to that element. Also note that in the cases of
+    // subclasses, an explicit foundation class will not have to be passed in; it will simply be initialized
+    // from getDefaultFoundation().
+    return new MDCComponent(root, new __WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */]());
+  }
+
+  /**
+   * @param {!Element} root
+   * @param {F=} foundation
+   * @param {...?} args
+   */
+  constructor(root, foundation = undefined, ...args) {
+    /** @protected {!Element} */
+    this.root_ = root;
+    this.initialize(...args);
+    // Note that we initialize foundation here and not within the constructor's default param so that
+    // this.root_ is defined and can be used within the foundation class.
+    /** @protected {!F} */
+    this.foundation_ = foundation === undefined ? this.getDefaultFoundation() : foundation;
+    this.foundation_.init();
+    this.initialSyncWithDOM();
+  }
+
+  initialize() /* ...args */{}
+  // Subclasses can override this to do any additional setup work that would be considered part of a
+  // "constructor". Essentially, it is a hook into the parent constructor before the foundation is
+  // initialized. Any additional arguments besides root and foundation will be passed in here.
+
+
+  /**
+   * @return {!F} foundation
+   */
+  getDefaultFoundation() {
+    // Subclasses must override this method to return a properly configured foundation class for the
+    // component.
+    throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' + 'foundation class');
+  }
+
+  initialSyncWithDOM() {
+    // Subclasses should override this method if they need to perform work to synchronize with a host DOM
+    // object. An example of this would be a form control wrapper that needs to synchronize its internal state
+    // to some property or attribute of the host DOM. Please note: this is *not* the place to perform DOM
+    // reads/writes that would cause layout / paint, as this is called synchronously from within the constructor.
+  }
+
+  destroy() {
+    // Subclasses may implement this method to release any resources / deregister any listeners they have
+    // attached. An example of this might be deregistering a resize event from the window object.
+    this.foundation_.destroy();
+  }
+
+  /**
+   * Wrapper method to add an event listener to the component's root element. This is most useful when
+   * listening for custom events.
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  listen(evtType, handler) {
+    this.root_.addEventListener(evtType, handler);
+  }
+
+  /**
+   * Wrapper method to remove an event listener to the component's root element. This is most useful when
+   * unlistening for custom events.
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  unlisten(evtType, handler) {
+    this.root_.removeEventListener(evtType, handler);
+  }
+
+  /**
+   * Fires a cross-browser-compatible custom event from the component root of the given type,
+   * with the given data.
+   * @param {string} evtType
+   * @param {!Object} evtData
+   * @param {boolean=} shouldBubble
+   */
+  emit(evtType, evtData, shouldBubble = false) {
+    let evt;
+    if (typeof CustomEvent === 'function') {
+      evt = new CustomEvent(evtType, {
+        detail: evtData,
+        bubbles: shouldBubble
+      });
+    } else {
+      evt = document.createEvent('CustomEvent');
+      evt.initCustomEvent(evtType, shouldBubble, false, evtData);
+    }
+
+    this.root_.dispatchEvent(evt);
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCComponent);
+
+/***/ }),
+/* 34 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* eslint no-unused-vars: [2, {"args": "none"}] */
+
+/**
+ * Adapter for MDC Ripple. Provides an interface for managing
+ * - classes
+ * - dom
+ * - CSS variables
+ * - position
+ * - dimensions
+ * - scroll position
+ * - event handlers
+ * - unbounded, active and disabled states
+ *
+ * Additionally, provides type information for the adapter to the Closure
+ * compiler.
+ *
+ * Implement this adapter for your framework of choice to delegate updates to
+ * the component in your framework of choice. See architecture documentation
+ * for more details.
+ * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
+ *
+ * @record
+ */
+class MDCRippleAdapter {
+  /** @return {boolean} */
+  browserSupportsCssVars() {}
+
+  /** @return {boolean} */
+  isUnbounded() {}
+
+  /** @return {boolean} */
+  isSurfaceActive() {}
+
+  /** @return {boolean} */
+  isSurfaceDisabled() {}
+
+  /** @param {string} className */
+  addClass(className) {}
+
+  /** @param {string} className */
+  removeClass(className) {}
+
+  /** @param {!EventTarget} target */
+  containsEventTarget(target) {}
+
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  registerInteractionHandler(evtType, handler) {}
+
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  deregisterInteractionHandler(evtType, handler) {}
+
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  registerDocumentInteractionHandler(evtType, handler) {}
+
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  deregisterDocumentInteractionHandler(evtType, handler) {}
+
+  /**
+   * @param {!Function} handler
+   */
+  registerResizeHandler(handler) {}
+
+  /**
+   * @param {!Function} handler
+   */
+  deregisterResizeHandler(handler) {}
+
+  /**
+   * @param {string} varName
+   * @param {?number|string} value
+   */
+  updateCssVariable(varName, value) {}
+
+  /** @return {!ClientRect} */
+  computeBoundingRect() {}
+
+  /** @return {{x: number, y: number}} */
+  getWindowPageOffset() {}
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCRippleAdapter);
+
+/***/ }),
+/* 35 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return supportsCssVariables; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return applyPassive; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getMatchesProperty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getNormalizedEventCoords; });
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Stores result from supportsCssVariables to avoid redundant processing to detect CSS custom variable support.
+ * @private {boolean|undefined}
+ */
+let supportsCssVariables_;
+
+/**
+ * Stores result from applyPassive to avoid redundant processing to detect passive event listener support.
+ * @private {boolean|undefined}
+ */
+let supportsPassive_;
+
+/**
+ * @param {!Window} windowObj
+ * @return {boolean}
+ */
+function detectEdgePseudoVarBug(windowObj) {
+  // Detect versions of Edge with buggy var() support
+  // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11495448/
+  const document = windowObj.document;
+  const node = document.createElement('div');
+  node.className = 'mdc-ripple-surface--test-edge-var-bug';
+  document.body.appendChild(node);
+
+  // The bug exists if ::before style ends up propagating to the parent element.
+  // Additionally, getComputedStyle returns null in iframes with display: "none" in Firefox,
+  // but Firefox is known to support CSS custom properties correctly.
+  // See: https://bugzilla.mozilla.org/show_bug.cgi?id=548397
+  const computedStyle = windowObj.getComputedStyle(node);
+  const hasPseudoVarBug = computedStyle !== null && computedStyle.borderTopStyle === 'solid';
+  node.remove();
+  return hasPseudoVarBug;
+}
+
+/**
+ * @param {!Window} windowObj
+ * @param {boolean=} forceRefresh
+ * @return {boolean|undefined}
+ */
+
+function supportsCssVariables(windowObj, forceRefresh = false) {
+  let supportsCssVariables = supportsCssVariables_;
+  if (typeof supportsCssVariables_ === 'boolean' && !forceRefresh) {
+    return supportsCssVariables;
+  }
+
+  const supportsFunctionPresent = windowObj.CSS && typeof windowObj.CSS.supports === 'function';
+  if (!supportsFunctionPresent) {
+    return;
+  }
+
+  const explicitlySupportsCssVars = windowObj.CSS.supports('--css-vars', 'yes');
+  // See: https://bugs.webkit.org/show_bug.cgi?id=154669
+  // See: README section on Safari
+  const weAreFeatureDetectingSafari10plus = windowObj.CSS.supports('(--css-vars: yes)') && windowObj.CSS.supports('color', '#00000000');
+
+  if (explicitlySupportsCssVars || weAreFeatureDetectingSafari10plus) {
+    supportsCssVariables = !detectEdgePseudoVarBug(windowObj);
+  } else {
+    supportsCssVariables = false;
+  }
+
+  if (!forceRefresh) {
+    supportsCssVariables_ = supportsCssVariables;
+  }
+  return supportsCssVariables;
+}
+
+//
+/**
+ * Determine whether the current browser supports passive event listeners, and if so, use them.
+ * @param {!Window=} globalObj
+ * @param {boolean=} forceRefresh
+ * @return {boolean|{passive: boolean}}
+ */
+function applyPassive(globalObj = window, forceRefresh = false) {
+  if (supportsPassive_ === undefined || forceRefresh) {
+    let isSupported = false;
+    try {
+      globalObj.document.addEventListener('test', null, { get passive() {
+          isSupported = true;
+        } });
+    } catch (e) {}
+
+    supportsPassive_ = isSupported;
+  }
+
+  return supportsPassive_ ? { passive: true } : false;
+}
+
+/**
+ * @param {!Object} HTMLElementPrototype
+ * @return {!Array<string>}
+ */
+function getMatchesProperty(HTMLElementPrototype) {
+  return ['webkitMatchesSelector', 'msMatchesSelector', 'matches'].filter(p => p in HTMLElementPrototype).pop();
+}
+
+/**
+ * @param {!Event} ev
+ * @param {!{x: number, y: number}} pageOffset
+ * @param {!ClientRect} clientRect
+ * @return {!{x: number, y: number}}
+ */
+function getNormalizedEventCoords(ev, pageOffset, clientRect) {
+  const { x, y } = pageOffset;
+  const documentX = x + clientRect.left;
+  const documentY = y + clientRect.top;
+
+  let normalizedX;
+  let normalizedY;
+  // Determine touch point relative to the ripple container.
+  if (ev.type === 'touchstart') {
+    normalizedX = ev.changedTouches[0].pageX - documentX;
+    normalizedY = ev.changedTouches[0].pageY - documentY;
+  } else {
+    normalizedX = ev.pageX - documentX;
+    normalizedY = ev.pageY - documentY;
+  }
+
+  return { x: normalizedX, y: normalizedY };
+}
+
+
+
+/***/ }),
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MDCMenu; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(38);
 /* unused harmony reexport MDCMenuFoundation */
 /* unused harmony reexport AnchorMargin */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__constants__["a"]; });
@@ -3500,7 +3970,7 @@ class MDCMenu extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
         this.previousFocus_ = document.activeElement;
       },
       restoreFocus: () => {
-        if (this.previousFocus_ && this.previousFocus_.focus) {
+        if (this.previousFocus_) {
           this.previousFocus_.focus();
         }
       },
@@ -3532,7 +4002,81 @@ class MDCMenu extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
 
 
 /***/ }),
-/* 32 */
+/* 37 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @template A
+ */
+class MDCFoundation {
+  /** @return enum{cssClasses} */
+  static get cssClasses() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports every
+    // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
+    return {};
+  }
+
+  /** @return enum{strings} */
+  static get strings() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports all
+    // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
+    return {};
+  }
+
+  /** @return enum{numbers} */
+  static get numbers() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports all
+    // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
+    return {};
+  }
+
+  /** @return {!Object} */
+  static get defaultAdapter() {
+    // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
+    // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
+    // validation.
+    return {};
+  }
+
+  /**
+   * @param {A=} adapter
+   */
+  constructor(adapter = {}) {
+    /** @protected {!A} */
+    this.adapter_ = adapter;
+  }
+
+  init() {
+    // Subclasses should override this method to perform initialization routines (registering events, etc.)
+  }
+
+  destroy() {
+    // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
+
+/***/ }),
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3627,13 +4171,141 @@ const Corner = {
 
 
 /***/ }),
-/* 33 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return strings; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return numbers; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component__ = __webpack_require__(1);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__foundation__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__component__["a"]; });
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/***/ }),
+/* 40 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* eslint no-unused-vars: [2, {"args": "none"}] */
+
+/**
+ * Adapter for MDC Select Bottom Line.
+ *
+ * Defines the shape of the adapter expected by the foundation. Implement this
+ * adapter to integrate the Select label into your framework. See
+ * https://github.com/material-components/material-components-web/blob/master/docs/authoring-components.md
+ * for more information.
+ *
+ * @record
+ */
+class MDCSelectBottomLineAdapter {
+  /**
+   * Adds a class to the bottom line element.
+   * @param {string} className
+   */
+  addClass(className) {}
+
+  /**
+   * Removes a class from the bottom line element.
+   * @param {string} className
+   */
+  removeClass(className) {}
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCSelectBottomLineAdapter);
+
+/***/ }),
+/* 41 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* eslint no-unused-vars: [2, {"args": "none"}] */
+
+/**
+ * Adapter for MDC Select Label.
+ *
+ * Defines the shape of the adapter expected by the foundation. Implement this
+ * adapter to integrate the Select label into your framework. See
+ * https://github.com/material-components/material-components-web/blob/master/docs/authoring-components.md
+ * for more information.
+ *
+ * @record
+ */
+class MDCSelectLabelAdapter {
+  /**
+   * Adds a class to the label element.
+   * @param {string} className
+   */
+  addClass(className) {}
+
+  /**
+   * Removes a class from the label element.
+   * @param {string} className
+   */
+  removeClass(className) {}
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCSelectLabelAdapter);
+
+/***/ }),
+/* 42 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
  *
@@ -3653,201 +4325,28 @@ const cssClasses = {
   BOX: 'mdc-select--box',
   DISABLED: 'mdc-select--disabled',
   ROOT: 'mdc-select',
-  OUTLINED: 'mdc-select--outlined'
+  IS_CHANGING: 'mdc-select--is-changing'
 };
+/* harmony export (immutable) */ __webpack_exports__["a"] = cssClasses;
+
+
+const numbers = {
+  FLOAT_NATIVE_CONTROL_TRANSITION_TIME_MS: 125
+};
+/* harmony export (immutable) */ __webpack_exports__["b"] = numbers;
+
 
 const strings = {
   CHANGE_EVENT: 'MDCSelect:change',
-  LINE_RIPPLE_SELECTOR: '.mdc-line-ripple',
-  LABEL_SELECTOR: '.mdc-floating-label',
-  NATIVE_CONTROL_SELECTOR: '.mdc-select__native-control',
-  OUTLINE_SELECTOR: '.mdc-notched-outline'
+  BOTTOM_LINE_SELECTOR: '.mdc-select__bottom-line',
+  LABEL_SELECTOR: '.mdc-select__label',
+  NATIVE_CONTROL_SELECTOR: '.mdc-select__native-control'
 };
-
-/** @enum {number} */
-const numbers = {
-  LABEL_SCALE: 0.75
-};
-
+/* harmony export (immutable) */ __webpack_exports__["c"] = strings;
 
 
 /***/ }),
-/* 34 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCChip; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(36);
-/* unused harmony reexport MDCChipFoundation */
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-
-
-
-/**
- * @extends {MDCComponent<!MDCChipFoundation>}
- * @final
- */
-class MDCChip extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
-  /**
-   * @param {...?} args
-   */
-  constructor(...args) {
-    super(...args);
-
-    /** @private {?Element} */
-    this.leadingIcon_;
-    /** @private {!MDCRipple} */
-    this.ripple_;
-  }
-
-  /**
-   * @param {!Element} root
-   * @return {!MDCChip}
-   */
-  static attachTo(root) {
-    return new MDCChip(root);
-  }
-
-  initialize() {
-    this.leadingIcon_ = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].LEADING_ICON_SELECTOR);
-
-    // Adjust ripple size for chips with animated growing width. This applies when filter chips without
-    // a leading icon are selected, and a leading checkmark will cause the chip width to expand.
-    const checkmarkEl = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].CHECKMARK_SELECTOR);
-    if (checkmarkEl && !this.leadingIcon_) {
-      const adapter = Object.assign(__WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["a" /* MDCRipple */].createAdapter(this), {
-        computeBoundingRect: () => {
-          const height = this.root_.getBoundingClientRect().height;
-          // The checkmark's width is initially set to 0, so use the checkmark's height as a proxy since the
-          // checkmark should always be square.
-          const width = this.root_.getBoundingClientRect().width + checkmarkEl.getBoundingClientRect().height;
-          return { height, width };
-        }
-      });
-      this.ripple_ = new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["a" /* MDCRipple */](this.root_, new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["b" /* MDCRippleFoundation */](adapter));
-    } else {
-      this.ripple_ = new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["a" /* MDCRipple */](this.root_);
-    }
-  }
-
-  destroy() {
-    this.ripple_.destroy();
-    super.destroy();
-  }
-
-  /**
-   * Returns true if the chip is selected.
-   * @return {boolean}
-   */
-  isSelected() {
-    return this.foundation_.isSelected();
-  }
-
-  /**
-   * Begins the exit animation which leads to removal of the chip.
-   */
-  beginExit() {
-    this.foundation_.beginExit();
-  }
-
-  /**
-   * @return {!MDCChipFoundation}
-   */
-  get foundation() {
-    return this.foundation_;
-  }
-
-  /**
-   * Returns whether a trailing icon click should trigger exit/removal of the chip.
-   * @return {boolean}
-   */
-  get shouldRemoveOnTrailingIconClick() {
-    return this.foundation_.getShouldRemoveOnTrailingIconClick();
-  }
-
-  /**
-   * Sets whether a trailing icon click should trigger exit/removal of the chip.
-   * @param {boolean} shouldRemove
-   */
-  set shouldRemoveOnTrailingIconClick(shouldRemove) {
-    return this.foundation_.setShouldRemoveOnTrailingIconClick(shouldRemove);
-  }
-
-  /**
-   * @return {!MDCChipFoundation}
-   */
-  getDefaultFoundation() {
-    return new __WEBPACK_IMPORTED_MODULE_3__foundation__["a" /* MDCChipFoundation */]( /** @type {!MDCChipAdapter} */Object.assign({
-      addClass: className => this.root_.classList.add(className),
-      removeClass: className => this.root_.classList.remove(className),
-      hasClass: className => this.root_.classList.contains(className),
-      addClassToLeadingIcon: className => {
-        if (this.leadingIcon_) {
-          this.leadingIcon_.classList.add(className);
-        }
-      },
-      removeClassFromLeadingIcon: className => {
-        if (this.leadingIcon_) {
-          this.leadingIcon_.classList.remove(className);
-        }
-      },
-      eventTargetHasClass: (target, className) => target.classList.contains(className),
-      registerEventHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
-      deregisterEventHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler),
-      registerTrailingIconInteractionHandler: (evtType, handler) => {
-        const trailingIconEl = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].TRAILING_ICON_SELECTOR);
-        if (trailingIconEl) {
-          trailingIconEl.addEventListener(evtType, handler);
-        }
-      },
-      deregisterTrailingIconInteractionHandler: (evtType, handler) => {
-        const trailingIconEl = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].TRAILING_ICON_SELECTOR);
-        if (trailingIconEl) {
-          trailingIconEl.removeEventListener(evtType, handler);
-        }
-      },
-      notifyInteraction: () => this.emit(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].INTERACTION_EVENT, { chip: this }, true /* shouldBubble */),
-      notifyTrailingIconInteraction: () => this.emit(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].TRAILING_ICON_INTERACTION_EVENT, { chip: this }, true /* shouldBubble */),
-      notifyRemoval: () => this.emit(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].REMOVAL_EVENT, { chip: this, root: this.root_ }, true /* shouldBubble */),
-      getComputedStyleValue: propertyName => window.getComputedStyle(this.root_).getPropertyValue(propertyName),
-      setStyleProperty: (propertyName, value) => this.root_.style.setProperty(propertyName, value)
-    }));
-  }
-
-  /** @return {!MDCRipple} */
-  get ripple() {
-    return this.ripple_;
-  }
-}
-
-
-
-/***/ }),
-/* 35 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3959,31 +4458,12 @@ class MDCChipAdapter {
    * interacted with (typically on click or keydown).
    */
   notifyTrailingIconInteraction() {}
-
-  /**
-   * Emits a custom event "MDCChip:removal" denoting the chip will be removed.
-   */
-  notifyRemoval() {}
-
-  /**
-   * Returns the computed property value of the given style property on the root element.
-   * @param {string} propertyName
-   * @return {string}
-   */
-  getComputedStyleValue(propertyName) {}
-
-  /**
-   * Sets the property value of the given style property on the root element.
-   * @param {string} propertyName
-   * @param {string} value
-   */
-  setStyleProperty(propertyName, value) {}
 }
 
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCChipAdapter);
 
 /***/ }),
-/* 36 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4008,33 +4488,27 @@ class MDCChipAdapter {
 
 /** @enum {string} */
 const strings = {
-  ENTRY_ANIMATION_NAME: 'mdc-chip-entry',
   INTERACTION_EVENT: 'MDCChip:interaction',
-  TRAILING_ICON_INTERACTION_EVENT: 'MDCChip:trailingIconInteraction',
-  REMOVAL_EVENT: 'MDCChip:removal',
-  CHECKMARK_SELECTOR: '.mdc-chip__checkmark',
   LEADING_ICON_SELECTOR: '.mdc-chip__icon--leading',
+  TRAILING_ICON_INTERACTION_EVENT: 'MDCChip:trailingIconInteraction',
   TRAILING_ICON_SELECTOR: '.mdc-chip__icon--trailing'
 };
 
 /** @enum {string} */
 const cssClasses = {
   CHECKMARK: 'mdc-chip__checkmark',
-  CHIP_EXIT: 'mdc-chip--exit',
-  HIDDEN_LEADING_ICON: 'mdc-chip__icon--leading-hidden',
+  HIDDEN_LEADING_ICON: 'mdc-chip__icon--hidden-leading',
   LEADING_ICON: 'mdc-chip__icon--leading',
-  TRAILING_ICON: 'mdc-chip__icon--trailing',
   SELECTED: 'mdc-chip--selected'
 };
 
 
 
 /***/ }),
-/* 37 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chip_foundation__ = __webpack_require__(13);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -4051,9 +4525,6 @@ const cssClasses = {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-// eslint-disable-next-line no-unused-vars
-
 
 /* eslint no-unused-vars: [2, {"args": "none"}] */
 
@@ -4078,309 +4549,36 @@ class MDCChipSetAdapter {
   /**
    * Registers an event handler on the root element for a given event.
    * @param {string} evtType
-   * @param {function(!MDCChipInteractionEventType): undefined} handler
+   * @param {function(!Event): undefined} handler
    */
   registerInteractionHandler(evtType, handler) {}
 
   /**
    * Deregisters an event handler on the root element for a given event.
    * @param {string} evtType
-   * @param {function(!MDCChipInteractionEventType): undefined} handler
+   * @param {function(!Event): undefined} handler
    */
   deregisterInteractionHandler(evtType, handler) {}
-
-  /**
-   * Removes the chip object from the chip set.
-   * @param {!Object} chip
-   */
-  removeChip(chip) {}
 }
 
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCChipSetAdapter);
 
 /***/ }),
-/* 38 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export MDCFormField */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_selection_control_index__ = __webpack_require__(3);
-/* unused harmony reexport MDCFormFieldFoundation */
-/**
- * @license
- * Copyright 2017 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-/* eslint-disable no-unused-vars */
-
-/* eslint-enable no-unused-vars */
-
-/**
- * @extends MDCComponent<!MDCFormFieldFoundation>
- */
-class MDCFormField extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
-  static attachTo(root) {
-    return new MDCFormField(root);
-  }
-
-  /** @param {?MDCSelectionControl} input */
-  set input(input) {
-    this.input_ = input;
-  }
-
-  /** @return {?MDCSelectionControl} */
-  get input() {
-    return this.input_;
-  }
-
-  constructor(...args) {
-    super(...args);
-
-    /** @private {?MDCSelectionControl} */
-    this.input_;
-  }
-
-  /**
-   * @return {!Element}
-   * @private
-   */
-  get label_() {
-    const { LABEL_SELECTOR } = __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings;
-    return (/** @type {!Element} */this.root_.querySelector(LABEL_SELECTOR)
-    );
-  }
-
-  /** @return {!MDCFormFieldFoundation} */
-  getDefaultFoundation() {
-    return new __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */]({
-      registerInteractionHandler: (type, handler) => this.label_.addEventListener(type, handler),
-      deregisterInteractionHandler: (type, handler) => this.label_.removeEventListener(type, handler),
-      activateInputRipple: () => {
-        if (this.input_ && this.input_.ripple) {
-          this.input_.ripple.activate();
-        }
-      },
-      deactivateInputRipple: () => {
-        if (this.input_ && this.input_.ripple) {
-          this.input_.ripple.deactivate();
-        }
-      }
-    });
-  }
-}
-
-
-
-/***/ }),
-/* 39 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRadio; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__ = __webpack_require__(2);
-/* unused harmony reexport MDCRadioFoundation */
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-/* eslint-disable no-unused-vars */
-
-/* eslint-enable no-unused-vars */
-
-
-
-/**
- * @extends MDCComponent<!MDCRadioFoundation>
- * @implements {MDCSelectionControl}
- */
-class MDCRadio extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
-  static attachTo(root) {
-    return new MDCRadio(root);
-  }
-
-  /** @return {boolean} */
-  get checked() {
-    return this.foundation_.isChecked();
-  }
-
-  /** @param {boolean} checked */
-  set checked(checked) {
-    this.foundation_.setChecked(checked);
-  }
-
-  /** @return {boolean} */
-  get disabled() {
-    return this.foundation_.isDisabled();
-  }
-
-  /** @param {boolean} disabled */
-  set disabled(disabled) {
-    this.foundation_.setDisabled(disabled);
-  }
-
-  /** @return {?string} */
-  get value() {
-    return this.foundation_.getValue();
-  }
-
-  /** @param {?string} value */
-  set value(value) {
-    this.foundation_.setValue(value);
-  }
-
-  /** @return {!MDCRipple} */
-  get ripple() {
-    return this.ripple_;
-  }
-
-  constructor(...args) {
-    super(...args);
-
-    /** @private {!MDCRipple} */
-    this.ripple_ = this.initRipple_();
-  }
-
-  /**
-   * @return {!MDCRipple}
-   * @private
-   */
-  initRipple_() {
-    const adapter = Object.assign(__WEBPACK_IMPORTED_MODULE_3__material_ripple_index__["a" /* MDCRipple */].createAdapter(this), {
-      isUnbounded: () => true,
-      // Radio buttons technically go "active" whenever there is *any* keyboard interaction. This is not the
-      // UI we desire.
-      isSurfaceActive: () => false,
-      registerInteractionHandler: (type, handler) => this.nativeControl_.addEventListener(type, handler),
-      deregisterInteractionHandler: (type, handler) => this.nativeControl_.removeEventListener(type, handler)
-    });
-    const foundation = new __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__["b" /* MDCRippleFoundation */](adapter);
-    return new __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__["a" /* MDCRipple */](this.root_, foundation);
-  }
-
-  /**
-   * Returns the state of the native control element, or null if the native control element is not present.
-   * @return {?MDCSelectionControlState}
-   * @private
-   */
-  get nativeControl_() {
-    const { NATIVE_CONTROL_SELECTOR } = __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */].strings;
-    const el = /** @type {?MDCSelectionControlState} */this.root_.querySelector(NATIVE_CONTROL_SELECTOR);
-    return el;
-  }
-
-  destroy() {
-    this.ripple_.destroy();
-    super.destroy();
-  }
-
-  /** @return {!MDCRadioFoundation} */
-  getDefaultFoundation() {
-    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
-      addClass: className => this.root_.classList.add(className),
-      removeClass: className => this.root_.classList.remove(className),
-      getNativeControl: () => this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */].strings.NATIVE_CONTROL_SELECTOR)
-    });
-  }
-}
-
-
-
-/***/ }),
-/* 40 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = initRadios;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_form_field__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_radio__ = __webpack_require__(39);
-
-
-
-
-
-function initRadios() {
-    console.log('\tRadios');
-
-    var radios = document.querySelectorAll('.mdc-radio');
-    for (var i = 0; i < radios.length; i++) {
-        var radio = radios[i];
-        if (!radio.vComponent) {
-            radio.vComponent = new VRadio(radio, new __WEBPACK_IMPORTED_MODULE_3__material_radio__["a" /* MDCRadio */](radio));
-        }
-    }
-}
-
-class VRadio extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]) {
-    constructor(element, mdcComponent) {
-        super(element);
-        this.input = element.querySelector('input');
-        this.mdcComponent = mdcComponent;
-    }
-
-    prepareSubmit(form, params) {
-        // On actual post/submit the form is passed and we are not expected to return our value
-        if (!form) {
-            if (this.input.selected) {
-                params.push([this.input.name, this.input.value]);
-            }
-        }
-    }
-}
-/* unused harmony export VRadio */
-
-
-/***/ }),
-/* 41 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(42);
+module.exports = __webpack_require__(47);
 
 
 /***/ }),
-/* 42 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_initialize__ = __webpack_require__(10);
-__webpack_require__(43);
-__webpack_require__(44);
-window.dialogPolyfill = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_initialize__ = __webpack_require__(5);
+window.dialogPolyfill = __webpack_require__(48);
+window.componentHandler = __webpack_require__(50);
 
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -4388,5113 +4586,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 /***/ }),
-/* 43 */
-/***/ (function(module, exports) {
-
-;(function() {
-"use strict";
-
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * A component handler interface using the revealing module design pattern.
- * More details on this design pattern here:
- * https://github.com/jasonmayes/mdl-component-design-pattern
- *
- * @author Jason Mayes.
- */
-/* exported componentHandler */
-
-// Pre-defining the componentHandler interface, for closure documentation and
-// static verification.
-var componentHandler = {
-  /**
-   * Searches existing DOM for elements of our component type and upgrades them
-   * if they have not already been upgraded.
-   *
-   * @param {string=} optJsClass the programatic name of the element class we
-   * need to create a new instance of.
-   * @param {string=} optCssClass the name of the CSS class elements of this
-   * type will have.
-   */
-  upgradeDom: function(optJsClass, optCssClass) {},
-  /**
-   * Upgrades a specific element rather than all in the DOM.
-   *
-   * @param {!Element} element The element we wish to upgrade.
-   * @param {string=} optJsClass Optional name of the class we want to upgrade
-   * the element to.
-   */
-  upgradeElement: function(element, optJsClass) {},
-  /**
-   * Upgrades a specific list of elements rather than all in the DOM.
-   *
-   * @param {!Element|!Array<!Element>|!NodeList|!HTMLCollection} elements
-   * The elements we wish to upgrade.
-   */
-  upgradeElements: function(elements) {},
-  /**
-   * Upgrades all registered components found in the current DOM. This is
-   * automatically called on window load.
-   */
-  upgradeAllRegistered: function() {},
-  /**
-   * Allows user to be alerted to any upgrades that are performed for a given
-   * component type
-   *
-   * @param {string} jsClass The class name of the MDL component we wish
-   * to hook into for any upgrades performed.
-   * @param {function(!HTMLElement)} callback The function to call upon an
-   * upgrade. This function should expect 1 parameter - the HTMLElement which
-   * got upgraded.
-   */
-  registerUpgradedCallback: function(jsClass, callback) {},
-  /**
-   * Registers a class for future use and attempts to upgrade existing DOM.
-   *
-   * @param {componentHandler.ComponentConfigPublic} config the registration configuration
-   */
-  register: function(config) {},
-  /**
-   * Downgrade either a given node, an array of nodes, or a NodeList.
-   *
-   * @param {!Node|!Array<!Node>|!NodeList} nodes
-   */
-  downgradeElements: function(nodes) {}
-};
-
-componentHandler = (function() {
-  'use strict';
-
-  /** @type {!Array<componentHandler.ComponentConfig>} */
-  var registeredComponents_ = [];
-
-  /** @type {!Array<componentHandler.Component>} */
-  var createdComponents_ = [];
-
-  var componentConfigProperty_ = 'mdlComponentConfigInternal_';
-
-  /**
-   * Searches registered components for a class we are interested in using.
-   * Optionally replaces a match with passed object if specified.
-   *
-   * @param {string} name The name of a class we want to use.
-   * @param {componentHandler.ComponentConfig=} optReplace Optional object to replace match with.
-   * @return {!Object|boolean}
-   * @private
-   */
-  function findRegisteredClass_(name, optReplace) {
-    for (var i = 0; i < registeredComponents_.length; i++) {
-      if (registeredComponents_[i].className === name) {
-        if (typeof optReplace !== 'undefined') {
-          registeredComponents_[i] = optReplace;
-        }
-        return registeredComponents_[i];
-      }
-    }
-    return false;
-  }
-
-  /**
-   * Returns an array of the classNames of the upgraded classes on the element.
-   *
-   * @param {!Element} element The element to fetch data from.
-   * @return {!Array<string>}
-   * @private
-   */
-  function getUpgradedListOfElement_(element) {
-    var dataUpgraded = element.getAttribute('data-upgraded');
-    // Use `['']` as default value to conform the `,name,name...` style.
-    return dataUpgraded === null ? [''] : dataUpgraded.split(',');
-  }
-
-  /**
-   * Returns true if the given element has already been upgraded for the given
-   * class.
-   *
-   * @param {!Element} element The element we want to check.
-   * @param {string} jsClass The class to check for.
-   * @returns {boolean}
-   * @private
-   */
-  function isElementUpgraded_(element, jsClass) {
-    var upgradedList = getUpgradedListOfElement_(element);
-    return upgradedList.indexOf(jsClass) !== -1;
-  }
-
-  /**
-   * Create an event object.
-   *
-   * @param {string} eventType The type name of the event.
-   * @param {boolean} bubbles Whether the event should bubble up the DOM.
-   * @param {boolean} cancelable Whether the event can be canceled.
-   * @returns {!Event}
-   */
-  function createEvent_(eventType, bubbles, cancelable) {
-    if ('CustomEvent' in window && typeof window.CustomEvent === 'function') {
-      return new CustomEvent(eventType, {
-        bubbles: bubbles,
-        cancelable: cancelable
-      });
-    } else {
-      var ev = document.createEvent('Events');
-      ev.initEvent(eventType, bubbles, cancelable);
-      return ev;
-    }
-  }
-
-  /**
-   * Searches existing DOM for elements of our component type and upgrades them
-   * if they have not already been upgraded.
-   *
-   * @param {string=} optJsClass the programatic name of the element class we
-   * need to create a new instance of.
-   * @param {string=} optCssClass the name of the CSS class elements of this
-   * type will have.
-   */
-  function upgradeDomInternal(optJsClass, optCssClass) {
-    if (typeof optJsClass === 'undefined' &&
-        typeof optCssClass === 'undefined') {
-      for (var i = 0; i < registeredComponents_.length; i++) {
-        upgradeDomInternal(registeredComponents_[i].className,
-            registeredComponents_[i].cssClass);
-      }
-    } else {
-      var jsClass = /** @type {string} */ (optJsClass);
-      if (typeof optCssClass === 'undefined') {
-        var registeredClass = findRegisteredClass_(jsClass);
-        if (registeredClass) {
-          optCssClass = registeredClass.cssClass;
-        }
-      }
-
-      var elements = document.querySelectorAll('.' + optCssClass);
-      for (var n = 0; n < elements.length; n++) {
-        upgradeElementInternal(elements[n], jsClass);
-      }
-    }
-  }
-
-  /**
-   * Upgrades a specific element rather than all in the DOM.
-   *
-   * @param {!Element} element The element we wish to upgrade.
-   * @param {string=} optJsClass Optional name of the class we want to upgrade
-   * the element to.
-   */
-  function upgradeElementInternal(element, optJsClass) {
-    // Verify argument type.
-    if (!(typeof element === 'object' && element instanceof Element)) {
-      throw new Error('Invalid argument provided to upgrade MDL element.');
-    }
-    // Allow upgrade to be canceled by canceling emitted event.
-    var upgradingEv = createEvent_('mdl-componentupgrading', true, true);
-    element.dispatchEvent(upgradingEv);
-    if (upgradingEv.defaultPrevented) {
-      return;
-    }
-
-    var upgradedList = getUpgradedListOfElement_(element);
-    var classesToUpgrade = [];
-    // If jsClass is not provided scan the registered components to find the
-    // ones matching the element's CSS classList.
-    if (!optJsClass) {
-      var classList = element.classList;
-      registeredComponents_.forEach(function(component) {
-        // Match CSS & Not to be upgraded & Not upgraded.
-        if (classList.contains(component.cssClass) &&
-            classesToUpgrade.indexOf(component) === -1 &&
-            !isElementUpgraded_(element, component.className)) {
-          classesToUpgrade.push(component);
-        }
-      });
-    } else if (!isElementUpgraded_(element, optJsClass)) {
-      classesToUpgrade.push(findRegisteredClass_(optJsClass));
-    }
-
-    // Upgrade the element for each classes.
-    for (var i = 0, n = classesToUpgrade.length, registeredClass; i < n; i++) {
-      registeredClass = classesToUpgrade[i];
-      if (registeredClass) {
-        // Mark element as upgraded.
-        upgradedList.push(registeredClass.className);
-        element.setAttribute('data-upgraded', upgradedList.join(','));
-        var instance = new registeredClass.classConstructor(element);
-        instance[componentConfigProperty_] = registeredClass;
-        createdComponents_.push(instance);
-        // Call any callbacks the user has registered with this component type.
-        for (var j = 0, m = registeredClass.callbacks.length; j < m; j++) {
-          registeredClass.callbacks[j](element);
-        }
-
-        if (registeredClass.widget) {
-          // Assign per element instance for control over API
-          element[registeredClass.className] = instance;
-        }
-      } else {
-        throw new Error(
-          'Unable to find a registered component for the given class.');
-      }
-
-      var upgradedEv = createEvent_('mdl-componentupgraded', true, false);
-      element.dispatchEvent(upgradedEv);
-    }
-  }
-
-  /**
-   * Upgrades a specific list of elements rather than all in the DOM.
-   *
-   * @param {!Element|!Array<!Element>|!NodeList|!HTMLCollection} elements
-   * The elements we wish to upgrade.
-   */
-  function upgradeElementsInternal(elements) {
-    if (!Array.isArray(elements)) {
-      if (elements instanceof Element) {
-        elements = [elements];
-      } else {
-        elements = Array.prototype.slice.call(elements);
-      }
-    }
-    for (var i = 0, n = elements.length, element; i < n; i++) {
-      element = elements[i];
-      if (element instanceof HTMLElement) {
-        upgradeElementInternal(element);
-        if (element.children.length > 0) {
-          upgradeElementsInternal(element.children);
-        }
-      }
-    }
-  }
-
-  /**
-   * Registers a class for future use and attempts to upgrade existing DOM.
-   *
-   * @param {componentHandler.ComponentConfigPublic} config
-   */
-  function registerInternal(config) {
-    // In order to support both Closure-compiled and uncompiled code accessing
-    // this method, we need to allow for both the dot and array syntax for
-    // property access. You'll therefore see the `foo.bar || foo['bar']`
-    // pattern repeated across this method.
-    var widgetMissing = (typeof config.widget === 'undefined' &&
-        typeof config['widget'] === 'undefined');
-    var widget = true;
-
-    if (!widgetMissing) {
-      widget = config.widget || config['widget'];
-    }
-
-    var newConfig = /** @type {componentHandler.ComponentConfig} */ ({
-      classConstructor: config.constructor || config['constructor'],
-      className: config.classAsString || config['classAsString'],
-      cssClass: config.cssClass || config['cssClass'],
-      widget: widget,
-      callbacks: []
-    });
-
-    registeredComponents_.forEach(function(item) {
-      if (item.cssClass === newConfig.cssClass) {
-        throw new Error('The provided cssClass has already been registered: ' + item.cssClass);
-      }
-      if (item.className === newConfig.className) {
-        throw new Error('The provided className has already been registered');
-      }
-    });
-
-    if (config.constructor.prototype
-        .hasOwnProperty(componentConfigProperty_)) {
-      throw new Error(
-          'MDL component classes must not have ' + componentConfigProperty_ +
-          ' defined as a property.');
-    }
-
-    var found = findRegisteredClass_(config.classAsString, newConfig);
-
-    if (!found) {
-      registeredComponents_.push(newConfig);
-    }
-  }
-
-  /**
-   * Allows user to be alerted to any upgrades that are performed for a given
-   * component type
-   *
-   * @param {string} jsClass The class name of the MDL component we wish
-   * to hook into for any upgrades performed.
-   * @param {function(!HTMLElement)} callback The function to call upon an
-   * upgrade. This function should expect 1 parameter - the HTMLElement which
-   * got upgraded.
-   */
-  function registerUpgradedCallbackInternal(jsClass, callback) {
-    var regClass = findRegisteredClass_(jsClass);
-    if (regClass) {
-      regClass.callbacks.push(callback);
-    }
-  }
-
-  /**
-   * Upgrades all registered components found in the current DOM. This is
-   * automatically called on window load.
-   */
-  function upgradeAllRegisteredInternal() {
-    for (var n = 0; n < registeredComponents_.length; n++) {
-      upgradeDomInternal(registeredComponents_[n].className);
-    }
-  }
-
-  /**
-   * Check the component for the downgrade method.
-   * Execute if found.
-   * Remove component from createdComponents list.
-   *
-   * @param {?componentHandler.Component} component
-   */
-  function deconstructComponentInternal(component) {
-    if (component) {
-      var componentIndex = createdComponents_.indexOf(component);
-      createdComponents_.splice(componentIndex, 1);
-
-      var upgrades = component.element_.getAttribute('data-upgraded').split(',');
-      var componentPlace = upgrades.indexOf(component[componentConfigProperty_].classAsString);
-      upgrades.splice(componentPlace, 1);
-      component.element_.setAttribute('data-upgraded', upgrades.join(','));
-
-      var ev = createEvent_('mdl-componentdowngraded', true, false);
-      component.element_.dispatchEvent(ev);
-    }
-  }
-
-  /**
-   * Downgrade either a given node, an array of nodes, or a NodeList.
-   *
-   * @param {!Node|!Array<!Node>|!NodeList} nodes
-   */
-  function downgradeNodesInternal(nodes) {
-    /**
-     * Auxiliary function to downgrade a single node.
-     * @param  {!Node} node the node to be downgraded
-     */
-    var downgradeNode = function(node) {
-      createdComponents_.filter(function(item) {
-        return item.element_ === node;
-      }).forEach(deconstructComponentInternal);
-    };
-    if (nodes instanceof Array || nodes instanceof NodeList) {
-      for (var n = 0; n < nodes.length; n++) {
-        downgradeNode(nodes[n]);
-      }
-    } else if (nodes instanceof Node) {
-      downgradeNode(nodes);
-    } else {
-      throw new Error('Invalid argument provided to downgrade MDL nodes.');
-    }
-  }
-
-  // Now return the functions that should be made public with their publicly
-  // facing names...
-  return {
-    upgradeDom: upgradeDomInternal,
-    upgradeElement: upgradeElementInternal,
-    upgradeElements: upgradeElementsInternal,
-    upgradeAllRegistered: upgradeAllRegisteredInternal,
-    registerUpgradedCallback: registerUpgradedCallbackInternal,
-    register: registerInternal,
-    downgradeElements: downgradeNodesInternal
-  };
-})();
-
-/**
- * Describes the type of a registered component type managed by
- * componentHandler. Provided for benefit of the Closure compiler.
- *
- * @typedef {{
- *   constructor: Function,
- *   classAsString: string,
- *   cssClass: string,
- *   widget: (string|boolean|undefined)
- * }}
- */
-componentHandler.ComponentConfigPublic;  // jshint ignore:line
-
-/**
- * Describes the type of a registered component type managed by
- * componentHandler. Provided for benefit of the Closure compiler.
- *
- * @typedef {{
- *   constructor: !Function,
- *   className: string,
- *   cssClass: string,
- *   widget: (string|boolean),
- *   callbacks: !Array<function(!HTMLElement)>
- * }}
- */
-componentHandler.ComponentConfig;  // jshint ignore:line
-
-/**
- * Created component (i.e., upgraded element) type as managed by
- * componentHandler. Provided for benefit of the Closure compiler.
- *
- * @typedef {{
- *   element_: !HTMLElement,
- *   className: string,
- *   classAsString: string,
- *   cssClass: string,
- *   widget: string
- * }}
- */
-componentHandler.Component;  // jshint ignore:line
-
-// Export all symbols, for the benefit of Closure compiler.
-// No effect on uncompiled code.
-componentHandler['upgradeDom'] = componentHandler.upgradeDom;
-componentHandler['upgradeElement'] = componentHandler.upgradeElement;
-componentHandler['upgradeElements'] = componentHandler.upgradeElements;
-componentHandler['upgradeAllRegistered'] =
-    componentHandler.upgradeAllRegistered;
-componentHandler['registerUpgradedCallback'] =
-    componentHandler.registerUpgradedCallback;
-componentHandler['register'] = componentHandler.register;
-componentHandler['downgradeElements'] = componentHandler.downgradeElements;
-window.componentHandler = componentHandler;
-window['componentHandler'] = componentHandler;
-
-window.addEventListener('load', function() {
-  'use strict';
-
-  /**
-   * Performs a "Cutting the mustard" test. If the browser supports the features
-   * tested, adds a mdl-js class to the <html> element. It then upgrades all MDL
-   * components requiring JavaScript.
-   */
-  if ('classList' in document.createElement('div') &&
-      'querySelector' in document &&
-      'addEventListener' in window && Array.prototype.forEach) {
-    document.documentElement.classList.add('mdl-js');
-    componentHandler.upgradeAllRegistered();
-  } else {
-    /**
-     * Dummy function to avoid JS errors.
-     */
-    componentHandler.upgradeElement = function() {};
-    /**
-     * Dummy function to avoid JS errors.
-     */
-    componentHandler.register = function() {};
-  }
-});
-
-// Source: https://github.com/darius/requestAnimationFrame/blob/master/requestAnimationFrame.js
-// Adapted from https://gist.github.com/paulirish/1579671 which derived from
-// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
-// http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
-// requestAnimationFrame polyfill by Erik Möller.
-// Fixes from Paul Irish, Tino Zijdel, Andrew Mao, Klemen Slavič, Darius Bacon
-// MIT license
-if (!Date.now) {
-    /**
-     * Date.now polyfill.
-     * @return {number} the current Date
-     */
-    Date.now = function () {
-        return new Date().getTime();
-    };
-    Date['now'] = Date.now;
-}
-var vendors = [
-    'webkit',
-    'moz'
-];
-for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
-    var vp = vendors[i];
-    window.requestAnimationFrame = window[vp + 'RequestAnimationFrame'];
-    window.cancelAnimationFrame = window[vp + 'CancelAnimationFrame'] || window[vp + 'CancelRequestAnimationFrame'];
-    window['requestAnimationFrame'] = window.requestAnimationFrame;
-    window['cancelAnimationFrame'] = window.cancelAnimationFrame;
-}
-if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent) || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
-    var lastTime = 0;
-    /**
-     * requestAnimationFrame polyfill.
-     * @param  {!Function} callback the callback function.
-     */
-    window.requestAnimationFrame = function (callback) {
-        var now = Date.now();
-        var nextTime = Math.max(lastTime + 16, now);
-        return setTimeout(function () {
-            callback(lastTime = nextTime);
-        }, nextTime - now);
-    };
-    window.cancelAnimationFrame = clearTimeout;
-    window['requestAnimationFrame'] = window.requestAnimationFrame;
-    window['cancelAnimationFrame'] = window.cancelAnimationFrame;
-}
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for Button MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @param {HTMLElement} element The element that will be upgraded.
-   */
-var MaterialButton = function MaterialButton(element) {
-    this.element_ = element;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialButton'] = MaterialButton;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialButton.prototype.Constant_ = {};
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialButton.prototype.CssClasses_ = {
-    RIPPLE_EFFECT: 'mdl-js-ripple-effect',
-    RIPPLE_CONTAINER: 'mdl-button__ripple-container',
-    RIPPLE: 'mdl-ripple'
-};
-/**
-   * Handle blur of element.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialButton.prototype.blurHandler_ = function (event) {
-    if (event) {
-        this.element_.blur();
-    }
-};
-// Public methods.
-/**
-   * Disable button.
-   *
-   * @public
-   */
-MaterialButton.prototype.disable = function () {
-    this.element_.disabled = true;
-};
-MaterialButton.prototype['disable'] = MaterialButton.prototype.disable;
-/**
-   * Enable button.
-   *
-   * @public
-   */
-MaterialButton.prototype.enable = function () {
-    this.element_.disabled = false;
-};
-MaterialButton.prototype['enable'] = MaterialButton.prototype.enable;
-/**
-   * Initialize element.
-   */
-MaterialButton.prototype.init = function () {
-    if (this.element_) {
-        if (this.element_.classList.contains(this.CssClasses_.RIPPLE_EFFECT)) {
-            var rippleContainer = document.createElement('span');
-            rippleContainer.classList.add(this.CssClasses_.RIPPLE_CONTAINER);
-            this.rippleElement_ = document.createElement('span');
-            this.rippleElement_.classList.add(this.CssClasses_.RIPPLE);
-            rippleContainer.appendChild(this.rippleElement_);
-            this.boundRippleBlurHandler = this.blurHandler_.bind(this);
-            this.rippleElement_.addEventListener('mouseup', this.boundRippleBlurHandler);
-            this.element_.appendChild(rippleContainer);
-        }
-        this.boundButtonBlurHandler = this.blurHandler_.bind(this);
-        this.element_.addEventListener('mouseup', this.boundButtonBlurHandler);
-        this.element_.addEventListener('mouseleave', this.boundButtonBlurHandler);
-    }
-};
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialButton,
-    classAsString: 'MaterialButton',
-    cssClass: 'mdl-js-button',
-    widget: true
-});
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for Checkbox MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {HTMLElement} element The element that will be upgraded.
-   */
-var MaterialCheckbox = function MaterialCheckbox(element) {
-    this.element_ = element;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialCheckbox'] = MaterialCheckbox;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialCheckbox.prototype.Constant_ = { TINY_TIMEOUT: 0.001 };
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialCheckbox.prototype.CssClasses_ = {
-    INPUT: 'mdl-checkbox__input',
-    BOX_OUTLINE: 'mdl-checkbox__box-outline',
-    FOCUS_HELPER: 'mdl-checkbox__focus-helper',
-    TICK_OUTLINE: 'mdl-checkbox__tick-outline',
-    RIPPLE_EFFECT: 'mdl-js-ripple-effect',
-    RIPPLE_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
-    RIPPLE_CONTAINER: 'mdl-checkbox__ripple-container',
-    RIPPLE_CENTER: 'mdl-ripple--center',
-    RIPPLE: 'mdl-ripple',
-    IS_FOCUSED: 'is-focused',
-    IS_DISABLED: 'is-disabled',
-    IS_CHECKED: 'is-checked',
-    IS_UPGRADED: 'is-upgraded'
-};
-/**
-   * Handle change of state.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialCheckbox.prototype.onChange_ = function (event) {
-    this.updateClasses_();
-};
-/**
-   * Handle focus of element.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialCheckbox.prototype.onFocus_ = function (event) {
-    this.element_.classList.add(this.CssClasses_.IS_FOCUSED);
-};
-/**
-   * Handle lost focus of element.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialCheckbox.prototype.onBlur_ = function (event) {
-    this.element_.classList.remove(this.CssClasses_.IS_FOCUSED);
-};
-/**
-   * Handle mouseup.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialCheckbox.prototype.onMouseUp_ = function (event) {
-    this.blur_();
-};
-/**
-   * Handle class updates.
-   *
-   * @private
-   */
-MaterialCheckbox.prototype.updateClasses_ = function () {
-    this.checkDisabled();
-    this.checkToggleState();
-};
-/**
-   * Add blur.
-   *
-   * @private
-   */
-MaterialCheckbox.prototype.blur_ = function () {
-    // TODO: figure out why there's a focus event being fired after our blur,
-    // so that we can avoid this hack.
-    window.setTimeout(function () {
-        this.inputElement_.blur();
-    }.bind(this), this.Constant_.TINY_TIMEOUT);
-};
-// Public methods.
-/**
-   * Check the inputs toggle state and update display.
-   *
-   * @public
-   */
-MaterialCheckbox.prototype.checkToggleState = function () {
-    if (this.inputElement_.checked) {
-        this.element_.classList.add(this.CssClasses_.IS_CHECKED);
-    } else {
-        this.element_.classList.remove(this.CssClasses_.IS_CHECKED);
-    }
-};
-MaterialCheckbox.prototype['checkToggleState'] = MaterialCheckbox.prototype.checkToggleState;
-/**
-   * Check the inputs disabled state and update display.
-   *
-   * @public
-   */
-MaterialCheckbox.prototype.checkDisabled = function () {
-    if (this.inputElement_.disabled) {
-        this.element_.classList.add(this.CssClasses_.IS_DISABLED);
-    } else {
-        this.element_.classList.remove(this.CssClasses_.IS_DISABLED);
-    }
-};
-MaterialCheckbox.prototype['checkDisabled'] = MaterialCheckbox.prototype.checkDisabled;
-/**
-   * Disable checkbox.
-   *
-   * @public
-   */
-MaterialCheckbox.prototype.disable = function () {
-    this.inputElement_.disabled = true;
-    this.updateClasses_();
-};
-MaterialCheckbox.prototype['disable'] = MaterialCheckbox.prototype.disable;
-/**
-   * Enable checkbox.
-   *
-   * @public
-   */
-MaterialCheckbox.prototype.enable = function () {
-    this.inputElement_.disabled = false;
-    this.updateClasses_();
-};
-MaterialCheckbox.prototype['enable'] = MaterialCheckbox.prototype.enable;
-/**
-   * Check checkbox.
-   *
-   * @public
-   */
-MaterialCheckbox.prototype.check = function () {
-    this.inputElement_.checked = true;
-    this.updateClasses_();
-};
-MaterialCheckbox.prototype['check'] = MaterialCheckbox.prototype.check;
-/**
-   * Uncheck checkbox.
-   *
-   * @public
-   */
-MaterialCheckbox.prototype.uncheck = function () {
-    this.inputElement_.checked = false;
-    this.updateClasses_();
-};
-MaterialCheckbox.prototype['uncheck'] = MaterialCheckbox.prototype.uncheck;
-/**
-   * Initialize element.
-   */
-MaterialCheckbox.prototype.init = function () {
-    if (this.element_) {
-        this.inputElement_ = this.element_.querySelector('.' + this.CssClasses_.INPUT);
-        var boxOutline = document.createElement('span');
-        boxOutline.classList.add(this.CssClasses_.BOX_OUTLINE);
-        var tickContainer = document.createElement('span');
-        tickContainer.classList.add(this.CssClasses_.FOCUS_HELPER);
-        var tickOutline = document.createElement('span');
-        tickOutline.classList.add(this.CssClasses_.TICK_OUTLINE);
-        boxOutline.appendChild(tickOutline);
-        this.element_.appendChild(tickContainer);
-        this.element_.appendChild(boxOutline);
-        if (this.element_.classList.contains(this.CssClasses_.RIPPLE_EFFECT)) {
-            this.element_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS);
-            this.rippleContainerElement_ = document.createElement('span');
-            this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_CONTAINER);
-            this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_EFFECT);
-            this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_CENTER);
-            this.boundRippleMouseUp = this.onMouseUp_.bind(this);
-            this.rippleContainerElement_.addEventListener('mouseup', this.boundRippleMouseUp);
-            var ripple = document.createElement('span');
-            ripple.classList.add(this.CssClasses_.RIPPLE);
-            this.rippleContainerElement_.appendChild(ripple);
-            this.element_.appendChild(this.rippleContainerElement_);
-        }
-        this.boundInputOnChange = this.onChange_.bind(this);
-        this.boundInputOnFocus = this.onFocus_.bind(this);
-        this.boundInputOnBlur = this.onBlur_.bind(this);
-        this.boundElementMouseUp = this.onMouseUp_.bind(this);
-        this.inputElement_.addEventListener('change', this.boundInputOnChange);
-        this.inputElement_.addEventListener('focus', this.boundInputOnFocus);
-        this.inputElement_.addEventListener('blur', this.boundInputOnBlur);
-        this.element_.addEventListener('mouseup', this.boundElementMouseUp);
-        this.updateClasses_();
-        this.element_.classList.add(this.CssClasses_.IS_UPGRADED);
-    }
-};
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialCheckbox,
-    classAsString: 'MaterialCheckbox',
-    cssClass: 'mdl-js-checkbox',
-    widget: true
-});
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for icon toggle MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {HTMLElement} element The element that will be upgraded.
-   */
-var MaterialIconToggle = function MaterialIconToggle(element) {
-    this.element_ = element;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialIconToggle'] = MaterialIconToggle;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialIconToggle.prototype.Constant_ = { TINY_TIMEOUT: 0.001 };
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialIconToggle.prototype.CssClasses_ = {
-    INPUT: 'mdl-icon-toggle__input',
-    JS_RIPPLE_EFFECT: 'mdl-js-ripple-effect',
-    RIPPLE_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
-    RIPPLE_CONTAINER: 'mdl-icon-toggle__ripple-container',
-    RIPPLE_CENTER: 'mdl-ripple--center',
-    RIPPLE: 'mdl-ripple',
-    IS_FOCUSED: 'is-focused',
-    IS_DISABLED: 'is-disabled',
-    IS_CHECKED: 'is-checked'
-};
-/**
-   * Handle change of state.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialIconToggle.prototype.onChange_ = function (event) {
-    this.updateClasses_();
-};
-/**
-   * Handle focus of element.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialIconToggle.prototype.onFocus_ = function (event) {
-    this.element_.classList.add(this.CssClasses_.IS_FOCUSED);
-};
-/**
-   * Handle lost focus of element.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialIconToggle.prototype.onBlur_ = function (event) {
-    this.element_.classList.remove(this.CssClasses_.IS_FOCUSED);
-};
-/**
-   * Handle mouseup.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialIconToggle.prototype.onMouseUp_ = function (event) {
-    this.blur_();
-};
-/**
-   * Handle class updates.
-   *
-   * @private
-   */
-MaterialIconToggle.prototype.updateClasses_ = function () {
-    this.checkDisabled();
-    this.checkToggleState();
-};
-/**
-   * Add blur.
-   *
-   * @private
-   */
-MaterialIconToggle.prototype.blur_ = function () {
-    // TODO: figure out why there's a focus event being fired after our blur,
-    // so that we can avoid this hack.
-    window.setTimeout(function () {
-        this.inputElement_.blur();
-    }.bind(this), this.Constant_.TINY_TIMEOUT);
-};
-// Public methods.
-/**
-   * Check the inputs toggle state and update display.
-   *
-   * @public
-   */
-MaterialIconToggle.prototype.checkToggleState = function () {
-    if (this.inputElement_.checked) {
-        this.element_.classList.add(this.CssClasses_.IS_CHECKED);
-    } else {
-        this.element_.classList.remove(this.CssClasses_.IS_CHECKED);
-    }
-};
-MaterialIconToggle.prototype['checkToggleState'] = MaterialIconToggle.prototype.checkToggleState;
-/**
-   * Check the inputs disabled state and update display.
-   *
-   * @public
-   */
-MaterialIconToggle.prototype.checkDisabled = function () {
-    if (this.inputElement_.disabled) {
-        this.element_.classList.add(this.CssClasses_.IS_DISABLED);
-    } else {
-        this.element_.classList.remove(this.CssClasses_.IS_DISABLED);
-    }
-};
-MaterialIconToggle.prototype['checkDisabled'] = MaterialIconToggle.prototype.checkDisabled;
-/**
-   * Disable icon toggle.
-   *
-   * @public
-   */
-MaterialIconToggle.prototype.disable = function () {
-    this.inputElement_.disabled = true;
-    this.updateClasses_();
-};
-MaterialIconToggle.prototype['disable'] = MaterialIconToggle.prototype.disable;
-/**
-   * Enable icon toggle.
-   *
-   * @public
-   */
-MaterialIconToggle.prototype.enable = function () {
-    this.inputElement_.disabled = false;
-    this.updateClasses_();
-};
-MaterialIconToggle.prototype['enable'] = MaterialIconToggle.prototype.enable;
-/**
-   * Check icon toggle.
-   *
-   * @public
-   */
-MaterialIconToggle.prototype.check = function () {
-    this.inputElement_.checked = true;
-    this.updateClasses_();
-};
-MaterialIconToggle.prototype['check'] = MaterialIconToggle.prototype.check;
-/**
-   * Uncheck icon toggle.
-   *
-   * @public
-   */
-MaterialIconToggle.prototype.uncheck = function () {
-    this.inputElement_.checked = false;
-    this.updateClasses_();
-};
-MaterialIconToggle.prototype['uncheck'] = MaterialIconToggle.prototype.uncheck;
-/**
-   * Initialize element.
-   */
-MaterialIconToggle.prototype.init = function () {
-    if (this.element_) {
-        this.inputElement_ = this.element_.querySelector('.' + this.CssClasses_.INPUT);
-        if (this.element_.classList.contains(this.CssClasses_.JS_RIPPLE_EFFECT)) {
-            this.element_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS);
-            this.rippleContainerElement_ = document.createElement('span');
-            this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_CONTAINER);
-            this.rippleContainerElement_.classList.add(this.CssClasses_.JS_RIPPLE_EFFECT);
-            this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_CENTER);
-            this.boundRippleMouseUp = this.onMouseUp_.bind(this);
-            this.rippleContainerElement_.addEventListener('mouseup', this.boundRippleMouseUp);
-            var ripple = document.createElement('span');
-            ripple.classList.add(this.CssClasses_.RIPPLE);
-            this.rippleContainerElement_.appendChild(ripple);
-            this.element_.appendChild(this.rippleContainerElement_);
-        }
-        this.boundInputOnChange = this.onChange_.bind(this);
-        this.boundInputOnFocus = this.onFocus_.bind(this);
-        this.boundInputOnBlur = this.onBlur_.bind(this);
-        this.boundElementOnMouseUp = this.onMouseUp_.bind(this);
-        this.inputElement_.addEventListener('change', this.boundInputOnChange);
-        this.inputElement_.addEventListener('focus', this.boundInputOnFocus);
-        this.inputElement_.addEventListener('blur', this.boundInputOnBlur);
-        this.element_.addEventListener('mouseup', this.boundElementOnMouseUp);
-        this.updateClasses_();
-        this.element_.classList.add('is-upgraded');
-    }
-};
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialIconToggle,
-    classAsString: 'MaterialIconToggle',
-    cssClass: 'mdl-js-icon-toggle',
-    widget: true
-});
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for dropdown MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {HTMLElement} element The element that will be upgraded.
-   */
-var MaterialMenu = function MaterialMenu(element) {
-    this.element_ = element;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialMenu'] = MaterialMenu;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialMenu.prototype.Constant_ = {
-    // Total duration of the menu animation.
-    TRANSITION_DURATION_SECONDS: 0.3,
-    // The fraction of the total duration we want to use for menu item animations.
-    TRANSITION_DURATION_FRACTION: 0.8,
-    // How long the menu stays open after choosing an option (so the user can see
-    // the ripple).
-    CLOSE_TIMEOUT: 150
-};
-/**
-   * Keycodes, for code readability.
-   *
-   * @enum {number}
-   * @private
-   */
-MaterialMenu.prototype.Keycodes_ = {
-    ENTER: 13,
-    ESCAPE: 27,
-    SPACE: 32,
-    UP_ARROW: 38,
-    DOWN_ARROW: 40
-};
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialMenu.prototype.CssClasses_ = {
-    CONTAINER: 'mdl-menu__container',
-    OUTLINE: 'mdl-menu__outline',
-    ITEM: 'mdl-menu__item',
-    ITEM_RIPPLE_CONTAINER: 'mdl-menu__item-ripple-container',
-    RIPPLE_EFFECT: 'mdl-js-ripple-effect',
-    RIPPLE_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
-    RIPPLE: 'mdl-ripple',
-    // Statuses
-    IS_UPGRADED: 'is-upgraded',
-    IS_VISIBLE: 'is-visible',
-    IS_ANIMATING: 'is-animating',
-    // Alignment options
-    BOTTOM_LEFT: 'mdl-menu--bottom-left',
-    // This is the default.
-    BOTTOM_RIGHT: 'mdl-menu--bottom-right',
-    TOP_LEFT: 'mdl-menu--top-left',
-    TOP_RIGHT: 'mdl-menu--top-right',
-    UNALIGNED: 'mdl-menu--unaligned'
-};
-/**
-   * Initialize element.
-   */
-MaterialMenu.prototype.init = function () {
-    if (this.element_) {
-        // Create container for the menu.
-        var container = document.createElement('div');
-        container.classList.add(this.CssClasses_.CONTAINER);
-        this.element_.parentElement.insertBefore(container, this.element_);
-        this.element_.parentElement.removeChild(this.element_);
-        container.appendChild(this.element_);
-        this.container_ = container;
-        // Create outline for the menu (shadow and background).
-        var outline = document.createElement('div');
-        outline.classList.add(this.CssClasses_.OUTLINE);
-        this.outline_ = outline;
-        container.insertBefore(outline, this.element_);
-        // Find the "for" element and bind events to it.
-        var forElId = this.element_.getAttribute('for') || this.element_.getAttribute('data-mdl-for');
-        var forEl = null;
-        if (forElId) {
-            forEl = document.getElementById(forElId);
-            if (forEl) {
-                this.forElement_ = forEl;
-                forEl.addEventListener('click', this.handleForClick_.bind(this));
-                forEl.addEventListener('keydown', this.handleForKeyboardEvent_.bind(this));
-            }
-        }
-        var items = this.element_.querySelectorAll('.' + this.CssClasses_.ITEM);
-        this.boundItemKeydown_ = this.handleItemKeyboardEvent_.bind(this);
-        this.boundItemClick_ = this.handleItemClick_.bind(this);
-        for (var i = 0; i < items.length; i++) {
-            // Add a listener to each menu item.
-            items[i].addEventListener('click', this.boundItemClick_);
-            // Add a tab index to each menu item.
-            items[i].tabIndex = '-1';
-            // Add a keyboard listener to each menu item.
-            items[i].addEventListener('keydown', this.boundItemKeydown_);
-        }
-        // Add ripple classes to each item, if the user has enabled ripples.
-        if (this.element_.classList.contains(this.CssClasses_.RIPPLE_EFFECT)) {
-            this.element_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS);
-            for (i = 0; i < items.length; i++) {
-                var item = items[i];
-                var rippleContainer = document.createElement('span');
-                rippleContainer.classList.add(this.CssClasses_.ITEM_RIPPLE_CONTAINER);
-                var ripple = document.createElement('span');
-                ripple.classList.add(this.CssClasses_.RIPPLE);
-                rippleContainer.appendChild(ripple);
-                item.appendChild(rippleContainer);
-                item.classList.add(this.CssClasses_.RIPPLE_EFFECT);
-            }
-        }
-        // Copy alignment classes to the container, so the outline can use them.
-        if (this.element_.classList.contains(this.CssClasses_.BOTTOM_LEFT)) {
-            this.outline_.classList.add(this.CssClasses_.BOTTOM_LEFT);
-        }
-        if (this.element_.classList.contains(this.CssClasses_.BOTTOM_RIGHT)) {
-            this.outline_.classList.add(this.CssClasses_.BOTTOM_RIGHT);
-        }
-        if (this.element_.classList.contains(this.CssClasses_.TOP_LEFT)) {
-            this.outline_.classList.add(this.CssClasses_.TOP_LEFT);
-        }
-        if (this.element_.classList.contains(this.CssClasses_.TOP_RIGHT)) {
-            this.outline_.classList.add(this.CssClasses_.TOP_RIGHT);
-        }
-        if (this.element_.classList.contains(this.CssClasses_.UNALIGNED)) {
-            this.outline_.classList.add(this.CssClasses_.UNALIGNED);
-        }
-        container.classList.add(this.CssClasses_.IS_UPGRADED);
-    }
-};
-/**
-   * Handles a click on the "for" element, by positioning the menu and then
-   * toggling it.
-   *
-   * @param {Event} evt The event that fired.
-   * @private
-   */
-MaterialMenu.prototype.handleForClick_ = function (evt) {
-    if (this.element_ && this.forElement_) {
-        var rect = this.forElement_.getBoundingClientRect();
-        var forRect = this.forElement_.parentElement.getBoundingClientRect();
-        if (this.element_.classList.contains(this.CssClasses_.UNALIGNED)) {
-        } else if (this.element_.classList.contains(this.CssClasses_.BOTTOM_RIGHT)) {
-            // Position below the "for" element, aligned to its right.
-            this.container_.style.right = forRect.right - rect.right + 'px';
-            this.container_.style.top = this.forElement_.offsetTop + this.forElement_.offsetHeight + 'px';
-        } else if (this.element_.classList.contains(this.CssClasses_.TOP_LEFT)) {
-            // Position above the "for" element, aligned to its left.
-            this.container_.style.left = this.forElement_.offsetLeft + 'px';
-            this.container_.style.bottom = forRect.bottom - rect.top + 'px';
-        } else if (this.element_.classList.contains(this.CssClasses_.TOP_RIGHT)) {
-            // Position above the "for" element, aligned to its right.
-            this.container_.style.right = forRect.right - rect.right + 'px';
-            this.container_.style.bottom = forRect.bottom - rect.top + 'px';
-        } else {
-            // Default: position below the "for" element, aligned to its left.
-            this.container_.style.left = this.forElement_.offsetLeft + 'px';
-            this.container_.style.top = this.forElement_.offsetTop + this.forElement_.offsetHeight + 'px';
-        }
-    }
-    this.toggle(evt);
-};
-/**
-   * Handles a keyboard event on the "for" element.
-   *
-   * @param {Event} evt The event that fired.
-   * @private
-   */
-MaterialMenu.prototype.handleForKeyboardEvent_ = function (evt) {
-    if (this.element_ && this.container_ && this.forElement_) {
-        var items = this.element_.querySelectorAll('.' + this.CssClasses_.ITEM + ':not([disabled])');
-        if (items && items.length > 0 && this.container_.classList.contains(this.CssClasses_.IS_VISIBLE)) {
-            if (evt.keyCode === this.Keycodes_.UP_ARROW) {
-                evt.preventDefault();
-                items[items.length - 1].focus();
-            } else if (evt.keyCode === this.Keycodes_.DOWN_ARROW) {
-                evt.preventDefault();
-                items[0].focus();
-            }
-        }
-    }
-};
-/**
-   * Handles a keyboard event on an item.
-   *
-   * @param {Event} evt The event that fired.
-   * @private
-   */
-MaterialMenu.prototype.handleItemKeyboardEvent_ = function (evt) {
-    if (this.element_ && this.container_) {
-        var items = this.element_.querySelectorAll('.' + this.CssClasses_.ITEM + ':not([disabled])');
-        if (items && items.length > 0 && this.container_.classList.contains(this.CssClasses_.IS_VISIBLE)) {
-            var currentIndex = Array.prototype.slice.call(items).indexOf(evt.target);
-            if (evt.keyCode === this.Keycodes_.UP_ARROW) {
-                evt.preventDefault();
-                if (currentIndex > 0) {
-                    items[currentIndex - 1].focus();
-                } else {
-                    items[items.length - 1].focus();
-                }
-            } else if (evt.keyCode === this.Keycodes_.DOWN_ARROW) {
-                evt.preventDefault();
-                if (items.length > currentIndex + 1) {
-                    items[currentIndex + 1].focus();
-                } else {
-                    items[0].focus();
-                }
-            } else if (evt.keyCode === this.Keycodes_.SPACE || evt.keyCode === this.Keycodes_.ENTER) {
-                evt.preventDefault();
-                // Send mousedown and mouseup to trigger ripple.
-                var e = new MouseEvent('mousedown');
-                evt.target.dispatchEvent(e);
-                e = new MouseEvent('mouseup');
-                evt.target.dispatchEvent(e);
-                // Send click.
-                evt.target.click();
-            } else if (evt.keyCode === this.Keycodes_.ESCAPE) {
-                evt.preventDefault();
-                this.hide();
-            }
-        }
-    }
-};
-/**
-   * Handles a click event on an item.
-   *
-   * @param {Event} evt The event that fired.
-   * @private
-   */
-MaterialMenu.prototype.handleItemClick_ = function (evt) {
-    if (evt.target.hasAttribute('disabled')) {
-        evt.stopPropagation();
-    } else {
-        // Wait some time before closing menu, so the user can see the ripple.
-        this.closing_ = true;
-        window.setTimeout(function (evt) {
-            this.hide();
-            this.closing_ = false;
-        }.bind(this), this.Constant_.CLOSE_TIMEOUT);
-    }
-};
-/**
-   * Calculates the initial clip (for opening the menu) or final clip (for closing
-   * it), and applies it. This allows us to animate from or to the correct point,
-   * that is, the point it's aligned to in the "for" element.
-   *
-   * @param {number} height Height of the clip rectangle
-   * @param {number} width Width of the clip rectangle
-   * @private
-   */
-MaterialMenu.prototype.applyClip_ = function (height, width) {
-    if (this.element_.classList.contains(this.CssClasses_.UNALIGNED)) {
-        // Do not clip.
-        this.element_.style.clip = '';
-    } else if (this.element_.classList.contains(this.CssClasses_.BOTTOM_RIGHT)) {
-        // Clip to the top right corner of the menu.
-        this.element_.style.clip = 'rect(0 ' + width + 'px ' + '0 ' + width + 'px)';
-    } else if (this.element_.classList.contains(this.CssClasses_.TOP_LEFT)) {
-        // Clip to the bottom left corner of the menu.
-        this.element_.style.clip = 'rect(' + height + 'px 0 ' + height + 'px 0)';
-    } else if (this.element_.classList.contains(this.CssClasses_.TOP_RIGHT)) {
-        // Clip to the bottom right corner of the menu.
-        this.element_.style.clip = 'rect(' + height + 'px ' + width + 'px ' + height + 'px ' + width + 'px)';
-    } else {
-        // Default: do not clip (same as clipping to the top left corner).
-        this.element_.style.clip = '';
-    }
-};
-/**
-   * Cleanup function to remove animation listeners.
-   *
-   * @param {Event} evt
-   * @private
-   */
-MaterialMenu.prototype.removeAnimationEndListener_ = function (evt) {
-    evt.target.classList.remove(MaterialMenu.prototype.CssClasses_.IS_ANIMATING);
-};
-/**
-   * Adds an event listener to clean up after the animation ends.
-   *
-   * @private
-   */
-MaterialMenu.prototype.addAnimationEndListener_ = function () {
-    this.element_.addEventListener('transitionend', this.removeAnimationEndListener_);
-    this.element_.addEventListener('webkitTransitionEnd', this.removeAnimationEndListener_);
-};
-/**
-   * Displays the menu.
-   *
-   * @public
-   */
-MaterialMenu.prototype.show = function (evt) {
-    if (this.element_ && this.container_ && this.outline_) {
-        // Measure the inner element.
-        var height = this.element_.getBoundingClientRect().height;
-        var width = this.element_.getBoundingClientRect().width;
-        // Apply the inner element's size to the container and outline.
-        this.container_.style.width = width + 'px';
-        this.container_.style.height = height + 'px';
-        this.outline_.style.width = width + 'px';
-        this.outline_.style.height = height + 'px';
-        var transitionDuration = this.Constant_.TRANSITION_DURATION_SECONDS * this.Constant_.TRANSITION_DURATION_FRACTION;
-        // Calculate transition delays for individual menu items, so that they fade
-        // in one at a time.
-        var items = this.element_.querySelectorAll('.' + this.CssClasses_.ITEM);
-        for (var i = 0; i < items.length; i++) {
-            var itemDelay = null;
-            if (this.element_.classList.contains(this.CssClasses_.TOP_LEFT) || this.element_.classList.contains(this.CssClasses_.TOP_RIGHT)) {
-                itemDelay = (height - items[i].offsetTop - items[i].offsetHeight) / height * transitionDuration + 's';
-            } else {
-                itemDelay = items[i].offsetTop / height * transitionDuration + 's';
-            }
-            items[i].style.transitionDelay = itemDelay;
-        }
-        // Apply the initial clip to the text before we start animating.
-        this.applyClip_(height, width);
-        // Wait for the next frame, turn on animation, and apply the final clip.
-        // Also make it visible. This triggers the transitions.
-        window.requestAnimationFrame(function () {
-            this.element_.classList.add(this.CssClasses_.IS_ANIMATING);
-            this.element_.style.clip = 'rect(0 ' + width + 'px ' + height + 'px 0)';
-            this.container_.classList.add(this.CssClasses_.IS_VISIBLE);
-        }.bind(this));
-        // Clean up after the animation is complete.
-        this.addAnimationEndListener_();
-        // Add a click listener to the document, to close the menu.
-        var callback = function (e) {
-            // Check to see if the document is processing the same event that
-            // displayed the menu in the first place. If so, do nothing.
-            // Also check to see if the menu is in the process of closing itself, and
-            // do nothing in that case.
-            // Also check if the clicked element is a menu item
-            // if so, do nothing.
-            if (e !== evt && !this.closing_ && e.target.parentNode !== this.element_) {
-                document.removeEventListener('click', callback);
-                this.hide();
-            }
-        }.bind(this);
-        document.addEventListener('click', callback);
-    }
-};
-MaterialMenu.prototype['show'] = MaterialMenu.prototype.show;
-/**
-   * Hides the menu.
-   *
-   * @public
-   */
-MaterialMenu.prototype.hide = function () {
-    if (this.element_ && this.container_ && this.outline_) {
-        var items = this.element_.querySelectorAll('.' + this.CssClasses_.ITEM);
-        // Remove all transition delays; menu items fade out concurrently.
-        for (var i = 0; i < items.length; i++) {
-            items[i].style.removeProperty('transition-delay');
-        }
-        // Measure the inner element.
-        var rect = this.element_.getBoundingClientRect();
-        var height = rect.height;
-        var width = rect.width;
-        // Turn on animation, and apply the final clip. Also make invisible.
-        // This triggers the transitions.
-        this.element_.classList.add(this.CssClasses_.IS_ANIMATING);
-        this.applyClip_(height, width);
-        this.container_.classList.remove(this.CssClasses_.IS_VISIBLE);
-        // Clean up after the animation is complete.
-        this.addAnimationEndListener_();
-    }
-};
-MaterialMenu.prototype['hide'] = MaterialMenu.prototype.hide;
-/**
-   * Displays or hides the menu, depending on current state.
-   *
-   * @public
-   */
-MaterialMenu.prototype.toggle = function (evt) {
-    if (this.container_.classList.contains(this.CssClasses_.IS_VISIBLE)) {
-        this.hide();
-    } else {
-        this.show(evt);
-    }
-};
-MaterialMenu.prototype['toggle'] = MaterialMenu.prototype.toggle;
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialMenu,
-    classAsString: 'MaterialMenu',
-    cssClass: 'mdl-js-menu',
-    widget: true
-});
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for Progress MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {HTMLElement} element The element that will be upgraded.
-   */
-var MaterialProgress = function MaterialProgress(element) {
-    this.element_ = element;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialProgress'] = MaterialProgress;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialProgress.prototype.Constant_ = {};
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialProgress.prototype.CssClasses_ = { INDETERMINATE_CLASS: 'mdl-progress__indeterminate' };
-/**
-   * Set the current progress of the progressbar.
-   *
-   * @param {number} p Percentage of the progress (0-100)
-   * @public
-   */
-MaterialProgress.prototype.setProgress = function (p) {
-    if (this.element_.classList.contains(this.CssClasses_.INDETERMINATE_CLASS)) {
-        return;
-    }
-    this.progressbar_.style.width = p + '%';
-};
-MaterialProgress.prototype['setProgress'] = MaterialProgress.prototype.setProgress;
-/**
-   * Set the current progress of the buffer.
-   *
-   * @param {number} p Percentage of the buffer (0-100)
-   * @public
-   */
-MaterialProgress.prototype.setBuffer = function (p) {
-    this.bufferbar_.style.width = p + '%';
-    this.auxbar_.style.width = 100 - p + '%';
-};
-MaterialProgress.prototype['setBuffer'] = MaterialProgress.prototype.setBuffer;
-/**
-   * Initialize element.
-   */
-MaterialProgress.prototype.init = function () {
-    if (this.element_) {
-        var el = document.createElement('div');
-        el.className = 'progressbar bar bar1';
-        this.element_.appendChild(el);
-        this.progressbar_ = el;
-        el = document.createElement('div');
-        el.className = 'bufferbar bar bar2';
-        this.element_.appendChild(el);
-        this.bufferbar_ = el;
-        el = document.createElement('div');
-        el.className = 'auxbar bar bar3';
-        this.element_.appendChild(el);
-        this.auxbar_ = el;
-        this.progressbar_.style.width = '0%';
-        this.bufferbar_.style.width = '100%';
-        this.auxbar_.style.width = '0%';
-        this.element_.classList.add('is-upgraded');
-    }
-};
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialProgress,
-    classAsString: 'MaterialProgress',
-    cssClass: 'mdl-js-progress',
-    widget: true
-});
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for Radio MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {HTMLElement} element The element that will be upgraded.
-   */
-var MaterialRadio = function MaterialRadio(element) {
-    this.element_ = element;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialRadio'] = MaterialRadio;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialRadio.prototype.Constant_ = { TINY_TIMEOUT: 0.001 };
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialRadio.prototype.CssClasses_ = {
-    IS_FOCUSED: 'is-focused',
-    IS_DISABLED: 'is-disabled',
-    IS_CHECKED: 'is-checked',
-    IS_UPGRADED: 'is-upgraded',
-    JS_RADIO: 'mdl-js-radio',
-    RADIO_BTN: 'mdl-radio__button',
-    RADIO_OUTER_CIRCLE: 'mdl-radio__outer-circle',
-    RADIO_INNER_CIRCLE: 'mdl-radio__inner-circle',
-    RIPPLE_EFFECT: 'mdl-js-ripple-effect',
-    RIPPLE_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
-    RIPPLE_CONTAINER: 'mdl-radio__ripple-container',
-    RIPPLE_CENTER: 'mdl-ripple--center',
-    RIPPLE: 'mdl-ripple'
-};
-/**
-   * Handle change of state.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialRadio.prototype.onChange_ = function (event) {
-    // Since other radio buttons don't get change events, we need to look for
-    // them to update their classes.
-    var radios = document.getElementsByClassName(this.CssClasses_.JS_RADIO);
-    for (var i = 0; i < radios.length; i++) {
-        var button = radios[i].querySelector('.' + this.CssClasses_.RADIO_BTN);
-        // Different name == different group, so no point updating those.
-        if (button.getAttribute('name') === this.btnElement_.getAttribute('name')) {
-            if (typeof radios[i]['MaterialRadio'] !== 'undefined') {
-                radios[i]['MaterialRadio'].updateClasses_();
-            }
-        }
-    }
-};
-/**
-   * Handle focus.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialRadio.prototype.onFocus_ = function (event) {
-    this.element_.classList.add(this.CssClasses_.IS_FOCUSED);
-};
-/**
-   * Handle lost focus.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialRadio.prototype.onBlur_ = function (event) {
-    this.element_.classList.remove(this.CssClasses_.IS_FOCUSED);
-};
-/**
-   * Handle mouseup.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialRadio.prototype.onMouseup_ = function (event) {
-    this.blur_();
-};
-/**
-   * Update classes.
-   *
-   * @private
-   */
-MaterialRadio.prototype.updateClasses_ = function () {
-    this.checkDisabled();
-    this.checkToggleState();
-};
-/**
-   * Add blur.
-   *
-   * @private
-   */
-MaterialRadio.prototype.blur_ = function () {
-    // TODO: figure out why there's a focus event being fired after our blur,
-    // so that we can avoid this hack.
-    window.setTimeout(function () {
-        this.btnElement_.blur();
-    }.bind(this), this.Constant_.TINY_TIMEOUT);
-};
-// Public methods.
-/**
-   * Check the components disabled state.
-   *
-   * @public
-   */
-MaterialRadio.prototype.checkDisabled = function () {
-    if (this.btnElement_.disabled) {
-        this.element_.classList.add(this.CssClasses_.IS_DISABLED);
-    } else {
-        this.element_.classList.remove(this.CssClasses_.IS_DISABLED);
-    }
-};
-MaterialRadio.prototype['checkDisabled'] = MaterialRadio.prototype.checkDisabled;
-/**
-   * Check the components toggled state.
-   *
-   * @public
-   */
-MaterialRadio.prototype.checkToggleState = function () {
-    if (this.btnElement_.checked) {
-        this.element_.classList.add(this.CssClasses_.IS_CHECKED);
-    } else {
-        this.element_.classList.remove(this.CssClasses_.IS_CHECKED);
-    }
-};
-MaterialRadio.prototype['checkToggleState'] = MaterialRadio.prototype.checkToggleState;
-/**
-   * Disable radio.
-   *
-   * @public
-   */
-MaterialRadio.prototype.disable = function () {
-    this.btnElement_.disabled = true;
-    this.updateClasses_();
-};
-MaterialRadio.prototype['disable'] = MaterialRadio.prototype.disable;
-/**
-   * Enable radio.
-   *
-   * @public
-   */
-MaterialRadio.prototype.enable = function () {
-    this.btnElement_.disabled = false;
-    this.updateClasses_();
-};
-MaterialRadio.prototype['enable'] = MaterialRadio.prototype.enable;
-/**
-   * Check radio.
-   *
-   * @public
-   */
-MaterialRadio.prototype.check = function () {
-    this.btnElement_.checked = true;
-    this.onChange_(null);
-};
-MaterialRadio.prototype['check'] = MaterialRadio.prototype.check;
-/**
-   * Uncheck radio.
-   *
-   * @public
-   */
-MaterialRadio.prototype.uncheck = function () {
-    this.btnElement_.checked = false;
-    this.onChange_(null);
-};
-MaterialRadio.prototype['uncheck'] = MaterialRadio.prototype.uncheck;
-/**
-   * Initialize element.
-   */
-MaterialRadio.prototype.init = function () {
-    if (this.element_) {
-        this.btnElement_ = this.element_.querySelector('.' + this.CssClasses_.RADIO_BTN);
-        this.boundChangeHandler_ = this.onChange_.bind(this);
-        this.boundFocusHandler_ = this.onChange_.bind(this);
-        this.boundBlurHandler_ = this.onBlur_.bind(this);
-        this.boundMouseUpHandler_ = this.onMouseup_.bind(this);
-        var outerCircle = document.createElement('span');
-        outerCircle.classList.add(this.CssClasses_.RADIO_OUTER_CIRCLE);
-        var innerCircle = document.createElement('span');
-        innerCircle.classList.add(this.CssClasses_.RADIO_INNER_CIRCLE);
-        this.element_.appendChild(outerCircle);
-        this.element_.appendChild(innerCircle);
-        var rippleContainer;
-        if (this.element_.classList.contains(this.CssClasses_.RIPPLE_EFFECT)) {
-            this.element_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS);
-            rippleContainer = document.createElement('span');
-            rippleContainer.classList.add(this.CssClasses_.RIPPLE_CONTAINER);
-            rippleContainer.classList.add(this.CssClasses_.RIPPLE_EFFECT);
-            rippleContainer.classList.add(this.CssClasses_.RIPPLE_CENTER);
-            rippleContainer.addEventListener('mouseup', this.boundMouseUpHandler_);
-            var ripple = document.createElement('span');
-            ripple.classList.add(this.CssClasses_.RIPPLE);
-            rippleContainer.appendChild(ripple);
-            this.element_.appendChild(rippleContainer);
-        }
-        this.btnElement_.addEventListener('change', this.boundChangeHandler_);
-        this.btnElement_.addEventListener('focus', this.boundFocusHandler_);
-        this.btnElement_.addEventListener('blur', this.boundBlurHandler_);
-        this.element_.addEventListener('mouseup', this.boundMouseUpHandler_);
-        this.updateClasses_();
-        this.element_.classList.add(this.CssClasses_.IS_UPGRADED);
-    }
-};
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialRadio,
-    classAsString: 'MaterialRadio',
-    cssClass: 'mdl-js-radio',
-    widget: true
-});
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for Slider MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {HTMLElement} element The element that will be upgraded.
-   */
-var MaterialSlider = function MaterialSlider(element) {
-    this.element_ = element;
-    // Browser feature detection.
-    this.isIE_ = window.navigator.msPointerEnabled;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialSlider'] = MaterialSlider;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialSlider.prototype.Constant_ = {};
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialSlider.prototype.CssClasses_ = {
-    IE_CONTAINER: 'mdl-slider__ie-container',
-    SLIDER_CONTAINER: 'mdl-slider__container',
-    BACKGROUND_FLEX: 'mdl-slider__background-flex',
-    BACKGROUND_LOWER: 'mdl-slider__background-lower',
-    BACKGROUND_UPPER: 'mdl-slider__background-upper',
-    IS_LOWEST_VALUE: 'is-lowest-value',
-    IS_UPGRADED: 'is-upgraded'
-};
-/**
-   * Handle input on element.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialSlider.prototype.onInput_ = function (event) {
-    this.updateValueStyles_();
-};
-/**
-   * Handle change on element.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialSlider.prototype.onChange_ = function (event) {
-    this.updateValueStyles_();
-};
-/**
-   * Handle mouseup on element.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialSlider.prototype.onMouseUp_ = function (event) {
-    event.target.blur();
-};
-/**
-   * Handle mousedown on container element.
-   * This handler is purpose is to not require the use to click
-   * exactly on the 2px slider element, as FireFox seems to be very
-   * strict about this.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   * @suppress {missingProperties}
-   */
-MaterialSlider.prototype.onContainerMouseDown_ = function (event) {
-    // If this click is not on the parent element (but rather some child)
-    // ignore. It may still bubble up.
-    if (event.target !== this.element_.parentElement) {
-        return;
-    }
-    // Discard the original event and create a new event that
-    // is on the slider element.
-    event.preventDefault();
-    var newEvent = new MouseEvent('mousedown', {
-        target: event.target,
-        buttons: event.buttons,
-        clientX: event.clientX,
-        clientY: this.element_.getBoundingClientRect().y
-    });
-    this.element_.dispatchEvent(newEvent);
-};
-/**
-   * Handle updating of values.
-   *
-   * @private
-   */
-MaterialSlider.prototype.updateValueStyles_ = function () {
-    // Calculate and apply percentages to div structure behind slider.
-    var fraction = (this.element_.value - this.element_.min) / (this.element_.max - this.element_.min);
-    if (fraction === 0) {
-        this.element_.classList.add(this.CssClasses_.IS_LOWEST_VALUE);
-    } else {
-        this.element_.classList.remove(this.CssClasses_.IS_LOWEST_VALUE);
-    }
-    if (!this.isIE_) {
-        this.backgroundLower_.style.flex = fraction;
-        this.backgroundLower_.style.webkitFlex = fraction;
-        this.backgroundUpper_.style.flex = 1 - fraction;
-        this.backgroundUpper_.style.webkitFlex = 1 - fraction;
-    }
-};
-// Public methods.
-/**
-   * Disable slider.
-   *
-   * @public
-   */
-MaterialSlider.prototype.disable = function () {
-    this.element_.disabled = true;
-};
-MaterialSlider.prototype['disable'] = MaterialSlider.prototype.disable;
-/**
-   * Enable slider.
-   *
-   * @public
-   */
-MaterialSlider.prototype.enable = function () {
-    this.element_.disabled = false;
-};
-MaterialSlider.prototype['enable'] = MaterialSlider.prototype.enable;
-/**
-   * Update slider value.
-   *
-   * @param {number} value The value to which to set the control (optional).
-   * @public
-   */
-MaterialSlider.prototype.change = function (value) {
-    if (typeof value !== 'undefined') {
-        this.element_.value = value;
-    }
-    this.updateValueStyles_();
-};
-MaterialSlider.prototype['change'] = MaterialSlider.prototype.change;
-/**
-   * Initialize element.
-   */
-MaterialSlider.prototype.init = function () {
-    if (this.element_) {
-        if (this.isIE_) {
-            // Since we need to specify a very large height in IE due to
-            // implementation limitations, we add a parent here that trims it down to
-            // a reasonable size.
-            var containerIE = document.createElement('div');
-            containerIE.classList.add(this.CssClasses_.IE_CONTAINER);
-            this.element_.parentElement.insertBefore(containerIE, this.element_);
-            this.element_.parentElement.removeChild(this.element_);
-            containerIE.appendChild(this.element_);
-        } else {
-            // For non-IE browsers, we need a div structure that sits behind the
-            // slider and allows us to style the left and right sides of it with
-            // different colors.
-            var container = document.createElement('div');
-            container.classList.add(this.CssClasses_.SLIDER_CONTAINER);
-            this.element_.parentElement.insertBefore(container, this.element_);
-            this.element_.parentElement.removeChild(this.element_);
-            container.appendChild(this.element_);
-            var backgroundFlex = document.createElement('div');
-            backgroundFlex.classList.add(this.CssClasses_.BACKGROUND_FLEX);
-            container.appendChild(backgroundFlex);
-            this.backgroundLower_ = document.createElement('div');
-            this.backgroundLower_.classList.add(this.CssClasses_.BACKGROUND_LOWER);
-            backgroundFlex.appendChild(this.backgroundLower_);
-            this.backgroundUpper_ = document.createElement('div');
-            this.backgroundUpper_.classList.add(this.CssClasses_.BACKGROUND_UPPER);
-            backgroundFlex.appendChild(this.backgroundUpper_);
-        }
-        this.boundInputHandler = this.onInput_.bind(this);
-        this.boundChangeHandler = this.onChange_.bind(this);
-        this.boundMouseUpHandler = this.onMouseUp_.bind(this);
-        this.boundContainerMouseDownHandler = this.onContainerMouseDown_.bind(this);
-        this.element_.addEventListener('input', this.boundInputHandler);
-        this.element_.addEventListener('change', this.boundChangeHandler);
-        this.element_.addEventListener('mouseup', this.boundMouseUpHandler);
-        this.element_.parentElement.addEventListener('mousedown', this.boundContainerMouseDownHandler);
-        this.updateValueStyles_();
-        this.element_.classList.add(this.CssClasses_.IS_UPGRADED);
-    }
-};
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialSlider,
-    classAsString: 'MaterialSlider',
-    cssClass: 'mdl-js-slider',
-    widget: true
-});
-/**
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for Snackbar MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {HTMLElement} element The element that will be upgraded.
-   */
-var MaterialSnackbar = function MaterialSnackbar(element) {
-    this.element_ = element;
-    this.textElement_ = this.element_.querySelector('.' + this.cssClasses_.MESSAGE);
-    this.actionElement_ = this.element_.querySelector('.' + this.cssClasses_.ACTION);
-    if (!this.textElement_) {
-        throw new Error('There must be a message element for a snackbar.');
-    }
-    if (!this.actionElement_) {
-        throw new Error('There must be an action element for a snackbar.');
-    }
-    this.active = false;
-    this.actionHandler_ = undefined;
-    this.message_ = undefined;
-    this.actionText_ = undefined;
-    this.queuedNotifications_ = [];
-    this.setActionHidden_(true);
-};
-window['MaterialSnackbar'] = MaterialSnackbar;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialSnackbar.prototype.Constant_ = {
-    // The duration of the snackbar show/hide animation, in ms.
-    ANIMATION_LENGTH: 250
-};
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialSnackbar.prototype.cssClasses_ = {
-    SNACKBAR: 'mdl-snackbar',
-    MESSAGE: 'mdl-snackbar__text',
-    ACTION: 'mdl-snackbar__action',
-    ACTIVE: 'mdl-snackbar--active'
-};
-/**
-   * Display the snackbar.
-   *
-   * @private
-   */
-MaterialSnackbar.prototype.displaySnackbar_ = function () {
-    this.element_.setAttribute('aria-hidden', 'true');
-    if (this.actionHandler_) {
-        this.actionElement_.textContent = this.actionText_;
-        this.actionElement_.addEventListener('click', this.actionHandler_);
-        this.setActionHidden_(false);
-    }
-    this.textElement_.textContent = this.message_;
-    this.element_.classList.add(this.cssClasses_.ACTIVE);
-    this.element_.setAttribute('aria-hidden', 'false');
-    setTimeout(this.cleanup_.bind(this), this.timeout_);
-};
-/**
-   * Show the snackbar.
-   *
-   * @param {Object} data The data for the notification.
-   * @public
-   */
-MaterialSnackbar.prototype.showSnackbar = function (data) {
-    if (data === undefined) {
-        throw new Error('Please provide a data object with at least a message to display.');
-    }
-    if (data['message'] === undefined) {
-        throw new Error('Please provide a message to be displayed.');
-    }
-    if (data['actionHandler'] && !data['actionText']) {
-        throw new Error('Please provide action text with the handler.');
-    }
-    if (this.active) {
-        this.queuedNotifications_.push(data);
-    } else {
-        this.active = true;
-        this.message_ = data['message'];
-        if (data['timeout']) {
-            this.timeout_ = data['timeout'];
-        } else {
-            this.timeout_ = 2750;
-        }
-        if (data['actionHandler']) {
-            this.actionHandler_ = data['actionHandler'];
-        }
-        if (data['actionText']) {
-            this.actionText_ = data['actionText'];
-        }
-        this.displaySnackbar_();
-    }
-};
-MaterialSnackbar.prototype['showSnackbar'] = MaterialSnackbar.prototype.showSnackbar;
-/**
-   * Check if the queue has items within it.
-   * If it does, display the next entry.
-   *
-   * @private
-   */
-MaterialSnackbar.prototype.checkQueue_ = function () {
-    if (this.queuedNotifications_.length > 0) {
-        this.showSnackbar(this.queuedNotifications_.shift());
-    }
-};
-/**
-   * Cleanup the snackbar event listeners and accessiblity attributes.
-   *
-   * @private
-   */
-MaterialSnackbar.prototype.cleanup_ = function () {
-    this.element_.classList.remove(this.cssClasses_.ACTIVE);
-    setTimeout(function () {
-        this.element_.setAttribute('aria-hidden', 'true');
-        this.textElement_.textContent = '';
-        if (!Boolean(this.actionElement_.getAttribute('aria-hidden'))) {
-            this.setActionHidden_(true);
-            this.actionElement_.textContent = '';
-            this.actionElement_.removeEventListener('click', this.actionHandler_);
-        }
-        this.actionHandler_ = undefined;
-        this.message_ = undefined;
-        this.actionText_ = undefined;
-        this.active = false;
-        this.checkQueue_();
-    }.bind(this), this.Constant_.ANIMATION_LENGTH);
-};
-/**
-   * Set the action handler hidden state.
-   *
-   * @param {boolean} value
-   * @private
-   */
-MaterialSnackbar.prototype.setActionHidden_ = function (value) {
-    if (value) {
-        this.actionElement_.setAttribute('aria-hidden', 'true');
-    } else {
-        this.actionElement_.removeAttribute('aria-hidden');
-    }
-};
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialSnackbar,
-    classAsString: 'MaterialSnackbar',
-    cssClass: 'mdl-js-snackbar',
-    widget: true
-});
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for Spinner MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @param {HTMLElement} element The element that will be upgraded.
-   * @constructor
-   */
-var MaterialSpinner = function MaterialSpinner(element) {
-    this.element_ = element;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialSpinner'] = MaterialSpinner;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialSpinner.prototype.Constant_ = { MDL_SPINNER_LAYER_COUNT: 4 };
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialSpinner.prototype.CssClasses_ = {
-    MDL_SPINNER_LAYER: 'mdl-spinner__layer',
-    MDL_SPINNER_CIRCLE_CLIPPER: 'mdl-spinner__circle-clipper',
-    MDL_SPINNER_CIRCLE: 'mdl-spinner__circle',
-    MDL_SPINNER_GAP_PATCH: 'mdl-spinner__gap-patch',
-    MDL_SPINNER_LEFT: 'mdl-spinner__left',
-    MDL_SPINNER_RIGHT: 'mdl-spinner__right'
-};
-/**
-   * Auxiliary method to create a spinner layer.
-   *
-   * @param {number} index Index of the layer to be created.
-   * @public
-   */
-MaterialSpinner.prototype.createLayer = function (index) {
-    var layer = document.createElement('div');
-    layer.classList.add(this.CssClasses_.MDL_SPINNER_LAYER);
-    layer.classList.add(this.CssClasses_.MDL_SPINNER_LAYER + '-' + index);
-    var leftClipper = document.createElement('div');
-    leftClipper.classList.add(this.CssClasses_.MDL_SPINNER_CIRCLE_CLIPPER);
-    leftClipper.classList.add(this.CssClasses_.MDL_SPINNER_LEFT);
-    var gapPatch = document.createElement('div');
-    gapPatch.classList.add(this.CssClasses_.MDL_SPINNER_GAP_PATCH);
-    var rightClipper = document.createElement('div');
-    rightClipper.classList.add(this.CssClasses_.MDL_SPINNER_CIRCLE_CLIPPER);
-    rightClipper.classList.add(this.CssClasses_.MDL_SPINNER_RIGHT);
-    var circleOwners = [
-        leftClipper,
-        gapPatch,
-        rightClipper
-    ];
-    for (var i = 0; i < circleOwners.length; i++) {
-        var circle = document.createElement('div');
-        circle.classList.add(this.CssClasses_.MDL_SPINNER_CIRCLE);
-        circleOwners[i].appendChild(circle);
-    }
-    layer.appendChild(leftClipper);
-    layer.appendChild(gapPatch);
-    layer.appendChild(rightClipper);
-    this.element_.appendChild(layer);
-};
-MaterialSpinner.prototype['createLayer'] = MaterialSpinner.prototype.createLayer;
-/**
-   * Stops the spinner animation.
-   * Public method for users who need to stop the spinner for any reason.
-   *
-   * @public
-   */
-MaterialSpinner.prototype.stop = function () {
-    this.element_.classList.remove('is-active');
-};
-MaterialSpinner.prototype['stop'] = MaterialSpinner.prototype.stop;
-/**
-   * Starts the spinner animation.
-   * Public method for users who need to manually start the spinner for any reason
-   * (instead of just adding the 'is-active' class to their markup).
-   *
-   * @public
-   */
-MaterialSpinner.prototype.start = function () {
-    this.element_.classList.add('is-active');
-};
-MaterialSpinner.prototype['start'] = MaterialSpinner.prototype.start;
-/**
-   * Initialize element.
-   */
-MaterialSpinner.prototype.init = function () {
-    if (this.element_) {
-        for (var i = 1; i <= this.Constant_.MDL_SPINNER_LAYER_COUNT; i++) {
-            this.createLayer(i);
-        }
-        this.element_.classList.add('is-upgraded');
-    }
-};
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialSpinner,
-    classAsString: 'MaterialSpinner',
-    cssClass: 'mdl-js-spinner',
-    widget: true
-});
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for Checkbox MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {HTMLElement} element The element that will be upgraded.
-   */
-var MaterialSwitch = function MaterialSwitch(element) {
-    this.element_ = element;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialSwitch'] = MaterialSwitch;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialSwitch.prototype.Constant_ = { TINY_TIMEOUT: 0.001 };
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialSwitch.prototype.CssClasses_ = {
-    INPUT: 'mdl-switch__input',
-    TRACK: 'mdl-switch__track',
-    THUMB: 'mdl-switch__thumb',
-    FOCUS_HELPER: 'mdl-switch__focus-helper',
-    RIPPLE_EFFECT: 'mdl-js-ripple-effect',
-    RIPPLE_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
-    RIPPLE_CONTAINER: 'mdl-switch__ripple-container',
-    RIPPLE_CENTER: 'mdl-ripple--center',
-    RIPPLE: 'mdl-ripple',
-    IS_FOCUSED: 'is-focused',
-    IS_DISABLED: 'is-disabled',
-    IS_CHECKED: 'is-checked'
-};
-/**
-   * Handle change of state.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialSwitch.prototype.onChange_ = function (event) {
-    this.updateClasses_();
-};
-/**
-   * Handle focus of element.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialSwitch.prototype.onFocus_ = function (event) {
-    this.element_.classList.add(this.CssClasses_.IS_FOCUSED);
-};
-/**
-   * Handle lost focus of element.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialSwitch.prototype.onBlur_ = function (event) {
-    this.element_.classList.remove(this.CssClasses_.IS_FOCUSED);
-};
-/**
-   * Handle mouseup.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialSwitch.prototype.onMouseUp_ = function (event) {
-    this.blur_();
-};
-/**
-   * Handle class updates.
-   *
-   * @private
-   */
-MaterialSwitch.prototype.updateClasses_ = function () {
-    this.checkDisabled();
-    this.checkToggleState();
-};
-/**
-   * Add blur.
-   *
-   * @private
-   */
-MaterialSwitch.prototype.blur_ = function () {
-    // TODO: figure out why there's a focus event being fired after our blur,
-    // so that we can avoid this hack.
-    window.setTimeout(function () {
-        this.inputElement_.blur();
-    }.bind(this), this.Constant_.TINY_TIMEOUT);
-};
-// Public methods.
-/**
-   * Check the components disabled state.
-   *
-   * @public
-   */
-MaterialSwitch.prototype.checkDisabled = function () {
-    if (this.inputElement_.disabled) {
-        this.element_.classList.add(this.CssClasses_.IS_DISABLED);
-    } else {
-        this.element_.classList.remove(this.CssClasses_.IS_DISABLED);
-    }
-};
-MaterialSwitch.prototype['checkDisabled'] = MaterialSwitch.prototype.checkDisabled;
-/**
-   * Check the components toggled state.
-   *
-   * @public
-   */
-MaterialSwitch.prototype.checkToggleState = function () {
-    if (this.inputElement_.checked) {
-        this.element_.classList.add(this.CssClasses_.IS_CHECKED);
-    } else {
-        this.element_.classList.remove(this.CssClasses_.IS_CHECKED);
-    }
-};
-MaterialSwitch.prototype['checkToggleState'] = MaterialSwitch.prototype.checkToggleState;
-/**
-   * Disable switch.
-   *
-   * @public
-   */
-MaterialSwitch.prototype.disable = function () {
-    this.inputElement_.disabled = true;
-    this.updateClasses_();
-};
-MaterialSwitch.prototype['disable'] = MaterialSwitch.prototype.disable;
-/**
-   * Enable switch.
-   *
-   * @public
-   */
-MaterialSwitch.prototype.enable = function () {
-    this.inputElement_.disabled = false;
-    this.updateClasses_();
-};
-MaterialSwitch.prototype['enable'] = MaterialSwitch.prototype.enable;
-/**
-   * Activate switch.
-   *
-   * @public
-   */
-MaterialSwitch.prototype.on = function () {
-    this.inputElement_.checked = true;
-    this.updateClasses_();
-};
-MaterialSwitch.prototype['on'] = MaterialSwitch.prototype.on;
-/**
-   * Deactivate switch.
-   *
-   * @public
-   */
-MaterialSwitch.prototype.off = function () {
-    this.inputElement_.checked = false;
-    this.updateClasses_();
-};
-MaterialSwitch.prototype['off'] = MaterialSwitch.prototype.off;
-/**
-   * Initialize element.
-   */
-MaterialSwitch.prototype.init = function () {
-    if (this.element_) {
-        this.inputElement_ = this.element_.querySelector('.' + this.CssClasses_.INPUT);
-        var track = document.createElement('div');
-        track.classList.add(this.CssClasses_.TRACK);
-        var thumb = document.createElement('div');
-        thumb.classList.add(this.CssClasses_.THUMB);
-        var focusHelper = document.createElement('span');
-        focusHelper.classList.add(this.CssClasses_.FOCUS_HELPER);
-        thumb.appendChild(focusHelper);
-        this.element_.appendChild(track);
-        this.element_.appendChild(thumb);
-        this.boundMouseUpHandler = this.onMouseUp_.bind(this);
-        if (this.element_.classList.contains(this.CssClasses_.RIPPLE_EFFECT)) {
-            this.element_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS);
-            this.rippleContainerElement_ = document.createElement('span');
-            this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_CONTAINER);
-            this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_EFFECT);
-            this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_CENTER);
-            this.rippleContainerElement_.addEventListener('mouseup', this.boundMouseUpHandler);
-            var ripple = document.createElement('span');
-            ripple.classList.add(this.CssClasses_.RIPPLE);
-            this.rippleContainerElement_.appendChild(ripple);
-            this.element_.appendChild(this.rippleContainerElement_);
-        }
-        this.boundChangeHandler = this.onChange_.bind(this);
-        this.boundFocusHandler = this.onFocus_.bind(this);
-        this.boundBlurHandler = this.onBlur_.bind(this);
-        this.inputElement_.addEventListener('change', this.boundChangeHandler);
-        this.inputElement_.addEventListener('focus', this.boundFocusHandler);
-        this.inputElement_.addEventListener('blur', this.boundBlurHandler);
-        this.element_.addEventListener('mouseup', this.boundMouseUpHandler);
-        this.updateClasses_();
-        this.element_.classList.add('is-upgraded');
-    }
-};
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialSwitch,
-    classAsString: 'MaterialSwitch',
-    cssClass: 'mdl-js-switch',
-    widget: true
-});
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for Tabs MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {Element} element The element that will be upgraded.
-   */
-var MaterialTabs = function MaterialTabs(element) {
-    // Stores the HTML element.
-    this.element_ = element;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialTabs'] = MaterialTabs;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialTabs.prototype.Constant_ = {};
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialTabs.prototype.CssClasses_ = {
-    TAB_CLASS: 'mdl-tabs__tab',
-    PANEL_CLASS: 'mdl-tabs__panel',
-    ACTIVE_CLASS: 'is-active',
-    UPGRADED_CLASS: 'is-upgraded',
-    MDL_JS_RIPPLE_EFFECT: 'mdl-js-ripple-effect',
-    MDL_RIPPLE_CONTAINER: 'mdl-tabs__ripple-container',
-    MDL_RIPPLE: 'mdl-ripple',
-    MDL_JS_RIPPLE_EFFECT_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events'
-};
-/**
-   * Handle clicks to a tabs component
-   *
-   * @private
-   */
-MaterialTabs.prototype.initTabs_ = function () {
-    if (this.element_.classList.contains(this.CssClasses_.MDL_JS_RIPPLE_EFFECT)) {
-        this.element_.classList.add(this.CssClasses_.MDL_JS_RIPPLE_EFFECT_IGNORE_EVENTS);
-    }
-    // Select element tabs, document panels
-    this.tabs_ = this.element_.querySelectorAll('.' + this.CssClasses_.TAB_CLASS);
-    this.panels_ = this.element_.querySelectorAll('.' + this.CssClasses_.PANEL_CLASS);
-    // Create new tabs for each tab element
-    for (var i = 0; i < this.tabs_.length; i++) {
-        new MaterialTab(this.tabs_[i], this);
-    }
-    this.element_.classList.add(this.CssClasses_.UPGRADED_CLASS);
-};
-/**
-   * Reset tab state, dropping active classes
-   *
-   * @private
-   */
-MaterialTabs.prototype.resetTabState_ = function () {
-    for (var k = 0; k < this.tabs_.length; k++) {
-        this.tabs_[k].classList.remove(this.CssClasses_.ACTIVE_CLASS);
-    }
-};
-/**
-   * Reset panel state, droping active classes
-   *
-   * @private
-   */
-MaterialTabs.prototype.resetPanelState_ = function () {
-    for (var j = 0; j < this.panels_.length; j++) {
-        this.panels_[j].classList.remove(this.CssClasses_.ACTIVE_CLASS);
-    }
-};
-/**
-   * Initialize element.
-   */
-MaterialTabs.prototype.init = function () {
-    if (this.element_) {
-        this.initTabs_();
-    }
-};
-/**
-   * Constructor for an individual tab.
-   *
-   * @constructor
-   * @param {Element} tab The HTML element for the tab.
-   * @param {MaterialTabs} ctx The MaterialTabs object that owns the tab.
-   */
-function MaterialTab(tab, ctx) {
-    if (tab) {
-        if (ctx.element_.classList.contains(ctx.CssClasses_.MDL_JS_RIPPLE_EFFECT)) {
-            var rippleContainer = document.createElement('span');
-            rippleContainer.classList.add(ctx.CssClasses_.MDL_RIPPLE_CONTAINER);
-            rippleContainer.classList.add(ctx.CssClasses_.MDL_JS_RIPPLE_EFFECT);
-            var ripple = document.createElement('span');
-            ripple.classList.add(ctx.CssClasses_.MDL_RIPPLE);
-            rippleContainer.appendChild(ripple);
-            tab.appendChild(rippleContainer);
-        }
-        tab.addEventListener('click', function (e) {
-            if (tab.getAttribute('href').charAt(0) === '#') {
-                e.preventDefault();
-                var href = tab.href.split('#')[1];
-                var panel = ctx.element_.querySelector('#' + href);
-                ctx.resetTabState_();
-                ctx.resetPanelState_();
-                tab.classList.add(ctx.CssClasses_.ACTIVE_CLASS);
-                panel.classList.add(ctx.CssClasses_.ACTIVE_CLASS);
-            }
-        });
-    }
-}
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialTabs,
-    classAsString: 'MaterialTabs',
-    cssClass: 'mdl-js-tabs'
-});
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for Textfield MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {HTMLElement} element The element that will be upgraded.
-   */
-var MaterialTextfield = function MaterialTextfield(element) {
-    this.element_ = element;
-    this.maxRows = this.Constant_.NO_MAX_ROWS;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialTextfield'] = MaterialTextfield;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialTextfield.prototype.Constant_ = {
-    NO_MAX_ROWS: -1,
-    MAX_ROWS_ATTRIBUTE: 'maxrows'
-};
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialTextfield.prototype.CssClasses_ = {
-    LABEL: 'mdl-textfield__label',
-    INPUT: 'mdl-textfield__input',
-    IS_DIRTY: 'is-dirty',
-    IS_FOCUSED: 'is-focused',
-    IS_DISABLED: 'is-disabled',
-    IS_INVALID: 'is-invalid',
-    IS_UPGRADED: 'is-upgraded',
-    HAS_PLACEHOLDER: 'has-placeholder'
-};
-/**
-   * Handle input being entered.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialTextfield.prototype.onKeyDown_ = function (event) {
-    var currentRowCount = event.target.value.split('\n').length;
-    if (event.keyCode === 13) {
-        if (currentRowCount >= this.maxRows) {
-            event.preventDefault();
-        }
-    }
-};
-/**
-   * Handle focus.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialTextfield.prototype.onFocus_ = function (event) {
-    this.element_.classList.add(this.CssClasses_.IS_FOCUSED);
-};
-/**
-   * Handle lost focus.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialTextfield.prototype.onBlur_ = function (event) {
-    this.element_.classList.remove(this.CssClasses_.IS_FOCUSED);
-};
-/**
-   * Handle reset event from out side.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialTextfield.prototype.onReset_ = function (event) {
-    this.updateClasses_();
-};
-/**
-   * Handle class updates.
-   *
-   * @private
-   */
-MaterialTextfield.prototype.updateClasses_ = function () {
-    this.checkDisabled();
-    this.checkValidity();
-    this.checkDirty();
-    this.checkFocus();
-};
-// Public methods.
-/**
-   * Check the disabled state and update field accordingly.
-   *
-   * @public
-   */
-MaterialTextfield.prototype.checkDisabled = function () {
-    if (this.input_.disabled) {
-        this.element_.classList.add(this.CssClasses_.IS_DISABLED);
-    } else {
-        this.element_.classList.remove(this.CssClasses_.IS_DISABLED);
-    }
-};
-MaterialTextfield.prototype['checkDisabled'] = MaterialTextfield.prototype.checkDisabled;
-/**
-  * Check the focus state and update field accordingly.
-  *
-  * @public
-  */
-MaterialTextfield.prototype.checkFocus = function () {
-    if (Boolean(this.element_.querySelector(':focus'))) {
-        this.element_.classList.add(this.CssClasses_.IS_FOCUSED);
-    } else {
-        this.element_.classList.remove(this.CssClasses_.IS_FOCUSED);
-    }
-};
-MaterialTextfield.prototype['checkFocus'] = MaterialTextfield.prototype.checkFocus;
-/**
-   * Check the validity state and update field accordingly.
-   *
-   * @public
-   */
-MaterialTextfield.prototype.checkValidity = function () {
-    if (this.input_.validity) {
-        if (this.input_.validity.valid) {
-            this.element_.classList.remove(this.CssClasses_.IS_INVALID);
-        } else {
-            this.element_.classList.add(this.CssClasses_.IS_INVALID);
-        }
-    }
-};
-MaterialTextfield.prototype['checkValidity'] = MaterialTextfield.prototype.checkValidity;
-/**
-   * Check the dirty state and update field accordingly.
-   *
-   * @public
-   */
-MaterialTextfield.prototype.checkDirty = function () {
-    if (this.input_.value && this.input_.value.length > 0) {
-        this.element_.classList.add(this.CssClasses_.IS_DIRTY);
-    } else {
-        this.element_.classList.remove(this.CssClasses_.IS_DIRTY);
-    }
-};
-MaterialTextfield.prototype['checkDirty'] = MaterialTextfield.prototype.checkDirty;
-/**
-   * Disable text field.
-   *
-   * @public
-   */
-MaterialTextfield.prototype.disable = function () {
-    this.input_.disabled = true;
-    this.updateClasses_();
-};
-MaterialTextfield.prototype['disable'] = MaterialTextfield.prototype.disable;
-/**
-   * Enable text field.
-   *
-   * @public
-   */
-MaterialTextfield.prototype.enable = function () {
-    this.input_.disabled = false;
-    this.updateClasses_();
-};
-MaterialTextfield.prototype['enable'] = MaterialTextfield.prototype.enable;
-/**
-   * Update text field value.
-   *
-   * @param {string} value The value to which to set the control (optional).
-   * @public
-   */
-MaterialTextfield.prototype.change = function (value) {
-    this.input_.value = value || '';
-    this.updateClasses_();
-};
-MaterialTextfield.prototype['change'] = MaterialTextfield.prototype.change;
-/**
-   * Initialize element.
-   */
-MaterialTextfield.prototype.init = function () {
-    if (this.element_) {
-        this.label_ = this.element_.querySelector('.' + this.CssClasses_.LABEL);
-        this.input_ = this.element_.querySelector('.' + this.CssClasses_.INPUT);
-        if (this.input_) {
-            if (this.input_.hasAttribute(this.Constant_.MAX_ROWS_ATTRIBUTE)) {
-                this.maxRows = parseInt(this.input_.getAttribute(this.Constant_.MAX_ROWS_ATTRIBUTE), 10);
-                if (isNaN(this.maxRows)) {
-                    this.maxRows = this.Constant_.NO_MAX_ROWS;
-                }
-            }
-            if (this.input_.hasAttribute('placeholder')) {
-                this.element_.classList.add(this.CssClasses_.HAS_PLACEHOLDER);
-            }
-            this.boundUpdateClassesHandler = this.updateClasses_.bind(this);
-            this.boundFocusHandler = this.onFocus_.bind(this);
-            this.boundBlurHandler = this.onBlur_.bind(this);
-            this.boundResetHandler = this.onReset_.bind(this);
-            this.input_.addEventListener('input', this.boundUpdateClassesHandler);
-            this.input_.addEventListener('focus', this.boundFocusHandler);
-            this.input_.addEventListener('blur', this.boundBlurHandler);
-            this.input_.addEventListener('reset', this.boundResetHandler);
-            if (this.maxRows !== this.Constant_.NO_MAX_ROWS) {
-                // TODO: This should handle pasting multi line text.
-                // Currently doesn't.
-                this.boundKeyDownHandler = this.onKeyDown_.bind(this);
-                this.input_.addEventListener('keydown', this.boundKeyDownHandler);
-            }
-            var invalid = this.element_.classList.contains(this.CssClasses_.IS_INVALID);
-            this.updateClasses_();
-            this.element_.classList.add(this.CssClasses_.IS_UPGRADED);
-            if (invalid) {
-                this.element_.classList.add(this.CssClasses_.IS_INVALID);
-            }
-            if (this.input_.hasAttribute('autofocus')) {
-                this.element_.focus();
-                this.checkFocus();
-            }
-        }
-    }
-};
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialTextfield,
-    classAsString: 'MaterialTextfield',
-    cssClass: 'mdl-js-textfield',
-    widget: true
-});
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for Tooltip MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {HTMLElement} element The element that will be upgraded.
-   */
-var MaterialTooltip = function MaterialTooltip(element) {
-    this.element_ = element;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialTooltip'] = MaterialTooltip;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialTooltip.prototype.Constant_ = {};
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialTooltip.prototype.CssClasses_ = {
-    IS_ACTIVE: 'is-active',
-    BOTTOM: 'mdl-tooltip--bottom',
-    LEFT: 'mdl-tooltip--left',
-    RIGHT: 'mdl-tooltip--right',
-    TOP: 'mdl-tooltip--top'
-};
-/**
-   * Handle mouseenter for tooltip.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialTooltip.prototype.handleMouseEnter_ = function (event) {
-    var props = event.target.getBoundingClientRect();
-    var left = props.left + props.width / 2;
-    var top = props.top + props.height / 2;
-    var marginLeft = -1 * (this.element_.offsetWidth / 2);
-    var marginTop = -1 * (this.element_.offsetHeight / 2);
-    if (this.element_.classList.contains(this.CssClasses_.LEFT) || this.element_.classList.contains(this.CssClasses_.RIGHT)) {
-        left = props.width / 2;
-        if (top + marginTop < 0) {
-            this.element_.style.top = '0';
-            this.element_.style.marginTop = '0';
-        } else {
-            this.element_.style.top = top + 'px';
-            this.element_.style.marginTop = marginTop + 'px';
-        }
-    } else {
-        if (left + marginLeft < 0) {
-            this.element_.style.left = '0';
-            this.element_.style.marginLeft = '0';
-        } else {
-            this.element_.style.left = left + 'px';
-            this.element_.style.marginLeft = marginLeft + 'px';
-        }
-    }
-    if (this.element_.classList.contains(this.CssClasses_.TOP)) {
-        this.element_.style.top = props.top - this.element_.offsetHeight - 10 + 'px';
-    } else if (this.element_.classList.contains(this.CssClasses_.RIGHT)) {
-        this.element_.style.left = props.left + props.width + 10 + 'px';
-    } else if (this.element_.classList.contains(this.CssClasses_.LEFT)) {
-        this.element_.style.left = props.left - this.element_.offsetWidth - 10 + 'px';
-    } else {
-        this.element_.style.top = props.top + props.height + 10 + 'px';
-    }
-    this.element_.classList.add(this.CssClasses_.IS_ACTIVE);
-};
-/**
-   * Hide tooltip on mouseleave or scroll
-   *
-   * @private
-   */
-MaterialTooltip.prototype.hideTooltip_ = function () {
-    this.element_.classList.remove(this.CssClasses_.IS_ACTIVE);
-};
-/**
-   * Initialize element.
-   */
-MaterialTooltip.prototype.init = function () {
-    if (this.element_) {
-        var forElId = this.element_.getAttribute('for') || this.element_.getAttribute('data-mdl-for');
-        if (forElId) {
-            this.forElement_ = document.getElementById(forElId);
-        }
-        if (this.forElement_) {
-            // It's left here because it prevents accidental text selection on Android
-            if (!this.forElement_.hasAttribute('tabindex')) {
-                this.forElement_.setAttribute('tabindex', '0');
-            }
-            this.boundMouseEnterHandler = this.handleMouseEnter_.bind(this);
-            this.boundMouseLeaveAndScrollHandler = this.hideTooltip_.bind(this);
-            this.forElement_.addEventListener('mouseenter', this.boundMouseEnterHandler, false);
-            this.forElement_.addEventListener('touchend', this.boundMouseEnterHandler, false);
-            this.forElement_.addEventListener('mouseleave', this.boundMouseLeaveAndScrollHandler, false);
-            window.addEventListener('scroll', this.boundMouseLeaveAndScrollHandler, true);
-            window.addEventListener('touchstart', this.boundMouseLeaveAndScrollHandler);
-        }
-    }
-};
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialTooltip,
-    classAsString: 'MaterialTooltip',
-    cssClass: 'mdl-tooltip'
-});
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for Layout MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {HTMLElement} element The element that will be upgraded.
-   */
-var MaterialLayout = function MaterialLayout(element) {
-    this.element_ = element;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialLayout'] = MaterialLayout;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialLayout.prototype.Constant_ = {
-    MAX_WIDTH: '(max-width: 1024px)',
-    TAB_SCROLL_PIXELS: 100,
-    RESIZE_TIMEOUT: 100,
-    MENU_ICON: '&#xE5D2;',
-    CHEVRON_LEFT: 'chevron_left',
-    CHEVRON_RIGHT: 'chevron_right'
-};
-/**
-   * Keycodes, for code readability.
-   *
-   * @enum {number}
-   * @private
-   */
-MaterialLayout.prototype.Keycodes_ = {
-    ENTER: 13,
-    ESCAPE: 27,
-    SPACE: 32
-};
-/**
-   * Modes.
-   *
-   * @enum {number}
-   * @private
-   */
-MaterialLayout.prototype.Mode_ = {
-    STANDARD: 0,
-    SEAMED: 1,
-    WATERFALL: 2,
-    SCROLL: 3
-};
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialLayout.prototype.CssClasses_ = {
-    CONTAINER: 'mdl-layout__container',
-    HEADER: 'mdl-layout__header',
-    DRAWER: 'mdl-layout__drawer',
-    CONTENT: 'mdl-layout__content',
-    DRAWER_BTN: 'mdl-layout__drawer-button',
-    ICON: 'material-icons',
-    JS_RIPPLE_EFFECT: 'mdl-js-ripple-effect',
-    RIPPLE_CONTAINER: 'mdl-layout__tab-ripple-container',
-    RIPPLE: 'mdl-ripple',
-    RIPPLE_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
-    HEADER_SEAMED: 'mdl-layout__header--seamed',
-    HEADER_WATERFALL: 'mdl-layout__header--waterfall',
-    HEADER_SCROLL: 'mdl-layout__header--scroll',
-    FIXED_HEADER: 'mdl-layout--fixed-header',
-    OBFUSCATOR: 'mdl-layout__obfuscator',
-    TAB_BAR: 'mdl-layout__tab-bar',
-    TAB_CONTAINER: 'mdl-layout__tab-bar-container',
-    TAB: 'mdl-layout__tab',
-    TAB_BAR_BUTTON: 'mdl-layout__tab-bar-button',
-    TAB_BAR_LEFT_BUTTON: 'mdl-layout__tab-bar-left-button',
-    TAB_BAR_RIGHT_BUTTON: 'mdl-layout__tab-bar-right-button',
-    TAB_MANUAL_SWITCH: 'mdl-layout__tab-manual-switch',
-    PANEL: 'mdl-layout__tab-panel',
-    HAS_DRAWER: 'has-drawer',
-    HAS_TABS: 'has-tabs',
-    HAS_SCROLLING_HEADER: 'has-scrolling-header',
-    CASTING_SHADOW: 'is-casting-shadow',
-    IS_COMPACT: 'is-compact',
-    IS_SMALL_SCREEN: 'is-small-screen',
-    IS_DRAWER_OPEN: 'is-visible',
-    IS_ACTIVE: 'is-active',
-    IS_UPGRADED: 'is-upgraded',
-    IS_ANIMATING: 'is-animating',
-    ON_LARGE_SCREEN: 'mdl-layout--large-screen-only',
-    ON_SMALL_SCREEN: 'mdl-layout--small-screen-only'
-};
-/**
-   * Handles scrolling on the content.
-   *
-   * @private
-   */
-MaterialLayout.prototype.contentScrollHandler_ = function () {
-    if (this.header_.classList.contains(this.CssClasses_.IS_ANIMATING)) {
-        return;
-    }
-    var headerVisible = !this.element_.classList.contains(this.CssClasses_.IS_SMALL_SCREEN) || this.element_.classList.contains(this.CssClasses_.FIXED_HEADER);
-    if (this.content_.scrollTop > 0 && !this.header_.classList.contains(this.CssClasses_.IS_COMPACT)) {
-        this.header_.classList.add(this.CssClasses_.CASTING_SHADOW);
-        this.header_.classList.add(this.CssClasses_.IS_COMPACT);
-        if (headerVisible) {
-            this.header_.classList.add(this.CssClasses_.IS_ANIMATING);
-        }
-    } else if (this.content_.scrollTop <= 0 && this.header_.classList.contains(this.CssClasses_.IS_COMPACT)) {
-        this.header_.classList.remove(this.CssClasses_.CASTING_SHADOW);
-        this.header_.classList.remove(this.CssClasses_.IS_COMPACT);
-        if (headerVisible) {
-            this.header_.classList.add(this.CssClasses_.IS_ANIMATING);
-        }
-    }
-};
-/**
-   * Handles a keyboard event on the drawer.
-   *
-   * @param {Event} evt The event that fired.
-   * @private
-   */
-MaterialLayout.prototype.keyboardEventHandler_ = function (evt) {
-    // Only react when the drawer is open.
-    if (evt.keyCode === this.Keycodes_.ESCAPE && this.drawer_.classList.contains(this.CssClasses_.IS_DRAWER_OPEN)) {
-        this.toggleDrawer();
-    }
-};
-/**
-   * Handles changes in screen size.
-   *
-   * @private
-   */
-MaterialLayout.prototype.screenSizeHandler_ = function () {
-    if (this.screenSizeMediaQuery_.matches) {
-        this.element_.classList.add(this.CssClasses_.IS_SMALL_SCREEN);
-    } else {
-        this.element_.classList.remove(this.CssClasses_.IS_SMALL_SCREEN);
-        // Collapse drawer (if any) when moving to a large screen size.
-        if (this.drawer_) {
-            this.drawer_.classList.remove(this.CssClasses_.IS_DRAWER_OPEN);
-            this.obfuscator_.classList.remove(this.CssClasses_.IS_DRAWER_OPEN);
-        }
-    }
-};
-/**
-   * Handles events of drawer button.
-   *
-   * @param {Event} evt The event that fired.
-   * @private
-   */
-MaterialLayout.prototype.drawerToggleHandler_ = function (evt) {
-    if (evt && evt.type === 'keydown') {
-        if (evt.keyCode === this.Keycodes_.SPACE || evt.keyCode === this.Keycodes_.ENTER) {
-            // prevent scrolling in drawer nav
-            evt.preventDefault();
-        } else {
-            // prevent other keys
-            return;
-        }
-    }
-    this.toggleDrawer();
-};
-/**
-   * Handles (un)setting the `is-animating` class
-   *
-   * @private
-   */
-MaterialLayout.prototype.headerTransitionEndHandler_ = function () {
-    this.header_.classList.remove(this.CssClasses_.IS_ANIMATING);
-};
-/**
-   * Handles expanding the header on click
-   *
-   * @private
-   */
-MaterialLayout.prototype.headerClickHandler_ = function () {
-    if (this.header_.classList.contains(this.CssClasses_.IS_COMPACT)) {
-        this.header_.classList.remove(this.CssClasses_.IS_COMPACT);
-        this.header_.classList.add(this.CssClasses_.IS_ANIMATING);
-    }
-};
-/**
-   * Reset tab state, dropping active classes
-   *
-   * @private
-   */
-MaterialLayout.prototype.resetTabState_ = function (tabBar) {
-    for (var k = 0; k < tabBar.length; k++) {
-        tabBar[k].classList.remove(this.CssClasses_.IS_ACTIVE);
-    }
-};
-/**
-   * Reset panel state, droping active classes
-   *
-   * @private
-   */
-MaterialLayout.prototype.resetPanelState_ = function (panels) {
-    for (var j = 0; j < panels.length; j++) {
-        panels[j].classList.remove(this.CssClasses_.IS_ACTIVE);
-    }
-};
-/**
-  * Toggle drawer state
-  *
-  * @public
-  */
-MaterialLayout.prototype.toggleDrawer = function () {
-    var drawerButton = this.element_.querySelector('.' + this.CssClasses_.DRAWER_BTN);
-    this.drawer_.classList.toggle(this.CssClasses_.IS_DRAWER_OPEN);
-    this.obfuscator_.classList.toggle(this.CssClasses_.IS_DRAWER_OPEN);
-    // Set accessibility properties.
-    if (this.drawer_.classList.contains(this.CssClasses_.IS_DRAWER_OPEN)) {
-        this.drawer_.setAttribute('aria-hidden', 'false');
-        drawerButton.setAttribute('aria-expanded', 'true');
-    } else {
-        this.drawer_.setAttribute('aria-hidden', 'true');
-        drawerButton.setAttribute('aria-expanded', 'false');
-    }
-};
-MaterialLayout.prototype['toggleDrawer'] = MaterialLayout.prototype.toggleDrawer;
-/**
-   * Initialize element.
-   */
-MaterialLayout.prototype.init = function () {
-    if (this.element_) {
-        var container = document.createElement('div');
-        container.classList.add(this.CssClasses_.CONTAINER);
-        var focusedElement = this.element_.querySelector(':focus');
-        this.element_.parentElement.insertBefore(container, this.element_);
-        this.element_.parentElement.removeChild(this.element_);
-        container.appendChild(this.element_);
-        if (focusedElement) {
-            focusedElement.focus();
-        }
-        var directChildren = this.element_.childNodes;
-        var numChildren = directChildren.length;
-        for (var c = 0; c < numChildren; c++) {
-            var child = directChildren[c];
-            if (child.classList && child.classList.contains(this.CssClasses_.HEADER)) {
-                this.header_ = child;
-            }
-            if (child.classList && child.classList.contains(this.CssClasses_.DRAWER)) {
-                this.drawer_ = child;
-            }
-            if (child.classList && child.classList.contains(this.CssClasses_.CONTENT)) {
-                this.content_ = child;
-            }
-        }
-        window.addEventListener('pageshow', function (e) {
-            if (e.persisted) {
-                // when page is loaded from back/forward cache
-                // trigger repaint to let layout scroll in safari
-                this.element_.style.overflowY = 'hidden';
-                requestAnimationFrame(function () {
-                    this.element_.style.overflowY = '';
-                }.bind(this));
-            }
-        }.bind(this), false);
-        if (this.header_) {
-            this.tabBar_ = this.header_.querySelector('.' + this.CssClasses_.TAB_BAR);
-        }
-        var mode = this.Mode_.STANDARD;
-        if (this.header_) {
-            if (this.header_.classList.contains(this.CssClasses_.HEADER_SEAMED)) {
-                mode = this.Mode_.SEAMED;
-            } else if (this.header_.classList.contains(this.CssClasses_.HEADER_WATERFALL)) {
-                mode = this.Mode_.WATERFALL;
-                this.header_.addEventListener('transitionend', this.headerTransitionEndHandler_.bind(this));
-                this.header_.addEventListener('click', this.headerClickHandler_.bind(this));
-            } else if (this.header_.classList.contains(this.CssClasses_.HEADER_SCROLL)) {
-                mode = this.Mode_.SCROLL;
-                container.classList.add(this.CssClasses_.HAS_SCROLLING_HEADER);
-            }
-            if (mode === this.Mode_.STANDARD) {
-                this.header_.classList.add(this.CssClasses_.CASTING_SHADOW);
-                if (this.tabBar_) {
-                    this.tabBar_.classList.add(this.CssClasses_.CASTING_SHADOW);
-                }
-            } else if (mode === this.Mode_.SEAMED || mode === this.Mode_.SCROLL) {
-                this.header_.classList.remove(this.CssClasses_.CASTING_SHADOW);
-                if (this.tabBar_) {
-                    this.tabBar_.classList.remove(this.CssClasses_.CASTING_SHADOW);
-                }
-            } else if (mode === this.Mode_.WATERFALL) {
-                // Add and remove shadows depending on scroll position.
-                // Also add/remove auxiliary class for styling of the compact version of
-                // the header.
-                this.content_.addEventListener('scroll', this.contentScrollHandler_.bind(this));
-                this.contentScrollHandler_();
-            }
-        }
-        // Add drawer toggling button to our layout, if we have an openable drawer.
-        if (this.drawer_) {
-            var drawerButton = this.element_.querySelector('.' + this.CssClasses_.DRAWER_BTN);
-            if (!drawerButton) {
-                drawerButton = document.createElement('div');
-                drawerButton.setAttribute('aria-expanded', 'false');
-                drawerButton.setAttribute('role', 'button');
-                drawerButton.setAttribute('tabindex', '0');
-                drawerButton.classList.add(this.CssClasses_.DRAWER_BTN);
-                var drawerButtonIcon = document.createElement('i');
-                drawerButtonIcon.classList.add(this.CssClasses_.ICON);
-                drawerButtonIcon.innerHTML = this.Constant_.MENU_ICON;
-                drawerButton.appendChild(drawerButtonIcon);
-            }
-            if (this.drawer_.classList.contains(this.CssClasses_.ON_LARGE_SCREEN)) {
-                //If drawer has ON_LARGE_SCREEN class then add it to the drawer toggle button as well.
-                drawerButton.classList.add(this.CssClasses_.ON_LARGE_SCREEN);
-            } else if (this.drawer_.classList.contains(this.CssClasses_.ON_SMALL_SCREEN)) {
-                //If drawer has ON_SMALL_SCREEN class then add it to the drawer toggle button as well.
-                drawerButton.classList.add(this.CssClasses_.ON_SMALL_SCREEN);
-            }
-            drawerButton.addEventListener('click', this.drawerToggleHandler_.bind(this));
-            drawerButton.addEventListener('keydown', this.drawerToggleHandler_.bind(this));
-            // Add a class if the layout has a drawer, for altering the left padding.
-            // Adds the HAS_DRAWER to the elements since this.header_ may or may
-            // not be present.
-            this.element_.classList.add(this.CssClasses_.HAS_DRAWER);
-            // If we have a fixed header, add the button to the header rather than
-            // the layout.
-            if (this.element_.classList.contains(this.CssClasses_.FIXED_HEADER)) {
-                this.header_.insertBefore(drawerButton, this.header_.firstChild);
-            } else {
-                this.element_.insertBefore(drawerButton, this.content_);
-            }
-            var obfuscator = document.createElement('div');
-            obfuscator.classList.add(this.CssClasses_.OBFUSCATOR);
-            this.element_.appendChild(obfuscator);
-            obfuscator.addEventListener('click', this.drawerToggleHandler_.bind(this));
-            this.obfuscator_ = obfuscator;
-            this.drawer_.addEventListener('keydown', this.keyboardEventHandler_.bind(this));
-            this.drawer_.setAttribute('aria-hidden', 'true');
-        }
-        // Keep an eye on screen size, and add/remove auxiliary class for styling
-        // of small screens.
-        this.screenSizeMediaQuery_ = window.matchMedia(this.Constant_.MAX_WIDTH);
-        this.screenSizeMediaQuery_.addListener(this.screenSizeHandler_.bind(this));
-        this.screenSizeHandler_();
-        // Initialize tabs, if any.
-        if (this.header_ && this.tabBar_) {
-            this.element_.classList.add(this.CssClasses_.HAS_TABS);
-            var tabContainer = document.createElement('div');
-            tabContainer.classList.add(this.CssClasses_.TAB_CONTAINER);
-            this.header_.insertBefore(tabContainer, this.tabBar_);
-            this.header_.removeChild(this.tabBar_);
-            var leftButton = document.createElement('div');
-            leftButton.classList.add(this.CssClasses_.TAB_BAR_BUTTON);
-            leftButton.classList.add(this.CssClasses_.TAB_BAR_LEFT_BUTTON);
-            var leftButtonIcon = document.createElement('i');
-            leftButtonIcon.classList.add(this.CssClasses_.ICON);
-            leftButtonIcon.textContent = this.Constant_.CHEVRON_LEFT;
-            leftButton.appendChild(leftButtonIcon);
-            leftButton.addEventListener('click', function () {
-                this.tabBar_.scrollLeft -= this.Constant_.TAB_SCROLL_PIXELS;
-            }.bind(this));
-            var rightButton = document.createElement('div');
-            rightButton.classList.add(this.CssClasses_.TAB_BAR_BUTTON);
-            rightButton.classList.add(this.CssClasses_.TAB_BAR_RIGHT_BUTTON);
-            var rightButtonIcon = document.createElement('i');
-            rightButtonIcon.classList.add(this.CssClasses_.ICON);
-            rightButtonIcon.textContent = this.Constant_.CHEVRON_RIGHT;
-            rightButton.appendChild(rightButtonIcon);
-            rightButton.addEventListener('click', function () {
-                this.tabBar_.scrollLeft += this.Constant_.TAB_SCROLL_PIXELS;
-            }.bind(this));
-            tabContainer.appendChild(leftButton);
-            tabContainer.appendChild(this.tabBar_);
-            tabContainer.appendChild(rightButton);
-            // Add and remove tab buttons depending on scroll position and total
-            // window size.
-            var tabUpdateHandler = function () {
-                if (this.tabBar_.scrollLeft > 0) {
-                    leftButton.classList.add(this.CssClasses_.IS_ACTIVE);
-                } else {
-                    leftButton.classList.remove(this.CssClasses_.IS_ACTIVE);
-                }
-                if (this.tabBar_.scrollLeft < this.tabBar_.scrollWidth - this.tabBar_.offsetWidth) {
-                    rightButton.classList.add(this.CssClasses_.IS_ACTIVE);
-                } else {
-                    rightButton.classList.remove(this.CssClasses_.IS_ACTIVE);
-                }
-            }.bind(this);
-            this.tabBar_.addEventListener('scroll', tabUpdateHandler);
-            tabUpdateHandler();
-            // Update tabs when the window resizes.
-            var windowResizeHandler = function () {
-                // Use timeouts to make sure it doesn't happen too often.
-                if (this.resizeTimeoutId_) {
-                    clearTimeout(this.resizeTimeoutId_);
-                }
-                this.resizeTimeoutId_ = setTimeout(function () {
-                    tabUpdateHandler();
-                    this.resizeTimeoutId_ = null;
-                }.bind(this), this.Constant_.RESIZE_TIMEOUT);
-            }.bind(this);
-            window.addEventListener('resize', windowResizeHandler);
-            if (this.tabBar_.classList.contains(this.CssClasses_.JS_RIPPLE_EFFECT)) {
-                this.tabBar_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS);
-            }
-            // Select element tabs, document panels
-            var tabs = this.tabBar_.querySelectorAll('.' + this.CssClasses_.TAB);
-            var panels = this.content_.querySelectorAll('.' + this.CssClasses_.PANEL);
-            // Create new tabs for each tab element
-            for (var i = 0; i < tabs.length; i++) {
-                new MaterialLayoutTab(tabs[i], tabs, panels, this);
-            }
-        }
-        this.element_.classList.add(this.CssClasses_.IS_UPGRADED);
-    }
-};
-/**
-   * Constructor for an individual tab.
-   *
-   * @constructor
-   * @param {HTMLElement} tab The HTML element for the tab.
-   * @param {!Array<HTMLElement>} tabs Array with HTML elements for all tabs.
-   * @param {!Array<HTMLElement>} panels Array with HTML elements for all panels.
-   * @param {MaterialLayout} layout The MaterialLayout object that owns the tab.
-   */
-function MaterialLayoutTab(tab, tabs, panels, layout) {
-    /**
-     * Auxiliary method to programmatically select a tab in the UI.
-     */
-    function selectTab() {
-        var href = tab.href.split('#')[1];
-        var panel = layout.content_.querySelector('#' + href);
-        layout.resetTabState_(tabs);
-        layout.resetPanelState_(panels);
-        tab.classList.add(layout.CssClasses_.IS_ACTIVE);
-        panel.classList.add(layout.CssClasses_.IS_ACTIVE);
-    }
-    if (layout.tabBar_.classList.contains(layout.CssClasses_.JS_RIPPLE_EFFECT)) {
-        var rippleContainer = document.createElement('span');
-        rippleContainer.classList.add(layout.CssClasses_.RIPPLE_CONTAINER);
-        rippleContainer.classList.add(layout.CssClasses_.JS_RIPPLE_EFFECT);
-        var ripple = document.createElement('span');
-        ripple.classList.add(layout.CssClasses_.RIPPLE);
-        rippleContainer.appendChild(ripple);
-        tab.appendChild(rippleContainer);
-    }
-    if (!layout.tabBar_.classList.contains(layout.CssClasses_.TAB_MANUAL_SWITCH)) {
-        tab.addEventListener('click', function (e) {
-            if (tab.getAttribute('href').charAt(0) === '#') {
-                e.preventDefault();
-                selectTab();
-            }
-        });
-    }
-    tab.show = selectTab;
-}
-window['MaterialLayoutTab'] = MaterialLayoutTab;
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialLayout,
-    classAsString: 'MaterialLayout',
-    cssClass: 'mdl-js-layout'
-});
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for Data Table Card MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {Element} element The element that will be upgraded.
-   */
-var MaterialDataTable = function MaterialDataTable(element) {
-    this.element_ = element;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialDataTable'] = MaterialDataTable;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialDataTable.prototype.Constant_ = {};
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialDataTable.prototype.CssClasses_ = {
-    DATA_TABLE: 'mdl-data-table',
-    SELECTABLE: 'mdl-data-table--selectable',
-    SELECT_ELEMENT: 'mdl-data-table__select',
-    IS_SELECTED: 'is-selected',
-    IS_UPGRADED: 'is-upgraded'
-};
-/**
-   * Generates and returns a function that toggles the selection state of a
-   * single row (or multiple rows).
-   *
-   * @param {Element} checkbox Checkbox that toggles the selection state.
-   * @param {Element} row Row to toggle when checkbox changes.
-   * @param {(Array<Object>|NodeList)=} opt_rows Rows to toggle when checkbox changes.
-   * @private
-   */
-MaterialDataTable.prototype.selectRow_ = function (checkbox, row, opt_rows) {
-    if (row) {
-        return function () {
-            if (checkbox.checked) {
-                row.classList.add(this.CssClasses_.IS_SELECTED);
-            } else {
-                row.classList.remove(this.CssClasses_.IS_SELECTED);
-            }
-        }.bind(this);
-    }
-    if (opt_rows) {
-        return function () {
-            var i;
-            var el;
-            if (checkbox.checked) {
-                for (i = 0; i < opt_rows.length; i++) {
-                    el = opt_rows[i].querySelector('td').querySelector('.mdl-checkbox');
-                    el['MaterialCheckbox'].check();
-                    opt_rows[i].classList.add(this.CssClasses_.IS_SELECTED);
-                }
-            } else {
-                for (i = 0; i < opt_rows.length; i++) {
-                    el = opt_rows[i].querySelector('td').querySelector('.mdl-checkbox');
-                    el['MaterialCheckbox'].uncheck();
-                    opt_rows[i].classList.remove(this.CssClasses_.IS_SELECTED);
-                }
-            }
-        }.bind(this);
-    }
-};
-/**
-   * Creates a checkbox for a single or or multiple rows and hooks up the
-   * event handling.
-   *
-   * @param {Element} row Row to toggle when checkbox changes.
-   * @param {(Array<Object>|NodeList)=} opt_rows Rows to toggle when checkbox changes.
-   * @private
-   */
-MaterialDataTable.prototype.createCheckbox_ = function (row, opt_rows) {
-    var label = document.createElement('label');
-    var labelClasses = [
-        'mdl-checkbox',
-        'mdl-js-checkbox',
-        'mdl-js-ripple-effect',
-        this.CssClasses_.SELECT_ELEMENT
-    ];
-    label.className = labelClasses.join(' ');
-    var checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.classList.add('mdl-checkbox__input');
-    if (row) {
-        checkbox.checked = row.classList.contains(this.CssClasses_.IS_SELECTED);
-        checkbox.addEventListener('change', this.selectRow_(checkbox, row));
-    } else if (opt_rows) {
-        checkbox.addEventListener('change', this.selectRow_(checkbox, null, opt_rows));
-    }
-    label.appendChild(checkbox);
-    componentHandler.upgradeElement(label, 'MaterialCheckbox');
-    return label;
-};
-/**
-   * Initialize element.
-   */
-MaterialDataTable.prototype.init = function () {
-    if (this.element_) {
-        var firstHeader = this.element_.querySelector('th');
-        var bodyRows = Array.prototype.slice.call(this.element_.querySelectorAll('tbody tr'));
-        var footRows = Array.prototype.slice.call(this.element_.querySelectorAll('tfoot tr'));
-        var rows = bodyRows.concat(footRows);
-        if (this.element_.classList.contains(this.CssClasses_.SELECTABLE)) {
-            var th = document.createElement('th');
-            var headerCheckbox = this.createCheckbox_(null, rows);
-            th.appendChild(headerCheckbox);
-            firstHeader.parentElement.insertBefore(th, firstHeader);
-            for (var i = 0; i < rows.length; i++) {
-                var firstCell = rows[i].querySelector('td');
-                if (firstCell) {
-                    var td = document.createElement('td');
-                    if (rows[i].parentNode.nodeName.toUpperCase() === 'TBODY') {
-                        var rowCheckbox = this.createCheckbox_(rows[i]);
-                        td.appendChild(rowCheckbox);
-                    }
-                    rows[i].insertBefore(td, firstCell);
-                }
-            }
-            this.element_.classList.add(this.CssClasses_.IS_UPGRADED);
-        }
-    }
-};
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialDataTable,
-    classAsString: 'MaterialDataTable',
-    cssClass: 'mdl-js-data-table'
-});
-/**
- * @license
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
-   * Class constructor for Ripple MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {HTMLElement} element The element that will be upgraded.
-   */
-var MaterialRipple = function MaterialRipple(element) {
-    this.element_ = element;
-    // Initialize instance.
-    this.init();
-};
-window['MaterialRipple'] = MaterialRipple;
-/**
-   * Store constants in one place so they can be updated easily.
-   *
-   * @enum {string | number}
-   * @private
-   */
-MaterialRipple.prototype.Constant_ = {
-    INITIAL_SCALE: 'scale(0.0001, 0.0001)',
-    INITIAL_SIZE: '1px',
-    INITIAL_OPACITY: '0.4',
-    FINAL_OPACITY: '0',
-    FINAL_SCALE: ''
-};
-/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-MaterialRipple.prototype.CssClasses_ = {
-    RIPPLE_CENTER: 'mdl-ripple--center',
-    RIPPLE_EFFECT_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
-    RIPPLE: 'mdl-ripple',
-    IS_ANIMATING: 'is-animating',
-    IS_VISIBLE: 'is-visible'
-};
-/**
-   * Handle mouse / finger down on element.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialRipple.prototype.downHandler_ = function (event) {
-    if (!this.rippleElement_.style.width && !this.rippleElement_.style.height) {
-        var rect = this.element_.getBoundingClientRect();
-        this.boundHeight = rect.height;
-        this.boundWidth = rect.width;
-        this.rippleSize_ = Math.sqrt(rect.width * rect.width + rect.height * rect.height) * 2 + 2;
-        this.rippleElement_.style.width = this.rippleSize_ + 'px';
-        this.rippleElement_.style.height = this.rippleSize_ + 'px';
-    }
-    this.rippleElement_.classList.add(this.CssClasses_.IS_VISIBLE);
-    if (event.type === 'mousedown' && this.ignoringMouseDown_) {
-        this.ignoringMouseDown_ = false;
-    } else {
-        if (event.type === 'touchstart') {
-            this.ignoringMouseDown_ = true;
-        }
-        var frameCount = this.getFrameCount();
-        if (frameCount > 0) {
-            return;
-        }
-        this.setFrameCount(1);
-        var bound = event.currentTarget.getBoundingClientRect();
-        var x;
-        var y;
-        // Check if we are handling a keyboard click.
-        if (event.clientX === 0 && event.clientY === 0) {
-            x = Math.round(bound.width / 2);
-            y = Math.round(bound.height / 2);
-        } else {
-            var clientX = event.clientX !== undefined ? event.clientX : event.touches[0].clientX;
-            var clientY = event.clientY !== undefined ? event.clientY : event.touches[0].clientY;
-            x = Math.round(clientX - bound.left);
-            y = Math.round(clientY - bound.top);
-        }
-        this.setRippleXY(x, y);
-        this.setRippleStyles(true);
-        window.requestAnimationFrame(this.animFrameHandler.bind(this));
-    }
-};
-/**
-   * Handle mouse / finger up on element.
-   *
-   * @param {Event} event The event that fired.
-   * @private
-   */
-MaterialRipple.prototype.upHandler_ = function (event) {
-    // Don't fire for the artificial "mouseup" generated by a double-click.
-    if (event && event.detail !== 2) {
-        // Allow a repaint to occur before removing this class, so the animation
-        // shows for tap events, which seem to trigger a mouseup too soon after
-        // mousedown.
-        window.setTimeout(function () {
-            this.rippleElement_.classList.remove(this.CssClasses_.IS_VISIBLE);
-        }.bind(this), 0);
-    }
-};
-/**
-   * Initialize element.
-   */
-MaterialRipple.prototype.init = function () {
-    if (this.element_) {
-        var recentering = this.element_.classList.contains(this.CssClasses_.RIPPLE_CENTER);
-        if (!this.element_.classList.contains(this.CssClasses_.RIPPLE_EFFECT_IGNORE_EVENTS)) {
-            this.rippleElement_ = this.element_.querySelector('.' + this.CssClasses_.RIPPLE);
-            this.frameCount_ = 0;
-            this.rippleSize_ = 0;
-            this.x_ = 0;
-            this.y_ = 0;
-            // Touch start produces a compat mouse down event, which would cause a
-            // second ripples. To avoid that, we use this property to ignore the first
-            // mouse down after a touch start.
-            this.ignoringMouseDown_ = false;
-            this.boundDownHandler = this.downHandler_.bind(this);
-            this.element_.addEventListener('mousedown', this.boundDownHandler);
-            this.element_.addEventListener('touchstart', this.boundDownHandler);
-            this.boundUpHandler = this.upHandler_.bind(this);
-            this.element_.addEventListener('mouseup', this.boundUpHandler);
-            this.element_.addEventListener('mouseleave', this.boundUpHandler);
-            this.element_.addEventListener('touchend', this.boundUpHandler);
-            this.element_.addEventListener('blur', this.boundUpHandler);
-            /**
-         * Getter for frameCount_.
-         * @return {number} the frame count.
-         */
-            this.getFrameCount = function () {
-                return this.frameCount_;
-            };
-            /**
-         * Setter for frameCount_.
-         * @param {number} fC the frame count.
-         */
-            this.setFrameCount = function (fC) {
-                this.frameCount_ = fC;
-            };
-            /**
-         * Getter for rippleElement_.
-         * @return {Element} the ripple element.
-         */
-            this.getRippleElement = function () {
-                return this.rippleElement_;
-            };
-            /**
-         * Sets the ripple X and Y coordinates.
-         * @param  {number} newX the new X coordinate
-         * @param  {number} newY the new Y coordinate
-         */
-            this.setRippleXY = function (newX, newY) {
-                this.x_ = newX;
-                this.y_ = newY;
-            };
-            /**
-         * Sets the ripple styles.
-         * @param  {boolean} start whether or not this is the start frame.
-         */
-            this.setRippleStyles = function (start) {
-                if (this.rippleElement_ !== null) {
-                    var transformString;
-                    var scale;
-                    var size;
-                    var offset = 'translate(' + this.x_ + 'px, ' + this.y_ + 'px)';
-                    if (start) {
-                        scale = this.Constant_.INITIAL_SCALE;
-                        size = this.Constant_.INITIAL_SIZE;
-                    } else {
-                        scale = this.Constant_.FINAL_SCALE;
-                        size = this.rippleSize_ + 'px';
-                        if (recentering) {
-                            offset = 'translate(' + this.boundWidth / 2 + 'px, ' + this.boundHeight / 2 + 'px)';
-                        }
-                    }
-                    transformString = 'translate(-50%, -50%) ' + offset + scale;
-                    this.rippleElement_.style.webkitTransform = transformString;
-                    this.rippleElement_.style.msTransform = transformString;
-                    this.rippleElement_.style.transform = transformString;
-                    if (start) {
-                        this.rippleElement_.classList.remove(this.CssClasses_.IS_ANIMATING);
-                    } else {
-                        this.rippleElement_.classList.add(this.CssClasses_.IS_ANIMATING);
-                    }
-                }
-            };
-            /**
-         * Handles an animation frame.
-         */
-            this.animFrameHandler = function () {
-                if (this.frameCount_-- > 0) {
-                    window.requestAnimationFrame(this.animFrameHandler.bind(this));
-                } else {
-                    this.setRippleStyles(false);
-                }
-            };
-        }
-    }
-};
-// The component registers itself. It can assume componentHandler is available
-// in the global scope.
-componentHandler.register({
-    constructor: MaterialRipple,
-    classAsString: 'MaterialRipple',
-    cssClass: 'mdl-js-ripple-effect',
-    widget: false
-});
-}());
-
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/******/(function (modules) {
-	// webpackBootstrap
-	/******/ // The module cache
-	/******/var installedModules = {};
-
-	/******/ // The require function
-	/******/function __webpack_require__(moduleId) {
-
-		/******/ // Check if module is in cache
-		/******/if (installedModules[moduleId])
-			/******/return installedModules[moduleId].exports;
-
-		/******/ // Create a new module (and put it into the cache)
-		/******/var module = installedModules[moduleId] = {
-			/******/exports: {},
-			/******/id: moduleId,
-			/******/loaded: false
-			/******/ };
-
-		/******/ // Execute the module function
-		/******/modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
-		/******/ // Flag the module as loaded
-		/******/module.loaded = true;
-
-		/******/ // Return the exports of the module
-		/******/return module.exports;
-		/******/
-	}
-
-	/******/ // expose the modules object (__webpack_modules__)
-	/******/__webpack_require__.m = modules;
-
-	/******/ // expose the module cache
-	/******/__webpack_require__.c = installedModules;
-
-	/******/ // __webpack_public_path__
-	/******/__webpack_require__.p = "";
-
-	/******/ // Load entry module and return exports
-	/******/return __webpack_require__(0);
-	/******/
-})(
-/************************************************************************/
-/******/[
-/* 0 */
-/***/function (module, exports) {
-
-	'use strict';
-
-	/**
-  * MDL Stepper - A library that implements to the Material Design Lite (MDL) a polyfill for stepper
-  * component specified by Material Design.
-  * @version v1.1.6
-  * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
-  * @link https://github.com/ahlechandre/mdl-stepper
-  */
-
-	(function () {
-		'use strict';
-
-		/**
-   * Class constructor for Stepper MDL component.
-   * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
-   *
-   * @constructor
-   * @param {HTMLElement} element The element that will be upgraded.
-   */
-
-		function MaterialStepper(element) {
-			this.element_ = element;
-
-			// initialize instance.
-			this.init();
-		}
-
-		window.MaterialStepper = MaterialStepper;
-
-		/**
-   * Store properties of stepper.
-   * @private
-   */
-		MaterialStepper.prototype.Stepper_ = {};
-
-		/**
-   * Get properties of stepper.
-   * @return {Object}
-   * @private
-   */
-		MaterialStepper.prototype.getStepper_ = function () {
-			return {
-				isLinear: this.element_.classList.contains(this.CssClasses_.STEPPER_LINEAR),
-				hasFeedback: this.element_.classList.contains(this.CssClasses_.STEPPER_FEEDBACK)
-			};
-		};
-
-		/**
-   * Store strings for steps states.
-   * @enum {string}
-   * @private
-   */
-		MaterialStepper.prototype.StepState_ = {
-			COMPLETED: 'completed',
-			ERROR: 'error',
-			NORMAL: 'normal'
-		};
-
-		/**
-   * Store strings for dataset attributes defined by this component that are used for
-   * JavaScript custom events.
-   *
-   * @enum {string}
-   * @private
-   */
-		MaterialStepper.prototype.DatasetAttributes_ = {
-			CONTINUE: 'stepper-next',
-			CANCEL: 'stepper-cancel',
-			SKIP: 'stepper-skip',
-			BACK: 'stepper-back'
-		};
-
-		/**
-   * Issue: https://github.com/ahlechandre/mdl-stepper/issues/14
-   * Returns a custom event object
-   * @param {string} evtName The name/type of custom event to create.
-   * @param {bool} bubble If event is bubbleable.
-   * @param {bool} cancel If event is cancelable.
-   * @returns {Event}
-   */
-		MaterialStepper.prototype.defineCustomEvent = function (evtName, bubble, cancel) {
-			var ev;
-			if ('CustomEvent' in window && typeof window.CustomEvent === 'function') {
-				ev = new Event(evtName, {
-					bubbles: bubble,
-					cancelable: cancel
-				});
-			} else {
-				ev = document.createEvent('Events');
-				ev.initEvent(evtName, bubble, cancel);
-			}
-			return ev;
-		};
-
-		/**
-   * Store the custom events applieds to the steps and stepper.
-   *
-   * @private
-   */
-		MaterialStepper.prototype.CustomEvents_ = {
-			onstepnext: MaterialStepper.prototype.defineCustomEvent('onstepnext', true, true),
-			onstepcancel: MaterialStepper.prototype.defineCustomEvent('onstepcancel', true, true),
-			onstepskip: MaterialStepper.prototype.defineCustomEvent('onstepskip', true, true),
-			onstepback: MaterialStepper.prototype.defineCustomEvent('onstepback', true, true),
-			onstepcomplete: MaterialStepper.prototype.defineCustomEvent('onstepcomplete', true, true),
-			onsteperror: MaterialStepper.prototype.defineCustomEvent('onsteperror', true, true),
-			onsteppercomplete: MaterialStepper.prototype.defineCustomEvent('onsteppercomplete', true, true)
-		};
-
-		/**
-   * Store strings for class names defined by this component that are used in
-   * JavaScript. This allows us to simply change it in one place should we
-   * decide to modify at a later date.
-   *
-   * @enum {string}
-   * @private
-   */
-		MaterialStepper.prototype.CssClasses_ = {
-			BUTTON_JS: 'mdl-js-button',
-			STEPPER_LINEAR: 'mdl-stepper--linear',
-			STEPPER_FEEDBACK: 'mdl-stepper--feedback',
-			STEP_COMPLETED: 'mdl-step--completed',
-			STEP_ERROR: 'mdl-step--error',
-			STEP_TRANSIENT: 'mdl-step--transient',
-			STEP_OPTIONAL: 'mdl-step--optional',
-			STEP_EDITABLE: 'mdl-step--editable',
-			IS_ACTIVE: 'is-active',
-			TRANSIENT: 'mdl-step__transient',
-			TRANSIENT_OVERLAY: 'mdl-step__transient-overlay',
-			TRANSIENT_LOADER: 'mdl-step__transient-loader',
-			SPINNER: 'mdl-spinner',
-			SPINNER_JS: 'mdl-js-spinner',
-			SPINNER_IS_ACTIVE: 'is-active',
-			STEPPER: 'mdl-stepper',
-			STEP: 'mdl-step',
-			STEP_LABEL: 'mdl-step__label',
-			STEP_LABEL_INDICATOR: 'mdl-step__label-indicator',
-			STEP_LABEL_INDICATOR_CONTENT: 'mdl-step__label-indicator-content',
-			STEP_TITLE: 'mdl-step__title',
-			STEP_TITLE_TEXT: 'mdl-step__title-text',
-			STEP_TITLE_MESSAGE: 'mdl-step__title-message',
-			STEP_CONTENT: 'mdl-step__content',
-			STEP_ACTIONS: 'mdl-step__actions'
-		};
-
-		/**
-   * Store collection of steps and important data about them
-   * @private
-   */
-		MaterialStepper.prototype.Steps_ = {};
-
-		/**
-   * Returns the label indicator for referred to the passed step.
-   * @param {MaterialStepper.Steps_.collection.<step>} step The step that will get
-   *                                                        the label indicator.
-   * @return {HTMLElement}
-   * @private
-   */
-		MaterialStepper.prototype.getIndicatorElement_ = function (step) {
-			/** @type {HTMLElement} */
-			var indicatorElement;
-			/** @type {HTMLElement} */
-			var indicatorContent;
-			indicatorElement = document.createElement('span');
-			indicatorContent = this.getIndicatorContentNormal_(step.labelndicatorText);
-			indicatorElement.classList.add(this.CssClasses_.STEP_LABEL_INDICATOR);
-			indicatorElement.appendChild(indicatorContent);
-			return indicatorElement;
-		};
-
-		/**
-   * Create a new element that's represent "normal" label indicator.
-   * @param {string} text The text content of indicator (e.g. 1, 2..N).
-   * @return {HTMLElement}
-   * @private
-   */
-		MaterialStepper.prototype.getIndicatorContentNormal_ = function (text) {
-			/** @type {HTMLElement} */
-			var normal;
-			normal = document.createElement('span');
-			normal.classList.add(this.CssClasses_.STEP_LABEL_INDICATOR_CONTENT);
-			normal.textContent = text;
-			return normal;
-		};
-
-		/**
-   * Create a new element that's represent "completed" label indicator.
-   * @param {boolean} isEditable Flag to check if step is of editable type.
-   * @return {HTMLElement}
-   * @private
-   */
-		MaterialStepper.prototype.getIndicatorContentCompleted_ = function (isEditable) {
-			// Creates a new material icon to represent the completed step.
-			/** @type {HTMLElement} */
-			var completed;
-			completed = document.createElement('i');
-			completed.classList.add('material-icons', this.CssClasses_.STEP_LABEL_INDICATOR_CONTENT);
-			// If step is editable the icon used will be "edit",
-			// else the icon will be "check".
-			completed.textContent = isEditable ? 'edit' : 'check';
-			return completed;
-		};
-
-		/**
-   * Create a new element that's represent "error" label indicator.
-   * @return {HTMLElement}
-   * @private
-   */
-		MaterialStepper.prototype.getIndicatorContentError_ = function () {
-			/** @type {HTMLElement} */
-			var error;
-			error = document.createElement('span');
-			error.classList.add(this.CssClasses_.STEP_LABEL_INDICATOR_CONTENT);
-			error.textContent = '!';
-			return error;
-		};
-
-		/**
-   * Defines a new step model.
-   * @param {HTMLElement} step The step element.
-   * @param {number} id The unique number for each step.
-   * @return {Object}
-   * @private
-   */
-		MaterialStepper.prototype.getStepModel_ = function (step, id) {
-			/** @type {Object} */
-			var model;
-			/** @type {string} */
-			var selectorActionsBack;
-			/** @type {string} */
-			var selectorActionsCancel;
-			/** @type {string} */
-			var selectorActionsNext;
-			/** @type {string} */
-			var selectorActionsSkip;
-			selectorActionsBack = '[data-' + this.DatasetAttributes_.BACK + ']';
-			selectorActionsCancel = '[data-' + this.DatasetAttributes_.CANCEL + ']';
-			selectorActionsNext = '[data-' + this.DatasetAttributes_.CONTINUE + ']';
-			selectorActionsSkip = '[data-' + this.DatasetAttributes_.SKIP + ']';
-			model = {};
-			model.container = step;
-			model.id = id;
-			model.label = step.querySelector('.' + this.CssClasses_.STEP_LABEL);
-			model.labelndicatorText = id;
-			model.labelTitle = step.querySelector('.' + this.CssClasses_.STEP_TITLE);
-			model.labelTitleText = step.querySelector('.' + this.CssClasses_.STEP_TITLE_TEXT).textContent;
-			model.labelTitleMessage = step.querySelector('.' + this.CssClasses_.STEP_TITLE_MESSAGE);
-			model.labelTitleMessageText = model.labelTitleMessage ? model.labelTitleMessage.textContent : '';
-			model.content = step.querySelector('.' + this.CssClasses_.STEP_CONTENT);
-			model.actions = step.querySelector('.' + this.CssClasses_.STEP_ACTIONS);
-			model.actionsBack = model.actions.querySelector(selectorActionsBack) || null;
-			model.actionsCancel = model.actions.querySelector(selectorActionsCancel) || null;
-			model.actionsNext = model.actions.querySelector(selectorActionsNext) || null;
-			model.actionsSkip = model.actions.querySelector(selectorActionsSkip) || null;
-			model.labelIndicator = model.label.querySelector('.' + this.CssClasses_.STEP_LABEL_INDICATOR);
-
-			if (!model.labelIndicator) {
-				// Creates a new indicator for the label if not exists
-				model.labelIndicator = this.getIndicatorElement_(model);
-				model.label.appendChild(model.labelIndicator);
-			}
-
-			if (step.classList.contains(this.CssClasses_.STEP_COMPLETED)) {
-				model.state = this.StepState_.COMPLETED;
-			} else if (step.classList.contains(this.CssClasses_.STEP_ERROR)) {
-				model.state = this.StepState_.ERROR;
-			} else {
-				model.state = this.StepState_.NORMAL;
-			}
-			model.isActive = step.classList.contains(this.CssClasses_.IS_ACTIVE);
-			model.isOptional = step.classList.contains(this.CssClasses_.STEP_OPTIONAL);
-			model.isEditable = step.classList.contains(this.CssClasses_.STEP_EDITABLE);
-			return model;
-		};
-
-		/**
-   * Get the active step element.
-   * @return {HTMLElement}
-   */
-		MaterialStepper.prototype.getActive = function () {
-			return this.Steps_.collection[this.Steps_.active - 1].container;
-		};
-
-		/**
-   * Get the active step id.
-   * @return {number}
-   */
-		MaterialStepper.prototype.getActiveId = function () {
-			return this.Steps_.collection[this.Steps_.active - 1].id;
-		};
-
-		/**
-   * Load the model of all steps and store inside a collection.
-   * @return {Object}
-   * @private
-   */
-		MaterialStepper.prototype.getSteps_ = function () {
-			/** @type {array} */
-			var collection;
-			/** @type {number} */
-			var total;
-			/** @type {number} */
-			var completed;
-			/** @type {number} */
-			var optional;
-			/** @type {number} */
-			var active;
-			/** @type {HTMLElement} */
-			var stepElements;
-			/** @type {number} */
-			var i;
-			collection = [];
-			total = 0;
-			completed = 0;
-			optional = 0;
-			active = 0;
-			stepElements = this.element_.querySelectorAll('.' + this.CssClasses_.STEP);
-
-			for (i = 0; i < stepElements.length; i++) {
-				collection[i] = this.getStepModel_(stepElements[i], i + 1);
-
-				if (collection[i].isOptional) {
-					optional += 1;
-				}
-
-				if (collection[i].isActive) {
-					active = collection[i].id;
-				}
-
-				// Prevents the step label to scrolling out of user view on Google Chrome.
-				// More details here: <https://github.com/ahlechandre/mdl-stepper/issues/11 />.
-				stepElements[i].addEventListener('scroll', function (event) {
-					event.target.scrollTop = 0;
-				});
-			}
-			total = collection.length;
-			return {
-				collection: collection,
-				total: total,
-				completed: completed,
-				optional: optional,
-				active: active
-			};
-		};
-
-		/**
-   * Defines a specific step as "active".
-   * @param {MaterialStepper.Steps_.collection<step>} step A model of step.
-   * @return {boolean}
-   * @private
-   */
-		MaterialStepper.prototype.setStepActive_ = function (step) {
-			/** @type {function} */
-			var stepsDeactivator;
-
-			// The transient effect blocks the stepper to move
-			if (this.hasTransient()) return false;
-
-			stepsDeactivator = function stepsDeactivator(step) {
-				step.container.classList.remove(this.CssClasses_.IS_ACTIVE);
-
-				if (step.isActive) {
-					step.isActive = false;
-				}
-			};
-			this.Steps_.collection.forEach(stepsDeactivator.bind(this));
-			// remove if step was in transient (feedback) effect
-			step.container.classList.remove(this.CssClasses_.STEP_TRANSIENT);
-			step.container.classList.add(this.CssClasses_.IS_ACTIVE);
-			step.isActive = true;
-			this.Steps_.active = step.id;
-			return true;
-		};
-
-		/**
-   * Defines as "active" the first step or a specific id.
-   * @param {number | undefined} id Unique number of a step.
-   * @return {boolean}
-   * @private
-   */
-		MaterialStepper.prototype.setActive_ = function (id) {
-			/** @type {HTMLElement | null} */
-			var active;
-			/** MaterialStepper.Steps_.collection<step> */
-			var first;
-			/** @type {number} */
-			var i;
-			/** @type {boolean} */
-			var moved;
-			/** MaterialStepper.Steps_.collection<step> */
-			var step;
-
-			// Return false if specified id is less or equal 0 and bigger than the last step
-			if (!isNaN(id) && (id > this.Steps_.total || id <= 0)) return false;
-
-			moved = false;
-
-			if (id) {
-				for (i = 0; i < this.Steps_.total; i++) {
-					step = this.Steps_.collection[i];
-
-					if (step.id === id) {
-						moved = this.setStepActive_(step);
-						break;
-					}
-				}
-			} else {
-				active = this.element_.querySelector('.' + this.CssClasses_.IS_ACTIVE);
-
-				if (!active) {
-					// Set the first step as "active" if none id was specified and
-					// no "active" step was found at the DOM.
-					first = this.Steps_.collection[0];
-					moved = this.setStepActive_(first);
-				}
-			}
-
-			if (this.Stepper_.isLinear) {
-				// We know that all steps previous the "active" are "completed"
-				// case the stepper is linear
-				this.updateLinearStates_();
-			}
-			return moved;
-		};
-
-		/**
-   * Change the state of a step
-   * @param {MaterialStepper.Steps_.collection<step>} step The step to be updated.
-   * @param {string} state The step state ("completed", "error" or "normal").
-   * @return {boolean}
-   * @private
-   */
-		MaterialStepper.prototype.updateStepState_ = function (step, state) {
-			/** @type {string} */
-			var stateClass;
-			/** @type {HTMLElement} */
-			var indicatorContent;
-			/** @type {HTMLElement} */
-			var currentIndicatorContent;
-			/** @type {boolean} */
-			var stepperCompleted;
-			/** @type {boolean} */
-			var hasRequired;
-			/** @type {MaterialStepper.Steps_.collection<stepItem>} */
-			var stepItem;
-			/** @type {number} */
-			var item;
-			/** @type {string} */
-			var selectorIndicator;
-			selectorIndicator = '.' + this.CssClasses_.STEP_LABEL_INDICATOR_CONTENT;
-
-			// Can't update the state for the same.
-			if (step.state === state) return false;
-
-			// Case the current step state to change is "completed",
-			// we can decrement the total number of completed.
-			if (step.state === this.StepState_.COMPLETED) {
-				this.Steps_.completed -= 1;
-			}
-			currentIndicatorContent = step.labelIndicator.querySelector(selectorIndicator);
-
-			switch (state) {
-				case this.StepState_.COMPLETED:
-					{
-						// Case changing the current step state to "completed",
-						// we can increment the total number of completed.
-						this.Steps_.completed += 1;
-						step.container.classList.remove(this.CssClasses_.STEP_ERROR);
-						indicatorContent = this.getIndicatorContentCompleted_(step.isEditable);
-						stateClass = this.CssClasses_.STEP_COMPLETED;
-						break;
-					}
-				case this.StepState_.ERROR:
-					{
-						step.container.classList.remove(this.CssClasses_.STEP_COMPLETED);
-						indicatorContent = this.getIndicatorContentError_();
-						stateClass = this.CssClasses_.STEP_ERROR;
-						break;
-					}
-				case this.StepState_.NORMAL:
-					{
-						step.container.classList.remove(this.CssClasses_.STEP_COMPLETED);
-						step.container.classList.remove(this.CssClasses_.STEP_ERROR);
-						indicatorContent = this.getIndicatorContentNormal_(step.labelndicatorText);
-						break;
-					}
-				default:
-					{
-						break;
-					}
-			}
-
-			// "normal" is the default state and don't have specific css class.
-			if (stateClass) {
-				step.container.classList.add(stateClass);
-			}
-			step.labelIndicator.replaceChild(indicatorContent, currentIndicatorContent);
-			step.state = state;
-
-			// Case the total number of completed steps
-			// are equal the total number of steps less the optionals
-			// or total number of completed steps are equal the total number of steps,
-			// we can consider that the stepper are successfully complete and
-			// dispatch the custom event.
-			stepperCompleted = false;
-
-			if (this.Steps_.completed === this.Steps_.total) {
-				stepperCompleted = true;
-			} else if (this.Steps_.completed === this.Steps_.total - this.Steps_.optional) {
-				for (item in this.Steps_.collection) {
-					// eslint guard-for-in.
-					if (this.Steps_.collection.hasOwnProperty(item)) {
-						stepItem = this.Steps_.collection[item];
-						hasRequired = !stepItem.isOptional && stepItem.state !== this.StepState_.COMPLETED;
-
-						if (hasRequired) break;
-					}
-				}
-				stepperCompleted = !hasRequired;
-			}
-
-			if (stepperCompleted) {
-				this.dispatchEventOnStepperComplete_();
-			}
-
-			return true;
-		};
-
-		/**
-   * Change to "completed" the state of all steps previous the "active"
-   * except the optionals.
-   * @return {undefined}
-   * @private
-   */
-		MaterialStepper.prototype.updateLinearStates_ = function () {
-			/** @type {number} */
-			var i;
-
-			for (i = 0; i < this.Steps_.total; i++) {
-				if (this.Steps_.collection[i].isActive) {
-					break;
-				} else {
-					if (this.Steps_.collection[i].isOptional) continue;
-
-					this.updateStepState_(this.Steps_.collection[i], this.StepState_.COMPLETED);
-				}
-			}
-		};
-
-		/**
-   * Move "active" to the previous step. This operation can returns false
-   * if it does not regress the step.
-   * @return {boolean}
-   */
-		MaterialStepper.prototype.back = function () {
-			/** @type {boolean} */
-			var moved;
-			/** @type {function} */
-			var moveStep;
-			/** @type {string} */
-			var model;
-			/** @type {MaterialStepper.Steps_.collection<step>} */
-			var step;
-			/** @type {MaterialStepper.Steps_.collection<step>} */
-			var previous;
-			moved = false;
-			moveStep = function moveStep(step) {
-				/** @type {boolean} */
-				var stepActivated;
-				stepActivated = this.setActive_(step.id);
-
-				if (stepActivated) {
-					if (stepActivated && this.Stepper_.hasFeedback) {
-						// Remove the (feedback) transient effect before move.
-						this.removeTransientEffect_(step);
-					}
-				}
-				return stepActivated;
-			};
-
-			for (model in this.Steps_.collection) {
-				// Rule eslint guard-for-in.
-				if (this.Steps_.collection.hasOwnProperty(model)) {
-					step = this.Steps_.collection[model];
-
-					if (step.isActive) {
-						previous = this.Steps_.collection[step.id - 2];
-
-						if (!previous) return false;
-
-						if (this.Stepper_.isLinear) {
-							if (previous.isEditable) {
-								moved = moveStep.bind(this)(previous);
-							}
-						} else {
-							moved = moveStep.bind(this)(previous);
-						}
-						break;
-					}
-				}
-			}
-			return moved;
-		};
-
-		/**
-   * Move "active" to the next if the current step is optional. This operation can returns false
-   * if it does not advances the step.
-   * @return {boolean}
-   */
-		MaterialStepper.prototype.skip = function () {
-			/** @type {boolean} */
-			var moved;
-			/** @type {string} */
-			var model;
-			/** @type {MaterialStepper.Steps_.collection<step>} */
-			var step;
-			moved = false;
-
-			for (model in this.Steps_.collection) {
-				// Rule eslint guard-for-in.
-				if (this.Steps_.collection.hasOwnProperty(model)) {
-					step = this.Steps_.collection[model];
-
-					if (step.isActive) {
-						if (step.isOptional) {
-							moved = this.setActive_(step.id + 1);
-
-							if (moved && this.Stepper_.hasFeedback) {
-								// Remove the (feedback) transient effect before move
-								this.removeTransientEffect_(step);
-							}
-						}
-						break;
-					}
-				}
-			}
-			return moved;
-		};
-
-		/**
-   * Move "active" to specified step id.
-   * This operation is similar to the MaterialStepper.setActive_(<number>).
-   * @param {number} id Unique number for step.
-   * @return {boolean}
-   */
-		MaterialStepper.prototype.goto = function (id) {
-			return this.setActive_(id);
-		};
-
-		/**
-   * Defines the current state of step to "error" and display
-   * an alert message instead of default title message.
-   * @param {string} message The text content to show with error state.
-   * @return {undefined}
-   */
-		MaterialStepper.prototype.error = function (message) {
-			/** @type {string} */
-			var model;
-			/** @type {MaterialStepper.Steps_.collection<step>} */
-			var step;
-
-			for (model in this.Steps_.collection) {
-				// Rule eslint guard-for-in.
-				if (this.Steps_.collection.hasOwnProperty(model)) {
-					step = this.Steps_.collection[model];
-
-					if (step.isActive) {
-						if (this.Stepper_.hasFeedback) {
-							// Remove the (feedback) transient effect before move.
-							this.removeTransientEffect_(step);
-						}
-						this.updateStepState_(step, this.StepState_.ERROR);
-
-						if (message) {
-							this.updateTitleMessage_(step, message);
-						}
-						// Now dispatch on step the custom event "onsteperror".
-						this.dispatchEventOnStepError_(step);
-						break;
-					}
-				}
-			}
-		};
-
-		/**
-  * Defines current step state to "completed" and move active to the next.
-  * This operation can returns false if it does not advance the step.
-  * @return {boolean}
-  */
-		MaterialStepper.prototype.next = function () {
-			/** @type {boolean} */
-			var moved;
-			/** @type {MaterialStepper.Steps_.collection<step>} */
-			var step;
-			/** @type {number} */
-			var activate;
-			/** @type {string} */
-			var model;
-			/** @type {string} */
-			var item;
-			/** @type {MaterialStepper.Steps_.collection<stepItem>} */
-			var stepItem;
-			moved = false;
-
-			for (model in this.Steps_.collection) {
-				// Rule eslint guard-for-in.
-				if (this.Steps_.collection.hasOwnProperty(model)) {
-					step = this.Steps_.collection[model];
-
-					if (step.isActive) {
-						activate = step.id + 1;
-
-						if (this.Stepper_.hasFeedback) {
-							// Remove the (feedback) transient effect before move
-							this.removeTransientEffect_(step);
-						}
-
-						if (step.state === this.StepState_.ERROR) {
-							// Case the current state of step is "error", update the error message
-							// to the original title message or just remove it.
-							if (step.labelTitleMessageText) {
-								this.updateTitleMessage_(step, step.labelTitleMessageText);
-							} else {
-								this.removeTitleMessage_(step);
-							}
-						}
-
-						if (step.isEditable && this.Stepper_.isLinear) {
-							// In linear steppers if the current step is editable the stepper needs to find
-							// the next step without "completed" state
-							for (item in this.Steps_.collection) {
-								// Rule eslint guard-for-in.
-								if (this.Steps_.collection.hasOwnProperty(item)) {
-									stepItem = this.Steps_.collection[item];
-
-									if (stepItem.id > step.id && stepItem.state !== this.StepState_.COMPLETED) {
-										activate = stepItem.id;
-										break;
-									}
-								}
-							}
-						}
-						moved = this.setActive_(activate);
-
-						// Update "manually" the state of current step to "completed" because
-						// MaterialStepper.setActive_(<number>) can't change the state of non-linears steppers
-						// and can't change the state of optional or last step in linears steppers.
-						if (this.Stepper_.isLinear) {
-							if (step.isOptional || step.id === this.Steps_.total) {
-								this.updateStepState_(step, this.StepState_.COMPLETED);
-							}
-						} else {
-							this.updateStepState_(step, this.StepState_.COMPLETED);
-						}
-
-						// Now dispatch on step the custom event "onstepcomplete"
-						this.dispatchEventOnStepComplete_(step);
-						break;
-					}
-				}
-			}
-			return moved;
-		};
-
-		/**
-   * Update the title message or creates a new if it not exists.
-   * @param {MaterialStepper.Steps_.collection<step>} step The step of label to be updated.
-   * @param {string} text The text content to update.
-   * @return {undefined}
-   */
-		MaterialStepper.prototype.updateTitleMessage_ = function (step, text) {
-			/** @type {HTMLElement | null} */
-			var titleMessage;
-			titleMessage = step.container.querySelector('.' + this.CssClasses_.STEP_TITLE_MESSAGE);
-
-			if (!titleMessage) {
-				titleMessage = document.createElement('span');
-				titleMessage.classList.add(this.CssClasses_.STEP_TITLE_MESSAGE);
-				step.labelTitle.appendChild(titleMessage);
-			}
-			titleMessage.textContent = text;
-		};
-
-		/**
-   * Remove the title message if it exists.
-   * @param {MaterialStepper.Steps_.collection<step>} step The step to remove title message.
-   * @return {undefined}
-   */
-		MaterialStepper.prototype.removeTitleMessage_ = function (step) {
-			/** @type {HTMLElement | null} */
-			var titleMessage;
-			titleMessage = step.container.querySelector('.' + this.CssClasses_.STEP_TITLE_MESSAGE);
-
-			if (titleMessage) {
-				titleMessage.parentNode.removeChild(titleMessage);
-			}
-		};
-
-		/**
-   * Remove (feedback) transient effect and applied to the step.
-   * @param {MaterialStepper.Steps_.collection<step>} step The step to remove effect.
-   * @return {boolean}
-   */
-		MaterialStepper.prototype.removeTransientEffect_ = function (step) {
-			/** @type {HTMLElement | null} */
-			var transient;
-			transient = step.content.querySelector('.' + this.CssClasses_.TRANSIENT);
-
-			if (!transient) return false;
-
-			step.container.classList.remove(this.CssClasses_.STEP_TRANSIENT);
-			step.content.removeChild(transient);
-			return true;
-		};
-
-		/**
-   * Create (feedback) transient effect and apply to the current step.
-   * @param {MaterialStepper.Steps_.collection<step>} step The step to add effect.
-   * @return {boolean}
-   */
-		MaterialStepper.prototype.addTransientEffect_ = function (step) {
-			/** @type {HTMLElement} */
-			var transient;
-			/** @type {HTMLElement} */
-			var overlay;
-			/** @type {HTMLElement} */
-			var loader;
-			/** @type {HTMLElement} */
-			var spinner;
-
-			if (step.content.querySelector('.' + this.CssClasses_.TRANSIENT)) return false;
-
-			transient = document.createElement('div');
-			overlay = document.createElement('div');
-			loader = document.createElement('div');
-			spinner = document.createElement('div');
-			transient.classList.add(this.CssClasses_.TRANSIENT);
-			overlay.classList.add(this.CssClasses_.TRANSIENT_OVERLAY);
-			loader.classList.add(this.CssClasses_.TRANSIENT_LOADER);
-			spinner.classList.add(this.CssClasses_.SPINNER);
-			spinner.classList.add(this.CssClasses_.SPINNER_JS);
-			spinner.classList.add(this.CssClasses_.SPINNER_IS_ACTIVE);
-			loader.appendChild(spinner);
-			transient.appendChild(overlay);
-			transient.appendChild(loader);
-			step.container.classList.add(this.CssClasses_.STEP_TRANSIENT);
-			step.content.appendChild(transient);
-			// Assume componentHandler is available in the global scope.
-			componentHandler.upgradeDom();
-			return true;
-		};
-
-		/**
-   * Add event listener to linear, non-linear steppers and dispatch the custom events.
-   * @return {undefined}
-   */
-		MaterialStepper.prototype.setCustomEvents_ = function () {
-			/** @type {function} */
-			var linearLabels;
-			/** @type {function} */
-			var nonLinearLabels;
-			/** @type {function} */
-			var dispatchCustomEvents;
-
-			linearLabels = function linearLabels(step) {
-				// We know that editable steps can be activated by click on label case it's completed
-				if (step.isEditable) {
-					step.label.addEventListener('click', function (event) {
-						event.preventDefault();
-
-						if (step.state === this.StepState_.COMPLETED) {
-							this.setStepActive_(step);
-						}
-					}.bind(this));
-				}
-			};
-			nonLinearLabels = function nonLinearLabels(step) {
-				step.label.addEventListener('click', function (event) {
-					event.preventDefault();
-					this.setStepActive_(step);
-				}.bind(this));
-			};
-			dispatchCustomEvents = function dispatchCustomEvents(step) {
-				this.dispatchEventOnStepNext_(step);
-				this.dispatchEventOnStepCancel_(step);
-				this.dispatchEventOnStepSkip_(step);
-				this.dispatchEventOnStepBack_(step);
-			};
-
-			if (this.Stepper_.isLinear) {
-				this.Steps_.collection.forEach(linearLabels.bind(this));
-			} else {
-				this.Steps_.collection.forEach(nonLinearLabels.bind(this));
-			}
-			this.Steps_.collection.forEach(dispatchCustomEvents.bind(this));
-		};
-
-		/**
-   * Dispatch "onstepcomplete" event on step when method stepper.next() is invoked to the
-   * current and return true. Or just when the active step change your state to "completed".
-   * @param {MaterialStepper.Steps_.collection<step>} step The step to dispatch event.
-   * @return {undefined}
-   */
-		MaterialStepper.prototype.dispatchEventOnStepComplete_ = function (step) {
-			step.container.dispatchEvent(this.CustomEvents_.onstepcomplete);
-		};
-
-		/**
-   * Dispatch "onsteperror" event on step when method stepper.error('Your alert message')
-   * is invoked to the current step and return true. Or just when the active step
-   * change your state to "error".
-   * @param {MaterialStepper.Steps_.collection<step>} step The step to dispatch event.
-   * @return {undefined}
-   */
-		MaterialStepper.prototype.dispatchEventOnStepError_ = function (step) {
-			step.container.dispatchEvent(this.CustomEvents_.onsteperror);
-		};
-
-		/**
-   * Dispatch "onsteppercomplete" event on stepper when all steps are completed.
-   * If there is optionals steps, they will be ignored.
-   * @return {undefined}
-   */
-		MaterialStepper.prototype.dispatchEventOnStepperComplete_ = function () {
-			this.element_.dispatchEvent(this.CustomEvents_.onsteppercomplete);
-		};
-
-		/**
-   * Dispatch "onstepnext" event on step when the step action button/link with
-   * [data-stepper-next] attribute is clicked.
-   * @param {MaterialStepper.Steps_.collection<step>} step The step to dispatch event.
-   * @return {boolean}
-   */
-		MaterialStepper.prototype.dispatchEventOnStepNext_ = function (step) {
-			if (!step.actionsNext) return false;
-
-			step.actionsNext.addEventListener('click', function () {
-				if (this.Stepper_.hasFeedback) {
-					this.addTransientEffect_(step);
-				}
-				step.container.dispatchEvent(this.CustomEvents_.onstepnext);
-			}.bind(this));
-
-			return true;
-		};
-
-		/**
-   * Dispatch "onstepcancel" event on step when the step action button/link with
-   * [data-stepper-cancel] attribute is clicked.
-   * @param {MaterialStepper.Steps_.collection<step>} step The step to dispatch event.
-   * @return {boolean}
-   */
-		MaterialStepper.prototype.dispatchEventOnStepCancel_ = function (step) {
-			if (!step.actionsCancel) return false;
-
-			step.actionsCancel.addEventListener('click', function (event) {
-				event.preventDefault();
-				step.container.dispatchEvent(this.CustomEvents_.onstepcancel);
-			}.bind(this));
-
-			return true;
-		};
-
-		/**
-   * Dispatch "onstepskip" event on step when the step action button/link with
-   * [data-stepper-skip] attribute is clicked.
-   * @param {MaterialStepper.Steps_.collection<step>} step The step to dispatch event.
-   * @return {boolean}
-   */
-		MaterialStepper.prototype.dispatchEventOnStepSkip_ = function (step) {
-			if (!step.actionsSkip) return false;
-
-			step.actionsSkip.addEventListener('click', function (event) {
-				event.preventDefault();
-				step.container.dispatchEvent(this.CustomEvents_.onstepskip);
-			}.bind(this));
-			return true;
-		};
-
-		/**
-   * Dispatch "onstepback" event on step when the step action button/link with
-   * [data-stepper-back] attribute is clicked.
-   * @param {MaterialStepper.Steps_.collection<step>} step The step to dispatch event.
-   * @return {boolean}
-   */
-		MaterialStepper.prototype.dispatchEventOnStepBack_ = function (step) {
-			if (!step.actionsBack) return false;
-
-			step.actionsBack.addEventListener('click', function (event) {
-				event.preventDefault();
-				step.container.dispatchEvent(this.CustomEvents_.onstepback);
-			}.bind(this));
-			return true;
-		};
-
-		/**
-   * Check if has some active transient effect on steps.
-   * @return {boolean}
-   */
-		MaterialStepper.prototype.hasTransient = function () {
-			/** @type {string} */
-			var cssClasseStep;
-			/** @type {string} */
-			var cssClasseStepContent;
-			/** @type {string} */
-			var cssClasseTransient;
-			/** @type {string} */
-			var selectorTransient;
-			/** @type {HTMLElement | null} */
-			var transient;
-			cssClasseStep = '.' + this.CssClasses_.STEP;
-			cssClasseStepContent = '.' + this.CssClasses_.STEP_CONTENT;
-			cssClasseTransient = '.' + this.CssClasses_.TRANSIENT;
-			selectorTransient = cssClasseStep + ' > ' + cssClasseStepContent + ' > ' + cssClasseTransient;
-			transient = this.element_.querySelector(selectorTransient);
-			return transient !== null;
-		};
-
-		/**
-   * Initialize the instance.
-   * @return {undefined}
-   * @public
-   */
-		MaterialStepper.prototype.init = function () {
-			// Check if stepper element exists.
-			if (this.element_) {
-				this.Stepper_ = this.getStepper_();
-				this.Steps_ = this.getSteps_();
-				this.setActive_();
-				this.setCustomEvents_();
-			}
-		};
-
-		// The component registers itself. It can assume componentHandler is available
-		// in the global scope.
-		componentHandler.register({
-			constructor: MaterialStepper,
-			classAsString: 'MaterialStepper',
-			cssClass: 'mdl-stepper',
-			widget: true
-		});
-	})();
-
-	/***/
-}
-/******/]);
-
-/***/ }),
-/* 45 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;(function () {
@@ -10239,7 +5331,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;(function () {
   dialogPolyfill['forceRegisterDialog'] = dialogPolyfill.forceRegisterDialog;
   dialogPolyfill['registerDialog'] = dialogPolyfill.registerDialog;
 
-  if ("function" === 'function' && 'amd' in __webpack_require__(46)) {
+  if ("function" === 'function' && 'amd' in __webpack_require__(49)) {
     // AMD support
     !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
       return dialogPolyfill;
@@ -10255,7 +5347,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;(function () {
 })();
 
 /***/ }),
-/* 46 */
+/* 49 */
 /***/ (function(module, exports) {
 
 module.exports = function() {
@@ -10264,7 +5356,3985 @@ module.exports = function() {
 
 
 /***/ }),
-/* 47 */
+/* 50 */
+/***/ (function(module, exports) {
+
+;(function () {
+    "use strict";
+
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+
+    /**
+     * A component handler interface using the revealing module design pattern.
+     * More details on this design pattern here:
+     * https://github.com/jasonmayes/mdl-component-design-pattern
+     *
+     * @author Jason Mayes.
+     */
+    /* exported componentHandler */
+
+    // Pre-defining the componentHandler interface, for closure documentation and
+    // static verification.
+
+    var componentHandler = {
+        /**
+         * Searches existing DOM for elements of our component type and upgrades them
+         * if they have not already been upgraded.
+         *
+         * @param {string=} optJsClass the programatic name of the element class we
+         * need to create a new instance of.
+         * @param {string=} optCssClass the name of the CSS class elements of this
+         * type will have.
+         */
+        upgradeDom: function (optJsClass, optCssClass) {},
+        /**
+         * Upgrades a specific element rather than all in the DOM.
+         *
+         * @param {!Element} element The element we wish to upgrade.
+         * @param {string=} optJsClass Optional name of the class we want to upgrade
+         * the element to.
+         */
+        upgradeElement: function (element, optJsClass) {},
+        /**
+         * Upgrades a specific list of elements rather than all in the DOM.
+         *
+         * @param {!Element|!Array<!Element>|!NodeList|!HTMLCollection} elements
+         * The elements we wish to upgrade.
+         */
+        upgradeElements: function (elements) {},
+        /**
+         * Upgrades all registered components found in the current DOM. This is
+         * automatically called on window load.
+         */
+        upgradeAllRegistered: function () {},
+        /**
+         * Allows user to be alerted to any upgrades that are performed for a given
+         * component type
+         *
+         * @param {string} jsClass The class name of the MDL component we wish
+         * to hook into for any upgrades performed.
+         * @param {function(!HTMLElement)} callback The function to call upon an
+         * upgrade. This function should expect 1 parameter - the HTMLElement which
+         * got upgraded.
+         */
+        registerUpgradedCallback: function (jsClass, callback) {},
+        /**
+         * Registers a class for future use and attempts to upgrade existing DOM.
+         *
+         * @param {componentHandler.ComponentConfigPublic} config the registration configuration
+         */
+        register: function (config) {},
+        /**
+         * Downgrade either a given node, an array of nodes, or a NodeList.
+         *
+         * @param {!Node|!Array<!Node>|!NodeList} nodes
+         */
+        downgradeElements: function (nodes) {}
+    };
+
+    componentHandler = function () {
+        'use strict';
+
+        /** @type {!Array<componentHandler.ComponentConfig>} */
+
+        var registeredComponents_ = [];
+
+        /** @type {!Array<componentHandler.Component>} */
+        var createdComponents_ = [];
+
+        var componentConfigProperty_ = 'mdlComponentConfigInternal_';
+
+        /**
+         * Searches registered components for a class we are interested in using.
+         * Optionally replaces a match with passed object if specified.
+         *
+         * @param {string} name The name of a class we want to use.
+         * @param {componentHandler.ComponentConfig=} optReplace Optional object to replace match with.
+         * @return {!Object|boolean}
+         * @private
+         */
+        function findRegisteredClass_(name, optReplace) {
+            for (var i = 0; i < registeredComponents_.length; i++) {
+                if (registeredComponents_[i].className === name) {
+                    if (typeof optReplace !== 'undefined') {
+                        registeredComponents_[i] = optReplace;
+                    }
+                    return registeredComponents_[i];
+                }
+            }
+            return false;
+        }
+
+        /**
+         * Returns an array of the classNames of the upgraded classes on the element.
+         *
+         * @param {!Element} element The element to fetch data from.
+         * @return {!Array<string>}
+         * @private
+         */
+        function getUpgradedListOfElement_(element) {
+            var dataUpgraded = element.getAttribute('data-upgraded');
+            // Use `['']` as default value to conform the `,name,name...` style.
+            return dataUpgraded === null ? [''] : dataUpgraded.split(',');
+        }
+
+        /**
+         * Returns true if the given element has already been upgraded for the given
+         * class.
+         *
+         * @param {!Element} element The element we want to check.
+         * @param {string} jsClass The class to check for.
+         * @returns {boolean}
+         * @private
+         */
+        function isElementUpgraded_(element, jsClass) {
+            var upgradedList = getUpgradedListOfElement_(element);
+            return upgradedList.indexOf(jsClass) !== -1;
+        }
+
+        /**
+         * Create an event object.
+         *
+         * @param {string} eventType The type name of the event.
+         * @param {boolean} bubbles Whether the event should bubble up the DOM.
+         * @param {boolean} cancelable Whether the event can be canceled.
+         * @returns {!Event}
+         */
+        function createEvent_(eventType, bubbles, cancelable) {
+            if ('CustomEvent' in window && typeof window.CustomEvent === 'function') {
+                return new CustomEvent(eventType, {
+                    bubbles: bubbles,
+                    cancelable: cancelable
+                });
+            } else {
+                var ev = document.createEvent('Events');
+                ev.initEvent(eventType, bubbles, cancelable);
+                return ev;
+            }
+        }
+
+        /**
+         * Searches existing DOM for elements of our component type and upgrades them
+         * if they have not already been upgraded.
+         *
+         * @param {string=} optJsClass the programatic name of the element class we
+         * need to create a new instance of.
+         * @param {string=} optCssClass the name of the CSS class elements of this
+         * type will have.
+         */
+        function upgradeDomInternal(optJsClass, optCssClass) {
+            if (typeof optJsClass === 'undefined' && typeof optCssClass === 'undefined') {
+                for (var i = 0; i < registeredComponents_.length; i++) {
+                    upgradeDomInternal(registeredComponents_[i].className, registeredComponents_[i].cssClass);
+                }
+            } else {
+                var jsClass = /** @type {string} */optJsClass;
+                if (typeof optCssClass === 'undefined') {
+                    var registeredClass = findRegisteredClass_(jsClass);
+                    if (registeredClass) {
+                        optCssClass = registeredClass.cssClass;
+                    }
+                }
+
+                var elements = document.querySelectorAll('.' + optCssClass);
+                for (var n = 0; n < elements.length; n++) {
+                    upgradeElementInternal(elements[n], jsClass);
+                }
+            }
+        }
+
+        /**
+         * Upgrades a specific element rather than all in the DOM.
+         *
+         * @param {!Element} element The element we wish to upgrade.
+         * @param {string=} optJsClass Optional name of the class we want to upgrade
+         * the element to.
+         */
+        function upgradeElementInternal(element, optJsClass) {
+            // Verify argument type.
+            if (!(typeof element === 'object' && element instanceof Element)) {
+                throw new Error('Invalid argument provided to upgrade MDL element.');
+            }
+            // Allow upgrade to be canceled by canceling emitted event.
+            var upgradingEv = createEvent_('mdl-componentupgrading', true, true);
+            element.dispatchEvent(upgradingEv);
+            if (upgradingEv.defaultPrevented) {
+                return;
+            }
+
+            var upgradedList = getUpgradedListOfElement_(element);
+            var classesToUpgrade = [];
+            // If jsClass is not provided scan the registered components to find the
+            // ones matching the element's CSS classList.
+            if (!optJsClass) {
+                var classList = element.classList;
+                registeredComponents_.forEach(function (component) {
+                    // Match CSS & Not to be upgraded & Not upgraded.
+                    if (classList.contains(component.cssClass) && classesToUpgrade.indexOf(component) === -1 && !isElementUpgraded_(element, component.className)) {
+                        classesToUpgrade.push(component);
+                    }
+                });
+            } else if (!isElementUpgraded_(element, optJsClass)) {
+                classesToUpgrade.push(findRegisteredClass_(optJsClass));
+            }
+
+            // Upgrade the element for each classes.
+            for (var i = 0, n = classesToUpgrade.length, registeredClass; i < n; i++) {
+                registeredClass = classesToUpgrade[i];
+                if (registeredClass) {
+                    // Mark element as upgraded.
+                    upgradedList.push(registeredClass.className);
+                    element.setAttribute('data-upgraded', upgradedList.join(','));
+                    var instance = new registeredClass.classConstructor(element);
+                    instance[componentConfigProperty_] = registeredClass;
+                    createdComponents_.push(instance);
+                    // Call any callbacks the user has registered with this component type.
+                    for (var j = 0, m = registeredClass.callbacks.length; j < m; j++) {
+                        registeredClass.callbacks[j](element);
+                    }
+
+                    if (registeredClass.widget) {
+                        // Assign per element instance for control over API
+                        element[registeredClass.className] = instance;
+                    }
+                } else {
+                    throw new Error('Unable to find a registered component for the given class.');
+                }
+
+                var upgradedEv = createEvent_('mdl-componentupgraded', true, false);
+                element.dispatchEvent(upgradedEv);
+            }
+        }
+
+        /**
+         * Upgrades a specific list of elements rather than all in the DOM.
+         *
+         * @param {!Element|!Array<!Element>|!NodeList|!HTMLCollection} elements
+         * The elements we wish to upgrade.
+         */
+        function upgradeElementsInternal(elements) {
+            if (!Array.isArray(elements)) {
+                if (elements instanceof Element) {
+                    elements = [elements];
+                } else {
+                    elements = Array.prototype.slice.call(elements);
+                }
+            }
+            for (var i = 0, n = elements.length, element; i < n; i++) {
+                element = elements[i];
+                if (element instanceof HTMLElement) {
+                    upgradeElementInternal(element);
+                    if (element.children.length > 0) {
+                        upgradeElementsInternal(element.children);
+                    }
+                }
+            }
+        }
+
+        /**
+         * Registers a class for future use and attempts to upgrade existing DOM.
+         *
+         * @param {componentHandler.ComponentConfigPublic} config
+         */
+        function registerInternal(config) {
+            // In order to support both Closure-compiled and uncompiled code accessing
+            // this method, we need to allow for both the dot and array syntax for
+            // property access. You'll therefore see the `foo.bar || foo['bar']`
+            // pattern repeated across this method.
+            var widgetMissing = typeof config.widget === 'undefined' && typeof config['widget'] === 'undefined';
+            var widget = true;
+
+            if (!widgetMissing) {
+                widget = config.widget || config['widget'];
+            }
+
+            var newConfig = /** @type {componentHandler.ComponentConfig} */{
+                classConstructor: config.constructor || config['constructor'],
+                className: config.classAsString || config['classAsString'],
+                cssClass: config.cssClass || config['cssClass'],
+                widget: widget,
+                callbacks: []
+            };
+
+            registeredComponents_.forEach(function (item) {
+                if (item.cssClass === newConfig.cssClass) {
+                    throw new Error('The provided cssClass has already been registered: ' + item.cssClass);
+                }
+                if (item.className === newConfig.className) {
+                    throw new Error('The provided className has already been registered');
+                }
+            });
+
+            if (config.constructor.prototype.hasOwnProperty(componentConfigProperty_)) {
+                throw new Error('MDL component classes must not have ' + componentConfigProperty_ + ' defined as a property.');
+            }
+
+            var found = findRegisteredClass_(config.classAsString, newConfig);
+
+            if (!found) {
+                registeredComponents_.push(newConfig);
+            }
+        }
+
+        /**
+         * Allows user to be alerted to any upgrades that are performed for a given
+         * component type
+         *
+         * @param {string} jsClass The class name of the MDL component we wish
+         * to hook into for any upgrades performed.
+         * @param {function(!HTMLElement)} callback The function to call upon an
+         * upgrade. This function should expect 1 parameter - the HTMLElement which
+         * got upgraded.
+         */
+        function registerUpgradedCallbackInternal(jsClass, callback) {
+            var regClass = findRegisteredClass_(jsClass);
+            if (regClass) {
+                regClass.callbacks.push(callback);
+            }
+        }
+
+        /**
+         * Upgrades all registered components found in the current DOM. This is
+         * automatically called on window load.
+         */
+        function upgradeAllRegisteredInternal() {
+            for (var n = 0; n < registeredComponents_.length; n++) {
+                upgradeDomInternal(registeredComponents_[n].className);
+            }
+        }
+
+        /**
+         * Check the component for the downgrade method.
+         * Execute if found.
+         * Remove component from createdComponents list.
+         *
+         * @param {?componentHandler.Component} component
+         */
+        function deconstructComponentInternal(component) {
+            if (component) {
+                var componentIndex = createdComponents_.indexOf(component);
+                createdComponents_.splice(componentIndex, 1);
+
+                var upgrades = component.element_.getAttribute('data-upgraded').split(',');
+                var componentPlace = upgrades.indexOf(component[componentConfigProperty_].classAsString);
+                upgrades.splice(componentPlace, 1);
+                component.element_.setAttribute('data-upgraded', upgrades.join(','));
+
+                var ev = createEvent_('mdl-componentdowngraded', true, false);
+                component.element_.dispatchEvent(ev);
+            }
+        }
+
+        /**
+         * Downgrade either a given node, an array of nodes, or a NodeList.
+         *
+         * @param {!Node|!Array<!Node>|!NodeList} nodes
+         */
+        function downgradeNodesInternal(nodes) {
+            /**
+             * Auxiliary function to downgrade a single node.
+             * @param  {!Node} node the node to be downgraded
+             */
+            var downgradeNode = function (node) {
+                createdComponents_.filter(function (item) {
+                    return item.element_ === node;
+                }).forEach(deconstructComponentInternal);
+            };
+            if (nodes instanceof Array || nodes instanceof NodeList) {
+                for (var n = 0; n < nodes.length; n++) {
+                    downgradeNode(nodes[n]);
+                }
+            } else if (nodes instanceof Node) {
+                downgradeNode(nodes);
+            } else {
+                throw new Error('Invalid argument provided to downgrade MDL nodes.');
+            }
+        }
+
+        // Now return the functions that should be made public with their publicly
+        // facing names...
+        return {
+            upgradeDom: upgradeDomInternal,
+            upgradeElement: upgradeElementInternal,
+            upgradeElements: upgradeElementsInternal,
+            upgradeAllRegistered: upgradeAllRegisteredInternal,
+            registerUpgradedCallback: registerUpgradedCallbackInternal,
+            register: registerInternal,
+            downgradeElements: downgradeNodesInternal
+        };
+    }();
+
+    /**
+     * Describes the type of a registered component type managed by
+     * componentHandler. Provided for benefit of the Closure compiler.
+     *
+     * @typedef {{
+     *   constructor: Function,
+     *   classAsString: string,
+     *   cssClass: string,
+     *   widget: (string|boolean|undefined)
+     * }}
+     */
+    componentHandler.ComponentConfigPublic; // jshint ignore:line
+
+    /**
+     * Describes the type of a registered component type managed by
+     * componentHandler. Provided for benefit of the Closure compiler.
+     *
+     * @typedef {{
+     *   constructor: !Function,
+     *   className: string,
+     *   cssClass: string,
+     *   widget: (string|boolean),
+     *   callbacks: !Array<function(!HTMLElement)>
+     * }}
+     */
+    componentHandler.ComponentConfig; // jshint ignore:line
+
+    /**
+     * Created component (i.e., upgraded element) type as managed by
+     * componentHandler. Provided for benefit of the Closure compiler.
+     *
+     * @typedef {{
+     *   element_: !HTMLElement,
+     *   className: string,
+     *   classAsString: string,
+     *   cssClass: string,
+     *   widget: string
+     * }}
+     */
+    componentHandler.Component; // jshint ignore:line
+
+    // Export all symbols, for the benefit of Closure compiler.
+    // No effect on uncompiled code.
+    componentHandler['upgradeDom'] = componentHandler.upgradeDom;
+    componentHandler['upgradeElement'] = componentHandler.upgradeElement;
+    componentHandler['upgradeElements'] = componentHandler.upgradeElements;
+    componentHandler['upgradeAllRegistered'] = componentHandler.upgradeAllRegistered;
+    componentHandler['registerUpgradedCallback'] = componentHandler.registerUpgradedCallback;
+    componentHandler['register'] = componentHandler.register;
+    componentHandler['downgradeElements'] = componentHandler.downgradeElements;
+    window.componentHandler = componentHandler;
+    window['componentHandler'] = componentHandler;
+
+    window.addEventListener('load', function () {
+        'use strict';
+
+        /**
+         * Performs a "Cutting the mustard" test. If the browser supports the features
+         * tested, adds a mdl-js class to the <html> element. It then upgrades all MDL
+         * components requiring JavaScript.
+         */
+
+        if ('classList' in document.createElement('div') && 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach) {
+            document.documentElement.classList.add('mdl-js');
+            componentHandler.upgradeAllRegistered();
+        } else {
+            /**
+             * Dummy function to avoid JS errors.
+             */
+            componentHandler.upgradeElement = function () {};
+            /**
+             * Dummy function to avoid JS errors.
+             */
+            componentHandler.register = function () {};
+        }
+    });
+
+    // Source: https://github.com/darius/requestAnimationFrame/blob/master/requestAnimationFrame.js
+    // Adapted from https://gist.github.com/paulirish/1579671 which derived from
+    // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+    // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+    // requestAnimationFrame polyfill by Erik Möller.
+    // Fixes from Paul Irish, Tino Zijdel, Andrew Mao, Klemen Slavič, Darius Bacon
+    // MIT license
+    if (!Date.now) {
+        /**
+         * Date.now polyfill.
+         * @return {number} the current Date
+         */
+        Date.now = function () {
+            return new Date().getTime();
+        };
+        Date['now'] = Date.now;
+    }
+    var vendors = ['webkit', 'moz'];
+    for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
+        var vp = vendors[i];
+        window.requestAnimationFrame = window[vp + 'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vp + 'CancelAnimationFrame'] || window[vp + 'CancelRequestAnimationFrame'];
+        window['requestAnimationFrame'] = window.requestAnimationFrame;
+        window['cancelAnimationFrame'] = window.cancelAnimationFrame;
+    }
+    if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent) || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
+        var lastTime = 0;
+        /**
+         * requestAnimationFrame polyfill.
+         * @param  {!Function} callback the callback function.
+         */
+        window.requestAnimationFrame = function (callback) {
+            var now = Date.now();
+            var nextTime = Math.max(lastTime + 16, now);
+            return setTimeout(function () {
+                callback(lastTime = nextTime);
+            }, nextTime - now);
+        };
+        window.cancelAnimationFrame = clearTimeout;
+        window['requestAnimationFrame'] = window.requestAnimationFrame;
+        window['cancelAnimationFrame'] = window.cancelAnimationFrame;
+    }
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for Button MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @param {HTMLElement} element The element that will be upgraded.
+       */
+    var MaterialButton = function MaterialButton(element) {
+        this.element_ = element;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialButton'] = MaterialButton;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialButton.prototype.Constant_ = {};
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialButton.prototype.CssClasses_ = {
+        RIPPLE_EFFECT: 'mdl-js-ripple-effect',
+        RIPPLE_CONTAINER: 'mdl-button__ripple-container',
+        RIPPLE: 'mdl-ripple'
+    };
+    /**
+       * Handle blur of element.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialButton.prototype.blurHandler_ = function (event) {
+        if (event) {
+            this.element_.blur();
+        }
+    };
+    // Public methods.
+    /**
+       * Disable button.
+       *
+       * @public
+       */
+    MaterialButton.prototype.disable = function () {
+        this.element_.disabled = true;
+    };
+    MaterialButton.prototype['disable'] = MaterialButton.prototype.disable;
+    /**
+       * Enable button.
+       *
+       * @public
+       */
+    MaterialButton.prototype.enable = function () {
+        this.element_.disabled = false;
+    };
+    MaterialButton.prototype['enable'] = MaterialButton.prototype.enable;
+    /**
+       * Initialize element.
+       */
+    MaterialButton.prototype.init = function () {
+        if (this.element_) {
+            if (this.element_.classList.contains(this.CssClasses_.RIPPLE_EFFECT)) {
+                var rippleContainer = document.createElement('span');
+                rippleContainer.classList.add(this.CssClasses_.RIPPLE_CONTAINER);
+                this.rippleElement_ = document.createElement('span');
+                this.rippleElement_.classList.add(this.CssClasses_.RIPPLE);
+                rippleContainer.appendChild(this.rippleElement_);
+                this.boundRippleBlurHandler = this.blurHandler_.bind(this);
+                this.rippleElement_.addEventListener('mouseup', this.boundRippleBlurHandler);
+                this.element_.appendChild(rippleContainer);
+            }
+            this.boundButtonBlurHandler = this.blurHandler_.bind(this);
+            this.element_.addEventListener('mouseup', this.boundButtonBlurHandler);
+            this.element_.addEventListener('mouseleave', this.boundButtonBlurHandler);
+        }
+    };
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialButton,
+        classAsString: 'MaterialButton',
+        cssClass: 'mdl-js-button',
+        widget: true
+    });
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for Checkbox MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @constructor
+       * @param {HTMLElement} element The element that will be upgraded.
+       */
+    var MaterialCheckbox = function MaterialCheckbox(element) {
+        this.element_ = element;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialCheckbox'] = MaterialCheckbox;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialCheckbox.prototype.Constant_ = { TINY_TIMEOUT: 0.001 };
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialCheckbox.prototype.CssClasses_ = {
+        INPUT: 'mdl-checkbox__input',
+        BOX_OUTLINE: 'mdl-checkbox__box-outline',
+        FOCUS_HELPER: 'mdl-checkbox__focus-helper',
+        TICK_OUTLINE: 'mdl-checkbox__tick-outline',
+        RIPPLE_EFFECT: 'mdl-js-ripple-effect',
+        RIPPLE_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
+        RIPPLE_CONTAINER: 'mdl-checkbox__ripple-container',
+        RIPPLE_CENTER: 'mdl-ripple--center',
+        RIPPLE: 'mdl-ripple',
+        IS_FOCUSED: 'is-focused',
+        IS_DISABLED: 'is-disabled',
+        IS_CHECKED: 'is-checked',
+        IS_UPGRADED: 'is-upgraded'
+    };
+    /**
+       * Handle change of state.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialCheckbox.prototype.onChange_ = function (event) {
+        this.updateClasses_();
+    };
+    /**
+       * Handle focus of element.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialCheckbox.prototype.onFocus_ = function (event) {
+        this.element_.classList.add(this.CssClasses_.IS_FOCUSED);
+    };
+    /**
+       * Handle lost focus of element.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialCheckbox.prototype.onBlur_ = function (event) {
+        this.element_.classList.remove(this.CssClasses_.IS_FOCUSED);
+    };
+    /**
+       * Handle mouseup.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialCheckbox.prototype.onMouseUp_ = function (event) {
+        this.blur_();
+    };
+    /**
+       * Handle class updates.
+       *
+       * @private
+       */
+    MaterialCheckbox.prototype.updateClasses_ = function () {
+        this.checkDisabled();
+        this.checkToggleState();
+    };
+    /**
+       * Add blur.
+       *
+       * @private
+       */
+    MaterialCheckbox.prototype.blur_ = function () {
+        // TODO: figure out why there's a focus event being fired after our blur,
+        // so that we can avoid this hack.
+        window.setTimeout(function () {
+            this.inputElement_.blur();
+        }.bind(this), this.Constant_.TINY_TIMEOUT);
+    };
+    // Public methods.
+    /**
+       * Check the inputs toggle state and update display.
+       *
+       * @public
+       */
+    MaterialCheckbox.prototype.checkToggleState = function () {
+        if (this.inputElement_.checked) {
+            this.element_.classList.add(this.CssClasses_.IS_CHECKED);
+        } else {
+            this.element_.classList.remove(this.CssClasses_.IS_CHECKED);
+        }
+    };
+    MaterialCheckbox.prototype['checkToggleState'] = MaterialCheckbox.prototype.checkToggleState;
+    /**
+       * Check the inputs disabled state and update display.
+       *
+       * @public
+       */
+    MaterialCheckbox.prototype.checkDisabled = function () {
+        if (this.inputElement_.disabled) {
+            this.element_.classList.add(this.CssClasses_.IS_DISABLED);
+        } else {
+            this.element_.classList.remove(this.CssClasses_.IS_DISABLED);
+        }
+    };
+    MaterialCheckbox.prototype['checkDisabled'] = MaterialCheckbox.prototype.checkDisabled;
+    /**
+       * Disable checkbox.
+       *
+       * @public
+       */
+    MaterialCheckbox.prototype.disable = function () {
+        this.inputElement_.disabled = true;
+        this.updateClasses_();
+    };
+    MaterialCheckbox.prototype['disable'] = MaterialCheckbox.prototype.disable;
+    /**
+       * Enable checkbox.
+       *
+       * @public
+       */
+    MaterialCheckbox.prototype.enable = function () {
+        this.inputElement_.disabled = false;
+        this.updateClasses_();
+    };
+    MaterialCheckbox.prototype['enable'] = MaterialCheckbox.prototype.enable;
+    /**
+       * Check checkbox.
+       *
+       * @public
+       */
+    MaterialCheckbox.prototype.check = function () {
+        this.inputElement_.checked = true;
+        this.updateClasses_();
+    };
+    MaterialCheckbox.prototype['check'] = MaterialCheckbox.prototype.check;
+    /**
+       * Uncheck checkbox.
+       *
+       * @public
+       */
+    MaterialCheckbox.prototype.uncheck = function () {
+        this.inputElement_.checked = false;
+        this.updateClasses_();
+    };
+    MaterialCheckbox.prototype['uncheck'] = MaterialCheckbox.prototype.uncheck;
+    /**
+       * Initialize element.
+       */
+    MaterialCheckbox.prototype.init = function () {
+        if (this.element_) {
+            this.inputElement_ = this.element_.querySelector('.' + this.CssClasses_.INPUT);
+            var boxOutline = document.createElement('span');
+            boxOutline.classList.add(this.CssClasses_.BOX_OUTLINE);
+            var tickContainer = document.createElement('span');
+            tickContainer.classList.add(this.CssClasses_.FOCUS_HELPER);
+            var tickOutline = document.createElement('span');
+            tickOutline.classList.add(this.CssClasses_.TICK_OUTLINE);
+            boxOutline.appendChild(tickOutline);
+            this.element_.appendChild(tickContainer);
+            this.element_.appendChild(boxOutline);
+            if (this.element_.classList.contains(this.CssClasses_.RIPPLE_EFFECT)) {
+                this.element_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS);
+                this.rippleContainerElement_ = document.createElement('span');
+                this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_CONTAINER);
+                this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_EFFECT);
+                this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_CENTER);
+                this.boundRippleMouseUp = this.onMouseUp_.bind(this);
+                this.rippleContainerElement_.addEventListener('mouseup', this.boundRippleMouseUp);
+                var ripple = document.createElement('span');
+                ripple.classList.add(this.CssClasses_.RIPPLE);
+                this.rippleContainerElement_.appendChild(ripple);
+                this.element_.appendChild(this.rippleContainerElement_);
+            }
+            this.boundInputOnChange = this.onChange_.bind(this);
+            this.boundInputOnFocus = this.onFocus_.bind(this);
+            this.boundInputOnBlur = this.onBlur_.bind(this);
+            this.boundElementMouseUp = this.onMouseUp_.bind(this);
+            this.inputElement_.addEventListener('change', this.boundInputOnChange);
+            this.inputElement_.addEventListener('focus', this.boundInputOnFocus);
+            this.inputElement_.addEventListener('blur', this.boundInputOnBlur);
+            this.element_.addEventListener('mouseup', this.boundElementMouseUp);
+            this.updateClasses_();
+            this.element_.classList.add(this.CssClasses_.IS_UPGRADED);
+        }
+    };
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialCheckbox,
+        classAsString: 'MaterialCheckbox',
+        cssClass: 'mdl-js-checkbox',
+        widget: true
+    });
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for icon toggle MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @constructor
+       * @param {HTMLElement} element The element that will be upgraded.
+       */
+    var MaterialIconToggle = function MaterialIconToggle(element) {
+        this.element_ = element;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialIconToggle'] = MaterialIconToggle;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialIconToggle.prototype.Constant_ = { TINY_TIMEOUT: 0.001 };
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialIconToggle.prototype.CssClasses_ = {
+        INPUT: 'mdl-icon-toggle__input',
+        JS_RIPPLE_EFFECT: 'mdl-js-ripple-effect',
+        RIPPLE_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
+        RIPPLE_CONTAINER: 'mdl-icon-toggle__ripple-container',
+        RIPPLE_CENTER: 'mdl-ripple--center',
+        RIPPLE: 'mdl-ripple',
+        IS_FOCUSED: 'is-focused',
+        IS_DISABLED: 'is-disabled',
+        IS_CHECKED: 'is-checked'
+    };
+    /**
+       * Handle change of state.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialIconToggle.prototype.onChange_ = function (event) {
+        this.updateClasses_();
+    };
+    /**
+       * Handle focus of element.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialIconToggle.prototype.onFocus_ = function (event) {
+        this.element_.classList.add(this.CssClasses_.IS_FOCUSED);
+    };
+    /**
+       * Handle lost focus of element.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialIconToggle.prototype.onBlur_ = function (event) {
+        this.element_.classList.remove(this.CssClasses_.IS_FOCUSED);
+    };
+    /**
+       * Handle mouseup.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialIconToggle.prototype.onMouseUp_ = function (event) {
+        this.blur_();
+    };
+    /**
+       * Handle class updates.
+       *
+       * @private
+       */
+    MaterialIconToggle.prototype.updateClasses_ = function () {
+        this.checkDisabled();
+        this.checkToggleState();
+    };
+    /**
+       * Add blur.
+       *
+       * @private
+       */
+    MaterialIconToggle.prototype.blur_ = function () {
+        // TODO: figure out why there's a focus event being fired after our blur,
+        // so that we can avoid this hack.
+        window.setTimeout(function () {
+            this.inputElement_.blur();
+        }.bind(this), this.Constant_.TINY_TIMEOUT);
+    };
+    // Public methods.
+    /**
+       * Check the inputs toggle state and update display.
+       *
+       * @public
+       */
+    MaterialIconToggle.prototype.checkToggleState = function () {
+        if (this.inputElement_.checked) {
+            this.element_.classList.add(this.CssClasses_.IS_CHECKED);
+        } else {
+            this.element_.classList.remove(this.CssClasses_.IS_CHECKED);
+        }
+    };
+    MaterialIconToggle.prototype['checkToggleState'] = MaterialIconToggle.prototype.checkToggleState;
+    /**
+       * Check the inputs disabled state and update display.
+       *
+       * @public
+       */
+    MaterialIconToggle.prototype.checkDisabled = function () {
+        if (this.inputElement_.disabled) {
+            this.element_.classList.add(this.CssClasses_.IS_DISABLED);
+        } else {
+            this.element_.classList.remove(this.CssClasses_.IS_DISABLED);
+        }
+    };
+    MaterialIconToggle.prototype['checkDisabled'] = MaterialIconToggle.prototype.checkDisabled;
+    /**
+       * Disable icon toggle.
+       *
+       * @public
+       */
+    MaterialIconToggle.prototype.disable = function () {
+        this.inputElement_.disabled = true;
+        this.updateClasses_();
+    };
+    MaterialIconToggle.prototype['disable'] = MaterialIconToggle.prototype.disable;
+    /**
+       * Enable icon toggle.
+       *
+       * @public
+       */
+    MaterialIconToggle.prototype.enable = function () {
+        this.inputElement_.disabled = false;
+        this.updateClasses_();
+    };
+    MaterialIconToggle.prototype['enable'] = MaterialIconToggle.prototype.enable;
+    /**
+       * Check icon toggle.
+       *
+       * @public
+       */
+    MaterialIconToggle.prototype.check = function () {
+        this.inputElement_.checked = true;
+        this.updateClasses_();
+    };
+    MaterialIconToggle.prototype['check'] = MaterialIconToggle.prototype.check;
+    /**
+       * Uncheck icon toggle.
+       *
+       * @public
+       */
+    MaterialIconToggle.prototype.uncheck = function () {
+        this.inputElement_.checked = false;
+        this.updateClasses_();
+    };
+    MaterialIconToggle.prototype['uncheck'] = MaterialIconToggle.prototype.uncheck;
+    /**
+       * Initialize element.
+       */
+    MaterialIconToggle.prototype.init = function () {
+        if (this.element_) {
+            this.inputElement_ = this.element_.querySelector('.' + this.CssClasses_.INPUT);
+            if (this.element_.classList.contains(this.CssClasses_.JS_RIPPLE_EFFECT)) {
+                this.element_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS);
+                this.rippleContainerElement_ = document.createElement('span');
+                this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_CONTAINER);
+                this.rippleContainerElement_.classList.add(this.CssClasses_.JS_RIPPLE_EFFECT);
+                this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_CENTER);
+                this.boundRippleMouseUp = this.onMouseUp_.bind(this);
+                this.rippleContainerElement_.addEventListener('mouseup', this.boundRippleMouseUp);
+                var ripple = document.createElement('span');
+                ripple.classList.add(this.CssClasses_.RIPPLE);
+                this.rippleContainerElement_.appendChild(ripple);
+                this.element_.appendChild(this.rippleContainerElement_);
+            }
+            this.boundInputOnChange = this.onChange_.bind(this);
+            this.boundInputOnFocus = this.onFocus_.bind(this);
+            this.boundInputOnBlur = this.onBlur_.bind(this);
+            this.boundElementOnMouseUp = this.onMouseUp_.bind(this);
+            this.inputElement_.addEventListener('change', this.boundInputOnChange);
+            this.inputElement_.addEventListener('focus', this.boundInputOnFocus);
+            this.inputElement_.addEventListener('blur', this.boundInputOnBlur);
+            this.element_.addEventListener('mouseup', this.boundElementOnMouseUp);
+            this.updateClasses_();
+            this.element_.classList.add('is-upgraded');
+        }
+    };
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialIconToggle,
+        classAsString: 'MaterialIconToggle',
+        cssClass: 'mdl-js-icon-toggle',
+        widget: true
+    });
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for dropdown MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @constructor
+       * @param {HTMLElement} element The element that will be upgraded.
+       */
+    var MaterialMenu = function MaterialMenu(element) {
+        this.element_ = element;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialMenu'] = MaterialMenu;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialMenu.prototype.Constant_ = {
+        // Total duration of the menu animation.
+        TRANSITION_DURATION_SECONDS: 0.3,
+        // The fraction of the total duration we want to use for menu item animations.
+        TRANSITION_DURATION_FRACTION: 0.8,
+        // How long the menu stays open after choosing an option (so the user can see
+        // the ripple).
+        CLOSE_TIMEOUT: 150
+    };
+    /**
+       * Keycodes, for code readability.
+       *
+       * @enum {number}
+       * @private
+       */
+    MaterialMenu.prototype.Keycodes_ = {
+        ENTER: 13,
+        ESCAPE: 27,
+        SPACE: 32,
+        UP_ARROW: 38,
+        DOWN_ARROW: 40
+    };
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialMenu.prototype.CssClasses_ = {
+        CONTAINER: 'mdl-menu__container',
+        OUTLINE: 'mdl-menu__outline',
+        ITEM: 'mdl-menu__item',
+        ITEM_RIPPLE_CONTAINER: 'mdl-menu__item-ripple-container',
+        RIPPLE_EFFECT: 'mdl-js-ripple-effect',
+        RIPPLE_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
+        RIPPLE: 'mdl-ripple',
+        // Statuses
+        IS_UPGRADED: 'is-upgraded',
+        IS_VISIBLE: 'is-visible',
+        IS_ANIMATING: 'is-animating',
+        // Alignment options
+        BOTTOM_LEFT: 'mdl-menu--bottom-left',
+        // This is the default.
+        BOTTOM_RIGHT: 'mdl-menu--bottom-right',
+        TOP_LEFT: 'mdl-menu--top-left',
+        TOP_RIGHT: 'mdl-menu--top-right',
+        UNALIGNED: 'mdl-menu--unaligned'
+    };
+    /**
+       * Initialize element.
+       */
+    MaterialMenu.prototype.init = function () {
+        if (this.element_) {
+            // Create container for the menu.
+            var container = document.createElement('div');
+            container.classList.add(this.CssClasses_.CONTAINER);
+            this.element_.parentElement.insertBefore(container, this.element_);
+            this.element_.parentElement.removeChild(this.element_);
+            container.appendChild(this.element_);
+            this.container_ = container;
+            // Create outline for the menu (shadow and background).
+            var outline = document.createElement('div');
+            outline.classList.add(this.CssClasses_.OUTLINE);
+            this.outline_ = outline;
+            container.insertBefore(outline, this.element_);
+            // Find the "for" element and bind events to it.
+            var forElId = this.element_.getAttribute('for') || this.element_.getAttribute('data-mdl-for');
+            var forEl = null;
+            if (forElId) {
+                forEl = document.getElementById(forElId);
+                if (forEl) {
+                    this.forElement_ = forEl;
+                    forEl.addEventListener('click', this.handleForClick_.bind(this));
+                    forEl.addEventListener('keydown', this.handleForKeyboardEvent_.bind(this));
+                }
+            }
+            var items = this.element_.querySelectorAll('.' + this.CssClasses_.ITEM);
+            this.boundItemKeydown_ = this.handleItemKeyboardEvent_.bind(this);
+            this.boundItemClick_ = this.handleItemClick_.bind(this);
+            for (var i = 0; i < items.length; i++) {
+                // Add a listener to each menu item.
+                items[i].addEventListener('click', this.boundItemClick_);
+                // Add a tab index to each menu item.
+                items[i].tabIndex = '-1';
+                // Add a keyboard listener to each menu item.
+                items[i].addEventListener('keydown', this.boundItemKeydown_);
+            }
+            // Add ripple classes to each item, if the user has enabled ripples.
+            if (this.element_.classList.contains(this.CssClasses_.RIPPLE_EFFECT)) {
+                this.element_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS);
+                for (i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    var rippleContainer = document.createElement('span');
+                    rippleContainer.classList.add(this.CssClasses_.ITEM_RIPPLE_CONTAINER);
+                    var ripple = document.createElement('span');
+                    ripple.classList.add(this.CssClasses_.RIPPLE);
+                    rippleContainer.appendChild(ripple);
+                    item.appendChild(rippleContainer);
+                    item.classList.add(this.CssClasses_.RIPPLE_EFFECT);
+                }
+            }
+            // Copy alignment classes to the container, so the outline can use them.
+            if (this.element_.classList.contains(this.CssClasses_.BOTTOM_LEFT)) {
+                this.outline_.classList.add(this.CssClasses_.BOTTOM_LEFT);
+            }
+            if (this.element_.classList.contains(this.CssClasses_.BOTTOM_RIGHT)) {
+                this.outline_.classList.add(this.CssClasses_.BOTTOM_RIGHT);
+            }
+            if (this.element_.classList.contains(this.CssClasses_.TOP_LEFT)) {
+                this.outline_.classList.add(this.CssClasses_.TOP_LEFT);
+            }
+            if (this.element_.classList.contains(this.CssClasses_.TOP_RIGHT)) {
+                this.outline_.classList.add(this.CssClasses_.TOP_RIGHT);
+            }
+            if (this.element_.classList.contains(this.CssClasses_.UNALIGNED)) {
+                this.outline_.classList.add(this.CssClasses_.UNALIGNED);
+            }
+            container.classList.add(this.CssClasses_.IS_UPGRADED);
+        }
+    };
+    /**
+       * Handles a click on the "for" element, by positioning the menu and then
+       * toggling it.
+       *
+       * @param {Event} evt The event that fired.
+       * @private
+       */
+    MaterialMenu.prototype.handleForClick_ = function (evt) {
+        if (this.element_ && this.forElement_) {
+            var rect = this.forElement_.getBoundingClientRect();
+            var forRect = this.forElement_.parentElement.getBoundingClientRect();
+            if (this.element_.classList.contains(this.CssClasses_.UNALIGNED)) {} else if (this.element_.classList.contains(this.CssClasses_.BOTTOM_RIGHT)) {
+                // Position below the "for" element, aligned to its right.
+                this.container_.style.right = forRect.right - rect.right + 'px';
+                this.container_.style.top = this.forElement_.offsetTop + this.forElement_.offsetHeight + 'px';
+            } else if (this.element_.classList.contains(this.CssClasses_.TOP_LEFT)) {
+                // Position above the "for" element, aligned to its left.
+                this.container_.style.left = this.forElement_.offsetLeft + 'px';
+                this.container_.style.bottom = forRect.bottom - rect.top + 'px';
+            } else if (this.element_.classList.contains(this.CssClasses_.TOP_RIGHT)) {
+                // Position above the "for" element, aligned to its right.
+                this.container_.style.right = forRect.right - rect.right + 'px';
+                this.container_.style.bottom = forRect.bottom - rect.top + 'px';
+            } else {
+                // Default: position below the "for" element, aligned to its left.
+                this.container_.style.left = this.forElement_.offsetLeft + 'px';
+                this.container_.style.top = this.forElement_.offsetTop + this.forElement_.offsetHeight + 'px';
+            }
+        }
+        this.toggle(evt);
+    };
+    /**
+       * Handles a keyboard event on the "for" element.
+       *
+       * @param {Event} evt The event that fired.
+       * @private
+       */
+    MaterialMenu.prototype.handleForKeyboardEvent_ = function (evt) {
+        if (this.element_ && this.container_ && this.forElement_) {
+            var items = this.element_.querySelectorAll('.' + this.CssClasses_.ITEM + ':not([disabled])');
+            if (items && items.length > 0 && this.container_.classList.contains(this.CssClasses_.IS_VISIBLE)) {
+                if (evt.keyCode === this.Keycodes_.UP_ARROW) {
+                    evt.preventDefault();
+                    items[items.length - 1].focus();
+                } else if (evt.keyCode === this.Keycodes_.DOWN_ARROW) {
+                    evt.preventDefault();
+                    items[0].focus();
+                }
+            }
+        }
+    };
+    /**
+       * Handles a keyboard event on an item.
+       *
+       * @param {Event} evt The event that fired.
+       * @private
+       */
+    MaterialMenu.prototype.handleItemKeyboardEvent_ = function (evt) {
+        if (this.element_ && this.container_) {
+            var items = this.element_.querySelectorAll('.' + this.CssClasses_.ITEM + ':not([disabled])');
+            if (items && items.length > 0 && this.container_.classList.contains(this.CssClasses_.IS_VISIBLE)) {
+                var currentIndex = Array.prototype.slice.call(items).indexOf(evt.target);
+                if (evt.keyCode === this.Keycodes_.UP_ARROW) {
+                    evt.preventDefault();
+                    if (currentIndex > 0) {
+                        items[currentIndex - 1].focus();
+                    } else {
+                        items[items.length - 1].focus();
+                    }
+                } else if (evt.keyCode === this.Keycodes_.DOWN_ARROW) {
+                    evt.preventDefault();
+                    if (items.length > currentIndex + 1) {
+                        items[currentIndex + 1].focus();
+                    } else {
+                        items[0].focus();
+                    }
+                } else if (evt.keyCode === this.Keycodes_.SPACE || evt.keyCode === this.Keycodes_.ENTER) {
+                    evt.preventDefault();
+                    // Send mousedown and mouseup to trigger ripple.
+                    var e = new MouseEvent('mousedown');
+                    evt.target.dispatchEvent(e);
+                    e = new MouseEvent('mouseup');
+                    evt.target.dispatchEvent(e);
+                    // Send click.
+                    evt.target.click();
+                } else if (evt.keyCode === this.Keycodes_.ESCAPE) {
+                    evt.preventDefault();
+                    this.hide();
+                }
+            }
+        }
+    };
+    /**
+       * Handles a click event on an item.
+       *
+       * @param {Event} evt The event that fired.
+       * @private
+       */
+    MaterialMenu.prototype.handleItemClick_ = function (evt) {
+        if (evt.target.hasAttribute('disabled')) {
+            evt.stopPropagation();
+        } else {
+            // Wait some time before closing menu, so the user can see the ripple.
+            this.closing_ = true;
+            window.setTimeout(function (evt) {
+                this.hide();
+                this.closing_ = false;
+            }.bind(this), this.Constant_.CLOSE_TIMEOUT);
+        }
+    };
+    /**
+       * Calculates the initial clip (for opening the menu) or final clip (for closing
+       * it), and applies it. This allows us to animate from or to the correct point,
+       * that is, the point it's aligned to in the "for" element.
+       *
+       * @param {number} height Height of the clip rectangle
+       * @param {number} width Width of the clip rectangle
+       * @private
+       */
+    MaterialMenu.prototype.applyClip_ = function (height, width) {
+        if (this.element_.classList.contains(this.CssClasses_.UNALIGNED)) {
+            // Do not clip.
+            this.element_.style.clip = '';
+        } else if (this.element_.classList.contains(this.CssClasses_.BOTTOM_RIGHT)) {
+            // Clip to the top right corner of the menu.
+            this.element_.style.clip = 'rect(0 ' + width + 'px ' + '0 ' + width + 'px)';
+        } else if (this.element_.classList.contains(this.CssClasses_.TOP_LEFT)) {
+            // Clip to the bottom left corner of the menu.
+            this.element_.style.clip = 'rect(' + height + 'px 0 ' + height + 'px 0)';
+        } else if (this.element_.classList.contains(this.CssClasses_.TOP_RIGHT)) {
+            // Clip to the bottom right corner of the menu.
+            this.element_.style.clip = 'rect(' + height + 'px ' + width + 'px ' + height + 'px ' + width + 'px)';
+        } else {
+            // Default: do not clip (same as clipping to the top left corner).
+            this.element_.style.clip = '';
+        }
+    };
+    /**
+       * Cleanup function to remove animation listeners.
+       *
+       * @param {Event} evt
+       * @private
+       */
+    MaterialMenu.prototype.removeAnimationEndListener_ = function (evt) {
+        evt.target.classList.remove(MaterialMenu.prototype.CssClasses_.IS_ANIMATING);
+    };
+    /**
+       * Adds an event listener to clean up after the animation ends.
+       *
+       * @private
+       */
+    MaterialMenu.prototype.addAnimationEndListener_ = function () {
+        this.element_.addEventListener('transitionend', this.removeAnimationEndListener_);
+        this.element_.addEventListener('webkitTransitionEnd', this.removeAnimationEndListener_);
+    };
+    /**
+       * Displays the menu.
+       *
+       * @public
+       */
+    MaterialMenu.prototype.show = function (evt) {
+        if (this.element_ && this.container_ && this.outline_) {
+            // Measure the inner element.
+            var height = this.element_.getBoundingClientRect().height;
+            var width = this.element_.getBoundingClientRect().width;
+            // Apply the inner element's size to the container and outline.
+            this.container_.style.width = width + 'px';
+            this.container_.style.height = height + 'px';
+            this.outline_.style.width = width + 'px';
+            this.outline_.style.height = height + 'px';
+            var transitionDuration = this.Constant_.TRANSITION_DURATION_SECONDS * this.Constant_.TRANSITION_DURATION_FRACTION;
+            // Calculate transition delays for individual menu items, so that they fade
+            // in one at a time.
+            var items = this.element_.querySelectorAll('.' + this.CssClasses_.ITEM);
+            for (var i = 0; i < items.length; i++) {
+                var itemDelay = null;
+                if (this.element_.classList.contains(this.CssClasses_.TOP_LEFT) || this.element_.classList.contains(this.CssClasses_.TOP_RIGHT)) {
+                    itemDelay = (height - items[i].offsetTop - items[i].offsetHeight) / height * transitionDuration + 's';
+                } else {
+                    itemDelay = items[i].offsetTop / height * transitionDuration + 's';
+                }
+                items[i].style.transitionDelay = itemDelay;
+            }
+            // Apply the initial clip to the text before we start animating.
+            this.applyClip_(height, width);
+            // Wait for the next frame, turn on animation, and apply the final clip.
+            // Also make it visible. This triggers the transitions.
+            window.requestAnimationFrame(function () {
+                this.element_.classList.add(this.CssClasses_.IS_ANIMATING);
+                this.element_.style.clip = 'rect(0 ' + width + 'px ' + height + 'px 0)';
+                this.container_.classList.add(this.CssClasses_.IS_VISIBLE);
+            }.bind(this));
+            // Clean up after the animation is complete.
+            this.addAnimationEndListener_();
+            // Add a click listener to the document, to close the menu.
+            var callback = function (e) {
+                // Check to see if the document is processing the same event that
+                // displayed the menu in the first place. If so, do nothing.
+                // Also check to see if the menu is in the process of closing itself, and
+                // do nothing in that case.
+                // Also check if the clicked element is a menu item
+                // if so, do nothing.
+                if (e !== evt && !this.closing_ && e.target.parentNode !== this.element_) {
+                    document.removeEventListener('click', callback);
+                    this.hide();
+                }
+            }.bind(this);
+            document.addEventListener('click', callback);
+        }
+    };
+    MaterialMenu.prototype['show'] = MaterialMenu.prototype.show;
+    /**
+       * Hides the menu.
+       *
+       * @public
+       */
+    MaterialMenu.prototype.hide = function () {
+        if (this.element_ && this.container_ && this.outline_) {
+            var items = this.element_.querySelectorAll('.' + this.CssClasses_.ITEM);
+            // Remove all transition delays; menu items fade out concurrently.
+            for (var i = 0; i < items.length; i++) {
+                items[i].style.removeProperty('transition-delay');
+            }
+            // Measure the inner element.
+            var rect = this.element_.getBoundingClientRect();
+            var height = rect.height;
+            var width = rect.width;
+            // Turn on animation, and apply the final clip. Also make invisible.
+            // This triggers the transitions.
+            this.element_.classList.add(this.CssClasses_.IS_ANIMATING);
+            this.applyClip_(height, width);
+            this.container_.classList.remove(this.CssClasses_.IS_VISIBLE);
+            // Clean up after the animation is complete.
+            this.addAnimationEndListener_();
+        }
+    };
+    MaterialMenu.prototype['hide'] = MaterialMenu.prototype.hide;
+    /**
+       * Displays or hides the menu, depending on current state.
+       *
+       * @public
+       */
+    MaterialMenu.prototype.toggle = function (evt) {
+        if (this.container_.classList.contains(this.CssClasses_.IS_VISIBLE)) {
+            this.hide();
+        } else {
+            this.show(evt);
+        }
+    };
+    MaterialMenu.prototype['toggle'] = MaterialMenu.prototype.toggle;
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialMenu,
+        classAsString: 'MaterialMenu',
+        cssClass: 'mdl-js-menu',
+        widget: true
+    });
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for Progress MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @constructor
+       * @param {HTMLElement} element The element that will be upgraded.
+       */
+    var MaterialProgress = function MaterialProgress(element) {
+        this.element_ = element;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialProgress'] = MaterialProgress;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialProgress.prototype.Constant_ = {};
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialProgress.prototype.CssClasses_ = { INDETERMINATE_CLASS: 'mdl-progress__indeterminate' };
+    /**
+       * Set the current progress of the progressbar.
+       *
+       * @param {number} p Percentage of the progress (0-100)
+       * @public
+       */
+    MaterialProgress.prototype.setProgress = function (p) {
+        if (this.element_.classList.contains(this.CssClasses_.INDETERMINATE_CLASS)) {
+            return;
+        }
+        this.progressbar_.style.width = p + '%';
+    };
+    MaterialProgress.prototype['setProgress'] = MaterialProgress.prototype.setProgress;
+    /**
+       * Set the current progress of the buffer.
+       *
+       * @param {number} p Percentage of the buffer (0-100)
+       * @public
+       */
+    MaterialProgress.prototype.setBuffer = function (p) {
+        this.bufferbar_.style.width = p + '%';
+        this.auxbar_.style.width = 100 - p + '%';
+    };
+    MaterialProgress.prototype['setBuffer'] = MaterialProgress.prototype.setBuffer;
+    /**
+       * Initialize element.
+       */
+    MaterialProgress.prototype.init = function () {
+        if (this.element_) {
+            var el = document.createElement('div');
+            el.className = 'progressbar bar bar1';
+            this.element_.appendChild(el);
+            this.progressbar_ = el;
+            el = document.createElement('div');
+            el.className = 'bufferbar bar bar2';
+            this.element_.appendChild(el);
+            this.bufferbar_ = el;
+            el = document.createElement('div');
+            el.className = 'auxbar bar bar3';
+            this.element_.appendChild(el);
+            this.auxbar_ = el;
+            this.progressbar_.style.width = '0%';
+            this.bufferbar_.style.width = '100%';
+            this.auxbar_.style.width = '0%';
+            this.element_.classList.add('is-upgraded');
+        }
+    };
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialProgress,
+        classAsString: 'MaterialProgress',
+        cssClass: 'mdl-js-progress',
+        widget: true
+    });
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for Radio MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @constructor
+       * @param {HTMLElement} element The element that will be upgraded.
+       */
+    var MaterialRadio = function MaterialRadio(element) {
+        this.element_ = element;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialRadio'] = MaterialRadio;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialRadio.prototype.Constant_ = { TINY_TIMEOUT: 0.001 };
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialRadio.prototype.CssClasses_ = {
+        IS_FOCUSED: 'is-focused',
+        IS_DISABLED: 'is-disabled',
+        IS_CHECKED: 'is-checked',
+        IS_UPGRADED: 'is-upgraded',
+        JS_RADIO: 'mdl-js-radio',
+        RADIO_BTN: 'mdl-radio__button',
+        RADIO_OUTER_CIRCLE: 'mdl-radio__outer-circle',
+        RADIO_INNER_CIRCLE: 'mdl-radio__inner-circle',
+        RIPPLE_EFFECT: 'mdl-js-ripple-effect',
+        RIPPLE_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
+        RIPPLE_CONTAINER: 'mdl-radio__ripple-container',
+        RIPPLE_CENTER: 'mdl-ripple--center',
+        RIPPLE: 'mdl-ripple'
+    };
+    /**
+       * Handle change of state.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialRadio.prototype.onChange_ = function (event) {
+        // Since other radio buttons don't get change events, we need to look for
+        // them to update their classes.
+        var radios = document.getElementsByClassName(this.CssClasses_.JS_RADIO);
+        for (var i = 0; i < radios.length; i++) {
+            var button = radios[i].querySelector('.' + this.CssClasses_.RADIO_BTN);
+            // Different name == different group, so no point updating those.
+            if (button.getAttribute('name') === this.btnElement_.getAttribute('name')) {
+                if (typeof radios[i]['MaterialRadio'] !== 'undefined') {
+                    radios[i]['MaterialRadio'].updateClasses_();
+                }
+            }
+        }
+    };
+    /**
+       * Handle focus.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialRadio.prototype.onFocus_ = function (event) {
+        this.element_.classList.add(this.CssClasses_.IS_FOCUSED);
+    };
+    /**
+       * Handle lost focus.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialRadio.prototype.onBlur_ = function (event) {
+        this.element_.classList.remove(this.CssClasses_.IS_FOCUSED);
+    };
+    /**
+       * Handle mouseup.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialRadio.prototype.onMouseup_ = function (event) {
+        this.blur_();
+    };
+    /**
+       * Update classes.
+       *
+       * @private
+       */
+    MaterialRadio.prototype.updateClasses_ = function () {
+        this.checkDisabled();
+        this.checkToggleState();
+    };
+    /**
+       * Add blur.
+       *
+       * @private
+       */
+    MaterialRadio.prototype.blur_ = function () {
+        // TODO: figure out why there's a focus event being fired after our blur,
+        // so that we can avoid this hack.
+        window.setTimeout(function () {
+            this.btnElement_.blur();
+        }.bind(this), this.Constant_.TINY_TIMEOUT);
+    };
+    // Public methods.
+    /**
+       * Check the components disabled state.
+       *
+       * @public
+       */
+    MaterialRadio.prototype.checkDisabled = function () {
+        if (this.btnElement_.disabled) {
+            this.element_.classList.add(this.CssClasses_.IS_DISABLED);
+        } else {
+            this.element_.classList.remove(this.CssClasses_.IS_DISABLED);
+        }
+    };
+    MaterialRadio.prototype['checkDisabled'] = MaterialRadio.prototype.checkDisabled;
+    /**
+       * Check the components toggled state.
+       *
+       * @public
+       */
+    MaterialRadio.prototype.checkToggleState = function () {
+        if (this.btnElement_.checked) {
+            this.element_.classList.add(this.CssClasses_.IS_CHECKED);
+        } else {
+            this.element_.classList.remove(this.CssClasses_.IS_CHECKED);
+        }
+    };
+    MaterialRadio.prototype['checkToggleState'] = MaterialRadio.prototype.checkToggleState;
+    /**
+       * Disable radio.
+       *
+       * @public
+       */
+    MaterialRadio.prototype.disable = function () {
+        this.btnElement_.disabled = true;
+        this.updateClasses_();
+    };
+    MaterialRadio.prototype['disable'] = MaterialRadio.prototype.disable;
+    /**
+       * Enable radio.
+       *
+       * @public
+       */
+    MaterialRadio.prototype.enable = function () {
+        this.btnElement_.disabled = false;
+        this.updateClasses_();
+    };
+    MaterialRadio.prototype['enable'] = MaterialRadio.prototype.enable;
+    /**
+       * Check radio.
+       *
+       * @public
+       */
+    MaterialRadio.prototype.check = function () {
+        this.btnElement_.checked = true;
+        this.onChange_(null);
+    };
+    MaterialRadio.prototype['check'] = MaterialRadio.prototype.check;
+    /**
+       * Uncheck radio.
+       *
+       * @public
+       */
+    MaterialRadio.prototype.uncheck = function () {
+        this.btnElement_.checked = false;
+        this.onChange_(null);
+    };
+    MaterialRadio.prototype['uncheck'] = MaterialRadio.prototype.uncheck;
+    /**
+       * Initialize element.
+       */
+    MaterialRadio.prototype.init = function () {
+        if (this.element_) {
+            this.btnElement_ = this.element_.querySelector('.' + this.CssClasses_.RADIO_BTN);
+            this.boundChangeHandler_ = this.onChange_.bind(this);
+            this.boundFocusHandler_ = this.onChange_.bind(this);
+            this.boundBlurHandler_ = this.onBlur_.bind(this);
+            this.boundMouseUpHandler_ = this.onMouseup_.bind(this);
+            var outerCircle = document.createElement('span');
+            outerCircle.classList.add(this.CssClasses_.RADIO_OUTER_CIRCLE);
+            var innerCircle = document.createElement('span');
+            innerCircle.classList.add(this.CssClasses_.RADIO_INNER_CIRCLE);
+            this.element_.appendChild(outerCircle);
+            this.element_.appendChild(innerCircle);
+            var rippleContainer;
+            if (this.element_.classList.contains(this.CssClasses_.RIPPLE_EFFECT)) {
+                this.element_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS);
+                rippleContainer = document.createElement('span');
+                rippleContainer.classList.add(this.CssClasses_.RIPPLE_CONTAINER);
+                rippleContainer.classList.add(this.CssClasses_.RIPPLE_EFFECT);
+                rippleContainer.classList.add(this.CssClasses_.RIPPLE_CENTER);
+                rippleContainer.addEventListener('mouseup', this.boundMouseUpHandler_);
+                var ripple = document.createElement('span');
+                ripple.classList.add(this.CssClasses_.RIPPLE);
+                rippleContainer.appendChild(ripple);
+                this.element_.appendChild(rippleContainer);
+            }
+            this.btnElement_.addEventListener('change', this.boundChangeHandler_);
+            this.btnElement_.addEventListener('focus', this.boundFocusHandler_);
+            this.btnElement_.addEventListener('blur', this.boundBlurHandler_);
+            this.element_.addEventListener('mouseup', this.boundMouseUpHandler_);
+            this.updateClasses_();
+            this.element_.classList.add(this.CssClasses_.IS_UPGRADED);
+        }
+    };
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialRadio,
+        classAsString: 'MaterialRadio',
+        cssClass: 'mdl-js-radio',
+        widget: true
+    });
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for Slider MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @constructor
+       * @param {HTMLElement} element The element that will be upgraded.
+       */
+    var MaterialSlider = function MaterialSlider(element) {
+        this.element_ = element;
+        // Browser feature detection.
+        this.isIE_ = window.navigator.msPointerEnabled;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialSlider'] = MaterialSlider;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialSlider.prototype.Constant_ = {};
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialSlider.prototype.CssClasses_ = {
+        IE_CONTAINER: 'mdl-slider__ie-container',
+        SLIDER_CONTAINER: 'mdl-slider__container',
+        BACKGROUND_FLEX: 'mdl-slider__background-flex',
+        BACKGROUND_LOWER: 'mdl-slider__background-lower',
+        BACKGROUND_UPPER: 'mdl-slider__background-upper',
+        IS_LOWEST_VALUE: 'is-lowest-value',
+        IS_UPGRADED: 'is-upgraded'
+    };
+    /**
+       * Handle input on element.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialSlider.prototype.onInput_ = function (event) {
+        this.updateValueStyles_();
+    };
+    /**
+       * Handle change on element.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialSlider.prototype.onChange_ = function (event) {
+        this.updateValueStyles_();
+    };
+    /**
+       * Handle mouseup on element.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialSlider.prototype.onMouseUp_ = function (event) {
+        event.target.blur();
+    };
+    /**
+       * Handle mousedown on container element.
+       * This handler is purpose is to not require the use to click
+       * exactly on the 2px slider element, as FireFox seems to be very
+       * strict about this.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       * @suppress {missingProperties}
+       */
+    MaterialSlider.prototype.onContainerMouseDown_ = function (event) {
+        // If this click is not on the parent element (but rather some child)
+        // ignore. It may still bubble up.
+        if (event.target !== this.element_.parentElement) {
+            return;
+        }
+        // Discard the original event and create a new event that
+        // is on the slider element.
+        event.preventDefault();
+        var newEvent = new MouseEvent('mousedown', {
+            target: event.target,
+            buttons: event.buttons,
+            clientX: event.clientX,
+            clientY: this.element_.getBoundingClientRect().y
+        });
+        this.element_.dispatchEvent(newEvent);
+    };
+    /**
+       * Handle updating of values.
+       *
+       * @private
+       */
+    MaterialSlider.prototype.updateValueStyles_ = function () {
+        // Calculate and apply percentages to div structure behind slider.
+        var fraction = (this.element_.value - this.element_.min) / (this.element_.max - this.element_.min);
+        if (fraction === 0) {
+            this.element_.classList.add(this.CssClasses_.IS_LOWEST_VALUE);
+        } else {
+            this.element_.classList.remove(this.CssClasses_.IS_LOWEST_VALUE);
+        }
+        if (!this.isIE_) {
+            this.backgroundLower_.style.flex = fraction;
+            this.backgroundLower_.style.webkitFlex = fraction;
+            this.backgroundUpper_.style.flex = 1 - fraction;
+            this.backgroundUpper_.style.webkitFlex = 1 - fraction;
+        }
+    };
+    // Public methods.
+    /**
+       * Disable slider.
+       *
+       * @public
+       */
+    MaterialSlider.prototype.disable = function () {
+        this.element_.disabled = true;
+    };
+    MaterialSlider.prototype['disable'] = MaterialSlider.prototype.disable;
+    /**
+       * Enable slider.
+       *
+       * @public
+       */
+    MaterialSlider.prototype.enable = function () {
+        this.element_.disabled = false;
+    };
+    MaterialSlider.prototype['enable'] = MaterialSlider.prototype.enable;
+    /**
+       * Update slider value.
+       *
+       * @param {number} value The value to which to set the control (optional).
+       * @public
+       */
+    MaterialSlider.prototype.change = function (value) {
+        if (typeof value !== 'undefined') {
+            this.element_.value = value;
+        }
+        this.updateValueStyles_();
+    };
+    MaterialSlider.prototype['change'] = MaterialSlider.prototype.change;
+    /**
+       * Initialize element.
+       */
+    MaterialSlider.prototype.init = function () {
+        if (this.element_) {
+            if (this.isIE_) {
+                // Since we need to specify a very large height in IE due to
+                // implementation limitations, we add a parent here that trims it down to
+                // a reasonable size.
+                var containerIE = document.createElement('div');
+                containerIE.classList.add(this.CssClasses_.IE_CONTAINER);
+                this.element_.parentElement.insertBefore(containerIE, this.element_);
+                this.element_.parentElement.removeChild(this.element_);
+                containerIE.appendChild(this.element_);
+            } else {
+                // For non-IE browsers, we need a div structure that sits behind the
+                // slider and allows us to style the left and right sides of it with
+                // different colors.
+                var container = document.createElement('div');
+                container.classList.add(this.CssClasses_.SLIDER_CONTAINER);
+                this.element_.parentElement.insertBefore(container, this.element_);
+                this.element_.parentElement.removeChild(this.element_);
+                container.appendChild(this.element_);
+                var backgroundFlex = document.createElement('div');
+                backgroundFlex.classList.add(this.CssClasses_.BACKGROUND_FLEX);
+                container.appendChild(backgroundFlex);
+                this.backgroundLower_ = document.createElement('div');
+                this.backgroundLower_.classList.add(this.CssClasses_.BACKGROUND_LOWER);
+                backgroundFlex.appendChild(this.backgroundLower_);
+                this.backgroundUpper_ = document.createElement('div');
+                this.backgroundUpper_.classList.add(this.CssClasses_.BACKGROUND_UPPER);
+                backgroundFlex.appendChild(this.backgroundUpper_);
+            }
+            this.boundInputHandler = this.onInput_.bind(this);
+            this.boundChangeHandler = this.onChange_.bind(this);
+            this.boundMouseUpHandler = this.onMouseUp_.bind(this);
+            this.boundContainerMouseDownHandler = this.onContainerMouseDown_.bind(this);
+            this.element_.addEventListener('input', this.boundInputHandler);
+            this.element_.addEventListener('change', this.boundChangeHandler);
+            this.element_.addEventListener('mouseup', this.boundMouseUpHandler);
+            this.element_.parentElement.addEventListener('mousedown', this.boundContainerMouseDownHandler);
+            this.updateValueStyles_();
+            this.element_.classList.add(this.CssClasses_.IS_UPGRADED);
+        }
+    };
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialSlider,
+        classAsString: 'MaterialSlider',
+        cssClass: 'mdl-js-slider',
+        widget: true
+    });
+    /**
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for Snackbar MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @constructor
+       * @param {HTMLElement} element The element that will be upgraded.
+       */
+    var MaterialSnackbar = function MaterialSnackbar(element) {
+        this.element_ = element;
+        this.textElement_ = this.element_.querySelector('.' + this.cssClasses_.MESSAGE);
+        this.actionElement_ = this.element_.querySelector('.' + this.cssClasses_.ACTION);
+        if (!this.textElement_) {
+            throw new Error('There must be a message element for a snackbar.');
+        }
+        if (!this.actionElement_) {
+            throw new Error('There must be an action element for a snackbar.');
+        }
+        this.active = false;
+        this.actionHandler_ = undefined;
+        this.message_ = undefined;
+        this.actionText_ = undefined;
+        this.queuedNotifications_ = [];
+        this.setActionHidden_(true);
+    };
+    window['MaterialSnackbar'] = MaterialSnackbar;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialSnackbar.prototype.Constant_ = {
+        // The duration of the snackbar show/hide animation, in ms.
+        ANIMATION_LENGTH: 250
+    };
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialSnackbar.prototype.cssClasses_ = {
+        SNACKBAR: 'mdl-snackbar',
+        MESSAGE: 'mdl-snackbar__text',
+        ACTION: 'mdl-snackbar__action',
+        ACTIVE: 'mdl-snackbar--active'
+    };
+    /**
+       * Display the snackbar.
+       *
+       * @private
+       */
+    MaterialSnackbar.prototype.displaySnackbar_ = function () {
+        this.element_.setAttribute('aria-hidden', 'true');
+        if (this.actionHandler_) {
+            this.actionElement_.textContent = this.actionText_;
+            this.actionElement_.addEventListener('click', this.actionHandler_);
+            this.setActionHidden_(false);
+        }
+        this.textElement_.textContent = this.message_;
+        this.element_.classList.add(this.cssClasses_.ACTIVE);
+        this.element_.setAttribute('aria-hidden', 'false');
+        setTimeout(this.cleanup_.bind(this), this.timeout_);
+    };
+    /**
+       * Show the snackbar.
+       *
+       * @param {Object} data The data for the notification.
+       * @public
+       */
+    MaterialSnackbar.prototype.showSnackbar = function (data) {
+        if (data === undefined) {
+            throw new Error('Please provide a data object with at least a message to display.');
+        }
+        if (data['message'] === undefined) {
+            throw new Error('Please provide a message to be displayed.');
+        }
+        if (data['actionHandler'] && !data['actionText']) {
+            throw new Error('Please provide action text with the handler.');
+        }
+        if (this.active) {
+            this.queuedNotifications_.push(data);
+        } else {
+            this.active = true;
+            this.message_ = data['message'];
+            if (data['timeout']) {
+                this.timeout_ = data['timeout'];
+            } else {
+                this.timeout_ = 2750;
+            }
+            if (data['actionHandler']) {
+                this.actionHandler_ = data['actionHandler'];
+            }
+            if (data['actionText']) {
+                this.actionText_ = data['actionText'];
+            }
+            this.displaySnackbar_();
+        }
+    };
+    MaterialSnackbar.prototype['showSnackbar'] = MaterialSnackbar.prototype.showSnackbar;
+    /**
+       * Check if the queue has items within it.
+       * If it does, display the next entry.
+       *
+       * @private
+       */
+    MaterialSnackbar.prototype.checkQueue_ = function () {
+        if (this.queuedNotifications_.length > 0) {
+            this.showSnackbar(this.queuedNotifications_.shift());
+        }
+    };
+    /**
+       * Cleanup the snackbar event listeners and accessiblity attributes.
+       *
+       * @private
+       */
+    MaterialSnackbar.prototype.cleanup_ = function () {
+        this.element_.classList.remove(this.cssClasses_.ACTIVE);
+        setTimeout(function () {
+            this.element_.setAttribute('aria-hidden', 'true');
+            this.textElement_.textContent = '';
+            if (!Boolean(this.actionElement_.getAttribute('aria-hidden'))) {
+                this.setActionHidden_(true);
+                this.actionElement_.textContent = '';
+                this.actionElement_.removeEventListener('click', this.actionHandler_);
+            }
+            this.actionHandler_ = undefined;
+            this.message_ = undefined;
+            this.actionText_ = undefined;
+            this.active = false;
+            this.checkQueue_();
+        }.bind(this), this.Constant_.ANIMATION_LENGTH);
+    };
+    /**
+       * Set the action handler hidden state.
+       *
+       * @param {boolean} value
+       * @private
+       */
+    MaterialSnackbar.prototype.setActionHidden_ = function (value) {
+        if (value) {
+            this.actionElement_.setAttribute('aria-hidden', 'true');
+        } else {
+            this.actionElement_.removeAttribute('aria-hidden');
+        }
+    };
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialSnackbar,
+        classAsString: 'MaterialSnackbar',
+        cssClass: 'mdl-js-snackbar',
+        widget: true
+    });
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for Spinner MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @param {HTMLElement} element The element that will be upgraded.
+       * @constructor
+       */
+    var MaterialSpinner = function MaterialSpinner(element) {
+        this.element_ = element;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialSpinner'] = MaterialSpinner;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialSpinner.prototype.Constant_ = { MDL_SPINNER_LAYER_COUNT: 4 };
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialSpinner.prototype.CssClasses_ = {
+        MDL_SPINNER_LAYER: 'mdl-spinner__layer',
+        MDL_SPINNER_CIRCLE_CLIPPER: 'mdl-spinner__circle-clipper',
+        MDL_SPINNER_CIRCLE: 'mdl-spinner__circle',
+        MDL_SPINNER_GAP_PATCH: 'mdl-spinner__gap-patch',
+        MDL_SPINNER_LEFT: 'mdl-spinner__left',
+        MDL_SPINNER_RIGHT: 'mdl-spinner__right'
+    };
+    /**
+       * Auxiliary method to create a spinner layer.
+       *
+       * @param {number} index Index of the layer to be created.
+       * @public
+       */
+    MaterialSpinner.prototype.createLayer = function (index) {
+        var layer = document.createElement('div');
+        layer.classList.add(this.CssClasses_.MDL_SPINNER_LAYER);
+        layer.classList.add(this.CssClasses_.MDL_SPINNER_LAYER + '-' + index);
+        var leftClipper = document.createElement('div');
+        leftClipper.classList.add(this.CssClasses_.MDL_SPINNER_CIRCLE_CLIPPER);
+        leftClipper.classList.add(this.CssClasses_.MDL_SPINNER_LEFT);
+        var gapPatch = document.createElement('div');
+        gapPatch.classList.add(this.CssClasses_.MDL_SPINNER_GAP_PATCH);
+        var rightClipper = document.createElement('div');
+        rightClipper.classList.add(this.CssClasses_.MDL_SPINNER_CIRCLE_CLIPPER);
+        rightClipper.classList.add(this.CssClasses_.MDL_SPINNER_RIGHT);
+        var circleOwners = [leftClipper, gapPatch, rightClipper];
+        for (var i = 0; i < circleOwners.length; i++) {
+            var circle = document.createElement('div');
+            circle.classList.add(this.CssClasses_.MDL_SPINNER_CIRCLE);
+            circleOwners[i].appendChild(circle);
+        }
+        layer.appendChild(leftClipper);
+        layer.appendChild(gapPatch);
+        layer.appendChild(rightClipper);
+        this.element_.appendChild(layer);
+    };
+    MaterialSpinner.prototype['createLayer'] = MaterialSpinner.prototype.createLayer;
+    /**
+       * Stops the spinner animation.
+       * Public method for users who need to stop the spinner for any reason.
+       *
+       * @public
+       */
+    MaterialSpinner.prototype.stop = function () {
+        this.element_.classList.remove('is-active');
+    };
+    MaterialSpinner.prototype['stop'] = MaterialSpinner.prototype.stop;
+    /**
+       * Starts the spinner animation.
+       * Public method for users who need to manually start the spinner for any reason
+       * (instead of just adding the 'is-active' class to their markup).
+       *
+       * @public
+       */
+    MaterialSpinner.prototype.start = function () {
+        this.element_.classList.add('is-active');
+    };
+    MaterialSpinner.prototype['start'] = MaterialSpinner.prototype.start;
+    /**
+       * Initialize element.
+       */
+    MaterialSpinner.prototype.init = function () {
+        if (this.element_) {
+            for (var i = 1; i <= this.Constant_.MDL_SPINNER_LAYER_COUNT; i++) {
+                this.createLayer(i);
+            }
+            this.element_.classList.add('is-upgraded');
+        }
+    };
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialSpinner,
+        classAsString: 'MaterialSpinner',
+        cssClass: 'mdl-js-spinner',
+        widget: true
+    });
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for Checkbox MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @constructor
+       * @param {HTMLElement} element The element that will be upgraded.
+       */
+    var MaterialSwitch = function MaterialSwitch(element) {
+        this.element_ = element;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialSwitch'] = MaterialSwitch;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialSwitch.prototype.Constant_ = { TINY_TIMEOUT: 0.001 };
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialSwitch.prototype.CssClasses_ = {
+        INPUT: 'mdl-switch__input',
+        TRACK: 'mdl-switch__track',
+        THUMB: 'mdl-switch__thumb',
+        FOCUS_HELPER: 'mdl-switch__focus-helper',
+        RIPPLE_EFFECT: 'mdl-js-ripple-effect',
+        RIPPLE_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
+        RIPPLE_CONTAINER: 'mdl-switch__ripple-container',
+        RIPPLE_CENTER: 'mdl-ripple--center',
+        RIPPLE: 'mdl-ripple',
+        IS_FOCUSED: 'is-focused',
+        IS_DISABLED: 'is-disabled',
+        IS_CHECKED: 'is-checked'
+    };
+    /**
+       * Handle change of state.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialSwitch.prototype.onChange_ = function (event) {
+        this.updateClasses_();
+    };
+    /**
+       * Handle focus of element.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialSwitch.prototype.onFocus_ = function (event) {
+        this.element_.classList.add(this.CssClasses_.IS_FOCUSED);
+    };
+    /**
+       * Handle lost focus of element.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialSwitch.prototype.onBlur_ = function (event) {
+        this.element_.classList.remove(this.CssClasses_.IS_FOCUSED);
+    };
+    /**
+       * Handle mouseup.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialSwitch.prototype.onMouseUp_ = function (event) {
+        this.blur_();
+    };
+    /**
+       * Handle class updates.
+       *
+       * @private
+       */
+    MaterialSwitch.prototype.updateClasses_ = function () {
+        this.checkDisabled();
+        this.checkToggleState();
+    };
+    /**
+       * Add blur.
+       *
+       * @private
+       */
+    MaterialSwitch.prototype.blur_ = function () {
+        // TODO: figure out why there's a focus event being fired after our blur,
+        // so that we can avoid this hack.
+        window.setTimeout(function () {
+            this.inputElement_.blur();
+        }.bind(this), this.Constant_.TINY_TIMEOUT);
+    };
+    // Public methods.
+    /**
+       * Check the components disabled state.
+       *
+       * @public
+       */
+    MaterialSwitch.prototype.checkDisabled = function () {
+        if (this.inputElement_.disabled) {
+            this.element_.classList.add(this.CssClasses_.IS_DISABLED);
+        } else {
+            this.element_.classList.remove(this.CssClasses_.IS_DISABLED);
+        }
+    };
+    MaterialSwitch.prototype['checkDisabled'] = MaterialSwitch.prototype.checkDisabled;
+    /**
+       * Check the components toggled state.
+       *
+       * @public
+       */
+    MaterialSwitch.prototype.checkToggleState = function () {
+        if (this.inputElement_.checked) {
+            this.element_.classList.add(this.CssClasses_.IS_CHECKED);
+        } else {
+            this.element_.classList.remove(this.CssClasses_.IS_CHECKED);
+        }
+    };
+    MaterialSwitch.prototype['checkToggleState'] = MaterialSwitch.prototype.checkToggleState;
+    /**
+       * Disable switch.
+       *
+       * @public
+       */
+    MaterialSwitch.prototype.disable = function () {
+        this.inputElement_.disabled = true;
+        this.updateClasses_();
+    };
+    MaterialSwitch.prototype['disable'] = MaterialSwitch.prototype.disable;
+    /**
+       * Enable switch.
+       *
+       * @public
+       */
+    MaterialSwitch.prototype.enable = function () {
+        this.inputElement_.disabled = false;
+        this.updateClasses_();
+    };
+    MaterialSwitch.prototype['enable'] = MaterialSwitch.prototype.enable;
+    /**
+       * Activate switch.
+       *
+       * @public
+       */
+    MaterialSwitch.prototype.on = function () {
+        this.inputElement_.checked = true;
+        this.updateClasses_();
+    };
+    MaterialSwitch.prototype['on'] = MaterialSwitch.prototype.on;
+    /**
+       * Deactivate switch.
+       *
+       * @public
+       */
+    MaterialSwitch.prototype.off = function () {
+        this.inputElement_.checked = false;
+        this.updateClasses_();
+    };
+    MaterialSwitch.prototype['off'] = MaterialSwitch.prototype.off;
+    /**
+       * Initialize element.
+       */
+    MaterialSwitch.prototype.init = function () {
+        if (this.element_) {
+            this.inputElement_ = this.element_.querySelector('.' + this.CssClasses_.INPUT);
+            var track = document.createElement('div');
+            track.classList.add(this.CssClasses_.TRACK);
+            var thumb = document.createElement('div');
+            thumb.classList.add(this.CssClasses_.THUMB);
+            var focusHelper = document.createElement('span');
+            focusHelper.classList.add(this.CssClasses_.FOCUS_HELPER);
+            thumb.appendChild(focusHelper);
+            this.element_.appendChild(track);
+            this.element_.appendChild(thumb);
+            this.boundMouseUpHandler = this.onMouseUp_.bind(this);
+            if (this.element_.classList.contains(this.CssClasses_.RIPPLE_EFFECT)) {
+                this.element_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS);
+                this.rippleContainerElement_ = document.createElement('span');
+                this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_CONTAINER);
+                this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_EFFECT);
+                this.rippleContainerElement_.classList.add(this.CssClasses_.RIPPLE_CENTER);
+                this.rippleContainerElement_.addEventListener('mouseup', this.boundMouseUpHandler);
+                var ripple = document.createElement('span');
+                ripple.classList.add(this.CssClasses_.RIPPLE);
+                this.rippleContainerElement_.appendChild(ripple);
+                this.element_.appendChild(this.rippleContainerElement_);
+            }
+            this.boundChangeHandler = this.onChange_.bind(this);
+            this.boundFocusHandler = this.onFocus_.bind(this);
+            this.boundBlurHandler = this.onBlur_.bind(this);
+            this.inputElement_.addEventListener('change', this.boundChangeHandler);
+            this.inputElement_.addEventListener('focus', this.boundFocusHandler);
+            this.inputElement_.addEventListener('blur', this.boundBlurHandler);
+            this.element_.addEventListener('mouseup', this.boundMouseUpHandler);
+            this.updateClasses_();
+            this.element_.classList.add('is-upgraded');
+        }
+    };
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialSwitch,
+        classAsString: 'MaterialSwitch',
+        cssClass: 'mdl-js-switch',
+        widget: true
+    });
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for Tabs MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @constructor
+       * @param {Element} element The element that will be upgraded.
+       */
+    var MaterialTabs = function MaterialTabs(element) {
+        // Stores the HTML element.
+        this.element_ = element;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialTabs'] = MaterialTabs;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialTabs.prototype.Constant_ = {};
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialTabs.prototype.CssClasses_ = {
+        TAB_CLASS: 'mdl-tabs__tab',
+        PANEL_CLASS: 'mdl-tabs__panel',
+        ACTIVE_CLASS: 'is-active',
+        UPGRADED_CLASS: 'is-upgraded',
+        MDL_JS_RIPPLE_EFFECT: 'mdl-js-ripple-effect',
+        MDL_RIPPLE_CONTAINER: 'mdl-tabs__ripple-container',
+        MDL_RIPPLE: 'mdl-ripple',
+        MDL_JS_RIPPLE_EFFECT_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events'
+    };
+    /**
+       * Handle clicks to a tabs component
+       *
+       * @private
+       */
+    MaterialTabs.prototype.initTabs_ = function () {
+        if (this.element_.classList.contains(this.CssClasses_.MDL_JS_RIPPLE_EFFECT)) {
+            this.element_.classList.add(this.CssClasses_.MDL_JS_RIPPLE_EFFECT_IGNORE_EVENTS);
+        }
+        // Select element tabs, document panels
+        this.tabs_ = this.element_.querySelectorAll('.' + this.CssClasses_.TAB_CLASS);
+        this.panels_ = this.element_.querySelectorAll('.' + this.CssClasses_.PANEL_CLASS);
+        // Create new tabs for each tab element
+        for (var i = 0; i < this.tabs_.length; i++) {
+            new MaterialTab(this.tabs_[i], this);
+        }
+        this.element_.classList.add(this.CssClasses_.UPGRADED_CLASS);
+    };
+    /**
+       * Reset tab state, dropping active classes
+       *
+       * @private
+       */
+    MaterialTabs.prototype.resetTabState_ = function () {
+        for (var k = 0; k < this.tabs_.length; k++) {
+            this.tabs_[k].classList.remove(this.CssClasses_.ACTIVE_CLASS);
+        }
+    };
+    /**
+       * Reset panel state, droping active classes
+       *
+       * @private
+       */
+    MaterialTabs.prototype.resetPanelState_ = function () {
+        for (var j = 0; j < this.panels_.length; j++) {
+            this.panels_[j].classList.remove(this.CssClasses_.ACTIVE_CLASS);
+        }
+    };
+    /**
+       * Initialize element.
+       */
+    MaterialTabs.prototype.init = function () {
+        if (this.element_) {
+            this.initTabs_();
+        }
+    };
+    /**
+       * Constructor for an individual tab.
+       *
+       * @constructor
+       * @param {Element} tab The HTML element for the tab.
+       * @param {MaterialTabs} ctx The MaterialTabs object that owns the tab.
+       */
+    function MaterialTab(tab, ctx) {
+        if (tab) {
+            if (ctx.element_.classList.contains(ctx.CssClasses_.MDL_JS_RIPPLE_EFFECT)) {
+                var rippleContainer = document.createElement('span');
+                rippleContainer.classList.add(ctx.CssClasses_.MDL_RIPPLE_CONTAINER);
+                rippleContainer.classList.add(ctx.CssClasses_.MDL_JS_RIPPLE_EFFECT);
+                var ripple = document.createElement('span');
+                ripple.classList.add(ctx.CssClasses_.MDL_RIPPLE);
+                rippleContainer.appendChild(ripple);
+                tab.appendChild(rippleContainer);
+            }
+            tab.addEventListener('click', function (e) {
+                if (tab.getAttribute('href').charAt(0) === '#') {
+                    e.preventDefault();
+                    var href = tab.href.split('#')[1];
+                    var panel = ctx.element_.querySelector('#' + href);
+                    ctx.resetTabState_();
+                    ctx.resetPanelState_();
+                    tab.classList.add(ctx.CssClasses_.ACTIVE_CLASS);
+                    panel.classList.add(ctx.CssClasses_.ACTIVE_CLASS);
+                }
+            });
+        }
+    }
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialTabs,
+        classAsString: 'MaterialTabs',
+        cssClass: 'mdl-js-tabs'
+    });
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for Textfield MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @constructor
+       * @param {HTMLElement} element The element that will be upgraded.
+       */
+    var MaterialTextfield = function MaterialTextfield(element) {
+        this.element_ = element;
+        this.maxRows = this.Constant_.NO_MAX_ROWS;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialTextfield'] = MaterialTextfield;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialTextfield.prototype.Constant_ = {
+        NO_MAX_ROWS: -1,
+        MAX_ROWS_ATTRIBUTE: 'maxrows'
+    };
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialTextfield.prototype.CssClasses_ = {
+        LABEL: 'mdl-textfield__label',
+        INPUT: 'mdl-textfield__input',
+        IS_DIRTY: 'is-dirty',
+        IS_FOCUSED: 'is-focused',
+        IS_DISABLED: 'is-disabled',
+        IS_INVALID: 'is-invalid',
+        IS_UPGRADED: 'is-upgraded',
+        HAS_PLACEHOLDER: 'has-placeholder'
+    };
+    /**
+       * Handle input being entered.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialTextfield.prototype.onKeyDown_ = function (event) {
+        var currentRowCount = event.target.value.split('\n').length;
+        if (event.keyCode === 13) {
+            if (currentRowCount >= this.maxRows) {
+                event.preventDefault();
+            }
+        }
+    };
+    /**
+       * Handle focus.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialTextfield.prototype.onFocus_ = function (event) {
+        this.element_.classList.add(this.CssClasses_.IS_FOCUSED);
+    };
+    /**
+       * Handle lost focus.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialTextfield.prototype.onBlur_ = function (event) {
+        this.element_.classList.remove(this.CssClasses_.IS_FOCUSED);
+    };
+    /**
+       * Handle reset event from out side.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialTextfield.prototype.onReset_ = function (event) {
+        this.updateClasses_();
+    };
+    /**
+       * Handle class updates.
+       *
+       * @private
+       */
+    MaterialTextfield.prototype.updateClasses_ = function () {
+        this.checkDisabled();
+        this.checkValidity();
+        this.checkDirty();
+        this.checkFocus();
+    };
+    // Public methods.
+    /**
+       * Check the disabled state and update field accordingly.
+       *
+       * @public
+       */
+    MaterialTextfield.prototype.checkDisabled = function () {
+        if (this.input_.disabled) {
+            this.element_.classList.add(this.CssClasses_.IS_DISABLED);
+        } else {
+            this.element_.classList.remove(this.CssClasses_.IS_DISABLED);
+        }
+    };
+    MaterialTextfield.prototype['checkDisabled'] = MaterialTextfield.prototype.checkDisabled;
+    /**
+      * Check the focus state and update field accordingly.
+      *
+      * @public
+      */
+    MaterialTextfield.prototype.checkFocus = function () {
+        if (Boolean(this.element_.querySelector(':focus'))) {
+            this.element_.classList.add(this.CssClasses_.IS_FOCUSED);
+        } else {
+            this.element_.classList.remove(this.CssClasses_.IS_FOCUSED);
+        }
+    };
+    MaterialTextfield.prototype['checkFocus'] = MaterialTextfield.prototype.checkFocus;
+    /**
+       * Check the validity state and update field accordingly.
+       *
+       * @public
+       */
+    MaterialTextfield.prototype.checkValidity = function () {
+        if (this.input_.validity) {
+            if (this.input_.validity.valid) {
+                this.element_.classList.remove(this.CssClasses_.IS_INVALID);
+            } else {
+                this.element_.classList.add(this.CssClasses_.IS_INVALID);
+            }
+        }
+    };
+    MaterialTextfield.prototype['checkValidity'] = MaterialTextfield.prototype.checkValidity;
+    /**
+       * Check the dirty state and update field accordingly.
+       *
+       * @public
+       */
+    MaterialTextfield.prototype.checkDirty = function () {
+        if (this.input_.value && this.input_.value.length > 0) {
+            this.element_.classList.add(this.CssClasses_.IS_DIRTY);
+        } else {
+            this.element_.classList.remove(this.CssClasses_.IS_DIRTY);
+        }
+    };
+    MaterialTextfield.prototype['checkDirty'] = MaterialTextfield.prototype.checkDirty;
+    /**
+       * Disable text field.
+       *
+       * @public
+       */
+    MaterialTextfield.prototype.disable = function () {
+        this.input_.disabled = true;
+        this.updateClasses_();
+    };
+    MaterialTextfield.prototype['disable'] = MaterialTextfield.prototype.disable;
+    /**
+       * Enable text field.
+       *
+       * @public
+       */
+    MaterialTextfield.prototype.enable = function () {
+        this.input_.disabled = false;
+        this.updateClasses_();
+    };
+    MaterialTextfield.prototype['enable'] = MaterialTextfield.prototype.enable;
+    /**
+       * Update text field value.
+       *
+       * @param {string} value The value to which to set the control (optional).
+       * @public
+       */
+    MaterialTextfield.prototype.change = function (value) {
+        this.input_.value = value || '';
+        this.updateClasses_();
+    };
+    MaterialTextfield.prototype['change'] = MaterialTextfield.prototype.change;
+    /**
+       * Initialize element.
+       */
+    MaterialTextfield.prototype.init = function () {
+        if (this.element_) {
+            this.label_ = this.element_.querySelector('.' + this.CssClasses_.LABEL);
+            this.input_ = this.element_.querySelector('.' + this.CssClasses_.INPUT);
+            if (this.input_) {
+                if (this.input_.hasAttribute(this.Constant_.MAX_ROWS_ATTRIBUTE)) {
+                    this.maxRows = parseInt(this.input_.getAttribute(this.Constant_.MAX_ROWS_ATTRIBUTE), 10);
+                    if (isNaN(this.maxRows)) {
+                        this.maxRows = this.Constant_.NO_MAX_ROWS;
+                    }
+                }
+                if (this.input_.hasAttribute('placeholder')) {
+                    this.element_.classList.add(this.CssClasses_.HAS_PLACEHOLDER);
+                }
+                this.boundUpdateClassesHandler = this.updateClasses_.bind(this);
+                this.boundFocusHandler = this.onFocus_.bind(this);
+                this.boundBlurHandler = this.onBlur_.bind(this);
+                this.boundResetHandler = this.onReset_.bind(this);
+                this.input_.addEventListener('input', this.boundUpdateClassesHandler);
+                this.input_.addEventListener('focus', this.boundFocusHandler);
+                this.input_.addEventListener('blur', this.boundBlurHandler);
+                this.input_.addEventListener('reset', this.boundResetHandler);
+                if (this.maxRows !== this.Constant_.NO_MAX_ROWS) {
+                    // TODO: This should handle pasting multi line text.
+                    // Currently doesn't.
+                    this.boundKeyDownHandler = this.onKeyDown_.bind(this);
+                    this.input_.addEventListener('keydown', this.boundKeyDownHandler);
+                }
+                var invalid = this.element_.classList.contains(this.CssClasses_.IS_INVALID);
+                this.updateClasses_();
+                this.element_.classList.add(this.CssClasses_.IS_UPGRADED);
+                if (invalid) {
+                    this.element_.classList.add(this.CssClasses_.IS_INVALID);
+                }
+                if (this.input_.hasAttribute('autofocus')) {
+                    this.element_.focus();
+                    this.checkFocus();
+                }
+            }
+        }
+    };
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialTextfield,
+        classAsString: 'MaterialTextfield',
+        cssClass: 'mdl-js-textfield',
+        widget: true
+    });
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for Tooltip MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @constructor
+       * @param {HTMLElement} element The element that will be upgraded.
+       */
+    var MaterialTooltip = function MaterialTooltip(element) {
+        this.element_ = element;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialTooltip'] = MaterialTooltip;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialTooltip.prototype.Constant_ = {};
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialTooltip.prototype.CssClasses_ = {
+        IS_ACTIVE: 'is-active',
+        BOTTOM: 'mdl-tooltip--bottom',
+        LEFT: 'mdl-tooltip--left',
+        RIGHT: 'mdl-tooltip--right',
+        TOP: 'mdl-tooltip--top'
+    };
+    /**
+       * Handle mouseenter for tooltip.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialTooltip.prototype.handleMouseEnter_ = function (event) {
+        var props = event.target.getBoundingClientRect();
+        var left = props.left + props.width / 2;
+        var top = props.top + props.height / 2;
+        var marginLeft = -1 * (this.element_.offsetWidth / 2);
+        var marginTop = -1 * (this.element_.offsetHeight / 2);
+        if (this.element_.classList.contains(this.CssClasses_.LEFT) || this.element_.classList.contains(this.CssClasses_.RIGHT)) {
+            left = props.width / 2;
+            if (top + marginTop < 0) {
+                this.element_.style.top = '0';
+                this.element_.style.marginTop = '0';
+            } else {
+                this.element_.style.top = top + 'px';
+                this.element_.style.marginTop = marginTop + 'px';
+            }
+        } else {
+            if (left + marginLeft < 0) {
+                this.element_.style.left = '0';
+                this.element_.style.marginLeft = '0';
+            } else {
+                this.element_.style.left = left + 'px';
+                this.element_.style.marginLeft = marginLeft + 'px';
+            }
+        }
+        if (this.element_.classList.contains(this.CssClasses_.TOP)) {
+            this.element_.style.top = props.top - this.element_.offsetHeight - 10 + 'px';
+        } else if (this.element_.classList.contains(this.CssClasses_.RIGHT)) {
+            this.element_.style.left = props.left + props.width + 10 + 'px';
+        } else if (this.element_.classList.contains(this.CssClasses_.LEFT)) {
+            this.element_.style.left = props.left - this.element_.offsetWidth - 10 + 'px';
+        } else {
+            this.element_.style.top = props.top + props.height + 10 + 'px';
+        }
+        this.element_.classList.add(this.CssClasses_.IS_ACTIVE);
+    };
+    /**
+       * Hide tooltip on mouseleave or scroll
+       *
+       * @private
+       */
+    MaterialTooltip.prototype.hideTooltip_ = function () {
+        this.element_.classList.remove(this.CssClasses_.IS_ACTIVE);
+    };
+    /**
+       * Initialize element.
+       */
+    MaterialTooltip.prototype.init = function () {
+        if (this.element_) {
+            var forElId = this.element_.getAttribute('for') || this.element_.getAttribute('data-mdl-for');
+            if (forElId) {
+                this.forElement_ = document.getElementById(forElId);
+            }
+            if (this.forElement_) {
+                // It's left here because it prevents accidental text selection on Android
+                if (!this.forElement_.hasAttribute('tabindex')) {
+                    this.forElement_.setAttribute('tabindex', '0');
+                }
+                this.boundMouseEnterHandler = this.handleMouseEnter_.bind(this);
+                this.boundMouseLeaveAndScrollHandler = this.hideTooltip_.bind(this);
+                this.forElement_.addEventListener('mouseenter', this.boundMouseEnterHandler, false);
+                this.forElement_.addEventListener('touchend', this.boundMouseEnterHandler, false);
+                this.forElement_.addEventListener('mouseleave', this.boundMouseLeaveAndScrollHandler, false);
+                window.addEventListener('scroll', this.boundMouseLeaveAndScrollHandler, true);
+                window.addEventListener('touchstart', this.boundMouseLeaveAndScrollHandler);
+            }
+        }
+    };
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialTooltip,
+        classAsString: 'MaterialTooltip',
+        cssClass: 'mdl-tooltip'
+    });
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for Layout MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @constructor
+       * @param {HTMLElement} element The element that will be upgraded.
+       */
+    var MaterialLayout = function MaterialLayout(element) {
+        this.element_ = element;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialLayout'] = MaterialLayout;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialLayout.prototype.Constant_ = {
+        MAX_WIDTH: '(max-width: 1024px)',
+        TAB_SCROLL_PIXELS: 100,
+        RESIZE_TIMEOUT: 100,
+        MENU_ICON: '&#xE5D2;',
+        CHEVRON_LEFT: 'chevron_left',
+        CHEVRON_RIGHT: 'chevron_right'
+    };
+    /**
+       * Keycodes, for code readability.
+       *
+       * @enum {number}
+       * @private
+       */
+    MaterialLayout.prototype.Keycodes_ = {
+        ENTER: 13,
+        ESCAPE: 27,
+        SPACE: 32
+    };
+    /**
+       * Modes.
+       *
+       * @enum {number}
+       * @private
+       */
+    MaterialLayout.prototype.Mode_ = {
+        STANDARD: 0,
+        SEAMED: 1,
+        WATERFALL: 2,
+        SCROLL: 3
+    };
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialLayout.prototype.CssClasses_ = {
+        CONTAINER: 'mdl-layout__container',
+        HEADER: 'mdl-layout__header',
+        DRAWER: 'mdl-layout__drawer',
+        CONTENT: 'mdl-layout__content',
+        DRAWER_BTN: 'mdl-layout__drawer-button',
+        ICON: 'material-icons',
+        JS_RIPPLE_EFFECT: 'mdl-js-ripple-effect',
+        RIPPLE_CONTAINER: 'mdl-layout__tab-ripple-container',
+        RIPPLE: 'mdl-ripple',
+        RIPPLE_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
+        HEADER_SEAMED: 'mdl-layout__header--seamed',
+        HEADER_WATERFALL: 'mdl-layout__header--waterfall',
+        HEADER_SCROLL: 'mdl-layout__header--scroll',
+        FIXED_HEADER: 'mdl-layout--fixed-header',
+        OBFUSCATOR: 'mdl-layout__obfuscator',
+        TAB_BAR: 'mdl-layout__tab-bar',
+        TAB_CONTAINER: 'mdl-layout__tab-bar-container',
+        TAB: 'mdl-layout__tab',
+        TAB_BAR_BUTTON: 'mdl-layout__tab-bar-button',
+        TAB_BAR_LEFT_BUTTON: 'mdl-layout__tab-bar-left-button',
+        TAB_BAR_RIGHT_BUTTON: 'mdl-layout__tab-bar-right-button',
+        TAB_MANUAL_SWITCH: 'mdl-layout__tab-manual-switch',
+        PANEL: 'mdl-layout__tab-panel',
+        HAS_DRAWER: 'has-drawer',
+        HAS_TABS: 'has-tabs',
+        HAS_SCROLLING_HEADER: 'has-scrolling-header',
+        CASTING_SHADOW: 'is-casting-shadow',
+        IS_COMPACT: 'is-compact',
+        IS_SMALL_SCREEN: 'is-small-screen',
+        IS_DRAWER_OPEN: 'is-visible',
+        IS_ACTIVE: 'is-active',
+        IS_UPGRADED: 'is-upgraded',
+        IS_ANIMATING: 'is-animating',
+        ON_LARGE_SCREEN: 'mdl-layout--large-screen-only',
+        ON_SMALL_SCREEN: 'mdl-layout--small-screen-only'
+    };
+    /**
+       * Handles scrolling on the content.
+       *
+       * @private
+       */
+    MaterialLayout.prototype.contentScrollHandler_ = function () {
+        if (this.header_.classList.contains(this.CssClasses_.IS_ANIMATING)) {
+            return;
+        }
+        var headerVisible = !this.element_.classList.contains(this.CssClasses_.IS_SMALL_SCREEN) || this.element_.classList.contains(this.CssClasses_.FIXED_HEADER);
+        if (this.content_.scrollTop > 0 && !this.header_.classList.contains(this.CssClasses_.IS_COMPACT)) {
+            this.header_.classList.add(this.CssClasses_.CASTING_SHADOW);
+            this.header_.classList.add(this.CssClasses_.IS_COMPACT);
+            if (headerVisible) {
+                this.header_.classList.add(this.CssClasses_.IS_ANIMATING);
+            }
+        } else if (this.content_.scrollTop <= 0 && this.header_.classList.contains(this.CssClasses_.IS_COMPACT)) {
+            this.header_.classList.remove(this.CssClasses_.CASTING_SHADOW);
+            this.header_.classList.remove(this.CssClasses_.IS_COMPACT);
+            if (headerVisible) {
+                this.header_.classList.add(this.CssClasses_.IS_ANIMATING);
+            }
+        }
+    };
+    /**
+       * Handles a keyboard event on the drawer.
+       *
+       * @param {Event} evt The event that fired.
+       * @private
+       */
+    MaterialLayout.prototype.keyboardEventHandler_ = function (evt) {
+        // Only react when the drawer is open.
+        if (evt.keyCode === this.Keycodes_.ESCAPE && this.drawer_.classList.contains(this.CssClasses_.IS_DRAWER_OPEN)) {
+            this.toggleDrawer();
+        }
+    };
+    /**
+       * Handles changes in screen size.
+       *
+       * @private
+       */
+    MaterialLayout.prototype.screenSizeHandler_ = function () {
+        if (this.screenSizeMediaQuery_.matches) {
+            this.element_.classList.add(this.CssClasses_.IS_SMALL_SCREEN);
+        } else {
+            this.element_.classList.remove(this.CssClasses_.IS_SMALL_SCREEN);
+            // Collapse drawer (if any) when moving to a large screen size.
+            if (this.drawer_) {
+                this.drawer_.classList.remove(this.CssClasses_.IS_DRAWER_OPEN);
+                this.obfuscator_.classList.remove(this.CssClasses_.IS_DRAWER_OPEN);
+            }
+        }
+    };
+    /**
+       * Handles events of drawer button.
+       *
+       * @param {Event} evt The event that fired.
+       * @private
+       */
+    MaterialLayout.prototype.drawerToggleHandler_ = function (evt) {
+        if (evt && evt.type === 'keydown') {
+            if (evt.keyCode === this.Keycodes_.SPACE || evt.keyCode === this.Keycodes_.ENTER) {
+                // prevent scrolling in drawer nav
+                evt.preventDefault();
+            } else {
+                // prevent other keys
+                return;
+            }
+        }
+        this.toggleDrawer();
+    };
+    /**
+       * Handles (un)setting the `is-animating` class
+       *
+       * @private
+       */
+    MaterialLayout.prototype.headerTransitionEndHandler_ = function () {
+        this.header_.classList.remove(this.CssClasses_.IS_ANIMATING);
+    };
+    /**
+       * Handles expanding the header on click
+       *
+       * @private
+       */
+    MaterialLayout.prototype.headerClickHandler_ = function () {
+        if (this.header_.classList.contains(this.CssClasses_.IS_COMPACT)) {
+            this.header_.classList.remove(this.CssClasses_.IS_COMPACT);
+            this.header_.classList.add(this.CssClasses_.IS_ANIMATING);
+        }
+    };
+    /**
+       * Reset tab state, dropping active classes
+       *
+       * @private
+       */
+    MaterialLayout.prototype.resetTabState_ = function (tabBar) {
+        for (var k = 0; k < tabBar.length; k++) {
+            tabBar[k].classList.remove(this.CssClasses_.IS_ACTIVE);
+        }
+    };
+    /**
+       * Reset panel state, droping active classes
+       *
+       * @private
+       */
+    MaterialLayout.prototype.resetPanelState_ = function (panels) {
+        for (var j = 0; j < panels.length; j++) {
+            panels[j].classList.remove(this.CssClasses_.IS_ACTIVE);
+        }
+    };
+    /**
+      * Toggle drawer state
+      *
+      * @public
+      */
+    MaterialLayout.prototype.toggleDrawer = function () {
+        var drawerButton = this.element_.querySelector('.' + this.CssClasses_.DRAWER_BTN);
+        this.drawer_.classList.toggle(this.CssClasses_.IS_DRAWER_OPEN);
+        this.obfuscator_.classList.toggle(this.CssClasses_.IS_DRAWER_OPEN);
+        // Set accessibility properties.
+        if (this.drawer_.classList.contains(this.CssClasses_.IS_DRAWER_OPEN)) {
+            this.drawer_.setAttribute('aria-hidden', 'false');
+            drawerButton.setAttribute('aria-expanded', 'true');
+        } else {
+            this.drawer_.setAttribute('aria-hidden', 'true');
+            drawerButton.setAttribute('aria-expanded', 'false');
+        }
+    };
+    MaterialLayout.prototype['toggleDrawer'] = MaterialLayout.prototype.toggleDrawer;
+    /**
+       * Initialize element.
+       */
+    MaterialLayout.prototype.init = function () {
+        if (this.element_) {
+            var container = document.createElement('div');
+            container.classList.add(this.CssClasses_.CONTAINER);
+            var focusedElement = this.element_.querySelector(':focus');
+            this.element_.parentElement.insertBefore(container, this.element_);
+            this.element_.parentElement.removeChild(this.element_);
+            container.appendChild(this.element_);
+            if (focusedElement) {
+                focusedElement.focus();
+            }
+            var directChildren = this.element_.childNodes;
+            var numChildren = directChildren.length;
+            for (var c = 0; c < numChildren; c++) {
+                var child = directChildren[c];
+                if (child.classList && child.classList.contains(this.CssClasses_.HEADER)) {
+                    this.header_ = child;
+                }
+                if (child.classList && child.classList.contains(this.CssClasses_.DRAWER)) {
+                    this.drawer_ = child;
+                }
+                if (child.classList && child.classList.contains(this.CssClasses_.CONTENT)) {
+                    this.content_ = child;
+                }
+            }
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    // when page is loaded from back/forward cache
+                    // trigger repaint to let layout scroll in safari
+                    this.element_.style.overflowY = 'hidden';
+                    requestAnimationFrame(function () {
+                        this.element_.style.overflowY = '';
+                    }.bind(this));
+                }
+            }.bind(this), false);
+            if (this.header_) {
+                this.tabBar_ = this.header_.querySelector('.' + this.CssClasses_.TAB_BAR);
+            }
+            var mode = this.Mode_.STANDARD;
+            if (this.header_) {
+                if (this.header_.classList.contains(this.CssClasses_.HEADER_SEAMED)) {
+                    mode = this.Mode_.SEAMED;
+                } else if (this.header_.classList.contains(this.CssClasses_.HEADER_WATERFALL)) {
+                    mode = this.Mode_.WATERFALL;
+                    this.header_.addEventListener('transitionend', this.headerTransitionEndHandler_.bind(this));
+                    this.header_.addEventListener('click', this.headerClickHandler_.bind(this));
+                } else if (this.header_.classList.contains(this.CssClasses_.HEADER_SCROLL)) {
+                    mode = this.Mode_.SCROLL;
+                    container.classList.add(this.CssClasses_.HAS_SCROLLING_HEADER);
+                }
+                if (mode === this.Mode_.STANDARD) {
+                    this.header_.classList.add(this.CssClasses_.CASTING_SHADOW);
+                    if (this.tabBar_) {
+                        this.tabBar_.classList.add(this.CssClasses_.CASTING_SHADOW);
+                    }
+                } else if (mode === this.Mode_.SEAMED || mode === this.Mode_.SCROLL) {
+                    this.header_.classList.remove(this.CssClasses_.CASTING_SHADOW);
+                    if (this.tabBar_) {
+                        this.tabBar_.classList.remove(this.CssClasses_.CASTING_SHADOW);
+                    }
+                } else if (mode === this.Mode_.WATERFALL) {
+                    // Add and remove shadows depending on scroll position.
+                    // Also add/remove auxiliary class for styling of the compact version of
+                    // the header.
+                    this.content_.addEventListener('scroll', this.contentScrollHandler_.bind(this));
+                    this.contentScrollHandler_();
+                }
+            }
+            // Add drawer toggling button to our layout, if we have an openable drawer.
+            if (this.drawer_) {
+                var drawerButton = this.element_.querySelector('.' + this.CssClasses_.DRAWER_BTN);
+                if (!drawerButton) {
+                    drawerButton = document.createElement('div');
+                    drawerButton.setAttribute('aria-expanded', 'false');
+                    drawerButton.setAttribute('role', 'button');
+                    drawerButton.setAttribute('tabindex', '0');
+                    drawerButton.classList.add(this.CssClasses_.DRAWER_BTN);
+                    var drawerButtonIcon = document.createElement('i');
+                    drawerButtonIcon.classList.add(this.CssClasses_.ICON);
+                    drawerButtonIcon.innerHTML = this.Constant_.MENU_ICON;
+                    drawerButton.appendChild(drawerButtonIcon);
+                }
+                if (this.drawer_.classList.contains(this.CssClasses_.ON_LARGE_SCREEN)) {
+                    //If drawer has ON_LARGE_SCREEN class then add it to the drawer toggle button as well.
+                    drawerButton.classList.add(this.CssClasses_.ON_LARGE_SCREEN);
+                } else if (this.drawer_.classList.contains(this.CssClasses_.ON_SMALL_SCREEN)) {
+                    //If drawer has ON_SMALL_SCREEN class then add it to the drawer toggle button as well.
+                    drawerButton.classList.add(this.CssClasses_.ON_SMALL_SCREEN);
+                }
+                drawerButton.addEventListener('click', this.drawerToggleHandler_.bind(this));
+                drawerButton.addEventListener('keydown', this.drawerToggleHandler_.bind(this));
+                // Add a class if the layout has a drawer, for altering the left padding.
+                // Adds the HAS_DRAWER to the elements since this.header_ may or may
+                // not be present.
+                this.element_.classList.add(this.CssClasses_.HAS_DRAWER);
+                // If we have a fixed header, add the button to the header rather than
+                // the layout.
+                if (this.element_.classList.contains(this.CssClasses_.FIXED_HEADER)) {
+                    this.header_.insertBefore(drawerButton, this.header_.firstChild);
+                } else {
+                    this.element_.insertBefore(drawerButton, this.content_);
+                }
+                var obfuscator = document.createElement('div');
+                obfuscator.classList.add(this.CssClasses_.OBFUSCATOR);
+                this.element_.appendChild(obfuscator);
+                obfuscator.addEventListener('click', this.drawerToggleHandler_.bind(this));
+                this.obfuscator_ = obfuscator;
+                this.drawer_.addEventListener('keydown', this.keyboardEventHandler_.bind(this));
+                this.drawer_.setAttribute('aria-hidden', 'true');
+            }
+            // Keep an eye on screen size, and add/remove auxiliary class for styling
+            // of small screens.
+            this.screenSizeMediaQuery_ = window.matchMedia(this.Constant_.MAX_WIDTH);
+            this.screenSizeMediaQuery_.addListener(this.screenSizeHandler_.bind(this));
+            this.screenSizeHandler_();
+            // Initialize tabs, if any.
+            if (this.header_ && this.tabBar_) {
+                this.element_.classList.add(this.CssClasses_.HAS_TABS);
+                var tabContainer = document.createElement('div');
+                tabContainer.classList.add(this.CssClasses_.TAB_CONTAINER);
+                this.header_.insertBefore(tabContainer, this.tabBar_);
+                this.header_.removeChild(this.tabBar_);
+                var leftButton = document.createElement('div');
+                leftButton.classList.add(this.CssClasses_.TAB_BAR_BUTTON);
+                leftButton.classList.add(this.CssClasses_.TAB_BAR_LEFT_BUTTON);
+                var leftButtonIcon = document.createElement('i');
+                leftButtonIcon.classList.add(this.CssClasses_.ICON);
+                leftButtonIcon.textContent = this.Constant_.CHEVRON_LEFT;
+                leftButton.appendChild(leftButtonIcon);
+                leftButton.addEventListener('click', function () {
+                    this.tabBar_.scrollLeft -= this.Constant_.TAB_SCROLL_PIXELS;
+                }.bind(this));
+                var rightButton = document.createElement('div');
+                rightButton.classList.add(this.CssClasses_.TAB_BAR_BUTTON);
+                rightButton.classList.add(this.CssClasses_.TAB_BAR_RIGHT_BUTTON);
+                var rightButtonIcon = document.createElement('i');
+                rightButtonIcon.classList.add(this.CssClasses_.ICON);
+                rightButtonIcon.textContent = this.Constant_.CHEVRON_RIGHT;
+                rightButton.appendChild(rightButtonIcon);
+                rightButton.addEventListener('click', function () {
+                    this.tabBar_.scrollLeft += this.Constant_.TAB_SCROLL_PIXELS;
+                }.bind(this));
+                tabContainer.appendChild(leftButton);
+                tabContainer.appendChild(this.tabBar_);
+                tabContainer.appendChild(rightButton);
+                // Add and remove tab buttons depending on scroll position and total
+                // window size.
+                var tabUpdateHandler = function () {
+                    if (this.tabBar_.scrollLeft > 0) {
+                        leftButton.classList.add(this.CssClasses_.IS_ACTIVE);
+                    } else {
+                        leftButton.classList.remove(this.CssClasses_.IS_ACTIVE);
+                    }
+                    if (this.tabBar_.scrollLeft < this.tabBar_.scrollWidth - this.tabBar_.offsetWidth) {
+                        rightButton.classList.add(this.CssClasses_.IS_ACTIVE);
+                    } else {
+                        rightButton.classList.remove(this.CssClasses_.IS_ACTIVE);
+                    }
+                }.bind(this);
+                this.tabBar_.addEventListener('scroll', tabUpdateHandler);
+                tabUpdateHandler();
+                // Update tabs when the window resizes.
+                var windowResizeHandler = function () {
+                    // Use timeouts to make sure it doesn't happen too often.
+                    if (this.resizeTimeoutId_) {
+                        clearTimeout(this.resizeTimeoutId_);
+                    }
+                    this.resizeTimeoutId_ = setTimeout(function () {
+                        tabUpdateHandler();
+                        this.resizeTimeoutId_ = null;
+                    }.bind(this), this.Constant_.RESIZE_TIMEOUT);
+                }.bind(this);
+                window.addEventListener('resize', windowResizeHandler);
+                if (this.tabBar_.classList.contains(this.CssClasses_.JS_RIPPLE_EFFECT)) {
+                    this.tabBar_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS);
+                }
+                // Select element tabs, document panels
+                var tabs = this.tabBar_.querySelectorAll('.' + this.CssClasses_.TAB);
+                var panels = this.content_.querySelectorAll('.' + this.CssClasses_.PANEL);
+                // Create new tabs for each tab element
+                for (var i = 0; i < tabs.length; i++) {
+                    new MaterialLayoutTab(tabs[i], tabs, panels, this);
+                }
+            }
+            this.element_.classList.add(this.CssClasses_.IS_UPGRADED);
+        }
+    };
+    /**
+       * Constructor for an individual tab.
+       *
+       * @constructor
+       * @param {HTMLElement} tab The HTML element for the tab.
+       * @param {!Array<HTMLElement>} tabs Array with HTML elements for all tabs.
+       * @param {!Array<HTMLElement>} panels Array with HTML elements for all panels.
+       * @param {MaterialLayout} layout The MaterialLayout object that owns the tab.
+       */
+    function MaterialLayoutTab(tab, tabs, panels, layout) {
+        /**
+         * Auxiliary method to programmatically select a tab in the UI.
+         */
+        function selectTab() {
+            var href = tab.href.split('#')[1];
+            var panel = layout.content_.querySelector('#' + href);
+            layout.resetTabState_(tabs);
+            layout.resetPanelState_(panels);
+            tab.classList.add(layout.CssClasses_.IS_ACTIVE);
+            panel.classList.add(layout.CssClasses_.IS_ACTIVE);
+        }
+        if (layout.tabBar_.classList.contains(layout.CssClasses_.JS_RIPPLE_EFFECT)) {
+            var rippleContainer = document.createElement('span');
+            rippleContainer.classList.add(layout.CssClasses_.RIPPLE_CONTAINER);
+            rippleContainer.classList.add(layout.CssClasses_.JS_RIPPLE_EFFECT);
+            var ripple = document.createElement('span');
+            ripple.classList.add(layout.CssClasses_.RIPPLE);
+            rippleContainer.appendChild(ripple);
+            tab.appendChild(rippleContainer);
+        }
+        if (!layout.tabBar_.classList.contains(layout.CssClasses_.TAB_MANUAL_SWITCH)) {
+            tab.addEventListener('click', function (e) {
+                if (tab.getAttribute('href').charAt(0) === '#') {
+                    e.preventDefault();
+                    selectTab();
+                }
+            });
+        }
+        tab.show = selectTab;
+    }
+    window['MaterialLayoutTab'] = MaterialLayoutTab;
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialLayout,
+        classAsString: 'MaterialLayout',
+        cssClass: 'mdl-js-layout'
+    });
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for Data Table Card MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @constructor
+       * @param {Element} element The element that will be upgraded.
+       */
+    var MaterialDataTable = function MaterialDataTable(element) {
+        this.element_ = element;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialDataTable'] = MaterialDataTable;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialDataTable.prototype.Constant_ = {};
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialDataTable.prototype.CssClasses_ = {
+        DATA_TABLE: 'mdl-data-table',
+        SELECTABLE: 'mdl-data-table--selectable',
+        SELECT_ELEMENT: 'mdl-data-table__select',
+        IS_SELECTED: 'is-selected',
+        IS_UPGRADED: 'is-upgraded'
+    };
+    /**
+       * Generates and returns a function that toggles the selection state of a
+       * single row (or multiple rows).
+       *
+       * @param {Element} checkbox Checkbox that toggles the selection state.
+       * @param {Element} row Row to toggle when checkbox changes.
+       * @param {(Array<Object>|NodeList)=} opt_rows Rows to toggle when checkbox changes.
+       * @private
+       */
+    MaterialDataTable.prototype.selectRow_ = function (checkbox, row, opt_rows) {
+        if (row) {
+            return function () {
+                if (checkbox.checked) {
+                    row.classList.add(this.CssClasses_.IS_SELECTED);
+                } else {
+                    row.classList.remove(this.CssClasses_.IS_SELECTED);
+                }
+            }.bind(this);
+        }
+        if (opt_rows) {
+            return function () {
+                var i;
+                var el;
+                if (checkbox.checked) {
+                    for (i = 0; i < opt_rows.length; i++) {
+                        el = opt_rows[i].querySelector('td').querySelector('.mdl-checkbox');
+                        el['MaterialCheckbox'].check();
+                        opt_rows[i].classList.add(this.CssClasses_.IS_SELECTED);
+                    }
+                } else {
+                    for (i = 0; i < opt_rows.length; i++) {
+                        el = opt_rows[i].querySelector('td').querySelector('.mdl-checkbox');
+                        el['MaterialCheckbox'].uncheck();
+                        opt_rows[i].classList.remove(this.CssClasses_.IS_SELECTED);
+                    }
+                }
+            }.bind(this);
+        }
+    };
+    /**
+       * Creates a checkbox for a single or or multiple rows and hooks up the
+       * event handling.
+       *
+       * @param {Element} row Row to toggle when checkbox changes.
+       * @param {(Array<Object>|NodeList)=} opt_rows Rows to toggle when checkbox changes.
+       * @private
+       */
+    MaterialDataTable.prototype.createCheckbox_ = function (row, opt_rows) {
+        var label = document.createElement('label');
+        var labelClasses = ['mdl-checkbox', 'mdl-js-checkbox', 'mdl-js-ripple-effect', this.CssClasses_.SELECT_ELEMENT];
+        label.className = labelClasses.join(' ');
+        var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.classList.add('mdl-checkbox__input');
+        if (row) {
+            checkbox.checked = row.classList.contains(this.CssClasses_.IS_SELECTED);
+            checkbox.addEventListener('change', this.selectRow_(checkbox, row));
+        } else if (opt_rows) {
+            checkbox.addEventListener('change', this.selectRow_(checkbox, null, opt_rows));
+        }
+        label.appendChild(checkbox);
+        componentHandler.upgradeElement(label, 'MaterialCheckbox');
+        return label;
+    };
+    /**
+       * Initialize element.
+       */
+    MaterialDataTable.prototype.init = function () {
+        if (this.element_) {
+            var firstHeader = this.element_.querySelector('th');
+            var bodyRows = Array.prototype.slice.call(this.element_.querySelectorAll('tbody tr'));
+            var footRows = Array.prototype.slice.call(this.element_.querySelectorAll('tfoot tr'));
+            var rows = bodyRows.concat(footRows);
+            if (this.element_.classList.contains(this.CssClasses_.SELECTABLE)) {
+                var th = document.createElement('th');
+                var headerCheckbox = this.createCheckbox_(null, rows);
+                th.appendChild(headerCheckbox);
+                firstHeader.parentElement.insertBefore(th, firstHeader);
+                for (var i = 0; i < rows.length; i++) {
+                    var firstCell = rows[i].querySelector('td');
+                    if (firstCell) {
+                        var td = document.createElement('td');
+                        if (rows[i].parentNode.nodeName.toUpperCase() === 'TBODY') {
+                            var rowCheckbox = this.createCheckbox_(rows[i]);
+                            td.appendChild(rowCheckbox);
+                        }
+                        rows[i].insertBefore(td, firstCell);
+                    }
+                }
+                this.element_.classList.add(this.CssClasses_.IS_UPGRADED);
+            }
+        }
+    };
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialDataTable,
+        classAsString: 'MaterialDataTable',
+        cssClass: 'mdl-js-data-table'
+    });
+    /**
+     * @license
+     * Copyright 2015 Google Inc. All Rights Reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    /**
+       * Class constructor for Ripple MDL component.
+       * Implements MDL component design pattern defined at:
+       * https://github.com/jasonmayes/mdl-component-design-pattern
+       *
+       * @constructor
+       * @param {HTMLElement} element The element that will be upgraded.
+       */
+    var MaterialRipple = function MaterialRipple(element) {
+        this.element_ = element;
+        // Initialize instance.
+        this.init();
+    };
+    window['MaterialRipple'] = MaterialRipple;
+    /**
+       * Store constants in one place so they can be updated easily.
+       *
+       * @enum {string | number}
+       * @private
+       */
+    MaterialRipple.prototype.Constant_ = {
+        INITIAL_SCALE: 'scale(0.0001, 0.0001)',
+        INITIAL_SIZE: '1px',
+        INITIAL_OPACITY: '0.4',
+        FINAL_OPACITY: '0',
+        FINAL_SCALE: ''
+    };
+    /**
+       * Store strings for class names defined by this component that are used in
+       * JavaScript. This allows us to simply change it in one place should we
+       * decide to modify at a later date.
+       *
+       * @enum {string}
+       * @private
+       */
+    MaterialRipple.prototype.CssClasses_ = {
+        RIPPLE_CENTER: 'mdl-ripple--center',
+        RIPPLE_EFFECT_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
+        RIPPLE: 'mdl-ripple',
+        IS_ANIMATING: 'is-animating',
+        IS_VISIBLE: 'is-visible'
+    };
+    /**
+       * Handle mouse / finger down on element.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialRipple.prototype.downHandler_ = function (event) {
+        if (!this.rippleElement_.style.width && !this.rippleElement_.style.height) {
+            var rect = this.element_.getBoundingClientRect();
+            this.boundHeight = rect.height;
+            this.boundWidth = rect.width;
+            this.rippleSize_ = Math.sqrt(rect.width * rect.width + rect.height * rect.height) * 2 + 2;
+            this.rippleElement_.style.width = this.rippleSize_ + 'px';
+            this.rippleElement_.style.height = this.rippleSize_ + 'px';
+        }
+        this.rippleElement_.classList.add(this.CssClasses_.IS_VISIBLE);
+        if (event.type === 'mousedown' && this.ignoringMouseDown_) {
+            this.ignoringMouseDown_ = false;
+        } else {
+            if (event.type === 'touchstart') {
+                this.ignoringMouseDown_ = true;
+            }
+            var frameCount = this.getFrameCount();
+            if (frameCount > 0) {
+                return;
+            }
+            this.setFrameCount(1);
+            var bound = event.currentTarget.getBoundingClientRect();
+            var x;
+            var y;
+            // Check if we are handling a keyboard click.
+            if (event.clientX === 0 && event.clientY === 0) {
+                x = Math.round(bound.width / 2);
+                y = Math.round(bound.height / 2);
+            } else {
+                var clientX = event.clientX !== undefined ? event.clientX : event.touches[0].clientX;
+                var clientY = event.clientY !== undefined ? event.clientY : event.touches[0].clientY;
+                x = Math.round(clientX - bound.left);
+                y = Math.round(clientY - bound.top);
+            }
+            this.setRippleXY(x, y);
+            this.setRippleStyles(true);
+            window.requestAnimationFrame(this.animFrameHandler.bind(this));
+        }
+    };
+    /**
+       * Handle mouse / finger up on element.
+       *
+       * @param {Event} event The event that fired.
+       * @private
+       */
+    MaterialRipple.prototype.upHandler_ = function (event) {
+        // Don't fire for the artificial "mouseup" generated by a double-click.
+        if (event && event.detail !== 2) {
+            // Allow a repaint to occur before removing this class, so the animation
+            // shows for tap events, which seem to trigger a mouseup too soon after
+            // mousedown.
+            window.setTimeout(function () {
+                this.rippleElement_.classList.remove(this.CssClasses_.IS_VISIBLE);
+            }.bind(this), 0);
+        }
+    };
+    /**
+       * Initialize element.
+       */
+    MaterialRipple.prototype.init = function () {
+        if (this.element_) {
+            var recentering = this.element_.classList.contains(this.CssClasses_.RIPPLE_CENTER);
+            if (!this.element_.classList.contains(this.CssClasses_.RIPPLE_EFFECT_IGNORE_EVENTS)) {
+                this.rippleElement_ = this.element_.querySelector('.' + this.CssClasses_.RIPPLE);
+                this.frameCount_ = 0;
+                this.rippleSize_ = 0;
+                this.x_ = 0;
+                this.y_ = 0;
+                // Touch start produces a compat mouse down event, which would cause a
+                // second ripples. To avoid that, we use this property to ignore the first
+                // mouse down after a touch start.
+                this.ignoringMouseDown_ = false;
+                this.boundDownHandler = this.downHandler_.bind(this);
+                this.element_.addEventListener('mousedown', this.boundDownHandler);
+                this.element_.addEventListener('touchstart', this.boundDownHandler);
+                this.boundUpHandler = this.upHandler_.bind(this);
+                this.element_.addEventListener('mouseup', this.boundUpHandler);
+                this.element_.addEventListener('mouseleave', this.boundUpHandler);
+                this.element_.addEventListener('touchend', this.boundUpHandler);
+                this.element_.addEventListener('blur', this.boundUpHandler);
+                /**
+                * Getter for frameCount_.
+                * @return {number} the frame count.
+                */
+                this.getFrameCount = function () {
+                    return this.frameCount_;
+                };
+                /**
+                * Setter for frameCount_.
+                * @param {number} fC the frame count.
+                */
+                this.setFrameCount = function (fC) {
+                    this.frameCount_ = fC;
+                };
+                /**
+                * Getter for rippleElement_.
+                * @return {Element} the ripple element.
+                */
+                this.getRippleElement = function () {
+                    return this.rippleElement_;
+                };
+                /**
+                * Sets the ripple X and Y coordinates.
+                * @param  {number} newX the new X coordinate
+                * @param  {number} newY the new Y coordinate
+                */
+                this.setRippleXY = function (newX, newY) {
+                    this.x_ = newX;
+                    this.y_ = newY;
+                };
+                /**
+                * Sets the ripple styles.
+                * @param  {boolean} start whether or not this is the start frame.
+                */
+                this.setRippleStyles = function (start) {
+                    if (this.rippleElement_ !== null) {
+                        var transformString;
+                        var scale;
+                        var size;
+                        var offset = 'translate(' + this.x_ + 'px, ' + this.y_ + 'px)';
+                        if (start) {
+                            scale = this.Constant_.INITIAL_SCALE;
+                            size = this.Constant_.INITIAL_SIZE;
+                        } else {
+                            scale = this.Constant_.FINAL_SCALE;
+                            size = this.rippleSize_ + 'px';
+                            if (recentering) {
+                                offset = 'translate(' + this.boundWidth / 2 + 'px, ' + this.boundHeight / 2 + 'px)';
+                            }
+                        }
+                        transformString = 'translate(-50%, -50%) ' + offset + scale;
+                        this.rippleElement_.style.webkitTransform = transformString;
+                        this.rippleElement_.style.msTransform = transformString;
+                        this.rippleElement_.style.transform = transformString;
+                        if (start) {
+                            this.rippleElement_.classList.remove(this.CssClasses_.IS_ANIMATING);
+                        } else {
+                            this.rippleElement_.classList.add(this.CssClasses_.IS_ANIMATING);
+                        }
+                    }
+                };
+                /**
+                * Handles an animation frame.
+                */
+                this.animFrameHandler = function () {
+                    if (this.frameCount_-- > 0) {
+                        window.requestAnimationFrame(this.animFrameHandler.bind(this));
+                    } else {
+                        this.setRippleStyles(false);
+                    }
+                };
+            }
+        }
+    };
+    // The component registers itself. It can assume componentHandler is available
+    // in the global scope.
+    componentHandler.register({
+        constructor: MaterialRipple,
+        classAsString: 'MaterialRipple',
+        cssClass: 'mdl-js-ripple-effect',
+        widget: false
+    });
+})();
+
+/***/ }),
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10287,14 +9357,14 @@ function initButtons() {
 }
 
 /***/ }),
-/* 48 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(4);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -10318,7 +9388,7 @@ function initButtons() {
 
 
 /**
- * @typedef {{
+ * @typedef {!{
  *   isActivated: (boolean|undefined),
  *   hasDeactivationUXRun: (boolean|undefined),
  *   wasActivatedByPointer: (boolean|undefined),
@@ -10330,7 +9400,7 @@ function initButtons() {
 let ActivationStateType;
 
 /**
- * @typedef {{
+ * @typedef {!{
  *   activate: (string|undefined),
  *   deactivate: (string|undefined),
  *   focus: (string|undefined),
@@ -10340,7 +9410,7 @@ let ActivationStateType;
 let ListenerInfoType;
 
 /**
- * @typedef {{
+ * @typedef {!{
  *   activate: function(!Event),
  *   deactivate: function(!Event),
  *   focus: function(),
@@ -10350,7 +9420,7 @@ let ListenerInfoType;
 let ListenersType;
 
 /**
- * @typedef {{
+ * @typedef {!{
  *   x: number,
  *   y: number
  * }}
@@ -10429,15 +9499,15 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
     this.deactivateHandler_ = e => this.deactivate_(e);
 
     /** @private {function(?Event=)} */
-    this.focusHandler_ = () => this.handleFocus();
+    this.focusHandler_ = () => requestAnimationFrame(() => this.adapter_.addClass(MDCRippleFoundation.cssClasses.BG_FOCUSED));
 
     /** @private {function(?Event=)} */
-    this.blurHandler_ = () => this.handleBlur();
+    this.blurHandler_ = () => requestAnimationFrame(() => this.adapter_.removeClass(MDCRippleFoundation.cssClasses.BG_FOCUSED));
 
     /** @private {!Function} */
     this.resizeHandler_ = () => this.layout();
 
-    /** @private {{left: number, top:number}} */
+    /** @private {!{left: number, top:number}} */
     this.unboundedCoords_ = {
       left: 0,
       top: 0
@@ -10502,9 +9572,8 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
       this.adapter_.addClass(ROOT);
       if (this.adapter_.isUnbounded()) {
         this.adapter_.addClass(UNBOUNDED);
-        // Unbounded ripples need layout logic applied immediately to set coordinates for both shade and ripple
-        this.layoutInternal_();
       }
+      this.layoutInternal_();
     });
   }
 
@@ -10538,10 +9607,7 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
     });
     this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
     this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
-
-    if (this.adapter_.isUnbounded()) {
-      this.adapter_.registerResizeHandler(this.resizeHandler_);
-    }
+    this.adapter_.registerResizeHandler(this.resizeHandler_);
   }
 
   /**
@@ -10565,10 +9631,7 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
     });
     this.adapter_.deregisterInteractionHandler('focus', this.focusHandler_);
     this.adapter_.deregisterInteractionHandler('blur', this.blurHandler_);
-
-    if (this.adapter_.isUnbounded()) {
-      this.adapter_.deregisterResizeHandler(this.resizeHandler_);
-    }
+    this.adapter_.deregisterResizeHandler(this.resizeHandler_);
   }
 
   /** @private */
@@ -10627,41 +9690,23 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
       this.registerDeactivationHandlers_(e);
     }
 
-    activationState.wasElementMadeActive = this.checkElementMadeActive_(e);
-    if (activationState.wasElementMadeActive) {
-      this.animateActivation_();
-    }
-
     requestAnimationFrame(() => {
-      // Reset array on next frame after the current event has had a chance to bubble to prevent ancestor ripples
-      activatedTargets = [];
-
-      if (!activationState.wasElementMadeActive && (e.key === ' ' || e.keyCode === 32)) {
-        // If space was pressed, try again within an rAF call to detect :active, because different UAs report
-        // active states inconsistently when they're called within event handling code:
-        // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
-        // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
-        // We try first outside rAF to support Edge, which does not exhibit this problem, but will crash if a CSS
-        // variable is set within a rAF callback for a submit button interaction (#2241).
-        activationState.wasElementMadeActive = this.checkElementMadeActive_(e);
-        if (activationState.wasElementMadeActive) {
-          this.animateActivation_();
-        }
-      }
-
-      if (!activationState.wasElementMadeActive) {
+      // This needs to be wrapped in an rAF call b/c web browsers
+      // report active states inconsistently when they're called within
+      // event handling code:
+      // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
+      // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
+      activationState.wasElementMadeActive = e && e.type === 'keydown' ? this.adapter_.isSurfaceActive() : true;
+      if (activationState.wasElementMadeActive) {
+        this.animateActivation_();
+      } else {
         // Reset activation state immediately if element was not made active.
         this.activationState_ = this.defaultActivationState_();
       }
-    });
-  }
 
-  /**
-   * @param {?Event} e
-   * @private
-   */
-  checkElementMadeActive_(e) {
-    return e && e.type === 'keydown' ? this.adapter_.isSurfaceActive() : true;
+      // Reset array on next frame after the current event has had a chance to bubble to prevent ancestor ripples
+      activatedTargets = [];
+    });
   }
 
   /**
@@ -10676,8 +9721,6 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
     const { VAR_FG_TRANSLATE_START, VAR_FG_TRANSLATE_END } = MDCRippleFoundation.strings;
     const { FG_DEACTIVATION, FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
     const { DEACTIVATION_TIMEOUT_MS } = MDCRippleFoundation.numbers;
-
-    this.layoutInternal_();
 
     let translateStart = '';
     let translateEnd = '';
@@ -10875,20 +9918,12 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
       this.adapter_.removeClass(UNBOUNDED);
     }
   }
-
-  handleFocus() {
-    requestAnimationFrame(() => this.adapter_.addClass(MDCRippleFoundation.cssClasses.BG_FOCUSED));
-  }
-
-  handleBlur() {
-    requestAnimationFrame(() => this.adapter_.removeClass(MDCRippleFoundation.cssClasses.BG_FOCUSED));
-  }
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (MDCRippleFoundation);
 
 /***/ }),
-/* 49 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10943,7 +9978,7 @@ const numbers = {
 
 
 /***/ }),
-/* 50 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10982,12 +10017,12 @@ function initDialogs() {
 }
 
 /***/ }),
-/* 51 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initDateTime;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_flatpickr__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__text_fields__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_textfield__ = __webpack_require__(16);
@@ -11030,10 +10065,10 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
 
 /***/ }),
-/* 52 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* flatpickr v4.5.1, @license MIT */
+/* flatpickr v4.4.6, @license MIT */
 (function (global, factory) {
    true ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : global.flatpickr = factory();
 })(this, function () {
@@ -11284,9 +10319,8 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
         config = _ref2$config === void 0 ? defaults : _ref2$config,
         _ref2$l10n = _ref2.l10n,
         l10n = _ref2$l10n === void 0 ? english : _ref2$l10n;
-    return function (date, givenFormat, timeless, customLocale) {
+    return function (date, givenFormat, timeless) {
       if (date !== 0 && !date) return undefined;
-      var locale = customLocale || l10n;
       var parsedDate;
       var date_orig = date;
       if (date instanceof Date) parsedDate = new Date(date.getTime());else if (typeof date !== "string" && date.toFixed !== undefined) parsedDate = new Date(date);else if (typeof date === "string") {
@@ -11321,7 +10355,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
             ops.forEach(function (_ref3) {
               var fn = _ref3.fn,
                   val = _ref3.val;
-              return parsedDate = fn(parsedDate, val, locale) || parsedDate;
+              return parsedDate = fn(parsedDate, val, l10n) || parsedDate;
             });
           }
 
@@ -11329,7 +10363,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
         }
       }
 
-      if (!(parsedDate instanceof Date && !isNaN(parsedDate.getTime()))) {
+      if (!(parsedDate instanceof Date)) {
         config.errorHandler(new Error("Invalid date provided: " + date_orig));
         return undefined;
       }
@@ -11486,6 +10520,20 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
     };
   }
 
+  if (typeof window.requestAnimationFrame !== "function") {
+    var vendors = ["ms", "moz", "webkit", "o"];
+
+    for (var x = 0, length = vendors.length; x < length && !window.requestAnimationFrame; ++x) {
+      window.requestAnimationFrame = window[vendors[x] + "RequestAnimationFrame"];
+    }
+
+    if (typeof window.requestAnimationFrame !== "function") {
+      window.requestAnimationFrame = function (cb) {
+        return setTimeout(cb, 16);
+      };
+    }
+  }
+
   var DEBOUNCED_CHANGE_MS = 300;
 
   function FlatpickrInstance(element, instanceConfig) {
@@ -11500,7 +10548,6 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
     self._handlers = [];
     self._bind = bind;
     self._setHoursFromDate = setHoursFromDate;
-    self._positionCalendar = positionCalendar;
     self.changeMonth = changeMonth;
     self.changeYear = changeYear;
     self.clear = clear;
@@ -11586,17 +10633,16 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
     function updateTime(e) {
       if (self.selectedDates.length === 0) return;
+      timeWrapper(e);
 
-      if (e !== undefined && e.type !== "blur") {
-        timeWrapper(e);
-      }
-
-      var prevValue = self._input.value;
-      setHoursFromInputs();
-      updateValue();
-
-      if (self._input.value !== prevValue) {
-        self._debouncedChange();
+      if (e.type !== "input") {
+        setHoursFromInputs();
+        updateValue();
+      } else {
+        setTimeout(function () {
+          setHoursFromInputs();
+          updateValue();
+        }, DEBOUNCED_CHANGE_MS);
       }
     }
 
@@ -11620,11 +10666,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
       var hours = (parseInt(self.hourElement.value.slice(-2), 10) || 0) % 24,
           minutes = (parseInt(self.minuteElement.value, 10) || 0) % 60,
           seconds = self.secondElement !== undefined ? (parseInt(self.secondElement.value, 10) || 0) % 60 : 0;
-
-      if (self.amPM !== undefined) {
-        hours = ampm2military(hours, self.amPM.textContent);
-      }
-
+      if (self.amPM !== undefined) hours = ampm2military(hours, self.amPM.textContent);
       var limitMinHours = self.config.minTime !== undefined || self.config.minDate && self.minDateHasTime && self.latestSelectedDateObj && compareDates(self.latestSelectedDateObj, self.config.minDate, true) === 0;
       var limitMaxHours = self.config.maxTime !== undefined || self.config.maxDate && self.maxDateHasTime && self.latestSelectedDateObj && compareDates(self.latestSelectedDateObj, self.config.maxDate, true) === 0;
 
@@ -11648,30 +10690,6 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
     function setHoursFromDate(dateObj) {
       var date = dateObj || self.latestSelectedDateObj;
       if (date) setHours(date.getHours(), date.getMinutes(), date.getSeconds());
-    }
-
-    function setDefaultHours() {
-      var hours = self.config.defaultHour;
-      var minutes = self.config.defaultMinute;
-      var seconds = self.config.defaultSeconds;
-
-      if (self.config.minDate !== undefined) {
-        var min_hr = self.config.minDate.getHours();
-        var min_minutes = self.config.minDate.getMinutes();
-        hours = Math.max(hours, min_hr);
-        if (hours === min_hr) minutes = Math.max(min_minutes, minutes);
-        if (hours === min_hr && minutes === min_minutes) seconds = self.config.minDate.getSeconds();
-      }
-
-      if (self.config.maxDate !== undefined) {
-        var max_hr = self.config.maxDate.getHours();
-        var max_minutes = self.config.maxDate.getMinutes();
-        hours = Math.min(hours, max_hr);
-        if (hours === max_hr) minutes = Math.min(max_minutes, minutes);
-        if (hours === max_hr && minutes === max_minutes) seconds = self.config.maxDate.getSeconds();
-      }
-
-      setHours(hours, minutes, seconds);
     }
 
     function setHours(hours, minutes, seconds) {
@@ -11764,11 +10782,11 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
           return e.target.select();
         };
 
-        bind(self.timeContainer, ["increment"], updateTime);
-        bind(self.timeContainer, "blur", updateTime, {
-          capture: true
-        });
+        bind(self.timeContainer, ["input", "increment"], updateTime);
         bind(self.timeContainer, "mousedown", onClick(timeIncrement));
+        bind(self.timeContainer, ["input", "increment"], self._debouncedChange, {
+          passive: true
+        });
         bind([self.hourElement, self.minuteElement], ["focus", "click"], selText);
         if (self.secondElement !== undefined) bind(self.secondElement, "focus", function () {
           return self.secondElement && self.secondElement.select();
@@ -12012,20 +11030,18 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
       self.daysContainer.appendChild(frag);
       self.days = self.daysContainer.firstChild;
-
-      if (self.config.mode === "range" && self.selectedDates.length === 1) {
-        onMouseOver();
-      }
     }
 
     function buildMonth() {
       var container = createElement("div", "flatpickr-month");
       var monthNavFragment = window.document.createDocumentFragment();
       var monthElement = createElement("span", "cur-month");
+      monthElement.title = self.l10n.scrollTitle;
       var yearInput = createNumberInput("cur-year", {
         tabindex: "-1"
       });
       var yearElement = yearInput.childNodes[0];
+      yearElement.title = self.l10n.scrollTitle;
       yearElement.setAttribute("aria-label", self.l10n.yearAriaLabel);
       if (self.config.minDate) yearElement.setAttribute("data-min", self.config.minDate.getFullYear().toString());
 
@@ -12212,7 +11228,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
       self.showTimeInput = false;
 
       if (self.config.enableTime === true) {
-        setDefaultHours();
+        if (self.config.minDate !== undefined) setHoursFromDate(self.config.minDate);else setHours(self.config.defaultHour, self.config.defaultMinute, self.config.defaultSeconds);
       }
 
       self.redraw();
@@ -12244,18 +11260,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
       if (self.mobileInput) {
         if (self.mobileInput.parentNode) self.mobileInput.parentNode.removeChild(self.mobileInput);
         self.mobileInput = undefined;
-      } else if (self.calendarContainer && self.calendarContainer.parentNode) {
-        if (self.config.static && self.calendarContainer.parentNode) {
-          var wrapper = self.calendarContainer.parentNode;
-          wrapper.lastChild && wrapper.removeChild(wrapper.lastChild);
-
-          while (wrapper.firstChild) {
-            wrapper.parentNode.insertBefore(wrapper.firstChild, wrapper);
-          }
-
-          wrapper.parentNode.removeChild(wrapper);
-        } else self.calendarContainer.parentNode.removeChild(self.calendarContainer);
-      }
+      } else if (self.calendarContainer && self.calendarContainer.parentNode) self.calendarContainer.parentNode.removeChild(self.calendarContainer);
 
       if (self.altInput) {
         self.input.type = "text";
@@ -12350,6 +11355,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
     function onKeyDown(e) {
       var isInput = e.target === self._input;
+      var calendarElem = isCalendarElem(e.target);
       var allowInput = self.config.allowInput;
       var allowKeydown = self.isOpen && (!allowInput || !isInput);
       var allowInlineKeydown = self.config.inline && isInput && !allowInput;
@@ -12359,12 +11365,12 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
           self.setDate(self._input.value, true, e.target === self.altInput ? self.config.altFormat : self.config.dateFormat);
           return e.target.blur();
         } else self.open();
-      } else if (isCalendarElem(e.target) || allowKeydown || allowInlineKeydown) {
+      } else if (calendarElem || allowKeydown || allowInlineKeydown) {
         var isTimeObj = !!self.timeContainer && self.timeContainer.contains(e.target);
 
         switch (e.keyCode) {
           case 13:
-            if (isTimeObj) updateTime();else selectDate(e);
+            if (isTimeObj) updateValue();else selectDate(e);
             break;
 
           case 27:
@@ -12419,18 +11425,19 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
           case 9:
             if (!isTimeObj) break;
-            var elems = [self.hourElement, self.minuteElement, self.secondElement, self.amPM].filter(function (x) {
-              return x;
-            });
-            var i = elems.indexOf(e.target);
 
-            if (i !== -1) {
-              var target = elems[i + (e.shiftKey ? -1 : 1)];
-
-              if (target !== undefined) {
+            if (e.target === self.hourElement) {
+              e.preventDefault();
+              self.minuteElement.select();
+            } else if (e.target === self.minuteElement && (self.secondElement || self.amPM)) {
+              e.preventDefault();
+              if (self.secondElement !== undefined) self.secondElement.focus();else if (self.amPM !== undefined) {
                 e.preventDefault();
-                target.focus();
+                self.amPM.focus();
               }
+            } else if (e.target === self.secondElement && self.amPM) {
+              e.preventDefault();
+              self.amPM.focus();
             }
 
             break;
@@ -12462,17 +11469,16 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
     }
 
     function onMouseOver(elem) {
-      if (self.selectedDates.length !== 1 || elem && (!elem.classList.contains("flatpickr-day") || elem.classList.contains("disabled"))) return;
-      var hoverDate = elem ? elem.dateObj.getTime() : self.days.firstElementChild.dateObj.getTime(),
+      if (self.selectedDates.length !== 1 || !elem.classList.contains("flatpickr-day") || elem.classList.contains("disabled")) return;
+      var hoverDate = elem.dateObj.getTime(),
           initialDate = self.parseDate(self.selectedDates[0], undefined, true).getTime(),
           rangeStartDate = Math.min(hoverDate, self.selectedDates[0].getTime()),
-          rangeEndDate = Math.max(hoverDate, self.selectedDates[0].getTime()),
-          lastDate = self.daysContainer.lastChild.lastChild.dateObj.getTime();
+          rangeEndDate = Math.max(hoverDate, self.selectedDates[0].getTime());
       var containsDisabled = false;
       var minRange = 0,
           maxRange = 0;
 
-      for (var t = rangeStartDate; t < lastDate; t += duration.DAY) {
+      for (var t = rangeStartDate; t < rangeEndDate; t += duration.DAY) {
         if (!isEnabled(new Date(t), true)) {
           containsDisabled = containsDisabled || t > rangeStartDate && t < rangeEndDate;
           if (t < initialDate && (!minRange || t > minRange)) minRange = t;else if (t > initialDate && (!maxRange || t < maxRange)) maxRange = t;
@@ -12500,14 +11506,11 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
           ["startRange", "inRange", "endRange", "notAllowed"].forEach(function (c) {
             dayElem.classList.remove(c);
           });
+          elem.classList.add(hoverDate < self.selectedDates[0].getTime() ? "startRange" : "endRange");
 
-          if (elem !== undefined) {
-            elem.classList.add(hoverDate < self.selectedDates[0].getTime() ? "startRange" : "endRange");
-
-            if (month.contains(elem) || !(m > 0 && prevMonth && prevMonth.lastChild.dateObj.getTime() >= timestamp)) {
-              if (initialDate < hoverDate && timestamp === initialDate) dayElem.classList.add("startRange");else if (initialDate > hoverDate && timestamp === initialDate) dayElem.classList.add("endRange");
-              if (timestamp >= minRange && (maxRange === 0 || timestamp <= maxRange) && isBetween(timestamp, initialDate, hoverDate)) dayElem.classList.add("inRange");
-            }
+          if (month.contains(elem) || !(m > 0 && prevMonth && prevMonth.lastChild.dateObj.getTime() >= timestamp)) {
+            if (initialDate < hoverDate && timestamp === initialDate) dayElem.classList.add("startRange");else if (initialDate > hoverDate && timestamp === initialDate) dayElem.classList.add("endRange");
+            if (timestamp >= minRange && (maxRange === 0 || timestamp <= maxRange) && isBetween(timestamp, initialDate, hoverDate)) dayElem.classList.add("inRange");
           }
         };
 
@@ -12525,7 +11528,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
     function open(e, positionElement) {
       if (positionElement === void 0) {
-        positionElement = self._positionElement;
+        positionElement = self._input;
       }
 
       if (self.isMobile === true) {
@@ -12556,8 +11559,8 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
       if (self.config.enableTime === true && self.config.noCalendar === true) {
         if (self.selectedDates.length === 0) {
-          self.setDate(self.config.minDate !== undefined ? new Date(self.config.minDate.getTime()) : new Date(), false);
-          setDefaultHours();
+          self.setDate(self.config.minDate !== undefined ? new Date(self.config.minDate.getTime()) : new Date().setHours(self.config.defaultHour, self.config.defaultMinute, self.config.defaultSeconds, 0), false);
+          setHoursFromInputs();
           updateValue();
         }
 
@@ -12696,10 +11699,6 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
       self.l10n = Object.assign({}, flatpickr.l10ns.default, typeof self.config.locale === "object" ? self.config.locale : self.config.locale !== "default" ? flatpickr.l10ns[self.config.locale] : undefined);
       tokenRegex.K = "(" + self.l10n.amPM[0] + "|" + self.l10n.amPM[1] + "|" + self.l10n.amPM[0].toLowerCase() + "|" + self.l10n.amPM[1].toLowerCase() + ")";
       self.formatDate = createDateFormatter(self);
-      self.parseDate = createDateParser({
-        config: self.config,
-        l10n: self.l10n
-      });
     }
 
     function positionCalendar(customPositionElement) {
@@ -12788,10 +11787,18 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
       updateNavigationCurrentMonth();
       buildDays();
+      if (self.config.minDate && self.minDateHasTime && self.config.enableTime && compareDates(selectedDate, self.config.minDate) === 0) setHoursFromDate(self.config.minDate);
       updateValue();
       if (self.config.enableTime) setTimeout(function () {
         return self.showTimeInput = true;
       }, 50);
+
+      if (self.config.mode === "range") {
+        if (self.selectedDates.length === 1) {
+          onMouseOver(target);
+        } else updateNavigationCurrentMonth();
+      }
+
       if (!shouldChangeMonth && self.config.mode !== "range" && self.config.showMonths === 1) focusOnDayElem(target);else self.selectedDateElem && self.selectedDateElem.focus();
       if (self.hourElement !== undefined) setTimeout(function () {
         return self.hourElement !== undefined && self.hourElement.select();
@@ -12869,7 +11876,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
         format = self.config.dateFormat;
       }
 
-      if (date !== 0 && !date || date instanceof Array && date.length === 0) return self.clear(triggerChange);
+      if (date !== 0 && !date) return self.clear(triggerChange);
       setSelectedDate(date, format);
       self.showTimeInput = self.selectedDates.length > 0;
       self.latestSelectedDateObj = self.selectedDates[0];
@@ -12898,7 +11905,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
     function setupDates() {
       self.selectedDates = [];
       self.now = self.parseDate(self.config.now) || new Date();
-      var preloadedDate = self.config.defaultDate || ((self.input.nodeName === "INPUT" || self.input.nodeName === "TEXTAREA") && self.input.placeholder && self.input.value === self.input.placeholder ? null : self.input.value);
+      var preloadedDate = self.config.defaultDate || self.input.value;
       if (preloadedDate) setSelectedDate(preloadedDate, self.config.dateFormat);
       var initialDate = self.selectedDates.length > 0 ? self.selectedDates[0] : self.config.minDate && self.config.minDate.getTime() > self.now.getTime() ? self.config.minDate : self.config.maxDate && self.config.maxDate.getTime() < self.now.getTime() ? self.config.maxDate : self.now;
       self.currentYear = initialDate.getFullYear();
@@ -12941,7 +11948,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
         self.altInput.required = self.input.required;
         self.altInput.tabIndex = self.input.tabIndex;
         self.altInput.type = "text";
-        self.input.setAttribute("type", "hidden");
+        self.input.type = "hidden";
         if (!self.config.static && self.input.parentNode) self.input.parentNode.insertBefore(self.altInput, self.input.nextSibling);
       }
 
@@ -13189,7 +12196,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 });
 
 /***/ }),
-/* 53 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13227,7 +12234,7 @@ const cssClasses = {
 
 
 /***/ }),
-/* 54 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13251,22 +12258,24 @@ const cssClasses = {
 
 /** @enum {string} */
 const strings = {
-  ICON_EVENT: 'MDCTextField:icon',
-  ICON_ROLE: 'button'
+  ICON_EVENT: 'MDCTextField:icon'
 };
 
 
 
 /***/ }),
-/* 55 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helper_text_foundation__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__icon_foundation__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__adapter__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_line_ripple_foundation__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__helper_text_foundation__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__icon_foundation__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_floating_label_foundation__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_notched_outline_foundation__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__constants__ = __webpack_require__(17);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -13285,12 +12294,19 @@ const strings = {
  */
 
 
+
 /* eslint-disable no-unused-vars */
+
+
+
 
 
 /* eslint-enable no-unused-vars */
 
 
+// whitelist based off of https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
+// under section: `Validation-related attributes`
+const VALIDATION_ATTR_WHITELIST = ['pattern', 'min', 'max', 'required', 'step', 'minlength', 'maxlength'];
 
 /**
  * @extends {MDCFoundation<!MDCTextFieldAdapter>}
@@ -13299,17 +12315,17 @@ const strings = {
 class MDCTextFieldFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
   /** @return enum {string} */
   static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_4__constants__["b" /* cssClasses */];
+    return __WEBPACK_IMPORTED_MODULE_7__constants__["a" /* cssClasses */];
   }
 
   /** @return enum {string} */
   static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_4__constants__["d" /* strings */];
+    return __WEBPACK_IMPORTED_MODULE_7__constants__["c" /* strings */];
   }
 
   /** @return enum {string} */
   static get numbers() {
-    return __WEBPACK_IMPORTED_MODULE_4__constants__["c" /* numbers */];
+    return __WEBPACK_IMPORTED_MODULE_7__constants__["b" /* numbers */];
   }
 
   /** @return {boolean} */
@@ -13319,7 +12335,7 @@ class MDCTextFieldFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_
 
   /** @return {boolean} */
   get shouldFloat() {
-    return this.isFocused_ || !!this.getValue() || this.isBadInput_();
+    return !this.isBadInput_() && (!!this.getValue() || this.isFocused_);
   }
 
   /**
@@ -13386,8 +12402,7 @@ class MDCTextFieldFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_
     /** @private {function(!Event): undefined} */
     this.textFieldInteractionHandler_ = () => this.handleTextFieldInteraction();
     /** @private {function(!Array): undefined} */
-    this.validationAttributeChangeHandler_ = attributesList => this.handleValidationAttributeChange(attributesList);
-
+    this.validationAttributeChangeHandler_ = mutations => this.handleValidationAttributeMutation_(mutations);
     /** @private {!MutationObserver} */
     this.validationObserver_;
   }
@@ -13395,7 +12410,7 @@ class MDCTextFieldFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_
   init() {
     this.adapter_.addClass(MDCTextFieldFoundation.cssClasses.UPGRADED);
     // Ensure label does not collide with any pre-filled value.
-    if (this.adapter_.hasLabel() && (this.getValue() || this.isBadInput_())) {
+    if (this.adapter_.hasLabel() && this.getValue()) {
       this.adapter_.floatLabel(this.shouldFloat);
       this.notchOutline(this.shouldFloat);
     }
@@ -13442,11 +12457,12 @@ class MDCTextFieldFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_
 
   /**
    * Handles validation attribute changes
-   * @param {!Array<string>} attributesList
+   * @param {Array<MutationRecord>} mutationsList
+   * @private
    */
-  handleValidationAttributeChange(attributesList) {
-    attributesList.some(attributeName => {
-      if (__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* VALIDATION_ATTR_WHITELIST */].indexOf(attributeName) > -1) {
+  handleValidationAttributeMutation_(mutationsList) {
+    mutationsList.some(mutation => {
+      if (VALIDATION_ATTR_WHITELIST.indexOf(mutation.attributeName) > -1) {
         this.styleValidity_(true);
         return true;
       }
@@ -13463,8 +12479,8 @@ class MDCTextFieldFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_
     }
 
     if (openNotch) {
-      const isDense = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* cssClasses */].DENSE);
-      const labelScale = isDense ? __WEBPACK_IMPORTED_MODULE_4__constants__["c" /* numbers */].DENSE_LABEL_SCALE : __WEBPACK_IMPORTED_MODULE_4__constants__["c" /* numbers */].LABEL_SCALE;
+      const isDense = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_7__constants__["a" /* cssClasses */].DENSE);
+      const labelScale = isDense ? __WEBPACK_IMPORTED_MODULE_7__constants__["b" /* numbers */].DENSE_LABEL_SCALE : __WEBPACK_IMPORTED_MODULE_7__constants__["b" /* numbers */].LABEL_SCALE;
       const labelWidth = this.adapter_.getLabelWidth() * labelScale;
       const isRtl = this.adapter_.isRtl();
       this.adapter_.notchOutline(labelWidth, isRtl);
@@ -13601,26 +12617,6 @@ class MDCTextFieldFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_
   }
 
   /**
-   * Sets the aria label of the icon.
-   * @param {string} label
-   */
-  setIconAriaLabel(label) {
-    if (this.icon_) {
-      this.icon_.setAriaLabel(label);
-    }
-  }
-
-  /**
-   * Sets the text content of the icon.
-   * @param {string} content
-   */
-  setIconContent(content) {
-    if (this.icon_) {
-      this.icon_.setContent(content);
-    }
-  }
-
-  /**
    * @return {boolean} True if the Text Field input fails in converting the
    *     user-supplied value.
    * @private
@@ -13707,124 +12703,7 @@ class MDCTextFieldFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_
 /* harmony default export */ __webpack_exports__["a"] = (MDCTextFieldFoundation);
 
 /***/ }),
-/* 56 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(57);
-/**
- * @license
- * Copyright 2018 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-/**
- * @extends {MDCFoundation<!MDCLineRippleAdapter>}
- * @final
- */
-class MDCLineRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum {string} */
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
-  }
-
-  /**
-   * {@see MDCLineRippleAdapter} for typing information on parameters and return
-   * types.
-   * @return {!MDCLineRippleAdapter}
-   */
-  static get defaultAdapter() {
-    return (/** @type {!MDCLineRippleAdapter} */{
-        addClass: () => {},
-        removeClass: () => {},
-        hasClass: () => {},
-        setStyle: () => {},
-        registerEventHandler: () => {},
-        deregisterEventHandler: () => {}
-      }
-    );
-  }
-
-  /**
-   * @param {!MDCLineRippleAdapter=} adapter
-   */
-  constructor(adapter = /** @type {!MDCLineRippleAdapter} */{}) {
-    super(Object.assign(MDCLineRippleFoundation.defaultAdapter, adapter));
-
-    /** @private {function(!Event): undefined} */
-    this.transitionEndHandler_ = evt => this.handleTransitionEnd(evt);
-  }
-
-  init() {
-    this.adapter_.registerEventHandler('transitionend', this.transitionEndHandler_);
-  }
-
-  destroy() {
-    this.adapter_.deregisterEventHandler('transitionend', this.transitionEndHandler_);
-  }
-
-  /**
-   * Activates the line ripple
-   */
-  activate() {
-    this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
-    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_ACTIVE);
-  }
-
-  /**
-   * Sets the center of the ripple animation to the given X coordinate.
-   * @param {number} xCoordinate
-   */
-  setRippleCenter(xCoordinate) {
-    this.adapter_.setStyle('transform-origin', `${xCoordinate}px center`);
-  }
-
-  /**
-   * Deactivates the line ripple
-   */
-  deactivate() {
-    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
-  }
-
-  /**
-   * Handles a transition end event
-   * @param {!Event} evt
-   */
-  handleTransitionEnd(evt) {
-    // Wait for the line ripple to be either transparent or opaque
-    // before emitting the animation end event
-    const isDeactivating = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
-
-    if (evt.propertyName === 'opacity') {
-      if (isDeactivating) {
-        this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_ACTIVE);
-        this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
-      }
-    }
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCLineRippleFoundation);
-
-/***/ }),
-/* 57 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13855,14 +12734,130 @@ const cssClasses = {
 
 
 /***/ }),
-/* 58 */
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/** @enum {string} */
+const cssClasses = {
+  LABEL_FLOAT_ABOVE: 'mdc-floating-label--float-above',
+  LABEL_SHAKE: 'mdc-floating-label--shake'
+};
+
+
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCLineRipple; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(21);
+/* unused harmony reexport MDCLineRippleFoundation */
+/**
+ * @license
+ * Copyright 2018 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @extends {MDCComponent<!MDCLineRippleFoundation>}
+ * @final
+ */
+class MDCLineRipple extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /**
+   * @param {!Element} root
+   * @return {!MDCLineRipple}
+   */
+  static attachTo(root) {
+    return new MDCLineRipple(root);
+  }
+
+  /**
+   * Activates the line ripple
+   */
+  activate() {
+    this.foundation_.activate();
+  }
+
+  /**
+   * Deactivates the line ripple
+   */
+  deactivate() {
+    this.foundation_.deactivate();
+  }
+
+  /**
+   * Sets the transform origin given a user's click location. The `rippleCenter` is the
+   * x-coordinate of the middle of the ripple.
+   * @param {!number} xCoordinate
+   */
+  setRippleCenter(xCoordinate) {
+    this.foundation_.setRippleCenter(xCoordinate);
+  }
+
+  /**
+   * @return {!MDCLineRippleFoundation}
+   */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]( /** @type {!MDCLineRippleAdapter} */Object.assign({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className),
+      hasClass: className => this.root_.classList.contains(className),
+      setStyle: (propertyName, value) => this.root_.style[propertyName] = value,
+      registerEventHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
+      deregisterEventHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler)
+    }));
+  }
+}
+
+
+
+/***/ }),
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextFieldHelperText; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(6);
 /* unused harmony reexport MDCTextFieldHelperTextFoundation */
 /**
  * @license
@@ -13926,14 +12921,14 @@ class MDCTextFieldHelperText extends __WEBPACK_IMPORTED_MODULE_0__material_base_
 
 
 /***/ }),
-/* 59 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextFieldIcon; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(7);
 /* unused harmony reexport MDCTextFieldIconFoundation */
 /**
  * @license
@@ -13982,12 +12977,7 @@ class MDCTextFieldIcon extends __WEBPACK_IMPORTED_MODULE_0__material_base_compon
    */
   getDefaultFoundation() {
     return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]( /** @type {!MDCTextFieldIconAdapter} */Object.assign({
-      getAttr: attr => this.root_.getAttribute(attr),
       setAttr: (attr, value) => this.root_.setAttribute(attr, value),
-      removeAttr: attr => this.root_.removeAttribute(attr),
-      setContent: content => {
-        this.root_.textContent = content;
-      },
       registerInteractionHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
       deregisterInteractionHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler),
       notifyIconAction: () => this.emit(__WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */].strings.ICON_EVENT, {} /* evtData */, true /* shouldBubble */)
@@ -13998,13 +12988,15 @@ class MDCTextFieldIcon extends __WEBPACK_IMPORTED_MODULE_0__material_base_compon
 
 
 /***/ }),
-/* 60 */
+/* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCFloatingLabel; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(23);
+/* unused harmony reexport MDCFloatingLabelFoundation */
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -14027,136 +13019,70 @@ class MDCTextFieldIcon extends __WEBPACK_IMPORTED_MODULE_0__material_base_compon
 
 
 /**
- * @extends {MDCFoundation<!MDCFloatingLabelAdapter>}
+ * @extends {MDCComponent<!MDCFloatingLabelFoundation>}
  * @final
  */
-class MDCFloatingLabelFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum {string} */
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
-  }
-
+class MDCFloatingLabel extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
   /**
-   * {@see MDCFloatingLabelAdapter} for typing information on parameters and return
-   * types.
-   * @return {!MDCFloatingLabelAdapter}
+   * @param {!Element} root
+   * @return {!MDCFloatingLabel}
    */
-  static get defaultAdapter() {
-    return (/** @type {!MDCFloatingLabelAdapter} */{
-        addClass: () => {},
-        removeClass: () => {},
-        getWidth: () => {},
-        registerInteractionHandler: () => {},
-        deregisterInteractionHandler: () => {}
-      }
-    );
-  }
-
-  /**
-   * @param {!MDCFloatingLabelAdapter} adapter
-   */
-  constructor(adapter) {
-    super(Object.assign(MDCFloatingLabelFoundation.defaultAdapter, adapter));
-
-    /** @private {function(!Event): undefined} */
-    this.shakeAnimationEndHandler_ = () => this.handleShakeAnimationEnd_();
-  }
-
-  init() {
-    this.adapter_.registerInteractionHandler('animationend', this.shakeAnimationEndHandler_);
-  }
-
-  destroy() {
-    this.adapter_.deregisterInteractionHandler('animationend', this.shakeAnimationEndHandler_);
-  }
-
-  /**
-   * Returns the width of the label element.
-   * @return {number}
-   */
-  getWidth() {
-    return this.adapter_.getWidth();
+  static attachTo(root) {
+    return new MDCFloatingLabel(root);
   }
 
   /**
    * Styles the label to produce the label shake for errors.
-   * @param {boolean} shouldShake adds shake class if true,
-   * otherwise removes shake class.
+   * @param {boolean} shouldShake styles the label to shake by adding shake class
+   * if true, otherwise will stop shaking by removing shake class.
    */
   shake(shouldShake) {
-    const { LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
-    if (shouldShake) {
-      this.adapter_.addClass(LABEL_SHAKE);
-    } else {
-      this.adapter_.removeClass(LABEL_SHAKE);
-    }
+    this.foundation_.shake(shouldShake);
   }
 
   /**
-   * Styles the label to float or dock.
-   * @param {boolean} shouldFloat adds float class if true, otherwise remove
-   * float and shake class to dock label.
+   * Styles label to float/dock.
+   * @param {boolean} shouldFloat styles the label to float by adding float class
+   * if true, otherwise docks the label by removing the float class.
    */
   float(shouldFloat) {
-    const { LABEL_FLOAT_ABOVE, LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
-    if (shouldFloat) {
-      this.adapter_.addClass(LABEL_FLOAT_ABOVE);
-    } else {
-      this.adapter_.removeClass(LABEL_FLOAT_ABOVE);
-      this.adapter_.removeClass(LABEL_SHAKE);
-    }
+    this.foundation_.float(shouldFloat);
   }
 
   /**
-   * Handles an interaction event on the root element.
+   * @return {number}
    */
-  handleShakeAnimationEnd_() {
-    const { LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
-    this.adapter_.removeClass(LABEL_SHAKE);
+  getWidth() {
+    return this.foundation_.getWidth();
+  }
+
+  /**
+   * @return {!MDCFloatingLabelFoundation}
+   */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className),
+      getWidth: () => this.root_.offsetWidth,
+      registerInteractionHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
+      deregisterInteractionHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler)
+    });
   }
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (MDCFloatingLabelFoundation);
-
-/***/ }),
-/* 61 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/** @enum {string} */
-const cssClasses = {
-  LABEL_FLOAT_ABOVE: 'mdc-floating-label--float-above',
-  LABEL_SHAKE: 'mdc-floating-label--shake'
-};
-
 
 
 /***/ }),
-/* 62 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCNotchedOutline; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(27);
+/* unused harmony reexport MDCNotchedOutlineFoundation */
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -14178,116 +13104,77 @@ const cssClasses = {
 
 
 
+
+
 /**
- * @extends {MDCFoundation<!MDCNotchedOutlineAdapter>}
+ * @extends {MDCComponent<!MDCNotchedOutlineFoundation>}
  * @final
  */
-class MDCNotchedOutlineFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum {string} */
-  static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
-  }
-
-  /** @return enum {string} */
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
-  }
-
+class MDCNotchedOutline extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
   /**
-   * {@see MDCNotchedOutlineAdapter} for typing information on parameters and return
-   * types.
-   * @return {!MDCNotchedOutlineAdapter}
+   * @param {!Element} root
+   * @return {!MDCNotchedOutline}
    */
-  static get defaultAdapter() {
-    return (/** @type {!MDCNotchedOutlineAdapter} */{
-        getWidth: () => {},
-        getHeight: () => {},
-        addClass: () => {},
-        removeClass: () => {},
-        setOutlinePathAttr: () => {},
-        getIdleOutlineStyleValue: () => {}
-      }
-    );
+  static attachTo(root) {
+    return new MDCNotchedOutline(root);
   }
 
   /**
-   * @param {!MDCNotchedOutlineAdapter} adapter
-   */
-  constructor(adapter) {
-    super(Object.assign(MDCNotchedOutlineFoundation.defaultAdapter, adapter));
+    * Updates outline selectors and SVG path to open notch.
+    * @param {number} notchWidth The notch width in the outline.
+    * @param {boolean=} isRtl Determines if outline is rtl. If rtl is true, notch
+    * will be right justified in outline path, otherwise left justified.
+    */
+  notch(notchWidth, isRtl) {
+    this.foundation_.notch(notchWidth, isRtl);
   }
 
   /**
-   * Adds the outline notched selector and updates the notch width
-   * calculated based off of notchWidth and isRtl.
-   * @param {number} notchWidth
-   * @param {boolean=} isRtl
-   */
-  notch(notchWidth, isRtl = false) {
-    const { OUTLINE_NOTCHED } = MDCNotchedOutlineFoundation.cssClasses;
-    this.adapter_.addClass(OUTLINE_NOTCHED);
-    this.updateSvgPath_(notchWidth, isRtl);
-  }
-
-  /**
-   * Removes notched outline selector to close the notch in the outline.
+   * Updates the outline selectors to close notch and return it to idle state.
    */
   closeNotch() {
-    const { OUTLINE_NOTCHED } = MDCNotchedOutlineFoundation.cssClasses;
-    this.adapter_.removeClass(OUTLINE_NOTCHED);
+    this.foundation_.closeNotch();
   }
 
   /**
-   * Updates the SVG path of the focus outline element based on the notchWidth
-   * and the RTL context.
-   * @param {number} notchWidth
-   * @param {boolean=} isRtl
-   * @private
+   * @return {!MDCNotchedOutlineFoundation}
    */
-  updateSvgPath_(notchWidth, isRtl) {
-    // Fall back to reading a specific corner's style because Firefox doesn't report the style on border-radius.
-    const radiusStyleValue = this.adapter_.getIdleOutlineStyleValue('border-radius') || this.adapter_.getIdleOutlineStyleValue('border-top-left-radius');
-    const radius = parseFloat(radiusStyleValue);
-    const width = this.adapter_.getWidth();
-    const height = this.adapter_.getHeight();
-    const cornerWidth = radius + 1.2;
-    const leadingStrokeLength = Math.abs(11 - cornerWidth);
-    const paddedNotchWidth = notchWidth + 8;
-
-    // The right, bottom, and left sides of the outline follow the same SVG path.
-    const pathMiddle = 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + radius + 'v' + (height - 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + radius + 'h' + (-width + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + -radius + 'v' + (-height + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + -radius;
-
-    let path;
-    if (!isRtl) {
-      path = 'M' + (cornerWidth + leadingStrokeLength + paddedNotchWidth) + ',' + 1 + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength) + pathMiddle + 'h' + leadingStrokeLength;
-    } else {
-      path = 'M' + (width - cornerWidth - leadingStrokeLength) + ',' + 1 + 'h' + leadingStrokeLength + pathMiddle + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength);
-    }
-
-    this.adapter_.setOutlinePathAttr(path);
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
+      getWidth: () => this.root_.offsetWidth,
+      getHeight: () => this.root_.offsetHeight,
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className),
+      setOutlinePathAttr: value => {
+        const path = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["b" /* strings */].PATH_SELECTOR);
+        path.setAttribute('d', value);
+      },
+      getIdleOutlineStyleValue: propertyName => {
+        const idleOutlineElement = this.root_.parentNode.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["b" /* strings */].IDLE_OUTLINE_SELECTOR);
+        return window.getComputedStyle(idleOutlineElement).getPropertyValue(propertyName);
+      }
+    });
   }
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (MDCNotchedOutlineFoundation);
+
 
 /***/ }),
-/* 63 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initEvents;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_loads__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_posts__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replaces__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_dialog__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events_errors__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visibility__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__events_snackbar__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_autocomplete__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_navigates__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__events_clears__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__events_stepper__ = __webpack_require__(76);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_loads__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_posts__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replaces__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_dialog__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events_errors__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visibility__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__events_snackbar__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_autocomplete__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_navigates__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__events_clears__ = __webpack_require__(80);
 
 
 
@@ -14338,8 +13225,6 @@ class VEvents {
                 window.location = responseURL;
             }
         }).catch(function (results) {
-            console.log("If you got here it may not be what you think:", results);
-
             var result = results.pop();
             new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](event).displayErrors(result);
         });
@@ -14374,8 +13259,6 @@ class VEvents {
                 return new __WEBPACK_IMPORTED_MODULE_8__events_navigates__["a" /* VNavigates */](options, params, event);
             case 'clear':
                 return new __WEBPACK_IMPORTED_MODULE_9__events_clears__["a" /* VClears */](options, params, event);
-            case 'stepper':
-                return new __WEBPACK_IMPORTED_MODULE_10__events_stepper__["a" /* VStepperEvent */](options, params, event);
             default:
                 throw action_type + ' is not supported.';
         }
@@ -14442,7 +13325,7 @@ function fireAfterLoad() {
 }
 
 /***/ }),
-/* 64 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14460,11 +13343,12 @@ class VLoads extends __WEBPACK_IMPORTED_MODULE_0__utils_urls__["a" /* VUrls */] 
 
     call(results) {
         var url = this.buildURL(this.url, this.params);
+        var newWindow = this.options['target'] === '_blank';
         var promiseObj = new Promise(function (resolve) {
             console.log("Loading page: " + url);
             results.push({ action: 'loads', statusCode: 200 });
             resolve(results);
-            window.location = url;
+            newWindow ? window.open(url) : window.location = url;
         });
         return promiseObj;
     }
@@ -14473,12 +13357,12 @@ class VLoads extends __WEBPACK_IMPORTED_MODULE_0__utils_urls__["a" /* VUrls */] 
 
 
 /***/ }),
-/* 65 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(10);
 
 
 
@@ -14582,13 +13466,13 @@ class VPosts extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
 
 
 /***/ }),
-/* 66 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_animation_index__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_animation_index__ = __webpack_require__(31);
 /* unused harmony reexport MDCSnackbarFoundation */
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -14672,12 +13556,143 @@ class MDCSnackbar extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a"
 
 
 /***/ }),
-/* 67 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(30);
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+/**
+ * @template F
+ */
+class MDCComponent {
+  /**
+   * @param {!Element} root
+   * @return {!MDCComponent}
+   */
+  static attachTo(root) {
+    // Subclasses which extend MDCBase should provide an attachTo() method that takes a root element and
+    // returns an instantiated component with its root set to that element. Also note that in the cases of
+    // subclasses, an explicit foundation class will not have to be passed in; it will simply be initialized
+    // from getDefaultFoundation().
+    return new MDCComponent(root, new __WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */]());
+  }
+
+  /**
+   * @param {!Element} root
+   * @param {F=} foundation
+   * @param {...?} args
+   */
+  constructor(root, foundation = undefined, ...args) {
+    /** @protected {!Element} */
+    this.root_ = root;
+    this.initialize(...args);
+    // Note that we initialize foundation here and not within the constructor's default param so that
+    // this.root_ is defined and can be used within the foundation class.
+    /** @protected {!F} */
+    this.foundation_ = foundation === undefined ? this.getDefaultFoundation() : foundation;
+    this.foundation_.init();
+    this.initialSyncWithDOM();
+  }
+
+  initialize() /* ...args */{}
+  // Subclasses can override this to do any additional setup work that would be considered part of a
+  // "constructor". Essentially, it is a hook into the parent constructor before the foundation is
+  // initialized. Any additional arguments besides root and foundation will be passed in here.
+
+
+  /**
+   * @return {!F} foundation
+   */
+  getDefaultFoundation() {
+    // Subclasses must override this method to return a properly configured foundation class for the
+    // component.
+    throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' + 'foundation class');
+  }
+
+  initialSyncWithDOM() {
+    // Subclasses should override this method if they need to perform work to synchronize with a host DOM
+    // object. An example of this would be a form control wrapper that needs to synchronize its internal state
+    // to some property or attribute of the host DOM. Please note: this is *not* the place to perform DOM
+    // reads/writes that would cause layout / paint, as this is called synchronously from within the constructor.
+  }
+
+  destroy() {
+    // Subclasses may implement this method to release any resources / deregister any listeners they have
+    // attached. An example of this might be deregistering a resize event from the window object.
+    this.foundation_.destroy();
+  }
+
+  /**
+   * Wrapper method to add an event listener to the component's root element. This is most useful when
+   * listening for custom events.
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  listen(evtType, handler) {
+    this.root_.addEventListener(evtType, handler);
+  }
+
+  /**
+   * Wrapper method to remove an event listener to the component's root element. This is most useful when
+   * unlistening for custom events.
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  unlisten(evtType, handler) {
+    this.root_.removeEventListener(evtType, handler);
+  }
+
+  /**
+   * Fires a cross-browser-compatible custom event from the component root of the given type,
+   * with the given data.
+   * @param {string} evtType
+   * @param {!Object} evtData
+   * @param {boolean=} shouldBubble
+   */
+  emit(evtType, evtData, shouldBubble = false) {
+    let evt;
+    if (typeof CustomEvent === 'function') {
+      evt = new CustomEvent(evtType, {
+        detail: evtData,
+        bubbles: shouldBubble
+      });
+    } else {
+      evt = document.createEvent('CustomEvent');
+      evt.initCustomEvent(evtType, shouldBubble, false, evtData);
+    }
+
+    this.root_.dispatchEvent(evt);
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCComponent);
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(73);
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
  *
@@ -14926,7 +13941,7 @@ class MDCSnackbarFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_i
 
 
 /***/ }),
-/* 68 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14974,13 +13989,13 @@ const numbers = {
 
 
 /***/ }),
-/* 69 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(5);
 
 
 
@@ -15065,7 +14080,7 @@ class VReplaces extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
 
 
 /***/ }),
-/* 70 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15098,7 +14113,7 @@ class VDialog {
 
 
 /***/ }),
-/* 71 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15132,11 +14147,11 @@ class VToggleVisibility {
 
 
 /***/ }),
-/* 72 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar_js__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar_js__ = __webpack_require__(3);
 
 
 class VSnackbarEvent {
@@ -15164,13 +14179,13 @@ class VSnackbarEvent {
 
 
 /***/ }),
-/* 73 */
+/* 78 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(5);
 
 
 
@@ -15271,7 +14286,7 @@ class VAutoComplete extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */]
 
 
 /***/ }),
-/* 74 */
+/* 79 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15296,7 +14311,7 @@ class VNavigates {
 
 
 /***/ }),
-/* 75 */
+/* 80 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15329,40 +14344,7 @@ class VClears {
 
 
 /***/ }),
-/* 76 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base__ = __webpack_require__(9);
-
-
-class VStepperEvent extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* VBase */] {
-
-    constructor(options, params, event) {
-        super(options);
-        this.params = params;
-        this.event = event;
-    }
-
-    call(results) {
-        let parentElem = document.getElementById(this.params.stepper_id);
-        let component = parentElem.vComponent;
-        let nav_action = this.params.navigate;
-
-        let promiseObj = new Promise(function (resolve) {
-            console.log("Stepping: " + nav_action);
-            component.navigate(nav_action);
-            results.push({ action: 'stepper', statusCode: 200 });
-            resolve(results);
-        });
-        return promiseObj;
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = VStepperEvent;
-
-
-/***/ }),
-/* 77 */
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15456,12 +14438,12 @@ function initLists() {
 }
 
 /***/ }),
-/* 78 */
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initIconToggles;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_icon_toggle__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_icon_toggle__ = __webpack_require__(83);
 
 
 function initIconToggles() {
@@ -15485,14 +14467,14 @@ function initIconToggles() {
 //         });
 
 /***/ }),
-/* 79 */
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCIconToggle; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__ = __webpack_require__(87);
 /* unused harmony reexport MDCIconToggleFoundation */
 /**
  * @license
@@ -15610,13 +14592,13 @@ class MDCIconToggle extends __WEBPACK_IMPORTED_MODULE_0__material_base_component
 
 
 /***/ }),
-/* 80 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(86);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -15812,7 +14794,7 @@ class MDCIconToggleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base
 }
 
 /**
- * @typedef {{
+ * @typedef {!{
  *   key: string,
  *   keyCode: number
  * }}
@@ -15851,7 +14833,7 @@ IconToggleState.prototype.cssClass;
 /* harmony default export */ __webpack_exports__["a"] = (MDCIconToggleFoundation);
 
 /***/ }),
-/* 81 */
+/* 85 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15943,7 +14925,7 @@ class MDCIconToggleAdapter {
 }
 
 /**
- * @typedef {{
+ * @typedef {!{
  *   isOn: boolean,
  * }}
  */
@@ -15952,7 +14934,7 @@ let IconToggleEvent;
 
 
 /***/ }),
-/* 82 */
+/* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15994,12 +14976,792 @@ const strings = {
 
 
 /***/ }),
-/* 83 */
+/* 87 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRipple; });
+/* unused harmony export RippleCapableSurface */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(35);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
+/* unused harmony reexport util */
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @extends MDCComponent<!MDCRippleFoundation>
+ */
+class MDCRipple extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /** @param {...?} args */
+  constructor(...args) {
+    super(...args);
+
+    /** @type {boolean} */
+    this.disabled = false;
+
+    /** @private {boolean} */
+    this.unbounded_;
+  }
+
+  /**
+   * @param {!Element} root
+   * @param {{isUnbounded: (boolean|undefined)}=} options
+   * @return {!MDCRipple}
+   */
+  static attachTo(root, { isUnbounded = undefined } = {}) {
+    const ripple = new MDCRipple(root);
+    // Only override unbounded behavior if option is explicitly specified
+    if (isUnbounded !== undefined) {
+      ripple.unbounded = /** @type {boolean} */isUnbounded;
+    }
+    return ripple;
+  }
+
+  /**
+   * @param {!RippleCapableSurface} instance
+   * @return {!MDCRippleAdapter}
+   */
+  static createAdapter(instance) {
+    const MATCHES = __WEBPACK_IMPORTED_MODULE_3__util__["b" /* getMatchesProperty */](HTMLElement.prototype);
+
+    return {
+      browserSupportsCssVars: () => __WEBPACK_IMPORTED_MODULE_3__util__["d" /* supportsCssVariables */](window),
+      isUnbounded: () => instance.unbounded,
+      isSurfaceActive: () => instance.root_[MATCHES](':active'),
+      isSurfaceDisabled: () => instance.disabled,
+      addClass: className => instance.root_.classList.add(className),
+      removeClass: className => instance.root_.classList.remove(className),
+      containsEventTarget: target => instance.root_.contains(target),
+      registerInteractionHandler: (evtType, handler) => instance.root_.addEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
+      deregisterInteractionHandler: (evtType, handler) => instance.root_.removeEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
+      registerDocumentInteractionHandler: (evtType, handler) => document.documentElement.addEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
+      deregisterDocumentInteractionHandler: (evtType, handler) => document.documentElement.removeEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["a" /* applyPassive */]()),
+      registerResizeHandler: handler => window.addEventListener('resize', handler),
+      deregisterResizeHandler: handler => window.removeEventListener('resize', handler),
+      updateCssVariable: (varName, value) => instance.root_.style.setProperty(varName, value),
+      computeBoundingRect: () => instance.root_.getBoundingClientRect(),
+      getWindowPageOffset: () => ({ x: window.pageXOffset, y: window.pageYOffset })
+    };
+  }
+
+  /** @return {boolean} */
+  get unbounded() {
+    return this.unbounded_;
+  }
+
+  /** @param {boolean} unbounded */
+  set unbounded(unbounded) {
+    this.unbounded_ = Boolean(unbounded);
+    this.setUnbounded_();
+  }
+
+  /**
+   * Closure Compiler throws an access control error when directly accessing a
+   * protected or private property inside a getter/setter, like unbounded above.
+   * By accessing the protected property inside a method, we solve that problem.
+   * That's why this function exists.
+   * @private
+   */
+  setUnbounded_() {
+    this.foundation_.setUnbounded(this.unbounded_);
+  }
+
+  activate() {
+    this.foundation_.activate();
+  }
+
+  deactivate() {
+    this.foundation_.deactivate();
+  }
+
+  layout() {
+    this.foundation_.layout();
+  }
+
+  /** @return {!MDCRippleFoundation} */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */](MDCRipple.createAdapter(this));
+  }
+
+  initialSyncWithDOM() {
+    this.unbounded = 'mdcRippleIsUnbounded' in this.root_.dataset;
+  }
+}
+
+/**
+ * See Material Design spec for more details on when to use ripples.
+ * https://material.io/guidelines/motion/choreography.html#choreography-creation
+ * @record
+ */
+class RippleCapableSurface {}
+
+/** @protected {!Element} */
+RippleCapableSurface.prototype.root_;
+
+/**
+ * Whether or not the ripple bleeds out of the bounds of the element.
+ * @type {boolean|undefined}
+ */
+RippleCapableSurface.prototype.unbounded;
+
+/**
+ * Whether or not the ripple is attached to a disabled component.
+ * @type {boolean|undefined}
+ */
+RippleCapableSurface.prototype.disabled;
+
+
+
+/***/ }),
+/* 88 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(35);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @typedef {!{
+ *   isActivated: (boolean|undefined),
+ *   hasDeactivationUXRun: (boolean|undefined),
+ *   wasActivatedByPointer: (boolean|undefined),
+ *   wasElementMadeActive: (boolean|undefined),
+ *   activationEvent: Event,
+ *   isProgrammatic: (boolean|undefined)
+ * }}
+ */
+let ActivationStateType;
+
+/**
+ * @typedef {!{
+ *   activate: (string|undefined),
+ *   deactivate: (string|undefined),
+ *   focus: (string|undefined),
+ *   blur: (string|undefined)
+ * }}
+ */
+let ListenerInfoType;
+
+/**
+ * @typedef {!{
+ *   activate: function(!Event),
+ *   deactivate: function(!Event),
+ *   focus: function(),
+ *   blur: function()
+ * }}
+ */
+let ListenersType;
+
+/**
+ * @typedef {!{
+ *   x: number,
+ *   y: number
+ * }}
+ */
+let PointType;
+
+// Activation events registered on the root element of each instance for activation
+const ACTIVATION_EVENT_TYPES = ['touchstart', 'pointerdown', 'mousedown', 'keydown'];
+
+// Deactivation events registered on documentElement when a pointer-related down event occurs
+const POINTER_DEACTIVATION_EVENT_TYPES = ['touchend', 'pointerup', 'mouseup'];
+
+// Tracks activations that have occurred on the current frame, to avoid simultaneous nested activations
+/** @type {!Array<!EventTarget>} */
+let activatedTargets = [];
+
+/**
+ * @extends {MDCFoundation<!MDCRippleAdapter>}
+ */
+class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */];
+  }
+
+  static get numbers() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */];
+  }
+
+  static get defaultAdapter() {
+    return {
+      browserSupportsCssVars: () => /* boolean - cached */{},
+      isUnbounded: () => /* boolean */{},
+      isSurfaceActive: () => /* boolean */{},
+      isSurfaceDisabled: () => /* boolean */{},
+      addClass: () => /* className: string */{},
+      removeClass: () => /* className: string */{},
+      containsEventTarget: () => /* target: !EventTarget */{},
+      registerInteractionHandler: () => /* evtType: string, handler: EventListener */{},
+      deregisterInteractionHandler: () => /* evtType: string, handler: EventListener */{},
+      registerDocumentInteractionHandler: () => /* evtType: string, handler: EventListener */{},
+      deregisterDocumentInteractionHandler: () => /* evtType: string, handler: EventListener */{},
+      registerResizeHandler: () => /* handler: EventListener */{},
+      deregisterResizeHandler: () => /* handler: EventListener */{},
+      updateCssVariable: () => /* varName: string, value: string */{},
+      computeBoundingRect: () => /* ClientRect */{},
+      getWindowPageOffset: () => /* {x: number, y: number} */{}
+    };
+  }
+
+  constructor(adapter) {
+    super(Object.assign(MDCRippleFoundation.defaultAdapter, adapter));
+
+    /** @private {number} */
+    this.layoutFrame_ = 0;
+
+    /** @private {!ClientRect} */
+    this.frame_ = /** @type {!ClientRect} */{ width: 0, height: 0 };
+
+    /** @private {!ActivationStateType} */
+    this.activationState_ = this.defaultActivationState_();
+
+    /** @private {number} */
+    this.initialSize_ = 0;
+
+    /** @private {number} */
+    this.maxRadius_ = 0;
+
+    /** @private {function(!Event)} */
+    this.activateHandler_ = e => this.activate_(e);
+
+    /** @private {function(!Event)} */
+    this.deactivateHandler_ = e => this.deactivate_(e);
+
+    /** @private {function(?Event=)} */
+    this.focusHandler_ = () => requestAnimationFrame(() => this.adapter_.addClass(MDCRippleFoundation.cssClasses.BG_FOCUSED));
+
+    /** @private {function(?Event=)} */
+    this.blurHandler_ = () => requestAnimationFrame(() => this.adapter_.removeClass(MDCRippleFoundation.cssClasses.BG_FOCUSED));
+
+    /** @private {!Function} */
+    this.resizeHandler_ = () => this.layout();
+
+    /** @private {!{left: number, top:number}} */
+    this.unboundedCoords_ = {
+      left: 0,
+      top: 0
+    };
+
+    /** @private {number} */
+    this.fgScale_ = 0;
+
+    /** @private {number} */
+    this.activationTimer_ = 0;
+
+    /** @private {number} */
+    this.fgDeactivationRemovalTimer_ = 0;
+
+    /** @private {boolean} */
+    this.activationAnimationHasEnded_ = false;
+
+    /** @private {!Function} */
+    this.activationTimerCallback_ = () => {
+      this.activationAnimationHasEnded_ = true;
+      this.runDeactivationUXLogicIfReady_();
+    };
+
+    /** @private {?Event} */
+    this.previousActivationEvent_ = null;
+  }
+
+  /**
+   * We compute this property so that we are not querying information about the client
+   * until the point in time where the foundation requests it. This prevents scenarios where
+   * client-side feature-detection may happen too early, such as when components are rendered on the server
+   * and then initialized at mount time on the client.
+   * @return {boolean}
+   * @private
+   */
+  isSupported_() {
+    return this.adapter_.browserSupportsCssVars();
+  }
+
+  /**
+   * @return {!ActivationStateType}
+   */
+  defaultActivationState_() {
+    return {
+      isActivated: false,
+      hasDeactivationUXRun: false,
+      wasActivatedByPointer: false,
+      wasElementMadeActive: false,
+      activationEvent: null,
+      isProgrammatic: false
+    };
+  }
+
+  init() {
+    if (!this.isSupported_()) {
+      return;
+    }
+    this.registerRootHandlers_();
+
+    const { ROOT, UNBOUNDED } = MDCRippleFoundation.cssClasses;
+    requestAnimationFrame(() => {
+      this.adapter_.addClass(ROOT);
+      if (this.adapter_.isUnbounded()) {
+        this.adapter_.addClass(UNBOUNDED);
+      }
+      this.layoutInternal_();
+    });
+  }
+
+  destroy() {
+    if (!this.isSupported_()) {
+      return;
+    }
+
+    if (this.activationTimer_) {
+      clearTimeout(this.activationTimer_);
+      this.activationTimer_ = 0;
+      const { FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
+      this.adapter_.removeClass(FG_ACTIVATION);
+    }
+
+    this.deregisterRootHandlers_();
+    this.deregisterDeactivationHandlers_();
+
+    const { ROOT, UNBOUNDED } = MDCRippleFoundation.cssClasses;
+    requestAnimationFrame(() => {
+      this.adapter_.removeClass(ROOT);
+      this.adapter_.removeClass(UNBOUNDED);
+      this.removeCssVars_();
+    });
+  }
+
+  /** @private */
+  registerRootHandlers_() {
+    ACTIVATION_EVENT_TYPES.forEach(type => {
+      this.adapter_.registerInteractionHandler(type, this.activateHandler_);
+    });
+    this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
+    this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
+    this.adapter_.registerResizeHandler(this.resizeHandler_);
+  }
+
+  /**
+   * @param {!Event} e
+   * @private
+   */
+  registerDeactivationHandlers_(e) {
+    if (e.type === 'keydown') {
+      this.adapter_.registerInteractionHandler('keyup', this.deactivateHandler_);
+    } else {
+      POINTER_DEACTIVATION_EVENT_TYPES.forEach(type => {
+        this.adapter_.registerDocumentInteractionHandler(type, this.deactivateHandler_);
+      });
+    }
+  }
+
+  /** @private */
+  deregisterRootHandlers_() {
+    ACTIVATION_EVENT_TYPES.forEach(type => {
+      this.adapter_.deregisterInteractionHandler(type, this.activateHandler_);
+    });
+    this.adapter_.deregisterInteractionHandler('focus', this.focusHandler_);
+    this.adapter_.deregisterInteractionHandler('blur', this.blurHandler_);
+    this.adapter_.deregisterResizeHandler(this.resizeHandler_);
+  }
+
+  /** @private */
+  deregisterDeactivationHandlers_() {
+    this.adapter_.deregisterInteractionHandler('keyup', this.deactivateHandler_);
+    POINTER_DEACTIVATION_EVENT_TYPES.forEach(type => {
+      this.adapter_.deregisterDocumentInteractionHandler(type, this.deactivateHandler_);
+    });
+  }
+
+  /** @private */
+  removeCssVars_() {
+    const { strings } = MDCRippleFoundation;
+    Object.keys(strings).forEach(k => {
+      if (k.indexOf('VAR_') === 0) {
+        this.adapter_.updateCssVariable(strings[k], null);
+      }
+    });
+  }
+
+  /**
+   * @param {?Event} e
+   * @private
+   */
+  activate_(e) {
+    if (this.adapter_.isSurfaceDisabled()) {
+      return;
+    }
+
+    const activationState = this.activationState_;
+    if (activationState.isActivated) {
+      return;
+    }
+
+    // Avoid reacting to follow-on events fired by touch device after an already-processed user interaction
+    const previousActivationEvent = this.previousActivationEvent_;
+    const isSameInteraction = previousActivationEvent && e && previousActivationEvent.type !== e.type;
+    if (isSameInteraction) {
+      return;
+    }
+
+    activationState.isActivated = true;
+    activationState.isProgrammatic = e === null;
+    activationState.activationEvent = e;
+    activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : e.type === 'mousedown' || e.type === 'touchstart' || e.type === 'pointerdown';
+
+    const hasActivatedChild = e && activatedTargets.length > 0 && activatedTargets.some(target => this.adapter_.containsEventTarget(target));
+    if (hasActivatedChild) {
+      // Immediately reset activation state, while preserving logic that prevents touch follow-on events
+      this.resetActivationState_();
+      return;
+    }
+
+    if (e) {
+      activatedTargets.push( /** @type {!EventTarget} */e.target);
+      this.registerDeactivationHandlers_(e);
+    }
+
+    requestAnimationFrame(() => {
+      // This needs to be wrapped in an rAF call b/c web browsers
+      // report active states inconsistently when they're called within
+      // event handling code:
+      // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
+      // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
+      activationState.wasElementMadeActive = e && e.type === 'keydown' ? this.adapter_.isSurfaceActive() : true;
+      if (activationState.wasElementMadeActive) {
+        this.animateActivation_();
+      } else {
+        // Reset activation state immediately if element was not made active.
+        this.activationState_ = this.defaultActivationState_();
+      }
+
+      // Reset array on next frame after the current event has had a chance to bubble to prevent ancestor ripples
+      activatedTargets = [];
+    });
+  }
+
+  /**
+   * @param {?Event=} event Optional event containing position information.
+   */
+  activate(event = null) {
+    this.activate_(event);
+  }
+
+  /** @private */
+  animateActivation_() {
+    const { VAR_FG_TRANSLATE_START, VAR_FG_TRANSLATE_END } = MDCRippleFoundation.strings;
+    const { FG_DEACTIVATION, FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
+    const { DEACTIVATION_TIMEOUT_MS } = MDCRippleFoundation.numbers;
+
+    let translateStart = '';
+    let translateEnd = '';
+
+    if (!this.adapter_.isUnbounded()) {
+      const { startPoint, endPoint } = this.getFgTranslationCoordinates_();
+      translateStart = `${startPoint.x}px, ${startPoint.y}px`;
+      translateEnd = `${endPoint.x}px, ${endPoint.y}px`;
+    }
+
+    this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_START, translateStart);
+    this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_END, translateEnd);
+    // Cancel any ongoing activation/deactivation animations
+    clearTimeout(this.activationTimer_);
+    clearTimeout(this.fgDeactivationRemovalTimer_);
+    this.rmBoundedActivationClasses_();
+    this.adapter_.removeClass(FG_DEACTIVATION);
+
+    // Force layout in order to re-trigger the animation.
+    this.adapter_.computeBoundingRect();
+    this.adapter_.addClass(FG_ACTIVATION);
+    this.activationTimer_ = setTimeout(() => this.activationTimerCallback_(), DEACTIVATION_TIMEOUT_MS);
+  }
+
+  /**
+   * @private
+   * @return {{startPoint: PointType, endPoint: PointType}}
+   */
+  getFgTranslationCoordinates_() {
+    const { activationEvent, wasActivatedByPointer } = this.activationState_;
+
+    let startPoint;
+    if (wasActivatedByPointer) {
+      startPoint = Object(__WEBPACK_IMPORTED_MODULE_3__util__["c" /* getNormalizedEventCoords */])(
+      /** @type {!Event} */activationEvent, this.adapter_.getWindowPageOffset(), this.adapter_.computeBoundingRect());
+    } else {
+      startPoint = {
+        x: this.frame_.width / 2,
+        y: this.frame_.height / 2
+      };
+    }
+    // Center the element around the start point.
+    startPoint = {
+      x: startPoint.x - this.initialSize_ / 2,
+      y: startPoint.y - this.initialSize_ / 2
+    };
+
+    const endPoint = {
+      x: this.frame_.width / 2 - this.initialSize_ / 2,
+      y: this.frame_.height / 2 - this.initialSize_ / 2
+    };
+
+    return { startPoint, endPoint };
+  }
+
+  /** @private */
+  runDeactivationUXLogicIfReady_() {
+    // This method is called both when a pointing device is released, and when the activation animation ends.
+    // The deactivation animation should only run after both of those occur.
+    const { FG_DEACTIVATION } = MDCRippleFoundation.cssClasses;
+    const { hasDeactivationUXRun, isActivated } = this.activationState_;
+    const activationHasEnded = hasDeactivationUXRun || !isActivated;
+
+    if (activationHasEnded && this.activationAnimationHasEnded_) {
+      this.rmBoundedActivationClasses_();
+      this.adapter_.addClass(FG_DEACTIVATION);
+      this.fgDeactivationRemovalTimer_ = setTimeout(() => {
+        this.adapter_.removeClass(FG_DEACTIVATION);
+      }, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].FG_DEACTIVATION_MS);
+    }
+  }
+
+  /** @private */
+  rmBoundedActivationClasses_() {
+    const { FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
+    this.adapter_.removeClass(FG_ACTIVATION);
+    this.activationAnimationHasEnded_ = false;
+    this.adapter_.computeBoundingRect();
+  }
+
+  resetActivationState_() {
+    this.previousActivationEvent_ = this.activationState_.activationEvent;
+    this.activationState_ = this.defaultActivationState_();
+    // Touch devices may fire additional events for the same interaction within a short time.
+    // Store the previous event until it's safe to assume that subsequent events are for new interactions.
+    setTimeout(() => this.previousActivationEvent_ = null, MDCRippleFoundation.numbers.TAP_DELAY_MS);
+  }
+
+  /**
+   * @param {?Event} e
+   * @private
+   */
+  deactivate_(e) {
+    const activationState = this.activationState_;
+    // This can happen in scenarios such as when you have a keyup event that blurs the element.
+    if (!activationState.isActivated) {
+      return;
+    }
+
+    const state = /** @type {!ActivationStateType} */Object.assign({}, activationState);
+
+    if (activationState.isProgrammatic) {
+      const evtObject = null;
+      requestAnimationFrame(() => this.animateDeactivation_(evtObject, state));
+      this.resetActivationState_();
+    } else {
+      this.deregisterDeactivationHandlers_();
+      requestAnimationFrame(() => {
+        this.activationState_.hasDeactivationUXRun = true;
+        this.animateDeactivation_(e, state);
+        this.resetActivationState_();
+      });
+    }
+  }
+
+  /**
+   * @param {?Event=} event Optional event containing position information.
+   */
+  deactivate(event = null) {
+    this.deactivate_(event);
+  }
+
+  /**
+   * @param {Event} e
+   * @param {!ActivationStateType} options
+   * @private
+   */
+  animateDeactivation_(e, { wasActivatedByPointer, wasElementMadeActive }) {
+    if (wasActivatedByPointer || wasElementMadeActive) {
+      this.runDeactivationUXLogicIfReady_();
+    }
+  }
+
+  layout() {
+    if (this.layoutFrame_) {
+      cancelAnimationFrame(this.layoutFrame_);
+    }
+    this.layoutFrame_ = requestAnimationFrame(() => {
+      this.layoutInternal_();
+      this.layoutFrame_ = 0;
+    });
+  }
+
+  /** @private */
+  layoutInternal_() {
+    this.frame_ = this.adapter_.computeBoundingRect();
+    const maxDim = Math.max(this.frame_.height, this.frame_.width);
+
+    // Surface diameter is treated differently for unbounded vs. bounded ripples.
+    // Unbounded ripple diameter is calculated smaller since the surface is expected to already be padded appropriately
+    // to extend the hitbox, and the ripple is expected to meet the edges of the padded hitbox (which is typically
+    // square). Bounded ripples, on the other hand, are fully expected to expand beyond the surface's longest diameter
+    // (calculated based on the diagonal plus a constant padding), and are clipped at the surface's border via
+    // `overflow: hidden`.
+    const getBoundedRadius = () => {
+      const hypotenuse = Math.sqrt(Math.pow(this.frame_.width, 2) + Math.pow(this.frame_.height, 2));
+      return hypotenuse + MDCRippleFoundation.numbers.PADDING;
+    };
+
+    this.maxRadius_ = this.adapter_.isUnbounded() ? maxDim : getBoundedRadius();
+
+    // Ripple is sized as a fraction of the largest dimension of the surface, then scales up using a CSS scale transform
+    this.initialSize_ = maxDim * MDCRippleFoundation.numbers.INITIAL_ORIGIN_SCALE;
+    this.fgScale_ = this.maxRadius_ / this.initialSize_;
+
+    this.updateLayoutCssVars_();
+  }
+
+  /** @private */
+  updateLayoutCssVars_() {
+    const {
+      VAR_FG_SIZE, VAR_LEFT, VAR_TOP, VAR_FG_SCALE
+    } = MDCRippleFoundation.strings;
+
+    this.adapter_.updateCssVariable(VAR_FG_SIZE, `${this.initialSize_}px`);
+    this.adapter_.updateCssVariable(VAR_FG_SCALE, this.fgScale_);
+
+    if (this.adapter_.isUnbounded()) {
+      this.unboundedCoords_ = {
+        left: Math.round(this.frame_.width / 2 - this.initialSize_ / 2),
+        top: Math.round(this.frame_.height / 2 - this.initialSize_ / 2)
+      };
+
+      this.adapter_.updateCssVariable(VAR_LEFT, `${this.unboundedCoords_.left}px`);
+      this.adapter_.updateCssVariable(VAR_TOP, `${this.unboundedCoords_.top}px`);
+    }
+  }
+
+  /** @param {boolean} unbounded */
+  setUnbounded(unbounded) {
+    const { UNBOUNDED } = MDCRippleFoundation.cssClasses;
+    if (unbounded) {
+      this.adapter_.addClass(UNBOUNDED);
+    } else {
+      this.adapter_.removeClass(UNBOUNDED);
+    }
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCRippleFoundation);
+
+/***/ }),
+/* 89 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return strings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return numbers; });
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+const cssClasses = {
+  // Ripple is a special case where the "root" component is really a "mixin" of sorts,
+  // given that it's an 'upgrade' to an existing component. That being said it is the root
+  // CSS class that all other CSS classes derive from.
+  ROOT: 'mdc-ripple-upgraded',
+  UNBOUNDED: 'mdc-ripple-upgraded--unbounded',
+  BG_FOCUSED: 'mdc-ripple-upgraded--background-focused',
+  FG_ACTIVATION: 'mdc-ripple-upgraded--foreground-activation',
+  FG_DEACTIVATION: 'mdc-ripple-upgraded--foreground-deactivation'
+};
+
+const strings = {
+  VAR_LEFT: '--mdc-ripple-left',
+  VAR_TOP: '--mdc-ripple-top',
+  VAR_FG_SIZE: '--mdc-ripple-fg-size',
+  VAR_FG_SCALE: '--mdc-ripple-fg-scale',
+  VAR_FG_TRANSLATE_START: '--mdc-ripple-fg-translate-start',
+  VAR_FG_TRANSLATE_END: '--mdc-ripple-fg-translate-end'
+};
+
+const numbers = {
+  PADDING: 10,
+  INITIAL_ORIGIN_SCALE: 0.6,
+  DEACTIVATION_TIMEOUT_MS: 225, // Corresponds to $mdc-ripple-translate-duration (i.e. activation animation duration)
+  FG_DEACTIVATION_MS: 150, // Corresponds to $mdc-ripple-fade-out-duration (i.e. deactivation animation duration)
+  TAP_DELAY_MS: 300 // Delay between touch and simulated mouse events on touch devices
+};
+
+
+
+/***/ }),
+/* 90 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initMenus;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_menu__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_menu__ = __webpack_require__(36);
 
 
 
@@ -16033,7 +15795,138 @@ function initMenus() {
 }
 
 /***/ }),
-/* 84 */
+/* 91 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(37);
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+/**
+ * @template F
+ */
+class MDCComponent {
+  /**
+   * @param {!Element} root
+   * @return {!MDCComponent}
+   */
+  static attachTo(root) {
+    // Subclasses which extend MDCBase should provide an attachTo() method that takes a root element and
+    // returns an instantiated component with its root set to that element. Also note that in the cases of
+    // subclasses, an explicit foundation class will not have to be passed in; it will simply be initialized
+    // from getDefaultFoundation().
+    return new MDCComponent(root, new __WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */]());
+  }
+
+  /**
+   * @param {!Element} root
+   * @param {F=} foundation
+   * @param {...?} args
+   */
+  constructor(root, foundation = undefined, ...args) {
+    /** @protected {!Element} */
+    this.root_ = root;
+    this.initialize(...args);
+    // Note that we initialize foundation here and not within the constructor's default param so that
+    // this.root_ is defined and can be used within the foundation class.
+    /** @protected {!F} */
+    this.foundation_ = foundation === undefined ? this.getDefaultFoundation() : foundation;
+    this.foundation_.init();
+    this.initialSyncWithDOM();
+  }
+
+  initialize() /* ...args */{}
+  // Subclasses can override this to do any additional setup work that would be considered part of a
+  // "constructor". Essentially, it is a hook into the parent constructor before the foundation is
+  // initialized. Any additional arguments besides root and foundation will be passed in here.
+
+
+  /**
+   * @return {!F} foundation
+   */
+  getDefaultFoundation() {
+    // Subclasses must override this method to return a properly configured foundation class for the
+    // component.
+    throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' + 'foundation class');
+  }
+
+  initialSyncWithDOM() {
+    // Subclasses should override this method if they need to perform work to synchronize with a host DOM
+    // object. An example of this would be a form control wrapper that needs to synchronize its internal state
+    // to some property or attribute of the host DOM. Please note: this is *not* the place to perform DOM
+    // reads/writes that would cause layout / paint, as this is called synchronously from within the constructor.
+  }
+
+  destroy() {
+    // Subclasses may implement this method to release any resources / deregister any listeners they have
+    // attached. An example of this might be deregistering a resize event from the window object.
+    this.foundation_.destroy();
+  }
+
+  /**
+   * Wrapper method to add an event listener to the component's root element. This is most useful when
+   * listening for custom events.
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  listen(evtType, handler) {
+    this.root_.addEventListener(evtType, handler);
+  }
+
+  /**
+   * Wrapper method to remove an event listener to the component's root element. This is most useful when
+   * unlistening for custom events.
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  unlisten(evtType, handler) {
+    this.root_.removeEventListener(evtType, handler);
+  }
+
+  /**
+   * Fires a cross-browser-compatible custom event from the component root of the given type,
+   * with the given data.
+   * @param {string} evtType
+   * @param {!Object} evtData
+   * @param {boolean=} shouldBubble
+   */
+  emit(evtType, evtData, shouldBubble = false) {
+    let evt;
+    if (typeof CustomEvent === 'function') {
+      evt = new CustomEvent(evtType, {
+        detail: evtData,
+        bubbles: shouldBubble
+      });
+    } else {
+      evt = document.createEvent('CustomEvent');
+      evt.initCustomEvent(evtType, shouldBubble, false, evtData);
+    }
+
+    this.root_.dispatchEvent(evt);
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCComponent);
+
+/***/ }),
+/* 92 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16196,15 +16089,15 @@ function solvePositionFromXValue_(xVal, x1, x2) {
 
 
 /***/ }),
-/* 85 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCMenuFoundation; });
 /* unused harmony export AnchorMargin */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(38);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -16847,7 +16740,7 @@ class MDCMenuFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_found
 
 
 /***/ }),
-/* 86 */
+/* 94 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17018,14 +16911,14 @@ class MDCMenuAdapter {
 
 
 /***/ }),
-/* 87 */
+/* 95 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSelects;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(9);
 
 
 
@@ -17070,17 +16963,16 @@ class VSelect extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__
 
 
 /***/ }),
-/* 88 */
+/* 96 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_floating_label_index__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_line_ripple_index__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_notched_outline_index__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__constants__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bottom_line_index__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__label_index__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__constants__ = __webpack_require__(42);
 /* unused harmony reexport MDCSelectFoundation */
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -17097,7 +16989,6 @@ class VSelect extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 
 
 
@@ -17138,56 +17029,48 @@ class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /
     this.foundation_.setDisabled(disabled);
   }
 
-  /**
-   * Recomputes the outline SVG path for the outline element.
-   */
-  layout() {
-    const openNotch = this.nativeControl_.value.length > 0;
-    this.foundation_.notchOutline(openNotch);
-  }
-
-  initialize(labelFactory = el => new __WEBPACK_IMPORTED_MODULE_1__material_floating_label_index__["a" /* MDCFloatingLabel */](el), lineRippleFactory = el => new __WEBPACK_IMPORTED_MODULE_2__material_line_ripple_index__["a" /* MDCLineRipple */](el), outlineFactory = el => new __WEBPACK_IMPORTED_MODULE_4__material_notched_outline_index__["a" /* MDCNotchedOutline */](el)) {
-    this.nativeControl_ = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_6__constants__["c" /* strings */].NATIVE_CONTROL_SELECTOR);
-    const labelElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_6__constants__["c" /* strings */].LABEL_SELECTOR);
+  initialize(labelFactory = el => new __WEBPACK_IMPORTED_MODULE_3__label_index__["a" /* MDCSelectLabel */](el), bottomLineFactory = el => new __WEBPACK_IMPORTED_MODULE_2__bottom_line_index__["a" /* MDCSelectBottomLine */](el)) {
+    this.nativeControl_ = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_5__constants__["c" /* strings */].NATIVE_CONTROL_SELECTOR);
+    const labelElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_5__constants__["c" /* strings */].LABEL_SELECTOR);
     if (labelElement) {
       this.label_ = labelFactory(labelElement);
     }
-    const lineRippleElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_6__constants__["c" /* strings */].LINE_RIPPLE_SELECTOR);
-    if (lineRippleElement) {
-      this.lineRipple_ = lineRippleFactory(lineRippleElement);
-    }
-    const outlineElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_6__constants__["c" /* strings */].OUTLINE_SELECTOR);
-    if (outlineElement) {
-      this.outline_ = outlineFactory(outlineElement);
+    const bottomLineElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_5__constants__["c" /* strings */].BOTTOM_LINE_SELECTOR);
+    if (bottomLineElement) {
+      this.bottomLine_ = bottomLineFactory(bottomLineElement);
     }
 
-    if (this.root_.classList.contains(__WEBPACK_IMPORTED_MODULE_6__constants__["a" /* cssClasses */].BOX)) {
+    if (this.root_.classList.contains(__WEBPACK_IMPORTED_MODULE_5__constants__["a" /* cssClasses */].BOX)) {
       this.ripple = this.initRipple_();
     }
   }
 
   initRipple_() {
-    const adapter = Object.assign(__WEBPACK_IMPORTED_MODULE_3__material_ripple_index__["a" /* MDCRipple */].createAdapter(this), {
+    const adapter = Object.assign(__WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["a" /* MDCRipple */].createAdapter(this), {
       registerInteractionHandler: (type, handler) => this.nativeControl_.addEventListener(type, handler),
       deregisterInteractionHandler: (type, handler) => this.nativeControl_.removeEventListener(type, handler)
     });
-    const foundation = new __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__["b" /* MDCRippleFoundation */](adapter);
-    return new __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__["a" /* MDCRipple */](this.root_, foundation);
+    const foundation = new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["b" /* MDCRippleFoundation */](adapter);
+    return new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["a" /* MDCRipple */](this.root_, foundation);
   }
 
   getDefaultFoundation() {
-    return new __WEBPACK_IMPORTED_MODULE_5__foundation__["a" /* default */](Object.assign({
+    return new __WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */]({
       addClass: className => this.root_.classList.add(className),
       removeClass: className => this.root_.classList.remove(className),
-      hasClass: className => this.root_.classList.contains(className),
+      floatLabel: value => {
+        if (this.label_) {
+          this.label_.float(value);
+        }
+      },
       activateBottomLine: () => {
-        if (this.lineRipple_) {
-          this.lineRipple_.activate();
+        if (this.bottomLine_) {
+          this.bottomLine_.activate();
         }
       },
       deactivateBottomLine: () => {
-        if (this.lineRipple_) {
-          this.lineRipple_.deactivate();
+        if (this.bottomLine_) {
+          this.bottomLine_.deactivate();
         }
       },
       setDisabled: disabled => this.nativeControl_.disabled = disabled,
@@ -17196,9 +17079,8 @@ class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /
       getSelectedIndex: () => this.nativeControl_.selectedIndex,
       setSelectedIndex: index => this.nativeControl_.selectedIndex = index,
       getValue: () => this.nativeControl_.value,
-      setValue: value => this.nativeControl_.value = value,
-      isRtl: () => window.getComputedStyle(this.root_).getPropertyValue('direction') === 'rtl'
-    }, this.getOutlineAdapterMethods_(), this.getLabelAdapterMethods_()));
+      setValue: value => this.nativeControl_.value = value
+    });
   }
 
   initialSyncWithDOM() {
@@ -17214,67 +17096,347 @@ class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /
     if (this.ripple) {
       this.ripple.destroy();
     }
-    if (this.outline_) {
-      this.outline_.destroy();
-    }
     super.destroy();
-  }
-
-  /**
-   * @return {!{
-   *   notchOutline: function(number, boolean): undefined,
-   *   hasOutline: function(): boolean,
-   * }}
-   */
-  getOutlineAdapterMethods_() {
-    return {
-      notchOutline: (labelWidth, isRtl) => {
-        if (this.outline_) {
-          this.outline_.notch(labelWidth, isRtl);
-        }
-      },
-      closeOutline: () => {
-        if (this.outline_) {
-          this.outline_.closeNotch();
-        }
-      },
-      hasOutline: () => !!this.outline_
-    };
-  }
-
-  /**
-   * @return {!{
-   *   floatLabel: function(boolean): undefined,
-   *   hasLabel: function(): boolean,
-   *   getLabelWidth: function(): number,
-   * }}
-   */
-  getLabelAdapterMethods_() {
-    return {
-      floatLabel: shouldFloat => {
-        if (this.label_) {
-          this.label_.float(shouldFloat);
-        }
-      },
-      hasLabel: () => !!this.label_,
-      getLabelWidth: () => {
-        if (this.label_) {
-          return this.label_.getWidth();
-        }
-      }
-    };
   }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = MDCSelect;
 
 
 /***/ }),
-/* 89 */
+/* 97 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(33);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCSelectBottomLine; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(98);
+/* unused harmony reexport MDCSelectBottomLineFoundation */
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @extends {MDCComponent<!MDCSelectBottomLineFoundation>}
+ * @final
+ */
+class MDCSelectBottomLine extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /**
+   * @param {!Element} root
+   * @return {!MDCSelectBottomLine}
+   */
+  static attachTo(root) {
+    return new MDCSelectBottomLine(root);
+  }
+
+  /**
+   * Activates the bottom line active class
+   */
+  activate() {
+    this.foundation_.activate();
+  }
+
+  /**
+   * Deactivates the bottom line active class
+   */
+  deactivate() {
+    this.foundation_.deactivate();
+  }
+
+  /**
+   * @return {!MDCSelectBottomLineFoundation}
+   */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className)
+    });
+  }
+}
+
+
+
+/***/ }),
+/* 98 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(99);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCSelectBottomLineAdapter>}
+ * @final
+ */
+class MDCSelectBottomLineFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  /**
+   * {@see MDCSelectBottomLineAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCSelectBottomLineAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCSelectBottomLineAdapter} */{
+        addClass: () => {},
+        removeClass: () => {}
+      }
+    );
+  }
+
+  /**
+   * Adds the active class to bottom line
+   */
+  activate() {
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].BOTTOM_LINE_ACTIVE);
+  }
+
+  /**
+   * Removes the active class from the bottom line
+   */
+  deactivate() {
+    this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].BOTTOM_LINE_ACTIVE);
+  }
+
+  /**
+   * @param {!MDCSelectBottomLineAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCSelectBottomLineFoundation.defaultAdapter, adapter));
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCSelectBottomLineFoundation);
+
+/***/ }),
+/* 99 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+const cssClasses = {
+  BOTTOM_LINE_ACTIVE: 'mdc-select__bottom-line--active'
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = cssClasses;
+
+
+/***/ }),
+/* 100 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCSelectLabel; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(101);
+/* unused harmony reexport MDCSelectLabelFoundation */
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @extends {MDCComponent<!MDCSelectLabelFoundation>}
+ * @final
+ */
+class MDCSelectLabel extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /**
+   * @param {!Element} root
+   * @return {!MDCSelectLabel}
+   */
+  static attachTo(root) {
+    return new MDCSelectLabel(root);
+  }
+
+  /**
+   * Styles the label to float or defloat as necessary.
+   * @param {string} value The value of the input.
+   */
+  float(value) {
+    this.foundation_.styleFloat(value);
+  }
+
+  /**
+   * @return {!MDCSelectLabelFoundation}
+   */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className)
+    });
+  }
+}
+
+
+
+/***/ }),
+/* 101 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(102);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCSelectLabelAdapter>}
+ * @final
+ */
+class MDCSelectLabelFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  /**
+   * {@see MDCSelectLabelAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCSelectLabelAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCSelectLabelAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        getWidth: () => {}
+      }
+    );
+  }
+
+  /**
+   * @param {!MDCSelectLabelAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCSelectLabelFoundation.defaultAdapter, adapter));
+  }
+
+  /**
+   * Styles the label to float or defloat as necessary.
+   * @param {string} value The value of the input.
+   */
+  styleFloat(value) {
+    const { LABEL_FLOAT_ABOVE } = MDCSelectLabelFoundation.cssClasses;
+    if (!!value) {
+      this.adapter_.addClass(LABEL_FLOAT_ABOVE);
+    } else {
+      this.adapter_.removeClass(LABEL_FLOAT_ABOVE);
+    }
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCSelectLabelFoundation);
+
+/***/ }),
+/* 102 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const cssClasses = {
+  LABEL_FLOAT_ABOVE: 'mdc-select__label--float-above'
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = cssClasses;
+
+
+/***/ }),
+/* 103 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(42);
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
  *
@@ -17311,7 +17473,6 @@ class MDCSelectFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_ind
     return {
       addClass: () => /* className: string */{},
       removeClass: () => /* className: string */{},
-      hasClass: () => /* className: string */false,
       floatLabel: () => /* value: boolean */{},
       activateBottomLine: () => {},
       deactivateBottomLine: () => {},
@@ -17321,13 +17482,7 @@ class MDCSelectFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_ind
       setSelectedIndex: () => /* index: number */{},
       setDisabled: () => /* disabled: boolean */{},
       getValue: () => /* string */'',
-      setValue: () => /* value: string */{},
-      isRtl: () => false,
-      hasLabel: () => {},
-      getLabelWidth: () => {},
-      hasOutline: () => {},
-      notchOutline: () => {},
-      closeOutline: () => {}
+      setValue: () => /* value: string */{}
     };
   }
 
@@ -17352,8 +17507,18 @@ class MDCSelectFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_ind
   }
 
   setSelectedIndex(index) {
+    const { IS_CHANGING } = MDCSelectFoundation.cssClasses;
+    const { FLOAT_NATIVE_CONTROL_TRANSITION_TIME_MS } = MDCSelectFoundation.numbers;
+
     this.adapter_.setSelectedIndex(index);
-    this.floatLabelWithValue_();
+    this.adapter_.addClass(IS_CHANGING);
+    const optionHasValue = this.adapter_.getValue().length > 0;
+
+    this.adapter_.floatLabel(optionHasValue);
+
+    setTimeout(() => {
+      this.adapter_.removeClass(IS_CHANGING);
+    }, FLOAT_NATIVE_CONTROL_TRANSITION_TIME_MS);
   }
 
   setValue(value) {
@@ -17371,56 +17536,28 @@ class MDCSelectFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_ind
     }
   }
 
-  floatLabelWithValue_() {
-    const optionHasValue = this.adapter_.getValue().length > 0;
-    this.adapter_.floatLabel(optionHasValue);
-    this.notchOutline(optionHasValue);
-  }
-
   handleFocus_() {
-    this.adapter_.floatLabel(true);
-    this.notchOutline(true);
     this.adapter_.activateBottomLine();
   }
 
   handleBlur_() {
-    this.floatLabelWithValue_();
     this.adapter_.deactivateBottomLine();
   }
 
   handleSelect_() {
     this.setSelectedIndex(this.adapter_.getSelectedIndex());
   }
-
-  /**
-   * Opens/closes the notched outline.
-   * @param {boolean} openNotch
-   */
-  notchOutline(openNotch) {
-    if (!this.adapter_.hasOutline() || !this.adapter_.hasLabel()) {
-      return;
-    }
-
-    if (openNotch) {
-      const labelScale = __WEBPACK_IMPORTED_MODULE_1__constants__["b" /* numbers */].LABEL_SCALE;
-      const labelWidth = this.adapter_.getLabelWidth() * labelScale;
-      const isRtl = this.adapter_.isRtl();
-      this.adapter_.notchOutline(labelWidth, isRtl);
-    } else {
-      this.adapter_.closeOutline();
-    }
-  }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = MDCSelectFoundation;
 
 
 /***/ }),
-/* 90 */
+/* 104 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initChips;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips__ = __webpack_require__(105);
 
 
 function initChips() {
@@ -17435,12 +17572,12 @@ function initChips() {
 }
 
 /***/ }),
-/* 91 */
+/* 105 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chip_index__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chip_set_index__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chip_index__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chip_set_index__ = __webpack_require__(107);
 /* unused harmony reexport MDCChipFoundation */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__chip_index__["a"]; });
 /* unused harmony reexport MDCChipSetFoundation */
@@ -17467,15 +17604,169 @@ function initChips() {
 
 
 /***/ }),
-/* 92 */
+/* 106 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(44);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCChipAdapter>}
+ * @final
+ */
+class MDCChipFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
+  }
+
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  /**
+   * {@see MDCChipAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCChipAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCChipAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        hasClass: () => {},
+        addClassToLeadingIcon: () => {},
+        removeClassFromLeadingIcon: () => {},
+        eventTargetHasClass: () => {},
+        registerEventHandler: () => {},
+        deregisterEventHandler: () => {},
+        registerTrailingIconInteractionHandler: () => {},
+        deregisterTrailingIconInteractionHandler: () => {},
+        notifyInteraction: () => {},
+        notifyTrailingIconInteraction: () => {}
+      }
+    );
+  }
+
+  /**
+   * @param {!MDCChipAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCChipFoundation.defaultAdapter, adapter));
+
+    /** @private {function(!Event): undefined} */
+    this.interactionHandler_ = evt => this.handleInteraction_(evt);
+    /** @private {function(!Event): undefined} */
+    this.transitionEndHandler_ = evt => this.handleTransitionEnd_(evt);
+    /** @private {function(!Event): undefined} */
+    this.trailingIconInteractionHandler_ = evt => this.handleTrailingIconInteraction_(evt);
+  }
+
+  init() {
+    ['click', 'keydown'].forEach(evtType => {
+      this.adapter_.registerEventHandler(evtType, this.interactionHandler_);
+    });
+    this.adapter_.registerEventHandler('transitionend', this.transitionEndHandler_);
+    ['click', 'keydown', 'touchstart', 'pointerdown', 'mousedown'].forEach(evtType => {
+      this.adapter_.registerTrailingIconInteractionHandler(evtType, this.trailingIconInteractionHandler_);
+    });
+  }
+
+  destroy() {
+    ['click', 'keydown'].forEach(evtType => {
+      this.adapter_.deregisterEventHandler(evtType, this.interactionHandler_);
+    });
+    this.adapter_.deregisterEventHandler('transitionend', this.transitionEndHandler_);
+    ['click', 'keydown', 'touchstart', 'pointerdown', 'mousedown'].forEach(evtType => {
+      this.adapter_.deregisterTrailingIconInteractionHandler(evtType, this.trailingIconInteractionHandler_);
+    });
+  }
+
+  /**
+   * Toggles the selected class on the chip element.
+   */
+  toggleSelected() {
+    if (this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED)) {
+      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED);
+    } else {
+      this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED);
+    }
+  }
+
+  /**
+   * Handles an interaction event on the root element.
+   * @param {!Event} evt
+   */
+  handleInteraction_(evt) {
+    if (evt.type === 'click' || evt.key === 'Enter' || evt.keyCode === 13) {
+      this.adapter_.notifyInteraction();
+    }
+  }
+
+  /**
+   * Handles a transition end event on the root element.
+   * This is a proxy for handling a transition end event on the leading icon or checkmark,
+   * since the transition end event bubbles.
+   * @param {!Event} evt
+   */
+  handleTransitionEnd_(evt) {
+    if (evt.propertyName !== 'opacity') {
+      return;
+    }
+    if (this.adapter_.eventTargetHasClass( /** @type {!EventTarget} */evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LEADING_ICON) && this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED)) {
+      this.adapter_.addClassToLeadingIcon(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HIDDEN_LEADING_ICON);
+    } else if (this.adapter_.eventTargetHasClass( /** @type {!EventTarget} */evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CHECKMARK) && !this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED)) {
+      this.adapter_.removeClassFromLeadingIcon(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HIDDEN_LEADING_ICON);
+    }
+  }
+
+  /**
+   * Handles an interaction event on the trailing icon element. This is used to
+   * prevent the ripple from activating on interaction with the trailing icon.
+   * @param {!Event} evt
+   */
+  handleTrailingIconInteraction_(evt) {
+    evt.stopPropagation();
+    if (evt.type === 'click' || evt.key === 'Enter' || evt.keyCode === 13) {
+      this.adapter_.notifyTrailingIconInteraction();
+    }
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCChipFoundation);
+
+/***/ }),
+/* 107 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export MDCChipSet */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chip_index__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chip_index__ = __webpack_require__(12);
 /* unused harmony reexport MDCChipSetFoundation */
 /**
  * @license
@@ -17513,8 +17804,6 @@ class MDCChipSet extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__[
 
     /** @type {!Array<!MDCChip>} */
     this.chips;
-    /** @type {(function(!Element): !MDCChip)} */
-    this.chipFactory_;
   }
 
   /**
@@ -17530,30 +17819,13 @@ class MDCChipSet extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__[
    * creates a new MDCChip.
    */
   initialize(chipFactory = el => new __WEBPACK_IMPORTED_MODULE_3__chip_index__["a" /* MDCChip */](el)) {
-    this.chipFactory_ = chipFactory;
-    this.chips = this.instantiateChips_(this.chipFactory_);
+    this.chips = this.instantiateChips_(chipFactory);
   }
 
   destroy() {
     this.chips.forEach(chip => {
       chip.destroy();
     });
-  }
-
-  initialSyncWithDOM() {
-    this.chips.forEach(chip => {
-      if (chip.isSelected()) {
-        this.foundation_.select(chip.foundation);
-      }
-    });
-  }
-
-  /**
-   * Adds a new chip object to the chip set from the given chip element.
-   * @param {!Element} chipEl
-   */
-  addChip(chipEl) {
-    this.chips.push(this.chipFactory_(chipEl));
   }
 
   /**
@@ -17563,12 +17835,7 @@ class MDCChipSet extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__[
     return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]( /** @type {!MDCChipSetAdapter} */Object.assign({
       hasClass: className => this.root_.classList.contains(className),
       registerInteractionHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
-      deregisterInteractionHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler),
-      removeChip: chip => {
-        const index = this.chips.indexOf(chip);
-        this.chips.splice(index, 1);
-        chip.destroy();
-      }
+      deregisterInteractionHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler)
     }));
   }
 
@@ -17586,14 +17853,14 @@ class MDCChipSet extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__[
 
 
 /***/ }),
-/* 93 */
+/* 108 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chip_foundation__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chip_index__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(109);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -17641,8 +17908,7 @@ class MDCChipSetFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fo
     return (/** @type {!MDCChipSetAdapter} */{
         hasClass: () => {},
         registerInteractionHandler: () => {},
-        deregisterInteractionHandler: () => {},
-        removeChip: () => {}
+        deregisterInteractionHandler: () => {}
       }
     );
   }
@@ -17655,90 +17921,55 @@ class MDCChipSetFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fo
 
     /**
      * The selected chips in the set. Only used for choice chip set or filter chip set.
-     * @private {!Array<!MDCChipFoundation>}
+     * @private {!Array<!MDCChip>}
      */
     this.selectedChips_ = [];
 
-    /** @private {function(!MDCChipInteractionEventType): undefined} */
+    /** @private {function(!Event): undefined} */
     this.chipInteractionHandler_ = evt => this.handleChipInteraction_(evt);
-    /** @private {function(!MDCChipInteractionEventType): undefined} */
-    this.chipRemovalHandler_ = evt => this.handleChipRemoval_(evt);
   }
 
   init() {
-    this.adapter_.registerInteractionHandler(__WEBPACK_IMPORTED_MODULE_2__chip_foundation__["a" /* MDCChipFoundation */].strings.INTERACTION_EVENT, this.chipInteractionHandler_);
-    this.adapter_.registerInteractionHandler(__WEBPACK_IMPORTED_MODULE_2__chip_foundation__["a" /* MDCChipFoundation */].strings.REMOVAL_EVENT, this.chipRemovalHandler_);
+    this.adapter_.registerInteractionHandler(__WEBPACK_IMPORTED_MODULE_2__chip_index__["b" /* MDCChipFoundation */].strings.INTERACTION_EVENT, this.chipInteractionHandler_);
   }
 
   destroy() {
-    this.adapter_.deregisterInteractionHandler(__WEBPACK_IMPORTED_MODULE_2__chip_foundation__["a" /* MDCChipFoundation */].strings.INTERACTION_EVENT, this.chipInteractionHandler_);
-    this.adapter_.deregisterInteractionHandler(__WEBPACK_IMPORTED_MODULE_2__chip_foundation__["a" /* MDCChipFoundation */].strings.REMOVAL_EVENT, this.chipRemovalHandler_);
-  }
-
-  /**
-   * Selects the given chip. Deselects all other chips if the chip set is of the choice variant.
-   * @param {!MDCChipFoundation} chipFoundation
-   */
-  select(chipFoundation) {
-    if (this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].CHOICE)) {
-      this.deselectAll_();
-    }
-    chipFoundation.setSelected(true);
-    this.selectedChips_.push(chipFoundation);
-  }
-
-  /**
-   * Deselects the given chip.
-   * @param {!MDCChipFoundation} chipFoundation
-   */
-  deselect(chipFoundation) {
-    const index = this.selectedChips_.indexOf(chipFoundation);
-    if (index >= 0) {
-      this.selectedChips_.splice(index, 1);
-    }
-    chipFoundation.setSelected(false);
-  }
-
-  /** Deselects all selected chips. */
-  deselectAll_() {
-    this.selectedChips_.forEach(chipFoundation => {
-      chipFoundation.setSelected(false);
-    });
-    this.selectedChips_.length = 0;
+    this.adapter_.deregisterInteractionHandler(__WEBPACK_IMPORTED_MODULE_2__chip_index__["b" /* MDCChipFoundation */].strings.INTERACTION_EVENT, this.chipInteractionHandler_);
   }
 
   /**
    * Handles a chip interaction event
-   * @param {!MDCChipInteractionEventType} evt
+   * @param {!Object} evt
    * @private
    */
   handleChipInteraction_(evt) {
-    const chipFoundation = evt.detail.chip.foundation;
-    if (this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].CHOICE) || this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].FILTER)) {
-      if (chipFoundation.isSelected()) {
-        this.deselect(chipFoundation);
-      } else {
-        this.select(chipFoundation);
-      }
-    }
-  }
-
-  /**
-   * Handles the event when a chip is removed.
-   * @param {!MDCChipInteractionEventType} evt
-   * @private
-   */
-  handleChipRemoval_(evt) {
     const { chip } = evt.detail;
-    this.deselect(chip.foundation);
-    this.adapter_.removeChip(chip);
+    if (this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].CHOICE)) {
+      if (this.selectedChips_.length === 0) {
+        this.selectedChips_[0] = chip;
+      } else if (this.selectedChips_[0] !== chip) {
+        this.selectedChips_[0].toggleSelected();
+        this.selectedChips_[0] = chip;
+      } else {
+        this.selectedChips_ = [];
+      }
+      chip.toggleSelected();
+    } else if (this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].FILTER)) {
+      const index = this.selectedChips_.indexOf(chip);
+      if (index >= 0) {
+        this.selectedChips_.splice(index, 1);
+      } else {
+        this.selectedChips_.push(chip);
+      }
+      chip.toggleSelected();
+    }
   }
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (MDCChipSetFoundation);
 
 /***/ }),
-/* 94 */
+/* 109 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17775,7 +18006,7 @@ const cssClasses = {
 
 
 /***/ }),
-/* 95 */
+/* 110 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17785,7 +18016,7 @@ function initCards() {
 }
 
 /***/ }),
-/* 96 */
+/* 111 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17859,22 +18090,12 @@ class VForm {
 
 
 /***/ }),
-/* 97 */
+/* 112 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initCheckboxes;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_checkbox__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_form_field_index__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_radio_index__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__radios__ = __webpack_require__(40);
-
-
-
-
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_checkbox__ = __webpack_require__(113);
 
 
 function initCheckboxes() {
@@ -17885,41 +18106,24 @@ function initCheckboxes() {
         for (var i = 0; i < components.length; i++) {
             var component = components[i];
             if (!component.mdcComponent) {
-                component.vComponent = new VCheckbox(radio, __WEBPACK_IMPORTED_MODULE_0__material_checkbox__["a" /* MDCCheckbox */].attachTo(component));
+                component.mdcComponent = __WEBPACK_IMPORTED_MODULE_0__material_checkbox__["a" /* MDCCheckbox */].attachTo(component);
             }
         }
     }
 }
 
-class VCheckbox extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_2__base_component__["a" /* VBaseComponent */]) {
-    constructor(element, mdcComponent) {
-        super(element);
-        this.input = element.querySelector('input');
-        this.mdcComponent = mdcComponent;
-    }
-
-    prepareSubmit(form, params) {
-        // On actual post/submit the form is passed and we are not expected to return our value
-        if (!form) {
-            params.push([this.input.name, this.input.value]);
-        }
-    }
-}
-/* unused harmony export VCheckbox */
-
-
 /***/ }),
-/* 98 */
+/* 113 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCCheckbox; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_animation_index__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_animation_index__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_selection_control_index__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_selection_control_index__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ripple_index__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ripple_util__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ripple_util__ = __webpack_require__(4);
 /* unused harmony reexport MDCCheckboxFoundation */
 /**
  * @license
@@ -17995,8 +18199,6 @@ class MDCCheckbox extends __WEBPACK_IMPORTED_MODULE_1__material_base_component__
     return new __WEBPACK_IMPORTED_MODULE_3__foundation__["a" /* default */]({
       addClass: className => this.root_.classList.add(className),
       removeClass: className => this.root_.classList.remove(className),
-      setNativeControlAttr: (attr, value) => this.nativeCb_.setAttribute(attr, value),
-      removeNativeControlAttr: attr => this.nativeCb_.removeAttribute(attr),
       registerAnimationEndHandler: handler => this.root_.addEventListener(Object(__WEBPACK_IMPORTED_MODULE_0__material_animation_index__["a" /* getCorrectEventName */])(window, 'animationend'), handler),
       deregisterAnimationEndHandler: handler => this.root_.removeEventListener(Object(__WEBPACK_IMPORTED_MODULE_0__material_animation_index__["a" /* getCorrectEventName */])(window, 'animationend'), handler),
       registerChangeHandler: handler => this.nativeCb_.addEventListener('change', handler),
@@ -18061,14 +18263,14 @@ class MDCCheckbox extends __WEBPACK_IMPORTED_MODULE_1__material_base_component__
 
 
 /***/ }),
-/* 99 */
+/* 114 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(116);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -18120,8 +18322,8 @@ class MDCCheckboxFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_f
     return (/** @type {!MDCCheckboxAdapter} */{
         addClass: () => /* className: string */{},
         removeClass: () => /* className: string */{},
-        setNativeControlAttr: () => /* attr: string, value: string */{},
-        removeNativeControlAttr: () => /* attr: string */{},
+        setNativeControlAttr: () => {},
+        removeNativeControlAttr: () => {},
         registerAnimationEndHandler: () => /* handler: EventListener */{},
         deregisterAnimationEndHandler: () => /* handler: EventListener */{},
         registerChangeHandler: () => /* handler: EventListener */{},
@@ -18152,7 +18354,6 @@ class MDCCheckboxFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_f
 
   init() {
     this.currentCheckState_ = this.determineCheckState_(this.getNativeControl_());
-    this.updateAriaChecked_();
     this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].UPGRADED);
     this.adapter_.registerChangeHandler(this.changeHandler_);
     this.installPropertyChangeHooks_();
@@ -18275,7 +18476,12 @@ class MDCCheckboxFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_f
       return;
     }
 
-    this.updateAriaChecked_();
+    // Ensure aria-checked is set to mixed if checkbox is in indeterminate state.
+    if (this.isIndeterminate()) {
+      this.adapter_.setNativeControlAttr(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ARIA_CHECKED_ATTR, __WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ARIA_CHECKED_INDETERMINATE_VALUE);
+    } else {
+      this.adapter_.removeNativeControlAttr(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ARIA_CHECKED_ATTR);
+    }
 
     // Check to ensure that there isn't a previously existing animation class, in case for example
     // the user interacted with the checkbox before the animation was finished.
@@ -18351,15 +18557,6 @@ class MDCCheckboxFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_f
     }
   }
 
-  updateAriaChecked_() {
-    // Ensure aria-checked is set to mixed if checkbox is in indeterminate state.
-    if (this.isIndeterminate()) {
-      this.adapter_.setNativeControlAttr(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ARIA_CHECKED_ATTR, __WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ARIA_CHECKED_INDETERMINATE_VALUE);
-    } else {
-      this.adapter_.removeNativeControlAttr(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ARIA_CHECKED_ATTR);
-    }
-  }
-
   /**
    * @return {!MDCSelectionControlState}
    * @private
@@ -18385,11 +18582,11 @@ function validDescriptor(inputPropDesc) {
 /* harmony default export */ __webpack_exports__["a"] = (MDCCheckboxFoundation);
 
 /***/ }),
-/* 100 */
+/* 115 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_selection_control_index__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_selection_control_index__ = __webpack_require__(13);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -18472,7 +18669,7 @@ class MDCCheckboxAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCCheckboxAdapter);
 
 /***/ }),
-/* 101 */
+/* 116 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18532,386 +18729,13 @@ const numbers = {
 
 
 /***/ }),
-/* 102 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(104);
-/**
- * @license
- * Copyright 2017 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-/**
- * @extends {MDCFoundation<!MDCFormFieldAdapter>}
- */
-class MDCFormFieldFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum {cssClasses} */
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
-  }
-
-  /** @return enum {strings} */
-  static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
-  }
-
-  /** @return {!MDCFormFieldAdapter} */
-  static get defaultAdapter() {
-    return {
-      registerInteractionHandler: () => /* type: string, handler: EventListener */{},
-      deregisterInteractionHandler: () => /* type: string, handler: EventListener */{},
-      activateInputRipple: () => {},
-      deactivateInputRipple: () => {}
-    };
-  }
-
-  constructor(adapter) {
-    super(Object.assign(MDCFormFieldFoundation.defaultAdapter, adapter));
-
-    /** @private {!EventListener} */
-    this.clickHandler_ = /** @type {!EventListener} */() => this.handleClick_();
-  }
-
-  init() {
-    this.adapter_.registerInteractionHandler('click', this.clickHandler_);
-  }
-
-  destroy() {
-    this.adapter_.deregisterInteractionHandler('click', this.clickHandler_);
-  }
-
-  /** @private */
-  handleClick_() {
-    this.adapter_.activateInputRipple();
-    requestAnimationFrame(() => this.adapter_.deactivateInputRipple());
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCFormFieldFoundation);
-
-/***/ }),
-/* 103 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* eslint no-unused-vars: [2, {"args": "none"}] */
-
-/**
- * Adapter for MDC Form Field. Provides an interface for managing
- * - event handlers
- * - ripple activation
- *
- * Additionally, provides type information for the adapter to the Closure
- * compiler.
- *
- * Implement this adapter for your framework of choice to delegate updates to
- * the component in your framework of choice. See architecture documentation
- * for more details.
- * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
- *
- * @record
- */
-class MDCFormFieldAdapter {
-  /**
-   * @param {string} type
-   * @param {!EventListener} handler
-   */
-  registerInteractionHandler(type, handler) {}
-
-  /**
-   * @param {string} type
-   * @param {!EventListener} handler
-   */
-  deregisterInteractionHandler(type, handler) {}
-
-  activateInputRipple() {}
-
-  deactivateInputRipple() {}
-}
-
-/* unused harmony default export */ var _unused_webpack_default_export = (MDCFormFieldAdapter);
-
-/***/ }),
-/* 104 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return strings; });
-/**
- * @license
- * Copyright 2017 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/** @enum {string} */
-const cssClasses = {
-  ROOT: 'mdc-form-field'
-};
-
-/** @enum {string} */
-const strings = {
-  LABEL_SELECTOR: '.mdc-form-field > label'
-};
-
-
-
-/***/ }),
-/* 105 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(107);
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-/* eslint-disable no-unused-vars */
-
-
-/* eslint-enable no-unused-vars */
-
-
-/**
- * @extends {MDCFoundation<!MDCRadioAdapter>}
- */
-class MDCRadioFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum {cssClasses} */
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */];
-  }
-
-  /** @return enum {strings} */
-  static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_3__constants__["b" /* strings */];
-  }
-
-  /** @return {!MDCRadioAdapter} */
-  static get defaultAdapter() {
-    return (/** @type {!MDCRadioAdapter} */{
-        addClass: () => /* className: string */{},
-        removeClass: () => /* className: string */{},
-        getNativeControl: () => /* !MDCSelectionControlState */{}
-      }
-    );
-  }
-
-  /** @return {boolean} */
-  isChecked() {
-    return this.getNativeControl_().checked;
-  }
-
-  /** @param {boolean} checked */
-  setChecked(checked) {
-    this.getNativeControl_().checked = checked;
-  }
-
-  /** @return {boolean} */
-  isDisabled() {
-    return this.getNativeControl_().disabled;
-  }
-
-  /** @param {boolean} disabled */
-  setDisabled(disabled) {
-    const { DISABLED } = MDCRadioFoundation.cssClasses;
-    this.getNativeControl_().disabled = disabled;
-    if (disabled) {
-      this.adapter_.addClass(DISABLED);
-    } else {
-      this.adapter_.removeClass(DISABLED);
-    }
-  }
-
-  /** @return {?string} */
-  getValue() {
-    return this.getNativeControl_().value;
-  }
-
-  /** @param {?string} value */
-  setValue(value) {
-    this.getNativeControl_().value = value;
-  }
-
-  /**
-   * @return {!MDCSelectionControlState}
-   * @private
-   */
-  getNativeControl_() {
-    return this.adapter_.getNativeControl() || {
-      checked: false,
-      disabled: false,
-      value: null
-    };
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCRadioFoundation);
-
-/***/ }),
-/* 106 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_selection_control_index__ = __webpack_require__(3);
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* eslint-disable no-unused-vars */
-
-
-/* eslint no-unused-vars: [2, {"args": "none"}] */
-
-/**
- * Adapter for MDC Radio. Provides an interface for managing
- * - classes
- * - dom
- *
- * Additionally, provides type information for the adapter to the Closure
- * compiler.
- *
- * Implement this adapter for your framework of choice to delegate updates to
- * the component in your framework of choice. See architecture documentation
- * for more details.
- * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
- *
- * @record
- */
-class MDCRadioAdapter {
-  /** @param {string} className */
-  addClass(className) {}
-
-  /** @param {string} className */
-  removeClass(className) {}
-
-  /** @return {!MDCSelectionControlState} */
-  getNativeControl() {}
-}
-
-/* unused harmony default export */ var _unused_webpack_default_export = (MDCRadioAdapter);
-
-/***/ }),
-/* 107 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return strings; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/** @enum {string} */
-const strings = {
-  NATIVE_CONTROL_SELECTOR: '.mdc-radio__native-control'
-};
-
-/** @enum {string} */
-const cssClasses = {
-  ROOT: 'mdc-radio',
-  DISABLED: 'mdc-radio--disabled'
-};
-
-
-
-/***/ }),
-/* 108 */
+/* 117 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSwitches;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(9);
 
 
 
@@ -18949,63 +18773,6 @@ class VSwitch extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__
     }
 }
 /* unused harmony export VSwitch */
-
-
-/***/ }),
-/* 109 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = initSteppers;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_event_handler__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(4);
-
-
-
-function initSteppers() {
-    console.log('\tStepper');
-    let components = document.querySelectorAll('ul.mdl-stepper');
-    for (let i = 0; i < components.length; i++) {
-        let component = components[i];
-        if (!component.vComponent) {
-            component.vComponent = new VStepper(component);
-        }
-    }
-}
-
-class VStepper extends Object(__WEBPACK_IMPORTED_MODULE_0__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]) {
-    constructor(element) {
-        super(element);
-
-        if (typeof componentHandler !== 'undefined') {
-            // MDL is loaded?
-            componentHandler.upgradeElement(element);
-            this.stepper = element.MaterialStepper;
-        }
-    }
-
-    navigate(nav_action) {
-        if (nav_action === 'continue' || nav_action === 'next') {
-            this.next_step();
-        } else if (nav_action === 'back') {
-            this.back_step();
-        } else if (nav_action === 'skip') {
-            this.skip_step();
-        }
-    }
-
-    next_step() {
-        this.stepper.next();
-    }
-    back_step() {
-        this.stepper.back();
-    }
-    skip_step() {
-        this.stepper.skip();
-    }
-
-}
-/* unused harmony export VStepper */
 
 
 /***/ })
