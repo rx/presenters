@@ -17,7 +17,7 @@
          <%= 'readonly' if comp.readonly %>
          list="<%= comp.id %>-list"
          <%= erb :"components/event", :locals => {events: comp.events, parent_id:  "#{comp.id}-input"} %>>
-  <label class='mdc-floating-label' for="<%= comp.id %>"><%= comp.label %></label>
+  <label class='mdc-floating-label' for="<%= comp.id %>-input"><%= comp.label %></label>
   <div class="mdc-line-ripple"></div>
   <datalist id="<%= comp.id %>-list">
   </datalist>
