@@ -9457,6 +9457,9 @@ a.mdc-list-item {
   #list-item-select-all-header > span {
     margin: auto; }
 
+.mdc-list-item__meta {
+  white-space: nowrap; }
+
 /** postcss-bem-linter: define icon-toggle */
 .mdc-icon-toggle {
   --mdc-ripple-fg-size: 0;
