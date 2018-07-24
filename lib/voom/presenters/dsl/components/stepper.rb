@@ -1,4 +1,6 @@
 require_relative '../../helpers/errors'
+require_relative 'form'
+require_relative 'button'
 require_relative 'mixins/common'
 require_relative 'mixins/images'
 require_relative 'mixins/icons'
@@ -10,8 +12,6 @@ require_relative 'mixins/snackbars'
 require_relative 'mixins/selects'
 require_relative 'mixins/text_fields'
 require_relative 'mixins/date_time_fields'
-require_relative 'form'
-require_relative 'button'
 
 module Voom
   module Presenters
