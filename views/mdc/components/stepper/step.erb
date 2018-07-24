@@ -27,7 +27,6 @@
     <% if comp.actions&.buttons %>
       <% comp.actions.buttons.each do |button| %>
         <%= erb :"components/button", :locals => {:comp => button,
-                                                  class_name: 'mdc-card__action mdc-card__action--button',
                                                   data_attributes: "data-stepper-#{button.stepper_type}",
                                                   event_parent_id: "#{comp.id}-form" }
         %>

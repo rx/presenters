@@ -8,6 +8,7 @@ require_relative 'mixins/snackbars'
 require_relative 'mixins/date_time_fields'
 require_relative 'mixins/images'
 require_relative 'mixins/steppers'
+require_relative 'mixins/sliders'
 
 module Voom
   module Presenters
@@ -22,6 +23,7 @@ module Voom
           include Mixins::Snackbars
           include Mixins::Images
           include Mixins::Steppers
+          include Mixins::Sliders
 
           attr_reader :hidden, :components, :shows_errors
          

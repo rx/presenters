@@ -3,9 +3,9 @@ module Voom
     module DSL
       module Components
         module Mixins
-          module Steppers
-            def stepper(**attributes, &block)
-              self << Components::Stepper.new(parent: self, context: context, **attributes, &block)
+          module Sliders
+            def slider(**attributes, &block)
+              self << Components::Slider.new(parent: self, context: context, **attributes, &block)
             end
           end
         end

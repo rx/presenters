@@ -14,7 +14,6 @@
     "hoek": "^5.0.3",
     "l": "^0.6.0",
     "node-sass": "^4.9.2",
-    "npm-check-updates": "^2.14.2",
     "sass-loader": "^7.0.3",
     "webpack": "^3.12.0",
     "webpack-dev-server": "^2.11.2"

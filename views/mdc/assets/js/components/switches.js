@@ -9,19 +9,17 @@ export function initSwitches() {
         for (let i = 0; i < components.length; i++) {
             let component = components[i];
             if (!component.vComponent) {
-                let input = component.querySelector('input');
-                let vSwitch = new VSwitch(component, input);
-                component.vComponent = vSwitch;
-                input.vComponent = vSwitch;
+                component.vComponent = new VSwitch(component, null); //new MDCSwitch(commponent));
             }
         }
     }
 }
 
 export class VSwitch extends eventHandlerMixin(VBaseComponent) {
-    constructor(element, input) {
+    constructor(element, mdcComponent) {
         super(element);
-        this.input = input;
+        this.input = element.querySelector('input');
+        this.mdcComponent = mdcComponent;
     }
 
     validate(_formData) {

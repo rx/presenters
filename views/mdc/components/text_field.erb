@@ -3,7 +3,7 @@
      trailing_icon = comp.icon && comp.icon.position.select{|p| eq(p, :right)}.any?
 %>
   <div id="<%= comp.id %>"
-     class=" v-text-field mdc-text-field mdc-text-field--outlined
+     class="v-input v-text-field mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-leading-icon' if leading_icon %>
             <%= 'mdc-text-field--with-trailing-icon' if trailing_icon %>
             <%= 'is-invalid is-dirty' if comp.error %>"

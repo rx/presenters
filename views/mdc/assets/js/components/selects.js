@@ -8,10 +8,7 @@ export function initSelects() {
     for (var i = 0; i < components.length; i++) {
         var component = components[i];
         if (!component.vComponent) {
-            let vSelect = new VSelect(component, MDCSelect.attachTo(component));
-            component.vComponent = vSelect;
-            var selectInput = component.querySelector('select');
-            selectInput.vComponent = vSelect;
+            component.vComponent = new VSelect(component, MDCSelect.attachTo(component));
         }
     }
 }

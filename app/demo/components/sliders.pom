@@ -1,148 +1,28 @@
 require_relative '../helpers/indented_grid'
 
-Voom::Presenters.define(:steppers) do
+Voom::Presenters.define(:sliders) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
-  page_title 'Stepper'
+  page_title 'Sliders'
 
   indented_grid do
 
-    title 'Horizontal Stepper'
-    stepper id: :my_stepper_id do
-      step id: :step1 do
-        label 'Step 1'
-        heading 'Make a choice:'
-        select name: :step_type do
-          option do
-            value ''
-            text 'Select something...'
-          end
-          option do
-            value 'type1'
-            text 'Step 2 Variation 1'
-          end
-          option do
-            value 'type2'
-            text 'Step 2 Variation 2'
-          end
-          event :change do
-            replaces :step2_content, :step2_form
-            stepper :continue # This should call the stepper.next() method.
-            # What I really want to happen here is:
-            # 1) Replace the content of step 2 with whatever the :step2_form POM returns (that's working)
-            # 2) Get the parent element, grab it's MaterialStepper and call .next()
+    title 'Continuous Slider'
+    slider discrete: false
 
-          end
-        end
+    title 'Discrete Slider'
+    slider discrete: true
 
-        actions do
-          continue do
-            event :click do
-              posts 'to_nowhere_fails'  # stepper should NOT advance
-            end
-          end
-        end
-
-      end
-
-      step id: :step2 do
-        label 'Middle Step'
-        attach :step2_form
-        actions do
-          continue
-          back
-          cancel
-        end
-      end
-
-      step id: :step3 do
-        label 'Final Step'
-        actions do
-          continue
-          back
-          cancel
-        end
-      end
-    end
-
-    title 'Vertical Stepper'
-
-    stepper orientation: :vertical do
-      step id: :step1 do
-        label 'Step 1'
-        heading 'Look at me:'
-        text_area
-
-        actions do
-          continue
-          cancel
-        end
-      end
-      step id: :step2 do
-        label 'Step 2'
-        heading 'Hey Now!'
-        select do
-          label 'Text...'
-          option do
-            value 'value1'
-            text 'First value'
-          end
-          option do
-            value 'value2'
-            text 'Second value'
-          end
-          event :change do
-            snackbar 'item changed'
-          end
-        end
-
-
-        actions do
-          continue
-          back
-          cancel
-        end
-      end
-
-      step id: :step3 do
-        label 'Step 3'
-
-        heading 'Finally:'
-        text_field name: :numeric do
-          label 'Number...'
-          pattern /-?[0-9]*(\.[0-9]+)?/
-          hint 'Input is not a number!'
-        end
-
-        actions do
-          continue
-          back
-          cancel
-        end
-      end
-
-
+    title 'Discrete Slider with tick marks'
+    subheading '1 to 50 in steps of 2'
+    slider discrete: true, show_tracker_marks: true, value_min: 0, value_max: 50, step: 2 do
+      value 10
     end
 
   end
 
   attach :code, file: __FILE__
-end
-
-Voom::Presenters.define(:step2_form) do
-  content id: :step2_content do
-    type = context.fetch('step_type') {nil}
-    attach "step2_#{type}_form" if type
-  end
-end
-
-Voom::Presenters.define(:step2_type1_form) do
-  heading 'Form of Type1'
-end
-
-Voom::Presenters.define(:step2_type2_form) do
-  heading 'Form of Type2'
 end
 
 
