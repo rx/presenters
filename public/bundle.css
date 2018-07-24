@@ -8572,6 +8572,9 @@ a.mdc-list-item {
   #list-item-select-all-header > span {
     margin: auto; }
 
+.mdc-list-item__meta {
+  white-space: nowrap; }
+
 .mdc-icon-toggle {
   --mdc-ripple-fg-size: 0;
   --mdc-ripple-left: 0;
