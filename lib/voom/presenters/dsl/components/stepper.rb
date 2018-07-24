@@ -11,6 +11,7 @@ require_relative 'mixins/selects'
 require_relative 'mixins/text_fields'
 require_relative 'mixins/date_time_fields'
 require_relative 'form'
+require_relative 'buttton'
 
 module Voom
   module Presenters
