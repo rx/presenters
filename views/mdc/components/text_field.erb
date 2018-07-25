@@ -22,7 +22,7 @@
          list="<%= comp.id %>-list"
          <%= erb :"components/event", :locals => {events: comp.events, parent_id:  "#{comp.id}-input"} %>>
 
-  <label for="<%= comp.id %>-input" class="mdc-floating-label"><%= comp.label %></label>
+  <label class="mdc-floating-label" for="<%= comp.id %>-input"><%= comp.label %></label>
   <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"} %>
   <div class="mdc-notched-outline">
     <svg>
