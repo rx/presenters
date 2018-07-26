@@ -18,6 +18,9 @@ export class VTextField extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element);
         this.input = element.querySelector('input');
+        if(this.input == null){
+            this.input = element.querySelector('textarea');
+        }
         this.input.vComponent = this;
         this.mdcComponent = mdcComponent;
     }

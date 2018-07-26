@@ -19,6 +19,7 @@ module.exports = [{
         { loader: 'css-loader' },
         { loader: 'sass-loader',
           options: {
+            includePaths: ["./node_modules"],
             importer: function(url, prev) {
               if(url.indexOf('@material') === 0) {
                 var filePath = url.split('@material')[1];

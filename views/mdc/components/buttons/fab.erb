@@ -1,13 +1,16 @@
 <% class_name = '' unless local_variables.include? :class_name
    position_classes = comp.position.map {|p| "v-button-fab-position-#{p}"}.join(' ')
+   event_parent_id = nil unless local_variables.include? :event_parent_id
+   data_attributes = '' unless local_variables.include? :data_attributes
 %>
 
 <button id="<%= comp.id %>"
+        <%= data_attributes %>
         class="mdc-fab material-icons v-fab--absolute v-js-ripple-button <%= class_name %> <%= position_classes %>
           <%= 'mdc-fab--mini' if eq(comp.size, :small) %>"
         aria-label="<%= inflector.humanize(comp.icon.icon) %>"
         <%= 'disabled' if comp.disabled %>
-        <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} unless comp.disabled %>>
+        <%= erb :"components/event", :locals => {events: comp.events, parent_id: event_parent_id || comp.event_parent_id} unless comp.disabled %>>
   <span class="mdc-fab__icon">
   <%= comp.icon.icon %>
   </span>
