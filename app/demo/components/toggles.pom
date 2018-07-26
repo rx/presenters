@@ -9,7 +9,7 @@ Voom::Presenters.define(:toggles) do
   indented_grid do
     headline 'CHECKBOX'
     checkbox
-    checkbox checked: true
+    checkbox checked: true, text: "I am initially checked"
 
     headline 'RADIO BUTTON'
     radio_button name: :radio, value: 'one', checked: true, text: "One"

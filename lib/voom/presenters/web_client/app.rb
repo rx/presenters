@@ -15,7 +15,7 @@ module Voom
       class App < Sinatra::Base
         include Trace
         set :root, File.expand_path('../../../../..', __FILE__)
-        set :router_, Router
+        set :router_, WebClient::Router
         set :bind, '0.0.0.0'
         set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE']||'mdc')}
 
@@ -66,9 +66,9 @@ module Voom
           def snake_to_camel(hash, except: [])
             Hash[hash.map {|k, v|
               next [k, v] if except.include?(k)
-              newKey = k.to_s.split('_').collect(&:capitalize).join
-              newKey[0] = newKey[0].downcase
-              [newKey, v]}
+              new_key = k.to_s.split('_').collect(&:capitalize).join
+              new_key[0] = new_key[0].downcase
+              [new_key, v]}
             ]
           end
 

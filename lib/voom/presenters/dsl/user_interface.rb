@@ -17,7 +17,6 @@ module Voom
     module DSL
       class UserInterface
         include DSL::Definer
-        include Lockable
         include Components::Mixins::Common
         include Components::Mixins::Helpers
         include Components::Mixins::Dialogs
@@ -133,6 +132,13 @@ module Voom
           end
         end
 
+        def lock!
+          @locked = true
+        end
+
+        def locked?
+          @locked
+        end
       end
     end
   end

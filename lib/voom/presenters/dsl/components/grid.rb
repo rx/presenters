@@ -10,6 +10,7 @@ require_relative 'mixins/selects'
 require_relative 'mixins/text_fields'
 require_relative 'mixins/date_time_fields'
 require_relative 'mixins/steppers'
+require_relative 'mixins/sliders'
 
 module Voom
   module Presenters
@@ -49,6 +50,7 @@ module Voom
             include Mixins::Toggles
             include Mixins::Snackbars
             include Mixins::Steppers
+            include Mixins::Sliders
 
             attr_reader :size, :desktop, :tablet, :phone, :color, :components
 

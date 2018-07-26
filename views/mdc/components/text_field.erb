@@ -3,7 +3,7 @@
      trailing_icon = comp.icon && comp.icon.position.select{|p| eq(p, :right)}.any?
 %>
   <div id="<%= comp.id %>"
-     class=" v-text-field mdc-text-field mdc-text-field--outlined
+     class="v-input v-text-field mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-leading-icon' if leading_icon %>
             <%= 'mdc-text-field--with-trailing-icon' if trailing_icon %>
             <%= 'is-invalid is-dirty' if comp.error %>"
@@ -22,7 +22,7 @@
          list="<%= comp.id %>-list"
          <%= erb :"components/event", :locals => {events: comp.events, parent_id:  "#{comp.id}-input"} %>>
 
-  <label for="<%= comp.id %>-input" class="mdc-floating-label"><%= comp.label %></label>
+  <label class="mdc-floating-label" for="<%= comp.id %>-input"><%= comp.label %></label>
   <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"} %>
   <div class="mdc-notched-outline">
     <svg>

@@ -1,7 +1,7 @@
 <% if comp
   float_label = comp.options.select{|o| o.selected }.any?
 %>
-  <div class="mdc-select">
+  <div class="mdc-select v-input">
     <select id="<%= comp.id %>"
             name="<%= comp.name%>"
             class="mdc-select__native-control"

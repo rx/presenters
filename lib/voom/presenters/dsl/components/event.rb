@@ -12,11 +12,12 @@ module Voom
             expand!
           end
 
-          def loads(presenter=nil, path: nil, **params, &block)
+          def loads(presenter=nil, path: nil, target: nil, **params, &block)
             @actions << Components::Action.new(parent: self,
                                                type: :loads,
                                                presenter: presenter,
                                                path: path,
+                                               target: target,
                                                params: params, &block)
           end
 

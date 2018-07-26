@@ -10,7 +10,7 @@ module Voom
 
           BUTTON_TYPES = %i(raised flat fab icon)
 
-          attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :position, :data_attributes
+          attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :position
 
           def initialize(type: nil, **attribs_, &block)
             @button_type = h(type) || ((attribs_[:icon]&&!attribs_[:text]) ? :icon : nil) || :flat
@@ -21,7 +21,6 @@ module Voom
             @disabled = attribs.delete(:disabled) { false }
             @size = attribs.delete(:size)
             @position = Array(attribs.delete(:position)).compact
-            @data_attributes = attribs.delete(:data_attributes)
             expand!
             @event_parent_id = self.parent(:form)&.id || id
           end

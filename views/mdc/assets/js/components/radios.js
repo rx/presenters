@@ -20,13 +20,14 @@ export class VRadio extends eventHandlerMixin(VBaseComponent) {
         super(element);
         this.input = element.querySelector('input');
         this.mdcComponent = mdcComponent;
-
-        // This is necessary to hook up ripple
-        this.mdcFormField = new MDCFormField(element.parentNode);
-        this.mdcFormField.input = mdcComponent;
     }
 
     prepareSubmit(form, params) {
         // On actual post/submit the form is passed and we are not expected to return our value
+        if (!form) {
+            if(this.input.selected) {
+                params.push([this.input.name, this.input.value]);
+            }
+        }
     }
 }

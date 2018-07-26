@@ -1,4 +1,6 @@
 require_relative '../../helpers/errors'
+require_relative 'form'
+require_relative 'button'
 require_relative 'mixins/common'
 require_relative 'mixins/images'
 require_relative 'mixins/icons'
@@ -10,7 +12,6 @@ require_relative 'mixins/snackbars'
 require_relative 'mixins/selects'
 require_relative 'mixins/text_fields'
 require_relative 'mixins/date_time_fields'
-require_relative 'form'
 
 module Voom
   module Presenters
@@ -101,9 +102,9 @@ module Voom
               end
 
               private
+
               def button(text = nil, stepper_type, **options, &block)
-                btn = Components::Button.new(parent: self, text: text,
-                                                   data_attributes: "data-stepper-#{stepper_type}",
+                btn = StepperButton.new(stepper_type, parent: self, text: text,
                                                    context: context,
                                                    **options, &block)
 
@@ -114,6 +115,16 @@ module Voom
                 end
                 @buttons << btn
               end
+
+              class StepperButton < Components::Button
+                attr_reader :stepper_type
+                def initialize(stepper_type, **attribs_, &block)
+                  @stepper_type = stepper_type
+                  super(**attribs_, &block)
+                end
+              end
+
+
             end
 
           end

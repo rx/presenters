@@ -28,11 +28,7 @@ Voom::Presenters.define(:steppers) do
           end
           event :change do
             replaces :step2_content, :step2_form
-            stepper :continue # This should call the stepper.next() method.
-            # What I really want to happen here is:
-            # 1) Replace the content of step 2 with whatever the :step2_form POM returns (that's working)
-            # 2) Get the parent element, grab it's MaterialStepper and call .next()
-
+            stepper :continue
           end
         end
 
@@ -48,7 +44,7 @@ Voom::Presenters.define(:steppers) do
 
       step id: :step2 do
         label 'Middle Step'
-        attach :step2_form
+        attach :step2_form, step_type: :type1
         actions do
           continue
           back
@@ -132,13 +128,20 @@ end
 
 Voom::Presenters.define(:step2_form) do
   content id: :step2_content do
-    type = context.fetch('step_type') {nil}
+    type = context.fetch('step_type') {context.fetch(:step_type) {nil}}
     attach "step2_#{type}_form" if type
   end
 end
 
 Voom::Presenters.define(:step2_type1_form) do
-  heading 'Form of Type1'
+  helpers Demo::Helpers::IndentedGrid
+  indented_grid do
+    heading 'Form of Type1'
+    title 'Continuous Slider'
+    slider discrete: true, show_tracker_marks: true, value_min: 0, value_max: 50, step: 2 do
+      value 10
+    end
+  end
 end
 
 Voom::Presenters.define(:step2_type2_form) do

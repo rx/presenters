@@ -47,7 +47,7 @@ Voom::Presenters.define(:text_fields) do
     headline 'With Trailing Icon'
     text_field name: :numeric do
       label 'Name'
-      icon :face, position: :right
+      icon :remove_red_eye
     end
 
     card do

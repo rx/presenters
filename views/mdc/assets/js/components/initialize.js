@@ -15,6 +15,8 @@ import {initCheckboxes} from './checkboxes';
 import {initSwitches} from './switches';
 import {initSteppers} from './steppers';
 import {initRadios} from './radios';
+import {initSliders} from './sliders';
+import {initHiddenFields} from './hidden-fields';
 
 export function initialize(){
     console.log('Initializing');
@@ -34,6 +36,8 @@ export function initialize(){
     initSwitches();
     initSteppers();
     initRadios();
+    initSliders();
+    initHiddenFields();
     // This needs to be last, because it relies on the components installed above.
     initEvents();
 }
