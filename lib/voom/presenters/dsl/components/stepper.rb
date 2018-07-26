@@ -30,11 +30,6 @@ module Voom
             expand!
           end
 
-          def horizontal?
-            @orientation == :horizontal
-          end
-
-
           def step(text = nil, **attribs, &block)
             @steps << Step.new(parent: self, context: context, text: text, **attribs, &block)
           end

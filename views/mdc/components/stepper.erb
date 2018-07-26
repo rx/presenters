@@ -1,7 +1,7 @@
 <div class="v-errors">
   <ul id="<%= comp.id %>"
       class="mdl-stepper
-            <%= 'mdl-stepper--horizontal' if comp.horizontal? %>
+            <%= 'mdl-stepper--horizontal' if eq(comp.orientation, :horizontal) %>
             <%= 'mdl-stepper--linear' if comp.linear %>" >
     <% for step in comp.steps %>
       <%= erb :"components/stepper/#{step.type}", :locals => {:comp => step} %>
