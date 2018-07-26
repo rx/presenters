@@ -18,6 +18,7 @@ export class VSelect extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element);
         this.select = element.querySelector('select');
+        this.select.vComponent = this;
         this.mdcComponent = mdcComponent;
     }
 

@@ -20,6 +20,19 @@ Voom::Presenters.define(:sliders) do
       value 10
     end
 
+    button 'Show hidden slider', type: :flat, color: :secondary do
+      event :click do
+        toggle_visibility :hidden_slider, action: :show
+      end
+    end
+    content id: :hidden_slider, hidden: true do
+      title 'I was a hidden slider'
+      subheading 'This slider was hidden when the page was first rendered. Now that it was made visible, it should work properly.'
+      slider discrete: true, show_tracker_marks: true, value_min: 0, value_max: 50, step: 2 do
+        value 10
+      end
+    end
+
   end
 
   attach :code, file: __FILE__
