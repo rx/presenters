@@ -17309,6 +17309,7 @@ class VSelect extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__
     constructor(element, mdcComponent) {
         super(element);
         this.select = element.querySelector('select');
+        this.select.vComponent = this;
         this.mdcComponent = mdcComponent;
     }
 
@@ -19297,6 +19298,24 @@ class VSlider extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__
     constructor(element, mdcComponent) {
         super(element);
         this.mdcComponent = mdcComponent;
+
+        this.mutationObserver = new MutationObserver(function (mutations) {
+            var components = document.querySelectorAll('.mdc-slider');
+            for (var i = 0; i < components.length; i++) {
+                var comp = components[i];
+                if (comp.vComponent) {
+                    comp.vComponent.mdcComponent.layout();
+                }
+            }
+        });
+        this.mutationObserver.observe(document.documentElement, {
+            attributes: true,
+            characterData: false,
+            childList: true,
+            subtree: true,
+            attributeOldValue: true,
+            characterDataOldValue: false
+        });
     }
 
     prepareSubmit(form, params) {
