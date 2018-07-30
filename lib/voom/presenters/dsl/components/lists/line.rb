@@ -1,4 +1,4 @@
-require_relative 'action'
+require_relative 'actions'
 require_relative '../icon'
 require_relative '../avatar'
 require_relative '../typography'
@@ -10,6 +10,8 @@ module Voom
       module Components
         module Lists
           class Line < EventBase
+            extend Gem::Deprecate
+
             attr_accessor :selected, :selectable
 
             def initialize(**attribs_, &block)
@@ -84,58 +86,8 @@ module Voom
                           context: context,
                           **attribs, &block)
             end
-
-            class Actions < Base
-              def initialize(actions, **attribs_, &block)
-                @actions = actions
-                super(type: :actions, **attribs_, &block)
-                expand!
-              end
-
-
-              def icon(icon=nil, **attribs, &block)
-                action = Lists::Action.new(parent: self, context: context)
-                action.icon(icon, **attribs, &block)
-                @actions << action
-              end
-
-
-              def menu(**attribs, &block)
-                action = Lists::Action.new(parent: self, context: context)
-                action.menu(**attribs, &block)
-                @actions << action
-              end
-
-              def checkbox(**attribs, &block)
-                action = Lists::Action.new(parent: self, context: context)
-                action.checkbox(**attribs, &block)
-                @actions << action
-              end
-
-              def radio_button(**attribs, &block)
-                action = Lists::Action.new(parent: self, context: context)
-                action.radio_button(**attribs, &block)
-                @actions << action
-              end
-
-              def switch(**attribs, &block)
-                action = Lists::Action.new(parent: self, context: context)
-                action.switch(**attribs, &block)
-                @actions << action
-              end
-
-              def icon_toggle(icon=nil, **attribs, &block)
-                action = Lists::Action.new(parent: self, context: context)
-                action.icon_toggle(icon, **attribs, &block)
-                @actions << action
-              end
-
-              def button(text=nil, **attribs, &block)
-                action = Lists::Action.new(parent: self, context: context)
-                action.button(text, **attribs, &block)
-                @actions << action
-              end
-            end
+            alias action actions
+            deprecate :action, :actions, 2018, 8
           end
         end
       end
