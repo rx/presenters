@@ -52,3 +52,4 @@ build-iPhoneSimulator/
 /.idea/
 .DS_Store
 .env
+notes.txt
