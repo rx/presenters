@@ -106,17 +106,6 @@ Voom::Presenters.define(:lists) do
         end
       end
     end
-#
-# headline 'Three line'
-#
-# list do
-#   actors.each do |actor|
-#     line actor.name, avatar: :person do
-#       action icon: :star
-#       body actor.body
-#     end
-#   end
-# end
 
     headline 'Selectable List'
     list selectable: true do
