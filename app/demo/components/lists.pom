@@ -62,7 +62,7 @@ Voom::Presenters.define(:lists) do
         line do
           text actor.name
           avatar :person
-          action do
+          actions do
             icon :star
           end
         end
@@ -75,7 +75,7 @@ Voom::Presenters.define(:lists) do
         line do
           text actor.name
           avatar :person
-          action do
+          actions do
             case index%4
               when 0
                 checkbox
@@ -99,7 +99,7 @@ Voom::Presenters.define(:lists) do
           text actor.name
           avatar :person
           info 'actor' if index == 0
-          action do
+          actions do
             icon_toggle :star 
           end
           subtitle "#{actor.episodes} episodes"
