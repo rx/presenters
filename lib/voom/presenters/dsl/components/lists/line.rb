@@ -14,8 +14,8 @@ module Voom
 
             def initialize(**attribs_, &block)
               super(type: :line, **attribs_, &block)
-              @selected = attribs.delete(:selected) { false }
-              @selectable = attribs.delete(:selectable) { false }
+              @selected = attribs.delete(:selected) {false}
+              @selectable = attribs.delete(:selectable) {false}
               self.text(attribs.delete(:text)) if attribs.key?(:text)
               self.subtitle(attribs.delete(:subtitle)) if attribs.key?(:subtitle)
               self.info(attribs.delete(:info)) if attribs.key?(:info)
@@ -80,12 +80,62 @@ module Voom
 
             def actions(**attribs, &block)
               return @actions if locked?
-              @actions << Lists::Action.new(parent: self,
-                                            context: context,
-                                            **attribs, &block)
+              Actions.new(@actions, parent: self,
+                          context: context,
+                          **attribs, &block)
             end
-            alias action actions
 
+            class Actions < Base
+              def initialize(actions, **attribs_, &block)
+                @actions = actions
+                super(type: :actions, **attribs_, &block)
+                expand!
+              end
+
+
+              def icon(icon=nil, **attribs, &block)
+                action = Lists::Action.new(parent: self, context: context)
+                action.icon(icon, **attribs, &block)
+                @actions << action
+              end
+
+
+              def menu(**attribs, &block)
+                action = Lists::Action.new(parent: self, context: context)
+                action.menu(**attribs, &block)
+                @actions << action
+              end
+
+              def checkbox(**attribs, &block)
+                action = Lists::Action.new(parent: self, context: context)
+                action.checkbox(**attribs, &block)
+                @actions << action
+              end
+
+              def radio_button(**attribs, &block)
+                action = Lists::Action.new(parent: self, context: context)
+                action.radio_button(**attribs, &block)
+                @actions << action
+              end
+
+              def switch(**attribs, &block)
+                action = Lists::Action.new(parent: self, context: context)
+                action.switch(**attribs, &block)
+                @actions << action
+              end
+
+              def icon_toggle(icon=nil, **attribs, &block)
+                action = Lists::Action.new(parent: self, context: context)
+                action.icon_toggle(icon, **attribs, &block)
+                @actions << action
+              end
+
+              def button(text=nil, **attribs, &block)
+                action = Lists::Action.new(parent: self, context: context)
+                action.button(text, **attribs, &block)
+                @actions << action
+              end
+            end
           end
         end
       end
