@@ -4,7 +4,7 @@ Voom::Presenters.define('list') do
       subtitle 'subtitle 9000'
       body 'body 8000'
       info 'info 7000'
-      action do
+      actions do
         menu do
           item 'item1'
         end

@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-gem bump -v ${1:-next}
+# Docs: https://github.com/svenfuchs/gem-release#gem-release
+gem bump
 

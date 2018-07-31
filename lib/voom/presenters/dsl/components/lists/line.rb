@@ -1,4 +1,4 @@
-require_relative 'action'
+require_relative 'actions'
 require_relative '../icon'
 require_relative '../avatar'
 require_relative '../typography'
@@ -10,12 +10,14 @@ module Voom
       module Components
         module Lists
           class Line < EventBase
+            extend Gem::Deprecate
+
             attr_accessor :selected, :selectable
 
             def initialize(**attribs_, &block)
               super(type: :line, **attribs_, &block)
-              @selected = attribs.delete(:selected) { false }
-              @selectable = attribs.delete(:selectable) { false }
+              @selected = attribs.delete(:selected) {false}
+              @selectable = attribs.delete(:selectable) {false}
               self.text(attribs.delete(:text)) if attribs.key?(:text)
               self.subtitle(attribs.delete(:subtitle)) if attribs.key?(:subtitle)
               self.info(attribs.delete(:info)) if attribs.key?(:info)
@@ -80,12 +82,12 @@ module Voom
 
             def actions(**attribs, &block)
               return @actions if locked?
-              @actions << Lists::Action.new(parent: self,
-                                            context: context,
-                                            **attribs, &block)
+              Actions.new(@actions, parent: self,
+                          context: context,
+                          **attribs, &block)
             end
             alias action actions
-
+            deprecate :action, :actions, 2018, 8
           end
         end
       end
