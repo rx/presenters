@@ -1,0 +1,41 @@
+require_relative '../helpers/indented_grid'
+
+Voom::Presenters.define(:sliders) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :component_drawer
+  page_title 'Sliders'
+
+  indented_grid do
+
+    title 'Continuous Slider'
+    slider discrete: false
+
+    title 'Discrete Slider'
+    slider discrete: true
+
+    title 'Discrete Slider with tick marks'
+    subheading '1 to 50 in steps of 2'
+    slider discrete: true, show_tracker_marks: true, value_min: 0, value_max: 50, step: 2 do
+      value 10
+    end
+
+    button 'Show hidden slider', type: :flat, color: :secondary do
+      event :click do
+        toggle_visibility :hidden_slider, action: :show
+      end
+    end
+    content id: :hidden_slider, hidden: true do
+      title 'I was a hidden slider'
+      subheading 'This slider was hidden when the page was first rendered. Now that it was made visible, it should work properly.'
+      slider discrete: true, show_tracker_marks: true, value_min: 0, value_max: 50, step: 2 do
+        value 10
+      end
+    end
+
+  end
+
+  attach :code, file: __FILE__
+end
+
+

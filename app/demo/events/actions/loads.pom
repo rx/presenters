@@ -1,4 +1,4 @@
-Voom::Presenters.define(:toggle_visibility_action) do
+Voom::Presenters.define(:loads_action) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :events_drawer
