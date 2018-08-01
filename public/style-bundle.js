@@ -65,9 +65,9 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: \n@import \"@material/base/mixins\";\n^\n      File to import not found or unreadable: /Users/derekgraham/rx/presenters/views/mdc/node_modules/@material/base/mixins.\n      in /Users/derekgraham/rx/presenters/views/mdc/node_modules/@material/floating-label/mdc-floating-label.scss (line 18, column 1)");
+module.exports = __webpack_require__.p + "../../public/bundle.css";
 
 /***/ })
 /******/ ]);

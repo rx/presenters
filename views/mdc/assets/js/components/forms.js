@@ -35,7 +35,8 @@ export class VForm {
     }
 
     inputs() {
-        return this.element.elements;
+        //return this.element.elements;
+        return this.element.querySelectorAll('.v-input')
     }
 
     // Called to collect data for submission

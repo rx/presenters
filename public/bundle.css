@@ -5993,46 +5993,6 @@ h1.v-page-title {
   .mdc-ripple-surface--test-edge-var-bug::before {
     border: var(--mdc-ripple-surface-test-edge-var); }
 
-/**
- * The css property used for elevation. In most cases this should not be changed. It is exposed
- * as a variable for abstraction / easy use when needing to reference the property directly, for
- * example in a `will-change` rule.
- */
-/**
- * The default duration value for elevation transitions.
- */
-/**
- * The default easing value for elevation transitions.
- */
-/**
- * Applies the correct CSS rules to an element to give it the elevation specified by $z-value.
- * The $z-value must be between 0 and 24.
- * If $color has an alpha channel, it will be ignored and overridden. To increase the opacity of the shadow, use
- * $opacity-boost.
- */
-/**
- * Returns a string that can be used as the value for a `transition` property for elevation.
- * Calling this function directly is useful in situations where a component needs to transition
- * more than one property.
- *
- * ```scss
- * .foo {
- *   transition: mdc-elevation-transition-value(), opacity 100ms ease;
- *   will-change: $mdc-elevation-property, opacity;
- * }
- * ```
- */
-/**
- * The css property used for elevation. In most cases this should not be changed. It is exposed
- * as a variable for abstraction / easy use when needing to reference the property directly, for
- * example in a `will-change` rule.
- */
-/**
- * The default duration value for elevation transitions.
- */
-/**
- * The default easing value for elevation transitions.
- */
 .mdc-fab {
   --mdc-ripple-fg-size: 0;
   --mdc-ripple-left: 0;
@@ -6045,6 +6005,7 @@ h1.v-page-title {
   box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
   display: inline-flex;
   position: relative;
+  align-items: center;
   justify-content: center;
   box-sizing: border-box;
   width: 56px;
@@ -6060,9 +6021,9 @@ h1.v-page-title {
   -webkit-appearance: none;
   overflow: hidden;
   background-color: #E58D36;
-  color: rgba(0, 0, 0, 0.87);
+  color: #000;
   /* @alternate */
-  color: var(--mdc-theme-text-primary-on-secondary, rgba(0, 0, 0, 0.87)); }
+  color: var(--mdc-theme-on-secondary, #000); }
   .mdc-fab::before, .mdc-fab::after {
     position: absolute;
     border-radius: 50%;
@@ -6115,12 +6076,16 @@ h1.v-page-title {
     .mdc-fab {
       /* @alternate */
       background-color: var(--mdc-theme-secondary, #E58D36); } }
+  .mdc-fab .mdc-fab__icon {
+    width: 24px;
+    height: 24px;
+    font-size: 24px; }
   .mdc-fab::before, .mdc-fab::after {
-    background-color: rgba(0, 0, 0, 0.87); }
+    background-color: #000; }
     @supports not (-ms-ime-align: auto) {
       .mdc-fab::before, .mdc-fab::after {
         /* @alternate */
-        background-color: var(--mdc-theme-text-primary-on-secondary, rgba(0, 0, 0, 0.87)); } }
+        background-color: var(--mdc-theme-on-secondary, #000); } }
   .mdc-fab:hover::before {
     opacity: 0.04; }
   .mdc-fab:not(.mdc-ripple-upgraded):focus::before, .mdc-fab.mdc-ripple-upgraded--background-focused::before {
@@ -6138,13 +6103,57 @@ h1.v-page-title {
   width: 40px;
   height: 40px; }
 
+.mdc-fab--extended {
+  font-family: Roboto, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 0.875rem;
+  line-height: 2.25rem;
+  font-weight: 500;
+  letter-spacing: 0.08929em;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0 20px;
+  width: auto;
+  max-width: 100%;
+  height: 48px;
+  border-radius: 24px; }
+  .mdc-fab--extended .mdc-fab__icon {
+    /* @noflip */
+    margin-left: -8px;
+    /* @noflip */
+    margin-right: 12px; }
+    [dir="rtl"] .mdc-fab--extended .mdc-fab__icon, .mdc-fab--extended .mdc-fab__icon[dir="rtl"] {
+      /* @noflip */
+      margin-left: 12px;
+      /* @noflip */
+      margin-right: -8px; }
+  .mdc-fab--extended .mdc-fab__label + .mdc-fab__icon {
+    /* @noflip */
+    margin-left: 12px;
+    /* @noflip */
+    margin-right: -8px; }
+    [dir="rtl"] .mdc-fab--extended .mdc-fab__label + .mdc-fab__icon, .mdc-fab--extended .mdc-fab__label + .mdc-fab__icon[dir="rtl"] {
+      /* @noflip */
+      margin-left: -8px;
+      /* @noflip */
+      margin-right: 12px; }
+
+.mdc-fab__label {
+  justify-content: flex-start;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden; }
+
 .mdc-fab__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
   transition: transform 180ms 90ms cubic-bezier(0, 0, 0.2, 1);
+  fill: currentColor;
   will-change: transform; }
+
+.mdc-fab .mdc-fab__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; }
 
 .mdc-fab--exited {
   transform: scale(0);
@@ -6160,188 +6169,6 @@ h1.v-page-title {
   margin: 6px -8px -69px;
   z-index: 10; }
 
-/**
- * The css property used for elevation. In most cases this should not be changed. It is exposed
- * as a variable for abstraction / easy use when needing to reference the property directly, for
- * example in a `will-change` rule.
- */
-/**
- * The default duration value for elevation transitions.
- */
-/**
- * The default easing value for elevation transitions.
- */
-/**
- * Applies the correct CSS rules to an element to give it the elevation specified by $z-value.
- * The $z-value must be between 0 and 24.
- * If $color has an alpha channel, it will be ignored and overridden. To increase the opacity of the shadow, use
- * $opacity-boost.
- */
-/**
- * Returns a string that can be used as the value for a `transition` property for elevation.
- * Calling this function directly is useful in situations where a component needs to transition
- * more than one property.
- *
- * ```scss
- * .foo {
- *   transition: mdc-elevation-transition-value(), opacity 100ms ease;
- *   will-change: $mdc-elevation-property, opacity;
- * }
- * ```
- */
-/**
- * Creates a rule that will be applied when an MDC Web component is within the context of an RTL layout.
- *
- * Usage Example:
- * ```scss
- * .mdc-foo {
- *   position: absolute;
- *   left: 0;
- *
- *   @include mdc-rtl {
- *     left: auto;
- *     right: 0;
- *   }
- *
- *   &__bar {
- *     margin-left: 4px;
- *     @include mdc-rtl(".mdc-foo") {
- *       margin-left: auto;
- *       margin-right: 4px;
- *     }
- *   }
- * }
- *
- * .mdc-foo--mod {
- *   padding-left: 4px;
- *
- *   @include mdc-rtl {
- *     padding-left: auto;
- *     padding-right: 4px;
- *   }
- * }
- * ```
- *
- * Note that this works by checking for [dir="rtl"] on an ancestor element. While this will work
- * in most cases, it will in some cases lead to false negatives, e.g.
- *
- * ```html
- * <html dir="rtl">
- *   <!-- ... -->
- *   <div dir="ltr">
- *     <div class="mdc-foo">Styled incorrectly as RTL!</div>
- *   </div>
- * </html>
- * ```
- *
- * In the future, selectors such as :dir (http://mdn.io/:dir) will help us mitigate this.
- */
-/**
- * Takes a base box-model property - e.g. margin / border / padding - along with a default
- * direction and value, and emits rules which apply the value to the
- * "<base-property>-<default-direction>" property by default, but flips the direction
- * when within an RTL context.
- *
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, left, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 8px;
- *     margin-left: 0;
- *   }
- * }
- * ```
- * whereas:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, right, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-right: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 0;
- *     margin-left: 8px;
- *   }
- * }
- * ```
- *
- * You can also pass a 4th optional $root-selector argument which will be forwarded to `mdc-rtl`,
- * e.g. `@include mdc-rtl-reflexive-box(margin, left, 8px, ".mdc-component")`.
- *
- * Note that this function will always zero out the original value in an RTL context. If you're
- * trying to flip the values, use mdc-rtl-reflexive-property().
- */
-/**
- * Takes a base property and emits rules that assign <base-property>-left to <left-value> and
- * <base-property>-right to <right-value> in a LTR context, and vice versa in a RTL context.
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-property(margin, auto, 12px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: auto;
- *   margin-right: 12px;
- *
- *   @include mdc-rtl {
- *     margin-left: 12px;
- *     margin-right: auto;
- *   }
- * }
- * ```
- *
- * A 4th optional $root-selector argument can be given, which will be passed to `mdc-rtl`.
- */
-/**
- * Takes an argument specifying a horizontal position property (either "left" or "right") as well
- * as a value, and applies that value to the specified position in a LTR context, and flips it in a
- * RTL context. For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-position(left, 0);
- *   position: absolute;
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- *  .mdc-foo {
- *    position: absolute;
- *    left: 0;
- *    right: initial;
- *
- *    @include mdc-rtl {
- *      right: 0;
- *      left: initial;
- *    }
- *  }
- * ```
- * An optional third $root-selector argument may also be given, which is passed to `mdc-rtl`.
- */
-/* TODO(sgomes): Figure out what to do about desktop font sizes. */
-/* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
 .mdc-button {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
@@ -6349,7 +6176,7 @@ h1.v-page-title {
   font-size: 0.875rem;
   line-height: 2.25rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08929em;
   text-decoration: none;
   text-transform: uppercase;
   --mdc-ripple-fg-size: 0;
@@ -6360,8 +6187,7 @@ h1.v-page-title {
   --mdc-ripple-fg-translate-start: 0;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   will-change: transform, opacity;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding: 0 8px 0 8px;
   display: inline-flex;
   position: relative;
   align-items: center;
@@ -6371,6 +6197,8 @@ h1.v-page-title {
   height: 36px;
   border: none;
   outline: none;
+  /* @alternate */
+  line-height: inherit;
   user-select: none;
   -webkit-appearance: none;
   overflow: hidden;
@@ -6420,9 +6248,7 @@ h1.v-page-title {
     cursor: pointer; }
   .mdc-button:disabled {
     background-color: transparent;
-    color: rgba(0, 0, 0, 0.38);
-    /* @alternate */
-    color: var(--mdc-theme-text-disabled-on-light, rgba(0, 0, 0, 0.38));
+    color: rgba(0, 0, 0, 0.37);
     cursor: default;
     pointer-events: none; }
   .mdc-button:not(:disabled) {
@@ -6469,7 +6295,7 @@ h1.v-page-title {
 
 .mdc-button--raised .mdc-button__icon,
 .mdc-button--unelevated .mdc-button__icon,
-.mdc-button--stroked .mdc-button__icon {
+.mdc-button--outlined .mdc-button__icon {
   /* @noflip */
   margin-left: -4px;
   /* @noflip */
@@ -6477,8 +6303,8 @@ h1.v-page-title {
   [dir="rtl"] .mdc-button--raised .mdc-button__icon, .mdc-button--raised .mdc-button__icon[dir="rtl"], [dir="rtl"]
   .mdc-button--unelevated .mdc-button__icon,
   .mdc-button--unelevated .mdc-button__icon[dir="rtl"], [dir="rtl"]
-  .mdc-button--stroked .mdc-button__icon,
-  .mdc-button--stroked .mdc-button__icon[dir="rtl"] {
+  .mdc-button--outlined .mdc-button__icon,
+  .mdc-button--outlined .mdc-button__icon[dir="rtl"] {
     /* @noflip */
     margin-left: 8px;
     /* @noflip */
@@ -6486,14 +6312,11 @@ h1.v-page-title {
 
 .mdc-button--raised,
 .mdc-button--unelevated {
-  padding-right: 16px;
-  padding-left: 16px; }
+  padding: 0 16px 0 16px; }
   .mdc-button--raised:disabled,
   .mdc-button--unelevated:disabled {
     background-color: rgba(0, 0, 0, 0.12);
-    color: rgba(0, 0, 0, 0.38);
-    /* @alternate */
-    color: var(--mdc-theme-text-disabled-on-light, rgba(0, 0, 0, 0.38)); }
+    color: rgba(0, 0, 0, 0.37); }
   .mdc-button--raised:not(:disabled),
   .mdc-button--unelevated:not(:disabled) {
     background-color: #5488b2; }
@@ -6504,19 +6327,19 @@ h1.v-page-title {
         background-color: var(--mdc-theme-primary, #5488b2); } }
   .mdc-button--raised:not(:disabled),
   .mdc-button--unelevated:not(:disabled) {
-    color: white;
+    color: #fff;
     /* @alternate */
-    color: var(--mdc-theme-text-primary-on-primary, white); }
+    color: var(--mdc-theme-on-primary, #fff); }
   .mdc-button--raised::before, .mdc-button--raised::after,
   .mdc-button--unelevated::before,
   .mdc-button--unelevated::after {
-    background-color: white; }
+    background-color: #fff; }
     @supports not (-ms-ime-align: auto) {
       .mdc-button--raised::before, .mdc-button--raised::after,
       .mdc-button--unelevated::before,
       .mdc-button--unelevated::after {
         /* @alternate */
-        background-color: var(--mdc-theme-text-primary-on-primary, white); } }
+        background-color: var(--mdc-theme-on-primary, #fff); } }
   .mdc-button--raised:hover::before,
   .mdc-button--unelevated:hover::before {
     opacity: 0.08; }
@@ -6546,19 +6369,16 @@ h1.v-page-title {
   .mdc-button--raised:disabled {
     box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12); }
 
-.mdc-button--stroked {
+.mdc-button--outlined {
   border-style: solid;
-  padding-right: 14px;
-  padding-left: 14px;
+  padding: 0 14px 0 14px;
   border-width: 2px;
   line-height: 32px; }
-  .mdc-button--stroked:disabled {
-    border-color: rgba(0, 0, 0, 0.38);
-    /* @alternate */
-    border-color: var(--mdc-theme-text-disabled-on-light, rgba(0, 0, 0, 0.38)); }
-  .mdc-button--stroked.mdc-button--dense {
+  .mdc-button--outlined:disabled {
+    border-color: rgba(0, 0, 0, 0.37); }
+  .mdc-button--outlined.mdc-button--dense {
     line-height: 27px; }
-  .mdc-button--stroked:not(:disabled) {
+  .mdc-button--outlined:not(:disabled) {
     border-color: #5488b2;
     /* @alternate */
     border-color: var(--mdc-theme-primary, #5488b2); }
@@ -6666,157 +6486,6 @@ v-card-title-position-left {
   position: absolute;
   bottom: 0; }
 
-/**
- * Creates a rule that will be applied when an MDC Web component is within the context of an RTL layout.
- *
- * Usage Example:
- * ```scss
- * .mdc-foo {
- *   position: absolute;
- *   left: 0;
- *
- *   @include mdc-rtl {
- *     left: auto;
- *     right: 0;
- *   }
- *
- *   &__bar {
- *     margin-left: 4px;
- *     @include mdc-rtl(".mdc-foo") {
- *       margin-left: auto;
- *       margin-right: 4px;
- *     }
- *   }
- * }
- *
- * .mdc-foo--mod {
- *   padding-left: 4px;
- *
- *   @include mdc-rtl {
- *     padding-left: auto;
- *     padding-right: 4px;
- *   }
- * }
- * ```
- *
- * Note that this works by checking for [dir="rtl"] on an ancestor element. While this will work
- * in most cases, it will in some cases lead to false negatives, e.g.
- *
- * ```html
- * <html dir="rtl">
- *   <!-- ... -->
- *   <div dir="ltr">
- *     <div class="mdc-foo">Styled incorrectly as RTL!</div>
- *   </div>
- * </html>
- * ```
- *
- * In the future, selectors such as :dir (http://mdn.io/:dir) will help us mitigate this.
- */
-/**
- * Takes a base box-model property - e.g. margin / border / padding - along with a default
- * direction and value, and emits rules which apply the value to the
- * "<base-property>-<default-direction>" property by default, but flips the direction
- * when within an RTL context.
- *
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, left, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 8px;
- *     margin-left: 0;
- *   }
- * }
- * ```
- * whereas:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, right, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-right: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 0;
- *     margin-left: 8px;
- *   }
- * }
- * ```
- *
- * You can also pass a 4th optional $root-selector argument which will be forwarded to `mdc-rtl`,
- * e.g. `@include mdc-rtl-reflexive-box(margin, left, 8px, ".mdc-component")`.
- *
- * Note that this function will always zero out the original value in an RTL context. If you're
- * trying to flip the values, use mdc-rtl-reflexive-property().
- */
-/**
- * Takes a base property and emits rules that assign <base-property>-left to <left-value> and
- * <base-property>-right to <right-value> in a LTR context, and vice versa in a RTL context.
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-property(margin, auto, 12px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: auto;
- *   margin-right: 12px;
- *
- *   @include mdc-rtl {
- *     margin-left: 12px;
- *     margin-right: auto;
- *   }
- * }
- * ```
- *
- * A 4th optional $root-selector argument can be given, which will be passed to `mdc-rtl`.
- */
-/**
- * Takes an argument specifying a horizontal position property (either "left" or "right") as well
- * as a value, and applies that value to the specified position in a LTR context, and flips it in a
- * RTL context. For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-position(left, 0);
- *   position: absolute;
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- *  .mdc-foo {
- *    position: absolute;
- *    left: 0;
- *    right: initial;
- *
- *    @include mdc-rtl {
- *      right: 0;
- *      left: initial;
- *    }
- *  }
- * ```
- * An optional third $root-selector argument may also be given, which is passed to `mdc-rtl`.
- */
 @keyframes mdc-checkbox-unchecked-checked-checkmark-path {
   0%,
   50% {
@@ -6970,11 +6639,11 @@ v-card-title-position-left {
     width: var(--mdc-ripple-fg-size, 100%);
     height: var(--mdc-ripple-fg-size, 100%); }
 
-.mdc-checkbox__checkmark-path {
-  stroke: white !important; }
+.mdc-checkbox__checkmark {
+  color: #fff; }
 
 .mdc-checkbox__mixedmark {
-  background-color: white; }
+  border-color: #fff; }
 
 .mdc-checkbox__background::before {
   background-color: #E58D36; }
@@ -7034,6 +6703,10 @@ v-card-title-position-left {
   border-color: transparent;
   background-color: rgba(0, 0, 0, 0.26); }
 
+@media screen and (-ms-high-contrast: active) {
+  .mdc-checkbox__mixedmark {
+    margin: 0 1px; } }
+
 .mdc-checkbox--disabled {
   cursor: default;
   pointer-events: none; }
@@ -7079,15 +6752,18 @@ v-card-title-position-left {
 
 .mdc-checkbox__checkmark-path {
   transition: stroke-dashoffset 180ms 0ms cubic-bezier(0.4, 0, 0.6, 1);
+  stroke: currentColor;
   stroke-width: 3.12px;
   stroke-dashoffset: 29.78334;
   stroke-dasharray: 29.78334; }
 
 .mdc-checkbox__mixedmark {
   width: 100%;
-  height: 2px;
+  height: 0;
   transform: scaleX(0) rotate(0deg);
   transition: opacity 90ms 0ms cubic-bezier(0.4, 0, 0.6, 1), transform 90ms 0ms cubic-bezier(0.4, 0, 0.6, 1);
+  border-width: 1px;
+  border-style: solid;
   opacity: 0; }
 
 .mdc-checkbox--upgraded .mdc-checkbox__background,
@@ -7728,167 +7404,33 @@ v-card-title-position-left {
   .v-nested_grid {
     padding: 8px 0 8px 0; } }
 
-/**
- * Creates a rule that will be applied when an MDC Web component is within the context of an RTL layout.
- *
- * Usage Example:
- * ```scss
- * .mdc-foo {
- *   position: absolute;
- *   left: 0;
- *
- *   @include mdc-rtl {
- *     left: auto;
- *     right: 0;
- *   }
- *
- *   &__bar {
- *     margin-left: 4px;
- *     @include mdc-rtl(".mdc-foo") {
- *       margin-left: auto;
- *       margin-right: 4px;
- *     }
- *   }
- * }
- *
- * .mdc-foo--mod {
- *   padding-left: 4px;
- *
- *   @include mdc-rtl {
- *     padding-left: auto;
- *     padding-right: 4px;
- *   }
- * }
- * ```
- *
- * Note that this works by checking for [dir="rtl"] on an ancestor element. While this will work
- * in most cases, it will in some cases lead to false negatives, e.g.
- *
- * ```html
- * <html dir="rtl">
- *   <!-- ... -->
- *   <div dir="ltr">
- *     <div class="mdc-foo">Styled incorrectly as RTL!</div>
- *   </div>
- * </html>
- * ```
- *
- * In the future, selectors such as :dir (http://mdn.io/:dir) will help us mitigate this.
- */
-/**
- * Takes a base box-model property - e.g. margin / border / padding - along with a default
- * direction and value, and emits rules which apply the value to the
- * "<base-property>-<default-direction>" property by default, but flips the direction
- * when within an RTL context.
- *
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, left, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 8px;
- *     margin-left: 0;
- *   }
- * }
- * ```
- * whereas:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, right, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-right: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 0;
- *     margin-left: 8px;
- *   }
- * }
- * ```
- *
- * You can also pass a 4th optional $root-selector argument which will be forwarded to `mdc-rtl`,
- * e.g. `@include mdc-rtl-reflexive-box(margin, left, 8px, ".mdc-component")`.
- *
- * Note that this function will always zero out the original value in an RTL context. If you're
- * trying to flip the values, use mdc-rtl-reflexive-property().
- */
-/**
- * Takes a base property and emits rules that assign <base-property>-left to <left-value> and
- * <base-property>-right to <right-value> in a LTR context, and vice versa in a RTL context.
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-property(margin, auto, 12px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: auto;
- *   margin-right: 12px;
- *
- *   @include mdc-rtl {
- *     margin-left: 12px;
- *     margin-right: auto;
- *   }
- * }
- * ```
- *
- * A 4th optional $root-selector argument can be given, which will be passed to `mdc-rtl`.
- */
-/**
- * Takes an argument specifying a horizontal position property (either "left" or "right") as well
- * as a value, and applies that value to the specified position in a LTR context, and flips it in a
- * RTL context. For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-position(left, 0);
- *   position: absolute;
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- *  .mdc-foo {
- *    position: absolute;
- *    left: 0;
- *    right: initial;
- *
- *    @include mdc-rtl {
- *      right: 0;
- *      left: initial;
- *    }
- *  }
- * ```
- * An optional third $root-selector argument may also be given, which is passed to `mdc-rtl`.
- */
 .mdc-floating-label {
+  font-family: Roboto, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+  letter-spacing: 0.00937em;
+  text-decoration: inherit;
+  text-transform: inherit;
   position: absolute;
   bottom: 8px;
   left: 0;
   transform-origin: left top;
-  transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1), color 180ms cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: text; }
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1), color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1.15rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: text;
+  overflow: hidden;
+  will-change: transform; }
   [dir="rtl"] .mdc-floating-label, .mdc-floating-label[dir="rtl"] {
+    /* @noflip */
     right: 0;
+    /* @noflip */
     left: auto;
+    /* @noflip */
     transform-origin: right top; }
 
 .mdc-floating-label--float-above {
@@ -7936,7 +7478,7 @@ v-card-title-position-left {
   left: 0;
   width: calc(100% - 1px);
   height: calc(100% - 2px);
-  transition: opacity 180ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
   overflow: hidden; }
   .mdc-notched-outline svg {
@@ -7950,13 +7492,13 @@ v-card-title-position-left {
   left: 0;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
-  transition: opacity 100ms ease;
+  transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1), border-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid;
   opacity: 1; }
 
 .mdc-notched-outline__path {
   stroke-width: 1px;
-  transition: stroke 180ms cubic-bezier(0.4, 0, 0.2, 1), stroke-width 180ms cubic-bezier(0.4, 0, 0.2, 1), opacity 180ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: stroke 150ms cubic-bezier(0.4, 0, 0.2, 1), stroke-width 150ms cubic-bezier(0.4, 0, 0.2, 1);
   fill: transparent; }
 
 .mdc-notched-outline--notched {
@@ -7965,166 +7507,19 @@ v-card-title-position-left {
 .mdc-notched-outline--notched ~ .mdc-notched-outline__idle {
   opacity: 0; }
 
-/**
- * Creates a rule that will be applied when an MDC Web component is within the context of an RTL layout.
- *
- * Usage Example:
- * ```scss
- * .mdc-foo {
- *   position: absolute;
- *   left: 0;
- *
- *   @include mdc-rtl {
- *     left: auto;
- *     right: 0;
- *   }
- *
- *   &__bar {
- *     margin-left: 4px;
- *     @include mdc-rtl(".mdc-foo") {
- *       margin-left: auto;
- *       margin-right: 4px;
- *     }
- *   }
- * }
- *
- * .mdc-foo--mod {
- *   padding-left: 4px;
- *
- *   @include mdc-rtl {
- *     padding-left: auto;
- *     padding-right: 4px;
- *   }
- * }
- * ```
- *
- * Note that this works by checking for [dir="rtl"] on an ancestor element. While this will work
- * in most cases, it will in some cases lead to false negatives, e.g.
- *
- * ```html
- * <html dir="rtl">
- *   <!-- ... -->
- *   <div dir="ltr">
- *     <div class="mdc-foo">Styled incorrectly as RTL!</div>
- *   </div>
- * </html>
- * ```
- *
- * In the future, selectors such as :dir (http://mdn.io/:dir) will help us mitigate this.
- */
-/**
- * Takes a base box-model property - e.g. margin / border / padding - along with a default
- * direction and value, and emits rules which apply the value to the
- * "<base-property>-<default-direction>" property by default, but flips the direction
- * when within an RTL context.
- *
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, left, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 8px;
- *     margin-left: 0;
- *   }
- * }
- * ```
- * whereas:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, right, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-right: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 0;
- *     margin-left: 8px;
- *   }
- * }
- * ```
- *
- * You can also pass a 4th optional $root-selector argument which will be forwarded to `mdc-rtl`,
- * e.g. `@include mdc-rtl-reflexive-box(margin, left, 8px, ".mdc-component")`.
- *
- * Note that this function will always zero out the original value in an RTL context. If you're
- * trying to flip the values, use mdc-rtl-reflexive-property().
- */
-/**
- * Takes a base property and emits rules that assign <base-property>-left to <left-value> and
- * <base-property>-right to <right-value> in a LTR context, and vice versa in a RTL context.
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-property(margin, auto, 12px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: auto;
- *   margin-right: 12px;
- *
- *   @include mdc-rtl {
- *     margin-left: 12px;
- *     margin-right: auto;
- *   }
- * }
- * ```
- *
- * A 4th optional $root-selector argument can be given, which will be passed to `mdc-rtl`.
- */
-/**
- * Takes an argument specifying a horizontal position property (either "left" or "right") as well
- * as a value, and applies that value to the specified position in a LTR context, and flips it in a
- * RTL context. For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-position(left, 0);
- *   position: absolute;
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- *  .mdc-foo {
- *    position: absolute;
- *    left: 0;
- *    right: initial;
- *
- *    @include mdc-rtl {
- *      right: 0;
- *      left: initial;
- *    }
- *  }
- * ```
- * An optional third $root-selector argument may also be given, which is passed to `mdc-rtl`.
- */
-/* TODO(sgomes): Figure out what to do about desktop font sizes. */
-/* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
-/* TODO(sgomes): Figure out what to do about desktop font sizes. */
-/* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
 .mdc-text-field-helper-text {
+  font-family: Roboto, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.03333em;
+  text-decoration: inherit;
+  text-transform: inherit;
   margin: 0;
   transition: opacity 180ms cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
-  font-size: .75rem;
   will-change: opacity; }
   .mdc-text-field + .mdc-text-field-helper-text {
     margin-bottom: 8px; }
@@ -8151,43 +7546,48 @@ v-card-title-position-left {
   margin-bottom: 8px;
   will-change: opacity, transform, color; }
   .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input {
-    border-bottom-color: rgba(0, 0, 0, 0.5); }
+    border-bottom-color: rgba(0, 0, 0, 0.42); }
   .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input:hover {
-    border-bottom-color: black; }
+    border-bottom-color: rgba(0, 0, 0, 0.87); }
   .mdc-text-field .mdc-line-ripple {
     background-color: #5488b2;
     /* @alternate */
     background-color: var(--mdc-theme-primary, #5488b2); }
   .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
-    color: rgba(0, 0, 0, 0.87);
-    /* @alternate */
-    color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87)); }
+    color: rgba(0, 0, 0, 0.87); }
   .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
     color: rgba(0, 0, 0, 0.6); }
   .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input::placeholder {
     color: rgba(0, 0, 0, 0.6); }
   .mdc-text-field:not(.mdc-text-field--disabled) + .mdc-text-field-helper-text {
-    color: rgba(0, 0, 0, 0.38);
-    /* @alternate */
-    color: var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.38)); }
+    color: rgba(0, 0, 0, 0.6); }
   .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--textarea) {
     border-bottom-color: rgba(0, 0, 0, 0.12); }
   .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__icon {
-    color: black; }
+    color: rgba(0, 0, 0, 0.54); }
+  .mdc-text-field .mdc-text-field__input {
+    caret-color: #5488b2;
+    /* @alternate */
+    caret-color: var(--mdc-theme-primary, #5488b2); }
 
 .mdc-text-field__input {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  letter-spacing: 0.04em;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+  letter-spacing: 0.00937em;
+  text-decoration: inherit;
+  text-transform: inherit;
   width: 100%;
-  padding: 20px 0 8px;
+  height: 30px;
+  padding: 20px 0 1px;
   transition: opacity 180ms cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
   border-bottom: 1px solid;
   border-radius: 0;
   background: none;
-  font-size: inherit;
   appearance: none; }
   .mdc-text-field__input::placeholder {
     transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -8204,9 +7604,9 @@ v-card-title-position-left {
   height: 56px;
   border: none; }
   .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__idle {
-    border-color: rgba(0, 0, 0, 0.12); }
+    border-color: rgba(0, 0, 0, 0.24); }
   .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__path {
-    stroke: rgba(0, 0, 0, 0.12); }
+    stroke: rgba(0, 0, 0, 0.24); }
   .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline__idle,
   .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline__idle {
     border-color: rgba(0, 0, 0, 0.87); }
@@ -8227,9 +7627,8 @@ v-card-title-position-left {
     border-radius: 4px; }
   .mdc-text-field--outlined .mdc-text-field__input {
     display: flex;
-    height: 30px;
     padding: 12px;
-    border: none;
+    border: none !important;
     background-color: transparent;
     z-index: 1; }
   .mdc-text-field--outlined .mdc-floating-label {
@@ -8238,8 +7637,7 @@ v-card-title-position-left {
     /* @noflip */
     right: initial;
     position: absolute;
-    bottom: 20px;
-    transition: transform 260ms ease; }
+    bottom: 20px; }
     [dir="rtl"] .mdc-text-field--outlined .mdc-floating-label, .mdc-text-field--outlined .mdc-floating-label[dir="rtl"] {
       /* @noflip */
       left: initial;
@@ -8252,7 +7650,7 @@ v-card-title-position-left {
   stroke-width: 2px; }
 
 .mdc-text-field--outlined.mdc-text-field--disabled .mdc-text-field__input {
-  color: rgba(0, 0, 0, 0.38); }
+  color: rgba(0, 0, 0, 0.6); }
 
 .mdc-text-field--outlined.mdc-text-field--disabled .mdc-notched-outline__idle {
   border-color: rgba(0, 0, 0, 0.06); }
@@ -8266,13 +7664,13 @@ v-card-title-position-left {
 .mdc-text-field--outlined.mdc-text-field--dense {
   height: 48px; }
   .mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--float-above {
-    transform: translateY(-145%) scale(0.923); }
+    transform: translateY(-110%) scale(0.923); }
   .mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--shake {
     animation: mdc-floating-label-shake-float-above-text-field-outlined-dense 250ms 1; }
   .mdc-text-field--outlined.mdc-text-field--dense .mdc-text-field__input {
     padding: 12px 12px 7px; }
   .mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label {
-    bottom: 18px; }
+    bottom: 16px; }
   .mdc-text-field--outlined.mdc-text-field--dense .mdc-text-field__icon {
     top: 12px; }
 
@@ -8319,10 +7717,6 @@ v-card-title-position-left {
     transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); }
   .mdc-text-field--box::before, .mdc-text-field--box::after {
     background-color: rgba(0, 0, 0, 0.87); }
-    @supports not (-ms-ime-align: auto) {
-      .mdc-text-field--box::before, .mdc-text-field--box::after {
-        /* @alternate */
-        background-color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87)); } }
   .mdc-text-field--box:hover::before {
     opacity: 0.04; }
   .mdc-text-field--box:not(.mdc-ripple-upgraded):focus::before, .mdc-text-field--box:not(.mdc-ripple-upgraded):focus-within::before, .mdc-text-field--box.mdc-ripple-upgraded--background-focused::before {
@@ -8338,7 +7732,7 @@ v-card-title-position-left {
     width: var(--mdc-ripple-fg-size, 100%);
     height: var(--mdc-ripple-fg-size, 100%); }
   .mdc-text-field--box:not(.mdc-text-field--disabled) {
-    background-color: rgba(0, 0, 0, 0.04); }
+    background-color: whitesmoke; }
   .mdc-text-field--box .mdc-floating-label--float-above {
     transform: translateY(-50%) scale(0.75); }
   .mdc-text-field--box .mdc-floating-label--shake {
@@ -8368,21 +7762,17 @@ v-card-title-position-left {
       right: 16px; }
 
 .mdc-text-field--box.mdc-text-field--disabled {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: #fafafa;
   border-bottom: none; }
   .mdc-text-field--box.mdc-text-field--disabled .mdc-text-field__input {
     border-bottom-color: rgba(0, 0, 0, 0.06); }
   .mdc-text-field--box.mdc-text-field--disabled:not(.mdc-text-field--disabled) .mdc-floating-label {
-    color: rgba(0, 0, 0, 0.38);
-    /* @alternate */
-    color: var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.38)); }
+    color: rgba(0, 0, 0, 0.37); }
   .mdc-text-field--box.mdc-text-field--disabled:not(.mdc-text-field--disabled) .mdc-text-field__input::placeholder {
-    color: rgba(0, 0, 0, 0.38);
-    /* @alternate */
-    color: var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.38)); }
+    color: rgba(0, 0, 0, 0.37); }
 
 .mdc-text-field--box.mdc-text-field--dense .mdc-floating-label--float-above {
-  transform: translateY(-90%) scale(0.923); }
+  transform: translateY(-70%) scale(0.923); }
 
 .mdc-text-field--box.mdc-text-field--dense .mdc-floating-label--shake {
   animation: mdc-floating-label-shake-float-above-text-field-box-dense 250ms 1; }
@@ -8431,13 +7821,19 @@ v-card-title-position-left {
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-floating-label--shake {
   animation: mdc-floating-label-shake-float-above-text-field-outlined-leading-icon 250ms 1; }
 
+[dir="rtl"] .mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-floating-label--shake, .mdc-text-field--with-leading-icon.mdc-text-field--outlined[dir="rtl"] .mdc-floating-label--shake {
+  animation: mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-rtl 250ms 1; }
+
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--float-above {
-  transform: translateY(-145%) translateX(-21px) scale(0.923); }
+  transform: translateY(-110%) translateX(-21px) scale(0.923); }
   [dir="rtl"] .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--float-above, .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--float-above[dir="rtl"] {
-    transform: translateY(-145%) translateX(21px) scale(0.923); }
+    transform: translateY(-110%) translateX(21px) scale(0.923); }
 
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--shake {
   animation: mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-dense 250ms 1; }
+
+[dir="rtl"] .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--shake, .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense[dir="rtl"] .mdc-floating-label--shake {
+  animation: mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-dense-rtl 250ms 1; }
 
 .mdc-text-field--with-trailing-icon .mdc-text-field__icon {
   /* @noflip */
@@ -8532,10 +7928,11 @@ v-card-title-position-left {
 
 .mdc-text-field--dense {
   margin-top: 12px;
-  margin-bottom: 4px;
-  font-size: .813rem; }
+  margin-bottom: 4px; }
   .mdc-text-field--dense .mdc-floating-label--float-above {
     transform: translateY(-110%) scale(0.923); }
+  .mdc-text-field--dense .mdc-floating-label {
+    font-size: .813rem; }
 
 .mdc-text-field__input:required + .mdc-floating-label::after {
   margin-left: 1px;
@@ -8562,27 +7959,37 @@ v-card-title-position-left {
   .mdc-text-field--textarea .mdc-floating-label--shake {
     animation: mdc-floating-label-shake-float-above-textarea 250ms 1; }
   .mdc-text-field--textarea .mdc-text-field__input {
+    height: auto;
     margin: 0;
     padding: 16px;
     padding-top: 32px;
     border: 1px solid transparent; }
   .mdc-text-field--textarea .mdc-floating-label {
+    background-color: white;
     /* @noflip */
     left: 1px;
     /* @noflip */
-    right: initial;
-    background-color: white;
+    right: 0;
+    /* @noflip */
+    margin-left: 8px;
+    /* @noflip */
+    margin-right: 0;
     top: 18px;
     bottom: auto;
     margin-top: 2px;
-    margin-left: 8px;
-    padding: 8px;
-    line-height: 1.15; }
+    padding: 12px 8px 8px 8px;
+    line-height: 1.15;
+    pointer-events: none; }
     [dir="rtl"] .mdc-text-field--textarea .mdc-floating-label, .mdc-text-field--textarea .mdc-floating-label[dir="rtl"] {
       /* @noflip */
-      left: initial;
+      left: 0;
       /* @noflip */
       right: 1px; }
+    [dir="rtl"] .mdc-text-field--textarea .mdc-floating-label, .mdc-text-field--textarea .mdc-floating-label[dir="rtl"] {
+      /* @noflip */
+      margin-left: 0;
+      /* @noflip */
+      margin-right: 8px; }
 
 .mdc-text-field--fullwidth {
   width: 100%; }
@@ -8604,7 +8011,7 @@ v-card-title-position-left {
       border: none !important; }
 
 .mdc-text-field--fullwidth.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--textarea) {
-  border-bottom-color: #d50000; }
+  border-bottom-color: #b00020; }
 
 .mdc-text-field--dense + .mdc-text-field-helper-text {
   margin-bottom: 4px; }
@@ -8618,17 +8025,13 @@ v-card-title-position-left {
   align-self: flex-start; }
 
 .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
-  color: #5488b2;
-  /* @alternate */
-  color: var(--mdc-theme-primary, #5488b2); }
+  color: rgba(84, 136, 178, 0.87); }
 
 .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-text-field__input::placeholder {
-  color: #5488b2;
-  /* @alternate */
-  color: var(--mdc-theme-primary, #5488b2); }
+  color: rgba(84, 136, 178, 0.87); }
 
 .mdc-text-field--focused .mdc-text-field__input:required + .mdc-floating-label::after {
-  color: #d50000; }
+  color: #b00020; }
 
 .mdc-text-field--focused + .mdc-text-field-helper-text:not(.mdc-text-field-helper-text--validation-msg) {
   opacity: 1; }
@@ -8643,68 +8046,66 @@ v-card-title-position-left {
     border-color: var(--mdc-theme-primary, #5488b2); }
 
 .mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input {
-  border-bottom-color: #d50000; }
+  border-bottom-color: #b00020; }
 
 .mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input:hover {
-  border-bottom-color: #d50000; }
+  border-bottom-color: #b00020; }
 
 .mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-line-ripple {
-  background-color: #d50000; }
+  background-color: #b00020; }
 
 .mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label {
-  color: #d50000; }
+  color: #b00020; }
 
 .mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-text-field__input::placeholder {
-  color: #d50000; }
+  color: #b00020; }
 
 .mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--invalid + .mdc-text-field-helper-text--validation-msg {
-  color: #d50000; }
+  color: #b00020; }
+
+.mdc-text-field--invalid .mdc-text-field__input {
+  caret-color: #b00020; }
+
+.mdc-text-field--invalid.mdc-text-field--with-trailing-icon:not(.mdc-text-field--disabled) .mdc-text-field__icon {
+  color: #b00020; }
 
 .mdc-text-field--invalid + .mdc-text-field-helper-text--validation-msg {
   opacity: 1; }
 
 .mdc-text-field--textarea.mdc-text-field--invalid:not(.mdc-text-field--disabled) {
-  border-color: #d50000; }
+  border-color: #b00020; }
   .mdc-text-field--textarea.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-text-field__input:focus {
-    border-color: #d50000; }
+    border-color: #b00020; }
 
 .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-notched-outline__idle {
-  border-color: #d50000; }
+  border-color: #b00020; }
 
 .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-notched-outline__path {
-  stroke: #d50000; }
+  stroke: #b00020; }
 
 .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline__idle,
 .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline__idle {
-  border-color: #d50000; }
+  border-color: #b00020; }
 
 .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__path,
 .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__path {
-  stroke: #d50000; }
+  stroke: #b00020; }
 
 .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__path {
-  stroke: #d50000; }
+  stroke: #b00020; }
 
 .mdc-text-field--disabled {
   pointer-events: none; }
   .mdc-text-field--disabled .mdc-text-field__input {
     border-bottom-color: rgba(35, 31, 32, 0.26); }
   .mdc-text-field--disabled .mdc-text-field__input {
-    color: rgba(0, 0, 0, 0.38);
-    /* @alternate */
-    color: var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.38)); }
+    color: rgba(0, 0, 0, 0.37); }
   .mdc-text-field--disabled .mdc-floating-label {
-    color: rgba(0, 0, 0, 0.38);
-    /* @alternate */
-    color: var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.38)); }
+    color: rgba(0, 0, 0, 0.37); }
   .mdc-text-field--disabled .mdc-text-field__input::placeholder {
-    color: rgba(0, 0, 0, 0.38);
-    /* @alternate */
-    color: var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.38)); }
+    color: rgba(0, 0, 0, 0.37); }
   .mdc-text-field--disabled + .mdc-text-field-helper-text {
-    color: rgba(0, 0, 0, 0.38);
-    /* @alternate */
-    color: var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.38)); }
+    color: rgba(0, 0, 0, 0.37); }
   .mdc-text-field--disabled .mdc-text-field__icon {
     color: rgba(0, 0, 0, 0.3); }
   .mdc-text-field--disabled:not(.mdc-text-field--textarea) {
@@ -8739,15 +8140,15 @@ v-card-title-position-left {
 
 @keyframes mdc-floating-label-shake-float-above-text-field-box-dense {
   0% {
-    transform: translateX(calc(0 - 0%)) translateY(-90%) scale(0.923); }
+    transform: translateX(calc(0 - 0%)) translateY(-70%) scale(0.923); }
   33% {
     animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);
-    transform: translateX(calc(4% - 0%)) translateY(-90%) scale(0.923); }
+    transform: translateX(calc(4% - 0%)) translateY(-70%) scale(0.923); }
   66% {
     animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);
-    transform: translateX(calc(-4% - 0%)) translateY(-90%) scale(0.923); }
+    transform: translateX(calc(-4% - 0%)) translateY(-70%) scale(0.923); }
   100% {
-    transform: translateX(calc(0 - 0%)) translateY(-90%) scale(0.923); } }
+    transform: translateX(calc(0 - 0%)) translateY(-70%) scale(0.923); } }
 
 @keyframes mdc-floating-label-shake-float-above-text-field-outlined {
   0% {
@@ -8763,15 +8164,15 @@ v-card-title-position-left {
 
 @keyframes mdc-floating-label-shake-float-above-text-field-outlined-dense {
   0% {
-    transform: translateX(calc(0 - 0%)) translateY(-145%) scale(0.923); }
+    transform: translateX(calc(0 - 0%)) translateY(-110%) scale(0.923); }
   33% {
     animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);
-    transform: translateX(calc(4% - 0%)) translateY(-145%) scale(0.923); }
+    transform: translateX(calc(4% - 0%)) translateY(-110%) scale(0.923); }
   66% {
     animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);
-    transform: translateX(calc(-4% - 0%)) translateY(-145%) scale(0.923); }
+    transform: translateX(calc(-4% - 0%)) translateY(-110%) scale(0.923); }
   100% {
-    transform: translateX(calc(0 - 0%)) translateY(-145%) scale(0.923); } }
+    transform: translateX(calc(0 - 0%)) translateY(-110%) scale(0.923); } }
 
 @keyframes mdc-floating-label-shake-float-above-text-field-outlined-leading-icon {
   0% {
@@ -8787,15 +8188,39 @@ v-card-title-position-left {
 
 @keyframes mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-dense {
   0% {
-    transform: translateX(calc(0 - 21px)) translateY(-145%) scale(0.923); }
+    transform: translateX(calc(0 - 21px)) translateY(-110%) scale(0.923); }
   33% {
     animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);
-    transform: translateX(calc(4% - 21px)) translateY(-145%) scale(0.923); }
+    transform: translateX(calc(4% - 21px)) translateY(-110%) scale(0.923); }
   66% {
     animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);
-    transform: translateX(calc(-4% - 21px)) translateY(-145%) scale(0.923); }
+    transform: translateX(calc(-4% - 21px)) translateY(-110%) scale(0.923); }
   100% {
-    transform: translateX(calc(0 - 21px)) translateY(-145%) scale(0.923); } }
+    transform: translateX(calc(0 - 21px)) translateY(-110%) scale(0.923); } }
+
+@keyframes mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-rtl {
+  0% {
+    transform: translateX(calc(0 - -32px)) translateY(-130%) scale(0.75); }
+  33% {
+    animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);
+    transform: translateX(calc(4% - -32px)) translateY(-130%) scale(0.75); }
+  66% {
+    animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);
+    transform: translateX(calc(-4% - -32px)) translateY(-130%) scale(0.75); }
+  100% {
+    transform: translateX(calc(0 - -32px)) translateY(-130%) scale(0.75); } }
+
+@keyframes mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-dense-rtl {
+  0% {
+    transform: translateX(calc(0 - -21px)) translateY(-110%) scale(0.923); }
+  33% {
+    animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);
+    transform: translateX(calc(4% - -21px)) translateY(-110%) scale(0.923); }
+  66% {
+    animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);
+    transform: translateX(calc(-4% - -21px)) translateY(-110%) scale(0.923); }
+  100% {
+    transform: translateX(calc(0 - -21px)) translateY(-110%) scale(0.923); } }
 
 @keyframes mdc-floating-label-shake-float-above-textarea {
   0% {
@@ -8812,312 +8237,6 @@ v-card-title-position-left {
 .mdc-text-field__input .v-text-field {
   padding: inherit; }
 
-/**
- * Creates a rule that will be applied when an MDC Web component is within the context of an RTL layout.
- *
- * Usage Example:
- * ```scss
- * .mdc-foo {
- *   position: absolute;
- *   left: 0;
- *
- *   @include mdc-rtl {
- *     left: auto;
- *     right: 0;
- *   }
- *
- *   &__bar {
- *     margin-left: 4px;
- *     @include mdc-rtl(".mdc-foo") {
- *       margin-left: auto;
- *       margin-right: 4px;
- *     }
- *   }
- * }
- *
- * .mdc-foo--mod {
- *   padding-left: 4px;
- *
- *   @include mdc-rtl {
- *     padding-left: auto;
- *     padding-right: 4px;
- *   }
- * }
- * ```
- *
- * Note that this works by checking for [dir="rtl"] on an ancestor element. While this will work
- * in most cases, it will in some cases lead to false negatives, e.g.
- *
- * ```html
- * <html dir="rtl">
- *   <!-- ... -->
- *   <div dir="ltr">
- *     <div class="mdc-foo">Styled incorrectly as RTL!</div>
- *   </div>
- * </html>
- * ```
- *
- * In the future, selectors such as :dir (http://mdn.io/:dir) will help us mitigate this.
- */
-/**
- * Takes a base box-model property - e.g. margin / border / padding - along with a default
- * direction and value, and emits rules which apply the value to the
- * "<base-property>-<default-direction>" property by default, but flips the direction
- * when within an RTL context.
- *
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, left, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 8px;
- *     margin-left: 0;
- *   }
- * }
- * ```
- * whereas:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, right, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-right: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 0;
- *     margin-left: 8px;
- *   }
- * }
- * ```
- *
- * You can also pass a 4th optional $root-selector argument which will be forwarded to `mdc-rtl`,
- * e.g. `@include mdc-rtl-reflexive-box(margin, left, 8px, ".mdc-component")`.
- *
- * Note that this function will always zero out the original value in an RTL context. If you're
- * trying to flip the values, use mdc-rtl-reflexive-property().
- */
-/**
- * Takes a base property and emits rules that assign <base-property>-left to <left-value> and
- * <base-property>-right to <right-value> in a LTR context, and vice versa in a RTL context.
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-property(margin, auto, 12px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: auto;
- *   margin-right: 12px;
- *
- *   @include mdc-rtl {
- *     margin-left: 12px;
- *     margin-right: auto;
- *   }
- * }
- * ```
- *
- * A 4th optional $root-selector argument can be given, which will be passed to `mdc-rtl`.
- */
-/**
- * Takes an argument specifying a horizontal position property (either "left" or "right") as well
- * as a value, and applies that value to the specified position in a LTR context, and flips it in a
- * RTL context. For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-position(left, 0);
- *   position: absolute;
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- *  .mdc-foo {
- *    position: absolute;
- *    left: 0;
- *    right: initial;
- *
- *    @include mdc-rtl {
- *      right: 0;
- *      left: initial;
- *    }
- *  }
- * ```
- * An optional third $root-selector argument may also be given, which is passed to `mdc-rtl`.
- */
-/* TODO(sgomes): Figure out what to do about desktop font sizes. */
-/* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
-/* TODO(sgomes): Figure out what to do about desktop font sizes. */
-/* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
-/**
- * Creates a rule that will be applied when an MDC Web component is within the context of an RTL layout.
- *
- * Usage Example:
- * ```scss
- * .mdc-foo {
- *   position: absolute;
- *   left: 0;
- *
- *   @include mdc-rtl {
- *     left: auto;
- *     right: 0;
- *   }
- *
- *   &__bar {
- *     margin-left: 4px;
- *     @include mdc-rtl(".mdc-foo") {
- *       margin-left: auto;
- *       margin-right: 4px;
- *     }
- *   }
- * }
- *
- * .mdc-foo--mod {
- *   padding-left: 4px;
- *
- *   @include mdc-rtl {
- *     padding-left: auto;
- *     padding-right: 4px;
- *   }
- * }
- * ```
- *
- * Note that this works by checking for [dir="rtl"] on an ancestor element. While this will work
- * in most cases, it will in some cases lead to false negatives, e.g.
- *
- * ```html
- * <html dir="rtl">
- *   <!-- ... -->
- *   <div dir="ltr">
- *     <div class="mdc-foo">Styled incorrectly as RTL!</div>
- *   </div>
- * </html>
- * ```
- *
- * In the future, selectors such as :dir (http://mdn.io/:dir) will help us mitigate this.
- */
-/**
- * Takes a base box-model property - e.g. margin / border / padding - along with a default
- * direction and value, and emits rules which apply the value to the
- * "<base-property>-<default-direction>" property by default, but flips the direction
- * when within an RTL context.
- *
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, left, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 8px;
- *     margin-left: 0;
- *   }
- * }
- * ```
- * whereas:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, right, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-right: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 0;
- *     margin-left: 8px;
- *   }
- * }
- * ```
- *
- * You can also pass a 4th optional $root-selector argument which will be forwarded to `mdc-rtl`,
- * e.g. `@include mdc-rtl-reflexive-box(margin, left, 8px, ".mdc-component")`.
- *
- * Note that this function will always zero out the original value in an RTL context. If you're
- * trying to flip the values, use mdc-rtl-reflexive-property().
- */
-/**
- * Takes a base property and emits rules that assign <base-property>-left to <left-value> and
- * <base-property>-right to <right-value> in a LTR context, and vice versa in a RTL context.
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-property(margin, auto, 12px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: auto;
- *   margin-right: 12px;
- *
- *   @include mdc-rtl {
- *     margin-left: 12px;
- *     margin-right: auto;
- *   }
- * }
- * ```
- *
- * A 4th optional $root-selector argument can be given, which will be passed to `mdc-rtl`.
- */
-/**
- * Takes an argument specifying a horizontal position property (either "left" or "right") as well
- * as a value, and applies that value to the specified position in a LTR context, and flips it in a
- * RTL context. For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-position(left, 0);
- *   position: absolute;
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- *  .mdc-foo {
- *    position: absolute;
- *    left: 0;
- *    right: initial;
- *
- *    @include mdc-rtl {
- *      right: 0;
- *      left: initial;
- *    }
- *  }
- * ```
- * An optional third $root-selector argument may also be given, which is passed to `mdc-rtl`.
- */
 .mdc-list {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
@@ -9125,7 +8244,7 @@ v-card-title-position-left {
   font-size: 1rem;
   line-height: 1.75rem;
   font-weight: 400;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.00937em;
   text-decoration: inherit;
   text-transform: inherit;
   color: rgba(0, 0, 0, 0.87);
@@ -9226,7 +8345,7 @@ v-card-title-position-left {
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 400;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.01786em;
   text-decoration: inherit;
   text-transform: inherit; }
 
@@ -9430,10 +8549,10 @@ a.mdc-list-item {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 0.875rem;
-  line-height: 1.5rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+  letter-spacing: 0.00937em;
   text-decoration: inherit;
   text-transform: inherit;
   margin: 0.75rem 16px; }
@@ -9460,7 +8579,6 @@ a.mdc-list-item {
 .mdc-list-item__meta {
   white-space: nowrap; }
 
-/** postcss-bem-linter: define icon-toggle */
 .mdc-icon-toggle {
   --mdc-ripple-fg-size: 0;
   --mdc-ripple-left: 0;
@@ -9555,44 +8673,12 @@ a.mdc-list-item {
   color: var(--mdc-theme-text-disabled-on-light, rgba(0, 0, 0, 0.38));
   pointer-events: none; }
 
-/** postcss-bem-linter: end */
 .v-toggle-icon--off {
   color: black; }
 
 .v-toggle-icon--on {
   color: #5488b2; }
 
-/**
- * The css property used for elevation. In most cases this should not be changed. It is exposed
- * as a variable for abstraction / easy use when needing to reference the property directly, for
- * example in a `will-change` rule.
- */
-/**
- * The default duration value for elevation transitions.
- */
-/**
- * The default easing value for elevation transitions.
- */
-/**
- * Applies the correct CSS rules to an element to give it the elevation specified by $z-value.
- * The $z-value must be between 0 and 24.
- * If $color has an alpha channel, it will be ignored and overridden. To increase the opacity of the shadow, use
- * $opacity-boost.
- */
-/**
- * Returns a string that can be used as the value for a `transition` property for elevation.
- * Calling this function directly is useful in situations where a component needs to transition
- * more than one property.
- *
- * ```scss
- * .foo {
- *   transition: mdc-elevation-transition-value(), opacity 100ms ease;
- *   will-change: $mdc-elevation-property, opacity;
- * }
- * ```
- */
-/* TODO(sgomes): Figure out what to do about desktop font sizes. */
-/* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
 .mdc-menu {
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   background-color: #fff;
@@ -9658,7 +8744,7 @@ a.mdc-list-item {
     font-size: 1rem;
     line-height: 1.75rem;
     font-weight: 400;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.00937em;
     text-decoration: inherit;
     text-transform: inherit;
     position: relative;
@@ -9693,60 +8779,56 @@ a.mdc-list-item {
 .mdl-navigation__link .v-icon__fa {
   font-size: 18px; }
 
-/* TODO(sgomes): Figure out what to do about desktop font sizes. */
-/* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
-/* TODO(sgomes): Figure out what to do about desktop font sizes. */
-/* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
 .mdc-typography {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased; }
 
-.mdc-typography--display4 {
+.mdc-typography--headline1 {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 7rem;
-  line-height: 7rem;
+  font-size: 6rem;
+  line-height: 6rem;
   font-weight: 300;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.01562em;
   text-decoration: inherit;
   text-transform: inherit; }
 
-.mdc-typography--display3 {
+.mdc-typography--headline2 {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 3.5rem;
-  line-height: 3.5rem;
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  font-size: 3.75rem;
+  line-height: 3.75rem;
+  font-weight: 300;
+  letter-spacing: -0.00833em;
   text-decoration: inherit;
   text-transform: inherit; }
 
-.mdc-typography--display2 {
+.mdc-typography--headline3 {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 2.8125rem;
-  line-height: 3rem;
+  font-size: 3rem;
+  line-height: 3.125rem;
   font-weight: 400;
   letter-spacing: normal;
   text-decoration: inherit;
   text-transform: inherit; }
 
-.mdc-typography--display1 {
+.mdc-typography--headline4 {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-size: 2.125rem;
   line-height: 2.5rem;
   font-weight: 400;
-  letter-spacing: normal;
+  letter-spacing: 0.00735em;
   text-decoration: inherit;
   text-transform: inherit; }
 
-.mdc-typography--headline {
+.mdc-typography--headline5 {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -9757,36 +8839,47 @@ a.mdc-list-item {
   text-decoration: inherit;
   text-transform: inherit; }
 
-.mdc-typography--title {
+.mdc-typography--headline6 {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-size: 1.25rem;
   line-height: 2rem;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.0125em;
   text-decoration: inherit;
   text-transform: inherit; }
 
-.mdc-typography--subheading2 {
+.mdc-typography--subtitle1 {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-size: 1rem;
   line-height: 1.75rem;
   font-weight: 400;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.00937em;
   text-decoration: inherit;
   text-transform: inherit; }
 
-.mdc-typography--subheading1 {
+.mdc-typography--subtitle2 {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 0.938rem;
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  font-weight: 500;
+  letter-spacing: 0.00714em;
+  text-decoration: inherit;
+  text-transform: inherit; }
+
+.mdc-typography--body1 {
+  font-family: Roboto, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 400;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03125em;
   text-decoration: inherit;
   text-transform: inherit; }
 
@@ -9795,20 +8888,9 @@ a.mdc-list-item {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-size: 0.875rem;
-  line-height: 1.5rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-decoration: inherit;
-  text-transform: inherit; }
-
-.mdc-typography--body1 {
-  font-family: Roboto, sans-serif;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 400;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.01786em;
   text-decoration: inherit;
   text-transform: inherit; }
 
@@ -9819,7 +8901,7 @@ a.mdc-list-item {
   font-size: 0.75rem;
   line-height: 1.25rem;
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03333em;
   text-decoration: inherit;
   text-transform: inherit; }
 
@@ -9830,7 +8912,18 @@ a.mdc-list-item {
   font-size: 0.875rem;
   line-height: 2.25rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08929em;
+  text-decoration: none;
+  text-transform: uppercase; }
+
+.mdc-typography--overline {
+  font-family: Roboto, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 0.75rem;
+  line-height: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.16667em;
   text-decoration: none;
   text-transform: uppercase; }
 
@@ -9860,389 +8953,30 @@ a.mdc-list-item {
     transform: translateY(0);
     opacity: 1; } }
 
-/* TODO(sgomes): Figure out what to do about desktop font sizes. */
-/* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
-/**
- * Creates a rule that will be applied when an MDC Web component is within the context of an RTL layout.
- *
- * Usage Example:
- * ```scss
- * .mdc-foo {
- *   position: absolute;
- *   left: 0;
- *
- *   @include mdc-rtl {
- *     left: auto;
- *     right: 0;
- *   }
- *
- *   &__bar {
- *     margin-left: 4px;
- *     @include mdc-rtl(".mdc-foo") {
- *       margin-left: auto;
- *       margin-right: 4px;
- *     }
- *   }
- * }
- *
- * .mdc-foo--mod {
- *   padding-left: 4px;
- *
- *   @include mdc-rtl {
- *     padding-left: auto;
- *     padding-right: 4px;
- *   }
- * }
- * ```
- *
- * Note that this works by checking for [dir="rtl"] on an ancestor element. While this will work
- * in most cases, it will in some cases lead to false negatives, e.g.
- *
- * ```html
- * <html dir="rtl">
- *   <!-- ... -->
- *   <div dir="ltr">
- *     <div class="mdc-foo">Styled incorrectly as RTL!</div>
- *   </div>
- * </html>
- * ```
- *
- * In the future, selectors such as :dir (http://mdn.io/:dir) will help us mitigate this.
- */
-/**
- * Takes a base box-model property - e.g. margin / border / padding - along with a default
- * direction and value, and emits rules which apply the value to the
- * "<base-property>-<default-direction>" property by default, but flips the direction
- * when within an RTL context.
- *
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, left, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 8px;
- *     margin-left: 0;
- *   }
- * }
- * ```
- * whereas:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, right, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-right: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 0;
- *     margin-left: 8px;
- *   }
- * }
- * ```
- *
- * You can also pass a 4th optional $root-selector argument which will be forwarded to `mdc-rtl`,
- * e.g. `@include mdc-rtl-reflexive-box(margin, left, 8px, ".mdc-component")`.
- *
- * Note that this function will always zero out the original value in an RTL context. If you're
- * trying to flip the values, use mdc-rtl-reflexive-property().
- */
-/**
- * Takes a base property and emits rules that assign <base-property>-left to <left-value> and
- * <base-property>-right to <right-value> in a LTR context, and vice versa in a RTL context.
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-property(margin, auto, 12px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: auto;
- *   margin-right: 12px;
- *
- *   @include mdc-rtl {
- *     margin-left: 12px;
- *     margin-right: auto;
- *   }
- * }
- * ```
- *
- * A 4th optional $root-selector argument can be given, which will be passed to `mdc-rtl`.
- */
-/**
- * Takes an argument specifying a horizontal position property (either "left" or "right") as well
- * as a value, and applies that value to the specified position in a LTR context, and flips it in a
- * RTL context. For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-position(left, 0);
- *   position: absolute;
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- *  .mdc-foo {
- *    position: absolute;
- *    left: 0;
- *    right: initial;
- *
- *    @include mdc-rtl {
- *      right: 0;
- *      left: initial;
- *    }
- *  }
- * ```
- * An optional third $root-selector argument may also be given, which is passed to `mdc-rtl`.
- */
-/**
- * Creates a rule that will be applied when an MDC Web component is within the context of an RTL layout.
- *
- * Usage Example:
- * ```scss
- * .mdc-foo {
- *   position: absolute;
- *   left: 0;
- *
- *   @include mdc-rtl {
- *     left: auto;
- *     right: 0;
- *   }
- *
- *   &__bar {
- *     margin-left: 4px;
- *     @include mdc-rtl(".mdc-foo") {
- *       margin-left: auto;
- *       margin-right: 4px;
- *     }
- *   }
- * }
- *
- * .mdc-foo--mod {
- *   padding-left: 4px;
- *
- *   @include mdc-rtl {
- *     padding-left: auto;
- *     padding-right: 4px;
- *   }
- * }
- * ```
- *
- * Note that this works by checking for [dir="rtl"] on an ancestor element. While this will work
- * in most cases, it will in some cases lead to false negatives, e.g.
- *
- * ```html
- * <html dir="rtl">
- *   <!-- ... -->
- *   <div dir="ltr">
- *     <div class="mdc-foo">Styled incorrectly as RTL!</div>
- *   </div>
- * </html>
- * ```
- *
- * In the future, selectors such as :dir (http://mdn.io/:dir) will help us mitigate this.
- */
-/**
- * Takes a base box-model property - e.g. margin / border / padding - along with a default
- * direction and value, and emits rules which apply the value to the
- * "<base-property>-<default-direction>" property by default, but flips the direction
- * when within an RTL context.
- *
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, left, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 8px;
- *     margin-left: 0;
- *   }
- * }
- * ```
- * whereas:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, right, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-right: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 0;
- *     margin-left: 8px;
- *   }
- * }
- * ```
- *
- * You can also pass a 4th optional $root-selector argument which will be forwarded to `mdc-rtl`,
- * e.g. `@include mdc-rtl-reflexive-box(margin, left, 8px, ".mdc-component")`.
- *
- * Note that this function will always zero out the original value in an RTL context. If you're
- * trying to flip the values, use mdc-rtl-reflexive-property().
- */
-/**
- * Takes a base property and emits rules that assign <base-property>-left to <left-value> and
- * <base-property>-right to <right-value> in a LTR context, and vice versa in a RTL context.
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-property(margin, auto, 12px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: auto;
- *   margin-right: 12px;
- *
- *   @include mdc-rtl {
- *     margin-left: 12px;
- *     margin-right: auto;
- *   }
- * }
- * ```
- *
- * A 4th optional $root-selector argument can be given, which will be passed to `mdc-rtl`.
- */
-/**
- * Takes an argument specifying a horizontal position property (either "left" or "right") as well
- * as a value, and applies that value to the specified position in a LTR context, and flips it in a
- * RTL context. For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-position(left, 0);
- *   position: absolute;
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- *  .mdc-foo {
- *    position: absolute;
- *    left: 0;
- *    right: initial;
- *
- *    @include mdc-rtl {
- *      right: 0;
- *      left: initial;
- *    }
- *  }
- * ```
- * An optional third $root-selector argument may also be given, which is passed to `mdc-rtl`.
- */
-.mdc-select__label {
-  /* @noflip */
-  left: 0;
-  /* @noflip */
-  right: initial;
-  position: absolute;
-  bottom: 8px;
-  left: 0;
-  transform-origin: left top;
-  transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-  will-change: transform; }
-  [dir="rtl"] .mdc-select__label, .mdc-select__label[dir="rtl"] {
-    /* @noflip */
-    left: initial;
-    /* @noflip */
-    right: 0; }
-  .mdc-select[dir="rtl"] .mdc-select__label,
-  [dir="rtl"] .mdc-select .mdc-select__label {
-    transform-origin: right top; }
-  .mdc-select__label--float-above {
-    transform: translateY(-100%) scale(0.75); }
-
-.mdc-select__bottom-line {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  transform: scaleY(1);
-  transform-origin: bottom;
-  transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1); }
-  .mdc-select__bottom-line::after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    transform: scaleX(0);
-    transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-    content: "";
-    z-index: 2; }
-
-.mdc-select__bottom-line--active::after {
-  opacity: 1; }
-
 .mdc-select {
-  font-family: Roboto, sans-serif;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  background-image: url(data:image/svg+xml,%3Csvg%20width%3D%2210px%22%20height%3D%225px%22%20viewBox%3D%227%2010%2010%205%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Cpolygon%20id%3D%22Shape%22%20stroke%3D%22none%22%20fill%3D%22%230%22%20fill-rule%3D%22evenodd%22%20opacity%3D%220.54%22%20points%3D%227%2010%2012%2015%2017%2010%22%3E%3C%2Fpolygon%3E%0A%3C%2Fsvg%3E);
+  background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2210px%22%20height%3D%225px%22%20viewBox%3D%227%2010%2010%205%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Cpolygon%20id%3D%22Shape%22%20stroke%3D%22none%22%20fill%3D%22%230%22%20fill-rule%3D%22evenodd%22%20opacity%3D%220.54%22%20points%3D%227%2010%2012%2015%2017%2010%22%3E%3C%2Fpolygon%3E%0A%3C%2Fsvg%3E");
   display: inline-flex;
   position: relative;
   box-sizing: border-box;
-  height: 48px;
+  height: 52px;
   background-repeat: no-repeat;
-  background-position: right 8px bottom 12px;
-  overflow: hidden; }
+  background-position: right 8px bottom 12px; }
   .mdc-select:not(.mdc-select--disabled) {
     background-color: transparent; }
   .mdc-select:not(.mdc-select--disabled) .mdc-select__native-control {
-    color: rgba(0, 0, 0, 0.87);
-    /* @alternate */
-    color: var(--mdc-theme-text-primary-on-light, rgba(0, 0, 0, 0.87)); }
-  .mdc-select:not(.mdc-select--disabled) .mdc-select__label {
+    color: rgba(0, 0, 0, 0.87); }
+  .mdc-select:not(.mdc-select--disabled) .mdc-floating-label {
     color: rgba(0, 0, 0, 0.6); }
-  .mdc-select:not(.mdc-select--disabled) .mdc-select__bottom-line {
-    background-color: rgba(0, 0, 0, 0.5); }
-  .mdc-select:not(.mdc-select--disabled) .mdc-select__native-control:focus ~ .mdc-select__bottom-line {
+  .mdc-select:not(.mdc-select--disabled) .mdc-select__native-control {
+    border-bottom-color: rgba(0, 0, 0, 0.42); }
+  .mdc-select:not(.mdc-select--disabled) .mdc-select__native-control:focus ~ .mdc-line-ripple {
     background-color: #5488b2;
     /* @alternate */
     background-color: var(--mdc-theme-primary, #5488b2); }
-  .mdc-select:not(.mdc-select--disabled) .mdc-select__bottom-line::after {
-    background-color: #5488b2;
-    /* @alternate */
-    background-color: var(--mdc-theme-primary, #5488b2); }
-  .mdc-select:not(.mdc-select--disabled) .mdc-select__native-control:focus ~ .mdc-select__label {
+  .mdc-select:not(.mdc-select--disabled) .mdc-select__native-control:focus ~ .mdc-floating-label {
     color: rgba(84, 136, 178, 0.87); }
+  .mdc-select:not(.mdc-select--disabled) .mdc-select__native-control:hover {
+    border-bottom-color: rgba(0, 0, 0, 0.87); }
   [dir="rtl"] .mdc-select, .mdc-select[dir="rtl"] {
     background-position: left 8px bottom 12px; }
   .mdc-select__native-control {
@@ -10253,10 +8987,18 @@ a.mdc-list-item {
     font-family: Roboto, sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    font-weight: 400;
+    letter-spacing: 0.00937em;
+    text-decoration: inherit;
+    text-transform: inherit;
     width: 100%;
-    padding-top: 22px;
-    padding-bottom: 8px;
+    padding-top: 20px;
+    padding-bottom: 4px;
     border: none;
+    border-bottom: 1px solid;
+    border-radius: 0;
     outline: none;
     background-color: transparent;
     white-space: nowrap;
@@ -10273,13 +9015,11 @@ a.mdc-list-item {
 @-moz-document url-prefix("") {
   .mdc-select__native-control {
     text-indent: -2px; } }
-  .mdc-select .mdc-select__native-control:focus ~ .mdc-select__bottom-line::after {
+  .mdc-select .mdc-floating-label {
+    pointer-events: none; }
+  .mdc-select .mdc-select__native-control:focus ~ .mdc-line-ripple::after {
     transform: scale(1, 2);
     opacity: 1; }
-
-.mdc-select--is-changing .mdc-select__native-control {
-  animation: mdc-select-float-native-control 125ms 1;
-  animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
 
 .mdc-select--box {
   --mdc-ripple-fg-size: 0;
@@ -10292,9 +9032,10 @@ a.mdc-list-item {
   will-change: transform, opacity;
   height: 56px;
   border-radius: 4px 4px 0 0;
-  background-position: right 10px center; }
+  background-position: right 10px center;
+  overflow: hidden; }
   .mdc-select--box:not(.mdc-select--disabled) {
-    background-color: rgba(0, 0, 0, 0.04); }
+    background-color: whitesmoke; }
   .mdc-select--box::before, .mdc-select--box::after {
     position: absolute;
     border-radius: 50%;
@@ -10332,10 +9073,6 @@ a.mdc-list-item {
     height: var(--mdc-ripple-fg-size, 100%); }
   .mdc-select--box::before, .mdc-select--box::after {
     background-color: rgba(0, 0, 0, 0.87); }
-    @supports not (-ms-ime-align: auto) {
-      .mdc-select--box::before, .mdc-select--box::after {
-        /* @alternate */
-        background-color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87)); } }
   .mdc-select--box:hover::before {
     opacity: 0.04; }
   .mdc-select--box:not(.mdc-ripple-upgraded):focus::before, .mdc-select--box:not(.mdc-ripple-upgraded):focus-within::before, .mdc-select--box.mdc-ripple-upgraded--background-focused::before {
@@ -10343,17 +9080,6 @@ a.mdc-list-item {
     opacity: 0.12; }
   [dir="rtl"] .mdc-select--box, .mdc-select--box[dir="rtl"] {
     background-position: left 10px center; }
-  .mdc-select--box .mdc-select__native-control,
-  .mdc-select--box .mdc-select__label {
-    font-family: Roboto, sans-serif;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font-size: 1rem;
-    line-height: 1.75rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    text-decoration: inherit;
-    text-transform: inherit; }
   .mdc-select--box .mdc-select__native-control {
     /* @noflip */
     padding-left: 16px;
@@ -10366,32 +9092,97 @@ a.mdc-list-item {
       padding-left: 26px;
       /* @noflip */
       padding-right: 16px; }
-  .mdc-select--box .mdc-select__label {
+  .mdc-select--box .mdc-floating-label {
     /* @noflip */
     left: 16px;
     /* @noflip */
     right: initial;
-    bottom: 12px; }
-    [dir="rtl"] .mdc-select--box .mdc-select__label, .mdc-select--box .mdc-select__label[dir="rtl"] {
+    bottom: 12px;
+    line-height: 1.75rem; }
+    [dir="rtl"] .mdc-select--box .mdc-floating-label, .mdc-select--box .mdc-floating-label[dir="rtl"] {
       /* @noflip */
       left: initial;
       /* @noflip */
       right: 16px; }
-    .mdc-select--box .mdc-select__label--float-above {
+    .mdc-select--box .mdc-floating-label--float-above {
       transform: translateY(-40%) scale(0.75, 0.75); }
 
+.mdc-select--outlined {
+  height: 56px;
+  border: none;
+  background-position: right 10px center; }
+  .mdc-select--outlined:not(.mdc-select--disabled) .mdc-notched-outline__idle {
+    border-color: rgba(0, 0, 0, 0.24); }
+  .mdc-select--outlined:not(.mdc-select--disabled) .mdc-notched-outline__path {
+    stroke: rgba(0, 0, 0, 0.24); }
+  .mdc-select--outlined:not(.mdc-select--disabled):not(.mdc-select__native-control:focus) .mdc-select__native-control:hover ~ .mdc-notched-outline__idle {
+    border-color: rgba(0, 0, 0, 0.87); }
+  .mdc-select--outlined:not(.mdc-select--disabled):not(.mdc-select__native-control:focus) .mdc-select__native-control:hover ~ .mdc-notched-outline .mdc-notched-outline__path {
+    stroke: rgba(0, 0, 0, 0.87); }
+  .mdc-select--outlined:not(.mdc-select--disabled) .mdc-select__native-control:focus ~ .mdc-notched-outline .mdc-notched-outline__path {
+    stroke-width: 2px; }
+  .mdc-select--outlined:not(.mdc-select--disabled) .mdc-select__native-control:focus ~ .mdc-notched-outline .mdc-notched-outline__path {
+    stroke: #5488b2;
+    /* @alternate */
+    stroke: var(--mdc-theme-primary, #5488b2); }
+  .mdc-select--outlined .mdc-floating-label--float-above {
+    transform: translateY(-130%) scale(0.75); }
+  .mdc-select--outlined .mdc-floating-label--shake {
+    animation: mdc-floating-label-shake-float-above-text-field-outlined 250ms 1; }
+  .mdc-select--outlined .mdc-notched-outline {
+    border-radius: 4px; }
+  .mdc-select--outlined .mdc-notched-outline__idle {
+    border-radius: 4px; }
+  [dir="rtl"] .mdc-select--outlined, .mdc-select--outlined[dir="rtl"] {
+    background-position: left 10px center; }
+  .mdc-select--outlined .mdc-select__native-control {
+    /* @noflip */
+    padding-left: 16px;
+    /* @noflip */
+    padding-right: 26px;
+    display: flex;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border: none;
+    background-color: transparent;
+    z-index: 1; }
+    [dir="rtl"] .mdc-select--outlined .mdc-select__native-control, .mdc-select--outlined .mdc-select__native-control[dir="rtl"] {
+      /* @noflip */
+      padding-left: 26px;
+      /* @noflip */
+      padding-right: 16px; }
+  .mdc-select--outlined .mdc-floating-label {
+    /* @noflip */
+    left: 16px;
+    /* @noflip */
+    right: initial;
+    position: absolute;
+    bottom: 20px; }
+    [dir="rtl"] .mdc-select--outlined .mdc-floating-label, .mdc-select--outlined .mdc-floating-label[dir="rtl"] {
+      /* @noflip */
+      left: initial;
+      /* @noflip */
+      right: 16px; }
+
 .mdc-select--disabled {
-  background-image: url(data:image/svg+xml,%3Csvg%20width%3D%2210px%22%20height%3D%225px%22%20viewBox%3D%227%2010%2010%205%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Cpolygon%20id%3D%22Shape%22%20stroke%3D%22none%22%20fill%3D%22%230%22%20fill-rule%3D%22evenodd%22%20opacity%3D%220.38%22%20points%3D%227%2010%2012%2015%2017%2010%22%3E%3C%2Fpolygon%3E%0A%3C%2Fsvg%3E);
-  background-color: transparent;
-  border-bottom-width: 1px;
-  border-bottom-style: dotted;
+  background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2210px%22%20height%3D%225px%22%20viewBox%3D%227%2010%2010%205%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Cpolygon%20id%3D%22Shape%22%20stroke%3D%22none%22%20fill%3D%22%23#000%22%20fill-rule%3D%22evenodd%22%20opacity%3D%220.54%22%20points%3D%227%2010%2012%2015%2017%2010%22%3E%3C%2Fpolygon%3E%0A%3C%2Fsvg%3E");
   opacity: .38;
   cursor: default;
   pointer-events: none; }
-  .mdc-select--disabled .mdc-select__label {
-    color: black; }
-  .mdc-select--disabled .mdc-select__bottom-line {
+  .mdc-select--disabled .mdc-floating-label {
+    color: rgba(0, 0, 0, 0.37); }
+  .mdc-select--disabled .mdc-line-ripple {
     display: none; }
+  .mdc-select--disabled .mdc-select__native-control {
+    border-bottom-style: dotted; }
+  .mdc-select--disabled.mdc-select--box {
+    background-color: #fafafa; }
+  .mdc-select--disabled.mdc-select--outlined .mdc-select__native-control {
+    border-bottom-style: none; }
+  .mdc-select--disabled.mdc-select--outlined .mdc-notched-outline__idle {
+    border-color: rgba(0, 0, 0, 0.16); }
+  .mdc-select--disabled.mdc-select--outlined .mdc-notched-outline__path {
+    stroke: rgba(0, 0, 0, 0.16); }
 
 .mdc-select__native-control {
   -webkit-appearance: none;
@@ -10418,11 +9209,22 @@ select {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   will-change: transform, opacity;
   border-radius: 16px;
-  background-color: rgba(0, 0, 0, 0.08);
-  color: rgba(0, 0, 0, 0.6);
+  background-color: #e0e0e0;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: Roboto, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.01786em;
+  text-decoration: inherit;
+  text-transform: inherit;
+  height: 32px;
   display: inline-flex;
   position: relative;
   align-items: center;
+  box-sizing: border-box;
   padding: 7px 12px;
   outline: none;
   cursor: pointer;
@@ -10463,7 +9265,7 @@ select {
     width: var(--mdc-ripple-fg-size, 100%);
     height: var(--mdc-ripple-fg-size, 100%); }
   .mdc-chip::before, .mdc-chip::after {
-    background-color: rgba(0, 0, 0, 0.6); }
+    background-color: rgba(0, 0, 0, 0.87); }
   .mdc-chip:hover::before {
     opacity: 0.04; }
   .mdc-chip:not(.mdc-ripple-upgraded):focus::before, .mdc-chip.mdc-ripple-upgraded--background-focused::before {
@@ -10477,7 +9279,7 @@ select {
   .mdc-chip.mdc-ripple-upgraded {
     --mdc-ripple-fg-opacity: 0.16; }
   .mdc-chip:hover {
-    color: rgba(0, 0, 0, 0.6); }
+    color: rgba(0, 0, 0, 0.87); }
   .mdc-chip.mdc-chip--selected::before {
     opacity: 0.08; }
   .mdc-chip.mdc-chip--selected::before, .mdc-chip.mdc-chip--selected::after {
@@ -10502,6 +9304,8 @@ select {
     color: #5488b2;
     /* @alternate */
     color: var(--mdc-theme-primary, #5488b2); }
+    .mdc-chip.mdc-chip--selected .mdc-chip__icon.mdc-chip__icon--leading {
+      color: rgba(84, 136, 178, 0.54); }
     .mdc-chip.mdc-chip--selected:hover {
       color: #5488b2;
       /* @alternate */
@@ -10510,36 +9314,50 @@ select {
     stroke: #5488b2;
     /* @alternate */
     stroke: var(--mdc-theme-primary, #5488b2); }
+  .mdc-chip .mdc-chip__icon.mdc-chip__icon--leading {
+    color: rgba(0, 0, 0, 0.54); }
+  .mdc-chip .mdc-chip__icon.mdc-chip__icon--trailing {
+    color: rgba(0, 0, 0, 0.54); }
+    .mdc-chip .mdc-chip__icon.mdc-chip__icon--trailing:hover {
+      color: rgba(0, 0, 0, 0.62); }
+    .mdc-chip .mdc-chip__icon.mdc-chip__icon--trailing:focus {
+      color: rgba(0, 0, 0, 0.87); }
+  .mdc-chip .mdc-chip__icon.mdc-chip__icon--leading:not(.mdc-chip__icon--leading-hidden) {
+    width: 20px;
+    height: 20px;
+    font-size: 20px; }
+  .mdc-chip .mdc-chip__icon.mdc-chip__icon--trailing {
+    width: 18px;
+    height: 18px;
+    font-size: 18px; }
   .mdc-chip:hover {
-    color: black; }
+    color: #000;
+    /* @alternate */
+    color: var(--mdc-theme-on-surface, #000); }
+
+.mdc-chip--exit {
+  transition: opacity 75ms cubic-bezier(0.4, 0, 0.2, 1), width 150ms cubic-bezier(0, 0, 0.2, 1), padding 100ms linear, margin 100ms linear;
+  opacity: 0; }
 
 .mdc-chip--selected {
-  background-color: white; }
+  background-color: #fff;
+  /* @alternate */
+  background-color: var(--mdc-theme-surface, #fff); }
 
 .mdc-chip__text {
-  line-height: 17px; }
+  white-space: nowrap; }
 
 .mdc-chip__icon {
   border-radius: 50%;
   outline: none;
-  color: rgba(0, 0, 0, 0.54);
   vertical-align: middle; }
 
 .mdc-chip__icon--trailing {
   margin: 0 -4px 0 4px; }
-  .mdc-chip__icon--trailing:hover {
-    color: rgba(0, 0, 0, 0.62); }
-  .mdc-chip__icon--trailing:focus {
-    color: rgba(0, 0, 0, 0.87); }
-
-.mdc-chip__icon.mdc-chip__icon--trailing {
-  width: 18px;
-  height: 18px;
-  font-size: 18px; }
 
 .mdc-chip__checkmark,
 .mdc-chip__icon--leading {
-  height: 24px;
+  height: 20px;
   margin: -4px 4px -4px -4px; }
 
 .mdc-chip__checkmark-path {
@@ -10553,32 +9371,42 @@ select {
 
 .mdc-chip__checkmark-svg {
   width: 0;
-  height: 24px;
+  height: 20px;
   transition: width 150ms cubic-bezier(0.4, 0, 0.2, 1); }
 
 .mdc-chip--selected .mdc-chip__checkmark-svg {
-  width: 24px; }
+  width: 20px; }
 
-.mdc-chip__icon--leading {
+.mdc-chip-set--filter .mdc-chip__icon--leading {
   transition: opacity 75ms linear;
+  transition-delay: -50ms;
   opacity: 1; }
-  .mdc-chip__icon--leading + .mdc-chip__checkmark {
+  .mdc-chip-set--filter .mdc-chip__icon--leading + .mdc-chip__checkmark {
     transition: opacity 75ms linear;
+    transition-delay: 80ms;
     opacity: 0; }
-    .mdc-chip__icon--leading + .mdc-chip__checkmark .mdc-chip__checkmark-svg {
+    .mdc-chip-set--filter .mdc-chip__icon--leading + .mdc-chip__checkmark .mdc-chip__checkmark-svg {
       transition: width 0ms; }
 
-.mdc-chip--selected .mdc-chip__icon--leading {
+.mdc-chip-set--filter .mdc-chip--selected .mdc-chip__icon--leading {
   opacity: 0; }
-  .mdc-chip--selected .mdc-chip__icon--leading + .mdc-chip__checkmark {
+  .mdc-chip-set--filter .mdc-chip--selected .mdc-chip__icon--leading + .mdc-chip__checkmark {
     width: 0;
     opacity: 1; }
 
-.mdc-chip__icon--hidden-leading.mdc-chip__icon--leading {
+.mdc-chip-set--filter .mdc-chip__icon--leading-hidden.mdc-chip__icon--leading {
   width: 0;
   opacity: 0; }
-  .mdc-chip__icon--hidden-leading.mdc-chip__icon--leading + .mdc-chip__checkmark {
-    width: 24px; }
+  .mdc-chip-set--filter .mdc-chip__icon--leading-hidden.mdc-chip__icon--leading + .mdc-chip__checkmark {
+    width: 20px; }
+
+@keyframes mdc-chip-entry {
+  from {
+    transform: scale(0.8);
+    opacity: .4; }
+  to {
+    transform: scale(1);
+    opacity: 1; } }
 
 .mdc-chip-set {
   padding: 4px;
@@ -10587,6 +9415,9 @@ select {
   box-sizing: border-box; }
   .mdc-chip-set .mdc-chip {
     margin: 4px; }
+
+.mdc-chip-set--input .mdc-chip {
+  animation: mdc-chip-entry 100ms cubic-bezier(0, 0, 0.2, 1); }
 
 .mdc-chip__icon.v-icon-position-left {
   float: none;
@@ -10606,199 +9437,19 @@ select {
 .v-chip__secondary {
   background-color: #E58D36; }
 
-/**
- * The css property used for elevation. In most cases this should not be changed. It is exposed
- * as a variable for abstraction / easy use when needing to reference the property directly, for
- * example in a `will-change` rule.
- */
-/**
- * The default duration value for elevation transitions.
- */
-/**
- * The default easing value for elevation transitions.
- */
-/**
- * Applies the correct CSS rules to an element to give it the elevation specified by $z-value.
- * The $z-value must be between 0 and 24.
- * If $color has an alpha channel, it will be ignored and overridden. To increase the opacity of the shadow, use
- * $opacity-boost.
- */
-/**
- * Returns a string that can be used as the value for a `transition` property for elevation.
- * Calling this function directly is useful in situations where a component needs to transition
- * more than one property.
- *
- * ```scss
- * .foo {
- *   transition: mdc-elevation-transition-value(), opacity 100ms ease;
- *   will-change: $mdc-elevation-property, opacity;
- * }
- * ```
- */
-/**
- * Creates a rule that will be applied when an MDC Web component is within the context of an RTL layout.
- *
- * Usage Example:
- * ```scss
- * .mdc-foo {
- *   position: absolute;
- *   left: 0;
- *
- *   @include mdc-rtl {
- *     left: auto;
- *     right: 0;
- *   }
- *
- *   &__bar {
- *     margin-left: 4px;
- *     @include mdc-rtl(".mdc-foo") {
- *       margin-left: auto;
- *       margin-right: 4px;
- *     }
- *   }
- * }
- *
- * .mdc-foo--mod {
- *   padding-left: 4px;
- *
- *   @include mdc-rtl {
- *     padding-left: auto;
- *     padding-right: 4px;
- *   }
- * }
- * ```
- *
- * Note that this works by checking for [dir="rtl"] on an ancestor element. While this will work
- * in most cases, it will in some cases lead to false negatives, e.g.
- *
- * ```html
- * <html dir="rtl">
- *   <!-- ... -->
- *   <div dir="ltr">
- *     <div class="mdc-foo">Styled incorrectly as RTL!</div>
- *   </div>
- * </html>
- * ```
- *
- * In the future, selectors such as :dir (http://mdn.io/:dir) will help us mitigate this.
- */
-/**
- * Takes a base box-model property - e.g. margin / border / padding - along with a default
- * direction and value, and emits rules which apply the value to the
- * "<base-property>-<default-direction>" property by default, but flips the direction
- * when within an RTL context.
- *
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, left, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 8px;
- *     margin-left: 0;
- *   }
- * }
- * ```
- * whereas:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, right, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-right: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 0;
- *     margin-left: 8px;
- *   }
- * }
- * ```
- *
- * You can also pass a 4th optional $root-selector argument which will be forwarded to `mdc-rtl`,
- * e.g. `@include mdc-rtl-reflexive-box(margin, left, 8px, ".mdc-component")`.
- *
- * Note that this function will always zero out the original value in an RTL context. If you're
- * trying to flip the values, use mdc-rtl-reflexive-property().
- */
-/**
- * Takes a base property and emits rules that assign <base-property>-left to <left-value> and
- * <base-property>-right to <right-value> in a LTR context, and vice versa in a RTL context.
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-property(margin, auto, 12px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: auto;
- *   margin-right: 12px;
- *
- *   @include mdc-rtl {
- *     margin-left: 12px;
- *     margin-right: auto;
- *   }
- * }
- * ```
- *
- * A 4th optional $root-selector argument can be given, which will be passed to `mdc-rtl`.
- */
-/**
- * Takes an argument specifying a horizontal position property (either "left" or "right") as well
- * as a value, and applies that value to the specified position in a LTR context, and flips it in a
- * RTL context. For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-position(left, 0);
- *   position: absolute;
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- *  .mdc-foo {
- *    position: absolute;
- *    left: 0;
- *    right: initial;
- *
- *    @include mdc-rtl {
- *      right: 0;
- *      left: initial;
- *    }
- *  }
- * ```
- * An optional third $root-selector argument may also be given, which is passed to `mdc-rtl`.
- */
 .mdc-card {
   background-color: #fff;
   /* @alternate */
-  background-color: var(--mdc-theme-background, #fff);
+  background-color: var(--mdc-theme-surface, #fff);
   border-radius: 2px;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
   box-sizing: border-box; }
 
-.mdc-card--stroked {
+.mdc-card--outlined {
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
-  border: 1px solid #dbdbdb; }
+  border: 1px solid #e0e0e0; }
 
 .mdc-card__media {
   position: relative;
@@ -11028,159 +9679,6 @@ select {
 .v-card__media-menu .v-button-icon-position-top {
   top: 8px; }
 
-/**
- * Creates a rule that will be applied when an MDC Web component is within the context of an RTL layout.
- *
- * Usage Example:
- * ```scss
- * .mdc-foo {
- *   position: absolute;
- *   left: 0;
- *
- *   @include mdc-rtl {
- *     left: auto;
- *     right: 0;
- *   }
- *
- *   &__bar {
- *     margin-left: 4px;
- *     @include mdc-rtl(".mdc-foo") {
- *       margin-left: auto;
- *       margin-right: 4px;
- *     }
- *   }
- * }
- *
- * .mdc-foo--mod {
- *   padding-left: 4px;
- *
- *   @include mdc-rtl {
- *     padding-left: auto;
- *     padding-right: 4px;
- *   }
- * }
- * ```
- *
- * Note that this works by checking for [dir="rtl"] on an ancestor element. While this will work
- * in most cases, it will in some cases lead to false negatives, e.g.
- *
- * ```html
- * <html dir="rtl">
- *   <!-- ... -->
- *   <div dir="ltr">
- *     <div class="mdc-foo">Styled incorrectly as RTL!</div>
- *   </div>
- * </html>
- * ```
- *
- * In the future, selectors such as :dir (http://mdn.io/:dir) will help us mitigate this.
- */
-/**
- * Takes a base box-model property - e.g. margin / border / padding - along with a default
- * direction and value, and emits rules which apply the value to the
- * "<base-property>-<default-direction>" property by default, but flips the direction
- * when within an RTL context.
- *
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, left, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 8px;
- *     margin-left: 0;
- *   }
- * }
- * ```
- * whereas:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-box(margin, right, 8px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-right: 8px;
- *
- *   @include mdc-rtl {
- *     margin-right: 0;
- *     margin-left: 8px;
- *   }
- * }
- * ```
- *
- * You can also pass a 4th optional $root-selector argument which will be forwarded to `mdc-rtl`,
- * e.g. `@include mdc-rtl-reflexive-box(margin, left, 8px, ".mdc-component")`.
- *
- * Note that this function will always zero out the original value in an RTL context. If you're
- * trying to flip the values, use mdc-rtl-reflexive-property().
- */
-/**
- * Takes a base property and emits rules that assign <base-property>-left to <left-value> and
- * <base-property>-right to <right-value> in a LTR context, and vice versa in a RTL context.
- * For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-property(margin, auto, 12px);
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- * .mdc-foo {
- *   margin-left: auto;
- *   margin-right: 12px;
- *
- *   @include mdc-rtl {
- *     margin-left: 12px;
- *     margin-right: auto;
- *   }
- * }
- * ```
- *
- * A 4th optional $root-selector argument can be given, which will be passed to `mdc-rtl`.
- */
-/**
- * Takes an argument specifying a horizontal position property (either "left" or "right") as well
- * as a value, and applies that value to the specified position in a LTR context, and flips it in a
- * RTL context. For example:
- *
- * ```scss
- * .mdc-foo {
- *   @include mdc-rtl-reflexive-position(left, 0);
- *   position: absolute;
- * }
- * ```
- * is equivalent to:
- *
- * ```scss
- *  .mdc-foo {
- *    position: absolute;
- *    left: 0;
- *    right: initial;
- *
- *    @include mdc-rtl {
- *      right: 0;
- *      left: initial;
- *    }
- *  }
- * ```
- * An optional third $root-selector argument may also be given, which is passed to `mdc-rtl`.
- */
-/* TODO(sgomes): Figure out what to do about desktop font sizes. */
-/* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
 .mdc-snackbar {
   display: flex;
   position: fixed;
@@ -11259,10 +9757,10 @@ select {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 400;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03125em;
   text-decoration: inherit;
   text-transform: inherit;
   /* @noflip */
@@ -11321,7 +9819,7 @@ select {
   font-size: 0.875rem;
   line-height: 2.25rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08929em;
   text-decoration: none;
   text-transform: uppercase;
   color: #E58D36;
@@ -11356,6 +9854,929 @@ select {
 
 .mdc-snackbar {
   z-index: 9999; }
+
+/**
+ * mdl-stepper - A Material Design Lite Stepper component polyfill.
+ * @version v1.1.6
+ * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
+ * @link https://github.com/ahlechandre/mdl-stepper
+ *
+ */
+/* MDL Stepper */
+/**
+ * mdl-stepper - A Material Design Lite Stepper component polyfill.
+ * @version v1.1.6
+ * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
+ * @link https://github.com/ahlechandre/mdl-stepper
+ *
+ */
+/* STEPPER */
+/* GRID */
+/* SHADOWS */
+/**
+ * mdl-stepper - A Material Design Lite Stepper component polyfill.
+ * @version v1.1.6
+ * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
+ * @link https://github.com/ahlechandre/mdl-stepper
+ *
+ */
+/* Animation */
+/* KEYFRAMES */
+/* DISPLAY FLEX */
+/* Shadows */
+/**
+ * mdl-stepper - A Material Design Lite Stepper component polyfill.
+ * @version v1.1.6
+ * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
+ * @link https://github.com/ahlechandre/mdl-stepper
+ *
+ * @contributor Michael Haschke <http://michael.haschke.biz/>
+ */
+/**
+ * mdl-stepper - A Material Design Lite Stepper component polyfill.
+ * @version v1.1.6
+ * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
+ * @link https://github.com/ahlechandre/mdl-stepper
+ *
+ */
+/* STEPPER */
+/* GRID */
+/* SHADOWS */
+/**
+ * mdl-stepper - A Material Design Lite Stepper component polyfill.
+ * @version v1.1.6
+ * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
+ * @link https://github.com/ahlechandre/mdl-stepper
+ *
+ */
+/* Animation */
+/* KEYFRAMES */
+/* DISPLAY FLEX */
+/* Shadows */
+/**
+ * mdl-stepper - A Material Design Lite Stepper component polyfill.
+ * @version v1.1.6
+ * @author Alexandre Thebaldi <ahlechandre@gmail.com>.
+ * @link https://github.com/ahlechandre/mdl-stepper
+ *
+ */
+@-webkit-keyframes FadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 100; } }
+
+@-moz-keyframes FadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 100; } }
+
+@-o-keyframes FadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 100; } }
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 100; } }
+
+@-webkit-keyframes FadeInFromBottom {
+  0% {
+    height: 0;
+    padding-top: 84px;
+    background-color: white;
+    color: white; }
+  25% {
+    color: white; } }
+
+@-moz-keyframes FadeInFromBottom {
+  0% {
+    height: 0;
+    padding-top: 84px;
+    background-color: white;
+    color: white; }
+  25% {
+    color: white; } }
+
+@-o-keyframes FadeInFromBottom {
+  0% {
+    height: 0;
+    padding-top: 84px;
+    background-color: white;
+    color: white; }
+  25% {
+    color: white; } }
+
+@keyframes FadeInFromBottom {
+  0% {
+    height: 0;
+    padding-top: 84px;
+    background-color: white;
+    color: white; }
+  25% {
+    color: white; } }
+
+/* STEPPER */
+.mdl-stepper {
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  background-color: white;
+  display: block;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  padding: 24px 0;
+  max-width: 720px;
+  width: 100%;
+  border-radius: 2px; }
+
+.mdl-stepper > li {
+  list-style: none; }
+
+/* STEPPER ON SMALL SCREENS */
+@media only screen and (max-width: 375px) {
+  .mdl-stepper {
+    width: 100vw; }
+  .mdl-grid .mdl-cell .mdl-stepper {
+    margin-left: -16px; } }
+
+/* STEPPER VERTICAL ONLY */
+.mdl-stepper:not(.mdl-stepper--horizontal) > .mdl-step:not(:last-child):after {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: 37px;
+  width: 1px;
+  height: calc(100% - 24px);
+  background-color: rgba(0, 0, 0, 0.1); }
+
+.mdl-stepper:not(.mdl-stepper--horizontal) > .mdl-step:not(:last-child).is-active:after {
+  height: calc(100% - 12px); }
+
+.mdl-stepper:not(.mdl-stepper--horizontal) .mdl-step__label:hover, .mdl-stepper:not(.mdl-stepper--horizontal) .mdl-step__label:active, .mdl-stepper:not(.mdl-stepper--horizontal) .mdl-step__label:focus {
+  background-color: rgba(0, 0, 0, 0.06); }
+
+/* STEP */
+.mdl-step {
+  position: relative;
+  height: 460px; }
+
+.mdl-step:not(.is-active) {
+  height: initial !important; }
+
+.mdl-step:not(:last-child) {
+  margin-bottom: 24px; }
+
+.mdl-step:not(:last-child).is-active {
+  margin-bottom: 36px; }
+
+.mdl-step .mdl-step-error-message {
+  display: none; }
+
+.mdl-step > * {
+  -webkit-animation: FadeIn 0.5s ease-in-out;
+  -moz-animation: FadeIn 0.5s ease-in-out;
+  -ms-animation: FadeIn 0.5s ease-in-out;
+  animation: FadeIn 0.5s ease-in-out; }
+
+/* STEP ACTIVE */
+.mdl-step.is-active .mdl-step__title {
+  font-weight: bold; }
+
+.mdl-step.is-active .mdl-step__content {
+  display: block; }
+
+.mdl-step.is-active .mdl-step__label-indicator {
+  background-color: #2196F3;
+  color: white; }
+
+.mdl-step.is-active .mdl-step__actions {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  justify-content: flex-start; }
+
+.mdl-step.is-active .mdl-step__actions [data-stepper-next] {
+  order: 1;
+  margin-right: 8px; }
+
+.mdl-step.is-active .mdl-step__actions [data-stepper-cancel] {
+  order: 2; }
+
+.mdl-step.is-active .mdl-step__actions [data-stepper-skip] {
+  order: 3;
+  margin-left: auto; }
+
+.mdl-step.is-active .mdl-step__actions [data-stepper-back] {
+  order: 4;
+  margin-left: auto; }
+
+/* STEP MOD COMPLETED */
+.mdl-step--completed .mdl-step__label-indicator {
+  background-color: #2196F3; }
+
+/* STEP MOD ERROR */
+.mdl-step--error .mdl-step__title {
+  color: #F44336; }
+
+.mdl-step--error .mdl-step-error-message {
+  display: block;
+  color: #F44336;
+  font-weight: normal; }
+
+.mdl-step--error .mdl-step__label-indicator {
+  background-color: #F44336 !important;
+  font-weight: bold; }
+
+/* STEP MOD OPTIONAL */
+/* STEP MOD TRANSIENT */
+.mdl-step--transient .mdl-step__content {
+  overflow: hidden !important; }
+
+.mdl-step__label {
+  position: relative;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  cursor: pointer;
+  margin-bottom: 8px;
+  padding: 12px 24px 24px 24px;
+  align-items: center; }
+
+/* STEP LABEL MOD WITH SUBLABEL */
+.mdl-step__label--with-sublabel {
+  align-items: baseline; }
+
+/* STEP TITLE */
+.mdl-step__title {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  flex-flow: column nowrap;
+  order: 2;
+  width: 100%; }
+
+/* STEP TITLE MESSAGE */
+.mdl-step__title-message {
+  position: absolute;
+  font-size: 12px;
+  opacity: .7;
+  font-weight: 400;
+  top: 28px; }
+
+/* STEP LABEL INDICATOR */
+.mdl-step__label-indicator {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  order: 1;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 100%;
+  color: white;
+  margin-right: 12px;
+  margin-bottom: auto; }
+
+.mdl-step__label-indicator > :first-child {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  font-size: 15px;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center; }
+
+/* STEP CONTENT */
+.mdl-step__content {
+  display: none;
+  height: calc(100% - 132px);
+  width: inherit;
+  overflow: auto;
+  margin-left: 64px;
+  margin-right: 24px; }
+
+/* STEP ACTIONS */
+.mdl-step__actions {
+  display: none;
+  padding-top: 16px;
+  height: 48px;
+  margin-left: 64px;
+  margin-right: 24px; }
+
+.mdl-step__actions [data-stepper-next].mdl-button--raised.mdl-button--colored {
+  background-color: #2196F3;
+  box-shadow: none; }
+
+/* STEP TRANSIENT */
+.mdl-step__transient {
+  position: absolute;
+  top: 72px;
+  left: 64px;
+  z-index: 2;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  width: calc(100% - 88px);
+  height: calc(100% - 132px);
+  transition: 0.3s all ease-in-out; }
+
+/* STEP TRANSIENT OVERLAY */
+.mdl-step__transient-overlay {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.8); }
+
+/* STEP TRANSIENT LOADER */
+.mdl-step__transient-loader {
+  z-index: 4;
+  margin: auto; }
+
+/* STEPPER MOD HORIZONTAL */
+@media only screen and (min-width: 841px) {
+  .mdl-stepper--horizontal {
+    -webkit-display: flex;
+    -moz-display: flex;
+    -ms-display: flex;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    max-width: 840px;
+    padding: 0;
+    min-height: 576px;
+    /* HORIZONTAL STEP */
+    /* HORIZONTAL STEP LABEL */
+    /* HORIZONTAL STEP CONTENT */
+    /* HORIZONTAL STEP ACTIONS */
+    /* STEPPER MOD HORIZONTAL + MOD LINEAR */ }
+  .mdl-stepper--horizontal:before {
+    content: '';
+    background-color: transparent;
+    width: 100%;
+    min-height: 84px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .mdl-stepper--horizontal > .mdl-step {
+    position: static;
+    -webkit-display: flex;
+    -moz-display: flex;
+    -ms-display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: initial;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    height: initial;
+    max-height: 84px;
+    overflow: hidden;
+    /* STEP MOD COMPLETED */ }
+  .mdl-stepper--horizontal > .mdl-step.is-active.mdl-step--transient:before {
+    content: attr(data-step-transient-message);
+    -webkit-animation: FadeInFromBottom 0.3s cubic-bezier(0, 0, 0, 0.99);
+    -moz-animation: FadeInFromBottom 0.3s cubic-bezier(0, 0, 0, 0.99);
+    -ms-animation: FadeInFromBottom 0.3s cubic-bezier(0, 0, 0, 0.99);
+    animation: FadeInFromBottom 0.3s cubic-bezier(0, 0, 0, 0.99);
+    position: absolute;
+    padding-left: 24px;
+    display: flex;
+    font-size: 16px;
+    justify-content: flex-start;
+    align-items: center;
+    width: calc(100% - 24px);
+    height: 84px;
+    background-color: white;
+    top: 0;
+    left: 0;
+    z-index: 9; }
+  .mdl-stepper--horizontal > .mdl-step .mdl-step__transient {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+  .mdl-stepper--horizontal > .mdl-step:not(:first-child):not(:last-child) {
+    margin: auto auto; }
+  .mdl-stepper--horizontal > .mdl-step:not(:last-child) {
+    flex: 1; }
+  .mdl-stepper--horizontal > .mdl-step:not(:last-child):after {
+    content: '';
+    position: relative;
+    flex: 1;
+    top: 42px;
+    width: 168px;
+    margin-left: -12px;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1); }
+  .mdl-stepper--horizontal > .mdl-step.mdl-step--completed .mdl-step__title > .mdl-step__title-text {
+    font-weight: bold; }
+  .mdl-stepper--horizontal .mdl-step__label {
+    top: -48px;
+    flex: initial;
+    margin: 0;
+    padding: 24px;
+    min-height: 132px;
+    transition: 0.025s border-radius linear; }
+  .mdl-stepper--horizontal .mdl-step__label:hover {
+    background-color: rgba(0, 0, 0, 0.06); }
+  .mdl-stepper--horizontal .mdl-step__label:active {
+    padding: 12px;
+    margin: 12px;
+    border-radius: 100%; }
+  .mdl-stepper--horizontal .mdl-step__label > .mdl-step__title {
+    width: initial; }
+  .mdl-stepper--horizontal .mdl-step__label > .mdl-step__title > * {
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .mdl-stepper--horizontal .mdl-step__label > .mdl-step__title > .mdl-step__title-message {
+    position: relative;
+    top: 0;
+    line-height: 14px; }
+  .mdl-stepper--horizontal .mdl-step__label > .mdl-step__label-indicator {
+    margin-top: auto; }
+  .mdl-stepper--horizontal .mdl-step > .mdl-step__content {
+    position: absolute;
+    top: 84px;
+    left: 0;
+    width: calc(100% - 48px);
+    height: calc(100% - 192px);
+    margin: 24px; }
+  .mdl-stepper--horizontal .mdl-step > .mdl-step__actions {
+    position: absolute;
+    top: calc(100% - 84px);
+    left: 0;
+    margin: 0;
+    padding: 24px;
+    width: calc(100% - 48px); }
+  .mdl-stepper--horizontal .mdl-step > .mdl-step__actions [data-stepper-next] {
+    order: 4;
+    margin-left: 8px;
+    margin-right: 0;
+    color: #2196F3;
+    background-color: transparent; }
+  .mdl-stepper--horizontal .mdl-step > .mdl-step__actions [data-stepper-cancel] {
+    order: 3;
+    margin-left: auto; }
+  .mdl-stepper--horizontal .mdl-step > .mdl-step__actions [data-stepper-skip] {
+    order: 2;
+    margin-left: auto; }
+  .mdl-stepper--horizontal .mdl-step > .mdl-step__actions [data-stepper-back] {
+    order: 1;
+    margin-left: 0;
+    margin-right: auto; }
+  .mdl-stepper--horizontal.mdl-stepper--linear > .mdl-step:not(.mdl-step--completed):not(.is-active) .mdl-step__title > .mdl-step__title-text {
+    opacity: .5; } }
+.mdl-step.is-active .mdl-step__actions {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  justify-content: flex-start; }
+
+.mdl-step.is-active .mdl-step__actions [data-stepper-next] {
+  order: 1;
+  margin-right: 8px; }
+
+.mdl-step.is-active .mdl-step__actions [data-stepper-back] {
+  order: 2; }
+
+.mdl-step.is-active .mdl-step__actions [data-stepper-skip] {
+  order: 3;
+  margin-left: auto; }
+
+.mdl-step.is-active .mdl-step__actions [data-stepper-cancel] {
+  order: 4;
+  margin-left: auto; }
+
+.mdl-stepper--horizontal .mdl-step > .mdl-step__actions [data-stepper-next] {
+  order: 4;
+  margin-left: 8px;
+  margin-right: 0;
+  color: #2196F3;
+  background-color: transparent; }
+
+.mdl-stepper--horizontal .mdl-step > .mdl-step__actions [data-stepper-back] {
+  order: 3;
+  margin-left: auto; }
+
+.mdl-stepper--horizontal .mdl-step > .mdl-step__actions [data-stepper-skip] {
+  order: 2;
+  margin-left: auto; }
+
+.mdl-stepper--horizontal .mdl-step > .mdl-step__actions [data-stepper-cancel] {
+  order: 1;
+  margin-left: 0;
+  margin-right: auto; }
+
+.mdc-form-field {
+  font-family: Roboto, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.01786em;
+  text-decoration: inherit;
+  text-transform: inherit;
+  color: rgba(0, 0, 0, 0.87);
+  /* @alternate */
+  color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87));
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle; }
+  .mdc-form-field > label {
+    order: 0;
+    margin-right: auto;
+    padding-left: 4px; }
+  [dir="rtl"] .mdc-form-field > label, .mdc-form-field[dir="rtl"] > label {
+    margin-left: auto;
+    padding-right: 4px; }
+
+.mdc-form-field--align-end > label {
+  order: -1;
+  margin-left: auto;
+  padding-right: 4px; }
+
+[dir="rtl"] .mdc-form-field--align-end > label, .mdc-form-field--align-end[dir="rtl"] > label {
+  margin-right: auto;
+  padding-left: 4px; }
+
+.mdc-radio {
+  --mdc-ripple-fg-size: 0;
+  --mdc-ripple-left: 0;
+  --mdc-ripple-top: 0;
+  --mdc-ripple-fg-scale: 1;
+  --mdc-ripple-fg-translate-end: 0;
+  --mdc-ripple-fg-translate-start: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  will-change: transform, opacity;
+  display: inline-block;
+  position: relative;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  cursor: pointer;
+  /* @alternate */
+  will-change: opacity, transform, border-color, color; }
+  .mdc-radio .mdc-radio__native-control:enabled:not(:checked) + .mdc-radio__background .mdc-radio__outer-circle {
+    border-color: rgba(0, 0, 0, 0.54); }
+  .mdc-radio .mdc-radio__native-control:enabled:checked + .mdc-radio__background .mdc-radio__outer-circle {
+    border-color: #E58D36;
+    /* @alternate */
+    border-color: var(--mdc-theme-secondary, #E58D36); }
+  .mdc-radio .mdc-radio__native-control:enabled + .mdc-radio__background .mdc-radio__inner-circle {
+    border-color: #E58D36;
+    /* @alternate */
+    border-color: var(--mdc-theme-secondary, #E58D36); }
+  .mdc-radio .mdc-radio__background::before {
+    background-color: #E58D36; }
+    @supports not (-ms-ime-align: auto) {
+      .mdc-radio .mdc-radio__background::before {
+        /* @alternate */
+        background-color: var(--mdc-theme-secondary, #E58D36); } }
+  .mdc-radio::before, .mdc-radio::after {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    content: ""; }
+  .mdc-radio::before {
+    transition: opacity 15ms linear;
+    z-index: 1; }
+  .mdc-radio.mdc-ripple-upgraded::before {
+    transform: scale(var(--mdc-ripple-fg-scale, 1)); }
+  .mdc-radio.mdc-ripple-upgraded::after {
+    top: 0;
+    /* @noflip */
+    left: 0;
+    transform: scale(0);
+    transform-origin: center center; }
+  .mdc-radio.mdc-ripple-upgraded--unbounded::after {
+    top: var(--mdc-ripple-top, 0);
+    /* @noflip */
+    left: var(--mdc-ripple-left, 0); }
+  .mdc-radio.mdc-ripple-upgraded--foreground-activation::after {
+    animation: 225ms mdc-ripple-fg-radius-in forwards, 75ms mdc-ripple-fg-opacity-in forwards; }
+  .mdc-radio.mdc-ripple-upgraded--foreground-deactivation::after {
+    animation: 150ms mdc-ripple-fg-opacity-out;
+    transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); }
+  .mdc-radio::before, .mdc-radio::after {
+    top: calc(50% - 50%);
+    /* @noflip */
+    left: calc(50% - 50%);
+    width: 100%;
+    height: 100%; }
+  .mdc-radio.mdc-ripple-upgraded::before, .mdc-radio.mdc-ripple-upgraded::after {
+    top: var(--mdc-ripple-top, calc(50% - 50%));
+    /* @noflip */
+    left: var(--mdc-ripple-left, calc(50% - 50%));
+    width: var(--mdc-ripple-fg-size, 100%);
+    height: var(--mdc-ripple-fg-size, 100%); }
+  .mdc-radio.mdc-ripple-upgraded::after {
+    width: var(--mdc-ripple-fg-size, 100%);
+    height: var(--mdc-ripple-fg-size, 100%); }
+  .mdc-radio::before, .mdc-radio::after {
+    background-color: #E58D36; }
+    @supports not (-ms-ime-align: auto) {
+      .mdc-radio::before, .mdc-radio::after {
+        /* @alternate */
+        background-color: var(--mdc-theme-secondary, #E58D36); } }
+  .mdc-radio:hover::before {
+    opacity: 0.08; }
+  .mdc-radio:not(.mdc-ripple-upgraded):focus::before, .mdc-radio.mdc-ripple-upgraded--background-focused::before {
+    transition-duration: 75ms;
+    opacity: 0.24; }
+  .mdc-radio:not(.mdc-ripple-upgraded)::after {
+    transition: opacity 150ms linear; }
+  .mdc-radio:not(.mdc-ripple-upgraded):active::after {
+    transition-duration: 75ms;
+    opacity: 0.32; }
+  .mdc-radio.mdc-ripple-upgraded {
+    --mdc-ripple-fg-opacity: 0.32; }
+  .mdc-radio__background {
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    box-sizing: border-box;
+    width: 50%;
+    height: 50%; }
+    .mdc-radio__background::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: scale(0, 0);
+      transition: opacity 120ms 0ms cubic-bezier(0.4, 0, 0.6, 1), transform 120ms 0ms cubic-bezier(0.4, 0, 0.6, 1);
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+      content: ""; }
+  .mdc-radio__outer-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    transition: border-color 120ms 0ms cubic-bezier(0.4, 0, 0.6, 1);
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%; }
+  .mdc-radio__inner-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    transform: scale(0, 0);
+    transition: transform 120ms 0ms cubic-bezier(0.4, 0, 0.6, 1), border-color 120ms 0ms cubic-bezier(0.4, 0, 0.6, 1);
+    border-width: 10px;
+    border-style: solid;
+    border-radius: 50%; }
+  .mdc-radio__native-control {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    cursor: inherit;
+    z-index: 1; }
+  .mdc-radio.mdc-ripple-upgraded .mdc-radio__background::before {
+    content: none; }
+
+.mdc-radio__native-control:checked + .mdc-radio__background,
+.mdc-radio__native-control:disabled + .mdc-radio__background {
+  transition: opacity 120ms 0ms cubic-bezier(0, 0, 0.2, 1), transform 120ms 0ms cubic-bezier(0, 0, 0.2, 1); }
+  .mdc-radio__native-control:checked + .mdc-radio__background .mdc-radio__outer-circle,
+  .mdc-radio__native-control:disabled + .mdc-radio__background .mdc-radio__outer-circle {
+    transition: border-color 120ms 0ms cubic-bezier(0, 0, 0.2, 1); }
+  .mdc-radio__native-control:checked + .mdc-radio__background .mdc-radio__inner-circle,
+  .mdc-radio__native-control:disabled + .mdc-radio__background .mdc-radio__inner-circle {
+    transition: transform 120ms 0ms cubic-bezier(0, 0, 0.2, 1), border-color 120ms 0ms cubic-bezier(0, 0, 0.2, 1); }
+
+.mdc-radio--disabled {
+  cursor: default;
+  pointer-events: none; }
+
+.mdc-radio__native-control:checked + .mdc-radio__background .mdc-radio__inner-circle {
+  transform: scale(0.5);
+  transition: transform 120ms 0ms cubic-bezier(0, 0, 0.2, 1), border-color 120ms 0ms cubic-bezier(0, 0, 0.2, 1); }
+
+.mdc-radio__native-control:disabled + .mdc-radio__background,
+[aria-disabled="true"] .mdc-radio__native-control + .mdc-radio__background {
+  cursor: default; }
+  .mdc-radio__native-control:disabled + .mdc-radio__background .mdc-radio__outer-circle,
+  [aria-disabled="true"] .mdc-radio__native-control + .mdc-radio__background .mdc-radio__outer-circle {
+    border-color: rgba(0, 0, 0, 0.26); }
+  .mdc-radio__native-control:disabled + .mdc-radio__background .mdc-radio__inner-circle,
+  [aria-disabled="true"] .mdc-radio__native-control + .mdc-radio__background .mdc-radio__inner-circle {
+    border-color: rgba(0, 0, 0, 0.26); }
+
+.mdc-radio__native-control:focus + .mdc-radio__background::before {
+  transform: scale(2, 2);
+  transition: opacity 120ms 0ms cubic-bezier(0, 0, 0.2, 1), transform 120ms 0ms cubic-bezier(0, 0, 0.2, 1);
+  opacity: .26; }
+
+@keyframes mdc-slider-emphasize {
+  0% {
+    animation-timing-function: ease-out; }
+  50% {
+    animation-timing-function: ease-in;
+    transform: scale(0.85); }
+  100% {
+    transform: scale(0.571); } }
+
+.mdc-slider {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  cursor: pointer;
+  touch-action: pan-x;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track {
+    background-color: #E58D36;
+    /* @alternate */
+    background-color: var(--mdc-theme-secondary, #E58D36); }
+  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track-container {
+    background-color: rgba(229, 141, 54, 0.26); }
+  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track-marker::after,
+  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track-marker-container::after {
+    background-color: #E58D36;
+    /* @alternate */
+    background-color: var(--mdc-theme-secondary, #E58D36); }
+  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__thumb {
+    fill: #E58D36;
+    /* @alternate */
+    fill: var(--mdc-theme-secondary, #E58D36);
+    stroke: #E58D36;
+    /* @alternate */
+    stroke: var(--mdc-theme-secondary, #E58D36); }
+  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__focus-ring {
+    background-color: #E58D36;
+    /* @alternate */
+    background-color: var(--mdc-theme-secondary, #E58D36); }
+  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__pin {
+    background-color: #E58D36;
+    /* @alternate */
+    background-color: var(--mdc-theme-secondary, #E58D36); }
+  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__pin {
+    color: rgba(0, 0, 0, 0.87);
+    /* @alternate */
+    color: var(--mdc-theme-text-primary-on-light, rgba(0, 0, 0, 0.87)); }
+  .mdc-slider--disabled {
+    cursor: auto; }
+    .mdc-slider--disabled .mdc-slider__track {
+      background-color: #9a9a9a; }
+    .mdc-slider--disabled .mdc-slider__track-container {
+      background-color: rgba(154, 154, 154, 0.26); }
+    .mdc-slider--disabled .mdc-slider__track-marker::after,
+    .mdc-slider--disabled .mdc-slider__track-marker-container::after {
+      background-color: #9a9a9a; }
+    .mdc-slider--disabled .mdc-slider__thumb {
+      fill: #9a9a9a;
+      stroke: #9a9a9a; }
+    .mdc-slider--disabled .mdc-slider__thumb {
+      /* @alternate */
+      stroke: white;
+      stroke: var(--mdc-slider-bg-color-behind-component, white); }
+  .mdc-slider:focus {
+    outline: none; }
+  .mdc-slider__track-container {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    overflow: hidden; }
+  .mdc-slider__track {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: left top;
+    will-change: transform; }
+    .mdc-slider[dir="rtl"] .mdc-slider__track,
+    [dir="rtl"] .mdc-slider .mdc-slider__track {
+      transform-origin: right top; }
+  .mdc-slider__track-marker-container {
+    display: flex;
+    margin-right: 0;
+    margin-left: -1px;
+    visibility: hidden; }
+    .mdc-slider[dir="rtl"] .mdc-slider__track-marker-container,
+    [dir="rtl"] .mdc-slider .mdc-slider__track-marker-container {
+      margin-right: -1px;
+      margin-left: 0; }
+    .mdc-slider__track-marker-container::after {
+      display: block;
+      width: 2px;
+      height: 2px;
+      content: ""; }
+  .mdc-slider__track-marker {
+    flex: 1; }
+    .mdc-slider__track-marker::after {
+      display: block;
+      width: 2px;
+      height: 2px;
+      content: ""; }
+    .mdc-slider__track-marker:first-child::after {
+      width: 3px; }
+  .mdc-slider__thumb-container {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 21px;
+    height: 100%;
+    user-select: none;
+    will-change: transform; }
+  .mdc-slider__thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(0.571);
+    transition: transform 100ms ease-out, fill 100ms ease-out, stroke 100ms ease-out;
+    stroke-width: 3.5; }
+  .mdc-slider__focus-ring {
+    width: 21px;
+    height: 21px;
+    transition: transform 266.67ms ease-out, opacity 266.67ms ease-out, background-color 266.67ms ease-out;
+    border-radius: 50%;
+    opacity: 0; }
+  .mdc-slider__pin {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    margin-top: -2px;
+    margin-left: -2px;
+    transform: rotate(-45deg) scale(0) translate(0, 0);
+    transition: transform 100ms ease-out;
+    border-radius: 50% 50% 50% 0%;
+    z-index: 1; }
+  .mdc-slider__pin-value-marker {
+    font-family: Roboto, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.01786em;
+    text-decoration: inherit;
+    text-transform: inherit;
+    transform: rotate(45deg); }
+
+.mdc-slider--active .mdc-slider__thumb {
+  transform: scale3d(1, 1, 1); }
+
+.mdc-slider--focus .mdc-slider__thumb {
+  animation: mdc-slider-emphasize 266.67ms linear; }
+
+.mdc-slider--focus .mdc-slider__focus-ring {
+  transform: scale3d(1.55, 1.55, 1.55);
+  opacity: .25; }
+
+.mdc-slider--in-transit .mdc-slider__thumb {
+  transition-delay: 140ms; }
+
+.mdc-slider--in-transit .mdc-slider__thumb-container,
+.mdc-slider--in-transit .mdc-slider__track,
+.mdc-slider:focus:not(.mdc-slider--active) .mdc-slider__thumb-container,
+.mdc-slider:focus:not(.mdc-slider--active) .mdc-slider__track {
+  transition: transform 80ms ease; }
+
+.mdc-slider--discrete.mdc-slider--active .mdc-slider__thumb {
+  transform: scale(calc(12 / 21)); }
+
+.mdc-slider--discrete.mdc-slider--active .mdc-slider__pin {
+  transform: rotate(-45deg) scale(1) translate(19px, -20px); }
+
+.mdc-slider--discrete.mdc-slider--focus .mdc-slider__thumb {
+  animation: none; }
+
+.mdc-slider--discrete.mdc-slider--display-markers .mdc-slider__track-marker-container {
+  visibility: visible; }
 
 .v-expansion {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12); }

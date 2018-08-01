@@ -1,19 +1,22 @@
 <% class_name = '' unless local_variables.include? :class_name
    position_classes = comp.position.map {|p| "v-button-position-#{p}"}.join(' ')
-   text_align = comp.position.select {|p| eq(p, :left)}.any? && eq(comp.button_type, :flat)%>
+   text_align = comp.position.select {|p| eq(p, :left)}.any? && eq(comp.button_type, :flat)
+   event_parent_id = nil unless local_variables.include? :event_parent_id
+   data_attributes = '' unless local_variables.include? :data_attributes
+%>
 
 
-<button
-id="<%= comp.id %>"
-class="mdc-button v-js-ripple-button <%=class_name%>
+<button id="<%= comp.id %>"
+         class="mdc-button v-js-ripple-button <%=class_name%>
           <%= 'mdc-button--raised' if eq(comp.button_type, :raised) %>
           <%= 'v-secondary-filled-button' if eq(comp.button_type, :raised) && eq(comp.color, :secondary) %>
           <%= 'v-secondary-text-button' if eq(comp.button_type, :flat) && eq(comp.color, :secondary) %>
           <%=  position_classes %>
            <%= "v-button-text-align-left" if text_align %>
           <%= 'v-menu-click' if comp.menu%>"
+         <%= data_attributes %>
 <%= 'disabled' if comp.disabled %>
-<%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} unless comp.disabled %>>
+<%= erb :"components/event", :locals => {events: comp.events, parent_id: event_parent_id || comp.event_parent_id} unless comp.disabled %>>
   <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-button__icon'} %>
   <%= erb :"components/image", :locals => {comp: comp.image} %>
   <%= comp.text %>

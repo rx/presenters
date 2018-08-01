@@ -50,7 +50,7 @@ Voom::Presenters.define(:date_fields) do
         date_field min_date: :today
 
         title 'Min (today), Max (14 days from now)'
-        date_field min_date: :today, max_date: DateTime.now.next_day(14) # Or in rails Time.now + 14.days
+        date_field min_date: :today, max_date: DateTime.new(2025, 4, 9) # Or in rails Time.now + 14.days
 
         title 'Disabling specific dates'
         date_field disable: ["2025-01-30", "2025-02-21", "2025-03-08", DateTime.new(2025, 4, 9)]
