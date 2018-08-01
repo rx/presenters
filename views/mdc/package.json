@@ -3,7 +3,6 @@
     "start": "webpack"
   },
   "devDependencies": {
-    "@material/button": "^0.37.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
@@ -19,6 +18,7 @@
     "webpack-dev-server": "^2.11.2"
   },
   "dependencies": {
+    "@material/button": "^0.37.0",
     "@material/card": "^0.37.0",
     "@material/chips": "^0.37.0",
     "@material/fab": "^0.37.0",

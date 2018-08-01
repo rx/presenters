@@ -1,9 +1,6 @@
 import {MDCCheckbox} from '@material/checkbox';
 import {eventHandlerMixin} from "./mixins/event-handler";
 import {VBaseComponent} from "./base-component";
-import {MDCFormField} from "@material/form-field/index";
-import {MDCRadio} from "@material/radio/index";
-import {VRadio} from "./radios";
 
 export function initCheckboxes() {
     console.log('\tCheckboxes');

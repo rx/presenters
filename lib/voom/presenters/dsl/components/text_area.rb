@@ -9,8 +9,8 @@ module Voom
           
           def initialize(**attribs_, &block)
             super(type: :text_area, **attribs_, &block)
-            @rows = attribs.delete(:rows) || 3
-            @cols = attribs.delete(:cols) || 40 unless full_width
+            @rows = attribs.delete(:rows) || default(:rows)
+            @cols = attribs.delete(:cols) || default(:cols) unless full_width
             expand!
           end
         end

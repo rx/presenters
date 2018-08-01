@@ -14,7 +14,6 @@ export class VStepperEvent extends VBase {
         let nav_action = this.params.navigate;
 
         let promiseObj = new Promise(function (resolve) {
-            console.log("Stepping: " + nav_action);
             component.navigate(nav_action);
             results.push({action:'stepper', statusCode: 200});
             resolve(results);

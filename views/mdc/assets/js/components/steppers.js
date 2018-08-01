@@ -43,6 +43,5 @@ export class VStepper extends eventHandlerMixin(VBaseComponent) {
     skip_step() {
         this.stepper.skip();
     }
-
 }
 
