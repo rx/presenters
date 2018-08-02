@@ -545,6 +545,7 @@ function initSnackbar() {
     for (var i = 0; i < components.length; i++) {
         var component = components[i];
         if (!component.vComponent) {
+            component.classList.remove('v-hidden'); // defer causes default snackbar to flash without this
             let vSnackbar = new VSnackbar(component, __WEBPACK_IMPORTED_MODULE_0__material_snackbar__["a" /* MDCSnackbar */].attachTo(component));
             component.vComponent = vSnackbar;
         }
