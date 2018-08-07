@@ -20,8 +20,22 @@ Voom::Presenters.define(:toggles) do
     icon_toggle 'format_italic'
 
     headline 'SWITCH'
-    switch checked: true
-    switch
+    grid do
+      column 6 do
+          switch checked: true
+      end
+    end
+    grid do
+      column 6 do
+        switch
+      end
+    end
+    grid do
+      column 6 do
+        switch disabled: true
+      end
+    end
+
 
     grid do
       column 6 do
