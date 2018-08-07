@@ -129,12 +129,12 @@
     Notes: 
 -
     Components: Selection controls/switches
-    Implementation: MDL/MDC
+    Implementation: MDC
     MDL: 
     MDC: Y
     Priority: 
-    Completeness: 1
-    Notes: The checkboxes and radio buttons from MDL need to be ported to MDC.
+    Completeness: 2
+    Notes:
 -
     Components: Select fields
     Implementation: MDC
@@ -145,11 +145,11 @@
     Notes:
 -
     Components: Sliders
-    Implementation: N
+    Implementation: MDC
     MDL: 
     MDC: Y
     Priority: medium
-    Completeness: 
+    Completeness: 2
     Notes: 
 -
     Components: Snackbars & toasts
@@ -161,11 +161,11 @@
     Notes: 
 -
     Components: Steppers
-    Implementation: N
-    MDL: N
+    Implementation: MDL
+    MDL: Y
     MDC: N
     Priority: medium
-    Completeness: 
+    Completeness: 1
     Notes:  https://ahlechandre.github.io/mdl-stepper/
 -
     Components: Subheaders

@@ -10,7 +10,7 @@ export function initCheckboxes() {
         for (var i = 0; i < components.length; i++) {
             var component = components[i];
             if (!component.mdcComponent) {
-                component.vComponent = new VCheckbox(radio, MDCCheckbox.attachTo(component));
+                component.vComponent = new VCheckbox(component, MDCCheckbox.attachTo(component));
             }
         }
     }
