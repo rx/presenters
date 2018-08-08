@@ -1,3 +1,10 @@
-.v-rich-text-area {
-  height: 350px;
+.v-rich-text-area-container {
+  position: relative;
+  width: 100%;
+  > label {
+    top: -10px;
+  }
+  .v-rich-text-area {
+    height: 350px;
+  }
 }

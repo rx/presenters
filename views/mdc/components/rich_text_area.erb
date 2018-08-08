@@ -1,7 +1,13 @@
-<label class="mdl-textfield__label" for="<%= comp.id %>"><%= expand_text(comp.label) %></label>
-<div class="v-rich-text-area"
-     style="<%= 'width:100%;' if comp.full_width %>
-            <%= "height:#{comp.height};" if comp.height %>"
-     <%= "data-placeholder='#{comp.placeholder}'" if comp.placeholder %>></div>
-<span class="mdl-textfield__error <% if comp.error %> is-invalid<%end%>" ><%= comp.error || comp.hint%></span>
-<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+<div class="v-rich-text-area-container mdl-textfield">
+  <label class="mdl-textfield__label" for="<%= comp.id %>"><%= expand_text(comp.label) %></label>
+  <div class="v-rich-text-area"
+       id="<%= comp.id %>"
+       style="<%= 'width:100%;' if comp.full_width %>
+              <%= "height:#{comp.height};" if comp.height %>"
+       data-name="<%= comp.name %>"
+       <%= "data-placeholder='#{comp.placeholder}'" if comp.placeholder %>>
+  </div>
+  <input type="hidden" name="<%= comp.name %>" value="<%= comp.value %>"/>
+  <span class="mdl-textfield__error <% if comp.error %> is-invalid<%end%>" ><%= comp.error || comp.hint%></span>
+  <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+</div>

@@ -16,7 +16,7 @@ var toolbarOptions = [
     //[{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
     //[{ 'font': [] }],
     [{ 'align': [] }],
-
+    ['link', 'image'],
     ['clean']                                         // remove formatting button
 ];
 
@@ -25,14 +25,18 @@ export function initRichTextArea() {
     let components = document.querySelectorAll('.v-rich-text-area');
     for (let i = 0; i < components.length; i++) {
         let component = components[i];
+        let form = component.closest('form');
         if (!component.vComponent) {
             component.vComponent = new Quill(component, {
-                debug: 'info',
                 modules: {
                     toolbar: toolbarOptions
                 },
                 theme: 'snow',
                 placeholder: component.dataset.placeholder
+            });
+            let input = document.querySelector('input[name=' + component.dataset.name + ']');
+            component.vComponent.on('text-change', function(){
+                input.value = component.vComponent.root.innerHTML;
             });
         }
     }

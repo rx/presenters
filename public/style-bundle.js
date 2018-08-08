@@ -65,9 +65,9 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: \n      @error \"Invalid style: '#{$style}'. Choose one of: #{map-keys($mdc-theme-property-values)}\";\n     ^\n      Invalid style: 'text-primary-on-secondary'. Choose one of: primary, secondary, background, surface, on-primary, on-secondary, on-surface, text-primary-on-background, text-secondary-on-background, text-hint-on-background, text-disabled-on-background, text-icon-on-background, text-primary-on-light, text-secondary-on-light, text-hint-on-light, text-disabled-on-light, text-icon-on-light, text-primary-on-dark, text-secondary-on-dark, text-hint-on-dark, text-disabled-on-dark, text-icon-on-dark\n      in /Users/derekgraham/rx/presenters/views/mdc/node_modules/@material/theme/_mixins.scss (line 33, column 7)");
+module.exports = __webpack_require__.p + "../../public/bundle.css";
 
 /***/ })
 /******/ ]);
