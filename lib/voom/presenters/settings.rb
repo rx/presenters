@@ -42,6 +42,10 @@ module Voom
               setting :format, 'h:i K'
               setting :time_24hr, false
             end
+            setting :text_area do
+              setting :rows, 3
+              setting :cols, 80
+            end
           end
         end
       end

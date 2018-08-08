@@ -9,7 +9,7 @@ Voom::Presenters.define(:events_drawer) do
           end
         end
       end
-      %i(dialog autocomplete replaces toggle_visibility snackbar updates deletes posts).sort.each do |comp|
+      %i(dialog autocomplete replaces loads toggle_visibility snackbar updates deletes posts).sort.each do |comp|
         item titleize(comp) do
           event :click do
             loads "#{comp}_action"

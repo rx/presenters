@@ -1,10 +1,14 @@
-<div class="mdl-textfield mdl-js-textfield<%= ' is-invalid is-dirty' if comp.error%>"
-      style="<%= 'width:100%' if comp.full_width %>">
-    <textarea id="<%= comp.id %>"
-              name="<%= comp.name %>"
-             class="mdl-textfield__input" type="text" rows= "<%= comp.rows %>" ><%= comp.value %></textarea>
-    <label class="mdl-textfield__label" for="<%= comp.id %>"><%= expand_text(comp.label) %></label>
-    <span class="mdl-textfield__error <% if comp.error %> is-invalid<%end%>" ><%= comp.error || comp.hint%></span>
+<div class="v-input mdc-text-field mdc-text-field--textarea<%= ' is-invalid is-dirty' if comp.error%>"
+     style="<%= 'width:100%' if comp.full_width %>">
+  <textarea id="<%= comp.id %>"
+            name="<%= comp.name %>"
+            class="mdc-text-field__input"
+            rows="<%= comp.rows %>"
+            cols="<%= comp.cols %>"> <%= comp.value %> </textarea>
+  <label for="<%= comp.id %>" class="mdc-floating-label"><%= expand_text(comp.label) %></label>
 </div>
+<p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg" aria-hidden="true">
+  <%= comp.error || comp.hint %>
+</p>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 

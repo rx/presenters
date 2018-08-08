@@ -42,6 +42,12 @@ Voom::Presenters.define(:datetime_fields) do
     end
     grid do
       column 6 do
+
+        title 'With Floating Label'
+        datetime_field name: :start_datetime do
+          label 'Date of Birth...'
+        end
+
         title 'Min Date'
         datetime_field min_date: "2020-01-01 00:15"
 

@@ -1,13 +1,18 @@
-<label id="<%=comp.id%>"
-       class="mdl-switch mdl-js-switch mdl-js-ripple-effect v-switch"
-       for="<%=comp.id%>-input" >
-  <input id="<%= comp.id %>-input"
-         name="<%= comp.name %>"
-         type="checkbox"
-         class="mdl-switch__input"
-         <%if comp.checked%> checked<%end%><%if comp.disabled%> disabled<%end%>
-         <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%>/>
-  <span id=<%=comp.id%>-label
-            class="mdl-switch__label"><%=comp.text%></span>
-</label>
+<div id="<%=comp.id%>"
+     class="v-switch v-input mdc-switch
+      <%= 'mdc-switch--disabled' if comp.disabled %>">
+  <div class="mdc-switch__track"></div>
+  <div class="mdc-switch__thumb-underlay">
+    <div class="mdc-switch__thumb">
+      <input id="<%= comp.id %>-input"
+             name="<%= comp.name %>"
+             type="checkbox"
+             class="mdc-switch__native-control"
+             role="switch"
+             <%if comp.checked%> checked<%end%>
+      <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id}%>/>
+    </div>
+  </div>
+</div>
+<label for="<%=comp.id%>-input"><%=comp.text%></label>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

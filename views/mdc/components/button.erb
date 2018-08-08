@@ -1,21 +1,24 @@
-<% class_name = '' unless local_variables.include? :class_name
+<%
+  class_name = '' unless local_variables.include? :class_name
+  event_parent_id = nil unless local_variables.include? :event_parent_id
+  data_attributes = '' unless local_variables.include? :data_attributes
 %>
 <% if comp
      position_classes = comp.position.map {|p| "v-button-position-#{p}"}.join(' ')
-     class_name= "#{class_name} #{position_classes}"
+     class_name = "#{class_name} #{position_classes}"
 %>
   <% if comp.menu %>
     <div class="mdc-menu-anchor" %>
   <% end %>
   <% case comp.button_type.to_sym
         when :fab %>
-            <%= erb :"components/buttons/fab", :locals => {:comp => comp, class_name: class_name} %>
+            <%= erb :"components/buttons/fab", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} %>
      <% when :icon %>
-            <%= erb :"components/buttons/icon", :locals => {:comp => comp, class_name: class_name} %>
+            <%= erb :"components/buttons/icon", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} %>
     <% when :image %>
-            <%= erb :"components/buttons/image", :locals => {:comp => comp, class_name: class_name} %>
+            <%= erb :"components/buttons/image", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} %>
     <% else  %>
-            <%= erb :"components/buttons/button", :locals => {:comp => comp, class_name: class_name} %>
+            <%= erb :"components/buttons/button", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} %>
   <% end %>
   <% if comp.menu %>
     </div>

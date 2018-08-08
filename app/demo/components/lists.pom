@@ -91,6 +91,31 @@ Voom::Presenters.define(:lists) do
       end
     end
 
+    headline 'Multiple controls'
+    list do
+      actors.each_with_index do |actor, index|
+        line do
+          text actor.name
+          actions do
+            case index%4
+            when 0
+              checkbox
+              icon :delete
+            when 1
+              radio_button
+              icon :delete
+            when 2
+              switch
+              icon :delete
+            when 3
+              icon_toggle :star
+              icon :delete
+            end
+          end
+        end
+      end
+    end
+
     headline 'Two line'
 
     list do

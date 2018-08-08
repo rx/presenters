@@ -1,27 +1,26 @@
 import {VBaseComponent} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
+import {MDCSwitch} from '@material/switch';
 
 export function initSwitches() {
     console.log('\tSwitches');
 
-    let components = document.querySelectorAll('.v-switch');
+    let components = document.querySelectorAll('.mdc-switch');
     if (components) {
         for (let i = 0; i < components.length; i++) {
             let component = components[i];
             if (!component.vComponent) {
-                let input = component.querySelector('input');
-                let vSwitch = new VSwitch(component, input);
-                component.vComponent = vSwitch;
-                input.vComponent = vSwitch;
+                component.vComponent = new VSwitch(component, new MDCSwitch(component));
             }
         }
     }
 }
 
 export class VSwitch extends eventHandlerMixin(VBaseComponent) {
-    constructor(element, input) {
+    constructor(element, mdcComponent) {
         super(element);
-        this.input = input;
+        this.input = element.querySelector('input');
+        this.mdcComponent = mdcComponent;
     }
 
     validate(_formData) {
