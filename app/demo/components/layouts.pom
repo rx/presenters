@@ -9,7 +9,7 @@ Voom::Presenters.define(:layouts) do
 
   indented_grid do
 
-    display 'Grid'
+    headline 'Grid'
 
     grid do
       (1..12).each do |size|
