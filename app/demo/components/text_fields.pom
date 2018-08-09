@@ -7,7 +7,7 @@ Voom::Presenters.define(:text_fields) do
   page_title 'Text Fields'
 
   indented_grid do
-    title 'Text'
+    headline 'Text'
 
     text_field name: :text do
       label 'Text...'
@@ -19,8 +19,7 @@ Voom::Presenters.define(:text_fields) do
       label 'Password'
     end
 
-    title 'Numeric'
-
+    headline 'Numeric'
     # Client side validation with hints
     title 'With Hints'
     text_field name: :numeric do
