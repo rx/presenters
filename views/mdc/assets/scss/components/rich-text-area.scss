@@ -1,8 +1,9 @@
 .v-rich-text-area-container {
   position: relative;
   width: 100%;
+  padding-top: 30px;
   > label {
-    top: -10px;
+    top: 0px;
   }
   .v-rich-text-area {
     height: 350px;

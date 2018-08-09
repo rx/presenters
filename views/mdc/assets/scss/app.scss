@@ -30,8 +30,8 @@
 
 @import "components/datetime";
 @import "components/rich-text-area";
-@import 'flatpickr.min';
-
+@import 'components/vendor/flatpickr.min';
+@import "components/vendor/quill.snow";
 @import "styles";
 
 

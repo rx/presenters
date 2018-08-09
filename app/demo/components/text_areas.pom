@@ -20,6 +20,11 @@ Voom::Presenters.define(:text_areas) do
       hint 'Or specify using rows and columns'
     end
 
+    rich_text_area name: :notes, placeholder: 'Text entered here is saved as HTML' do
+      label 'Rich Text Area'
+      hint 'Default is full width and 350px height'
+    end
+
 
     attach :code, file: __FILE__
   end
