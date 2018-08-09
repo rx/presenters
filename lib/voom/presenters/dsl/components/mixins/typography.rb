@@ -8,29 +8,38 @@ module Voom
           module Typography
             include Mixins::Append
 
-            def display(*text, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :display, text: text, context: context, **attributes, &block)
-            end
-            alias heading display
-
-            def headline(*text, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :headline, text: text, context: context, **attributes, &block)
+            def headline(*text, level: 1, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :headline, text: text, level: level,
+                                                 context: context, **attributes, &block)
             end
 
-            def title(*text, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :title, text: text, context: context, **attributes, &block)
+            alias heading headline
+            alias display headline
+
+            def title(*text, level: 6, **attributes, &block)
+              headline(text, level: level, **attributes, &block)
             end
+
+            def subtitle(*text, level: 1, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :subtitle, text: text, level: level, context: context, **attributes, &block)
+            end
+
+            alias subheading subtitle
 
             def page_title(*text, **attributes, &block)
               self << Components::Typography.new(parent: self, type: :page_title, text: text, context: context, level: 1, **attributes, &block)
             end
 
-            def subheading(*text, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :subheading, text: text, context: context, **attributes, &block)
+            def body(*text, level: 1, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :body, text: text, level: level, context: context, **attributes, &block)
             end
 
-            def body(*text, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :body, text: text, context: context, **attributes, &block)
+            def caption(*text, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :caption, text: text, context: context, **attributes, &block)
+            end
+
+            def overline(*text, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :overline, text: text, context: context, **attributes, &block)
             end
           end
         end
