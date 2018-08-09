@@ -14,7 +14,6 @@ module Voom
             super(type: :text, parent: parent, **attribs_, &block)
             @text = Array(attribs.delete(:text)||'').flatten.join("\n\n").split("\n\n")
             @level = level
-            puts @level
             @color = attribs.delete(:color)
             @position = Array(attribs.delete(:position)).compact
             expand!
