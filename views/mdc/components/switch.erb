@@ -1,6 +1,10 @@
+<% class_name = '' unless local_variables.include? :class_name
+%>
+
 <div id="<%=comp.id%>"
      class="v-switch v-input mdc-switch
-      <%= 'mdc-switch--disabled' if comp.disabled %>">
+      <%= 'mdc-switch--disabled' if comp.disabled %>
+      <%= class_name %>">
   <div class="mdc-switch__track"></div>
   <div class="mdc-switch__thumb-underlay">
     <div class="mdc-switch__thumb">
