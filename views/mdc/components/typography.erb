@@ -1,9 +1,8 @@
 <% class_name = '' unless local_variables.include? :class_name
    position_classes = comp.position.map {|p| "v-typography-position-#{p}"}.join(' ')
-  level = %i(subheading display body).include?(type.to_sym) ? comp.level : nil
 %>
 <div id="<%= comp.id %>"
-     class="mdc-typography--<%= "#{type}#{level}" %>
+     class="mdc-typography--<%= "#{type}#{comp.level}" %>
            <%= class_name %>
            <%= position_classes %>
            <%= 'v-actionable' if comp.events %>"
