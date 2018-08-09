@@ -7,19 +7,19 @@ Voom::Presenters.define(:toggles) do
   page_title 'Toggles'
 
   indented_grid do
-    headline 'CHECKBOX'
+    title 'CHECKBOX'
     checkbox
     checkbox checked: true, text: "I am initially checked"
 
-    headline 'RADIO BUTTON'
+    title 'RADIO BUTTON'
     radio_button name: :radio, value: 'one', checked: true, text: "One"
     radio_button name: :radio, value: 'two', text: "Two"
 
-    headline 'ICON TOGGLE'
+    title 'ICON TOGGLE'
     icon_toggle 'format_bold', checked: true
     icon_toggle 'format_italic'
 
-    headline 'SWITCH'
+    title 'SWITCH'
     grid do
       column 6 do
           switch checked: true
@@ -39,8 +39,8 @@ Voom::Presenters.define(:toggles) do
 
     grid do
       column 6 do
-        display 'Field Level Events'
-        heading 'Text Fields'
+        headline 'Field Level Events', level: 3
+        title 'Text Fields'
         body 'This demonstrates that a change event will submit the  field value to the event action. '\
                  'This works with posts and replace actions'
         switch name: :myfield do
@@ -49,7 +49,7 @@ Voom::Presenters.define(:toggles) do
           end
         end
        
-        display 'Posts in Form'
+        headline 'Posts in Form', level: 3
         body 'This demonstrates that a change event on **ANY** form input will send all the form inputs to the event action. '\
                  'This works with posts and replace actions'
         form do

@@ -34,7 +34,7 @@ Voom::Presenters.define(:headers) do
 
 
   indented_grid do
-    display 'Headers'
+    headline 'Headers'
     
     attach :code, file: __FILE__
   end

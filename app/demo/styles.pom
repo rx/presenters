@@ -8,15 +8,14 @@ Voom::Presenters.define(:styles) do
   end
 
   indented_grid do
-    display 'Styles'
+    headline'Typography',  level: 1
 
-    # heading is an alias for display
-    heading 'Typography',  level: 4
     headline 'Headline 1', level: 1
     headline 'Headline 2', level: 2
     headline 'Headline 3', level: 3
     headline 'Headline 4', level: 4
     headline 'Headline 5', level: 5
+    headline 'Default Headline Size'
     headline 'Headline 6', level: 6
     title    'Title'
     subtitle 'subtitle 1', level: 1

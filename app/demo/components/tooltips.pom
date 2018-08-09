@@ -95,12 +95,8 @@ Voom::Presenters.define(:tooltips) do
     end
 
 
-    display 'Styles'
-
-    display 'Typography', level: 4 do
-      tooltip 'I do nothing.'
-    end
-
+    headline 'Styles', level: 3
+    
     headline 'Headline' do
       tooltip 'I do nothing.'
     end

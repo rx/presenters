@@ -7,29 +7,29 @@ Voom::Presenters.define(:text_fields) do
   page_title 'Text Fields'
 
   indented_grid do
-    headline 'Text'
+    title 'Text'
 
     text_field name: :text do
       label 'Text...'
     end
 
-    headline 'Password'
+    title 'Password'
 
     text_field name: :password, password: true do
       label 'Password'
     end
 
-    headline 'Numeric'
+    title 'Numeric'
 
     # Client side validation with hints
-    headline 'With Hints'
+    title 'With Hints'
     text_field name: :numeric do
       label 'Number...'
       pattern /-?[0-9]*(\.[0-9]+)?/
       hint 'Input should be a number!'
     end
 
-    headline 'With Errors'
+    title 'With Errors'
     text_field name: :guess_me do
       label 'Guess a number...'
       pattern /-?[0-9]*(\.[0-9]+)?/
@@ -38,21 +38,21 @@ Voom::Presenters.define(:text_fields) do
     end
 
 
-    headline 'With Leading Icon'
+    title 'With Leading Icon'
     text_field name: :numeric do
       label 'Amount'
       icon :attach_money, position: :left
     end
 
-    headline 'With Trailing Icon'
+    title 'With Trailing Icon'
     text_field name: :numeric do
       label 'Name'
       icon :remove_red_eye
     end
 
     card do
-      display 'Field Level Events'
-      heading 'Text Fields'
+      headline 'Field Level Events'
+      title 'Text Fields'
       body 'This demonstrates that a change event will submit the  field value to the event action. '\
                  'This works with posts and replace actions'
       text_field name: :myfield do

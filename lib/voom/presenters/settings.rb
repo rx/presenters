@@ -46,8 +46,19 @@ module Voom
               setting :rows, 3
               setting :cols, 80
             end
+            # Typography 
+            setting :headline do
+              setting :level, 5
+            end
+            setting :title do
+              setting :level, 6
+            end
           end
         end
+      end
+
+      def self.default(type, key)
+        config.presenters.components.defaults&.public_send(type)&.public_send(key)
       end
     end
   end
