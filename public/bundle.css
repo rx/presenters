@@ -8575,6 +8575,10 @@ a.mdc-list-item {
 .mdc-list-item__meta {
   white-space: nowrap; }
 
+.v-list-switch-action {
+  padding-left: 6px;
+  padding-right: 6px; }
+
 .mdc-icon-toggle {
   --mdc-ripple-fg-size: 0;
   --mdc-ripple-left: 0;
