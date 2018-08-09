@@ -10,10 +10,10 @@ module Voom
 
           attr_accessor :text, :level, :color, :position
 
-          def initialize(parent:, **attribs_, &block)
+          def initialize(parent:, level: nil, **attribs_, &block)
             super(type: :text, parent: parent, **attribs_, &block)
             @text = Array(attribs.delete(:text)||'').flatten.join("\n\n").split("\n\n")
-            @level = attribs.delete(:level){1}
+            @level = level
             @color = attribs.delete(:color)
             @position = Array(attribs.delete(:position)).compact
             expand!
