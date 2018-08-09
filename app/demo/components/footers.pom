@@ -29,7 +29,7 @@ Voom::Presenters.define(:footers) do
   end
 
   indented_grid do
-    display 'Footers'
+    headline 'Footers', level: 3
 
     attach :code, file: __FILE__
   end

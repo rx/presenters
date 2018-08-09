@@ -28,7 +28,7 @@ Voom::Presenters.define(:drawers) do
   end
 
   indented_grid do
-    display 'Drawers'
+    headline 'Drawers'
 
     attach :code, file: __FILE__
   end

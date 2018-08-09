@@ -8,16 +8,17 @@ module Voom
           module Typography
             include Mixins::Append
 
-            def headline(*text, level: 1, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :headline, text: text, level: level,
+            def headline(*text, level: nil, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :headline, text: text,
+                                                 level: level || Settings.default(:headline, :level),
                                                  context: context, **attributes, &block)
             end
 
             alias heading headline
             alias display headline
 
-            def title(*text, level: 6, **attributes, &block)
-              headline(text, level: level, **attributes, &block)
+            def title(*text, level: nil, **attributes, &block)
+              headline(text, level: level || Settings.default(:title, :level), **attributes, &block)
             end
 
             def subtitle(*text, level: 1, **attributes, &block)

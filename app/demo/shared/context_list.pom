@@ -16,7 +16,7 @@ Voom::Presenters.define(:context_list) do
   content id: :context_list do
     grid do
       column 12 do
-        display title
+        headline title
         subheading "#{time}"
         list do
           scrubbed_context.map {|k, v| "#{k}: #{v}"}.each do |param|
