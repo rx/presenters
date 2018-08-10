@@ -2379,6 +2379,8 @@ class MDCRippleAdapter {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_textfield__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__ = __webpack_require__(139);
+
 
 
 
@@ -2395,7 +2397,7 @@ function initTextFields() {
     }
 }
 
-class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]) {
+class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__["a" /* visibilityObserverMixin */])(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */])) {
     constructor(element, mdcComponent) {
         super(element);
         this.input = element.querySelector('input');
@@ -2404,6 +2406,7 @@ class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handle
         }
         this.input.vComponent = this;
         this.mdcComponent = mdcComponent;
+        this.recalcWhenVisible(this);
     }
 
     // Called whenever a form is about to be submitted.
@@ -22490,6 +22493,8 @@ const cssClasses = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_slider__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__ = __webpack_require__(139);
+
 
 
 
@@ -22506,28 +22511,11 @@ function initSliders() {
     }
 }
 
-class VSlider extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]) {
+class VSlider extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__["a" /* visibilityObserverMixin */])(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */])) {
     constructor(element, mdcComponent) {
         super(element);
         this.mdcComponent = mdcComponent;
-
-        this.mutationObserver = new MutationObserver(function (mutations) {
-            var components = document.querySelectorAll('.mdc-slider');
-            for (var i = 0; i < components.length; i++) {
-                var comp = components[i];
-                if (comp.vComponent) {
-                    comp.vComponent.mdcComponent.layout();
-                }
-            }
-        });
-        this.mutationObserver.observe(document.documentElement, {
-            attributes: true,
-            characterData: false,
-            childList: true,
-            subtree: true,
-            attributeOldValue: true,
-            characterDataOldValue: false
-        });
+        this.recalcWhenVisible(this);
     }
 
     prepareSubmit(form, params) {
@@ -23388,6 +23376,40 @@ class VHiddenField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_hand
 }
 /* unused harmony export VHiddenField */
 
+
+/***/ }),
+/* 139 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return visibilityObserverMixin; });
+let visibilityObserverMixin = Base => class extends Base {
+
+    recalcWhenVisible(vComponent) {
+        vComponent.hidden_on_create = vComponent.element.offsetParent === null;
+        if (vComponent.hidden_on_create) {
+            // If the component is hidden in DOM for any number of reasons (parent is hidden) then the
+            // Text Field may no render correctly. In this case we observe the DOM watching for a point at which the
+            // element become visible in the DOM and at that point using the MDCComponent to properly re-render that
+            // element
+            vComponent.mutationObserver = new MutationObserver(function (mutations) {
+                if (this.vComponent.hidden_on_create) {
+                    if (this.vComponent.element.offsetParent !== null) {
+                        // Parent is now visible. Re-run the MDC layout and disconnect from the observer
+                        this.vComponent.hidden_on_create = false;
+                        this.vComponent.mdcComponent.layout();
+                        this.disconnect();
+                    }
+                }
+            });
+            vComponent.mutationObserver.vComponent = vComponent;
+            vComponent.mutationObserver.observe(document.documentElement, {
+                attributes: true,
+                subtree: true
+            });
+        }
+    }
+};
 
 /***/ })
 /******/ ]);
