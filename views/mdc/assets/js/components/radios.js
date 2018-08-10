@@ -25,7 +25,7 @@ export class VRadio extends eventHandlerMixin(VBaseComponent) {
     prepareSubmit(form, params) {
         // On actual post/submit the form is passed and we are not expected to return our value
         if (!form) {
-            if(this.input.selected) {
+            if(this.input.checked) {
                 params.push([this.input.name, this.input.value]);
             }
         }
