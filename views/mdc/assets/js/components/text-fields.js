@@ -1,6 +1,7 @@
 import {MDCTextField} from '@material/textfield';
 import {VBaseComponent} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
+import {visibilityObserverMixin} from './mixins/visibility-observer';
 
 export function initTextFields() {
     console.log('\tTextFields');
@@ -14,7 +15,7 @@ export function initTextFields() {
     }
 }
 
-export class VTextField extends eventHandlerMixin(VBaseComponent) {
+export class VTextField extends visibilityObserverMixin(eventHandlerMixin(VBaseComponent)) {
     constructor(element, mdcComponent) {
         super(element);
         this.input = element.querySelector('input');
@@ -23,6 +24,7 @@ export class VTextField extends eventHandlerMixin(VBaseComponent) {
         }
         this.input.vComponent = this;
         this.mdcComponent = mdcComponent;
+        this.recalcWhenVisible(this);
     }
 
     // Called whenever a form is about to be submitted.
