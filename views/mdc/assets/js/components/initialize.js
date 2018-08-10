@@ -13,6 +13,7 @@ import {initForms} from './forms';
 import {initSnackbar} from './snackbar';
 import {initCheckboxes} from './checkboxes';
 import {initSwitches} from './switches';
+import {initRichTextArea} from './rich-text-area';
 import {initSteppers} from './steppers';
 import {initRadios} from './radios';
 import {initSliders} from './sliders';
@@ -34,6 +35,7 @@ export function initialize(){
     initSnackbar();
     initCheckboxes();
     initSwitches();
+    initRichTextArea();
     initSteppers();
     initRadios();
     initSliders();
