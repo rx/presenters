@@ -21,6 +21,12 @@ module Voom
                                                   context: context,
                                                   **attribs, &block)
             end
+
+            def rich_text_area(**attribs, &block)
+              self << Components::RichTextArea.new(parent: self,
+                                                   context: context,
+                                                   **attribs, &block)
+            end
           end
         end
       end

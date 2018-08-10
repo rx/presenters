@@ -29,8 +29,9 @@
 @import "components/icon";
 
 @import "components/datetime";
-@import 'flatpickr.min';
-
+@import "components/rich-text-area";
+@import 'components/vendor/flatpickr.min';
+@import "components/vendor/quill.snow";
 @import "styles";
 
 

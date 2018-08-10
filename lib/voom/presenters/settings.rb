@@ -53,6 +53,9 @@ module Voom
             setting :title do
               setting :level, 6
             end
+            setting :rich_text_area do
+              setting :rows, 25
+            end
           end
         end
       end
