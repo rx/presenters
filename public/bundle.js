@@ -773,7 +773,7 @@ class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
             var inputContainers = document.querySelectorAll('[data-input-tag=' + this.params.input_tag + ']');
             for (let container of inputContainers) {
                 for (let input of this.inputComponents(container)) {
-                    if (input.vComponent && input.vComponent.prepareSubmit) {
+                    if (input.vComponent && typeof input.vComponent.prepareSubmit === 'function') {
                         input.vComponent.prepareSubmit(null, params);
                     }
                 }
@@ -18318,7 +18318,9 @@ class VCheckbox extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler
     prepareSubmit(form, params) {
         // On actual post/submit the form is passed and we are not expected to return our value
         if (!form) {
-            params.push([this.input.name, this.input.value]);
+            if (this.input.checked) {
+                params.push([this.input.name, this.input.value]);
+            }
         }
     }
 }
