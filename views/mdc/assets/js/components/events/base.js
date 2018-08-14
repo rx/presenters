@@ -26,7 +26,7 @@ export class VBase extends VUrls {
             var inputContainers = document.querySelectorAll('[data-input-tag=' + this.params.input_tag + ']');
             for (let container of inputContainers) {
                 for (let input of this.inputComponents(container)) {
-                    if (input.vComponent && input.vComponent.prepareSubmit) {
+                    if (input.vComponent && typeof input.vComponent.prepareSubmit === 'function') {
                         input.vComponent.prepareSubmit(null, params);
                     }
                 }
