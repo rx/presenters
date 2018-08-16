@@ -11,3 +11,7 @@ require_relative 'presenters/dsl/definition'
 require_relative 'presenters/helpers'
 require_relative 'presenters/app'
 
+module Voom
+  module Presenters
+  end
+end

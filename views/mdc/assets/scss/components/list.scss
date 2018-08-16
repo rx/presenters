@@ -26,4 +26,8 @@
   padding-right: 6px;
 }
 
+.mdc-list-item__secondary-text::before {
+    content: unset;
+}
+
 

@@ -3,6 +3,7 @@ require_relative '../icon'
 require_relative '../avatar'
 require_relative '../typography'
 require_relative '../mixins/event'
+require_relative '../mixins/tooltips'
 
 module Voom
   module Presenters
@@ -11,6 +12,7 @@ module Voom
         module Lists
           class Line < EventBase
             extend Gem::Deprecate
+            include Mixins::Tooltips
 
             attr_accessor :selected, :selectable
 
