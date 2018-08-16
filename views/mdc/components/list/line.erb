@@ -28,8 +28,10 @@
     <% end %>
   </span>
   <%= erb :"components/list/actions", :locals => {:line => line} %>
+
 </li>
 <% if line.menu %>
   <%= erb :"components/list/menu", :locals => {:comp => line.menu} %>
 </div>
 <%end%>
+<%= erb :"components/tooltip", :locals => {comp: line.tooltip, parent_id: line.id} %>
