@@ -1,0 +1,5 @@
+Voom::Presenters.define(:pattern_drawer) do
+  drawer 'Patterns' do
+    attach :pattern_menu
+  end
+end

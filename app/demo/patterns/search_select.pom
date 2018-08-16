@@ -1,0 +1,15 @@
+require_relative '../helpers/indented_grid'
+
+Voom::Presenters.define(:search_select) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :pattern_drawer
+  page_title 'Search and Select'
+
+  indented_grid do
+    chip color: :hotpink do
+      text 'Chip 3', color: :white
+    end
+    attach :code, file: __FILE__
+  end
+end

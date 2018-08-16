@@ -29,6 +29,12 @@ Voom::Presenters.define('top_nav') do
         end
       end
 
+      item 'Advanced Patterns' do
+        event :click do
+          loads :patterns
+        end
+      end
+
       item 'Status' do
         event :click do
           loads :component_status
