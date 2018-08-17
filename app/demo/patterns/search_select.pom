@@ -5,30 +5,25 @@ Voom::Presenters.define(:search_select) do
   attach :top_nav
   attach :pattern_drawer
 
-  helpers do
-
-  end
-
   page_title 'Search and Select Pattern'
   indented_grid do
     grid tag: :input_data_container do
       column 6 do
         grid do
-          column 6 do
+          column 4 do
             content id: :search_field do
               text_field name: :search, full_width: false do
                 label 'Search Tickets'
-                # event :input do
-                #   autocomplete '/_search_'
-                # end
-                event :change do
+                event :input do
                   replaces :ticket_list, :ticket_list, input_tag: :input_data_container
+                end
+                event :change do
                   replaces :completed_searches, :completed_searches, input_tag: :input_data_container
                 end
               end
             end
           end
-          column 6 do
+          column 8 do
             attach :completed_searches, searches: []
           end
         end
@@ -38,7 +33,6 @@ Voom::Presenters.define(:search_select) do
     attach :code, file: __FILE__
   end
 end
-
 
 Voom::Presenters.define(:ticket_list) do
   helpers do
@@ -78,14 +72,16 @@ end
 Voom::Presenters.define(:completed_searches) do
   helpers do
     def searches
-      context.fetch(:searches) {[{name: 'ABC'}, {name: 'XYZ'}]}
+      searches = context.fetch(:searches) {[]}
+      return searches if searches.is_a? Array
+      [] << searches
     end
   end
 
   content id: :completed_searches do
     searches.each do |search|
-      chip color: :primary do
-        text search[:name]
+      chip color: :primary, name: 'searches', value: search do
+        text search
         icon :delete, position: :right do
           event :click do
             snackbar 'Do something useful here!'
@@ -93,6 +89,17 @@ Voom::Presenters.define(:completed_searches) do
         end
       end
     end
+
+    search = context.fetch(:search) {nil}
+    chip color: :primary, name: 'searches', value: search do
+      text search
+      icon :delete, position: :right do
+        event :click do
+          snackbar 'Do something useful here!'
+        end
+      end
+      searches << search
+    end unless search.nil?
   end
 end
 

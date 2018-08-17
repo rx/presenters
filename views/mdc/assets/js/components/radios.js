@@ -1,6 +1,5 @@
 import {VBaseComponent} from "./base-component";
 import {eventHandlerMixin} from "./mixins/event-handler";
-import {MDCFormField} from "@material/form-field";
 import {MDCRadio} from "@material/radio";
 
 export function initRadios() {
