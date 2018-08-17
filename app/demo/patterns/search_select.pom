@@ -4,12 +4,95 @@ Voom::Presenters.define(:search_select) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :pattern_drawer
-  page_title 'Search and Select'
 
+  helpers do
+
+  end
+
+  page_title 'Search and Select Pattern'
   indented_grid do
-    chip color: :hotpink do
-      text 'Chip 3', color: :white
+    grid tag: :input_data_container do
+      column 6 do
+        grid do
+          column 6 do
+            content id: :search_field do
+              text_field name: :search, full_width: false do
+                label 'Search Tickets'
+                # event :input do
+                #   autocomplete '/_search_'
+                # end
+                event :change do
+                  replaces :ticket_list, :ticket_list, input_tag: :input_data_container
+                  replaces :completed_searches, :completed_searches, input_tag: :input_data_container
+                end
+              end
+            end
+          end
+          column 6 do
+            attach :completed_searches, searches: []
+          end
+        end
+        attach :ticket_list, title: 'Search Results'
+      end
     end
     attach :code, file: __FILE__
   end
 end
+
+
+Voom::Presenters.define(:ticket_list) do
+  helpers do
+    def ticket_data
+      [OpenStruct.new(id: 1, event_name: 'Pearl Jam', type: 'General Admission', amount: 10.00),
+       OpenStruct.new(id: 2, event_name: 'Pearl Jam', type: 'Reserved Seating', amount: 25.00),
+       OpenStruct.new(id: 3, event_name: 'Temple of the Dog', type: 'General Admission', amount: 5.00),
+       OpenStruct.new(id: 4, event_name: 'Temple of the Dog', type: 'Reserved Seating', amount: 10.00),
+       OpenStruct.new(id: 5, event_name: 'Japandroids', type: 'General Admission', amount: 7.50),
+       OpenStruct.new(id: 6, event_name: 'Japandroids', type: 'Reserved Seating', amount: 15.00)]
+    end
+
+    def tickets
+      search = context.fetch(:search) {''}
+      re = Regexp.new(search)
+      ticket_data.select {|ticket| !search.empty? && re.match(ticket.event_name)}
+    end
+
+    def ticket_ids
+      context.fetch(:ticket_id) {[]}
+    end
+  end
+
+  content id: :ticket_list do
+    list selectable: true do
+      tickets.each do |ticket|
+        line name: :ticket_id, value: ticket.id, checked: ticket_ids.include?(ticket.id.to_s) do
+          text ticket.event_name
+          subtitle ticket.type
+          info "$#{ticket.amount}"
+        end
+      end
+    end
+  end
+end
+
+Voom::Presenters.define(:completed_searches) do
+  helpers do
+    def searches
+      context.fetch(:searches) {[{name: 'ABC'}, {name: 'XYZ'}]}
+    end
+  end
+
+  content id: :completed_searches do
+    searches.each do |search|
+      chip color: :primary do
+        text search[:name]
+        icon :delete, position: :right do
+          event :click do
+            snackbar 'Do something useful here!'
+          end
+        end
+      end
+    end
+  end
+end
+

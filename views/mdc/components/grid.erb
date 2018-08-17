@@ -1,5 +1,8 @@
 <% @grid_nesting += 1 %>
 <div id="<%= comp.id %>"
+     <% if comp.tag %>
+     data-input-tag="<%= comp.tag %>"
+     <% end %>
      class="mdc-layout-grid
             <%= 'v-nested_grid' if @grid_nesting>1 && !comp.padded %>"
      style="<%= "background-color: #{comp.color};" if comp.color %>">
