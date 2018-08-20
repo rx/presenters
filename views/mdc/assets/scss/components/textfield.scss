@@ -6,3 +6,10 @@
     padding: inherit;
   }
 }
+
+.mdc-text-field--textarea:not(.mdc-text-field--disabled) {
+  border-color: $v-input-border-color;
+  &:hover {
+    border-color: $v-input-hover-border-color;
+  }
+}
