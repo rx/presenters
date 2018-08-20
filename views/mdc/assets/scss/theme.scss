@@ -12,6 +12,12 @@ $v-drawer-color: #71818c;
 
 $v-title-background: #EBF0F4;
 
+// Variables for matching Material blue-gray-orange theme
+$v-input-border-radius: 4px;
+$v-input-border-color: rgba(0, 0, 0, 0.24);
+$v-input-hover-border-color: rgba(0, 0, 0, 0.87);
+$v-input-focus-border-color: $mdc-theme-primary;
+
 .mdl-layout__header {
   background-color: $v-title-background;
   .mdl-layout__header-row {

@@ -8233,6 +8233,11 @@ v-card-title-position-left {
 .mdc-text-field__input .v-text-field {
   padding: inherit; }
 
+.mdc-text-field--textarea:not(.mdc-text-field--disabled) {
+  border-color: rgba(0, 0, 0, 0.24); }
+  .mdc-text-field--textarea:not(.mdc-text-field--disabled):hover {
+    border-color: rgba(0, 0, 0, 0.87); }
+
 .mdc-list {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
@@ -11905,8 +11910,20 @@ i:focus.v-datetime--clear {
   padding-top: 30px; }
   .v-rich-text-area-container > label {
     top: 0px; }
+  .v-rich-text-area-container .ql-toolbar.ql-snow {
+    border-color: rgba(0, 0, 0, 0.24);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px; }
   .v-rich-text-area-container .v-rich-text-area {
     height: 350px; }
+    .v-rich-text-area-container .v-rich-text-area.ql-snow {
+      border-color: rgba(0, 0, 0, 0.24);
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px; }
+  .v-rich-text-area-container:hover .ql-toolbar.ql-snow {
+    border-color: rgba(0, 0, 0, 0.87); }
+  .v-rich-text-area-container:hover .v-rich-text-area.ql-snow {
+    border-color: rgba(0, 0, 0, 0.87); }
 
 .flatpickr-calendar {
   background: transparent;
