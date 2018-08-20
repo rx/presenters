@@ -23,13 +23,24 @@ export class VSwitch extends eventHandlerMixin(VBaseComponent) {
         this.mdcComponent = mdcComponent;
     }
 
-    validate(_formData) {
-        return true;
+    prepareSubmit(params) {
+        params.push([this.name(), this.value()]);
     }
 
-    prepareSubmit(form, params) {
-        if (!form) {
-            params.push([this.input.name, this.input.checked]);
-        }
+    name(){
+        return this.input.name;
     }
+
+    value(){
+        return this.input.checked;
+    }
+
+    clear(){
+        this.setValue(false);
+    }
+
+    setValue(value){
+        this.input.checked = value;
+    }
+
 }

@@ -17,24 +17,24 @@ export function initHiddenFields() {
 export class VHiddenField extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element);
-        // With the component the element is the input
         this.vComponent = this;
+    }
+
+    // Called to collect data for submission
+    prepareSubmit(params) {
+        params.push([this.name(), this.value()]);
+    }
+
+    name(){
+        return this.element.name;
     }
 
     value(){
         return this.element.value;
     }
 
-    // Called to collect data for submission
-    prepareSubmit(form, params) {
-        // On actual post/submit the form is passed and we are not expected to return our value
-        if (!form) {
-            params.push([this.element.name, this.element.value]);
-        }
-    }
-
     clear(){
-        this.element.setValue('');
+        this.setValue('');
     }
 
     setValue(value){

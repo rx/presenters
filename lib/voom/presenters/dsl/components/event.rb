@@ -67,6 +67,15 @@ module Voom
                                                params: params, &block)
           end
 
+          # Removes the component and all its children
+          # Takes either an id or a list of ids.
+          def remove(*ids, **params, &block)
+            @actions << Components::Action.new(parent: self,
+                                               type: :remove,
+                                               params: params.merge(ids: ids), &block)
+          end
+          alias removes remove
+
           def show(component_id, **params, &block)
             @actions << Components::Action.new(parent: self,
                                                type: :toggle_visibility,

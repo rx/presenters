@@ -23,12 +23,26 @@ export class VCheckbox extends eventHandlerMixin(VBaseComponent) {
         this.mdcComponent = mdcComponent;
     }
 
-    prepareSubmit(form, params) {
-        // On actual post/submit the form is passed and we are not expected to return our value
-        if (!form) {
-            if(this.input.checked) {
-                params.push([this.input.name, this.input.value]);
-            }
+    prepareSubmit(params) {
+        if(this.input.checked) {
+            params.push([this.name(), this.value()]);
         }
     }
+
+    name(){
+        return this.element.name;
+    }
+
+    value(){
+        return this.element.value;
+    }
+
+    clear(){
+        this.element.setValue('');
+    }
+
+    setValue(value){
+        this.element.value = value;
+    }
+
 }

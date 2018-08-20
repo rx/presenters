@@ -20,8 +20,10 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
     }
 
     // Called to collect data for submission
-    prepareSubmit(form, params) {
-        params.push([this.name(), this.value()]);
+    prepareSubmit(params) {
+        if(this.value() !== ''){
+            params.push([this.name(), this.value()]);
+        }
     }
 
     name(){
@@ -37,11 +39,6 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
     }
 
     setValue(value){
-        this.input.value = value;
+        this.element.setAttribute('data-value', value);
     }
-
-    validate(formData) {
-        return true;
-    }
-
 }

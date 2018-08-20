@@ -27,7 +27,7 @@ export class VBase extends VUrls {
             for (let container of inputContainers) {
                 for (let input of this.inputComponents(container)) {
                     if (input.vComponent && typeof input.vComponent.prepareSubmit === 'function') {
-                        input.vComponent.prepareSubmit(null, params);
+                        input.vComponent.prepareSubmit(params);
                     }
                 }
             }
@@ -37,7 +37,7 @@ export class VBase extends VUrls {
             // Let input components push parameters
             let vComp = this.component();
             if (vComp) {
-                vComp.prepareSubmit(form, params);
+                vComp.prepareSubmit(params);
             }
         }
         return params;

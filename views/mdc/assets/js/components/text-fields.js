@@ -43,26 +43,19 @@ export class VTextField extends visibilityObserverMixin(eventHandlerMixin(VBaseC
         return errorMessage;
     }
 
-    value(){
-        return this.input.value;
-    }
-
     // Called to collect data for submission
-    prepareSubmit(form, params) {
+    prepareSubmit(params) {
         var optionSelected = this.optionSelected();
         if (optionSelected) {
             var key = optionSelected.dataset.key;
             if (key) {
-                var name = this.input.name;
+                var name = this.name();
                 var id = name + '_id';
                 params.push([id, key]);
                 console.log("TextField prepareSubmit added:" + id + '=' + key);
             }
         }
-        // On actual post/submit the form is passed and we are not expected to return our value
-        if (!form) {
-            params.push([this.input.name, this.input.value]);
-        }
+        params.push([this.name(), this.value()]);
     }
 
     optionSelected() {
@@ -76,6 +69,14 @@ export class VTextField extends visibilityObserverMixin(eventHandlerMixin(VBaseC
             }
         }
         return null;
+    }
+
+    name(){
+        return this.input.name;
+    }
+
+    value(){
+        return this.input.value;
     }
 
     clear(){

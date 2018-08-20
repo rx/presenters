@@ -21,19 +21,18 @@ export class VReplaces extends VBase {
             throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
         }
         var elementId = this.element_id;
-        var parentElement = this.parentElement();
+        var nodeToReplace = document.getElementById(elementId);
         var url = this.buildURL(this.url, this.params, this.inputValues(), [['grid_nesting', this.options.grid_nesting]]);
 
         let delayAmt = this.event instanceof InputEvent ? 500 : 0;
 
         var promiseObj = new Promise(function (resolve, reject) {
-            clearTimeout(parentElement.vTimeout);
-            parentElement.vTimeout = setTimeout(function(){
+            clearTimeout(nodeToReplace.vTimeout);
+            nodeToReplace.vTimeout = setTimeout(function(){
                 httpRequest.onreadystatechange = function () {
                     if (httpRequest.readyState === XMLHttpRequest.DONE) {
                         console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                         if (httpRequest.status === 200) {
-                            var nodeToReplace = document.getElementById(elementId);
                             if (!nodeToReplace) {
                                 let msg = 'Unable to located node: \'' + elementId + '\'' +
                                     ' This usually the result of issuing a replaces action and specifying a element id that does not currently exist on the page.';

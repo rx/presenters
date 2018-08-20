@@ -39,10 +39,10 @@ export class VForm {
     }
 
     // Called to collect data for submission
-    prepareSubmit(form, params) {
+    prepareSubmit(params) {
         for (let input of this.inputs()) {
             if (input.vComponent && input.vComponent.prepareSubmit) {
-                input.vComponent.prepareSubmit(form, params);
+                input.vComponent.prepareSubmit(params);
             }
         }
     }

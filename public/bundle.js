@@ -277,6 +277,10 @@ class VBaseComponent {
     constructor(element) {
         this.element = element;
     }
+
+    validate(formData) {
+        return true;
+    }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = VBaseComponent;
 
@@ -774,7 +778,7 @@ class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
             for (let container of inputContainers) {
                 for (let input of this.inputComponents(container)) {
                     if (input.vComponent && typeof input.vComponent.prepareSubmit === 'function') {
-                        input.vComponent.prepareSubmit(null, params);
+                        input.vComponent.prepareSubmit(params);
                     }
                 }
             }
@@ -782,7 +786,7 @@ class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
             // Let input components push parameters
             let vComp = this.component();
             if (vComp) {
-                vComp.prepareSubmit(form, params);
+                vComp.prepareSubmit(params);
             }
         }
         return params;
@@ -829,8 +833,8 @@ class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__rich_text_area__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__steppers__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__radios__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__sliders__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__hidden_fields__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__sliders__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__hidden_fields__ = __webpack_require__(129);
 
 
 
@@ -2267,26 +2271,19 @@ class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_o
         return errorMessage;
     }
 
-    value() {
-        return this.input.value;
-    }
-
     // Called to collect data for submission
-    prepareSubmit(form, params) {
+    prepareSubmit(params) {
         var optionSelected = this.optionSelected();
         if (optionSelected) {
             var key = optionSelected.dataset.key;
             if (key) {
-                var name = this.input.name;
+                var name = this.name();
                 var id = name + '_id';
                 params.push([id, key]);
                 console.log("TextField prepareSubmit added:" + id + '=' + key);
             }
         }
-        // On actual post/submit the form is passed and we are not expected to return our value
-        if (!form) {
-            params.push([this.input.name, this.input.value]);
-        }
+        params.push([this.name(), this.value()]);
     }
 
     optionSelected() {
@@ -2300,6 +2297,14 @@ class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_o
             }
         }
         return null;
+    }
+
+    name() {
+        return this.input.name;
+    }
+
+    value() {
+        return this.input.value;
     }
 
     clear() {
@@ -14739,7 +14744,9 @@ class MDCNotchedOutlineFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_autocomplete__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_navigates__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__events_clears__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__events_stepper__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__events_removes__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__events_stepper__ = __webpack_require__(79);
+
 
 
 
@@ -14819,6 +14826,8 @@ class VEvents {
                 return new __WEBPACK_IMPORTED_MODULE_3__events_dialog__["a" /* VDialog */](options, params, event);
             case 'toggle_visibility':
                 return new __WEBPACK_IMPORTED_MODULE_5__events_toggle_visibility__["a" /* VToggleVisibility */](options, params, event);
+            case 'remove':
+                return new __WEBPACK_IMPORTED_MODULE_10__events_removes__["a" /* VRemoves */](options, params, event);
             case 'snackbar':
                 return new __WEBPACK_IMPORTED_MODULE_6__events_snackbar__["a" /* VSnackbarEvent */](options, params, event);
             case 'autocomplete':
@@ -14828,7 +14837,7 @@ class VEvents {
             case 'clear':
                 return new __WEBPACK_IMPORTED_MODULE_9__events_clears__["a" /* VClears */](options, params, event);
             case 'stepper':
-                return new __WEBPACK_IMPORTED_MODULE_10__events_stepper__["a" /* VStepperEvent */](options, params, event);
+                return new __WEBPACK_IMPORTED_MODULE_11__events_stepper__["a" /* VStepperEvent */](options, params, event);
             default:
                 throw action_type + ' is not supported.';
         }
@@ -15458,19 +15467,18 @@ class VReplaces extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
             throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
         }
         var elementId = this.element_id;
-        var parentElement = this.parentElement();
+        var nodeToReplace = document.getElementById(elementId);
         var url = this.buildURL(this.url, this.params, this.inputValues(), [['grid_nesting', this.options.grid_nesting]]);
 
         let delayAmt = this.event instanceof InputEvent ? 500 : 0;
 
         var promiseObj = new Promise(function (resolve, reject) {
-            clearTimeout(parentElement.vTimeout);
-            parentElement.vTimeout = setTimeout(function () {
+            clearTimeout(nodeToReplace.vTimeout);
+            nodeToReplace.vTimeout = setTimeout(function () {
                 httpRequest.onreadystatechange = function () {
                     if (httpRequest.readyState === XMLHttpRequest.DONE) {
                         console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                         if (httpRequest.status === 200) {
-                            var nodeToReplace = document.getElementById(elementId);
                             if (!nodeToReplace) {
                                 let msg = 'Unable to located node: \'' + elementId + '\'' + ' This usually the result of issuing a replaces action and specifying a element id that does not currently exist on the page.';
                                 console.error(msg);
@@ -17502,20 +17510,25 @@ class VSelect extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__
         this.mdcComponent = mdcComponent;
     }
 
-    prepareSubmit(form, params) {
-        // On actual post/submit the form is passed and we are not expected to return our value
-        if (!form) {
-            params.push([this.select.name, this.select.value]);
-        }
+    prepareSubmit(params) {
+        params.push([this.name(), this.value()]);
     }
 
-    validate() {
-        return true;
+    name() {
+        return this.select.name;
     }
 
-    name() {}
+    value() {
+        return this.select.value;
+    }
 
-    value() {}
+    clear() {
+        this.setValue('');
+    }
+
+    setValue(value) {
+        this.select.value = value;
+    }
 }
 /* unused harmony export VSelect */
 
@@ -17872,8 +17885,10 @@ class VChip extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["
     }
 
     // Called to collect data for submission
-    prepareSubmit(form, params) {
-        params.push([this.name(), this.value()]);
+    prepareSubmit(params) {
+        if (this.value() !== '') {
+            params.push([this.name(), this.value()]);
+        }
     }
 
     name() {
@@ -17889,13 +17904,8 @@ class VChip extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["
     }
 
     setValue(value) {
-        this.input.value = value;
+        this.element.setAttribute('data-value', value);
     }
-
-    validate(formData) {
-        return true;
-    }
-
 }
 /* unused harmony export VChip */
 
@@ -18293,10 +18303,10 @@ class VForm {
     }
 
     // Called to collect data for submission
-    prepareSubmit(form, params) {
+    prepareSubmit(params) {
         for (let input of this.inputs()) {
             if (input.vComponent && input.vComponent.prepareSubmit) {
-                input.vComponent.prepareSubmit(form, params);
+                input.vComponent.prepareSubmit(params);
             }
         }
     }
@@ -18354,14 +18364,28 @@ class VCheckbox extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler
         this.mdcComponent = mdcComponent;
     }
 
-    prepareSubmit(form, params) {
-        // On actual post/submit the form is passed and we are not expected to return our value
-        if (!form) {
-            if (this.input.checked) {
-                params.push([this.input.name, this.input.value]);
-            }
+    prepareSubmit(params) {
+        if (this.input.checked) {
+            params.push([this.name(), this.value()]);
         }
     }
+
+    name() {
+        return this.element.name;
+    }
+
+    value() {
+        return this.element.value;
+    }
+
+    clear() {
+        this.element.setValue('');
+    }
+
+    setValue(value) {
+        this.element.value = value;
+    }
+
 }
 /* unused harmony export VCheckbox */
 
@@ -19025,15 +19049,26 @@ class VSwitch extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__
         this.mdcComponent = mdcComponent;
     }
 
-    validate(_formData) {
-        return true;
+    prepareSubmit(params) {
+        params.push([this.name(), this.value()]);
     }
 
-    prepareSubmit(form, params) {
-        if (!form) {
-            params.push([this.input.name, this.input.checked]);
-        }
+    name() {
+        return this.input.name;
     }
+
+    value() {
+        return this.input.checked;
+    }
+
+    clear() {
+        this.setValue(false);
+    }
+
+    setValue(value) {
+        this.input.checked = value;
+    }
+
 }
 /* unused harmony export VSwitch */
 
@@ -35105,7 +35140,7 @@ class VStepper extends Object(__WEBPACK_IMPORTED_MODULE_0__mixins_event_handler_
 /* harmony export (immutable) */ __webpack_exports__["a"] = initRadios;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_radio__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_radio__ = __webpack_require__(122);
 
 
 
@@ -35129,31 +35164,41 @@ class VRadio extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__[
         this.mdcComponent = mdcComponent;
     }
 
-    prepareSubmit(form, params) {
-        // On actual post/submit the form is passed and we are not expected to return our value
-        if (!form) {
-            if (this.input.checked) {
-                params.push([this.input.name, this.input.value]);
-            }
+    prepareSubmit(params) {
+        if (this.input.checked) {
+            params.push([this.name(), this.value()]);
         }
     }
+
+    name() {
+        return this.input.name;
+    }
+
+    value() {
+        return this.input.value;
+    }
+
+    clear() {
+        this.setValue('');
+    }
+
+    setValue(value) {
+        this.input.value = value;
+    }
+
 }
 /* unused harmony export VRadio */
 
 
 /***/ }),
-/* 122 */,
-/* 123 */,
-/* 124 */,
-/* 125 */,
-/* 126 */
+/* 122 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRadio; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__ = __webpack_require__(4);
 /* unused harmony reexport MDCRadioFoundation */
 /**
@@ -35277,14 +35322,14 @@ class MDCRadio extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a
 
 
 /***/ }),
-/* 127 */
+/* 123 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(125);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -35385,7 +35430,7 @@ class MDCRadioFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foun
 /* harmony default export */ __webpack_exports__["a"] = (MDCRadioFoundation);
 
 /***/ }),
-/* 128 */
+/* 124 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35441,7 +35486,7 @@ class MDCRadioAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCRadioAdapter);
 
 /***/ }),
-/* 129 */
+/* 125 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35478,14 +35523,14 @@ const cssClasses = {
 
 
 /***/ }),
-/* 130 */
+/* 126 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSliders;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_slider__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_slider__ = __webpack_require__(127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__ = __webpack_require__(30);
 
 
@@ -35511,18 +35556,31 @@ class VSlider extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_obse
         this.recalcWhenVisible(this);
     }
 
-    prepareSubmit(form, params) {
-        // On actual post/submit the form is passed and we are not expected to return our value
-        //if (!form) {
-        params.push([this.element.getAttribute('data-name'), this.mdcComponent.value]);
-        //}
+    prepareSubmit(params) {
+        params.push([this.name(), this.value()]);
+    }
+
+    name() {
+        return this.element.getAttribute('data-name');
+    }
+
+    value() {
+        return this.mdcComponent.value;
+    }
+
+    clear() {
+        this.setValue('');
+    }
+
+    setValue(value) {
+        this.mdcComponent.value = value;
     }
 }
 /* unused harmony export VSlider */
 
 
 /***/ }),
-/* 131 */
+/* 127 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35530,7 +35588,7 @@ class VSlider extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_obse
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(128);
 /* unused harmony reexport MDCSliderFoundation */
 /**
  * @license
@@ -35736,7 +35794,7 @@ class MDCSlider extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["
 
 
 /***/ }),
-/* 132 */
+/* 128 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36316,7 +36374,7 @@ class MDCSliderFoundation extends __WEBPACK_IMPORTED_MODULE_3__material_base_fou
 /* harmony default export */ __webpack_exports__["a"] = (MDCSliderFoundation);
 
 /***/ }),
-/* 133 */
+/* 129 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36343,24 +36401,24 @@ function initHiddenFields() {
 class VHiddenField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]) {
     constructor(element, mdcComponent) {
         super(element);
-        // With the component the element is the input
         this.vComponent = this;
+    }
+
+    // Called to collect data for submission
+    prepareSubmit(params) {
+        params.push([this.name(), this.value()]);
+    }
+
+    name() {
+        return this.element.name;
     }
 
     value() {
         return this.element.value;
     }
 
-    // Called to collect data for submission
-    prepareSubmit(form, params) {
-        // On actual post/submit the form is passed and we are not expected to return our value
-        if (!form) {
-            params.push([this.element.name, this.element.value]);
-        }
-    }
-
     clear() {
-        this.element.setValue('');
+        this.setValue('');
     }
 
     setValue(value) {
@@ -36368,6 +36426,35 @@ class VHiddenField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_hand
     }
 }
 /* unused harmony export VHiddenField */
+
+
+/***/ }),
+/* 130 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+class VRemoves {
+    constructor(options, params, event) {
+        this.target = options.target;
+        this.ids = params.ids;
+        this.event = event;
+    }
+
+    call(results) {
+        let ids = this.ids;
+        var promiseObj = new Promise(function (resolve) {
+            console.log("Removing");
+            results.push({ action: 'removes', statusCode: 200 });
+            for (const id of ids) {
+                let elem = document.getElementById(id);
+                elem.parentNode.removeChild(elem);
+            }
+            resolve(results);
+        });
+        return promiseObj;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VRemoves;
 
 
 /***/ })

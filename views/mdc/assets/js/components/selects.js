@@ -22,22 +22,23 @@ export class VSelect extends eventHandlerMixin(VBaseComponent) {
         this.mdcComponent = mdcComponent;
     }
 
-    prepareSubmit(form, params) {
-        // On actual post/submit the form is passed and we are not expected to return our value
-        if (!form) {
-            params.push([this.select.name, this.select.value]);
-        }
-    }
-
-    validate() {
-        return true;
+    prepareSubmit(params) {
+        params.push([this.name(), this.value()]);
     }
 
     name(){
-            
+        return this.select.name;
     }
 
     value(){
+        return this.select.value;
+    }
 
+    clear(){
+        this.setValue('');
+    }
+
+    setValue(value){
+        this.select.value = value;
     }
 }

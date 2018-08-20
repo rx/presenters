@@ -1,5 +1,19 @@
 require_relative '../helpers/indented_grid'
 
+module Demo
+  module Helpers
+    module SearchSelectDemo
+      def searches
+        search = context.fetch(:search) {nil}
+        searches = context.fetch(:searches) {[]}
+        searches << search unless search.nil? || search == ''
+        searches.select{|s| s != ''}
+      end
+    end
+  end
+end
+
+
 Voom::Presenters.define(:search_select) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
@@ -11,20 +25,22 @@ Voom::Presenters.define(:search_select) do
       column 6 do
         grid do
           column 4 do
-            content id: :search_field do
-              text_field name: :search, full_width: false do
+            content do
+              text_field id: :search_field,  name: :search, full_width: false do
                 label 'Search Tickets'
                 event :input do
                   replaces :ticket_list, :ticket_list, input_tag: :input_data_container
                 end
                 event :change do
+                  replaces :ticket_list, :ticket_list, input_tag: :input_data_container
                   replaces :completed_searches, :completed_searches, input_tag: :input_data_container
+                  clears :search_field
                 end
               end
             end
           end
           column 8 do
-            attach :completed_searches, searches: []
+            attach :completed_searches
           end
         end
         attach :ticket_list, title: 'Search Results'
@@ -35,6 +51,7 @@ Voom::Presenters.define(:search_select) do
 end
 
 Voom::Presenters.define(:ticket_list) do
+  helpers Demo::Helpers::SearchSelectDemo
   helpers do
     def ticket_data
       [OpenStruct.new(id: 1, event_name: 'Pearl Jam', type: 'General Admission', amount: 10.00),
@@ -46,9 +63,8 @@ Voom::Presenters.define(:ticket_list) do
     end
 
     def tickets
-      search = context.fetch(:search) {''}
-      re = Regexp.new(search)
-      ticket_data.select {|ticket| !search.empty? && re.match(ticket.event_name)}
+      re = Regexp.union(searches)
+      ticket_data.select {|ticket| re.match(ticket.event_name)}
     end
 
     def ticket_ids
@@ -70,36 +86,19 @@ Voom::Presenters.define(:ticket_list) do
 end
 
 Voom::Presenters.define(:completed_searches) do
-  helpers do
-    def searches
-      searches = context.fetch(:searches) {[]}
-      return searches if searches.is_a? Array
-      [] << searches
-    end
-  end
-
+  helpers Demo::Helpers::SearchSelectDemo
   content id: :completed_searches do
     searches.each do |search|
-      chip color: :primary, name: 'searches', value: search do
+      chip color: :primary, name: 'searches[]', value: search, id: search do
         text search
         icon :delete, position: :right do
           event :click do
-            snackbar 'Do something useful here!'
+            remove search
+            replaces :ticket_list, :ticket_list, input_tag: :input_data_container
           end
         end
       end
     end
-
-    search = context.fetch(:search) {nil}
-    chip color: :primary, name: 'searches', value: search do
-      text search
-      icon :delete, position: :right do
-        event :click do
-          snackbar 'Do something useful here!'
-        end
-      end
-      searches << search
-    end unless search.nil?
   end
 end
 

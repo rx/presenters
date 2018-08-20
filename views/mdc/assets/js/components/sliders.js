@@ -22,10 +22,23 @@ export class VSlider extends visibilityObserverMixin(eventHandlerMixin(VBaseComp
         this.recalcWhenVisible(this);
     }
 
-    prepareSubmit(form, params) {
-        // On actual post/submit the form is passed and we are not expected to return our value
-        //if (!form) {
-            params.push([this.element.getAttribute('data-name'), this.mdcComponent.value]);
-        //}
+    prepareSubmit(params) {
+        params.push([this.name(), this.value()]);
+     }
+
+    name(){
+        return this.element.getAttribute('data-name')
+    }
+
+    value(){
+        return this.mdcComponent.value
+    }
+
+    clear(){
+        this.setValue('');
+    }
+
+    setValue(value){
+        this.mdcComponent.value = value;
     }
 }
