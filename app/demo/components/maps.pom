@@ -1,0 +1,17 @@
+require_relative '../helpers/indented_grid'
+
+Voom::Presenters.define(:maps) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :component_drawer
+  page_title 'Maps'
+
+  indented_grid do
+    subheading 'Static Maps'
+
+    map address: '125 Park Street, Traverse City, MI', height: 300, width: 400
+
+    attach :code, file: __FILE__
+  end
+
+end
