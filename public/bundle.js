@@ -17548,7 +17548,7 @@ class VSelect extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__
     }
 
     value() {
-        return this.select.value;
+        return this.select.options[this.select.selectedIndex];
     }
 
     clear() {
@@ -18400,19 +18400,19 @@ class VCheckbox extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler
     }
 
     name() {
-        return this.element.name;
+        return this.input.name;
     }
 
     value() {
-        return this.element.value;
+        return this.input.value;
     }
 
     clear() {
-        this.element.setValue('');
+        this.setValue('');
     }
 
     setValue(value) {
-        this.element.value = value;
+        this.input.value = value;
     }
 
 }
@@ -36439,7 +36439,7 @@ class VHiddenField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_hand
     }
 
     name() {
-        return this.element.name;
+        return this.name;
     }
 
     value() {

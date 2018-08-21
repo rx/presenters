@@ -30,19 +30,19 @@ export class VCheckbox extends eventHandlerMixin(VBaseComponent) {
     }
 
     name(){
-        return this.element.name;
+        return this.input.name;
     }
 
     value(){
-        return this.element.value;
+        return this.input.value;
     }
 
     clear(){
-        this.element.setValue('');
+        this.setValue('');
     }
 
     setValue(value){
-        this.element.value = value;
+        this.input.value = value;
     }
 
 }
