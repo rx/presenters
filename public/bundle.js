@@ -36439,7 +36439,7 @@ class VHiddenField extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_hand
     }
 
     name() {
-        return this.name;
+        return this.element.name;
     }
 
     value() {

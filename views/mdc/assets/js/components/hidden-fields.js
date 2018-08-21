@@ -26,7 +26,7 @@ export class VHiddenField extends eventHandlerMixin(VBaseComponent) {
     }
 
     name(){
-        return this.name;
+        return this.element.name;
     }
 
     value(){
