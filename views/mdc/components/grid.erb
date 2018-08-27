@@ -1,7 +1,16 @@
-<% @grid_nesting += 1 %>
+<% @grid_nesting += 1
+   def _padding_array_(padding, nesting)
+     return (%i(top0 right0 bottom0 left0)-padding.map{|p|"#{p}0".to_sym}+padding).sort if padding
+     nesting >1 ? %i(top right0 bottom left0).sort : []
+   end
+
+   def _padding_classes_(padding, nesting, grid_or_column)
+     "v-#{grid_or_column}__padding-#{_padding_array_(padding, nesting).join('-')}"
+   end
+%>
 <div id="<%= comp.id %>"
      class="mdc-layout-grid
-            <%= 'v-nested_grid' if @grid_nesting>1 && !comp.padded %>"
+            <%= _padding_classes_(comp.padding, @grid_nesting, :grid) %>"
      style="<%= "background-color: #{comp.color};" if comp.color %>">
   <% unless @grid_nesting>1 %>
   <% end %>
@@ -13,7 +22,8 @@
         span << " mdc-layout-grid__cell--span-#{col.send(device)}-#{device}" if col.send(device)
       end
     %>
-      <div id="<%= col.id %>" class="mdc-layout-grid__cell <%= span %>"
+      <div id="<%= col.id %>" class="mdc-layout-grid__cell <%= span %>
+                          <%= _padding_classes_(col.padding, 0, :col) %>"
            style="<%= "background-color: #{col.color};" if col.color %>">
         <%= erb :"components/render", :locals => {:components => col.components, :scope => nil} %>
       </div>
