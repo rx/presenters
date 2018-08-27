@@ -5,7 +5,32 @@
   > label {
     top: 0px;
   }
+  .ql-toolbar {
+    &.ql-snow {
+      border-color: $v-input-border-color;
+      border-top-left-radius: $v-input-border-radius;
+      border-top-right-radius: $v-input-border-radius;
+    }
+  }
   .v-rich-text-area {
     height: 350px;
+    &.ql-snow {
+      border-color: $v-input-border-color;
+      border-bottom-left-radius: $v-input-border-radius;
+      border-bottom-right-radius: $v-input-border-radius;
+    }
+  }
+  &:hover {
+    .ql-toolbar {
+      &.ql-snow {
+        border-color: $v-input-hover-border-color;
+      }
+    }
+    .v-rich-text-area {
+      &.ql-snow {
+        border-color: $v-input-hover-border-color;
+     ;
+      }
+    }
   }
 }

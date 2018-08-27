@@ -46,7 +46,7 @@ function toggleSelectTotalHeader(component, count, show = false) {
 
 function toggleSelectTotalInput(component, selectTotal = false) {
     if (component.dataset.totalLines > 0) {
-        component.querySelector('#select-total').checked = selectTotal
+        component.querySelector('#select-total').checked = selectTotal;
         component.querySelector('#list-item-select-all-toggle-on').classList.add('hidden');
         component.querySelector('#list-item-select-all-toggle-off').classList.add('hidden');
         component.querySelector('#list-item-select-all-toggle-' + (selectTotal ? 'on' : 'off')).classList.remove('hidden');
