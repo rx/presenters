@@ -54,7 +54,7 @@ module Voom
             @columns = []
             @color = h(color)
             padding = attribs.delete(:padding) {nil}
-            @padding = validate_padding(coerce_padding(padding)).uniq if padding
+            @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
             expand!
           end
 
@@ -94,7 +94,7 @@ module Voom
               @color = attribs.delete(:color)
               @components = []
               padding = attribs.delete(:padding) {nil}
-              @padding = validate_padding(coerce_padding(padding)).uniq if padding
+              @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
               expand!
             end
 
