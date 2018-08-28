@@ -1,7 +1,8 @@
 <% if comp
   float_label = comp.options.select{|o| o.selected }.any?
 %>
-  <div class="mdc-select v-input">
+  <div class="mdc-select v-input"
+       <%= 'style="width: 100%;"' if comp.full_width %>>
     <select id="<%= comp.id %>"
             name="<%= comp.name%>"
             class="mdc-select__native-control"
