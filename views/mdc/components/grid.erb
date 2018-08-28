@@ -1,6 +1,6 @@
 <% @grid_nesting += 1
    def _padding_array_(padding, nesting)
-     return (%i(top0 right0 bottom0 left0)-padding.map{|p|"#{p}0".to_sym}+padding).sort if padding
+     return (%i(top0 right0 bottom0 left0)-padding.map{|p|"#{p}0".to_sym}+padding.map(&:to_sym)).sort if padding
      nesting >1 ? %i(top right0 bottom left0).sort : []
    end
 
