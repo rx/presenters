@@ -29,11 +29,11 @@ module Voom
         include Voom::Serializer
         include Voom::Trace
 
-        attr_reader :router, :context, :components
-        private :context, :router
+        attr_reader :router, :context, :components, :namespace
+        private :context, :router, :namespace
         alias params context
 
-        def initialize(parent: nil, router: nil, context:, &block)
+        def initialize(context:, parent: nil, router: nil, namespace: [], &block)
           @parent = parent
           @router = router || @parent&.send(:router)
           @context = context
@@ -42,6 +42,7 @@ module Voom
           @drawer = nil
           @components = []
           @footer = nil
+          @namespace = namespace
           add_global_helpers
         end
 

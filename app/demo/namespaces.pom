@@ -1,0 +1,63 @@
+require_relative 'helpers/indented_grid'
+
+Voom::Presenters.define(:mypresenter, namespace: :mynamespace) do
+  content id: :attached_presenter do
+    body "`attach 'mynamespace:mypresenter'` from a presenter in a different namespace. #{context[:replaced]}"
+  end
+end
+
+Voom::Presenters.define(:mypresenter, namespace: [:mynamespace, :level2]) do
+  content id: :attached_presenter2 do
+    body %(Namespaces can be nested two levels deep by passing an array of namespaces:
+              `Voom::Presenters.define(:mypresenter, namespace: [:foo,:bar])`
+           #{context[:replaced]})
+
+  end
+end
+
+Voom::Presenters.define(:namespaces) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  page_title 'Namespaces' do
+    icon 'far fa-object-group'
+  end
+
+  indented_grid do
+    body %(Presenters support namespaces. The namespace is an optional parameter to the define method:
+
+          `Voom::Presenters.define(:mypresenter, namespace: :mynamespace)`
+
+           When defined in a namespace all other presenters in the same namespace are accessable without scoping the namespace.
+           When accessing a presenter outside your current namespace, simple provide the namespace(s) with `:` as the separator.
+           attach, loads and replaces all accept namespaced presenters:)
+    blank
+    attach 'mynamespace:mypresenter'
+    button 'Load' do
+      event :click do
+        loads 'mynamespace:mypresenter', replaced: 'I was loaded'
+      end
+    end
+    button 'Replace' do
+      event :click do
+        replaces :attached_presenter, 'mynamespace:mypresenter', replaced: 'I was replaced'
+      end
+    end
+    blank
+    attach 'mynamespace:level2:mypresenter'
+    button 'Load' do
+      event :click do
+        loads 'mynamespace:level2:mypresenter', replaced: 'I was loaded'
+      end
+    end
+    button 'Replace' do
+      event :click do
+        replaces :attached_presenter2, 'mynamespace:level2:mypresenter', replaced: 'I was replaced'
+      end
+    end
+    blank
+    body %(Routes add the namespace(s) as a prefix: /mynamespace/mypresenter)
+
+
+  end
+  attach :code, file: __FILE__
+end
