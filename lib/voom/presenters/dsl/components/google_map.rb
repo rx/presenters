@@ -4,12 +4,12 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class Map < Base
+        class GoogleMap < Base
 
           attr_reader :url, :google_api_key
 
           def initialize(**attribs_, &block)
-            super(type: :map, **attribs_, &block)
+            super(type: :google_map, **attribs_, &block)
             @address = attribs.delete(:address)
             @latitude = attribs.delete(:latitude)
             @longitude = attribs.delete(:longitude)
