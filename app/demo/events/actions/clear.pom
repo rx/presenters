@@ -1,0 +1,23 @@
+Voom::Presenters.define(:clear_action) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :events_drawer
+
+  indented_grid do
+    heading 'Clear'
+    body 'Allows you to clear an input control.',
+         'Takes the id of the element to clear.'
+
+    text_field id: :input_to_clear do
+      label 'Input to clear'
+      value 'Clear me'
+    end
+
+    button 'clear' do
+      event :click do
+        clear :input_to_clear
+      end
+    end
+  end
+  attach :code, file: __FILE__
+end
