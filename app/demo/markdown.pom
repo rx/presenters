@@ -62,5 +62,6 @@ Voom::Presenters.define(:markdown) do
       ## changelog
       * 17-Feb-2013 re-design
     HEREDOC
+    attach :code, file: __FILE__
   end
 end

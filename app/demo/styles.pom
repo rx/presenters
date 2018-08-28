@@ -29,4 +29,5 @@ Voom::Presenters.define(:styles) do
     overline 'Overline'
     body 'You can use [markdown](/markdown) in your typography'
   end
+  attach :code, file: __FILE__
 end
