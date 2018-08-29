@@ -1,20 +1,5 @@
 require_relative 'helpers/indented_grid'
 
-Voom::Presenters.define(:mypresenter, namespace: :mynamespace) do
-  content id: :attached_presenter do
-    body "`attach 'mynamespace:mypresenter'` from a presenter in a different namespace. #{context[:replaced]}"
-  end
-end
-
-Voom::Presenters.define(:mypresenter, namespace: [:mynamespace, :level2]) do
-  content id: :attached_presenter2 do
-    body %(Namespaces can be nested two levels deep by passing an array of namespaces:
-              `Voom::Presenters.define(:mypresenter, namespace: [:foo,:bar])`
-           #{context[:replaced]})
-
-  end
-end
-
 Voom::Presenters.define(:namespaces) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
@@ -23,41 +8,81 @@ Voom::Presenters.define(:namespaces) do
   end
 
   indented_grid do
-    body %(Presenters support namespaces. The namespace is an optional parameter to the define method:
+    body 'Presenters support namespaces. The namespace is an optional parameter to the define method:'
+    blank
+    body "`Voom::Presenters.define(:mypresenter, namespace: :namespace1)` or"
+    attach 'namespace2:alternate_namespacing'
 
-          `Voom::Presenters.define(:mypresenter, namespace: :mynamespace)`
-
-           When defined in a namespace all other presenters in the same namespace are accessable without scoping the namespace.
+    body %(When defined in a namespace all other presenters in the same namespace are accessable without scoping the namespace.
            When accessing a presenter outside your current namespace, simple provide the namespace(s) with `:` as the separator.
            attach, loads and replaces all accept namespaced presenters:)
     blank
-    attach 'mynamespace:mypresenter'
+    attach 'namespace1:attach_with_namespace'
+    body   'Both loads and replaces are namespace aware. To call a presenter in the ame namespace, no scoping is needed.
+            To call a presenter in another namespace, you need to fully qualify it.'
     button 'Load' do
       event :click do
-        loads 'mynamespace:mypresenter', replaced: 'I was loaded'
+        loads 'namespace1:attach_with_namespace', replaced: 'I was loaded'
       end
     end
     button 'Replace' do
       event :click do
-        replaces :attached_presenter, 'mynamespace:mypresenter', replaced: 'I was replaced'
+        replaces :attach_with_namespace_id, 'namespace1:attach_with_namespace', replaced: 'I was replaced'
       end
     end
     blank
-    attach 'mynamespace:level2:mypresenter'
+    attach 'namespace1:namespace2:nested_namespaces'
     button 'Load' do
       event :click do
-        loads 'mynamespace:level2:mypresenter', replaced: 'I was loaded'
+        loads 'namespace1:namespace2:nested_namespaces', replaced: 'I was loaded'
       end
     end
     button 'Replace' do
       event :click do
-        replaces :attached_presenter2, 'mynamespace:level2:mypresenter', replaced: 'I was replaced'
+        replaces :nested_namespaces_id, 'namespace1:namespace2:nested_namespaces', replaced: 'I was replaced'
       end
     end
     blank
-    body %(Routes add the namespace(s) as a prefix: /mynamespace/mypresenter)
-
-
+    body %(Routes add the namespace(s) as a prefix: /namespace1/mypresenter)
+    blank
+    overline 'Notes:'
+    attach 'namespace1:namespace2:notes'
   end
   attach :code, file: __FILE__
+end
+
+Voom::Presenters.define(:attach_with_namespace, namespace: :namespace1) do
+  content id: :attach_with_namespace_id do
+    body "`attach 'namespace1:mypresenter'` from a presenter in a different namespace."
+    attach :replaced # Demonstrates calling top level presenters from a namespaced presenter
+  end
+end
+
+Voom::Presenters.define(:nested_namespaces, namespace: [:namespace1, :namespace2]) do
+  content id: :nested_namespaces_id do
+    body %(Namespaces can be nested two levels deep by passing an array of namespaces:
+              `Voom::Presenters.define(:mypresenter, namespace: [:foo,:bar])`)
+    attach :replaced # Demonstrates calling top level presenters from a namespaced presenter
+  end
+end
+
+Voom::Presenters.define(:replaced) do
+  body "#{context[:replaced]}"
+end
+
+Voom::Presenters.define('namespace2:alternate_namespacing') do
+    body "`Voom::Presenters.define('namespace1:mypresenter')`"
+    attach :blank_line # demonstrates attaching a presenter in the same namespace mixing alternate naming
+end
+
+Voom::Presenters.define(:blank_line, namespace: :namespace2) do
+  blank
+end
+
+Voom::Presenters.define('namespace2:notes', namespace: :namespace1) do
+  body <<~HEREDOC
+    * You can mix the two syntax's. `Voom::Presenters.define('namespace2:mypresenter', namespace: 'namespace1')`
+      * With this syntax attach/loads and replaces will operate in namespace1, unless fully qualified    
+    * Unlike ruby modules you are either inside a namespace and can call presenters without qualification, or you are not and you must fully qualify them.
+  HEREDOC
 end
