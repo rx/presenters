@@ -10,8 +10,7 @@ module Voom
           include Mixins::Tooltips
 
           def initialize(**attribs_, &block)
-            super(context: context,
-                  **attribs_, &block)
+            super(**attribs_, &block)
             expand!
           end
         end

@@ -7,9 +7,9 @@ module Voom
         module Mixins
           module Event
             attr_reader :events
-            def event(event, **params, &block)
+            def event(event, &block)
               @events ||= []
-              @events << Components::Event.new(parent: self, event: event, context: context&.merge(params), &block)
+              @events << Components::Event.new(parent: self, event: event, &block)
             end
           end
         end

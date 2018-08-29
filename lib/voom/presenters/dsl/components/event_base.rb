@@ -9,7 +9,7 @@ module Voom
           attr_reader :event_parent_id
 
           def initialize(**attribs_, &block)
-            super(type: :icon, context: context,
+            super(type: :icon, 
                   **attribs_, &block)
             @event_parent_id = @id
           end

@@ -26,7 +26,6 @@ module Voom
           def clear_icon(icon=nil, **attribs, &block)
             return @clear_icon if locked?
             @clear_icon = icon ? Components::Icon.new(parent: self, icon: icon,
-                                                      context: context,
                                                       **attribs, &block) : nil
           end
 

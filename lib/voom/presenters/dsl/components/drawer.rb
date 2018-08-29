@@ -21,7 +21,7 @@ module Voom
 
           def menu(**attribs, &block)
             return @menu if locked?
-            @menu = Menu.new(parent: self, context: context,
+            @menu = Menu.new(parent: self,
                              **attribs, &block)
           end
 
@@ -32,7 +32,7 @@ module Voom
 
           def title(*text, **attribs, &block)
             return @title if locked?
-            @title = Components::Typography.new(parent: self, type: :text, text: text, context: context, **attribs, &block)
+            @title = Components::Typography.new(parent: self, type: :text, text: text, **attribs, &block)
           end
 
         end

@@ -5,7 +5,7 @@ module Voom
         module Mixins
           module GoogleMaps
             def google_map(**attributes, &block)
-              self << Components::GoogleMap.new(parent: self, context: context, **attributes, &block)
+              self << Components::GoogleMap.new(parent: self, **attributes, &block)
             end
           end
         end

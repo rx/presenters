@@ -25,24 +25,24 @@ module Voom
             include Mixins::GoogleMaps
 
             def badge(badge=nil, **attributes, &block)
-              self << Components::Badge.new(parent: self, badge: badge, context: context, **attributes, &block)
+              self << Components::Badge.new(parent: self, badge: badge, **attributes, &block)
             end
 
             def card(**attributes, &block)
-              self << Components::Card.new(parent: self, context: context, **attributes, &block)
+              self << Components::Card.new(parent: self, **attributes, &block)
             end
 
             def form(id: nil, **attributes, &block)
-              self << Components::Form.new(parent: self, id: id, context: context, **attributes, &block)
+              self << Components::Form.new(parent: self, id: id, **attributes, &block)
             end
 
             def list(**attributes, &block)
               self << Components::List.new(parent: self,
-                                           context: context, **attributes, &block)
+                                           **attributes, &block)
             end
 
             def table(**attributes, &block)
-              self << Components::Table.new(parent: self, context: context, **attributes, &block)
+              self << Components::Table.new(parent: self, **attributes, &block)
             end
           end
         end

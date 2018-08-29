@@ -22,7 +22,7 @@ module Voom
           VALID_ORIENTATIONS = [:vertical, :horizontal]
 
           def initialize(**attribs_, &block)
-            super(type: :stepper, context: context, **attribs_, &block)
+            super(type: :stepper, **attribs_, &block)
             @orientation = attribs.delete(:orientation) {:horizontal}
             raise_parameter_validation "Invalid Orientation Type specified: #{orientation}" unless VALID_ORIENTATIONS.include? orientation
             @linear = attribs.delete(:linear) {true}
@@ -31,7 +31,7 @@ module Voom
           end
 
           def step(text = nil, **attribs, &block)
-            @steps << Step.new(parent: self, context: context, text: text, **attribs, &block)
+            @steps << Step.new(parent: self, text: text, **attribs, &block)
           end
 
           class Step < Form
@@ -49,8 +49,8 @@ module Voom
 
             attr_accessor :components, :editable, :optional, :selected
 
-            def initialize(context:, **attribs_, &block)
-              super(type: :step, context: context, **attribs_, &block)
+            def initialize(**attribs_, &block)
+              super(type: :step, **attribs_, &block)
               @editable = attribs.delete(:editable) {true}
               @optional = attribs.delete(:optional) {false}
               @selected = attribs.delete(:selected) {false}
@@ -66,7 +66,6 @@ module Voom
             def actions(**attribs, &block)
               return @actions if locked?
               @actions = Actions.new(parent: self,
-                                     context: context,
                                      **attribs, &block)
             end
 
@@ -100,7 +99,6 @@ module Voom
 
               def button(text = nil, stepper_type, **options, &block)
                 btn = StepperButton.new(stepper_type, parent: self, text: text,
-                                                   context: context,
                                                    **options, &block)
 
                 btn.instance_eval do

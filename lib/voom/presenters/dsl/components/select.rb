@@ -24,14 +24,12 @@ module Voom
           def icon(icon=nil, **attribs, &block)
             return @icon if locked?
             @icon = Components::Icon.new(parent: self, icon: icon,
-                                         context: context,
                                          **attribs, &block)
           end
 
           def option(text=nil, **attribs, &block)
             @options << Option.new(parent: self,
                                    text: text,
-                                   context: context,
                                    **attribs, &block)
           end
 

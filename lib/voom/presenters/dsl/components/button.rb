@@ -28,19 +28,18 @@ module Voom
           def icon(icon=nil, **attribs, &block)
             return @icon if locked?
             @icon = Components::Icon.new(parent: self, icon: icon,
-                                         context: context,
                                          **attribs, &block)
 
           end
 
           def image(image=nil, **attribs, &block)
             return @image if locked?
-            @image = Components::Image.new(parent: self, image: image, context: context, **attribs, &block)
+            @image = Components::Image.new(parent: self, image: image, **attribs, &block)
           end
 
           def menu(**attributes, &block)
             return @menu if locked?
-            @menu = Components::Menu.new(parent: self, position: menu_position, context: context, **attributes, &block)
+            @menu = Components::Menu.new(parent: self, position: menu_position, **attributes, &block)
           end
 
           private

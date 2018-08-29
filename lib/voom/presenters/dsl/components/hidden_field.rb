@@ -8,7 +8,7 @@ module Voom
           attr_reader :name
 
           def initialize(**attribs_, &block)
-            super(type: :hidden_field, context: context,
+            super(type: :hidden_field,
                   **attribs_, &block)
             expand!
           end

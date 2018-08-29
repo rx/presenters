@@ -18,16 +18,14 @@ module Voom
           include Trace
           include Mixins::YieldTo
 
-          attr_reader :type, :id, :attributes, :context
+          attr_reader :type, :id, :attributes
 
-          alias params context
           alias attribs attributes
 
-          def initialize(type:, parent:, id: nil, context: {}, **attributes, &block)
+          def initialize(type:, parent:, id: nil, **attributes, &block)
             @id = h(id) || generate_id
             @type = h(type)
             @parent = parent
-            @context = context
             @attributes = escape(attributes)
             @block = block
           end
@@ -66,6 +64,12 @@ module Voom
           def namespace
             @parent.send(:namespace)
           end
+
+          def context
+            @parent.send(:context)
+          end
+          alias params context
+
 
           def yield_block
             return @_yield_block_ if @_yield_block_

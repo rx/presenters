@@ -12,7 +12,6 @@ module Voom
           
           def initialize(**attribs_, &block)
             super(type: :chip,
-                  context: context,
                   **attribs_, &block)
             @icons = []
             self.text(attribs.delete(:text)) if attribs.key?(:text)
@@ -23,25 +22,23 @@ module Voom
 
           def text(*text, **attribs, &block)
             return @text if locked?
-            @text = Components::Typography.new(parent: self, type: :text, text: text, context: context, **attribs, &block)
+            @text = Components::Typography.new(parent: self, type: :text, text: text, **attribs, &block)
           end
 
           def icon(icon=nil, **attribs, &block)
             @icons << Icon.new(parent: self, icon: icon,
-                               context: context,
                                **attribs, &block)
           end
 
           def menu(**attributes, &block)
             return @menu if locked?
-            @menu = Components::Menu.new(parent: self, context: context, **attributes, &block)
+            @menu = Components::Menu.new(parent: self, **attributes, &block)
           end
           
           class Icon < Components::IconBase
 
             def initialize(**attribs_, &block)
-              super(context: context,
-                    **attribs_, &block)
+              super(**attribs_, &block)
               @position = [:left] if position.empty?
               expand!
             end

@@ -10,7 +10,6 @@ module Voom
 
             def chip(text= nil, **attribs, &block)
               self << Components::Chip.new(parent: self, text: text,
-                                                 context: context,
                                                  **attribs, &block)
             end
           end

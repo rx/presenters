@@ -61,7 +61,7 @@ module Voom
           def column(size, color: nil, **attribs, &block)
             attribs = size.respond_to?(:keys) ? attribs.merge(size) : attribs.merge(size: size)
             @columns << Column.new(parent: self, color: color,
-                                   context: context, **attribs, &block)
+                                   **attribs, &block)
           end
 
           private

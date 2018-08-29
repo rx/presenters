@@ -11,9 +11,9 @@ module Voom
             expand!
           end
 
-          def action(text=nil, **params, &block)
+          def action(text=nil, &block)
             return @action if locked?
-            @action = Action.new(parent: self, text: text, context: params, &block)
+            @action = Action.new(parent: self, text: text, &block)
           end
 
           class Action < EventBase

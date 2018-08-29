@@ -14,7 +14,7 @@ module Voom
 
           def menu(title=nil, **attribs, &block)
             return @menus if locked?
-            @menus << Menu.new(title,parent: self, context: context,
+            @menus << Menu.new(title,parent: self, 
                                **attribs, &block)
           end
 
