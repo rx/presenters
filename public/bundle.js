@@ -15469,27 +15469,26 @@ class VReplaces extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
         var elementId = this.element_id;
         var nodeToReplace = document.getElementById(elementId);
         var url = this.buildURL(this.url, this.params, this.inputValues(), [['grid_nesting', this.options.grid_nesting]]);
-
         let delayAmt = this.event instanceof InputEvent ? 500 : 0;
 
         var promiseObj = new Promise(function (resolve, reject) {
-            clearTimeout(nodeToReplace.vTimeout);
-            nodeToReplace.vTimeout = setTimeout(function () {
-                httpRequest.onreadystatechange = function () {
-                    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                        console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
-                        if (httpRequest.status === 200) {
-                            if (!nodeToReplace) {
-                                let msg = 'Unable to located node: \'' + elementId + '\'' + ' This usually the result of issuing a replaces action and specifying a element id that does not currently exist on the page.';
-                                console.error(msg);
-                                results.push({
-                                    action: 'replaces',
-                                    statusCode: 500,
-                                    contentType: 'v/errors',
-                                    content: { exception: msg }
-                                });
-                                reject(results);
-                            } else {
+            if (!nodeToReplace) {
+                let msg = 'Unable to located node: \'' + elementId + '\'' + ' This usually the result of issuing a replaces action and specifying a element id that does not currently exist on the page.';
+                console.error(msg);
+                results.push({
+                    action: 'replaces',
+                    statusCode: 500,
+                    contentType: 'v/errors',
+                    content: { exception: msg }
+                });
+                reject(results);
+            } else {
+                clearTimeout(nodeToReplace.vTimeout);
+                nodeToReplace.vTimeout = setTimeout(function () {
+                    httpRequest.onreadystatechange = function () {
+                        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                            console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
+                            if (httpRequest.status === 200) {
                                 nodeToReplace.outerHTML = httpRequest.responseText;
                                 var newNode = document.getElementById(elementId);
                                 Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["a" /* initialize */])(newNode);
@@ -15501,23 +15500,23 @@ class VReplaces extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
                                     content: httpRequest.responseText
                                 });
                                 resolve(results);
+                            } else {
+                                results.push({
+                                    action: 'replaces',
+                                    statusCode: httpRequest.status,
+                                    contentType: this.getResponseHeader('content-type'),
+                                    content: httpRequest.responseText
+                                });
+                                reject(results);
                             }
-                        } else {
-                            results.push({
-                                action: 'replaces',
-                                statusCode: httpRequest.status,
-                                contentType: this.getResponseHeader('content-type'),
-                                content: httpRequest.responseText
-                            });
-                            reject(results);
                         }
-                    }
-                };
-                console.log('GET:' + url);
-                httpRequest.open('GET', url, true);
-                httpRequest.setRequestHeader('X-NO-LAYOUT', true);
-                httpRequest.send();
-            }, delayAmt);
+                    };
+                    console.log('GET:' + url);
+                    httpRequest.open('GET', url, true);
+                    httpRequest.setRequestHeader('X-NO-LAYOUT', true);
+                    httpRequest.send();
+                }, delayAmt);
+            }
         });
         return promiseObj;
     }
@@ -15805,7 +15804,6 @@ class VRemoves {
     call(results) {
         let ids = this.ids;
         var promiseObj = new Promise(function (resolve) {
-            console.log("Removing");
             results.push({ action: 'removes', statusCode: 200 });
             for (const id of ids) {
                 let elem = document.getElementById(id);
@@ -17552,6 +17550,7 @@ class VSelect extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__
     }
 
     clear() {
+        this.select.selectedIndex = -1;
         this.setValue('');
     }
 
@@ -17929,7 +17928,7 @@ class VChip extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["
     }
 
     clear() {
-        this.setValue('');
+        console.log('\tChip clear is a no-op');
     }
 
     setValue(value) {
@@ -18408,13 +18407,12 @@ class VCheckbox extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler
     }
 
     clear() {
-        this.setValue('');
+        this.input.checked = false;
     }
 
     setValue(value) {
         this.input.value = value;
     }
-
 }
 /* unused harmony export VCheckbox */
 
@@ -19079,7 +19077,9 @@ class VSwitch extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__
     }
 
     prepareSubmit(params) {
-        params.push([this.name(), this.value()]);
+        if (this.input.checked) {
+            params.push([this.name(), this.value()]);
+        }
     }
 
     name() {
@@ -19087,17 +19087,16 @@ class VSwitch extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__
     }
 
     value() {
-        return this.input.checked;
+        return this.input.value;
     }
 
     clear() {
-        this.setValue(false);
+        this.input.checked = false;
     }
 
     setValue(value) {
-        this.input.checked = value;
+        this.input.value = value;
     }
-
 }
 /* unused harmony export VSwitch */
 
@@ -35598,7 +35597,7 @@ class VSlider extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_obse
     }
 
     clear() {
-        this.setValue('');
+        this.setValue(0);
     }
 
     setValue(value) {
