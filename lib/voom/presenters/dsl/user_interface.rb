@@ -76,7 +76,7 @@ module Voom
                                            **attribs, &block)
         end
 
-        def attach(presenter, **context_, &yield_block)
+        def attach(presenter, **params, &yield_block)
           pom = super
           @header ||= pom.header
           @drawer ||= pom.drawer
