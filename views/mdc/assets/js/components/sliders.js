@@ -35,7 +35,7 @@ export class VSlider extends visibilityObserverMixin(eventHandlerMixin(VBaseComp
     }
 
     clear(){
-        this.setValue('');
+        this.setValue(0);
     }
 
     setValue(value){

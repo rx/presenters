@@ -1,4 +1,7 @@
-<div class="v-rich-text-area-container v-input">
+<div class="v-rich-text-area-container v-input"
+     <% if comp.tag %>
+     data-input-tag="<%= comp.tag %>"
+     <% end %>>
   <label class="mdc-floating-label" for="<%= comp.id %>"><%= expand_text(comp.label) %></label>
   <div class="v-rich-text-area"
        id="<%= comp.id %>"

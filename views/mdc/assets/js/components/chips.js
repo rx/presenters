@@ -35,7 +35,7 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
     }
 
     clear(){
-        this.setValue('');
+        console.log('\tChip clear is a no-op');
     }
 
     setValue(value){

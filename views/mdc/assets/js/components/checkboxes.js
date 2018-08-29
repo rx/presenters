@@ -38,11 +38,10 @@ export class VCheckbox extends eventHandlerMixin(VBaseComponent) {
     }
 
     clear(){
-        this.setValue('');
+        this.input.checked = false
     }
 
     setValue(value){
         this.input.value = value;
     }
-
 }

@@ -14,6 +14,9 @@
   <% end %>
 
   <div id="<%= comp.id %>"
+       <% if comp.tag %>
+       data-input-tag="<%= comp.tag %>"
+       <% end %>
        class="v-input mdc-chip
               <%= color_classname(comp) %>
               v-menu-click"

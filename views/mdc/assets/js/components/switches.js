@@ -24,7 +24,9 @@ export class VSwitch extends eventHandlerMixin(VBaseComponent) {
     }
 
     prepareSubmit(params) {
-        params.push([this.name(), this.value()]);
+        if(this.input.checked) {
+            params.push([this.name(), this.value()]);
+        }
     }
 
     name(){
@@ -32,15 +34,14 @@ export class VSwitch extends eventHandlerMixin(VBaseComponent) {
     }
 
     value(){
-        return this.input.checked;
+        return this.input.value;
     }
 
     clear(){
-        this.setValue(false);
+        this.input.checked = false
     }
 
     setValue(value){
-        this.input.checked = value;
+        this.input.value = value;
     }
-
 }

@@ -29,7 +29,7 @@ Voom::Presenters.define('top_nav') do
         end
       end
 
-      item 'Advanced Patterns' do
+      item 'Patterns' do
         event :click do
           loads :patterns
         end

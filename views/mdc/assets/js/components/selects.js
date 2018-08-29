@@ -35,6 +35,7 @@ export class VSelect extends eventHandlerMixin(VBaseComponent) {
     }
 
     clear(){
+        this.select.selectedIndex = -1;
         this.setValue('');
     }
 
