@@ -13,15 +13,28 @@ module Voom
         set :bind, '0.0.0.0'
 
         get '/:_presenter_.pom' do
-          render_presenter
+          render_presenter(params[:_presenter_])
         end
+
+        get '/:_namespace1_/:_presenter_.pom' do
+          fq_presenter = [params[:_namespace1_], params[:_presenter_]].join(':')
+          pass unless Presenters::App.registered?(fq_presenter)
+          render_presenter(fq_presenter)
+        end
+
+        get '/:_namespace1_/:_namespace2_/:_presenter_.pom' do
+          fq_presenter = [params[:_namespace1_], params[:_namespace2_], params[:_presenter_]].join(':')
+          pass unless Presenters::App.registered?(fq_presenter)
+          render_presenter(fq_presenter)
+        end
+
 
         private
 
-        def render_presenter
+        def render_presenter(presenter)
           # puts "/presenters/api/#{params[:version]}/#{params[:presenter]}/"
           # puts "Parameters: #{params.inspect}"
-          presenter = Voom::Presenters::App[params[:_presenter_]].call
+          presenter = Voom::Presenters::App[presenter].call
           pom = presenter.expand(router: router, context: prepare_context)
           content_type :json
           JSON.dump(pom.to_hash)

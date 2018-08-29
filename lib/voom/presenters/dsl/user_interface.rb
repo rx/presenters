@@ -6,6 +6,7 @@ require_relative 'components/mixins/dialogs'
 require_relative 'components/mixins/snackbars'
 require_relative 'components/mixins/text_fields'
 require_relative 'components/mixins/date_time_fields'
+require_relative 'components/mixins/attaches'
 require_relative 'invalid_presenter'
 
 require 'voom/serializer'
@@ -24,16 +25,16 @@ module Voom
         include Components::Mixins::Icons
         include Components::Mixins::TextFields
         include Components::Mixins::DateTimeFields
-
+        include Components::Mixins::Attaches
 
         include Voom::Serializer
         include Voom::Trace
 
-        attr_reader :router, :context, :components
-        private :context, :router
+        attr_reader :router, :context, :components, :namespace
+        private :context, :router, :namespace
         alias params context
 
-        def initialize(parent: nil, router: nil, context:, &block)
+        def initialize(context:, parent: nil, router: nil, namespace: [], &block)
           @parent = parent
           @router = router || @parent&.send(:router)
           @context = context
@@ -42,6 +43,7 @@ module Voom
           @drawer = nil
           @components = []
           @footer = nil
+          @namespace = namespace
           add_global_helpers
         end
 
@@ -74,13 +76,11 @@ module Voom
                                            **attribs, &block)
         end
 
-        def attach(presenter, **context_, &yield_block)
-          @_yield_block_ = yield_block
-          pom = Voom::Presenters::App[presenter].call.expand_child(parent: self, context: context.merge(context_))
+        def attach(presenter, **params, &yield_block)
+          pom = super
           @header ||= pom.header
           @drawer ||= pom.drawer
           @footer ||= pom.footer
-          @components += pom.components
         end
 
         # Called by the definition.expand method to evaluate a user interface with a different context

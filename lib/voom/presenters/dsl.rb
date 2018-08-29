@@ -2,8 +2,12 @@ require 'voom/trace'
 
 module Voom
   module Presenters
-    def self.define(name, &block)
-      DSL.define(name, &block)
+    def self.define(name, namespace: nil, &block)
+      unless namespace
+        namespace = name.to_s.split(':')
+        name = namespace.pop
+      end
+      DSL.define(name, namespace, &block)
     end
 
     module DSL
@@ -17,8 +21,10 @@ module Voom
         @registry
       end
 
-      def self.define(name, &block)
-        registry[name] = Voom::Presenters::DSL::Definition.new(&block)
+      def self.define(name, namespace, &block)
+        namespace = Array(namespace).map(&:to_s)
+        fq_name = namespace.any? ? namespace.join(':') + ':'+name.to_s : name.to_s
+        registry[fq_name] = Voom::Presenters::DSL::Definition.new(namespace, &block)
       end
 
       def self.load(directory)

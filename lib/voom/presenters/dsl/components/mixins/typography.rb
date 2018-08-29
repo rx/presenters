@@ -35,6 +35,10 @@ module Voom
               self << Components::Typography.new(parent: self, type: :body, text: text, level: level, context: context, **attributes, &block)
             end
 
+            def blank(level: 1, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :body, text: ['&nbsp;'], level: level, context: context, **attributes, &block)
+            end
+
             def caption(*text, **attributes, &block)
               self << Components::Typography.new(parent: self, type: :caption, text: text, context: context, **attributes, &block)
             end

@@ -64,6 +64,10 @@ module Voom
             @parent.send(:router)
           end
 
+          def namespace
+            @parent.send(:namespace)
+          end
+
           def yield_block
             return @_yield_block_ if @_yield_block_
             @parent.send(:yield_block)

@@ -1,5 +1,5 @@
 class CustomRender < Redcarpet::Render::Safe
-  include Redcarpet::Render::SmartyPants
+  # include Redcarpet::Render::SmartyPants
   BR = '<br/>'
   
   def initialize(extensions = {})

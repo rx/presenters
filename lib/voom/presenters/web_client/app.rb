@@ -103,6 +103,20 @@ module Voom
           render_presenter(presenter)
         end
 
+        get '/:_namespace1_/:_presenter_' do
+          fq_presenter = [params[:_namespace1_], params[:_presenter_]].join(':')
+          pass unless Presenters::App.registered?(fq_presenter)
+          presenter = Presenters::App[fq_presenter].call
+          render_presenter(presenter)
+        end
+
+        get '/:_namespace1_/:_namespace2_/:_presenter_' do
+          fq_presenter = [params[:_namespace1_], params[:_namespace2_], params[:_presenter_]].join(':')
+          pass unless Presenters::App.registered?(fq_presenter)
+          presenter = Presenters::App[fq_presenter].call
+          render_presenter(presenter)
+        end
+
         # Forms engine demo
         post '/__post__/:presenter' do
           @pom = JSON.parse(request.body.read, object_class: OpenStruct)

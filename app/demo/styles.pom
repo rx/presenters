@@ -28,5 +28,10 @@ Voom::Presenters.define(:styles) do
     caption 'Caption'
     overline 'Overline'
     body 'You can use [markdown](/markdown) in your typography'
+    body '`blank` will insert a blank line'
+    blank
+    body 'Line above me, intentionally left blank'
+
   end
+  attach :code, file: __FILE__
 end
