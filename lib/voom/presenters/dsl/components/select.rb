@@ -28,8 +28,9 @@ module Voom
                                          **attribs, &block)
           end
 
-          def option(**attribs, &block)
+          def option(text=nil, **attribs, &block)
             @options << Option.new(parent: self,
+                                   text: text,
                                    context: context,
                                    **attribs, &block)
           end

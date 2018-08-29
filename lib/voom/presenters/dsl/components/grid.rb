@@ -16,18 +16,45 @@ module Voom
   module Presenters
     module DSL
       module Components
+        module Padding
+          def coerce_padding(padding)
+            case padding
+              when true, :full
+                [:top, :right, :bottom, :left]
+              when false, :none
+                []
+              else
+                Array(padding)
+            end
+          end
+
+          def validate_padding(padding_)
+            validation_msg = 'Padding must either be true or :full, false or :none, '\
+                             'or an array containing zero ore more of the following :top, :right, :bottom, :left!'
+            if padding_.respond_to?(:pop)
+              raise Errors::ParameterValidation, validation_msg if (padding_ - %i(top right bottom left)).any?
+            else
+              raise Errors::ParameterValidation, validation_msg unless padding_===true ||
+                  padding_===false ||
+                  %i(full none).include(padding_)
+            end
+            padding_
+          end
+
+        end
         class Grid < Base
           include Mixins::Attaches
           include Mixins::Dialogs
           include Mixins::Snackbars
-          
-          attr_accessor :columns, :color, :padded
+
+          attr_accessor :columns, :color, :padding
 
           def initialize(color: nil, **attribs_, &block)
             super(type: :grid, **attribs_, &block)
             @columns = []
             @color = h(color)
-            @padded = attribs.delete(:padded)
+            padding = attribs.delete(:padding) {nil}
+            @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
             expand!
           end
 
@@ -37,6 +64,8 @@ module Voom
                                    context: context, **attribs, &block)
           end
 
+          private
+          include Padding
           class Column < EventBase
             include Mixins::Common
             include Mixins::Images
@@ -52,7 +81,9 @@ module Voom
             include Mixins::Steppers
             include Mixins::Sliders
 
-            attr_reader :size, :desktop, :tablet, :phone, :color, :components
+            include Padding
+
+            attr_reader :size, :desktop, :tablet, :phone, :color, :components, :padding
 
             def initialize(**attribs_, &block)
               super(type: :column, **attribs_, &block)
@@ -62,8 +93,11 @@ module Voom
               @phone = attribs.delete(:phone)
               @color = attribs.delete(:color)
               @components = []
+              padding = attribs.delete(:padding) {nil}
+              @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
               expand!
             end
+
           end
         end
       end

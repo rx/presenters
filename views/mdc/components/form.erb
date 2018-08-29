@@ -1,3 +1,12 @@
+<%
+  def buttons?(components)
+    buttons(components).any?
+  end
+
+  def buttons(components)
+    components.select {|c| eq(c.type, :button)}
+  end
+%>
 <form role="form"
       id="<%= comp.id %>"
       class="v-has-errors v-form"
@@ -6,10 +15,12 @@
       <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.id} %>>
   <div class="v-errors">
     <%= erb :"components/render", :locals => {:components => comp.components.select {|c| !eq(c.type, :button)}, :scope => nil} %>
-    <div class="mdl-dialog__actions">
-      <% comp.components.select {|c| eq(c.type, :button)}.reverse.each do |button| %>
-        <%= erb :"components/button", :locals => {:comp => button} %>
-      <% end %>
-    </div>
+    <% if buttons?(comp.components) %>
+      <div class="mdl-dialog__actions">
+        <% buttons(comp.components).reverse.each do |button| %>
+          <%= erb :"components/button", :locals => {:comp => button} %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </form>

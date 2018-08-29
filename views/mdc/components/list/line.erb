@@ -13,7 +13,7 @@
                <%= 'v-actionable' if line.events %>
                <%= 'v-menu-click' if line.menu && line.actions.any? %>"
         <%= erb :"components/event", :locals => {events: line.events, parent_id: line.event_parent_id} %>>
-    <%= expand_text(line.text&.text) %>
+    <span class="mdc-list-item__primary-text"><%= expand_text(line.text&.text) %></span>
 
     <% if line.subtitle %>
       <span class="mdc-list-item__secondary-text">
