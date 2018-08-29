@@ -5,7 +5,7 @@ module Voom
     module DSL
       module Components
         module Actions
-          class Navigates < Base
+          class Navigates < Actions::Base
             def initialize(**attribs_, &block)
               super(type: :navigates, **attribs_, &block)
             end

@@ -5,7 +5,7 @@ module Voom
     module DSL
       module Components
         module Actions
-          class Clear < Base
+          class Clear < Actions::Base
             def initialize(**attribs_, &block)
               super(type: :clear, **attribs_, &block)
             end

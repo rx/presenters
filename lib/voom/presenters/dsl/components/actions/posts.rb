@@ -5,7 +5,7 @@ module Voom
     module DSL
       module Components
         module Actions
-          class Posts < Base
+          class Posts < Actions::Base
             def initialize(**attribs_, &block)
               super(type: :post, **attribs_, &block)
             end
