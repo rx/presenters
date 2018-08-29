@@ -1,4 +1,5 @@
 require_relative 'mixins/common'
+require_relative 'mixins/attaches'
 
 module Voom
   module Presenters
@@ -6,6 +7,7 @@ module Voom
       module Components
         class Drawer < Base
           include Mixins::Common
+          include Mixins::Attaches
 
           attr_accessor :title, :components
 
@@ -24,7 +26,7 @@ module Voom
           end
 
           def attach(presenter, **params, &block)
-            pom = Voom::Presenters::App[presenter].call.expand_child(parent: self, context: context.merge(params), &block)
+            pom = super
             @menu = pom.components.select {|i| i.type==:menu}.first
           end
 
