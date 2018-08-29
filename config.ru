@@ -9,6 +9,7 @@ if ENV['VOOM_ENV']=='integration_testing'
 end
 
 ENV['VOOM_ROOT'] = File.expand_path(__dir__)
+ENV['GOOGLE_API_KEY'] = 'AIzaSyDhSgj9XSBLY5E9Rx5pP2ILQ7IXnD4uX2Q'
 libdir = File.join(ENV['VOOM_ROOT'], 'lib')
 $:.unshift(libdir) unless $:.include?(libdir)
 require 'voom/presenters/api/app'
@@ -27,4 +28,5 @@ Voom::Presenters::Settings.configure do |config|
   config.presenters.root = File.join(ENV['VOOM_ROOT'], 'app')
 end
 Voom::Presenters::App.boot!
+
 
