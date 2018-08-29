@@ -3,6 +3,10 @@ require 'voom/trace'
 module Voom
   module Presenters
     def self.define(name, namespace: nil, &block)
+      unless namespace
+        namespace = name.to_s.split(':')
+        name = namespace.pop
+      end
       DSL.define(name, namespace, &block)
     end
 
