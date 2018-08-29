@@ -7,7 +7,7 @@ module Voom
     module DSL
       module Components
         module Actions
-          class Loads < Base
+          class Loads < Actions::Base
             include Namespace
 
             def initialize(**attribs_, &block)

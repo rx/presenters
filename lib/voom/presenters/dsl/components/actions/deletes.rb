@@ -5,7 +5,7 @@ module Voom
     module DSL
       module Components
         module Actions
-          class Deletes < Base
+          class Deletes < Actions::Base
             def initialize(**attribs_, &block)
               super(type: :delete, **attribs_, &block)
             end

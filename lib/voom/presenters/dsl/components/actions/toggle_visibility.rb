@@ -5,7 +5,7 @@ module Voom
     module DSL
       module Components
         module Actions
-          class ToggleVisiblity < Base
+          class ToggleVisiblity < Actions::Base
             def initialize(**attribs_, &block)
               super(type: :toggle_visibility, **attribs_, &block)
             end

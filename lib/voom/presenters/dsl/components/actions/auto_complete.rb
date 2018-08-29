@@ -5,7 +5,7 @@ module Voom
     module DSL
       module Components
         module Actions
-          class AutoComplete < Base
+          class AutoComplete < Actions::Base
             def initialize(**attribs_, &block)
               super(type: :autocomplete, **attribs_, &block)
             end

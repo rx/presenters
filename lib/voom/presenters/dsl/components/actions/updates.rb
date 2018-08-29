@@ -5,7 +5,7 @@ module Voom
     module DSL
       module Components
         module Actions
-          class Updates < Base
+          class Updates < Actions::Base
             def initialize(**attribs_, &block)
               super(type: :update, **attribs_, &block)
             end

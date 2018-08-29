@@ -6,7 +6,7 @@ module Voom
     module DSL
       module Components
         module Actions
-          class Replaces < Base
+          class Replaces < Actions::Base
             include Namespace
 
             def initialize(**attribs_, &block)

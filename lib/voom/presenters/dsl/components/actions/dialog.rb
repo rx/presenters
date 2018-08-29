@@ -5,7 +5,7 @@ module Voom
     module DSL
       module Components
         module Actions
-          class Dialog < Base
+          class Dialog < Actions::Base
             def initialize(**attribs_, &block)
               super(type: :dialog, **attribs_, &block)
             end
