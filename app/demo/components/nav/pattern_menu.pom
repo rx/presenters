@@ -10,5 +10,3 @@ Voom::Presenters.define('pattern_menu') do
     end
   end
 end
-
-

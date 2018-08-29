@@ -8,7 +8,6 @@ export class VRemoves {
     call(results) {
         let ids = this.ids;
         var promiseObj = new Promise(function (resolve) {
-            console.log("Removing");
             results.push({action: 'removes', statusCode: 200});
             for (const id of ids){
                 let elem = document.getElementById(id);
