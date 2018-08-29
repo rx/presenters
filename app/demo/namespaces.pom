@@ -18,6 +18,7 @@ Voom::Presenters.define(:namespaces) do
            attach, loads and replaces all accept namespaced presenters:)
     blank
     attach 'namespace1:attach_with_namespace'
+    blank
     body   'Both loads and replaces are namespace aware. To call a presenter in the ame namespace, no scoping is needed.
             To call a presenter in another namespace, you need to fully qualify it.'
     button 'Load' do
@@ -53,7 +54,7 @@ end
 
 Voom::Presenters.define(:attach_with_namespace, namespace: :namespace1) do
   content id: :attach_with_namespace_id do
-    body "`attach 'namespace1:mypresenter'` from a presenter in a different namespace."
+    body "For example: `attach 'namespace1:mypresenter'` to insert/attach a presenter in a different namespace."
     attach :replaced # Demonstrates calling top level presenters from a namespaced presenter
   end
 end

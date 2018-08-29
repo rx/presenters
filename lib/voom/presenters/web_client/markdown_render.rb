@@ -7,7 +7,7 @@ class CustomRender < Redcarpet::Render::Safe
   end
   
   def paragraph(text)
-      text + BR + BR
+      text + BR
     end
 
   def postprocess(full_document)
@@ -22,6 +22,6 @@ class CustomRender < Redcarpet::Render::Safe
 
   def strip_trailing_br(doc)
     return doc unless doc.reverse[0...BR.length]==BR.reverse
-    doc[0...doc.length-2*BR.length]
+    doc[0...doc.length-BR.length]
   end
 end
