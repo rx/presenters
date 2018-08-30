@@ -69,7 +69,7 @@ module Voom
           end
 
           def toggle_visibility(component_id, **params, &block)
-            @actions << Actions::ToggleVisiblity.new(parent: self,
+            @actions << Actions::ToggleVisibility.new(parent: self,
                                                target: component_id,
                                                params: params, &block)
           end
