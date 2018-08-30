@@ -29,25 +29,24 @@ module Voom
           def title(*title, **options, &block)
             return @title if locked?
             @title = Components::Typography.new(parent: self, type: :title,
-                                                text: title, context: context,
+                                                text: title, 
                                                                  **options, &block)
           end
 
           def heading(*text, **options, &block)
             components << Components::Typography.new(parent: self, type: :heading,
-                                                     text: text, context: context,
+                                                     text: text,
                                                   **options, &block)
           end
 
           def body(*text, **options, &block)
             components << Components::Typography.new(parent: self, type: :body,
-                                                     text: text, context: context,
+                                                     text: text,
                                                      **options, &block)
           end
 
           def button(text=nil, **attribs, &block)
             @buttons << Button.new(parent: self, text: text,
-                                   context: context,
                                    **attribs, &block)
           end
         end

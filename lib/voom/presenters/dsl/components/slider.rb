@@ -10,7 +10,7 @@ module Voom
           attr_reader :name, :value_min, :value_max, :step, :show_tracker_marks, :discrete
 
           def initialize(**attribs_, &block)
-            super(type: :slider, context: context, **attribs_, &block)
+            super(type: :slider, **attribs_, &block)
             @name = attribs.delete(:name)
             @value_min = attribs.delete(:value_min){0}
             @value_max = attribs.delete(:value_max){100}

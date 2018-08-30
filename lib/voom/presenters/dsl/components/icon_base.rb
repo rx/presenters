@@ -10,7 +10,7 @@ module Voom
           attr_reader :icon, :color, :size, :position
 
           def initialize(**attribs_, &block)
-            super(type: :icon, context: context,
+            super(type: :icon,
                   **attribs_, &block)
             @icon = attribs.delete(:icon)
             @color    = attribs.delete(:color)

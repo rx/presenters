@@ -5,7 +5,7 @@ module Voom
         module Mixins
           module Sliders
             def slider(**attributes, &block)
-              self << Components::Slider.new(parent: self, context: context, **attributes, &block)
+              self << Components::Slider.new(parent: self, **attributes, &block)
             end
           end
         end

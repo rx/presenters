@@ -7,7 +7,6 @@ module Voom
             def snackbar(text=nil, **attribs, &block)
               self << Components::Snackbar.new(parent: self,
                                                text: text,
-                                               context: context,
                                                **attribs, &block)
             end
           end

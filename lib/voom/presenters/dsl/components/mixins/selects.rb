@@ -6,7 +6,6 @@ module Voom
           module Selects
             def select(**attribs, &block)
               self << Components::Select.new(parent: self,
-                                             context: context,
                                              **attribs, &block)
             end
           end

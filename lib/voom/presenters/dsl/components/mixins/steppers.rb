@@ -5,7 +5,7 @@ module Voom
         module Mixins
           module Steppers
             def stepper(**attributes, &block)
-              self << Components::Stepper.new(parent: self, context: context, **attributes, &block)
+              self << Components::Stepper.new(parent: self, **attributes, &block)
             end
           end
         end
