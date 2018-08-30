@@ -81,7 +81,7 @@ module Voom
 
             def actions(**attribs, &block)
               return @actions if locked?
-              Actions.new(@actions, parent: self,
+              Lists::Actions.new(@actions, parent: self,
                           **attribs, &block)
             end
             alias action actions
