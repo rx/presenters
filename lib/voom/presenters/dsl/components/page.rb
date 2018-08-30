@@ -7,7 +7,6 @@ module Voom
 
           def initialize(**attribs_, &block)
             super(type: :page,
-                  context: context,
                   **attribs_, &block)
             expand!
           end

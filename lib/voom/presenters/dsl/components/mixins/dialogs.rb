@@ -8,7 +8,6 @@ module Voom
           module Dialogs
             def dialog(**attributes, &block)
               @components << Components::Dialog.new(parent: self,
-                                                    context: context,
                                                     **attributes, &block)
             end
           end

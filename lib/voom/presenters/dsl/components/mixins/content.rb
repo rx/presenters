@@ -5,7 +5,7 @@ module Voom
         module Mixins
           module Content
             def content(**attributes, &block)
-              self << Components::Content.new(parent: self, context: context, **attributes, &block)
+              self << Components::Content.new(parent: self, **attributes, &block)
             end
           end
         end

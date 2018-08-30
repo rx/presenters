@@ -14,13 +14,11 @@ module Voom
 
             def radio_button(**attribs, &block)
               self << RadioButton.new(parent: self,
-                                      context: context,
                                       **attribs, &block)
             end
 
             def switch(**attribs, &block)
               self << Switch.new(parent: self,
-                                 context: context,
                                  **attribs, &block)
             end
 
@@ -28,7 +26,6 @@ module Voom
               trace { attribs.inspect }
               self << IconToggle.new(parent: self,
                                      icon: icon,
-                                     context: context,
                                      **attribs, &block)
             end
           end

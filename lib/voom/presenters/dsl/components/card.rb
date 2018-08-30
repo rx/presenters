@@ -41,7 +41,6 @@ module Voom
           def media(**attribs, &block)
             return @media if locked?
             @media = Media.new(parent: self,
-                               context: context,
                                **attribs, &block)
           end
 
@@ -74,30 +73,28 @@ module Voom
               @title = Typography.new(type: :title,
                                       parent: self,
                                       text: title,
-                                      context: context,
                                       **attribs, &block)
             end
 
             def image(image=nil, **attribs, &block)
               return @image if locked?
-              @image = Image.new(parent: self, image: image, context: context, **attribs, &block)
+              @image = Image.new(parent: self, image: image, **attribs, &block)
             end
 
             def button(icon=nil, **attributes, &block)
               return @button if locked?
-              @button = Components::Button.new(icon: icon, position:[:top, :right], parent: self, context: context, **attributes, &block)
+              @button = Components::Button.new(icon: icon, position:[:top, :right], parent: self, **attributes, &block)
             end
           end
 
           def text(*text, **attribs, &block)
             self << Typography.new(type: :body,
-                                   parent: self, text: text, context: context, **attribs, &block)
+                                   parent: self, text: text, **attribs, &block)
           end
 
           def actions(**attribs, &block)
             return @actions if locked?
             @actions = Actions.new(parent: self,
-                                   context: context,
                                    **attribs, &block)
           end
 
@@ -112,7 +109,6 @@ module Voom
 
             def button(text=nil, **options, &block)
               @buttons << Components::Button.new(parent: self, text: text,
-                                                 context: context,
                                                  **options, &block)
             end
           end

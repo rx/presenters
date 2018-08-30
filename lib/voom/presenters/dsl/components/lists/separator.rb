@@ -4,8 +4,8 @@ module Voom
       module Components
         module Lists
           class Separator < Base
-            def initialize(context:, **attribs_, &block)
-              super(type: :separator, context: context, **attribs_, &block)
+            def initialize(**attribs_, &block)
+              super(type: :separator, **attribs_, &block)
               expand!
             end
           end

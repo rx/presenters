@@ -11,7 +11,7 @@ module Voom
           attr_accessor :image, :height, :width, :position, :selected, :url
 
           def initialize(**attribs_, &block)
-            super(type: :image, context: context,
+            super(type: :image,
                   **attribs_, &block)
             @image = attribs.delete(:image)
             @height = attribs.delete(:height)

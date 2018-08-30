@@ -12,8 +12,7 @@ module Voom
           attr_accessor :avatar, :color, :size, :position
 
           def initialize(**attribs_, &block)
-            super(type: :avatar, context: context,
-                  **attribs_, &block)
+            super(type: :avatar, **attribs_, &block)
             @avatar = attribs.delete(:avatar)
             @color = attribs.delete(:color)
             @size = attribs.delete(:size)

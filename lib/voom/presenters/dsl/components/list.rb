@@ -31,17 +31,16 @@ module Voom
           def add_select_control!(text)
             return unless @selectable && !@lines_only
             @lines << Lists::Header.new(parent: self,
-                                        context: context,
                                         total_lines: @total_lines,
                                         checkbox: {text: text})
           end
 
           def line(text=nil, **attribs, &block)
-            @lines << Lists::Line.new(parent:self, context: context, text: text, selectable: selectable, **attribs, &block)
+            @lines << Lists::Line.new(parent:self, text: text, selectable: selectable, **attribs, &block)
           end
 
           def separator(**attribs, &block)
-            @lines << Lists::Separator.new(parent:self, context: context, **attribs, &block)
+            @lines << Lists::Separator.new(parent:self, **attribs, &block)
           end
         end
       end

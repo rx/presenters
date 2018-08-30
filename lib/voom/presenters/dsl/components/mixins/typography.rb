@@ -11,7 +11,7 @@ module Voom
             def headline(*text, level: nil, **attributes, &block)
               self << Components::Typography.new(parent: self, type: :headline, text: text,
                                                  level: level || Settings.default(:headline, :level),
-                                                 context: context, **attributes, &block)
+                                                 **attributes, &block)
             end
 
             alias heading headline
@@ -22,29 +22,35 @@ module Voom
             end
 
             def subtitle(*text, level: 1, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :subtitle, text: text, level: level, context: context, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :subtitle, text: text, level: level,
+                                                 **attributes, &block)
             end
 
             alias subheading subtitle
 
             def page_title(*text, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :page_title, text: text, context: context, level: 1, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :page_title, text: text,
+                                                 level: 1, **attributes, &block)
             end
 
             def body(*text, level: 1, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :body, text: text, level: level, context: context, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :body, text: text, level: level,
+                                                 **attributes, &block)
             end
 
             def blank(level: 1, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :body, text: ['&nbsp;'], level: level, context: context, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :body, text: ['&nbsp;'], level: level,
+                                                 **attributes, &block)
             end
 
             def caption(*text, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :caption, text: text, context: context, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :caption, text: text,
+                                                 **attributes, &block)
             end
 
             def overline(*text, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :overline, text: text, context: context, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :overline, text: text,
+                                                 **attributes, &block)
             end
           end
         end

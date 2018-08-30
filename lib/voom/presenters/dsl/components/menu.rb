@@ -24,20 +24,17 @@ module Voom
           def item(first_text = nil, text: nil, **attribs, &block)
             the_text = first_text || text
             @items << Item.new(parent: self, text: the_text,
-                               context: context,
                                **attribs, &block)
           end
 
           def divider(**attribs, &block)
             @items << Divider.new(parent: self,
-                                  context: context,
                                   **attribs, &block)
           end
 
           def label(**attribs, &block)
             return @label if locked?
             @label = Label.new(parent: self,
-                               context: context,
                                **attribs, &block)
           end
 
@@ -59,7 +56,6 @@ module Voom
             def icon(icon=nil, **attribs, &block)
               return @icon if locked?
               @icon = Icon.new(parent: self, icon: icon,
-                               context: context,
                                **attribs, &block)
             end
           end
