@@ -8,6 +8,9 @@
   end
 %>
 <form role="form"
+      <% if comp.tag %>
+      data-input-tag="<%= comp.tag %>"
+      <% end %>
       id="<%= comp.id %>"
       class="v-has-errors v-form"
       style='width: 100%'

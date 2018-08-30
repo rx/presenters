@@ -35,15 +35,14 @@ export class VForm {
     }
 
     inputs() {
-        //return this.element.elements;
         return this.element.querySelectorAll('.v-input')
     }
 
     // Called to collect data for submission
-    prepareSubmit(form, params) {
+    prepareSubmit(params) {
         for (let input of this.inputs()) {
             if (input.vComponent && input.vComponent.prepareSubmit) {
-                input.vComponent.prepareSubmit(form, params);
+                input.vComponent.prepareSubmit(params);
             }
         }
     }

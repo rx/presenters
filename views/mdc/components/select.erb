@@ -2,6 +2,9 @@
   float_label = comp.options.select{|o| o.selected }.any?
 %>
   <div class="mdc-select v-input"
+       <% if comp.tag %>
+       data-input-tag="<%= comp.tag %>"
+       <% end %>
        <%= 'style="width: 100%;"' if comp.full_width %>>
     <select id="<%= comp.id %>"
             name="<%= comp.name%>"

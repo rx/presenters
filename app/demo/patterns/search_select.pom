@@ -1,0 +1,104 @@
+require_relative '../helpers/indented_grid'
+
+module Demo
+  module Helpers
+    module SearchSelectDemo
+      def searches
+        search = context.fetch(:search) {nil}
+        searches = context.fetch(:searches) {[]}
+        searches << search unless search.nil? || search == ''
+        searches.select{|s| s != ''}
+      end
+    end
+  end
+end
+
+
+Voom::Presenters.define(:search_select) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :pattern_drawer
+
+  page_title 'Search and Select Pattern'
+  indented_grid do
+    grid tag: :input_data_container do
+      column 6 do
+        grid do
+          column 4 do
+            content do
+              text_field id: :search_field,  name: :search, full_width: false do
+                label 'Search Tickets'
+                event :input do
+                  replaces :ticket_list, :ticket_list, input_tag: :input_data_container
+                end
+                event :change do
+                  replaces :ticket_list, :ticket_list, input_tag: :input_data_container
+                  replaces :completed_searches, :completed_searches, input_tag: :input_data_container
+                  clears :search_field
+                end
+              end
+            end
+          end
+          column 8 do
+            attach :completed_searches
+          end
+        end
+        attach :ticket_list, title: 'Search Results'
+      end
+    end
+    attach :code, file: __FILE__
+  end
+end
+
+Voom::Presenters.define(:ticket_list) do
+  helpers Demo::Helpers::SearchSelectDemo
+  helpers do
+    def ticket_data
+      [OpenStruct.new(id: 1, event_name: 'Pearl Jam', type: 'General Admission', amount: 10.00),
+       OpenStruct.new(id: 2, event_name: 'Pearl Jam', type: 'Reserved Seating', amount: 25.00),
+       OpenStruct.new(id: 3, event_name: 'Temple of the Dog', type: 'General Admission', amount: 5.00),
+       OpenStruct.new(id: 4, event_name: 'Temple of the Dog', type: 'Reserved Seating', amount: 10.00),
+       OpenStruct.new(id: 5, event_name: 'Japandroids', type: 'General Admission', amount: 7.50),
+       OpenStruct.new(id: 6, event_name: 'Japandroids', type: 'Reserved Seating', amount: 15.00)]
+    end
+
+    def tickets
+      re = Regexp.union(searches)
+      ticket_data.select {|ticket| re.match(ticket.event_name)}
+    end
+
+    def ticket_ids
+      context.fetch(:ticket_id) {[]}
+    end
+  end
+
+  content id: :ticket_list do
+    list selectable: true do
+      tickets.each do |ticket|
+        line name: :ticket_id, value: ticket.id, checked: ticket_ids.include?(ticket.id.to_s) do
+          text ticket.event_name
+          subtitle ticket.type
+          info "$#{ticket.amount}"
+        end
+      end
+    end
+  end
+end
+
+Voom::Presenters.define(:completed_searches) do
+  helpers Demo::Helpers::SearchSelectDemo
+  content id: :completed_searches do
+    searches.each do |search|
+      chip color: :primary, name: 'searches[]', value: search, id: search do
+        text search
+        icon :delete, position: :right do
+          event :click do
+            remove search
+            replaces :ticket_list, :ticket_list, input_tag: :input_data_container
+          end
+        end
+      end
+    end
+  end
+end
+

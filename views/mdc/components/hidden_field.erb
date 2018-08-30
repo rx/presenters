@@ -1,1 +1,6 @@
-<input class="v-input v-hidden-field" type="hidden" id="<%= comp.id %>" name="<%= comp.name %>" value="<%= comp.value %>"/>
+<input class="v-input v-hidden-field"
+       type="hidden"
+       <% if comp.tag %>
+       data-input-tag="<%= comp.tag %>"
+       <% end %>
+       id="<%= comp.id %>" name="<%= comp.name %>" value="<%= comp.value %>"/>

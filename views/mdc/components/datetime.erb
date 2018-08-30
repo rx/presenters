@@ -2,6 +2,9 @@
   time_val = comp.value ? Array([comp.value]).join(', ') : nil
 %>
 <div id="<%= comp.id %>"
+     <% if comp.tag %>
+     data-input-tag="<%= comp.tag %>"
+     <% end %>
      class="v-input v-datetime mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-trailing-icon' if comp.clear_icon %>
             <%= 'is-invalid is-dirty' if comp.error %>"

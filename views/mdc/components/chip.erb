@@ -14,9 +14,18 @@
   <% end %>
 
   <div id="<%= comp.id %>"
-       class="mdc-chip
+       <% if comp.tag %>
+       data-input-tag="<%= comp.tag %>"
+       <% end %>
+       class="v-input mdc-chip
               <%= color_classname(comp) %>
               v-menu-click"
+       <% if comp.name %>
+         data-name="<%= comp.name %>"
+       <% end %>
+       <% if comp.value %>
+         data-value="<%= comp.value %>"
+       <% end %>
        style = "<%= color_style(comp, 'background-') %>"
        tabindex="0"
        <%= erb(:"components/event", locals: {events: comp.events,
@@ -27,7 +36,7 @@
     <%= erb :"components/typography", :locals => {comp: comp.text, type: 'chip-text', class_name: 'mdc-chip__text'} %>
     <%= erb(:"components/icon", locals: {comp: trailing_icon,
                                          class_name: 'mdc-chip__icon mdc-chip__icon--trailing',
-                                         events: trailing_icon&.events || comp.events }) %>
+                                         events: child_events ? (trailing_icon&.events || comp.events) : nil}) %>
   </div>
   <% if comp.menu %>
     <%= erb :"components/list/menu", :locals => {:comp => comp.menu} %>

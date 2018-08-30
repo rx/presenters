@@ -1,6 +1,10 @@
 <%  class_name = '' unless local_variables.include? :class_name %>
 
-<div class="mdc-checkbox v-input">
+<div
+  <% if comp.tag %>
+  data-input-tag="<%= comp.tag %>"
+  <% end %>
+  class="mdc-checkbox v-input">
   <input type="checkbox"
          id="<%=comp.id%>"
          name="<%=comp.name%>"

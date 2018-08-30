@@ -29,6 +29,12 @@ Voom::Presenters.define('top_nav') do
         end
       end
 
+      item 'Patterns' do
+        event :click do
+          loads :patterns
+        end
+      end
+
       item 'Namespaces' do
         event :click do
           loads :namespaces

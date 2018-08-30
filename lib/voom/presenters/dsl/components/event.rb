@@ -3,6 +3,7 @@ require_relative 'actions/replaces'
 require_relative 'actions/posts'
 require_relative 'actions/updates'
 require_relative 'actions/deletes'
+require_relative 'actions/remove'
 require_relative 'actions/dialog'
 require_relative 'actions/toggle_visibility'
 require_relative 'actions/snackbar'
@@ -72,6 +73,14 @@ module Voom
                                                target: component_id,
                                                params: params, &block)
           end
+
+          # Removes the component and all its children
+          # Takes either an id or a list of ids.
+          def remove(*ids, **params, &block)
+            @actions << Actions::Remove.new(parent: self,
+                                           params: params.merge(ids: ids), &block)
+          end
+          alias removes remove
 
           def show(component_id, **params, &block)
             @actions << Actions::ToggleVisibility.new(parent: self,

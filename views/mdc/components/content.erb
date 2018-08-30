@@ -1,4 +1,7 @@
 <div id="<%= comp.id %>"
+     <% if comp.tag %>
+     data-input-tag="<%= comp.tag %>"
+     <% end %>
      class="v-content
             <%= 'v-hidden' if comp.hidden %>">
   <% if comp.shows_errors %>

@@ -9,6 +9,9 @@
    end
 %>
 <div id="<%= comp.id %>"
+     <% if comp.tag %>
+     data-input-tag="<%= comp.tag %>"
+     <% end %>
      class="mdc-layout-grid
             <%= _padding_classes_(comp.padding, @grid_nesting, :grid) %>"
      style="<%= "background-color: #{comp.color};" if comp.color %>">

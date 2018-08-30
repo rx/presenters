@@ -9,6 +9,7 @@ require_relative 'mixins/date_time_fields'
 require_relative 'mixins/images'
 require_relative 'mixins/steppers'
 require_relative 'mixins/sliders'
+require_relative 'mixins/chips'
 require_relative 'mixins/icons'
 
 module Voom
@@ -25,6 +26,7 @@ module Voom
           include Mixins::Images
           include Mixins::Steppers
           include Mixins::Sliders
+          include Mixins::Chips
           include Mixins::Icons
 
           attr_reader :hidden, :components, :shows_errors

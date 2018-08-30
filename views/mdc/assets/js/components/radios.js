@@ -1,6 +1,5 @@
 import {VBaseComponent} from "./base-component";
 import {eventHandlerMixin} from "./mixins/event-handler";
-import {MDCFormField} from "@material/form-field";
 import {MDCRadio} from "@material/radio";
 
 export function initRadios() {
@@ -22,12 +21,27 @@ export class VRadio extends eventHandlerMixin(VBaseComponent) {
         this.mdcComponent = mdcComponent;
     }
 
-    prepareSubmit(form, params) {
-        // On actual post/submit the form is passed and we are not expected to return our value
-        if (!form) {
-            if(this.input.selected) {
-                params.push([this.input.name, this.input.value]);
-            }
+    prepareSubmit(params) {
+        if(this.input.checked) {
+            params.push([this.name(), this.value()]);
         }
     }
+
+    name(){
+        return this.input.name;
+    }
+
+    value(){
+        return this.input.value;
+    }
+
+    clear(){
+        this.setValue('');
+    }
+
+    setValue(value){
+        this.input.value = value;
+    }
+
+
 }

@@ -2,6 +2,9 @@
   has_form = comp.components.select{|c| eq(c.type, :form)}.any?
 %>
 <dialog id="<%= comp.id %>"
+        <% if comp.tag %>
+        data-input-tag="<%= comp.tag %>"
+        <% end %>
         class="mdl-dialog v-js-dialog"
     style="<%= "width: #{comp.width}" if comp.width %>
            <%= "height: #{comp.height}" if comp.height %>"

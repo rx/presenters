@@ -8,7 +8,7 @@ module Voom
       module Components
         class Chip < EventBase
           include Mixins::Tooltips
-          attr_reader :icons, :color
+          attr_reader :icons, :color, :name, :value
           
           def initialize(**attribs_, &block)
             super(type: :chip,
@@ -17,6 +17,8 @@ module Voom
             self.text(attribs.delete(:text)) if attribs.key?(:text)
             self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
             @color = attribs.delete(:color)
+            @name = attribs.delete(:name)
+            @value = attribs.delete(:value)
             expand!
           end
 

@@ -1,0 +1,19 @@
+require_relative 'helpers/indented_grid'
+
+Voom::Presenters.define('patterns') do
+  helpers Demo::Helpers::IndentedGrid
+  attach 'top_nav'
+  attach 'pattern_drawer'
+  page_title 'Patterns'
+
+  indented_grid do
+    grid do
+      column 12 do
+        icon 'fa-hand-point-left', position: :left
+        subheading 'Select a pattern'
+      end
+    end
+  end
+  attach :code, file: __FILE__
+
+end

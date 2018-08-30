@@ -27,7 +27,7 @@ module Voom
               self.avatar(attribs.delete(:avatar)) if attribs.key?(:avatar)
               self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
               self.checkbox(attribs.delete(:checkbox)) if attribs.key?(:checkbox) && !@selectable
-              self.checkbox(attribs.slice(:name, :value)) if @selectable
+              self.checkbox(attribs.slice(:name, :value, :checked)) if @selectable
 
               @actions = []
               expand!
@@ -81,8 +81,7 @@ module Voom
 
             def actions(**attribs, &block)
               return @actions if locked?
-              Lists::Actions.new(@actions, parent: self,
-                          **attribs, &block)
+              Lists::Actions.new(@actions, parent: self, **attribs, &block)
             end
             alias action actions
             deprecate :action, :actions, 2018, 8

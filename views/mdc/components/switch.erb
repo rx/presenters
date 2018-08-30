@@ -2,6 +2,9 @@
 %>
 
 <div id="<%=comp.id%>"
+     <% if comp.tag %>
+     data-input-tag="<%= comp.tag %>"
+     <% end %>
      class="v-switch v-input mdc-switch
       <%= 'mdc-switch--disabled' if comp.disabled %>
       <%= class_name %>">

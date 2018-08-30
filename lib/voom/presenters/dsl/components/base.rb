@@ -18,12 +18,13 @@ module Voom
           include Trace
           include Mixins::YieldTo
 
-          attr_reader :type, :id, :attributes
-
+          attr_reader :type, :id, :tag, :attributes
+          
           alias attribs attributes
 
-          def initialize(type:, parent:, id: nil, **attributes, &block)
+          def initialize(type:, parent:, id: nil, tag: nil, **attributes, &block)
             @id = h(id) || generate_id
+            @tag = tag
             @type = h(type)
             @parent = parent
             @attributes = escape(attributes)

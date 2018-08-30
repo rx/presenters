@@ -1,4 +1,7 @@
 <div id="<%=comp.id%>"
+     <% if comp.tag %>
+     data-input-tag="<%= comp.tag %>"
+     <% end %>
     class="card-<%= comp.id %> mdc-card v-card
            <%= 'v-actionable' if comp.events %>"
      style="<%= "width: #{comp.width};" if comp.width%>
