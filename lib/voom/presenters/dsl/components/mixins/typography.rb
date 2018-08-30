@@ -52,6 +52,11 @@ module Voom
               self << Components::Typography.new(parent: self, type: :overline, text: text,
                                                  **attributes, &block)
             end
+
+            def separator(**attributes, &block)
+              self << Components::Typography.new(parent: self, type: :body, text: ['---'],
+                                                 **attributes, &block)
+            end
           end
         end
       end

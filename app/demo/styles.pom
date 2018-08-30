@@ -31,6 +31,8 @@ Voom::Presenters.define(:styles) do
     body '`blank` will insert a blank line'
     blank
     body 'Line above me, intentionally left blank'
+    separator
+    body 'Line above me is a separator'
 
   end
   attach :code, file: __FILE__
