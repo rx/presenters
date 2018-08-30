@@ -31,7 +31,7 @@ export class VSelect extends eventHandlerMixin(VBaseComponent) {
     }
 
     value(){
-        return this.select.options[this.select.selectedIndex]
+        return this.select.options[this.select.selectedIndex].value;
     }
 
     clear(){
