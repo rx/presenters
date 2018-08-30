@@ -57,6 +57,11 @@ module Voom
               self << Components::Typography.new(parent: self, type: :body, text: ['---'],
                                                  **attributes, &block)
             end
+
+            def link(text, url, **attributes, &block)
+              self << Components::Typography.new(parent: self, type: :body, text: ["[#{text}](#{url})"],
+                                                 **attributes, &block)
+            end
           end
         end
       end

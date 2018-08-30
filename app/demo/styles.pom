@@ -33,6 +33,7 @@ Voom::Presenters.define(:styles) do
     body 'Line above me, intentionally left blank'
     separator
     body 'Line above me is a separator'
+    link 'You can have a link', 'https://www.google.com/search?q=link&source=lnms&tbm=isch&sa=X&ved=0ahUKEwipr4zY_JXdAhVNXK0KHWFNCdYQ_AUICigB&biw=1651&bih=932'
 
   end
   attach :code, file: __FILE__
