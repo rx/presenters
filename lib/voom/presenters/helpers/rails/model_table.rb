@@ -5,7 +5,7 @@ module Voom
         module ModelTable
           # Build a a table from a Rails model
           def table_for(query_,
-                        empty_icon: nil,
+                        empty_icon: 'far fa-folder-open fa-rotate-180',
                         except: [:id, :created_at, :updated_at],
                         selectable: false, &block)
             row1 = query_.first
