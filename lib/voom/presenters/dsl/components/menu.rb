@@ -2,6 +2,7 @@ require_relative 'mixins/event'
 require_relative 'mixins/tooltips'
 require_relative 'mixins/attaches'
 require_relative 'mixins/buttons'
+require_relative 'mixins/typography'
 
 module Voom
   module Presenters
@@ -42,6 +43,7 @@ module Voom
 
           class Item < EventBase
             include Mixins::Tooltips
+            include Mixins::Typography
 
             attr_accessor :text, :disabled, :selected
 
@@ -50,6 +52,7 @@ module Voom
               @text = attribs.delete(:text)
               @disabled = attribs.delete(:disabled)
               @selected = attribs.delete(:selected) { false }
+              @components = []
               expand!
             end
 
