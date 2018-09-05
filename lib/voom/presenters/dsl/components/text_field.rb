@@ -6,13 +6,14 @@ module Voom
       module Components
         class TextField < Input
 
-          attr_reader :required, :full_width, :password
+          attr_reader :required, :full_width, :password, :disabled
 
           def initialize(**attribs_, &block)
             super(type: :text_field, **attribs_, &block)
             @required = attribs.delete(:required)
             @full_width = attribs.delete(:full_width){ true }
             @password = attribs.delete(:password)
+            @disabled = attribs.delete(:disabled)
             expand!
           end
 
@@ -46,12 +47,7 @@ module Voom
             return @error if locked?
             @error = error
           end
-
-          def readonly(readonly=nil)
-            return @readonly if locked?
-            @readonly = readonly
-          end
-
+          
           private
           def json_regexp(regexp)
             str = regexp.inspect.

@@ -9,6 +9,7 @@
        class="v-input v-text-field mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-leading-icon' if leading_icon %>
             <%= 'mdc-text-field--with-trailing-icon' if trailing_icon %>
+            <%= 'mdc-text-field--disabled' if comp.disabled %>
             <%= 'is-invalid is-dirty' if comp.error %>"
             style="<%= 'width:100%' if comp.full_width %>">
 
@@ -21,7 +22,6 @@
          <%= 'required' if comp.required %>
          <%= 'invalid' if comp.error %>
          <%= "pattern='#{comp.pattern}'" if comp.pattern %>
-         <%= 'readonly' if comp.readonly %>
          list="<%= comp.id %>-list"
          <%= erb :"components/event", :locals => {events: comp.events, parent_id:  "#{comp.id}-input"} %>>
 

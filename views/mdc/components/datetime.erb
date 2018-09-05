@@ -7,6 +7,7 @@
      <% end %>
      class="v-input v-datetime mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-trailing-icon' if comp.clear_icon %>
+            <%= 'mdc-text-field--disabled' if comp.disabled %>
             <%= 'is-invalid is-dirty' if comp.error %>"
      data-config='<%= snake_to_camel(to_hash(comp.config), except: %i(time_24hr)).to_json %>'
      data-type='<%= comp.type %>'>
@@ -20,7 +21,6 @@
          <%= 'required' if comp.required %>
          <%= 'invalid' if comp.error %>
          <%= "pattern='#{comp.pattern}'" if comp.pattern %>
-         <%= 'readonly' if comp.readonly %>
          list="<%= comp.id %>-list"
          <%= erb :"components/event", :locals => {events: comp.events, parent_id:  "#{comp.id}-input"} %>>
   <label class="mdc-floating-label" for="<%= comp.id %>-input"><%= comp.label %></label>
