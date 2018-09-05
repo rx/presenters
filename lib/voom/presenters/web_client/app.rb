@@ -98,8 +98,10 @@ module Voom
         end
 
         get '/:_presenter_' do
-          pass unless Presenters::App.registered?(params[:_presenter_])
-          presenter = Presenters::App[params[:_presenter_]].call
+          fq_presenter = [params[:_presenter_], 'index'].join(':')
+          pass unless  Presenters::App.registered?(params[:_presenter_]) || Presenters::App.registered?(fq_presenter)
+          presenter = (Presenters::App.registered?(fq_presenter) ? Presenters::App[fq_presenter] :
+                          Presenters::App[params[:_presenter_]]).call
           render_presenter(presenter)
         end
 
