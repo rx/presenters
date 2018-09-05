@@ -32,7 +32,7 @@ GEM
     json (2.1.0)
     method_source (0.8.2)
     mini_portile2 (2.3.0)
-    mustermann (1.0.2)
+    mustermann (1.0.3)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     pry (0.10.4)
