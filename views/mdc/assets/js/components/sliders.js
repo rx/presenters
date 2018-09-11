@@ -16,10 +16,22 @@ export function initSliders() {
 }
 
 export class VSlider extends visibilityObserverMixin(eventHandlerMixin(VBaseComponent)) {
-    constructor(element, mdcComponent) {
+    constructor(element, mdcSliderComponent) {
         super(element);
-        this.mdcComponent = mdcComponent;
+        this.mdcComponent = mdcSliderComponent;
         this.recalcWhenVisible(this);
+
+        mdcSliderComponent.listen('MDCSlider:change', function (e){
+            // Forward as a standard change event
+            if ("createEvent" in document) {
+                var evt = document.createEvent("HTMLEvents");
+                evt.initEvent("change", false, true);
+                element.dispatchEvent(evt);
+            }
+            else{
+                element.fireEvent("onchange");
+            }
+        });
     }
 
     prepareSubmit(params) {

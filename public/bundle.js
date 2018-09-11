@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 45);
+/******/ 	return __webpack_require__(__webpack_require__.s = 44);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -314,7 +314,7 @@ let eventHandlerMixin = Base => class extends Base {
 /* unused harmony export RippleCapableSurface */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(7);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
 /* unused harmony reexport util */
@@ -523,7 +523,7 @@ class MDCSelectionControl {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSnackbar;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_snackbar__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_snackbar__ = __webpack_require__(69);
 
 
 // This class displays a page level message
@@ -815,26 +815,26 @@ class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initialize;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialogs__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datetime__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialogs__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datetime__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text_fields__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lists__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__icon_toggles__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__menus__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__selects__ = __webpack_require__(92);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__chips__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__cards__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__forms__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lists__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__icon_toggles__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__menus__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__selects__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__chips__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__cards__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__forms__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__snackbar__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__checkboxes__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__switches__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__rich_text_area__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__steppers__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__radios__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__sliders__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__hidden_fields__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__checkboxes__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__switches__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__rich_text_area__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__steppers__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__radios__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__sliders__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__hidden_fields__ = __webpack_require__(130);
 
 
 
@@ -892,10 +892,10 @@ function initialize() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_util__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__adapter__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_line_ripple_index__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__helper_text_index__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__icon_index__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__helper_text_index__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__icon_index__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__material_floating_label_index__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__material_notched_outline_index__ = __webpack_require__(27);
 /* unused harmony reexport MDCTextFieldFoundation */
@@ -1351,7 +1351,7 @@ class MDCTextField extends __WEBPACK_IMPORTED_MODULE_0__material_base_component_
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(56);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -1484,7 +1484,7 @@ class MDCTextFieldHelperTextFoundation extends __WEBPACK_IMPORTED_MODULE_0__mate
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(57);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -1757,8 +1757,8 @@ function getCorrectPropertyName(windowObj, eventType) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCChipFoundation; });
 /* unused harmony export MDCChipInteractionEventType */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(38);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -2763,7 +2763,7 @@ class MDCTextFieldIconAdapter {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCLineRipple; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(59);
 /* unused harmony reexport MDCLineRippleFoundation */
 /**
  * @license
@@ -2925,7 +2925,7 @@ class MDCLineRippleAdapter {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCFloatingLabel; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(63);
 /* unused harmony reexport MDCFloatingLabelFoundation */
 /**
  * @license
@@ -3080,7 +3080,7 @@ class MDCFloatingLabelAdapter {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCNotchedOutline; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(29);
 /* unused harmony reexport MDCNotchedOutlineFoundation */
 /**
@@ -3521,8 +3521,8 @@ class VErrors {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MDCMenu; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(34);
 /* unused harmony reexport MDCMenuFoundation */
 /* unused harmony reexport AnchorMargin */
@@ -3824,134 +3824,10 @@ const Corner = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/**
- * @license
- * Copyright 2018 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* eslint no-unused-vars: [2, {"args": "none"}] */
-
-/**
- * Adapter for MDC Select. Provides an interface for managing
- * - classes
- * - dom
- * - event handlers
- *
- * Additionally, provides type information for the adapter to the Closure
- * compiler.
- *
- * Implement this adapter for your framework of choice to delegate updates to
- * the component in your framework of choice. See architecture documentation
- * for more details.
- * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
- *
- * @record
- */
-
-class MDCSelectAdapter {
-  /**
-   * Adds class to root element.
-   * @param {string} className
-   */
-  addClass(className) {}
-
-  /**
-   * Removes a class from the root element.
-   * @param {string} className
-   */
-  removeClass(className) {}
-
-  /**
-   * Returns true if the root element contains the given class name.
-   * @param {string} className
-   * @return {boolean}
-   */
-  hasClass(className) {}
-
-  /**
-   * Activates the bottom line, showing a focused state.
-   */
-  activateBottomLine() {}
-
-  /**
-   * Deactivates the bottom line.
-   */
-  deactivateBottomLine() {}
-
-  /**
-   * Returns the selected value of the select element.
-   * @return {string}
-   */
-  getValue() {}
-
-  /**
-   * Returns true if the direction of the root element is set to RTL.
-   * @return {boolean}
-   */
-  isRtl() {}
-
-  /**
-   * Returns true if label element exists, false if it doesn't.
-   * @return {boolean}
-   */
-  hasLabel() {}
-
-  /**
-   * Floats label determined based off of the shouldFloat argument.
-   * @param {boolean} shouldFloat
-   */
-  floatLabel(shouldFloat) {}
-
-  /**
-   * Returns width of label in pixels, if the label exists.
-   * @return {number}
-   */
-  getLabelWidth() {}
-
-  /**
-   * Returns true if outline element exists, false if it doesn't.
-   * @return {boolean}
-   */
-  hasOutline() {}
-
-  /**
-   * Updates SVG Path and outline element based on the
-   * label element width and RTL context, if the outline exists.
-   * @param {number} labelWidth
-   * @param {boolean=} isRtl
-   */
-  notchOutline(labelWidth, isRtl) {}
-
-  /**
-   * Closes notch in outline element, if the outline exists.
-   */
-  closeOutline() {}
-}
-
-/* unused harmony default export */ var _unused_webpack_default_export = (MDCSelectAdapter);
-
-/***/ }),
-/* 36 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return strings; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return numbers; });
 /**
- * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -3966,8 +3842,6 @@ class MDCSelectAdapter {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/** @enum {string} */
 const cssClasses = {
   BOX: 'mdc-select--box',
   DISABLED: 'mdc-select--disabled',
@@ -3975,7 +3849,6 @@ const cssClasses = {
   OUTLINED: 'mdc-select--outlined'
 };
 
-/** @enum {string} */
 const strings = {
   CHANGE_EVENT: 'MDCSelect:change',
   LINE_RIPPLE_SELECTOR: '.mdc-line-ripple',
@@ -3992,16 +3865,16 @@ const numbers = {
 
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCChip; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(38);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__foundation__["a"]; });
 /**
  * @license
@@ -4194,7 +4067,7 @@ class MDCChip extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
 
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4302,7 +4175,7 @@ class MDCChipAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCChipAdapter);
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4349,7 +4222,7 @@ const cssClasses = {
 
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4404,15 +4277,15 @@ class MDCChipSetAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCChipSetAdapter);
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRipple; });
 /* unused harmony export RippleCapableSurface */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(16);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
 /* unused harmony reexport util */
@@ -4567,7 +4440,7 @@ RippleCapableSurface.prototype.disabled;
 
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4683,7 +4556,7 @@ class MDCRippleAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCRippleAdapter);
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4742,7 +4615,7 @@ const numbers = {
 
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4940,22 +4813,22 @@ class MDCSliderAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCSliderAdapter);
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(46);
+module.exports = __webpack_require__(45);
 
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_initialize__ = __webpack_require__(10);
+__webpack_require__(46);
 __webpack_require__(47);
-__webpack_require__(48);
-window.dialogPolyfill = __webpack_require__(49);
+window.dialogPolyfill = __webpack_require__(48);
 
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -4963,7 +4836,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports) {
 
 ;(function() {
@@ -8965,7 +8838,7 @@ componentHandler.register({
 
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10069,7 +9942,7 @@ componentHandler.register({
 /******/]);
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;(function () {
@@ -10814,7 +10687,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;(function () {
   dialogPolyfill['forceRegisterDialog'] = dialogPolyfill.forceRegisterDialog;
   dialogPolyfill['registerDialog'] = dialogPolyfill.registerDialog;
 
-  if ("function" === 'function' && 'amd' in __webpack_require__(50)) {
+  if ("function" === 'function' && 'amd' in __webpack_require__(49)) {
     // AMD support
     !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
       return dialogPolyfill;
@@ -10830,7 +10703,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;(function () {
 })();
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports) {
 
 module.exports = function() {
@@ -10839,7 +10712,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10862,13 +10735,13 @@ function initButtons() {
 }
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(7);
 /**
  * @license
@@ -11048,7 +10921,7 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
    * @return {boolean}
    * @private
    */
-  supportsPressRipple_() {
+  isSupported_() {
     return this.adapter_.browserSupportsCssVars();
   }
 
@@ -11068,61 +10941,57 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
 
   /** @override */
   init() {
-    const supportsPressRipple = this.supportsPressRipple_();
-
-    this.registerRootHandlers_(supportsPressRipple);
-
-    if (supportsPressRipple) {
-      const { ROOT, UNBOUNDED } = MDCRippleFoundation.cssClasses;
-      requestAnimationFrame(() => {
-        this.adapter_.addClass(ROOT);
-        if (this.adapter_.isUnbounded()) {
-          this.adapter_.addClass(UNBOUNDED);
-          // Unbounded ripples need layout logic applied immediately to set coordinates for both shade and ripple
-          this.layoutInternal_();
-        }
-      });
+    if (!this.isSupported_()) {
+      return;
     }
+    this.registerRootHandlers_();
+
+    const { ROOT, UNBOUNDED } = MDCRippleFoundation.cssClasses;
+    requestAnimationFrame(() => {
+      this.adapter_.addClass(ROOT);
+      if (this.adapter_.isUnbounded()) {
+        this.adapter_.addClass(UNBOUNDED);
+        // Unbounded ripples need layout logic applied immediately to set coordinates for both shade and ripple
+        this.layoutInternal_();
+      }
+    });
   }
 
   /** @override */
   destroy() {
-    if (this.supportsPressRipple_()) {
-      if (this.activationTimer_) {
-        clearTimeout(this.activationTimer_);
-        this.activationTimer_ = 0;
-        const { FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
-        this.adapter_.removeClass(FG_ACTIVATION);
-      }
+    if (!this.isSupported_()) {
+      return;
+    }
 
-      const { ROOT, UNBOUNDED } = MDCRippleFoundation.cssClasses;
-      requestAnimationFrame(() => {
-        this.adapter_.removeClass(ROOT);
-        this.adapter_.removeClass(UNBOUNDED);
-        this.removeCssVars_();
-      });
+    if (this.activationTimer_) {
+      clearTimeout(this.activationTimer_);
+      this.activationTimer_ = 0;
+      const { FG_ACTIVATION } = MDCRippleFoundation.cssClasses;
+      this.adapter_.removeClass(FG_ACTIVATION);
     }
 
     this.deregisterRootHandlers_();
     this.deregisterDeactivationHandlers_();
+
+    const { ROOT, UNBOUNDED } = MDCRippleFoundation.cssClasses;
+    requestAnimationFrame(() => {
+      this.adapter_.removeClass(ROOT);
+      this.adapter_.removeClass(UNBOUNDED);
+      this.removeCssVars_();
+    });
   }
 
-  /**
-   * @param {boolean} supportsPressRipple Passed from init to save a redundant function call
-   * @private
-   */
-  registerRootHandlers_(supportsPressRipple) {
-    if (supportsPressRipple) {
-      ACTIVATION_EVENT_TYPES.forEach(type => {
-        this.adapter_.registerInteractionHandler(type, this.activateHandler_);
-      });
-      if (this.adapter_.isUnbounded()) {
-        this.adapter_.registerResizeHandler(this.resizeHandler_);
-      }
-    }
-
+  /** @private */
+  registerRootHandlers_() {
+    ACTIVATION_EVENT_TYPES.forEach(type => {
+      this.adapter_.registerInteractionHandler(type, this.activateHandler_);
+    });
     this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
     this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
+
+    if (this.adapter_.isUnbounded()) {
+      this.adapter_.registerResizeHandler(this.resizeHandler_);
+    }
   }
 
   /**
@@ -11469,7 +11338,7 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
 /* harmony default export */ __webpack_exports__["a"] = (MDCRippleFoundation);
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11524,7 +11393,7 @@ const numbers = {
 
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11563,12 +11432,12 @@ function initDialogs() {
 }
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initDateTime;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_flatpickr__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__text_fields__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_textfield__ = __webpack_require__(11);
@@ -11619,7 +11488,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* flatpickr v4.5.1, @license MIT */
@@ -13778,7 +13647,7 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 });
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13816,7 +13685,7 @@ const cssClasses = {
 
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13847,7 +13716,7 @@ const strings = {
 
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14296,13 +14165,13 @@ class MDCTextFieldFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_
 /* harmony default export */ __webpack_exports__["a"] = (MDCTextFieldFoundation);
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(60);
 /**
  * @license
  * Copyright 2018 Google Inc. All Rights Reserved.
@@ -14413,7 +14282,7 @@ class MDCLineRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base
 /* harmony default export */ __webpack_exports__["a"] = (MDCLineRippleFoundation);
 
 /***/ }),
-/* 61 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14444,7 +14313,7 @@ const cssClasses = {
 
 
 /***/ }),
-/* 62 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14515,7 +14384,7 @@ class MDCTextFieldHelperText extends __WEBPACK_IMPORTED_MODULE_0__material_base_
 
 
 /***/ }),
-/* 63 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14587,13 +14456,13 @@ class MDCTextFieldIcon extends __WEBPACK_IMPORTED_MODULE_0__material_base_compon
 
 
 /***/ }),
-/* 64 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(64);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -14708,7 +14577,7 @@ class MDCFloatingLabelFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_b
 /* harmony default export */ __webpack_exports__["a"] = (MDCFloatingLabelFoundation);
 
 /***/ }),
-/* 65 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14739,7 +14608,7 @@ const cssClasses = {
 
 
 /***/ }),
-/* 66 */
+/* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14860,23 +14729,23 @@ class MDCNotchedOutlineFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_
 /* harmony default export */ __webpack_exports__["a"] = (MDCNotchedOutlineFoundation);
 
 /***/ }),
-/* 67 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initEvents;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_loads__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_posts__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replaces__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_dialog__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_loads__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_posts__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replaces__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_dialog__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events_errors__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visibility__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__events_snackbar__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_autocomplete__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_navigates__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__events_clears__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__events_removes__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__events_stepper__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visibility__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__events_snackbar__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_autocomplete__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_navigates__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__events_clears__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__events_removes__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__events_stepper__ = __webpack_require__(80);
 
 
 
@@ -15035,7 +14904,7 @@ function fireAfterLoad() {
 }
 
 /***/ }),
-/* 68 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15067,7 +14936,7 @@ class VLoads extends __WEBPACK_IMPORTED_MODULE_0__utils_urls__["a" /* VUrls */] 
 
 
 /***/ }),
-/* 69 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15176,12 +15045,12 @@ class VPosts extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
 
 
 /***/ }),
-/* 70 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_animation_index__ = __webpack_require__(14);
 /* unused harmony reexport MDCSnackbarFoundation */
 /**
@@ -15266,12 +15135,12 @@ class MDCSnackbar extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a"
 
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(71);
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
  *
@@ -15520,7 +15389,7 @@ class MDCSnackbarFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_i
 
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15568,7 +15437,7 @@ const numbers = {
 
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15657,7 +15526,7 @@ class VReplaces extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
 
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15690,7 +15559,7 @@ class VDialog {
 
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15724,7 +15593,7 @@ class VToggleVisibility {
 
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15756,7 +15625,7 @@ class VSnackbarEvent {
 
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15863,7 +15732,7 @@ class VAutoComplete extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */]
 
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15888,7 +15757,7 @@ class VNavigates {
 
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15921,7 +15790,7 @@ class VClears {
 
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15949,7 +15818,7 @@ class VRemoves {
 
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15981,7 +15850,7 @@ class VStepperEvent extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* VBase */]
 
 
 /***/ }),
-/* 82 */
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16075,12 +15944,12 @@ function initLists() {
 }
 
 /***/ }),
-/* 83 */
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initIconToggles;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_icon_toggle__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_icon_toggle__ = __webpack_require__(83);
 
 
 function initIconToggles() {
@@ -16104,13 +15973,13 @@ function initIconToggles() {
 //         });
 
 /***/ }),
-/* 84 */
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCIconToggle; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__ = __webpack_require__(4);
 /* unused harmony reexport MDCIconToggleFoundation */
 /**
@@ -16229,13 +16098,13 @@ class MDCIconToggle extends __WEBPACK_IMPORTED_MODULE_0__material_base_component
 
 
 /***/ }),
-/* 85 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(86);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -16470,7 +16339,7 @@ IconToggleState.prototype.cssClass;
 /* harmony default export */ __webpack_exports__["a"] = (MDCIconToggleFoundation);
 
 /***/ }),
-/* 86 */
+/* 85 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16571,7 +16440,7 @@ let IconToggleEvent;
 
 
 /***/ }),
-/* 87 */
+/* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16613,7 +16482,7 @@ const strings = {
 
 
 /***/ }),
-/* 88 */
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16652,7 +16521,7 @@ function initMenus() {
 }
 
 /***/ }),
-/* 89 */
+/* 88 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16815,14 +16684,14 @@ function solvePositionFromXValue_(xVal, x1, x2) {
 
 
 /***/ }),
-/* 90 */
+/* 89 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCMenuFoundation; });
 /* unused harmony export AnchorMargin */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(34);
 /**
  * @license
@@ -17466,7 +17335,7 @@ class MDCMenuFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_found
 
 
 /***/ }),
-/* 91 */
+/* 90 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17637,12 +17506,12 @@ class MDCMenuAdapter {
 
 
 /***/ }),
-/* 92 */
+/* 91 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSelects;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(3);
 
@@ -17693,19 +17562,17 @@ class VSelect extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__
 
 
 /***/ }),
-/* 93 */
+/* 92 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCSelect; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_floating_label_index__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_line_ripple_index__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_notched_outline_index__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__adapter__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__constants__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__constants__ = __webpack_require__(35);
 /* unused harmony reexport MDCSelectFoundation */
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -17733,81 +17600,34 @@ class VSelect extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__
 
 
 
-/**
- * @extends MDCComponent<!MDCSelectFoundation>
- */
-class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /* MDCComponent */] {
-  /**
-   * @param {...?} args
-   */
-  constructor(...args) {
-    super(...args);
-    /** @private {?Element} */
-    this.nativeControl_;
-    /** @type {?MDCRipple} */
-    this.ripple;
-    /** @private {?MDCLineRipple} */
-    this.lineRipple_;
-    /** @private {?MDCFloatingLabel} */
-    this.label_;
-    /** @private {?MDCNotchedOutline} */
-    this.outline_;
-    /** @private {!Function} */
-    this.handleChange_;
-    /** @private {!Function} */
-    this.handleFocus_;
-    /** @private {!Function} */
-    this.handleBlur_;
-  }
 
-  /**
-   * @param {!Element} root
-   * @return {!MDCSelect}
-   */
+class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /* MDCComponent */] {
   static attachTo(root) {
     return new MDCSelect(root);
   }
 
-  /**
-   * @return {string} The value of the select.
-   */
   get value() {
     return this.nativeControl_.value;
   }
 
-  /**
-   * @param {string} value The value to set on the select.
-   */
   set value(value) {
     this.nativeControl_.value = value;
     this.foundation_.handleChange();
   }
 
-  /**
-   * @return {number} The selected index of the select.
-   */
   get selectedIndex() {
     return this.nativeControl_.selectedIndex;
   }
 
-  /**
-   * @param {number} selectedIndex The index of the option to be set on the select.
-   */
   set selectedIndex(selectedIndex) {
     this.nativeControl_.selectedIndex = selectedIndex;
     this.foundation_.handleChange();
   }
 
-  /**
-   * @return {boolean} True if the select is disabled.
-   */
   get disabled() {
     return this.nativeControl_.disabled;
   }
 
-  /**
-   * @param {boolean} disabled Sets the select disabled or enabled.
-   */
   set disabled(disabled) {
     this.nativeControl_.disabled = disabled;
     this.foundation_.updateDisabledStyle(disabled);
@@ -17821,35 +17641,26 @@ class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /
     this.foundation_.notchOutline(openNotch);
   }
 
-  /**
-   * @param {(function(!Element): !MDCLineRipple)=} lineRippleFactory A function which creates a new MDCLineRipple.
-   * @param {(function(!Element): !MDCFloatingLabel)=} labelFactory A function which creates a new MDCFloatingLabel.
-   * @param {(function(!Element): !MDCNotchedOutline)=} outlineFactory A function which creates a new MDCNotchedOutline.
-   */
   initialize(labelFactory = el => new __WEBPACK_IMPORTED_MODULE_1__material_floating_label_index__["a" /* MDCFloatingLabel */](el), lineRippleFactory = el => new __WEBPACK_IMPORTED_MODULE_2__material_line_ripple_index__["a" /* MDCLineRipple */](el), outlineFactory = el => new __WEBPACK_IMPORTED_MODULE_4__material_notched_outline_index__["a" /* MDCNotchedOutline */](el)) {
-    this.nativeControl_ = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_7__constants__["c" /* strings */].NATIVE_CONTROL_SELECTOR);
-    const labelElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_7__constants__["c" /* strings */].LABEL_SELECTOR);
+    this.nativeControl_ = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_6__constants__["c" /* strings */].NATIVE_CONTROL_SELECTOR);
+    const labelElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_6__constants__["c" /* strings */].LABEL_SELECTOR);
     if (labelElement) {
       this.label_ = labelFactory(labelElement);
     }
-    const lineRippleElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_7__constants__["c" /* strings */].LINE_RIPPLE_SELECTOR);
+    const lineRippleElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_6__constants__["c" /* strings */].LINE_RIPPLE_SELECTOR);
     if (lineRippleElement) {
       this.lineRipple_ = lineRippleFactory(lineRippleElement);
     }
-    const outlineElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_7__constants__["c" /* strings */].OUTLINE_SELECTOR);
+    const outlineElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_6__constants__["c" /* strings */].OUTLINE_SELECTOR);
     if (outlineElement) {
       this.outline_ = outlineFactory(outlineElement);
     }
 
-    if (this.root_.classList.contains(__WEBPACK_IMPORTED_MODULE_7__constants__["a" /* cssClasses */].BOX)) {
+    if (this.root_.classList.contains(__WEBPACK_IMPORTED_MODULE_6__constants__["a" /* cssClasses */].BOX)) {
       this.ripple = this.initRipple_();
     }
   }
 
-  /**
-   * @private
-   * @return {!MDCRipple}
-   */
   initRipple_() {
     const adapter = Object.assign(__WEBPACK_IMPORTED_MODULE_3__material_ripple_index__["a" /* MDCRipple */].createAdapter(this), {
       registerInteractionHandler: (type, handler) => this.nativeControl_.addEventListener(type, handler),
@@ -17859,10 +17670,6 @@ class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /
     return new __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__["a" /* MDCRipple */](this.root_, foundation);
   }
 
-  /**
-   * Initializes the select's event listeners and internal state based
-   * on the environment's state.
-   */
   initialSyncWithDOM() {
     this.handleChange_ = () => this.foundation_.handleChange();
     this.handleFocus_ = () => this.foundation_.handleFocus();
@@ -17895,17 +17702,11 @@ class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /
     super.destroy();
   }
 
-  /**
-   * @return {!MDCSelectFoundation}
-   */
   getDefaultFoundation() {
-    return new __WEBPACK_IMPORTED_MODULE_5__foundation__["a" /* default */](
-    /** @type {!MDCSelectAdapter} */Object.assign({
+    return new __WEBPACK_IMPORTED_MODULE_5__foundation__["a" /* default */](Object.assign({
       addClass: className => this.root_.classList.add(className),
       removeClass: className => this.root_.classList.remove(className),
       hasClass: className => this.root_.classList.contains(className),
-      getValue: () => this.nativeControl_.value,
-      isRtl: () => window.getComputedStyle(this.root_).getPropertyValue('direction') === 'rtl',
       activateBottomLine: () => {
         if (this.lineRipple_) {
           this.lineRipple_.activate();
@@ -17915,20 +17716,20 @@ class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /
         if (this.lineRipple_) {
           this.lineRipple_.deactivate();
         }
-      }
+      },
+      isRtl: () => window.getComputedStyle(this.root_).getPropertyValue('direction') === 'rtl',
+      getValue: () => this.nativeControl_.value
     }, this.getOutlineAdapterMethods_(), this.getLabelAdapterMethods_()));
   }
 
   /**
    * @return {!{
-   *   hasOutline: function(): boolean,
    *   notchOutline: function(number, boolean): undefined,
-   *   closeOutline: function(): undefined,
+   *   hasOutline: function(): boolean,
    * }}
    */
   getOutlineAdapterMethods_() {
     return {
-      hasOutline: () => !!this.outline_,
       notchOutline: (labelWidth, isRtl) => {
         if (this.outline_) {
           this.outline_.notch(labelWidth, isRtl);
@@ -17938,25 +17739,26 @@ class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /
         if (this.outline_) {
           this.outline_.closeNotch();
         }
-      }
+      },
+      hasOutline: () => !!this.outline_
     };
   }
 
   /**
    * @return {!{
-   *   hasLabel: function(): boolean,
    *   floatLabel: function(boolean): undefined,
+   *   hasLabel: function(): boolean,
    *   getLabelWidth: function(): number,
    * }}
    */
   getLabelAdapterMethods_() {
     return {
-      hasLabel: () => !!this.label_,
       floatLabel: shouldFloat => {
         if (this.label_) {
           this.label_.float(shouldFloat);
         }
       },
+      hasLabel: () => !!this.label_,
       getLabelWidth: () => {
         if (this.label_) {
           return this.label_.getWidth();
@@ -17965,17 +17767,16 @@ class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /
     };
   }
 }
-
+/* harmony export (immutable) */ __webpack_exports__["a"] = MDCSelect;
 
 
 /***/ }),
-/* 94 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(35);
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
  *
@@ -17993,66 +17794,46 @@ class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /
  */
 
 
-/* eslint-disable no-unused-vars */
-
-/* eslint-enable no-unused-vars */
 
 
-/**
- * @extends {MDCFoundation<!MDCSelectAdapter>}
- * @final
- */
 class MDCSelectFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["b" /* MDCFoundation */] {
-  /** @return enum {string} */
   static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+    return __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* cssClasses */];
   }
 
-  /** @return enum {number} */
   static get numbers() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */];
+    return __WEBPACK_IMPORTED_MODULE_1__constants__["b" /* numbers */];
   }
 
-  /** @return enum {string} */
   static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */];
+    return __WEBPACK_IMPORTED_MODULE_1__constants__["c" /* strings */];
   }
 
-  /**
-   * {@see MDCSelectAdapter} for typing information on parameters and return
-   * types.
-   * @return {!MDCSelectAdapter}
-   */
   static get defaultAdapter() {
-    return (/** @type {!MDCSelectAdapter} */{
-        addClass: () => /* className: string */{},
-        removeClass: () => /* className: string */{},
-        hasClass: () => /* className: string */false,
-        activateBottomLine: () => {},
-        deactivateBottomLine: () => {},
-        getValue: () => {},
-        isRtl: () => false,
-        hasLabel: () => false,
-        floatLabel: () => /* value: boolean */{},
-        getLabelWidth: () => {},
-        hasOutline: () => false,
-        notchOutline: () => /* labelWidth: number, isRtl: boolean */{},
-        closeOutline: () => {}
-      }
-    );
+    return {
+      addClass: () => /* className: string */{},
+      removeClass: () => /* className: string */{},
+      hasClass: () => /* className: string */false,
+      floatLabel: () => /* value: boolean */{},
+      activateBottomLine: () => {},
+      deactivateBottomLine: () => {},
+      getValue: () => {},
+      isRtl: () => false,
+      hasLabel: () => {},
+      getLabelWidth: () => {},
+      hasOutline: () => {},
+      notchOutline: () => {},
+      closeOutline: () => {}
+    };
   }
 
-  /**
-   * @param {!MDCSelectAdapter} adapter
-   */
   constructor(adapter) {
     super(Object.assign(MDCSelectFoundation.defaultAdapter, adapter));
+
+    this.focusHandler_ = evt => this.handleFocus_(evt);
+    this.blurHandler_ = evt => this.handleBlur_(evt);
   }
 
-  /**
-   * Updates the styles of the select to show the disasbled state.
-   * @param {boolean} disabled
-   */
   updateDisabledStyle(disabled) {
     const { DISABLED } = MDCSelectFoundation.cssClasses;
     if (disabled) {
@@ -18062,27 +17843,18 @@ class MDCSelectFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_ind
     }
   }
 
-  /**
-   * Handles value changes, via change event or programmatic updates.
-   */
   handleChange() {
     const optionHasValue = this.adapter_.getValue().length > 0;
     this.adapter_.floatLabel(optionHasValue);
     this.notchOutline(optionHasValue);
   }
 
-  /**
-   * Handles focus events from root element.
-   */
   handleFocus() {
     this.adapter_.floatLabel(true);
     this.notchOutline(true);
     this.adapter_.activateBottomLine();
   }
 
-  /**
-   * Handles blur events from root element.
-   */
   handleBlur() {
     this.handleChange();
     this.adapter_.deactivateBottomLine();
@@ -18098,7 +17870,7 @@ class MDCSelectFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_ind
     }
 
     if (openNotch) {
-      const labelScale = __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].LABEL_SCALE;
+      const labelScale = __WEBPACK_IMPORTED_MODULE_1__constants__["b" /* numbers */].LABEL_SCALE;
       const labelWidth = this.adapter_.getLabelWidth() * labelScale;
       const isRtl = this.adapter_.isRtl();
       this.adapter_.notchOutline(labelWidth, isRtl);
@@ -18107,16 +17879,16 @@ class MDCSelectFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_ind
     }
   }
 }
+/* harmony export (immutable) */ __webpack_exports__["a"] = MDCSelectFoundation;
 
-/* harmony default export */ __webpack_exports__["a"] = (MDCSelectFoundation);
 
 /***/ }),
-/* 95 */
+/* 94 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initChips;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(2);
 
@@ -18167,12 +17939,12 @@ class VChip extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["
 
 
 /***/ }),
-/* 96 */
+/* 95 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chip_index__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chip_set_index__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chip_index__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chip_set_index__ = __webpack_require__(96);
 /* unused harmony reexport MDCChipFoundation */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__chip_index__["a"]; });
 /* unused harmony reexport MDCChipSetFoundation */
@@ -18199,15 +17971,15 @@ class VChip extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["
 
 
 /***/ }),
-/* 97 */
+/* 96 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export MDCChipSet */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chip_index__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chip_index__ = __webpack_require__(36);
 /* unused harmony reexport MDCChipSetFoundation */
 /**
  * @license
@@ -18331,14 +18103,14 @@ class MDCChipSet extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__[
 
 
 /***/ }),
-/* 98 */
+/* 97 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chip_foundation__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(98);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -18466,7 +18238,7 @@ class MDCChipSetFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fo
 /* harmony default export */ __webpack_exports__["a"] = (MDCChipSetFoundation);
 
 /***/ }),
-/* 99 */
+/* 98 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18503,7 +18275,7 @@ const cssClasses = {
 
 
 /***/ }),
-/* 100 */
+/* 99 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18513,7 +18285,7 @@ function initCards() {
 }
 
 /***/ }),
-/* 101 */
+/* 100 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18587,12 +18359,12 @@ class VForm {
 
 
 /***/ }),
-/* 102 */
+/* 101 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initCheckboxes;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_checkbox__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_checkbox__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(2);
 
@@ -18646,7 +18418,7 @@ class VCheckbox extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler
 
 
 /***/ }),
-/* 103 */
+/* 102 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18654,7 +18426,7 @@ class VCheckbox extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_animation_index__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_selection_control_index__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ripple_index__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ripple_util__ = __webpack_require__(7);
 /* unused harmony reexport MDCCheckboxFoundation */
@@ -18798,14 +18570,14 @@ class MDCCheckbox extends __WEBPACK_IMPORTED_MODULE_1__material_base_component__
 
 
 /***/ }),
-/* 104 */
+/* 103 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(105);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -19124,7 +18896,7 @@ function validDescriptor(inputPropDesc) {
 /* harmony default export */ __webpack_exports__["a"] = (MDCCheckboxFoundation);
 
 /***/ }),
-/* 105 */
+/* 104 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19211,7 +18983,7 @@ class MDCCheckboxAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCCheckboxAdapter);
 
 /***/ }),
-/* 106 */
+/* 105 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19271,14 +19043,14 @@ const numbers = {
 
 
 /***/ }),
-/* 107 */
+/* 106 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSwitches;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_switch__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_switch__ = __webpack_require__(107);
 
 
 
@@ -19330,15 +19102,15 @@ class VSwitch extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__
 
 
 /***/ }),
-/* 108 */
+/* 107 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCSwitch; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ripple_util__ = __webpack_require__(16);
 /* unused harmony reexport MDCSwitchFoundation */
 /**
@@ -19471,13 +19243,13 @@ class MDCSwitch extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["
 
 
 /***/ }),
-/* 109 */
+/* 108 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export MDCSelectionControlState */
 /* unused harmony export MDCSelectionControl */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple_index__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple_index__ = __webpack_require__(40);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -19520,13 +19292,13 @@ class MDCSelectionControl {
 
 
 /***/ }),
-/* 110 */
+/* 109 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(16);
 /**
  * @license
@@ -20123,7 +19895,7 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
 /* harmony default export */ __webpack_exports__["a"] = (MDCRippleFoundation);
 
 /***/ }),
-/* 111 */
+/* 110 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20178,13 +19950,13 @@ const numbers = {
 
 
 /***/ }),
-/* 112 */
+/* 111 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(113);
 /**
  * @license
  * Copyright 2018 Google Inc. All Rights Reserved.
@@ -20294,7 +20066,7 @@ class MDCSwitchFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
 /* harmony default export */ __webpack_exports__["a"] = (MDCSwitchFoundation);
 
 /***/ }),
-/* 113 */
+/* 112 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20355,7 +20127,7 @@ class MDCSwitchAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCSwitchAdapter);
 
 /***/ }),
-/* 114 */
+/* 113 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20393,12 +20165,12 @@ const strings = {
 
 
 /***/ }),
-/* 115 */
+/* 114 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initRichTextArea;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_quill__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_quill__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_quill__);
 
 
@@ -20439,7 +20211,7 @@ function initRichTextArea() {
 }
 
 /***/ }),
-/* 116 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {/*!
@@ -33335,10 +33107,10 @@ function initRichTextArea() {
     /******/)["default"]
   );
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(117).Buffer))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(116).Buffer))
 
 /***/ }),
-/* 117 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33352,9 +33124,9 @@ function initRichTextArea() {
 
 
 
-var base64 = __webpack_require__(119);
-var ieee754 = __webpack_require__(120);
-var isArray = __webpack_require__(121);
+var base64 = __webpack_require__(118);
+var ieee754 = __webpack_require__(119);
+var isArray = __webpack_require__(120);
 
 exports.Buffer = Buffer;
 exports.SlowBuffer = SlowBuffer;
@@ -35079,10 +34851,10 @@ function blitBuffer(src, dst, offset, length) {
 function isnan(val) {
   return val !== val; // eslint-disable-line no-self-compare
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(118)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(117)))
 
 /***/ }),
-/* 118 */
+/* 117 */
 /***/ (function(module, exports) {
 
 var g;
@@ -35107,7 +34879,7 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 119 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35234,7 +35006,7 @@ function fromByteArray(uint8) {
 }
 
 /***/ }),
-/* 120 */
+/* 119 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -35323,7 +35095,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 };
 
 /***/ }),
-/* 121 */
+/* 120 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -35333,7 +35105,7 @@ module.exports = Array.isArray || function (arr) {
 };
 
 /***/ }),
-/* 122 */
+/* 121 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35389,14 +35161,14 @@ class VStepper extends Object(__WEBPACK_IMPORTED_MODULE_0__mixins_event_handler_
 
 
 /***/ }),
-/* 123 */
+/* 122 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initRadios;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_radio__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_radio__ = __webpack_require__(123);
 
 
 
@@ -35447,14 +35219,14 @@ class VRadio extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__[
 
 
 /***/ }),
-/* 124 */
+/* 123 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRadio; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(124);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__ = __webpack_require__(4);
 /* unused harmony reexport MDCRadioFoundation */
 /**
@@ -35578,14 +35350,14 @@ class MDCRadio extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a
 
 
 /***/ }),
-/* 125 */
+/* 124 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(126);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(126);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -35686,7 +35458,7 @@ class MDCRadioFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foun
 /* harmony default export */ __webpack_exports__["a"] = (MDCRadioFoundation);
 
 /***/ }),
-/* 126 */
+/* 125 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35742,7 +35514,7 @@ class MDCRadioAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCRadioAdapter);
 
 /***/ }),
-/* 127 */
+/* 126 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35779,14 +35551,14 @@ const cssClasses = {
 
 
 /***/ }),
-/* 128 */
+/* 127 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSliders;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_slider__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_slider__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__ = __webpack_require__(30);
 
 
@@ -35806,10 +35578,22 @@ function initSliders() {
 }
 
 class VSlider extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__["a" /* visibilityObserverMixin */])(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */])) {
-    constructor(element, mdcComponent) {
+    constructor(element, mdcSliderComponent) {
         super(element);
-        this.mdcComponent = mdcComponent;
+        this.mdcComponent = mdcSliderComponent;
         this.recalcWhenVisible(this);
+
+        mdcSliderComponent.listen('MDCSlider:change', function (e) {
+            // console.log(`Value changed to ${mdcSliderComponent.value}`)
+            // Forward as a standard change event
+            if ("createEvent" in document) {
+                var evt = document.createEvent("HTMLEvents");
+                evt.initEvent("change", false, true);
+                element.dispatchEvent(evt);
+            } else {
+                element.fireEvent("onchange");
+            }
+        });
     }
 
     prepareSubmit(params) {
@@ -35836,15 +35620,15 @@ class VSlider extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_obse
 
 
 /***/ }),
-/* 129 */
+/* 128 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCSlider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(129);
 /* unused harmony reexport MDCSliderFoundation */
 /**
  * @license
@@ -36050,12 +35834,12 @@ class MDCSlider extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["
 
 
 /***/ }),
-/* 130 */
+/* 129 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_animation_index__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_base_foundation__ = __webpack_require__(0);
 /**
@@ -36630,7 +36414,7 @@ class MDCSliderFoundation extends __WEBPACK_IMPORTED_MODULE_3__material_base_fou
 /* harmony default export */ __webpack_exports__["a"] = (MDCSliderFoundation);
 
 /***/ }),
-/* 131 */
+/* 130 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

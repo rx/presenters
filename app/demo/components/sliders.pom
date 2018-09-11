@@ -20,6 +20,14 @@ Voom::Presenters.define(:sliders) do
       value 10
     end
 
+    title 'Slider with change event'
+    slider discrete: true, show_tracker_marks: true, value_min: 0, value_max: 50, step: 2 do
+      value 10
+      event :change do
+        snackbar "Slider value changed"
+      end
+    end
+
     button 'Show hidden slider', type: :flat, color: :secondary do
       event :click do
         toggle_visibility :hidden_slider, action: :show
