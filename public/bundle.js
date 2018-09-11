@@ -35584,7 +35584,6 @@ class VSlider extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_obse
         this.recalcWhenVisible(this);
 
         mdcSliderComponent.listen('MDCSlider:change', function (e) {
-            // console.log(`Value changed to ${mdcSliderComponent.value}`)
             // Forward as a standard change event
             if ("createEvent" in document) {
                 var evt = document.createEvent("HTMLEvents");
