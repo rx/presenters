@@ -7,7 +7,7 @@ module Voom
         LONG_FORMAT='%m/%d/%Y %I:%M:%S %p %Z'
         SHORT_FORMAT='%d %b %H:%M %Z'
 
-        def format_time(time, format: '%m/%d/%Y %I:%M:%S %p %Z', timezone: nil)
+        def format_time(time, format: LONG_FORMAT, timezone: nil)
           return '' unless time
           time = time.in_time_zone(timezone) if timezone
           time.strftime(format)
