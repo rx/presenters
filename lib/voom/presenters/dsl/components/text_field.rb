@@ -6,14 +6,15 @@ module Voom
       module Components
         class TextField < Input
 
-          attr_reader :required, :full_width, :password, :disabled
+          attr_reader :required, :full_width, :password, :disabled, :auto_complete
 
           def initialize(**attribs_, &block)
             super(type: :text_field, **attribs_, &block)
-            @required = attribs.delete(:required)
+            @required = attribs.delete(:required){ false }
             @full_width = attribs.delete(:full_width){ true }
-            @password = attribs.delete(:password)
-            @disabled = attribs.delete(:disabled)
+            @password = attribs.delete(:password){ false }
+            @disabled = attribs.delete(:disabled){ false }
+            @auto_complete = attribs.delete(:auto_complete){ true }
             expand!
           end
 
