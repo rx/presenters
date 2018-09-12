@@ -1,19 +1,24 @@
-<%  class_name = '' unless local_variables.include? :class_name %>
+<% class_name = '' unless local_variables.include? :class_name %>
 
 <div
-  <% if comp.tag %>
-  data-input-tag="<%= comp.tag %>"
-  <% end %>
-  class="mdc-checkbox v-input">
+<% if comp.tag %>
+data-input-tag="<%= comp.tag %>"
+<% end %>
+class="mdc-checkbox v-input">
   <input type="checkbox"
-         id="<%=comp.id%>"
-         name="<%=comp.name%>"
-         value="<%=comp.value%>"
+         id="<%= comp.id %>"
+         name="<%= comp.name %>"
+         <% if comp.value %>
+          value="<%= comp.value %>"
+         <% end %>
          class="mdc-checkbox__native-control
                <%= class_name %>"
-         <% if comp.checked %> checked <% end %><% if comp.disabled %> disabled <% end %>
+         <% if comp.checked %> checked
+         <% end %>
+  <% if comp.disabled %> disabled
+         <% end %>
          <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>
-    />
+         />
   <div class="mdc-checkbox__background">
     <svg class="mdc-checkbox__checkmark"
          viewBox="0 0 24 24">
@@ -25,5 +30,5 @@
     <div class="mdc-checkbox__mixedmark"></div>
   </div>
 </div>
-<label class="v-checkbox__label" id="<%=comp.id%>" for="<%=comp.id%>"><%=comp.text%></label>
-<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id }%>
+<label class="v-checkbox__label" id="<%= comp.id %>" for="<%= comp.id %>"><%= comp.text %></label>
+<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
