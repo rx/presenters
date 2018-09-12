@@ -18,10 +18,12 @@ module Voom
       module Components
         class Event < Base
           attr_accessor :event, :actions
+          # Alias common event names
+          EVENT_MAP = {focus: :focusin, blur: :focusout}
 
           def initialize(**attribs_, &block)
             super(type: :event, **attribs_, &block)
-            @event = attribs.delete(:event)
+            @event = alias_event(attribs.delete(:event))
             @actions = []
             expand!
           end
@@ -126,6 +128,11 @@ module Voom
           def stepper(navigate, **params, &block)
             @actions << Actions::Stepper.new(parent: self,
                                                params: params.merge(navigate: navigate, stepper_id: parent(:stepper).id), &block)
+          end
+
+          private
+          def alias_event(event)
+            EVENT_MAP.fetch(event.to_sym){event.to_sym}
           end
         end
       end
