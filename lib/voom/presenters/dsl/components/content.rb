@@ -29,12 +29,13 @@ module Voom
           include Mixins::Chips
           include Mixins::Icons
 
-          attr_reader :hidden, :components, :shows_errors
+          attr_reader :hidden, :float, :components, :shows_errors
          
           def initialize(**attribs_, &block)
             super(type: :content, **attribs_, &block)
             @components = []
             @hidden = attribs.delete(:hidden){false}
+            @float = attribs.delete(:float){false}
             @shows_errors = attribs.delete(:shows_errors){false}
             expand!
           end
