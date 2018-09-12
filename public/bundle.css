@@ -6166,7 +6166,7 @@ h1.v-page-title {
 .v-fab--absolute {
   position: relative;
   float: right;
-  margin: 6px -40px -69px;
+  margin: -46px -14px -69px;
   z-index: 10; }
 
 .mdc-button {
@@ -8834,6 +8834,9 @@ a.mdc-list-item {
 .mdc-list-item__secondary-text::before {
   content: unset; }
 
+.v-list__border {
+  border: 1px solid rgba(0, 0, 0, 0.1); }
+
 .mdc-icon-toggle {
   --mdc-ripple-fg-size: 0;
   --mdc-ripple-left: 0;
@@ -11376,6 +11379,13 @@ form .mdc-switch {
 
 .v-icon__secondary {
   color: #E58D36; }
+
+.v-content--float {
+  position: absolute;
+  text-align: left;
+  margin-top: -1px;
+  margin-left: -1px;
+  z-index: 989; }
 
 .flatpickr-calendar {
   background: transparent;
