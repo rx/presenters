@@ -1,5 +1,6 @@
 import {eventHandlerMixin} from "./mixins/event-handler";
-import {VBaseComponent} from "./base-component";
+import {VBaseContainer} from "./base-container";
+
 
 export function initSteppers() {
     console.log('\tStepper');
@@ -12,7 +13,7 @@ export function initSteppers() {
     }
 }
 
-export class VStepper extends eventHandlerMixin(VBaseComponent) {
+export class VStepper extends eventHandlerMixin(VBaseContainer) {
     constructor(element) {
         super(element);
 

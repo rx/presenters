@@ -12,7 +12,7 @@
      <% if comp.tag %>
      data-input-tag="<%= comp.tag %>"
      <% end %>
-     class="mdc-layout-grid
+     class="v-grid mdc-layout-grid
             <%= _padding_classes_(comp.padding, @grid_nesting, :grid) %>"
      style="<%= "background-color: #{comp.color};" if comp.color %>">
   <% unless @grid_nesting>1 %>
@@ -25,7 +25,7 @@
         span << " mdc-layout-grid__cell--span-#{col.send(device)}-#{device}" if col.send(device)
       end
     %>
-      <div id="<%= col.id %>" class="mdc-layout-grid__cell <%= span %>
+      <div id="<%= col.id %>" class="v-column mdc-layout-grid__cell <%= span %>
                           <%= _padding_classes_(col.padding, 0, :col) %>"
            style="<%= "background-color: #{col.color};" if col.color %>">
         <%= erb :"components/render", :locals => {:components => col.components, :scope => nil} %>

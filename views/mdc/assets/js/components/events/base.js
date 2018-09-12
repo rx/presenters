@@ -15,30 +15,22 @@ export class VBase extends VUrls {
         return document.getElementById(this.options.__parent_id__);
     }
 
-    inputComponents(el) {
-        return el.querySelectorAll('.v-input')
-    }
-
     inputValues(form) {
         let params = [];
 
-        if(this.params.input_tag !== undefined){
-            var inputContainers = document.querySelectorAll('[data-input-tag=' + this.params.input_tag + ']');
-            for (let container of inputContainers) {
-                for (let input of this.inputComponents(container)) {
-                    if (input.vComponent && typeof input.vComponent.prepareSubmit === 'function') {
-                        input.vComponent.prepareSubmit(params);
-                    }
+        // If tagged input is asked for. Fetch all the matching tag elements and then call any bound components
+        if (this.params.input_tag !== undefined) {
+            var taggedInputs = document.querySelectorAll('[data-input-tag=' + this.params.input_tag + ']');
+            for (let input of taggedInputs) {
+                if (input.vComponent && typeof input.vComponent.prepareSubmit === 'function') {
+                    input.vComponent.prepareSubmit(params);
                 }
             }
         }
-        else
-        {
-            // Let input components push parameters
-            let vComp = this.component();
-            if (vComp) {
-                vComp.prepareSubmit(params);
-            }
+        // Let input components push parameters
+        let vComp = this.component();
+        if (vComp) {
+            vComp.prepareSubmit(params);
         }
         return params;
     }
