@@ -10,7 +10,8 @@
             <%= 'mdc-text-field--disabled' if comp.disabled %>
             <%= 'is-invalid is-dirty' if comp.error %>"
      data-config='<%= snake_to_camel(to_hash(comp.config), except: %i(time_24hr)).to_json %>'
-     data-type='<%= comp.type %>'>
+     data-type='<%= comp.type %>'
+     style="<%= 'width:100%' if comp.full_width %>">
   <input id="<%= comp.id %>-input"
          name="<%= comp.name %>"
          type="text"

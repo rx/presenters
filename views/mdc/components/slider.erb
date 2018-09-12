@@ -14,8 +14,9 @@
      aria-valuemin="<%= comp.value_min %>"
      aria-valuemax="<%= comp.value_max %>"
      aria-valuenow="<%= comp.value unless comp.value.nil? %>"
-     aria-label="Select Value">
-  <div class="mdc-slider__track-container">
+     aria-label="Select Value"
+    <%= erb :"components/event", :locals => {events: comp.events, parent_id: "#{comp.id}-input"} %>>
+<div class="mdc-slider__track-container">
     <div class="mdc-slider__track"></div>
 
     <% if comp.show_tracker_marks %>

@@ -878,7 +878,7 @@ function initialize() {
     Object(__WEBPACK_IMPORTED_MODULE_18__sliders__["a" /* initSliders */])();
     Object(__WEBPACK_IMPORTED_MODULE_19__hidden_fields__["a" /* initHiddenFields */])();
     // This needs to be last, because it relies on the components installed above.
-    Object(__WEBPACK_IMPORTED_MODULE_4__events__["a" /* initEvents */])();
+    Object(__WEBPACK_IMPORTED_MODULE_4__events__["b" /* initEvents */])();
 }
 
 /***/ }),
@@ -14864,7 +14864,7 @@ class MDCNotchedOutlineFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = initEvents;
+/* harmony export (immutable) */ __webpack_exports__["b"] = initEvents;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_loads__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_posts__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replaces__ = __webpack_require__(73);
@@ -14975,7 +14975,7 @@ class VEvents {
     }
 
 }
-/* unused harmony export VEvents */
+/* harmony export (immutable) */ __webpack_exports__["a"] = VEvents;
 
 
 // This is used to get a proper binding of the actionData
@@ -14999,6 +14999,10 @@ function initEvents() {
             var eventOptions = eventData[2];
             var actionsData = eventData[1];
             var eventHandler = createEventHandler(actionsData);
+            // allow overide of event handler by component
+            if (eventElem.vComponent && eventElem.vComponent.createEventHandler) {
+                eventHandler = eventElem.vComponent.createEventHandler(actionsData);
+            }
             // Delegate to the component if possible
             if (eventElem.vComponent && eventElem.vComponent.initEventListener) {
                 eventElem.vComponent.initEventListener(eventName, eventHandler);
@@ -35788,6 +35792,8 @@ const cssClasses = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_slider__ = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(67);
+
 
 
 
@@ -35806,9 +35812,9 @@ function initSliders() {
 }
 
 class VSlider extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__["a" /* visibilityObserverMixin */])(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */])) {
-    constructor(element, mdcComponent) {
+    constructor(element, mdcSliderComponent) {
         super(element);
-        this.mdcComponent = mdcComponent;
+        this.mdcComponent = mdcSliderComponent;
         this.recalcWhenVisible(this);
     }
 
@@ -35830,6 +35836,23 @@ class VSlider extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_obse
 
     setValue(value) {
         this.mdcComponent.value = value;
+    }
+
+    initEventListener(eventName, eventHandler) {
+        if (eventName === 'change') {
+            eventName = 'MDCSlider:change';
+        }
+        super.initEventListener(eventName, eventHandler);
+    }
+
+    createEventHandler(actionsData) {
+        return function (event) {
+            // The MDC slider was firing duplicate change events - this prevents that
+            if (!this.lastEvent || event.timeStamp - this.lastEvent.timeStamp > 10.0) {
+                new __WEBPACK_IMPORTED_MODULE_4__events__["a" /* VEvents */](actionsData, event).call();
+            }
+            this.lastEvent = event;
+        };
     }
 }
 /* unused harmony export VSlider */

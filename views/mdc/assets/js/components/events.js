@@ -52,7 +52,7 @@ export class VEvents {
                 }
 
             }).catch(function (results) {
-                console.log("If you got here it may not be what you think:", results);
+            console.log("If you got here it may not be what you think:", results);
 
             var result = results.pop();
             new VErrors(event).displayErrors(result);
@@ -120,6 +120,10 @@ export function initEvents() {
             var eventOptions = eventData[2];
             var actionsData = eventData[1];
             var eventHandler = createEventHandler(actionsData);
+            // allow overide of event handler by component
+            if (eventElem.vComponent && eventElem.vComponent.createEventHandler) {
+                eventHandler = eventElem.vComponent.createEventHandler(actionsData);
+            }
             // Delegate to the component if possible
             if (eventElem.vComponent && eventElem.vComponent.initEventListener) {
                 eventElem.vComponent.initEventListener(eventName, eventHandler);
