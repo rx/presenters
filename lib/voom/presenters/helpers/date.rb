@@ -2,10 +2,10 @@ module Voom
   module Presenters
     module Helpers
       module Date
-        LONG_FORMAT='%m/%d/%Y'
-        SHORT_FORMAT='%d %b %Y'
+        LONG_FORMAT='%B %e, %Y'
+        SHORT_FORMAT='%e %b'
 
-        def format_date(date, format: '%m/%d/%Y')
+        def format_date(date, format: LONG_FORMAT)
           date ? date.strftime(format) : ''
         end
 

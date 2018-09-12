@@ -3,7 +3,9 @@
      data-input-tag="<%= comp.tag %>"
      <% end %>
      class="v-content
-            <%= 'v-hidden' if comp.hidden %>">
+            <%= 'v-hidden' if comp.hidden %>
+            <%= 'v-content--float' if comp.float %>
+               ">
   <% if comp.shows_errors %>
     <div class="v-errors">
   <% end %>

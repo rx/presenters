@@ -1,20 +1,19 @@
 import {VBaseContainer} from "./base-container";
 
-export function initCards() {
-    console.log('\tCards');
+export function initContent() {
+    console.log('\tContent');
 
-    var components = document.querySelectorAll('.v-card');
+    var components = document.querySelectorAll('.v-content');
     for (var i = 0; i < components.length; i++) {
         var component = components[i];
         if (!component.vComponent) {
-            component.vComponent = new VCard(component);
+            component.vComponent = new VContent(component);
         }
     }
 }
 
-export class VCard extends VBaseContainer {
+export class VContent extends VBaseContainer {
     constructor(element) {
         super(element);
     }
 }
-

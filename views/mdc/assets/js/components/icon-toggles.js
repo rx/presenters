@@ -11,11 +11,3 @@ export function initIconToggles() {
         }
     }
 }
-
-// TODO: Add event handler
-// var addToFavorites = document.getElementById('add-to-favorites');
-//         var favoritedStatus = document.getElementById('favorited-status');
-//         addToFavorites.addEventListener('MDCIconToggle:change', function(evt) {
-//           var newStatus = evt.detail.isOn ? 'yes' : 'no';
-//           favoritedStatus.textContent = newStatus;
-//         });
