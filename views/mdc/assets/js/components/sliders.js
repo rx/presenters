@@ -2,6 +2,7 @@ import {VBaseComponent} from "./base-component";
 import {eventHandlerMixin} from "./mixins/event-handler";
 import {MDCSlider} from '@material/slider';
 import {visibilityObserverMixin} from './mixins/visibility-observer';
+import {VEvents} from './events';
 
 export function initSliders() {
     console.log('\tSliders');
@@ -20,37 +21,44 @@ export class VSlider extends visibilityObserverMixin(eventHandlerMixin(VBaseComp
         super(element);
         this.mdcComponent = mdcSliderComponent;
         this.recalcWhenVisible(this);
-
-        mdcSliderComponent.listen('MDCSlider:change', function (e){
-            // Forward as a standard change event
-            if ("createEvent" in document) {
-                var evt = document.createEvent("HTMLEvents");
-                evt.initEvent("change", false, true);
-                element.dispatchEvent(evt);
-            }
-            else{
-                element.fireEvent("onchange");
-            }
-        });
     }
+
 
     prepareSubmit(params) {
         params.push([this.name(), this.value()]);
-     }
+    }
 
-    name(){
+    name() {
         return this.element.getAttribute('data-name')
     }
 
-    value(){
+    value() {
         return this.mdcComponent.value
     }
 
-    clear(){
+    clear() {
         this.setValue(0);
     }
 
-    setValue(value){
+    setValue(value) {
         this.mdcComponent.value = value;
+    }
+
+    initEventListener(eventName, eventHandler) {
+        if (eventName === 'change') {
+            eventName = 'MDCSlider:change';
+        }
+        super.initEventListener(eventName, eventHandler);
+    }
+
+
+    createEventHandler(actionsData) {
+        return function (event) {
+            // The MDC slider was firing duplicate change events - this prevents that
+            if (!this.lastEvent || (event.timeStamp - this.lastEvent.timeStamp) > 10.0) {
+                new VEvents(actionsData, event).call();
+            }
+            this.lastEvent = event;
+        };
     }
 }
