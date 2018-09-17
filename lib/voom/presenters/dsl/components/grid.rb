@@ -47,7 +47,7 @@ module Voom
           include Mixins::Dialogs
           include Mixins::Snackbars
 
-          attr_accessor :columns, :color, :padding
+          attr_accessor :columns, :color, :padding, :wide
 
           def initialize(color: nil, **attribs_, &block)
             super(type: :grid, **attribs_, &block)
@@ -55,6 +55,7 @@ module Voom
             @color = h(color)
             padding = attribs.delete(:padding) {nil}
             @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
+            @wide = attribs.delete(:wide) {false}
             expand!
           end
 

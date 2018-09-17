@@ -7388,6 +7388,13 @@ v-card-title-position-left {
   margin-right: 0;
   margin-left: auto; }
 
+.v-grid__wide {
+  overflow-y: hidden;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch; }
+  .v-grid__wide::-webkit-scrollbar {
+    display: none; }
+
 @media (min-width: 840px) {
   .v-grid__padding-bottom-left-right-top {
     padding: 24px 24px 24px 24px; }

@@ -13,7 +13,8 @@
      data-input-tag="<%= comp.tag %>"
      <% end %>
      class="v-grid mdc-layout-grid
-            <%= _padding_classes_(comp.padding, @grid_nesting, :grid) %>"
+            <%= _padding_classes_(comp.padding, @grid_nesting, :grid) %>
+            <%= 'v-grid__wide' if comp.wide %>"
      style="<%= "background-color: #{comp.color};" if comp.color %>">
   <% unless @grid_nesting>1 %>
   <% end %>
