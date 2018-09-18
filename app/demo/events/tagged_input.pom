@@ -1,0 +1,37 @@
+Voom::Presenters.define(:tagged_input) do
+  helpers Demo::Helpers::IndentedGrid
+
+  attach :top_nav
+  attach :events_drawer
+
+  indented_grid do
+    display 'Tagged Input'
+    body %(This demonstrates the ability to tag containers or components and then to post those values in an event action.
+         Sometimes you need to pull values from different nesting levels on a page to post.
+         Tags let you collect all tagged inputs from anywhere on the page and post them to some server side action.
+         An example of this can be found in the [search select](/search_select) pattern demo.)
+
+    blank
+    body 'Tags can be applied to containers and/or components.
+         Containers include content blocks, grids, forms, steppers, dialogs and cards.
+         All input components accept tags.'
+
+    title 'Example'
+
+    content tag: :somefields do
+      radio_button text: :on, name: :check_me, value: :on, checked: true
+      radio_button text: :off, name: :check_me, value: :off
+    end
+    text_field name: :myfield2, tag: :somefields do
+      label 'More Data to post'
+    end
+
+    button 'Press me' do
+      event :click do
+        replaces :context_list, :context_list, input_tag: :somefields
+      end
+    end
+    attach :context_list
+    attach :code, file: __FILE__
+  end
+end

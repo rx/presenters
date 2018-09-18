@@ -7,7 +7,6 @@ require_relative 'actions/remove'
 require_relative 'actions/dialog'
 require_relative 'actions/toggle_visibility'
 require_relative 'actions/snackbar'
-require_relative 'actions/auto_complete'
 require_relative 'actions/clear'
 require_relative 'actions/navigates'
 require_relative 'actions/stepper'
@@ -100,14 +99,7 @@ module Voom
             @actions << Actions::Snackbar.new(parent: self,
                                                params: params.merge(text: text), &block)
           end
-
-          def autocomplete(path, **params, &block)
-            @actions << Actions::AutoComplete.new(parent: self,
-                                               path: path,
-                                               target: "#{parent(:text_field).id}-list",
-                                               params: params, &block)
-          end
-
+          
           def navigates(direction, **params, &block)
             @actions << Actions::Navigates.new(parent: self,
                                                params: params.merge(direction: direction), &block)

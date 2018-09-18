@@ -5,7 +5,6 @@ import {VDialog} from './events/dialog';
 import {VErrors} from './events/errors';
 import {VToggleVisibility} from './events/toggle_visibility';
 import {VSnackbarEvent} from './events/snackbar';
-import {VAutoComplete} from './events/autocomplete';
 import {VNavigates} from './events/navigates';
 import {VClears} from './events/clears';
 import {VRemoves} from './events/removes';
@@ -84,8 +83,6 @@ export class VEvents {
                 return new VRemoves(options, params, event);
             case 'snackbar':
                 return new VSnackbarEvent(options, params, event);
-            case 'autocomplete':
-                return new VAutoComplete(options, url, params, event);
             case 'navigates':
                 return new VNavigates(options, params, event);
             case 'clear':
