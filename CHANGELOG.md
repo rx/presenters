@@ -13,30 +13,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - This change log
 - [Namespaces]
-- [Rich text component]
 - [Slider component]
+- [Rich text component]
+- [Map component]
+- [Chip as input]
 - [Tagged Input]
+- [Grid Padding]
+- [Grid Wide/Table scrolling]
 - [Overline Text Style]
 - [Blank lines]
 - [Page separator]
-- [Grid Padding]
-- [Maps]
 - [Clear action]
-- [Chip as input]
-- Icons support inside content blocks
 - Floating content blocks
 
 ### Removed
 - Autocomplete event
 
 ### Changed
-- List component action blocks are now actions
-- Edit controls now draw with outlined style by default
-- Text fields support leading or trailing icons
+- Text field - draw with outlined style by default
+- Text field - support for leading or trailing icons
+- Text field - disabled support
+- Text area - can specify cols to control width
+- Select options - can pass the option text as the first parameter, or in the block.
+- List - component action blocks are now actions
+- List - color and border
+- Content blocks - icons support
+- Events - aliases focus and blur (maps to focusin and focusout)
+- Typography - available in menu items, including markdown
+- Typography - removed trailing line breaks
+- Rails helper table_for helper - accepts timezone for auto time formatting
+- Date time - default format changed
+- Webclient FAB button - shifted up and out to make room for list actions 
 
 ### Fixed
-- Removed excessive spacing on text_fields
+- Text field - Removed excessive trailing spacing
 - Context is no longer copied and it is not included in the pom json
+- List - selected lists can render selected with the checked option
 
 [Unreleased]: https://github.com/rx/presenters/compare/v0.1.14...HEAD 
 [0.1.14]: https://github.com/rx/presenters/compare/v0.1.14...v0.1.13
@@ -49,7 +61,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Page separator]: https://powerful-bastion-96181.herokuapp.com/separator
 [Blank lines]: https://powerful-bastion-96181.herokuapp.com/styles
 [Grid Padding]: https://powerful-bastion-96181.herokuapp.com/layouts
-[Maps]: https://powerful-bastion-96181.herokuapp.com/maps
+[Map component]: https://powerful-bastion-96181.herokuapp.com/maps
 [Clear action]: https://powerful-bastion-96181.herokuapp.com/clear_action 
 [Chip as input]: https://powerful-bastion-96181.herokuapp.com/chips#input_chips 
 [Floating content blocks]:https://powerful-bastion-96181.herokuapp.com/content#floating  
+[Grid Wide/Table scrolling]:https://powerful-bastion-96181.herokuapp.com/tables

@@ -33,6 +33,27 @@ Voom::Presenters.define(:tables) do
       end
     end
 
+    grid wide: true do
+      column 12 do
+        title 'Wide (scrollable)', id: :scrollable
+        table do
+          header do
+            (1..18).each do |idx|
+              column "Column #{idx}"
+            end
+          end
+          items.each do |item|
+            row do
+              (1..6).each do
+                column item.material
+                column item.quantity
+                column item.price
+              end
+            end
+          end
+        end
+      end
+    end
     attach :code, file: __FILE__
   end
 end
