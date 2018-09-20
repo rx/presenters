@@ -35,6 +35,7 @@
     "@material/slider": "^0.38.0",
     "@material/snackbar": "^0.38.0",
     "@material/switch": "^0.38.1",
+    "@material/tab-bar": "^0.39.3",
     "@material/textfield": "^0.38.0",
     "@material/toolbar": "^0.38.0",
     "@material/typography": "^0.38.0",
