@@ -19,6 +19,7 @@ module Voom
         end
         
         def scrub_params(_params_)
+          _params_.delete('captures')
           _params_.delete('presenter')
           _params_.delete('action')
           _params_.delete('errors')

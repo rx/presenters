@@ -85,6 +85,12 @@ Voom::Presenters.define(:chips) do
       end
     end
 
+    title 'Chips as input',id: :input_chips
+    body 'You can set the name and value attributes of a chip, they then can be posted.
+          An example of this can be found in the [search select](/search_select) pattern demo.'
+
+
+
     attach :code, file: __FILE__
   end
 end
