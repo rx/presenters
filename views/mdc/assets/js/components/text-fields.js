@@ -80,7 +80,9 @@ export class VTextField extends visibilityObserverMixin(eventHandlerMixin(VBaseC
     }
 
     clear(){
-        this.setValue('');
+        if(this.value()!=='') {
+            this.setValue('');
+        }
     }
 
     setValue(value){

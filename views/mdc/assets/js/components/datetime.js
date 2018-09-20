@@ -37,7 +37,10 @@ export class VDateTime extends VTextField {
    }
 
     clear() {
-        this.fp.clear();
+
+        if(this.fp.input.value!=='') {
+            this.fp.clear();
+        }
         this.mdcComponent.foundation_.deactivateFocus();
     }
 }
