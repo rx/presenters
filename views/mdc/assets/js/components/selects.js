@@ -26,20 +26,28 @@ export class VSelect extends eventHandlerMixin(VBaseComponent) {
         params.push([this.name(), this.value()]);
     }
 
-    name(){
+    name() {
         return this.select.name;
     }
 
-    value(){
+    value() {
         return this.select.options[this.select.selectedIndex].value;
     }
 
-    clear(){
-        this.select.selectedIndex = -1;
-        this.setValue('');
+    clear() {
+        let before = this.select.selectedIndex;
+        this.select.selectedIndex = 0;
+        if (before !== 0) {
+            var event = new InputEvent('input', {
+                view: window,
+                bubbles: true,
+                cancelable: true
+              });
+            this.select .dispatchEvent(event);
+        }
     }
 
-    setValue(value){
+    setValue(value) {
         this.select.value = value;
     }
 }
