@@ -30,5 +30,5 @@ class="mdc-checkbox v-input">
     <div class="mdc-checkbox__mixedmark"></div>
   </div>
 </div>
-<label class="v-checkbox__label" id="<%= comp.id %>" for="<%= comp.id %>"><%= comp.text %></label>
+<label class="v-checkbox__label" id="<%= comp.id %>-label" for="<%= comp.id %>"><%= comp.text %></label>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
