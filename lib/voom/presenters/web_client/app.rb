@@ -18,6 +18,9 @@ module Voom
         set :router_, WebClient::Router
         set :bind, '0.0.0.0'
         set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE']||'mdc')}
+        configure do
+          enable :logging
+        end
 
         helpers do
           def markdown(text)
@@ -159,8 +162,8 @@ module Voom
         end
 
         def scrub_context(params, _session, _env)
-          %i(splat captures _presenter_ grid_nesting input_tag).each do |key|
-            params.delete(key)
+          %i(splat captures _presenter_ grid_nesting input_tag _namespace1_ _namespace2_).each do |key|
+            params.delete(key){params.delete(key.to_s)}
           end
           params
         end
