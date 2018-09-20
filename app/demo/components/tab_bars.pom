@@ -34,8 +34,8 @@ Voom::Presenters.define(:tab_bars) do
 
     title 'Scrolling Tabs'
     tab_bar do
-      10.times do |idx|
-        tab "Tab-#{idx}", active: idx == 3 do
+      15.times do |idx|
+        tab "Tab Number-#{idx}", active: idx == 3 do
           event :click do
             snackbar 'tab clicked'
           end
