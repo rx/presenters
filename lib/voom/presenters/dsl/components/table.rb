@@ -72,13 +72,14 @@ module Voom
 
               def value(*value, **attribs, &block)
                 return @value if locked?
+                @numeric = numeric?(*value) if value.size ==1
                 @value = Components::Typography.new(parent: self, type: :text, text: value, **attribs, &block)
               end
 
               private
               def numeric?(value)
                 return true if value.is_a? Numeric
-                (value.to_s.sub(/\D/, '') =~ /^[-+]?[0-9]*\.?[0-9]+$/) != nil
+                (value.to_s.strip.sub(/\D/, '') =~ /^[\$]?[-+]?[0-9]*\.?[0-9]+$/) != nil
               end
             end
 
