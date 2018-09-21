@@ -7,6 +7,7 @@ require_relative 'expansion_panels'
 require_relative 'content'
 require_relative 'menus'
 require_relative 'google_maps'
+require_relative 'tab_bars'
 
 module Voom
   module Presenters
@@ -23,6 +24,7 @@ module Voom
             include Mixins::Content
             include Mixins::Menus
             include Mixins::GoogleMaps
+            include Mixins::TabBars
 
             def badge(badge=nil, **attributes, &block)
               self << Components::Badge.new(parent: self, badge: badge, **attributes, &block)

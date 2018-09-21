@@ -20,6 +20,7 @@ import {initSliders} from './sliders';
 import {initHiddenFields} from './hidden-fields';
 import {initContent} from './content';
 import {initGrid} from './grid';
+import {initTabBars} from './tab-bars';
 
 export function initialize(){
     console.log('Initializing');
@@ -44,6 +45,7 @@ export function initialize(){
     initHiddenFields();
     initContent();
     initGrid();
+    initTabBars();
     // This needs to be last, because it relies on the components installed above.
     initEvents();
 }
