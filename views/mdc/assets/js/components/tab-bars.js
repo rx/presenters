@@ -5,7 +5,7 @@ import {MDCTabBar} from '@material/tab-bar';
 export function initTabBars() {
     console.log('\tTab Bars');
 
-    var components = document.querySelectorAll('.mdc-tab-bar');
+    var components = document.querySelectorAll('.v-tab-bar');
     for (var i = 0; i < components.length; i++) {
         var comp = components[i];
         if (!comp.vComponent) {
