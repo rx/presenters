@@ -11,6 +11,7 @@ require_relative 'mixins/steppers'
 require_relative 'mixins/sliders'
 require_relative 'mixins/chips'
 require_relative 'mixins/icons'
+require_relative 'mixins/dialogs'
 
 module Voom
   module Presenters
@@ -28,6 +29,7 @@ module Voom
           include Mixins::Sliders
           include Mixins::Chips
           include Mixins::Icons
+          include Mixins::Dialogs
 
           attr_reader :hidden, :float, :components, :shows_errors
          
