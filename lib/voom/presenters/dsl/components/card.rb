@@ -70,7 +70,8 @@ module Voom
 
             def title(*title, **attribs, &block)
               return @title if locked?
-              @title = Typography.new(type: :title,
+              @title = Typography.new(type: :headline,
+                                      level: 6,
                                       parent: self,
                                       text: title,
                                       **attribs, &block)
