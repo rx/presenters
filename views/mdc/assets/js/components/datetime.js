@@ -1,16 +1,11 @@
 import flatpickr from "flatpickr";
 import {VTextField} from './text-fields';
 import {MDCTextField} from '@material/textfield';
+import {hookupComponents} from "./base-component";
 
 export function initDateTime() {
     console.log('\tDateTime');
-    let components = document.querySelectorAll('.v-datetime');
-    for (let i = 0; i < components.length; i++) {
-        let component = components[i];
-        if (!component.vComponent) {
-            component.vComponent = new VDateTime(component, new MDCTextField(component));
-        }
-    }
+    hookupComponents('.v-datetime', VDateTime, MDCTextField);
 }
 
 export class VDateTime extends VTextField {

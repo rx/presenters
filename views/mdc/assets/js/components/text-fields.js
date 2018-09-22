@@ -1,29 +1,21 @@
 import {MDCTextField} from '@material/textfield';
-import {VBaseComponent} from './base-component';
+import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 import {visibilityObserverMixin} from './mixins/visibility-observer';
 
 export function initTextFields() {
     console.log('\tTextFields');
-
-    var textFields = document.querySelectorAll('.mdc-text-field');
-    for (var i = 0; i < textFields.length; i++) {
-        var textField = textFields[i];
-        if (!textField.vComponent) {
-            textField.vComponent = new VTextField(textField, new MDCTextField(textField));
-        }
-    }
+    hookupComponents('.v-text-field', VTextField, MDCTextField);
 }
 
 export class VTextField extends visibilityObserverMixin(eventHandlerMixin(VBaseComponent)) {
     constructor(element, mdcComponent) {
-        super(element);
+        super(element, mdcComponent);
         this.input = element.querySelector('input');
         if(this.input == null){
             this.input = element.querySelector('textarea');
         }
         this.input.vComponent = this;
-        this.mdcComponent = mdcComponent;
         this.recalcWhenVisible(this);
     }
 

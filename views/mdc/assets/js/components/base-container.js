@@ -1,8 +1,8 @@
 import {VBaseComponent} from "./base-component";
 
 export class VBaseContainer extends VBaseComponent {
-    constructor(element) {
-        super(element);
+    constructor(element, mdcComponent) {
+        super(element, mdcComponent);
     }
 
     inputs() {

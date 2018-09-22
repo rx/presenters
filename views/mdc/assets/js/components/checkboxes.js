@@ -1,26 +1,16 @@
 import {MDCCheckbox} from '@material/checkbox';
 import {eventHandlerMixin} from "./mixins/event-handler";
-import {VBaseComponent} from "./base-component";
+import {VBaseComponent, hookupComponents} from './base-component';
 
 export function initCheckboxes() {
     console.log('\tCheckboxes');
-
-    var components = document.querySelectorAll('.mdc-checkbox');
-    if (components) {
-        for (var i = 0; i < components.length; i++) {
-            var component = components[i];
-            if (!component.mdcComponent) {
-                component.vComponent = new VCheckbox(component, MDCCheckbox.attachTo(component));
-            }
-        }
-    }
+    hookupComponents('.v-checkbox', VCheckbox, MDCCheckbox);
 }
 
 export class VCheckbox extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
-        super(element);
+        super(element, mdcComponent);
         this.input = element.querySelector('input');
-        this.mdcComponent = mdcComponent;
     }
 
     prepareSubmit(params) {
