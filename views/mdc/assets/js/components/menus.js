@@ -7,7 +7,7 @@ import {eventHandlerMixin} from "./mixins/event-handler";
 function createMenuHandler(menu, element) {
     return function () {
         let offset = parseInt(element.dataset.rightOffset);
-        let placement = element.dataset.placement === 'contextual' ? Corner.TOP_LEFT : Corner.BOTTOM_LEFT
+        let placement = element.dataset.placement === 'contextual' ? Corner.TOP_LEFT : Corner.BOTTOM_LEFT;
         menu.setAnchorMargin({left: offset});
         menu.setAnchorCorner(placement);
         menu.open = !menu.open;
