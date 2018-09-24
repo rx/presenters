@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 60);
+/******/ 	return __webpack_require__(__webpack_require__.s = 61);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -332,9 +332,9 @@ let eventHandlerMixin = Base => class extends Base {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRipple; });
 /* unused harmony export RippleCapableSurface */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(8);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
 /* unused harmony reexport util */
 /**
@@ -541,6 +541,62 @@ class MDCSelectionControl {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(0);
+
+
+class VBaseContainer extends __WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */] {
+    constructor(element, mdcComponent) {
+        super(element, mdcComponent);
+    }
+
+    inputs() {
+        return this.element.querySelectorAll('.v-input');
+    }
+
+    // Called to collect data for submission
+    prepareSubmit(params) {
+        for (let input of this.inputs()) {
+            if (input.vComponent && input.vComponent.prepareSubmit) {
+                input.vComponent.prepareSubmit(params);
+            }
+        }
+    }
+
+    clear() {
+        for (const input of this.inputs()) {
+            if (input.vComponent && input.vComponent.clear) {
+                input.vComponent.clear();
+            }
+        }
+    }
+
+    // Called whenever a container is about to be submitted.
+    // returns true on success
+    // returns on failure return an error object that can be processed by VErrors:
+    //    { email: ["email must be filled", "email must be from your domain"] }
+    //    { :page: ["must be filled"] }
+    validate(form, params) {
+        console.log("Form validate", form, params);
+        var errors = [];
+        for (let input of this.inputs()) {
+            if (input.vComponent && input.vComponent.validate) {
+                var result = input.vComponent.validate(form, params);
+                if (result !== true) {
+                    errors.push(result);
+                }
+            }
+        }
+        return errors;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VBaseContainer;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* unused harmony export MDCTabScrollerAnimation */
 /* unused harmony export MDCTabScrollerHorizontalEdges */
 /* unused harmony export MDCTabScrollerAdapter */
@@ -697,7 +753,7 @@ class MDCTabScrollerAdapter {
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -845,62 +901,6 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
   return { x: normalizedX, y: normalizedY };
 }
 
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(0);
-
-
-class VBaseContainer extends __WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */] {
-    constructor(element, mdcComponent) {
-        super(element, mdcComponent);
-    }
-
-    inputs() {
-        return this.element.querySelectorAll('.v-input');
-    }
-
-    // Called to collect data for submission
-    prepareSubmit(params) {
-        for (let input of this.inputs()) {
-            if (input.vComponent && input.vComponent.prepareSubmit) {
-                input.vComponent.prepareSubmit(params);
-            }
-        }
-    }
-
-    clear() {
-        for (const input of this.inputs()) {
-            if (input.vComponent && input.vComponent.clear) {
-                input.vComponent.clear();
-            }
-        }
-    }
-
-    // Called whenever a container is about to be submitted.
-    // returns true on success
-    // returns on failure return an error object that can be processed by VErrors:
-    //    { email: ["email must be filled", "email must be from your domain"] }
-    //    { :page: ["must be filled"] }
-    validate(form, params) {
-        console.log("Form validate", form, params);
-        var errors = [];
-        for (let input of this.inputs()) {
-            if (input.vComponent && input.vComponent.validate) {
-                var result = input.vComponent.validate(form, params);
-                if (result !== true) {
-                    errors.push(result);
-                }
-            }
-        }
-        return errors;
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = VBaseContainer;
 
 
 /***/ }),
@@ -1095,7 +1095,7 @@ class MDCTabAdapter {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adapter__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adapter__ = __webpack_require__(7);
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -1172,1144 +1172,18 @@ class MDCTabScrollerRTL {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(72);
-/**
- * @license
- * Copyright 2017 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-/**
- * @extends {MDCFoundation<!MDCTextFieldHelperTextAdapter>}
- * @final
- */
-class MDCTextFieldHelperTextFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum {string} */
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
-  }
-
-  /** @return enum {string} */
-  static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
-  }
-
-  /**
-   * {@see MDCTextFieldHelperTextAdapter} for typing information on parameters and return
-   * types.
-   * @return {!MDCTextFieldHelperTextAdapter}
-   */
-  static get defaultAdapter() {
-    return (/** @type {!MDCTextFieldHelperTextAdapter} */{
-        addClass: () => {},
-        removeClass: () => {},
-        hasClass: () => {},
-        setAttr: () => {},
-        removeAttr: () => {},
-        setContent: () => {}
-      }
-    );
-  }
-
-  /**
-   * @param {!MDCTextFieldHelperTextAdapter} adapter
-   */
-  constructor(adapter) {
-    super(Object.assign(MDCTextFieldHelperTextFoundation.defaultAdapter, adapter));
-  }
-
-  /**
-   * Sets the content of the helper text field.
-   * @param {string} content
-   */
-  setContent(content) {
-    this.adapter_.setContent(content);
-  }
-
-  /** @param {boolean} isPersistent Sets the persistency of the helper text. */
-  setPersistent(isPersistent) {
-    if (isPersistent) {
-      this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_PERSISTENT);
-    } else {
-      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_PERSISTENT);
-    }
-  }
-
-  /**
-   * @param {boolean} isValidation True to make the helper text act as an
-   *   error validation message.
-   */
-  setValidation(isValidation) {
-    if (isValidation) {
-      this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_VALIDATION_MSG);
-    } else {
-      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_VALIDATION_MSG);
-    }
-  }
-
-  /** Makes the helper text visible to the screen reader. */
-  showToScreenReader() {
-    this.adapter_.removeAttr(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_HIDDEN);
-  }
-
-  /**
-   * Sets the validity of the helper text based on the input validity.
-   * @param {boolean} inputIsValid
-   */
-  setValidity(inputIsValid) {
-    const helperTextIsPersistent = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_PERSISTENT);
-    const helperTextIsValidationMsg = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_VALIDATION_MSG);
-    const validationMsgNeedsDisplay = helperTextIsValidationMsg && !inputIsValid;
-
-    if (validationMsgNeedsDisplay) {
-      this.adapter_.setAttr(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ROLE, 'alert');
-    } else {
-      this.adapter_.removeAttr(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ROLE);
-    }
-
-    if (!helperTextIsPersistent && !validationMsgNeedsDisplay) {
-      this.hide_();
-    }
-  }
-
-  /**
-   * Hides the help text from screen readers.
-   * @private
-   */
-  hide_() {
-    this.adapter_.setAttr(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_HIDDEN, 'true');
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCTextFieldHelperTextFoundation);
-
-/***/ }),
-/* 14 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(73);
-/**
- * @license
- * Copyright 2017 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-/**
- * @extends {MDCFoundation<!MDCTextFieldIconAdapter>}
- * @final
- */
-class MDCTextFieldIconFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum {string} */
-  static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* strings */];
-  }
-
-  /**
-   * {@see MDCTextFieldIconAdapter} for typing information on parameters and return
-   * types.
-   * @return {!MDCTextFieldIconAdapter}
-   */
-  static get defaultAdapter() {
-    return (/** @type {!MDCTextFieldIconAdapter} */{
-        getAttr: () => {},
-        setAttr: () => {},
-        removeAttr: () => {},
-        setContent: () => {},
-        registerInteractionHandler: () => {},
-        deregisterInteractionHandler: () => {},
-        notifyIconAction: () => {}
-      }
-    );
-  }
-
-  /**
-   * @param {!MDCTextFieldIconAdapter} adapter
-   */
-  constructor(adapter) {
-    super(Object.assign(MDCTextFieldIconFoundation.defaultAdapter, adapter));
-
-    /** @private {string?} */
-    this.savedTabIndex_ = null;
-
-    /** @private {function(!Event): undefined} */
-    this.interactionHandler_ = evt => this.handleInteraction(evt);
-  }
-
-  init() {
-    this.savedTabIndex_ = this.adapter_.getAttr('tabindex');
-
-    ['click', 'keydown'].forEach(evtType => {
-      this.adapter_.registerInteractionHandler(evtType, this.interactionHandler_);
-    });
-  }
-
-  destroy() {
-    ['click', 'keydown'].forEach(evtType => {
-      this.adapter_.deregisterInteractionHandler(evtType, this.interactionHandler_);
-    });
-  }
-
-  /** @param {boolean} disabled */
-  setDisabled(disabled) {
-    if (!this.savedTabIndex_) {
-      return;
-    }
-
-    if (disabled) {
-      this.adapter_.setAttr('tabindex', '-1');
-      this.adapter_.removeAttr('role');
-    } else {
-      this.adapter_.setAttr('tabindex', this.savedTabIndex_);
-      this.adapter_.setAttr('role', __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* strings */].ICON_ROLE);
-    }
-  }
-
-  /** @param {string} label */
-  setAriaLabel(label) {
-    this.adapter_.setAttr('aria-label', label);
-  }
-
-  /** @param {string} content */
-  setContent(content) {
-    this.adapter_.setContent(content);
-  }
-
-  /**
-   * Handles an interaction event
-   * @param {!Event} evt
-   */
-  handleInteraction(evt) {
-    if (evt.type === 'click' || evt.key === 'Enter' || evt.keyCode === 13) {
-      this.adapter_.notifyIconAction();
-    }
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCTextFieldIconFoundation);
-
-/***/ }),
-/* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export transformStyleProperties */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getCorrectEventName; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getCorrectPropertyName; });
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * @typedef {{
- *   noPrefix: string,
- *   webkitPrefix: string,
- *   styleProperty: string
- * }}
- */
-let VendorPropertyMapType;
-
-/** @const {Object<string, !VendorPropertyMapType>} */
-const eventTypeMap = {
-  'animationstart': {
-    noPrefix: 'animationstart',
-    webkitPrefix: 'webkitAnimationStart',
-    styleProperty: 'animation'
-  },
-  'animationend': {
-    noPrefix: 'animationend',
-    webkitPrefix: 'webkitAnimationEnd',
-    styleProperty: 'animation'
-  },
-  'animationiteration': {
-    noPrefix: 'animationiteration',
-    webkitPrefix: 'webkitAnimationIteration',
-    styleProperty: 'animation'
-  },
-  'transitionend': {
-    noPrefix: 'transitionend',
-    webkitPrefix: 'webkitTransitionEnd',
-    styleProperty: 'transition'
-  }
-};
-
-/** @const {Object<string, !VendorPropertyMapType>} */
-const cssPropertyMap = {
-  'animation': {
-    noPrefix: 'animation',
-    webkitPrefix: '-webkit-animation'
-  },
-  'transform': {
-    noPrefix: 'transform',
-    webkitPrefix: '-webkit-transform'
-  },
-  'transition': {
-    noPrefix: 'transition',
-    webkitPrefix: '-webkit-transition'
-  }
-};
-
-/**
- * @param {!Object} windowObj
- * @return {boolean}
- */
-function hasProperShape(windowObj) {
-  return windowObj['document'] !== undefined && typeof windowObj['document']['createElement'] === 'function';
-}
-
-/**
- * @param {string} eventType
- * @return {boolean}
- */
-function eventFoundInMaps(eventType) {
-  return eventType in eventTypeMap || eventType in cssPropertyMap;
-}
-
-/**
- * @param {string} eventType
- * @param {!Object<string, !VendorPropertyMapType>} map
- * @param {!Element} el
- * @return {string}
- */
-function getJavaScriptEventName(eventType, map, el) {
-  return map[eventType].styleProperty in el.style ? map[eventType].noPrefix : map[eventType].webkitPrefix;
-}
-
-/**
- * Helper function to determine browser prefix for CSS3 animation events
- * and property names.
- * @param {!Object} windowObj
- * @param {string} eventType
- * @return {string}
- */
-function getAnimationName(windowObj, eventType) {
-  if (!hasProperShape(windowObj) || !eventFoundInMaps(eventType)) {
-    return eventType;
-  }
-
-  const map = /** @type {!Object<string, !VendorPropertyMapType>} */eventType in eventTypeMap ? eventTypeMap : cssPropertyMap;
-  const el = windowObj['document']['createElement']('div');
-  let eventName = '';
-
-  if (map === eventTypeMap) {
-    eventName = getJavaScriptEventName(eventType, map, el);
-  } else {
-    eventName = map[eventType].noPrefix in el.style ? map[eventType].noPrefix : map[eventType].webkitPrefix;
-  }
-
-  return eventName;
-}
-
-// Public functions to access getAnimationName() for JavaScript events or CSS
-// property names.
-
-const transformStyleProperties = ['transform', 'WebkitTransform', 'MozTransform', 'OTransform', 'MSTransform'];
-
-/**
- * @param {!Object} windowObj
- * @param {string} eventType
- * @return {string}
- */
-function getCorrectEventName(windowObj, eventType) {
-  return getAnimationName(windowObj, eventType);
-}
-
-/**
- * @param {!Object} windowObj
- * @param {string} eventType
- * @return {string}
- */
-function getCorrectPropertyName(windowObj, eventType) {
-  return getAnimationName(windowObj, eventType);
-}
-
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_urls__ = __webpack_require__(37);
-
-
-
-class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
-    constructor(options) {
-        super();
-        this.options = options;
-    }
-
-    clearErrors() {
-        new __WEBPACK_IMPORTED_MODULE_0__errors__["a" /* VErrors */]().clearErrors();
-    }
-
-    parentElement() {
-        return document.getElementById(this.options.__parent_id__);
-    }
-
-    inputValues(form) {
-        let params = [];
-
-        // If tagged input is asked for. Fetch all the matching tag elements and then call any bound components
-        if (this.params.input_tag !== undefined) {
-            var taggedInputs = document.querySelectorAll('[data-input-tag=' + this.params.input_tag + ']');
-            for (let input of taggedInputs) {
-                if (input.vComponent && typeof input.vComponent.prepareSubmit === 'function') {
-                    input.vComponent.prepareSubmit(params);
-                }
-            }
-        }
-        // Let input components push parameters
-        let vComp = this.component();
-        if (vComp) {
-            vComp.prepareSubmit(params);
-        }
-        return params;
-    }
-
-    component() {
-        let parent = this.parentElement();
-        return parent ? parent.vComponent : null;
-    }
-
-    validate() {
-        let errors = [];
-        let comp = this.component();
-        if (comp) {
-            errors = comp.validate();
-        }
-        return errors;
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = VBase;
-
-
-/***/ }),
-/* 17 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCChipFoundation; });
-/* unused harmony export MDCChipInteractionEventType */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(46);
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-/**
- * @extends {MDCFoundation<!MDCChipAdapter>}
- * @final
- */
-class MDCChipFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum {string} */
-  static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
-  }
-
-  /** @return enum {string} */
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
-  }
-
-  /**
-   * {@see MDCChipAdapter} for typing information on parameters and return
-   * types.
-   * @return {!MDCChipAdapter}
-   */
-  static get defaultAdapter() {
-    return (/** @type {!MDCChipAdapter} */{
-        addClass: () => {},
-        removeClass: () => {},
-        hasClass: () => {},
-        addClassToLeadingIcon: () => {},
-        removeClassFromLeadingIcon: () => {},
-        eventTargetHasClass: () => {},
-        notifyInteraction: () => {},
-        notifyTrailingIconInteraction: () => {},
-        notifyRemoval: () => {},
-        getComputedStyleValue: () => {},
-        setStyleProperty: () => {}
-      }
-    );
-  }
-
-  /**
-   * @param {!MDCChipAdapter} adapter
-   */
-  constructor(adapter) {
-    super(Object.assign(MDCChipFoundation.defaultAdapter, adapter));
-
-    /**
-     * Whether a trailing icon click should immediately trigger exit/removal of the chip.
-     * @private {boolean}
-     * */
-    this.shouldRemoveOnTrailingIconClick_ = true;
-  }
-
-  /**
-   * @return {boolean}
-   */
-  isSelected() {
-    return this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED);
-  }
-
-  /**
-   * @param {boolean} selected
-   */
-  setSelected(selected) {
-    if (selected) {
-      this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED);
-    } else {
-      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED);
-    }
-  }
-
-  /**
-   * @return {boolean}
-   */
-  getShouldRemoveOnTrailingIconClick() {
-    return this.shouldRemoveOnTrailingIconClick_;
-  }
-
-  /**
-   * @param {boolean} shouldRemove
-   */
-  setShouldRemoveOnTrailingIconClick(shouldRemove) {
-    this.shouldRemoveOnTrailingIconClick_ = shouldRemove;
-  }
-
-  /**
-   * Begins the exit animation which leads to removal of the chip.
-   */
-  beginExit() {
-    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CHIP_EXIT);
-  }
-
-  /**
-   * Handles an interaction event on the root element.
-   * @param {!Event} evt
-   */
-  handleInteraction(evt) {
-    if (evt.type === 'click' || evt.key === 'Enter' || evt.keyCode === 13) {
-      this.adapter_.notifyInteraction();
-    }
-  }
-
-  /**
-   * Handles a transition end event on the root element.
-   * @param {!Event} evt
-   */
-  handleTransitionEnd(evt) {
-    // Handle transition end event on the chip when it is about to be removed.
-    if (this.adapter_.eventTargetHasClass( /** @type {!EventTarget} */evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CHIP_EXIT)) {
-      if (evt.propertyName === 'width') {
-        this.adapter_.notifyRemoval();
-      } else if (evt.propertyName === 'opacity') {
-        // See: https://css-tricks.com/using-css-transitions-auto-dimensions/#article-header-id-5
-        const chipWidth = this.adapter_.getComputedStyleValue('width');
-
-        // On the next frame (once we get the computed width), explicitly set the chip's width
-        // to its current pixel width, so we aren't transitioning out of 'auto'.
-        requestAnimationFrame(() => {
-          this.adapter_.setStyleProperty('width', chipWidth);
-
-          // To mitigate jitter, start transitioning padding and margin before width.
-          this.adapter_.setStyleProperty('padding', '0');
-          this.adapter_.setStyleProperty('margin', '0');
-
-          // On the next frame (once width is explicitly set), transition width to 0.
-          requestAnimationFrame(() => {
-            this.adapter_.setStyleProperty('width', '0');
-          });
-        });
-      }
-      return;
-    }
-
-    // Handle a transition end event on the leading icon or checkmark, since the transition end event bubbles.
-    if (evt.propertyName !== 'opacity') {
-      return;
-    }
-    if (this.adapter_.eventTargetHasClass( /** @type {!EventTarget} */evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LEADING_ICON) && this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED)) {
-      this.adapter_.addClassToLeadingIcon(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HIDDEN_LEADING_ICON);
-    } else if (this.adapter_.eventTargetHasClass( /** @type {!EventTarget} */evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CHECKMARK) && !this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED)) {
-      this.adapter_.removeClassFromLeadingIcon(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HIDDEN_LEADING_ICON);
-    }
-  }
-
-  /**
-   * Handles an interaction event on the trailing icon element. This is used to
-   * prevent the ripple from activating on interaction with the trailing icon.
-   * @param {!Event} evt
-   */
-  handleTrailingIconInteraction(evt) {
-    evt.stopPropagation();
-    if (evt.type === 'click' || evt.key === 'Enter' || evt.keyCode === 13) {
-      this.adapter_.notifyTrailingIconInteraction();
-      if (this.shouldRemoveOnTrailingIconClick_) {
-        this.beginExit();
-      }
-    }
-  }
-}
-
-/**
- * @typedef {{
- *   detail: {
- *     chip: {foundation: !MDCChipFoundation},
- *   },
- *   bubbles: boolean,
- * }}
- */
-let MDCChipInteractionEventType;
-
-
-
-/***/ }),
-/* 18 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-/**
- * @template A
- */
-class MDCFoundation {
-  /** @return enum{cssClasses} */
-  static get cssClasses() {
-    // Classes extending MDCFoundation should implement this method to return an object which exports every
-    // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
-    return {};
-  }
-
-  /** @return enum{strings} */
-  static get strings() {
-    // Classes extending MDCFoundation should implement this method to return an object which exports all
-    // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
-    return {};
-  }
-
-  /** @return enum{numbers} */
-  static get numbers() {
-    // Classes extending MDCFoundation should implement this method to return an object which exports all
-    // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
-    return {};
-  }
-
-  /** @return {!Object} */
-  static get defaultAdapter() {
-    // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
-    // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
-    // validation.
-    return {};
-  }
-
-  /**
-   * @param {A=} adapter
-   */
-  constructor(adapter = {}) {
-    /** @protected {!A} */
-    this.adapter_ = adapter;
-  }
-
-  init() {
-    // Subclasses should override this method to perform initialization routines (registering events, etc.)
-  }
-
-  destroy() {
-    // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
-
-/***/ }),
-/* 19 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(151);
-/**
- * @license
- * Copyright 2018 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-
-
-
-
-/**
- * @extends {MDCFoundation<!MDCTabIndicatorAdapter>}
- * @abstract
- */
-class MDCTabIndicatorFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum {string} */
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
-  }
-
-  /** @return enum {string} */
-  static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
-  }
-
-  /**
-   * @see MDCTabIndicatorAdapter for typing information
-   * @return {!MDCTabIndicatorAdapter}
-   */
-  static get defaultAdapter() {
-    return (/** @type {!MDCTabIndicatorAdapter} */{
-        addClass: () => {},
-        removeClass: () => {},
-        computeContentClientRect: () => {},
-        setContentStyleProperty: () => {}
-      }
-    );
-  }
-
-  /** @param {!MDCTabIndicatorAdapter} adapter */
-  constructor(adapter) {
-    super(Object.assign(MDCTabIndicatorFoundation.defaultAdapter, adapter));
-  }
-
-  /** @return {!ClientRect} */
-  computeContentClientRect() {
-    return this.adapter_.computeContentClientRect();
-  }
-
-  /**
-   * Activates the indicator
-   * @param {!ClientRect=} previousIndicatorClientRect
-   * @abstract
-   */
-  activate(previousIndicatorClientRect) {} // eslint-disable-line no-unused-vars
-
-  /** @abstract */
-  deactivate() {}
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCTabIndicatorFoundation);
-
-/***/ }),
-/* 20 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = initialize;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialogs__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datetime__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text_fields__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lists__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__icon_toggles__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__menus__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__selects__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__chips__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__cards__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__forms__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__snackbar__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__checkboxes__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__switches__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__rich_text_area__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__steppers__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__radios__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__sliders__ = __webpack_require__(137);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__hidden_fields__ = __webpack_require__(140);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__content__ = __webpack_require__(141);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__grid__ = __webpack_require__(142);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__tab_bars__ = __webpack_require__(143);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function initialize() {
-    console.log('Initializing');
-    Object(__WEBPACK_IMPORTED_MODULE_0__button__["a" /* initButtons */])();
-    Object(__WEBPACK_IMPORTED_MODULE_1__dialogs__["a" /* initDialogs */])();
-    Object(__WEBPACK_IMPORTED_MODULE_2__datetime__["a" /* initDateTime */])(); // MUST BE BEFORE initTextFields
-    Object(__WEBPACK_IMPORTED_MODULE_3__text_fields__["b" /* initTextFields */])();
-    Object(__WEBPACK_IMPORTED_MODULE_5__lists__["a" /* initLists */])();
-    Object(__WEBPACK_IMPORTED_MODULE_6__icon_toggles__["a" /* initIconToggles */])();
-    Object(__WEBPACK_IMPORTED_MODULE_7__menus__["a" /* initMenus */])();
-    Object(__WEBPACK_IMPORTED_MODULE_8__selects__["a" /* initSelects */])();
-    Object(__WEBPACK_IMPORTED_MODULE_9__chips__["a" /* initChips */])();
-    Object(__WEBPACK_IMPORTED_MODULE_10__cards__["a" /* initCards */])();
-    Object(__WEBPACK_IMPORTED_MODULE_11__forms__["a" /* initForms */])();
-    Object(__WEBPACK_IMPORTED_MODULE_12__snackbar__["a" /* initSnackbar */])();
-    Object(__WEBPACK_IMPORTED_MODULE_13__checkboxes__["a" /* initCheckboxes */])();
-    Object(__WEBPACK_IMPORTED_MODULE_14__switches__["a" /* initSwitches */])();
-    Object(__WEBPACK_IMPORTED_MODULE_15__rich_text_area__["a" /* initRichTextArea */])();
-    Object(__WEBPACK_IMPORTED_MODULE_16__steppers__["a" /* initSteppers */])();
-    Object(__WEBPACK_IMPORTED_MODULE_17__radios__["a" /* initRadios */])();
-    Object(__WEBPACK_IMPORTED_MODULE_18__sliders__["a" /* initSliders */])();
-    Object(__WEBPACK_IMPORTED_MODULE_19__hidden_fields__["a" /* initHiddenFields */])();
-    Object(__WEBPACK_IMPORTED_MODULE_20__content__["a" /* initContent */])();
-    Object(__WEBPACK_IMPORTED_MODULE_21__grid__["a" /* initGrid */])();
-    Object(__WEBPACK_IMPORTED_MODULE_22__tab_bars__["a" /* initTabBars */])();
-    // This needs to be last, because it relies on the components installed above.
-    Object(__WEBPACK_IMPORTED_MODULE_4__events__["b" /* initEvents */])();
-}
-
-/***/ }),
-/* 21 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* eslint no-unused-vars: [2, {"args": "none"}] */
-
-/**
- * Adapter for MDC Ripple. Provides an interface for managing
- * - classes
- * - dom
- * - CSS variables
- * - position
- * - dimensions
- * - scroll position
- * - event handlers
- * - unbounded, active and disabled states
- *
- * Additionally, provides type information for the adapter to the Closure
- * compiler.
- *
- * Implement this adapter for your framework of choice to delegate updates to
- * the component in your framework of choice. See architecture documentation
- * for more details.
- * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
- *
- * @record
- */
-class MDCRippleAdapter {
-  /** @return {boolean} */
-  browserSupportsCssVars() {}
-
-  /** @return {boolean} */
-  isUnbounded() {}
-
-  /** @return {boolean} */
-  isSurfaceActive() {}
-
-  /** @return {boolean} */
-  isSurfaceDisabled() {}
-
-  /** @param {string} className */
-  addClass(className) {}
-
-  /** @param {string} className */
-  removeClass(className) {}
-
-  /** @param {!EventTarget} target */
-  containsEventTarget(target) {}
-
-  /**
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  registerInteractionHandler(evtType, handler) {}
-
-  /**
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  deregisterInteractionHandler(evtType, handler) {}
-
-  /**
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  registerDocumentInteractionHandler(evtType, handler) {}
-
-  /**
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  deregisterDocumentInteractionHandler(evtType, handler) {}
-
-  /**
-   * @param {!Function} handler
-   */
-  registerResizeHandler(handler) {}
-
-  /**
-   * @param {!Function} handler
-   */
-  deregisterResizeHandler(handler) {}
-
-  /**
-   * @param {string} varName
-   * @param {?number|string} value
-   */
-  updateCssVariable(varName, value) {}
-
-  /** @return {!ClientRect} */
-  computeBoundingRect() {}
-
-  /** @return {{x: number, y: number}} */
-  getWindowPageOffset() {}
-}
-
-/* unused harmony default export */ var _unused_webpack_default_export = (MDCRippleAdapter);
-
-/***/ }),
-/* 22 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["b"] = initTextFields;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_textfield__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__ = __webpack_require__(35);
-
-
-
-
-
-function initTextFields() {
-    console.log('\tTextFields');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])('.v-text-field', VTextField, __WEBPACK_IMPORTED_MODULE_0__material_textfield__["a" /* MDCTextField */]);
-}
-
-class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__["a" /* visibilityObserverMixin */])(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */])) {
-    constructor(element, mdcComponent) {
-        super(element, mdcComponent);
-        this.input = element.querySelector('input');
-        if (this.input == null) {
-            this.input = element.querySelector('textarea');
-        }
-        this.input.vComponent = this;
-        this.recalcWhenVisible(this);
-    }
-
-    // Called whenever a form is about to be submitted.
-    // returns true on success
-    // returns on failure return an error object that can be processed by VErrors:
-    //    { email: ["email must be filled", "email must be from your domain"] }
-    //    { :page: ["must be filled"] }
-    validate(formData) {
-        console.log("TextField validate", formData);
-        let isValid = this.input.checkValidity();
-        if (isValid) {
-            return true;
-        }
-        let errorMessage = {};
-        errorMessage[this.input.id] = [this.input.validationMessage];
-        return errorMessage;
-    }
-
-    // Called to collect data for submission
-    prepareSubmit(params) {
-        var optionSelected = this.optionSelected();
-        if (optionSelected) {
-            var key = optionSelected.dataset.key;
-            if (key) {
-                var name = this.name();
-                var id = name + '_id';
-                params.push([id, key]);
-                console.log("TextField prepareSubmit added:" + id + '=' + key);
-            }
-        }
-        params.push([this.name(), this.value()]);
-    }
-
-    optionSelected() {
-        var dataList = this.element.querySelector('datalist');
-        var parentElement = this.input;
-
-        // If we find the input inside our list, we submit the form
-        for (var element of dataList.children) {
-            if (element.value === parentElement.value) {
-                return element;
-            }
-        }
-        return null;
-    }
-
-    name() {
-        return this.input.name;
-    }
-
-    value() {
-        return this.input.value;
-    }
-
-    clear() {
-        if (this.value() !== '') {
-            this.setValue('');
-        }
-    }
-
-    setValue(value) {
-        this.input.value = value;
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = VTextField;
-
-
-/***/ }),
-/* 23 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextField; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_util__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__adapter__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_line_ripple_index__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__helper_text_index__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__icon_index__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__material_floating_label_index__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__material_notched_outline_index__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_util__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__adapter__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_line_ripple_index__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__helper_text_index__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__icon_index__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__material_floating_label_index__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__material_notched_outline_index__ = __webpack_require__(31);
 /* unused harmony reexport MDCTextFieldFoundation */
 /* unused harmony reexport MDCTextFieldHelperText */
 /* unused harmony reexport MDCTextFieldHelperTextFoundation */
@@ -2757,7 +1631,1037 @@ class MDCTextField extends __WEBPACK_IMPORTED_MODULE_0__material_base_component_
 
 
 /***/ }),
-/* 24 */
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(71);
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCTextFieldHelperTextAdapter>}
+ * @final
+ */
+class MDCTextFieldHelperTextFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  /** @return enum {string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
+  }
+
+  /**
+   * {@see MDCTextFieldHelperTextAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCTextFieldHelperTextAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCTextFieldHelperTextAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        hasClass: () => {},
+        setAttr: () => {},
+        removeAttr: () => {},
+        setContent: () => {}
+      }
+    );
+  }
+
+  /**
+   * @param {!MDCTextFieldHelperTextAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCTextFieldHelperTextFoundation.defaultAdapter, adapter));
+  }
+
+  /**
+   * Sets the content of the helper text field.
+   * @param {string} content
+   */
+  setContent(content) {
+    this.adapter_.setContent(content);
+  }
+
+  /** @param {boolean} isPersistent Sets the persistency of the helper text. */
+  setPersistent(isPersistent) {
+    if (isPersistent) {
+      this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_PERSISTENT);
+    } else {
+      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_PERSISTENT);
+    }
+  }
+
+  /**
+   * @param {boolean} isValidation True to make the helper text act as an
+   *   error validation message.
+   */
+  setValidation(isValidation) {
+    if (isValidation) {
+      this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_VALIDATION_MSG);
+    } else {
+      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_VALIDATION_MSG);
+    }
+  }
+
+  /** Makes the helper text visible to the screen reader. */
+  showToScreenReader() {
+    this.adapter_.removeAttr(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_HIDDEN);
+  }
+
+  /**
+   * Sets the validity of the helper text based on the input validity.
+   * @param {boolean} inputIsValid
+   */
+  setValidity(inputIsValid) {
+    const helperTextIsPersistent = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_PERSISTENT);
+    const helperTextIsValidationMsg = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HELPER_TEXT_VALIDATION_MSG);
+    const validationMsgNeedsDisplay = helperTextIsValidationMsg && !inputIsValid;
+
+    if (validationMsgNeedsDisplay) {
+      this.adapter_.setAttr(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ROLE, 'alert');
+    } else {
+      this.adapter_.removeAttr(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ROLE);
+    }
+
+    if (!helperTextIsPersistent && !validationMsgNeedsDisplay) {
+      this.hide_();
+    }
+  }
+
+  /**
+   * Hides the help text from screen readers.
+   * @private
+   */
+  hide_() {
+    this.adapter_.setAttr(__WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_HIDDEN, 'true');
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCTextFieldHelperTextFoundation);
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(72);
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCTextFieldIconAdapter>}
+ * @final
+ */
+class MDCTextFieldIconFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* strings */];
+  }
+
+  /**
+   * {@see MDCTextFieldIconAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCTextFieldIconAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCTextFieldIconAdapter} */{
+        getAttr: () => {},
+        setAttr: () => {},
+        removeAttr: () => {},
+        setContent: () => {},
+        registerInteractionHandler: () => {},
+        deregisterInteractionHandler: () => {},
+        notifyIconAction: () => {}
+      }
+    );
+  }
+
+  /**
+   * @param {!MDCTextFieldIconAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCTextFieldIconFoundation.defaultAdapter, adapter));
+
+    /** @private {string?} */
+    this.savedTabIndex_ = null;
+
+    /** @private {function(!Event): undefined} */
+    this.interactionHandler_ = evt => this.handleInteraction(evt);
+  }
+
+  init() {
+    this.savedTabIndex_ = this.adapter_.getAttr('tabindex');
+
+    ['click', 'keydown'].forEach(evtType => {
+      this.adapter_.registerInteractionHandler(evtType, this.interactionHandler_);
+    });
+  }
+
+  destroy() {
+    ['click', 'keydown'].forEach(evtType => {
+      this.adapter_.deregisterInteractionHandler(evtType, this.interactionHandler_);
+    });
+  }
+
+  /** @param {boolean} disabled */
+  setDisabled(disabled) {
+    if (!this.savedTabIndex_) {
+      return;
+    }
+
+    if (disabled) {
+      this.adapter_.setAttr('tabindex', '-1');
+      this.adapter_.removeAttr('role');
+    } else {
+      this.adapter_.setAttr('tabindex', this.savedTabIndex_);
+      this.adapter_.setAttr('role', __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* strings */].ICON_ROLE);
+    }
+  }
+
+  /** @param {string} label */
+  setAriaLabel(label) {
+    this.adapter_.setAttr('aria-label', label);
+  }
+
+  /** @param {string} content */
+  setContent(content) {
+    this.adapter_.setContent(content);
+  }
+
+  /**
+   * Handles an interaction event
+   * @param {!Event} evt
+   */
+  handleInteraction(evt) {
+    if (evt.type === 'click' || evt.key === 'Enter' || evt.keyCode === 13) {
+      this.adapter_.notifyIconAction();
+    }
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCTextFieldIconFoundation);
+
+/***/ }),
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export transformStyleProperties */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getCorrectEventName; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getCorrectPropertyName; });
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @typedef {{
+ *   noPrefix: string,
+ *   webkitPrefix: string,
+ *   styleProperty: string
+ * }}
+ */
+let VendorPropertyMapType;
+
+/** @const {Object<string, !VendorPropertyMapType>} */
+const eventTypeMap = {
+  'animationstart': {
+    noPrefix: 'animationstart',
+    webkitPrefix: 'webkitAnimationStart',
+    styleProperty: 'animation'
+  },
+  'animationend': {
+    noPrefix: 'animationend',
+    webkitPrefix: 'webkitAnimationEnd',
+    styleProperty: 'animation'
+  },
+  'animationiteration': {
+    noPrefix: 'animationiteration',
+    webkitPrefix: 'webkitAnimationIteration',
+    styleProperty: 'animation'
+  },
+  'transitionend': {
+    noPrefix: 'transitionend',
+    webkitPrefix: 'webkitTransitionEnd',
+    styleProperty: 'transition'
+  }
+};
+
+/** @const {Object<string, !VendorPropertyMapType>} */
+const cssPropertyMap = {
+  'animation': {
+    noPrefix: 'animation',
+    webkitPrefix: '-webkit-animation'
+  },
+  'transform': {
+    noPrefix: 'transform',
+    webkitPrefix: '-webkit-transform'
+  },
+  'transition': {
+    noPrefix: 'transition',
+    webkitPrefix: '-webkit-transition'
+  }
+};
+
+/**
+ * @param {!Object} windowObj
+ * @return {boolean}
+ */
+function hasProperShape(windowObj) {
+  return windowObj['document'] !== undefined && typeof windowObj['document']['createElement'] === 'function';
+}
+
+/**
+ * @param {string} eventType
+ * @return {boolean}
+ */
+function eventFoundInMaps(eventType) {
+  return eventType in eventTypeMap || eventType in cssPropertyMap;
+}
+
+/**
+ * @param {string} eventType
+ * @param {!Object<string, !VendorPropertyMapType>} map
+ * @param {!Element} el
+ * @return {string}
+ */
+function getJavaScriptEventName(eventType, map, el) {
+  return map[eventType].styleProperty in el.style ? map[eventType].noPrefix : map[eventType].webkitPrefix;
+}
+
+/**
+ * Helper function to determine browser prefix for CSS3 animation events
+ * and property names.
+ * @param {!Object} windowObj
+ * @param {string} eventType
+ * @return {string}
+ */
+function getAnimationName(windowObj, eventType) {
+  if (!hasProperShape(windowObj) || !eventFoundInMaps(eventType)) {
+    return eventType;
+  }
+
+  const map = /** @type {!Object<string, !VendorPropertyMapType>} */eventType in eventTypeMap ? eventTypeMap : cssPropertyMap;
+  const el = windowObj['document']['createElement']('div');
+  let eventName = '';
+
+  if (map === eventTypeMap) {
+    eventName = getJavaScriptEventName(eventType, map, el);
+  } else {
+    eventName = map[eventType].noPrefix in el.style ? map[eventType].noPrefix : map[eventType].webkitPrefix;
+  }
+
+  return eventName;
+}
+
+// Public functions to access getAnimationName() for JavaScript events or CSS
+// property names.
+
+const transformStyleProperties = ['transform', 'WebkitTransform', 'MozTransform', 'OTransform', 'MSTransform'];
+
+/**
+ * @param {!Object} windowObj
+ * @param {string} eventType
+ * @return {string}
+ */
+function getCorrectEventName(windowObj, eventType) {
+  return getAnimationName(windowObj, eventType);
+}
+
+/**
+ * @param {!Object} windowObj
+ * @param {string} eventType
+ * @return {string}
+ */
+function getCorrectPropertyName(windowObj, eventType) {
+  return getAnimationName(windowObj, eventType);
+}
+
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_urls__ = __webpack_require__(38);
+
+
+
+class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
+    constructor(options) {
+        super();
+        this.options = options;
+    }
+
+    clearErrors() {
+        new __WEBPACK_IMPORTED_MODULE_0__errors__["a" /* VErrors */]().clearErrors();
+    }
+
+    parentElement() {
+        return document.getElementById(this.options.__parent_id__);
+    }
+
+    inputValues(form) {
+        let params = [];
+
+        // If tagged input is asked for. Fetch all the matching tag elements and then call any bound components
+        if (this.params.input_tag !== undefined) {
+            var taggedInputs = document.querySelectorAll('[data-input-tag=' + this.params.input_tag + ']');
+            for (let input of taggedInputs) {
+                if (input.vComponent && typeof input.vComponent.prepareSubmit === 'function') {
+                    input.vComponent.prepareSubmit(params);
+                }
+            }
+        }
+        // Let input components push parameters
+        let vComp = this.component();
+        if (vComp && vComp.prepareSubmit === 'function') {
+            vComp.prepareSubmit(params);
+        }
+        return params;
+    }
+
+    component() {
+        let parent = this.parentElement();
+        return parent ? parent.vComponent : null;
+    }
+
+    validate() {
+        let errors = [];
+        let comp = this.component();
+        if (comp) {
+            errors = comp.validate();
+        }
+        return errors;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VBase;
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCChipFoundation; });
+/* unused harmony export MDCChipInteractionEventType */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(47);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCChipAdapter>}
+ * @final
+ */
+class MDCChipFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
+  }
+
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  /**
+   * {@see MDCChipAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCChipAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCChipAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        hasClass: () => {},
+        addClassToLeadingIcon: () => {},
+        removeClassFromLeadingIcon: () => {},
+        eventTargetHasClass: () => {},
+        notifyInteraction: () => {},
+        notifyTrailingIconInteraction: () => {},
+        notifyRemoval: () => {},
+        getComputedStyleValue: () => {},
+        setStyleProperty: () => {}
+      }
+    );
+  }
+
+  /**
+   * @param {!MDCChipAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCChipFoundation.defaultAdapter, adapter));
+
+    /**
+     * Whether a trailing icon click should immediately trigger exit/removal of the chip.
+     * @private {boolean}
+     * */
+    this.shouldRemoveOnTrailingIconClick_ = true;
+  }
+
+  /**
+   * @return {boolean}
+   */
+  isSelected() {
+    return this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED);
+  }
+
+  /**
+   * @param {boolean} selected
+   */
+  setSelected(selected) {
+    if (selected) {
+      this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED);
+    } else {
+      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED);
+    }
+  }
+
+  /**
+   * @return {boolean}
+   */
+  getShouldRemoveOnTrailingIconClick() {
+    return this.shouldRemoveOnTrailingIconClick_;
+  }
+
+  /**
+   * @param {boolean} shouldRemove
+   */
+  setShouldRemoveOnTrailingIconClick(shouldRemove) {
+    this.shouldRemoveOnTrailingIconClick_ = shouldRemove;
+  }
+
+  /**
+   * Begins the exit animation which leads to removal of the chip.
+   */
+  beginExit() {
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CHIP_EXIT);
+  }
+
+  /**
+   * Handles an interaction event on the root element.
+   * @param {!Event} evt
+   */
+  handleInteraction(evt) {
+    if (evt.type === 'click' || evt.key === 'Enter' || evt.keyCode === 13) {
+      this.adapter_.notifyInteraction();
+    }
+  }
+
+  /**
+   * Handles a transition end event on the root element.
+   * @param {!Event} evt
+   */
+  handleTransitionEnd(evt) {
+    // Handle transition end event on the chip when it is about to be removed.
+    if (this.adapter_.eventTargetHasClass( /** @type {!EventTarget} */evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CHIP_EXIT)) {
+      if (evt.propertyName === 'width') {
+        this.adapter_.notifyRemoval();
+      } else if (evt.propertyName === 'opacity') {
+        // See: https://css-tricks.com/using-css-transitions-auto-dimensions/#article-header-id-5
+        const chipWidth = this.adapter_.getComputedStyleValue('width');
+
+        // On the next frame (once we get the computed width), explicitly set the chip's width
+        // to its current pixel width, so we aren't transitioning out of 'auto'.
+        requestAnimationFrame(() => {
+          this.adapter_.setStyleProperty('width', chipWidth);
+
+          // To mitigate jitter, start transitioning padding and margin before width.
+          this.adapter_.setStyleProperty('padding', '0');
+          this.adapter_.setStyleProperty('margin', '0');
+
+          // On the next frame (once width is explicitly set), transition width to 0.
+          requestAnimationFrame(() => {
+            this.adapter_.setStyleProperty('width', '0');
+          });
+        });
+      }
+      return;
+    }
+
+    // Handle a transition end event on the leading icon or checkmark, since the transition end event bubbles.
+    if (evt.propertyName !== 'opacity') {
+      return;
+    }
+    if (this.adapter_.eventTargetHasClass( /** @type {!EventTarget} */evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LEADING_ICON) && this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED)) {
+      this.adapter_.addClassToLeadingIcon(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HIDDEN_LEADING_ICON);
+    } else if (this.adapter_.eventTargetHasClass( /** @type {!EventTarget} */evt.target, __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CHECKMARK) && !this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].SELECTED)) {
+      this.adapter_.removeClassFromLeadingIcon(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].HIDDEN_LEADING_ICON);
+    }
+  }
+
+  /**
+   * Handles an interaction event on the trailing icon element. This is used to
+   * prevent the ripple from activating on interaction with the trailing icon.
+   * @param {!Event} evt
+   */
+  handleTrailingIconInteraction(evt) {
+    evt.stopPropagation();
+    if (evt.type === 'click' || evt.key === 'Enter' || evt.keyCode === 13) {
+      this.adapter_.notifyTrailingIconInteraction();
+      if (this.shouldRemoveOnTrailingIconClick_) {
+        this.beginExit();
+      }
+    }
+  }
+}
+
+/**
+ * @typedef {{
+ *   detail: {
+ *     chip: {foundation: !MDCChipFoundation},
+ *   },
+ *   bubbles: boolean,
+ * }}
+ */
+let MDCChipInteractionEventType;
+
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/**
+ * @template A
+ */
+class MDCFoundation {
+  /** @return enum{cssClasses} */
+  static get cssClasses() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports every
+    // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
+    return {};
+  }
+
+  /** @return enum{strings} */
+  static get strings() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports all
+    // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
+    return {};
+  }
+
+  /** @return enum{numbers} */
+  static get numbers() {
+    // Classes extending MDCFoundation should implement this method to return an object which exports all
+    // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
+    return {};
+  }
+
+  /** @return {!Object} */
+  static get defaultAdapter() {
+    // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
+    // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
+    // validation.
+    return {};
+  }
+
+  /**
+   * @param {A=} adapter
+   */
+  constructor(adapter = {}) {
+    /** @protected {!A} */
+    this.adapter_ = adapter;
+  }
+
+  init() {
+    // Subclasses should override this method to perform initialization routines (registering events, etc.)
+  }
+
+  destroy() {
+    // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
+
+/***/ }),
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(151);
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCTabIndicatorAdapter>}
+ * @abstract
+ */
+class MDCTabIndicatorFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  /** @return enum {string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
+  }
+
+  /**
+   * @see MDCTabIndicatorAdapter for typing information
+   * @return {!MDCTabIndicatorAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCTabIndicatorAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        computeContentClientRect: () => {},
+        setContentStyleProperty: () => {}
+      }
+    );
+  }
+
+  /** @param {!MDCTabIndicatorAdapter} adapter */
+  constructor(adapter) {
+    super(Object.assign(MDCTabIndicatorFoundation.defaultAdapter, adapter));
+  }
+
+  /** @return {!ClientRect} */
+  computeContentClientRect() {
+    return this.adapter_.computeContentClientRect();
+  }
+
+  /**
+   * Activates the indicator
+   * @param {!ClientRect=} previousIndicatorClientRect
+   * @abstract
+   */
+  activate(previousIndicatorClientRect) {} // eslint-disable-line no-unused-vars
+
+  /** @abstract */
+  deactivate() {}
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCTabIndicatorFoundation);
+
+/***/ }),
+/* 21 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initialize;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialogs__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datetime__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text_fields__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lists__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__icon_toggles__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__menus__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__selects__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__chips__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__cards__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__forms__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__snackbar__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__checkboxes__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__switches__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__rich_text_area__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__steppers__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__radios__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__sliders__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__hidden_fields__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__content__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__grid__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__tab_bars__ = __webpack_require__(143);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function initialize() {
+    console.log('Initializing');
+    Object(__WEBPACK_IMPORTED_MODULE_0__button__["a" /* initButtons */])();
+    Object(__WEBPACK_IMPORTED_MODULE_1__dialogs__["a" /* initDialogs */])();
+    Object(__WEBPACK_IMPORTED_MODULE_2__datetime__["a" /* initDateTime */])(); // MUST BE BEFORE initTextFields
+    Object(__WEBPACK_IMPORTED_MODULE_3__text_fields__["b" /* initTextFields */])();
+    Object(__WEBPACK_IMPORTED_MODULE_5__lists__["a" /* initLists */])();
+    Object(__WEBPACK_IMPORTED_MODULE_6__icon_toggles__["a" /* initIconToggles */])();
+    Object(__WEBPACK_IMPORTED_MODULE_7__menus__["a" /* initMenus */])();
+    Object(__WEBPACK_IMPORTED_MODULE_8__selects__["a" /* initSelects */])();
+    Object(__WEBPACK_IMPORTED_MODULE_9__chips__["a" /* initChips */])();
+    Object(__WEBPACK_IMPORTED_MODULE_10__cards__["a" /* initCards */])();
+    Object(__WEBPACK_IMPORTED_MODULE_11__forms__["a" /* initForms */])();
+    Object(__WEBPACK_IMPORTED_MODULE_12__snackbar__["a" /* initSnackbar */])();
+    Object(__WEBPACK_IMPORTED_MODULE_13__checkboxes__["a" /* initCheckboxes */])();
+    Object(__WEBPACK_IMPORTED_MODULE_14__switches__["a" /* initSwitches */])();
+    Object(__WEBPACK_IMPORTED_MODULE_15__rich_text_area__["a" /* initRichTextArea */])();
+    Object(__WEBPACK_IMPORTED_MODULE_16__steppers__["a" /* initSteppers */])();
+    Object(__WEBPACK_IMPORTED_MODULE_17__radios__["a" /* initRadios */])();
+    Object(__WEBPACK_IMPORTED_MODULE_18__sliders__["a" /* initSliders */])();
+    Object(__WEBPACK_IMPORTED_MODULE_19__hidden_fields__["a" /* initHiddenFields */])();
+    Object(__WEBPACK_IMPORTED_MODULE_20__content__["a" /* initContent */])();
+    Object(__WEBPACK_IMPORTED_MODULE_21__grid__["a" /* initGrid */])();
+    Object(__WEBPACK_IMPORTED_MODULE_22__tab_bars__["a" /* initTabBars */])();
+    // This needs to be last, because it relies on the components installed above.
+    Object(__WEBPACK_IMPORTED_MODULE_4__events__["b" /* initEvents */])();
+}
+
+/***/ }),
+/* 22 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* eslint no-unused-vars: [2, {"args": "none"}] */
+
+/**
+ * Adapter for MDC Ripple. Provides an interface for managing
+ * - classes
+ * - dom
+ * - CSS variables
+ * - position
+ * - dimensions
+ * - scroll position
+ * - event handlers
+ * - unbounded, active and disabled states
+ *
+ * Additionally, provides type information for the adapter to the Closure
+ * compiler.
+ *
+ * Implement this adapter for your framework of choice to delegate updates to
+ * the component in your framework of choice. See architecture documentation
+ * for more details.
+ * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
+ *
+ * @record
+ */
+class MDCRippleAdapter {
+  /** @return {boolean} */
+  browserSupportsCssVars() {}
+
+  /** @return {boolean} */
+  isUnbounded() {}
+
+  /** @return {boolean} */
+  isSurfaceActive() {}
+
+  /** @return {boolean} */
+  isSurfaceDisabled() {}
+
+  /** @param {string} className */
+  addClass(className) {}
+
+  /** @param {string} className */
+  removeClass(className) {}
+
+  /** @param {!EventTarget} target */
+  containsEventTarget(target) {}
+
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  registerInteractionHandler(evtType, handler) {}
+
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  deregisterInteractionHandler(evtType, handler) {}
+
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  registerDocumentInteractionHandler(evtType, handler) {}
+
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  deregisterDocumentInteractionHandler(evtType, handler) {}
+
+  /**
+   * @param {!Function} handler
+   */
+  registerResizeHandler(handler) {}
+
+  /**
+   * @param {!Function} handler
+   */
+  deregisterResizeHandler(handler) {}
+
+  /**
+   * @param {string} varName
+   * @param {?number|string} value
+   */
+  updateCssVariable(varName, value) {}
+
+  /** @return {!ClientRect} */
+  computeBoundingRect() {}
+
+  /** @return {{x: number, y: number}} */
+  getWindowPageOffset() {}
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCRippleAdapter);
+
+/***/ }),
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2817,15 +2721,15 @@ const VALIDATION_ATTR_WHITELIST = ['pattern', 'min', 'max', 'required', 'step', 
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export MDCTextFieldAdapter */
 /* unused harmony export NativeInputType */
 /* unused harmony export FoundationMapType */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helper_text_foundation__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_foundation__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helper_text_foundation__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_foundation__ = __webpack_require__(15);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -3035,7 +2939,7 @@ class MDCTextFieldAdapter {
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3111,7 +3015,7 @@ class MDCTextFieldHelperTextAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCTextFieldHelperTextAdapter);
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3194,14 +3098,14 @@ class MDCTextFieldIconAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCTextFieldIconAdapter);
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCLineRipple; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(74);
 /* unused harmony reexport MDCLineRippleFoundation */
 /**
  * @license
@@ -3279,7 +3183,7 @@ class MDCLineRipple extends __WEBPACK_IMPORTED_MODULE_0__material_base_component
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3356,14 +3260,14 @@ class MDCLineRippleAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCLineRippleAdapter);
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCFloatingLabel; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(78);
 /* unused harmony reexport MDCFloatingLabelFoundation */
 /**
  * @license
@@ -3441,7 +3345,7 @@ class MDCFloatingLabel extends __WEBPACK_IMPORTED_MODULE_0__material_base_compon
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3511,15 +3415,15 @@ class MDCFloatingLabelAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCFloatingLabelAdapter);
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCNotchedOutline; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(33);
 /* unused harmony reexport MDCNotchedOutlineFoundation */
 /**
  * @license
@@ -3598,7 +3502,7 @@ class MDCNotchedOutline extends __WEBPACK_IMPORTED_MODULE_0__material_base_compo
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3674,7 +3578,7 @@ class MDCNotchedOutlineAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCNotchedOutlineAdapter);
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3711,7 +3615,158 @@ const cssClasses = {
 
 
 /***/ }),
+/* 34 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initDateTime;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_flatpickr__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__text_fields__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_textfield__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__base_component__ = __webpack_require__(0);
+
+
+
+
+
+function initDateTime() {
+    console.log('\tDateTime');
+    Object(__WEBPACK_IMPORTED_MODULE_3__base_component__["b" /* hookupComponents */])('.v-datetime', VDateTime, __WEBPACK_IMPORTED_MODULE_2__material_textfield__["a" /* MDCTextField */]);
+}
+
+class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextField */] {
+    constructor(element, mdcComponent) {
+        super(element, mdcComponent);
+        let config = JSON.parse(element.dataset.config);
+        config.altInput = true;
+        let type = element.dataset.type;
+
+        if (type === 'datetime') {
+            config.enableTime = true;
+        } else if (type === 'time') {
+            config.enableTime = true;
+            config.noCalendar = true;
+        }
+        config.onOpen = function (selectedDates, dateStr, instance) {
+            instance.mdc_text_field.foundation_.activateFocus();
+        };
+        config.onClose = function (selectedDates, dateStr, instance) {
+            instance.mdc_text_field.foundation_.deactivateFocus();
+        };
+        this.fp = __WEBPACK_IMPORTED_MODULE_0_flatpickr___default()(this.input, config);
+        this.fp.mdc_text_field = mdcComponent;
+    }
+
+    clear() {
+
+        if (this.fp.input.value !== '') {
+            this.fp.clear();
+        }
+        this.mdcComponent.foundation_.deactivateFocus();
+    }
+}
+/* unused harmony export VDateTime */
+
+
+/***/ }),
 /* 35 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["b"] = initTextFields;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_textfield__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__ = __webpack_require__(36);
+
+
+
+
+
+function initTextFields() {
+    console.log('\tTextFields');
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])('.v-text-field', VTextField, __WEBPACK_IMPORTED_MODULE_0__material_textfield__["a" /* MDCTextField */]);
+}
+
+class VTextField extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__["a" /* visibilityObserverMixin */])(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */])) {
+    constructor(element, mdcComponent) {
+        super(element, mdcComponent);
+        this.input = element.querySelector('input');
+        if (this.input == null) {
+            this.input = element.querySelector('textarea');
+        }
+        this.input.vComponent = this;
+        this.recalcWhenVisible(this);
+    }
+
+    // Called whenever a form is about to be submitted.
+    // returns true on success
+    // returns on failure return an error object that can be processed by VErrors:
+    //    { email: ["email must be filled", "email must be from your domain"] }
+    //    { :page: ["must be filled"] }
+    validate(formData) {
+        console.log("TextField validate", formData);
+        let isValid = this.input.checkValidity();
+        if (isValid) {
+            return true;
+        }
+        let errorMessage = {};
+        errorMessage[this.input.id] = [this.input.validationMessage];
+        return errorMessage;
+    }
+
+    // Called to collect data for submission
+    prepareSubmit(params) {
+        var optionSelected = this.optionSelected();
+        if (optionSelected) {
+            var key = optionSelected.dataset.key;
+            if (key) {
+                var name = this.name();
+                var id = name + '_id';
+                params.push([id, key]);
+                console.log("TextField prepareSubmit added:" + id + '=' + key);
+            }
+        }
+        params.push([this.name(), this.value()]);
+    }
+
+    optionSelected() {
+        var dataList = this.element.querySelector('datalist');
+        var parentElement = this.input;
+
+        // If we find the input inside our list, we submit the form
+        for (var element of dataList.children) {
+            if (element.value === parentElement.value) {
+                return element;
+            }
+        }
+        return null;
+    }
+
+    name() {
+        return this.input.name;
+    }
+
+    value() {
+        return this.input.value;
+    }
+
+    clear() {
+        if (this.value() !== '') {
+            this.setValue('');
+        }
+    }
+
+    setValue(value) {
+        this.input.value = value;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = VTextField;
+
+
+/***/ }),
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3745,7 +3800,7 @@ let visibilityObserverMixin = Base => class extends Base {
 };
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3754,7 +3809,7 @@ let visibilityObserverMixin = Base => class extends Base {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_posts__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replaces__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_dialog__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events_errors__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events_errors__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visibility__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__events_snackbar__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_navigates__ = __webpack_require__(91);
@@ -3920,7 +3975,7 @@ function fireAfterLoad() {
 }
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3980,7 +4035,7 @@ class VUrls {
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4128,7 +4183,7 @@ class VErrors {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4136,7 +4191,7 @@ class VErrors {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(41);
 /* unused harmony reexport MDCMenuFoundation */
 /* unused harmony reexport AnchorMargin */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__constants__["a"]; });
@@ -4338,7 +4393,7 @@ class MDCMenu extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4433,7 +4488,7 @@ const Corner = {
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4556,7 +4611,7 @@ class MDCSelectAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCSelectAdapter);
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4605,11 +4660,11 @@ const numbers = {
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chip_index__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chip_index__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chip_set_index__ = __webpack_require__(109);
 /* unused harmony reexport MDCChipFoundation */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__chip_index__["a"]; });
@@ -4637,16 +4692,16 @@ const numbers = {
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCChip; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(47);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__foundation__["a"]; });
 /**
  * @license
@@ -4839,7 +4894,7 @@ class MDCChip extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a"
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4947,7 +5002,7 @@ class MDCChipAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCChipAdapter);
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4994,11 +5049,11 @@ const cssClasses = {
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chip_foundation__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chip_foundation__ = __webpack_require__(18);
 /**
  * @license
  * Copyright 2017 Google Inc. All Rights Reserved.
@@ -5049,7 +5104,7 @@ class MDCChipSetAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCChipSetAdapter);
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5108,7 +5163,7 @@ const numbers = {
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5306,7 +5361,7 @@ class MDCSliderAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCSliderAdapter);
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5386,12 +5441,12 @@ class MDCFoundation {
 /* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTab; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_tab_indicator_index__ = __webpack_require__(149);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__adapter__ = __webpack_require__(11);
@@ -5556,11 +5611,11 @@ class MDCTab extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" 
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(19);
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -5693,7 +5748,7 @@ class MDCComponent {
 /* harmony default export */ __webpack_exports__["a"] = (MDCComponent);
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5815,7 +5870,7 @@ class MDCRippleAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCRippleAdapter);
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5972,7 +6027,7 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6052,7 +6107,7 @@ class MDCFoundation {
 /* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6121,7 +6176,7 @@ class MDCTabIndicatorAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCTabIndicatorAdapter);
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6201,7 +6256,7 @@ class MDCFoundation {
 /* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6246,12 +6301,12 @@ const strings = {
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_tab_adapter__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_tab_index__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_tab_index__ = __webpack_require__(52);
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -6403,22 +6458,22 @@ class MDCTabBarAdapter {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCTabBarAdapter);
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(61);
+module.exports = __webpack_require__(62);
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_initialize__ = __webpack_require__(20);
-__webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_initialize__ = __webpack_require__(21);
 __webpack_require__(63);
-window.dialogPolyfill = __webpack_require__(64);
+__webpack_require__(64);
+window.dialogPolyfill = __webpack_require__(65);
 
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -6426,7 +6481,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports) {
 
 ;(function() {
@@ -10428,7 +10483,7 @@ componentHandler.register({
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11532,7 +11587,7 @@ componentHandler.register({
 /******/]);
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;(function () {
@@ -12277,7 +12332,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;(function () {
   dialogPolyfill['forceRegisterDialog'] = dialogPolyfill.forceRegisterDialog;
   dialogPolyfill['registerDialog'] = dialogPolyfill.registerDialog;
 
-  if ("function" === 'function' && 'amd' in __webpack_require__(65)) {
+  if ("function" === 'function' && 'amd' in __webpack_require__(66)) {
     // AMD support
     !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
       return dialogPolyfill;
@@ -12293,7 +12348,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;(function () {
 })();
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports) {
 
 module.exports = function() {
@@ -12302,7 +12357,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12319,14 +12374,14 @@ function initButtons() {
 }
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(8);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -12926,7 +12981,7 @@ class MDCRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_fou
 /* harmony default export */ __webpack_exports__["a"] = (MDCRippleFoundation);
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12981,15 +13036,15 @@ const numbers = {
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initDialogs;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_textfield__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__datetime__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_textfield__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__datetime__ = __webpack_require__(34);
 // This is used to get a proper binding of the actionData
 // https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
 
@@ -13032,62 +13087,1089 @@ class VDialog extends __WEBPACK_IMPORTED_MODULE_0__base_container__["a" /* VBase
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = initDateTime;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_flatpickr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__text_fields__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_textfield__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__base_component__ = __webpack_require__(0);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return strings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
+/** @enum {string} */
+const strings = {
+  ARIA_HIDDEN: 'aria-hidden',
+  ROLE: 'role'
+};
 
+/** @enum {string} */
+const cssClasses = {
+  HELPER_TEXT_PERSISTENT: 'mdc-text-field-helper-text--persistent',
+  HELPER_TEXT_VALIDATION_MSG: 'mdc-text-field-helper-text--validation-msg'
+};
 
-
-
-function initDateTime() {
-    console.log('\tDateTime');
-    Object(__WEBPACK_IMPORTED_MODULE_3__base_component__["b" /* hookupComponents */])('.v-datetime', VDateTime, __WEBPACK_IMPORTED_MODULE_2__material_textfield__["a" /* MDCTextField */]);
-}
-
-class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextField */] {
-    constructor(element, mdcComponent) {
-        super(element, mdcComponent);
-        let config = JSON.parse(element.dataset.config);
-        config.altInput = true;
-        let type = element.dataset.type;
-
-        if (type === 'datetime') {
-            config.enableTime = true;
-        } else if (type === 'time') {
-            config.enableTime = true;
-            config.noCalendar = true;
-        }
-        config.onOpen = function (selectedDates, dateStr, instance) {
-            instance.mdc_text_field.foundation_.activateFocus();
-        };
-        config.onClose = function (selectedDates, dateStr, instance) {
-            instance.mdc_text_field.foundation_.deactivateFocus();
-        };
-        this.fp = __WEBPACK_IMPORTED_MODULE_0_flatpickr___default()(this.input, config);
-        this.fp.mdc_text_field = mdcComponent;
-    }
-
-    clear() {
-
-        if (this.fp.input.value !== '') {
-            this.fp.clear();
-        }
-        this.mdcComponent.foundation_.deactivateFocus();
-    }
-}
-/* unused harmony export VDateTime */
 
 
 /***/ }),
-/* 71 */
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return strings; });
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/** @enum {string} */
+const strings = {
+  ICON_EVENT: 'MDCTextField:icon',
+  ICON_ROLE: 'button'
+};
+
+
+
+/***/ }),
+/* 73 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helper_text_foundation__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__icon_foundation__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__adapter__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(23);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+/* eslint-disable no-unused-vars */
+
+
+/* eslint-enable no-unused-vars */
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCTextFieldAdapter>}
+ * @final
+ */
+class MDCTextFieldFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_4__constants__["b" /* cssClasses */];
+  }
+
+  /** @return enum {string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_4__constants__["d" /* strings */];
+  }
+
+  /** @return enum {string} */
+  static get numbers() {
+    return __WEBPACK_IMPORTED_MODULE_4__constants__["c" /* numbers */];
+  }
+
+  /** @return {boolean} */
+  get shouldShake() {
+    return !this.isValid() && !this.isFocused_;
+  }
+
+  /** @return {boolean} */
+  get shouldFloat() {
+    return this.isFocused_ || !!this.getValue() || this.isBadInput_();
+  }
+
+  /**
+   * {@see MDCTextFieldAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCTextFieldAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCTextFieldAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        hasClass: () => {},
+        registerTextFieldInteractionHandler: () => {},
+        deregisterTextFieldInteractionHandler: () => {},
+        registerInputInteractionHandler: () => {},
+        deregisterInputInteractionHandler: () => {},
+        registerValidationAttributeChangeHandler: () => {},
+        deregisterValidationAttributeChangeHandler: () => {},
+        getNativeInput: () => {},
+        isFocused: () => {},
+        isRtl: () => {},
+        activateLineRipple: () => {},
+        deactivateLineRipple: () => {},
+        setLineRippleTransformOrigin: () => {},
+        shakeLabel: () => {},
+        floatLabel: () => {},
+        hasLabel: () => {},
+        getLabelWidth: () => {},
+        hasOutline: () => {},
+        notchOutline: () => {},
+        closeOutline: () => {}
+      }
+    );
+  }
+
+  /**
+   * @param {!MDCTextFieldAdapter} adapter
+   * @param {!FoundationMapType=} foundationMap Map from subcomponent names to their subfoundations.
+   */
+  constructor(adapter, foundationMap = /** @type {!FoundationMapType} */{}) {
+    super(Object.assign(MDCTextFieldFoundation.defaultAdapter, adapter));
+
+    /** @type {!MDCTextFieldHelperTextFoundation|undefined} */
+    this.helperText_ = foundationMap.helperText;
+    /** @type {!MDCTextFieldIconFoundation|undefined} */
+    this.icon_ = foundationMap.icon;
+
+    /** @private {boolean} */
+    this.isFocused_ = false;
+    /** @private {boolean} */
+    this.receivedUserInput_ = false;
+    /** @private {boolean} */
+    this.useCustomValidityChecking_ = false;
+    /** @private {boolean} */
+    this.isValid_ = true;
+    /** @private {function(): undefined} */
+    this.inputFocusHandler_ = () => this.activateFocus();
+    /** @private {function(): undefined} */
+    this.inputBlurHandler_ = () => this.deactivateFocus();
+    /** @private {function(): undefined} */
+    this.inputInputHandler_ = () => this.autoCompleteFocus();
+    /** @private {function(!Event): undefined} */
+    this.setPointerXOffset_ = evt => this.setTransformOrigin(evt);
+    /** @private {function(!Event): undefined} */
+    this.textFieldInteractionHandler_ = () => this.handleTextFieldInteraction();
+    /** @private {function(!Array): undefined} */
+    this.validationAttributeChangeHandler_ = attributesList => this.handleValidationAttributeChange(attributesList);
+
+    /** @private {!MutationObserver} */
+    this.validationObserver_;
+  }
+
+  init() {
+    this.adapter_.addClass(MDCTextFieldFoundation.cssClasses.UPGRADED);
+    // Ensure label does not collide with any pre-filled value.
+    if (this.adapter_.hasLabel() && (this.getValue() || this.isBadInput_())) {
+      this.adapter_.floatLabel(this.shouldFloat);
+      this.notchOutline(this.shouldFloat);
+    }
+
+    if (this.adapter_.isFocused()) {
+      this.inputFocusHandler_();
+    }
+
+    this.adapter_.registerInputInteractionHandler('focus', this.inputFocusHandler_);
+    this.adapter_.registerInputInteractionHandler('blur', this.inputBlurHandler_);
+    this.adapter_.registerInputInteractionHandler('input', this.inputInputHandler_);
+    ['mousedown', 'touchstart'].forEach(evtType => {
+      this.adapter_.registerInputInteractionHandler(evtType, this.setPointerXOffset_);
+    });
+    ['click', 'keydown'].forEach(evtType => {
+      this.adapter_.registerTextFieldInteractionHandler(evtType, this.textFieldInteractionHandler_);
+    });
+    this.validationObserver_ = this.adapter_.registerValidationAttributeChangeHandler(this.validationAttributeChangeHandler_);
+  }
+
+  destroy() {
+    this.adapter_.removeClass(MDCTextFieldFoundation.cssClasses.UPGRADED);
+    this.adapter_.deregisterInputInteractionHandler('focus', this.inputFocusHandler_);
+    this.adapter_.deregisterInputInteractionHandler('blur', this.inputBlurHandler_);
+    this.adapter_.deregisterInputInteractionHandler('input', this.inputInputHandler_);
+    ['mousedown', 'touchstart'].forEach(evtType => {
+      this.adapter_.deregisterInputInteractionHandler(evtType, this.setPointerXOffset_);
+    });
+    ['click', 'keydown'].forEach(evtType => {
+      this.adapter_.deregisterTextFieldInteractionHandler(evtType, this.textFieldInteractionHandler_);
+    });
+    this.adapter_.deregisterValidationAttributeChangeHandler(this.validationObserver_);
+  }
+
+  /**
+   * Handles user interactions with the Text Field.
+   */
+  handleTextFieldInteraction() {
+    if (this.adapter_.getNativeInput().disabled) {
+      return;
+    }
+    this.receivedUserInput_ = true;
+  }
+
+  /**
+   * Handles validation attribute changes
+   * @param {!Array<string>} attributesList
+   */
+  handleValidationAttributeChange(attributesList) {
+    attributesList.some(attributeName => {
+      if (__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* VALIDATION_ATTR_WHITELIST */].indexOf(attributeName) > -1) {
+        this.styleValidity_(true);
+        return true;
+      }
+    });
+  }
+
+  /**
+   * Opens/closes the notched outline.
+   * @param {boolean} openNotch
+   */
+  notchOutline(openNotch) {
+    if (!this.adapter_.hasOutline() || !this.adapter_.hasLabel()) {
+      return;
+    }
+
+    if (openNotch) {
+      const isDense = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* cssClasses */].DENSE);
+      const labelScale = isDense ? __WEBPACK_IMPORTED_MODULE_4__constants__["c" /* numbers */].DENSE_LABEL_SCALE : __WEBPACK_IMPORTED_MODULE_4__constants__["c" /* numbers */].LABEL_SCALE;
+      const labelWidth = this.adapter_.getLabelWidth() * labelScale;
+      const isRtl = this.adapter_.isRtl();
+      this.adapter_.notchOutline(labelWidth, isRtl);
+    } else {
+      this.adapter_.closeOutline();
+    }
+  }
+
+  /**
+   * Activates the text field focus state.
+   */
+  activateFocus() {
+    this.isFocused_ = true;
+    this.styleFocused_(this.isFocused_);
+    this.adapter_.activateLineRipple();
+    this.notchOutline(this.shouldFloat);
+    if (this.adapter_.hasLabel()) {
+      this.adapter_.shakeLabel(this.shouldShake);
+      this.adapter_.floatLabel(this.shouldFloat);
+    }
+    if (this.helperText_) {
+      this.helperText_.showToScreenReader();
+    }
+  }
+
+  /**
+   * Sets the line ripple's transform origin, so that the line ripple activate
+   * animation will animate out from the user's click location.
+   * @param {!Event} evt
+   */
+  setTransformOrigin(evt) {
+    const targetClientRect = evt.target.getBoundingClientRect();
+    const evtCoords = { x: evt.clientX, y: evt.clientY };
+    const normalizedX = evtCoords.x - targetClientRect.left;
+    this.adapter_.setLineRippleTransformOrigin(normalizedX);
+  }
+
+  /**
+   * Activates the Text Field's focus state in cases when the input value
+   * changes without user input (e.g. programatically).
+   */
+  autoCompleteFocus() {
+    if (!this.receivedUserInput_) {
+      this.activateFocus();
+    }
+  }
+
+  /**
+   * Deactivates the Text Field's focus state.
+   */
+  deactivateFocus() {
+    this.isFocused_ = false;
+    this.adapter_.deactivateLineRipple();
+    const input = this.getNativeInput_();
+    const shouldRemoveLabelFloat = !input.value && !this.isBadInput_();
+    const isValid = this.isValid();
+    this.styleValidity_(isValid);
+    this.styleFocused_(this.isFocused_);
+    if (this.adapter_.hasLabel()) {
+      this.adapter_.shakeLabel(this.shouldShake);
+      this.adapter_.floatLabel(this.shouldFloat);
+      this.notchOutline(this.shouldFloat);
+    }
+    if (shouldRemoveLabelFloat) {
+      this.receivedUserInput_ = false;
+    }
+  }
+
+  /**
+   * @return {string} The value of the input Element.
+   */
+  getValue() {
+    return this.getNativeInput_().value;
+  }
+
+  /**
+   * @param {string} value The value to set on the input Element.
+   */
+  setValue(value) {
+    this.getNativeInput_().value = value;
+    const isValid = this.isValid();
+    this.styleValidity_(isValid);
+    if (this.adapter_.hasLabel()) {
+      this.adapter_.shakeLabel(this.shouldShake);
+      this.adapter_.floatLabel(this.shouldFloat);
+      this.notchOutline(this.shouldFloat);
+    }
+  }
+
+  /**
+   * @return {boolean} If a custom validity is set, returns that value.
+   *     Otherwise, returns the result of native validity checks.
+   */
+  isValid() {
+    return this.useCustomValidityChecking_ ? this.isValid_ : this.isNativeInputValid_();
+  }
+
+  /**
+   * @param {boolean} isValid Sets the validity state of the Text Field.
+   */
+  setValid(isValid) {
+    this.useCustomValidityChecking_ = true;
+    this.isValid_ = isValid;
+    // Retrieve from the getter to ensure correct logic is applied.
+    isValid = this.isValid();
+    this.styleValidity_(isValid);
+    if (this.adapter_.hasLabel()) {
+      this.adapter_.shakeLabel(this.shouldShake);
+    }
+  }
+
+  /**
+   * @return {boolean} True if the Text Field is disabled.
+   */
+  isDisabled() {
+    return this.getNativeInput_().disabled;
+  }
+
+  /**
+   * @param {boolean} disabled Sets the text-field disabled or enabled.
+   */
+  setDisabled(disabled) {
+    this.getNativeInput_().disabled = disabled;
+    this.styleDisabled_(disabled);
+  }
+
+  /**
+   * @param {string} content Sets the content of the helper text.
+   */
+  setHelperTextContent(content) {
+    if (this.helperText_) {
+      this.helperText_.setContent(content);
+    }
+  }
+
+  /**
+   * Sets the aria label of the icon.
+   * @param {string} label
+   */
+  setIconAriaLabel(label) {
+    if (this.icon_) {
+      this.icon_.setAriaLabel(label);
+    }
+  }
+
+  /**
+   * Sets the text content of the icon.
+   * @param {string} content
+   */
+  setIconContent(content) {
+    if (this.icon_) {
+      this.icon_.setContent(content);
+    }
+  }
+
+  /**
+   * @return {boolean} True if the Text Field input fails in converting the
+   *     user-supplied value.
+   * @private
+   */
+  isBadInput_() {
+    return this.getNativeInput_().validity.badInput;
+  }
+
+  /**
+   * @return {boolean} The result of native validity checking
+   *     (ValidityState.valid).
+   */
+  isNativeInputValid_() {
+    return this.getNativeInput_().validity.valid;
+  }
+
+  /**
+   * Styles the component based on the validity state.
+   * @param {boolean} isValid
+   * @private
+   */
+  styleValidity_(isValid) {
+    const { INVALID } = MDCTextFieldFoundation.cssClasses;
+    if (isValid) {
+      this.adapter_.removeClass(INVALID);
+    } else {
+      this.adapter_.addClass(INVALID);
+    }
+    if (this.helperText_) {
+      this.helperText_.setValidity(isValid);
+    }
+  }
+
+  /**
+   * Styles the component based on the focused state.
+   * @param {boolean} isFocused
+   * @private
+   */
+  styleFocused_(isFocused) {
+    const { FOCUSED } = MDCTextFieldFoundation.cssClasses;
+    if (isFocused) {
+      this.adapter_.addClass(FOCUSED);
+    } else {
+      this.adapter_.removeClass(FOCUSED);
+    }
+  }
+
+  /**
+   * Styles the component based on the disabled state.
+   * @param {boolean} isDisabled
+   * @private
+   */
+  styleDisabled_(isDisabled) {
+    const { DISABLED, INVALID } = MDCTextFieldFoundation.cssClasses;
+    if (isDisabled) {
+      this.adapter_.addClass(DISABLED);
+      this.adapter_.removeClass(INVALID);
+    } else {
+      this.adapter_.removeClass(DISABLED);
+    }
+    if (this.icon_) {
+      this.icon_.setDisabled(isDisabled);
+    }
+  }
+
+  /**
+   * @return {!Element|!NativeInputType} The native text input from the
+   * host environment, or a dummy if none exists.
+   * @private
+   */
+  getNativeInput_() {
+    return this.adapter_.getNativeInput() ||
+    /** @type {!NativeInputType} */{
+      value: '',
+      disabled: false,
+      validity: {
+        badInput: false,
+        valid: true
+      }
+    };
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCTextFieldFoundation);
+
+/***/ }),
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(75);
+/**
+ * @license
+ * Copyright 2018 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCLineRippleAdapter>}
+ * @final
+ */
+class MDCLineRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  /**
+   * {@see MDCLineRippleAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCLineRippleAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCLineRippleAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        hasClass: () => {},
+        setStyle: () => {},
+        registerEventHandler: () => {},
+        deregisterEventHandler: () => {}
+      }
+    );
+  }
+
+  /**
+   * @param {!MDCLineRippleAdapter=} adapter
+   */
+  constructor(adapter = /** @type {!MDCLineRippleAdapter} */{}) {
+    super(Object.assign(MDCLineRippleFoundation.defaultAdapter, adapter));
+
+    /** @private {function(!Event): undefined} */
+    this.transitionEndHandler_ = evt => this.handleTransitionEnd(evt);
+  }
+
+  init() {
+    this.adapter_.registerEventHandler('transitionend', this.transitionEndHandler_);
+  }
+
+  destroy() {
+    this.adapter_.deregisterEventHandler('transitionend', this.transitionEndHandler_);
+  }
+
+  /**
+   * Activates the line ripple
+   */
+  activate() {
+    this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_ACTIVE);
+  }
+
+  /**
+   * Sets the center of the ripple animation to the given X coordinate.
+   * @param {number} xCoordinate
+   */
+  setRippleCenter(xCoordinate) {
+    this.adapter_.setStyle('transform-origin', `${xCoordinate}px center`);
+  }
+
+  /**
+   * Deactivates the line ripple
+   */
+  deactivate() {
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
+  }
+
+  /**
+   * Handles a transition end event
+   * @param {!Event} evt
+   */
+  handleTransitionEnd(evt) {
+    // Wait for the line ripple to be either transparent or opaque
+    // before emitting the animation end event
+    const isDeactivating = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
+
+    if (evt.propertyName === 'opacity') {
+      if (isDeactivating) {
+        this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_ACTIVE);
+        this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
+      }
+    }
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCLineRippleFoundation);
+
+/***/ }),
+/* 75 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/**
+ * @license
+ * Copyright 2018 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/** @enum {string} */
+const cssClasses = {
+  LINE_RIPPLE_ACTIVE: 'mdc-line-ripple--active',
+  LINE_RIPPLE_DEACTIVATING: 'mdc-line-ripple--deactivating'
+};
+
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextFieldHelperText; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(14);
+/* unused harmony reexport MDCTextFieldHelperTextFoundation */
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @extends {MDCComponent<!MDCTextFieldHelperTextFoundation>}
+ * @final
+ */
+class MDCTextFieldHelperText extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /**
+   * @param {!Element} root
+   * @return {!MDCTextFieldHelperText}
+   */
+  static attachTo(root) {
+    return new MDCTextFieldHelperText(root);
+  }
+
+  /**
+   * @return {!MDCTextFieldHelperTextFoundation}
+   */
+  get foundation() {
+    return this.foundation_;
+  }
+
+  /**
+   * @return {!MDCTextFieldHelperTextFoundation}
+   */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]( /** @type {!MDCTextFieldHelperTextAdapter} */Object.assign({
+      addClass: className => this.root_.classList.add(className),
+      removeClass: className => this.root_.classList.remove(className),
+      hasClass: className => this.root_.classList.contains(className),
+      setAttr: (attr, value) => this.root_.setAttribute(attr, value),
+      removeAttr: attr => this.root_.removeAttribute(attr),
+      setContent: content => {
+        this.root_.textContent = content;
+      }
+    }));
+  }
+}
+
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextFieldIcon; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(15);
+/* unused harmony reexport MDCTextFieldIconFoundation */
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+
+/**
+ * @extends {MDCComponent<!MDCTextFieldIconFoundation>}
+ * @final
+ */
+class MDCTextFieldIcon extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
+  /**
+   * @param {!Element} root
+   * @return {!MDCTextFieldIcon}
+   */
+  static attachTo(root) {
+    return new MDCTextFieldIcon(root);
+  }
+
+  /**
+   * @return {!MDCTextFieldIconFoundation}
+   */
+  get foundation() {
+    return this.foundation_;
+  }
+
+  /**
+   * @return {!MDCTextFieldIconFoundation}
+   */
+  getDefaultFoundation() {
+    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]( /** @type {!MDCTextFieldIconAdapter} */Object.assign({
+      getAttr: attr => this.root_.getAttribute(attr),
+      setAttr: (attr, value) => this.root_.setAttribute(attr, value),
+      removeAttr: attr => this.root_.removeAttribute(attr),
+      setContent: content => {
+        this.root_.textContent = content;
+      },
+      registerInteractionHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
+      deregisterInteractionHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler),
+      notifyIconAction: () => this.emit(__WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */].strings.ICON_EVENT, {} /* evtData */, true /* shouldBubble */)
+    }));
+  }
+}
+
+
+
+/***/ }),
+/* 78 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(79);
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCFloatingLabelAdapter>}
+ * @final
+ */
+class MDCFloatingLabelFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  /**
+   * {@see MDCFloatingLabelAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCFloatingLabelAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCFloatingLabelAdapter} */{
+        addClass: () => {},
+        removeClass: () => {},
+        getWidth: () => {},
+        registerInteractionHandler: () => {},
+        deregisterInteractionHandler: () => {}
+      }
+    );
+  }
+
+  /**
+   * @param {!MDCFloatingLabelAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCFloatingLabelFoundation.defaultAdapter, adapter));
+
+    /** @private {function(!Event): undefined} */
+    this.shakeAnimationEndHandler_ = () => this.handleShakeAnimationEnd_();
+  }
+
+  init() {
+    this.adapter_.registerInteractionHandler('animationend', this.shakeAnimationEndHandler_);
+  }
+
+  destroy() {
+    this.adapter_.deregisterInteractionHandler('animationend', this.shakeAnimationEndHandler_);
+  }
+
+  /**
+   * Returns the width of the label element.
+   * @return {number}
+   */
+  getWidth() {
+    return this.adapter_.getWidth();
+  }
+
+  /**
+   * Styles the label to produce the label shake for errors.
+   * @param {boolean} shouldShake adds shake class if true,
+   * otherwise removes shake class.
+   */
+  shake(shouldShake) {
+    const { LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
+    if (shouldShake) {
+      this.adapter_.addClass(LABEL_SHAKE);
+    } else {
+      this.adapter_.removeClass(LABEL_SHAKE);
+    }
+  }
+
+  /**
+   * Styles the label to float or dock.
+   * @param {boolean} shouldFloat adds float class if true, otherwise remove
+   * float and shake class to dock label.
+   */
+  float(shouldFloat) {
+    const { LABEL_FLOAT_ABOVE, LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
+    if (shouldFloat) {
+      this.adapter_.addClass(LABEL_FLOAT_ABOVE);
+    } else {
+      this.adapter_.removeClass(LABEL_FLOAT_ABOVE);
+      this.adapter_.removeClass(LABEL_SHAKE);
+    }
+  }
+
+  /**
+   * Handles an interaction event on the root element.
+   */
+  handleShakeAnimationEnd_() {
+    const { LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
+    this.adapter_.removeClass(LABEL_SHAKE);
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCFloatingLabelFoundation);
+
+/***/ }),
+/* 79 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/**
+ * @license
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/** @enum {string} */
+const cssClasses = {
+  LABEL_FLOAT_ABOVE: 'mdc-floating-label--float-above',
+  LABEL_SHAKE: 'mdc-floating-label--shake'
+};
+
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(33);
+/**
+ * @license
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCNotchedOutlineAdapter>}
+ * @final
+ */
+class MDCNotchedOutlineFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
+  /** @return enum {string} */
+  static get strings() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
+  }
+
+  /** @return enum {string} */
+  static get cssClasses() {
+    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+  }
+
+  /**
+   * {@see MDCNotchedOutlineAdapter} for typing information on parameters and return
+   * types.
+   * @return {!MDCNotchedOutlineAdapter}
+   */
+  static get defaultAdapter() {
+    return (/** @type {!MDCNotchedOutlineAdapter} */{
+        getWidth: () => {},
+        getHeight: () => {},
+        addClass: () => {},
+        removeClass: () => {},
+        setOutlinePathAttr: () => {},
+        getIdleOutlineStyleValue: () => {}
+      }
+    );
+  }
+
+  /**
+   * @param {!MDCNotchedOutlineAdapter} adapter
+   */
+  constructor(adapter) {
+    super(Object.assign(MDCNotchedOutlineFoundation.defaultAdapter, adapter));
+  }
+
+  /**
+   * Adds the outline notched selector and updates the notch width
+   * calculated based off of notchWidth and isRtl.
+   * @param {number} notchWidth
+   * @param {boolean=} isRtl
+   */
+  notch(notchWidth, isRtl = false) {
+    const { OUTLINE_NOTCHED } = MDCNotchedOutlineFoundation.cssClasses;
+    this.adapter_.addClass(OUTLINE_NOTCHED);
+    this.updateSvgPath_(notchWidth, isRtl);
+  }
+
+  /**
+   * Removes notched outline selector to close the notch in the outline.
+   */
+  closeNotch() {
+    const { OUTLINE_NOTCHED } = MDCNotchedOutlineFoundation.cssClasses;
+    this.adapter_.removeClass(OUTLINE_NOTCHED);
+  }
+
+  /**
+   * Updates the SVG path of the focus outline element based on the notchWidth
+   * and the RTL context.
+   * @param {number} notchWidth
+   * @param {boolean=} isRtl
+   * @private
+   */
+  updateSvgPath_(notchWidth, isRtl) {
+    // Fall back to reading a specific corner's style because Firefox doesn't report the style on border-radius.
+    const radiusStyleValue = this.adapter_.getIdleOutlineStyleValue('border-radius') || this.adapter_.getIdleOutlineStyleValue('border-top-left-radius');
+    const radius = parseFloat(radiusStyleValue);
+    const width = this.adapter_.getWidth();
+    const height = this.adapter_.getHeight();
+    const cornerWidth = radius + 1.2;
+    const leadingStrokeLength = Math.abs(11 - cornerWidth);
+    const paddedNotchWidth = notchWidth + 8;
+
+    // The right, bottom, and left sides of the outline follow the same SVG path.
+    const pathMiddle = 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + radius + 'v' + (height - 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + radius + 'h' + (-width + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + -radius + 'v' + (-height + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + -radius;
+
+    let path;
+    if (!isRtl) {
+      path = 'M' + (cornerWidth + leadingStrokeLength + paddedNotchWidth) + ',' + 1 + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength) + pathMiddle + 'h' + leadingStrokeLength;
+    } else {
+      path = 'M' + (width - cornerWidth - leadingStrokeLength) + ',' + 1 + 'h' + leadingStrokeLength + pathMiddle + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength);
+    }
+
+    this.adapter_.setOutlinePathAttr(path);
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCNotchedOutlineFoundation);
+
+/***/ }),
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* flatpickr v4.5.2, @license MIT */
@@ -15264,1093 +16346,11 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
 });
 
 /***/ }),
-/* 72 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return strings; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/** @enum {string} */
-const strings = {
-  ARIA_HIDDEN: 'aria-hidden',
-  ROLE: 'role'
-};
-
-/** @enum {string} */
-const cssClasses = {
-  HELPER_TEXT_PERSISTENT: 'mdc-text-field-helper-text--persistent',
-  HELPER_TEXT_VALIDATION_MSG: 'mdc-text-field-helper-text--validation-msg'
-};
-
-
-
-/***/ }),
-/* 73 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return strings; });
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/** @enum {string} */
-const strings = {
-  ICON_EVENT: 'MDCTextField:icon',
-  ICON_ROLE: 'button'
-};
-
-
-
-/***/ }),
-/* 74 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helper_text_foundation__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__icon_foundation__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__adapter__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(24);
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-/* eslint-disable no-unused-vars */
-
-
-/* eslint-enable no-unused-vars */
-
-
-
-/**
- * @extends {MDCFoundation<!MDCTextFieldAdapter>}
- * @final
- */
-class MDCTextFieldFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum {string} */
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_4__constants__["b" /* cssClasses */];
-  }
-
-  /** @return enum {string} */
-  static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_4__constants__["d" /* strings */];
-  }
-
-  /** @return enum {string} */
-  static get numbers() {
-    return __WEBPACK_IMPORTED_MODULE_4__constants__["c" /* numbers */];
-  }
-
-  /** @return {boolean} */
-  get shouldShake() {
-    return !this.isValid() && !this.isFocused_;
-  }
-
-  /** @return {boolean} */
-  get shouldFloat() {
-    return this.isFocused_ || !!this.getValue() || this.isBadInput_();
-  }
-
-  /**
-   * {@see MDCTextFieldAdapter} for typing information on parameters and return
-   * types.
-   * @return {!MDCTextFieldAdapter}
-   */
-  static get defaultAdapter() {
-    return (/** @type {!MDCTextFieldAdapter} */{
-        addClass: () => {},
-        removeClass: () => {},
-        hasClass: () => {},
-        registerTextFieldInteractionHandler: () => {},
-        deregisterTextFieldInteractionHandler: () => {},
-        registerInputInteractionHandler: () => {},
-        deregisterInputInteractionHandler: () => {},
-        registerValidationAttributeChangeHandler: () => {},
-        deregisterValidationAttributeChangeHandler: () => {},
-        getNativeInput: () => {},
-        isFocused: () => {},
-        isRtl: () => {},
-        activateLineRipple: () => {},
-        deactivateLineRipple: () => {},
-        setLineRippleTransformOrigin: () => {},
-        shakeLabel: () => {},
-        floatLabel: () => {},
-        hasLabel: () => {},
-        getLabelWidth: () => {},
-        hasOutline: () => {},
-        notchOutline: () => {},
-        closeOutline: () => {}
-      }
-    );
-  }
-
-  /**
-   * @param {!MDCTextFieldAdapter} adapter
-   * @param {!FoundationMapType=} foundationMap Map from subcomponent names to their subfoundations.
-   */
-  constructor(adapter, foundationMap = /** @type {!FoundationMapType} */{}) {
-    super(Object.assign(MDCTextFieldFoundation.defaultAdapter, adapter));
-
-    /** @type {!MDCTextFieldHelperTextFoundation|undefined} */
-    this.helperText_ = foundationMap.helperText;
-    /** @type {!MDCTextFieldIconFoundation|undefined} */
-    this.icon_ = foundationMap.icon;
-
-    /** @private {boolean} */
-    this.isFocused_ = false;
-    /** @private {boolean} */
-    this.receivedUserInput_ = false;
-    /** @private {boolean} */
-    this.useCustomValidityChecking_ = false;
-    /** @private {boolean} */
-    this.isValid_ = true;
-    /** @private {function(): undefined} */
-    this.inputFocusHandler_ = () => this.activateFocus();
-    /** @private {function(): undefined} */
-    this.inputBlurHandler_ = () => this.deactivateFocus();
-    /** @private {function(): undefined} */
-    this.inputInputHandler_ = () => this.autoCompleteFocus();
-    /** @private {function(!Event): undefined} */
-    this.setPointerXOffset_ = evt => this.setTransformOrigin(evt);
-    /** @private {function(!Event): undefined} */
-    this.textFieldInteractionHandler_ = () => this.handleTextFieldInteraction();
-    /** @private {function(!Array): undefined} */
-    this.validationAttributeChangeHandler_ = attributesList => this.handleValidationAttributeChange(attributesList);
-
-    /** @private {!MutationObserver} */
-    this.validationObserver_;
-  }
-
-  init() {
-    this.adapter_.addClass(MDCTextFieldFoundation.cssClasses.UPGRADED);
-    // Ensure label does not collide with any pre-filled value.
-    if (this.adapter_.hasLabel() && (this.getValue() || this.isBadInput_())) {
-      this.adapter_.floatLabel(this.shouldFloat);
-      this.notchOutline(this.shouldFloat);
-    }
-
-    if (this.adapter_.isFocused()) {
-      this.inputFocusHandler_();
-    }
-
-    this.adapter_.registerInputInteractionHandler('focus', this.inputFocusHandler_);
-    this.adapter_.registerInputInteractionHandler('blur', this.inputBlurHandler_);
-    this.adapter_.registerInputInteractionHandler('input', this.inputInputHandler_);
-    ['mousedown', 'touchstart'].forEach(evtType => {
-      this.adapter_.registerInputInteractionHandler(evtType, this.setPointerXOffset_);
-    });
-    ['click', 'keydown'].forEach(evtType => {
-      this.adapter_.registerTextFieldInteractionHandler(evtType, this.textFieldInteractionHandler_);
-    });
-    this.validationObserver_ = this.adapter_.registerValidationAttributeChangeHandler(this.validationAttributeChangeHandler_);
-  }
-
-  destroy() {
-    this.adapter_.removeClass(MDCTextFieldFoundation.cssClasses.UPGRADED);
-    this.adapter_.deregisterInputInteractionHandler('focus', this.inputFocusHandler_);
-    this.adapter_.deregisterInputInteractionHandler('blur', this.inputBlurHandler_);
-    this.adapter_.deregisterInputInteractionHandler('input', this.inputInputHandler_);
-    ['mousedown', 'touchstart'].forEach(evtType => {
-      this.adapter_.deregisterInputInteractionHandler(evtType, this.setPointerXOffset_);
-    });
-    ['click', 'keydown'].forEach(evtType => {
-      this.adapter_.deregisterTextFieldInteractionHandler(evtType, this.textFieldInteractionHandler_);
-    });
-    this.adapter_.deregisterValidationAttributeChangeHandler(this.validationObserver_);
-  }
-
-  /**
-   * Handles user interactions with the Text Field.
-   */
-  handleTextFieldInteraction() {
-    if (this.adapter_.getNativeInput().disabled) {
-      return;
-    }
-    this.receivedUserInput_ = true;
-  }
-
-  /**
-   * Handles validation attribute changes
-   * @param {!Array<string>} attributesList
-   */
-  handleValidationAttributeChange(attributesList) {
-    attributesList.some(attributeName => {
-      if (__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* VALIDATION_ATTR_WHITELIST */].indexOf(attributeName) > -1) {
-        this.styleValidity_(true);
-        return true;
-      }
-    });
-  }
-
-  /**
-   * Opens/closes the notched outline.
-   * @param {boolean} openNotch
-   */
-  notchOutline(openNotch) {
-    if (!this.adapter_.hasOutline() || !this.adapter_.hasLabel()) {
-      return;
-    }
-
-    if (openNotch) {
-      const isDense = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* cssClasses */].DENSE);
-      const labelScale = isDense ? __WEBPACK_IMPORTED_MODULE_4__constants__["c" /* numbers */].DENSE_LABEL_SCALE : __WEBPACK_IMPORTED_MODULE_4__constants__["c" /* numbers */].LABEL_SCALE;
-      const labelWidth = this.adapter_.getLabelWidth() * labelScale;
-      const isRtl = this.adapter_.isRtl();
-      this.adapter_.notchOutline(labelWidth, isRtl);
-    } else {
-      this.adapter_.closeOutline();
-    }
-  }
-
-  /**
-   * Activates the text field focus state.
-   */
-  activateFocus() {
-    this.isFocused_ = true;
-    this.styleFocused_(this.isFocused_);
-    this.adapter_.activateLineRipple();
-    this.notchOutline(this.shouldFloat);
-    if (this.adapter_.hasLabel()) {
-      this.adapter_.shakeLabel(this.shouldShake);
-      this.adapter_.floatLabel(this.shouldFloat);
-    }
-    if (this.helperText_) {
-      this.helperText_.showToScreenReader();
-    }
-  }
-
-  /**
-   * Sets the line ripple's transform origin, so that the line ripple activate
-   * animation will animate out from the user's click location.
-   * @param {!Event} evt
-   */
-  setTransformOrigin(evt) {
-    const targetClientRect = evt.target.getBoundingClientRect();
-    const evtCoords = { x: evt.clientX, y: evt.clientY };
-    const normalizedX = evtCoords.x - targetClientRect.left;
-    this.adapter_.setLineRippleTransformOrigin(normalizedX);
-  }
-
-  /**
-   * Activates the Text Field's focus state in cases when the input value
-   * changes without user input (e.g. programatically).
-   */
-  autoCompleteFocus() {
-    if (!this.receivedUserInput_) {
-      this.activateFocus();
-    }
-  }
-
-  /**
-   * Deactivates the Text Field's focus state.
-   */
-  deactivateFocus() {
-    this.isFocused_ = false;
-    this.adapter_.deactivateLineRipple();
-    const input = this.getNativeInput_();
-    const shouldRemoveLabelFloat = !input.value && !this.isBadInput_();
-    const isValid = this.isValid();
-    this.styleValidity_(isValid);
-    this.styleFocused_(this.isFocused_);
-    if (this.adapter_.hasLabel()) {
-      this.adapter_.shakeLabel(this.shouldShake);
-      this.adapter_.floatLabel(this.shouldFloat);
-      this.notchOutline(this.shouldFloat);
-    }
-    if (shouldRemoveLabelFloat) {
-      this.receivedUserInput_ = false;
-    }
-  }
-
-  /**
-   * @return {string} The value of the input Element.
-   */
-  getValue() {
-    return this.getNativeInput_().value;
-  }
-
-  /**
-   * @param {string} value The value to set on the input Element.
-   */
-  setValue(value) {
-    this.getNativeInput_().value = value;
-    const isValid = this.isValid();
-    this.styleValidity_(isValid);
-    if (this.adapter_.hasLabel()) {
-      this.adapter_.shakeLabel(this.shouldShake);
-      this.adapter_.floatLabel(this.shouldFloat);
-      this.notchOutline(this.shouldFloat);
-    }
-  }
-
-  /**
-   * @return {boolean} If a custom validity is set, returns that value.
-   *     Otherwise, returns the result of native validity checks.
-   */
-  isValid() {
-    return this.useCustomValidityChecking_ ? this.isValid_ : this.isNativeInputValid_();
-  }
-
-  /**
-   * @param {boolean} isValid Sets the validity state of the Text Field.
-   */
-  setValid(isValid) {
-    this.useCustomValidityChecking_ = true;
-    this.isValid_ = isValid;
-    // Retrieve from the getter to ensure correct logic is applied.
-    isValid = this.isValid();
-    this.styleValidity_(isValid);
-    if (this.adapter_.hasLabel()) {
-      this.adapter_.shakeLabel(this.shouldShake);
-    }
-  }
-
-  /**
-   * @return {boolean} True if the Text Field is disabled.
-   */
-  isDisabled() {
-    return this.getNativeInput_().disabled;
-  }
-
-  /**
-   * @param {boolean} disabled Sets the text-field disabled or enabled.
-   */
-  setDisabled(disabled) {
-    this.getNativeInput_().disabled = disabled;
-    this.styleDisabled_(disabled);
-  }
-
-  /**
-   * @param {string} content Sets the content of the helper text.
-   */
-  setHelperTextContent(content) {
-    if (this.helperText_) {
-      this.helperText_.setContent(content);
-    }
-  }
-
-  /**
-   * Sets the aria label of the icon.
-   * @param {string} label
-   */
-  setIconAriaLabel(label) {
-    if (this.icon_) {
-      this.icon_.setAriaLabel(label);
-    }
-  }
-
-  /**
-   * Sets the text content of the icon.
-   * @param {string} content
-   */
-  setIconContent(content) {
-    if (this.icon_) {
-      this.icon_.setContent(content);
-    }
-  }
-
-  /**
-   * @return {boolean} True if the Text Field input fails in converting the
-   *     user-supplied value.
-   * @private
-   */
-  isBadInput_() {
-    return this.getNativeInput_().validity.badInput;
-  }
-
-  /**
-   * @return {boolean} The result of native validity checking
-   *     (ValidityState.valid).
-   */
-  isNativeInputValid_() {
-    return this.getNativeInput_().validity.valid;
-  }
-
-  /**
-   * Styles the component based on the validity state.
-   * @param {boolean} isValid
-   * @private
-   */
-  styleValidity_(isValid) {
-    const { INVALID } = MDCTextFieldFoundation.cssClasses;
-    if (isValid) {
-      this.adapter_.removeClass(INVALID);
-    } else {
-      this.adapter_.addClass(INVALID);
-    }
-    if (this.helperText_) {
-      this.helperText_.setValidity(isValid);
-    }
-  }
-
-  /**
-   * Styles the component based on the focused state.
-   * @param {boolean} isFocused
-   * @private
-   */
-  styleFocused_(isFocused) {
-    const { FOCUSED } = MDCTextFieldFoundation.cssClasses;
-    if (isFocused) {
-      this.adapter_.addClass(FOCUSED);
-    } else {
-      this.adapter_.removeClass(FOCUSED);
-    }
-  }
-
-  /**
-   * Styles the component based on the disabled state.
-   * @param {boolean} isDisabled
-   * @private
-   */
-  styleDisabled_(isDisabled) {
-    const { DISABLED, INVALID } = MDCTextFieldFoundation.cssClasses;
-    if (isDisabled) {
-      this.adapter_.addClass(DISABLED);
-      this.adapter_.removeClass(INVALID);
-    } else {
-      this.adapter_.removeClass(DISABLED);
-    }
-    if (this.icon_) {
-      this.icon_.setDisabled(isDisabled);
-    }
-  }
-
-  /**
-   * @return {!Element|!NativeInputType} The native text input from the
-   * host environment, or a dummy if none exists.
-   * @private
-   */
-  getNativeInput_() {
-    return this.adapter_.getNativeInput() ||
-    /** @type {!NativeInputType} */{
-      value: '',
-      disabled: false,
-      validity: {
-        badInput: false,
-        valid: true
-      }
-    };
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCTextFieldFoundation);
-
-/***/ }),
-/* 75 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(76);
-/**
- * @license
- * Copyright 2018 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-/**
- * @extends {MDCFoundation<!MDCLineRippleAdapter>}
- * @final
- */
-class MDCLineRippleFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum {string} */
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
-  }
-
-  /**
-   * {@see MDCLineRippleAdapter} for typing information on parameters and return
-   * types.
-   * @return {!MDCLineRippleAdapter}
-   */
-  static get defaultAdapter() {
-    return (/** @type {!MDCLineRippleAdapter} */{
-        addClass: () => {},
-        removeClass: () => {},
-        hasClass: () => {},
-        setStyle: () => {},
-        registerEventHandler: () => {},
-        deregisterEventHandler: () => {}
-      }
-    );
-  }
-
-  /**
-   * @param {!MDCLineRippleAdapter=} adapter
-   */
-  constructor(adapter = /** @type {!MDCLineRippleAdapter} */{}) {
-    super(Object.assign(MDCLineRippleFoundation.defaultAdapter, adapter));
-
-    /** @private {function(!Event): undefined} */
-    this.transitionEndHandler_ = evt => this.handleTransitionEnd(evt);
-  }
-
-  init() {
-    this.adapter_.registerEventHandler('transitionend', this.transitionEndHandler_);
-  }
-
-  destroy() {
-    this.adapter_.deregisterEventHandler('transitionend', this.transitionEndHandler_);
-  }
-
-  /**
-   * Activates the line ripple
-   */
-  activate() {
-    this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
-    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_ACTIVE);
-  }
-
-  /**
-   * Sets the center of the ripple animation to the given X coordinate.
-   * @param {number} xCoordinate
-   */
-  setRippleCenter(xCoordinate) {
-    this.adapter_.setStyle('transform-origin', `${xCoordinate}px center`);
-  }
-
-  /**
-   * Deactivates the line ripple
-   */
-  deactivate() {
-    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
-  }
-
-  /**
-   * Handles a transition end event
-   * @param {!Event} evt
-   */
-  handleTransitionEnd(evt) {
-    // Wait for the line ripple to be either transparent or opaque
-    // before emitting the animation end event
-    const isDeactivating = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
-
-    if (evt.propertyName === 'opacity') {
-      if (isDeactivating) {
-        this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_ACTIVE);
-        this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LINE_RIPPLE_DEACTIVATING);
-      }
-    }
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCLineRippleFoundation);
-
-/***/ }),
-/* 76 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
-/**
- * @license
- * Copyright 2018 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/** @enum {string} */
-const cssClasses = {
-  LINE_RIPPLE_ACTIVE: 'mdc-line-ripple--active',
-  LINE_RIPPLE_DEACTIVATING: 'mdc-line-ripple--deactivating'
-};
-
-
-
-/***/ }),
-/* 77 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextFieldHelperText; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(13);
-/* unused harmony reexport MDCTextFieldHelperTextFoundation */
-/**
- * @license
- * Copyright 2017 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-
-/**
- * @extends {MDCComponent<!MDCTextFieldHelperTextFoundation>}
- * @final
- */
-class MDCTextFieldHelperText extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
-  /**
-   * @param {!Element} root
-   * @return {!MDCTextFieldHelperText}
-   */
-  static attachTo(root) {
-    return new MDCTextFieldHelperText(root);
-  }
-
-  /**
-   * @return {!MDCTextFieldHelperTextFoundation}
-   */
-  get foundation() {
-    return this.foundation_;
-  }
-
-  /**
-   * @return {!MDCTextFieldHelperTextFoundation}
-   */
-  getDefaultFoundation() {
-    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]( /** @type {!MDCTextFieldHelperTextAdapter} */Object.assign({
-      addClass: className => this.root_.classList.add(className),
-      removeClass: className => this.root_.classList.remove(className),
-      hasClass: className => this.root_.classList.contains(className),
-      setAttr: (attr, value) => this.root_.setAttribute(attr, value),
-      removeAttr: attr => this.root_.removeAttribute(attr),
-      setContent: content => {
-        this.root_.textContent = content;
-      }
-    }));
-  }
-}
-
-
-
-/***/ }),
-/* 78 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTextFieldIcon; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(14);
-/* unused harmony reexport MDCTextFieldIconFoundation */
-/**
- * @license
- * Copyright 2017 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-
-/**
- * @extends {MDCComponent<!MDCTextFieldIconFoundation>}
- * @final
- */
-class MDCTextFieldIcon extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */] {
-  /**
-   * @param {!Element} root
-   * @return {!MDCTextFieldIcon}
-   */
-  static attachTo(root) {
-    return new MDCTextFieldIcon(root);
-  }
-
-  /**
-   * @return {!MDCTextFieldIconFoundation}
-   */
-  get foundation() {
-    return this.foundation_;
-  }
-
-  /**
-   * @return {!MDCTextFieldIconFoundation}
-   */
-  getDefaultFoundation() {
-    return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]( /** @type {!MDCTextFieldIconAdapter} */Object.assign({
-      getAttr: attr => this.root_.getAttribute(attr),
-      setAttr: (attr, value) => this.root_.setAttribute(attr, value),
-      removeAttr: attr => this.root_.removeAttribute(attr),
-      setContent: content => {
-        this.root_.textContent = content;
-      },
-      registerInteractionHandler: (evtType, handler) => this.root_.addEventListener(evtType, handler),
-      deregisterInteractionHandler: (evtType, handler) => this.root_.removeEventListener(evtType, handler),
-      notifyIconAction: () => this.emit(__WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */].strings.ICON_EVENT, {} /* evtData */, true /* shouldBubble */)
-    }));
-  }
-}
-
-
-
-/***/ }),
-/* 79 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(80);
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-/**
- * @extends {MDCFoundation<!MDCFloatingLabelAdapter>}
- * @final
- */
-class MDCFloatingLabelFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum {string} */
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
-  }
-
-  /**
-   * {@see MDCFloatingLabelAdapter} for typing information on parameters and return
-   * types.
-   * @return {!MDCFloatingLabelAdapter}
-   */
-  static get defaultAdapter() {
-    return (/** @type {!MDCFloatingLabelAdapter} */{
-        addClass: () => {},
-        removeClass: () => {},
-        getWidth: () => {},
-        registerInteractionHandler: () => {},
-        deregisterInteractionHandler: () => {}
-      }
-    );
-  }
-
-  /**
-   * @param {!MDCFloatingLabelAdapter} adapter
-   */
-  constructor(adapter) {
-    super(Object.assign(MDCFloatingLabelFoundation.defaultAdapter, adapter));
-
-    /** @private {function(!Event): undefined} */
-    this.shakeAnimationEndHandler_ = () => this.handleShakeAnimationEnd_();
-  }
-
-  init() {
-    this.adapter_.registerInteractionHandler('animationend', this.shakeAnimationEndHandler_);
-  }
-
-  destroy() {
-    this.adapter_.deregisterInteractionHandler('animationend', this.shakeAnimationEndHandler_);
-  }
-
-  /**
-   * Returns the width of the label element.
-   * @return {number}
-   */
-  getWidth() {
-    return this.adapter_.getWidth();
-  }
-
-  /**
-   * Styles the label to produce the label shake for errors.
-   * @param {boolean} shouldShake adds shake class if true,
-   * otherwise removes shake class.
-   */
-  shake(shouldShake) {
-    const { LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
-    if (shouldShake) {
-      this.adapter_.addClass(LABEL_SHAKE);
-    } else {
-      this.adapter_.removeClass(LABEL_SHAKE);
-    }
-  }
-
-  /**
-   * Styles the label to float or dock.
-   * @param {boolean} shouldFloat adds float class if true, otherwise remove
-   * float and shake class to dock label.
-   */
-  float(shouldFloat) {
-    const { LABEL_FLOAT_ABOVE, LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
-    if (shouldFloat) {
-      this.adapter_.addClass(LABEL_FLOAT_ABOVE);
-    } else {
-      this.adapter_.removeClass(LABEL_FLOAT_ABOVE);
-      this.adapter_.removeClass(LABEL_SHAKE);
-    }
-  }
-
-  /**
-   * Handles an interaction event on the root element.
-   */
-  handleShakeAnimationEnd_() {
-    const { LABEL_SHAKE } = MDCFloatingLabelFoundation.cssClasses;
-    this.adapter_.removeClass(LABEL_SHAKE);
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCFloatingLabelFoundation);
-
-/***/ }),
-/* 80 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
-/**
- * @license
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/** @enum {string} */
-const cssClasses = {
-  LABEL_FLOAT_ABOVE: 'mdc-floating-label--float-above',
-  LABEL_SHAKE: 'mdc-floating-label--shake'
-};
-
-
-
-/***/ }),
-/* 81 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(34);
-/**
- * @license
- * Copyright 2017 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-
-/**
- * @extends {MDCFoundation<!MDCNotchedOutlineAdapter>}
- * @final
- */
-class MDCNotchedOutlineFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */] {
-  /** @return enum {string} */
-  static get strings() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */];
-  }
-
-  /** @return enum {string} */
-  static get cssClasses() {
-    return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
-  }
-
-  /**
-   * {@see MDCNotchedOutlineAdapter} for typing information on parameters and return
-   * types.
-   * @return {!MDCNotchedOutlineAdapter}
-   */
-  static get defaultAdapter() {
-    return (/** @type {!MDCNotchedOutlineAdapter} */{
-        getWidth: () => {},
-        getHeight: () => {},
-        addClass: () => {},
-        removeClass: () => {},
-        setOutlinePathAttr: () => {},
-        getIdleOutlineStyleValue: () => {}
-      }
-    );
-  }
-
-  /**
-   * @param {!MDCNotchedOutlineAdapter} adapter
-   */
-  constructor(adapter) {
-    super(Object.assign(MDCNotchedOutlineFoundation.defaultAdapter, adapter));
-  }
-
-  /**
-   * Adds the outline notched selector and updates the notch width
-   * calculated based off of notchWidth and isRtl.
-   * @param {number} notchWidth
-   * @param {boolean=} isRtl
-   */
-  notch(notchWidth, isRtl = false) {
-    const { OUTLINE_NOTCHED } = MDCNotchedOutlineFoundation.cssClasses;
-    this.adapter_.addClass(OUTLINE_NOTCHED);
-    this.updateSvgPath_(notchWidth, isRtl);
-  }
-
-  /**
-   * Removes notched outline selector to close the notch in the outline.
-   */
-  closeNotch() {
-    const { OUTLINE_NOTCHED } = MDCNotchedOutlineFoundation.cssClasses;
-    this.adapter_.removeClass(OUTLINE_NOTCHED);
-  }
-
-  /**
-   * Updates the SVG path of the focus outline element based on the notchWidth
-   * and the RTL context.
-   * @param {number} notchWidth
-   * @param {boolean=} isRtl
-   * @private
-   */
-  updateSvgPath_(notchWidth, isRtl) {
-    // Fall back to reading a specific corner's style because Firefox doesn't report the style on border-radius.
-    const radiusStyleValue = this.adapter_.getIdleOutlineStyleValue('border-radius') || this.adapter_.getIdleOutlineStyleValue('border-top-left-radius');
-    const radius = parseFloat(radiusStyleValue);
-    const width = this.adapter_.getWidth();
-    const height = this.adapter_.getHeight();
-    const cornerWidth = radius + 1.2;
-    const leadingStrokeLength = Math.abs(11 - cornerWidth);
-    const paddedNotchWidth = notchWidth + 8;
-
-    // The right, bottom, and left sides of the outline follow the same SVG path.
-    const pathMiddle = 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + radius + 'v' + (height - 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + radius + 'h' + (-width + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + -radius + 'v' + (-height + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + -radius;
-
-    let path;
-    if (!isRtl) {
-      path = 'M' + (cornerWidth + leadingStrokeLength + paddedNotchWidth) + ',' + 1 + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength) + pathMiddle + 'h' + leadingStrokeLength;
-    } else {
-      path = 'M' + (width - cornerWidth - leadingStrokeLength) + ',' + 1 + 'h' + leadingStrokeLength + pathMiddle + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength);
-    }
-
-    this.adapter_.setOutlinePathAttr(path);
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCNotchedOutlineFoundation);
-
-/***/ }),
 /* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_urls__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_urls__ = __webpack_require__(38);
 
 
 class VLoads extends __WEBPACK_IMPORTED_MODULE_0__utils_urls__["a" /* VUrls */] {
@@ -16383,7 +16383,7 @@ class VLoads extends __WEBPACK_IMPORTED_MODULE_0__utils_urls__["a" /* VUrls */] 
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(17);
 
 
 
@@ -16493,7 +16493,7 @@ class VPosts extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_animation_index__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_animation_index__ = __webpack_require__(16);
 /* unused harmony reexport MDCSnackbarFoundation */
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -16884,8 +16884,8 @@ const numbers = {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snackbar__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(21);
 
 
 
@@ -17161,7 +17161,7 @@ class VRemoves {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base__ = __webpack_require__(17);
 
 
 class VStepperEvent extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* VBase */] {
@@ -17823,7 +17823,7 @@ const strings = {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initMenus;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_menu__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_menu__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(3);
 
@@ -18032,7 +18032,7 @@ function solvePositionFromXValue_(xVal, x1, x2) {
 /* unused harmony export AnchorMargin */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(41);
 /**
  * @license
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -18909,13 +18909,13 @@ class VSelect extends Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCSelect; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_floating_label_index__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_line_ripple_index__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_floating_label_index__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_line_ripple_index__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_notched_outline_index__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_notched_outline_index__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__adapter__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__constants__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__adapter__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__constants__ = __webpack_require__(43);
 /* unused harmony reexport MDCSelectFoundation */
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
@@ -19184,8 +19184,8 @@ class MDCSelect extends __WEBPACK_IMPORTED_MODULE_0__material_base_index__["a" /
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(43);
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
  *
@@ -19326,7 +19326,7 @@ class MDCSelectFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_base_ind
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initChips;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(0);
 
@@ -19386,9 +19386,9 @@ class VChipSet extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler_
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCChipSet; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chip_index__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chip_index__ = __webpack_require__(45);
 /* unused harmony reexport MDCChipSetFoundation */
 /**
  * @license
@@ -19517,8 +19517,8 @@ class MDCChipSet extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__[
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chip_foundation__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chip_foundation__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(111);
 /**
  * @license
@@ -19689,7 +19689,7 @@ const cssClasses = {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initCards;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(0);
 
 
@@ -19714,7 +19714,7 @@ class VCard extends __WEBPACK_IMPORTED_MODULE_0__base_container__["a" /* VBaseCo
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initForms;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_event_handler__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_container__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_container__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(0);
 
 
@@ -19788,12 +19788,12 @@ class VCheckbox extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCCheckbox; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_animation_index__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_animation_index__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_selection_control_index__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ripple_index__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ripple_util__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ripple_util__ = __webpack_require__(8);
 /* unused harmony reexport MDCCheckboxFoundation */
 /**
  * @license
@@ -20466,7 +20466,7 @@ class VSwitch extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ripple_util__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ripple_util__ = __webpack_require__(8);
 /* unused harmony reexport MDCSwitchFoundation */
 /**
  * @license
@@ -35759,7 +35759,7 @@ module.exports = Array.isArray || function (arr) {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSteppers;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_event_handler__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_container__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_container__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(0);
 
 
@@ -36195,8 +36195,8 @@ const cssClasses = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_slider__ = __webpack_require__(138);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(37);
 
 
 
@@ -36261,8 +36261,8 @@ class VSlider extends Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_obse
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCSlider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(139);
 /* unused harmony reexport MDCSliderFoundation */
 /**
@@ -36473,9 +36473,9 @@ class MDCSlider extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_animation_index__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_animation_index__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_base_foundation__ = __webpack_require__(1);
 /**
  * @license
@@ -37097,7 +37097,7 @@ class VHiddenField extends __WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* 
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initContent;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(0);
 
 
@@ -37121,7 +37121,7 @@ class VContent extends __WEBPACK_IMPORTED_MODULE_0__base_container__["a" /* VBas
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initGrid;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(0);
 
 
@@ -37181,9 +37181,9 @@ class VTabBar extends Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTabBar; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(145);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_tab_index__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_tab_index__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_tab_scroller_index__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__adapter__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__adapter__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation__ = __webpack_require__(163);
 /* unused harmony reexport MDCTabBarFoundation */
 /**
@@ -37363,7 +37363,7 @@ class MDCTabBar extends __WEBPACK_IMPORTED_MODULE_0__material_base_component__["
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(51);
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -37502,10 +37502,10 @@ class MDCComponent {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRipple; });
 /* unused harmony export RippleCapableSurface */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(147);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(55);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
 /* unused harmony reexport util */
 /**
@@ -37669,10 +37669,10 @@ RippleCapableSurface.prototype.disabled;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(148);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(55);
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -38350,8 +38350,8 @@ const numbers = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTabIndicator; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(150);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sliding_foundation__ = __webpack_require__(152);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__fading_foundation__ = __webpack_require__(153);
 /* unused harmony reexport MDCTabIndicatorFoundation */
@@ -38459,7 +38459,7 @@ class MDCTabIndicator extends __WEBPACK_IMPORTED_MODULE_0__material_base_compone
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(56);
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -38640,7 +38640,7 @@ const strings = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(20);
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -38710,7 +38710,7 @@ class MDCSlidingTabIndicatorFoundation extends __WEBPACK_IMPORTED_MODULE_0__foun
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(20);
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -38757,7 +38757,7 @@ class MDCFadingTabIndicatorFoundation extends __WEBPACK_IMPORTED_MODULE_0__found
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(155);
 /**
@@ -38955,7 +38955,7 @@ const strings = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTabScroller; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(162);
 /* unused harmony reexport MDCTabScrollerFoundation */
@@ -39113,7 +39113,7 @@ class MDCTabScroller extends __WEBPACK_IMPORTED_MODULE_0__material_base_componen
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(58);
 /**
  * @license
  * Copyright 2016 Google Inc.
@@ -39250,9 +39250,9 @@ class MDCComponent {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rtl_scroller__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__rtl_default_scroller__ = __webpack_require__(159);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__rtl_negative_scroller__ = __webpack_require__(160);
@@ -39667,7 +39667,7 @@ class MDCTabScrollerFoundation extends __WEBPACK_IMPORTED_MODULE_0__material_bas
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__rtl_scroller__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(7);
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -39782,7 +39782,7 @@ class MDCTabScrollerRTLDefault extends __WEBPACK_IMPORTED_MODULE_0__rtl_scroller
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__rtl_scroller__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(7);
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -39896,7 +39896,7 @@ class MDCTabScrollerRTLNegative extends __WEBPACK_IMPORTED_MODULE_0__rtl_scrolle
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__rtl_scroller__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(7);
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -40011,7 +40011,7 @@ class MDCTabScrollerRTLReverse extends __WEBPACK_IMPORTED_MODULE_0__rtl_scroller
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return computeHorizontalScrollbarHeight; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getMatchesProperty; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(59);
 /**
  * @license
  * Copyright 2018 Google Inc.
@@ -40083,9 +40083,9 @@ function getMatchesProperty(HTMLElementPrototype) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_tab_adapter__ = __webpack_require__(11);
 /**
  * @license
