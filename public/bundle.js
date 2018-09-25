@@ -16931,6 +16931,7 @@ class VReplaces extends __WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */] {
                         if (httpRequest.readyState === XMLHttpRequest.DONE) {
                             console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                             if (httpRequest.status === 200) {
+                                let nodeToReplace = document.getElementById(elementId);
                                 nodeToReplace.outerHTML = httpRequest.responseText;
                                 var newNode = document.getElementById(elementId);
                                 Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["a" /* initialize */])(newNode);
