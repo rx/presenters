@@ -29,7 +29,7 @@ export class VBase extends VUrls {
         }
         // Let input components push parameters
         let vComp = this.component();
-        if (vComp) {
+        if (vComp && vComp.prepareSubmit === 'function') {
             vComp.prepareSubmit(params);
         }
         return params;

@@ -1,17 +1,13 @@
 // This is used to get a proper binding of the actionData
 // https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
 import {VBaseContainer} from "./base-container";
+import {hookupComponents} from "./base-component";
+import {MDCTextField} from "@material/textfield";
+import {VDateTime} from "./datetime";
 
 export function initDialogs() {
     console.log('\tDialogs');
-
-    var components = document.querySelectorAll('.v-dialog');
-    for (var i = 0; i < components.length; i++) {
-        var component = components[i];
-        if (!component.vComponent) {
-            component.vComponent = new VDialog(component);
-        }
-    }
+    hookupComponents('.v-dialog', VDialog, null);
 }
 
 function createDialogHandler(dialog) {
