@@ -2073,7 +2073,7 @@ class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
         }
         // Let input components push parameters
         let vComp = this.component();
-        if (vComp && vComp.prepareSubmit === 'function') {
+        if (vComp && typeof vComp.prepareSubmit === 'function') {
             vComp.prepareSubmit(params);
         }
         return params;
