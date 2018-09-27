@@ -1,14 +1,20 @@
 import {VBaseContainer} from "./base-container";
-import {hookupComponents} from "./base-component";
 
 export function initCards() {
     console.log('\tCards');
-    hookupComponents('.v-card', VCard, null);
+
+    var components = document.querySelectorAll('.v-card');
+    for (var i = 0; i < components.length; i++) {
+        var component = components[i];
+        if (!component.vComponent) {
+            component.vComponent = new VCard(component);
+        }
+    }
 }
 
 export class VCard extends VBaseContainer {
-    constructor(element, mdcComponent) {
-        super(element, mdcComponent);
+    constructor(element) {
+        super(element);
     }
 }
 

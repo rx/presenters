@@ -1,13 +1,23 @@
-import {VBaseComponent, hookupComponents} from './base-component';
+import {MDCTextField} from '@material/textfield';
+import {VBaseComponent} from './base-component';
+import {eventHandlerMixin} from './mixins/event-handler';
 
 export function initHiddenFields() {
     console.log('\tHiddenFields');
-    hookupComponents('.v-hidden-field', VHiddenField, null);
+
+    var fields = document.querySelectorAll('.v-hidden-field');
+    for (var i = 0; i < fields.length; i++) {
+        var field = fields[i];
+        if (!field.vComponent) {
+            field.vComponent = new VHiddenField(field);
+        }
+    }
 }
 
-export class VHiddenField extends VBaseComponent {
+export class VHiddenField extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
-        super(element, mdcComponent);
+        super(element);
+        this.vComponent = this;
     }
 
     // Called to collect data for submission

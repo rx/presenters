@@ -1,20 +1,32 @@
 import {VBaseContainer} from "./base-container";
-import {hookupComponents} from "./base-component";
 
 export function initGrid() {
     console.log('\tGrid');
-    hookupComponents('.v-grid', VGrid, null);
-    hookupComponents('.v-column', VColumn, null);
+
+    var components = document.querySelectorAll('.v-grid');
+    for (var i = 0; i < components.length; i++) {
+        var component = components[i];
+        if (!component.vComponent) {
+            component.vComponent = new VGrid(component);
+        }
+    }
+    var components = document.querySelectorAll('.v-column');
+    for (var i = 0; i < components.length; i++) {
+        var component = components[i];
+        if (!component.vComponent) {
+            component.vComponent = new VColumn(component);
+        }
+    }
 }
 
 export class VGrid extends VBaseContainer {
-    constructor(element, mdcComponent) {
-        super(element, mdcComponent);
+    constructor(element) {
+        super(element);
     }
 }
 
 export class VColumn extends VBaseContainer {
-    constructor(element, mdcComponent) {
-        super(element, mdcComponent);
+    constructor(element) {
+        super(element);
     }
 }
