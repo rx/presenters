@@ -79,7 +79,7 @@ module Voom
               private
               def numeric?(value)
                 return true if value.is_a? Numeric
-                (value.to_s.strip.sub(/\D/, '') =~ /^[\$]?[-+]?[0-9]*\.?[0-9]+$/) != nil
+                (value.to_s.strip.sub(/\D/, '') =~ /^[\$]?[-+]?(,?[0-9])*\.?[0-9]+$/) != nil
               end
             end
 
