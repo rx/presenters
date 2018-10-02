@@ -1,17 +1,22 @@
 import {MDCChip} from '@material/chips';
-import {MDCChipSet} from '@material/chips';
 import {eventHandlerMixin} from "./mixins/event-handler";
-import {VBaseComponent, hookupComponents} from './base-component';
+import {VBaseComponent} from "./base-component";
 
 export function initChips() {
     console.log('\tChips');
-    hookupComponents('.v-chip', VChip, MDCChip);
-    hookupComponents('.v-chip-set', VChipSet, MDCChipSet);
+    var components = document.querySelectorAll('.mdc-chip');
+    for (var i = 0; i < components.length; i++) {
+        var component = components[i];
+        if(!component.mdcComponent) {
+            component.vComponent = new VChip(component, MDCChip.attachTo(component));
+        }
+    }
 }
 
 export class VChip extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
-        super(element, mdcComponent);
+        super(element);
+        this.mdcComponent = mdcComponent;
     }
 
     // Called to collect data for submission
@@ -35,11 +40,5 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
 
     setValue(value){
         this.element.setAttribute('data-value', value);
-    }
-}
-
-export class VChipSet extends eventHandlerMixin(VBaseComponent) {
-    constructor(element, mdcComponent) {
-        super(element, mdcComponent);
     }
 }

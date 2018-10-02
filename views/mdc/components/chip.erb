@@ -7,7 +7,7 @@
      child_events = (leading_icon&.events || trailing_icon&.events || comp.text&.events||[]).any?
 %>
   <% if first_chip %>
-    <div class="v-chip-set mdc-chip-set">
+    <div class="mdc-chip-set">
   <% end %>
   <% if comp.menu %>
     <div class="mdc-menu-anchor">
@@ -17,7 +17,7 @@
        <% if comp.tag %>
        data-input-tag="<%= comp.tag %>"
        <% end %>
-       class="v-chip v-input mdc-chip
+       class="v-input mdc-chip
               <%= color_classname(comp) %>
               v-menu-click"
        <% if comp.name %>

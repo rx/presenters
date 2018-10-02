@@ -1,4 +1,4 @@
-import {VBaseComponent, hookupComponents} from './base-component';
+import {VBaseComponent} from "./base-component";
 import {eventHandlerMixin} from "./mixins/event-handler";
 import {MDCSlider} from '@material/slider';
 import {visibilityObserverMixin} from './mixins/visibility-observer';
@@ -6,12 +6,20 @@ import {VEvents} from './events';
 
 export function initSliders() {
     console.log('\tSliders');
-    hookupComponents('.v-slider', VSlider, MDCSlider);
+
+    var components = document.querySelectorAll('.mdc-slider');
+    for (var i = 0; i < components.length; i++) {
+        var comp = components[i];
+        if (!comp.vComponent) {
+            comp.vComponent = new VSlider(comp, new MDCSlider(comp));
+        }
+    }
 }
 
 export class VSlider extends visibilityObserverMixin(eventHandlerMixin(VBaseComponent)) {
-    constructor(element, mdcComponent) {
-        super(element, mdcComponent);
+    constructor(element, mdcSliderComponent) {
+        super(element);
+        this.mdcComponent = mdcSliderComponent;
         this.recalcWhenVisible(this);
     }
 

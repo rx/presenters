@@ -1,7 +1,7 @@
 <% if comp
   float_label = comp.options.select{|o| o.selected }.any?
 %>
-  <div class="v-select mdc-select v-input"
+  <div class="mdc-select v-input"
        <% if comp.tag %>
        data-input-tag="<%= comp.tag %>"
        <% end %>
