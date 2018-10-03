@@ -45,6 +45,7 @@ export class VReplaces extends VBase {
                         if (httpRequest.readyState === XMLHttpRequest.DONE) {
                             console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                             if (httpRequest.status === 200) {
+                                let nodeToReplace = document.getElementById(elementId);
                                 nodeToReplace.outerHTML = httpRequest.responseText;
                                 var newNode = document.getElementById(elementId);
                                 initialize(newNode);

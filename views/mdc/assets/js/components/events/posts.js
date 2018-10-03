@@ -1,5 +1,6 @@
 import {VSnackbar} from '../snackbar';
 import {VBase} from './base';
+import Config from '../../utils/config';
 
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
@@ -79,7 +80,13 @@ export class VPosts extends VBase {
             };
             // Set up our request
             httpRequest.open(method, url);
-            console.log(method + ':' + url);
+
+            const headers = Config.get('request.headers.POST');
+
+            for (const [key, value] of Object.entries(headers)) {
+                httpRequest.setRequestHeader(key, value);
+            }
+
             // Send our FormData object; HTTP headers are set automatically
             httpRequest.send(FD);
         });

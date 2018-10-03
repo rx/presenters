@@ -177,11 +177,11 @@
     Notes: This should be doable using typography
 -
     Components: Tabs
-    Implementation: Y
+    Implementation: N
     MDL: 
     MDC: Y
-    Priority:
-    Completeness: 2
+    Priority: medium
+    Completeness: 
     Notes: 
 -
     Components: Text fields
