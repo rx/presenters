@@ -14179,10 +14179,10 @@ span.flatpickr-weekday {
 
 .v-error-message {
   color: #d50000;
-  margin: 20px;
   padding: 20px;
   border: 1px solid #d50000;
-  font-weight: bold; }
+  font-weight: bold;
+  border-radius: 5px; }
 
 .v-hidden {
   display: none; }
