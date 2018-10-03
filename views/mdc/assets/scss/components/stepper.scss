@@ -1,9 +1,99 @@
 @import 'mdl-stepper/stepper';
 
+
 @media only screen and (min-width: 841px) {
   .mdl-stepper--horizontal {
     max-width: unset;
-    min-height: 768px;
+    min-height: unset;
   }
+}
+
+.mdl-step.is-active .mdl-step__label-indicator {
+  background-color: #5488b2;
+  color: white; }
+
+.mdl-step--completed .mdl-step__label-indicator {
+  background-color: #5488b2; }
+
+
+.v-stepper {
+  box-shadow: none;
+  margin-top: 24px;
+}
+
+.v-step {
+}
+
+.v-step__content {
+  height: 100%;
+  width: calc(100% - 48px);
+  display: none;
+  margin: 24px;
+}
+
+.v-step__content.is-active {
+  display: block;
+}
+
+.v-step__content:not(.is-active) {
+  display: none;
+}
+
+.v-step__content.is-active .v-step__actions {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  justify-content: flex-start; }
+.v-step__content.is-active .v-step__actions [data-stepper-next] {
+  order: 1;
+  margin-right: 8px; }
+.v-step__content.is-active .v-step__actions [data-stepper-cancel] {
+  order: 2; }
+.v-step__content.is-active .v-step__actions [data-stepper-skip] {
+  order: 3;
+  margin-left: auto; }
+.v-step__content.is-active .v-step__actions [data-stepper-back] {
+  order: 4;
+  margin-left: 0; }
+
+.v-step__actions {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  flex-direction: row-reverse;
+  padding-top: 16px;
+  height: 48px;
+}
+.v-step__actions [data-stepper-next] {
+  background-color: #2196F3;
+  box-shadow: none;
+}
+
+.v-step--horizontal > .v-step__actions {
+  left: 0;
+  margin: 0;
+}
+
+.v-step--horizontal  > .v-step__actions [data-stepper-next] {
+  order: 4;
+  margin-left: 8px;
+  margin-right: 0;
+  //color: #2196F3;
+  //background-color: transparent;
+  color: #FFFFFF;
+  background-color: #5488b2;
+}
+.v-step--horizontal  > .v-step__actions [data-stepper-cancel] {
+  order: 3;
+  margin-left: auto; }
+.v-step--horizontal  > .v-step__actions [data-stepper-skip] {
+  order: 2;
+  margin-left: auto; }
+.v-step--horizontal  > .v-step__actions [data-stepper-back] {
+  order: 1;
+  margin-left: 0;
+  margin-right: auto;
 }
 

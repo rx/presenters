@@ -3,13 +3,40 @@
       <% if comp.tag %>
       data-input-tag="<%= comp.tag %>"
       <% end %>
-      class="v-stepper mdl-stepper
-            <%= 'mdl-stepper--horizontal' if eq(comp.orientation, :horizontal) %>
-            <%= 'mdl-stepper--linear' if comp.linear %>" >
+      class="mdl-stepper v-stepper v-has-errors
+            <%= ' mdl-stepper--horizontal' if eq(comp.orientation, :horizontal) %>
+            <%= ' mdl-stepper--linear' if comp.linear %>">
     <% for step in comp.steps %>
       <%= erb :"components/stepper/#{step.type}", :locals => {:comp => step} %>
     <% end %>
   </ul>
+
+  <div id="<%= comp.id %>-content">
+    <% for step in comp.steps %>
+      <div id="<%= step.id %>-content"
+           <% if step.tag %>
+           data-input-tag="<%= step.tag %>"
+           <% end %>
+           class="v-content v-step__content v-step__content-<%= step.id %>
+            <%= ' v-step--horizontal' if eq(comp.orientation, :horizontal) %>">
+
+        <%= erb :"components/render", :locals => {:components => step.components.select {|c| !eq(c.type, :button)}, :scope => nil} %>
+
+        <% if step.actions&.buttons %>
+          <div class="v-step__actions v-step__actions-<%= step.id %>
+                  <%= ' is-active' if step.selected %>">
+            <% step.actions.buttons.each do |button| %>
+              <%= erb :"components/button", :locals => {:comp => button,
+                                                        data_attributes: "data-stepper-#{button.stepper_type}",
+                                                        event_parent_id: "#{step.id}-content"}
+              %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
 </div>
 
 
