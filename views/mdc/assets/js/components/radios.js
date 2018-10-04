@@ -1,24 +1,16 @@
-import {VBaseComponent} from "./base-component";
+import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from "./mixins/event-handler";
 import {MDCRadio} from "@material/radio";
 
 export function initRadios() {
     console.log('\tRadios');
-
-    var radios = document.querySelectorAll('.mdc-radio');
-    for (var i = 0; i < radios.length; i++) {
-        var radio = radios[i];
-        if (!radio.vComponent) {
-            radio.vComponent = new VRadio(radio, new MDCRadio(radio));
-        }
-    }
+    hookupComponents('.v-radio', VRadio, MDCRadio);
 }
 
 export class VRadio extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
-        super(element);
+        super(element, mdcComponent);
         this.input = element.querySelector('input');
-        this.mdcComponent = mdcComponent;
     }
 
     prepareSubmit(params) {
