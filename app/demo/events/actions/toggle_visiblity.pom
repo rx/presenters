@@ -8,8 +8,8 @@ Voom::Presenters.define(:toggle_visibility_action) do
     body 'Allows you to toggle visibility of content on and off on events.',
          'Takes the id of the element to toggle.',
          "Optionally takes :on or :off to force visibility.",
-         "`show :toggle_me` is the same as `toggle_visibility :toggle_me, on: true`",
-         "`hide :toggle_me` is the same as `toggle_visibility :toggle_me, on: false`"
+         "`show :toggle_me` **is the same as** `toggle_visibility :toggle_me, on: true`",
+         "`hide :toggle_me` **is the same as** `toggle_visibility :toggle_me, on: false`"
     
     button 'toggle visibility' do
       event :click do
