@@ -6,9 +6,9 @@
 
         <% for tab in comp.tabs %>
           <button class="mdc-tab
-                    <%= 'mdc-tab--active' if tab.active %>
+                    <%= 'mdc-tab--active' if tab.selected %>
                     <%= 'mdc-tab--stacked' if tab.stacked %>"
-                  role="tab" aria-selected="<%= tab.active %>" tabindex="0"
+                  role="tab" aria-selected="<%= tab.selected %>" tabindex="0"
                   <%= erb :"components/event", :locals => {events: tab.events, parent_id: tab.event_parent_id}%>>
           <span class="mdc-tab__content">
            <% if tab.icon %>
@@ -17,7 +17,7 @@
             <span class="mdc-tab__text-label"><%= tab.label %></span>
           </span>
             <span class="mdc-tab-indicator
-                    <%= 'mdc-tab-indicator--active' if tab.active %>">
+                    <%= 'mdc-tab-indicator--active' if tab.selected %>">
             <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
           </span>
             <span class="mdc-tab__ripple"></span>
