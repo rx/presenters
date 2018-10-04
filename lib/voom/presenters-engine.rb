@@ -33,8 +33,8 @@ module Voom
       end
 
       config.to_prepare do
-        RELOADER.execute_if_updated
-        BOOT.call
+        reloaded  = RELOADER.execute_if_updated
+        BOOT.call unless reloaded
       end
     end
   end

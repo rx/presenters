@@ -10,7 +10,7 @@ Voom::Presenters.define(:tab_bars) do
 
     title 'Standard Tab Bar'
     tab_bar do
-      tab 'One', active: true
+      tab 'One', selected: true
       tab 'Two'
       tab 'Three'
     end
@@ -19,14 +19,14 @@ Voom::Presenters.define(:tab_bars) do
     title 'Tabs with icons next to labels'
     tab_bar do
       tab 'One', icon: :thumb_up
-      tab 'Two', icon: :face, active: true
+      tab 'Two', icon: :face, selected: true
       tab 'Three', icon: :thumb_down
     end
     separator
 
     title 'Tabs with icons above labels'
     tab_bar do
-      tab 'One', icon: :thumb_up, stacked: true, active: true
+      tab 'One', icon: :thumb_up, stacked: true, selected: true
       tab 'Two', icon: :face, stacked: true
       tab 'Three', icon: :thumb_down, stacked: true
     end
@@ -35,7 +35,7 @@ Voom::Presenters.define(:tab_bars) do
     title 'Scrolling Tabs'
     tab_bar do
       15.times do |idx|
-        tab "Tab Number-#{idx}", active: idx == 3 do
+        tab "Tab Number-#{idx}", selected: idx == 3 do
           event :click do
             snackbar 'tab clicked'
           end
