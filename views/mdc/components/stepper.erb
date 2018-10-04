@@ -21,7 +21,7 @@
             <%= ' is-active' if step.selected %>
             <%= ' v-step--horizontal' if eq(comp.orientation, :horizontal) %>">
 
-        <%= erb :"components/render", :locals => {:components => step.components.select {|c| !eq(c.type, :button)}, :scope => nil} %>
+        <%= erb :"components/render", :locals => {:components => step.components, :scope => nil} %>
 
         <% if step.actions&.buttons %>
           <div class="v-step__actions v-step__actions-<%= step.id %>">
