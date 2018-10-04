@@ -1,0 +1,3 @@
+Voom::Presenters.define(:hello_world) do
+    headline 'Hello World'
+end
