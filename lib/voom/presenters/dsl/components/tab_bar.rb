@@ -21,14 +21,14 @@ module Voom
           class Tab < EventBase
             include Mixins::Common
 
-            attr_accessor :components, :label, :icon, :stacked, :active
+            attr_accessor :components, :label, :icon, :stacked, :selected
 
             def initialize(**attribs_, &block)
               super(type: :tab, **attribs_, &block)
               @label = attribs.delete(:label){nil}
               @icon = attribs.delete(:icon) {nil}
               @stacked = attribs.delete(:stacked) {false}
-              @active = attribs.delete(:active) {false}
+              @selected = attribs.delete(:selected) {false}
               @components = []
               expand!
             end
