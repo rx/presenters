@@ -10124,9 +10124,6 @@ select {
   margin: 0; }
 
 .v-snackbar {
-  display: none; }
-
-.mdc-snackbar {
   z-index: 9999; }
 
 /**

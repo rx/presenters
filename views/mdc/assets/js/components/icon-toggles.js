@@ -1,13 +1,14 @@
 import {MDCIconToggle} from '@material/icon-toggle';
+import {hookupComponents, VBaseComponent} from "./base-component";
+import {eventHandlerMixin} from "./mixins/event-handler";
 
 export function initIconToggles() {
     console.log('\tIcon Toggles');
+    hookupComponents('.v-icon-toggle', VIconToggle, MDCIconToggle);
+}
 
-    var components = document.querySelectorAll('.mdc-icon-toggle');
-    for (var i = 0; i < components.length; i++) {
-        var component = components[i];
-        if (!component.mdcComponent) {
-            component.mdcComponent = new MDCIconToggle(component);
-        }
+export class VIconToggle extends eventHandlerMixin(VBaseComponent) {
+    constructor(element, mdcComponent) {
+        super(element, mdcComponent);
     }
 }

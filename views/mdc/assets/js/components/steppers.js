@@ -1,21 +1,16 @@
 import {eventHandlerMixin} from "./mixins/event-handler";
 import {VBaseContainer} from "./base-container";
+import {hookupComponents} from "./base-component";
 
 
 export function initSteppers() {
     console.log('\tStepper');
-    let components = document.querySelectorAll('ul.mdl-stepper');
-    for (let i = 0; i < components.length; i++) {
-        let component = components[i];
-        if (!component.vComponent) {
-            component.vComponent = new VStepper(component);
-        }
-    }
+    hookupComponents('.v-stepper', VStepper, null);
 }
 
 export class VStepper extends eventHandlerMixin(VBaseContainer) {
-    constructor(element) {
-        super(element);
+    constructor(element, mdcComponent) {
+        super(element, mdcComponent);
 
         if (typeof componentHandler !== 'undefined') { // MDL is loaded?
             componentHandler.upgradeElement(element);
