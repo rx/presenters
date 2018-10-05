@@ -9,8 +9,25 @@
       <span class="mdl-step__title-message"></span>
     </span>
   </span>
+
+  <% if vertical %>
+    <div id="<%= comp.id %>-content"
+      class="mdl-step__content v-content v-has-errors">
+        <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
+    </div>
+  <% end %>
+
   <div class="mdl-step__actions">
-<!--    This needs to be here for the existing mdl-stepper styling to work - cleanup later -->
+    <!--    This needs to be here for the existing mdl-stepper styling to work - cleanup later -->
+    <% if vertical %>
+      <% if comp.actions&.buttons %>
+        <% comp.actions.buttons.each do |button| %>
+          <%= erb :"components/button", :locals => {:comp => button,
+                                                    data_attributes: "data-stepper-#{button.stepper_type}",
+                                                    event_parent_id: "#{comp.id}-content" }
+          %>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 </li>
-

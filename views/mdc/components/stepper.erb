@@ -1,16 +1,20 @@
+<%
+  horizontal = eq(comp.orientation, :horizontal)
+%>
 <div class="v-errors">
   <ul id="<%= comp.id %>"
       <% if comp.tag %>
       data-input-tag="<%= comp.tag %>"
       <% end %>
       class="mdl-stepper v-stepper v-has-errors
-            <%= ' mdl-stepper--horizontal' if eq(comp.orientation, :horizontal) %>
+            <%= ' mdl-stepper--horizontal' if horizontal %>
             <%= ' mdl-stepper--linear' if comp.linear %>">
     <% for step in comp.steps %>
-      <%= erb :"components/stepper/#{step.type}", :locals => {:comp => step} %>
+      <%= erb :"components/stepper/#{step.type}", :locals => {:comp => step, vertical: !horizontal} %>
     <% end %>
   </ul>
 
+  <% if horizontal %>
   <div id="<%= comp.id %>-content">
     <% for step in comp.steps %>
       <div id="<%= step.id %>-content"
@@ -19,7 +23,7 @@
            <% end %>
            class="v-content v-step__content v-step__content-<%= step.id %>
             <%= ' is-active' if step.selected %>
-            <%= ' v-step--horizontal' if eq(comp.orientation, :horizontal) %>">
+            <%= ' v-step--horizontal' if horizontal %>">
 
         <%= erb :"components/render", :locals => {:components => step.components, :scope => nil} %>
 
@@ -36,6 +40,7 @@
       </div>
     <% end %>
   </div>
+   <% end %>
 
 </div>
 
