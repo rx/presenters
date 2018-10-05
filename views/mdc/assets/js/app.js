@@ -1,5 +1,5 @@
 require('material-design-lite/material');
-require('mdl-stepper/stepper');
+require('./mdl-stepper');
 window.dialogPolyfill = require('./dialog-polyfill');
 import {initialize} from './components/initialize';
 

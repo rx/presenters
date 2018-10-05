@@ -1,8 +1,8 @@
-<li class="mdl-step
-      <%= 'mdl-step--editable' if comp.editable %>
-      <%= 'mdl-step--optional' if comp.optional %>
-      <%= 'is-active' if comp.selected %>
-    ">
+<li id="<%= comp.id %>"
+  class="v-step mdl-step
+      <%= ' mdl-step--editable' if comp.editable %>
+      <%= ' mdl-step--optional' if comp.optional %>
+      <%= ' is-active' if comp.selected %>">
   <span class="mdl-step__label">
     <span class="mdl-step__title">
       <span class="mdl-step__title-text"><%= comp.label %></span>
@@ -10,28 +10,24 @@
     </span>
   </span>
 
-  <div class="mdl-step__content">
-    <form role="form"
-          id="<%= comp.id %>-form"
-          class="v-has-errors v-form"
-          style='width: 100%'
-          onsubmit="javascript:void(0);return false;"
-          <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.id} %>>
-
-            <%= erb :"components/render", :locals => {:components => comp.components.select {|c| !eq(c.type, :button)}, :scope => nil} %>
-
-    </form>
-  </div>
+  <% if vertical %>
+    <div id="<%= comp.id %>-content"
+      class="mdl-step__content v-content v-has-errors">
+        <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
+    </div>
+  <% end %>
 
   <div class="mdl-step__actions">
-    <% if comp.actions&.buttons %>
-      <% comp.actions.buttons.each do |button| %>
-        <%= erb :"components/button", :locals => {:comp => button,
-                                                  data_attributes: "data-stepper-#{button.stepper_type}",
-                                                  event_parent_id: "#{comp.id}-form" }
-        %>
+    <!--    This needs to be here for the existing mdl-stepper styling to work - cleanup later -->
+    <% if vertical %>
+      <% if comp.actions&.buttons %>
+        <% comp.actions.buttons.each do |button| %>
+          <%= erb :"components/button", :locals => {:comp => button,
+                                                    data_attributes: "data-stepper-#{button.stepper_type}",
+                                                    event_parent_id: "#{comp.id}-content" }
+          %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
-
 </li>

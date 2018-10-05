@@ -64,7 +64,7 @@ export class VErrors {
             }
             for (var response of responseErrors) {
                 var pageErrors = Object.values(this.normalizeErrors(response)).reduce(function (previous, value) {
-                    if (Array.isArray(value)) {
+                    if (Array.isArray(value) && value.length > 0) {
                         previous.push(value.join('<br/>'));
                     }
                     return previous;

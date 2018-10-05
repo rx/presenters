@@ -4,10 +4,10 @@
 
 .v-error-message {
     color: $v-theme-error-message;
-    margin: 20px;
     padding: 20px;
     border: 1px solid $v-theme-error-message;
     font-weight: bold;
+    border-radius: 5px;
 }
 
 .v-hidden {

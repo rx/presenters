@@ -18,6 +18,11 @@ export class VStepper extends eventHandlerMixin(VBaseContainer) {
         }
     }
 
+    inputs() {
+        // A stepper content area does not live within the stepper element so let's get it from the right place
+        return document.querySelectorAll('#' + this.element.id + '-content .v-input')
+    }
+
     navigate(nav_action){
         if(nav_action === 'continue' || nav_action === 'next') {
             this.next_step();

@@ -1,17 +1,5 @@
 require_relative '../../helpers/errors'
-require_relative 'form'
 require_relative 'button'
-require_relative 'mixins/common'
-require_relative 'mixins/images'
-require_relative 'mixins/icons'
-require_relative 'mixins/event'
-require_relative 'mixins/attaches'
-require_relative 'mixins/dialogs'
-require_relative 'mixins/chips'
-require_relative 'mixins/snackbars'
-require_relative 'mixins/selects'
-require_relative 'mixins/text_fields'
-require_relative 'mixins/date_time_fields'
 
 module Voom
   module Presenters
@@ -34,19 +22,7 @@ module Voom
             @steps << Step.new(parent: self, text: text, **attribs, &block)
           end
 
-          class Step < Form
-            include Mixins::Common
-            include Mixins::Images
-            include Mixins::Icons
-            include Mixins::Attaches
-            include Mixins::Dialogs
-            include Mixins::Chips
-            include Mixins::TextFields
-            include Mixins::DateTimeFields
-            include Mixins::Selects
-            include Mixins::Toggles
-            include Mixins::Snackbars
-
+          class Step < Content
             attr_accessor :components, :editable, :optional, :selected
 
             def initialize(**attribs_, &block)

@@ -32,6 +32,22 @@ Voom::Presenters.define(:steppers) do
           end
         end
 
+        text_field do
+          label 'Text...'
+        end
+
+        text_field do
+          label 'Text...'
+        end
+
+        text_field do
+          label 'Text...'
+        end
+
+        text_field do
+          label 'Text...'
+        end
+
         actions do
           continue do
             event :click do
@@ -69,6 +85,22 @@ Voom::Presenters.define(:steppers) do
         label 'Step 1'
         headline 'Look at me:'
         text_area
+
+        text_field do
+          label 'Text...'
+        end
+
+        text_field do
+          label 'Text...'
+        end
+
+        text_field do
+          label 'Text...'
+        end
+
+        text_field do
+          label 'Text...'
+        end
 
         actions do
           continue
@@ -117,8 +149,6 @@ Voom::Presenters.define(:steppers) do
           cancel
         end
       end
-
-
     end
 
   end
