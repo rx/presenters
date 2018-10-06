@@ -84,7 +84,7 @@ describe Voom::Presenters::WebClient::App do
           puts key
 
 
-          expect(response_pom.body).to eq(response_get.body), "#{pom}\n#{get}"
+          expect(response_pom.body).to eq(response_get.body), "#{key}: #{pom}\n#{get}"
         end
       end
 
