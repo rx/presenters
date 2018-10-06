@@ -14,7 +14,7 @@ Voom::Presenters.define(:posts_action) do
     content shows_errors: false do
       button 'posts' do
         event :click do
-          posts 'postpath', {optional: :params}
+          posts 'postpath', {optional: :params, its_nil: nil}
         end
       end
     end

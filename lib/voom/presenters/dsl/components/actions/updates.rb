@@ -9,6 +9,10 @@ module Voom
             def initialize(**attribs_, &block)
               super(type: :update, **attribs_, &block)
             end
+
+            def url
+              @parent.router.url(render: options[:presenter], command: options[:path], context: {})
+            end
           end
         end
       end

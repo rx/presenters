@@ -10,7 +10,7 @@ Voom::Presenters.define(:loads_action) do
     subheading context['reloaded'] ? "Reloaded" : 'Loads'
     button 'loads' do
       event :click do
-        loads :events, reloaded: true
+        loads :events, reloaded: true, nil_value:nil
       end
     end
     heading context['reloaded'] ? "Reloaded" : 'Loaded'
