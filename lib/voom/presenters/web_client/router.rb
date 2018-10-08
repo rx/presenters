@@ -17,7 +17,7 @@ module Voom
           _params_[:redirect]=build_render_url(render, _params_) if render
           build_command_url(command, _params_)
         end
-        
+
         def scrub_params(_params_)
           _params_.delete('captures')
           _params_.delete('presenter')
@@ -30,19 +30,23 @@ module Voom
 
         def build_command_url(command, params)
           return '' unless command
-          seperator = command.include?('?') ? '&' : '?'
-          "#{command}#{seperator}#{build_params(params)}"
+          add_query_params(command, params)
         end
 
         def build_render_url(render_, params)
           return '#' unless render_
           render = render_.to_s
           return render if render.start_with?('http')
+          render = render.gsub(':', '/')
           seperator = render.start_with?('/') ? '' : '/'
           url = "#{base_url}#{seperator}#{render}"
+          add_query_params(url, params)
+        end
+
+        def add_query_params(url, params)
           query_params = build_params(params)
-          if(query_params)
-            query_seperator = render.include?('?') ? '&' : '?'
+          if (!query_params.nil? && !query_params.empty?)
+            query_seperator = url.include?('?') ? '&' : '?'
             url = "#{url}#{query_seperator}#{query_params}"
           end
           url

@@ -1,9 +1,10 @@
 module Actions
   class Post
-    def call(action, *)
+    def call(action, parent_id, *)
       # Type, URL, Options, Params (passed into javascript event/action classes)
-      [action.type, action.url, action.options.to_h,
-       nils_to_empty_string(action.params)  ]
+      [action.type, action.url,
+       action.options.to_h.merge({__parent_id__: parent_id}),
+       nils_to_empty_string(action.params.to_h)  ]
     end
 
     private
