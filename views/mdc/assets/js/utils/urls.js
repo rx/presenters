@@ -18,8 +18,11 @@ export class VUrls {
                     url += this.seperator(url) + this.encodeQueryParam(arg[0], arg[1]);
                 }
             } else if (typeof args === 'object') {
-                url += this.seperator(url) + this.serialize(arguments[i]);
-            } else {
+                let q = this.serialize(arguments[i]);
+                if(q && q.length>0){
+                    url += this.seperator(url) + q;
+                }
+            } else if(args && args.length > 0){
                 url += this.seperator(url) + args;
             }
         }
