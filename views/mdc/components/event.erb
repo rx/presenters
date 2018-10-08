@@ -6,7 +6,7 @@
           # Deligate the action data to each action class
           # [Type, URL, Options, Params] these are passed into javascript event/action class constructors
           # Only the type need be canonical, the rest is defined between this class and its javascript
-          Object.const_get("::Actions::#{inflector.camelize(action.type)}").new.call(action, parent_id, @grid_nesting)
+          Object.const_get("::WebClient::Actions::#{inflector.camelize(action.type)}").new.call(action, parent_id, @grid_nesting)
         end,
        {once: false}]
      end %>
