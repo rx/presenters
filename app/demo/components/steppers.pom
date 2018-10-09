@@ -12,46 +12,43 @@ Voom::Presenters.define(:steppers) do
     stepper id: :my_stepper_id do
       step id: :step1 do
         label 'Step 1'
-        headline 'Make a choice:'
-        select name: :step_type do
-          option do
-            value ''
-            text 'Select something...'
-          end
-          option do
-            value 'type1'
-            text 'Step 2 Variation 1'
-          end
-          option do
-            value 'type2'
-            text 'Step 2 Variation 2'
-          end
-          event :change do
-            replaces :step2_content, :step2_form
-            stepper :continue
-          end
-        end
 
-        text_field do
-          label 'Text...'
-        end
+        card do
+          text 'Make a choice:'
 
-        text_field do
-          label 'Text...'
-        end
+          select name: :step_type do
+            option do
+              value ''
+              text 'Select something...'
+            end
+            option do
+              value 'type1'
+              text 'Step 2 Variation 1'
+            end
+            option do
+              value 'type2'
+              text 'Step 2 Variation 2'
+            end
+            event :change do
+              replaces :step2_content, :step2_form
+              stepper :continue
+            end
+          end
 
-        text_field do
-          label 'Text...'
-        end
+          text_field do
+            label 'Text...'
+          end
 
-        text_field do
-          label 'Text...'
+          text_field do
+            label 'Text...'
+          end
+
         end
 
         actions do
           continue do
             event :click do
-              posts 'to_nowhere_fails'  # stepper should NOT advance
+              posts 'to_nowhere_fails' # stepper should NOT advance
             end
           end
         end
