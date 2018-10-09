@@ -6,6 +6,7 @@ require_relative 'mixins/attaches'
 require_relative 'mixins/avatar'
 require_relative 'mixins/text_fields'
 require_relative 'mixins/icons'
+require_relative 'mixins/selects'
 require_relative 'mixins/snackbars'
 require_relative 'mixins/date_time_fields'
 require_relative 'mixins/chips'
@@ -20,6 +21,7 @@ module Voom
           include Mixins::TextFields
           include Mixins::DateTimeFields
           include Mixins::Icons
+          include Mixins::Selects
           include Mixins::Snackbars
           include Mixins::Chips
 
