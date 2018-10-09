@@ -35,31 +35,35 @@ module Voom
                                                params: params, &block)
           end
 
-          def replaces(target, presenter, **params, &block)
+          def replaces(target, presenter, input_tag: nil, **params, &block)
             @actions << Actions::Replaces.new(parent: self,
                                                target: target,
                                                presenter: presenter,
+                                               input_tag: input_tag,
                                                params: params, &block)
           end
 
           # Method can be one of :post, :put, :delete or :patch
-          def posts(path, **params, &block)
+          def posts(path, input_tag: nil, **params, &block)
             @actions << Actions::Posts.new(parent: self,
                                                path: path,
+                                               input_tag: input_tag,
                                                params: params, &block)
           end
 
           alias creates posts
 
-          def updates(path, **params, &block)
+          def updates(path, input_tag: nil, **params, &block)
             @actions << Actions::Updates.new(parent: self,
                                                path: path,
+                                               input_tag: input_tag,
                                                params: params, &block)
           end
 
-          def deletes(path, **params, &block)
+          def deletes(path, input_tag: nil, **params, &block)
             @actions << Actions::Deletes.new(parent: self,
                                                path: path,
+                                               input_tag: input_tag,
                                                params: params, &block)
           end
 

@@ -2063,8 +2063,8 @@ class VBase extends __WEBPACK_IMPORTED_MODULE_1__utils_urls__["a" /* VUrls */] {
         let params = [];
 
         // If tagged input is asked for. Fetch all the matching tag elements and then call any bound components
-        if (this.params.input_tag !== undefined) {
-            var taggedInputs = document.querySelectorAll('[data-input-tag=' + this.params.input_tag + ']');
+        if (this.options.input_tag !== undefined) {
+            var taggedInputs = document.querySelectorAll('[data-input-tag=' + this.options.input_tag + ']');
             for (let input of taggedInputs) {
                 if (input.vComponent && typeof input.vComponent.prepareSubmit === 'function') {
                     input.vComponent.prepareSubmit(params);
