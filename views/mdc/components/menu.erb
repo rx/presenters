@@ -15,19 +15,15 @@
     <ul class="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
       <% comp.items.each do |item| %>
         <% unless eq(item.type, :divider) %>
-          <li class="mdc-list-item <%= 'v-menu-item__selected' if item.selected %>" role="menuitem" tabindex="0"
-              <%= 'disabled' if item.disabled %>>
-            <% unless item.disabled %>
-              <a class="v-menu-link"
-                 id="<%= item.id %>"
-                 href="javascript:void(0)"
-                 <%= erb :"components/event", :locals => {events: item.events, parent_id: item.event_parent_id} %>>
-            <% end %>
+          <li id="<%= item.id %>" class="mdc-list-item <%= 'v-menu-item__selected' if item.selected %>" role="menuitem" tabindex="0"
+              <%= 'disabled' if item.disabled %>
+              <%= erb :"components/event", :locals => {events: item.events, parent_id: item.event_parent_id} unless item.disabled %>>
+            <a class="v-menu-link"
+                             id="<%= item.id %>"
+                             href="javascript:void(0)">
             <%= expand_text(item.text) %>
-            <% unless item.disabled %>
-              </a>
-              <%= erb(:"components/icon", locals: {comp: item.icon, position: [:right, :center]}) %>
-            <% end %>
+            </a>
+            <%= erb(:"components/icon", locals: {comp: item.icon, position: [:right, :center]}) %>
           </li>
         <% else %>
           <li class="mdc-list-divider" role="separator"></li>

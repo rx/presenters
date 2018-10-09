@@ -18,12 +18,12 @@ module Voom
             @position = attribs.delete(:position) || :left
             @placement = attribs.delete(:placement) || :default
             @color = attribs.delete(:color)
-            @open = attributes.delete(:open){false}
+            @open = attributes.delete(:open) {false}
             expand!
           end
-          
-          def item(first_text = nil, text: nil, **attribs, &block)
-            the_text = first_text || text
+
+          def item(*first_text, text: nil, **attribs, &block)
+            the_text = first_text.any? ? first_text : text
             @items << Item.new(parent: self, text: the_text,
                                **attribs, &block)
           end
@@ -51,7 +51,7 @@ module Voom
               super(type: :item, **attribs_, &block)
               @text = attribs.delete(:text)
               @disabled = attribs.delete(:disabled)
-              @selected = attribs.delete(:selected) { false }
+              @selected = attribs.delete(:selected) {false}
               @components = []
               expand!
             end

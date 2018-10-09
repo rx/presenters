@@ -3918,6 +3918,7 @@ class VEvents {
 // https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
 function createEventHandler(actionsData) {
     return function (event) {
+        event.stopPropagation();
         new VEvents(actionsData, event).call();
     };
 }
