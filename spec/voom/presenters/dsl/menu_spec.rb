@@ -20,8 +20,8 @@ describe 'dsl' do
       let(:separator) {menu.items[1]}
 
       it 'text' do
-        expect(item1.text).to eq('home')
-        expect(item2.text).to eq('item2')
+        expect(item1.text).to eq(['home'])
+        expect(item2.text).to eq(['item2'])
       end
       it 'separator' do
         expect(separator).to_not eq(nil)

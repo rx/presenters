@@ -21,7 +21,7 @@ describe 'dsl' do
         let(:action) {line.actions.first}
 
         it 'text' do
-          expect(action.menu.items.first.text).to eq('item1')
+          expect(action.menu.items.first.text).to eq(['item1'])
         end
       end
 
