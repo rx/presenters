@@ -140,7 +140,7 @@ module Voom
             layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
             response.headers['X-Frame-Options'] = 'ALLOWALL' if ENV['ALLOWALL_FRAME_OPTIONS']
             erb :web, layout: layout
-          rescue Errors::Unprocessable => e
+          rescue Presenters::Errors::Unprocessable => e
             content_type :json
             status 422
             JSON.dump({error: e.message})
