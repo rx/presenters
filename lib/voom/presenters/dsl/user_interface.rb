@@ -1,16 +1,16 @@
 require 'ice_nine'
-require_relative 'definer'
-require_relative 'components/mixins/common'
-require_relative 'components/mixins/helpers'
-require_relative 'components/mixins/dialogs'
-require_relative 'components/mixins/snackbars'
-require_relative 'components/mixins/text_fields'
-require_relative 'components/mixins/date_time_fields'
-require_relative 'components/mixins/attaches'
-require_relative 'invalid_presenter'
+require_dependency 'voom/presenters/dsl/definer'
+require_dependency 'voom/presenters/dsl/components/mixins/common'
+require_dependency 'voom/presenters/dsl/components/mixins/helpers'
+require_dependency 'voom/presenters/dsl/components/mixins/dialogs'
+require_dependency 'voom/presenters/dsl/components/mixins/snackbars'
+require_dependency 'voom/presenters/dsl/components/mixins/text_fields'
+require_dependency 'voom/presenters/dsl/components/mixins/date_time_fields'
+require_dependency 'voom/presenters/dsl/components/mixins/attaches'
+require_dependency 'voom/presenters/dsl/invalid_presenter'
 
-require 'voom/serializer'
-require 'voom/trace'
+require_dependency 'voom/serializer'
+require_dependency 'voom/trace'
 
 
 module Voom

@@ -1,6 +1,6 @@
-require_relative '../../helpers/errors'
-require_relative 'button'
-require_relative 'content'
+require_dependency 'voom/presenters/helpers/errors'
+require_dependency 'voom/presenters/dsl/components/button'
+require_dependency 'voom/presenters/dsl/components/content'
 
 module Voom
   module Presenters

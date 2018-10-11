@@ -1,9 +1,9 @@
-require_relative 'actions'
-require_relative '../icon'
-require_relative '../avatar'
-require_relative '../typography'
-require_relative '../mixins/event'
-require_relative '../mixins/tooltips'
+require_dependency 'voom/presenters/dsl/components/lists/actions'
+require_dependency 'voom/presenters/dsl/components/icon'
+require_dependency 'voom/presenters/dsl/components/avatar'
+require_dependency 'voom/presenters/dsl/components/typography'
+require_dependency 'voom/presenters/dsl/components/mixins/event'
+require_dependency 'voom/presenters/dsl/components/mixins/tooltips'
 
 module Voom
   module Presenters

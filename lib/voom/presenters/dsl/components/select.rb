@@ -1,4 +1,4 @@
-require_relative 'input'
+require_dependency 'voom/presenters/dsl/components/input'
 
 module Voom
   module Presenters

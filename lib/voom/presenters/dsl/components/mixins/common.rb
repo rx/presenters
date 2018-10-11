@@ -1,13 +1,13 @@
-require_relative 'append'
-require_relative 'toggles'
-require_relative 'typography'
-require_relative 'grids'
-require_relative 'buttons'
-require_relative 'expansion_panels'
-require_relative 'content'
-require_relative 'menus'
-require_relative 'google_maps'
-require_relative 'tab_bars'
+require_dependency 'voom/presenters/dsl/components/mixins/append'
+require_dependency 'voom/presenters/dsl/components/mixins/toggles'
+require_dependency 'voom/presenters/dsl/components/mixins/typography'
+require_dependency 'voom/presenters/dsl/components/mixins/grids'
+require_dependency 'voom/presenters/dsl/components/mixins/buttons'
+require_dependency 'voom/presenters/dsl/components/mixins/expansion_panels'
+require_dependency 'voom/presenters/dsl/components/mixins/content'
+require_dependency 'voom/presenters/dsl/components/mixins/menus'
+require_dependency 'voom/presenters/dsl/components/mixins/google_maps'
+require_dependency 'voom/presenters/dsl/components/mixins/tab_bars'
 
 module Voom
   module Presenters

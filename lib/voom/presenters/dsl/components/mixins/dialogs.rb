@@ -1,4 +1,4 @@
-require_relative '../dialog'
+require_dependency 'voom/presenters/dsl/components/dialog'
 
 module Voom
   module Presenters

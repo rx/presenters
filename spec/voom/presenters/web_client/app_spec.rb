@@ -1,6 +1,6 @@
 require 'spec_helper'
-require 'voom/presenters/web_client/app'
 require 'rack/test'
+require_dependency 'voom/presenters/web_client/app'
 
 describe Voom::Presenters::WebClient::App do
   include Rack::Test::Methods

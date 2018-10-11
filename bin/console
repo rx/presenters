@@ -4,7 +4,7 @@ require 'bundler/setup'
 ENV['VOOM_ROOT'] =  File.expand_path(__dir__)
 libdir = File.join(ENV['VOOM_ROOT'], 'lib')
 $:.unshift(libdir) unless $:.include?(libdir)
-require 'voom-presenters'
+require_dependency 'voom-presenters'
 
 Voom::Presenters::Settings.configure do |config|
   config.presenters.root = File.join(ENV['VOOM_ROOT'], 'app')

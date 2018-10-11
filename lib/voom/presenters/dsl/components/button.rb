@@ -1,5 +1,5 @@
-require_relative 'mixins/common'
-require_relative 'mixins/tooltips'
+require_dependency 'voom/presenters/dsl/components/mixins/common'
+require_dependency 'voom/presenters/dsl/components/mixins/tooltips'
 
 module Voom
   module Presenters

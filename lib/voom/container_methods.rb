@@ -1,4 +1,4 @@
-require_relative 'symbol/to_str'
+require_dependency 'voom/symbol/to_str'
 
 module Voom
   module ContainerMethods

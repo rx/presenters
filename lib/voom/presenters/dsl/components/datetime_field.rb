@@ -1,4 +1,4 @@
-require_relative 'datetime_base'
+require_dependency 'voom/presenters/dsl/components/datetime_base'
 
 module Voom
   module Presenters

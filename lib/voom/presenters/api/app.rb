@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'json'
-require_relative '../../presenters'
-require_relative 'router'
+require_dependency 'voom/presenters'
+require_dependency 'voom/presenters/api/router'
 
 module Voom
   module Presenters

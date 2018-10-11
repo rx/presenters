@@ -1,7 +1,7 @@
 if defined?(Rails)
-  require_relative 'rails/currency'
-  require_relative 'rails/model_table'
-  require 'voom/presenters/namespace'
+  require_dependency 'voom/presenters/helpers/rails/currency'
+  require_dependency 'voom/presenters/helpers/rails/model_table'
+  require_dependency 'voom/presenters/namespace'
 
   module Voom
     module Presenters

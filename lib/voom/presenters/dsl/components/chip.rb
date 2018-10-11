@@ -1,6 +1,6 @@
-require_relative 'icon_base'
-require_relative 'mixins/event'
-require_relative 'mixins/tooltips'
+require_dependency 'voom/presenters/dsl/components/icon_base'
+require_dependency 'voom/presenters/dsl/components/mixins/event'
+require_dependency 'voom/presenters/dsl/components/mixins/tooltips'
 
 module Voom
   module Presenters

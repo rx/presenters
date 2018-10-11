@@ -1,5 +1,5 @@
-require_relative 'base'
-require 'voom/presenters/namespace'
+require_dependency 'voom/presenters/dsl/components/actions/base'
+require_dependency 'voom/presenters/namespace'
 
 
 module Voom

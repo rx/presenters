@@ -1,9 +1,9 @@
-require_relative 'lists/line'
-require_relative 'lists/separator'
-require_relative 'lists/header'
-require_relative 'mixins/content'
-require_relative 'mixins/append'
-require_relative 'mixins/attaches'
+require_dependency 'voom/presenters/dsl/components/lists/line'
+require_dependency 'voom/presenters/dsl/components/lists/separator'
+require_dependency 'voom/presenters/dsl/components/lists/header'
+require_dependency 'voom/presenters/dsl/components/mixins/content'
+require_dependency 'voom/presenters/dsl/components/mixins/append'
+require_dependency 'voom/presenters/dsl/components/mixins/attaches'
 
 module Voom
   module Presenters

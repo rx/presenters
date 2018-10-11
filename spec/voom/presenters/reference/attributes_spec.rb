@@ -1,6 +1,6 @@
 require 'spec_helper'
 require 'ostruct'
-require 'voom/presenters/web_client/router'
+require_dependency 'voom/presenters/web_client/router'
 
 describe 'reference' do
   describe 'attributes' do
