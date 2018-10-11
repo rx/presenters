@@ -1,4 +1,4 @@
-require_dependency 'voom/presenters/dsl/components/mixins/append'
+require 'voom/presenters/dsl/components/mixins/append'
 
 module Voom
   module Presenters

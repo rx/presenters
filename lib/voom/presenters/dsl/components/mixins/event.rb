@@ -1,4 +1,4 @@
-require_dependency 'voom/presenters/dsl/components/event'
+require 'voom/presenters/dsl/components/event'
 
 module Voom
   module Presenters

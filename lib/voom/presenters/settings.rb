@@ -1,6 +1,6 @@
 include Voom::Trace
 trace {"Loading Presenters Settings"}
-require_dependency 'voom/presenters/helpers/route'
+require 'voom/presenters/helpers/route'
 
 module Voom
   module Presenters

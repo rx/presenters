@@ -2,11 +2,11 @@ require 'sinatra'
 require 'uri'
 require 'redcarpet'
 require "dry/inflector"
-require_dependency 'voom/trace'
-require_dependency 'voom/presenters/app'
-require_dependency 'voom/presenters/web_client/router'
-require_dependency 'voom/presenters/web_client/markdown_render'
-require_dependency 'voom/presenters/errors/unprocessable'
+require 'voom/trace'
+require 'voom/presenters/app'
+require 'voom/presenters/web_client/router'
+require 'voom/presenters/web_client/markdown_render'
+require 'voom/presenters/errors/unprocessable'
 
 module Voom
   module Presenters

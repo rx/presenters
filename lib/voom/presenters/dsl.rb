@@ -1,4 +1,4 @@
-require_dependency 'voom/trace'
+require 'voom/trace'
 
 module Voom
   module Presenters

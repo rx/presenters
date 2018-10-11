@@ -1,4 +1,4 @@
-require_dependency 'voom/presenters/dsl/components/dialog'
+require 'voom/presenters/dsl/components/dialog'
 
 module Voom
   module Presenters

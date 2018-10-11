@@ -1,7 +1,7 @@
-require_dependency 'voom/presenters/dsl/components/mixins/common'
-require_dependency 'voom/presenters/dsl/components/mixins/attaches'
-require_dependency 'voom/presenters/dsl/components/mixins/steppers'
-require_dependency 'voom/presenters/dsl/components/mixins/sliders'
+require 'voom/presenters/dsl/components/mixins/common'
+require 'voom/presenters/dsl/components/mixins/attaches'
+require 'voom/presenters/dsl/components/mixins/steppers'
+require 'voom/presenters/dsl/components/mixins/sliders'
 
 module Voom
   module Presenters

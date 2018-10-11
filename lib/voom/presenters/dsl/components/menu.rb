@@ -1,8 +1,8 @@
-require_dependency 'voom/presenters/dsl/components/mixins/event'
-require_dependency 'voom/presenters/dsl/components/mixins/tooltips'
-require_dependency 'voom/presenters/dsl/components/mixins/attaches'
-require_dependency 'voom/presenters/dsl/components/mixins/buttons'
-require_dependency 'voom/presenters/dsl/components/mixins/typography'
+require 'voom/presenters/dsl/components/mixins/event'
+require 'voom/presenters/dsl/components/mixins/tooltips'
+require 'voom/presenters/dsl/components/mixins/attaches'
+require 'voom/presenters/dsl/components/mixins/buttons'
+require 'voom/presenters/dsl/components/mixins/typography'
 
 module Voom
   module Presenters

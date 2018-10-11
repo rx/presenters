@@ -1,5 +1,5 @@
-require_dependency 'voom/presenters/helpers/errors'
-require_dependency 'voom/presenters/dsl/components/mixins/common'
+require 'voom/presenters/helpers/errors'
+require 'voom/presenters/dsl/components/mixins/common'
 
 module Voom
   module Presenters

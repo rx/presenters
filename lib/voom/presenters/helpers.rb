@@ -1,7 +1,7 @@
-require_dependency 'voom/presenters/helpers/date'
-require_dependency 'voom/presenters/helpers/time'
-require_dependency 'voom/presenters/helpers/inflector'
-require_dependency 'voom/presenters/helpers/errors'
+require 'voom/presenters/helpers/date'
+require 'voom/presenters/helpers/time'
+require 'voom/presenters/helpers/inflector'
+require 'voom/presenters/helpers/errors'
 
 module Voom
   module Presenters
@@ -10,7 +10,7 @@ module Voom
       include Helpers::Date
       include Helpers::Errors
       if defined?(Rails)
-        require_dependency 'voom/presenters/helpers/rails'
+        require 'voom/presenters/helpers/rails'
         include Voom::Presenters::Helpers::Rails
       end
     end

@@ -1,4 +1,4 @@
-require_dependency 'voom/presenters/errors/unprocessable'
+require 'voom/presenters/errors/unprocessable'
 
 module Voom
   module Presenters

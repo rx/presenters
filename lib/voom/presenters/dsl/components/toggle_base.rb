@@ -1,5 +1,5 @@
-require_dependency 'voom/presenters/dsl/components/mixins/event'
-require_dependency 'voom/presenters/dsl/components/input'
+require 'voom/presenters/dsl/components/mixins/event'
+require 'voom/presenters/dsl/components/input'
 
 module Voom
   module Presenters

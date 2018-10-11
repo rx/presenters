@@ -1,5 +1,5 @@
-require_dependency 'voom/presenters/dsl/components/mixins/common'
-require_dependency 'voom/presenters/dsl/components/mixins/attaches'
+require 'voom/presenters/dsl/components/mixins/common'
+require 'voom/presenters/dsl/components/mixins/attaches'
 
 module Voom
   module Presenters

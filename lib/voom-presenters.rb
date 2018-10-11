@@ -7,9 +7,9 @@ end
 module Voom
   module Presenters
     if defined?(Rails)
-      require_dependency 'voom/presenters-engine'
+      require 'voom/presenters-engine'
     else
-      require_dependency 'voom/presenters'
+      require 'voom/presenters'
     end
   end
 end

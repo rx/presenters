@@ -1,9 +1,9 @@
-require_dependency 'voom/presenters/dsl/components/mixins/common'
-require_dependency 'voom/presenters/dsl/components/mixins/event'
-require_dependency 'voom/presenters/dsl/components/mixins/tooltips'
-require_dependency 'voom/presenters/dsl/components/mixins/chips'
-require_dependency 'voom/presenters/dsl/components/mixins/selects'
-require_dependency 'voom/presenters/dsl/components/mixins/icons'
+require 'voom/presenters/dsl/components/mixins/common'
+require 'voom/presenters/dsl/components/mixins/event'
+require 'voom/presenters/dsl/components/mixins/tooltips'
+require 'voom/presenters/dsl/components/mixins/chips'
+require 'voom/presenters/dsl/components/mixins/selects'
+require 'voom/presenters/dsl/components/mixins/icons'
 
 module Voom
   module Presenters

@@ -1,4 +1,4 @@
-require_dependency 'voom/presenters/dsl/components/actions/base'
+require 'voom/presenters/dsl/components/actions/base'
 
 module Voom
   module Presenters

@@ -1,5 +1,5 @@
-require_dependency 'voom/presenters/dsl/components/icon'
-require_dependency 'voom/presenters/dsl/components/icon_toggle'
+require 'voom/presenters/dsl/components/icon'
+require 'voom/presenters/dsl/components/icon_toggle'
 
 
 module Voom

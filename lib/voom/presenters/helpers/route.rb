@@ -1,4 +1,4 @@
-require_dependency 'voom/presenters/namespace'
+require 'voom/presenters/namespace'
 
 module Voom
   module Presenters
