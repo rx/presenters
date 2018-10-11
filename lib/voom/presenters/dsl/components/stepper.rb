@@ -1,5 +1,6 @@
 require_relative '../../helpers/errors'
 require_relative 'button'
+require_relative 'content'
 
 module Voom
   module Presenters
