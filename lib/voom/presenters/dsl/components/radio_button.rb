@@ -1,4 +1,4 @@
-require  'voom/presenters/dsl/components/toggle_base'
+require 'voom/presenters/dsl/components/toggle_base'
 module Voom
   module Presenters
     module DSL
