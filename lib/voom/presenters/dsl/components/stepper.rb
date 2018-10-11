@@ -22,7 +22,7 @@ module Voom
             @steps << Step.new(parent: self, text: text, **attribs, &block)
           end
 
-          class Step < Content
+          class Step < Components::Content
             attr_accessor :components, :editable, :optional, :selected
 
             def initialize(**attribs_, &block)
