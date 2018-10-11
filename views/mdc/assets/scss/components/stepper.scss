@@ -1,5 +1,9 @@
 @import 'mdl-stepper/stepper';
 
+.mdl-stepper {
+  box-shadow: unset;
+ }
+
 .mdl-step.is-active .mdl-step__label-indicator {
   background-color: #5488b2;
   color: white; }
@@ -121,7 +125,8 @@
     background-color: transparent;
     width: 100%;
     min-height: 84px;
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    //box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: unset;
     position: absolute;
     top: 0;
     left: 0; }

@@ -10611,6 +10611,9 @@ select {
     margin-right: auto; }
   .mdl-stepper--horizontal.mdl-stepper--linear > .mdl-step:not(.mdl-step--completed):not(.is-active) .mdl-step__title > .mdl-step__title-text {
     opacity: .5; } }
+.mdl-stepper {
+  box-shadow: unset; }
+
 .mdl-step.is-active .mdl-step__label-indicator {
   background-color: #5488b2;
   color: white; }
@@ -10718,7 +10721,7 @@ select {
     background-color: transparent;
     width: 100%;
     min-height: 84px;
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: unset;
     position: absolute;
     top: 0;
     left: 0; }
