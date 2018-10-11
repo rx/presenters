@@ -7,13 +7,23 @@ Voom::Presenters.define(:loads_action) do
     heading 'Loads'
     body 'Loads a new presenter, replacing the whole page.'
 
-    subheading context['reloaded'] ? "Reloaded" : 'Loads'
-    button 'loads' do
-      event :click do
-        loads :events, reloaded: true, nil_value:nil
+    content do
+      subheading "#{context['reloaded'] ? "Reloaded" : 'Loads'} another presenter"
+      button 'loads this page' do
+        event :click do
+          loads :loads_action, reloaded: true, nil_value:nil
+        end
+      end
+      heading context['reloaded'] ? "Reloaded" : 'Loaded'
+    end
+    content do
+      subheading "An absolute URL loads another page"
+      button 'loads google.com' do
+        event :click do
+          loads 'https://google.com'
+        end
       end
     end
-    heading context['reloaded'] ? "Reloaded" : 'Loaded'
   end
   attach :code, file: __FILE__
 end

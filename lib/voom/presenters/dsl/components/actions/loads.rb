@@ -15,9 +15,14 @@ module Voom
             end
 
             def url
-              presenter = _expand_namespace_(options[:presenter], namespace)
-              presenter = presenter.gsub(':','/')
-              @parent.router.url(render: presenter, command: options[:path], context: params)
+              @parent.router.url(render: parse_presenter, command: options[:path], context: params)
+            end
+
+            private
+
+            def parse_presenter
+              return options[:presenter] if options[:presenter].match(/^https?\:\/\//)
+              _expand_namespace_(options[:presenter], namespace).gsub(':','/')
             end
           end
         end
