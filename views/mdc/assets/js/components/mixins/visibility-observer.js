@@ -12,7 +12,13 @@ export let visibilityObserverMixin = Base => class extends Base {
                     if(this.vComponent.element.offsetParent !== null){
                         // Parent is now visible. Re-run the MDC layout and disconnect from the observer
                         this.vComponent.hidden_on_create = false;
-                        this.vComponent.mdcComponent.layout();
+                        //this.vComponent.mdcComponent.layout();
+                        // I changed this to force a resize event on the element rather than use the mdcComponent.layout();
+                        // method. In some scanarios with the MDCSlider going from hidden ti visible calling layout didn't work.
+                        // Firing the 'resize' event did.
+                        var event = document.createEvent('HTMLEvents');
+                        event.initEvent('resize', true, false);
+                        this.vComponent.element.dispatchEvent(event);
                         this.disconnect();
                     }
                 }
