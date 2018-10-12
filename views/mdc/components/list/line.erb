@@ -27,6 +27,9 @@
       </span>
     <% end %>
   </span>
+
+  <%= erb :"components/render", :locals => {:components => line.components, :scope => nil} %>
+
   <%= erb :"components/list/actions", :locals => {:line => line} %>
 </li>
 <% if line.menu %>
