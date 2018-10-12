@@ -14,7 +14,7 @@ export let visibilityObserverMixin = Base => class extends Base {
                         this.vComponent.hidden_on_create = false;
                         //this.vComponent.mdcComponent.layout();
                         // I changed this to force a resize event on the element rather than use the mdcComponent.layout();
-                        // method. In some scanarios with the MDCSlider going from hidden ti visible calling layout didn't work.
+                        // method. In some scenarios with the MDCSlider going from hidden ti visible calling layout didn't work.
                         // Firing the 'resize' event did.
                         var event = document.createEvent('HTMLEvents');
                         event.initEvent('resize', true, false);
