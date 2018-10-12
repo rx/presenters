@@ -4,6 +4,7 @@ require_relative '../avatar'
 require_relative '../typography'
 require_relative '../mixins/event'
 require_relative '../mixins/tooltips'
+require_relative '../mixins/common'
 
 module Voom
   module Presenters
@@ -13,8 +14,9 @@ module Voom
           class Line < EventBase
             extend Gem::Deprecate
             include Mixins::Tooltips
+            include Mixins::Common
 
-            attr_accessor :selected, :selectable
+            attr_accessor :selected, :selectable, :components
 
             def initialize(**attribs_, &block)
               super(type: :line, **attribs_, &block)
@@ -30,6 +32,7 @@ module Voom
               self.checkbox(attribs.slice(:name, :value, :checked)) if @selectable
 
               @actions = []
+              @components = []
               expand!
             end
 
