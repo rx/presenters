@@ -1,4 +1,4 @@
-require_relative 'mixins/event'
+require 'voom/presenters/dsl/components/mixins/event'
 
 module Voom
   module Presenters

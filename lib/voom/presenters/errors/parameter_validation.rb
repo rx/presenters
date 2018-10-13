@@ -1,4 +1,4 @@
-require_relative 'unprocessable'
+require 'voom/presenters/errors/unprocessable'
 
 module Voom
   module Presenters

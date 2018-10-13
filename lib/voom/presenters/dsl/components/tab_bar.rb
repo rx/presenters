@@ -1,5 +1,5 @@
-require_relative '../../helpers/errors'
-require_relative 'mixins/common'
+require 'voom/presenters/helpers/errors'
+require 'voom/presenters/dsl/components/mixins/common'
 
 module Voom
   module Presenters

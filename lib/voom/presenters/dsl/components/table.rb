@@ -1,9 +1,9 @@
-require_relative 'mixins/common'
-require_relative 'mixins/event'
-require_relative 'mixins/tooltips'
-require_relative 'mixins/chips'
-require_relative 'mixins/selects'
-require_relative 'mixins/icons'
+require 'voom/presenters/dsl/components/mixins/common'
+require 'voom/presenters/dsl/components/mixins/event'
+require 'voom/presenters/dsl/components/mixins/tooltips'
+require 'voom/presenters/dsl/components/mixins/chips'
+require 'voom/presenters/dsl/components/mixins/selects'
+require 'voom/presenters/dsl/components/mixins/icons'
 
 module Voom
   module Presenters

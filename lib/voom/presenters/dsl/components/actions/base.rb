@@ -1,4 +1,4 @@
-require_relative '../base'
+require 'voom/presenters/dsl/components/base'
 
 module Voom
   module Presenters

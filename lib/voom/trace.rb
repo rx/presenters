@@ -1,4 +1,4 @@
-require_relative 'logger_methods'
+require 'voom/logger_methods'
 
 module Voom
   module Trace

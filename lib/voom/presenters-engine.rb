@@ -7,7 +7,7 @@ end
 module Voom
   module Presenter
     class Engine < ::Rails::Engine
-      config.autoload_paths += Dir["#{config.root}/lib/**/"]
+      config.eager_load_paths += Dir["#{config.root}/lib"]
     end
   end
 end
@@ -35,6 +35,7 @@ module Voom
       config.to_prepare do
         reloaded  = RELOADER.execute_if_updated
         BOOT.call unless reloaded
+        require_dependency Voom::Presenter::Engine.root.join('lib', 'voom-presenters').to_s
       end
     end
   end

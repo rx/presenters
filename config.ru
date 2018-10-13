@@ -17,7 +17,6 @@ require 'voom/presenters/web_client/app'
 require 'voom/presenters/demo/search'
 require 'voom/presenters/demo/echo'
 
-
 use Voom::Presenters::Demo::Search
 use Voom::Presenters::Demo::Echo
 

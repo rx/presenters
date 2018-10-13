@@ -1,5 +1,5 @@
-require_relative 'parameters'
-require_relative 'trace'
+require 'voom/parameters'
+require 'voom/trace'
 
 module Voom
   # Simple serializer that will build add a to_hash method to an object by inspecting

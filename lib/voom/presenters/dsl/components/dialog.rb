@@ -1,7 +1,7 @@
-require_relative 'mixins/common'
-require_relative 'mixins/attaches'
-require_relative 'mixins/steppers'
-require_relative 'mixins/sliders'
+require 'voom/presenters/dsl/components/mixins/common'
+require 'voom/presenters/dsl/components/mixins/attaches'
+require 'voom/presenters/dsl/components/mixins/steppers'
+require 'voom/presenters/dsl/components/mixins/sliders'
 
 module Voom
   module Presenters

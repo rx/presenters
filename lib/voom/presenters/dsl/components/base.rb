@@ -1,8 +1,9 @@
-require_relative '../lockable'
-require_relative '../../../serializer'
-require_relative '../../../trace'
-require_relative 'mixins/yield_to'
 require 'securerandom'
+
+require 'voom/serializer'
+require 'voom/trace'
+require 'voom/presenters/dsl/lockable'
+require 'voom/presenters/dsl/components/mixins/yield_to'
 
 module Voom
   module Presenters

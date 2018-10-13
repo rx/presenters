@@ -1,4 +1,4 @@
-require_relative 'text_field'
+require 'voom/presenters/dsl/components/text_field'
 
 module Voom
   module Presenters

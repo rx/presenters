@@ -1,4 +1,4 @@
-require_relative 'user_interface'
+require 'voom/presenters/dsl/user_interface'
 
 module Voom
   module Presenters

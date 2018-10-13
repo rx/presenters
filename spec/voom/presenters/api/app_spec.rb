@@ -1,6 +1,6 @@
 require 'spec_helper'
-require 'voom/presenters/api/app'
 require 'rack/test'
+require 'voom/presenters/api/app'
 
 describe Voom::Presenters::Api::App do
   include Rack::Test::Methods

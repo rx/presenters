@@ -1,4 +1,4 @@
-require_relative 'append'
+require 'voom/presenters/dsl/components/mixins/append'
 
 module Voom
   module Presenters
