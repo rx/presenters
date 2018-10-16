@@ -155,7 +155,7 @@ module Voom
           prepare_context.push(method(:scrub_context))
           context = params.dup
           prepare_context.reduce(context) do |params, context_proc|
-            context_proc.call(params, session, env)
+            context = context_proc.call(params, session, env)
           end
           context
         end
