@@ -1,8 +1,4 @@
-if Rails.version =~ /^4/
-  require_dependency 'voom/presenters'
-else
-  require 'voom/presenters'
-end
+require 'voom/presenters'
 
 module Voom
   module Presenter
