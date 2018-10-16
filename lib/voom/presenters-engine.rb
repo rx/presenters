@@ -35,7 +35,7 @@ module Voom
       config.to_prepare do
         reloaded  = RELOADER.execute_if_updated
         BOOT.call unless reloaded
-        # require_dependency Voom::Presenter::Engine.root.join('lib', 'voom-presenters').to_s
+        require_dependency Voom::Presenter::Engine.root.join('lib', 'voom-presenters').to_s
       end
     end
   end
