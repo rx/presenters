@@ -2,7 +2,7 @@ import flatpickr from "flatpickr";
 import {VTextField} from './text-fields';
 import {MDCTextField} from '@material/textfield';
 import {hookupComponents} from "./base-component";
-import appConfig from '../utils/config';
+import appConfig from '../config';
 
 export function initDateTime() {
     console.log('\tDateTime');

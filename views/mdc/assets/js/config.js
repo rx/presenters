@@ -1,6 +1,6 @@
 import VConfig from './utils/config';
 
-const config = new VConfig({
+export default new VConfig({
     component: {
         datetime: {
             flatpickr: {
@@ -17,5 +17,3 @@ const config = new VConfig({
         },
     },
 });
-
-export default config;
