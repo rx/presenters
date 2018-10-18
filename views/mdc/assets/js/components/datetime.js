@@ -34,6 +34,8 @@ export class VDateTime extends VTextField {
         };
         this.fp = flatpickr(this.input, config);
         this.fp.mdc_text_field = mdcComponent;
+
+        element.addEventListener('click', event => this.toggle());
    }
 
     clear() {
@@ -42,6 +44,18 @@ export class VDateTime extends VTextField {
             this.fp.clear();
         }
         this.mdcComponent.foundation_.deactivateFocus();
+    }
+
+    open() {
+        this.fp.open();
+    }
+
+    close() {
+        this.fp.close();
+    }
+
+    toggle() {
+        this.fp.toggle();
     }
 }
 
