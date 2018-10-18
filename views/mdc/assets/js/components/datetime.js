@@ -2,6 +2,7 @@ import flatpickr from "flatpickr";
 import {VTextField} from './text-fields';
 import {MDCTextField} from '@material/textfield';
 import {hookupComponents} from "./base-component";
+import appConfig from '../utils/config';
 
 export function initDateTime() {
     console.log('\tDateTime');
@@ -11,8 +12,12 @@ export function initDateTime() {
 export class VDateTime extends VTextField {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
-        let config = JSON.parse(element.dataset.config);
-        config.altInput = true;
+
+        const config = Object.assign(
+            {},
+            JSON.parse(element.dataset.config),
+            appConfig.get('component.datetime.flatpickr', {}),
+        );
         let type = element.dataset.type;
 
         if (type === 'datetime') {
