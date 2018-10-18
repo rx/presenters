@@ -5,7 +5,6 @@ const config = new VConfig({
         datetime: {
             flatpickr: {
                 altInput: true,
-                clickOpens: false,
                 disableMobile: true,
             },
         },
