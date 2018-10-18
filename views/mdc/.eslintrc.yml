@@ -6,3 +6,4 @@ rules:
   indent:
     - warn
     - 4
+  prefer-destructuring: off
