@@ -54,12 +54,4 @@ export default class VConfig {
 
         return obj[last];
     }
-
-    static set(key, value) {
-        const keys = key.split(PATH_SEPARATOR);
-        const last = keys.pop();
-        const obj = getValueAt(config, keys.join(PATH_SEPARATOR)).value;
-
-        obj[last] = value;
-    }
 }
