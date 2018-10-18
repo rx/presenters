@@ -1,13 +1,8 @@
-import flatpickr from "flatpickr";
-import {VTextField} from './text-fields';
-import {MDCTextField} from '@material/textfield';
-import {hookupComponents} from "./base-component";
+import flatpickr from 'flatpickr';
+import { MDCTextField } from '@material/textfield';
+import { VTextField } from './text-fields';
+import { hookupComponents } from './base-component';
 import appConfig from '../config';
-
-export function initDateTime() {
-    console.log('\tDateTime');
-    hookupComponents('.v-datetime', VDateTime, MDCTextField);
-}
 
 export class VDateTime extends VTextField {
     constructor(element, mdcComponent) {
@@ -26,23 +21,25 @@ export class VDateTime extends VTextField {
             config.enableTime = true;
             config.noCalendar = true;
         }
-        config.onOpen = function(selectedDates, dateStr, instance) {
+
+        config.onOpen = function onOpen(selectedDates, dateStr, instance) {
             instance.mdc_text_field.foundation_.activateFocus();
         };
-        config.onClose = function(selectedDates, dateStr, instance) {
+        config.onClose = function onClose(selectedDates, dateStr, instance) {
             instance.mdc_text_field.foundation_.deactivateFocus();
         };
+
         this.fp = flatpickr(this.input, config);
         this.fp.mdc_text_field = mdcComponent;
 
-        element.addEventListener('click', event => this.toggle());
-   }
+        element.addEventListener('click', () => this.toggle());
+    }
 
     clear() {
-
-        if(this.fp.input.value!=='') {
+        if (this.fp.input.value !== '') {
             this.fp.clear();
         }
+
         this.mdcComponent.foundation_.deactivateFocus();
     }
 
@@ -59,5 +56,7 @@ export class VDateTime extends VTextField {
     }
 }
 
-
-
+export function initDateTime() {
+    console.log('\tDateTime');
+    hookupComponents('.v-datetime', VDateTime, MDCTextField);
+}
