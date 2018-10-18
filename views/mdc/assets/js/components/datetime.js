@@ -15,8 +15,8 @@ export class VDateTime extends VTextField {
 
         const config = Object.assign(
             {},
-            JSON.parse(element.dataset.config),
             appConfig.get('component.datetime.flatpickr', {}),
+            JSON.parse(element.dataset.config),
         );
         let type = element.dataset.type;
 
