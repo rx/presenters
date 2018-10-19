@@ -3622,8 +3622,8 @@ const cssClasses = {
 /* harmony export (immutable) */ __webpack_exports__["a"] = initDateTime;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_flatpickr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__text_fields__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_textfield__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_textfield__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__text_fields__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__base_component__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config__ = __webpack_require__(37);
 
@@ -3632,17 +3632,12 @@ const cssClasses = {
 
 
 
-function initDateTime() {
-    console.log('\tDateTime');
-    Object(__WEBPACK_IMPORTED_MODULE_3__base_component__["b" /* hookupComponents */])('.v-datetime', VDateTime, __WEBPACK_IMPORTED_MODULE_2__material_textfield__["a" /* MDCTextField */]);
-}
-
-class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextField */] {
+class VDateTime extends __WEBPACK_IMPORTED_MODULE_2__text_fields__["a" /* VTextField */] {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
 
+        const type = element.dataset.type;
         const config = Object.assign({}, __WEBPACK_IMPORTED_MODULE_4__config__["a" /* default */].get('component.datetime.flatpickr', {}), JSON.parse(element.dataset.config));
-        let type = element.dataset.type;
 
         if (type === 'datetime') {
             config.enableTime = true;
@@ -3650,26 +3645,47 @@ class VDateTime extends __WEBPACK_IMPORTED_MODULE_1__text_fields__["a" /* VTextF
             config.enableTime = true;
             config.noCalendar = true;
         }
-        config.onOpen = function (selectedDates, dateStr, instance) {
+
+        config.onOpen = function onOpen(selectedDates, dateStr, instance) {
             instance.mdc_text_field.foundation_.activateFocus();
         };
-        config.onClose = function (selectedDates, dateStr, instance) {
+        config.onClose = function onClose(selectedDates, dateStr, instance) {
             instance.mdc_text_field.foundation_.deactivateFocus();
         };
+
         this.fp = __WEBPACK_IMPORTED_MODULE_0_flatpickr___default()(this.input, config);
         this.fp.mdc_text_field = mdcComponent;
+
+        element.addEventListener('click', () => this.toggle());
     }
 
     clear() {
-
         if (this.fp.input.value !== '') {
             this.fp.clear();
         }
+
         this.mdcComponent.foundation_.deactivateFocus();
+    }
+
+    open() {
+        this.fp.open();
+    }
+
+    close() {
+        this.fp.close();
+    }
+
+    toggle() {
+        this.fp.toggle();
     }
 }
 /* unused harmony export VDateTime */
 
+
+function initDateTime() {
+    console.log('\tDateTime');
+    Object(__WEBPACK_IMPORTED_MODULE_3__base_component__["b" /* hookupComponents */])('.v-datetime', VDateTime, __WEBPACK_IMPORTED_MODULE_1__material_textfield__["a" /* MDCTextField */]);
+}
 
 /***/ }),
 /* 35 */
