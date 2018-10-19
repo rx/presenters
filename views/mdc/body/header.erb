@@ -7,6 +7,7 @@
           <%= erb :"components/event", :locals => {events: header.title&.events, parent_id: header.title&.event_parent_id} %>>
       <%= expand_text(header.title&.text) %>
     </span>
+    <%= erb :"components/icon", :locals => {comp: header.title&.icon } if header.title&.icon %>
     <div class="mdl-layout-spacer"></div>
     <% if header.nav %>
       <nav class="mdl-navigation">
