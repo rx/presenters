@@ -1,6 +1,9 @@
 ---
 root: true
 extends: airbnb-base
+env:
+  es6: true
+  browser: true
 
 rules:
   indent:
