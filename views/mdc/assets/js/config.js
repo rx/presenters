@@ -6,6 +6,7 @@ export default new VConfig({
             flatpickr: {
                 altInput: true,
                 disableMobile: true,
+                clickOpens: false,
             },
         },
     },

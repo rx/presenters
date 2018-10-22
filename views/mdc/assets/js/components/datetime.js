@@ -7,7 +7,7 @@ import appConfig from '../config';
 export class VDateTime extends VTextField {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
-        
+
         const type = element.dataset.type;
         const config = Object.assign(
             {},
