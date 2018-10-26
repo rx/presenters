@@ -1,23 +1,19 @@
 const PATH_SEPARATOR = '.';
-const config = {
-    request: {
-        headers: {
-            POST: {
-                Accept: 'application/json,text/html;q=0.9,*/*;q=0.8',
-            },
-        },
-    },
-};
 
-// object, string -> object
-function getValueAt(base, path) {
-    const keys = path.split(PATH_SEPARATOR);
-    let k;
-    let value = base;
+/**
+ * Retreive the nested value at `path`.
+ * @param {Object} object The object to search
+ * @param {string} path The period-delimited path to traverse
+ * @return {Object} An object of the structure { ok: boolean, value: any }
+ */
+function dig(object, path) {
     const ret = {
         ok: false,
         value: undefined,
     };
+    const keys = path.split(PATH_SEPARATOR);
+    let k;
+    let value = object;
 
     /* eslint-disable no-cond-assign */
     while (k = keys.shift()) {
@@ -35,31 +31,43 @@ function getValueAt(base, path) {
 }
 
 export default class VConfig {
-    static all() {
-        return config;
+    constructor(config = {}) {
+        this.config = config;
     }
 
-    static has(key) {
-        return getValueAt(config, key).ok;
+    /**
+     * Retrieve the entire configuration object.
+     * @return {Object}
+     */
+    all() {
+        return this.config;
     }
 
-    static get(key, fallback) {
-        if (!VConfig.has(key)) {
+    /**
+     * Determine whether `key` is present.
+     * @param {string} key [description]
+     * @return {Boolean} [description]
+     */
+    has(key) {
+        return dig(this.config, key).ok;
+    }
+
+    /**
+     * Retrieve the nested value at `key`. If any keys during traversal do
+     * not exist, `fallback` is returned.
+     * @param {string} key The period-delimited path to traverse
+     * @param {*} fallback
+     * @return {*}
+     */
+    get(key, fallback) {
+        if (!this.has(key)) {
             return fallback;
         }
 
         const keys = key.split(PATH_SEPARATOR);
         const last = keys.pop();
-        const obj = getValueAt(config, keys.join(PATH_SEPARATOR)).value;
+        const obj = dig(this.config, keys.join(PATH_SEPARATOR)).value;
 
         return obj[last];
-    }
-
-    static set(key, value) {
-        const keys = key.split(PATH_SEPARATOR);
-        const last = keys.pop();
-        const obj = getValueAt(config, keys.join(PATH_SEPARATOR)).value;
-
-        obj[last] = value;
     }
 }
