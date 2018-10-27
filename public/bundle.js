@@ -24140,6 +24140,7 @@ var VCheckbox = function (_eventHandlerMixin) {
         var _this = _possibleConstructorReturn(this, (VCheckbox.__proto__ || Object.getPrototypeOf(VCheckbox)).call(this, element, mdcComponent));
 
         _this.input = element.querySelector('input');
+        _this.mdcComponent.indeterminate = _this.input.dataset.indeterminate === 'true';
         return _this;
     }
 
