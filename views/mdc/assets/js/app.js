@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.dialogPolyfill = require('./dialog-polyfill');
     require('material-design-lite/material');
     require('./mdl-stepper');
+    require('babel-polyfill');
 
     initialize();
 });
