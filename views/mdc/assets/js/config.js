@@ -17,4 +17,10 @@ export default new VConfig({
             },
         },
     },
+    compatibility: {
+        errorMessage: 'Your browser is not supported! Please use a different browser to continue.',
+        incompatibleBrowsers: [
+            'ie',
+        ],
+    },
 });
