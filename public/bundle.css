@@ -14323,5 +14323,6 @@ span.flatpickr-weekday {
   font-weight: bold;
   border-radius: 5px; }
 
-.v-hidden {
+.v-hidden,
+.incompatible-browser .compatibility-wrapper * {
   display: none; }
