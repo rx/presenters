@@ -11,6 +11,6 @@
 }
 
 .v-hidden,
-.incompatible-browser body {
+.incompatible-browser .compatibility-wrapper * {
     display: none;
 }
