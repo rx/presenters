@@ -10,6 +10,7 @@
     border-radius: 5px;
 }
 
-.v-hidden {
+.v-hidden,
+.incompatible-browser body {
     display: none;
 }
