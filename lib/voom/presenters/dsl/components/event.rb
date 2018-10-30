@@ -6,6 +6,7 @@ require 'voom/presenters/dsl/components/actions/deletes'
 require 'voom/presenters/dsl/components/actions/remove'
 require 'voom/presenters/dsl/components/actions/dialog'
 require 'voom/presenters/dsl/components/actions/toggle_visibility'
+require 'voom/presenters/dsl/components/actions/autocomplete'
 require 'voom/presenters/dsl/components/actions/snackbar'
 require 'voom/presenters/dsl/components/actions/clear'
 require 'voom/presenters/dsl/components/actions/navigates'
@@ -102,6 +103,14 @@ module Voom
           def snackbar(text, **params, &block)
             @actions << Actions::Snackbar.new(parent: self,
                                                params: params.merge(text: text), &block)
+          end
+
+          def autocomplete(path, **params, &block)
+            @actions << Actions::Autocomplete.new(parent: self,
+                                                 type: :autocomplete,
+                                                 path: path,
+                                                 target: "#{parent(:text_field).id}-list",
+                                                 params: params, &block)
           end
           
           def navigates(direction, **params, &block)
