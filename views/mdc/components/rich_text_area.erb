@@ -2,7 +2,7 @@
      <% if comp.tag %>
      data-input-tag="<%= comp.tag %>"
      <% end %>>
-  <label class="mdc-floating-label" for="<%= comp.id %>"><%= expand_text(comp.label) %></label>
+  <label for="<%= comp.id %>"><%= expand_text(comp.label) %></label>
   <div class="v-rich-text-area"
        id="<%= comp.id %>"
        style="<%= 'width:100%;' if comp.full_width %>
