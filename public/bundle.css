@@ -10778,6 +10778,7 @@ select {
   .mdl-stepper--horizontal > .mdl-step.mdl-step--completed .mdl-step__title > .mdl-step__title-text {
     font-weight: bold; }
   .mdl-stepper--horizontal .mdl-step__label {
+    z-index: 999;
     top: -48px;
     flex: initial;
     margin: 0;
