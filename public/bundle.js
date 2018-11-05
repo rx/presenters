@@ -28679,7 +28679,7 @@ var VPosts = function (_VBase) {
                 var snackbar = document.querySelector('.mdc-snackbar').vComponent;
                 if (contentType.indexOf("application/json") !== -1) {
                     var messages = JSON.parse(response)['messages'];
-                    if (snackbar && messages['snackbar']) {
+                    if (snackbar && messages && messages['snackbar']) {
                         snackbar.display(messages['snackbar']);
                     }
                 }
