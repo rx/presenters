@@ -10,6 +10,8 @@ Voom::Presenters.define(:toggles) do
     title 'CHECKBOX'
     checkbox
     checkbox checked: true, text: "I am initially checked"
+    checkbox indeterminate: true, text: "I am indeterminate"
+    checkbox disabled: true, text: "I am disabled"
 
     title 'RADIO BUTTON'
     radio_button name: :radio, value: 'one', checked: true, text: "One"

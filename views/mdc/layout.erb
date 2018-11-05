@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js incompatible-browser" lang="en">
 <head>
   <base href="/">
   <meta charset="utf-8">
@@ -18,33 +18,35 @@
 
 </head>
 <body class="mdc-typography">
-<% header = @pom.header
-   drawer = @pom.drawer
-   footer = @pom.footer %>
-<div class="mdl-layout mdl-js-layout
-  <% if header %>mdl-layout--fixed-header
-  <% end %>
-  <% if drawer %>mdl-layout--fixed-drawer
-  <% end %>">
-  <% if header %>
-    <%= erb :"body/header", :locals => {:header => header} %>
-  <% end %>
-  <% if drawer %>
-    <%= erb :"body/drawer", :locals => {:drawer => drawer} %>
-  <% end %>
-  <main class="mdl-layout__content"
-        style="<%= "background-color:#{@pom.page.background_color}" if @pom.page&.background_color %>">
-    <div class="page-content">
-      <div class="v-errors">
-        <%= yield %>
+<div class="compatibility-wrapper">
+  <% header = @pom.header
+     drawer = @pom.drawer
+     footer = @pom.footer %>
+  <div class="mdl-layout mdl-js-layout
+    <% if header %>mdl-layout--fixed-header
+    <% end %>
+    <% if drawer %>mdl-layout--fixed-drawer
+    <% end %>">
+    <% if header %>
+      <%= erb :"body/header", :locals => {:header => header} %>
+    <% end %>
+    <% if drawer %>
+      <%= erb :"body/drawer", :locals => {:drawer => drawer} %>
+    <% end %>
+    <main class="mdl-layout__content"
+          style="<%= "background-color:#{@pom.page.background_color}" if @pom.page&.background_color %>">
+      <div class="page-content">
+        <div class="v-errors">
+          <%= yield %>
+        </div>
       </div>
-    </div>
-  </main>
-  <%= erb :"body/snackbar" %>
-  <% if footer %>
-    <%= erb :"body/footer", :locals => {:footer => footer} %>
-  <% end %>
+    </main>
+    <%= erb :"body/snackbar" %>
+    <% if footer %>
+      <%= erb :"body/footer", :locals => {:footer => footer} %>
+    <% end %>
+  </div>
 </div>
-
+<noscript><p>JavaScript must be enabled to continue.</p></noscript>
 </body>
 </html>

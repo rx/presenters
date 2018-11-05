@@ -11,6 +11,7 @@ export class VCheckbox extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
         this.input = element.querySelector('input');
+        this.mdcComponent.indeterminate = (this.input.dataset.indeterminate === 'true');
     }
 
     prepareSubmit(params) {

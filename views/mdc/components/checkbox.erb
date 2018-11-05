@@ -8,6 +8,7 @@ class="v-checkbox mdc-checkbox v-input">
   <input type="checkbox"
          id="<%= comp.id %>"
          name="<%= comp.name %>"
+         data-indeterminate=<%=comp.indeterminate%>
          <% if comp.value %>
           value="<%= comp.value %>"
          <% end %>
