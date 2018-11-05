@@ -28674,6 +28674,17 @@ var VPosts = function (_VBase) {
             if (!httpRequest) {
                 throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
             }
+
+            var snackbarCallback = function snackbarCallback(contentType, response) {
+                var snackbar = document.querySelector('.mdc-snackbar').vComponent;
+                if (contentType.indexOf("application/json") !== -1) {
+                    var messages = JSON.parse(response)['messages'];
+                    if (snackbar && messages['snackbar']) {
+                        snackbar.display(messages['snackbar']);
+                    }
+                }
+            };
+
             return new Promise(function (resolve, reject) {
                 httpRequest.onreadystatechange = function (event) {
                     if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -28687,6 +28698,7 @@ var VPosts = function (_VBase) {
                                 content: httpRequest.responseText,
                                 responseURL: httpRequest.responseURL
                             });
+                            snackbarCallback(this.getResponseHeader('content-type'), httpRequest.responseText);
                             resolve(results);
                         } else {
                             results.push({
