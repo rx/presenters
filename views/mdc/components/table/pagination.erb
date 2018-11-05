@@ -1,6 +1,8 @@
-<!-- WIP -->
-    <div class="v-paging"><span class="v-paging__per-page"><span class="v-paging__per-page-label">Rows per page:</span><span class="v-paging__per-page-value">10</span>
-  <button id="HkhZcTBbWFADje7t2" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon v-paging__per-page-dropdown"><i class="material-icons">arrow_drop_down</i>
+
+<div class="v-paging">
+  <span class="v-paging__per-page"><span class="v-paging__per-page-label">Rows per page:</span><span class="v-paging__per-page-value"><%= comp.page_size %></span>
+  <button id="HkhZcTBbWFADje7t2" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon v-paging__per-page-dropdown">
+    <i class="material-icons">arrow_drop_down</i>
   </button>
   <ul for="HkhZcTBbWFADje7t2" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events">
     <li tabindex="-1" data-value="10" class="mdl-menu__item mdl-js-ripple-effect">10
@@ -14,11 +16,15 @@
     <li tabindex="-1" data-value="50" class="mdl-menu__item mdl-js-ripple-effect">50
     </li>
   </ul>
-  </span><span class="v-paging__count">11-20 of 25</span>
-      <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon v-paging__prev">
-        <i class="material-icons">keyboard_arrow_left</i>
-      </button>
-      <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon v-paging__next">
-        <i class="material-icons">keyboard_arrow_right</i>
-      </button>
-    </div>
+  </span><span class="v-paging__count">11-20 of <%= comp.total %></span>
+    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon v-paging__prev">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </button>
+    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon v-paging__next"
+    <% if comp.replace_id %>
+      onclick="new VReplaceElement('<%= comp.replace_id %>','<%= comp.replace_presenter %>', '<%="page=#{comp.current_page+1}"%>').call()"
+    <% end %>
+    >
+      <i class="material-icons">keyboard_arrow_right</i>
+    </button>
+</div>

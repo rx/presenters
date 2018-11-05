@@ -30,26 +30,35 @@ module Voom
                              **attribs, &block)
           end
 
-          # WIP
-          # def pagination(**attribs, &block)
-          #   @pagination = Pagination.new(parent: self,
-          #                                context: context,
-          #                                **attribs, &block)
-          # end
+          def pagination(**attribs, &block)
+            return @pagination if locked?
+            @pagination = Pagination.new(parent: self,
+                                         **attribs, &block)
+          end
 
           class Row < Base
-            attr_accessor :columns, :color
+            attr_accessor :columns, :color, :checkbox
 
             def initialize(type:, **attribs_, &block)
               super(type: type, **attribs_, &block)
               @columns = []
               @color = attribs.delete(:color)
+              self.checkbox(attribs.slice(:name, :value, :checked)) if @parent.selectable
               expand!
             end
 
             def column(value=nil, **attribs, &block)
               @columns << Column.new(parent: self, value: value,
                                      **attribs, &block)
+            end
+
+            def checkbox(**attributes, &block)
+              return @checkbox if locked?
+              field_name = @type == :header ? 'all' : "#{attributes.delete(:name)}[]"
+              @checkbox = Components::Checkbox.new(parent: self,
+                                                   name: field_name,
+                                                   **attributes,
+                                                   &block)
             end
 
             class Column < EventBase
@@ -84,15 +93,22 @@ module Voom
             end
 
           end
-          # class Pagination < Base
-          #   attr_accessor :page_size
-          #
-          #   def initialize(**attribs_, &block)
-          #     super(type: :pagination, **attribs_, &block)
-          #     @page_size = attribs.delete(:page_size)
-          #     expand!
-          #   end
-          # end
+
+          class Pagination < Base
+            attr_accessor :page_size, :total, :current_page, :replace_id, :replace_presenter
+
+            def initialize(**attribs_, &block)
+              super(type: :pagination, **attribs_, &block)
+              @page_size = attribs.delete(:page_size)
+              @total = attribs.delete(:total)
+              @current_page = attribs.delete(:current_page){ 1 }
+              @replace_id = attribs.delete(:replace_id)
+              @replace_presenter = attribs.delete(:replace_presenter)
+              expand!
+            end
+
+          end
+
         end
       end
     end

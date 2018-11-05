@@ -1,0 +1,15 @@
+<% if row.checkbox %>
+  <% if type == 'header' %>
+    <th>
+  <% else %>
+    <td style="<%= "background-color: #{row.color};" if row.color %>">
+  <% end %>
+    <span class="mdc-list-item__graphic">
+      <%= erb :"components/checkbox", :locals => {comp: row.checkbox} %>
+    </span>
+  <% if type == 'header' %>
+    </th>
+  <% else %>
+    </td>
+  <% end %>
+<%end%>

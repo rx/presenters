@@ -12012,6 +12012,9 @@ form .mdc-switch {
   margin-left: -1px;
   z-index: 989; }
 
+.mdl-data-table .mdc-list-item__graphic {
+  margin-right: 0px; }
+
 .flatpickr-calendar {
   background: transparent;
   opacity: 0;
