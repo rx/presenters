@@ -1,0 +1,13 @@
+<% if comp %>
+<div class="v-file-input mdc-text-field mdc-text-field--outlined mdc-text-field--upgraded" style="width: 100%">
+  <input id="<%= comp.id %>-input" name="<%= comp.name %>" type="file">
+  <button class="mdc-button"><%= comp.button_label %></button>
+  <label for="<%= comp.id %>-input"><%= comp.input_label %></label>
+  <div class="mdc-notched-outline">
+    <svg>
+      <path class="mdc-notched-outline__path"/>
+    </svg>
+  </div>
+  <div class="mdc-notched-outline__idle"></div>
+</div>
+<% end %>

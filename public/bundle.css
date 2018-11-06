@@ -12690,6 +12690,26 @@ span.flatpickr-weekday {
 i:focus.v-datetime--clear {
   outline: none; }
 
+.v-file-input {
+  align-items: center !important;
+  display: inline-block;
+  padding: 16px;
+  position: relative;
+  width: 450px; }
+
+.v-file-input > [type='file'] {
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10; }
+
+.v-file-input > label {
+  line-height: 36px; }
+
 .v-rich-text-area-container {
   position: relative;
   width: 100%; }
