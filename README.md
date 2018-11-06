@@ -74,7 +74,26 @@ Any use should be for internal use only until the status becomes beta.
     
 ## Usage
 
-TODO: Write usage instructions here
+To use it, add this line to your Gemfile:
+
+    gem 'voom-presenters'
+
+For rails: Mount the web-client in your rails config/routes.rb
+
+    mount ::Voom::Presenters::WebClient::App, at: '/'
+    # the api is optional
+    mount ::Voom::Presenters::Api::App,       at: '/'
+     
+   
+Create the file app/presenters/index.pom with the contents:
+    
+    Voom::Presenters.define(:index) do
+      heading 'hello world'
+    end   
+
+Start your rails server and goto http://localhost:3000
+
+Use the demo to get example code to drop into your presetners.
 
 ## Contributing
 
