@@ -29,6 +29,7 @@ unless defined?(Voom::Presenters::Settings)
             #   }
             # end
             setting :prepare_context, []
+            setting     :custom_css, 'public/presenters/*.css'
           end
           setting :components do
             setting :defaults do

@@ -24,7 +24,6 @@ module Voom
           include Mixins::DateTimeFields
           include Mixins::Selects
           include Mixins::Snackbars
-          include Mixins::Images
           include Mixins::Steppers
           include Mixins::Sliders
           include Mixins::Chips
