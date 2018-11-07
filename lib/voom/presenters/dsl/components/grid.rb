@@ -11,6 +11,7 @@ require 'voom/presenters/dsl/components/mixins/text_fields'
 require 'voom/presenters/dsl/components/mixins/date_time_fields'
 require 'voom/presenters/dsl/components/mixins/steppers'
 require 'voom/presenters/dsl/components/mixins/sliders'
+require 'voom/presenters/dsl/components/mixins/file_inputs'
 
 module Voom
   module Presenters
@@ -80,6 +81,7 @@ module Voom
             include Mixins::Snackbars
             include Mixins::Steppers
             include Mixins::Sliders
+            include Mixins::FileInputs
 
             include Padding
 

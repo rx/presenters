@@ -13,7 +13,7 @@ require 'voom/presenters/dsl/components/mixins/expansion_panels'
 require 'voom/presenters/dsl/components/mixins/content'
 require 'voom/presenters/dsl/components/mixins/typography'
 require 'voom/presenters/dsl/components/mixins/date_time_fields'
-require 'voom/presenters/dsl/components/mixins/images'
+require 'voom/presenters/dsl/components/mixins/file_inputs'
 
 module Voom
   module Presenters
@@ -31,7 +31,7 @@ module Voom
           include Mixins::ExpansionPanels
           include Mixins::Content
           include Mixins::Typography
-          include Mixins::Images
+          include Mixins::FileInputs
 
           attr_reader :components, :shows_errors
 
