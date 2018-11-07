@@ -5,7 +5,9 @@
     <td style="<%= "background-color: #{row.color};" if row.color %>">
   <% end %>
     <span class="mdc-list-item__graphic">
-      <%= erb :"components/checkbox", :locals => {comp: row.checkbox} %>
+      <%= erb :"components/checkbox",
+              :locals => {comp: row.checkbox,
+                          class_name: (type == 'header' ? 'v-checkbox--select-control' : 'v-table-item--selectable-checkbox')} %>
     </span>
   <% if type == 'header' %>
     </th>

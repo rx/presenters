@@ -7074,6 +7074,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__content__ = __webpack_require__(473);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__grid__ = __webpack_require__(474);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__tab_bars__ = __webpack_require__(475);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__data_tables__ = __webpack_require__(497);
+
 
 
 
@@ -7122,6 +7124,7 @@ function initialize() {
     Object(__WEBPACK_IMPORTED_MODULE_20__content__["a" /* initContent */])();
     Object(__WEBPACK_IMPORTED_MODULE_21__grid__["a" /* initGrid */])();
     Object(__WEBPACK_IMPORTED_MODULE_22__tab_bars__["a" /* initTabBars */])();
+    Object(__WEBPACK_IMPORTED_MODULE_23__data_tables__["a" /* initTables */])();
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_4__events__["b" /* initEvents */])();
 }
@@ -56042,6 +56045,136 @@ var numbers = {
 };
 
 
+
+/***/ }),
+/* 497 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initTables;
+
+function createSelectAllHandler(component, target, listElements) {
+    return function () {
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            for (var _iterator = listElements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var element = _step.value;
+
+                element.checked = target.checked;
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
+    };
+}
+
+function createTableRowSelectHandler(component, listElements, selectAll) {
+    return function () {
+        var checked = 0;
+        var unchecked = 0;
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
+
+        try {
+            for (var _iterator2 = listElements[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                var element = _step2.value;
+
+                element.checked ? checked++ : unchecked++;
+            }
+        } catch (err) {
+            _didIteratorError2 = true;
+            _iteratorError2 = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                    _iterator2.return();
+                }
+            } finally {
+                if (_didIteratorError2) {
+                    throw _iteratorError2;
+                }
+            }
+        }
+
+        selectAll.indeterminate = checked && unchecked;
+        selectAll.checked = checked && !unchecked;
+    };
+}
+
+function initTables() {
+    console.log('\tTables');
+    var components = document.querySelectorAll('.mdl-data-table');
+    if (components) {
+        var _iteratorNormalCompletion3 = true;
+        var _didIteratorError3 = false;
+        var _iteratorError3 = undefined;
+
+        try {
+            for (var _iterator3 = components[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                var component = _step3.value;
+
+                var selectAllRow = component.querySelector('.v-checkbox--select-control');
+                var selectableRows = component.querySelectorAll('.v-table-item--selectable-checkbox');
+                if (selectAllRow && selectableRows) {
+                    selectAllRow.addEventListener('change', createSelectAllHandler(component, selectAllRow, selectableRows));
+
+                    var _iteratorNormalCompletion4 = true;
+                    var _didIteratorError4 = false;
+                    var _iteratorError4 = undefined;
+
+                    try {
+                        for (var _iterator4 = selectableRows[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                            var element = _step4.value;
+
+                            element.addEventListener('change', createTableRowSelectHandler(component, selectableRows, selectAllRow));
+                        }
+                    } catch (err) {
+                        _didIteratorError4 = true;
+                        _iteratorError4 = err;
+                    } finally {
+                        try {
+                            if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                                _iterator4.return();
+                            }
+                        } finally {
+                            if (_didIteratorError4) {
+                                throw _iteratorError4;
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (err) {
+            _didIteratorError3 = true;
+            _iteratorError3 = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                    _iterator3.return();
+                }
+            } finally {
+                if (_didIteratorError3) {
+                    throw _iteratorError3;
+                }
+            }
+        }
+    }
+}
 
 /***/ })
 /******/ ]);
