@@ -4,7 +4,7 @@
     <span class="v-paging__per-page-value"><%= erb :"components/select", :locals => {:comp=> comp.per_page} %></span>
   </span>
   <span class="v-paging__count">
-    <%= comp.range.join(' - ') %> of <%= comp.total %>
+    <%= comp.range&.join(' - ') %> of <%= comp.total %>
   </span>
   <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon v-paging__prev">
     <%= erb :"components/icon", :locals => {:comp=>comp.previous_button} %>

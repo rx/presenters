@@ -99,7 +99,7 @@ module Voom
 
             def initialize(**attribs_, &block)
               super(type: :pagination, **attribs_, &block)
-              @page_size = attribs.delete(:page_size).to_i
+              @page_size = attribs.delete(:page_size){10}.to_i
               @page_size_options = attribs.delete(:page_size_options){[10,20,30,40,50,100]}
               @total = attribs.delete(:total)
               @current_page = attribs.delete(:current_page){ 1 }.to_i
@@ -112,9 +112,10 @@ module Voom
             end
 
             def range
+              return @range if locked?
               end_range = @total - (@total - @page_size * @current_page.to_i)
               start_range = end_range - @page_size + 1
-              [start_range, end_range]
+              @range = [start_range, end_range]
             end
 
             def previous_button_icon(icon = :keyboard_arrow_left)
@@ -148,7 +149,7 @@ module Voom
             end
 
             def select(options, current_option, total_pages, replace_id = @replace_id, replace_presenter = @replace_presenter)
-              __attribs__ = attribs.except(:page_size, :page)
+              __attribs__ = attribs.reject{|key,val| [:page_size, :page].include? key }
               Components::Select.new(parent: self, name: :page_size, full_width: false) do
                 options.each do |num|
                   break if num > total_pages
