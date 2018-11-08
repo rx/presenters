@@ -93,14 +93,6 @@
   margin-right: auto;
 }
 
-
-//@media only screen and (min-width: 841px) {
-//  .mdl-stepper--horizontal {
-//    max-width: unset;
-//    min-height: unset;
-//  }
-//}
-
 //@media only screen and (min-width: 841px) {
 @media only screen and (min-width: 301px) {
   .mdl-stepper--horizontal {
@@ -183,6 +175,7 @@
   .mdl-stepper--horizontal > .mdl-step.mdl-step--completed .mdl-step__title > .mdl-step__title-text {
     font-weight: bold; }
   .mdl-stepper--horizontal .mdl-step__label {
+    z-index: 999;
     top: -48px;
     flex: initial;
     margin: 0;

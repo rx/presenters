@@ -52,6 +52,17 @@ export class VPosts extends VBase {
         if (!httpRequest) {
             throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
         }
+
+        let snackbarCallback = function(contentType, response) {
+            let snackbar = document.querySelector('.mdc-snackbar').vComponent;
+            if (contentType.indexOf("application/json") !== -1) {
+                let messages = JSON.parse(response)['messages'];
+                if (snackbar && messages && messages['snackbar']) {
+                    snackbar.display(messages['snackbar']);
+                }
+            }
+        }
+
         return new Promise(function (resolve, reject) {
             httpRequest.onreadystatechange = function (event) {
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -65,6 +76,7 @@ export class VPosts extends VBase {
                             content: httpRequest.responseText,
                             responseURL: httpRequest.responseURL
                         });
+                        snackbarCallback(this.getResponseHeader('content-type'), httpRequest.responseText);
                         resolve(results);
                     } else {
                         results.push({

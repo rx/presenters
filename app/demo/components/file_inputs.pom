@@ -1,0 +1,16 @@
+require_relative '../helpers/indented_grid'
+
+Voom::Presenters.define(:file_inputs) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :component_drawer
+  page_title 'File Inputs'
+
+  indented_grid do
+    form do
+      file_input name: :upload
+    end
+
+    attach :code, file: __FILE__
+  end
+end
