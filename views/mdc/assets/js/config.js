@@ -7,6 +7,7 @@ export default new VConfig({
                 altInput: true,
                 disableMobile: true,
                 clickOpens: false,
+                defaultHour: 0
             },
         },
     },
