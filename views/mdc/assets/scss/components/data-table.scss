@@ -3,3 +3,78 @@
     margin-right: 0px;
   }
 }
+
+// Custom Pagination based off of MDL
+.v-paging {
+  color: rgba(0, 0, 0, 0.54);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: left;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 56px;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+.v-paging > * {
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+}
+
+.mdl-list + .v-paging {
+  margin: 0;
+}
+
+.v-paging__per-page {
+  position: relative;
+}
+
+.v-paging__per-page-label {
+  margin-right: 20px;
+}
+
+.v-paging__per-page-value {
+  .v-select {
+    width: auto;
+    height: auto;
+    .mdc-select__native-control {
+      padding-top: 0px;
+      border-bottom: none;
+      &:not(.mdc-select--disabled) {
+        color: rgba(0, 0, 0, 0.54);
+      }
+    }
+  }
+}
+
+.v-paging__per-page + .v-paging__count {
+  margin-left: 24px;
+}
+
+.v-paging .mdl-menu {
+  min-width: 64px;
+}
+
+.v-paging__prev:last-child {
+  margin-right: 44px;
+}
+
+.v-paging__count {
+  margin-left: 30px;
+  margin-right: 44px;
+}
+
+.v-paging__prev + .v-paging__next {
+  margin-left: 12px;
+}
+
+.v-paging__count + .v-paging__next {
+  margin-left: 68px;
+}

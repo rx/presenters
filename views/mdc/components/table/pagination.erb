@@ -1,12 +1,15 @@
 <div class="v-paging">
   <span class="v-paging__per-page">
-    <span class="v-paging__per-page-label">Rows per page: </span><span class="v-paging__per-page-value"><%= comp.page_size %></span>
-    <%= erb :"components/select", :locals => {:comp=> comp.per_page} %>
-  </span><span class="v-paging__count"><%= comp.range.join(' - ') %> of <%= comp.total %></span>
-    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon v-paging__prev">
-      <%= erb :"components/icon", :locals => {:comp=>comp.previous_button} %>
-    </button>
-    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon v-paging__next">
-      <%= erb :"components/icon", :locals => {:comp=>comp.next_button} %>
-    </button>
+    <span class="v-paging__per-page-label">Rows per page: </span>
+    <span class="v-paging__per-page-value"><%= erb :"components/select", :locals => {:comp=> comp.per_page} %></span>
+  </span>
+  <span class="v-paging__count">
+    <%= comp.range.join(' - ') %> of <%= comp.total %>
+  </span>
+  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon v-paging__prev">
+    <%= erb :"components/icon", :locals => {:comp=>comp.previous_button} %>
+  </button>
+  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon v-paging__next">
+    <%= erb :"components/icon", :locals => {:comp=>comp.next_button} %>
+  </button>
 </div>

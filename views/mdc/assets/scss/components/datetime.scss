@@ -1,5 +1,11 @@
 @import "vendor/flatpickr.min";
 
+.v-datetime {
+  &.mdc-text-field--upgraded:not(.mdc-text-field--fullwidth):not(.mdc-text-field--box) {
+    margin-top: 0px;
+  }
+}
+
 .mdc-text-field__icon.v-datetime--clear {
   right: 15px;
   left: initial;
