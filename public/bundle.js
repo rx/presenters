@@ -2661,7 +2661,8 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
             flatpickr: {
                 altInput: true,
                 disableMobile: true,
-                clickOpens: false
+                clickOpens: false,
+                defaultHour: 0
             }
         }
     },
