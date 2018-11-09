@@ -1,11 +1,13 @@
 .v-rich-text-area-container {
   position: relative;
   width: 100%;
-  padding-top: 30px;
   > label {
-    top: 0px;
+    display: block;
+    margin-top: 16px;
   }
   .ql-toolbar {
+    margin-top: 16px;
+
     &.ql-snow {
       border-color: $v-input-border-color;
       border-top-left-radius: $v-input-border-radius;
@@ -29,7 +31,6 @@
     .v-rich-text-area {
       &.ql-snow {
         border-color: $v-input-hover-border-color;
-     ;
       }
     }
   }

@@ -7,6 +7,7 @@ export default new VConfig({
                 altInput: true,
                 disableMobile: true,
                 clickOpens: false,
+                defaultHour: 0
             },
         },
     },
@@ -16,5 +17,11 @@ export default new VConfig({
                 Accept: 'application/json,text/html;q=0.9',
             },
         },
+    },
+    compatibility: {
+        errorMessage: 'Your browser is not supported! Please use a different browser to continue.',
+        incompatibleBrowsers: [
+            'ie',
+        ],
     },
 });

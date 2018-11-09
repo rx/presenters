@@ -35,7 +35,9 @@
   <datalist id="<%= comp.id %>-list">
   </datalist>
 </div>
+<% if comp.error || comp.hint %>
 <p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg" aria-hidden="true">
   <%= comp.error || comp.hint %>
 </p>
+<% end %>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

@@ -10795,6 +10795,7 @@ select {
   .mdl-stepper--horizontal > .mdl-step.mdl-step--completed .mdl-step__title > .mdl-step__title-text {
     font-weight: bold; }
   .mdl-stepper--horizontal .mdl-step__label {
+    z-index: 999;
     top: -48px;
     flex: initial;
     margin: 0;
@@ -12706,16 +12707,38 @@ span.flatpickr-weekday {
 i:focus.v-datetime--clear {
   outline: none; }
 
+.v-file-input {
+  align-items: center !important;
+  display: inline-block;
+  padding: 16px;
+  position: relative;
+  width: 450px; }
+
+.v-file-input > [type='file'] {
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10; }
+
+.v-file-input > label {
+  line-height: 36px; }
+
 .v-rich-text-area-container {
   position: relative;
-  width: 100%;
-  padding-top: 30px; }
+  width: 100%; }
   .v-rich-text-area-container > label {
-    top: 0px; }
-  .v-rich-text-area-container .ql-toolbar.ql-snow {
-    border-color: rgba(0, 0, 0, 0.24);
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px; }
+    display: block;
+    margin-top: 16px; }
+  .v-rich-text-area-container .ql-toolbar {
+    margin-top: 16px; }
+    .v-rich-text-area-container .ql-toolbar.ql-snow {
+      border-color: rgba(0, 0, 0, 0.24);
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px; }
   .v-rich-text-area-container .v-rich-text-area {
     height: 350px; }
     .v-rich-text-area-container .v-rich-text-area.ql-snow {
@@ -14340,5 +14363,6 @@ span.flatpickr-weekday {
   font-weight: bold;
   border-radius: 5px; }
 
-.v-hidden {
+.v-hidden,
+.incompatible-browser .compatibility-wrapper * {
   display: none; }
