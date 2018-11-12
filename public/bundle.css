@@ -11651,6 +11651,22 @@ select {
     /* @noflip */
     padding-right: 8px; }
 
+.icon-ul {
+  list-style-type: none;
+  margin-left: 2.5em;
+  padding-left: 0px; }
+  .icon-ul > li {
+    position: relative;
+    margin-bottom: 6px; }
+
+.icon-li > i {
+  left: -2em;
+  position: absolute;
+  text-align: center;
+  width: 2em;
+  line-height: inherit;
+  font-size: 21px; }
+
 .v-expansion {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
   .v-expansion__summary {

@@ -46,6 +46,10 @@ module Voom
             def table(**attributes, &block)
               self << Components::Table.new(parent: self, **attributes, &block)
             end
+
+            def unordered_list(**attributes, &block)
+              self << Components::UnorderedList.new(parent: self, **attributes, &block)
+            end
           end
         end
       end

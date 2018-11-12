@@ -2,13 +2,39 @@ Voom::Presenters.define('component_menu') do
   helpers Voom::Presenters::Helpers::Inflector
   menu side: :left do
     %i(
-      cards lists expansion_panels tables text_fields
-      selects buttons fabs fabs_mini dialogs
-      layouts headers drawers footers menus
-      toggles chips snackbar badges tooltips
-      hidden_fields text_areas steppers sliders tab_bars
-      content icons datetime_fields date_fields time_fields
-      maps file_inputs
+      badges
+      buttons
+      cards
+      chips
+      content
+      date_fields
+      datetime_fields
+      dialogs
+      drawers
+      expansion_panels
+      fabs
+      fabs_mini
+      file_inputs
+      footers
+      headers
+      hidden_fields
+      icons
+      layouts
+      lists
+      maps
+      menus
+      selects
+      sliders
+      snackbar
+      steppers
+      tab_bars
+      tables
+      text_areas
+      text_fields
+      time_fields
+      toggles
+      tooltips
+      unordered_lists
     ).sort.each do |comp|
       item titleize(comp) do
         event :click do
