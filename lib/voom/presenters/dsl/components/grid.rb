@@ -70,7 +70,6 @@ module Voom
           include Padding
           class Column < EventBase
             include Mixins::Common
-            include Mixins::Images
             include Mixins::Icons
             include Mixins::Attaches
             include Mixins::Dialogs

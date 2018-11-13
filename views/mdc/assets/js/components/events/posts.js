@@ -18,13 +18,13 @@ export class VPosts extends VBase {
         let errors = this.validate();
         let method = this.method;
         if (errors.length > 0) {
-            return new Promise(function (_, reject) {
+            return new Promise(function(_, reject) {
                 results.push({
                     action: 'posts',
                     method: method,
                     statusCode: 400,
                     contentType: 'v/errors',
-                    content: errors
+                    content: errors,
                 });
                 reject(results);
             });
@@ -34,7 +34,8 @@ export class VPosts extends VBase {
         var form = this.form();
         if (form) {
             FD = new FormData(form);
-        } else {
+        }
+        else {
             FD = new FormData();
         }
         // Add params from presenter
@@ -50,43 +51,59 @@ export class VPosts extends VBase {
         var httpRequest = new XMLHttpRequest();
         var url = this.url;
         if (!httpRequest) {
-            throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
+            throw new Error(
+                'Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
         }
 
         let snackbarCallback = function(contentType, response) {
             let snackbar = document.querySelector('.mdc-snackbar').vComponent;
-            if (contentType.indexOf("application/json") !== -1) {
+            if (contentType.indexOf('application/json') !== -1) {
                 let messages = JSON.parse(response)['messages'];
                 if (snackbar && messages && messages['snackbar']) {
                     snackbar.display(messages['snackbar']);
                 }
             }
-        }
+        };
 
-        return new Promise(function (resolve, reject) {
-            httpRequest.onreadystatechange = function (event) {
+        return new Promise(function(resolve, reject) {
+            httpRequest.onreadystatechange = function(event) {
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                    console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
+                    const contentType = this.getResponseHeader('content-type');
+                    console.log(httpRequest.status + ':' + contentType);
                     if (httpRequest.status >= 200 && httpRequest.status < 300) {
                         results.push({
                             action: 'posts',
                             method: this.method,
                             statusCode: httpRequest.status,
-                            contentType: this.getResponseHeader('content-type'),
+                            contentType: contentType,
                             content: httpRequest.responseText,
-                            responseURL: httpRequest.responseURL
+                            responseURL: httpRequest.responseURL,
                         });
-                        snackbarCallback(this.getResponseHeader('content-type'), httpRequest.responseText);
+                        snackbarCallback(contentType,
+                            httpRequest.responseText);
                         resolve(results);
-                    } else {
+                    } else if (contentType.indexOf('application/json') !== -1) {
                         results.push({
                             action: 'posts',
                             method: this.method,
                             statusCode: httpRequest.status,
-                            contentType: this.getResponseHeader('content-type'),
-                            content: httpRequest.responseText
+                            contentType: contentType,
+                            content: httpRequest.responseText,
                         });
                         reject(results);
+                    } else {
+                        document.open(contentType);
+                        document.write(httpRequest.responseText);
+                        document.close();
+                        results.push({
+                            action: 'posts',
+                            method: this.method,
+                            statusCode: httpRequest.status,
+                            contentType: contentType,
+                            content: httpRequest.responseText,
+                            responseURL: httpRequest.responseURL,
+                        });
+                        resolve(results);
                     }
                 }
             };

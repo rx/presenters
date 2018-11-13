@@ -28704,7 +28704,7 @@ var VPosts = function (_VBase) {
 
             var snackbarCallback = function snackbarCallback(contentType, response) {
                 var snackbar = document.querySelector('.mdc-snackbar').vComponent;
-                if (contentType.indexOf("application/json") !== -1) {
+                if (contentType.indexOf('application/json') !== -1) {
                     var messages = JSON.parse(response)['messages'];
                     if (snackbar && messages && messages['snackbar']) {
                         snackbar.display(messages['snackbar']);
@@ -28715,27 +28715,41 @@ var VPosts = function (_VBase) {
             return new Promise(function (resolve, reject) {
                 httpRequest.onreadystatechange = function (event) {
                     if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                        console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
+                        var contentType = this.getResponseHeader('content-type');
+                        console.log(httpRequest.status + ':' + contentType);
                         if (httpRequest.status >= 200 && httpRequest.status < 300) {
                             results.push({
                                 action: 'posts',
                                 method: this.method,
                                 statusCode: httpRequest.status,
-                                contentType: this.getResponseHeader('content-type'),
+                                contentType: contentType,
                                 content: httpRequest.responseText,
                                 responseURL: httpRequest.responseURL
                             });
-                            snackbarCallback(this.getResponseHeader('content-type'), httpRequest.responseText);
+                            snackbarCallback(contentType, httpRequest.responseText);
                             resolve(results);
-                        } else {
+                        } else if (contentType.indexOf('application/json') !== -1) {
                             results.push({
                                 action: 'posts',
                                 method: this.method,
                                 statusCode: httpRequest.status,
-                                contentType: this.getResponseHeader('content-type'),
+                                contentType: contentType,
                                 content: httpRequest.responseText
                             });
                             reject(results);
+                        } else {
+                            document.open(contentType);
+                            document.write(httpRequest.responseText);
+                            document.close();
+                            results.push({
+                                action: 'posts',
+                                method: this.method,
+                                statusCode: httpRequest.status,
+                                contentType: contentType,
+                                content: httpRequest.responseText,
+                                responseURL: httpRequest.responseURL
+                            });
+                            resolve(results);
                         }
                     }
                 };

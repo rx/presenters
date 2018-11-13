@@ -8,6 +8,7 @@ require 'voom/presenters/dsl/components/mixins/content'
 require 'voom/presenters/dsl/components/mixins/menus'
 require 'voom/presenters/dsl/components/mixins/google_maps'
 require 'voom/presenters/dsl/components/mixins/tab_bars'
+require 'voom/presenters/dsl/components/mixins/images'
 
 module Voom
   module Presenters
@@ -25,7 +26,8 @@ module Voom
             include Mixins::Menus
             include Mixins::GoogleMaps
             include Mixins::TabBars
-
+            include Mixins::Images
+            
             def badge(badge=nil, **attributes, &block)
               self << Components::Badge.new(parent: self, badge: badge, **attributes, &block)
             end

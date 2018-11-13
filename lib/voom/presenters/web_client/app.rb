@@ -16,7 +16,7 @@ module Voom
         set :root, File.expand_path('../../../../..', __FILE__)
         set :router_, WebClient::Router
         set :bind, '0.0.0.0'
-        set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE']||'mdc')}
+        set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE'] || 'mdc')}
         configure do
           enable :logging
         end
@@ -61,7 +61,7 @@ module Voom
             "v-#{comp.type}__secondary" if eq(comp.color, :secondary)
           end
 
-          def color_style(comp, affects=nil)
+          def color_style(comp, affects = nil)
             "#{affects}color: #{comp.color};" unless %w(primary secondary).include?(comp.color.to_s) || comp.color.nil?
           end
 
@@ -82,15 +82,27 @@ module Voom
 
           def transform(thing)
             case thing
-              when OpenStruct
-                to_hash(thing)
-              when Array
-                thing.map {|v| transform(v)}
-              else
-                thing
+            when OpenStruct
+              to_hash(thing)
+            when Array
+              thing.map {|v| transform(v)}
+            else
+              thing
             end
           end
 
+          def custom_css
+            custom_css_path = Presenters::Settings.config.presenters.web_client.custom_css
+            Dir.glob(custom_css_path).map do |file|
+              _build_css_link_(file)
+            end.join("\n") if custom_css_path
+          end
+
+          def _build_css_link_(path)
+            (<<~CSS)
+              <link rel="stylesheet" href="#{env['SCRIPT_NAME']}#{path.sub('public/','')}">
+            CSS
+          end
         end
 
         get '/' do
@@ -101,9 +113,9 @@ module Voom
 
         get '/:_presenter_' do
           fq_presenter = [params[:_presenter_], 'index'].join(':')
-          pass unless  Presenters::App.registered?(params[:_presenter_]) || Presenters::App.registered?(fq_presenter)
+          pass unless Presenters::App.registered?(params[:_presenter_]) || Presenters::App.registered?(fq_presenter)
           presenter = (Presenters::App.registered?(fq_presenter) ? Presenters::App[fq_presenter] :
-                          Presenters::App[params[:_presenter_]]).call
+                           Presenters::App[params[:_presenter_]]).call
           render_presenter(presenter)
         end
 
@@ -162,7 +174,7 @@ module Voom
 
         def scrub_context(params, _session, _env)
           %i(splat captures _presenter_ grid_nesting input_tag _namespace1_ _namespace2_).each do |key|
-            params.delete(key){params.delete(key.to_s)}
+            params.delete(key) {params.delete(key.to_s)}
           end
           params
         end
