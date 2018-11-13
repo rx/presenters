@@ -29,7 +29,9 @@ unless defined?(Voom::Presenters::Settings)
             #   }
             # end
             setting :prepare_context, []
+            # Application level assets locations
             setting     :custom_css, 'public/presenters/*.css'
+            setting     :custom_js,  'public/presenters/*.js'
           end
           setting :components do
             setting :defaults do

@@ -103,6 +103,19 @@ module Voom
               <link rel="stylesheet" href="#{env['SCRIPT_NAME']}#{path.sub('public/','')}">
             CSS
           end
+
+          def custom_js
+            custom_js_path = Presenters::Settings.config.presenters.web_client.custom_js
+            Dir.glob(custom_js_path).map do |file|
+              _build_script_tag_(file)
+            end.join("\n") if custom_js_path
+          end
+
+          def _build_script_tag_(path)
+            (<<~JS)
+            <script defer src="#{env['SCRIPT_NAME']}#{path.sub('public/','')}"></script>
+            JS
+          end
         end
 
         get '/' do
