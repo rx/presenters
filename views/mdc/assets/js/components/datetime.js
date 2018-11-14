@@ -33,6 +33,7 @@ export class VDateTime extends VTextField {
         this.fp.mdc_text_field = mdcComponent;
 
         element.addEventListener('click', () => this.toggle());
+        // element.addEventListener('change', () => this.checkDefaults());
     }
 
     clear() {
@@ -54,6 +55,23 @@ export class VDateTime extends VTextField {
     toggle() {
         this.fp.toggle();
     }
+
+    // checkDefaults() {
+    //     if(this.fp.config.mode = 'range'){
+    //         if(this.fp.selectedDates[1]){
+    //             // If we are in range mode and the endDate is defined as the beginning of the day, default it to be the
+    //             // end of the day.
+    //             let endDate = this.fp.selectedDates[1];
+    //             if(endDate.getHours() == 0 && endDate.getMinutes() == 0 && endDate.getSeconds() == 0 && endDate.getMilliseconds() == 0){
+    //                 endDate.setHours(23);
+    //                 endDate.setMinutes(59);
+    //                 endDate.setSeconds(59);
+    //                 endDate.getMilliseconds(9999);
+    //                 this.fp.setDate(this.fp.selectedDates)
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 export function initDateTime() {
