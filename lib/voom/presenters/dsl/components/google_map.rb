@@ -6,7 +6,7 @@ module Voom
       module Components
         class GoogleMap < Base
 
-          attr_reader :url, :google_api_key
+          attr_reader :url, :google_api_key, :height, :width
 
           def initialize(**attribs_, &block)
             super(type: :google_map, **attribs_, &block)
