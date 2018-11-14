@@ -82,16 +82,8 @@ export class VPosts extends VBase {
                         snackbarCallback(contentType,
                             httpRequest.responseText);
                         resolve(results);
-                    } else if (contentType.indexOf('application/json') !== -1) {
-                        results.push({
-                            action: 'posts',
-                            method: this.method,
-                            statusCode: httpRequest.status,
-                            contentType: contentType,
-                            content: httpRequest.responseText,
-                        });
-                        reject(results);
-                    } else {
+                    // Response is an html error page
+                    } else if (contentType && contentType.indexOf('text/html') !== -1){
                         document.open(contentType);
                         document.write(httpRequest.responseText);
                         document.close();
@@ -104,6 +96,15 @@ export class VPosts extends VBase {
                             responseURL: httpRequest.responseURL,
                         });
                         resolve(results);
+                    } else {
+                        results.push({
+                            action: 'posts',
+                            method: this.method,
+                            statusCode: httpRequest.status,
+                            contentType: contentType,
+                            content: httpRequest.responseText,
+                        });
+                        reject(results);
                     }
                 }
             };
