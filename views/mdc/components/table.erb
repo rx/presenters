@@ -1,4 +1,4 @@
-<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp<%= ' mdl-data-table--selectable' if comp.selectable %>">
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
   <% if comp.header %>
     <thead>
       <%= erb :"components/table/header", :locals => {:row=> comp.header} %>
@@ -10,4 +10,6 @@
       <% end %>
   </tbody>
 </table>
-<%# WIP = erb :"components/table/pagination", :locals => {} %>
+<% if comp.pagination %>
+  <%= erb :"components/table/pagination", :locals => {:comp=> comp.pagination} %>
+<% end %>

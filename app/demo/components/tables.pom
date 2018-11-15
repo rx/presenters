@@ -9,26 +9,77 @@ Voom::Presenters.define(:tables) do
   helpers do
     def items
       [
-          OpenStruct.new(material: 'Acrylic (Transparent)', quantity: 50, price: '$2.90'),
-          OpenStruct.new(material: 'Plywood (Birch)', quantity: 10, price: '$1.25'),
-          OpenStruct.new(material: 'Laminate (Gold on Blue)', quantity: 50, price: '$2.35')
+          OpenStruct.new(id: 1, material: 'Acrylic (Transparent)', quantity: 50, price: '$2.90'),
+          OpenStruct.new(id: 2, material: 'Plywood (Birch)', quantity: 10, price: '$1.25'),
+          OpenStruct.new(id: 3, material: 'Laminate (Gold on Blue)', quantity: 50, price: '$2.35')
+      ]
+    end
+
+    def drivers
+      [
+          OpenStruct.new(name: 'Kimi Räikkönen', team: 'Scuderia Ferrari', country: 'Finland'),
+          OpenStruct.new(name: 'Daniel Ricciardo', team: 'Red Bull', country: 'Australia'),
+          OpenStruct.new(name: 'Lewis Hamilton', team: 'Mercedes', country: 'Great Britain'),
+          OpenStruct.new(name: 'Fernando Alonso', team: 'Mclaren', country: 'Spain'),
+          OpenStruct.new(name: 'Charles LeClerc', team: 'Sauber', country: 'Monaco')
       ]
     end
   end
 
   indented_grid do
-    table selectable: true do
-      header do
-        column 'Material'
-        column 'Quantity'
-        column 'Unit price'
+    grid do
+      column 12 do
+        content id: :drivers do
+          title 'Non-Selectable'
+          table do
+            header do
+              column 'Name'
+              column 'Team'
+              column 'Country'
+            end
+            drivers.each do |driver|
+              row do
+                column driver.name
+                column driver.team
+                column driver.country
+              end
+            end
+            pagination page_size: 5,
+                       total: drivers.count,
+                       current_page: context.fetch(:page){ 1 },
+                       replace_id: 'drivers',
+                       replace_presenter: 'drivers_presenter'
+          end
+        end
       end
+    end
 
-      items.each do |item|
-        row do
-          column item.material
-          column item.quantity
-          column item.price
+    form do
+      grid do
+        column 12 do
+          title 'Selectable (with form)'
+          table selectable: true do
+            header do
+              column 'Material'
+              column 'Quantity'
+              column 'Unit price'
+            end
+            items.each do |item|
+              row name: :id, value: item.id do
+                column item.material
+                column item.quantity
+                column item.price
+              end
+            end
+          end
+        end
+        column 12 do
+          button 'SUBMIT', type: :raised do
+            event :click do
+              replaces  :context_list, :context_list
+            end
+          end
+          attach :context_list
         end
       end
     end
