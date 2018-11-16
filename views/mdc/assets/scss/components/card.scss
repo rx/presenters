@@ -35,7 +35,6 @@
 .v-card-title-position-bottom {
   position: absolute;
   bottom: 0;
-
 }
 
 //.v-card-overflow-menu {
@@ -51,4 +50,10 @@
   .v-button-icon-position-top {
     top: 8px;
   }
+}
+
+.v-card--actions {
+  margin-right: 10px;
+  margin-left: 10px;
+  position: relative;
 }

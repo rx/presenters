@@ -27,7 +27,7 @@
       end
     %>
       <div id="<%= col.id %>" class="v-column mdc-layout-grid__cell <%= span %>
-                          <%= _padding_classes_(col.padding, 0, :col) %>"
+                          <%= _padding_classes_(col.padding, 0, :col) %> v-column--relative"
            style="<%= "background-color: #{col.color};" if col.color %>">
         <%= erb :"components/render", :locals => {:components => col.components, :scope => nil} %>
       </div>

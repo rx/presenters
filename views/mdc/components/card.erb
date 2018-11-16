@@ -34,7 +34,7 @@
          action_buttons = comp.actions.buttons.select {|b| !eq(b.button_type, :icon)}
          action_icons = comp.actions.buttons.select {|b| eq(b.button_type, :icon)}
     %>
-      <div class="mdc-card__actions">
+      <div class="mdc-card__actions v-card--actions">
         <div class="mdc-card__action-buttons">
           <% action_buttons.each do |button| %>
             <%= erb :"components/button", :locals => {:comp => button, class_name: 'mdc-card__action mdc-card__action--button'} %>

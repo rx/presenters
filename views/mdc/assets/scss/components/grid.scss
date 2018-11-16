@@ -1,5 +1,9 @@
 @import "@material/layout-grid/mdc-layout-grid";
 
+.v-column--relative {
+  position: relative;
+}
+
 // Used to support side to side scrolling for wide grid elements.
 // Grids that contain a wide table use this.
 .v-grid__wide {
