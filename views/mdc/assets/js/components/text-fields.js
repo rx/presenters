@@ -8,11 +8,12 @@ export function initTextFields() {
     hookupComponents('.v-text-field', VTextField, MDCTextField);
 }
 
-export class VTextField extends visibilityObserverMixin(eventHandlerMixin(VBaseComponent)) {
+export class VTextField extends visibilityObserverMixin(
+    eventHandlerMixin(VBaseComponent)) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
         this.input = element.querySelector('input');
-        if(this.input == null){
+        if (this.input == null) {
             this.input = element.querySelector('textarea');
         }
         this.input.vComponent = this;
@@ -25,13 +26,13 @@ export class VTextField extends visibilityObserverMixin(eventHandlerMixin(VBaseC
     //    { email: ["email must be filled", "email must be from your domain"] }
     //    { :page: ["must be filled"] }
     validate(formData) {
-        console.log("TextField validate", formData);
+        console.log('TextField validate', formData);
         let isValid = this.input.checkValidity();
-        if(isValid) {
+        if (isValid) {
             return true;
         }
         let errorMessage = {};
-        errorMessage[this.input.id] =  [this.input.validationMessage];
+        errorMessage[this.input.id] = [this.input.validationMessage];
         return errorMessage;
     }
 
@@ -44,7 +45,7 @@ export class VTextField extends visibilityObserverMixin(eventHandlerMixin(VBaseC
                 var name = this.name();
                 var id = name + '_id';
                 params.push([id, key]);
-                console.log("TextField prepareSubmit added:" + id + '=' + key);
+                console.log('TextField prepareSubmit added:' + id + '=' + key);
             }
         }
         params.push([this.name(), this.value()]);
@@ -52,32 +53,33 @@ export class VTextField extends visibilityObserverMixin(eventHandlerMixin(VBaseC
 
     optionSelected() {
         var dataList = this.element.querySelector('datalist');
-        var parentElement = this.input;
-
-        // If we find the input inside our list, we submit the form
-        for (var element of dataList.children) {
-            if (element.value === parentElement.value) {
-                return element;
+        if (dataList) {
+            var parentElement = this.input;
+            // If we find the input inside our list, we submit the form
+            for (var element of dataList.children) {
+                if (element.value === parentElement.value) {
+                    return element;
+                }
             }
         }
         return null;
     }
 
-    name(){
+    name() {
         return this.input.name;
     }
 
-    value(){
+    value() {
         return this.input.value;
     }
 
-    clear(){
-        if(this.value()!=='') {
+    clear() {
+        if (this.value() !== '') {
             this.setValue('');
         }
     }
 
-    setValue(value){
+    setValue(value) {
         this.input.value = value;
     }
 }

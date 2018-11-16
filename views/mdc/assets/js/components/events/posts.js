@@ -57,7 +57,7 @@ export class VPosts extends VBase {
 
         let snackbarCallback = function(contentType, response) {
             let snackbar = document.querySelector('.mdc-snackbar').vComponent;
-            if (contentType.indexOf('application/json') !== -1) {
+            if (contentType && contentType.indexOf('application/json') !== -1) {
                 let messages = JSON.parse(response)['messages'];
                 if (snackbar && messages && messages['snackbar']) {
                     snackbar.display(messages['snackbar']);
