@@ -10,7 +10,7 @@ module Voom
 
           BUTTON_TYPES = %i(raised flat fab icon)
 
-          attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :position, :full_width
+          attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :position, :full_width, :hidden
 
           def initialize(type: nil, **attribs_, &block)
             @button_type = h(type) || ((attribs_[:icon] && !attribs_[:text]) ? :icon : nil) || :flat
@@ -19,6 +19,7 @@ module Voom
             @text = attribs.delete(:text)
             @color = attribs.delete(:color)
             @disabled = attribs.delete(:disabled) {false}
+            @hidden = attribs.delete(:hidden) {false}
             @size = attribs.delete(:size)
             @full_width = attribs.delete(:full_width) {false}
             @position = Array(attribs.delete(:position)).compact
