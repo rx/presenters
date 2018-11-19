@@ -28704,9 +28704,12 @@ var VPosts = function (_VBase) {
             var snackbarCallback = function snackbarCallback(contentType, response) {
                 var snackbar = document.querySelector('.mdc-snackbar').vComponent;
                 if (contentType && contentType.indexOf('application/json') !== -1) {
-                    var messages = JSON.parse(response)['messages'];
-                    if (snackbar && messages && messages['snackbar']) {
-                        snackbar.display(messages['snackbar']);
+                    var messages = JSON.parse(response).messages;
+                    if (snackbar && messages && messages.snackbar) {
+                        var message = messages.snackbar.join('<br/>');
+                        if (message !== '') {
+                            snackbar.display(message);
+                        }
                     }
                 }
             };
