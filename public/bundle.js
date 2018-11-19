@@ -8793,7 +8793,7 @@ var VTextField = function (_visibilityObserverMi) {
     _createClass(VTextField, [{
         key: 'validate',
         value: function validate(formData) {
-            console.log("TextField validate", formData);
+            console.log('TextField validate', formData);
             var isValid = this.input.checkValidity();
             if (isValid) {
                 return true;
@@ -8815,7 +8815,7 @@ var VTextField = function (_visibilityObserverMi) {
                     var name = this.name();
                     var id = name + '_id';
                     params.push([id, key]);
-                    console.log("TextField prepareSubmit added:" + id + '=' + key);
+                    console.log('TextField prepareSubmit added:' + id + '=' + key);
                 }
             }
             params.push([this.name(), this.value()]);
@@ -8824,36 +8824,36 @@ var VTextField = function (_visibilityObserverMi) {
         key: 'optionSelected',
         value: function optionSelected() {
             var dataList = this.element.querySelector('datalist');
-            var parentElement = this.input;
+            if (dataList) {
+                var parentElement = this.input;
+                // If we find the input inside our list, we submit the form
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
 
-            // If we find the input inside our list, we submit the form
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = dataList.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var element = _step.value;
-
-                    if (element.value === parentElement.value) {
-                        return element;
-                    }
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
                 try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
+                    for (var _iterator = dataList.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var element = _step.value;
+
+                        if (element.value === parentElement.value) {
+                            return element;
+                        }
                     }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
                 } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
                     }
                 }
             }
-
             return null;
         }
     }, {
@@ -28703,7 +28703,7 @@ var VPosts = function (_VBase) {
 
             var snackbarCallback = function snackbarCallback(contentType, response) {
                 var snackbar = document.querySelector('.mdc-snackbar').vComponent;
-                if (contentType.indexOf('application/json') !== -1) {
+                if (contentType && contentType.indexOf('application/json') !== -1) {
                     var messages = JSON.parse(response)['messages'];
                     if (snackbar && messages && messages['snackbar']) {
                         snackbar.display(messages['snackbar']);
