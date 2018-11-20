@@ -6878,9 +6878,6 @@ v-card-title-position-left {
   transform: scaleX(1) rotate(0deg);
   opacity: 1; }
 
-.v-checkbox__label {
-  line-height: 40px; }
-
 :root {
   --mdc-layout-grid-margin-desktop: 24px;
   --mdc-layout-grid-gutter-desktop: 24px;
@@ -11984,8 +11981,8 @@ select {
     cursor: default;
     pointer-events: none; }
 
-form .mdc-switch {
-  padding-bottom: 36px; }
+.mdc-form-field > label.v-switch__label {
+  padding-left: 11px; }
 
 .v-image-position-left {
   position: absolute;

@@ -197,18 +197,18 @@ var VBaseComponent = function () {
     return VBaseComponent;
 }();
 
-function hookupComponents(selector, voomClass, mdcClass) {
+function hookupComponents(selector, VoomClass, MdcClass) {
 
     var components = document.querySelectorAll(selector);
     for (var i = 0; i < components.length; i++) {
         var component = components[i];
         if (!component.mdcComponent) {
             var mdcInstance = null;
-            if (mdcClass != null) {
-                mdcInstance = new mdcClass(component);
+            if (MdcClass != null) {
+                mdcInstance = new MdcClass(component);
             }
             if (!component.vComponent) {
-                component.vComponent = new voomClass(component, mdcInstance);
+                component.vComponent = new VoomClass(component, mdcInstance);
             }
         }
     }
