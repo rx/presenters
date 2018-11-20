@@ -8,6 +8,7 @@
 
 <button id="<%= comp.id %>"
          class="mdc-button v-js-ripple-button <%=class_name%>
+         <%= 'v-hidden' if comp.hidden %>
           <%= 'mdc-button--raised' if eq(comp.button_type, :raised) %>
           <%= 'v-secondary-filled-button' if eq(comp.button_type, :raised) && eq(comp.color, :secondary) %>
           <%= 'v-secondary-text-button' if eq(comp.button_type, :flat) && eq(comp.color, :secondary) %>

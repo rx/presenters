@@ -27,7 +27,8 @@
 }
 
 .v-button-position-left {
-  float: left;
+  position: absolute;
+  left: 0;
 }
 
 .v-button-text-align-left {
@@ -35,7 +36,18 @@
 }
 
 .v-button-position-right {
-  float: right;
+  position: absolute;
+  right: 0
+}
+
+.v-button-position-top {
+  position: absolute;
+  top: 0
+}
+
+.v-button-position-bottom {
+  position: absolute;
+  bottom: 0
 }
 
 
@@ -60,4 +72,7 @@ v-card-title-position-left {
 
 }
 
+.v-button-full-width {
+  width: 100%;
+}
 

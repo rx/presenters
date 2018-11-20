@@ -5,7 +5,7 @@
 %>
 <% if comp
      position_classes = comp.position.map {|p| "v-button-position-#{p}"}.join(' ')
-     class_name = "#{class_name} #{position_classes}"
+     class_name = "#{class_name} #{position_classes} #{comp.full_width ? 'v-button-full-width' : nil}"
 %>
   <% if comp.menu %>
     <div class="mdc-menu-anchor" %>

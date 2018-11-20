@@ -6,7 +6,10 @@
 
 <button id="<%= comp.id %>"
         <%= data_attributes %>
-        class="mdl-button mdl-js-button mdl-button--icon  <%=class_name%> <%= position_classes %>
+        class="mdl-button mdl-js-button mdl-button--icon
+         <%= 'v-hidden' if comp.hidden %>
+         <%=class_name%>
+         <%= position_classes %>
          <%= 'mdl-button--colored' if eq(comp.color, :primary) %>
          <%= 'mdl-button--accent' if eq(comp.color, :secondary) %>
          <%= 'v-menu-click' if comp.menu%>"

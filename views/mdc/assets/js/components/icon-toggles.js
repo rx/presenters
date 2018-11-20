@@ -1,6 +1,6 @@
 import {MDCIconToggle} from '@material/icon-toggle';
-import {hookupComponents, VBaseComponent} from "./base-component";
-import {eventHandlerMixin} from "./mixins/event-handler";
+import {hookupComponents, VBaseComponent} from './base-component';
+import {eventHandlerMixin} from './mixins/event-handler';
 
 export function initIconToggles() {
     console.log('\tIcon Toggles');

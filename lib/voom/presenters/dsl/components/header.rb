@@ -15,7 +15,7 @@ module Voom
 
           def button(icon=nil, **attributes, &block)
             return @button if locked?
-            @button = Components::Button.new(icon: icon, position:[:top, :right], parent: self, **attributes, &block)
+            @button = Components::Button.new(icon: icon, parent: self, **attributes, &block)
           end
 
           def menu(**attribs, &block)

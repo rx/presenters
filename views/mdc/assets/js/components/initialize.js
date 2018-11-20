@@ -21,6 +21,7 @@ import {initHiddenFields} from './hidden-fields';
 import {initContent} from './content';
 import {initGrid} from './grid';
 import {initTabBars} from './tab-bars';
+import {initTables} from './data-tables';
 import {initFileInputs} from './file-inputs';
 
 export function initialize(){
@@ -47,6 +48,7 @@ export function initialize(){
     initContent();
     initGrid();
     initTabBars();
+    initTables();
     initFileInputs();
     // This needs to be last, because it relies on the components installed above.
     initEvents();

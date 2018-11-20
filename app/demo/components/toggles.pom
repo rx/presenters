@@ -24,7 +24,7 @@ Voom::Presenters.define(:toggles) do
     title 'SWITCH'
     grid do
       column 6 do
-          switch checked: true
+        switch checked: true
       end
     end
     grid do
@@ -35,6 +35,26 @@ Voom::Presenters.define(:toggles) do
     grid do
       column 6 do
         switch disabled: true
+      end
+    end
+    grid do
+      column 10, padding: :none do
+        switch text: "This is a long text label that should display even longer wraps to another line?"
+      end
+      column 10, padding: :none  do
+        checkbox text: "This is a long text label that should display even longer wraps to another line?"
+      end
+    end
+
+
+    button :on_dialog do
+      event :click do
+        dialog :toggle_dlg
+      end
+    end
+    dialog id: :toggle_dlg, width: '30rem' do
+      form do
+        switch name: :reset_password_email, checked: true, text: 'Send reset password email'
       end
     end
 
@@ -50,7 +70,7 @@ Voom::Presenters.define(:toggles) do
             replaces :context_list, :context_list
           end
         end
-       
+
         headline 'Posts in Form', level: 3
         body 'This demonstrates that a change event on **ANY** form input will send all the form inputs to the event action. '\
                  'This works with posts and replace actions'

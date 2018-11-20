@@ -1,8 +1,5 @@
 @import "@material/switch/mdc-switch";
 
-form {
-  .mdc-switch{
-    padding-bottom: 36px;
-  }
+.mdc-form-field > label.v-switch__label {
+    padding-left: 11px;
 }
-

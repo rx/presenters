@@ -11,7 +11,7 @@ module Voom
           def initialize(**attribs_, &block)
             super(type: :select, **attribs_, &block)
             @required = attribs.delete(:required)
-            @full_width = attribs.delete(:full_width) || true
+            @full_width = attribs.delete(:full_width){ true }
             @options = []
             expand!
           end
