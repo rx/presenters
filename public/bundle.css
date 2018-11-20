@@ -8848,8 +8848,7 @@ a.mdc-list-item {
   white-space: nowrap; }
 
 .v-list-switch-action {
-  padding-left: 6px;
-  padding-right: 6px; }
+  margin-left: 6px; }
 
 .mdc-list-item__secondary-text::before {
   content: unset; }
