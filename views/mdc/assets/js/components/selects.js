@@ -24,7 +24,7 @@ export class VSelect extends eventHandlerMixin(VBaseComponent) {
     }
 
     value() {
-        return this.select.options[this.select.selectedIndex].value;
+        return this.select.options.length === 0 ? null : this.select.options[this.select.selectedIndex].value;
     }
 
     clear() {
