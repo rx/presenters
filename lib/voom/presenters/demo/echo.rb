@@ -11,6 +11,11 @@ module Voom
           JSON.dump(params)
         end
 
+        post('/_echo_snackbar_') do
+          content_type :json
+          JSON.dump(messages:{snackbar: [params[:snackbar_echo]]})
+        end
+
         delete('/_echo_') do
           content_type :json
           JSON.dump(params)
