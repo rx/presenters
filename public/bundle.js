@@ -32221,7 +32221,7 @@ var VSelect = function (_eventHandlerMixin) {
     }, {
         key: 'value',
         value: function value() {
-            return this.select.options[this.select.selectedIndex].value;
+            return this.select.options.length === 0 ? null : this.select.options[this.select.selectedIndex].value;
         }
     }, {
         key: 'clear',
