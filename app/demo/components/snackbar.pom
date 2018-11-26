@@ -19,6 +19,16 @@ Voom::Presenters.define(:snackbar) do
         snackbar 'You clicked snackbar the button!'
       end
     end
+
+    blank
+
+    title 'Response from a POST'
+    body 'You can return a string or array of strings in your CRUD response (`messages.snackbar`) and it will display after the event fires.'
+    button 'Show Snackbar from Response' do
+      event :click do
+        posts '/_echo_snackbar_', snackbar_echo: 'Your operation succeeded!'
+      end
+    end
   end
 
   attach :code, file: __FILE__
