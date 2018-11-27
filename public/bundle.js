@@ -197,18 +197,18 @@ var VBaseComponent = function () {
     return VBaseComponent;
 }();
 
-function hookupComponents(selector, voomClass, mdcClass) {
+function hookupComponents(selector, VoomClass, MdcClass) {
 
     var components = document.querySelectorAll(selector);
     for (var i = 0; i < components.length; i++) {
         var component = components[i];
         if (!component.mdcComponent) {
             var mdcInstance = null;
-            if (mdcClass != null) {
-                mdcInstance = new mdcClass(component);
+            if (MdcClass != null) {
+                mdcInstance = new MdcClass(component);
             }
             if (!component.vComponent) {
-                component.vComponent = new voomClass(component, mdcInstance);
+                component.vComponent = new VoomClass(component, mdcInstance);
             }
         }
     }
@@ -28704,9 +28704,12 @@ var VPosts = function (_VBase) {
             var snackbarCallback = function snackbarCallback(contentType, response) {
                 var snackbar = document.querySelector('.mdc-snackbar').vComponent;
                 if (contentType && contentType.indexOf('application/json') !== -1) {
-                    var messages = JSON.parse(response)['messages'];
-                    if (snackbar && messages && messages['snackbar']) {
-                        snackbar.display(messages['snackbar']);
+                    var messages = JSON.parse(response).messages;
+                    if (snackbar && messages && messages.snackbar) {
+                        var message = messages.snackbar.join('<br/>');
+                        if (message !== '') {
+                            snackbar.display(message);
+                        }
                     }
                 }
             };
@@ -32086,7 +32089,7 @@ var VSelect = function (_eventHandlerMixin) {
     }, {
         key: 'value',
         value: function value() {
-            return this.select.options[this.select.selectedIndex].value;
+            return this.select.options.length === 0 ? null : this.select.options[this.select.selectedIndex].value;
         }
     }, {
         key: 'clear',

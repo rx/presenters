@@ -9,18 +9,18 @@ export class VBaseComponent {
     }
 }
 
-export function hookupComponents(selector, voomClass, mdcClass){
+export function hookupComponents(selector, VoomClass, MdcClass) {
 
-    var components = document.querySelectorAll(selector);
+    const components = document.querySelectorAll(selector);
     for (let i = 0; i < components.length; i++) {
-        let component = components[i];
-        if(!component.mdcComponent) {
+        const component = components[i];
+        if (!component.mdcComponent) {
             let mdcInstance = null;
-            if(mdcClass != null){
-                mdcInstance = new mdcClass(component);
+            if (MdcClass != null) {
+                mdcInstance = new MdcClass(component);
             }
             if (!component.vComponent) {
-                component.vComponent = new voomClass(component, mdcInstance);
+                component.vComponent = new VoomClass(component, mdcInstance);
             }
         }
     }

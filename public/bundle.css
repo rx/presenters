@@ -6458,13 +6458,23 @@ h1.v-page-title {
   --mdc-ripple-fg-opacity: 0.32; }
 
 .v-button-position-left {
-  float: left; }
+  position: absolute;
+  left: 0; }
 
 .v-button-text-align-left {
   padding-left: 0; }
 
 .v-button-position-right {
-  float: right; }
+  position: absolute;
+  right: 0; }
+
+.v-button-position-top {
+  position: absolute;
+  top: 0; }
+
+.v-button-position-bottom {
+  position: absolute;
+  bottom: 0; }
 
 v-card-title-position-left {
   position: absolute;
@@ -6481,6 +6491,9 @@ v-card-title-position-left {
 .v-button-icon-position-bottom {
   position: absolute;
   bottom: 0; }
+
+.v-button-full-width {
+  width: 100%; }
 
 @keyframes mdc-checkbox-unchecked-checked-checkmark-path {
   0%,
@@ -6864,9 +6877,6 @@ v-card-title-position-left {
 .mdc-checkbox__native-control:indeterminate ~ .mdc-checkbox__background .mdc-checkbox__mixedmark {
   transform: scaleX(1) rotate(0deg);
   opacity: 1; }
-
-.v-checkbox__label {
-  line-height: 40px; }
 
 :root {
   --mdc-layout-grid-margin-desktop: 24px;
@@ -7387,6 +7397,9 @@ v-card-title-position-left {
 .mdc-layout-grid--align-right {
   margin-right: 0;
   margin-left: auto; }
+
+.v-column--relative {
+  position: relative; }
 
 .v-grid__wide {
   overflow-y: hidden;
@@ -8835,8 +8848,7 @@ a.mdc-list-item {
   white-space: nowrap; }
 
 .v-list-switch-action {
-  padding-left: 6px;
-  padding-right: 6px; }
+  margin-left: 6px; }
 
 .mdc-list-item__secondary-text::before {
   content: unset; }
@@ -9210,6 +9222,9 @@ a.mdc-list-item {
 .v-typography-position-bottom {
   position: absolute;
   bottom: 0; }
+
+.v-typography-position-center {
+  text-align: center; }
 
 @keyframes mdc-select-float-native-control {
   0% {
@@ -9953,6 +9968,11 @@ select {
 
 .v-card__media-menu .v-button-icon-position-top {
   top: 8px; }
+
+.v-card--actions {
+  margin-right: 10px;
+  margin-left: 10px;
+  position: relative; }
 
 .mdc-snackbar {
   display: flex;
@@ -11960,8 +11980,8 @@ select {
     cursor: default;
     pointer-events: none; }
 
-form .mdc-switch {
-  padding-bottom: 36px; }
+.mdc-form-field > label.v-switch__label {
+  padding-left: 11px; }
 
 .v-image-position-left {
   position: absolute;
@@ -11980,6 +12000,11 @@ form .mdc-switch {
 .v-image-position-bottom {
   position: absolute;
   bottom: 0; }
+
+.v-image-position-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
 
 .v-icon-position-left {
   float: left;
@@ -12012,6 +12037,9 @@ form .mdc-switch {
   margin-top: -1px;
   margin-left: -1px;
   z-index: 989; }
+
+.v-content--relative {
+  position: relative; }
 
 .mdl-data-table .mdc-list-item__graphic {
   margin-right: 0px; }

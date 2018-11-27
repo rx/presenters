@@ -1,6 +1,6 @@
 ---
 root: true
-extends: airbnb-base
+extends: ["eslint:recommended", "google"]
 env:
   es6: true
   browser: true
@@ -10,3 +10,14 @@ rules:
     - warn
     - 4
   prefer-destructuring: off
+  brace-style:
+    - 2
+    - stroustrup
+    - allowSingleLine: false
+  require-jsdoc: 0
+  no-console: 0
+
+parserOptions:
+  sourceType: module
+
+

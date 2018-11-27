@@ -56,11 +56,14 @@ export class VPosts extends VBase {
         }
 
         let snackbarCallback = function(contentType, response) {
-            let snackbar = document.querySelector('.mdc-snackbar').vComponent;
+            const snackbar = document.querySelector('.mdc-snackbar').vComponent;
             if (contentType && contentType.indexOf('application/json') !== -1) {
-                let messages = JSON.parse(response)['messages'];
-                if (snackbar && messages && messages['snackbar']) {
-                    snackbar.display(messages['snackbar']);
+                const messages = JSON.parse(response).messages;
+                if (snackbar && messages && messages.snackbar) {
+                    const message = messages.snackbar.join('<br/>');
+                    if (message !== '') {
+                        snackbar.display(message);
+                    }
                 }
             }
         };

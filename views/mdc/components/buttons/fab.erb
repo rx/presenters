@@ -6,7 +6,10 @@
 
 <button id="<%= comp.id %>"
         <%= data_attributes %>
-        class="mdc-fab material-icons v-fab--absolute v-js-ripple-button <%= class_name %> <%= position_classes %>
+        class="mdc-fab material-icons v-fab--absolute v-js-ripple-button
+          <%= 'v-hidden' if comp.hidden %>
+          <%= class_name %>
+          <%= position_classes %>
           <%= 'mdc-fab--mini' if eq(comp.size, :small) %>"
         aria-label="<%= inflector.humanize(comp.icon.icon) %>"
         <%= 'disabled' if comp.disabled %>

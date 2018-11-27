@@ -108,6 +108,7 @@ module Voom
               previous_button_icon
               next_button_icon
               per_page_select
+              range
               expand!
             end
 
@@ -130,7 +131,7 @@ module Voom
 
             def per_page_select
               return @per_page if locked?
-              @per_page = select(@page_size_options, @page_size, total_pages)
+              @per_page = select(@page_size_options, @page_size, @total)
             end
 
             private
@@ -148,15 +149,15 @@ module Voom
               end
             end
 
-            def select(options, current_option, total_pages, replace_id = @replace_id, replace_presenter = @replace_presenter)
+            def select(options, current_option, total_records, replace_id = @replace_id, replace_presenter = @replace_presenter)
               __attribs__ = attribs.reject{|key,val| [:page_size, :page].include? key }
               Components::Select.new(parent: self, name: :page_size, full_width: false) do
                 options.each do |num|
-                  break if num > total_pages
                   option selected: (num == current_option) do
                     text num
                     value num
                   end
+                  break if num > total_records
                 end
                 event :change do
                   replaces replace_id, replace_presenter, __attribs__.merge(page_size: context[:page_size])

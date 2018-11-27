@@ -10,29 +10,31 @@ module Voom
 
           BUTTON_TYPES = %i(raised flat fab icon)
 
-          attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :position
+          attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :position, :full_width, :hidden
 
           def initialize(type: nil, **attribs_, &block)
-            @button_type = h(type) || ((attribs_[:icon]&&!attribs_[:text]) ? :icon : nil) || :flat
+            @button_type = h(type) || ((attribs_[:icon] && !attribs_[:text]) ? :icon : nil) || :flat
             super(type: :button, **attribs_, &block)
             self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
             @text = attribs.delete(:text)
             @color = attribs.delete(:color)
-            @disabled = attribs.delete(:disabled) { false }
+            @disabled = attribs.delete(:disabled) {false}
+            @hidden = attribs.delete(:hidden) {false}
             @size = attribs.delete(:size)
+            @full_width = attribs.delete(:full_width) {false}
             @position = Array(attribs.delete(:position)).compact
             expand!
             @event_parent_id = self.parent(:form)&.id || id
           end
 
-          def icon(icon=nil, **attribs, &block)
+          def icon(icon = nil, **attribs, &block)
             return @icon if locked?
             @icon = Components::Icon.new(parent: self, icon: icon,
                                          **attribs, &block)
 
           end
 
-          def image(image=nil, **attribs, &block)
+          def image(image = nil, **attribs, &block)
             return @image if locked?
             @image = Components::Image.new(parent: self, image: image, **attribs, &block)
           end
@@ -43,6 +45,7 @@ module Voom
           end
 
           private
+
           def menu_position
             position.include?(:right) ? :right : nil
           end
