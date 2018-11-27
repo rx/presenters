@@ -28,8 +28,9 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency  'tzinfo', '~>1.2'
   spec.add_runtime_dependency  'tzinfo-data', '~>1.2018'
   spec.add_runtime_dependency  'redcarpet', '~>3.4'
-  
+
   spec.add_development_dependency 'rack-test', '~>0.8'
+  spec.add_development_dependency 'rack', '>= 2.0.6'
   spec.add_development_dependency 'pry', '~>0.10'
   spec.add_development_dependency 'bundler', '~> 1.13'
   spec.add_development_dependency 'rake', '~> 11.3'
