@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/rx/presenters/tree/HEAD)
-
-[Full Changelog](https://github.com/rx/presenters/compare/v0.2.0...HEAD)
+## [v0.2.0](https://github.com/rx/presenters/tree/v0.2.0) (2018-11-28)
+[Full Changelog](https://github.com/rx/presenters/compare/v0.1.13...v0.2.0)
 
 **Closed issues:**
 
@@ -11,6 +10,7 @@
 - All form buttons are rendered as submit buttons [\#40](https://github.com/rx/presenters/issues/40)
 - Double parameters + 'null' parameters [\#36](https://github.com/rx/presenters/issues/36)
 - All web client requests specify Accept: \*/\* [\#30](https://github.com/rx/presenters/issues/30)
+- Create ContainerBase class [\#21](https://github.com/rx/presenters/issues/21)
 
 **Merged pull requests:**
 
@@ -46,16 +46,6 @@
 - Dry up javascript [\#28](https://github.com/rx/presenters/pull/28) ([kgrafius](https://github.com/kgrafius))
 - Dry up javascript [\#27](https://github.com/rx/presenters/pull/27) ([kgrafius](https://github.com/kgrafius))
 - Mdc tabs [\#25](https://github.com/rx/presenters/pull/25) ([kgrafius](https://github.com/kgrafius))
-
-## [v0.2.0](https://github.com/rx/presenters/tree/v0.2.0) (2018-09-19)
-[Full Changelog](https://github.com/rx/presenters/compare/v0.1.13...v0.2.0)
-
-**Closed issues:**
-
-- Create ContainerBase class [\#21](https://github.com/rx/presenters/issues/21)
-
-**Merged pull requests:**
-
 - Refactor of tags to work with components of any kind. [\#24](https://github.com/rx/presenters/pull/24) ([rx](https://github.com/rx))
 - Slider event handling [\#22](https://github.com/rx/presenters/pull/22) ([kgrafius](https://github.com/kgrafius))
 - Removed context as a passed parameter to components. [\#19](https://github.com/rx/presenters/pull/19) ([rx](https://github.com/rx))
@@ -133,7 +123,7 @@
 # HISTORY
 This is the manual changelog, managed before switching to github_changelog_generator.
 
-## 2018-09-18
+## [0.2.00] - 2018-09-18
 ### Added
 - This change log
 - [Namespaces]
@@ -175,6 +165,7 @@ This is the manual changelog, managed before switching to github_changelog_gener
 - Context is no longer copied and it is not included in the pom json
 - List - selected lists can render selected with the checked option
 
+[Unreleased]: https://github.com/rx/presenters/compare/v0.1.14...HEAD 
 [0.1.14]: https://github.com/rx/presenters/compare/v0.1.14...v0.1.13
 [Namespaces]: https://powerful-bastion-96181.herokuapp.com/namespaces
 [Stepper]: https://powerful-bastion-96181.herokuapp.com/steppers
