@@ -12,6 +12,7 @@ require 'voom/presenters/dsl/components/mixins/sliders'
 require 'voom/presenters/dsl/components/mixins/chips'
 require 'voom/presenters/dsl/components/mixins/icons'
 require 'voom/presenters/dsl/components/mixins/dialogs'
+require 'voom/presenters/dsl/components/mixins/file_inputs'
 
 module Voom
   module Presenters
@@ -29,6 +30,7 @@ module Voom
           include Mixins::Chips
           include Mixins::Icons
           include Mixins::Dialogs
+          include Mixins::FileInputs
 
           attr_reader :hidden, :float, :components, :shows_errors
          
