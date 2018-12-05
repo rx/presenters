@@ -29,7 +29,7 @@
             <% comp.buttons.each do |button| %>
               <%= erb :"components/button",
                       :locals => {:comp => button,
-                                  :class_name => "mdc-dialog__button #{eq(button.button_type, :raised) ? 'mdc-dialog__button--default' : nil}",
+                                  :class_name => "mdc-dialog__button",
                                   :data_attributes => "data-mdc-dialog-action='#{button.id}'"} %>
             <% end %>
           </footer>
