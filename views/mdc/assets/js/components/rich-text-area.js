@@ -1,4 +1,6 @@
 import Quill from "quill";
+import {hookupComponents, VBaseComponent} from "./base-component";
+import {eventHandlerMixin} from "./mixins/event-handler";
 
 var toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -22,22 +24,42 @@ var toolbarOptions = [
 
 export function initRichTextArea() {
     console.log('\tRich Text Area');
-    let components = document.querySelectorAll('.v-rich-text-area');
-    for (let i = 0; i < components.length; i++) {
-        let component = components[i];
-        let form = component.closest('form');
-        if (!component.vComponent) {
-            component.vComponent = new Quill(component, {
-                modules: {
-                    toolbar: toolbarOptions
-                },
-                theme: 'snow',
-                placeholder: component.dataset.placeholder
-            });
-            let input = document.querySelector('input[name=' + component.dataset.name + ']');
-            component.vComponent.on('text-change', function(){
-                input.value = component.vComponent.root.innerHTML;
-            });
+    hookupComponents('.v-rich-text-area-container', VRichTextArea, null);
+}
+
+export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
+    constructor(element, mdcComponent) {
+        super(element, mdcComponent);
+
+        this.quillEditorElement = element.querySelector('.v-rich-text-area');
+        this.quill = new Quill(this.quillEditorElement, {
+            modules: {
+                toolbar: toolbarOptions
+            },
+            theme: 'snow',
+            placeholder: this.quillEditorElement.dataset.placeholder
+        });
+    }
+
+    prepareSubmit(params) {
+        params.push([this.name(), this.value()]);
+    }
+
+    name() {
+        return this.quillEditorElement.dataset.name;
+    }
+
+    value() {
+        return this.quill.root.innerHTML;
+    }
+
+    clear() {
+        if (this.value() !== '') {
+            this.setValue('');
         }
+    }
+
+    setValue(value) {
+        this.quill.root.innerHTML = value;
     }
 }

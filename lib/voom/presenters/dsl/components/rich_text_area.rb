@@ -15,8 +15,7 @@ module Voom
           end
 
           def height
-            return @height if locked?
-            @height = "#{@rows * 12}px"
+            @height ||= "#{@rows * 24}px"
           end
 
         end

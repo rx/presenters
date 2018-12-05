@@ -4,8 +4,6 @@
 .mdc-select__native-control {
   -webkit-appearance: none;
   -moz-appearance: none;
-  border-bottom: 1px solid;
-  border-radius: 0;
 }
 
 select {
@@ -13,6 +11,11 @@ select {
   font-size: 14px;
   line-height: 1.15;
   margin: 0;
+}
+
+.v-select {
+  margin-top: 16px;
+  margin-bottom: 8px;
 }
 
 .mdc-select__label--float-above {

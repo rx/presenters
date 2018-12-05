@@ -6,12 +6,13 @@ module Voom
       module Components
         class Select < Input
 
-          attr_reader :required, :full_width, :options
+          attr_reader :required, :full_width, :options, :outlined
 
           def initialize(**attribs_, &block)
             super(type: :select, **attribs_, &block)
             @required = attribs.delete(:required)
             @full_width = attribs.delete(:full_width){ true }
+            @outlined = attribs.delete(:outlined){ true }
             @options = []
             expand!
           end
@@ -19,12 +20,6 @@ module Voom
           def label(text=nil)
             return @label if locked?
             @label = text
-          end
-
-          def icon(icon=nil, **attribs, &block)
-            return @icon if locked?
-            @icon = Components::Icon.new(parent: self, icon: icon,
-                                         **attribs, &block)
           end
 
           def option(text=nil, **attribs, &block)

@@ -1,27 +1,33 @@
-<% if comp
-  float_label = comp.options.select{|o| o.selected }.any?
-%>
-  <div class="v-select mdc-select v-input"
-       <% if comp.tag %>
-       data-input-tag="<%= comp.tag %>"
-       <% end %>
-       <%= 'style="width: 100%;"' if comp.full_width %> <%= "#{comp.full_width}" %>>
-    <select id="<%= comp.id %>"
-            name="<%= comp.name%>"
-            class="mdc-select__native-control"
-            <%= erb(:"components/event", locals: {events: comp.events,
-                                                  parent_id: comp.id}) %>>
-      <% comp.options.each do |option| %>
-        <option value="<%= option.value %>"
-                <%= 'disabled' if option.disabled %>
-                <%= 'selected' if option.selected %>>
-          <%= option.text %>
-        </option>
-      <% end %>
-    </select>
-    <label class="mdc-floating-label
-               <%= 'mdc-floating-label--float-above' if float_label%>"><%= comp.label %></label>
-    <div class="mdc-select__bottom-line"></div>
-  </div>
-  <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
-<% end %>
+<% float_label = comp.options.select{|o| o.selected }.any? %>
+<div class="mdc-select <%= 'mdc-select--outlined' if comp.outlined %> v-select v-input"
+     <% if comp.tag %>
+     data-input-tag="<%= comp.tag %>"
+     <% end %>
+     <%= 'style="width: 100%;"' if comp.full_width %>>
+  <i class="mdc-select__dropdown-icon"></i>
+  <select id="<%= comp.id %>"
+          <% if comp.name %> name="<%= comp.name %>" <% end %>
+          class="mdc-select__native-control"
+          <%= erb(:"components/event", locals: {events: comp.events,
+                                                parent_id: comp.id}) %>>
+    <% comp.options.each do |option| %>
+      <option value="<%= option.value %>"
+              <%= 'disabled' if option.disabled %>
+              <%= 'selected' if option.selected %>>
+        <%= option.text %>
+      </option>
+    <% end %>
+  </select>
+  <label class="mdc-floating-label <%= 'mdc-floating-label--float-above' if float_label %>"><%= comp.label %></label>
+  <% if comp.outlined %>
+    <div class="mdc-notched-outline">
+      <svg>
+        <path class="mdc-notched-outline__path"></path>
+      </svg>
+    </div>
+    <div class="mdc-notched-outline__idle"></div>
+  <% else %>
+    <div class="mdc-line-ripple"></div>
+  <% end %>
+</div>
+<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
