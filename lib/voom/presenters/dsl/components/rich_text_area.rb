@@ -14,8 +14,14 @@ module Voom
             expand!
           end
 
-          def height
+          def height(height=nil)
+            return @height if locked?
             @height ||= "#{@rows * 24}px"
+          end
+
+          def value(value=nil)
+            return @value if locked?
+            @value = value
           end
 
         end
