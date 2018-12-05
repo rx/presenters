@@ -26,7 +26,7 @@
         </div>
         <% if comp.buttons.any? %>
           <footer class="mdc-dialog__actions">
-            <% comp.buttons.reverse.each do |button| %>
+            <% comp.buttons.each do |button| %>
               <%= erb :"components/button",
                       :locals => {:comp => button,
                                   :class_name => "mdc-dialog__button #{eq(button.button_type, :raised) ? 'mdc-dialog__button--default' : nil}",
