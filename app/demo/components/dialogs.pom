@@ -14,8 +14,8 @@ Voom::Presenters.define(:dialogs) do
     end
 
     dialog id: :hold_on do
-      title "MDL Dialog"
-      body 'This is an example of the Material Design Lite dialog component. Please use responsibly.'
+      title "MDC Dialog"
+      body 'This is an example of the Material Design Compoents for the web dialog component. Please use responsibly.'
 
       button 'Disabled action', disabled: true
       button 'Close'
