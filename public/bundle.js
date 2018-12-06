@@ -39831,6 +39831,7 @@ var VMenu = function (_eventHandlerMixin) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__material_select__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__ = __webpack_require__(136);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39843,13 +39844,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
 function initSelects() {
     console.log('\tSelects');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])('.v-select', VSelect, __WEBPACK_IMPORTED_MODULE_0__material_select__["MDCSelect"]);
 }
 
-var VSelect = function (_eventHandlerMixin) {
-    _inherits(VSelect, _eventHandlerMixin);
+var VSelect = function (_visibilityObserverMi) {
+    _inherits(VSelect, _visibilityObserverMi);
 
     function VSelect(element, mdcComponent) {
         _classCallCheck(this, VSelect);
@@ -39858,6 +39860,7 @@ var VSelect = function (_eventHandlerMixin) {
 
         _this.select = element.querySelector('select');
         _this.select.vComponent = _this;
+        _this.recalcWhenVisible(_this);
         return _this;
     }
 
@@ -39898,7 +39901,7 @@ var VSelect = function (_eventHandlerMixin) {
     }]);
 
     return VSelect;
-}(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]));
+}(Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__["a" /* visibilityObserverMixin */])(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */])));
 
 /***/ }),
 /* 374 */

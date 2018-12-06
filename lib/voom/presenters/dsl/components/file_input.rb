@@ -15,6 +15,12 @@ module Voom
 
             expand!
           end
+
+          def hint(hint=nil)
+            return @hint if locked?
+            @hint = hint
+          end
+
         end
       end
     end
