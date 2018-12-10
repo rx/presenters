@@ -7,7 +7,7 @@ module Voom
       module Components
         class IconBase < EventBase
           include Mixins::Tooltips
-          attr_reader :icon, :color, :size, :position
+          attr_reader :icon, :color, :size, :position, :hidden
 
           def initialize(**attribs_, &block)
             super(type: :icon,
@@ -15,6 +15,7 @@ module Voom
             @icon = attribs.delete(:icon)
             @color    = attribs.delete(:color)
             @size    = attribs.delete(:size)
+            @hidden = attribs.delete(:hidden) {false}
             @position    = Array(attribs.delete(:position)).compact
           end
         end
