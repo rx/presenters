@@ -13,17 +13,22 @@
   <span class="mdc-list-item__text
                <%= 'v-actionable' if line.events %>
                <%= 'v-menu-click' if line.menu && line.actions.any? %>">
-    <span class="mdc-list-item__primary-text"><%= expand_text(line.text&.text) %></span>
+
+    <% if line.text %>
+      <span class="mdc-list-item__primary-text">
+        <%= expand_text(line.text&.text) %>
+      </span>
+    <% end %>
 
     <% if line.subtitle %>
       <span class="mdc-list-item__secondary-text">
-        <%= expand_text(line.subtitle.text) %>
+        <%= expand_text(line.subtitle&.text) %>
       </span>
     <% end %>
 
     <% if line.body %>
       <span class="mdc-list-item__secondary-text">
-        <%= expand_text(line.body.text) %>
+        <%= expand_text(line.body&.text) %>
       </span>
     <% end %>
   </span>

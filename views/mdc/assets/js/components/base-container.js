@@ -26,6 +26,13 @@ export class VBaseContainer extends VBaseComponent {
         }
     }
 
+    show() {
+        for (const input of this.inputs()) {
+            if (input.vComponent && input.vComponent.show) {
+                input.vComponent.show();
+            }
+        }
+    }
     // Called whenever a container is about to be submitted.
     // returns true on success
     // returns on failure return an error object that can be processed by VErrors:

@@ -82,4 +82,5 @@ export class VTextField extends visibilityObserverMixin(
     setValue(value) {
         this.input.value = value;
     }
+    show() {this.mdcComponent.layout();}
 }

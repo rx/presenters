@@ -1,8 +1,12 @@
-<div id="<%= comp.id %>"
+<% if comp
+     position_classes = comp.position.map {|p| "v-content-position-#{p}"}.join(' ')
+%>
+  <div id="<%= comp.id %>"
      <% if comp.tag %>
      data-input-tag="<%= comp.tag %>"
      <% end %>
      class="v-content
+            <%= position_classes %>
             <%= 'v-hidden' if comp.hidden %>
             <%= comp.float  ? 'v-content--float' : 'v-content--relative'%>
                ">
@@ -14,3 +18,4 @@
     </div>
   <% end %>
 </div>
+<% end %>

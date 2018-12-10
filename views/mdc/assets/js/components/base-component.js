@@ -7,6 +7,8 @@ export class VBaseComponent {
     validate(formData) {
         return true;
     }
+    show() {}
+    hide() {}
 }
 
 export function hookupComponents(selector, VoomClass, MdcClass) {

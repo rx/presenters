@@ -21,6 +21,9 @@ export class VToggleVisibility  {
                 } else {
                     elem.classList.toggle("v-hidden");
                 }
+                if(elem && elem.vComponent && elem.vComponent.show){
+                    elem.classList.contains('v-hidden') ?  elem.vComponent.hide() : elem.vComponent.show();
+                }
                 results.push({action:'toggle_visibility', statusCode: 200});
                 resolve(results);
             }, delayAmt);

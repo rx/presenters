@@ -12903,6 +12903,22 @@ select {
 .v-content--relative {
   position: relative; }
 
+.v-content-position-left {
+  position: absolute;
+  left: 0; }
+
+.v-content-position-right {
+  position: absolute;
+  right: 0; }
+
+.v-content-position-top {
+  position: absolute;
+  top: 0; }
+
+.v-content-position-bottom {
+  position: absolute;
+  bottom: 0; }
+
 .mdl-data-table .mdc-list-item__graphic {
   margin-right: 0px; }
 
