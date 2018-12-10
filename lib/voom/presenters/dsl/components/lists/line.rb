@@ -20,10 +20,10 @@ module Voom
               super(type: :line, **attribs_, &block)
               @selected = attribs.delete(:selected) {false}
               @selectable = attribs.delete(:selectable) {false}
-              self.text(attribs.delete(:text)) if attribs.key?(:text) && attribs.fetch(:text).present?
-              self.subtitle(attribs.delete(:subtitle)) if attribs.key?(:subtitle) && attribs.fetch(:subtitle).present?
-              self.info(attribs.delete(:info)) if attribs.key?(:info) && attribs.fetch(:info).present?
-              self.body(attribs.delete(:body)) if attribs.key?(:body) && attribs.fetch(:body).present?
+              self.text(attribs.delete(:text)) unless attribs.fetch(:text){nil}.nil?
+              self.subtitle(attribs.delete(:subtitle)) unless attribs.fetch(:subtitle){nil}.nil?
+              self.info(attribs.delete(:info)) unless attribs.fetch(:info){nil}.nil?
+              self.body(attribs.delete(:body)) unless attribs.fetch(:body){nil}.nil?
               self.avatar(attribs.delete(:avatar)) if attribs.key?(:avatar)
               self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
               self.checkbox(attribs.delete(:checkbox)) if attribs.key?(:checkbox) && !@selectable
