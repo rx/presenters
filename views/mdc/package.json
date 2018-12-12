@@ -11,7 +11,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "css-loader": "^0.28.11",
-    "eslint": "^5.9.0",
+    "eslint": "^5.10.0",
     "eslint-config-google": "^0.11.0",
     "eslint-plugin-import": "^2.14.0",
     "extract-loader": "^2.0.1",
@@ -25,7 +25,11 @@
     "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
-    "@material/base": "^0.41.00",
+    "@material/notched-outline": "^0.41.0",
+    "@material/line-ripple": "^0.41.0",
+    "@material/elevation": "^0.41.0",
+    "@material/animation": "^0.41.0",
+    "@material/base": "^0.41.0",
     "@material/button": "^0.41.0",
     "@material/card": "^0.41.0",
     "@material/chips": "^0.41.0",
@@ -36,6 +40,7 @@
     "@material/layout-grid": "^0.41.0",
     "@material/list": "^0.41.0",
     "@material/menu": "^0.41.0",
+    "@material/menu-surface": "^0.41.0",
     "@material/radio": "^0.41.0",
     "@material/ripple": "^0.41.0",
     "@material/select": "^0.41.0",
@@ -43,6 +48,7 @@
     "@material/snackbar": "^0.41.0",
     "@material/switch": "^0.41.0",
     "@material/tab-bar": "^0.41.0",
+    "@material/tab-scroller": "^0.41.0",
     "@material/textfield": "^0.41.0",
     "@material/toolbar": "^0.41.0",
     "@material/typography": "^0.41.0",
@@ -51,7 +57,7 @@
     "flatpickr": "^4.5.2",
     "material-design-lite": "^1.3.0",
     "mdl-stepper": "^1.1.6",
-    "npm": "^6.4.1",
+    "npm": "^6.5.0",
     "quill": "^1.3.6",
     "url-parse": "^1.4.4"
   }
