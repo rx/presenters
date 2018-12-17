@@ -56027,8 +56027,8 @@ var VRichTextArea = function (_eventHandlerMixin) {
             modules: {
                 toolbar: toolbarOptions
             },
-            theme: 'snow',
-            placeholder: _this.quillEditorElement.dataset.placeholder
+            theme: 'snow' //,
+            // placeholder: this.quillEditorElement.dataset.placeholder
         });
         return _this;
     }

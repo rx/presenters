@@ -81,6 +81,11 @@ module Voom
                                       **attribs, &block)
             end
 
+            def subtitle(*text, **attribs, &block)
+              return @subtitle if locked?
+              @subtitle = Components::Typography.new(parent: self, type: :subtitle, text: text, **attribs, &block)
+            end
+
             def image(image=nil, **attribs, &block)
               return @image if locked?
               @image = Image.new(parent: self, image: image, **attribs, &block)

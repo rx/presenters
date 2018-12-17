@@ -36,8 +36,8 @@ export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
             modules: {
                 toolbar: toolbarOptions
             },
-            theme: 'snow',
-            placeholder: this.quillEditorElement.dataset.placeholder
+            theme: 'snow'//,
+            // placeholder: this.quillEditorElement.dataset.placeholder
         });
     }
 
