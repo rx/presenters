@@ -5,7 +5,7 @@ module WebClient
     class Post
       def call(action, parent_id, *)
         action_params = action.params.to_h.deep_transform_values do |v|
-          v.respond_to?(:to_h) ? v.to_h : v
+          v.respond_to?(:to_hash) ? v.to_hash : v
         end
 
         # Type, URL, Options, Params, Headers (passed into javascript event/action classes)
