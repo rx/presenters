@@ -10,6 +10,7 @@ require 'voom/presenters/dsl/components/actions/snackbar'
 require 'voom/presenters/dsl/components/actions/clear'
 require 'voom/presenters/dsl/components/actions/navigates'
 require 'voom/presenters/dsl/components/actions/stepper'
+require_relative 'mixins/last_response'
 
 module Voom
   module Presenters
@@ -103,7 +104,7 @@ module Voom
             @actions << Actions::Snackbar.new(parent: self,
                                                params: params.merge(text: text), &block)
           end
-          
+
           def navigates(direction, **params, &block)
             @actions << Actions::Navigates.new(parent: self,
                                                params: params.merge(direction: direction), &block)
@@ -130,6 +131,8 @@ module Voom
           def alias_event(event)
             EVENT_MAP.fetch(event.to_sym){event.to_sym}
           end
+
+          include Voom::Presenters::DSL::Components::Mixins::LastResponse
         end
       end
     end

@@ -1,0 +1,18 @@
+Voom::Presenters.define(:last_response) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :events_drawer
+
+  indented_grid do
+    heading 'Last Response'
+    body 'You can access the last response and forward its data to another command.'
+
+    button 'quote' do
+      event :click do
+        posts '_echo_', {quote: 'Compromise is the shared hypotenuse of the conjoined triangles of success.'}
+        snackbar last_response.quote
+      end
+    end
+  end
+  attach :code, file: __FILE__
+end
