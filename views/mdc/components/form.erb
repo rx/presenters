@@ -19,11 +19,11 @@
   <div class="v-errors">
     <%= erb :"components/render", :locals => {:components => comp.components.select {|c| !eq(c.type, :button)}, :scope => nil} %>
     <% if buttons?(comp.components) %>
-      <div class="mdl-dialog__actions">
+      <footer class="mdc-dialog__actions">
         <% buttons(comp.components).reverse.each do |button| %>
           <%= erb :"components/button", :locals => {:comp => button} %>
         <% end %>
-      </div>
+      </footer>
     <% end %>
   </div>
 </form>
