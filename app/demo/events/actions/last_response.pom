@@ -5,12 +5,13 @@ Voom::Presenters.define(:last_response) do
 
   indented_grid do
     heading 'Last Response'
-    body 'You can access the last response and forward its data to another command.'
+    body 'You can access the last response and forward its data to a snackbar or posts|updates|deletes.'
 
     button 'quote' do
       event :click do
         posts '_echo_', {quote: 'Compromise is the shared hypotenuse of the conjoined triangles of success.'}
-        snackbar last_response.quote
+        posts '_echo_', echo: {quote: last_response.quote}, headers: {'X-Custom'=>'Boom!'}
+        snackbar last_response.echo.quote
       end
     end
   end

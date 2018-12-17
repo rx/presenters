@@ -36,7 +36,7 @@ module Voom
             end
 
             def last_response(index=0)
-              @_last_response_ ||= ActionParameter.new(index)
+              ActionParameter.new(index)
             end
           end
         end

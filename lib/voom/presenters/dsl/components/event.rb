@@ -45,26 +45,29 @@ module Voom
           end
 
           # Method can be one of :post, :put, :delete or :patch
-          def posts(path, input_tag: nil, **params, &block)
+          def posts(path, input_tag: nil, headers: nil, **params, &block)
             @actions << Actions::Posts.new(parent: self,
                                                path: path,
                                                input_tag: input_tag,
+                                               headers: headers,
                                                params: params, &block)
           end
 
           alias creates posts
 
-          def updates(path, input_tag: nil, **params, &block)
+          def updates(path, input_tag: nil, headers: nil, **params, &block)
             @actions << Actions::Updates.new(parent: self,
                                                path: path,
                                                input_tag: input_tag,
+                                               headers: headers,
                                                params: params, &block)
           end
 
-          def deletes(path, input_tag: nil, **params, &block)
+          def deletes(path, input_tag: nil, headers: nil, **params, &block)
             @actions << Actions::Deletes.new(parent: self,
                                                path: path,
                                                input_tag: input_tag,
+                                               headers: headers,
                                                params: params, &block)
           end
 

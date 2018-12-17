@@ -24,7 +24,7 @@ module Voom
 
             private
             def extract_options!
-              %i(path presenter target input_tag).each do |option|
+              %i(path presenter target input_tag headers).each do |option|
                 optionValue = attribs.delete(option)
                 @options.merge!({option => optionValue}) if optionValue
               end
