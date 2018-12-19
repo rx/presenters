@@ -11,6 +11,7 @@ require 'voom/presenters/dsl/components/actions/snackbar'
 require 'voom/presenters/dsl/components/actions/clear'
 require 'voom/presenters/dsl/components/actions/navigates'
 require 'voom/presenters/dsl/components/actions/stepper'
+require_relative 'mixins/last_response'
 
 module Voom
   module Presenters
@@ -45,26 +46,29 @@ module Voom
           end
 
           # Method can be one of :post, :put, :delete or :patch
-          def posts(path, input_tag: nil, **params, &block)
+          def posts(path, input_tag: nil, headers: nil, **params, &block)
             @actions << Actions::Posts.new(parent: self,
                                                path: path,
                                                input_tag: input_tag,
+                                               headers: headers,
                                                params: params, &block)
           end
 
           alias creates posts
 
-          def updates(path, input_tag: nil, **params, &block)
+          def updates(path, input_tag: nil, headers: nil, **params, &block)
             @actions << Actions::Updates.new(parent: self,
                                                path: path,
                                                input_tag: input_tag,
+                                               headers: headers,
                                                params: params, &block)
           end
 
-          def deletes(path, input_tag: nil, **params, &block)
+          def deletes(path, input_tag: nil, headers: nil, **params, &block)
             @actions << Actions::Deletes.new(parent: self,
                                                path: path,
                                                input_tag: input_tag,
+                                               headers: headers,
                                                params: params, &block)
           end
 
@@ -104,7 +108,7 @@ module Voom
             @actions << Actions::Snackbar.new(parent: self,
                                                params: params.merge(text: text), &block)
           end
-
+          
           def autocomplete(path, **params, &block)
             @actions << Actions::Autocomplete.new(parent: self,
                                                  type: :autocomplete,
@@ -112,7 +116,7 @@ module Voom
                                                  target: "#{parent(:text_field).id}-list",
                                                  params: params, &block)
           end
-          
+
           def navigates(direction, **params, &block)
             @actions << Actions::Navigates.new(parent: self,
                                                params: params.merge(direction: direction), &block)
@@ -139,6 +143,8 @@ module Voom
           def alias_event(event)
             EVENT_MAP.fetch(event.to_sym){event.to_sym}
           end
+
+          include Voom::Presenters::DSL::Components::Mixins::LastResponse
         end
       end
     end
