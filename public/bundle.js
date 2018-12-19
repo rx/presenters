@@ -11415,6 +11415,7 @@ var VErrors = function () {
             }
 
             if (errorsDiv) {
+                errorsDiv.scrollIntoView();
                 errorsDiv.parentElement.insertBefore(newDiv, errorsDiv);
                 return true;
             } else {
