@@ -22,7 +22,7 @@ export class VEvents {
     call() {
         // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
         var fnlist = this.actions.map((action) => {
-            return function (results) {
+            return function(results) {
                 return Promise.resolve(action.call(results));
             };
         });
@@ -30,28 +30,29 @@ export class VEvents {
         // Execute a list of Promise return functions in series
         function pseries(list) {
             var p = Promise.resolve([]);
-            return list.reduce(function (pacc, fn) {
+            return list.reduce(function(pacc, fn) {
                 return pacc = pacc.then(fn);
             }, p);
         }
 
         var event = this.event;
 
-        pseries(fnlist)
-            .then(function (results) {
-                var result = results.pop();
-                var contentType = result.contentType;
-                var responseURL = result.responseURL;
+        pseries(fnlist).then(function(results) {
+            var result = results.pop();
+            var contentType = result.contentType;
+            var responseURL = result.responseURL;
 
-                if (event.target.dialog) {
-                    event.target.dialog.close();
-                }
-                if (contentType && contentType.indexOf("text/html") !== -1 && typeof responseURL !== 'undefined') {
-                    window.location = responseURL;
-                }
+            if (event.target.dialog) {
+                event.target.dialog.close();
+            }
+            if (contentType && contentType.indexOf('text/html') !== -1 &&
+                typeof responseURL !== 'undefined') {
+                window.location = responseURL;
+            }
 
-            }).catch(function (results) {
-            console.log("If you got here it may not be what you think:", results);
+        }).catch(function(results) {
+            console.log('If you got here it may not be what you think:',
+                results);
 
             var result = results.pop();
             new VErrors(event).displayErrors(result);
@@ -99,8 +100,8 @@ export class VEvents {
 // This is used to get a proper binding of the actionData
 // https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
 function createEventHandler(actionsData) {
-    return function (event) {
-        event.stopPropagation(); 
+    return function(event) {
+        event.stopPropagation();
         new VEvents(actionsData, event).call();
     };
 }
@@ -119,20 +120,26 @@ export function initEvents() {
             var actionsData = eventData[1];
             var eventHandler = createEventHandler(actionsData);
             // allow overide of event handler by component
-            if (eventElem.vComponent && eventElem.vComponent.createEventHandler) {
-                eventHandler = eventElem.vComponent.createEventHandler(actionsData);
+            if (eventElem.vComponent &&
+                eventElem.vComponent.createEventHandler) {
+                eventHandler = eventElem.vComponent.createEventHandler(
+                    actionsData);
             }
             // Delegate to the component if possible
-            if (eventElem.vComponent && eventElem.vComponent.initEventListener) {
+            if (eventElem.vComponent &&
+                eventElem.vComponent.initEventListener) {
                 eventElem.vComponent.initEventListener(eventName, eventHandler);
-            } else {
+            }
+            else {
                 if (typeof eventElem.eventsHandler === 'undefined') {
                     eventElem.eventsHandler = {};
                 }
                 if (!eventElem.eventsHandler[eventName]) {
                     // Delegate to the component if possible
                     eventElem.eventsHandler[eventName] = eventHandler;
-                    eventElem.addEventListener(eventName, eventHandler, eventOptions);
+                    eventOptions.passive = true;
+                    eventElem.addEventListener(eventName, eventHandler,
+                        eventOptions);
                 }
             }
         }
