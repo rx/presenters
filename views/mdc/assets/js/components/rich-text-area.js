@@ -52,7 +52,7 @@ export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
     value() {
         const QUILL_EMPTY_DOC = "<p><br></p>";
         // If the quill editor is empty calling innerHTML will still return '<p><br/></p>' which it
-        // uses to represent an mepty doc.
+        // uses to represent an empty doc.
         var doc = this.quill.root.innerHTML;
         return doc == QUILL_EMPTY_DOC ? '' : doc;
     }
