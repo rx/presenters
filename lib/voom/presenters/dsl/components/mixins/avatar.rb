@@ -5,9 +5,7 @@ module Voom
         module Mixins
           module Avatar
             def avatar(avatar = nil, **attribs, &block)
-              return @avatar if locked?
-              @avatar = Components::Avatar.new(parent: self, avatar: avatar,
-                                   **attribs, &block)
+              self << Components::Avatar.new(parent: self, avatar: avatar, **attribs, &block)
             end
           end
         end

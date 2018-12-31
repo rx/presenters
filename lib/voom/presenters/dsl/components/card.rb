@@ -1,5 +1,6 @@
 require 'voom/presenters/dsl/components/menu'
 require 'voom/presenters/dsl/components/typography'
+require 'voom/presenters/dsl/components/avatar'
 require 'voom/presenters/dsl/components/mixins/common'
 require 'voom/presenters/dsl/components/mixins/event'
 require 'voom/presenters/dsl/components/mixins/attaches'
@@ -60,7 +61,6 @@ module Voom
           # end
 
           class Media < Base
-            include Mixins::Avatar
             attr_reader :height, :width, :color
 
             def initialize(**attribs_, &block)
@@ -84,6 +84,12 @@ module Voom
             def subtitle(*text, **attribs, &block)
               return @subtitle if locked?
               @subtitle = Components::Typography.new(parent: self, type: :subtitle, text: text, **attribs, &block)
+            end
+
+            def avatar(avatar = nil, **attribs, &block)
+              return @avatar if locked?
+              @avatar = Avatar.new(parent: self, avatar: avatar,
+                                   **attribs, &block)
             end
 
             def image(image=nil, **attribs, &block)
