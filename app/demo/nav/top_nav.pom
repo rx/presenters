@@ -41,6 +41,12 @@ Voom::Presenters.define('top_nav') do
         end
       end
 
+      item 'Plugins' do
+        event :click do
+          loads :plugins
+        end
+      end
+
       item 'Status' do
         event :click do
           loads :component_status
