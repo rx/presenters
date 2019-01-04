@@ -108,7 +108,7 @@ module Voom
             @actions << Actions::Snackbar.new(parent: self,
                                                params: params.merge(text: text), &block)
           end
-          
+
           def autocomplete(path, **params, &block)
             @actions << Actions::Autocomplete.new(parent: self,
                                                  type: :autocomplete,
