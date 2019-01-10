@@ -9,7 +9,7 @@ module Voom
       # If they don't exist then it renders the base components
       class ComponentRenderer
         extend Pluggable
-        include_plugins(:WebClient)
+        include_plugins(:WebClientComponents)
 
         def initialize(comp,
                        render:,
@@ -37,7 +37,7 @@ module Voom
         end
         private
         def initialize_plugins
-          self.class.include_plugins(:WebClient, plugins: @comp.send(:_plugins_))
+          self.class.include_plugins(:WebClientComponents, plugins: @comp.send(:_plugins_))
         end
       end
     end

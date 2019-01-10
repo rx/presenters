@@ -9,6 +9,12 @@ Voom::Presenters.define(:index, namespace: :plugins) do
       body 'You can extend the presenters by writing a plugin.'
       body 'For a complete example checkout the sample [foo_presenter_plugin](https://github.com/rx/foo_presenter_plugin).'
       foo(random_fact)
+      button 'New Random Fact' do
+        event :click do
+          bar 'Showing new random fact!'
+          snackbar last_response.data
+        end
+      end
     end
     attach :code, file: __FILE__
 end

@@ -28,7 +28,7 @@ module Voom
         include Components::Mixins::DateTimeFields
         include Components::Mixins::Attaches
         extend Pluggable
-        include_plugins(:DSLMethods)
+        include_plugins(:DSLComponents, :DSLHelpers)
 
         include Voom::Serializer
         include Voom::Trace
@@ -140,7 +140,7 @@ module Voom
         end
 
         def initialize_plugins
-          self.class.include_plugins(:DSLMethods, plugins: @__plugins__)
+          self.class.include_plugins(:DSLComponents, :DSLHelpers, plugins: @__plugins__)
         end
 
         def lock!

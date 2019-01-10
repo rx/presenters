@@ -23,7 +23,7 @@
          <%= 'invalid' if comp.error %>
          <%= "pattern='#{comp.pattern}'" if comp.pattern %>
          list="<%= comp.id %>-list"
-         <%= erb :"components/event", :locals => {events: comp.events, parent_id:  "#{comp.id}-input"} %>>
+         <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id:  "#{comp.id}-input"} %>>
   <label class="mdc-floating-label" for="<%= comp.id %>-input"><%= comp.label %></label>
   <%= erb :"components/icon", :locals => {comp: comp.clear_icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"} %>
   <div class="mdc-notched-outline">

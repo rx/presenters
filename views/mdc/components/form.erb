@@ -15,7 +15,7 @@
       class="v-has-errors v-form"
       style='width: 100%'
       onsubmit="javascript:void(0);return false;"
-      <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.id} %>>
+      <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id} %>>
   <div class="v-errors">
     <%= erb :"components/render", :locals => {:components => comp.components.select {|c| !eq(c.type, :button)}, :scope => nil} %>
     <% if buttons?(comp.components) %>

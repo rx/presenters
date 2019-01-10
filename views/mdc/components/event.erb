@@ -1,12 +1,11 @@
 <% if events
+     require 'hash/deep_transform_values'
+     require_relative "actions/resolver"
      data_events = events.map do |event|
        [event.event,
         event.actions.map do |action|
-          require_relative "actions/#{action.type}"
-          # Deligate the action data to each action class
-          # [Type, URL, Options, Params] these are passed into javascript event/action class constructors
-          # Only the type need be canonical, the rest is defined between this class and its javascript
-          Object.const_get("::WebClient::Actions::#{inflector.camelize(action.type)}").new.call(action, parent_id, @grid_nesting)
+          action_proc = WebClient::Actions::Resolver.new(comp, action).resolve
+          action_proc.call(action, parent_id, @grid_nesting)
         end,
        {once: false}]
      end %>

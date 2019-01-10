@@ -20,7 +20,7 @@ module Voom
           include Trace
           include Mixins::YieldTo
           extend Pluggable
-          include_plugins(:DSLMethods)
+          include_plugins(:DSLComponents, :DSLHelpers)
 
           attr_reader :type, :id, :tag, :attributes
 
@@ -44,7 +44,7 @@ module Voom
           private
 
           def initialize_plugins
-            self.class.include_plugins(:DSLMethods, plugins: _plugins_)
+            self.class.include_plugins(:DSLComponents, :DSLHelpers, plugins: _plugins_)
           end
 
           def h(text)

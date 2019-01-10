@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/rx/foo_presenter_plugin.git
-  revision: 00bf559f06de34e1b64d891787ff7b7810f49f1b
+  revision: b86134862316227cee63f46297be7b488f14bb00
   specs:
     foo_presenter_plugin (0.0.1)
 

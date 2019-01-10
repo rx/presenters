@@ -1,11 +1,11 @@
 require 'uri'
-require 'voom/presenters/dsl/components/base'
+require 'voom/presenters/dsl/components/event_base'
 
 module Voom
   module Presenters
     module Plugins
       module GoogleMaps
-        class GoogleMap < DSL::Components::Base
+        class GoogleMap < DSL::Components::EventBase
 
           attr_reader :url, :google_api_key, :height, :width
 
@@ -20,6 +20,7 @@ module Voom
             @scale = attribs.delete(:scale) { 1 }
             @google_api_key = attribs.delete(:google_api_key) { ENV['GOOGLE_API_KEY'] }
             @url = build_static_map_image_url
+            expand!
           end
 
           private

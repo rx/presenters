@@ -4,7 +4,7 @@
 
     <span class="mdc-typography--title
                 <%= 'v-actionable' if header.title&.events %>"
-          <%= erb :"components/event", :locals => {events: header.title&.events, parent_id: header.title&.event_parent_id} %>>
+          <%= erb :"components/event", :locals => {comp: header, events: header.title&.events, parent_id: header.title&.event_parent_id} %>>
       <%= expand_text(header.title&.text) %>
     </span>
     <%= erb :"components/icon", :locals => {comp: header.title&.icon } if header.title&.icon %>
@@ -15,7 +15,7 @@
          <a class="mdl-navigation__link"
             id="<%= item.id %>"
             href="javascript:void(0)"
-            <%= erb :"components/event", :locals => {events: item.events, parent_id: item.event_parent_id} %>>
+            <%= erb :"components/event", :locals => {comp: item, events: item.events, parent_id: item.event_parent_id} %>>
             <%= erb :"components/icon", :locals => {comp: item.icon, class_name: nil} %>
             <%= item.text %>
           </a>
