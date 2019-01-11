@@ -5948,9 +5948,9 @@ h1.v-page-title {
   color: #71818c;
   margin: 0px;
   padding: 24px;
-  font-size: 30px; }
+  font-size: 2.125rem; }
   h1.v-page-title i {
-    font-size: 30px;
+    font-size: 2.125rem;
     vertical-align: middle; }
 
 .mdl-layout__drawer {
@@ -9052,10 +9052,10 @@ a.mdc-list-item {
   font-weight: 400; }
 
 .mdl-navigation__link i {
-  font-size: 18px; }
+  font-size: 1.25rem; }
 
 .mdl-navigation__link .v-icon__fa {
-  font-size: 18px; }
+  font-size: 1.25rem; }
 
 .mdc-typography {
   font-family: Roboto, sans-serif;
@@ -9473,7 +9473,7 @@ a.mdc-list-item {
 
 select {
   text-transform: none;
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1.15;
   margin: 0; }
 
@@ -11668,7 +11668,7 @@ select {
     .v-expansion__summary::after {
       font-family: "Material Icons";
       content: "\E313";
-      font-size: 24px;
+      font-size: 1.5rem;
       font-weight: normal;
       font-style: normal;
       display: inline-flex;
@@ -11735,7 +11735,7 @@ select {
   align-items: center;
   height: 48px;
   padding: 0 24px;
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: 400;
   outline: none; }
   .v-expansion-header::-webkit-details-marker {
@@ -11759,22 +11759,37 @@ select {
 
 .v-avatar {
   margin-left: 0;
-  width: 40px;
-  height: 40px;
   border-radius: 50%;
   color: white;
+  background-color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
   align-items: center;
   justify-content: center;
   display: inline-flex;
   flex-shrink: 0; }
+  .v-avatar.v-avatar-size-small {
+    width: 30px;
+    height: 30px; }
+  .v-avatar.v-avatar-size-default, .v-avatar.v-avatar-size-medium {
+    width: 40px;
+    height: 40px; }
+  .v-avatar.v-avatar-size-large {
+    width: 50px;
+    height: 50px; }
+  .v-avatar.v-avatar-size-x-large {
+    width: 60px;
+    height: 60px; }
+  .v-avatar.v-avatar-size-xx-large {
+    width: 110px;
+    height: 110px; }
+  .v-avatar > img {
+    width: 100%; }
 
 .v-card-media .v-avatar {
-  background-color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
-  margin-right: 8px;
   margin: 8px; }
 
-.v-card-media .v-avatar + .v-card-title {
-  margin-top: 8px; }
+.v-column > .v-avatar,
+.v-content > .v-avatar {
+  margin: 8px; }
 
 .v-avatar-position-left {
   float: left; }
@@ -12230,6 +12245,24 @@ select {
 
 .v-icon__secondary {
   color: #E58D36; }
+
+.v-icon-size-x-small {
+  font-size: 1rem; }
+
+.v-icon-size-small {
+  font-size: 1.25rem; }
+
+.v-icon-size-default, .v-icon-size-medium {
+  font-size: 1.5rem; }
+
+.v-icon-size-large {
+  font-size: 2.125rem; }
+
+.v-icon-size-x-large {
+  font-size: 3rem; }
+
+.v-icon-size-xx-large {
+  font-size: 6rem; }
 
 .v-content--float {
   position: absolute;
