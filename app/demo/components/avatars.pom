@@ -1,0 +1,40 @@
+Voom::Presenters.define(:avatars) do
+  attach :top_nav
+  attach :component_drawer
+  page_title 'Avatars'
+
+  grid do
+    column 1
+    column 10 do
+      body 'An avatar can contain an image or icon. Avatars can be used within a list line, the media section of a card, a content block or column.'
+
+      grid do
+        column 6 do
+          headline 'Types'
+          body '**With an Icon**'
+          avatar :thumb_up
+          body '**With an Image**'
+          avatar 'img/demo/avatar.jpg'
+        end
+      end
+
+      grid do
+        column 6 do
+          headline 'Sizes'
+          body '**small**'
+          avatar :person, size: :small
+          body '**medium** (default)'
+          avatar 'img/demo/image_card.jpg', size: :medium
+          body '**large**'
+          avatar :cake, size: :large
+          body '**x-large**'
+          avatar :golf_course, size: 'x-large'
+          body '**xx-large**'
+          avatar 'img/demo/avatar.jpg', size: 'xx-large'
+        end
+      end
+
+    end
+  end
+
+end

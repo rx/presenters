@@ -5,18 +5,19 @@
     class_name = 'v-avatar' unless locals.include? :class_name
     position = comp.position||[] unless locals.include? :position
     position_classes = position.map {|p| "v-avatar-position-#{p}"}.join(' ')
+    size_class = "v-avatar-size-#{comp.size}" unless locals.include? :size_class
 %>
   <% if %w(jpg gif png).include?(comp.avatar&.to_s.split('.').last) %>
-    <span class="<%=class_name%> <%=position_classes%>">
-    <img id="<%= comp.id %>"
-         class="v-avatar
+    <span class="<%=class_name%> <%=position_classes%> <%= size_class %>">
+      <img id="<%= comp.id %>"
+           class="v-avatar
                <%= 'v-actionable' if events %>"
-         src="<%= comp.avatar %>"
-         <%= erb :"components/event", :locals => {events: events, parent_id: comp.event_parent_id} %> />
+           src="<%= comp.avatar %>"
+           <%= erb :"components/event", :locals => {events: events, parent_id: comp.event_parent_id} %> />
       <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
     </span>
   <% else %>
-    <span class="v-avatar <%=position_classes%>">
+    <span class="v-avatar <%=position_classes%> <%= size_class %>">
     <%= erb :"components/icon", :locals => {comp: comp, icon_name: comp.avatar, parent_id: comp.event_parent_id, position: []} %>
     </span>
   <% end %>

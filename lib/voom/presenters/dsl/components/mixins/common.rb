@@ -52,6 +52,10 @@ module Voom
             def unordered_list(**attributes, &block)
               self << Components::UnorderedList.new(parent: self, **attributes, &block)
             end
+
+            def avatar(avatar = nil, **attributes, &block)
+              self << Components::Avatar.new(parent: self, avatar: avatar, **attributes, &block)
+            end
           end
         end
       end

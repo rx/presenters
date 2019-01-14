@@ -2,6 +2,7 @@ Voom::Presenters.define('component_menu') do
   helpers Voom::Presenters::Helpers::Inflector
   menu side: :left do
     %i(
+      avatars
       badges
       buttons
       cards
