@@ -12,6 +12,6 @@ export class VPluginEventAction {
         const params = this.params;
         const event = this.event;
         console.log('Calling plugin');
-        return window[actionType](options, params, event);
+        return window[actionType](options, params, event, results);
     }
 }
