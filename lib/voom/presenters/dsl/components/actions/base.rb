@@ -1,4 +1,5 @@
 require 'voom/presenters/dsl/components/base'
+require 'hash/deep_transform_values'
 
 module Voom
   module Presenters
@@ -14,7 +15,8 @@ module Voom
               super(type: type, **attribs_, &block)
               @options = {}
               extract_options!
-              @params = attribs.delete(:params) {{}}
+              @params = expand_dynamic_action_values(attribs.delete(:params) {{}})
+
               @url = nil
             end
 
@@ -27,6 +29,13 @@ module Voom
               %i(path presenter target input_tag headers).each do |option|
                 optionValue = attribs.delete(option)
                 @options.merge!({option => optionValue}) if optionValue
+              end
+            end
+
+            # When our parameters have dynamic value expressions like last_response.blah we need to expand the values
+            def expand_dynamic_action_values(_params_)
+              _params_.to_h.deep_transform_values do |v|
+                v.respond_to?(:to_hash) ? v.to_hash : v
               end
             end
           end
