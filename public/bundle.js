@@ -33398,13 +33398,8 @@ var VPluginEventAction = function () {
             var options = this.options;
             var params = this.params;
             var event = this.event;
-            return new Promise(function (resolve) {
-                console.log('Calling plugin');
-                var result = window[actionType](options, params, event);
-                result.content = JSON.stringify(result.content);
-                results.push(result);
-                resolve(results);
-            });
+            console.log('Calling plugin');
+            return window[actionType](options, params, event, results);
         }
     }]);
 
