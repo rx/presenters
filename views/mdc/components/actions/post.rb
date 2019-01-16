@@ -1,12 +1,14 @@
+require_relative 'mixins/expand_hash'
 
 module WebClient
   module Actions
     class Post
+      include ExpandHash
       def call(action, parent_id, *)
-        # Type, URL, Options, Params, Headers (passed into javascript event/action classes)
+        # Type, URL, Options, Params (passed into javascript event/action classes)
         [action.type, action.url,
-         action.options.to_h.merge({__parent_id__: parent_id, input_tag: action.options[:input_tag]}),
-         action.dynamic_params.to_h]
+         expand_hash(action.options).merge({__parent_id__: parent_id, input_tag: action.options[:input_tag]}),
+         expand_hash(action.dynamic_params)]
       end
 
       # private
