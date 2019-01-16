@@ -1,13 +1,11 @@
+require_relative 'mixins/expand_hash'
 module WebClient
   module Actions
     class Snackbar
+      include ExpandHash
       def call(action, *)
-        action_params = action.params.to_h.deep_transform_values do |v|
-          v.respond_to?(:to_h) ? v.to_h : v
-        end
-
         # Type, URL, Options, Params (passed into javascript event/action classes)
-        [action.type, action.url, action.options.to_h, action_params.to_h]
+        [action.type, action.url, expand_hash(action.options), expand_hash(action.dynamic_params).merge(expand_hash(action.params))]
       end
     end
   end

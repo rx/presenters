@@ -1,4 +1,4 @@
-Voom::Presenters.define(:last_response) do
+Voom::Presenters.define(:last_response_action) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :events_drawer

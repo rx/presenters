@@ -4,6 +4,7 @@ ruby `cat .ruby-version`
 # Specify your gem's dependencies in voom-console.gemspec
 gemspec
 
+gem 'pry', group: :development
 group :test do
   gem 'rspec'
   gem 'rspec-html-matchers'
