@@ -4,11 +4,13 @@
   <% else %>
     <td style="<%= "background-color: #{row.color};" if row.color %>">
   <% end %>
+  <% unless type == 'footer' %>
     <span class="mdc-list-item__graphic">
       <%= erb :"components/checkbox",
               :locals => {comp: row.checkbox,
                           class_name: (type == 'header' ? 'v-checkbox--select-control' : 'v-table-item--selectable-checkbox')} %>
-    </span>
+      </span>
+  <% end %>
   <% if type == 'header' %>
     </th>
   <% else %>

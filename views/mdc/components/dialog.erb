@@ -13,10 +13,10 @@
      aria-modal="true"
      aria-labelledby="my-dialog-title"
      aria-describedby="my-dialog-content">
-  <div class="mdc-dialog__container">
-    <div class="mdc-dialog__surface"
-         style="<%= "width: #{comp.width}" if comp.width %>
-                <%= "height: #{comp.height}" if comp.height %>">
+  <div class="mdc-dialog__container"
+       style="<%= "width: #{comp.width}" if comp.width %>
+         <%= "height: #{comp.height}" if comp.height %>">
+    <div class="mdc-dialog__surface">
       <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
       <% if comp.title %>
         <h2 class="mdc-dialog__title" id="my-dialog-title"><%= expand_text(comp.title.text) %></h2>

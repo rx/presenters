@@ -12041,6 +12041,11 @@ select {
 .mdc-dialog-scroll-lock {
   overflow: hidden; }
 
+@media (min-width: 592px) {
+  .mdc-dialog .mdc-dialog__surface {
+    max-width: 100%;
+    width: 100%; } }
+
 .mdc-switch {
   display: inline-block;
   position: relative;
@@ -12307,8 +12312,10 @@ select {
 .v-content--relative {
   position: relative; }
 
-.mdl-data-table .mdc-list-item__graphic {
-  margin-right: 0px; }
+.mdl-data-table {
+  width: 100%; }
+  .mdl-data-table .mdc-list-item__graphic {
+    margin-right: 0px; }
 
 .v-paging {
   color: rgba(0, 0, 0, 0.54);
@@ -12367,6 +12374,13 @@ select {
 
 .v-paging__count + .v-paging__next {
   margin-left: 68px; }
+
+.v-no-border {
+  border: none;
+  box-shadow: none; }
+  .v-no-border tfoot td {
+    border-bottom: none;
+    border-top: none; }
 
 .flatpickr-calendar {
   background: transparent;

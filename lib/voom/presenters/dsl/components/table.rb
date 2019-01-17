@@ -10,11 +10,12 @@ module Voom
     module DSL
       module Components
         class Table < Base
-          attr_accessor :header, :rows, :selectable
+          attr_accessor :header, :rows, :selectable, :border
 
           def initialize(**attribs_, &block)
             super(type: :table, **attribs_, &block)
             @selectable = attribs.delete(:selectable)
+            @border = attribs.delete(:border){ true }
             @rows = []
             expand!
           end
@@ -22,6 +23,12 @@ module Voom
           def header(**attribs, &block)
             return @header if locked?
             @header = Row.new(parent: self, type: :header,
+                              **attribs, &block)
+          end
+
+          def footer(**attribs, &block)
+            return @footer if locked?
+            @footer = Row.new(parent: self, type: :footer,
                               **attribs, &block)
           end
 
@@ -66,8 +73,9 @@ module Voom
               include Mixins::Chips
               include Mixins::Selects
               include Mixins::Icons
+              include Mixins::Typography
 
-              attr_accessor :numeric, :color, :components
+              attr_accessor :numeric, :color, :components, :colspan
 
               def initialize(**attribs_, &block)
                 super(type: :column, **attribs_, &block)
@@ -75,13 +83,13 @@ module Voom
                 @numeric = attribs.delete(:numeric){numeric?(value)}
                 self.value(value) if value
                 @color = attribs.delete(:color)
+                @colspan = attribs.delete(:colspan)
                 @components = []
                 expand!
               end
 
               def value(*value, **attribs, &block)
                 return @value if locked?
-                @numeric = numeric?(*value) if value.size ==1
                 @value = Components::Typography.new(parent: self, type: :text, text: value, **attribs, &block)
               end
 
