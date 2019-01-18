@@ -17,8 +17,9 @@
                type="checkbox"
                class="mdc-switch__native-control"
                role="switch"
-               <% if comp.checked %> checked
-        <% end %>
+               data-off="<%= comp.off_value %>"
+               data-on="<%= comp.on_value %>"
+               <%= ' checked ' if comp.checked %>
                <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>/>
       </div>
     </div>
