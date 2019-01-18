@@ -7,7 +7,7 @@ Voom::Presenters.define('component_menu') do
       layouts headers drawers footers menus
       toggles chips snackbar badges tooltips
       hidden_fields text_areas steppers sliders tab_bars
-      content icons datetime_fields date_fields time_fields
+      content icons images datetime_fields date_fields time_fields
       maps file_inputs
     ).sort.each do |comp|
       item titleize(comp) do
