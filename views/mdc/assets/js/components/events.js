@@ -60,10 +60,10 @@ export class VEvents {
     }
 
     static action_class(action, event) {
-        var action_type = action[0];
-        var url = action[1];
-        var options = action[2];
-        var params = action[3];
+        const action_type = action[0];
+        const url = action[1];
+        const options = action[2];
+        const params = action[3];
 
         switch (action_type) {
             case 'loads':
@@ -94,7 +94,6 @@ export class VEvents {
                 throw action_type + ' is not supported.';
         }
     }
-
 }
 
 // This is used to get a proper binding of the actionData

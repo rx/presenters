@@ -8,6 +8,7 @@ module Voom
       class Echo < Sinatra::Base
         post('/_echo_') do
           content_type :json
+          params[:echo] = JSON.parse(params[:echo]) if params[:echo]
           JSON.dump(params)
         end
 
