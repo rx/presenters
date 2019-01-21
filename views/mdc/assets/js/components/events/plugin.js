@@ -11,12 +11,7 @@ export class VPluginEventAction {
         const options = this.options;
         const params = this.params;
         const event = this.event;
-        return new Promise(function(resolve) {
-            console.log('Calling plugin');
-            const result = window[actionType](options, params, event);
-            result.content = JSON.stringify(result.content);
-            results.push(result);
-            resolve(results);
-        });
+        console.log('Calling plugin');
+        return window[actionType](options, params, event, results);
     }
 }

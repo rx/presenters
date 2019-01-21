@@ -1,5 +1,4 @@
 <% if events
-     require 'hash/deep_transform_values'
      require_relative "actions/resolver"
      data_events = events.map do |event|
        [event.event,

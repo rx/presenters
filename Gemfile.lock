@@ -108,7 +108,7 @@ DEPENDENCIES
   bundler (~> 1.13)
   foo_presenter_plugin!
   gem-release (~> 2.0)
-  pry (~> 0.10)
+  pry
   rack (>= 2.0.6)
   rack-test (~> 0.8)
   rake (~> 11.3)
