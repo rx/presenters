@@ -1,4 +1,4 @@
-<tr
+<tr id="<%= row.id %>"
   style="<%= "background-color: #{row.color};" if row.color %>">
   <%= erb :"components/table/checkbox", :locals => {:row=> row, :type=> 'row'} %>
   <% row.columns.each do |col| %>
