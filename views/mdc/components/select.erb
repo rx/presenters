@@ -9,7 +9,8 @@
     <select id="<%= comp.id %>"
             name="<%= comp.name%>"
             class="mdc-select__native-control"
-            <%= erb(:"components/event", locals: {events: comp.events,
+            <%= erb(:"components/event", locals: {comp: comp,
+                                                  events: comp.events,
                                                   parent_id: comp.id}) %>>
       <% comp.options.each do |option| %>
         <option value="<%= option.value %>"

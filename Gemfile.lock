@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/rx/foo_presenter_plugin.git
+  revision: b86134862316227cee63f46297be7b488f14bb00
+  specs:
+    foo_presenter_plugin (0.0.1)
+
 PATH
   remote: .
   specs:
@@ -100,8 +106,9 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.13)
+  foo_presenter_plugin!
   gem-release (~> 2.0)
-  pry (~> 0.10)
+  pry
   rack (>= 2.0.6)
   rack-test (~> 0.8)
   rake (~> 11.3)

@@ -4,6 +4,5 @@
   <% row.columns.each do |col| %>
     <%= erb :"components/table/column", :locals => {:col=> col, :type=> 'header'} %>
     <%= erb :"components/tooltip", :locals => {comp: col.tooltip, parent_id: col.id} %>
-
   <% end %>
 </tr>

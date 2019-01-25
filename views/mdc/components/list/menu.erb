@@ -8,7 +8,7 @@
             <a class="v-menu-link"
                id="<%= item.id %>"
                href="javascript:void(0)"
-               <%= erb :"components/event", :locals => {events: item.events, parent_id: item.event_parent_id} %>>
+               <%= erb :"components/event", :locals => {comp: item, events: item.events, parent_id: item.event_parent_id} %>>
           <% end %>
           <%= item.text %>
           <% unless item.disabled %>

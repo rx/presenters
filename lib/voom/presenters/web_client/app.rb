@@ -7,6 +7,7 @@ require 'voom/presenters/app'
 require 'voom/presenters/web_client/router'
 require 'voom/presenters/web_client/markdown_render'
 require 'voom/presenters/errors/unprocessable'
+require_relative 'component_renderer'
 
 module Voom
   module Presenters
@@ -22,6 +23,10 @@ module Voom
         end
 
         helpers do
+          def render_component(scope, comp, components, index)
+            ComponentRenderer.new(comp, render: method(:render), scope: scope, components: components, index: index).render
+          end
+
           def markdown(text)
             unless @markdown
               renderer = CustomRender.new(hard_wrap: false, filter_html: true)

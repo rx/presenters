@@ -11,7 +11,6 @@ unless defined?(Voom::Presenters::Settings)
           setting :root, []
           # You can add helpers that will automatically be included
           # For example:
-          # For example:
           # Voom::Presenters::Settings.configure do |config|
           #   config.presenters.helpers << YourHelperModule # Passing a module
           #   config.presenters.helpers << &->{ def foo; :foo; end } # Passing a block
@@ -33,6 +32,7 @@ unless defined?(Voom::Presenters::Settings)
             setting     :custom_css, 'public/presenters/*.css'
             setting     :custom_js,  'public/presenters/*.js'
           end
+          setting :plugins, [:google_maps]
           setting :components do
             setting :defaults do
               setting :datetime do

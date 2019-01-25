@@ -7,7 +7,7 @@
      style="<%= "width: #{comp.width};" if comp.width%>
          <%= "height: #{comp.height};" if comp.height%>
        <%= "outline: medium solid rgb(63,81,181);" if comp.selected %>"
-     <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>
+     <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
 >
   <% if comp.media %>
     <div class="v-errors">

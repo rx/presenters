@@ -21,6 +21,10 @@ module Voom
                 @response_index = index
               end
 
+              def dynamic_parameter
+                true
+              end
+
               def type
                 :action_parameter
               end

@@ -10,6 +10,7 @@ import {VNavigates} from './events/navigates';
 import {VClears} from './events/clears';
 import {VRemoves} from './events/removes';
 import {VStepperEvent} from './events/stepper';
+import {VPluginEventAction} from './events/plugin';
 
 export class VEvents {
     //[[type, url, target, params]]
@@ -94,7 +95,7 @@ export class VEvents {
             case 'stepper':
                 return new VStepperEvent(options, params, event);
             default:
-                throw action_type + ' is not supported.';
+                return new VPluginEventAction(action_type, options, params, event);
         }
     }
 }

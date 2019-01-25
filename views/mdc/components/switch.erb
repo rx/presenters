@@ -20,7 +20,7 @@
                data-off="<%= comp.off_value %>"
                data-on="<%= comp.on_value %>"
                <%= ' checked ' if comp.checked %>
-               <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>/>
+               <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>/>
       </div>
     </div>
   </div>
