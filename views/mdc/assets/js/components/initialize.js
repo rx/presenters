@@ -23,6 +23,7 @@ import {initGrid} from './grid';
 import {initTabBars} from './tab-bars';
 import {initTables} from './data-tables';
 import {initFileInputs} from './file-inputs';
+import {initImageCrop} from './image-crop';
 
 export function initialize(){
     console.log('Initializing');
@@ -50,6 +51,7 @@ export function initialize(){
     initTabBars();
     initTables();
     initFileInputs();
+    initImageCrop();
     // This needs to be last, because it relies on the components installed above.
     initEvents();
 }

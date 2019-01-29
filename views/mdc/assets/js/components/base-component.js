@@ -10,7 +10,6 @@ export class VBaseComponent {
 }
 
 export function hookupComponents(selector, VoomClass, MdcClass) {
-
     const components = document.querySelectorAll(selector);
     for (let i = 0; i < components.length; i++) {
         const component = components[i];

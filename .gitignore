@@ -53,3 +53,4 @@ build-iPhoneSimulator/
 .DS_Store
 .env
 notes.txt
+npm-debug.log
