@@ -12,7 +12,7 @@
 
   <% if vertical %>
     <div id="<%= comp.id %>-content"
-      class="mdl-step__content v-content v-has-errors">
+      class="mdl-step__content v-content">
         <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
     </div>
   <% end %>

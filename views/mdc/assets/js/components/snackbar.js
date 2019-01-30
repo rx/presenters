@@ -15,9 +15,12 @@ export class VSnackbar extends VBaseComponent {
     }
 
     display(message) {
-        const dataObj = {
-            message: message,
-        };
-        this.mdcComponent.show(dataObj);
+        // const dataObj = {
+        //     message: message,
+        // };
+        // this.mdcComponent.show(dataObj);
+
+        this.mdcComponent.labelText = message;
+        this.mdcComponent.open();
     }
 }

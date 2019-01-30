@@ -21,23 +21,28 @@
       <% if comp.title %>
         <h2 class="mdc-dialog__title" id="my-dialog-title"><%= expand_text(comp.title.text) %></h2>
       <% end %>
+
+      <div class="mdc-dialog__content" id="my-dialog-content">
       <% if forms.size == 1 %>
         <form role="form"
               <% if form.tag %>
               data-input-tag="<%= form.tag %>"
               <% end %>
               id="<%= form.id %>"
-              class="v-has-errors v-form"
+              class="v-form"
               style='width: 100%'
               onsubmit="javascript:void(0);return false;"
               <%= erb :"components/event", :locals => {events: form.events, parent_id: form.id} %>>
       <% end %>
       <div class="v-errors">
-        <div class="mdc-dialog__content" id="my-dialog-content">
           <% components.each do |dcomp| %>
             <%= erb :"components/#{dcomp.type}", :locals => {:comp => dcomp} %>
           <% end %>
-        </div>
+      </div>
+      <% if forms.size == 1 %>
+        </form>
+      <% end %>
+
         <% if buttons.any? %>
           <footer class="mdc-dialog__actions">
             <% buttons.each do |button| %>
@@ -49,9 +54,6 @@
           </footer>
         <% end %>
       </div>
-      <% if forms.size == 1 %>
-        </form>
-      <% end %>
     </div>
   </div>
   <div class="mdc-dialog__scrim"></div>

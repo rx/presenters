@@ -75,7 +75,7 @@ export class VTextField extends visibilityObserverMixin(
 
     clear() {
         if (this.value() !== '') {
-            this.setValue('');
+            this.setValue(null);
         }
     }
 

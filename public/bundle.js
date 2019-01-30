@@ -4282,7 +4282,7 @@ function initialize() {
 
 /*!
  Material Components for the Web
- Copyright (c) 2018 Google Inc.
+ Copyright (c) 2019 Google Inc.
  License: MIT
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -4365,7 +4365,7 @@ function initialize() {
       /******/__webpack_require__.p = "";
       /******/
       /******/ // Load entry module and return exports
-      /******/return __webpack_require__(__webpack_require__.s = 154);
+      /******/return __webpack_require__(__webpack_require__.s = 157);
       /******/
     }(
     /************************************************************************/
@@ -4686,7 +4686,124 @@ function initialize() {
         /***/
       },
 
-      /***/154:
+      /***/12:
+      /***/function _(module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+
+        var _createClass = function () {
+          function defineProperties(target, props) {
+            for (var i = 0; i < props.length; i++) {
+              var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+            }
+          }return function (Constructor, protoProps, staticProps) {
+            if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+          };
+        }();
+
+        function _classCallCheck(instance, Constructor) {
+          if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+          }
+        }
+
+        /**
+         * @license
+         * Copyright 2017 Google Inc.
+         *
+         * Permission is hereby granted, free of charge, to any person obtaining a copy
+         * of this software and associated documentation files (the "Software"), to deal
+         * in the Software without restriction, including without limitation the rights
+         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+         * copies of the Software, and to permit persons to whom the Software is
+         * furnished to do so, subject to the following conditions:
+         *
+         * The above copyright notice and this permission notice shall be included in
+         * all copies or substantial portions of the Software.
+         *
+         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+         * THE SOFTWARE.
+         */
+
+        /* eslint no-unused-vars: [2, {"args": "none"}] */
+
+        /**
+         * Adapter for MDC Floating Label.
+         *
+         * Defines the shape of the adapter expected by the foundation. Implement this
+         * adapter to integrate the floating label into your framework. See
+         * https://github.com/material-components/material-components-web/blob/master/docs/authoring-components.md
+         * for more information.
+         *
+         * @record
+         */
+        var MDCFloatingLabelAdapter = function () {
+          function MDCFloatingLabelAdapter() {
+            _classCallCheck(this, MDCFloatingLabelAdapter);
+          }
+
+          _createClass(MDCFloatingLabelAdapter, [{
+            key: "addClass",
+
+            /**
+             * Adds a class to the label element.
+             * @param {string} className
+             */
+            value: function addClass(className) {}
+
+            /**
+             * Removes a class from the label element.
+             * @param {string} className
+             */
+
+          }, {
+            key: "removeClass",
+            value: function removeClass(className) {}
+
+            /**
+             * Returns the width of the label element.
+             * @return {number}
+             */
+
+          }, {
+            key: "getWidth",
+            value: function getWidth() {}
+
+            /**
+             * Registers an event listener on the root element for a given event.
+             * @param {string} evtType
+             * @param {function(!Event): undefined} handler
+             */
+
+          }, {
+            key: "registerInteractionHandler",
+            value: function registerInteractionHandler(evtType, handler) {}
+
+            /**
+             * Deregisters an event listener on the root element for a given event.
+             * @param {string} evtType
+             * @param {function(!Event): undefined} handler
+             */
+
+          }, {
+            key: "deregisterInteractionHandler",
+            value: function deregisterInteractionHandler(evtType, handler) {}
+          }]);
+
+          return MDCFloatingLabelAdapter;
+        }();
+
+        /* unused harmony default export */var _unused_webpack_default_export = MDCFloatingLabelAdapter;
+
+        /***/
+      },
+
+      /***/157:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -4700,12 +4817,12 @@ function initialize() {
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__material_ripple_util__ = __webpack_require__(2);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(82);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__adapter__ = __webpack_require__(83);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(157);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_6__material_line_ripple_index__ = __webpack_require__(31);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_7__helper_text_index__ = __webpack_require__(158);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_8__icon_index__ = __webpack_require__(159);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_9__material_floating_label_index__ = __webpack_require__(28);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_10__material_notched_outline_index__ = __webpack_require__(36);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_5__foundation__ = __webpack_require__(160);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_6__material_line_ripple_index__ = __webpack_require__(30);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_7__helper_text_index__ = __webpack_require__(161);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_8__icon_index__ = __webpack_require__(162);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_9__material_floating_label_index__ = __webpack_require__(16);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_10__material_notched_outline_index__ = __webpack_require__(35);
         /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCTextFieldFoundation", function () {
           return __WEBPACK_IMPORTED_MODULE_5__foundation__["a"];
         });
@@ -4987,11 +5104,21 @@ function initialize() {
              */
 
           }, {
-            key: 'layout',
+            key: 'focus',
+
+            /**
+             * Focuses the input element.
+             */
+            value: function focus() {
+              this.input_.focus();
+            }
 
             /**
              * Recomputes the outline SVG path for the outline element.
              */
+
+          }, {
+            key: 'layout',
             value: function layout() {
               var openNotch = this.foundation_.shouldFloat;
               this.foundation_.notchOutline(openNotch);
@@ -5042,9 +5169,6 @@ function initialize() {
                 },
                 isFocused: function isFocused() {
                   return document.activeElement === _this3.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["e" /* strings */].INPUT_SELECTOR);
-                },
-                isRtl: function isRtl() {
-                  return window.getComputedStyle(_this3.root_).getPropertyValue('direction') === 'rtl';
                 }
               }, this.getInputAdapterMethods_(), this.getLabelAdapterMethods_(), this.getLineRippleAdapterMethods_(), this.getOutlineAdapterMethods_()), this.getFoundationMap_());
             }
@@ -5074,7 +5198,7 @@ function initialize() {
                   return !!_this4.label_;
                 },
                 getLabelWidth: function getLabelWidth() {
-                  return _this4.label_.getWidth();
+                  return _this4.label_ ? _this4.label_.getWidth() : 0;
                 }
               };
             }
@@ -5124,8 +5248,8 @@ function initialize() {
               var _this6 = this;
 
               return {
-                notchOutline: function notchOutline(labelWidth, isRtl) {
-                  return _this6.outline_.notch(labelWidth, isRtl);
+                notchOutline: function notchOutline(labelWidth) {
+                  return _this6.outline_.notch(labelWidth);
                 },
                 closeOutline: function closeOutline() {
                   return _this6.outline_.closeNotch();
@@ -5435,7 +5559,7 @@ function initialize() {
         /***/
       },
 
-      /***/155:
+      /***/158:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -5484,7 +5608,7 @@ function initialize() {
         /***/
       },
 
-      /***/156:
+      /***/159:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -5524,7 +5648,166 @@ function initialize() {
         /***/
       },
 
-      /***/157:
+      /***/16:
+      /***/function _(module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+
+        Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "MDCFloatingLabel", function () {
+          return MDCFloatingLabel;
+        });
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(12);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(26);
+        /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCFloatingLabelFoundation", function () {
+          return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"];
+        });
+        var _createClass = function () {
+          function defineProperties(target, props) {
+            for (var i = 0; i < props.length; i++) {
+              var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+            }
+          }return function (Constructor, protoProps, staticProps) {
+            if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+          };
+        }();
+
+        function _classCallCheck(instance, Constructor) {
+          if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+          }
+        }
+
+        function _possibleConstructorReturn(self, call) {
+          if (!self) {
+            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+          }return call && ((typeof call === 'undefined' ? 'undefined' : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+        }
+
+        function _inherits(subClass, superClass) {
+          if (typeof superClass !== "function" && superClass !== null) {
+            throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof(superClass)));
+          }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+        }
+
+        /**
+         * @license
+         * Copyright 2016 Google Inc.
+         *
+         * Permission is hereby granted, free of charge, to any person obtaining a copy
+         * of this software and associated documentation files (the "Software"), to deal
+         * in the Software without restriction, including without limitation the rights
+         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+         * copies of the Software, and to permit persons to whom the Software is
+         * furnished to do so, subject to the following conditions:
+         *
+         * The above copyright notice and this permission notice shall be included in
+         * all copies or substantial portions of the Software.
+         *
+         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+         * THE SOFTWARE.
+         */
+
+        /**
+         * @extends {MDCComponent<!MDCFloatingLabelFoundation>}
+         * @final
+         */
+
+        var MDCFloatingLabel = function (_MDCComponent) {
+          _inherits(MDCFloatingLabel, _MDCComponent);
+
+          function MDCFloatingLabel() {
+            _classCallCheck(this, MDCFloatingLabel);
+
+            return _possibleConstructorReturn(this, (MDCFloatingLabel.__proto__ || Object.getPrototypeOf(MDCFloatingLabel)).apply(this, arguments));
+          }
+
+          _createClass(MDCFloatingLabel, [{
+            key: 'shake',
+
+            /**
+             * Styles the label to produce the label shake for errors.
+             * @param {boolean} shouldShake styles the label to shake by adding shake class
+             * if true, otherwise will stop shaking by removing shake class.
+             */
+            value: function shake(shouldShake) {
+              this.foundation_.shake(shouldShake);
+            }
+
+            /**
+             * Styles label to float/dock.
+             * @param {boolean} shouldFloat styles the label to float by adding float class
+             * if true, otherwise docks the label by removing the float class.
+             */
+
+          }, {
+            key: 'float',
+            value: function float(shouldFloat) {
+              this.foundation_.float(shouldFloat);
+            }
+
+            /**
+             * @return {number}
+             */
+
+          }, {
+            key: 'getWidth',
+            value: function getWidth() {
+              return this.foundation_.getWidth();
+            }
+
+            /**
+             * @return {!MDCFloatingLabelFoundation}
+             */
+
+          }, {
+            key: 'getDefaultFoundation',
+            value: function getDefaultFoundation() {
+              var _this2 = this;
+
+              return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
+                addClass: function addClass(className) {
+                  return _this2.root_.classList.add(className);
+                },
+                removeClass: function removeClass(className) {
+                  return _this2.root_.classList.remove(className);
+                },
+                getWidth: function getWidth() {
+                  return _this2.root_.scrollWidth;
+                },
+                registerInteractionHandler: function registerInteractionHandler(evtType, handler) {
+                  return _this2.root_.addEventListener(evtType, handler);
+                },
+                deregisterInteractionHandler: function deregisterInteractionHandler(evtType, handler) {
+                  return _this2.root_.removeEventListener(evtType, handler);
+                }
+              });
+            }
+          }], [{
+            key: 'attachTo',
+
+            /**
+             * @param {!Element} root
+             * @return {!MDCFloatingLabel}
+             */
+            value: function attachTo(root) {
+              return new MDCFloatingLabel(root);
+            }
+          }]);
+
+          return MDCFloatingLabel;
+        }(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
+
+        /***/
+      },
+
+      /***/160:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -5679,7 +5962,6 @@ function initialize() {
                   deregisterValidationAttributeChangeHandler: function deregisterValidationAttributeChangeHandler() {},
                   getNativeInput: function getNativeInput() {},
                   isFocused: function isFocused() {},
-                  isRtl: function isRtl() {},
                   activateLineRipple: function activateLineRipple() {},
                   deactivateLineRipple: function deactivateLineRipple() {},
                   setLineRippleTransformOrigin: function setLineRippleTransformOrigin() {},
@@ -5844,8 +6126,7 @@ function initialize() {
                 var isDense = this.adapter_.hasClass(__WEBPACK_IMPORTED_MODULE_4__constants__["c" /* cssClasses */].DENSE);
                 var labelScale = isDense ? __WEBPACK_IMPORTED_MODULE_4__constants__["d" /* numbers */].DENSE_LABEL_SCALE : __WEBPACK_IMPORTED_MODULE_4__constants__["d" /* numbers */].LABEL_SCALE;
                 var labelWidth = this.adapter_.getLabelWidth() * labelScale;
-                var isRtl = this.adapter_.isRtl();
-                this.adapter_.notchOutline(labelWidth, isRtl);
+                this.adapter_.notchOutline(labelWidth);
               } else {
                 this.adapter_.closeOutline();
               }
@@ -5880,9 +6161,14 @@ function initialize() {
           }, {
             key: 'setTransformOrigin',
             value: function setTransformOrigin(evt) {
-              var targetClientRect = evt.target.getBoundingClientRect();
-              var evtCoords = { x: evt.clientX, y: evt.clientY };
-              var normalizedX = evtCoords.x - targetClientRect.left;
+              var targetEvent = void 0;
+              if (evt.touches) {
+                targetEvent = evt.touches[0];
+              } else {
+                targetEvent = evt;
+              }
+              var targetClientRect = targetEvent.target.getBoundingClientRect();
+              var normalizedX = targetEvent.clientX - targetClientRect.left;
               this.adapter_.setLineRippleTransformOrigin(normalizedX);
             }
 
@@ -5938,7 +6224,10 @@ function initialize() {
           }, {
             key: 'setValue',
             value: function setValue(value) {
-              this.getNativeInput_().value = value;
+              // Prevent Safari from moving the caret to the end of the input when the value has not changed.
+              if (this.getValue() !== value) {
+                this.getNativeInput_().value = value;
+              }
               var isValid = this.isValid();
               this.styleValidity_(isValid);
               if (this.adapter_.hasLabel()) {
@@ -6191,7 +6480,7 @@ function initialize() {
         /***/
       },
 
-      /***/158:
+      /***/161:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -6337,7 +6626,7 @@ function initialize() {
         /***/
       },
 
-      /***/159:
+      /***/162:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -6482,123 +6771,6 @@ function initialize() {
 
           return MDCTextFieldIcon;
         }(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
-
-        /***/
-      },
-
-      /***/19:
-      /***/function _(module, __webpack_exports__, __webpack_require__) {
-
-        "use strict";
-
-        var _createClass = function () {
-          function defineProperties(target, props) {
-            for (var i = 0; i < props.length; i++) {
-              var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-            }
-          }return function (Constructor, protoProps, staticProps) {
-            if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-          };
-        }();
-
-        function _classCallCheck(instance, Constructor) {
-          if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-          }
-        }
-
-        /**
-         * @license
-         * Copyright 2017 Google Inc.
-         *
-         * Permission is hereby granted, free of charge, to any person obtaining a copy
-         * of this software and associated documentation files (the "Software"), to deal
-         * in the Software without restriction, including without limitation the rights
-         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-         * copies of the Software, and to permit persons to whom the Software is
-         * furnished to do so, subject to the following conditions:
-         *
-         * The above copyright notice and this permission notice shall be included in
-         * all copies or substantial portions of the Software.
-         *
-         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-         * THE SOFTWARE.
-         */
-
-        /* eslint no-unused-vars: [2, {"args": "none"}] */
-
-        /**
-         * Adapter for MDC Floating Label.
-         *
-         * Defines the shape of the adapter expected by the foundation. Implement this
-         * adapter to integrate the floating label into your framework. See
-         * https://github.com/material-components/material-components-web/blob/master/docs/authoring-components.md
-         * for more information.
-         *
-         * @record
-         */
-        var MDCFloatingLabelAdapter = function () {
-          function MDCFloatingLabelAdapter() {
-            _classCallCheck(this, MDCFloatingLabelAdapter);
-          }
-
-          _createClass(MDCFloatingLabelAdapter, [{
-            key: "addClass",
-
-            /**
-             * Adds a class to the label element.
-             * @param {string} className
-             */
-            value: function addClass(className) {}
-
-            /**
-             * Removes a class from the label element.
-             * @param {string} className
-             */
-
-          }, {
-            key: "removeClass",
-            value: function removeClass(className) {}
-
-            /**
-             * Returns the width of the label element.
-             * @return {number}
-             */
-
-          }, {
-            key: "getWidth",
-            value: function getWidth() {}
-
-            /**
-             * Registers an event listener on the root element for a given event.
-             * @param {string} evtType
-             * @param {function(!Event): undefined} handler
-             */
-
-          }, {
-            key: "registerInteractionHandler",
-            value: function registerInteractionHandler(evtType, handler) {}
-
-            /**
-             * Deregisters an event listener on the root element for a given event.
-             * @param {string} evtType
-             * @param {function(!Event): undefined} handler
-             */
-
-          }, {
-            key: "deregisterInteractionHandler",
-            value: function deregisterInteractionHandler(evtType, handler) {}
-          }]);
-
-          return MDCFloatingLabelAdapter;
-        }();
-
-        /* unused harmony default export */var _unused_webpack_default_export = MDCFloatingLabelAdapter;
 
         /***/
       },
@@ -6983,30 +7155,12 @@ function initialize() {
           }
 
           _createClass(MDCNotchedOutlineAdapter, [{
-            key: "getWidth",
-
-            /**
-             * Returns the width of the root element.
-             * @return {number}
-             */
-            value: function getWidth() {}
-
-            /**
-             * Returns the height of the root element.
-             * @return {number}
-             */
-
-          }, {
-            key: "getHeight",
-            value: function getHeight() {}
+            key: "addClass",
 
             /**
              * Adds a class to the root element.
              * @param {string} className
              */
-
-          }, {
-            key: "addClass",
             value: function addClass(className) {}
 
             /**
@@ -7019,24 +7173,21 @@ function initialize() {
             value: function removeClass(className) {}
 
             /**
-             * Sets the "d" attribute of the outline element's SVG path.
-             * @param {string} value
+             * Sets the width style property of the notch element.
+             * @param {number} width
              */
 
           }, {
-            key: "setOutlinePathAttr",
-            value: function setOutlinePathAttr(value) {}
+            key: "setNotchWidthProperty",
+            value: function setNotchWidthProperty(width) {}
 
             /**
-             * Returns the idle outline element's computed style value of the given css property `propertyName`.
-             * We achieve this via `getComputedStyle(...).getPropertyValue(propertyName)`.
-             * @param {string} propertyName
-             * @return {string}
+             * Removes the width style property from the notch element.
              */
 
           }, {
-            key: "getIdleOutlineStyleValue",
-            value: function getIdleOutlineStyleValue(propertyName) {}
+            key: "removeNotchWidthProperty",
+            value: function removeNotchWidthProperty() {}
           }]);
 
           return MDCNotchedOutlineAdapter;
@@ -7055,11 +7206,11 @@ function initialize() {
         __webpack_require__.d(__webpack_exports__, "a", function () {
           return cssClasses;
         });
-        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "c", function () {
-          return strings;
-        });
         /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "b", function () {
           return numbers;
+        });
+        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "c", function () {
+          return strings;
         });
         /**
          * @license
@@ -7086,191 +7237,33 @@ function initialize() {
 
         /** @enum {string} */
         var strings = {
-          PATH_SELECTOR: '.mdc-notched-outline__path',
-          IDLE_OUTLINE_SELECTOR: '.mdc-notched-outline__idle'
-        };
-
-        /** @enum {string} */
-        var cssClasses = {
-          OUTLINE_NOTCHED: 'mdc-notched-outline--notched'
+          NOTCH_ELEMENT_SELECTOR: '.mdc-notched-outline__notch'
         };
 
         /** @enum {number} */
         var numbers = {
-          NOTCH_GUTTER_SIZE: 4,
-          MIN_LEADING_STROKE_EDGE_POSITION: 12
+          // This should stay in sync with $mdc-notched-outline-padding * 2.
+          NOTCH_ELEMENT_PADDING: 8
+        };
+
+        /** @enum {string} */
+        var cssClasses = {
+          OUTLINE_NOTCHED: 'mdc-notched-outline--notched',
+          OUTLINE_UPGRADED: 'mdc-notched-outline--upgraded',
+          NO_LABEL: 'mdc-notched-outline--no-label'
         };
 
         /***/
       },
 
-      /***/28:
-      /***/function _(module, __webpack_exports__, __webpack_require__) {
-
-        "use strict";
-
-        Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "MDCFloatingLabel", function () {
-          return MDCFloatingLabel;
-        });
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(19);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(29);
-        /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCFloatingLabelFoundation", function () {
-          return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"];
-        });
-        var _createClass = function () {
-          function defineProperties(target, props) {
-            for (var i = 0; i < props.length; i++) {
-              var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-            }
-          }return function (Constructor, protoProps, staticProps) {
-            if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-          };
-        }();
-
-        function _classCallCheck(instance, Constructor) {
-          if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-          }
-        }
-
-        function _possibleConstructorReturn(self, call) {
-          if (!self) {
-            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-          }return call && ((typeof call === 'undefined' ? 'undefined' : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-        }
-
-        function _inherits(subClass, superClass) {
-          if (typeof superClass !== "function" && superClass !== null) {
-            throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof(superClass)));
-          }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-        }
-
-        /**
-         * @license
-         * Copyright 2016 Google Inc.
-         *
-         * Permission is hereby granted, free of charge, to any person obtaining a copy
-         * of this software and associated documentation files (the "Software"), to deal
-         * in the Software without restriction, including without limitation the rights
-         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-         * copies of the Software, and to permit persons to whom the Software is
-         * furnished to do so, subject to the following conditions:
-         *
-         * The above copyright notice and this permission notice shall be included in
-         * all copies or substantial portions of the Software.
-         *
-         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-         * THE SOFTWARE.
-         */
-
-        /**
-         * @extends {MDCComponent<!MDCFloatingLabelFoundation>}
-         * @final
-         */
-
-        var MDCFloatingLabel = function (_MDCComponent) {
-          _inherits(MDCFloatingLabel, _MDCComponent);
-
-          function MDCFloatingLabel() {
-            _classCallCheck(this, MDCFloatingLabel);
-
-            return _possibleConstructorReturn(this, (MDCFloatingLabel.__proto__ || Object.getPrototypeOf(MDCFloatingLabel)).apply(this, arguments));
-          }
-
-          _createClass(MDCFloatingLabel, [{
-            key: 'shake',
-
-            /**
-             * Styles the label to produce the label shake for errors.
-             * @param {boolean} shouldShake styles the label to shake by adding shake class
-             * if true, otherwise will stop shaking by removing shake class.
-             */
-            value: function shake(shouldShake) {
-              this.foundation_.shake(shouldShake);
-            }
-
-            /**
-             * Styles label to float/dock.
-             * @param {boolean} shouldFloat styles the label to float by adding float class
-             * if true, otherwise docks the label by removing the float class.
-             */
-
-          }, {
-            key: 'float',
-            value: function float(shouldFloat) {
-              this.foundation_.float(shouldFloat);
-            }
-
-            /**
-             * @return {number}
-             */
-
-          }, {
-            key: 'getWidth',
-            value: function getWidth() {
-              return this.foundation_.getWidth();
-            }
-
-            /**
-             * @return {!MDCFloatingLabelFoundation}
-             */
-
-          }, {
-            key: 'getDefaultFoundation',
-            value: function getDefaultFoundation() {
-              var _this2 = this;
-
-              return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
-                addClass: function addClass(className) {
-                  return _this2.root_.classList.add(className);
-                },
-                removeClass: function removeClass(className) {
-                  return _this2.root_.classList.remove(className);
-                },
-                getWidth: function getWidth() {
-                  return _this2.root_.offsetWidth;
-                },
-                registerInteractionHandler: function registerInteractionHandler(evtType, handler) {
-                  return _this2.root_.addEventListener(evtType, handler);
-                },
-                deregisterInteractionHandler: function deregisterInteractionHandler(evtType, handler) {
-                  return _this2.root_.removeEventListener(evtType, handler);
-                }
-              });
-            }
-          }], [{
-            key: 'attachTo',
-
-            /**
-             * @param {!Element} root
-             * @return {!MDCFloatingLabel}
-             */
-            value: function attachTo(root) {
-              return new MDCFloatingLabel(root);
-            }
-          }]);
-
-          return MDCFloatingLabel;
-        }(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
-
-        /***/
-      },
-
-      /***/29:
+      /***/26:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* harmony import */
         var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(19);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(30);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(12);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(27);
         var _extends = Object.assign || function (target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = arguments[i];for (var key in source) {
@@ -7463,6 +7456,47 @@ function initialize() {
         }(__WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */]);
 
         /* harmony default export */__webpack_exports__["a"] = MDCFloatingLabelFoundation;
+
+        /***/
+      },
+
+      /***/27:
+      /***/function _(module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        /* harmony export (binding) */
+        __webpack_require__.d(__webpack_exports__, "a", function () {
+          return cssClasses;
+        });
+        /**
+         * @license
+         * Copyright 2016 Google Inc.
+         *
+         * Permission is hereby granted, free of charge, to any person obtaining a copy
+         * of this software and associated documentation files (the "Software"), to deal
+         * in the Software without restriction, including without limitation the rights
+         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+         * copies of the Software, and to permit persons to whom the Software is
+         * furnished to do so, subject to the following conditions:
+         *
+         * The above copyright notice and this permission notice shall be included in
+         * all copies or substantial portions of the Software.
+         *
+         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+         * THE SOFTWARE.
+         */
+
+        /** @enum {string} */
+        var cssClasses = {
+          LABEL_FLOAT_ABOVE: 'mdc-floating-label--float-above',
+          LABEL_SHAKE: 'mdc-floating-label--shake',
+          ROOT: 'mdc-floating-label'
+        };
 
         /***/
       },
@@ -7667,46 +7701,6 @@ function initialize() {
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
-        /* harmony export (binding) */
-        __webpack_require__.d(__webpack_exports__, "a", function () {
-          return cssClasses;
-        });
-        /**
-         * @license
-         * Copyright 2016 Google Inc.
-         *
-         * Permission is hereby granted, free of charge, to any person obtaining a copy
-         * of this software and associated documentation files (the "Software"), to deal
-         * in the Software without restriction, including without limitation the rights
-         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-         * copies of the Software, and to permit persons to whom the Software is
-         * furnished to do so, subject to the following conditions:
-         *
-         * The above copyright notice and this permission notice shall be included in
-         * all copies or substantial portions of the Software.
-         *
-         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-         * THE SOFTWARE.
-         */
-
-        /** @enum {string} */
-        var cssClasses = {
-          LABEL_FLOAT_ABOVE: 'mdc-floating-label--float-above',
-          LABEL_SHAKE: 'mdc-floating-label--shake'
-        };
-
-        /***/
-      },
-
-      /***/31:
-      /***/function _(module, __webpack_exports__, __webpack_require__) {
-
-        "use strict";
 
         Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "MDCLineRipple", function () {
@@ -7714,7 +7708,7 @@ function initialize() {
         });
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(20);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(32);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(31);
         /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCLineRippleFoundation", function () {
           return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"];
         });
@@ -7873,14 +7867,14 @@ function initialize() {
         /***/
       },
 
-      /***/32:
+      /***/31:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* harmony import */
         var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(20);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(33);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(32);
         var _extends = Object.assign || function (target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = arguments[i];for (var key in source) {
@@ -8068,7 +8062,7 @@ function initialize() {
         /***/
       },
 
-      /***/33:
+      /***/32:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -8108,7 +8102,7 @@ function initialize() {
         /***/
       },
 
-      /***/36:
+      /***/35:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -8119,11 +8113,22 @@ function initialize() {
         });
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(22);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(37);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(23);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(36);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_floating_label_index__ = __webpack_require__(16);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(23);
         /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCNotchedOutlineFoundation", function () {
           return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"];
         });
+        var _extends = Object.assign || function (target) {
+          for (var i = 1; i < arguments.length; i++) {
+            var source = arguments[i];for (var key in source) {
+              if (Object.prototype.hasOwnProperty.call(source, key)) {
+                target[key] = source[key];
+              }
+            }
+          }return target;
+        };
+
         var _createClass = function () {
           function defineProperties(target, props) {
             for (var i = 0; i < props.length; i++) {
@@ -8183,27 +8188,66 @@ function initialize() {
         var MDCNotchedOutline = function (_MDCComponent) {
           _inherits(MDCNotchedOutline, _MDCComponent);
 
+          _createClass(MDCNotchedOutline, null, [{
+            key: 'attachTo',
+
+            /**
+             * @param {!Element} root
+             * @return {!MDCNotchedOutline}
+             */
+            value: function attachTo(root) {
+              return new MDCNotchedOutline(root);
+            }
+            /** @param {...?} args */
+
+          }]);
+
           function MDCNotchedOutline() {
+            var _ref;
+
             _classCallCheck(this, MDCNotchedOutline);
 
-            return _possibleConstructorReturn(this, (MDCNotchedOutline.__proto__ || Object.getPrototypeOf(MDCNotchedOutline)).apply(this, arguments));
+            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+              args[_key] = arguments[_key];
+            }
+
+            /** @private {Element} */
+            var _this = _possibleConstructorReturn(this, (_ref = MDCNotchedOutline.__proto__ || Object.getPrototypeOf(MDCNotchedOutline)).call.apply(_ref, [this].concat(args)));
+
+            _this.notchElement_;
+            return _this;
           }
 
           _createClass(MDCNotchedOutline, [{
-            key: 'notch',
+            key: 'initialSyncWithDOM',
+            value: function initialSyncWithDOM() {
+              var label = this.root_.querySelector('.' + __WEBPACK_IMPORTED_MODULE_3__material_floating_label_index__["MDCFloatingLabelFoundation"].cssClasses.ROOT);
+              this.notchElement_ = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["c" /* strings */].NOTCH_ELEMENT_SELECTOR);
 
-            /**
-              * Updates outline selectors and SVG path to open notch.
-              * @param {number} notchWidth The notch width in the outline.
-              * @param {boolean=} isRtl Determines if outline is rtl. If rtl is true, notch
-              * will be right justified in outline path, otherwise left justified.
-              */
-            value: function notch(notchWidth, isRtl) {
-              this.foundation_.notch(notchWidth, isRtl);
+              if (label) {
+                label.style.transitionDuration = '0s';
+                this.root_.classList.add(__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].OUTLINE_UPGRADED);
+                requestAnimationFrame(function () {
+                  label.style.transitionDuration = '';
+                });
+              } else {
+                this.root_.classList.add(__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].NO_LABEL);
+              }
             }
 
             /**
-             * Updates the outline selectors to close notch and return it to idle state.
+              * Updates classes and styles to open the notch to the specified width.
+              * @param {number} notchWidth The notch width in the outline.
+              */
+
+          }, {
+            key: 'notch',
+            value: function notch(notchWidth) {
+              this.foundation_.notch(notchWidth);
+            }
+
+            /**
+             * Updates classes and styles to close the notch.
              */
 
           }, {
@@ -8221,38 +8265,21 @@ function initialize() {
             value: function getDefaultFoundation() {
               var _this2 = this;
 
-              return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
-                getWidth: function getWidth() {
-                  return _this2.root_.offsetWidth;
-                },
-                getHeight: function getHeight() {
-                  return _this2.root_.offsetHeight;
-                },
+              return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */](
+              /** @type {!MDCNotchedOutlineAdapter} */_extends({
                 addClass: function addClass(className) {
                   return _this2.root_.classList.add(className);
                 },
                 removeClass: function removeClass(className) {
                   return _this2.root_.classList.remove(className);
                 },
-                setOutlinePathAttr: function setOutlinePathAttr(value) {
-                  var path = _this2.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].PATH_SELECTOR);
-                  path.setAttribute('d', value);
+                setNotchWidthProperty: function setNotchWidthProperty(width) {
+                  return _this2.notchElement_.style.setProperty('width', width + 'px');
                 },
-                getIdleOutlineStyleValue: function getIdleOutlineStyleValue(propertyName) {
-                  var idleOutlineElement = _this2.root_.parentNode.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].IDLE_OUTLINE_SELECTOR);
-                  return window.getComputedStyle(idleOutlineElement).getPropertyValue(propertyName);
+                removeNotchWidthProperty: function removeNotchWidthProperty() {
+                  return _this2.notchElement_.style.removeProperty('width');
                 }
-              });
-            }
-          }], [{
-            key: 'attachTo',
-
-            /**
-             * @param {!Element} root
-             * @return {!MDCNotchedOutline}
-             */
-            value: function attachTo(root) {
-              return new MDCNotchedOutline(root);
+              }));
             }
           }]);
 
@@ -8262,7 +8289,7 @@ function initialize() {
         /***/
       },
 
-      /***/37:
+      /***/36:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -8373,12 +8400,10 @@ function initialize() {
             key: 'defaultAdapter',
             get: function get() {
               return (/** @type {!MDCNotchedOutlineAdapter} */{
-                  getWidth: function getWidth() {},
-                  getHeight: function getHeight() {},
                   addClass: function addClass() {},
                   removeClass: function removeClass() {},
-                  setOutlinePathAttr: function setOutlinePathAttr() {},
-                  getIdleOutlineStyleValue: function getIdleOutlineStyleValue() {}
+                  setNotchWidthProperty: function setNotchWidthProperty() {},
+                  removeNotchWidthProperty: function removeNotchWidthProperty() {}
                 }
               );
             }
@@ -8397,19 +8422,21 @@ function initialize() {
 
           /**
            * Adds the outline notched selector and updates the notch width
-           * calculated based off of notchWidth and isRtl.
+           * calculated based off of notchWidth.
            * @param {number} notchWidth
-           * @param {boolean=} isRtl
            */
 
           _createClass(MDCNotchedOutlineFoundation, [{
             key: 'notch',
             value: function notch(notchWidth) {
-              var isRtl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
               var OUTLINE_NOTCHED = MDCNotchedOutlineFoundation.cssClasses.OUTLINE_NOTCHED;
 
+              if (notchWidth > 0) {
+                notchWidth += __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].NOTCH_ELEMENT_PADDING; // Add padding from left/right.
+              }
+
+              this.adapter_.setNotchWidthProperty(notchWidth);
               this.adapter_.addClass(OUTLINE_NOTCHED);
-              this.updateSvgPath_(notchWidth, isRtl);
             }
 
             /**
@@ -8422,44 +8449,7 @@ function initialize() {
               var OUTLINE_NOTCHED = MDCNotchedOutlineFoundation.cssClasses.OUTLINE_NOTCHED;
 
               this.adapter_.removeClass(OUTLINE_NOTCHED);
-            }
-
-            /**
-             * Updates the SVG path of the focus outline element based on the notchWidth
-             * and the RTL context.
-             * @param {number} notchWidth
-             * @param {boolean=} isRtl
-             * @private
-             */
-
-          }, {
-            key: 'updateSvgPath_',
-            value: function updateSvgPath_(notchWidth, isRtl) {
-              // Fall back to reading a specific corner's style because Firefox doesn't report the style on border-radius.
-              var radiusStyleValue = this.adapter_.getIdleOutlineStyleValue('border-radius') || this.adapter_.getIdleOutlineStyleValue('border-top-left-radius');
-              var radius = parseFloat(radiusStyleValue);
-              var width = this.adapter_.getWidth();
-              var height = this.adapter_.getHeight();
-              var cornerWidth = radius + 1.2;
-              var leadingStrokeLength = Math.max(0, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].MIN_LEADING_STROKE_EDGE_POSITION - radius - 1.2);
-
-              // If the notchWidth is 0, the the notched outline doesn't need to add padding.
-              var paddedNotchWidth = 0;
-              if (notchWidth > 0) {
-                paddedNotchWidth = notchWidth + 2 * __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].NOTCH_GUTTER_SIZE;
-              }
-
-              // The right, bottom, and left sides of the outline follow the same SVG path.
-              var pathMiddle = 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + radius + 'v' + (height - 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + radius + 'h' + (-width + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + -radius + 'v' + (-height + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + -radius;
-
-              var path = void 0;
-              if (!isRtl) {
-                path = 'M' + (cornerWidth + leadingStrokeLength + paddedNotchWidth) + ',' + 1 + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength) + pathMiddle + 'h' + leadingStrokeLength;
-              } else {
-                path = 'M' + (width - cornerWidth - leadingStrokeLength) + ',' + 1 + 'h' + leadingStrokeLength + pathMiddle + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength);
-              }
-
-              this.adapter_.setOutlinePathAttr(path);
+              this.adapter_.removeNotchWidthProperty();
             }
           }]);
 
@@ -9633,7 +9623,7 @@ function initialize() {
         /* harmony import */
         var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(84);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(155);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(158);
         var _extends = Object.assign || function (target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = arguments[i];for (var key in source) {
@@ -9847,7 +9837,7 @@ function initialize() {
         /* harmony import */
         var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(85);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(156);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(159);
         var _extends = Object.assign || function (target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = arguments[i];for (var key in source) {
@@ -10330,15 +10320,6 @@ function initialize() {
             value: function isFocused() {}
 
             /**
-             * Returns true if the direction of the root element is set to RTL.
-             * @return {boolean}
-             */
-
-          }, {
-            key: 'isRtl',
-            value: function isRtl() {}
-
-            /**
              * Activates the line ripple.
              */
 
@@ -10413,15 +10394,12 @@ function initialize() {
 
             /**
              * Only implement if outline element exists.
-             * Updates SVG Path and outline element based on the
-             * label element width and RTL context.
              * @param {number} labelWidth
-             * @param {boolean=} isRtl
              */
 
           }, {
             key: 'notchOutline',
-            value: function notchOutline(labelWidth, isRtl) {}
+            value: function notchOutline(labelWidth) {}
 
             /**
              * Only implement if outline element exists.
@@ -10841,7 +10819,7 @@ var VTextField = function (_visibilityObserverMi) {
         key: 'clear',
         value: function clear() {
             if (this.value() !== '') {
-                this.setValue('');
+                this.setValue(null);
             }
         }
     }, {
@@ -11489,10 +11467,13 @@ var VSnackbar = function (_VBaseComponent) {
     _createClass(VSnackbar, [{
         key: 'display',
         value: function display(message) {
-            var dataObj = {
-                message: message
-            };
-            this.mdcComponent.show(dataObj);
+            // const dataObj = {
+            //     message: message,
+            // };
+            // this.mdcComponent.show(dataObj);
+
+            this.mdcComponent.labelText = message;
+            this.mdcComponent.open();
         }
     }]);
 
@@ -11507,7 +11488,7 @@ var VSnackbar = function (_VBaseComponent) {
 
 /*!
  Material Components for the Web
- Copyright (c) 2018 Google Inc.
+ Copyright (c) 2019 Google Inc.
  License: MIT
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -11590,7 +11571,7 @@ var VSnackbar = function (_VBaseComponent) {
       /******/__webpack_require__.p = "";
       /******/
       /******/ // Load entry module and return exports
-      /******/return __webpack_require__(__webpack_require__.s = 48);
+      /******/return __webpack_require__(__webpack_require__.s = 46);
       /******/
     }(
     /************************************************************************/
@@ -11907,7 +11888,7 @@ var VSnackbar = function (_VBaseComponent) {
       /* harmony default export */__webpack_exports__["a"] = MDCComponent;
 
       /***/
-    },,,,,,,,,,
+    },,,,,,,
     /* 2 */
     /* 3 */
     /* 4 */
@@ -11915,9 +11896,6 @@ var VSnackbar = function (_VBaseComponent) {
     /* 6 */
     /* 7 */
     /* 8 */
-    /* 9 */
-    /* 10 */
-    /* 11 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -11988,8 +11966,9 @@ var VSnackbar = function (_VBaseComponent) {
       }
 
       /***/
-    },
-    /* 12 */
+    },,
+    /* 9 */
+    /* 10 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -12133,14 +12112,49 @@ var VSnackbar = function (_VBaseComponent) {
           value: function followHref(ele) {}
 
           /**
-           * Toggles the checkbox or radio button within a list item.
            * @param {number} index
-           * @return {boolean} true if a radio button or checkbox was present.
+           * @return {boolean} Returns true if radio button is present at given list item index.
            */
 
         }, {
-          key: "toggleCheckbox",
-          value: function toggleCheckbox(index) {}
+          key: "hasRadioAtIndex",
+          value: function hasRadioAtIndex(index) {}
+
+          /**
+           * @param {number} index
+           * @return {boolean} Returns true if checkbox is present at given list item index.
+           */
+
+        }, {
+          key: "hasCheckboxAtIndex",
+          value: function hasCheckboxAtIndex(index) {}
+
+          /**
+           * @param {number} index
+           * @return {boolean} Returns true if checkbox inside a list item is checked.
+           */
+
+        }, {
+          key: "isCheckboxCheckedAtIndex",
+          value: function isCheckboxCheckedAtIndex(index) {}
+
+          /**
+           * Sets the checked status of checkbox or radio at given list item index.
+           * @param {number} index
+           * @param {boolean} isChecked
+           */
+
+        }, {
+          key: "setCheckedCheckboxOrRadioAtIndex",
+          value: function setCheckedCheckboxOrRadioAtIndex(index, isChecked) {}
+
+          /**
+           * @return {boolean} Returns true when the current focused element is inside list root.
+           */
+
+        }, {
+          key: "isFocusInsideList",
+          value: function isFocusInsideList() {}
         }]);
 
         return MDCListAdapter;
@@ -12150,7 +12164,7 @@ var VSnackbar = function (_VBaseComponent) {
 
       /***/
     },
-    /* 13 */
+    /* 11 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -12161,6 +12175,7 @@ var VSnackbar = function (_VBaseComponent) {
       /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "a", function () {
         return cssClasses;
       });
+      /* unused harmony export Index */
       /**
        * @license
        * Copyright 2018 Google Inc.
@@ -12197,14 +12212,25 @@ var VSnackbar = function (_VBaseComponent) {
         ARIA_ORIENTATION: 'aria-orientation',
         ARIA_ORIENTATION_HORIZONTAL: 'horizontal',
         ARIA_SELECTED: 'aria-selected',
+        ARIA_CHECKED: 'aria-checked',
+        ARIA_CHECKED_RADIO_SELECTOR: '[role="radio"][aria-checked="true"]',
+        ARIA_ROLE_CHECKBOX_SELECTOR: '[role="checkbox"]',
+        ARIA_CHECKED_CHECKBOX_SELECTOR: '[role="checkbox"][aria-checked="true"]',
+        RADIO_SELECTOR: 'input[type="radio"]:not(:disabled)',
+        CHECKBOX_SELECTOR: 'input[type="checkbox"]:not(:disabled)',
         CHECKBOX_RADIO_SELECTOR: 'input[type="checkbox"]:not(:disabled), input[type="radio"]:not(:disabled)',
         CHILD_ELEMENTS_TO_TOGGLE_TABINDEX: '.' + cssClasses.LIST_ITEM_CLASS + ' button:not(:disabled),\n  .' + cssClasses.LIST_ITEM_CLASS + ' a',
         FOCUSABLE_CHILD_ELEMENTS: '.' + cssClasses.LIST_ITEM_CLASS + ' button:not(:disabled), .' + cssClasses.LIST_ITEM_CLASS + ' a,\n  .' + cssClasses.LIST_ITEM_CLASS + ' input[type="radio"]:not(:disabled),\n  .' + cssClasses.LIST_ITEM_CLASS + ' input[type="checkbox"]:not(:disabled)',
         ENABLED_ITEMS_SELECTOR: '.mdc-list-item:not(.mdc-list-item--disabled)'
       };
 
+      /** @typedef {number|!Array<number>} */
+      var Index = void 0;
+
       /***/
-    },,
+    },,,,
+    /* 12 */
+    /* 13 */
     /* 14 */
     /* 15 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
@@ -12212,8 +12238,8 @@ var VSnackbar = function (_VBaseComponent) {
       "use strict";
       /* harmony import */
       var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(12);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(13);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(10);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(11);
       var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];for (var key in source) {
@@ -12275,6 +12301,8 @@ var VSnackbar = function (_VBaseComponent) {
        * THE SOFTWARE.
        */
 
+      // eslint-disable-line no-unused-vars
+
       var ELEMENTS_KEY_ALLOWED_IN = ['input', 'button', 'textarea', 'select'];
 
       var MDCListFoundation = function (_MDCFoundation) {
@@ -12315,7 +12343,11 @@ var VSnackbar = function (_VBaseComponent) {
                 focusItemAtIndex: function focusItemAtIndex() {},
                 setTabIndexForListItemChildren: function setTabIndexForListItemChildren() {},
                 followHref: function followHref() {},
-                toggleCheckbox: function toggleCheckbox() {}
+                hasRadioAtIndex: function hasRadioAtIndex() {},
+                hasCheckboxAtIndex: function hasCheckboxAtIndex() {},
+                isCheckboxCheckedAtIndex: function isCheckboxCheckedAtIndex() {},
+                setCheckedCheckboxOrRadioAtIndex: function setCheckedCheckboxOrRadioAtIndex() {},
+                isFocusInsideList: function isFocusInsideList() {}
               }
             );
           }
@@ -12329,27 +12361,52 @@ var VSnackbar = function (_VBaseComponent) {
         function MDCListFoundation(adapter) {
           _classCallCheck(this, MDCListFoundation);
 
-          /** {boolean} */
+          /** @private {boolean} */
           var _this = _possibleConstructorReturn(this, (MDCListFoundation.__proto__ || Object.getPrototypeOf(MDCListFoundation)).call(this, _extends(MDCListFoundation.defaultAdapter, adapter)));
 
           _this.wrapFocus_ = false;
-          /** {boolean} */
+
+          /** @private {boolean} */
           _this.isVertical_ = true;
-          /** {boolean} */
+
+          /** @private {boolean} */
           _this.isSingleSelectionList_ = false;
-          /** {number} */
+
+          /** @private {!Index} */
           _this.selectedIndex_ = -1;
-          /** {boolean} */
+
+          /** @private {number} */
+          _this.focusedItemIndex_ = -1;
+
+          /** @private {boolean} */
           _this.useActivatedClass_ = false;
+
+          /** @private {boolean} */
+          _this.isCheckboxList_ = false;
+
+          /** @private {boolean} */
+          _this.isRadioList_ = false;
           return _this;
         }
 
-        /**
-         * Sets the private wrapFocus_ variable.
-         * @param {boolean} value
-         */
-
         _createClass(MDCListFoundation, [{
+          key: 'layout',
+          value: function layout() {
+            if (this.adapter_.getListItemCount() === 0) return;
+
+            if (this.adapter_.hasCheckboxAtIndex(0)) {
+              this.isCheckboxList_ = true;
+            } else if (this.adapter_.hasRadioAtIndex(0)) {
+              this.isRadioList_ = true;
+            }
+          }
+
+          /**
+           * Sets the private wrapFocus_ variable.
+           * @param {boolean} value
+           */
+
+        }, {
           key: 'setWrapFocus',
           value: function setWrapFocus(value) {
             this.wrapFocus_ = value;
@@ -12388,32 +12445,27 @@ var VSnackbar = function (_VBaseComponent) {
             this.useActivatedClass_ = useActivated;
           }
 
-          /** @param {number} index */
+          /** @return {!Index} */
+
+        }, {
+          key: 'getSelectedIndex',
+          value: function getSelectedIndex() {
+            return this.selectedIndex_;
+          }
+
+          /** @param {!Index} index */
 
         }, {
           key: 'setSelectedIndex',
           value: function setSelectedIndex(index) {
-            if (index === this.selectedIndex_) {
-              return;
-            }
+            if (!this.isIndexValid_(index)) return;
 
-            var className = this.useActivatedClass_ ? __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS : __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LIST_ITEM_SELECTED_CLASS;
-
-            if (this.selectedIndex_ >= 0) {
-              this.adapter_.removeAttributeForElementIndex(this.selectedIndex_, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_SELECTED);
-              this.adapter_.removeClassForElementIndex(this.selectedIndex_, className);
-              this.adapter_.setAttributeForElementIndex(this.selectedIndex_, 'tabindex', -1);
-            }
-
-            if (index >= 0 && this.adapter_.getListItemCount() > index) {
-              this.selectedIndex_ = index;
-              this.adapter_.setAttributeForElementIndex(this.selectedIndex_, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_SELECTED, true);
-              this.adapter_.addClassForElementIndex(this.selectedIndex_, className);
-              this.adapter_.setAttributeForElementIndex(this.selectedIndex_, 'tabindex', 0);
-
-              if (this.selectedIndex_ !== 0) {
-                this.adapter_.setAttributeForElementIndex(0, 'tabindex', -1);
-              }
+            if (this.isCheckboxList_) {
+              this.setCheckboxAtIndex_( /** @type {!Array<number>} */index);
+            } else if (this.isRadioList_) {
+              this.setRadioAtIndex_( /** @type {number} */index);
+            } else {
+              this.setSingleSelectionAtIndex_( /** @type {number} */index);
             }
           }
 
@@ -12440,9 +12492,21 @@ var VSnackbar = function (_VBaseComponent) {
         }, {
           key: 'handleFocusOut',
           value: function handleFocusOut(evt, listItemIndex) {
+            var _this2 = this;
+
             if (listItemIndex >= 0) {
               this.adapter_.setTabIndexForListItemChildren(listItemIndex, -1);
             }
+
+            /**
+             * Between Focusout & Focusin some browsers do not have focus on any element. Setting a delay to wait till the focus
+             * is moved to next element.
+             */
+            setTimeout(function () {
+              if (!_this2.adapter_.isFocusInsideList()) {
+                _this2.setTabindexToFirstSelectedItem_();
+              }
+            }, 0);
           }
 
           /**
@@ -12465,6 +12529,7 @@ var VSnackbar = function (_VBaseComponent) {
             var isSpace = evt.key === 'Space' || evt.keyCode === 32;
 
             var currentIndex = this.adapter_.getFocusedElementIndex();
+            var nextIndex = -1;
             if (currentIndex === -1) {
               currentIndex = listItemIndex;
               if (currentIndex < 0) {
@@ -12476,33 +12541,33 @@ var VSnackbar = function (_VBaseComponent) {
 
             if (this.isVertical_ && arrowDown || !this.isVertical_ && arrowRight) {
               this.preventDefaultEvent_(evt);
-              this.focusNextElement(currentIndex);
+              nextIndex = this.focusNextElement(currentIndex);
             } else if (this.isVertical_ && arrowUp || !this.isVertical_ && arrowLeft) {
               this.preventDefaultEvent_(evt);
-              this.focusPrevElement(currentIndex);
+              nextIndex = this.focusPrevElement(currentIndex);
             } else if (isHome) {
               this.preventDefaultEvent_(evt);
-              this.focusFirstElement();
+              nextIndex = this.focusFirstElement();
             } else if (isEnd) {
               this.preventDefaultEvent_(evt);
-              this.focusLastElement();
+              nextIndex = this.focusLastElement();
             } else if (isEnter || isSpace) {
               if (isRootListItem) {
-                if (this.isSingleSelectionList_) {
-                  // Check if the space key was pressed on the list item or a child element.
-                  this.setSelectedIndex(currentIndex);
+                if (this.isSelectableList_()) {
+                  this.setSelectedIndexOnAction_(currentIndex);
                   this.preventDefaultEvent_(evt);
                 }
 
                 // Explicitly activate links, since we're preventing default on Enter, and Space doesn't activate them.
                 this.adapter_.followHref(currentIndex);
               }
+            }
 
-              var checkboxFound = this.adapter_.toggleCheckbox(listItemIndex);
+            this.focusedItemIndex_ = currentIndex;
 
-              if (checkboxFound) {
-                this.preventDefaultEvent_(evt);
-              }
+            if (nextIndex >= 0) {
+              this.setTabindexAtIndex_(nextIndex);
+              this.focusedItemIndex_ = nextIndex;
             }
           }
 
@@ -12517,13 +12582,12 @@ var VSnackbar = function (_VBaseComponent) {
           value: function handleClick(index, toggleCheckbox) {
             if (index === -1) return;
 
-            if (toggleCheckbox) {
-              this.adapter_.toggleCheckbox(index);
+            if (this.isSelectableList_()) {
+              this.setSelectedIndexOnAction_(index, toggleCheckbox);
             }
 
-            if (this.isSingleSelectionList_) {
-              this.setSelectedIndex(index);
-            }
+            this.setTabindexAtIndex_(index);
+            this.focusedItemIndex_ = index;
           }
 
           /**
@@ -12545,6 +12609,7 @@ var VSnackbar = function (_VBaseComponent) {
           /**
            * Focuses the next element on the list.
            * @param {number} index
+           * @return {number}
            */
 
         }, {
@@ -12557,15 +12622,18 @@ var VSnackbar = function (_VBaseComponent) {
                 nextIndex = 0;
               } else {
                 // Return early because last item is already focused.
-                return;
+                return index;
               }
             }
             this.adapter_.focusItemAtIndex(nextIndex);
+
+            return nextIndex;
           }
 
           /**
            * Focuses the previous element on the list.
            * @param {number} index
+           * @return {number}
            */
 
         }, {
@@ -12577,24 +12645,245 @@ var VSnackbar = function (_VBaseComponent) {
                 prevIndex = this.adapter_.getListItemCount() - 1;
               } else {
                 // Return early because first item is already focused.
-                return;
+                return index;
               }
             }
             this.adapter_.focusItemAtIndex(prevIndex);
+
+            return prevIndex;
           }
+
+          /**
+           * @return {number}
+           */
+
         }, {
           key: 'focusFirstElement',
           value: function focusFirstElement() {
-            if (this.adapter_.getListItemCount() > 0) {
-              this.adapter_.focusItemAtIndex(0);
-            }
+            this.adapter_.focusItemAtIndex(0);
+            return 0;
           }
+
+          /**
+           * @return {number}
+           */
+
         }, {
           key: 'focusLastElement',
           value: function focusLastElement() {
             var lastIndex = this.adapter_.getListItemCount() - 1;
-            if (lastIndex >= 0) {
-              this.adapter_.focusItemAtIndex(lastIndex);
+            this.adapter_.focusItemAtIndex(lastIndex);
+            return lastIndex;
+          }
+
+          /**
+           * @param {number} index
+           * @private
+           */
+
+        }, {
+          key: 'setSingleSelectionAtIndex_',
+          value: function setSingleSelectionAtIndex_(index) {
+            var selectedClassName = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LIST_ITEM_SELECTED_CLASS;
+            if (this.useActivatedClass_) {
+              selectedClassName = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS;
+            }
+
+            if (this.selectedIndex_ >= 0 && this.selectedIndex_ !== index) {
+              this.adapter_.removeClassForElementIndex(this.selectedIndex_, selectedClassName);
+              this.adapter_.setAttributeForElementIndex(this.selectedIndex_, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_SELECTED, 'false');
+            }
+
+            this.adapter_.addClassForElementIndex(index, selectedClassName);
+            this.adapter_.setAttributeForElementIndex(index, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_SELECTED, 'true');
+
+            this.selectedIndex_ = index;
+          }
+
+          /**
+           * Toggles radio at give index. Radio doesn't change the checked state if it is already checked.
+           * @param {number} index
+           * @private
+           */
+
+        }, {
+          key: 'setRadioAtIndex_',
+          value: function setRadioAtIndex_(index) {
+            this.adapter_.setCheckedCheckboxOrRadioAtIndex(index, true);
+
+            if (this.selectedIndex_ >= 0) {
+              this.adapter_.setAttributeForElementIndex(this.selectedIndex_, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_CHECKED, 'false');
+            }
+
+            this.adapter_.setAttributeForElementIndex(index, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_CHECKED, 'true');
+
+            this.selectedIndex_ = index;
+          }
+
+          /**
+           * @param {!Array<number>} index
+           * @private
+           */
+
+        }, {
+          key: 'setCheckboxAtIndex_',
+          value: function setCheckboxAtIndex_(index) {
+            for (var i = 0; i < this.adapter_.getListItemCount(); i++) {
+              var isChecked = false;
+              if (index.indexOf(i) >= 0) {
+                isChecked = true;
+              }
+
+              this.adapter_.setCheckedCheckboxOrRadioAtIndex(i, isChecked);
+              this.adapter_.setAttributeForElementIndex(i, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_CHECKED, isChecked ? 'true' : 'false');
+            }
+
+            this.selectedIndex_ = index;
+          }
+
+          /**
+           * @param {number} index
+           * @private
+           */
+
+        }, {
+          key: 'setTabindexAtIndex_',
+          value: function setTabindexAtIndex_(index) {
+            if (this.focusedItemIndex_ === -1 && index !== 0) {
+              // If no list item was selected set first list item's tabindex to -1.
+              // Generally, tabindex is set to 0 on first list item of list that has no preselected items.
+              this.adapter_.setAttributeForElementIndex(0, 'tabindex', -1);
+            } else if (this.focusedItemIndex_ >= 0 && this.focusedItemIndex_ !== index) {
+              this.adapter_.setAttributeForElementIndex(this.focusedItemIndex_, 'tabindex', -1);
+            }
+
+            this.adapter_.setAttributeForElementIndex(index, 'tabindex', 0);
+          }
+
+          /**
+           * @return {boolean} Return true if it is single selectin list, checkbox list or radio list.
+           * @private
+           */
+
+        }, {
+          key: 'isSelectableList_',
+          value: function isSelectableList_() {
+            return this.isSingleSelectionList_ || this.isCheckboxList_ || this.isRadioList_;
+          }
+
+          /** @private */
+
+        }, {
+          key: 'setTabindexToFirstSelectedItem_',
+          value: function setTabindexToFirstSelectedItem_() {
+            var targetIndex = 0;
+
+            if (this.isSelectableList_()) {
+              if (typeof this.selectedIndex_ === 'number' && this.selectedIndex_ !== -1) {
+                targetIndex = this.selectedIndex_;
+              } else if (this.selectedIndex_ instanceof Array && this.selectedIndex_.length > 0) {
+                targetIndex = this.selectedIndex_.reduce(function (currentIndex, minIndex) {
+                  return Math.min(currentIndex, minIndex);
+                });
+              }
+            }
+
+            this.setTabindexAtIndex_(targetIndex);
+          }
+
+          /**
+           * @param {!Index} index
+           * @return {boolean}
+           * @private
+           */
+
+        }, {
+          key: 'isIndexValid_',
+          value: function isIndexValid_(index) {
+            var _this3 = this;
+
+            if (index instanceof Array) {
+              if (!this.isCheckboxList_) {
+                throw new Error('MDCListFoundation: Array of index is only supported for checkbox based list');
+              }
+
+              if (index.length === 0) {
+                return true;
+              } else {
+                return index.some(function (i) {
+                  return _this3.isIndexInRange_(i);
+                });
+              }
+            } else if (typeof index === 'number') {
+              if (this.isCheckboxList_) {
+                throw new Error('MDCListFoundation: Expected array of index for checkbox based list but got number: ' + index);
+              }
+              return this.isIndexInRange_(index);
+            } else {
+              return false;
+            }
+          }
+
+          /**
+           * @param {number} index
+           * @return {boolean}
+           * @private
+           */
+
+        }, {
+          key: 'isIndexInRange_',
+          value: function isIndexInRange_(index) {
+            var listSize = this.adapter_.getListItemCount();
+            return index >= 0 && index < listSize;
+          }
+
+          /**
+           * @param {number} index
+           * @param {boolean=} toggleCheckbox
+           * @private
+           */
+
+        }, {
+          key: 'setSelectedIndexOnAction_',
+          value: function setSelectedIndexOnAction_(index) {
+            var toggleCheckbox = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+            if (this.isCheckboxList_) {
+              this.toggleCheckboxAtIndex_(index, toggleCheckbox);
+            } else {
+              this.setSelectedIndex(index);
+            }
+          }
+
+          /**
+           * @param {number} index
+           * @param {boolean} toggleCheckbox
+           * @private
+           */
+
+        }, {
+          key: 'toggleCheckboxAtIndex_',
+          value: function toggleCheckboxAtIndex_(index, toggleCheckbox) {
+            var isChecked = this.adapter_.isCheckboxCheckedAtIndex(index);
+
+            if (toggleCheckbox) {
+              isChecked = !isChecked;
+              this.adapter_.setCheckedCheckboxOrRadioAtIndex(index, isChecked);
+            }
+
+            this.adapter_.setAttributeForElementIndex(index, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_CHECKED, isChecked ? 'true' : 'false');
+
+            // If none of the checkbox items are selected and selectedIndex is not initialized then provide a default value.
+            if (this.selectedIndex_ === -1) {
+              this.selectedIndex_ = [];
+            }
+
+            if (isChecked) {
+              this.selectedIndex_.push(index);
+            } else {
+              this.selectedIndex_ = this.selectedIndex_.filter(function (i) {
+                return i !== index;
+              });
             }
           }
         }]);
@@ -12605,8 +12894,9 @@ var VSnackbar = function (_VBaseComponent) {
       /* harmony default export */__webpack_exports__["a"] = MDCListFoundation;
 
       /***/
-    },
+    },,
     /* 16 */
+    /* 17 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -12619,7 +12909,7 @@ var VSnackbar = function (_VBaseComponent) {
       });
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(21);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(17);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(18);
       var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];for (var key in source) {
@@ -13357,7 +13647,7 @@ var VSnackbar = function (_VBaseComponent) {
 
       /***/
     },
-    /* 17 */
+    /* 18 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -13461,8 +13751,7 @@ var VSnackbar = function (_VBaseComponent) {
       };
 
       /***/
-    },,,,
-    /* 18 */
+    },,,
     /* 19 */
     /* 20 */
     /* 21 */
@@ -13705,9 +13994,9 @@ var VSnackbar = function (_VBaseComponent) {
       });
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(15);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(12);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_dom_ponyfill__ = __webpack_require__(11);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(13);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(10);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_dom_ponyfill__ = __webpack_require__(8);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(11);
       /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCListFoundation", function () {
         return __WEBPACK_IMPORTED_MODULE_1__foundation__["a"];
       });
@@ -13771,6 +14060,8 @@ var VSnackbar = function (_VBaseComponent) {
        * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
        * THE SOFTWARE.
        */
+
+      // eslint-disable-line no-unused-vars
 
       /**
        * @extends MDCComponent<!MDCListFoundation>
@@ -13844,6 +14135,8 @@ var VSnackbar = function (_VBaseComponent) {
             [].slice.call(this.root_.querySelectorAll(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].FOCUSABLE_CHILD_ELEMENTS)).forEach(function (ele) {
               return ele.setAttribute('tabindex', -1);
             });
+
+            this.foundation_.layout();
           }
 
           /**
@@ -13930,19 +14223,34 @@ var VSnackbar = function (_VBaseComponent) {
             var toggleCheckbox = !Object(__WEBPACK_IMPORTED_MODULE_3__material_dom_ponyfill__["matches"])( /** @type {!Element} */evt.target, __WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].CHECKBOX_RADIO_SELECTOR);
             this.foundation_.handleClick(index, toggleCheckbox);
           }
+
+          /**
+           * Initialize selectedIndex value based on pre-selected checkbox list items, single selection or radio.
+           */
+
         }, {
           key: 'initializeListType',
           value: function initializeListType() {
-            // Automatically set single selection if selected/activated classes are present.
-            var preselectedElement = this.root_.querySelector('.' + __WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS + ', .' + __WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].LIST_ITEM_SELECTED_CLASS);
+            var _this2 = this;
 
-            if (preselectedElement) {
-              if (preselectedElement.classList.contains(__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS)) {
+            var checkboxListItems = this.root_.querySelectorAll(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].ARIA_ROLE_CHECKBOX_SELECTOR);
+            var singleSelectedListItem = this.root_.querySelector('.' + __WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS + ',\n        .' + __WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].LIST_ITEM_SELECTED_CLASS);
+            var radioSelectedListItem = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].ARIA_CHECKED_RADIO_SELECTOR);
+
+            if (checkboxListItems.length) {
+              var preselectedItems = this.root_.querySelectorAll(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].ARIA_CHECKED_CHECKBOX_SELECTOR);
+              this.selectedIndex = [].map.call(preselectedItems, function (listItem) {
+                return _this2.listElements.indexOf(listItem);
+              });
+            } else if (singleSelectedListItem) {
+              if (singleSelectedListItem.classList.contains(__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS)) {
                 this.foundation_.setUseActivatedClass(true);
               }
 
               this.singleSelection = true;
-              this.selectedIndex = this.listElements.indexOf(preselectedElement);
+              this.selectedIndex = this.listElements.indexOf(singleSelectedListItem);
+            } else if (radioSelectedListItem) {
+              this.selectedIndex = this.listElements.indexOf(radioSelectedListItem);
             }
           }
 
@@ -13953,73 +14261,82 @@ var VSnackbar = function (_VBaseComponent) {
 
           /** @return {!MDCListFoundation} */
           value: function getDefaultFoundation() {
-            var _this2 = this;
+            var _this3 = this;
 
             return new __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */]( /** @type {!MDCListAdapter} */_extends({
               getListItemCount: function getListItemCount() {
-                return _this2.listElements.length;
+                return _this3.listElements.length;
               },
               getFocusedElementIndex: function getFocusedElementIndex() {
-                return _this2.listElements.indexOf(document.activeElement);
+                return _this3.listElements.indexOf(document.activeElement);
               },
               setAttributeForElementIndex: function setAttributeForElementIndex(index, attr, value) {
-                var element = _this2.listElements[index];
+                var element = _this3.listElements[index];
                 if (element) {
                   element.setAttribute(attr, value);
                 }
               },
               removeAttributeForElementIndex: function removeAttributeForElementIndex(index, attr) {
-                var element = _this2.listElements[index];
+                var element = _this3.listElements[index];
                 if (element) {
                   element.removeAttribute(attr);
                 }
               },
               addClassForElementIndex: function addClassForElementIndex(index, className) {
-                var element = _this2.listElements[index];
+                var element = _this3.listElements[index];
                 if (element) {
                   element.classList.add(className);
                 }
               },
               removeClassForElementIndex: function removeClassForElementIndex(index, className) {
-                var element = _this2.listElements[index];
+                var element = _this3.listElements[index];
                 if (element) {
                   element.classList.remove(className);
                 }
               },
               focusItemAtIndex: function focusItemAtIndex(index) {
-                var element = _this2.listElements[index];
+                var element = _this3.listElements[index];
                 if (element) {
                   element.focus();
                 }
               },
               setTabIndexForListItemChildren: function setTabIndexForListItemChildren(listItemIndex, tabIndexValue) {
-                var element = _this2.listElements[listItemIndex];
+                var element = _this3.listElements[listItemIndex];
                 var listItemChildren = [].slice.call(element.querySelectorAll(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].CHILD_ELEMENTS_TO_TOGGLE_TABINDEX));
                 listItemChildren.forEach(function (ele) {
                   return ele.setAttribute('tabindex', tabIndexValue);
                 });
               },
               followHref: function followHref(index) {
-                var listItem = _this2.listElements[index];
+                var listItem = _this3.listElements[index];
                 if (listItem && listItem.href) {
                   listItem.click();
                 }
               },
-              toggleCheckbox: function toggleCheckbox(index) {
-                var checkboxOrRadioExists = false;
-                var listItem = _this2.listElements[index];
-                var elementsToToggle = [].slice.call(listItem.querySelectorAll(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].CHECKBOX_RADIO_SELECTOR));
-                elementsToToggle.forEach(function (element) {
-                  var event = document.createEvent('Event');
-                  event.initEvent('change', true, true);
+              hasCheckboxAtIndex: function hasCheckboxAtIndex(index) {
+                var listItem = _this3.listElements[index];
+                return !!listItem.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].CHECKBOX_SELECTOR);
+              },
+              hasRadioAtIndex: function hasRadioAtIndex(index) {
+                var listItem = _this3.listElements[index];
+                return !!listItem.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].RADIO_SELECTOR);
+              },
+              isCheckboxCheckedAtIndex: function isCheckboxCheckedAtIndex(index) {
+                var listItem = _this3.listElements[index];
+                var toggleEl = listItem.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].CHECKBOX_SELECTOR);
+                return toggleEl.checked;
+              },
+              setCheckedCheckboxOrRadioAtIndex: function setCheckedCheckboxOrRadioAtIndex(index, isChecked) {
+                var listItem = _this3.listElements[index];
+                var toggleEl = listItem.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].CHECKBOX_RADIO_SELECTOR);
+                toggleEl.checked = isChecked;
 
-                  if (!element.checked || element.type !== 'radio') {
-                    element.checked = !element.checked;
-                    element.dispatchEvent(event);
-                  }
-                  checkboxOrRadioExists = true;
-                });
-                return checkboxOrRadioExists;
+                var event = document.createEvent('Event');
+                event.initEvent('change', true, true);
+                toggleEl.dispatchEvent(event);
+              },
+              isFocusInsideList: function isFocusInsideList() {
+                return _this3.root_.contains(document.activeElement);
               }
             }));
           }
@@ -14053,11 +14370,17 @@ var VSnackbar = function (_VBaseComponent) {
             this.foundation_.setSingleSelection(isSingleSelectionList);
           }
 
-          /** @param {number} index */
+          /** @return {!Index} */
 
         }, {
           key: 'selectedIndex',
-          set: function set(index) {
+          get: function get() {
+            return this.foundation_.getSelectedIndex();
+          }
+
+          /** @param {!Index} index */
+
+          , set: function set(index) {
             this.foundation_.setSelectedIndex(index);
           }
         }], [{
@@ -14071,9 +14394,11 @@ var VSnackbar = function (_VBaseComponent) {
       }(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
 
       /***/
-    },,
+    },,,,
     /* 26 */
     /* 27 */
+    /* 28 */
+    /* 29 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -14123,14 +14448,11 @@ var VSnackbar = function (_VBaseComponent) {
       };
 
       /***/
-    },,,,,,,
-    /* 28 */
-    /* 29 */
+    },,,,
     /* 30 */
     /* 31 */
     /* 32 */
     /* 33 */
-    /* 34 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -14140,10 +14462,10 @@ var VSnackbar = function (_VBaseComponent) {
         return MDCMenuSurface;
       });
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(35);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(16);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(34);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(17);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__adapter__ = __webpack_require__(21);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(17);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(18);
       /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCMenuSurfaceFoundation", function () {
         return __WEBPACK_IMPORTED_MODULE_2__foundation__["b"];
       });
@@ -14572,7 +14894,7 @@ var VSnackbar = function (_VBaseComponent) {
 
       /***/
     },
-    /* 35 */
+    /* 34 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -14626,7 +14948,8 @@ var VSnackbar = function (_VBaseComponent) {
       }
 
       /***/
-    },,,,,,,,,,,,,
+    },,,,,,,,,,,,
+    /* 35 */
     /* 36 */
     /* 37 */
     /* 38 */
@@ -14638,8 +14961,6 @@ var VSnackbar = function (_VBaseComponent) {
     /* 44 */
     /* 45 */
     /* 46 */
-    /* 47 */
-    /* 48 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -14649,10 +14970,10 @@ var VSnackbar = function (_VBaseComponent) {
         return MDCMenu;
       });
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(49);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(27);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_menu_surface_index__ = __webpack_require__(34);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__material_menu_surface_foundation__ = __webpack_require__(16);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(47);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(29);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_menu_surface_index__ = __webpack_require__(33);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__material_menu_surface_foundation__ = __webpack_require__(17);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_5__material_list_index__ = __webpack_require__(25);
       /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCMenuFoundation", function () {
         return __WEBPACK_IMPORTED_MODULE_1__foundation__["a"];
@@ -14977,6 +15298,20 @@ var VSnackbar = function (_VBaseComponent) {
           , set: function set(value) {
             this.menuSurface_.open = value;
           }
+
+          /** @return {boolean} */
+
+        }, {
+          key: 'wrapFocus',
+          get: function get() {
+            return this.list_.wrapFocus;
+          }
+
+          /** @param {boolean} value */
+
+          , set: function set(value) {
+            this.list_.wrapFocus = value;
+          }
         }, {
           key: 'items',
           get: function get() {
@@ -14999,7 +15334,7 @@ var VSnackbar = function (_VBaseComponent) {
 
       /***/
     },
-    /* 49 */
+    /* 47 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -15008,9 +15343,9 @@ var VSnackbar = function (_VBaseComponent) {
         return MDCMenuFoundation;
       });
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(50);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(27);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_menu_surface_foundation__ = __webpack_require__(16);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(48);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(29);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_menu_surface_foundation__ = __webpack_require__(17);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__material_list_foundation__ = __webpack_require__(15);
       var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
@@ -15319,7 +15654,7 @@ var VSnackbar = function (_VBaseComponent) {
 
       /***/
     },
-    /* 50 */
+    /* 48 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -15508,7 +15843,7 @@ var VSnackbar = function (_VBaseComponent) {
 
 /*!
  Material Components for the Web
- Copyright (c) 2018 Google Inc.
+ Copyright (c) 2019 Google Inc.
  License: MIT
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -15591,7 +15926,7 @@ var VSnackbar = function (_VBaseComponent) {
       /******/__webpack_require__.p = "";
       /******/
       /******/ // Load entry module and return exports
-      /******/return __webpack_require__(__webpack_require__.s = 91);
+      /******/return __webpack_require__(__webpack_require__.s = 92);
       /******/
     }(
     /************************************************************************/
@@ -18451,14 +18786,14 @@ var VSnackbar = function (_VBaseComponent) {
         /***/
       },
 
-      /***/91:
+      /***/92:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
 
         Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__chip_index__ = __webpack_require__(63);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__chip_set_index__ = __webpack_require__(92);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__chip_set_index__ = __webpack_require__(93);
         /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCChipFoundation", function () {
           return __WEBPACK_IMPORTED_MODULE_0__chip_index__["b"];
         });
@@ -18497,7 +18832,7 @@ var VSnackbar = function (_VBaseComponent) {
         /***/
       },
 
-      /***/92:
+      /***/93:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -18507,7 +18842,7 @@ var VSnackbar = function (_VBaseComponent) {
         });
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(67);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(93);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(94);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__chip_index__ = __webpack_require__(63);
         /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "b", function () {
           return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"];
@@ -18781,7 +19116,7 @@ var VSnackbar = function (_VBaseComponent) {
         /***/
       },
 
-      /***/93:
+      /***/94:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -18789,7 +19124,7 @@ var VSnackbar = function (_VBaseComponent) {
         var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(67);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__chip_foundation__ = __webpack_require__(65);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(94);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(95);
         var _extends = Object.assign || function (target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = arguments[i];for (var key in source) {
@@ -19029,7 +19364,7 @@ var VSnackbar = function (_VBaseComponent) {
         /***/
       },
 
-      /***/94:
+      /***/95:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -30615,7 +30950,7 @@ var VButton = function (_eventHandlerMixin) {
 
 /*!
  Material Components for the Web
- Copyright (c) 2018 Google Inc.
+ Copyright (c) 2019 Google Inc.
  License: MIT
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -32631,7 +32966,7 @@ var VDialog = function (_VBaseContainer) {
 
 /*!
  Material Components for the Web
- Copyright (c) 2018 Google Inc.
+ Copyright (c) 2019 Google Inc.
  License: MIT
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -32714,7 +33049,7 @@ var VDialog = function (_VBaseContainer) {
       /******/__webpack_require__.p = "";
       /******/
       /******/ // Load entry module and return exports
-      /******/return __webpack_require__(__webpack_require__.s = 95);
+      /******/return __webpack_require__(__webpack_require__.s = 96);
       /******/
     }(
     /************************************************************************/
@@ -33036,127 +33371,25 @@ var VDialog = function (_VBaseContainer) {
       },
 
       /***/100:
-      /***/function _(module, exports) {
-
-        module.exports = function (el, options) {
-          options = options || {};
-
-          var elementDocument = el.ownerDocument || el;
-          var basicTabbables = [];
-          var orderedTabbables = [];
-
-          // A node is "available" if
-          // - it's computed style
-          var isUnavailable = createIsUnavailable(elementDocument);
-
-          var candidateSelectors = ['input', 'select', 'a[href]', 'textarea', 'button', '[tabindex]'];
-
-          var candidates = el.querySelectorAll(candidateSelectors.join(','));
-
-          if (options.includeContainer) {
-            var matches = Element.prototype.matches || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
-
-            if (candidateSelectors.some(function (candidateSelector) {
-              return matches.call(el, candidateSelector);
-            })) {
-              candidates = Array.prototype.slice.apply(candidates);
-              candidates.unshift(el);
-            }
-          }
-
-          var candidate, candidateIndex;
-          for (var i = 0, l = candidates.length; i < l; i++) {
-            candidate = candidates[i];
-            candidateIndex = parseInt(candidate.getAttribute('tabindex'), 10) || candidate.tabIndex;
-
-            if (candidateIndex < 0 || candidate.tagName === 'INPUT' && candidate.type === 'hidden' || candidate.disabled || isUnavailable(candidate, elementDocument)) {
-              continue;
-            }
-
-            if (candidateIndex === 0) {
-              basicTabbables.push(candidate);
-            } else {
-              orderedTabbables.push({
-                index: i,
-                tabIndex: candidateIndex,
-                node: candidate
-              });
-            }
-          }
-
-          var tabbableNodes = orderedTabbables.sort(function (a, b) {
-            return a.tabIndex === b.tabIndex ? a.index - b.index : a.tabIndex - b.tabIndex;
-          }).map(function (a) {
-            return a.node;
-          });
-
-          Array.prototype.push.apply(tabbableNodes, basicTabbables);
-
-          return tabbableNodes;
-        };
-
-        function createIsUnavailable(elementDocument) {
-          // Node cache must be refreshed on every check, in case
-          // the content of the element has changed
-          var isOffCache = [];
-
-          // "off" means `display: none;`, as opposed to "hidden",
-          // which means `visibility: hidden;`. getComputedStyle
-          // accurately reflects visiblity in context but not
-          // "off" state, so we need to recursively check parents.
-
-          function isOff(node, nodeComputedStyle) {
-            if (node === elementDocument.documentElement) return false;
-
-            // Find the cached node (Array.prototype.find not available in IE9)
-            for (var i = 0, length = isOffCache.length; i < length; i++) {
-              if (isOffCache[i][0] === node) return isOffCache[i][1];
-            }
-
-            nodeComputedStyle = nodeComputedStyle || elementDocument.defaultView.getComputedStyle(node);
-
-            var result = false;
-
-            if (nodeComputedStyle.display === 'none') {
-              result = true;
-            } else if (node.parentNode) {
-              result = isOff(node.parentNode);
-            }
-
-            isOffCache.push([node, result]);
-
-            return result;
-          }
-
-          return function isUnavailable(node) {
-            if (node === elementDocument.documentElement) return false;
-
-            var computedStyle = elementDocument.defaultView.getComputedStyle(node);
-
-            if (isOff(node, computedStyle)) return true;
-
-            return computedStyle.visibility === 'hidden';
-          };
-        }
-
-        /***/
-      },
-
-      /***/11:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
 
         Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "closest", function () {
-          return closest;
+        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "createFocusTrapInstance", function () {
+          return createFocusTrapInstance;
         });
-        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "matches", function () {
-          return matches;
+        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "isScrollable", function () {
+          return isScrollable;
         });
+        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "areTopsMisaligned", function () {
+          return areTopsMisaligned;
+        });
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0_focus_trap__ = __webpack_require__(68);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0_focus_trap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_focus_trap__);
         /**
          * @license
-         * Copyright 2018 Google Inc.
+         * Copyright 2016 Google Inc.
          *
          * Permission is hereby granted, free of charge, to any person obtaining a copy
          * of this software and associated documentation files (the "Software"), to deal
@@ -33178,38 +33411,251 @@ var VDialog = function (_VBaseContainer) {
          */
 
         /**
-         * @fileoverview A "ponyfill" is a polyfill that doesn't modify the global prototype chain.
-         * This makes ponyfills safer than traditional polyfills, especially for libraries like MDC.
+         * @param {!Element} surfaceEl
+         * @param {?Element=} initialFocusEl
+         * @param {function(!Element, !FocusTrapCreateOptions): !FocusTrapInstance} focusTrapFactory
+         * @return {!FocusTrapInstance}
          */
+        function createFocusTrapInstance(surfaceEl) {
+          var focusTrapFactory = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : __WEBPACK_IMPORTED_MODULE_0_focus_trap___default.a;
+          var initialFocusEl = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
-        /**
-         * @param {!Element} element
-         * @param {string} selector
-         * @return {?Element}
-         */
-        function closest(element, selector) {
-          if (element.closest) {
-            return element.closest(selector);
-          }
-
-          var el = element;
-          while (el) {
-            if (matches(el, selector)) {
-              return el;
-            }
-            el = el.parentElement;
-          }
-          return null;
+          return focusTrapFactory(surfaceEl, {
+            initialFocus: initialFocusEl,
+            escapeDeactivates: false, // Dialog foundation handles escape key
+            clickOutsideDeactivates: true });
         }
 
         /**
-         * @param {!Element} element
-         * @param {string} selector
+         * @param {!Element} el
          * @return {boolean}
          */
-        function matches(element, selector) {
-          var nativeMatches = element.matches || element.webkitMatchesSelector || element.msMatchesSelector;
-          return nativeMatches.call(element, selector);
+        function isScrollable(el) {
+          return el.scrollHeight > el.offsetHeight;
+        }
+
+        /**
+         * @param {!Array<!Element>|!NodeList} els
+         * @return {boolean}
+         */
+        function areTopsMisaligned(els) {
+          var tops = new Set();
+          [].forEach.call(els, function (el) {
+            return tops.add(el.offsetTop);
+          });
+          return tops.size > 1;
+        }
+
+        /***/
+      },
+
+      /***/101:
+      /***/function _(module, exports) {
+
+        var candidateSelectors = ['input', 'select', 'textarea', 'a[href]', 'button', '[tabindex]', 'audio[controls]', 'video[controls]', '[contenteditable]:not([contenteditable="false"])'];
+        var candidateSelector = candidateSelectors.join(',');
+
+        var matches = typeof Element === 'undefined' ? function () {} : Element.prototype.matches || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+
+        function tabbable(el, options) {
+          options = options || {};
+
+          var elementDocument = el.ownerDocument || el;
+          var regularTabbables = [];
+          var orderedTabbables = [];
+
+          var untouchabilityChecker = new UntouchabilityChecker(elementDocument);
+          var candidates = el.querySelectorAll(candidateSelector);
+
+          if (options.includeContainer) {
+            if (matches.call(el, candidateSelector)) {
+              candidates = Array.prototype.slice.apply(candidates);
+              candidates.unshift(el);
+            }
+          }
+
+          var i, candidate, candidateTabindex;
+          for (i = 0; i < candidates.length; i++) {
+            candidate = candidates[i];
+
+            if (!isNodeMatchingSelectorTabbable(candidate, untouchabilityChecker)) continue;
+
+            candidateTabindex = getTabindex(candidate);
+            if (candidateTabindex === 0) {
+              regularTabbables.push(candidate);
+            } else {
+              orderedTabbables.push({
+                documentOrder: i,
+                tabIndex: candidateTabindex,
+                node: candidate
+              });
+            }
+          }
+
+          var tabbableNodes = orderedTabbables.sort(sortOrderedTabbables).map(function (a) {
+            return a.node;
+          }).concat(regularTabbables);
+
+          return tabbableNodes;
+        }
+
+        tabbable.isTabbable = isTabbable;
+        tabbable.isFocusable = isFocusable;
+
+        function isNodeMatchingSelectorTabbable(node, untouchabilityChecker) {
+          if (!isNodeMatchingSelectorFocusable(node, untouchabilityChecker) || isNonTabbableRadio(node) || getTabindex(node) < 0) {
+            return false;
+          }
+          return true;
+        }
+
+        function isTabbable(node, untouchabilityChecker) {
+          if (!node) throw new Error('No node provided');
+          if (matches.call(node, candidateSelector) === false) return false;
+          return isNodeMatchingSelectorTabbable(node, untouchabilityChecker);
+        }
+
+        function isNodeMatchingSelectorFocusable(node, untouchabilityChecker) {
+          untouchabilityChecker = untouchabilityChecker || new UntouchabilityChecker(node.ownerDocument || node);
+          if (node.disabled || isHiddenInput(node) || untouchabilityChecker.isUntouchable(node)) {
+            return false;
+          }
+          return true;
+        }
+
+        var focusableCandidateSelector = candidateSelectors.concat('iframe').join(',');
+        function isFocusable(node, untouchabilityChecker) {
+          if (!node) throw new Error('No node provided');
+          if (matches.call(node, focusableCandidateSelector) === false) return false;
+          return isNodeMatchingSelectorFocusable(node, untouchabilityChecker);
+        }
+
+        function getTabindex(node) {
+          var tabindexAttr = parseInt(node.getAttribute('tabindex'), 10);
+          if (!isNaN(tabindexAttr)) return tabindexAttr;
+          // Browsers do not return `tabIndex` correctly for contentEditable nodes;
+          // so if they don't have a tabindex attribute specifically set, assume it's 0.
+          if (isContentEditable(node)) return 0;
+          return node.tabIndex;
+        }
+
+        function sortOrderedTabbables(a, b) {
+          return a.tabIndex === b.tabIndex ? a.documentOrder - b.documentOrder : a.tabIndex - b.tabIndex;
+        }
+
+        // Array.prototype.find not available in IE.
+        function find(list, predicate) {
+          for (var i = 0, length = list.length; i < length; i++) {
+            if (predicate(list[i])) return list[i];
+          }
+        }
+
+        function isContentEditable(node) {
+          return node.contentEditable === 'true';
+        }
+
+        function isInput(node) {
+          return node.tagName === 'INPUT';
+        }
+
+        function isHiddenInput(node) {
+          return isInput(node) && node.type === 'hidden';
+        }
+
+        function isRadio(node) {
+          return isInput(node) && node.type === 'radio';
+        }
+
+        function isNonTabbableRadio(node) {
+          return isRadio(node) && !isTabbableRadio(node);
+        }
+
+        function getCheckedRadio(nodes) {
+          for (var i = 0; i < nodes.length; i++) {
+            if (nodes[i].checked) {
+              return nodes[i];
+            }
+          }
+        }
+
+        function isTabbableRadio(node) {
+          if (!node.name) return true;
+          // This won't account for the edge case where you have radio groups with the same
+          // in separate forms on the same page.
+          var radioSet = node.ownerDocument.querySelectorAll('input[type="radio"][name="' + node.name + '"]');
+          var checked = getCheckedRadio(radioSet);
+          return !checked || checked === node;
+        }
+
+        // An element is "untouchable" if *it or one of its ancestors* has
+        // `visibility: hidden` or `display: none`.
+        function UntouchabilityChecker(elementDocument) {
+          this.doc = elementDocument;
+          // Node cache must be refreshed on every check, in case
+          // the content of the element has changed. The cache contains tuples
+          // mapping nodes to their boolean result.
+          this.cache = [];
+        }
+
+        // getComputedStyle accurately reflects `visibility: hidden` of ancestors
+        // but not `display: none`, so we need to recursively check parents.
+        UntouchabilityChecker.prototype.hasDisplayNone = function hasDisplayNone(node, nodeComputedStyle) {
+          if (node.nodeType !== Node.ELEMENT_NODE) return false;
+
+          // Search for a cached result.
+          var cached = find(this.cache, function (item) {
+            return item === node;
+          });
+          if (cached) return cached[1];
+
+          nodeComputedStyle = nodeComputedStyle || this.doc.defaultView.getComputedStyle(node);
+
+          var result = false;
+
+          if (nodeComputedStyle.display === 'none') {
+            result = true;
+          } else if (node.parentNode) {
+            result = this.hasDisplayNone(node.parentNode);
+          }
+
+          this.cache.push([node, result]);
+
+          return result;
+        };
+
+        UntouchabilityChecker.prototype.isUntouchable = function isUntouchable(node) {
+          if (node === this.doc.documentElement) return false;
+          var computedStyle = this.doc.defaultView.getComputedStyle(node);
+          if (this.hasDisplayNone(node, computedStyle)) return true;
+          return computedStyle.visibility === 'hidden';
+        };
+
+        module.exports = tabbable;
+
+        /***/
+      },
+
+      /***/102:
+      /***/function _(module, exports) {
+
+        module.exports = extend;
+
+        var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+        function extend() {
+          var target = {};
+
+          for (var i = 0; i < arguments.length; i++) {
+            var source = arguments[i];
+
+            for (var key in source) {
+              if (hasOwnProperty.call(source, key)) {
+                target[key] = source[key];
+              }
+            }
+          }
+
+          return target;
         }
 
         /***/
@@ -34760,24 +35206,60 @@ var VDialog = function (_VBaseContainer) {
       /***/68:
       /***/function _(module, exports, __webpack_require__) {
 
-        var tabbable = __webpack_require__(100);
+        var tabbable = __webpack_require__(101);
+        var xtend = __webpack_require__(102);
 
-        var listeningFocusTrap = null;
+        var activeFocusTraps = function () {
+          var trapQueue = [];
+          return {
+            activateTrap: function activateTrap(trap) {
+              if (trapQueue.length > 0) {
+                var activeTrap = trapQueue[trapQueue.length - 1];
+                if (activeTrap !== trap) {
+                  activeTrap.pause();
+                }
+              }
+
+              var trapIndex = trapQueue.indexOf(trap);
+              if (trapIndex === -1) {
+                trapQueue.push(trap);
+              } else {
+                // move this existing trap to the front of the queue
+                trapQueue.splice(trapIndex, 1);
+                trapQueue.push(trap);
+              }
+            },
+
+            deactivateTrap: function deactivateTrap(trap) {
+              var trapIndex = trapQueue.indexOf(trap);
+              if (trapIndex !== -1) {
+                trapQueue.splice(trapIndex, 1);
+              }
+
+              if (trapQueue.length > 0) {
+                trapQueue[trapQueue.length - 1].unpause();
+              }
+            }
+          };
+        }();
 
         function focusTrap(element, userOptions) {
-          var tabbableNodes = [];
-          var firstTabbableNode = null;
-          var lastTabbableNode = null;
-          var nodeFocusedBeforeActivation = null;
-          var active = false;
-          var paused = false;
-          var tabEvent = null;
+          var doc = document;
+          var container = typeof element === 'string' ? doc.querySelector(element) : element;
 
-          var container = typeof element === 'string' ? document.querySelector(element) : element;
+          var config = xtend({
+            returnFocusOnDeactivate: true,
+            escapeDeactivates: true
+          }, userOptions);
 
-          var config = userOptions || {};
-          config.returnFocusOnDeactivate = userOptions && userOptions.returnFocusOnDeactivate !== undefined ? userOptions.returnFocusOnDeactivate : true;
-          config.escapeDeactivates = userOptions && userOptions.escapeDeactivates !== undefined ? userOptions.escapeDeactivates : true;
+          var state = {
+            firstTabbableNode: null,
+            lastTabbableNode: null,
+            nodeFocusedBeforeActivation: null,
+            mostRecentlyFocusedNode: null,
+            active: false,
+            paused: false
+          };
 
           var trap = {
             activate: activate,
@@ -34789,18 +35271,17 @@ var VDialog = function (_VBaseContainer) {
           return trap;
 
           function activate(activateOptions) {
-            if (active) return;
+            if (state.active) return;
 
-            var defaultedActivateOptions = {
-              onActivate: activateOptions && activateOptions.onActivate !== undefined ? activateOptions.onActivate : config.onActivate
-            };
+            updateTabbableNodes();
 
-            active = true;
-            paused = false;
-            nodeFocusedBeforeActivation = document.activeElement;
+            state.active = true;
+            state.paused = false;
+            state.nodeFocusedBeforeActivation = doc.activeElement;
 
-            if (defaultedActivateOptions.onActivate) {
-              defaultedActivateOptions.onActivate();
+            var onActivate = activateOptions && activateOptions.onActivate ? activateOptions.onActivate : config.onActivate;
+            if (onActivate) {
+              onActivate();
             }
 
             addListeners();
@@ -34808,72 +35289,71 @@ var VDialog = function (_VBaseContainer) {
           }
 
           function deactivate(deactivateOptions) {
-            if (!active) return;
-
-            var defaultedDeactivateOptions = {
-              returnFocus: deactivateOptions && deactivateOptions.returnFocus !== undefined ? deactivateOptions.returnFocus : config.returnFocusOnDeactivate,
-              onDeactivate: deactivateOptions && deactivateOptions.onDeactivate !== undefined ? deactivateOptions.onDeactivate : config.onDeactivate
-            };
+            if (!state.active) return;
 
             removeListeners();
+            state.active = false;
+            state.paused = false;
 
-            if (defaultedDeactivateOptions.onDeactivate) {
-              defaultedDeactivateOptions.onDeactivate();
+            activeFocusTraps.deactivateTrap(trap);
+
+            var onDeactivate = deactivateOptions && deactivateOptions.onDeactivate !== undefined ? deactivateOptions.onDeactivate : config.onDeactivate;
+            if (onDeactivate) {
+              onDeactivate();
             }
 
-            if (defaultedDeactivateOptions.returnFocus) {
-              setTimeout(function () {
-                tryFocus(nodeFocusedBeforeActivation);
-              }, 0);
+            var returnFocus = deactivateOptions && deactivateOptions.returnFocus !== undefined ? deactivateOptions.returnFocus : config.returnFocusOnDeactivate;
+            if (returnFocus) {
+              delay(function () {
+                tryFocus(state.nodeFocusedBeforeActivation);
+              });
             }
 
-            active = false;
-            paused = false;
-            return this;
+            return trap;
           }
 
           function pause() {
-            if (paused || !active) return;
-            paused = true;
+            if (state.paused || !state.active) return;
+            state.paused = true;
             removeListeners();
           }
 
           function unpause() {
-            if (!paused || !active) return;
-            paused = false;
+            if (!state.paused || !state.active) return;
+            state.paused = false;
             addListeners();
           }
 
           function addListeners() {
-            if (!active) return;
+            if (!state.active) return;
 
             // There can be only one listening focus trap at a time
-            if (listeningFocusTrap) {
-              listeningFocusTrap.pause();
-            }
-            listeningFocusTrap = trap;
+            activeFocusTraps.activateTrap(trap);
 
             updateTabbableNodes();
-            tryFocus(firstFocusNode());
-            document.addEventListener('focus', checkFocus, true);
-            document.addEventListener('click', checkClick, true);
-            document.addEventListener('mousedown', checkPointerDown, true);
-            document.addEventListener('touchstart', checkPointerDown, true);
-            document.addEventListener('keydown', checkKey, true);
+
+            // Delay ensures that the focused element doesn't capture the event
+            // that caused the focus trap activation.
+            delay(function () {
+              tryFocus(getInitialFocusNode());
+            });
+            doc.addEventListener('focusin', checkFocusIn, true);
+            doc.addEventListener('mousedown', checkPointerDown, true);
+            doc.addEventListener('touchstart', checkPointerDown, true);
+            doc.addEventListener('click', checkClick, true);
+            doc.addEventListener('keydown', checkKey, true);
 
             return trap;
           }
 
           function removeListeners() {
-            if (!active || listeningFocusTrap !== trap) return;
+            if (!state.active) return;
 
-            document.removeEventListener('focus', checkFocus, true);
-            document.removeEventListener('click', checkClick, true);
-            document.removeEventListener('mousedown', checkPointerDown, true);
-            document.removeEventListener('touchstart', checkPointerDown, true);
-            document.removeEventListener('keydown', checkKey, true);
-
-            listeningFocusTrap = null;
+            doc.removeEventListener('focusin', checkFocusIn, true);
+            doc.removeEventListener('mousedown', checkPointerDown, true);
+            doc.removeEventListener('touchstart', checkPointerDown, true);
+            doc.removeEventListener('click', checkClick, true);
+            doc.removeEventListener('keydown', checkKey, true);
 
             return trap;
           }
@@ -34885,7 +35365,7 @@ var VDialog = function (_VBaseContainer) {
               return null;
             }
             if (typeof optionValue === 'string') {
-              node = document.querySelector(optionValue);
+              node = doc.querySelector(optionValue);
               if (!node) {
                 throw new Error('`' + optionName + '` refers to no known node');
               }
@@ -34899,28 +35379,73 @@ var VDialog = function (_VBaseContainer) {
             return node;
           }
 
-          function firstFocusNode() {
+          function getInitialFocusNode() {
             var node;
             if (getNodeForOption('initialFocus') !== null) {
               node = getNodeForOption('initialFocus');
-            } else if (container.contains(document.activeElement)) {
-              node = document.activeElement;
+            } else if (container.contains(doc.activeElement)) {
+              node = doc.activeElement;
             } else {
-              node = tabbableNodes[0] || getNodeForOption('fallbackFocus');
+              node = state.firstTabbableNode || getNodeForOption('fallbackFocus');
             }
 
             if (!node) {
-              throw new Error('You can\'t have a focus-trap without at least one focusable element');
+              throw new Error("You can't have a focus-trap without at least one focusable element");
             }
 
             return node;
           }
 
           // This needs to be done on mousedown and touchstart instead of click
-          // so that it precedes the focus event
+          // so that it precedes the focus event.
           function checkPointerDown(e) {
-            if (config.clickOutsideDeactivates && !container.contains(e.target)) {
-              deactivate({ returnFocus: false });
+            if (container.contains(e.target)) return;
+            if (config.clickOutsideDeactivates) {
+              deactivate({
+                returnFocus: !tabbable.isFocusable(e.target)
+              });
+            } else {
+              e.preventDefault();
+            }
+          }
+
+          // In case focus escapes the trap for some strange reason, pull it back in.
+          function checkFocusIn(e) {
+            // In Firefox when you Tab out of an iframe the Document is briefly focused.
+            if (container.contains(e.target) || e.target instanceof Document) {
+              return;
+            }
+            e.stopImmediatePropagation();
+            tryFocus(state.mostRecentlyFocusedNode || getInitialFocusNode());
+          }
+
+          function checkKey(e) {
+            if (config.escapeDeactivates !== false && isEscapeEvent(e)) {
+              e.preventDefault();
+              deactivate();
+              return;
+            }
+            if (isTabEvent(e)) {
+              checkTab(e);
+              return;
+            }
+          }
+
+          // Hijack Tab events on the first and last focusable nodes of the trap,
+          // in order to prevent focus from escaping. If it escapes for even a
+          // moment it can end up scrolling the page and causing confusion so we
+          // kind of need to capture the action at the keydown phase.
+          function checkTab(e) {
+            updateTabbableNodes();
+            if (e.shiftKey && e.target === state.firstTabbableNode) {
+              e.preventDefault();
+              tryFocus(state.lastTabbableNode);
+              return;
+            }
+            if (!e.shiftKey && e.target === state.lastTabbableNode) {
+              e.preventDefault();
+              tryFocus(state.firstTabbableNode);
+              return;
             }
           }
 
@@ -34931,75 +35456,41 @@ var VDialog = function (_VBaseContainer) {
             e.stopImmediatePropagation();
           }
 
-          function checkFocus(e) {
-            if (container.contains(e.target)) return;
-            e.preventDefault();
-            e.stopImmediatePropagation();
-            // Checking for a blur method here resolves a Firefox issue (#15)
-            if (typeof e.target.blur === 'function') e.target.blur();
-
-            if (tabEvent) {
-              readjustFocus(tabEvent);
-            }
-          }
-
-          function checkKey(e) {
-            if (e.key === 'Tab' || e.keyCode === 9) {
-              handleTab(e);
-            }
-
-            if (config.escapeDeactivates !== false && isEscapeEvent(e)) {
-              deactivate();
-            }
-          }
-
-          function handleTab(e) {
-            updateTabbableNodes();
-
-            if (e.target.hasAttribute('tabindex') && Number(e.target.getAttribute('tabindex')) < 0) {
-              return tabEvent = e;
-            }
-
-            e.preventDefault();
-            var currentFocusIndex = tabbableNodes.indexOf(e.target);
-
-            if (e.shiftKey) {
-              if (e.target === firstTabbableNode || tabbableNodes.indexOf(e.target) === -1) {
-                return tryFocus(lastTabbableNode);
-              }
-              return tryFocus(tabbableNodes[currentFocusIndex - 1]);
-            }
-
-            if (e.target === lastTabbableNode) return tryFocus(firstTabbableNode);
-
-            tryFocus(tabbableNodes[currentFocusIndex + 1]);
-          }
-
           function updateTabbableNodes() {
-            tabbableNodes = tabbable(container);
-            firstTabbableNode = tabbableNodes[0];
-            lastTabbableNode = tabbableNodes[tabbableNodes.length - 1];
+            var tabbableNodes = tabbable(container);
+            state.firstTabbableNode = tabbableNodes[0] || getInitialFocusNode();
+            state.lastTabbableNode = tabbableNodes[tabbableNodes.length - 1] || getInitialFocusNode();
           }
 
-          function readjustFocus(e) {
-            if (e.shiftKey) return tryFocus(lastTabbableNode);
+          function tryFocus(node) {
+            if (node === doc.activeElement) return;
+            if (!node || !node.focus) {
+              tryFocus(getInitialFocusNode());
+              return;
+            }
 
-            tryFocus(firstTabbableNode);
+            node.focus();
+            state.mostRecentlyFocusedNode = node;
+            if (isSelectableInput(node)) {
+              node.select();
+            }
           }
+        }
+
+        function isSelectableInput(node) {
+          return node.tagName && node.tagName.toLowerCase() === 'input' && typeof node.select === 'function';
         }
 
         function isEscapeEvent(e) {
           return e.key === 'Escape' || e.key === 'Esc' || e.keyCode === 27;
         }
 
-        function tryFocus(node) {
-          if (!node || !node.focus) return;
-          if (node === document.activeElement) return;
+        function isTabEvent(e) {
+          return e.key === 'Tab' || e.keyCode === 9;
+        }
 
-          node.focus();
-          if (node.tagName.toLowerCase() === 'input') {
-            node.select();
-          }
+        function delay(fn) {
+          return setTimeout(fn, 0);
         }
 
         module.exports = focusTrap;
@@ -35007,23 +35498,21 @@ var VDialog = function (_VBaseContainer) {
         /***/
       },
 
-      /***/7:
+      /***/8:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
 
         Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(0);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__component__ = __webpack_require__(1);
-        /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCFoundation", function () {
-          return __WEBPACK_IMPORTED_MODULE_0__foundation__["a"];
+        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "closest", function () {
+          return closest;
         });
-        /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCComponent", function () {
-          return __WEBPACK_IMPORTED_MODULE_1__component__["a"];
+        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "matches", function () {
+          return matches;
         });
         /**
          * @license
-         * Copyright 2016 Google Inc.
+         * Copyright 2018 Google Inc.
          *
          * Permission is hereby granted, free of charge, to any person obtaining a copy
          * of this software and associated documentation files (the "Software"), to deal
@@ -35044,10 +35533,45 @@ var VDialog = function (_VBaseContainer) {
          * THE SOFTWARE.
          */
 
+        /**
+         * @fileoverview A "ponyfill" is a polyfill that doesn't modify the global prototype chain.
+         * This makes ponyfills safer than traditional polyfills, especially for libraries like MDC.
+         */
+
+        /**
+         * @param {!Element} element
+         * @param {string} selector
+         * @return {?Element}
+         */
+        function closest(element, selector) {
+          if (element.closest) {
+            return element.closest(selector);
+          }
+
+          var el = element;
+          while (el) {
+            if (matches(el, selector)) {
+              return el;
+            }
+            el = el.parentElement;
+          }
+          return null;
+        }
+
+        /**
+         * @param {!Element} element
+         * @param {string} selector
+         * @return {boolean}
+         */
+        function matches(element, selector) {
+          var nativeMatches = element.matches || element.webkitMatchesSelector || element.msMatchesSelector;
+          return nativeMatches.call(element, selector);
+        }
+
         /***/
       },
 
-      /***/95:
+      /***/96:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -35056,11 +35580,11 @@ var VDialog = function (_VBaseContainer) {
         /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "MDCDialog", function () {
           return MDCDialog;
         });
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(7);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(4);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(96);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(99);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__material_dom_ponyfill__ = __webpack_require__(11);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(97);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(100);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__material_dom_ponyfill__ = __webpack_require__(8);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_5_focus_trap__ = __webpack_require__(68);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_5_focus_trap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_focus_trap__);
         /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCDialogFoundation", function () {
@@ -35382,19 +35906,19 @@ var VDialog = function (_VBaseContainer) {
           }]);
 
           return MDCDialog;
-        }(__WEBPACK_IMPORTED_MODULE_0__material_base_index__["MDCComponent"]);
+        }(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
 
         /***/
       },
 
-      /***/96:
+      /***/97:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* harmony import */
-        var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(7);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(97);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(98);
+        var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(98);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(99);
         var _extends = Object.assign || function (target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = arguments[i];for (var key in source) {
@@ -35791,14 +36315,14 @@ var VDialog = function (_VBaseContainer) {
           }]);
 
           return MDCDialogFoundation;
-        }(__WEBPACK_IMPORTED_MODULE_0__material_base_index__["MDCFoundation"]);
+        }(__WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */]);
 
         /* harmony default export */__webpack_exports__["a"] = MDCDialogFoundation;
 
         /***/
       },
 
-      /***/97:
+      /***/98:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -35972,7 +36496,7 @@ var VDialog = function (_VBaseContainer) {
         /***/
       },
 
-      /***/98:
+      /***/99:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -36042,85 +36566,6 @@ var VDialog = function (_VBaseContainer) {
           DIALOG_ANIMATION_OPEN_TIME_MS: 150,
           DIALOG_ANIMATION_CLOSE_TIME_MS: 75
         };
-
-        /***/
-      },
-
-      /***/99:
-      /***/function _(module, __webpack_exports__, __webpack_require__) {
-
-        "use strict";
-
-        Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "createFocusTrapInstance", function () {
-          return createFocusTrapInstance;
-        });
-        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "isScrollable", function () {
-          return isScrollable;
-        });
-        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "areTopsMisaligned", function () {
-          return areTopsMisaligned;
-        });
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0_focus_trap__ = __webpack_require__(68);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0_focus_trap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_focus_trap__);
-        /**
-         * @license
-         * Copyright 2016 Google Inc.
-         *
-         * Permission is hereby granted, free of charge, to any person obtaining a copy
-         * of this software and associated documentation files (the "Software"), to deal
-         * in the Software without restriction, including without limitation the rights
-         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-         * copies of the Software, and to permit persons to whom the Software is
-         * furnished to do so, subject to the following conditions:
-         *
-         * The above copyright notice and this permission notice shall be included in
-         * all copies or substantial portions of the Software.
-         *
-         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-         * THE SOFTWARE.
-         */
-
-        /**
-         * @param {!Element} surfaceEl
-         * @param {?Element=} initialFocusEl
-         * @param {function(!Element, !FocusTrapCreateOptions): !FocusTrapInstance} focusTrapFactory
-         * @return {!FocusTrapInstance}
-         */
-        function createFocusTrapInstance(surfaceEl) {
-          var focusTrapFactory = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : __WEBPACK_IMPORTED_MODULE_0_focus_trap___default.a;
-          var initialFocusEl = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-
-          return focusTrapFactory(surfaceEl, {
-            initialFocus: initialFocusEl,
-            escapeDeactivates: false, // Dialog foundation handles escape key
-            clickOutsideDeactivates: true });
-        }
-
-        /**
-         * @param {!Element} el
-         * @return {boolean}
-         */
-        function isScrollable(el) {
-          return el.scrollHeight > el.offsetHeight;
-        }
-
-        /**
-         * @param {!Array<!Element>|!NodeList} els
-         * @return {boolean}
-         */
-        function areTopsMisaligned(els) {
-          var tops = new Set();
-          [].forEach.call(els, function (el) {
-            return tops.add(el.offsetTop);
-          });
-          return tops.size > 1;
-        }
 
         /***/
       }
@@ -38859,7 +39304,7 @@ var VReplaces = function (_VBase) {
 
 /*!
  Material Components for the Web
- Copyright (c) 2018 Google Inc.
+ Copyright (c) 2019 Google Inc.
  License: MIT
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -38942,7 +39387,7 @@ var VReplaces = function (_VBase) {
       /******/__webpack_require__.p = "";
       /******/
       /******/ // Load entry module and return exports
-      /******/return __webpack_require__(__webpack_require__.s = 137);
+      /******/return __webpack_require__(__webpack_require__.s = 139);
       /******/
     }(
     /************************************************************************/
@@ -39263,171 +39708,7 @@ var VReplaces = function (_VBase) {
         /***/
       },
 
-      /***/10:
-      /***/function _(module, __webpack_exports__, __webpack_require__) {
-
-        "use strict";
-
-        Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "transformStyleProperties", function () {
-          return transformStyleProperties;
-        });
-        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "getCorrectEventName", function () {
-          return getCorrectEventName;
-        });
-        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "getCorrectPropertyName", function () {
-          return getCorrectPropertyName;
-        });
-        /**
-         * @license
-         * Copyright 2016 Google Inc.
-         *
-         * Permission is hereby granted, free of charge, to any person obtaining a copy
-         * of this software and associated documentation files (the "Software"), to deal
-         * in the Software without restriction, including without limitation the rights
-         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-         * copies of the Software, and to permit persons to whom the Software is
-         * furnished to do so, subject to the following conditions:
-         *
-         * The above copyright notice and this permission notice shall be included in
-         * all copies or substantial portions of the Software.
-         *
-         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-         * THE SOFTWARE.
-         */
-
-        /**
-         * @typedef {{
-         *   noPrefix: string,
-         *   webkitPrefix: string,
-         *   styleProperty: string
-         * }}
-         */
-        var VendorPropertyMapType = void 0;
-
-        /** @const {Object<string, !VendorPropertyMapType>} */
-        var eventTypeMap = {
-          'animationstart': {
-            noPrefix: 'animationstart',
-            webkitPrefix: 'webkitAnimationStart',
-            styleProperty: 'animation'
-          },
-          'animationend': {
-            noPrefix: 'animationend',
-            webkitPrefix: 'webkitAnimationEnd',
-            styleProperty: 'animation'
-          },
-          'animationiteration': {
-            noPrefix: 'animationiteration',
-            webkitPrefix: 'webkitAnimationIteration',
-            styleProperty: 'animation'
-          },
-          'transitionend': {
-            noPrefix: 'transitionend',
-            webkitPrefix: 'webkitTransitionEnd',
-            styleProperty: 'transition'
-          }
-        };
-
-        /** @const {Object<string, !VendorPropertyMapType>} */
-        var cssPropertyMap = {
-          'animation': {
-            noPrefix: 'animation',
-            webkitPrefix: '-webkit-animation'
-          },
-          'transform': {
-            noPrefix: 'transform',
-            webkitPrefix: '-webkit-transform'
-          },
-          'transition': {
-            noPrefix: 'transition',
-            webkitPrefix: '-webkit-transition'
-          }
-        };
-
-        /**
-         * @param {!Object} windowObj
-         * @return {boolean}
-         */
-        function hasProperShape(windowObj) {
-          return windowObj['document'] !== undefined && typeof windowObj['document']['createElement'] === 'function';
-        }
-
-        /**
-         * @param {string} eventType
-         * @return {boolean}
-         */
-        function eventFoundInMaps(eventType) {
-          return eventType in eventTypeMap || eventType in cssPropertyMap;
-        }
-
-        /**
-         * @param {string} eventType
-         * @param {!Object<string, !VendorPropertyMapType>} map
-         * @param {!Element} el
-         * @return {string}
-         */
-        function getJavaScriptEventName(eventType, map, el) {
-          return map[eventType].styleProperty in el.style ? map[eventType].noPrefix : map[eventType].webkitPrefix;
-        }
-
-        /**
-         * Helper function to determine browser prefix for CSS3 animation events
-         * and property names.
-         * @param {!Object} windowObj
-         * @param {string} eventType
-         * @return {string}
-         */
-        function getAnimationName(windowObj, eventType) {
-          if (!hasProperShape(windowObj) || !eventFoundInMaps(eventType)) {
-            return eventType;
-          }
-
-          var map = /** @type {!Object<string, !VendorPropertyMapType>} */eventType in eventTypeMap ? eventTypeMap : cssPropertyMap;
-          var el = windowObj['document']['createElement']('div');
-          var eventName = '';
-
-          if (map === eventTypeMap) {
-            eventName = getJavaScriptEventName(eventType, map, el);
-          } else {
-            eventName = map[eventType].noPrefix in el.style ? map[eventType].noPrefix : map[eventType].webkitPrefix;
-          }
-
-          return eventName;
-        }
-
-        // Public functions to access getAnimationName() for JavaScript events or CSS
-        // property names.
-
-        var transformStyleProperties = ['transform', 'WebkitTransform', 'MozTransform', 'OTransform', 'MSTransform'];
-
-        /**
-         * @param {!Object} windowObj
-         * @param {string} eventType
-         * @return {string}
-         */
-        function getCorrectEventName(windowObj, eventType) {
-          return getAnimationName(windowObj, eventType);
-        }
-
-        /**
-         * @param {!Object} windowObj
-         * @param {string} eventType
-         * @return {string}
-         */
-        function getCorrectPropertyName(windowObj, eventType) {
-          return getAnimationName(windowObj, eventType);
-        }
-
-        /***/
-      },
-
-      /***/137:
+      /***/139:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -39436,12 +39717,33 @@ var VReplaces = function (_VBase) {
         /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "MDCSnackbar", function () {
           return MDCSnackbar;
         });
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(7);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(138);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__material_animation_index__ = __webpack_require__(10);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(140);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(51);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(142);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__material_dom_ponyfill__ = __webpack_require__(8);
         /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCSnackbarFoundation", function () {
           return __WEBPACK_IMPORTED_MODULE_1__foundation__["a"];
         });
+        /* harmony reexport (module object) */__webpack_require__.d(__webpack_exports__, "util", function () {
+          return __WEBPACK_IMPORTED_MODULE_3__util__;
+        });
+        var _get = function get(object, property, receiver) {
+          if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+            var parent = Object.getPrototypeOf(object);if (parent === null) {
+              return undefined;
+            } else {
+              return get(parent, property, receiver);
+            }
+          } else if ("value" in desc) {
+            return desc.value;
+          } else {
+            var getter = desc.get;if (getter === undefined) {
+              return undefined;
+            }return getter.call(receiver);
+          }
+        };
+
         var _createClass = function () {
           function defineProperties(target, props) {
             for (var i = 0; i < props.length; i++) {
@@ -39472,7 +39774,7 @@ var VReplaces = function (_VBase) {
 
         /**
          * @license
-         * Copyright 2016 Google Inc.
+         * Copyright 2018 Google Inc.
          *
          * Permission is hereby granted, free of charge, to any person obtaining a copy
          * of this software and associated documentation files (the "Software"), to deal
@@ -39493,137 +39795,318 @@ var VReplaces = function (_VBase) {
          * THE SOFTWARE.
          */
 
+        var SURFACE_SELECTOR = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].SURFACE_SELECTOR,
+            LABEL_SELECTOR = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].LABEL_SELECTOR,
+            ACTION_SELECTOR = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].ACTION_SELECTOR,
+            DISMISS_SELECTOR = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].DISMISS_SELECTOR,
+            OPENING_EVENT = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].OPENING_EVENT,
+            OPENED_EVENT = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].OPENED_EVENT,
+            CLOSING_EVENT = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].CLOSING_EVENT,
+            CLOSED_EVENT = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].CLOSED_EVENT;
+
         var MDCSnackbar = function (_MDCComponent) {
           _inherits(MDCSnackbar, _MDCComponent);
 
-          function MDCSnackbar() {
-            _classCallCheck(this, MDCSnackbar);
-
-            return _possibleConstructorReturn(this, (MDCSnackbar.__proto__ || Object.getPrototypeOf(MDCSnackbar)).apply(this, arguments));
-          }
-
-          _createClass(MDCSnackbar, [{
-            key: 'show',
-            value: function show(data) {
-              this.foundation_.show(data);
-            }
-          }, {
-            key: 'getDefaultFoundation',
-            value: function getDefaultFoundation() {
-              var _this2 = this;
-
-              var _MDCSnackbarFoundatio = __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings,
-                  TEXT_SELECTOR = _MDCSnackbarFoundatio.TEXT_SELECTOR,
-                  ACTION_BUTTON_SELECTOR = _MDCSnackbarFoundatio.ACTION_BUTTON_SELECTOR;
-
-              var getText = function getText() {
-                return _this2.root_.querySelector(TEXT_SELECTOR);
-              };
-              var getActionButton = function getActionButton() {
-                return _this2.root_.querySelector(ACTION_BUTTON_SELECTOR);
-              };
-
-              /* eslint brace-style: "off" */
-              return new __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */]({
-                addClass: function addClass(className) {
-                  return _this2.root_.classList.add(className);
-                },
-                removeClass: function removeClass(className) {
-                  return _this2.root_.classList.remove(className);
-                },
-                setAriaHidden: function setAriaHidden() {
-                  return _this2.root_.setAttribute('aria-hidden', 'true');
-                },
-                unsetAriaHidden: function unsetAriaHidden() {
-                  return _this2.root_.removeAttribute('aria-hidden');
-                },
-                setActionAriaHidden: function setActionAriaHidden() {
-                  return getActionButton().setAttribute('aria-hidden', 'true');
-                },
-                unsetActionAriaHidden: function unsetActionAriaHidden() {
-                  return getActionButton().removeAttribute('aria-hidden');
-                },
-                setActionText: function setActionText(text) {
-                  getActionButton().textContent = text;
-                },
-                setMessageText: function setMessageText(text) {
-                  getText().textContent = text;
-                },
-                setFocus: function setFocus() {
-                  return getActionButton().focus();
-                },
-                isFocused: function isFocused() {
-                  return document.activeElement === getActionButton();
-                },
-                visibilityIsHidden: function visibilityIsHidden() {
-                  return document.hidden;
-                },
-                registerCapturedBlurHandler: function registerCapturedBlurHandler(handler) {
-                  return getActionButton().addEventListener('blur', handler, true);
-                },
-                deregisterCapturedBlurHandler: function deregisterCapturedBlurHandler(handler) {
-                  return getActionButton().removeEventListener('blur', handler, true);
-                },
-                registerVisibilityChangeHandler: function registerVisibilityChangeHandler(handler) {
-                  return document.addEventListener('visibilitychange', handler);
-                },
-                deregisterVisibilityChangeHandler: function deregisterVisibilityChangeHandler(handler) {
-                  return document.removeEventListener('visibilitychange', handler);
-                },
-                registerCapturedInteractionHandler: function registerCapturedInteractionHandler(evt, handler) {
-                  return document.body.addEventListener(evt, handler, true);
-                },
-                deregisterCapturedInteractionHandler: function deregisterCapturedInteractionHandler(evt, handler) {
-                  return document.body.removeEventListener(evt, handler, true);
-                },
-                registerActionClickHandler: function registerActionClickHandler(handler) {
-                  return getActionButton().addEventListener('click', handler);
-                },
-                deregisterActionClickHandler: function deregisterActionClickHandler(handler) {
-                  return getActionButton().removeEventListener('click', handler);
-                },
-                registerTransitionEndHandler: function registerTransitionEndHandler(handler) {
-                  return _this2.root_.addEventListener(Object(__WEBPACK_IMPORTED_MODULE_2__material_animation_index__["getCorrectEventName"])(window, 'transitionend'), handler);
-                },
-                deregisterTransitionEndHandler: function deregisterTransitionEndHandler(handler) {
-                  return _this2.root_.removeEventListener(Object(__WEBPACK_IMPORTED_MODULE_2__material_animation_index__["getCorrectEventName"])(window, 'transitionend'), handler);
-                },
-                notifyShow: function notifyShow() {
-                  return _this2.emit(__WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings.SHOW_EVENT);
-                },
-                notifyHide: function notifyHide() {
-                  return _this2.emit(__WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */].strings.HIDE_EVENT);
-                }
-              });
-            }
-          }, {
-            key: 'dismissesOnAction',
-            get: function get() {
-              return this.foundation_.dismissesOnAction();
-            },
-            set: function set(dismissesOnAction) {
-              this.foundation_.setDismissOnAction(dismissesOnAction);
-            }
-          }], [{
+          _createClass(MDCSnackbar, null, [{
             key: 'attachTo',
             value: function attachTo(root) {
               return new MDCSnackbar(root);
             }
           }]);
 
+          function MDCSnackbar() {
+            var _ref;
+
+            _classCallCheck(this, MDCSnackbar);
+
+            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+              args[_key] = arguments[_key];
+            }
+
+            /** @type {!HTMLElement} */
+            var _this = _possibleConstructorReturn(this, (_ref = MDCSnackbar.__proto__ || Object.getPrototypeOf(MDCSnackbar)).call.apply(_ref, [this].concat(args)));
+
+            _this.surfaceEl_;
+
+            /** @type {!HTMLElement} */
+            _this.labelEl_;
+
+            /** @type {!HTMLElement} */
+            _this.actionEl_;
+
+            /** @type {function(!HTMLElement, !HTMLElement=): void} */
+            _this.announce_;
+
+            /** @private {!Function} */
+            _this.handleKeyDown_;
+
+            /** @private {!Function} */
+            _this.handleSurfaceClick_;
+            return _this;
+          }
+
+          /**
+           * @param {function(): function(!HTMLElement, !HTMLElement=):void} announceFactory
+           */
+
+          _createClass(MDCSnackbar, [{
+            key: 'initialize',
+            value: function initialize() {
+              var announceFactory = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {
+                return __WEBPACK_IMPORTED_MODULE_3__util__["announce"];
+              };
+
+              this.announce_ = announceFactory();
+            }
+          }, {
+            key: 'initialSyncWithDOM',
+            value: function initialSyncWithDOM() {
+              var _this2 = this;
+
+              this.surfaceEl_ = /** @type {!HTMLElement} */this.root_.querySelector(SURFACE_SELECTOR);
+              this.labelEl_ = /** @type {!HTMLElement} */this.root_.querySelector(LABEL_SELECTOR);
+              this.actionEl_ = /** @type {!HTMLElement} */this.root_.querySelector(ACTION_SELECTOR);
+
+              this.handleKeyDown_ = function (evt) {
+                return _this2.foundation_.handleKeyDown(evt);
+              };
+              this.handleSurfaceClick_ = function (evt) {
+                if (_this2.isActionButton_(evt.target)) {
+                  _this2.foundation_.handleActionButtonClick(evt);
+                } else if (_this2.isActionIcon_(evt.target)) {
+                  _this2.foundation_.handleActionIconClick(evt);
+                }
+              };
+
+              this.registerKeyDownHandler_(this.handleKeyDown_);
+              this.registerSurfaceClickHandler_(this.handleSurfaceClick_);
+            }
+          }, {
+            key: 'destroy',
+            value: function destroy() {
+              _get(MDCSnackbar.prototype.__proto__ || Object.getPrototypeOf(MDCSnackbar.prototype), 'destroy', this).call(this);
+              this.deregisterKeyDownHandler_(this.handleKeyDown_);
+              this.deregisterSurfaceClickHandler_(this.handleSurfaceClick_);
+            }
+          }, {
+            key: 'open',
+            value: function open() {
+              this.foundation_.open();
+            }
+
+            /**
+             * @param {string=} reason Why the snackbar was closed. Value will be passed to CLOSING_EVENT and CLOSED_EVENT via the
+             *     `event.detail.reason` property. Standard values are REASON_ACTION and REASON_DISMISS, but custom
+             *     client-specific values may also be used if desired.
+             */
+
+          }, {
+            key: 'close',
+            value: function close() {
+              var reason = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+              this.foundation_.close(reason);
+            }
+
+            /**
+             * @return {!MDCSnackbarFoundation}
+             */
+
+          }, {
+            key: 'getDefaultFoundation',
+            value: function getDefaultFoundation() {
+              var _this3 = this;
+
+              /* eslint brace-style: "off" */
+              return new __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */]({
+                addClass: function addClass(className) {
+                  return _this3.root_.classList.add(className);
+                },
+                removeClass: function removeClass(className) {
+                  return _this3.root_.classList.remove(className);
+                },
+                announce: function announce() {
+                  return _this3.announce_(_this3.labelEl_);
+                },
+                notifyOpening: function notifyOpening() {
+                  return _this3.emit(OPENING_EVENT, {});
+                },
+                notifyOpened: function notifyOpened() {
+                  return _this3.emit(OPENED_EVENT, {});
+                },
+                notifyClosing: function notifyClosing(reason) {
+                  return _this3.emit(CLOSING_EVENT, reason ? { reason: reason } : {});
+                },
+                notifyClosed: function notifyClosed(reason) {
+                  return _this3.emit(CLOSED_EVENT, reason ? { reason: reason } : {});
+                }
+              });
+            }
+
+            /**
+             * @return {number}
+             */
+
+          }, {
+            key: 'registerKeyDownHandler_',
+
+            /**
+             * @param {!Function} handler
+             * @private
+             */
+            value: function registerKeyDownHandler_(handler) {
+              this.listen('keydown', handler);
+            }
+
+            /**
+             * @param {!Function} handler
+             * @private
+             */
+
+          }, {
+            key: 'deregisterKeyDownHandler_',
+            value: function deregisterKeyDownHandler_(handler) {
+              this.unlisten('keydown', handler);
+            }
+
+            /**
+             * @param {!Function} handler
+             * @private
+             */
+
+          }, {
+            key: 'registerSurfaceClickHandler_',
+            value: function registerSurfaceClickHandler_(handler) {
+              this.surfaceEl_.addEventListener('click', handler);
+            }
+
+            /**
+             * @param {!Function} handler
+             * @private
+             */
+
+          }, {
+            key: 'deregisterSurfaceClickHandler_',
+            value: function deregisterSurfaceClickHandler_(handler) {
+              this.surfaceEl_.removeEventListener('click', handler);
+            }
+
+            /**
+             * @param {!Element} target
+             * @return {boolean}
+             * @private
+             */
+
+          }, {
+            key: 'isActionButton_',
+            value: function isActionButton_(target) {
+              return Boolean(__WEBPACK_IMPORTED_MODULE_4__material_dom_ponyfill__["closest"](target, ACTION_SELECTOR));
+            }
+
+            /**
+             * @param {!Element} target
+             * @return {boolean}
+             * @private
+             */
+
+          }, {
+            key: 'isActionIcon_',
+            value: function isActionIcon_(target) {
+              return Boolean(__WEBPACK_IMPORTED_MODULE_4__material_dom_ponyfill__["closest"](target, DISMISS_SELECTOR));
+            }
+          }, {
+            key: 'timeoutMs',
+            get: function get() {
+              return this.foundation_.getTimeoutMs();
+            }
+
+            /**
+             * @param {number} timeoutMs
+             */
+
+            , set: function set(timeoutMs) {
+              this.foundation_.setTimeoutMs(timeoutMs);
+            }
+
+            /**
+             * @return {boolean}
+             */
+
+          }, {
+            key: 'closeOnEscape',
+            get: function get() {
+              return this.foundation_.getCloseOnEscape();
+            }
+
+            /**
+             * @param {boolean} closeOnEscape
+             */
+
+            , set: function set(closeOnEscape) {
+              this.foundation_.setCloseOnEscape(closeOnEscape);
+            }
+
+            /**
+             * @return {boolean}
+             */
+
+          }, {
+            key: 'isOpen',
+            get: function get() {
+              return this.foundation_.isOpen();
+            }
+
+            /**
+             * @return {string}
+             */
+
+          }, {
+            key: 'labelText',
+            get: function get() {
+              return this.labelEl_.textContent;
+            }
+
+            /**
+             * @param {string} labelText
+             */
+
+            , set: function set(labelText) {
+              this.labelEl_.textContent = labelText;
+            }
+
+            /**
+             * @return {string}
+             */
+
+          }, {
+            key: 'actionButtonText',
+            get: function get() {
+              return this.actionEl_.textContent;
+            }
+
+            /**
+             * @param {string} actionButtonText
+             */
+
+            , set: function set(actionButtonText) {
+              this.actionEl_.textContent = actionButtonText;
+            }
+          }]);
+
           return MDCSnackbar;
-        }(__WEBPACK_IMPORTED_MODULE_0__material_base_index__["MDCComponent"]);
+        }(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
 
         /***/
       },
 
-      /***/138:
+      /***/140:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* harmony import */
-        var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(7);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(139);
+        var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(141);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(51);
         var _extends = Object.assign || function (target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = arguments[i];for (var key in source) {
@@ -39664,7 +40147,7 @@ var VReplaces = function (_VBase) {
 
         /**
          * @license
-         * Copyright 2016 Google Inc.
+         * Copyright 2018 Google Inc.
          *
          * Permission is hereby granted, free of charge, to any person obtaining a copy
          * of this software and associated documentation files (the "Software"), to deal
@@ -39685,284 +40168,510 @@ var VReplaces = function (_VBase) {
          * THE SOFTWARE.
          */
 
+        /* eslint no-unused-vars: ["error", {"argsIgnorePattern": "evt", "varsIgnorePattern": "Adapter$"}] */
+
+        var OPENING = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].OPENING,
+            OPEN = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].OPEN,
+            CLOSING = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CLOSING;
+        var REASON_ACTION = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].REASON_ACTION,
+            REASON_DISMISS = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].REASON_DISMISS;
+
         var MDCSnackbarFoundation = function (_MDCFoundation) {
           _inherits(MDCSnackbarFoundation, _MDCFoundation);
 
-          _createClass(MDCSnackbarFoundation, [{
-            key: 'active',
-            get: function get() {
-              return this.active_;
-            }
-          }], [{
+          _createClass(MDCSnackbarFoundation, null, [{
             key: 'cssClasses',
             get: function get() {
-              return __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* cssClasses */];
+              return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
             }
           }, {
             key: 'strings',
             get: function get() {
-              return __WEBPACK_IMPORTED_MODULE_1__constants__["c" /* strings */];
+              return __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */];
             }
+          }, {
+            key: 'numbers',
+            get: function get() {
+              return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */];
+            }
+
+            /**
+             * @return {!MDCSnackbarAdapter}
+             */
+
           }, {
             key: 'defaultAdapter',
             get: function get() {
-              return {
-                addClass: function addClass() /* className: string */{},
-                removeClass: function removeClass() /* className: string */{},
-                setAriaHidden: function setAriaHidden() {},
-                unsetAriaHidden: function unsetAriaHidden() {},
-                setActionAriaHidden: function setActionAriaHidden() {},
-                unsetActionAriaHidden: function unsetActionAriaHidden() {},
-                setActionText: function setActionText() /* actionText: string */{},
-                setMessageText: function setMessageText() /* message: string */{},
-                setFocus: function setFocus() {},
-                isFocused: function isFocused() {
-                  return (/* boolean */false
-                  );
-                },
-                visibilityIsHidden: function visibilityIsHidden() {
-                  return (/* boolean */false
-                  );
-                },
-                registerCapturedBlurHandler: function registerCapturedBlurHandler() /* handler: EventListener */{},
-                deregisterCapturedBlurHandler: function deregisterCapturedBlurHandler() /* handler: EventListener */{},
-                registerVisibilityChangeHandler: function registerVisibilityChangeHandler() /* handler: EventListener */{},
-                deregisterVisibilityChangeHandler: function deregisterVisibilityChangeHandler() /* handler: EventListener */{},
-                registerCapturedInteractionHandler: function registerCapturedInteractionHandler() /* evtType: string, handler: EventListener */{},
-                deregisterCapturedInteractionHandler: function deregisterCapturedInteractionHandler() /* evtType: string, handler: EventListener */{},
-                registerActionClickHandler: function registerActionClickHandler() /* handler: EventListener */{},
-                deregisterActionClickHandler: function deregisterActionClickHandler() /* handler: EventListener */{},
-                registerTransitionEndHandler: function registerTransitionEndHandler() /* handler: EventListener */{},
-                deregisterTransitionEndHandler: function deregisterTransitionEndHandler() /* handler: EventListener */{},
-                notifyShow: function notifyShow() {},
-                notifyHide: function notifyHide() {}
-              };
+              return (/** @type {!MDCSnackbarAdapter} */{
+                  addClass: function addClass() /* className: string */{},
+                  removeClass: function removeClass() /* className: string */{},
+                  announce: function announce() {},
+                  notifyOpening: function notifyOpening() {},
+                  notifyOpened: function notifyOpened() {},
+                  notifyClosing: function notifyClosing() /* reason: string */{},
+                  notifyClosed: function notifyClosed() /* reason: string */{}
+                }
+              );
             }
+
+            /**
+             * @param {!MDCSnackbarAdapter=} adapter
+             */
+
           }]);
 
           function MDCSnackbarFoundation(adapter) {
             _classCallCheck(this, MDCSnackbarFoundation);
 
+            /** @private {boolean} */
             var _this = _possibleConstructorReturn(this, (MDCSnackbarFoundation.__proto__ || Object.getPrototypeOf(MDCSnackbarFoundation)).call(this, _extends(MDCSnackbarFoundation.defaultAdapter, adapter)));
 
-            _this.active_ = false;
-            _this.actionWasClicked_ = false;
-            _this.dismissOnAction_ = true;
-            _this.firstFocus_ = true;
-            _this.pointerDownRecognized_ = false;
-            _this.snackbarHasFocus_ = false;
-            _this.snackbarData_ = null;
-            _this.queue_ = [];
-            _this.actionClickHandler_ = function () {
-              _this.actionWasClicked_ = true;
-              _this.invokeAction_();
-            };
-            _this.visibilitychangeHandler_ = function () {
-              clearTimeout(_this.timeoutId_);
-              _this.snackbarHasFocus_ = true;
+            _this.isOpen_ = false;
 
-              if (!_this.adapter_.visibilityIsHidden()) {
-                setTimeout(_this.cleanup_.bind(_this), _this.snackbarData_.timeout || __WEBPACK_IMPORTED_MODULE_1__constants__["b" /* numbers */].MESSAGE_TIMEOUT);
-              }
-            };
-            _this.interactionHandler_ = function (evt) {
-              if (evt.type === 'focus' && !_this.adapter_.isFocused()) {
-                return;
-              }
-              if (evt.type === 'touchstart' || evt.type === 'mousedown') {
-                _this.pointerDownRecognized_ = true;
-              }
-              _this.handlePossibleTabKeyboardFocus_(evt);
+            /** @private {number} */
+            _this.animationFrame_ = 0;
 
-              if (evt.type === 'focus') {
-                _this.pointerDownRecognized_ = false;
-              }
-            };
-            _this.blurHandler_ = function () {
-              clearTimeout(_this.timeoutId_);
-              _this.snackbarHasFocus_ = false;
-              _this.timeoutId_ = setTimeout(_this.cleanup_.bind(_this), _this.snackbarData_.timeout || __WEBPACK_IMPORTED_MODULE_1__constants__["b" /* numbers */].MESSAGE_TIMEOUT);
-            };
+            /** @private {number} */
+            _this.animationTimer_ = 0;
+
+            /** @private {number} */
+            _this.autoDismissTimer_ = 0;
+
+            /** @private {number} */
+            _this.autoDismissTimeoutMs_ = __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].DEFAULT_AUTO_DISMISS_TIMEOUT_MS;
+
+            /** @private {boolean} */
+            _this.closeOnEscape_ = true;
             return _this;
           }
 
           _createClass(MDCSnackbarFoundation, [{
-            key: 'init',
-            value: function init() {
-              this.adapter_.registerActionClickHandler(this.actionClickHandler_);
-              this.adapter_.setAriaHidden();
-              this.adapter_.setActionAriaHidden();
-            }
-          }, {
             key: 'destroy',
             value: function destroy() {
+              this.clearAutoDismissTimer_();
+              cancelAnimationFrame(this.animationFrame_);
+              this.animationFrame_ = 0;
+              clearTimeout(this.animationTimer_);
+              this.animationTimer_ = 0;
+              this.adapter_.removeClass(OPENING);
+              this.adapter_.removeClass(OPEN);
+              this.adapter_.removeClass(CLOSING);
+            }
+          }, {
+            key: 'open',
+            value: function open() {
               var _this2 = this;
 
-              this.adapter_.deregisterActionClickHandler(this.actionClickHandler_);
-              this.adapter_.deregisterCapturedBlurHandler(this.blurHandler_);
-              this.adapter_.deregisterVisibilityChangeHandler(this.visibilitychangeHandler_);
-              ['touchstart', 'mousedown', 'focus'].forEach(function (evtType) {
-                _this2.adapter_.deregisterCapturedInteractionHandler(evtType, _this2.interactionHandler_);
+              this.clearAutoDismissTimer_();
+              this.isOpen_ = true;
+              this.adapter_.notifyOpening();
+              this.adapter_.removeClass(CLOSING);
+              this.adapter_.addClass(OPENING);
+              this.adapter_.announce();
+
+              // Wait a frame once display is no longer "none", to establish basis for animation
+              this.runNextAnimationFrame_(function () {
+                _this2.adapter_.addClass(OPEN);
+
+                _this2.animationTimer_ = setTimeout(function () {
+                  _this2.handleAnimationTimerEnd_();
+                  _this2.adapter_.notifyOpened();
+                  _this2.autoDismissTimer_ = setTimeout(function () {
+                    _this2.close(REASON_DISMISS);
+                  }, _this2.getTimeoutMs());
+                }, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].SNACKBAR_ANIMATION_OPEN_TIME_MS);
               });
             }
+
+            /**
+             * @param {string=} reason Why the snackbar was closed. Value will be passed to CLOSING_EVENT and CLOSED_EVENT via the
+             *     `event.detail.reason` property. Standard values are REASON_ACTION and REASON_DISMISS, but custom
+             *     client-specific values may also be used if desired.
+             */
+
           }, {
-            key: 'dismissesOnAction',
-            value: function dismissesOnAction() {
-              return this.dismissOnAction_;
-            }
-          }, {
-            key: 'setDismissOnAction',
-            value: function setDismissOnAction(dismissOnAction) {
-              this.dismissOnAction_ = !!dismissOnAction;
-            }
-          }, {
-            key: 'show',
-            value: function show(data) {
+            key: 'close',
+            value: function close() {
               var _this3 = this;
 
-              if (!data) {
-                throw new Error('Please provide a data object with at least a message to display.');
-              }
-              if (!data.message) {
-                throw new Error('Please provide a message to be displayed.');
-              }
-              if (data.actionHandler && !data.actionText) {
-                throw new Error('Please provide action text with the handler.');
-              }
-              if (this.active) {
-                this.queue_.push(data);
+              var reason = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+              if (!this.isOpen_) {
+                // Avoid redundant close calls (and events), e.g. repeated interactions as the snackbar is animating closed
                 return;
               }
-              clearTimeout(this.timeoutId_);
-              this.snackbarData_ = data;
-              this.firstFocus_ = true;
-              this.adapter_.registerVisibilityChangeHandler(this.visibilitychangeHandler_);
-              this.adapter_.registerCapturedBlurHandler(this.blurHandler_);
-              ['touchstart', 'mousedown', 'focus'].forEach(function (evtType) {
-                _this3.adapter_.registerCapturedInteractionHandler(evtType, _this3.interactionHandler_);
-              });
 
-              var ACTIVE = __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* cssClasses */].ACTIVE,
-                  MULTILINE = __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* cssClasses */].MULTILINE,
-                  ACTION_ON_BOTTOM = __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* cssClasses */].ACTION_ON_BOTTOM;
+              cancelAnimationFrame(this.animationFrame_);
+              this.animationFrame_ = 0;
+              this.clearAutoDismissTimer_();
 
-              this.adapter_.setMessageText(this.snackbarData_.message);
+              this.isOpen_ = false;
+              this.adapter_.notifyClosing(reason);
+              this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CLOSING);
+              this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].OPEN);
+              this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].OPENING);
 
-              if (this.snackbarData_.multiline) {
-                this.adapter_.addClass(MULTILINE);
-                if (this.snackbarData_.actionOnBottom) {
-                  this.adapter_.addClass(ACTION_ON_BOTTOM);
-                }
-              }
+              clearTimeout(this.animationTimer_);
+              this.animationTimer_ = setTimeout(function () {
+                _this3.handleAnimationTimerEnd_();
+                _this3.adapter_.notifyClosed(reason);
+              }, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].SNACKBAR_ANIMATION_CLOSE_TIME_MS);
+            }
 
-              if (this.snackbarData_.actionHandler) {
-                this.adapter_.setActionText(this.snackbarData_.actionText);
-                this.actionHandler_ = this.snackbarData_.actionHandler;
-                this.setActionHidden_(false);
+            /**
+             * @return {boolean}
+             */
+
+          }, {
+            key: 'isOpen',
+            value: function isOpen() {
+              return this.isOpen_;
+            }
+
+            /**
+             * @return {number}
+             */
+
+          }, {
+            key: 'getTimeoutMs',
+            value: function getTimeoutMs() {
+              return this.autoDismissTimeoutMs_;
+            }
+
+            /**
+             * @param {number} timeoutMs
+             */
+
+          }, {
+            key: 'setTimeoutMs',
+            value: function setTimeoutMs(timeoutMs) {
+              // Use shorter variable names to make the code more readable
+              var minValue = __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].MIN_AUTO_DISMISS_TIMEOUT_MS;
+              var maxValue = __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].MAX_AUTO_DISMISS_TIMEOUT_MS;
+
+              if (timeoutMs <= maxValue && timeoutMs >= minValue) {
+                this.autoDismissTimeoutMs_ = timeoutMs;
               } else {
-                this.setActionHidden_(true);
-                this.actionHandler_ = null;
-                this.adapter_.setActionText(null);
-              }
-
-              this.active_ = true;
-              this.adapter_.addClass(ACTIVE);
-              this.adapter_.unsetAriaHidden();
-              this.adapter_.notifyShow();
-
-              this.timeoutId_ = setTimeout(this.cleanup_.bind(this), this.snackbarData_.timeout || __WEBPACK_IMPORTED_MODULE_1__constants__["b" /* numbers */].MESSAGE_TIMEOUT);
-            }
-          }, {
-            key: 'handlePossibleTabKeyboardFocus_',
-            value: function handlePossibleTabKeyboardFocus_() {
-              var hijackFocus = this.firstFocus_ && !this.pointerDownRecognized_;
-
-              if (hijackFocus) {
-                this.setFocusOnAction_();
-              }
-
-              this.firstFocus_ = false;
-            }
-          }, {
-            key: 'setFocusOnAction_',
-            value: function setFocusOnAction_() {
-              this.adapter_.setFocus();
-              this.snackbarHasFocus_ = true;
-              this.firstFocus_ = false;
-            }
-          }, {
-            key: 'invokeAction_',
-            value: function invokeAction_() {
-              try {
-                if (!this.actionHandler_) {
-                  return;
-                }
-
-                this.actionHandler_();
-              } finally {
-                if (this.dismissOnAction_) {
-                  this.cleanup_();
-                }
+                throw new Error('timeoutMs must be an integer in the range ' + minValue + '\u2013' + maxValue + ', but got \'' + timeoutMs + '\'');
               }
             }
+
+            /**
+             * @return {boolean}
+             */
+
           }, {
-            key: 'cleanup_',
-            value: function cleanup_() {
+            key: 'getCloseOnEscape',
+            value: function getCloseOnEscape() {
+              return this.closeOnEscape_;
+            }
+
+            /**
+             * @param {boolean} closeOnEscape
+             */
+
+          }, {
+            key: 'setCloseOnEscape',
+            value: function setCloseOnEscape(closeOnEscape) {
+              this.closeOnEscape_ = closeOnEscape;
+            }
+
+            /**
+             * @param {!KeyboardEvent} evt
+             */
+
+          }, {
+            key: 'handleKeyDown',
+            value: function handleKeyDown(evt) {
+              if (this.getCloseOnEscape() && (evt.key === 'Escape' || evt.keyCode === 27)) {
+                this.close(REASON_DISMISS);
+              }
+            }
+
+            /**
+             * @param {!MouseEvent} evt
+             */
+
+          }, {
+            key: 'handleActionButtonClick',
+            value: function handleActionButtonClick(evt) {
+              this.close(REASON_ACTION);
+            }
+
+            /**
+             * @param {!MouseEvent} evt
+             */
+
+          }, {
+            key: 'handleActionIconClick',
+            value: function handleActionIconClick(evt) {
+              this.close(REASON_DISMISS);
+            }
+
+            /** @private */
+
+          }, {
+            key: 'clearAutoDismissTimer_',
+            value: function clearAutoDismissTimer_() {
+              clearTimeout(this.autoDismissTimer_);
+              this.autoDismissTimer_ = 0;
+            }
+
+            /** @private */
+
+          }, {
+            key: 'handleAnimationTimerEnd_',
+            value: function handleAnimationTimerEnd_() {
+              this.animationTimer_ = 0;
+              this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].OPENING);
+              this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CLOSING);
+            }
+
+            /**
+             * Runs the given logic on the next animation frame, using setTimeout to factor in Firefox reflow behavior.
+             * @param {Function} callback
+             * @private
+             */
+
+          }, {
+            key: 'runNextAnimationFrame_',
+            value: function runNextAnimationFrame_(callback) {
               var _this4 = this;
 
-              var allowDismissal = !this.snackbarHasFocus_ || this.actionWasClicked_;
-
-              if (allowDismissal) {
-                var ACTIVE = __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* cssClasses */].ACTIVE,
-                    MULTILINE = __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* cssClasses */].MULTILINE,
-                    ACTION_ON_BOTTOM = __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* cssClasses */].ACTION_ON_BOTTOM;
-
-                this.adapter_.removeClass(ACTIVE);
-
-                var handler = function handler() {
-                  clearTimeout(_this4.timeoutId_);
-                  _this4.adapter_.deregisterTransitionEndHandler(handler);
-                  _this4.adapter_.removeClass(MULTILINE);
-                  _this4.adapter_.removeClass(ACTION_ON_BOTTOM);
-                  _this4.setActionHidden_(true);
-                  _this4.adapter_.setAriaHidden();
-                  _this4.active_ = false;
-                  _this4.snackbarHasFocus_ = false;
-                  _this4.adapter_.notifyHide();
-                  _this4.showNext_();
-                };
-
-                this.adapter_.registerTransitionEndHandler(handler);
-              }
-            }
-          }, {
-            key: 'showNext_',
-            value: function showNext_() {
-              if (!this.queue_.length) {
-                return;
-              }
-              this.show(this.queue_.shift());
-            }
-          }, {
-            key: 'setActionHidden_',
-            value: function setActionHidden_(isHidden) {
-              if (isHidden) {
-                this.adapter_.setActionAriaHidden();
-              } else {
-                this.adapter_.unsetActionAriaHidden();
-              }
+              cancelAnimationFrame(this.animationFrame_);
+              this.animationFrame_ = requestAnimationFrame(function () {
+                _this4.animationFrame_ = 0;
+                clearTimeout(_this4.animationTimer_);
+                _this4.animationTimer_ = setTimeout(callback, 0);
+              });
             }
           }]);
 
           return MDCSnackbarFoundation;
-        }(__WEBPACK_IMPORTED_MODULE_0__material_base_index__["MDCFoundation"]);
+        }(__WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */]);
 
         /* harmony default export */__webpack_exports__["a"] = MDCSnackbarFoundation;
 
         /***/
       },
 
-      /***/139:
+      /***/141:
+      /***/function _(module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+
+        var _createClass = function () {
+          function defineProperties(target, props) {
+            for (var i = 0; i < props.length; i++) {
+              var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+            }
+          }return function (Constructor, protoProps, staticProps) {
+            if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+          };
+        }();
+
+        function _classCallCheck(instance, Constructor) {
+          if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+          }
+        }
+
+        /**
+         * @license
+         * Copyright 2018 Google Inc.
+         *
+         * Permission is hereby granted, free of charge, to any person obtaining a copy
+         * of this software and associated documentation files (the "Software"), to deal
+         * in the Software without restriction, including without limitation the rights
+         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+         * copies of the Software, and to permit persons to whom the Software is
+         * furnished to do so, subject to the following conditions:
+         *
+         * The above copyright notice and this permission notice shall be included in
+         * all copies or substantial portions of the Software.
+         *
+         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+         * THE SOFTWARE.
+         */
+
+        /* eslint no-unused-vars: [2, {"args": "none"}] */
+
+        /**
+         * Adapter for MDC Snackbar. Provides an interface for managing:
+         * - CSS classes
+         * - Event handlers
+         *
+         * Additionally, provides type information for the adapter to the Closure
+         * compiler.
+         *
+         * Implement this adapter for your framework of choice to delegate updates to
+         * the component in your framework of choice. See architecture documentation
+         * for more details.
+         * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
+         *
+         * @record
+         */
+        var MDCSnackbarAdapter = function () {
+          function MDCSnackbarAdapter() {
+            _classCallCheck(this, MDCSnackbarAdapter);
+          }
+
+          _createClass(MDCSnackbarAdapter, [{
+            key: "addClass",
+
+            /** @param {string} className */
+            value: function addClass(className) {}
+
+            /** @param {string} className */
+
+          }, {
+            key: "removeClass",
+            value: function removeClass(className) {}
+          }, {
+            key: "announce",
+            value: function announce() {}
+          }, {
+            key: "notifyOpening",
+            value: function notifyOpening() {}
+          }, {
+            key: "notifyOpened",
+            value: function notifyOpened() {}
+
+            /**
+             * @param {string} reason
+             */
+
+          }, {
+            key: "notifyClosing",
+            value: function notifyClosing(reason) {}
+
+            /**
+             * @param {string} reason
+             */
+
+          }, {
+            key: "notifyClosed",
+            value: function notifyClosed(reason) {}
+          }]);
+
+          return MDCSnackbarAdapter;
+        }();
+
+        /* unused harmony default export */var _unused_webpack_default_export = MDCSnackbarAdapter;
+
+        /***/
+      },
+
+      /***/142:
+      /***/function _(module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+
+        Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "announce", function () {
+          return announce;
+        });
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(51);
+        /**
+         * @license
+         * Copyright 2018 Google Inc.
+         *
+         * Permission is hereby granted, free of charge, to any person obtaining a copy
+         * of this software and associated documentation files (the "Software"), to deal
+         * in the Software without restriction, including without limitation the rights
+         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+         * copies of the Software, and to permit persons to whom the Software is
+         * furnished to do so, subject to the following conditions:
+         *
+         * The above copyright notice and this permission notice shall be included in
+         * all copies or substantial portions of the Software.
+         *
+         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+         * THE SOFTWARE.
+         */
+
+        var ARIA_LIVE_DELAY_MS = __WEBPACK_IMPORTED_MODULE_0__constants__["b" /* numbers */].ARIA_LIVE_DELAY_MS;
+        var ARIA_LIVE_LABEL_TEXT_ATTR = __WEBPACK_IMPORTED_MODULE_0__constants__["c" /* strings */].ARIA_LIVE_LABEL_TEXT_ATTR;
+
+        /**
+         * @param {!HTMLElement} ariaEl
+         * @param {!HTMLElement=} labelEl
+         */
+
+        function announce(ariaEl) {
+          var labelEl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ariaEl;
+
+          var priority = ariaEl.getAttribute('aria-live');
+          var labelText = labelEl.textContent.trim(); // Ignore `&nbsp;` (see below)
+          if (!labelText) {
+            return;
+          }
+
+          // Temporarily disable `aria-live` to prevent JAWS+Firefox from announcing the message twice.
+          ariaEl.setAttribute('aria-live', 'off');
+
+          // Temporarily clear `textContent` to force a DOM mutation event that will be detected by screen readers.
+          // `aria-live` elements are only announced when the element's `textContent` *changes*, so snackbars
+          // sent to the browser in the initial HTML response won't be read unless we clear the element's `textContent` first.
+          // Similarly, displaying the same snackbar message twice in a row doesn't trigger a DOM mutation event,
+          // so screen readers won't announce the second message unless we first clear `textContent`.
+          //
+          // We have to clear the label text two different ways to make it work in all browsers and screen readers:
+          //
+          //   1. `textContent = ''` is required for IE11 + JAWS
+          //   2. `innerHTML = '&nbsp;'` is required for Chrome + JAWS and NVDA
+          //
+          // All other browser/screen reader combinations support both methods.
+          //
+          // The wrapper `<span>` visually hides the space character so that it doesn't cause jank when added/removed.
+          // N.B.: Setting `position: absolute`, `opacity: 0`, or `height: 0` prevents Chrome from detecting the DOM change.
+          //
+          // This technique has been tested in:
+          //
+          //   * JAWS 2019:
+          //       - Chrome 70
+          //       - Firefox 60 (ESR)
+          //       - IE 11
+          //   * NVDA 2018:
+          //       - Chrome 70
+          //       - Firefox 60 (ESR)
+          //       - IE 11
+          //   * ChromeVox 53
+          labelEl.textContent = '';
+          labelEl.innerHTML = '<span style="display: inline-block; width: 0; height: 1px;">&nbsp;</span>';
+
+          // Prevent visual jank by temporarily displaying the label text in the ::before pseudo-element.
+          // CSS generated content is normally announced by screen readers
+          // (except in IE 11; see https://tink.uk/accessibility-support-for-css-generated-content/);
+          // however, `aria-live` is turned off, so this DOM update will be ignored by screen readers.
+          labelEl.setAttribute(ARIA_LIVE_LABEL_TEXT_ATTR, labelText);
+
+          setTimeout(function () {
+            // Allow screen readers to announce changes to the DOM again.
+            ariaEl.setAttribute('aria-live', priority);
+
+            // Remove the message from the ::before pseudo-element.
+            labelEl.removeAttribute(ARIA_LIVE_LABEL_TEXT_ATTR);
+
+            // Restore the original label text, which will be announced by screen readers.
+            labelEl.textContent = labelText;
+          }, ARIA_LIVE_DELAY_MS);
+        }
+
+        /***/
+      },
+
+      /***/51:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -39978,7 +40687,7 @@ var VReplaces = function (_VBase) {
         });
         /**
          * @license
-         * Copyright 2016 Google Inc.
+         * Copyright 2018 Google Inc.
          *
          * Permission is hereby granted, free of charge, to any person obtaining a copy
          * of this software and associated documentation files (the "Software"), to deal
@@ -39998,48 +40707,65 @@ var VReplaces = function (_VBase) {
          * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
          * THE SOFTWARE.
          */
+
         var cssClasses = {
-          ROOT: 'mdc-snackbar',
-          TEXT: 'mdc-snackbar__text',
-          ACTION_WRAPPER: 'mdc-snackbar__action-wrapper',
-          ACTION_BUTTON: 'mdc-snackbar__action-button',
-          ACTIVE: 'mdc-snackbar--active',
-          MULTILINE: 'mdc-snackbar--multiline',
-          ACTION_ON_BOTTOM: 'mdc-snackbar--action-on-bottom'
+          OPENING: 'mdc-snackbar--opening',
+          OPEN: 'mdc-snackbar--open',
+          CLOSING: 'mdc-snackbar--closing'
         };
 
         var strings = {
-          TEXT_SELECTOR: '.mdc-snackbar__text',
-          ACTION_WRAPPER_SELECTOR: '.mdc-snackbar__action-wrapper',
-          ACTION_BUTTON_SELECTOR: '.mdc-snackbar__action-button',
-          SHOW_EVENT: 'MDCSnackbar:show',
-          HIDE_EVENT: 'MDCSnackbar:hide'
+          SURFACE_SELECTOR: '.mdc-snackbar__surface',
+          LABEL_SELECTOR: '.mdc-snackbar__label',
+          ACTION_SELECTOR: '.mdc-snackbar__action',
+          DISMISS_SELECTOR: '.mdc-snackbar__dismiss',
+
+          OPENING_EVENT: 'MDCSnackbar:opening',
+          OPENED_EVENT: 'MDCSnackbar:opened',
+          CLOSING_EVENT: 'MDCSnackbar:closing',
+          CLOSED_EVENT: 'MDCSnackbar:closed',
+
+          REASON_ACTION: 'action',
+          REASON_DISMISS: 'dismiss',
+
+          ARIA_LIVE_LABEL_TEXT_ATTR: 'data-mdc-snackbar-label-text'
         };
 
         var numbers = {
-          MESSAGE_TIMEOUT: 2750
+          MIN_AUTO_DISMISS_TIMEOUT_MS: 4000,
+          MAX_AUTO_DISMISS_TIMEOUT_MS: 10000,
+          DEFAULT_AUTO_DISMISS_TIMEOUT_MS: 5000,
+
+          // These variables need to be kept in sync with the values in _variables.scss.
+          SNACKBAR_ANIMATION_OPEN_TIME_MS: 150,
+          SNACKBAR_ANIMATION_CLOSE_TIME_MS: 75,
+
+          /**
+           * Number of milliseconds to wait between temporarily clearing the label text
+           * in the DOM and subsequently restoring it. This is necessary to force IE 11
+           * to pick up the `aria-live` content change and announce it to the user.
+           */
+          ARIA_LIVE_DELAY_MS: 1000
         };
 
         /***/
       },
 
-      /***/7:
+      /***/8:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
 
         Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(0);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__component__ = __webpack_require__(1);
-        /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCFoundation", function () {
-          return __WEBPACK_IMPORTED_MODULE_0__foundation__["a"];
+        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "closest", function () {
+          return closest;
         });
-        /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCComponent", function () {
-          return __WEBPACK_IMPORTED_MODULE_1__component__["a"];
+        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "matches", function () {
+          return matches;
         });
         /**
          * @license
-         * Copyright 2016 Google Inc.
+         * Copyright 2018 Google Inc.
          *
          * Permission is hereby granted, free of charge, to any person obtaining a copy
          * of this software and associated documentation files (the "Software"), to deal
@@ -40059,6 +40785,41 @@ var VReplaces = function (_VBase) {
          * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
          * THE SOFTWARE.
          */
+
+        /**
+         * @fileoverview A "ponyfill" is a polyfill that doesn't modify the global prototype chain.
+         * This makes ponyfills safer than traditional polyfills, especially for libraries like MDC.
+         */
+
+        /**
+         * @param {!Element} element
+         * @param {string} selector
+         * @return {?Element}
+         */
+        function closest(element, selector) {
+          if (element.closest) {
+            return element.closest(selector);
+          }
+
+          var el = element;
+          while (el) {
+            if (matches(el, selector)) {
+              return el;
+            }
+            el = el.parentElement;
+          }
+          return null;
+        }
+
+        /**
+         * @param {!Element} element
+         * @param {string} selector
+         * @return {boolean}
+         */
+        function matches(element, selector) {
+          var nativeMatches = element.matches || element.webkitMatchesSelector || element.msMatchesSelector;
+          return nativeMatches.call(element, selector);
+        }
 
         /***/
       }
@@ -40660,7 +41421,7 @@ var VIconToggle = function (_eventHandlerMixin) {
 
 /*!
  Material Components for the Web
- Copyright (c) 2018 Google Inc.
+ Copyright (c) 2019 Google Inc.
  License: MIT
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -40743,7 +41504,7 @@ var VIconToggle = function (_eventHandlerMixin) {
       /******/__webpack_require__.p = "";
       /******/
       /******/ // Load entry module and return exports
-      /******/return __webpack_require__(__webpack_require__.s = 118);
+      /******/return __webpack_require__(__webpack_require__.s = 120);
       /******/
     }(
     /************************************************************************/
@@ -41064,7 +41825,7 @@ var VIconToggle = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/118:
+      /***/120:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -41074,7 +41835,7 @@ var VIconToggle = function (_eventHandlerMixin) {
           return MDCIconToggle;
         });
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(119);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(121);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__ = __webpack_require__(4);
         /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCIconToggleFoundation", function () {
           return __WEBPACK_IMPORTED_MODULE_1__foundation__["a"];
@@ -41323,14 +42084,14 @@ var VIconToggle = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/119:
+      /***/121:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* harmony import */
         var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(120);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(121);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(122);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(123);
         var _extends = Object.assign || function (target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = arguments[i];for (var key in source) {
@@ -41672,7 +42433,7 @@ var VIconToggle = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/120:
+      /***/122:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -41837,7 +42598,7 @@ var VIconToggle = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/121:
+      /***/123:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -43585,7 +44346,7 @@ var VSelect = function (_visibilityObserverMi) {
 
 /*!
  Material Components for the Web
- Copyright (c) 2018 Google Inc.
+ Copyright (c) 2019 Google Inc.
  License: MIT
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -43668,7 +44429,7 @@ var VSelect = function (_visibilityObserverMi) {
       /******/__webpack_require__.p = "";
       /******/
       /******/ // Load entry module and return exports
-      /******/return __webpack_require__(__webpack_require__.s = 129);
+      /******/return __webpack_require__(__webpack_require__.s = 131);
       /******/
     }(
     /************************************************************************/
@@ -45522,50 +46283,9 @@ var VSelect = function (_visibilityObserverMi) {
         TAP_DELAY_MS: 300 };
 
       /***/
-    },
+    },,
     /* 7 */
-    /***/function (module, __webpack_exports__, __webpack_require__) {
-
-      "use strict";
-
-      Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(0);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__component__ = __webpack_require__(1);
-      /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCFoundation", function () {
-        return __WEBPACK_IMPORTED_MODULE_0__foundation__["a"];
-      });
-      /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCComponent", function () {
-        return __WEBPACK_IMPORTED_MODULE_1__component__["a"];
-      });
-      /**
-       * @license
-       * Copyright 2016 Google Inc.
-       *
-       * Permission is hereby granted, free of charge, to any person obtaining a copy
-       * of this software and associated documentation files (the "Software"), to deal
-       * in the Software without restriction, including without limitation the rights
-       * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-       * copies of the Software, and to permit persons to whom the Software is
-       * furnished to do so, subject to the following conditions:
-       *
-       * The above copyright notice and this permission notice shall be included in
-       * all copies or substantial portions of the Software.
-       *
-       * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-       * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-       * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-       * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-       * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-       * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-       * THE SOFTWARE.
-       */
-
-      /***/
-    },,,,
     /* 8 */
-    /* 9 */
-    /* 10 */
-    /* 11 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -45636,8 +46356,9 @@ var VSelect = function (_visibilityObserverMi) {
       }
 
       /***/
-    },
-    /* 12 */
+    },,
+    /* 9 */
+    /* 10 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -45781,14 +46502,49 @@ var VSelect = function (_visibilityObserverMi) {
           value: function followHref(ele) {}
 
           /**
-           * Toggles the checkbox or radio button within a list item.
            * @param {number} index
-           * @return {boolean} true if a radio button or checkbox was present.
+           * @return {boolean} Returns true if radio button is present at given list item index.
            */
 
         }, {
-          key: "toggleCheckbox",
-          value: function toggleCheckbox(index) {}
+          key: "hasRadioAtIndex",
+          value: function hasRadioAtIndex(index) {}
+
+          /**
+           * @param {number} index
+           * @return {boolean} Returns true if checkbox is present at given list item index.
+           */
+
+        }, {
+          key: "hasCheckboxAtIndex",
+          value: function hasCheckboxAtIndex(index) {}
+
+          /**
+           * @param {number} index
+           * @return {boolean} Returns true if checkbox inside a list item is checked.
+           */
+
+        }, {
+          key: "isCheckboxCheckedAtIndex",
+          value: function isCheckboxCheckedAtIndex(index) {}
+
+          /**
+           * Sets the checked status of checkbox or radio at given list item index.
+           * @param {number} index
+           * @param {boolean} isChecked
+           */
+
+        }, {
+          key: "setCheckedCheckboxOrRadioAtIndex",
+          value: function setCheckedCheckboxOrRadioAtIndex(index, isChecked) {}
+
+          /**
+           * @return {boolean} Returns true when the current focused element is inside list root.
+           */
+
+        }, {
+          key: "isFocusInsideList",
+          value: function isFocusInsideList() {}
         }]);
 
         return MDCListAdapter;
@@ -45798,7 +46554,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 13 */
+    /* 11 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -45809,6 +46565,7 @@ var VSelect = function (_visibilityObserverMi) {
       /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "a", function () {
         return cssClasses;
       });
+      /* unused harmony export Index */
       /**
        * @license
        * Copyright 2018 Google Inc.
@@ -45845,14 +46602,140 @@ var VSelect = function (_visibilityObserverMi) {
         ARIA_ORIENTATION: 'aria-orientation',
         ARIA_ORIENTATION_HORIZONTAL: 'horizontal',
         ARIA_SELECTED: 'aria-selected',
+        ARIA_CHECKED: 'aria-checked',
+        ARIA_CHECKED_RADIO_SELECTOR: '[role="radio"][aria-checked="true"]',
+        ARIA_ROLE_CHECKBOX_SELECTOR: '[role="checkbox"]',
+        ARIA_CHECKED_CHECKBOX_SELECTOR: '[role="checkbox"][aria-checked="true"]',
+        RADIO_SELECTOR: 'input[type="radio"]:not(:disabled)',
+        CHECKBOX_SELECTOR: 'input[type="checkbox"]:not(:disabled)',
         CHECKBOX_RADIO_SELECTOR: 'input[type="checkbox"]:not(:disabled), input[type="radio"]:not(:disabled)',
         CHILD_ELEMENTS_TO_TOGGLE_TABINDEX: '.' + cssClasses.LIST_ITEM_CLASS + ' button:not(:disabled),\n  .' + cssClasses.LIST_ITEM_CLASS + ' a',
         FOCUSABLE_CHILD_ELEMENTS: '.' + cssClasses.LIST_ITEM_CLASS + ' button:not(:disabled), .' + cssClasses.LIST_ITEM_CLASS + ' a,\n  .' + cssClasses.LIST_ITEM_CLASS + ' input[type="radio"]:not(:disabled),\n  .' + cssClasses.LIST_ITEM_CLASS + ' input[type="checkbox"]:not(:disabled)',
         ENABLED_ITEMS_SELECTOR: '.mdc-list-item:not(.mdc-list-item--disabled)'
       };
 
+      /** @typedef {number|!Array<number>} */
+      var Index = void 0;
+
       /***/
-    },,
+    },
+    /* 12 */
+    /***/function (module, __webpack_exports__, __webpack_require__) {
+
+      "use strict";
+
+      var _createClass = function () {
+        function defineProperties(target, props) {
+          for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+          }
+        }return function (Constructor, protoProps, staticProps) {
+          if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+        };
+      }();
+
+      function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+          throw new TypeError("Cannot call a class as a function");
+        }
+      }
+
+      /**
+       * @license
+       * Copyright 2017 Google Inc.
+       *
+       * Permission is hereby granted, free of charge, to any person obtaining a copy
+       * of this software and associated documentation files (the "Software"), to deal
+       * in the Software without restriction, including without limitation the rights
+       * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+       * copies of the Software, and to permit persons to whom the Software is
+       * furnished to do so, subject to the following conditions:
+       *
+       * The above copyright notice and this permission notice shall be included in
+       * all copies or substantial portions of the Software.
+       *
+       * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+       * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+       * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+       * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+       * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+       * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+       * THE SOFTWARE.
+       */
+
+      /* eslint no-unused-vars: [2, {"args": "none"}] */
+
+      /**
+       * Adapter for MDC Floating Label.
+       *
+       * Defines the shape of the adapter expected by the foundation. Implement this
+       * adapter to integrate the floating label into your framework. See
+       * https://github.com/material-components/material-components-web/blob/master/docs/authoring-components.md
+       * for more information.
+       *
+       * @record
+       */
+      var MDCFloatingLabelAdapter = function () {
+        function MDCFloatingLabelAdapter() {
+          _classCallCheck(this, MDCFloatingLabelAdapter);
+        }
+
+        _createClass(MDCFloatingLabelAdapter, [{
+          key: "addClass",
+
+          /**
+           * Adds a class to the label element.
+           * @param {string} className
+           */
+          value: function addClass(className) {}
+
+          /**
+           * Removes a class from the label element.
+           * @param {string} className
+           */
+
+        }, {
+          key: "removeClass",
+          value: function removeClass(className) {}
+
+          /**
+           * Returns the width of the label element.
+           * @return {number}
+           */
+
+        }, {
+          key: "getWidth",
+          value: function getWidth() {}
+
+          /**
+           * Registers an event listener on the root element for a given event.
+           * @param {string} evtType
+           * @param {function(!Event): undefined} handler
+           */
+
+        }, {
+          key: "registerInteractionHandler",
+          value: function registerInteractionHandler(evtType, handler) {}
+
+          /**
+           * Deregisters an event listener on the root element for a given event.
+           * @param {string} evtType
+           * @param {function(!Event): undefined} handler
+           */
+
+        }, {
+          key: "deregisterInteractionHandler",
+          value: function deregisterInteractionHandler(evtType, handler) {}
+        }]);
+
+        return MDCFloatingLabelAdapter;
+      }();
+
+      /* unused harmony default export */var _unused_webpack_default_export = MDCFloatingLabelAdapter;
+
+      /***/
+    },,,
+    /* 13 */
     /* 14 */
     /* 15 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
@@ -45860,8 +46743,8 @@ var VSelect = function (_visibilityObserverMi) {
       "use strict";
       /* harmony import */
       var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(12);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(13);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(10);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(11);
       var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];for (var key in source) {
@@ -45923,6 +46806,8 @@ var VSelect = function (_visibilityObserverMi) {
        * THE SOFTWARE.
        */
 
+      // eslint-disable-line no-unused-vars
+
       var ELEMENTS_KEY_ALLOWED_IN = ['input', 'button', 'textarea', 'select'];
 
       var MDCListFoundation = function (_MDCFoundation) {
@@ -45963,7 +46848,11 @@ var VSelect = function (_visibilityObserverMi) {
                 focusItemAtIndex: function focusItemAtIndex() {},
                 setTabIndexForListItemChildren: function setTabIndexForListItemChildren() {},
                 followHref: function followHref() {},
-                toggleCheckbox: function toggleCheckbox() {}
+                hasRadioAtIndex: function hasRadioAtIndex() {},
+                hasCheckboxAtIndex: function hasCheckboxAtIndex() {},
+                isCheckboxCheckedAtIndex: function isCheckboxCheckedAtIndex() {},
+                setCheckedCheckboxOrRadioAtIndex: function setCheckedCheckboxOrRadioAtIndex() {},
+                isFocusInsideList: function isFocusInsideList() {}
               }
             );
           }
@@ -45977,27 +46866,52 @@ var VSelect = function (_visibilityObserverMi) {
         function MDCListFoundation(adapter) {
           _classCallCheck(this, MDCListFoundation);
 
-          /** {boolean} */
+          /** @private {boolean} */
           var _this = _possibleConstructorReturn(this, (MDCListFoundation.__proto__ || Object.getPrototypeOf(MDCListFoundation)).call(this, _extends(MDCListFoundation.defaultAdapter, adapter)));
 
           _this.wrapFocus_ = false;
-          /** {boolean} */
+
+          /** @private {boolean} */
           _this.isVertical_ = true;
-          /** {boolean} */
+
+          /** @private {boolean} */
           _this.isSingleSelectionList_ = false;
-          /** {number} */
+
+          /** @private {!Index} */
           _this.selectedIndex_ = -1;
-          /** {boolean} */
+
+          /** @private {number} */
+          _this.focusedItemIndex_ = -1;
+
+          /** @private {boolean} */
           _this.useActivatedClass_ = false;
+
+          /** @private {boolean} */
+          _this.isCheckboxList_ = false;
+
+          /** @private {boolean} */
+          _this.isRadioList_ = false;
           return _this;
         }
 
-        /**
-         * Sets the private wrapFocus_ variable.
-         * @param {boolean} value
-         */
-
         _createClass(MDCListFoundation, [{
+          key: 'layout',
+          value: function layout() {
+            if (this.adapter_.getListItemCount() === 0) return;
+
+            if (this.adapter_.hasCheckboxAtIndex(0)) {
+              this.isCheckboxList_ = true;
+            } else if (this.adapter_.hasRadioAtIndex(0)) {
+              this.isRadioList_ = true;
+            }
+          }
+
+          /**
+           * Sets the private wrapFocus_ variable.
+           * @param {boolean} value
+           */
+
+        }, {
           key: 'setWrapFocus',
           value: function setWrapFocus(value) {
             this.wrapFocus_ = value;
@@ -46036,32 +46950,27 @@ var VSelect = function (_visibilityObserverMi) {
             this.useActivatedClass_ = useActivated;
           }
 
-          /** @param {number} index */
+          /** @return {!Index} */
+
+        }, {
+          key: 'getSelectedIndex',
+          value: function getSelectedIndex() {
+            return this.selectedIndex_;
+          }
+
+          /** @param {!Index} index */
 
         }, {
           key: 'setSelectedIndex',
           value: function setSelectedIndex(index) {
-            if (index === this.selectedIndex_) {
-              return;
-            }
+            if (!this.isIndexValid_(index)) return;
 
-            var className = this.useActivatedClass_ ? __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS : __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LIST_ITEM_SELECTED_CLASS;
-
-            if (this.selectedIndex_ >= 0) {
-              this.adapter_.removeAttributeForElementIndex(this.selectedIndex_, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_SELECTED);
-              this.adapter_.removeClassForElementIndex(this.selectedIndex_, className);
-              this.adapter_.setAttributeForElementIndex(this.selectedIndex_, 'tabindex', -1);
-            }
-
-            if (index >= 0 && this.adapter_.getListItemCount() > index) {
-              this.selectedIndex_ = index;
-              this.adapter_.setAttributeForElementIndex(this.selectedIndex_, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_SELECTED, true);
-              this.adapter_.addClassForElementIndex(this.selectedIndex_, className);
-              this.adapter_.setAttributeForElementIndex(this.selectedIndex_, 'tabindex', 0);
-
-              if (this.selectedIndex_ !== 0) {
-                this.adapter_.setAttributeForElementIndex(0, 'tabindex', -1);
-              }
+            if (this.isCheckboxList_) {
+              this.setCheckboxAtIndex_( /** @type {!Array<number>} */index);
+            } else if (this.isRadioList_) {
+              this.setRadioAtIndex_( /** @type {number} */index);
+            } else {
+              this.setSingleSelectionAtIndex_( /** @type {number} */index);
             }
           }
 
@@ -46088,9 +46997,21 @@ var VSelect = function (_visibilityObserverMi) {
         }, {
           key: 'handleFocusOut',
           value: function handleFocusOut(evt, listItemIndex) {
+            var _this2 = this;
+
             if (listItemIndex >= 0) {
               this.adapter_.setTabIndexForListItemChildren(listItemIndex, -1);
             }
+
+            /**
+             * Between Focusout & Focusin some browsers do not have focus on any element. Setting a delay to wait till the focus
+             * is moved to next element.
+             */
+            setTimeout(function () {
+              if (!_this2.adapter_.isFocusInsideList()) {
+                _this2.setTabindexToFirstSelectedItem_();
+              }
+            }, 0);
           }
 
           /**
@@ -46113,6 +47034,7 @@ var VSelect = function (_visibilityObserverMi) {
             var isSpace = evt.key === 'Space' || evt.keyCode === 32;
 
             var currentIndex = this.adapter_.getFocusedElementIndex();
+            var nextIndex = -1;
             if (currentIndex === -1) {
               currentIndex = listItemIndex;
               if (currentIndex < 0) {
@@ -46124,33 +47046,33 @@ var VSelect = function (_visibilityObserverMi) {
 
             if (this.isVertical_ && arrowDown || !this.isVertical_ && arrowRight) {
               this.preventDefaultEvent_(evt);
-              this.focusNextElement(currentIndex);
+              nextIndex = this.focusNextElement(currentIndex);
             } else if (this.isVertical_ && arrowUp || !this.isVertical_ && arrowLeft) {
               this.preventDefaultEvent_(evt);
-              this.focusPrevElement(currentIndex);
+              nextIndex = this.focusPrevElement(currentIndex);
             } else if (isHome) {
               this.preventDefaultEvent_(evt);
-              this.focusFirstElement();
+              nextIndex = this.focusFirstElement();
             } else if (isEnd) {
               this.preventDefaultEvent_(evt);
-              this.focusLastElement();
+              nextIndex = this.focusLastElement();
             } else if (isEnter || isSpace) {
               if (isRootListItem) {
-                if (this.isSingleSelectionList_) {
-                  // Check if the space key was pressed on the list item or a child element.
-                  this.setSelectedIndex(currentIndex);
+                if (this.isSelectableList_()) {
+                  this.setSelectedIndexOnAction_(currentIndex);
                   this.preventDefaultEvent_(evt);
                 }
 
                 // Explicitly activate links, since we're preventing default on Enter, and Space doesn't activate them.
                 this.adapter_.followHref(currentIndex);
               }
+            }
 
-              var checkboxFound = this.adapter_.toggleCheckbox(listItemIndex);
+            this.focusedItemIndex_ = currentIndex;
 
-              if (checkboxFound) {
-                this.preventDefaultEvent_(evt);
-              }
+            if (nextIndex >= 0) {
+              this.setTabindexAtIndex_(nextIndex);
+              this.focusedItemIndex_ = nextIndex;
             }
           }
 
@@ -46165,13 +47087,12 @@ var VSelect = function (_visibilityObserverMi) {
           value: function handleClick(index, toggleCheckbox) {
             if (index === -1) return;
 
-            if (toggleCheckbox) {
-              this.adapter_.toggleCheckbox(index);
+            if (this.isSelectableList_()) {
+              this.setSelectedIndexOnAction_(index, toggleCheckbox);
             }
 
-            if (this.isSingleSelectionList_) {
-              this.setSelectedIndex(index);
-            }
+            this.setTabindexAtIndex_(index);
+            this.focusedItemIndex_ = index;
           }
 
           /**
@@ -46193,6 +47114,7 @@ var VSelect = function (_visibilityObserverMi) {
           /**
            * Focuses the next element on the list.
            * @param {number} index
+           * @return {number}
            */
 
         }, {
@@ -46205,15 +47127,18 @@ var VSelect = function (_visibilityObserverMi) {
                 nextIndex = 0;
               } else {
                 // Return early because last item is already focused.
-                return;
+                return index;
               }
             }
             this.adapter_.focusItemAtIndex(nextIndex);
+
+            return nextIndex;
           }
 
           /**
            * Focuses the previous element on the list.
            * @param {number} index
+           * @return {number}
            */
 
         }, {
@@ -46225,24 +47150,245 @@ var VSelect = function (_visibilityObserverMi) {
                 prevIndex = this.adapter_.getListItemCount() - 1;
               } else {
                 // Return early because first item is already focused.
-                return;
+                return index;
               }
             }
             this.adapter_.focusItemAtIndex(prevIndex);
+
+            return prevIndex;
           }
+
+          /**
+           * @return {number}
+           */
+
         }, {
           key: 'focusFirstElement',
           value: function focusFirstElement() {
-            if (this.adapter_.getListItemCount() > 0) {
-              this.adapter_.focusItemAtIndex(0);
-            }
+            this.adapter_.focusItemAtIndex(0);
+            return 0;
           }
+
+          /**
+           * @return {number}
+           */
+
         }, {
           key: 'focusLastElement',
           value: function focusLastElement() {
             var lastIndex = this.adapter_.getListItemCount() - 1;
-            if (lastIndex >= 0) {
-              this.adapter_.focusItemAtIndex(lastIndex);
+            this.adapter_.focusItemAtIndex(lastIndex);
+            return lastIndex;
+          }
+
+          /**
+           * @param {number} index
+           * @private
+           */
+
+        }, {
+          key: 'setSingleSelectionAtIndex_',
+          value: function setSingleSelectionAtIndex_(index) {
+            var selectedClassName = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LIST_ITEM_SELECTED_CLASS;
+            if (this.useActivatedClass_) {
+              selectedClassName = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS;
+            }
+
+            if (this.selectedIndex_ >= 0 && this.selectedIndex_ !== index) {
+              this.adapter_.removeClassForElementIndex(this.selectedIndex_, selectedClassName);
+              this.adapter_.setAttributeForElementIndex(this.selectedIndex_, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_SELECTED, 'false');
+            }
+
+            this.adapter_.addClassForElementIndex(index, selectedClassName);
+            this.adapter_.setAttributeForElementIndex(index, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_SELECTED, 'true');
+
+            this.selectedIndex_ = index;
+          }
+
+          /**
+           * Toggles radio at give index. Radio doesn't change the checked state if it is already checked.
+           * @param {number} index
+           * @private
+           */
+
+        }, {
+          key: 'setRadioAtIndex_',
+          value: function setRadioAtIndex_(index) {
+            this.adapter_.setCheckedCheckboxOrRadioAtIndex(index, true);
+
+            if (this.selectedIndex_ >= 0) {
+              this.adapter_.setAttributeForElementIndex(this.selectedIndex_, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_CHECKED, 'false');
+            }
+
+            this.adapter_.setAttributeForElementIndex(index, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_CHECKED, 'true');
+
+            this.selectedIndex_ = index;
+          }
+
+          /**
+           * @param {!Array<number>} index
+           * @private
+           */
+
+        }, {
+          key: 'setCheckboxAtIndex_',
+          value: function setCheckboxAtIndex_(index) {
+            for (var i = 0; i < this.adapter_.getListItemCount(); i++) {
+              var isChecked = false;
+              if (index.indexOf(i) >= 0) {
+                isChecked = true;
+              }
+
+              this.adapter_.setCheckedCheckboxOrRadioAtIndex(i, isChecked);
+              this.adapter_.setAttributeForElementIndex(i, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_CHECKED, isChecked ? 'true' : 'false');
+            }
+
+            this.selectedIndex_ = index;
+          }
+
+          /**
+           * @param {number} index
+           * @private
+           */
+
+        }, {
+          key: 'setTabindexAtIndex_',
+          value: function setTabindexAtIndex_(index) {
+            if (this.focusedItemIndex_ === -1 && index !== 0) {
+              // If no list item was selected set first list item's tabindex to -1.
+              // Generally, tabindex is set to 0 on first list item of list that has no preselected items.
+              this.adapter_.setAttributeForElementIndex(0, 'tabindex', -1);
+            } else if (this.focusedItemIndex_ >= 0 && this.focusedItemIndex_ !== index) {
+              this.adapter_.setAttributeForElementIndex(this.focusedItemIndex_, 'tabindex', -1);
+            }
+
+            this.adapter_.setAttributeForElementIndex(index, 'tabindex', 0);
+          }
+
+          /**
+           * @return {boolean} Return true if it is single selectin list, checkbox list or radio list.
+           * @private
+           */
+
+        }, {
+          key: 'isSelectableList_',
+          value: function isSelectableList_() {
+            return this.isSingleSelectionList_ || this.isCheckboxList_ || this.isRadioList_;
+          }
+
+          /** @private */
+
+        }, {
+          key: 'setTabindexToFirstSelectedItem_',
+          value: function setTabindexToFirstSelectedItem_() {
+            var targetIndex = 0;
+
+            if (this.isSelectableList_()) {
+              if (typeof this.selectedIndex_ === 'number' && this.selectedIndex_ !== -1) {
+                targetIndex = this.selectedIndex_;
+              } else if (this.selectedIndex_ instanceof Array && this.selectedIndex_.length > 0) {
+                targetIndex = this.selectedIndex_.reduce(function (currentIndex, minIndex) {
+                  return Math.min(currentIndex, minIndex);
+                });
+              }
+            }
+
+            this.setTabindexAtIndex_(targetIndex);
+          }
+
+          /**
+           * @param {!Index} index
+           * @return {boolean}
+           * @private
+           */
+
+        }, {
+          key: 'isIndexValid_',
+          value: function isIndexValid_(index) {
+            var _this3 = this;
+
+            if (index instanceof Array) {
+              if (!this.isCheckboxList_) {
+                throw new Error('MDCListFoundation: Array of index is only supported for checkbox based list');
+              }
+
+              if (index.length === 0) {
+                return true;
+              } else {
+                return index.some(function (i) {
+                  return _this3.isIndexInRange_(i);
+                });
+              }
+            } else if (typeof index === 'number') {
+              if (this.isCheckboxList_) {
+                throw new Error('MDCListFoundation: Expected array of index for checkbox based list but got number: ' + index);
+              }
+              return this.isIndexInRange_(index);
+            } else {
+              return false;
+            }
+          }
+
+          /**
+           * @param {number} index
+           * @return {boolean}
+           * @private
+           */
+
+        }, {
+          key: 'isIndexInRange_',
+          value: function isIndexInRange_(index) {
+            var listSize = this.adapter_.getListItemCount();
+            return index >= 0 && index < listSize;
+          }
+
+          /**
+           * @param {number} index
+           * @param {boolean=} toggleCheckbox
+           * @private
+           */
+
+        }, {
+          key: 'setSelectedIndexOnAction_',
+          value: function setSelectedIndexOnAction_(index) {
+            var toggleCheckbox = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+            if (this.isCheckboxList_) {
+              this.toggleCheckboxAtIndex_(index, toggleCheckbox);
+            } else {
+              this.setSelectedIndex(index);
+            }
+          }
+
+          /**
+           * @param {number} index
+           * @param {boolean} toggleCheckbox
+           * @private
+           */
+
+        }, {
+          key: 'toggleCheckboxAtIndex_',
+          value: function toggleCheckboxAtIndex_(index, toggleCheckbox) {
+            var isChecked = this.adapter_.isCheckboxCheckedAtIndex(index);
+
+            if (toggleCheckbox) {
+              isChecked = !isChecked;
+              this.adapter_.setCheckedCheckboxOrRadioAtIndex(index, isChecked);
+            }
+
+            this.adapter_.setAttributeForElementIndex(index, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* strings */].ARIA_CHECKED, isChecked ? 'true' : 'false');
+
+            // If none of the checkbox items are selected and selectedIndex is not initialized then provide a default value.
+            if (this.selectedIndex_ === -1) {
+              this.selectedIndex_ = [];
+            }
+
+            if (isChecked) {
+              this.selectedIndex_.push(index);
+            } else {
+              this.selectedIndex_ = this.selectedIndex_.filter(function (i) {
+                return i !== index;
+              });
             }
           }
         }]);
@@ -46258,6 +47404,164 @@ var VSelect = function (_visibilityObserverMi) {
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
+
+      Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+      /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "MDCFloatingLabel", function () {
+        return MDCFloatingLabel;
+      });
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(12);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(26);
+      /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCFloatingLabelFoundation", function () {
+        return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"];
+      });
+      var _createClass = function () {
+        function defineProperties(target, props) {
+          for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+          }
+        }return function (Constructor, protoProps, staticProps) {
+          if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+        };
+      }();
+
+      function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+          throw new TypeError("Cannot call a class as a function");
+        }
+      }
+
+      function _possibleConstructorReturn(self, call) {
+        if (!self) {
+          throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        }return call && ((typeof call === 'undefined' ? 'undefined' : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+      }
+
+      function _inherits(subClass, superClass) {
+        if (typeof superClass !== "function" && superClass !== null) {
+          throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof(superClass)));
+        }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+      }
+
+      /**
+       * @license
+       * Copyright 2016 Google Inc.
+       *
+       * Permission is hereby granted, free of charge, to any person obtaining a copy
+       * of this software and associated documentation files (the "Software"), to deal
+       * in the Software without restriction, including without limitation the rights
+       * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+       * copies of the Software, and to permit persons to whom the Software is
+       * furnished to do so, subject to the following conditions:
+       *
+       * The above copyright notice and this permission notice shall be included in
+       * all copies or substantial portions of the Software.
+       *
+       * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+       * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+       * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+       * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+       * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+       * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+       * THE SOFTWARE.
+       */
+
+      /**
+       * @extends {MDCComponent<!MDCFloatingLabelFoundation>}
+       * @final
+       */
+
+      var MDCFloatingLabel = function (_MDCComponent) {
+        _inherits(MDCFloatingLabel, _MDCComponent);
+
+        function MDCFloatingLabel() {
+          _classCallCheck(this, MDCFloatingLabel);
+
+          return _possibleConstructorReturn(this, (MDCFloatingLabel.__proto__ || Object.getPrototypeOf(MDCFloatingLabel)).apply(this, arguments));
+        }
+
+        _createClass(MDCFloatingLabel, [{
+          key: 'shake',
+
+          /**
+           * Styles the label to produce the label shake for errors.
+           * @param {boolean} shouldShake styles the label to shake by adding shake class
+           * if true, otherwise will stop shaking by removing shake class.
+           */
+          value: function shake(shouldShake) {
+            this.foundation_.shake(shouldShake);
+          }
+
+          /**
+           * Styles label to float/dock.
+           * @param {boolean} shouldFloat styles the label to float by adding float class
+           * if true, otherwise docks the label by removing the float class.
+           */
+
+        }, {
+          key: 'float',
+          value: function float(shouldFloat) {
+            this.foundation_.float(shouldFloat);
+          }
+
+          /**
+           * @return {number}
+           */
+
+        }, {
+          key: 'getWidth',
+          value: function getWidth() {
+            return this.foundation_.getWidth();
+          }
+
+          /**
+           * @return {!MDCFloatingLabelFoundation}
+           */
+
+        }, {
+          key: 'getDefaultFoundation',
+          value: function getDefaultFoundation() {
+            var _this2 = this;
+
+            return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
+              addClass: function addClass(className) {
+                return _this2.root_.classList.add(className);
+              },
+              removeClass: function removeClass(className) {
+                return _this2.root_.classList.remove(className);
+              },
+              getWidth: function getWidth() {
+                return _this2.root_.scrollWidth;
+              },
+              registerInteractionHandler: function registerInteractionHandler(evtType, handler) {
+                return _this2.root_.addEventListener(evtType, handler);
+              },
+              deregisterInteractionHandler: function deregisterInteractionHandler(evtType, handler) {
+                return _this2.root_.removeEventListener(evtType, handler);
+              }
+            });
+          }
+        }], [{
+          key: 'attachTo',
+
+          /**
+           * @param {!Element} root
+           * @return {!MDCFloatingLabel}
+           */
+          value: function attachTo(root) {
+            return new MDCFloatingLabel(root);
+          }
+        }]);
+
+        return MDCFloatingLabel;
+      }(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
+
+      /***/
+    },
+    /* 17 */
+    /***/function (module, __webpack_exports__, __webpack_require__) {
+
+      "use strict";
       /* harmony export (binding) */
       __webpack_require__.d(__webpack_exports__, "b", function () {
         return MDCMenuSurfaceFoundation;
@@ -46267,7 +47571,7 @@ var VSelect = function (_visibilityObserverMi) {
       });
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(21);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(17);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(18);
       var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];for (var key in source) {
@@ -47005,7 +48309,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 17 */
+    /* 18 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -47110,123 +48414,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },,
-    /* 18 */
     /* 19 */
-    /***/function (module, __webpack_exports__, __webpack_require__) {
-
-      "use strict";
-
-      var _createClass = function () {
-        function defineProperties(target, props) {
-          for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-          }
-        }return function (Constructor, protoProps, staticProps) {
-          if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-        };
-      }();
-
-      function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-          throw new TypeError("Cannot call a class as a function");
-        }
-      }
-
-      /**
-       * @license
-       * Copyright 2017 Google Inc.
-       *
-       * Permission is hereby granted, free of charge, to any person obtaining a copy
-       * of this software and associated documentation files (the "Software"), to deal
-       * in the Software without restriction, including without limitation the rights
-       * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-       * copies of the Software, and to permit persons to whom the Software is
-       * furnished to do so, subject to the following conditions:
-       *
-       * The above copyright notice and this permission notice shall be included in
-       * all copies or substantial portions of the Software.
-       *
-       * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-       * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-       * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-       * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-       * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-       * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-       * THE SOFTWARE.
-       */
-
-      /* eslint no-unused-vars: [2, {"args": "none"}] */
-
-      /**
-       * Adapter for MDC Floating Label.
-       *
-       * Defines the shape of the adapter expected by the foundation. Implement this
-       * adapter to integrate the floating label into your framework. See
-       * https://github.com/material-components/material-components-web/blob/master/docs/authoring-components.md
-       * for more information.
-       *
-       * @record
-       */
-      var MDCFloatingLabelAdapter = function () {
-        function MDCFloatingLabelAdapter() {
-          _classCallCheck(this, MDCFloatingLabelAdapter);
-        }
-
-        _createClass(MDCFloatingLabelAdapter, [{
-          key: "addClass",
-
-          /**
-           * Adds a class to the label element.
-           * @param {string} className
-           */
-          value: function addClass(className) {}
-
-          /**
-           * Removes a class from the label element.
-           * @param {string} className
-           */
-
-        }, {
-          key: "removeClass",
-          value: function removeClass(className) {}
-
-          /**
-           * Returns the width of the label element.
-           * @return {number}
-           */
-
-        }, {
-          key: "getWidth",
-          value: function getWidth() {}
-
-          /**
-           * Registers an event listener on the root element for a given event.
-           * @param {string} evtType
-           * @param {function(!Event): undefined} handler
-           */
-
-        }, {
-          key: "registerInteractionHandler",
-          value: function registerInteractionHandler(evtType, handler) {}
-
-          /**
-           * Deregisters an event listener on the root element for a given event.
-           * @param {string} evtType
-           * @param {function(!Event): undefined} handler
-           */
-
-        }, {
-          key: "deregisterInteractionHandler",
-          value: function deregisterInteractionHandler(evtType, handler) {}
-        }]);
-
-        return MDCFloatingLabelAdapter;
-      }();
-
-      /* unused harmony default export */var _unused_webpack_default_export = MDCFloatingLabelAdapter;
-
-      /***/
-    },
     /* 20 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
@@ -47641,30 +48829,12 @@ var VSelect = function (_visibilityObserverMi) {
         }
 
         _createClass(MDCNotchedOutlineAdapter, [{
-          key: "getWidth",
-
-          /**
-           * Returns the width of the root element.
-           * @return {number}
-           */
-          value: function getWidth() {}
-
-          /**
-           * Returns the height of the root element.
-           * @return {number}
-           */
-
-        }, {
-          key: "getHeight",
-          value: function getHeight() {}
+          key: "addClass",
 
           /**
            * Adds a class to the root element.
            * @param {string} className
            */
-
-        }, {
-          key: "addClass",
           value: function addClass(className) {}
 
           /**
@@ -47677,24 +48847,21 @@ var VSelect = function (_visibilityObserverMi) {
           value: function removeClass(className) {}
 
           /**
-           * Sets the "d" attribute of the outline element's SVG path.
-           * @param {string} value
+           * Sets the width style property of the notch element.
+           * @param {number} width
            */
 
         }, {
-          key: "setOutlinePathAttr",
-          value: function setOutlinePathAttr(value) {}
+          key: "setNotchWidthProperty",
+          value: function setNotchWidthProperty(width) {}
 
           /**
-           * Returns the idle outline element's computed style value of the given css property `propertyName`.
-           * We achieve this via `getComputedStyle(...).getPropertyValue(propertyName)`.
-           * @param {string} propertyName
-           * @return {string}
+           * Removes the width style property from the notch element.
            */
 
         }, {
-          key: "getIdleOutlineStyleValue",
-          value: function getIdleOutlineStyleValue(propertyName) {}
+          key: "removeNotchWidthProperty",
+          value: function removeNotchWidthProperty() {}
         }]);
 
         return MDCNotchedOutlineAdapter;
@@ -47712,11 +48879,11 @@ var VSelect = function (_visibilityObserverMi) {
       __webpack_require__.d(__webpack_exports__, "a", function () {
         return cssClasses;
       });
-      /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "c", function () {
-        return strings;
-      });
       /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "b", function () {
         return numbers;
+      });
+      /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "c", function () {
+        return strings;
       });
       /**
        * @license
@@ -47743,19 +48910,20 @@ var VSelect = function (_visibilityObserverMi) {
 
       /** @enum {string} */
       var strings = {
-        PATH_SELECTOR: '.mdc-notched-outline__path',
-        IDLE_OUTLINE_SELECTOR: '.mdc-notched-outline__idle'
-      };
-
-      /** @enum {string} */
-      var cssClasses = {
-        OUTLINE_NOTCHED: 'mdc-notched-outline--notched'
+        NOTCH_ELEMENT_SELECTOR: '.mdc-notched-outline__notch'
       };
 
       /** @enum {number} */
       var numbers = {
-        NOTCH_GUTTER_SIZE: 4,
-        MIN_LEADING_STROKE_EDGE_POSITION: 12
+        // This should stay in sync with $mdc-notched-outline-padding * 2.
+        NOTCH_ELEMENT_PADDING: 8
+      };
+
+      /** @enum {string} */
+      var cssClasses = {
+        OUTLINE_NOTCHED: 'mdc-notched-outline--notched',
+        OUTLINE_UPGRADED: 'mdc-notched-outline--upgraded',
+        NO_LABEL: 'mdc-notched-outline--no-label'
       };
 
       /***/
@@ -47772,9 +48940,9 @@ var VSelect = function (_visibilityObserverMi) {
       });
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(15);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(12);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_dom_ponyfill__ = __webpack_require__(11);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(13);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(10);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_dom_ponyfill__ = __webpack_require__(8);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(11);
       /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCListFoundation", function () {
         return __WEBPACK_IMPORTED_MODULE_1__foundation__["a"];
       });
@@ -47838,6 +49006,8 @@ var VSelect = function (_visibilityObserverMi) {
        * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
        * THE SOFTWARE.
        */
+
+      // eslint-disable-line no-unused-vars
 
       /**
        * @extends MDCComponent<!MDCListFoundation>
@@ -47911,6 +49081,8 @@ var VSelect = function (_visibilityObserverMi) {
             [].slice.call(this.root_.querySelectorAll(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].FOCUSABLE_CHILD_ELEMENTS)).forEach(function (ele) {
               return ele.setAttribute('tabindex', -1);
             });
+
+            this.foundation_.layout();
           }
 
           /**
@@ -47997,19 +49169,34 @@ var VSelect = function (_visibilityObserverMi) {
             var toggleCheckbox = !Object(__WEBPACK_IMPORTED_MODULE_3__material_dom_ponyfill__["matches"])( /** @type {!Element} */evt.target, __WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].CHECKBOX_RADIO_SELECTOR);
             this.foundation_.handleClick(index, toggleCheckbox);
           }
+
+          /**
+           * Initialize selectedIndex value based on pre-selected checkbox list items, single selection or radio.
+           */
+
         }, {
           key: 'initializeListType',
           value: function initializeListType() {
-            // Automatically set single selection if selected/activated classes are present.
-            var preselectedElement = this.root_.querySelector('.' + __WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS + ', .' + __WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].LIST_ITEM_SELECTED_CLASS);
+            var _this2 = this;
 
-            if (preselectedElement) {
-              if (preselectedElement.classList.contains(__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS)) {
+            var checkboxListItems = this.root_.querySelectorAll(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].ARIA_ROLE_CHECKBOX_SELECTOR);
+            var singleSelectedListItem = this.root_.querySelector('.' + __WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS + ',\n        .' + __WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].LIST_ITEM_SELECTED_CLASS);
+            var radioSelectedListItem = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].ARIA_CHECKED_RADIO_SELECTOR);
+
+            if (checkboxListItems.length) {
+              var preselectedItems = this.root_.querySelectorAll(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].ARIA_CHECKED_CHECKBOX_SELECTOR);
+              this.selectedIndex = [].map.call(preselectedItems, function (listItem) {
+                return _this2.listElements.indexOf(listItem);
+              });
+            } else if (singleSelectedListItem) {
+              if (singleSelectedListItem.classList.contains(__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].LIST_ITEM_ACTIVATED_CLASS)) {
                 this.foundation_.setUseActivatedClass(true);
               }
 
               this.singleSelection = true;
-              this.selectedIndex = this.listElements.indexOf(preselectedElement);
+              this.selectedIndex = this.listElements.indexOf(singleSelectedListItem);
+            } else if (radioSelectedListItem) {
+              this.selectedIndex = this.listElements.indexOf(radioSelectedListItem);
             }
           }
 
@@ -48020,73 +49207,82 @@ var VSelect = function (_visibilityObserverMi) {
 
           /** @return {!MDCListFoundation} */
           value: function getDefaultFoundation() {
-            var _this2 = this;
+            var _this3 = this;
 
             return new __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */]( /** @type {!MDCListAdapter} */_extends({
               getListItemCount: function getListItemCount() {
-                return _this2.listElements.length;
+                return _this3.listElements.length;
               },
               getFocusedElementIndex: function getFocusedElementIndex() {
-                return _this2.listElements.indexOf(document.activeElement);
+                return _this3.listElements.indexOf(document.activeElement);
               },
               setAttributeForElementIndex: function setAttributeForElementIndex(index, attr, value) {
-                var element = _this2.listElements[index];
+                var element = _this3.listElements[index];
                 if (element) {
                   element.setAttribute(attr, value);
                 }
               },
               removeAttributeForElementIndex: function removeAttributeForElementIndex(index, attr) {
-                var element = _this2.listElements[index];
+                var element = _this3.listElements[index];
                 if (element) {
                   element.removeAttribute(attr);
                 }
               },
               addClassForElementIndex: function addClassForElementIndex(index, className) {
-                var element = _this2.listElements[index];
+                var element = _this3.listElements[index];
                 if (element) {
                   element.classList.add(className);
                 }
               },
               removeClassForElementIndex: function removeClassForElementIndex(index, className) {
-                var element = _this2.listElements[index];
+                var element = _this3.listElements[index];
                 if (element) {
                   element.classList.remove(className);
                 }
               },
               focusItemAtIndex: function focusItemAtIndex(index) {
-                var element = _this2.listElements[index];
+                var element = _this3.listElements[index];
                 if (element) {
                   element.focus();
                 }
               },
               setTabIndexForListItemChildren: function setTabIndexForListItemChildren(listItemIndex, tabIndexValue) {
-                var element = _this2.listElements[listItemIndex];
+                var element = _this3.listElements[listItemIndex];
                 var listItemChildren = [].slice.call(element.querySelectorAll(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].CHILD_ELEMENTS_TO_TOGGLE_TABINDEX));
                 listItemChildren.forEach(function (ele) {
                   return ele.setAttribute('tabindex', tabIndexValue);
                 });
               },
               followHref: function followHref(index) {
-                var listItem = _this2.listElements[index];
+                var listItem = _this3.listElements[index];
                 if (listItem && listItem.href) {
                   listItem.click();
                 }
               },
-              toggleCheckbox: function toggleCheckbox(index) {
-                var checkboxOrRadioExists = false;
-                var listItem = _this2.listElements[index];
-                var elementsToToggle = [].slice.call(listItem.querySelectorAll(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].CHECKBOX_RADIO_SELECTOR));
-                elementsToToggle.forEach(function (element) {
-                  var event = document.createEvent('Event');
-                  event.initEvent('change', true, true);
+              hasCheckboxAtIndex: function hasCheckboxAtIndex(index) {
+                var listItem = _this3.listElements[index];
+                return !!listItem.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].CHECKBOX_SELECTOR);
+              },
+              hasRadioAtIndex: function hasRadioAtIndex(index) {
+                var listItem = _this3.listElements[index];
+                return !!listItem.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].RADIO_SELECTOR);
+              },
+              isCheckboxCheckedAtIndex: function isCheckboxCheckedAtIndex(index) {
+                var listItem = _this3.listElements[index];
+                var toggleEl = listItem.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].CHECKBOX_SELECTOR);
+                return toggleEl.checked;
+              },
+              setCheckedCheckboxOrRadioAtIndex: function setCheckedCheckboxOrRadioAtIndex(index, isChecked) {
+                var listItem = _this3.listElements[index];
+                var toggleEl = listItem.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["b" /* strings */].CHECKBOX_RADIO_SELECTOR);
+                toggleEl.checked = isChecked;
 
-                  if (!element.checked || element.type !== 'radio') {
-                    element.checked = !element.checked;
-                    element.dispatchEvent(event);
-                  }
-                  checkboxOrRadioExists = true;
-                });
-                return checkboxOrRadioExists;
+                var event = document.createEvent('Event');
+                event.initEvent('change', true, true);
+                toggleEl.dispatchEvent(event);
+              },
+              isFocusInsideList: function isFocusInsideList() {
+                return _this3.root_.contains(document.activeElement);
               }
             }));
           }
@@ -48120,11 +49316,17 @@ var VSelect = function (_visibilityObserverMi) {
             this.foundation_.setSingleSelection(isSingleSelectionList);
           }
 
-          /** @param {number} index */
+          /** @return {!Index} */
 
         }, {
           key: 'selectedIndex',
-          set: function set(index) {
+          get: function get() {
+            return this.foundation_.getSelectedIndex();
+          }
+
+          /** @param {!Index} index */
+
+          , set: function set(index) {
             this.foundation_.setSelectedIndex(index);
           }
         }], [{
@@ -48138,225 +49340,15 @@ var VSelect = function (_visibilityObserverMi) {
       }(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
 
       /***/
-    },,
+    },
     /* 26 */
-    /* 27 */
-    /***/function (module, __webpack_exports__, __webpack_require__) {
-
-      "use strict";
-      /* harmony export (binding) */
-      __webpack_require__.d(__webpack_exports__, "a", function () {
-        return cssClasses;
-      });
-      /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "b", function () {
-        return strings;
-      });
-      /**
-       * @license
-       * Copyright 2018 Google Inc.
-       *
-       * Permission is hereby granted, free of charge, to any person obtaining a copy
-       * of this software and associated documentation files (the "Software"), to deal
-       * in the Software without restriction, including without limitation the rights
-       * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-       * copies of the Software, and to permit persons to whom the Software is
-       * furnished to do so, subject to the following conditions:
-       *
-       * The above copyright notice and this permission notice shall be included in
-       * all copies or substantial portions of the Software.
-       *
-       * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-       * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-       * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-       * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-       * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-       * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-       * THE SOFTWARE.
-       */
-
-      /** @enum {string} */
-      var cssClasses = {
-        ROOT: 'mdc-menu',
-        MENU_SELECTED_LIST_ITEM: 'mdc-menu-item--selected',
-        MENU_SELECTION_GROUP: 'mdc-menu__selection-group'
-      };
-
-      /** @enum {string} */
-      var strings = {
-        SELECTED_EVENT: 'MDCMenu:selected',
-        ARIA_SELECTED_ATTR: 'aria-selected',
-        LIST_SELECTOR: '.mdc-list',
-        CHECKBOX_SELECTOR: 'input[type="checkbox"]'
-      };
-
-      /***/
-    },
-    /* 28 */
-    /***/function (module, __webpack_exports__, __webpack_require__) {
-
-      "use strict";
-
-      Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-      /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "MDCFloatingLabel", function () {
-        return MDCFloatingLabel;
-      });
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(19);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(29);
-      /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCFloatingLabelFoundation", function () {
-        return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"];
-      });
-      var _createClass = function () {
-        function defineProperties(target, props) {
-          for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-          }
-        }return function (Constructor, protoProps, staticProps) {
-          if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-        };
-      }();
-
-      function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-          throw new TypeError("Cannot call a class as a function");
-        }
-      }
-
-      function _possibleConstructorReturn(self, call) {
-        if (!self) {
-          throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-        }return call && ((typeof call === 'undefined' ? 'undefined' : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-      }
-
-      function _inherits(subClass, superClass) {
-        if (typeof superClass !== "function" && superClass !== null) {
-          throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof(superClass)));
-        }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-      }
-
-      /**
-       * @license
-       * Copyright 2016 Google Inc.
-       *
-       * Permission is hereby granted, free of charge, to any person obtaining a copy
-       * of this software and associated documentation files (the "Software"), to deal
-       * in the Software without restriction, including without limitation the rights
-       * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-       * copies of the Software, and to permit persons to whom the Software is
-       * furnished to do so, subject to the following conditions:
-       *
-       * The above copyright notice and this permission notice shall be included in
-       * all copies or substantial portions of the Software.
-       *
-       * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-       * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-       * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-       * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-       * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-       * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-       * THE SOFTWARE.
-       */
-
-      /**
-       * @extends {MDCComponent<!MDCFloatingLabelFoundation>}
-       * @final
-       */
-
-      var MDCFloatingLabel = function (_MDCComponent) {
-        _inherits(MDCFloatingLabel, _MDCComponent);
-
-        function MDCFloatingLabel() {
-          _classCallCheck(this, MDCFloatingLabel);
-
-          return _possibleConstructorReturn(this, (MDCFloatingLabel.__proto__ || Object.getPrototypeOf(MDCFloatingLabel)).apply(this, arguments));
-        }
-
-        _createClass(MDCFloatingLabel, [{
-          key: 'shake',
-
-          /**
-           * Styles the label to produce the label shake for errors.
-           * @param {boolean} shouldShake styles the label to shake by adding shake class
-           * if true, otherwise will stop shaking by removing shake class.
-           */
-          value: function shake(shouldShake) {
-            this.foundation_.shake(shouldShake);
-          }
-
-          /**
-           * Styles label to float/dock.
-           * @param {boolean} shouldFloat styles the label to float by adding float class
-           * if true, otherwise docks the label by removing the float class.
-           */
-
-        }, {
-          key: 'float',
-          value: function float(shouldFloat) {
-            this.foundation_.float(shouldFloat);
-          }
-
-          /**
-           * @return {number}
-           */
-
-        }, {
-          key: 'getWidth',
-          value: function getWidth() {
-            return this.foundation_.getWidth();
-          }
-
-          /**
-           * @return {!MDCFloatingLabelFoundation}
-           */
-
-        }, {
-          key: 'getDefaultFoundation',
-          value: function getDefaultFoundation() {
-            var _this2 = this;
-
-            return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
-              addClass: function addClass(className) {
-                return _this2.root_.classList.add(className);
-              },
-              removeClass: function removeClass(className) {
-                return _this2.root_.classList.remove(className);
-              },
-              getWidth: function getWidth() {
-                return _this2.root_.offsetWidth;
-              },
-              registerInteractionHandler: function registerInteractionHandler(evtType, handler) {
-                return _this2.root_.addEventListener(evtType, handler);
-              },
-              deregisterInteractionHandler: function deregisterInteractionHandler(evtType, handler) {
-                return _this2.root_.removeEventListener(evtType, handler);
-              }
-            });
-          }
-        }], [{
-          key: 'attachTo',
-
-          /**
-           * @param {!Element} root
-           * @return {!MDCFloatingLabel}
-           */
-          value: function attachTo(root) {
-            return new MDCFloatingLabel(root);
-          }
-        }]);
-
-        return MDCFloatingLabel;
-      }(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
-
-      /***/
-    },
-    /* 29 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
       /* harmony import */
       var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(19);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(30);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(12);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(27);
       var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];for (var key in source) {
@@ -48552,7 +49544,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 30 */
+    /* 27 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -48586,12 +49578,65 @@ var VSelect = function (_visibilityObserverMi) {
       /** @enum {string} */
       var cssClasses = {
         LABEL_FLOAT_ABOVE: 'mdc-floating-label--float-above',
-        LABEL_SHAKE: 'mdc-floating-label--shake'
+        LABEL_SHAKE: 'mdc-floating-label--shake',
+        ROOT: 'mdc-floating-label'
+      };
+
+      /***/
+    },,
+    /* 28 */
+    /* 29 */
+    /***/function (module, __webpack_exports__, __webpack_require__) {
+
+      "use strict";
+      /* harmony export (binding) */
+      __webpack_require__.d(__webpack_exports__, "a", function () {
+        return cssClasses;
+      });
+      /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "b", function () {
+        return strings;
+      });
+      /**
+       * @license
+       * Copyright 2018 Google Inc.
+       *
+       * Permission is hereby granted, free of charge, to any person obtaining a copy
+       * of this software and associated documentation files (the "Software"), to deal
+       * in the Software without restriction, including without limitation the rights
+       * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+       * copies of the Software, and to permit persons to whom the Software is
+       * furnished to do so, subject to the following conditions:
+       *
+       * The above copyright notice and this permission notice shall be included in
+       * all copies or substantial portions of the Software.
+       *
+       * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+       * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+       * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+       * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+       * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+       * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+       * THE SOFTWARE.
+       */
+
+      /** @enum {string} */
+      var cssClasses = {
+        ROOT: 'mdc-menu',
+        MENU_SELECTED_LIST_ITEM: 'mdc-menu-item--selected',
+        MENU_SELECTION_GROUP: 'mdc-menu__selection-group'
+      };
+
+      /** @enum {string} */
+      var strings = {
+        SELECTED_EVENT: 'MDCMenu:selected',
+        ARIA_SELECTED_ATTR: 'aria-selected',
+        LIST_SELECTOR: '.mdc-list',
+        CHECKBOX_SELECTOR: 'input[type="checkbox"]'
       };
 
       /***/
     },
-    /* 31 */
+    /* 30 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -48602,7 +49647,7 @@ var VSelect = function (_visibilityObserverMi) {
       });
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(20);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(32);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(31);
       /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCLineRippleFoundation", function () {
         return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"];
       });
@@ -48760,14 +49805,14 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 32 */
+    /* 31 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
       /* harmony import */
       var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(20);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(33);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(32);
       var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];for (var key in source) {
@@ -48954,7 +49999,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 33 */
+    /* 32 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -48993,7 +50038,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 34 */
+    /* 33 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -49003,10 +50048,10 @@ var VSelect = function (_visibilityObserverMi) {
         return MDCMenuSurface;
       });
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(35);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(16);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(34);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(17);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__adapter__ = __webpack_require__(21);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(17);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(18);
       /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCMenuSurfaceFoundation", function () {
         return __WEBPACK_IMPORTED_MODULE_2__foundation__["b"];
       });
@@ -49435,7 +50480,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 35 */
+    /* 34 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -49490,7 +50535,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 36 */
+    /* 35 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -49501,11 +50546,22 @@ var VSelect = function (_visibilityObserverMi) {
       });
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(22);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(37);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(23);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(36);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_floating_label_index__ = __webpack_require__(16);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(23);
       /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCNotchedOutlineFoundation", function () {
         return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"];
       });
+      var _extends = Object.assign || function (target) {
+        for (var i = 1; i < arguments.length; i++) {
+          var source = arguments[i];for (var key in source) {
+            if (Object.prototype.hasOwnProperty.call(source, key)) {
+              target[key] = source[key];
+            }
+          }
+        }return target;
+      };
+
       var _createClass = function () {
         function defineProperties(target, props) {
           for (var i = 0; i < props.length; i++) {
@@ -49565,27 +50621,66 @@ var VSelect = function (_visibilityObserverMi) {
       var MDCNotchedOutline = function (_MDCComponent) {
         _inherits(MDCNotchedOutline, _MDCComponent);
 
+        _createClass(MDCNotchedOutline, null, [{
+          key: 'attachTo',
+
+          /**
+           * @param {!Element} root
+           * @return {!MDCNotchedOutline}
+           */
+          value: function attachTo(root) {
+            return new MDCNotchedOutline(root);
+          }
+          /** @param {...?} args */
+
+        }]);
+
         function MDCNotchedOutline() {
+          var _ref;
+
           _classCallCheck(this, MDCNotchedOutline);
 
-          return _possibleConstructorReturn(this, (MDCNotchedOutline.__proto__ || Object.getPrototypeOf(MDCNotchedOutline)).apply(this, arguments));
+          for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          /** @private {Element} */
+          var _this = _possibleConstructorReturn(this, (_ref = MDCNotchedOutline.__proto__ || Object.getPrototypeOf(MDCNotchedOutline)).call.apply(_ref, [this].concat(args)));
+
+          _this.notchElement_;
+          return _this;
         }
 
         _createClass(MDCNotchedOutline, [{
-          key: 'notch',
+          key: 'initialSyncWithDOM',
+          value: function initialSyncWithDOM() {
+            var label = this.root_.querySelector('.' + __WEBPACK_IMPORTED_MODULE_3__material_floating_label_index__["MDCFloatingLabelFoundation"].cssClasses.ROOT);
+            this.notchElement_ = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__constants__["c" /* strings */].NOTCH_ELEMENT_SELECTOR);
 
-          /**
-            * Updates outline selectors and SVG path to open notch.
-            * @param {number} notchWidth The notch width in the outline.
-            * @param {boolean=} isRtl Determines if outline is rtl. If rtl is true, notch
-            * will be right justified in outline path, otherwise left justified.
-            */
-          value: function notch(notchWidth, isRtl) {
-            this.foundation_.notch(notchWidth, isRtl);
+            if (label) {
+              label.style.transitionDuration = '0s';
+              this.root_.classList.add(__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].OUTLINE_UPGRADED);
+              requestAnimationFrame(function () {
+                label.style.transitionDuration = '';
+              });
+            } else {
+              this.root_.classList.add(__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* cssClasses */].NO_LABEL);
+            }
           }
 
           /**
-           * Updates the outline selectors to close notch and return it to idle state.
+            * Updates classes and styles to open the notch to the specified width.
+            * @param {number} notchWidth The notch width in the outline.
+            */
+
+        }, {
+          key: 'notch',
+          value: function notch(notchWidth) {
+            this.foundation_.notch(notchWidth);
+          }
+
+          /**
+           * Updates classes and styles to close the notch.
            */
 
         }, {
@@ -49603,38 +50698,21 @@ var VSelect = function (_visibilityObserverMi) {
           value: function getDefaultFoundation() {
             var _this2 = this;
 
-            return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
-              getWidth: function getWidth() {
-                return _this2.root_.offsetWidth;
-              },
-              getHeight: function getHeight() {
-                return _this2.root_.offsetHeight;
-              },
+            return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */](
+            /** @type {!MDCNotchedOutlineAdapter} */_extends({
               addClass: function addClass(className) {
                 return _this2.root_.classList.add(className);
               },
               removeClass: function removeClass(className) {
                 return _this2.root_.classList.remove(className);
               },
-              setOutlinePathAttr: function setOutlinePathAttr(value) {
-                var path = _this2.root_.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].PATH_SELECTOR);
-                path.setAttribute('d', value);
+              setNotchWidthProperty: function setNotchWidthProperty(width) {
+                return _this2.notchElement_.style.setProperty('width', width + 'px');
               },
-              getIdleOutlineStyleValue: function getIdleOutlineStyleValue(propertyName) {
-                var idleOutlineElement = _this2.root_.parentNode.querySelector(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].IDLE_OUTLINE_SELECTOR);
-                return window.getComputedStyle(idleOutlineElement).getPropertyValue(propertyName);
+              removeNotchWidthProperty: function removeNotchWidthProperty() {
+                return _this2.notchElement_.style.removeProperty('width');
               }
-            });
-          }
-        }], [{
-          key: 'attachTo',
-
-          /**
-           * @param {!Element} root
-           * @return {!MDCNotchedOutline}
-           */
-          value: function attachTo(root) {
-            return new MDCNotchedOutline(root);
+            }));
           }
         }]);
 
@@ -49643,7 +50721,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 37 */
+    /* 36 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -49754,12 +50832,10 @@ var VSelect = function (_visibilityObserverMi) {
           key: 'defaultAdapter',
           get: function get() {
             return (/** @type {!MDCNotchedOutlineAdapter} */{
-                getWidth: function getWidth() {},
-                getHeight: function getHeight() {},
                 addClass: function addClass() {},
                 removeClass: function removeClass() {},
-                setOutlinePathAttr: function setOutlinePathAttr() {},
-                getIdleOutlineStyleValue: function getIdleOutlineStyleValue() {}
+                setNotchWidthProperty: function setNotchWidthProperty() {},
+                removeNotchWidthProperty: function removeNotchWidthProperty() {}
               }
             );
           }
@@ -49778,19 +50854,21 @@ var VSelect = function (_visibilityObserverMi) {
 
         /**
          * Adds the outline notched selector and updates the notch width
-         * calculated based off of notchWidth and isRtl.
+         * calculated based off of notchWidth.
          * @param {number} notchWidth
-         * @param {boolean=} isRtl
          */
 
         _createClass(MDCNotchedOutlineFoundation, [{
           key: 'notch',
           value: function notch(notchWidth) {
-            var isRtl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
             var OUTLINE_NOTCHED = MDCNotchedOutlineFoundation.cssClasses.OUTLINE_NOTCHED;
 
+            if (notchWidth > 0) {
+              notchWidth += __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].NOTCH_ELEMENT_PADDING; // Add padding from left/right.
+            }
+
+            this.adapter_.setNotchWidthProperty(notchWidth);
             this.adapter_.addClass(OUTLINE_NOTCHED);
-            this.updateSvgPath_(notchWidth, isRtl);
           }
 
           /**
@@ -49803,44 +50881,7 @@ var VSelect = function (_visibilityObserverMi) {
             var OUTLINE_NOTCHED = MDCNotchedOutlineFoundation.cssClasses.OUTLINE_NOTCHED;
 
             this.adapter_.removeClass(OUTLINE_NOTCHED);
-          }
-
-          /**
-           * Updates the SVG path of the focus outline element based on the notchWidth
-           * and the RTL context.
-           * @param {number} notchWidth
-           * @param {boolean=} isRtl
-           * @private
-           */
-
-        }, {
-          key: 'updateSvgPath_',
-          value: function updateSvgPath_(notchWidth, isRtl) {
-            // Fall back to reading a specific corner's style because Firefox doesn't report the style on border-radius.
-            var radiusStyleValue = this.adapter_.getIdleOutlineStyleValue('border-radius') || this.adapter_.getIdleOutlineStyleValue('border-top-left-radius');
-            var radius = parseFloat(radiusStyleValue);
-            var width = this.adapter_.getWidth();
-            var height = this.adapter_.getHeight();
-            var cornerWidth = radius + 1.2;
-            var leadingStrokeLength = Math.max(0, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].MIN_LEADING_STROKE_EDGE_POSITION - radius - 1.2);
-
-            // If the notchWidth is 0, the the notched outline doesn't need to add padding.
-            var paddedNotchWidth = 0;
-            if (notchWidth > 0) {
-              paddedNotchWidth = notchWidth + 2 * __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].NOTCH_GUTTER_SIZE;
-            }
-
-            // The right, bottom, and left sides of the outline follow the same SVG path.
-            var pathMiddle = 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + radius + 'v' + (height - 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + radius + 'h' + (-width + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + -radius + 'v' + (-height + 2 * cornerWidth) + 'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + -radius;
-
-            var path = void 0;
-            if (!isRtl) {
-              path = 'M' + (cornerWidth + leadingStrokeLength + paddedNotchWidth) + ',' + 1 + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength) + pathMiddle + 'h' + leadingStrokeLength;
-            } else {
-              path = 'M' + (width - cornerWidth - leadingStrokeLength) + ',' + 1 + 'h' + leadingStrokeLength + pathMiddle + 'h' + (width - 2 * cornerWidth - paddedNotchWidth - leadingStrokeLength);
-            }
-
-            this.adapter_.setOutlinePathAttr(path);
+            this.adapter_.removeNotchWidthProperty();
           }
         }]);
 
@@ -49850,7 +50891,8 @@ var VSelect = function (_visibilityObserverMi) {
       /* harmony default export */__webpack_exports__["a"] = MDCNotchedOutlineFoundation;
 
       /***/
-    },,,,,,,,,,,
+    },,,,,,,,,,
+    /* 37 */
     /* 38 */
     /* 39 */
     /* 40 */
@@ -49860,8 +50902,6 @@ var VSelect = function (_visibilityObserverMi) {
     /* 44 */
     /* 45 */
     /* 46 */
-    /* 47 */
-    /* 48 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -49871,10 +50911,10 @@ var VSelect = function (_visibilityObserverMi) {
         return MDCMenu;
       });
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(49);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(27);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_menu_surface_index__ = __webpack_require__(34);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__material_menu_surface_foundation__ = __webpack_require__(16);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(47);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(29);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_menu_surface_index__ = __webpack_require__(33);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__material_menu_surface_foundation__ = __webpack_require__(17);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_5__material_list_index__ = __webpack_require__(25);
       /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCMenuFoundation", function () {
         return __WEBPACK_IMPORTED_MODULE_1__foundation__["a"];
@@ -50199,6 +51239,20 @@ var VSelect = function (_visibilityObserverMi) {
           , set: function set(value) {
             this.menuSurface_.open = value;
           }
+
+          /** @return {boolean} */
+
+        }, {
+          key: 'wrapFocus',
+          get: function get() {
+            return this.list_.wrapFocus;
+          }
+
+          /** @param {boolean} value */
+
+          , set: function set(value) {
+            this.list_.wrapFocus = value;
+          }
         }, {
           key: 'items',
           get: function get() {
@@ -50221,7 +51275,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 49 */
+    /* 47 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -50230,9 +51284,9 @@ var VSelect = function (_visibilityObserverMi) {
         return MDCMenuFoundation;
       });
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(50);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(27);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_menu_surface_foundation__ = __webpack_require__(16);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(48);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(29);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_menu_surface_foundation__ = __webpack_require__(17);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__material_list_foundation__ = __webpack_require__(15);
       var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
@@ -50541,7 +51595,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 50 */
+    /* 48 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -50716,7 +51770,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 51 */
+    /* 49 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -50726,8 +51780,10 @@ var VSelect = function (_visibilityObserverMi) {
       });
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(73);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(131);
-      /* unused harmony reexport MDCSelectIconFoundation */
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(133);
+      /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "b", function () {
+        return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"];
+      });
       var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];for (var key in source) {
@@ -50862,7 +51918,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 52 */
+    /* 50 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -50872,8 +51928,10 @@ var VSelect = function (_visibilityObserverMi) {
       });
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(74);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(133);
-      /* unused harmony reexport MDCSelectHelperTextFoundation */
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(135);
+      /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "b", function () {
+        return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"];
+      });
       var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];for (var key in source) {
@@ -51004,7 +52062,9 @@ var VSelect = function (_visibilityObserverMi) {
       }(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
 
       /***/
-    },,,,,,,,,,,,,,,,,,,,
+    },,,,,,,,,,,,,,,,,,,,,,
+    /* 51 */
+    /* 52 */
     /* 53 */
     /* 54 */
     /* 55 */
@@ -51031,8 +52091,8 @@ var VSelect = function (_visibilityObserverMi) {
       /* unused harmony export MDCSelectAdapter */
       /* unused harmony export FoundationMapType */
       /* harmony import */
-      var __WEBPACK_IMPORTED_MODULE_0__icon_index__ = __webpack_require__(51);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__helper_text_index__ = __webpack_require__(52);
+      var __WEBPACK_IMPORTED_MODULE_0__icon_index__ = __webpack_require__(49);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__helper_text_index__ = __webpack_require__(50);
       var _createClass = function () {
         function defineProperties(target, props) {
           for (var i = 0; i < props.length; i++) {
@@ -51170,15 +52230,6 @@ var VSelect = function (_visibilityObserverMi) {
           value: function getValue() {}
 
           /**
-           * Returns true if the direction of the root element is set to RTL.
-           * @return {boolean}
-           */
-
-        }, {
-          key: 'isRtl',
-          value: function isRtl() {}
-
-          /**
            * Floats label determined based off of the shouldFloat argument.
            * @param {boolean} shouldFloat
            */
@@ -51206,15 +52257,13 @@ var VSelect = function (_visibilityObserverMi) {
           value: function hasOutline() {}
 
           /**
-           * Updates SVG Path and outline element based on the
-           * label element width and RTL context, if the outline exists.
+           * Only implement if outline element exists.
            * @param {number} labelWidth
-           * @param {boolean=} isRtl
            */
 
         }, {
           key: 'notchOutline',
-          value: function notchOutline(labelWidth, isRtl) {}
+          value: function notchOutline(labelWidth) {}
 
           /**
            * Closes notch in outline element, if the outline exists.
@@ -51641,7 +52690,7 @@ var VSelect = function (_visibilityObserverMi) {
       };
 
       /***/
-    },,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    },,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
     /* 76 */
     /* 77 */
     /* 78 */
@@ -51696,6 +52745,8 @@ var VSelect = function (_visibilityObserverMi) {
     /* 127 */
     /* 128 */
     /* 129 */
+    /* 130 */
+    /* 131 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -51704,21 +52755,33 @@ var VSelect = function (_visibilityObserverMi) {
       /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "MDCSelect", function () {
         return MDCSelect;
       });
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(7);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_floating_label_index__ = __webpack_require__(28);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__material_line_ripple_index__ = __webpack_require__(31);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_menu_index__ = __webpack_require__(48);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_floating_label_index__ = __webpack_require__(16);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__material_line_ripple_index__ = __webpack_require__(30);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_menu_index__ = __webpack_require__(46);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__material_ripple_index__ = __webpack_require__(4);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_5__material_notched_outline_index__ = __webpack_require__(36);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_6__foundation__ = __webpack_require__(130);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_5__material_notched_outline_index__ = __webpack_require__(35);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_6__foundation__ = __webpack_require__(132);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_7__constants__ = __webpack_require__(75);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_8__adapter__ = __webpack_require__(72);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_9__icon_index__ = __webpack_require__(51);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_10__helper_text_index__ = __webpack_require__(52);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_11__material_menu_surface_constants__ = __webpack_require__(17);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_12__material_menu_constants__ = __webpack_require__(27);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_9__icon_index__ = __webpack_require__(49);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_10__helper_text_index__ = __webpack_require__(50);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_11__material_menu_surface_constants__ = __webpack_require__(18);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_12__material_menu_constants__ = __webpack_require__(29);
       /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCSelectFoundation", function () {
         return __WEBPACK_IMPORTED_MODULE_6__foundation__["a"];
+      });
+      /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCSelectHelperText", function () {
+        return __WEBPACK_IMPORTED_MODULE_10__helper_text_index__["a"];
+      });
+      /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCSelectHelperTextFoundation", function () {
+        return __WEBPACK_IMPORTED_MODULE_10__helper_text_index__["b"];
+      });
+      /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCSelectIcon", function () {
+        return __WEBPACK_IMPORTED_MODULE_9__icon_index__["a"];
+      });
+      /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCSelectIconFoundation", function () {
+        return __WEBPACK_IMPORTED_MODULE_9__icon_index__["b"];
       });
       var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
@@ -51981,6 +53044,7 @@ var VSelect = function (_visibilityObserverMi) {
             this.menu_.hoistMenuToBody();
             this.menu_.setAnchorElement( /** @type {!HTMLElement} */this.root_);
             this.menu_.setAnchorCorner(__WEBPACK_IMPORTED_MODULE_11__material_menu_surface_constants__["a" /* Corner */].BOTTOM_START);
+            this.menu_.wrapFocus = false;
           }
 
           /**
@@ -52260,7 +53324,6 @@ var VSelect = function (_visibilityObserverMi) {
            *   addClass: function(string): void,
            *   removeClass: function(string): void,
            *   hasClass: function(string): void,
-           *   isRtl: function(): boolean,
            *   setRippleCenter: function(number): void,
            *   activateBottomLine: function(): void,
            *   deactivateBottomLine: function(): void,
@@ -52283,9 +53346,6 @@ var VSelect = function (_visibilityObserverMi) {
               },
               hasClass: function hasClass(className) {
                 return _this6.root_.classList.contains(className);
-              },
-              isRtl: function isRtl() {
-                return window.getComputedStyle(_this6.root_).getPropertyValue('direction') === 'rtl';
               },
               setRippleCenter: function setRippleCenter(normalizedX) {
                 return _this6.lineRipple_ && _this6.lineRipple_.setRippleCenter(normalizedX);
@@ -52320,9 +53380,9 @@ var VSelect = function (_visibilityObserverMi) {
               hasOutline: function hasOutline() {
                 return !!_this7.outline_;
               },
-              notchOutline: function notchOutline(labelWidth, isRtl) {
+              notchOutline: function notchOutline(labelWidth) {
                 if (_this7.outline_) {
-                  _this7.outline_.notch(labelWidth, isRtl);
+                  _this7.outline_.notch(labelWidth);
                 }
               },
               closeOutline: function closeOutline() {
@@ -52621,19 +53681,19 @@ var VSelect = function (_visibilityObserverMi) {
         }]);
 
         return MDCSelect;
-      }(__WEBPACK_IMPORTED_MODULE_0__material_base_index__["MDCComponent"]);
+      }(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
 
       /***/
     },
-    /* 130 */
+    /* 132 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
       /* harmony import */
-      var __WEBPACK_IMPORTED_MODULE_0__material_base_index__ = __webpack_require__(7);
+      var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(72);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__icon_index__ = __webpack_require__(51);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__helper_text_index__ = __webpack_require__(52);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__icon_index__ = __webpack_require__(49);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__helper_text_index__ = __webpack_require__(50);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(75);
       var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
@@ -52752,15 +53812,12 @@ var VSelect = function (_visibilityObserverMi) {
                 deactivateBottomLine: function deactivateBottomLine() {},
                 setValue: function setValue() {},
                 getValue: function getValue() {},
-                isRtl: function isRtl() {
-                  return false;
-                },
                 floatLabel: function floatLabel() /* value: boolean */{},
                 getLabelWidth: function getLabelWidth() {},
                 hasOutline: function hasOutline() {
                   return false;
                 },
-                notchOutline: function notchOutline() /* labelWidth: number, isRtl: boolean */{},
+                notchOutline: function notchOutline() /* labelWidth: number, */{},
                 closeOutline: function closeOutline() {},
                 openMenu: function openMenu() {},
                 closeMenu: function closeMenu() {},
@@ -52954,8 +54011,7 @@ var VSelect = function (_visibilityObserverMi) {
             if (openNotch) {
               var labelScale = __WEBPACK_IMPORTED_MODULE_4__constants__["b" /* numbers */].LABEL_SCALE;
               var labelWidth = this.adapter_.getLabelWidth() * labelScale;
-              var isRtl = this.adapter_.isRtl();
-              this.adapter_.notchOutline(labelWidth, isRtl);
+              this.adapter_.notchOutline(labelWidth);
             } else if (!isFocused) {
               this.adapter_.closeOutline();
             }
@@ -52999,20 +54055,20 @@ var VSelect = function (_visibilityObserverMi) {
         }]);
 
         return MDCSelectFoundation;
-      }(__WEBPACK_IMPORTED_MODULE_0__material_base_index__["MDCFoundation"]);
+      }(__WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */]);
 
       /* harmony default export */__webpack_exports__["a"] = MDCSelectFoundation;
 
       /***/
     },
-    /* 131 */
+    /* 133 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
       /* harmony import */
       var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(73);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(132);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(134);
       var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];for (var key in source) {
@@ -53208,7 +54264,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 132 */
+    /* 134 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -53247,14 +54303,14 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 133 */
+    /* 135 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
       /* harmony import */
       var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
       /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(74);
-      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(134);
+      /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(136);
       var _extends = Object.assign || function (target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];for (var key in source) {
@@ -53460,7 +54516,7 @@ var VSelect = function (_visibilityObserverMi) {
 
       /***/
     },
-    /* 134 */
+    /* 136 */
     /***/function (module, __webpack_exports__, __webpack_require__) {
 
       "use strict";
@@ -53754,7 +54810,7 @@ var VCheckbox = function (_eventHandlerMixin) {
 
 /*!
  Material Components for the Web
- Copyright (c) 2018 Google Inc.
+ Copyright (c) 2019 Google Inc.
  License: MIT
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -53837,7 +54893,7 @@ var VCheckbox = function (_eventHandlerMixin) {
       /******/__webpack_require__.p = "";
       /******/
       /******/ // Load entry module and return exports
-      /******/return __webpack_require__(__webpack_require__.s = 87);
+      /******/return __webpack_require__(__webpack_require__.s = 88);
       /******/
     }(
     /************************************************************************/
@@ -54158,7 +55214,7 @@ var VCheckbox = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/10:
+      /***/14:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -55864,7 +56920,7 @@ var VCheckbox = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/8:
+      /***/7:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -55952,7 +57008,7 @@ var VCheckbox = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/87:
+      /***/88:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -55961,10 +57017,10 @@ var VCheckbox = function (_eventHandlerMixin) {
         /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "MDCCheckbox", function () {
           return MDCCheckbox;
         });
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_animation_index__ = __webpack_require__(10);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_animation_index__ = __webpack_require__(14);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_base_component__ = __webpack_require__(1);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__material_selection_control_index__ = __webpack_require__(8);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(88);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__material_selection_control_index__ = __webpack_require__(7);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(89);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__material_ripple_index__ = __webpack_require__(4);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_5__material_ripple_util__ = __webpack_require__(2);
         /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCCheckboxFoundation", function () {
@@ -56051,6 +57107,9 @@ var VCheckbox = function (_eventHandlerMixin) {
 
         /* eslint-enable no-unused-vars */
 
+        /** @const {!Array<string>} */
+        var CB_PROTO_PROPS = ['checked', 'indeterminate'];
+
         /**
          * @extends MDCComponent<!MDCCheckboxFoundation>
          * @implements {MDCSelectionControl}
@@ -56064,13 +57123,13 @@ var VCheckbox = function (_eventHandlerMixin) {
 
             /**
              * Returns the state of the native control element, or null if the native control element is not present.
-             * @return {?MDCSelectionControlState}
+             * @return {!MDCSelectionControlState}
              * @private
              */
             get: function get() {
               var NATIVE_CONTROL_SELECTOR = __WEBPACK_IMPORTED_MODULE_3__foundation__["a" /* default */].strings.NATIVE_CONTROL_SELECTOR;
 
-              var cbEl = /** @type {?MDCSelectionControlState} */this.root_.querySelector(NATIVE_CONTROL_SELECTOR);
+              var cbEl = /** @type {!MDCSelectionControlState} */this.root_.querySelector(NATIVE_CONTROL_SELECTOR);
               return cbEl;
             }
           }], [{
@@ -56113,6 +57172,7 @@ var VCheckbox = function (_eventHandlerMixin) {
               };
               this.nativeCb_.addEventListener('change', this.handleChange_);
               this.listen(Object(__WEBPACK_IMPORTED_MODULE_0__material_animation_index__["getCorrectEventName"])(window, 'animationend'), this.handleAnimationEnd_);
+              this.installPropertyChangeHooks_();
             }
 
             /**
@@ -56144,46 +57204,88 @@ var VCheckbox = function (_eventHandlerMixin) {
               return new __WEBPACK_IMPORTED_MODULE_4__material_ripple_index__["MDCRipple"](this.root_, foundation);
             }
 
+            /** @private */
+
+          }, {
+            key: 'installPropertyChangeHooks_',
+            value: function installPropertyChangeHooks_() {
+              var _this4 = this;
+
+              var nativeCb = this.nativeCb_;
+              var cbProto = Object.getPrototypeOf(nativeCb);
+
+              CB_PROTO_PROPS.forEach(function (controlState) {
+                var desc = Object.getOwnPropertyDescriptor(cbProto, controlState);
+                // We have to check for this descriptor, since some browsers (Safari) don't support its return.
+                // See: https://bugs.webkit.org/show_bug.cgi?id=49739
+                if (validDescriptor(desc)) {
+                  var nativeCbDesc = /** @type {!ObjectPropertyDescriptor} */{
+                    get: desc.get,
+                    set: function set(state) {
+                      desc.set.call(nativeCb, state);
+                      _this4.foundation_.handleChange();
+                    },
+                    configurable: desc.configurable,
+                    enumerable: desc.enumerable
+                  };
+                  Object.defineProperty(nativeCb, controlState, nativeCbDesc);
+                }
+              });
+            }
+
+            /** @private */
+
+          }, {
+            key: 'uninstallPropertyChangeHooks_',
+            value: function uninstallPropertyChangeHooks_() {
+              var nativeCb = this.nativeCb_;
+              var cbProto = Object.getPrototypeOf(nativeCb);
+
+              CB_PROTO_PROPS.forEach(function (controlState) {
+                var desc = /** @type {!ObjectPropertyDescriptor} */Object.getOwnPropertyDescriptor(cbProto, controlState);
+                if (validDescriptor(desc)) {
+                  Object.defineProperty(nativeCb, controlState, desc);
+                }
+              });
+            }
+
             /** @return {!MDCCheckboxFoundation} */
 
           }, {
             key: 'getDefaultFoundation',
             value: function getDefaultFoundation() {
-              var _this4 = this;
+              var _this5 = this;
 
               return new __WEBPACK_IMPORTED_MODULE_3__foundation__["a" /* default */]({
                 addClass: function addClass(className) {
-                  return _this4.root_.classList.add(className);
+                  return _this5.root_.classList.add(className);
                 },
                 removeClass: function removeClass(className) {
-                  return _this4.root_.classList.remove(className);
+                  return _this5.root_.classList.remove(className);
                 },
                 setNativeControlAttr: function setNativeControlAttr(attr, value) {
-                  return _this4.nativeCb_.setAttribute(attr, value);
+                  return _this5.nativeCb_.setAttribute(attr, value);
                 },
                 removeNativeControlAttr: function removeNativeControlAttr(attr) {
-                  return _this4.nativeCb_.removeAttribute(attr);
-                },
-                getNativeControl: function getNativeControl() {
-                  return _this4.nativeCb_;
+                  return _this5.nativeCb_.removeAttribute(attr);
                 },
                 isIndeterminate: function isIndeterminate() {
-                  return _this4.indeterminate;
+                  return _this5.indeterminate;
                 },
                 isChecked: function isChecked() {
-                  return _this4.checked;
+                  return _this5.checked;
                 },
                 hasNativeControl: function hasNativeControl() {
-                  return !!_this4.nativeCb_;
+                  return !!_this5.nativeCb_;
                 },
                 setNativeControlDisabled: function setNativeControlDisabled(disabled) {
-                  return _this4.nativeCb_.disabled = disabled;
+                  return _this5.nativeCb_.disabled = disabled;
                 },
                 forceLayout: function forceLayout() {
-                  return _this4.root_.offsetWidth;
+                  return _this5.root_.offsetWidth;
                 },
                 isAttachedToDOM: function isAttachedToDOM() {
-                  return Boolean(_this4.root_.parentNode);
+                  return Boolean(_this5.root_.parentNode);
                 }
               });
             }
@@ -56196,6 +57298,7 @@ var VCheckbox = function (_eventHandlerMixin) {
               this.ripple_.destroy();
               this.nativeCb_.removeEventListener('change', this.handleChange_);
               this.unlisten(Object(__WEBPACK_IMPORTED_MODULE_0__material_animation_index__["getCorrectEventName"])(window, 'animationend'), this.handleAnimationEnd_);
+              this.uninstallPropertyChangeHooks_();
               _get(MDCCheckbox.prototype.__proto__ || Object.getPrototypeOf(MDCCheckbox.prototype), 'destroy', this).call(this);
             }
           }, {
@@ -56264,18 +57367,27 @@ var VCheckbox = function (_eventHandlerMixin) {
           return MDCCheckbox;
         }(__WEBPACK_IMPORTED_MODULE_1__material_base_component__["a" /* default */]);
 
+        /**
+         * @param {ObjectPropertyDescriptor|undefined} inputPropDesc
+         * @return {boolean}
+         */
+
+        function validDescriptor(inputPropDesc) {
+          return !!inputPropDesc && typeof inputPropDesc.set === 'function';
+        }
+
         /***/
       },
 
-      /***/88:
+      /***/89:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* harmony import */
         var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(8);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(89);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(90);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(7);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(90);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(91);
         var _extends = Object.assign || function (target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = arguments[i];for (var key in source) {
@@ -56341,9 +57453,6 @@ var VCheckbox = function (_eventHandlerMixin) {
 
         /* eslint-enable no-unused-vars */
 
-        /** @const {!Array<string>} */
-        var CB_PROTO_PROPS = ['checked', 'indeterminate'];
-
         /**
          * @extends {MDCFoundation<!MDCCheckboxAdapter>}
          */
@@ -56385,7 +57494,6 @@ var VCheckbox = function (_eventHandlerMixin) {
                   removeClass: function removeClass() /* className: string */{},
                   setNativeControlAttr: function setNativeControlAttr() /* attr: string, value: string */{},
                   removeNativeControlAttr: function removeNativeControlAttr() /* attr: string */{},
-                  getNativeControl: function getNativeControl() /* !MDCSelectionControlState */{},
                   forceLayout: function forceLayout() {},
                   isAttachedToDOM: function isAttachedToDOM() /* boolean */{},
                   isIndeterminate: function isIndeterminate() /* boolean */{},
@@ -56424,7 +57532,6 @@ var VCheckbox = function (_eventHandlerMixin) {
               this.currentCheckState_ = this.determineCheckState_();
               this.updateAriaChecked_();
               this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */].UPGRADED);
-              this.installPropertyChangeHooks_();
             }
 
             /** @override */
@@ -56432,7 +57539,6 @@ var VCheckbox = function (_eventHandlerMixin) {
           }, {
             key: 'destroy',
             value: function destroy() {
-              this.uninstallPropertyChangeHooks_();
               clearTimeout(this.animEndLatchTimer_);
             }
 
@@ -56476,51 +57582,6 @@ var VCheckbox = function (_eventHandlerMixin) {
             key: 'handleChange',
             value: function handleChange() {
               this.transitionCheckState_();
-            }
-
-            /** @private */
-
-          }, {
-            key: 'installPropertyChangeHooks_',
-            value: function installPropertyChangeHooks_() {
-              var _this3 = this;
-
-              var nativeCb = this.getNativeControl_();
-              var cbProto = Object.getPrototypeOf(nativeCb);
-
-              CB_PROTO_PROPS.forEach(function (controlState) {
-                var desc = Object.getOwnPropertyDescriptor(cbProto, controlState);
-                // We have to check for this descriptor, since some browsers (Safari) don't support its return.
-                // See: https://bugs.webkit.org/show_bug.cgi?id=49739
-                if (validDescriptor(desc)) {
-                  var nativeCbDesc = /** @type {!ObjectPropertyDescriptor} */{
-                    get: desc.get,
-                    set: function set(state) {
-                      desc.set.call(nativeCb, state);
-                      _this3.transitionCheckState_();
-                    },
-                    configurable: desc.configurable,
-                    enumerable: desc.enumerable
-                  };
-                  Object.defineProperty(nativeCb, controlState, nativeCbDesc);
-                }
-              });
-            }
-
-            /** @private */
-
-          }, {
-            key: 'uninstallPropertyChangeHooks_',
-            value: function uninstallPropertyChangeHooks_() {
-              var nativeCb = this.getNativeControl_();
-              var cbProto = Object.getPrototypeOf(nativeCb);
-
-              CB_PROTO_PROPS.forEach(function (controlState) {
-                var desc = /** @type {!ObjectPropertyDescriptor} */Object.getOwnPropertyDescriptor(cbProto, controlState);
-                if (validDescriptor(desc)) {
-                  Object.defineProperty(nativeCb, controlState, desc);
-                }
-              });
             }
 
             /** @private */
@@ -56624,47 +57685,22 @@ var VCheckbox = function (_eventHandlerMixin) {
                 this.adapter_.removeNativeControlAttr(__WEBPACK_IMPORTED_MODULE_3__constants__["c" /* strings */].ARIA_CHECKED_ATTR);
               }
             }
-
-            /**
-             * @return {!MDCSelectionControlState}
-             * @private
-             */
-
-          }, {
-            key: 'getNativeControl_',
-            value: function getNativeControl_() {
-              return this.adapter_.getNativeControl() || {
-                checked: false,
-                indeterminate: false,
-                disabled: false,
-                value: null
-              };
-            }
           }]);
 
           return MDCCheckboxFoundation;
         }(__WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */]);
-
-        /**
-         * @param {ObjectPropertyDescriptor|undefined} inputPropDesc
-         * @return {boolean}
-         */
-
-        function validDescriptor(inputPropDesc) {
-          return !!inputPropDesc && typeof inputPropDesc.set === 'function';
-        }
 
         /* harmony default export */__webpack_exports__["a"] = MDCCheckboxFoundation;
 
         /***/
       },
 
-      /***/89:
+      /***/90:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* harmony import */
-        var __WEBPACK_IMPORTED_MODULE_0__material_selection_control_index__ = __webpack_require__(8);
+        var __WEBPACK_IMPORTED_MODULE_0__material_selection_control_index__ = __webpack_require__(7);
         var _createClass = function () {
           function defineProperties(target, props) {
             for (var i = 0; i < props.length; i++) {
@@ -56760,12 +57796,6 @@ var VCheckbox = function (_eventHandlerMixin) {
           }, {
             key: 'removeNativeControlAttr',
             value: function removeNativeControlAttr(attr) {}
-
-            /** @return {!MDCSelectionControlState} */
-
-          }, {
-            key: 'getNativeControl',
-            value: function getNativeControl() {}
           }, {
             key: 'forceLayout',
             value: function forceLayout() {}
@@ -56809,7 +57839,7 @@ var VCheckbox = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/90:
+      /***/91:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -56968,7 +57998,7 @@ var VSwitch = function (_eventHandlerMixin) {
 
 /*!
  Material Components for the Web
- Copyright (c) 2018 Google Inc.
+ Copyright (c) 2019 Google Inc.
  License: MIT
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -57051,7 +58081,7 @@ var VSwitch = function (_eventHandlerMixin) {
       /******/__webpack_require__.p = "";
       /******/
       /******/ // Load entry module and return exports
-      /******/return __webpack_require__(__webpack_require__.s = 140);
+      /******/return __webpack_require__(__webpack_require__.s = 143);
       /******/
     }(
     /************************************************************************/
@@ -57372,7 +58402,7 @@ var VSwitch = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/140:
+      /***/143:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -57382,8 +58412,8 @@ var VSwitch = function (_eventHandlerMixin) {
           return MDCSwitch;
         });
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(8);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(141);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(7);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(144);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__ = __webpack_require__(4);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__material_ripple_util__ = __webpack_require__(2);
         /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCSwitchFoundation", function () {
@@ -57648,14 +58678,14 @@ var VSwitch = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/141:
+      /***/144:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* harmony import */
         var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(142);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(143);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(145);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(146);
         var _extends = Object.assign || function (target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = arguments[i];for (var key in source) {
@@ -57821,7 +58851,7 @@ var VSwitch = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/142:
+      /***/145:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -57920,7 +58950,7 @@ var VSwitch = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/143:
+      /***/146:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -59511,7 +60541,7 @@ var VSwitch = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/8:
+      /***/7:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -74762,7 +75792,7 @@ var VRadio = function (_eventHandlerMixin) {
 
 /*!
  Material Components for the Web
- Copyright (c) 2018 Google Inc.
+ Copyright (c) 2019 Google Inc.
  License: MIT
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -74845,7 +75875,7 @@ var VRadio = function (_eventHandlerMixin) {
       /******/__webpack_require__.p = "";
       /******/
       /******/ // Load entry module and return exports
-      /******/return __webpack_require__(__webpack_require__.s = 125);
+      /******/return __webpack_require__(__webpack_require__.s = 127);
       /******/
     }(
     /************************************************************************/
@@ -75166,7 +76196,7 @@ var VRadio = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/125:
+      /***/127:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -75176,8 +76206,8 @@ var VRadio = function (_eventHandlerMixin) {
           return MDCRadio;
         });
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(8);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(126);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(7);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(128);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__ = __webpack_require__(4);
         /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCRadioFoundation", function () {
           return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"];
@@ -75421,15 +76451,15 @@ var VRadio = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/126:
+      /***/128:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* harmony import */
         var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(8);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(127);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(128);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(7);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(129);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(130);
         var _createClass = function () {
           function defineProperties(target, props) {
             for (var i = 0; i < props.length; i++) {
@@ -75550,12 +76580,12 @@ var VRadio = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/127:
+      /***/129:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* harmony import */
-        var __WEBPACK_IMPORTED_MODULE_0__material_selection_control_index__ = __webpack_require__(8);
+        var __WEBPACK_IMPORTED_MODULE_0__material_selection_control_index__ = __webpack_require__(7);
         var _createClass = function () {
           function defineProperties(target, props) {
             for (var i = 0; i < props.length; i++) {
@@ -75647,7 +76677,7 @@ var VRadio = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/128:
+      /***/130:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -77237,7 +78267,7 @@ var VRadio = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/8:
+      /***/7:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -77434,7 +78464,7 @@ var VSlider = function (_visibilityObserverMi) {
 
 /*!
  Material Components for the Web
- Copyright (c) 2018 Google Inc.
+ Copyright (c) 2019 Google Inc.
  License: MIT
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -77517,7 +78547,7 @@ var VSlider = function (_visibilityObserverMi) {
       /******/__webpack_require__.p = "";
       /******/
       /******/ // Load entry module and return exports
-      /******/return __webpack_require__(__webpack_require__.s = 135);
+      /******/return __webpack_require__(__webpack_require__.s = 137);
       /******/
     }(
     /************************************************************************/
@@ -77838,171 +78868,7 @@ var VSlider = function (_visibilityObserverMi) {
         /***/
       },
 
-      /***/10:
-      /***/function _(module, __webpack_exports__, __webpack_require__) {
-
-        "use strict";
-
-        Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "transformStyleProperties", function () {
-          return transformStyleProperties;
-        });
-        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "getCorrectEventName", function () {
-          return getCorrectEventName;
-        });
-        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "getCorrectPropertyName", function () {
-          return getCorrectPropertyName;
-        });
-        /**
-         * @license
-         * Copyright 2016 Google Inc.
-         *
-         * Permission is hereby granted, free of charge, to any person obtaining a copy
-         * of this software and associated documentation files (the "Software"), to deal
-         * in the Software without restriction, including without limitation the rights
-         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-         * copies of the Software, and to permit persons to whom the Software is
-         * furnished to do so, subject to the following conditions:
-         *
-         * The above copyright notice and this permission notice shall be included in
-         * all copies or substantial portions of the Software.
-         *
-         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-         * THE SOFTWARE.
-         */
-
-        /**
-         * @typedef {{
-         *   noPrefix: string,
-         *   webkitPrefix: string,
-         *   styleProperty: string
-         * }}
-         */
-        var VendorPropertyMapType = void 0;
-
-        /** @const {Object<string, !VendorPropertyMapType>} */
-        var eventTypeMap = {
-          'animationstart': {
-            noPrefix: 'animationstart',
-            webkitPrefix: 'webkitAnimationStart',
-            styleProperty: 'animation'
-          },
-          'animationend': {
-            noPrefix: 'animationend',
-            webkitPrefix: 'webkitAnimationEnd',
-            styleProperty: 'animation'
-          },
-          'animationiteration': {
-            noPrefix: 'animationiteration',
-            webkitPrefix: 'webkitAnimationIteration',
-            styleProperty: 'animation'
-          },
-          'transitionend': {
-            noPrefix: 'transitionend',
-            webkitPrefix: 'webkitTransitionEnd',
-            styleProperty: 'transition'
-          }
-        };
-
-        /** @const {Object<string, !VendorPropertyMapType>} */
-        var cssPropertyMap = {
-          'animation': {
-            noPrefix: 'animation',
-            webkitPrefix: '-webkit-animation'
-          },
-          'transform': {
-            noPrefix: 'transform',
-            webkitPrefix: '-webkit-transform'
-          },
-          'transition': {
-            noPrefix: 'transition',
-            webkitPrefix: '-webkit-transition'
-          }
-        };
-
-        /**
-         * @param {!Object} windowObj
-         * @return {boolean}
-         */
-        function hasProperShape(windowObj) {
-          return windowObj['document'] !== undefined && typeof windowObj['document']['createElement'] === 'function';
-        }
-
-        /**
-         * @param {string} eventType
-         * @return {boolean}
-         */
-        function eventFoundInMaps(eventType) {
-          return eventType in eventTypeMap || eventType in cssPropertyMap;
-        }
-
-        /**
-         * @param {string} eventType
-         * @param {!Object<string, !VendorPropertyMapType>} map
-         * @param {!Element} el
-         * @return {string}
-         */
-        function getJavaScriptEventName(eventType, map, el) {
-          return map[eventType].styleProperty in el.style ? map[eventType].noPrefix : map[eventType].webkitPrefix;
-        }
-
-        /**
-         * Helper function to determine browser prefix for CSS3 animation events
-         * and property names.
-         * @param {!Object} windowObj
-         * @param {string} eventType
-         * @return {string}
-         */
-        function getAnimationName(windowObj, eventType) {
-          if (!hasProperShape(windowObj) || !eventFoundInMaps(eventType)) {
-            return eventType;
-          }
-
-          var map = /** @type {!Object<string, !VendorPropertyMapType>} */eventType in eventTypeMap ? eventTypeMap : cssPropertyMap;
-          var el = windowObj['document']['createElement']('div');
-          var eventName = '';
-
-          if (map === eventTypeMap) {
-            eventName = getJavaScriptEventName(eventType, map, el);
-          } else {
-            eventName = map[eventType].noPrefix in el.style ? map[eventType].noPrefix : map[eventType].webkitPrefix;
-          }
-
-          return eventName;
-        }
-
-        // Public functions to access getAnimationName() for JavaScript events or CSS
-        // property names.
-
-        var transformStyleProperties = ['transform', 'WebkitTransform', 'MozTransform', 'OTransform', 'MSTransform'];
-
-        /**
-         * @param {!Object} windowObj
-         * @param {string} eventType
-         * @return {string}
-         */
-        function getCorrectEventName(windowObj, eventType) {
-          return getAnimationName(windowObj, eventType);
-        }
-
-        /**
-         * @param {!Object} windowObj
-         * @param {string} eventType
-         * @return {string}
-         */
-        function getCorrectPropertyName(windowObj, eventType) {
-          return getAnimationName(windowObj, eventType);
-        }
-
-        /***/
-      },
-
-      /***/135:
+      /***/137:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -78014,7 +78880,7 @@ var VSlider = function (_visibilityObserverMi) {
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(76);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(77);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(136);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(138);
         /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCSliderFoundation", function () {
           return __WEBPACK_IMPORTED_MODULE_3__foundation__["a"];
         });
@@ -78218,8 +79084,19 @@ var VSlider = function (_visibilityObserverMi) {
             key: 'initialSyncWithDOM',
             value: function initialSyncWithDOM() {
               var origValueNow = parseFloat(this.root_.getAttribute(__WEBPACK_IMPORTED_MODULE_1__constants__["c" /* strings */].ARIA_VALUENOW));
-              this.min = parseFloat(this.root_.getAttribute(__WEBPACK_IMPORTED_MODULE_1__constants__["c" /* strings */].ARIA_VALUEMIN)) || this.min;
-              this.max = parseFloat(this.root_.getAttribute(__WEBPACK_IMPORTED_MODULE_1__constants__["c" /* strings */].ARIA_VALUEMAX)) || this.max;
+              var min = parseFloat(this.root_.getAttribute(__WEBPACK_IMPORTED_MODULE_1__constants__["c" /* strings */].ARIA_VALUEMIN)) || this.min;
+              var max = parseFloat(this.root_.getAttribute(__WEBPACK_IMPORTED_MODULE_1__constants__["c" /* strings */].ARIA_VALUEMAX)) || this.max;
+
+              // min and max need to be set in the right order to avoid throwing an error
+              // when the new min is greater than the default max.
+              if (min >= this.max) {
+                this.max = max;
+                this.min = min;
+              } else {
+                this.min = min;
+                this.max = max;
+              }
+
               this.step = parseFloat(this.root_.getAttribute(__WEBPACK_IMPORTED_MODULE_1__constants__["c" /* strings */].STEP_DATA_ATTR)) || this.step;
               this.value = origValueNow || this.value;
               this.disabled = this.root_.hasAttribute(__WEBPACK_IMPORTED_MODULE_1__constants__["c" /* strings */].ARIA_DISABLED) && this.root_.getAttribute(__WEBPACK_IMPORTED_MODULE_1__constants__["c" /* strings */].ARIA_DISABLED) !== 'false';
@@ -78325,14 +79202,14 @@ var VSlider = function (_visibilityObserverMi) {
         /***/
       },
 
-      /***/136:
+      /***/138:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* harmony import */
         var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(76);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(77);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__material_animation_index__ = __webpack_require__(10);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__material_animation_index__ = __webpack_require__(14);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_base_foundation__ = __webpack_require__(0);
         var _extends = Object.assign || function (target) {
           for (var i = 1; i < arguments.length; i++) {
@@ -79102,6 +79979,170 @@ var VSlider = function (_visibilityObserverMi) {
         /***/
       },
 
+      /***/14:
+      /***/function _(module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+
+        Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "transformStyleProperties", function () {
+          return transformStyleProperties;
+        });
+        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "getCorrectEventName", function () {
+          return getCorrectEventName;
+        });
+        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "getCorrectPropertyName", function () {
+          return getCorrectPropertyName;
+        });
+        /**
+         * @license
+         * Copyright 2016 Google Inc.
+         *
+         * Permission is hereby granted, free of charge, to any person obtaining a copy
+         * of this software and associated documentation files (the "Software"), to deal
+         * in the Software without restriction, including without limitation the rights
+         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+         * copies of the Software, and to permit persons to whom the Software is
+         * furnished to do so, subject to the following conditions:
+         *
+         * The above copyright notice and this permission notice shall be included in
+         * all copies or substantial portions of the Software.
+         *
+         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+         * THE SOFTWARE.
+         */
+
+        /**
+         * @typedef {{
+         *   noPrefix: string,
+         *   webkitPrefix: string,
+         *   styleProperty: string
+         * }}
+         */
+        var VendorPropertyMapType = void 0;
+
+        /** @const {Object<string, !VendorPropertyMapType>} */
+        var eventTypeMap = {
+          'animationstart': {
+            noPrefix: 'animationstart',
+            webkitPrefix: 'webkitAnimationStart',
+            styleProperty: 'animation'
+          },
+          'animationend': {
+            noPrefix: 'animationend',
+            webkitPrefix: 'webkitAnimationEnd',
+            styleProperty: 'animation'
+          },
+          'animationiteration': {
+            noPrefix: 'animationiteration',
+            webkitPrefix: 'webkitAnimationIteration',
+            styleProperty: 'animation'
+          },
+          'transitionend': {
+            noPrefix: 'transitionend',
+            webkitPrefix: 'webkitTransitionEnd',
+            styleProperty: 'transition'
+          }
+        };
+
+        /** @const {Object<string, !VendorPropertyMapType>} */
+        var cssPropertyMap = {
+          'animation': {
+            noPrefix: 'animation',
+            webkitPrefix: '-webkit-animation'
+          },
+          'transform': {
+            noPrefix: 'transform',
+            webkitPrefix: '-webkit-transform'
+          },
+          'transition': {
+            noPrefix: 'transition',
+            webkitPrefix: '-webkit-transition'
+          }
+        };
+
+        /**
+         * @param {!Object} windowObj
+         * @return {boolean}
+         */
+        function hasProperShape(windowObj) {
+          return windowObj['document'] !== undefined && typeof windowObj['document']['createElement'] === 'function';
+        }
+
+        /**
+         * @param {string} eventType
+         * @return {boolean}
+         */
+        function eventFoundInMaps(eventType) {
+          return eventType in eventTypeMap || eventType in cssPropertyMap;
+        }
+
+        /**
+         * @param {string} eventType
+         * @param {!Object<string, !VendorPropertyMapType>} map
+         * @param {!Element} el
+         * @return {string}
+         */
+        function getJavaScriptEventName(eventType, map, el) {
+          return map[eventType].styleProperty in el.style ? map[eventType].noPrefix : map[eventType].webkitPrefix;
+        }
+
+        /**
+         * Helper function to determine browser prefix for CSS3 animation events
+         * and property names.
+         * @param {!Object} windowObj
+         * @param {string} eventType
+         * @return {string}
+         */
+        function getAnimationName(windowObj, eventType) {
+          if (!hasProperShape(windowObj) || !eventFoundInMaps(eventType)) {
+            return eventType;
+          }
+
+          var map = /** @type {!Object<string, !VendorPropertyMapType>} */eventType in eventTypeMap ? eventTypeMap : cssPropertyMap;
+          var el = windowObj['document']['createElement']('div');
+          var eventName = '';
+
+          if (map === eventTypeMap) {
+            eventName = getJavaScriptEventName(eventType, map, el);
+          } else {
+            eventName = map[eventType].noPrefix in el.style ? map[eventType].noPrefix : map[eventType].webkitPrefix;
+          }
+
+          return eventName;
+        }
+
+        // Public functions to access getAnimationName() for JavaScript events or CSS
+        // property names.
+
+        var transformStyleProperties = ['transform', 'WebkitTransform', 'MozTransform', 'OTransform', 'MSTransform'];
+
+        /**
+         * @param {!Object} windowObj
+         * @param {string} eventType
+         * @return {string}
+         */
+        function getCorrectEventName(windowObj, eventType) {
+          return getAnimationName(windowObj, eventType);
+        }
+
+        /**
+         * @param {!Object} windowObj
+         * @param {string} eventType
+         * @return {string}
+         */
+        function getCorrectPropertyName(windowObj, eventType) {
+          return getAnimationName(windowObj, eventType);
+        }
+
+        /***/
+      },
+
       /***/76:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
@@ -79680,7 +80721,7 @@ var VTabBar = function (_eventHandlerMixin) {
 
 /*!
  Material Components for the Web
- Copyright (c) 2018 Google Inc.
+ Copyright (c) 2019 Google Inc.
  License: MIT
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -79763,7 +80804,7 @@ var VTabBar = function (_eventHandlerMixin) {
       /******/__webpack_require__.p = "";
       /******/
       /******/ // Load entry module and return exports
-      /******/return __webpack_require__(__webpack_require__.s = 144);
+      /******/return __webpack_require__(__webpack_require__.s = 147);
       /******/
     }(
     /************************************************************************/
@@ -80084,14 +81125,14 @@ var VTabBar = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/14:
+      /***/13:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* harmony import */
         var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(24);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(39);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(38);
         var _extends = Object.assign || function (target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = arguments[i];for (var key in source) {
@@ -80237,7 +81278,7 @@ var VTabBar = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/144:
+      /***/147:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -80247,10 +81288,10 @@ var VTabBar = function (_eventHandlerMixin) {
           return MDCTabBar;
         });
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_tab_index__ = __webpack_require__(45);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_tab_index__ = __webpack_require__(52);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__material_tab_scroller_index__ = __webpack_require__(55);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__adapter__ = __webpack_require__(78);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__foundation__ = __webpack_require__(145);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__foundation__ = __webpack_require__(148);
         /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCTabBarFoundation", function () {
           return __WEBPACK_IMPORTED_MODULE_4__foundation__["a"];
         });
@@ -80321,6 +81362,8 @@ var VTabBar = function (_eventHandlerMixin) {
          * THE SOFTWARE.
          */
 
+        var tabIdCounter = 0;
+
         /**
          * @extends {MDCComponent<!MDCTabBarFoundation>}
          * @final
@@ -80346,14 +81389,8 @@ var VTabBar = function (_eventHandlerMixin) {
 
             _this.tabList_;
 
-            /** @type {(function(!Element): !MDCTab)} */
-            _this.tabFactory_;
-
             /** @private {?MDCTabScroller} */
             _this.tabScroller_;
-
-            /** @type {(function(!Element): !MDCTabScroller)} */
-            _this.tabScrollerFactory_;
 
             /** @private {?function(?Event): undefined} */
             _this.handleTabInteraction_;
@@ -80376,8 +81413,6 @@ var VTabBar = function (_eventHandlerMixin) {
              * @param {(function(!Element): !MDCTabScroller)=} tabScrollerFactory A function which creates a new MDCTabScroller
              */
             value: function initialize() {
-              var _this2 = this;
-
               var tabFactory = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function (el) {
                 return new __WEBPACK_IMPORTED_MODULE_1__material_tab_index__["MDCTab"](el);
               };
@@ -80385,28 +81420,19 @@ var VTabBar = function (_eventHandlerMixin) {
                 return new __WEBPACK_IMPORTED_MODULE_2__material_tab_scroller_index__["MDCTabScroller"](el);
               };
 
-              this.tabFactory_ = tabFactory;
-              this.tabScrollerFactory_ = tabScrollerFactory;
-
-              this.tabList_ = this.getTabElements_().map(function (el) {
-                return _this2.tabFactory_(el);
-              });
-
-              var tabScrollerElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */].strings.TAB_SCROLLER_SELECTOR);
-              if (tabScrollerElement) {
-                this.tabScroller_ = this.tabScrollerFactory_(tabScrollerElement);
-              }
+              this.tabList_ = this.instantiateTabs_(tabFactory);
+              this.tabScroller_ = this.instantiateTabScroller_(tabScrollerFactory);
             }
           }, {
             key: 'initialSyncWithDOM',
             value: function initialSyncWithDOM() {
-              var _this3 = this;
+              var _this2 = this;
 
               this.handleTabInteraction_ = function (evt) {
-                return _this3.foundation_.handleTabInteraction(evt);
+                return _this2.foundation_.handleTabInteraction(evt);
               };
               this.handleKeyDown_ = function (evt) {
-                return _this3.foundation_.handleKeyDown(evt);
+                return _this2.foundation_.handleKeyDown(evt);
               };
 
               this.root_.addEventListener(__WEBPACK_IMPORTED_MODULE_1__material_tab_index__["MDCTabFoundation"].strings.INTERACTED_EVENT, this.handleTabInteraction_);
@@ -80438,67 +81464,72 @@ var VTabBar = function (_eventHandlerMixin) {
           }, {
             key: 'getDefaultFoundation',
             value: function getDefaultFoundation() {
-              var _this4 = this;
+              var _this3 = this;
 
               return new __WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */](
               /** @type {!MDCTabBarAdapter} */{
                 scrollTo: function scrollTo(scrollX) {
-                  return _this4.tabScroller_.scrollTo(scrollX);
+                  return _this3.tabScroller_.scrollTo(scrollX);
                 },
                 incrementScroll: function incrementScroll(scrollXIncrement) {
-                  return _this4.tabScroller_.incrementScroll(scrollXIncrement);
+                  return _this3.tabScroller_.incrementScroll(scrollXIncrement);
                 },
                 getScrollPosition: function getScrollPosition() {
-                  return _this4.tabScroller_.getScrollPosition();
+                  return _this3.tabScroller_.getScrollPosition();
                 },
                 getScrollContentWidth: function getScrollContentWidth() {
-                  return _this4.tabScroller_.getScrollContentWidth();
+                  return _this3.tabScroller_.getScrollContentWidth();
                 },
                 getOffsetWidth: function getOffsetWidth() {
-                  return _this4.root_.offsetWidth;
+                  return _this3.root_.offsetWidth;
                 },
                 isRTL: function isRTL() {
-                  return window.getComputedStyle(_this4.root_).getPropertyValue('direction') === 'rtl';
+                  return window.getComputedStyle(_this3.root_).getPropertyValue('direction') === 'rtl';
                 },
                 setActiveTab: function setActiveTab(index) {
-                  return _this4.foundation_.activateTab(index);
+                  return _this3.foundation_.activateTab(index);
                 },
                 activateTabAtIndex: function activateTabAtIndex(index, clientRect) {
-                  return _this4.tabList_[index].activate(clientRect);
+                  return _this3.tabList_[index].activate(clientRect);
                 },
                 deactivateTabAtIndex: function deactivateTabAtIndex(index) {
-                  return _this4.tabList_[index].deactivate();
+                  return _this3.tabList_[index].deactivate();
                 },
                 focusTabAtIndex: function focusTabAtIndex(index) {
-                  return _this4.tabList_[index].focus();
+                  return _this3.tabList_[index].focus();
                 },
                 getTabIndicatorClientRectAtIndex: function getTabIndicatorClientRectAtIndex(index) {
-                  return _this4.tabList_[index].computeIndicatorClientRect();
+                  return _this3.tabList_[index].computeIndicatorClientRect();
                 },
                 getTabDimensionsAtIndex: function getTabDimensionsAtIndex(index) {
-                  return _this4.tabList_[index].computeDimensions();
+                  return _this3.tabList_[index].computeDimensions();
                 },
                 getPreviousActiveTabIndex: function getPreviousActiveTabIndex() {
-                  for (var i = 0; i < _this4.tabList_.length; i++) {
-                    if (_this4.tabList_[i].active) {
+                  for (var i = 0; i < _this3.tabList_.length; i++) {
+                    if (_this3.tabList_[i].active) {
                       return i;
                     }
                   }
                   return -1;
                 },
                 getFocusedTabIndex: function getFocusedTabIndex() {
-                  var tabElements = _this4.getTabElements_();
+                  var tabElements = _this3.getTabElements_();
                   var activeElement = document.activeElement;
                   return tabElements.indexOf(activeElement);
                 },
-                getIndexOfTab: function getIndexOfTab(tabToFind) {
-                  return _this4.tabList_.indexOf(tabToFind);
+                getIndexOfTabById: function getIndexOfTabById(id) {
+                  for (var i = 0; i < _this3.tabList_.length; i++) {
+                    if (_this3.tabList_[i].id === id) {
+                      return i;
+                    }
+                  }
+                  return -1;
                 },
                 getTabListLength: function getTabListLength() {
-                  return _this4.tabList_.length;
+                  return _this3.tabList_.length;
                 },
                 notifyTabActivated: function notifyTabActivated(index) {
-                  return _this4.emit(__WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */].strings.TAB_ACTIVATED_EVENT, { index: index }, true);
+                  return _this3.emit(__WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */].strings.TAB_ACTIVATED_EVENT, { index: index }, true);
                 }
               });
             }
@@ -80524,10 +81555,50 @@ var VTabBar = function (_eventHandlerMixin) {
             value: function scrollIntoView(index) {
               this.foundation_.scrollIntoView(index);
             }
+
+            /**
+             * Returns all the tab elements in a nice clean array
+             * @return {!Array<!Element>}
+             * @private
+             */
+
           }, {
             key: 'getTabElements_',
             value: function getTabElements_() {
               return [].slice.call(this.root_.querySelectorAll(__WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */].strings.TAB_SELECTOR));
+            }
+
+            /**
+             * Instantiates tab components on all child tab elements
+             * @param {(function(!Element): !MDCTab)} tabFactory
+             * @return {!Array<!MDCTab>}
+             * @private
+             */
+
+          }, {
+            key: 'instantiateTabs_',
+            value: function instantiateTabs_(tabFactory) {
+              return this.getTabElements_().map(function (el) {
+                el.id = el.id || 'mdc-tab-' + ++tabIdCounter;
+                return tabFactory(el);
+              });
+            }
+
+            /**
+             * Instantiates tab scroller component on the child tab scroller element
+             * @param {(function(!Element): !MDCTabScroller)} tabScrollerFactory
+             * @return {?MDCTabScroller}
+             * @private
+             */
+
+          }, {
+            key: 'instantiateTabScroller_',
+            value: function instantiateTabScroller_(tabScrollerFactory) {
+              var tabScrollerElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */].strings.TAB_SCROLLER_SELECTOR);
+              if (tabScrollerElement) {
+                return tabScrollerFactory(tabScrollerElement);
+              }
+              return null;
             }
           }, {
             key: 'focusOnActivate',
@@ -80554,15 +81625,15 @@ var VTabBar = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/145:
+      /***/148:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* harmony import */
         var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(146);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(149);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(78);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_tab_adapter__ = __webpack_require__(26);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__material_tab_adapter__ = __webpack_require__(28);
         var _extends = Object.assign || function (target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = arguments[i];for (var key in source) {
@@ -80699,7 +81770,7 @@ var VTabBar = function (_eventHandlerMixin) {
                   getTabDimensionsAtIndex: function getTabDimensionsAtIndex() {},
                   getPreviousActiveTabIndex: function getPreviousActiveTabIndex() {},
                   getFocusedTabIndex: function getFocusedTabIndex() {},
-                  getIndexOfTab: function getIndexOfTab() {},
+                  getIndexOfTabById: function getIndexOfTabById() {},
                   getTabListLength: function getTabListLength() {},
                   notifyTabActivated: function notifyTabActivated() {}
                 }
@@ -80803,7 +81874,7 @@ var VTabBar = function (_eventHandlerMixin) {
           }, {
             key: 'handleTabInteraction',
             value: function handleTabInteraction(evt) {
-              this.adapter_.setActiveTab(this.adapter_.getIndexOfTab(evt.detail.tab));
+              this.adapter_.setActiveTab(this.adapter_.getIndexOfTabById(evt.detail.tabId));
             }
 
             /**
@@ -81112,7 +82183,7 @@ var VTabBar = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/146:
+      /***/149:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -81173,7 +82244,7 @@ var VTabBar = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/18:
+      /***/19:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -81585,11 +82656,12 @@ var VTabBar = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/26:
+      /***/28:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* unused harmony export MDCTabDimensions */
+        /* unused harmony export MDCTabInteractionEventType */
         /* unused harmony export MDCTabAdapter */
 
         var _createClass = function () {
@@ -81640,6 +82712,16 @@ var VTabBar = function (_eventHandlerMixin) {
          * @typedef {{rootLeft: number, rootRight: number, contentLeft: number, contentRight: number}}
          */
         var MDCTabDimensions = void 0;
+
+        /**
+         * @typedef {{
+         *   detail: {
+         *     tabId: string,
+         *   },
+         *   bubbles: boolean,
+         * }}
+         */
+        var MDCTabInteractionEventType = void 0;
 
         /**
          * Adapter for MDC Tab.
@@ -81965,7 +83047,7 @@ var VTabBar = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/38:
+      /***/37:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -81976,9 +83058,9 @@ var VTabBar = function (_eventHandlerMixin) {
         });
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(24);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(14);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__sliding_foundation__ = __webpack_require__(40);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__fading_foundation__ = __webpack_require__(41);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(13);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__sliding_foundation__ = __webpack_require__(39);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__fading_foundation__ = __webpack_require__(40);
         /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCTabIndicatorFoundation", function () {
           return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"];
         });
@@ -82160,7 +83242,7 @@ var VTabBar = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/39:
+      /***/38:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -82205,6 +83287,121 @@ var VTabBar = function (_eventHandlerMixin) {
         var strings = {
           CONTENT_SELECTOR: '.mdc-tab-indicator__content'
         };
+
+        /***/
+      },
+
+      /***/39:
+      /***/function _(module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        /* harmony import */
+        var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(13);
+        var _createClass = function () {
+          function defineProperties(target, props) {
+            for (var i = 0; i < props.length; i++) {
+              var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+            }
+          }return function (Constructor, protoProps, staticProps) {
+            if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+          };
+        }();
+
+        function _classCallCheck(instance, Constructor) {
+          if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+          }
+        }
+
+        function _possibleConstructorReturn(self, call) {
+          if (!self) {
+            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+          }return call && ((typeof call === 'undefined' ? 'undefined' : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+        }
+
+        function _inherits(subClass, superClass) {
+          if (typeof superClass !== "function" && superClass !== null) {
+            throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof(superClass)));
+          }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+        }
+
+        /**
+         * @license
+         * Copyright 2018 Google Inc.
+         *
+         * Permission is hereby granted, free of charge, to any person obtaining a copy
+         * of this software and associated documentation files (the "Software"), to deal
+         * in the Software without restriction, including without limitation the rights
+         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+         * copies of the Software, and to permit persons to whom the Software is
+         * furnished to do so, subject to the following conditions:
+         *
+         * The above copyright notice and this permission notice shall be included in
+         * all copies or substantial portions of the Software.
+         *
+         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+         * THE SOFTWARE.
+         */
+
+        /**
+         * @extends {MDCTabIndicatorFoundation}
+         * @final
+         */
+
+        var MDCSlidingTabIndicatorFoundation = function (_MDCTabIndicatorFound) {
+          _inherits(MDCSlidingTabIndicatorFoundation, _MDCTabIndicatorFound);
+
+          function MDCSlidingTabIndicatorFoundation() {
+            _classCallCheck(this, MDCSlidingTabIndicatorFoundation);
+
+            return _possibleConstructorReturn(this, (MDCSlidingTabIndicatorFoundation.__proto__ || Object.getPrototypeOf(MDCSlidingTabIndicatorFoundation)).apply(this, arguments));
+          }
+
+          _createClass(MDCSlidingTabIndicatorFoundation, [{
+            key: 'activate',
+
+            /** @param {!ClientRect=} previousIndicatorClientRect */
+            value: function activate(previousIndicatorClientRect) {
+              // Early exit if no indicator is present to handle cases where an indicator
+              // may be activated without a prior indicator state
+              if (!previousIndicatorClientRect) {
+                this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */].cssClasses.ACTIVE);
+                return;
+              }
+
+              // This animation uses the FLIP approach. You can read more about it at the link below:
+              // https://aerotwist.com/blog/flip-your-animations/
+
+              // Calculate the dimensions based on the dimensions of the previous indicator
+              var currentClientRect = this.computeContentClientRect();
+              var widthDelta = previousIndicatorClientRect.width / currentClientRect.width;
+              var xPosition = previousIndicatorClientRect.left - currentClientRect.left;
+              this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */].cssClasses.NO_TRANSITION);
+              this.adapter_.setContentStyleProperty('transform', 'translateX(' + xPosition + 'px) scaleX(' + widthDelta + ')');
+
+              // Force repaint before updating classes and transform to ensure the transform properly takes effect
+              this.computeContentClientRect();
+
+              this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */].cssClasses.NO_TRANSITION);
+              this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */].cssClasses.ACTIVE);
+              this.adapter_.setContentStyleProperty('transform', '');
+            }
+          }, {
+            key: 'deactivate',
+            value: function deactivate() {
+              this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */].cssClasses.ACTIVE);
+            }
+          }]);
+
+          return MDCSlidingTabIndicatorFoundation;
+        }(__WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */]);
+
+        /* harmony default export */__webpack_exports__["a"] = MDCSlidingTabIndicatorFoundation;
 
         /***/
       },
@@ -82491,122 +83688,7 @@ var VTabBar = function (_eventHandlerMixin) {
 
         "use strict";
         /* harmony import */
-        var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(14);
-        var _createClass = function () {
-          function defineProperties(target, props) {
-            for (var i = 0; i < props.length; i++) {
-              var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-            }
-          }return function (Constructor, protoProps, staticProps) {
-            if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-          };
-        }();
-
-        function _classCallCheck(instance, Constructor) {
-          if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-          }
-        }
-
-        function _possibleConstructorReturn(self, call) {
-          if (!self) {
-            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-          }return call && ((typeof call === 'undefined' ? 'undefined' : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-        }
-
-        function _inherits(subClass, superClass) {
-          if (typeof superClass !== "function" && superClass !== null) {
-            throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof(superClass)));
-          }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-        }
-
-        /**
-         * @license
-         * Copyright 2018 Google Inc.
-         *
-         * Permission is hereby granted, free of charge, to any person obtaining a copy
-         * of this software and associated documentation files (the "Software"), to deal
-         * in the Software without restriction, including without limitation the rights
-         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-         * copies of the Software, and to permit persons to whom the Software is
-         * furnished to do so, subject to the following conditions:
-         *
-         * The above copyright notice and this permission notice shall be included in
-         * all copies or substantial portions of the Software.
-         *
-         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-         * THE SOFTWARE.
-         */
-
-        /**
-         * @extends {MDCTabIndicatorFoundation}
-         * @final
-         */
-
-        var MDCSlidingTabIndicatorFoundation = function (_MDCTabIndicatorFound) {
-          _inherits(MDCSlidingTabIndicatorFoundation, _MDCTabIndicatorFound);
-
-          function MDCSlidingTabIndicatorFoundation() {
-            _classCallCheck(this, MDCSlidingTabIndicatorFoundation);
-
-            return _possibleConstructorReturn(this, (MDCSlidingTabIndicatorFoundation.__proto__ || Object.getPrototypeOf(MDCSlidingTabIndicatorFoundation)).apply(this, arguments));
-          }
-
-          _createClass(MDCSlidingTabIndicatorFoundation, [{
-            key: 'activate',
-
-            /** @param {!ClientRect=} previousIndicatorClientRect */
-            value: function activate(previousIndicatorClientRect) {
-              // Early exit if no indicator is present to handle cases where an indicator
-              // may be activated without a prior indicator state
-              if (!previousIndicatorClientRect) {
-                this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */].cssClasses.ACTIVE);
-                return;
-              }
-
-              // This animation uses the FLIP approach. You can read more about it at the link below:
-              // https://aerotwist.com/blog/flip-your-animations/
-
-              // Calculate the dimensions based on the dimensions of the previous indicator
-              var currentClientRect = this.computeContentClientRect();
-              var widthDelta = previousIndicatorClientRect.width / currentClientRect.width;
-              var xPosition = previousIndicatorClientRect.left - currentClientRect.left;
-              this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */].cssClasses.NO_TRANSITION);
-              this.adapter_.setContentStyleProperty('transform', 'translateX(' + xPosition + 'px) scaleX(' + widthDelta + ')');
-
-              // Force repaint before updating classes and transform to ensure the transform properly takes effect
-              this.computeContentClientRect();
-
-              this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */].cssClasses.NO_TRANSITION);
-              this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */].cssClasses.ACTIVE);
-              this.adapter_.setContentStyleProperty('transform', '');
-            }
-          }, {
-            key: 'deactivate',
-            value: function deactivate() {
-              this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */].cssClasses.ACTIVE);
-            }
-          }]);
-
-          return MDCSlidingTabIndicatorFoundation;
-        }(__WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */]);
-
-        /* harmony default export */__webpack_exports__["a"] = MDCSlidingTabIndicatorFoundation;
-
-        /***/
-      },
-
-      /***/41:
-      /***/function _(module, __webpack_exports__, __webpack_require__) {
-
-        "use strict";
-        /* harmony import */
-        var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(14);
+        var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(13);
         var _createClass = function () {
           function defineProperties(target, props) {
             for (var i = 0; i < props.length; i++) {
@@ -82692,7 +83774,7 @@ var VTabBar = function (_eventHandlerMixin) {
         /***/
       },
 
-      /***/42:
+      /***/41:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
@@ -82738,316 +83820,6 @@ var VTabBar = function (_eventHandlerMixin) {
           AREA_SELECTOR: '.mdc-tab-scroller__scroll-area',
           CONTENT_SELECTOR: '.mdc-tab-scroller__scroll-content'
         };
-
-        /***/
-      },
-
-      /***/45:
-      /***/function _(module, __webpack_exports__, __webpack_require__) {
-
-        "use strict";
-
-        Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "MDCTab", function () {
-          return MDCTab;
-        });
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(4);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__material_tab_indicator_index__ = __webpack_require__(38);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__adapter__ = __webpack_require__(26);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__foundation__ = __webpack_require__(53);
-        /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCTabFoundation", function () {
-          return __WEBPACK_IMPORTED_MODULE_4__foundation__["a"];
-        });
-        var _extends = Object.assign || function (target) {
-          for (var i = 1; i < arguments.length; i++) {
-            var source = arguments[i];for (var key in source) {
-              if (Object.prototype.hasOwnProperty.call(source, key)) {
-                target[key] = source[key];
-              }
-            }
-          }return target;
-        };
-
-        var _createClass = function () {
-          function defineProperties(target, props) {
-            for (var i = 0; i < props.length; i++) {
-              var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-            }
-          }return function (Constructor, protoProps, staticProps) {
-            if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-          };
-        }();
-
-        var _get = function get(object, property, receiver) {
-          if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
-            var parent = Object.getPrototypeOf(object);if (parent === null) {
-              return undefined;
-            } else {
-              return get(parent, property, receiver);
-            }
-          } else if ("value" in desc) {
-            return desc.value;
-          } else {
-            var getter = desc.get;if (getter === undefined) {
-              return undefined;
-            }return getter.call(receiver);
-          }
-        };
-
-        function _classCallCheck(instance, Constructor) {
-          if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-          }
-        }
-
-        function _possibleConstructorReturn(self, call) {
-          if (!self) {
-            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-          }return call && ((typeof call === 'undefined' ? 'undefined' : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-        }
-
-        function _inherits(subClass, superClass) {
-          if (typeof superClass !== "function" && superClass !== null) {
-            throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof(superClass)));
-          }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-        }
-
-        /**
-         * @license
-         * Copyright 2018 Google Inc.
-         *
-         * Permission is hereby granted, free of charge, to any person obtaining a copy
-         * of this software and associated documentation files (the "Software"), to deal
-         * in the Software without restriction, including without limitation the rights
-         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-         * copies of the Software, and to permit persons to whom the Software is
-         * furnished to do so, subject to the following conditions:
-         *
-         * The above copyright notice and this permission notice shall be included in
-         * all copies or substantial portions of the Software.
-         *
-         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-         * THE SOFTWARE.
-         */
-
-        /* eslint-disable no-unused-vars */
-
-        /* eslint-enable no-unused-vars */
-
-        /**
-         * @extends {MDCComponent<!MDCTabFoundation>}
-         * @final
-         */
-
-        var MDCTab = function (_MDCComponent) {
-          _inherits(MDCTab, _MDCComponent);
-
-          /**
-           * @param {...?} args
-           */
-          function MDCTab() {
-            var _ref;
-
-            _classCallCheck(this, MDCTab);
-
-            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-              args[_key] = arguments[_key];
-            }
-
-            /** @private {?MDCRipple} */
-            var _this = _possibleConstructorReturn(this, (_ref = MDCTab.__proto__ || Object.getPrototypeOf(MDCTab)).call.apply(_ref, [this].concat(args)));
-
-            _this.ripple_;
-            /** @private {?MDCTabIndicator} */
-            _this.tabIndicator_;
-            /** @private {?Element} */
-            _this.content_;
-
-            /** @private {?Function} */
-            _this.handleClick_;
-            return _this;
-          }
-
-          /**
-           * @param {!Element} root
-           * @return {!MDCTab}
-           */
-
-          _createClass(MDCTab, [{
-            key: 'initialize',
-            value: function initialize() {
-              var rippleFactory = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function (el, foundation) {
-                return new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["MDCRipple"](el, foundation);
-              };
-              var tabIndicatorFactory = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (el) {
-                return new __WEBPACK_IMPORTED_MODULE_2__material_tab_indicator_index__["MDCTabIndicator"](el);
-              };
-
-              var rippleSurface = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */].strings.RIPPLE_SELECTOR);
-              var rippleAdapter = _extends(__WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["MDCRipple"].createAdapter( /** @type {!RippleCapableSurface} */this), {
-                addClass: function addClass(className) {
-                  return rippleSurface.classList.add(className);
-                },
-                removeClass: function removeClass(className) {
-                  return rippleSurface.classList.remove(className);
-                },
-                updateCssVariable: function updateCssVariable(varName, value) {
-                  return rippleSurface.style.setProperty(varName, value);
-                }
-              });
-              var rippleFoundation = new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["MDCRippleFoundation"](rippleAdapter);
-              this.ripple_ = rippleFactory(this.root_, rippleFoundation);
-
-              var tabIndicatorElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */].strings.TAB_INDICATOR_SELECTOR);
-              this.tabIndicator_ = tabIndicatorFactory(tabIndicatorElement);
-
-              this.content_ = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */].strings.CONTENT_SELECTOR);
-            }
-          }, {
-            key: 'initialSyncWithDOM',
-            value: function initialSyncWithDOM() {
-              this.handleClick_ = this.foundation_.handleClick.bind(this.foundation_);
-              this.listen('click', this.handleClick_);
-            }
-          }, {
-            key: 'destroy',
-            value: function destroy() {
-              this.unlisten('click', /** @type {!Function} */this.handleClick_);
-              this.ripple_.destroy();
-              _get(MDCTab.prototype.__proto__ || Object.getPrototypeOf(MDCTab.prototype), 'destroy', this).call(this);
-            }
-
-            /**
-             * @return {!MDCTabFoundation}
-             */
-
-          }, {
-            key: 'getDefaultFoundation',
-            value: function getDefaultFoundation() {
-              var _this2 = this;
-
-              return new __WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */](
-              /** @type {!MDCTabAdapter} */{
-                setAttr: function setAttr(attr, value) {
-                  return _this2.root_.setAttribute(attr, value);
-                },
-                addClass: function addClass(className) {
-                  return _this2.root_.classList.add(className);
-                },
-                removeClass: function removeClass(className) {
-                  return _this2.root_.classList.remove(className);
-                },
-                hasClass: function hasClass(className) {
-                  return _this2.root_.classList.contains(className);
-                },
-                activateIndicator: function activateIndicator(previousIndicatorClientRect) {
-                  return _this2.tabIndicator_.activate(previousIndicatorClientRect);
-                },
-                deactivateIndicator: function deactivateIndicator() {
-                  return _this2.tabIndicator_.deactivate();
-                },
-                notifyInteracted: function notifyInteracted() {
-                  return _this2.emit(__WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */].strings.INTERACTED_EVENT, { tab: _this2 }, true /* bubble */);
-                },
-                getOffsetLeft: function getOffsetLeft() {
-                  return _this2.root_.offsetLeft;
-                },
-                getOffsetWidth: function getOffsetWidth() {
-                  return _this2.root_.offsetWidth;
-                },
-                getContentOffsetLeft: function getContentOffsetLeft() {
-                  return _this2.content_.offsetLeft;
-                },
-                getContentOffsetWidth: function getContentOffsetWidth() {
-                  return _this2.content_.offsetWidth;
-                },
-                focus: function focus() {
-                  return _this2.root_.focus();
-                }
-              });
-            }
-
-            /**
-             * Getter for the active state of the tab
-             * @return {boolean}
-             */
-
-          }, {
-            key: 'activate',
-
-            /**
-             * Activates the tab
-             * @param {!ClientRect=} computeIndicatorClientRect
-             */
-            value: function activate(computeIndicatorClientRect) {
-              this.foundation_.activate(computeIndicatorClientRect);
-            }
-
-            /**
-             * Deactivates the tab
-             */
-
-          }, {
-            key: 'deactivate',
-            value: function deactivate() {
-              this.foundation_.deactivate();
-            }
-
-            /**
-             * Returns the indicator's client rect
-             * @return {!ClientRect}
-             */
-
-          }, {
-            key: 'computeIndicatorClientRect',
-            value: function computeIndicatorClientRect() {
-              return this.tabIndicator_.computeContentClientRect();
-            }
-
-            /**
-             * @return {!MDCTabDimensions}
-             */
-
-          }, {
-            key: 'computeDimensions',
-            value: function computeDimensions() {
-              return this.foundation_.computeDimensions();
-            }
-
-            /**
-             * Focuses the tab
-             */
-
-          }, {
-            key: 'focus',
-            value: function focus() {
-              this.root_.focus();
-            }
-          }, {
-            key: 'active',
-            get: function get() {
-              return this.foundation_.isActive();
-            }
-          }, {
-            key: 'focusOnActivate',
-            set: function set(focusOnActivate) {
-              this.foundation_.setFocusOnActivate(focusOnActivate);
-            }
-          }], [{
-            key: 'attachTo',
-            value: function attachTo(root) {
-              return new MDCTab(root);
-            }
-          }]);
-
-          return MDCTab;
-        }(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
 
         /***/
       },
@@ -83863,13 +84635,326 @@ var VTabBar = function (_eventHandlerMixin) {
         /***/
       },
 
+      /***/52:
+      /***/function _(module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+
+        Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+        /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "MDCTab", function () {
+          return MDCTab;
+        });
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__ = __webpack_require__(4);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__material_tab_indicator_index__ = __webpack_require__(37);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__adapter__ = __webpack_require__(28);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__foundation__ = __webpack_require__(53);
+        /* harmony reexport (binding) */__webpack_require__.d(__webpack_exports__, "MDCTabFoundation", function () {
+          return __WEBPACK_IMPORTED_MODULE_4__foundation__["a"];
+        });
+        var _extends = Object.assign || function (target) {
+          for (var i = 1; i < arguments.length; i++) {
+            var source = arguments[i];for (var key in source) {
+              if (Object.prototype.hasOwnProperty.call(source, key)) {
+                target[key] = source[key];
+              }
+            }
+          }return target;
+        };
+
+        var _createClass = function () {
+          function defineProperties(target, props) {
+            for (var i = 0; i < props.length; i++) {
+              var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+            }
+          }return function (Constructor, protoProps, staticProps) {
+            if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+          };
+        }();
+
+        var _get = function get(object, property, receiver) {
+          if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+            var parent = Object.getPrototypeOf(object);if (parent === null) {
+              return undefined;
+            } else {
+              return get(parent, property, receiver);
+            }
+          } else if ("value" in desc) {
+            return desc.value;
+          } else {
+            var getter = desc.get;if (getter === undefined) {
+              return undefined;
+            }return getter.call(receiver);
+          }
+        };
+
+        function _classCallCheck(instance, Constructor) {
+          if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+          }
+        }
+
+        function _possibleConstructorReturn(self, call) {
+          if (!self) {
+            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+          }return call && ((typeof call === 'undefined' ? 'undefined' : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+        }
+
+        function _inherits(subClass, superClass) {
+          if (typeof superClass !== "function" && superClass !== null) {
+            throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof(superClass)));
+          }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+        }
+
+        /**
+         * @license
+         * Copyright 2018 Google Inc.
+         *
+         * Permission is hereby granted, free of charge, to any person obtaining a copy
+         * of this software and associated documentation files (the "Software"), to deal
+         * in the Software without restriction, including without limitation the rights
+         * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+         * copies of the Software, and to permit persons to whom the Software is
+         * furnished to do so, subject to the following conditions:
+         *
+         * The above copyright notice and this permission notice shall be included in
+         * all copies or substantial portions of the Software.
+         *
+         * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+         * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+         * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+         * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+         * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+         * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+         * THE SOFTWARE.
+         */
+
+        /* eslint-disable no-unused-vars */
+
+        /* eslint-enable no-unused-vars */
+
+        /**
+         * @extends {MDCComponent<!MDCTabFoundation>}
+         * @final
+         */
+
+        var MDCTab = function (_MDCComponent) {
+          _inherits(MDCTab, _MDCComponent);
+
+          /**
+           * @param {...?} args
+           */
+          function MDCTab() {
+            var _ref;
+
+            _classCallCheck(this, MDCTab);
+
+            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+              args[_key] = arguments[_key];
+            }
+
+            /** @type {string} */
+            var _this = _possibleConstructorReturn(this, (_ref = MDCTab.__proto__ || Object.getPrototypeOf(MDCTab)).call.apply(_ref, [this].concat(args)));
+
+            _this.id;
+            /** @private {?MDCRipple} */
+            _this.ripple_;
+            /** @private {?MDCTabIndicator} */
+            _this.tabIndicator_;
+            /** @private {?Element} */
+            _this.content_;
+
+            /** @private {?Function} */
+            _this.handleClick_;
+            return _this;
+          }
+
+          /**
+           * @param {!Element} root
+           * @return {!MDCTab}
+           */
+
+          _createClass(MDCTab, [{
+            key: 'initialize',
+            value: function initialize() {
+              var rippleFactory = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function (el, foundation) {
+                return new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["MDCRipple"](el, foundation);
+              };
+              var tabIndicatorFactory = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (el) {
+                return new __WEBPACK_IMPORTED_MODULE_2__material_tab_indicator_index__["MDCTabIndicator"](el);
+              };
+
+              this.id = this.root_.id;
+              var rippleSurface = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */].strings.RIPPLE_SELECTOR);
+              var rippleAdapter = _extends(__WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["MDCRipple"].createAdapter( /** @type {!RippleCapableSurface} */this), {
+                addClass: function addClass(className) {
+                  return rippleSurface.classList.add(className);
+                },
+                removeClass: function removeClass(className) {
+                  return rippleSurface.classList.remove(className);
+                },
+                updateCssVariable: function updateCssVariable(varName, value) {
+                  return rippleSurface.style.setProperty(varName, value);
+                }
+              });
+              var rippleFoundation = new __WEBPACK_IMPORTED_MODULE_1__material_ripple_index__["MDCRippleFoundation"](rippleAdapter);
+              this.ripple_ = rippleFactory(this.root_, rippleFoundation);
+
+              var tabIndicatorElement = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */].strings.TAB_INDICATOR_SELECTOR);
+              this.tabIndicator_ = tabIndicatorFactory(tabIndicatorElement);
+
+              this.content_ = this.root_.querySelector(__WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */].strings.CONTENT_SELECTOR);
+            }
+          }, {
+            key: 'initialSyncWithDOM',
+            value: function initialSyncWithDOM() {
+              this.handleClick_ = this.foundation_.handleClick.bind(this.foundation_);
+              this.listen('click', this.handleClick_);
+            }
+          }, {
+            key: 'destroy',
+            value: function destroy() {
+              this.unlisten('click', /** @type {!Function} */this.handleClick_);
+              this.ripple_.destroy();
+              _get(MDCTab.prototype.__proto__ || Object.getPrototypeOf(MDCTab.prototype), 'destroy', this).call(this);
+            }
+
+            /**
+             * @return {!MDCTabFoundation}
+             */
+
+          }, {
+            key: 'getDefaultFoundation',
+            value: function getDefaultFoundation() {
+              var _this2 = this;
+
+              return new __WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */](
+              /** @type {!MDCTabAdapter} */{
+                setAttr: function setAttr(attr, value) {
+                  return _this2.root_.setAttribute(attr, value);
+                },
+                addClass: function addClass(className) {
+                  return _this2.root_.classList.add(className);
+                },
+                removeClass: function removeClass(className) {
+                  return _this2.root_.classList.remove(className);
+                },
+                hasClass: function hasClass(className) {
+                  return _this2.root_.classList.contains(className);
+                },
+                activateIndicator: function activateIndicator(previousIndicatorClientRect) {
+                  return _this2.tabIndicator_.activate(previousIndicatorClientRect);
+                },
+                deactivateIndicator: function deactivateIndicator() {
+                  return _this2.tabIndicator_.deactivate();
+                },
+                notifyInteracted: function notifyInteracted() {
+                  return _this2.emit(__WEBPACK_IMPORTED_MODULE_4__foundation__["a" /* default */].strings.INTERACTED_EVENT, { tabId: _this2.id }, true /* bubble */);
+                },
+                getOffsetLeft: function getOffsetLeft() {
+                  return _this2.root_.offsetLeft;
+                },
+                getOffsetWidth: function getOffsetWidth() {
+                  return _this2.root_.offsetWidth;
+                },
+                getContentOffsetLeft: function getContentOffsetLeft() {
+                  return _this2.content_.offsetLeft;
+                },
+                getContentOffsetWidth: function getContentOffsetWidth() {
+                  return _this2.content_.offsetWidth;
+                },
+                focus: function focus() {
+                  return _this2.root_.focus();
+                }
+              });
+            }
+
+            /**
+             * Getter for the active state of the tab
+             * @return {boolean}
+             */
+
+          }, {
+            key: 'activate',
+
+            /**
+             * Activates the tab
+             * @param {!ClientRect=} computeIndicatorClientRect
+             */
+            value: function activate(computeIndicatorClientRect) {
+              this.foundation_.activate(computeIndicatorClientRect);
+            }
+
+            /**
+             * Deactivates the tab
+             */
+
+          }, {
+            key: 'deactivate',
+            value: function deactivate() {
+              this.foundation_.deactivate();
+            }
+
+            /**
+             * Returns the indicator's client rect
+             * @return {!ClientRect}
+             */
+
+          }, {
+            key: 'computeIndicatorClientRect',
+            value: function computeIndicatorClientRect() {
+              return this.tabIndicator_.computeContentClientRect();
+            }
+
+            /**
+             * @return {!MDCTabDimensions}
+             */
+
+          }, {
+            key: 'computeDimensions',
+            value: function computeDimensions() {
+              return this.foundation_.computeDimensions();
+            }
+
+            /**
+             * Focuses the tab
+             */
+
+          }, {
+            key: 'focus',
+            value: function focus() {
+              this.root_.focus();
+            }
+          }, {
+            key: 'active',
+            get: function get() {
+              return this.foundation_.isActive();
+            }
+          }, {
+            key: 'focusOnActivate',
+            set: function set(focusOnActivate) {
+              this.foundation_.setFocusOnActivate(focusOnActivate);
+            }
+          }], [{
+            key: 'attachTo',
+            value: function attachTo(root) {
+              return new MDCTab(root);
+            }
+          }]);
+
+          return MDCTab;
+        }(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
+
+        /***/
+      },
+
       /***/53:
       /***/function _(module, __webpack_exports__, __webpack_require__) {
 
         "use strict";
         /* harmony import */
         var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(26);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(28);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(54);
         var _extends = Object.assign || function (target) {
           for (var i = 1; i < arguments.length; i++) {
@@ -84434,9 +85519,9 @@ var VTabBar = function (_eventHandlerMixin) {
         "use strict";
         /* harmony import */
         var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(42);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(41);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(9);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__rtl_scroller__ = __webpack_require__(18);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__rtl_scroller__ = __webpack_require__(19);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__rtl_default_scroller__ = __webpack_require__(57);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_5__rtl_negative_scroller__ = __webpack_require__(58);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_6__rtl_reverse_scroller__ = __webpack_require__(59);
@@ -84966,7 +86051,7 @@ var VTabBar = function (_eventHandlerMixin) {
 
         "use strict";
         /* harmony import */
-        var __WEBPACK_IMPORTED_MODULE_0__rtl_scroller__ = __webpack_require__(18);
+        var __WEBPACK_IMPORTED_MODULE_0__rtl_scroller__ = __webpack_require__(19);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(9);
         var _createClass = function () {
           function defineProperties(target, props) {
@@ -85144,7 +86229,7 @@ var VTabBar = function (_eventHandlerMixin) {
 
         "use strict";
         /* harmony import */
-        var __WEBPACK_IMPORTED_MODULE_0__rtl_scroller__ = __webpack_require__(18);
+        var __WEBPACK_IMPORTED_MODULE_0__rtl_scroller__ = __webpack_require__(19);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(9);
         var _createClass = function () {
           function defineProperties(target, props) {
@@ -85317,7 +86402,7 @@ var VTabBar = function (_eventHandlerMixin) {
 
         "use strict";
         /* harmony import */
-        var __WEBPACK_IMPORTED_MODULE_0__rtl_scroller__ = __webpack_require__(18);
+        var __WEBPACK_IMPORTED_MODULE_0__rtl_scroller__ = __webpack_require__(19);
         /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(9);
         var _createClass = function () {
           function defineProperties(target, props) {
@@ -85564,7 +86649,7 @@ var VTabBar = function (_eventHandlerMixin) {
         /* harmony export (binding) */__webpack_require__.d(__webpack_exports__, "getMatchesProperty", function () {
           return getMatchesProperty;
         });
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(42);
+        /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(41);
         /**
          * @license
          * Copyright 2018 Google Inc.
@@ -85623,7 +86708,7 @@ var VTabBar = function (_eventHandlerMixin) {
 
         /**
          * @param {!Object} HTMLElementPrototype
-         * @return {!Array<string>}
+         * @return {string}
          */
         function getMatchesProperty(HTMLElementPrototype) {
           return ['msMatchesSelector', 'matches'].filter(function (p) {
@@ -85639,8 +86724,7 @@ var VTabBar = function (_eventHandlerMixin) {
 
         "use strict";
         /* harmony import */
-        var __WEBPACK_IMPORTED_MODULE_0__material_tab_adapter__ = __webpack_require__(26);
-        /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__material_tab_index__ = __webpack_require__(45);
+        var __WEBPACK_IMPORTED_MODULE_0__material_tab_adapter__ = __webpack_require__(28);
         var _createClass = function () {
           function defineProperties(target, props) {
             for (var i = 0; i < props.length; i++) {
@@ -85842,13 +86926,13 @@ var VTabBar = function (_eventHandlerMixin) {
 
             /**
              * Returns the index of the given tab
-             * @param {!MDCTab} tab The tab whose index to determin
+             * @param {string} id The ID of the tab whose index to determine
              * @return {number}
              */
 
           }, {
-            key: 'getIndexOfTab',
-            value: function getIndexOfTab(tab) {}
+            key: 'getIndexOfTabById',
+            value: function getIndexOfTabById(id) {}
 
             /**
              * Emits the MDCTabBar:activated event
