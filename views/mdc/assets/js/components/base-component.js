@@ -1,3 +1,5 @@
+import {VErrors} from "./events/errors";
+
 export class VBaseComponent {
     constructor(element, mdcComponent) {
         this.element = element;
@@ -9,6 +11,10 @@ export class VBaseComponent {
     }
     show() {}
     hide() {}
+
+    clearErrors() {
+        new VErrors().clearErrors();
+    }
 }
 
 export function hookupComponents(selector, VoomClass, MdcClass) {

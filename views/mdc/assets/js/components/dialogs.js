@@ -12,7 +12,7 @@ export function initDialogs() {
 export class VDialog extends VBaseContainer {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
-        const dialog = this.mdcComponent;
+        const dialog = mdcComponent;
         const dialogButtons = element.querySelectorAll('button:not([disabled])');
         for (let j = 0; j != dialogButtons.length; j++) {
             const dialogButton = dialogButtons[j];
@@ -20,6 +20,12 @@ export class VDialog extends VBaseContainer {
                 dialogButton.dialog = dialog;
             }
         }
+
+        dialog.listen('MDCDialog:closing', function() {
+            element.vComponent.clear();
+            element.vComponent.clearErrors();
+        });
+
     }
 
     open() {

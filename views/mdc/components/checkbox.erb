@@ -1,6 +1,6 @@
 <% class_name = '' unless local_variables.include? :class_name %>
 
-<div class="mdc-form-field">
+<div class="v-form-field mdc-form-field">
 <div
 <% if comp.tag %>
 data-input-tag="<%= comp.tag %>"
@@ -32,6 +32,6 @@ class="v-checkbox mdc-checkbox v-input">
     <div class="mdc-checkbox__mixedmark"></div>
   </div>
 </div>
-<label class="v-checkbox__label" id="<%= comp.id %>-label" for="<%= comp.id %>"><%= comp.text %></label>
+<label id="<%= comp.id %>-label" for="<%= comp.id %>" style="<%= "color: #{comp.text_color};" if comp.text_color %>"><%= comp.text %></label>
 </div>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
