@@ -54790,7 +54790,9 @@ var VCheckbox = function (_eventHandlerMixin) {
     _createClass(VCheckbox, [{
         key: 'prepareSubmit',
         value: function prepareSubmit(params) {
-            params.push([this.name(), this.value()]);
+            if (this.input.checked) {
+                params.push([this.name(), this.value()]);
+            }
         }
     }, {
         key: 'name',
