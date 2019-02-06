@@ -15,7 +15,9 @@ export class VCheckbox extends eventHandlerMixin(VBaseComponent) {
     }
 
     prepareSubmit(params) {
-        params.push([this.name(), this.value()]);
+        if(this.input.checked) {
+            params.push([this.name(), this.value()]);
+        }
     }
 
     name(){
