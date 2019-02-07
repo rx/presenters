@@ -36,6 +36,9 @@ module.exports = [{
 
 module.exports.push({
   entry: ["./assets/js/app.js"],
+  externals: {
+    croppr: 'croppr',
+  },
   output: {
     filename: "../../public/bundle.js"
   },
