@@ -1,3 +1,9 @@
+<%
+  single_line = !line.subtitle && !line.body
+  primary_text_class = single_line && line.selectable ? '' : 'mdc-list-item__primary-text';
+%>
+
+
 <% if line.menu %>
   <div class="mdc-menu-anchor">
 <% end %>
@@ -15,7 +21,7 @@
                <%= 'v-menu-click' if line.menu && line.actions.any? %>">
 
     <% if line.text %>
-      <span class="mdc-list-item__primary-text">
+      <span class="<%= primary_text_class %>">
         <%= expand_text(line.text&.text) %>
       </span>
     <% end %>
