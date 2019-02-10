@@ -1,4 +1,4 @@
-import {VBaseComponent} from "./base-component";
+import {VBaseComponent} from './base-component';
 
 export class VBaseContainer extends VBaseComponent {
     constructor(element, mdcComponent) {
@@ -6,7 +6,7 @@ export class VBaseContainer extends VBaseComponent {
     }
 
     inputs() {
-        return this.element.querySelectorAll('.v-input')
+        return this.element.querySelectorAll('.v-input');
     }
 
     // Called to collect data for submission
@@ -32,7 +32,7 @@ export class VBaseContainer extends VBaseComponent {
     //    { email: ["email must be filled", "email must be from your domain"] }
     //    { :page: ["must be filled"] }
     validate(form, params) {
-        console.log("Form validate", form, params);
+        console.log('Form validate', form, params);
         var errors = [];
         for (let input of this.inputs()) {
             if (input.vComponent && input.vComponent.validate) {
