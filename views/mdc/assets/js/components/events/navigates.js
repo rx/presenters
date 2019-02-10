@@ -6,12 +6,11 @@ export class VNavigates {
     }
 
     call(results) {
-        var promiseObj = new Promise(function (resolve) {
-            console.log("Navigating back");
+        return new Promise(function (resolve) {
+            console.log('Navigating back');
             results.push({action: 'navigates', statusCode: 200});
             history.back();
             resolve(results);
         });
-        return promiseObj;
     }
 }
