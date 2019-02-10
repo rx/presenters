@@ -105,7 +105,7 @@ module Voom
 
           def _build_css_link_(path)
             (<<~CSS)
-              <link rel="stylesheet" href="#{env['SCRIPT_NAME']}#{path.sub('public/','')}">
+              <link rel="stylesheet" href="#{path.sub('public/','')}">
             CSS
           end
         end
