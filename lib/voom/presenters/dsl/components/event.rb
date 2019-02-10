@@ -11,6 +11,7 @@ require 'voom/presenters/dsl/components/actions/clear'
 require 'voom/presenters/dsl/components/actions/navigates'
 require 'voom/presenters/dsl/components/actions/stepper'
 require_relative 'mixins/last_response'
+require 'voom/presenters/errors/parameter_validation'
 
 module Voom
   module Presenters
