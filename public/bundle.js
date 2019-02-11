@@ -1983,7 +1983,7 @@ var VBaseContainer = function (_VBaseComponent) {
     }
 
     _createClass(VBaseContainer, [{
-        key: "inputs",
+        key: 'inputs',
         value: function inputs() {
             return this.element.querySelectorAll('.v-input');
         }
@@ -1991,7 +1991,7 @@ var VBaseContainer = function (_VBaseComponent) {
         // Called to collect data for submission
 
     }, {
-        key: "prepareSubmit",
+        key: 'prepareSubmit',
         value: function prepareSubmit(params) {
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
@@ -2021,7 +2021,7 @@ var VBaseContainer = function (_VBaseComponent) {
             }
         }
     }, {
-        key: "clear",
+        key: 'clear',
         value: function clear() {
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
@@ -2058,9 +2058,9 @@ var VBaseContainer = function (_VBaseComponent) {
         //    { :page: ["must be filled"] }
 
     }, {
-        key: "validate",
+        key: 'validate',
         value: function validate(form, params) {
-            console.log("Form validate", form, params);
+            console.log('Form validate', form, params);
             var errors = [];
             var _iteratorNormalCompletion3 = true;
             var _didIteratorError3 = false;
@@ -6378,6 +6378,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__tab_bars__ = __webpack_require__(479);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__data_tables__ = __webpack_require__(501);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__file_inputs__ = __webpack_require__(502);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__plugins__ = __webpack_require__(503);
+
 
 
 
@@ -6430,6 +6432,7 @@ function initialize() {
     Object(__WEBPACK_IMPORTED_MODULE_22__tab_bars__["a" /* initTabBars */])();
     Object(__WEBPACK_IMPORTED_MODULE_23__data_tables__["a" /* initTables */])();
     Object(__WEBPACK_IMPORTED_MODULE_24__file_inputs__["a" /* initFileInputs */])();
+    Object(__WEBPACK_IMPORTED_MODULE_25__plugins__["a" /* initPlugins */])();
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_4__events__["b" /* initEvents */])();
 }
@@ -33182,15 +33185,14 @@ var VNavigates = function () {
     }
 
     _createClass(VNavigates, [{
-        key: "call",
+        key: 'call',
         value: function call(results) {
-            var promiseObj = new Promise(function (resolve) {
-                console.log("Navigating back");
+            return new Promise(function (resolve) {
+                console.log('Navigating back');
                 results.push({ action: 'navigates', statusCode: 200 });
                 history.back();
                 resolve(results);
             });
-            return promiseObj;
         }
     }]);
 
@@ -59926,6 +59928,97 @@ var VFileInput = function (_eventHandlerMixin) {
 
   return VFileInput;
 }(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]));
+
+/***/ }),
+/* 503 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initPlugins;
+/* unused harmony export VPluginComponent */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(14);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+function initPlugins() {
+    console.log('\tPlugins');
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])('.v-plugin', VPluginComponent);
+}
+
+// Delegating plugin class. Allows a plugin to define a class-name as a data
+// element, then contstructs that class and deligates componeent lifecycle
+// events to the class.
+var VPluginComponent = function (_eventHandlerMixin) {
+    _inherits(VPluginComponent, _eventHandlerMixin);
+
+    function VPluginComponent(element) {
+        _classCallCheck(this, VPluginComponent);
+
+        var _this = _possibleConstructorReturn(this, (VPluginComponent.__proto__ || Object.getPrototypeOf(VPluginComponent)).call(this, element));
+
+        var pluginClassName = _this.element.dataset.pluginCallback;
+        if (pluginClassName) {
+            var PluginClass = null;
+            if (!/^[$_a-z][$_a-z0-9.]*$/i.test(pluginClassName)) {
+                console.log('Invalid class name: $(pluginClassName)');
+            } else {
+                PluginClass = eval(pluginClassName);
+            }
+            if (PluginClass) {
+                _this.element.vPlugin = new PluginClass(element);
+            } else {
+                console.log('Unable to find a plugin class with name ' + pluginClassName);
+            }
+        }
+        return _this;
+    }
+
+    _createClass(VPluginComponent, [{
+        key: 'prepareSubmit',
+        value: function prepareSubmit(params) {
+            if (this.element.vPlugin && this.element.vPlugin.prepareSubmit) {
+                this.element.vPlugin.prepareSubmit(params);
+            }
+        }
+    }, {
+        key: 'validate',
+        value: function validate(formData) {
+            if (this.element.vPlugin && this.element.vPlugin.name) {
+                return this.element.vPlugin.validate(formData);
+            }
+            return _get(VPluginComponent.prototype.__proto__ || Object.getPrototypeOf(VPluginComponent.prototype), 'validate', this).call(this, formData);
+        }
+    }, {
+        key: 'clear',
+        value: function clear() {
+            if (this.element.vPlugin && this.element.vPlugin.name) {
+                return this.element.vPlugin.clear();
+            }
+        }
+    }, {
+        key: 'initEventListener',
+        value: function initEventListener(eventName, eventHandler) {
+            if (this.element.vPlugin && this.element.vPlugin.initEventListener) {
+                this.element.vPlugin.initEventListener(eventName, eventHandler);
+            } else {
+                _get(VPluginComponent.prototype.__proto__ || Object.getPrototypeOf(VPluginComponent.prototype), 'initEventListener', this).call(this, eventName, eventHandler);
+            }
+        }
+    }]);
+
+    return VPluginComponent;
+}(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]));
 
 /***/ })
 /******/ ]);

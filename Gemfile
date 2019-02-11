@@ -16,3 +16,4 @@ group :test do
 end
 
 gem 'foo_presenter_plugin',  github:'rx/foo_presenter_plugin'
+# gem 'foo_presenter_plugin',  path:'../foo_presenter_plugin'
