@@ -9,6 +9,7 @@ require 'voom/presenters/web_client/markdown_render'
 require 'voom/presenters/errors/unprocessable'
 require_relative 'component_renderer'
 require_relative 'plugin_headers'
+require_relative 'custom_css'
 
 module Voom
   module Presenters
@@ -97,43 +98,15 @@ module Voom
             end
           end
 
+          def plugin_headers(pom)
+            PluginHeaders.new(pom: pom, render: method(:render)).render
+          end
 
           def custom_css(path)
-            return unless custom_css_path
-            [global_css, presenter_css(path)].join
-          end
-
-          def custom_css_path
-            Presenters::Settings.config.presenters.web_client.custom_css
-          end
-
-          # loads a global css file - by default located at `public/presenters/global.css`
-          def global_css
-            css_file = File.join(custom_css_path, 'global.css')
-            full_path = File.join(self.class.root, css_file)
-            _build_css_link_(css_file) if File.exists?(full_path)
-          end
-
-          # loads a custom css file that matches the presenter namespace/presenter.css
-          # by default located at public/presenters/#{namespace}/#{presenter}.css
-          def presenter_css(path)
-            css_file = File.join(custom_css_path, path)
-            css_file = File.join(css_file, 'index') if path == '/'
-            css_file = "#{css_file}.css"
-            full_path = File.join(self.class.root, css_file)
-            _build_css_link_(css_file) if File.exists?(full_path)
-          end
-
-          def _build_css_link_(path)
-            (<<~CSS)
-              <link rel="stylesheet" type="text/css" href="#{path.sub('public/', '')}">
-            CSS
+            CustomCss.new(path, root: self.class.root).render
           end
         end
 
-        def plugin_headers(pom)
-          PluginHeaders.new(pom: pom, render: method(:render)).render
-        end
 
         get '/' do
           pass unless Presenters::App.registered?('index')
