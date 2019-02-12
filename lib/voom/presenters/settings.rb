@@ -28,7 +28,7 @@ unless defined?(Voom::Presenters::Settings)
             #   }
             # end
             setting :prepare_context, []
-            setting     :custom_css, 'public/presenters/*.css'
+            setting     :custom_css, 'public/presenters'
           end
           setting :plugins, [:google_maps]
           setting :components do

@@ -41,6 +41,12 @@ Voom::Presenters.define('top_nav') do
         end
       end
 
+      item 'Custom CSS' do
+        event :click do
+          loads :custom_css
+        end
+      end
+
       item 'Plugins' do
         event :click do
           loads :plugins

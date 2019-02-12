@@ -96,16 +96,35 @@ module Voom
             end
           end
 
-          def custom_css
-            custom_css_path = Presenters::Settings.config.presenters.web_client.custom_css
-            Dir.glob(custom_css_path).map do |file|
-              _build_css_link_(file)
-            end.join("\n") if custom_css_path
+          def custom_css(path)
+            return unless custom_css_path
+            [global_css,presenter_css(path)].join
+          end
+
+          def custom_css_path
+            Presenters::Settings.config.presenters.web_client.custom_css
+          end
+
+          # loads a global css file - by default located at `public/presenters/global.css`
+          def global_css
+            css_file = File.join(custom_css_path, 'global.css')
+            full_path = File.join(self.class.root, css_file)
+            _build_css_link_(css_file) if File.exists?(full_path)
+          end
+
+          # loads a custom css file that matches the presenter namespace/presenter.css
+          # by default located at public/presenters/#{namespace}/#{presenter}.css
+          def presenter_css(path)
+            css_file = File.join(custom_css_path, path)
+            css_file = File.join(css_file, 'index') if path == '/'
+            css_file = "#{css_file}.css"
+            full_path = File.join(self.class.root, css_file)
+            _build_css_link_(css_file) if File.exists?(full_path)
           end
 
           def _build_css_link_(path)
             (<<~CSS)
-              <link rel="stylesheet" href="#{path.sub('public/','')}">
+              <link rel="stylesheet" type="text/css" href="#{path.sub('public/', '')}">
             CSS
           end
         end
