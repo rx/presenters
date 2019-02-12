@@ -19,7 +19,7 @@
                role="switch"
                <% if comp.checked %> checked
         <% end %>
-               <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>/>
+               <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>/>
       </div>
     </div>
   </div>

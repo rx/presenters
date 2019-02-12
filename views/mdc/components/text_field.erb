@@ -24,7 +24,7 @@
            <%= "pattern='#{comp.pattern}'" if comp.pattern %>
            autocomplete="<%= comp.auto_complete ? 'on' : 'off' %>"
            list="<%= comp.id %>-list"
-           <%= erb :"components/event", :locals => {events: comp.events, parent_id: "#{comp.id}-input"} %>>
+           <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id:  "#{comp.id}-input"} %>>
 
     <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"} %>
 

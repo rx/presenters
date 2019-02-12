@@ -1,0 +1,26 @@
+H1.v-page-title {
+    font-family: 'Courier';
+    font-size: 20px;
+    background-color: palegreen;
+}
+
+H1.v-page-title i {
+    font-size: 20px;
+}
+
+.mdc-typography--headline1 {
+    font-family: 'Courier';
+}
+
+.mdc-typography--body1 {
+    font-family: 'Courier';
+}
+
+.mdc-typography--body1 code {
+    color: darkred;
+    white-space: pre;
+}
+
+.mdc-typography--headline6 {
+    font-family: 'Courier';
+}

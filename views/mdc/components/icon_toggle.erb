@@ -9,7 +9,7 @@
    data-name="<%= comp.name %>"
    data-toggle-on='{"label": "", "content": "<%= comp.icon %>" ,"cssClass": "v-toggle-icon--on"}'
    data-toggle-off='{"label": "", "content": "<%= comp.icon  %>", "cssClass": "v-toggle-icon--off"}'
-   <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>>
+   <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
   <%= comp.icon  %>
 </i>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

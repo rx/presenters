@@ -37,6 +37,7 @@ module Voom
               return @text if locked?
               @text = Components::Typography.new(parent: self,type: :text, text: text, **attribs, &block)
             end
+            alias title text
 
             def subtitle(*text, **attribs, &block)
               return @subtitle if locked?

@@ -4,6 +4,7 @@ require 'voom/serializer'
 require 'voom/trace'
 require 'voom/presenters/dsl/lockable'
 require 'voom/presenters/dsl/components/mixins/yield_to'
+require 'voom/presenters/pluggable'
 
 module Voom
   module Presenters
@@ -18,9 +19,11 @@ module Voom
           include LoggerMethods
           include Trace
           include Mixins::YieldTo
+          extend Pluggable
+          include_plugins(:DSLComponents, :DSLHelpers)
 
           attr_reader :type, :id, :tag, :attributes
-          
+
           alias attribs attributes
 
           def initialize(type:, parent:, id: nil, tag: nil, **attributes, &block)
@@ -30,6 +33,7 @@ module Voom
             @parent = parent
             @attributes = escape(attributes)
             @block = block
+            initialize_plugins
           end
 
           def expand!
@@ -38,6 +42,10 @@ module Voom
           end
 
           private
+
+          def initialize_plugins
+            self.class.include_plugins(:DSLComponents, :DSLHelpers, plugins: _plugins_)
+          end
 
           def h(text)
             return text unless text.is_a? String
@@ -51,7 +59,7 @@ module Voom
           def generate_id
             Voom::Presenters::Settings.config.presenters.id_generator.call(self)
           end
-      
+
           protected
 
           def parent(for_type)
@@ -70,6 +78,7 @@ module Voom
           def context
             @parent.send(:context)
           end
+
           alias params context
 
 
@@ -82,6 +91,9 @@ module Voom
             @parent.send(:_helpers_) if @parent
           end
 
+          def _plugins_
+            @parent.send(:_plugins_) if @parent
+          end
 
           def default(key)
             Settings.default(type, key)

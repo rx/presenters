@@ -19,7 +19,7 @@ class="v-checkbox mdc-checkbox v-input">
          <% end %>
   <% if comp.disabled %> disabled
          <% end %>
-         <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.event_parent_id} %>
+         <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
          />
   <div class="mdc-checkbox__background">
     <svg class="mdc-checkbox__checkmark"
