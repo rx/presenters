@@ -9,7 +9,12 @@ Voom::Presenters.define(:maps) do
   indented_grid do
     subheading 'Static Maps'
 
-    google_map address: '125 Park Street, Traverse City, MI', height: 300, width: 400
+    address = '125 Park Street, Traverse City, MI'
+    google_map address: address, height: 300, width: 400  do
+      event :click do
+        loads "https://www.google.com/maps/place/#{address}"
+      end
+    end
 
     attach :code, file: __FILE__
   end

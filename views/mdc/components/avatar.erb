@@ -12,7 +12,7 @@
          class="v-avatar
                <%= 'v-actionable' if events %>"
          src="<%= comp.avatar %>"
-         <%= erb :"components/event", :locals => {events: events, parent_id: comp.event_parent_id} %> />
+         <%= erb :"components/event", :locals => {comp: comp, events: events, parent_id: comp.event_parent_id} %> />
       <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
     </span>
   <% else %>

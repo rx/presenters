@@ -8,6 +8,7 @@ require 'voom/presenters/dsl/components/mixins/text_fields'
 require 'voom/presenters/dsl/components/mixins/date_time_fields'
 require 'voom/presenters/dsl/components/mixins/attaches'
 require 'voom/presenters/dsl/invalid_presenter'
+require 'voom/presenters/pluggable'
 
 require 'voom/serializer'
 require 'voom/trace'
@@ -26,6 +27,8 @@ module Voom
         include Components::Mixins::TextFields
         include Components::Mixins::DateTimeFields
         include Components::Mixins::Attaches
+        extend Pluggable
+        include_plugins(:DSLComponents, :DSLHelpers)
 
         include Voom::Serializer
         include Voom::Trace
@@ -44,7 +47,9 @@ module Voom
           @components = []
           @footer = nil
           @namespace = namespace
+          @__plugins__ = []
           add_global_helpers
+          initialize_plugins
         end
 
         def page(title=nil, **attribs, &block)
@@ -100,6 +105,10 @@ module Voom
           :presenter
         end
 
+        def plugin(*plugin_names)
+          @__plugins__.push(*plugin_names)
+        end
+
         private
 
         def deep_freeze
@@ -107,14 +116,16 @@ module Voom
           self
         end
 
-        private
-
         def parent(for_type)
           nil
         end
 
         def _helpers_
           return @helpers if @helpers
+        end
+
+        def _plugins_
+          return @__plugins__ if @__plugins__
         end
 
         def yield_block
@@ -126,6 +137,10 @@ module Voom
           Presenters::Settings.config.presenters.helpers.each do |helper|
             self.helpers(helper)
           end
+        end
+
+        def initialize_plugins
+          self.class.include_plugins(:DSLComponents, :DSLHelpers, plugins: @__plugins__)
         end
 
         def lock!

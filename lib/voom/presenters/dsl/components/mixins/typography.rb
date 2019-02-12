@@ -29,8 +29,7 @@ module Voom
             alias subheading subtitle
 
             def page_title(*text, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :page_title, text: text,
-                                                 level: 1, **attributes, &block)
+              self << Components::PageTitle.new(parent: self, text: text, level: 1, **attributes, &block)
             end
 
             def body(*text, level: 1, **attributes, &block)

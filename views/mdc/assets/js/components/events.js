@@ -9,6 +9,7 @@ import {VNavigates} from './events/navigates';
 import {VClears} from './events/clears';
 import {VRemoves} from './events/removes';
 import {VStepperEvent} from './events/stepper';
+import {VPluginEventAction} from './events/plugin';
 
 export class VEvents {
     //[[type, url, target, params]]
@@ -60,10 +61,10 @@ export class VEvents {
     }
 
     static action_class(action, event) {
-        var action_type = action[0];
-        var url = action[1];
-        var options = action[2];
-        var params = action[3];
+        const action_type = action[0];
+        const url = action[1];
+        const options = action[2];
+        const params = action[3];
 
         switch (action_type) {
             case 'loads':
@@ -91,10 +92,9 @@ export class VEvents {
             case 'stepper':
                 return new VStepperEvent(options, params, event);
             default:
-                throw action_type + ' is not supported.';
+                return new VPluginEventAction(action_type, options, params, event);
         }
     }
-
 }
 
 // This is used to get a proper binding of the actionData

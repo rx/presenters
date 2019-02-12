@@ -1,6 +1,7 @@
-import {VSnackbar} from '../snackbar';
 import {VBase} from './base';
 import appConfig from '../../config';
+import {expandParams} from './action_parameter';
+import {encode} from './encode';
 
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
@@ -11,6 +12,7 @@ export class VPosts extends VBase {
         this.params = params;
         this.method = method;
         this.event = event;
+        this.headers = options.headers;
     }
 
     call(results) {
@@ -39,8 +41,9 @@ export class VPosts extends VBase {
             FD = new FormData();
         }
         // Add params from presenter
-        for (var name in this.params) {
-            FD.append(name, this.params[name]);
+        expandParams(results, this.params);
+        for (const name in this.params) {
+            FD.append(name, encode(this.params[name]));
         }
 
         var inputValues = this.inputValues(form);
@@ -48,8 +51,9 @@ export class VPosts extends VBase {
             FD.append(input[0], input[1]);
         }
 
-        var httpRequest = new XMLHttpRequest();
-        var url = this.url;
+        const httpRequest = new XMLHttpRequest();
+        const url = this.url;
+        const callHeaders = this.headers;
         if (!httpRequest) {
             throw new Error(
                 'Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
@@ -85,8 +89,10 @@ export class VPosts extends VBase {
                         snackbarCallback(contentType,
                             httpRequest.responseText);
                         resolve(results);
-                    // Response is an html error page
-                    } else if (contentType && contentType.indexOf('text/html') !== -1){
+                        // Response is an html error page
+                    }
+                    else if (contentType && contentType.indexOf('text/html') !==
+                        -1) {
                         document.open(contentType);
                         document.write(httpRequest.responseText);
                         document.close();
@@ -99,7 +105,8 @@ export class VPosts extends VBase {
                             responseURL: httpRequest.responseURL,
                         });
                         resolve(results);
-                    } else {
+                    }
+                    else {
                         results.push({
                             action: 'posts',
                             method: this.method,
@@ -114,10 +121,16 @@ export class VPosts extends VBase {
             // Set up our request
             httpRequest.open(method, url);
 
-            const headers = appConfig.get('request.headers.POST', {});
+            const configHeaders = appConfig.get('request.headers.POST', {});
 
-            for (const [key, value] of Object.entries(headers)) {
+            for (const [key, value] of Object.entries(configHeaders)) {
                 httpRequest.setRequestHeader(key, value);
+            }
+
+            if (callHeaders) {
+                for (const [key, value] of Object.entries(callHeaders)) {
+                    httpRequest.setRequestHeader(key, value);
+                }
             }
 
             // Send our FormData object; HTTP headers are set automatically

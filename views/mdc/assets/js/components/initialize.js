@@ -23,9 +23,9 @@ import {initGrid} from './grid';
 import {initTabBars} from './tab-bars';
 import {initTables} from './data-tables';
 import {initFileInputs} from './file-inputs';
-import {initImageCrop} from './image-crop';
+import {initPlugins} from './plugins';
 
-export function initialize(){
+export function initialize() {
     console.log('Initializing');
     initButtons();
     initDialogs();
@@ -51,7 +51,11 @@ export function initialize(){
     initTabBars();
     initTables();
     initFileInputs();
+<<<<<<< HEAD
     initImageCrop();
+=======
+    initPlugins();
+>>>>>>> rx-plugins
     // This needs to be last, because it relies on the components installed above.
     initEvents();
 }

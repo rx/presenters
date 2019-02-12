@@ -1,4 +1,3 @@
 <% components.each_with_index do |comp, index| %>
-  <%= erb :"components#{scope ? "/#{scope}" : nil}/#{comp.type}", :locals => {comp: comp,
-                                                                              components: components, index: index} %>
+  <%= render_component(scope, comp, components, index) %>
 <% end %>

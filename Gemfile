@@ -4,6 +4,7 @@ ruby `cat .ruby-version`
 # Specify your gem's dependencies in voom-console.gemspec
 gemspec
 
+gem 'pry', group: :development
 group :test do
   gem 'rspec'
   gem 'rspec-html-matchers'
@@ -13,3 +14,6 @@ group :test do
   gem 'rspec_junit_formatter'
   gem 'simplecov', require: false
 end
+
+gem 'foo_presenter_plugin',  github:'rx/foo_presenter_plugin'
+# gem 'foo_presenter_plugin',  path:'../foo_presenter_plugin'

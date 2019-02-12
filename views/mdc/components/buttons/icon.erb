@@ -16,7 +16,7 @@
         style = "<%= color_style(comp) %>"
         <%= 'disabled' if comp.disabled %>
         <%= "type='#{eq(comp.button_type, :raised) ? 'submit' : 'button'}'" %>
-        <%= erb :'components/event', :locals => {events: comp.events, parent_id: event_parent_id || comp.event_parent_id} unless comp.disabled %>>
+        <%= erb :'components/event', :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} unless comp.disabled %>>
   <%= erb :'components/icon', :locals => {comp: comp.icon} %>
   <%= comp.text %>
 </button>

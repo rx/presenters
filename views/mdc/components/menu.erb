@@ -17,7 +17,7 @@
         <% unless eq(item.type, :divider) %>
           <li id="<%= item.id %>" class="mdc-list-item <%= 'v-menu-item__selected' if item.selected %>" role="menuitem" tabindex="0"
               <%= 'disabled' if item.disabled %>
-              <%= erb :"components/event", :locals => {events: item.events, parent_id: item.event_parent_id} unless item.disabled %>>
+              <%= erb :"components/event", :locals => {comp: item, events: item.events, parent_id: item.event_parent_id} unless item.disabled %>>
             <a class="v-menu-link"
                              id="<%= item.id %>"
                              href="javascript:void(0)">

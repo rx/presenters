@@ -15,7 +15,8 @@
   <!--MDC-->
   <link rel="stylesheet" href="<%= env['SCRIPT_NAME'] %>/bundle.css">
   <script defer src="<%= env['SCRIPT_NAME'] %>/bundle.js"></script>
-  <%= custom_css %>
+  <%= plugin_headers(@pom) %>
+  <%= custom_css(env['REQUEST_PATH']) %>
 
 </head>
 <body class="mdc-typography">
