@@ -8,6 +8,7 @@ require 'voom/presenters/web_client/router'
 require 'voom/presenters/web_client/markdown_render'
 require 'voom/presenters/errors/unprocessable'
 require_relative 'component_renderer'
+require_relative 'plugin_headers'
 
 module Voom
   module Presenters
@@ -96,9 +97,10 @@ module Voom
             end
           end
 
+
           def custom_css(path)
             return unless custom_css_path
-            [global_css,presenter_css(path)].join
+            [global_css, presenter_css(path)].join
           end
 
           def custom_css_path
@@ -127,6 +129,10 @@ module Voom
               <link rel="stylesheet" type="text/css" href="#{path.sub('public/', '')}">
             CSS
           end
+        end
+
+        def plugin_headers(pom)
+          PluginHeaders.new(pom: pom, render: method(:render)).render
         end
 
         get '/' do
