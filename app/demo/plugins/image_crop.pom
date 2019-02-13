@@ -1,0 +1,13 @@
+Voom::Presenters.define(:image_crop, namespace: :plugins) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :component_drawer
+  plugin :image_crop
+
+  page_title 'Image Crop'
+
+  indented_grid do
+    image_crop image: 'https://cdn.mos.cms.futurecdn.net/4f6d31c116fdada59a5cb16d136e3068-970-80.jpg'
+    attach :code, file: __FILE__
+  end
+end 

@@ -51,11 +51,7 @@ export function initialize() {
     initTabBars();
     initTables();
     initFileInputs();
-<<<<<<< HEAD
-    initImageCrop();
-=======
     initPlugins();
->>>>>>> rx-plugins
     // This needs to be last, because it relies on the components installed above.
     initEvents();
 }

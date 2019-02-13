@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/dennismonsewicz/image_crop_presenter_plugin.git
+  revision: 0ec43287bfdb58fe71b81b9509d7812de219a61d
+  specs:
+    image_crop_presenter_plugin (0.1.0)
+
+GIT
   remote: git://github.com/rx/foo_presenter_plugin.git
   revision: 0a7667c788a57d3b1960245892fa7925852bb27e
   specs:
@@ -109,6 +115,7 @@ DEPENDENCIES
   bundler (~> 1.13)
   foo_presenter_plugin!
   gem-release (~> 2.0)
+  image_crop_presenter_plugin!
   pry
   rack (>= 2.0.6)
   rack-test (~> 0.8)
@@ -127,4 +134,4 @@ RUBY VERSION
    ruby 2.5.3p105
 
 BUNDLED WITH
-   1.17.1
+   1.17.3

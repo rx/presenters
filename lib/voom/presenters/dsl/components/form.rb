@@ -14,7 +14,6 @@ require 'voom/presenters/dsl/components/mixins/content'
 require 'voom/presenters/dsl/components/mixins/typography'
 require 'voom/presenters/dsl/components/mixins/date_time_fields'
 require 'voom/presenters/dsl/components/mixins/file_inputs'
-require 'voom/presenters/dsl/components/mixins/image_crops'
 
 module Voom
   module Presenters
@@ -33,7 +32,6 @@ module Voom
           include Mixins::Content
           include Mixins::Typography
           include Mixins::FileInputs
-          include Mixins::ImageCrops
 
           attr_reader :components, :shows_errors
 

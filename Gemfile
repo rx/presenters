@@ -16,4 +16,4 @@ group :test do
 end
 
 gem 'foo_presenter_plugin',  github:'rx/foo_presenter_plugin'
-# gem 'foo_presenter_plugin',  path:'../foo_presenter_plugin'
+gem 'image_crop_presenter_plugin', github: 'dennismonsewicz/image_crop_presenter_plugin'
