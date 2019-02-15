@@ -26,6 +26,10 @@ module Voom
                                                  **attributes, &block)
             end
 
+            def subtitle2(*text, level: 2, **attributes, &block)
+              subtitle(*text, leve: level, **attributes, &block)
+            end
+
             alias subheading subtitle
 
             def page_title(*text, **attributes, &block)
@@ -36,6 +40,7 @@ module Voom
               self << Components::Typography.new(parent: self, type: :body, text: text, level: level,
                                                  **attributes, &block)
             end
+            alias text body
 
             def blank(level: 1, **attributes, &block)
               self << Components::Typography.new(parent: self, type: :body, text: ['&nbsp;'], level: level,

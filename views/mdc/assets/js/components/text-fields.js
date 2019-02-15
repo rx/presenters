@@ -82,4 +82,8 @@ export class VTextField extends visibilityObserverMixin(
     setValue(value) {
         this.input.value = value;
     }
+
+    preview(result, acceptsMimeTypes) {
+        this.setValue(result);
+    }
 }

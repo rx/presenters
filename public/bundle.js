@@ -6378,7 +6378,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__tab_bars__ = __webpack_require__(479);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__data_tables__ = __webpack_require__(501);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__file_inputs__ = __webpack_require__(502);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__plugins__ = __webpack_require__(503);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__images__ = __webpack_require__(504);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__typogrophy__ = __webpack_require__(505);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__plugins__ = __webpack_require__(503);
+
+
 
 
 
@@ -6432,7 +6436,9 @@ function initialize() {
     Object(__WEBPACK_IMPORTED_MODULE_22__tab_bars__["a" /* initTabBars */])();
     Object(__WEBPACK_IMPORTED_MODULE_23__data_tables__["a" /* initTables */])();
     Object(__WEBPACK_IMPORTED_MODULE_24__file_inputs__["a" /* initFileInputs */])();
-    Object(__WEBPACK_IMPORTED_MODULE_25__plugins__["a" /* initPlugins */])();
+    Object(__WEBPACK_IMPORTED_MODULE_25__images__["a" /* initImages */])();
+    Object(__WEBPACK_IMPORTED_MODULE_26__typogrophy__["a" /* initTypogrophy */])();
+    Object(__WEBPACK_IMPORTED_MODULE_27__plugins__["a" /* initPlugins */])();
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_4__events__["b" /* initEvents */])();
 }
@@ -8715,6 +8721,11 @@ var VTextField = function (_visibilityObserverMi) {
         key: 'setValue',
         value: function setValue(value) {
             this.input.value = value;
+        }
+    }, {
+        key: 'preview',
+        value: function preview(result, acceptsMimeTypes) {
+            this.setValue(result);
         }
     }]);
 
@@ -23969,6 +23980,8 @@ module.exports = function (regExp, replace) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(14);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -23993,6 +24006,17 @@ var VButton = function (_eventHandlerMixin) {
 
         return _possibleConstructorReturn(this, (VButton.__proto__ || Object.getPrototypeOf(VButton)).call(this, element, mdcComponent));
     }
+
+    _createClass(VButton, [{
+        key: 'preview',
+        value: function preview(result, acceptsMimeTypes, file) {
+            if (this.element.classList.contains('v-button-image')) {
+                this.element.style.backgroundImage = 'url(\'' + result + '\')';
+            } else {
+                console.log('WARNING: Attempted to preview an image on a Button (id: ' + this.element.id + ') that is NOT an image button.\nMake sure you set the type: :image on the button.');
+            }
+        }
+    }]);
 
     return VButton;
 }(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]));
@@ -59874,9 +59898,8 @@ function initTables() {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initFileInputs;
 /* unused harmony export VFileInput */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(14);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -59888,46 +59911,100 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
 function initFileInputs() {
-  console.log('\tFile Inputs');
-  Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])('.v-file-input', VFileInput, null);
+    console.log('\tFile Inputs');
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])('.v-file-input', VFileInput, null);
 }
 
 var VFileInput = function (_eventHandlerMixin) {
-  _inherits(VFileInput, _eventHandlerMixin);
+    _inherits(VFileInput, _eventHandlerMixin);
 
-  function VFileInput(element, mdcComponent) {
-    _classCallCheck(this, VFileInput);
+    function VFileInput(element, mdcComponent) {
+        _classCallCheck(this, VFileInput);
 
-    var _this = _possibleConstructorReturn(this, (VFileInput.__proto__ || Object.getPrototypeOf(VFileInput)).call(this, element, mdcComponent));
+        var _this = _possibleConstructorReturn(this, (VFileInput.__proto__ || Object.getPrototypeOf(VFileInput)).call(this, element, mdcComponent));
 
-    _this.input = element.querySelector('input[type=file]');
-    _this.label = element.querySelector('label');
-
-    ['change', 'mouseup'].forEach(function (e) {
-      element.addEventListener(e, function () {
-        return _this.handleFileSelection();
-      });
-    });
-    return _this;
-  }
-
-  // From an example based on: https://www.quirksmode.org/dom/inputfile.html
-
-
-  _createClass(VFileInput, [{
-    key: "handleFileSelection",
-    value: function handleFileSelection() {
-      if (!this.input.value) return;
-
-      var value = this.input.value.replace(/^.*[\\\/]/, '');
-      this.label.innerText = value;
+        _this.input = element.querySelector('input[type=file]');
+        _this.label = element.querySelector('label');
+        _this.accept = element.dataset.accept;
+        _this.preview = JSON.parse(element.dataset.preview);
+        ['change'].forEach(function (e) {
+            element.addEventListener(e, function (e) {
+                return _this.handleFileSelection(e);
+            }, false);
+        });
+        return _this;
     }
-  }]);
 
-  return VFileInput;
-}(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]));
+    _createClass(VFileInput, [{
+        key: 'previewComponent',
+        value: function previewComponent(e) {
+            var _this2 = this;
+
+            if (!this.preview) return null;
+
+            var _loop = function _loop(previewId) {
+                var elem = document.getElementById(previewId);
+                if (elem && elem.vComponent && elem.vComponent.preview) {
+                    var filename = e.target.files[0];
+                    var fr = new FileReader();
+                    fr.onload = function (e) {
+                        _this2.previewSelection(e, elem.vComponent);
+                    };
+                    if (_this2.accept.startsWith('text')) {
+                        fr.readAsText(filename);
+                    } else {
+                        fr.readAsDataURL(filename);
+                    }
+                } else {
+                    console.log('WARNING: Unable to find previewable element with id: ' + previewId + '\n1) Make sure you have an element with that id on your page\n2) Make sure the Componenet or Plugin supports the preview option for the request mime type');
+                }
+            };
+
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = this.preview[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var previewId = _step.value;
+
+                    _loop(previewId);
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'previewSelection',
+        value: function previewSelection(e, previewComp) {
+            previewComp.preview(e.target.result, this.accepts, this.file);
+        }
+
+        // From an example based on: https://www.quirksmode.org/dom/inputfile.html
+
+    }, {
+        key: 'handleFileSelection',
+        value: function handleFileSelection(e) {
+            this.file = e.target.files[0];
+            this.label.innerText = this.file.name;
+            this.previewComponent(e);
+        }
+    }]);
+
+    return VFileInput;
+}(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]));
 
 /***/ }),
 /* 503 */
@@ -60015,9 +60092,118 @@ var VPluginComponent = function (_eventHandlerMixin) {
                 _get(VPluginComponent.prototype.__proto__ || Object.getPrototypeOf(VPluginComponent.prototype), 'initEventListener', this).call(this, eventName, eventHandler);
             }
         }
+    }, {
+        key: 'preview',
+        value: function preview(result, acceptsMimeTypes, e) {
+            if (this.canPreview()) {
+                this.element.vPlugin.preview(result, acceptsMimeTypes, e);
+            }
+        }
+    }, {
+        key: 'canPreview',
+        value: function canPreview() {
+            return this.element.vPlugin && this.element.vPlugin.preview;
+        }
     }]);
 
     return VPluginComponent;
+}(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]));
+
+/***/ }),
+/* 504 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initImages;
+/* unused harmony export VImage */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(14);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+function initImages() {
+    console.log('\tImages');
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])('.v-image', VImage);
+}
+
+var VImage = function (_eventHandlerMixin) {
+    _inherits(VImage, _eventHandlerMixin);
+
+    function VImage(element) {
+        _classCallCheck(this, VImage);
+
+        return _possibleConstructorReturn(this, (VImage.__proto__ || Object.getPrototypeOf(VImage)).call(this, element));
+    }
+
+    _createClass(VImage, [{
+        key: 'preview',
+        value: function preview(result, acceptsMimeTypes) {
+            this.element.src = result;
+        }
+    }]);
+
+    return VImage;
+}(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]));
+
+/***/ }),
+/* 505 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initTypogrophy;
+/* unused harmony export VTypogrophy */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(14);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+function initTypogrophy() {
+    console.log('\tTypogrophy');
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])('.v-typography', VTypogrophy);
+}
+
+var VTypogrophy = function (_eventHandlerMixin) {
+    _inherits(VTypogrophy, _eventHandlerMixin);
+
+    function VTypogrophy(element) {
+        _classCallCheck(this, VTypogrophy);
+
+        return _possibleConstructorReturn(this, (VTypogrophy.__proto__ || Object.getPrototypeOf(VTypogrophy)).call(this, element));
+    }
+
+    _createClass(VTypogrophy, [{
+        key: 'preview',
+        value: function preview(result, acceptsMimeTypes, file) {
+            this.element.innerText = file.name;
+        }
+    }, {
+        key: 'clear',
+        value: function clear() {
+            this.element.innerText = '';
+        }
+    }]);
+
+    return VTypogrophy;
 }(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]));
 
 /***/ })

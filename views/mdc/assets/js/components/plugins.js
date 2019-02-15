@@ -59,6 +59,16 @@ export class VPluginComponent extends eventHandlerMixin(VBaseComponent) {
             super.initEventListener(eventName, eventHandler);
         }
     }
+
+    preview(result, acceptsMimeTypes, e) {
+        if (this.canPreview()) {
+            this.element.vPlugin.preview(result, acceptsMimeTypes, e);
+        }
+    }
+
+    canPreview() {
+        return this.element.vPlugin && this.element.vPlugin.preview;
+    }
 }
 
 
