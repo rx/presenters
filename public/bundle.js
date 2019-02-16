@@ -58017,7 +58017,14 @@ var VSwitch = function (_eventHandlerMixin) {
     _createClass(VSwitch, [{
         key: 'prepareSubmit',
         value: function prepareSubmit(params) {
-            params.push([this.name(), this.value()]);
+            if (this.submittedValue()) {
+                params.push([this.name(), this.submittedValue()]);
+            }
+        }
+    }, {
+        key: 'submittedValue',
+        value: function submittedValue() {
+            return this.input.checked ? this.value() : this.offValue();
         }
     }, {
         key: 'name',
@@ -58027,7 +58034,12 @@ var VSwitch = function (_eventHandlerMixin) {
     }, {
         key: 'value',
         value: function value() {
-            return this.input.value;
+            return this.input.dataset.on;
+        }
+    }, {
+        key: 'offValue',
+        value: function offValue() {
+            return this.input.dataset.off;
         }
     }, {
         key: 'clear',
@@ -58037,7 +58049,7 @@ var VSwitch = function (_eventHandlerMixin) {
     }, {
         key: 'setValue',
         value: function setValue(value) {
-            this.input.value = value;
+            this.input.dataset.on = value;
         }
     }]);
 

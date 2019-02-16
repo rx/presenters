@@ -3,8 +3,12 @@
 <img id="<%= comp.id %>"
      class="v-image <%=position_classes%>"
      src="<%= comp.url %>"
+     <% if comp.height %>
      height="<%= comp.height %>"
+     <% end %>
+     <% if comp.width %>
      width="<%= comp.width %>"
+     <% end %>
      alt=""
      border="<%= comp.border %>"
      style="<%= "border-radius: #{comp.border_radius};" if comp.border_radius %>">

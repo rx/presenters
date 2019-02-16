@@ -14,7 +14,13 @@ export class VSwitch extends eventHandlerMixin(VBaseComponent) {
     }
 
     prepareSubmit(params) {
-        params.push([this.name(), this.value()]);
+        if (this.submittedValue()) {
+            params.push([this.name(), this.submittedValue()]);
+        }
+    }
+
+    submittedValue() {
+        return this.input.checked ? this.value() : this.offValue();
     }
 
     name() {
@@ -22,7 +28,11 @@ export class VSwitch extends eventHandlerMixin(VBaseComponent) {
     }
 
     value() {
-        return this.input.value;
+        return this.input.dataset.on;
+    }
+
+    offValue() {
+        return this.input.dataset.off
     }
 
     clear() {
@@ -30,6 +40,6 @@ export class VSwitch extends eventHandlerMixin(VBaseComponent) {
     }
 
     setValue(value) {
-        this.input.value = value;
+        this.input.dataset.on = value;
     }
 }
