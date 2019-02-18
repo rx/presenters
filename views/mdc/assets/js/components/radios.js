@@ -35,5 +35,7 @@ export class VRadio extends eventHandlerMixin(VBaseComponent) {
         this.input.value = value;
     }
 
-
+    isDirty() {
+        return this.value() != this.element.dataset.originalValue;
+    }
 }

@@ -66,4 +66,8 @@ export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
     setValue(value) {
         this.quill.root.innerHTML = value;
     }
+
+    isDirty() {
+        return this.value() != this.element.dataset.originalValue;
+    }
 }

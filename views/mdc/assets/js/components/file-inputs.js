@@ -26,4 +26,8 @@ export class VFileInput extends eventHandlerMixin(VBaseComponent) {
     var value = this.input.value.replace(/^.*[\\\/]/, '');
     this.label.innerText = value;
   }
+
+  isDirty() {
+    return this.input.value != this.element.dataset.originalValue;
+  }
 }

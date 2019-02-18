@@ -35,4 +35,8 @@ export class VCheckbox extends eventHandlerMixin(VBaseComponent) {
     setValue(value){
         this.input.value = value;
     }
+
+    isDirty() {
+        return this.value() != this.dataset.originalValue;
+    }
 }
