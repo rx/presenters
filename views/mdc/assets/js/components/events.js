@@ -50,12 +50,16 @@ export class VEvents {
                 typeof responseURL !== 'undefined') {
                 window.location = responseURL;
             }
-
         }).catch(function(results) {
             console.log('If you got here it may not be what you think:',
                 results);
 
-            var result = results.pop();
+            let result = results;
+
+            if (typeof results.pop === 'function') {
+                result = results.pop();
+            }
+
             new VErrors(event).displayErrors(result);
         });
     }
