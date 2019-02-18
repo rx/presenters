@@ -28,6 +28,10 @@ module Voom
                                    **attribs, &block)
           end
 
+          def value
+            @options.select(&:_selected?).first&.value
+          end
+
           class Option < Base
             attr_reader :selected, :disabled
 
@@ -48,6 +52,10 @@ module Voom
             def text(text=nil)
               return @text if locked?
               @text = text
+            end
+
+            def _selected?
+              @selected
             end
           end
         end
