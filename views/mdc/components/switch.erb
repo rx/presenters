@@ -6,6 +6,7 @@
        <% if comp.tag %>
        data-input-tag="<%= comp.tag %>"
        <% end %>
+       data-original-value="<%=comp.value%>"
        class="v-switch v-input mdc-switch
       <%= 'mdc-switch--disabled' if comp.disabled %>
       <%= class_name %>">

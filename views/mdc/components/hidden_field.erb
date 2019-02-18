@@ -2,5 +2,6 @@
        type="hidden"
        <% if comp.tag %>
        data-input-tag="<%= comp.tag %>"
+       data-original-value="<%=comp.value%>"
        <% end %>
        id="<%= comp.id %>" name="<%= comp.name %>" value="<%= comp.value %>"/>

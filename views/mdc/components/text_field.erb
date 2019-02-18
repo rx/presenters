@@ -6,6 +6,7 @@
        <% if comp.tag %>
        data-input-tag="<%= comp.tag %>"
        <% end %>
+       data-original-value="<%=comp.value%>"
        class="v-input v-text-field mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-leading-icon' if leading_icon %>
             <%= 'mdc-text-field--with-trailing-icon' if trailing_icon %>

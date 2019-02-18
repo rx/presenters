@@ -3,6 +3,7 @@
      <% if comp.tag %>
      data-input-tag="<%= comp.tag %>"
      <% end %>
+     data-original-value="<%=comp.value%>"
      style="<%= 'width:100%' if comp.full_width %>">
   <textarea id="<%= comp.id %>-input"
             name="<%= comp.name %>"

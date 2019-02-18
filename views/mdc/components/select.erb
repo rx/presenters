@@ -5,6 +5,7 @@
        <% if comp.tag %>
        data-input-tag="<%= comp.tag %>"
        <% end %>
+       data-original-value="<%=comp.value%>"
        <%= 'style="width: 100%;"' if comp.full_width %>>
     <i class="mdc-select__dropdown-icon"></i>
     <select id="<%= comp.id %>"

@@ -5,6 +5,7 @@
      <% if comp.tag %>
      data-input-tag="<%= comp.tag %>"
      <% end %>
+     data-original-value="<%=comp.value%>">
      class="v-input v-datetime mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-trailing-icon' if comp.clear_icon %>
             <%= 'mdc-text-field--disabled' if comp.disabled %>
