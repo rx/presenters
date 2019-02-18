@@ -61,7 +61,9 @@ export class VEvents {
                 result = results.pop();
             }
 
-            new VErrors(event).displayErrors(result);
+            if (!result.squelch) {
+                new VErrors(event).displayErrors(result);
+            }
         });
     }
 
