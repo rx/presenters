@@ -1,7 +1,23 @@
 import {VBase} from './base';
 import {VDialog} from './dialog';
 
-const HALT_ACTIONS = ['close', 'halt', 'stay', 'stop'];
+const HALT_PATTERNS = [/close/i, /halt/i, /stay/i, /stop/i];
+
+/**
+ * shouldHalt determines whether the specified action should halt execution
+ * of further actions.
+ * @param {string} action
+ * @return {bool}
+ */
+function shouldHalt(action) {
+    for (const pattern of HALT_PATTERNS) {
+        if (pattern.test(action)) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 export class VPromptIfDirty extends VBase {
     constructor(options, params, event) {
@@ -59,7 +75,7 @@ export class VPromptIfDirty extends VBase {
                 const action = result.dialogAction;
 
                 // If the dialog's result indicates halting, bail out:
-                if (HALT_ACTIONS.includes(action)) {
+                if (shouldHalt(action)) {
                     return reject(results);
                 }
 
