@@ -40,6 +40,7 @@ export class VPromptIfDirty extends VBase {
 
         results.push({
             action: 'prompt_if_dirty',
+            statusCode: 412,
             squelch: true,
             dirty: dirty,
         });

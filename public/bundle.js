@@ -41141,6 +41141,7 @@ var VPromptIfDirty = function (_VBase) {
 
             results.push({
                 action: 'prompt_if_dirty',
+                statusCode: 412,
                 squelch: true,
                 dirty: dirty
             });
