@@ -1,7 +1,7 @@
 import {VBase} from './base';
 import {VDialog} from './dialog';
 
-const HALT_PATTERNS = [/close/i, /halt/i, /stay/i, /stop/i];
+const HALT_PATTERNS = [/close/i, /halt/i, /stay/i, /stop/i, /cancel/i];
 
 /**
  * shouldHalt determines whether the specified action should halt execution
