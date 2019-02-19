@@ -70,29 +70,29 @@ export class VPromptIfDirty extends VBase {
      * inputs returns an array of Voom components.
      * If an input_tag has been specified, the array contains input
      * components tagged with the specified input_tag.
-     * Otherwise, the array contains the parent's input components.
-     * @throws Error if No input_tag is specified and a parent container is
-     *               not present.
+     * Otherwise, the array contains the nearest container's input
+     * components.
+     * @throws Error if No input_tag is specified and a nearest container
+     *               cannot be found.
      * @return {array} An array of input components
      */
     inputs() {
-        const parent = this.parentElement();
-        const parentComp = parent ? parent.vComponent : null;
+        const container = this.closestContainer();
         const inputTag = this.options.input_tag;
 
-        // A specified input_tag has priority over the parent container:
+        // A specified input_tag has priority over the nearest container:
         if (inputTag) {
             return this.taggedInputs();
         }
 
-        // If no parent container can be found, bail:
-        if (!parentComp) {
+        // If no nearest container can be found, bail:
+        if (!(container && container.vComponent)) {
             throw new Error(
-                'Unable to find a parent container! Try using an input_tag.'
+                'Unable to find a nearest container! Try using an input_tag.'
             );
         }
 
-        // Otherwise, use the parent container's input elements:
-        return parentComp.inputs();
+        // Otherwise, use the nearest container's input elements:
+        return container.vComponent.inputs();
     }
 }

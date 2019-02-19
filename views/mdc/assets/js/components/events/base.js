@@ -71,4 +71,14 @@ export class VBase extends VUrls {
         }
         return errors;
     }
+
+    closestContainer() {
+        const comp = this.component();
+
+        if (!(comp && comp.element)) {
+            return null;
+        }
+
+        return comp.element.closest('[data-is-container="true"]');
+    }
 }
