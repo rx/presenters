@@ -32,6 +32,6 @@ export class VHiddenField extends VBaseComponent {
     }
 
     isDirty() {
-        return this.value() != this.dataset.originalValue;
+        return this.value() != this.element.dataset.originalValue;
     }
 }
