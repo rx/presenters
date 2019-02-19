@@ -1,0 +1,54 @@
+Voom::Presenters.define(:dirtyable_container) do
+  content id: :dirtyable_container do
+    grid do
+      column 6 do
+        text_field name: :a_text_field do
+          label 'Input'
+          value 'initial value'
+        end
+
+        button :save, type: :raised do
+          event :click do
+            snackbar 'Saved!'
+            replaces :dirtyable_container, :dirtyable_container
+          end
+        end
+        button :cancel do
+          event :click do
+            prompt_if_dirty :discard_dialog
+            replaces :dirtyable_container, :dirtyable_container
+          end
+        end
+      end
+    end
+  end
+end
+
+Voom::Presenters.define(:prompt_if_dirty_action) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :events_drawer
+  attach :discard_dialog
+
+  indented_grid do
+    heading 'Prompt if dirty'
+    body 'Allows you to prompt users to discard changes in fields which have unsaved changes.'
+    blank
+    body <<~MARKDOWN
+      Takes the ID of a dialog to display when one or more fields in the
+      closest container has changed.\n
+      Optionally takes an `input_tag` which has priority over the closest
+      container and can be used if no closest container is present.
+    MARKDOWN
+    blank
+    body <<~MARKDOWN
+      If the user dismisses the dialog (via the scrim or cancel button), the
+      actions following `prompt_if_dirty` are not executed.
+    MARKDOWN
+
+    blank
+    attach :dirtyable_container
+  end
+
+  attach :code, file: __FILE__
+end
