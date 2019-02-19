@@ -4,8 +4,8 @@
      <% end %>
      class="v-content
             <%= 'v-hidden' if comp.hidden %>
-            <%= comp.float  ? 'v-content--float' : 'v-content--relative'%>
-               ">
+            <%= comp.float  ? 'v-content--float' : 'v-content--relative'%>"
+     <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
   <% if comp.shows_errors %>
     <div class="v-errors">
   <% end %>
