@@ -1313,7 +1313,10 @@ var VBaseContainer = function (_VBaseComponent) {
     function VBaseContainer(element, mdcComponent) {
         _classCallCheck(this, VBaseContainer);
 
-        return _possibleConstructorReturn(this, (VBaseContainer.__proto__ || Object.getPrototypeOf(VBaseContainer)).call(this, element, mdcComponent));
+        var _this = _possibleConstructorReturn(this, (VBaseContainer.__proto__ || Object.getPrototypeOf(VBaseContainer)).call(this, element, mdcComponent));
+
+        element.dataset.isContainer = true;
+        return _this;
     }
 
     _createClass(VBaseContainer, [{
@@ -2260,7 +2263,7 @@ var VBase = function (_VUrls) {
             // If tagged input is asked for, fetch all the matching tag elements
             // and then call any bound components:
             if (this.options.input_tag !== undefined) {
-                var inputs = this.taggedInputs().filter(function (input) {
+                var inputs = Array.from(this.taggedInputs()).filter(function (input) {
                     return input.vComponent;
                 }).map(function (input) {
                     return input.vComponent;
@@ -2315,6 +2318,17 @@ var VBase = function (_VUrls) {
                 errors = comp.validate();
             }
             return errors;
+        }
+    }, {
+        key: 'closestContainer',
+        value: function closestContainer() {
+            var comp = this.component();
+
+            if (!(comp && comp.element)) {
+                return null;
+            }
+
+            return comp.element.closest('[data-is-container="true"]');
         }
     }]);
 
@@ -41159,31 +41173,31 @@ var VPromptIfDirty = function (_VBase) {
          * inputs returns an array of Voom components.
          * If an input_tag has been specified, the array contains input
          * components tagged with the specified input_tag.
-         * Otherwise, the array contains the parent's input components.
-         * @throws Error if No input_tag is specified and a parent container is
-         *               not present.
+         * Otherwise, the array contains the nearest container's input
+         * components.
+         * @throws Error if No input_tag is specified and a nearest container
+         *               cannot be found.
          * @return {array} An array of input components
          */
 
     }, {
         key: 'inputs',
         value: function inputs() {
-            var parent = this.parentElement();
-            var parentComp = parent ? parent.vComponent : null;
+            var container = this.closestContainer();
             var inputTag = this.options.input_tag;
 
-            // A specified input_tag has priority over the parent container:
+            // A specified input_tag has priority over the nearest container:
             if (inputTag) {
                 return this.taggedInputs();
             }
 
-            // If no parent container can be found, bail:
-            if (!parentComp) {
-                throw new Error('Unable to find a parent container! Try using an input_tag.');
+            // If no nearest container can be found, bail:
+            if (!(container && container.vComponent)) {
+                throw new Error('Unable to find a nearest container! Try using an input_tag.');
             }
 
-            // Otherwise, use the parent container's input elements:
-            return parentComp.inputs();
+            // Otherwise, use the nearest container's input elements:
+            return container.vComponent.inputs();
         }
     }]);
 
@@ -55110,7 +55124,7 @@ var VCheckbox = function (_eventHandlerMixin) {
     }, {
         key: 'isDirty',
         value: function isDirty() {
-            return this.input.checked != this.dataset.originalValue;
+            return String(this.input.checked) != this.dataset.originalValue;
         }
     }]);
 
@@ -58313,7 +58327,7 @@ var VSwitch = function (_eventHandlerMixin) {
     }, {
         key: 'isDirty',
         value: function isDirty() {
-            return this.input.checked != this.element.dataset.originalValue;
+            return String(this.input.checked) != this.element.dataset.originalValue;
         }
     }]);
 
@@ -76117,7 +76131,7 @@ var VRadio = function (_eventHandlerMixin) {
     }, {
         key: "isDirty",
         value: function isDirty() {
-            return this.input.checked != this.element.dataset.originalValue;
+            return String(this.input.checked) != this.element.dataset.originalValue;
         }
     }]);
 
