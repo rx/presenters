@@ -23,7 +23,7 @@ export class VBase extends VUrls {
         }
 
         const selector = `[data-input-tag="${inputTag}"]`;
-        const inputs = Array.from(document.querySelectorAll(selector));
+        const inputs = document.querySelectorAll(selector);
 
         if (inputs.length < 1) {
             console.warn(

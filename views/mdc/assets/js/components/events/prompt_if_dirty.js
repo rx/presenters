@@ -31,7 +31,7 @@ export class VPromptIfDirty extends VBase {
 
     call(results) {
         // We're in a dirty state if any dirtyable inputs are dirty:
-        const dirty = this.inputs()
+        const dirty = Array.from(this.inputs())
             .filter((input) => input.vComponent)
             .map((input) => input.vComponent)
             .filter((comp) => comp.isDirty)
