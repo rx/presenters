@@ -44,7 +44,7 @@ module Voom
           end
 
         end
-        class Grid < Base
+        class Grid < EventBase
           include Mixins::Attaches
           include Mixins::Dialogs
           include Mixins::Snackbars
