@@ -35,6 +35,7 @@ module Voom
         # loads a custom css file that matches the presenter namespace/presenter.css
         # by default located at public/presenters/#{namespace}/#{presenter}.css
         def presenter_css(path)
+          return unless custom_css_path && path
           css_file = File.join(custom_css_path, path)
           css_file = File.join(css_file, 'index') if path == '/'
           css_file = "#{css_file}.css"

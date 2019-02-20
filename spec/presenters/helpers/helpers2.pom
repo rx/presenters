@@ -5,7 +5,7 @@ Voom::Presenters.define(:helpers2) do
     end
   end
 
-  display foo if context[:has_foo]
+  display gfoo if context[:has_foo]
   display bar if context[:raise_bar]
   display baz
 end

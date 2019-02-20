@@ -23,7 +23,7 @@ module Voom
 
     private
     def inflector
-      @inflector ||= Dry::Inflector.new
+      @_inflector_ ||= Dry::Inflector.new
     end
   end
 end
