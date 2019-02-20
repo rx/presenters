@@ -15,7 +15,8 @@
      class="v-grid mdc-layout-grid
             <%= _padding_classes_(comp.padding, @grid_nesting, :grid) %>
             <%= 'v-grid__wide' if comp.wide %>"
-     style="<%= "background-color: #{comp.color};" if comp.color %>">
+     style="<%= "background-color: #{comp.color};" if comp.color %>"
+     <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
   <% unless @grid_nesting>1 %>
   <% end %>
 
@@ -28,7 +29,8 @@
     %>
       <div id="<%= col.id %>" class="v-column mdc-layout-grid__cell <%= span %>
                           <%= _padding_classes_(col.padding, 0, :col) %> v-column--relative"
-           style="<%= "background-color: #{col.color};" if col.color %>">
+           style="<%= "background-color: #{col.color};" if col.color %>"
+           <%= erb :"components/event", :locals => {comp: col, events: col.events, parent_id: col.event_parent_id} %>>
         <%= erb :"components/render", :locals => {:components => col.components, :scope => nil} %>
       </div>
     <% end %>
