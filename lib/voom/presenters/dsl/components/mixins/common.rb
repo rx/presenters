@@ -48,6 +48,10 @@ module Voom
             def table(**attributes, &block)
               self << Components::Table.new(parent: self, **attributes, &block)
             end
+
+            def avatar(avatar = nil, **attributes, &block)
+              self << Components::Avatar.new(parent: self, avatar: avatar, **attributes, &block)
+            end
           end
         end
       end

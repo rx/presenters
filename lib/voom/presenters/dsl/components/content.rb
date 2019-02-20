@@ -32,13 +32,14 @@ module Voom
           include Mixins::Dialogs
           include Mixins::FileInputs
 
-          attr_reader :hidden, :float, :components, :shows_errors
+          attr_reader :hidden, :float, :components, :shows_errors, :width
          
           def initialize(**attribs_, &block)
             super(type: :content, **attribs_, &block)
             @components = []
             @hidden = attribs.delete(:hidden){false}
             @float = attribs.delete(:float){false}
+            @width = attribs.delete(:width){nil}
             @shows_errors = attribs.delete(:shows_errors){false}
             expand!
           end

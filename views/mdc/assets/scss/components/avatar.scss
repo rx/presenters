@@ -1,25 +1,47 @@
 
 .v-avatar {
   margin-left: 0;
-  width: 40px;
-  height: 40px;
   border-radius: 50%;
   color: white;
+  background-color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
   align-items: center;
   justify-content: center;
   display: inline-flex;
   flex-shrink: 0;
+  &.v-avatar-size-small {
+    width: 30px;
+    height: 30px;
+  }
+  &.v-avatar-size-default, &.v-avatar-size-medium {
+    width: 40px;
+    height: 40px;
+  }
+  &.v-avatar-size-large {
+    width: 50px;
+    height: 50px;
+  }
+  &.v-avatar-size-x-large {
+    width: 60px;
+    height: 60px;
+  }
+  &.v-avatar-size-xx-large {
+    width: 110px;
+    height: 110px;
+  }
+  > img {
+    width: 100%;
+  }
 }
 
 .v-card-media {
   .v-avatar {
-    background-color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
-    margin-right: 8px;
     margin: 8px;
   }
-  .v-avatar + .v-card-title {
-    margin-top: 8px;
-  }
+}
+
+.v-column > .v-avatar,
+.v-content > .v-avatar {
+  margin: 8px;
 }
 
 .v-avatar-position-left {

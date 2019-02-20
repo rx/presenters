@@ -16,14 +16,14 @@
        icon_class_name = "material-icons"
        icon = icon_name
      end
+     size_class = "v-icon-size-#{comp.size}" unless locals.include? :size_class
 %>
   <i id="<%= comp.id %>"
-     class="<%= class_name %> <%= icon_class_name %>
+     class="<%= class_name %> <%= icon_class_name %> <%= size_class %>
             <%= 'v-actionable' if comp.events %>
             <%= color_classname(comp) %>"
       <%= "data-#{data}" if data %>
-       style = "<%= color_style(comp) %>
-                <%= "font-size: #{comp.size}" if comp.size %>"
+       style = "<%= color_style(comp) %>"
      <%= 'tabindex="1"' if class_name.include?('mdc-text-field__icon') && comp.events %>
        <%= erb :"components/event", :locals => {comp: comp, events: events, parent_id: parent_id} %>>
     <%= icon %>

@@ -5,7 +5,8 @@
      class="v-content
             <%= 'v-hidden' if comp.hidden %>
             <%= comp.float  ? 'v-content--float' : 'v-content--relative'%>
-               ">
+               "
+     style="<% if comp.width %>width: <%= comp.width %><% end %>">
   <% if comp.shows_errors %>
     <div class="v-errors">
   <% end %>
