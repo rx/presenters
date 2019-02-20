@@ -36,16 +36,16 @@ export class VFileInput extends eventHandlerMixin(VBaseComponent) {
         for (const previewId of this.preview) {
             const elem = document.getElementById(previewId);
             if (elem && elem.vComponent && elem.vComponent.preview) {
-                const filename = e.target.files[0];
+                this.file = e.target.files[0];
                 const fr = new FileReader();
                 fr.onload = (e) => {
                     this.previewSelection(e, elem.vComponent);
                 };
                 if (this.accept.startsWith('text')) {
-                    fr.readAsText(filename);
+                    fr.readAsText(this.file);
                 }
                 else {
-                    fr.readAsDataURL(filename);
+                    fr.readAsDataURL(this.file);
                 }
 
             }

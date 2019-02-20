@@ -2,13 +2,13 @@ import {VBaseComponent} from './base-component';
 import {hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
-export function initTypogrophy() {
-    console.log('\tTypogrophy');
-    hookupComponents('.v-typography', VTypogrophy);
+export function initTypography() {
+    console.log('\tTypography');
+    hookupComponents('.v-typography', VTypography);
 }
 
 
-export class VTypogrophy extends eventHandlerMixin(VBaseComponent) {
+export class VTypography extends eventHandlerMixin(VBaseComponent) {
     constructor(element) {
         super(element);
     }
