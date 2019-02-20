@@ -11,7 +11,6 @@ export class VFileInput extends eventHandlerMixin(VBaseComponent) {
         super(element, mdcComponent);
 
         this.input = element.querySelector('input[type=file]');
-        this.label = element.querySelector('label');
         this.accept = element.dataset.accept;
         this.preview = JSON.parse(element.dataset.preview);
         ['change'].forEach((e) => {
@@ -20,21 +19,33 @@ export class VFileInput extends eventHandlerMixin(VBaseComponent) {
         });
     }
 
+    prepareSubmit(params) {
+        params.push([this.name(), this.value()]);
+    }
+
+    name() {
+        return this.input.name;
+    }
+
+    value() {
+        return this.input.value;
+    }
+
     previewComponent(e) {
         if (!this.preview) return null;
         for (const previewId of this.preview) {
             const elem = document.getElementById(previewId);
             if (elem && elem.vComponent && elem.vComponent.preview) {
-                const filename = e.target.files[0];
+                this.file = e.target.files[0];
                 const fr = new FileReader();
                 fr.onload = (e) => {
                     this.previewSelection(e, elem.vComponent);
                 };
                 if (this.accept.startsWith('text')) {
-                    fr.readAsText(filename);
+                    fr.readAsText(this.file);
                 }
                 else {
-                    fr.readAsDataURL(filename);
+                    fr.readAsDataURL(this.file);
                 }
 
             }
@@ -51,17 +62,10 @@ export class VFileInput extends eventHandlerMixin(VBaseComponent) {
         previewComp.preview(e.target.result, this.accepts, this.file);
     }
 
-  // From an example based on: https://www.quirksmode.org/dom/inputfile.html
-  handleFileSelection() {
-    if (!this.input.value) return;
+    isDirty() {
+        return this.input.value != this.element.dataset.originalValue;
+    }
 
-    var value = this.input.value.replace(/^.*[\\\/]/, '');
-    this.label.innerText = value;
-  }
-
-  isDirty() {
-    return this.input.value != this.element.dataset.originalValue;
-  }
     // From an example based on: https://www.quirksmode.org/dom/inputfile.html
     handleFileSelection(e) {
         this.previewComponent(e);

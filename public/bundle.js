@@ -39410,7 +39410,6 @@ var VReplaces = function (_VBase) {
         key: 'call',
         value: function call(results) {
             this.clearErrors();
-            console.log('The event: ' + this.event);
             var httpRequest = new XMLHttpRequest();
             if (!httpRequest) {
                 throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
@@ -87743,7 +87742,6 @@ var VFileInput = function (_eventHandlerMixin) {
         var _this = _possibleConstructorReturn(this, (VFileInput.__proto__ || Object.getPrototypeOf(VFileInput)).call(this, element, mdcComponent));
 
         _this.input = element.querySelector('input[type=file]');
-        _this.label = element.querySelector('label');
         _this.accept = element.dataset.accept;
         _this.preview = JSON.parse(element.dataset.preview);
         ['change'].forEach(function (e) {
@@ -87755,6 +87753,21 @@ var VFileInput = function (_eventHandlerMixin) {
     }
 
     _createClass(VFileInput, [{
+        key: 'prepareSubmit',
+        value: function prepareSubmit(params) {
+            params.push([this.name(), this.value()]);
+        }
+    }, {
+        key: 'name',
+        value: function name() {
+            return this.input.name;
+        }
+    }, {
+        key: 'value',
+        value: function value() {
+            return this.input.value;
+        }
+    }, {
         key: 'previewComponent',
         value: function previewComponent(e) {
             var _this2 = this;
@@ -87809,22 +87822,12 @@ var VFileInput = function (_eventHandlerMixin) {
         value: function previewSelection(e, previewComp) {
             previewComp.preview(e.target.result, this.accepts, this.file);
         }
-
-        // From an example based on: https://www.quirksmode.org/dom/inputfile.html
-
-    }, {
-        key: 'handleFileSelection',
-        value: function handleFileSelection() {
-            if (!this.input.value) return;
-
-            var value = this.input.value.replace(/^.*[\\\/]/, '');
-            this.label.innerText = value;
-        }
     }, {
         key: 'isDirty',
         value: function isDirty() {
             return this.input.value != this.element.dataset.originalValue;
         }
+
         // From an example based on: https://www.quirksmode.org/dom/inputfile.html
 
     }, {

@@ -15,7 +15,6 @@ export class VReplaces extends VBase {
 
     call(results) {
         this.clearErrors();
-        console.log('The event: '+this.event);
         var httpRequest = new XMLHttpRequest();
         if (!httpRequest) {
             throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
