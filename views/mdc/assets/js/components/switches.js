@@ -42,4 +42,8 @@ export class VSwitch extends eventHandlerMixin(VBaseComponent) {
     setValue(value) {
         this.input.dataset.on = value;
     }
+
+    isDirty() {
+        return String(this.input.checked) != this.element.dataset.originalValue;
+    }
 }

@@ -10,6 +10,22 @@ export class VToggleVisibility  {
         let action = this.params.action;
         let delayAmt = this.event instanceof FocusEvent ? 500 : 0;
         let elem = document.getElementById(targetId);
+
+        if (!elem) {
+            const err = new Error(
+                `Unable to locate node ${targetId}!`
+                + ' Did you forget to attach it?'
+            );
+
+            results.push({
+                action: 'toggle_visibility',
+                contentType: 'v/errors',
+                content: {exception: err.message},
+            });
+
+            return new Promise((_, reject) => reject(results));
+        }
+
         let promiseObj = new Promise(function (resolve) {
             clearTimeout(elem.vTimeout);
             elem.vTimeout = setTimeout(function(){

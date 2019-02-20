@@ -1,5 +1,8 @@
 <% if comp %>
-  <div class="v-file-input mdc-text-field mdc-text-field--outlined mdc-text-field--upgraded" style="width: 100%">
+  <div
+    class="v-input v-file-input mdc-text-field mdc-text-field--outlined mdc-text-field--upgraded"
+    style="width: 100%"
+    data-original-value="<%=comp.value%>">
     <input id="<%= comp.id %>-input" name="<%= comp.name %>" type="file">
     <button class="mdc-button"><%= comp.button_label %></button>
     <label for="<%= comp.id %>-input"><%= comp.input_label %></label>

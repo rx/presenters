@@ -6,6 +6,7 @@ require 'voom/presenters/dsl/components/actions/deletes'
 require 'voom/presenters/dsl/components/actions/remove'
 require 'voom/presenters/dsl/components/actions/dialog'
 require 'voom/presenters/dsl/components/actions/toggle_visibility'
+require 'voom/presenters/dsl/components/actions/prompt_if_dirty'
 require 'voom/presenters/dsl/components/actions/snackbar'
 require 'voom/presenters/dsl/components/actions/clear'
 require 'voom/presenters/dsl/components/actions/navigates'
@@ -89,6 +90,13 @@ module Voom
             self << Actions::ToggleVisibility.new(parent: self,
                                                   target: component_id,
                                                   params: params, &block)
+          end
+
+          def prompt_if_dirty(dialog_id, input_tag: nil, **params, &block)
+            self << Actions::PromptIfDirty.new(parent: self,
+                                               target: dialog_id,
+                                               input_tag: input_tag,
+                                               params: params, &block)
           end
 
           # Removes the component and all its children

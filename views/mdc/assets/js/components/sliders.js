@@ -36,6 +36,10 @@ export class VSlider extends visibilityObserverMixin(eventHandlerMixin(VBaseComp
         this.mdcComponent.value = value;
     }
 
+    isDirty() {
+        return this.value() != this.element.dataset.originalValue;
+    }
+
     initEventListener(eventName, eventHandler) {
         if (eventName === 'change') {
             eventName = 'MDCSlider:change';

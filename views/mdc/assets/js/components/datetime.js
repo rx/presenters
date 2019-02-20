@@ -75,6 +75,10 @@ export class VDateTime extends VTextField {
     //         }
     //     }
     // }
+
+    isDirty() {
+        return this.fp.input.value !== this.element.dataset.originalValue;
+    }
 }
 
 

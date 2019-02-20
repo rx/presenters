@@ -3,6 +3,7 @@ import {VBaseComponent} from './base-component';
 export class VBaseContainer extends VBaseComponent {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
+        element.dataset.isContainer = true;
     }
 
     inputs() {
@@ -50,5 +51,15 @@ export class VBaseContainer extends VBaseComponent {
             }
         }
         return errors;
+    }
+
+    isDirty() {
+        // A container is dirty if any of its dirtyable inputs is dirty:
+        return Array.from(this.inputs())
+            .filter((element) => element.vComponent)
+            .map((element) => element.vComponent)
+            .filter((component) => component.isDirty)
+            .map((component) => component.isDirty())
+            .some(Boolean);
     }
 }

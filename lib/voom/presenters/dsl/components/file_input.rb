@@ -16,11 +16,15 @@ module Voom
             expand!
           end
 
+          def value(value=nil)
+            return @value if locked?
+            @value = value
+          end
+
           def hint(hint=nil)
             return @hint if locked?
             @hint = hint
           end
-
         end
       end
     end
