@@ -8,7 +8,7 @@
             name="<%= comp.name %>"
             class="mdc-text-field__input"
             rows="<%= comp.rows %>"
-            cols="<%= comp.cols %>"> <%= comp.value %> </textarea>
+            cols="<%= comp.cols %>"><%= comp.value %></textarea>
   <label for="<%= comp.id %>-input" class="mdc-floating-label"><%= expand_text(comp.label) %></label>
 </div>
 <% if comp.error || comp.hint %>
