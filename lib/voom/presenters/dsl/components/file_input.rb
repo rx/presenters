@@ -27,11 +27,6 @@ module Voom
             return @value if locked?
             @value = value
           end
-
-          def hint(hint=nil)
-            return @hint if locked?
-            @hint = hint
-          end
           private
           def default_button
             button(icon: :cloud_upload) unless components.any?

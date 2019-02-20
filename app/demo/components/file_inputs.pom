@@ -8,6 +8,22 @@ Voom::Presenters.define(:file_inputs) do
 
   indented_grid do
 
+    file_input name: :event_image, preview: [:preview_id, :filename] do
+      grid do
+        column 6 do
+          card do
+            image width: 200, id: :preview_id
+              text id: :filename
+            text 'Drag and drop or click this button to upload'
+            button icon: :cloud_upload
+          end
+        end
+        column 6 do
+        end
+      end
+    end
+
+
     title 'Simple'
     file_input name: :upload
 
@@ -30,7 +46,6 @@ Voom::Presenters.define(:file_inputs) do
     file_input preview: [:text_area_id2, :filename_id], accept: 'text/plain, text/markdown'
     subtitle2 id: :filename_id
     text_area id: :text_area_id2
-
 
     attach :code, file: __FILE__
   end
