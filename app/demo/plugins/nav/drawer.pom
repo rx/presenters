@@ -1,0 +1,19 @@
+Voom::Presenters.define(:plugin_drawer, namespace: :plugins) do
+  helpers Voom::Presenters::Helpers::Inflector
+  drawer 'Plugins' do
+    menu do
+      item 'Sample Plugin' do
+        event :click do
+          loads :index
+        end
+      end
+      %i(image_crop).sort.each do |comp|
+        item titleize(comp) do
+          event :click do
+            loads comp
+          end
+        end
+      end
+    end
+  end
+end

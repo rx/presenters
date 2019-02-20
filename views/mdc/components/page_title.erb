@@ -1,4 +1,5 @@
 <h1 class="v-page-title">
   <%= erb :"components/icon", :locals => {comp: comp.icon} %>
   <%= expand_text(comp.text) %>
+  <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
 </h1>

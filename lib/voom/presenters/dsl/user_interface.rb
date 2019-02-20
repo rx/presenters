@@ -8,6 +8,7 @@ require 'voom/presenters/dsl/components/mixins/text_fields'
 require 'voom/presenters/dsl/components/mixins/date_time_fields'
 require 'voom/presenters/dsl/components/mixins/attaches'
 require 'voom/presenters/dsl/invalid_presenter'
+require 'voom/presenters/pluggable'
 
 require 'voom/serializer'
 require 'voom/trace'
@@ -26,6 +27,8 @@ module Voom
         include Components::Mixins::TextFields
         include Components::Mixins::DateTimeFields
         include Components::Mixins::Attaches
+        extend Pluggable
+        include_plugins(:DSLComponents, :DSLHelpers)
 
         include Voom::Serializer
         include Voom::Trace
@@ -44,26 +47,27 @@ module Voom
           @components = []
           @footer = nil
           @namespace = namespace
+          @plugins = []
           add_global_helpers
+          initialize_plugins
         end
 
-        def page(title=nil, **attribs, &block)
+        def page(title = nil, **attribs, &block)
           return @page if locked?
           @page = Components::Page.new(parent: self, **attribs, &block)
         end
 
-        def header(title=nil, **attribs, &block)
+        def header(title = nil, **attribs, &block)
           return @header if locked?
           @header = Components::Header.new(parent: self, title: title,
                                            **attribs, &block)
         end
 
-        def drawer(name=nil, **attribs, &block)
+        def drawer(name = nil, **attribs, &block)
           return @drawer if locked?
           @drawer = Components::Drawer.new(parent: self, title: name,
                                            **attribs, &block)
         end
-
 
 
         def footer(**attribs, &block)
@@ -100,14 +104,22 @@ module Voom
           :presenter
         end
 
+        def plugin(*plugin_names)
+          @plugins.push(*plugin_names)
+        end
+
+        def plugins
+          return @plugins if locked?
+          return @plugins if @plugins
+        end
+        alias _plugins_ plugins
+
         private
 
         def deep_freeze
           IceNine.deep_freeze(self) if Presenters::Settings.config.presenters.deep_freeze
           self
         end
-
-        private
 
         def parent(for_type)
           nil
@@ -126,6 +138,10 @@ module Voom
           Presenters::Settings.config.presenters.helpers.each do |helper|
             self.helpers(helper)
           end
+        end
+
+        def initialize_plugins
+          self.class.include_plugins(:DSLComponents, :DSLHelpers, plugins: @plugins)
         end
 
         def lock!

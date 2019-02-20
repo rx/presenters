@@ -1,23 +1,22 @@
-import {VSnackbar} from '../snackbar.js';
+import {expandParam} from './action_parameter';
 
 export class VSnackbarEvent {
     constructor(options, params, event) {
         this.options = options;
-        this.params = params;
+        this.text = params.text;
         this.event = event;
-        let snackbarElem = document.querySelector('.mdc-snackbar');
+        const snackbarElem = document.querySelector('.mdc-snackbar');
         this.snackbar = snackbarElem.vComponent;
     }
 
     call(results) {
-        let message = this.params.text;
-        let snackbar = this.snackbar;
-        let promiseObj = new Promise(function (resolve) {
-            console.log("Showing snackbar");
+        const snackbar = this.snackbar;
+        const message = expandParam(results, this.text);
+        return new Promise(function(resolve) {
+            console.log('Showing snackbar');
             snackbar.display(message);
-            results.push({action:'snackbar', statusCode: 200});
+            results.push({action: 'snackbar', statusCode: 200});
             resolve(results);
         });
-        return promiseObj;
     }
 }

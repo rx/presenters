@@ -7,6 +7,9 @@ require 'voom/presenters/app'
 require 'voom/presenters/web_client/router'
 require 'voom/presenters/web_client/markdown_render'
 require 'voom/presenters/errors/unprocessable'
+require_relative 'component_renderer'
+require_relative 'plugin_headers'
+require_relative 'custom_css'
 
 module Voom
   module Presenters
@@ -22,6 +25,10 @@ module Voom
         end
 
         helpers do
+          def render_component(scope, comp, components, index)
+            ComponentRenderer.new(comp, render: method(:render), scope: scope, components: components, index: index).render
+          end
+
           def markdown(text)
             unless @markdown
               renderer = CustomRender.new(hard_wrap: false, filter_html: true)
@@ -91,19 +98,15 @@ module Voom
             end
           end
 
-          def custom_css
-            custom_css_path = Presenters::Settings.config.presenters.web_client.custom_css
-            Dir.glob(custom_css_path).map do |file|
-              _build_css_link_(file)
-            end.join("\n") if custom_css_path
+          def plugin_headers(pom)
+            PluginHeaders.new(pom: pom, render: method(:render)).render
           end
 
-          def _build_css_link_(path)
-            (<<~CSS)
-              <link rel="stylesheet" href="#{env['SCRIPT_NAME']}#{path.sub('public/','')}">
-            CSS
+          def custom_css(path)
+            CustomCss.new(path, root: Presenters::Settings.config.presenters.root).render
           end
         end
+
 
         get '/' do
           pass unless Presenters::App.registered?('index')

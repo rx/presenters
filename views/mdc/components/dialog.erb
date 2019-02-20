@@ -30,7 +30,7 @@
               class="v-has-errors v-form"
               style='width: 100%'
               onsubmit="javascript:void(0);return false;"
-              <%= erb :"components/event", :locals => {events: form.events, parent_id: form.id} %>>
+              <%= erb :"components/event", :locals => {comp: form, events: form.events, parent_id: form.id} %>>
       <% end %>
       <div class="v-errors">
         <div class="mdc-dialog__content" id="my-dialog-content">
