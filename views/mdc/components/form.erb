@@ -12,7 +12,7 @@
       data-input-tag="<%= comp.tag %>"
       <% end %>
       id="<%= comp.id %>"
-      class="v-has-errors v-form"
+      class="v-form"
       style='width: 100%'
       onsubmit="javascript:void(0);return false;"
       <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id} %>>

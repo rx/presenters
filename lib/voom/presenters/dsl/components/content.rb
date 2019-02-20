@@ -13,6 +13,7 @@ require 'voom/presenters/dsl/components/mixins/chips'
 require 'voom/presenters/dsl/components/mixins/icons'
 require 'voom/presenters/dsl/components/mixins/dialogs'
 require 'voom/presenters/dsl/components/mixins/file_inputs'
+require 'voom/presenters/dsl/components/mixins/avatar'
 
 module Voom
   module Presenters
@@ -31,9 +32,10 @@ module Voom
           include Mixins::Icons
           include Mixins::Dialogs
           include Mixins::FileInputs
+          include Mixins::Avatar
 
-          attr_reader :hidden, :float, :components, :shows_errors, :width
-         
+          attr_reader :hidden, :float, :components, :shows_errors, :width, :position
+
           def initialize(**attribs_, &block)
             super(type: :content, **attribs_, &block)
             @components = []
@@ -41,6 +43,7 @@ module Voom
             @float = attribs.delete(:float){false}
             @width = attribs.delete(:width){nil}
             @shows_errors = attribs.delete(:shows_errors){false}
+            @position = Array(attribs.delete(:position)).compact
             expand!
           end
         end

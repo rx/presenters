@@ -8,19 +8,33 @@ module Voom
       module Components
         class FileInput < Input
           include Mixins::Append
+          include Mixins::Buttons
           include Mixins::Grids
 
-          attr_reader :button_label, :input_label, :accept, :preview
+          attr_reader :accept, :preview, :components
 
           def initialize(**attribs_, &block)
             super(type: :file_input, **attribs_, &block)
 
-            @button_label = attribs.delete(:button_label) { 'Choose a file' }
-            @input_label = attribs.delete(:input_label) { 'No file selected' }
             @accept =  attribs.delete(:accept) { nil }
             @preview = attribs.delete(:preview) { nil }
             @components = []
             expand!
+            default_button
+          end
+
+          def value(value=nil)
+            return @value if locked?
+            @value = value
+          end
+
+          def hint(hint=nil)
+            return @hint if locked?
+            @hint = hint
+          end
+          private
+          def default_button
+            button(icon: :cloud_upload) unless components.any?
           end
         end
       end

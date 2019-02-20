@@ -1,7 +1,8 @@
 <div class="v-rich-text-area-container v-input"
      <% if comp.tag %>
      data-input-tag="<%= comp.tag %>"
-     <% end %>>
+     <% end %>
+     data-original-value="<%=comp.value%>">
   <label for="<%= comp.id %>"><%= expand_text(comp.label) %></label>
   <div class="v-rich-text-area"
        id="<%= comp.id %>"
@@ -9,8 +10,8 @@
               <%= "height:#{comp.height};" %>"
        data-name="<%= comp.name %>"
        <%= "data-placeholder='#{comp.placeholder}'" if comp.placeholder %>>
+    <%= comp.value %>
   </div>
-  <input type="hidden" name="<%= comp.name %>" value="<%= comp.value %>"/>
   <span class="mdl-textfield__error <% if comp.error %> is-invalid<%end%>" ><%= comp.error || comp.hint%></span>
   <p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg" aria-hidden="true">
     <%= comp.error || comp.hint %>

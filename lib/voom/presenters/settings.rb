@@ -57,7 +57,7 @@ unless defined?(Voom::Presenters::Settings)
                 setting :level, 6
               end
               setting :rich_text_area do
-                setting :rows, 25
+                setting :rows, 6
               end
             end
           end

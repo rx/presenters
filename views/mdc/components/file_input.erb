@@ -1,17 +1,10 @@
 <% if comp %>
-<div id="<%= comp.id %>" class="v-file-input mdc-text-field mdc-text-field--outlined mdc-text-field--upgraded"
-     style="width: 100%"
+<div id="<%= comp.id %>" class="v-input v-file-input"
      data-preview=<%= JSON.generate(Array(comp.preview)) %>
      data-accept="<%= comp.accept %>"
+     data-original-value="<%=comp.value%>"
      <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id }%>>
   <input id="<%= comp.id %>-input" name="<%= comp.name %>" type="file" accept="<%= comp.accept %>">
-  <button class="mdc-button"><%= comp.button_label %></button>
-  <label for="<%= comp.id %>-input"><%= comp.input_label %></label>
-  <div class="mdc-notched-outline">
-    <svg>
-      <path class="mdc-notched-outline__path"/>
-    </svg>
-  </div>
-  <div class="mdc-notched-outline__idle"></div>
+  <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
 </div>
 <% end %>

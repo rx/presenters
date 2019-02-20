@@ -6,7 +6,7 @@
       <% if comp.tag %>
       data-input-tag="<%= comp.tag %>"
       <% end %>
-      class="mdl-stepper v-stepper v-has-errors
+      class="mdl-stepper v-stepper
             <%= ' mdl-stepper--horizontal' if horizontal %>
             <%= ' mdl-stepper--linear' if comp.linear %>">
     <% for step in comp.steps %>

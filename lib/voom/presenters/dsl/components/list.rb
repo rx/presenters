@@ -14,7 +14,7 @@ module Voom
           include Mixins::Append
           include Mixins::Attaches
           
-          attr_reader :lines, :lines_only, :color, :border, :selectable, :total_lines
+          attr_reader :lines, :lines_only, :color, :border, :selectable, :total_lines, :dense
           attr_accessor :components
           
           def initialize(**attribs_, &block)
@@ -24,6 +24,7 @@ module Voom
 
             @lines_only = attribs.delete(:lines_only) { false }
             @selectable = attribs.delete(:selectable) { false }
+            @dense = attribs.delete(:dense) { false }
             @lines = []
             @components = []
             @total_lines = attribs.delete(:total_lines) || 0

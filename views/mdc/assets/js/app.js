@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'compatibility.errorMessage',
             'Unsupported browser!',
         );
+
         document.body.innerHTML = `<p>${errorMessage}</p>`;
 
         return;

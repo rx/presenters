@@ -51,10 +51,19 @@ export class VFileInput extends eventHandlerMixin(VBaseComponent) {
         previewComp.preview(e.target.result, this.accepts, this.file);
     }
 
+  // From an example based on: https://www.quirksmode.org/dom/inputfile.html
+  handleFileSelection() {
+    if (!this.input.value) return;
+
+    var value = this.input.value.replace(/^.*[\\\/]/, '');
+    this.label.innerText = value;
+  }
+
+  isDirty() {
+    return this.input.value != this.element.dataset.originalValue;
+  }
     // From an example based on: https://www.quirksmode.org/dom/inputfile.html
     handleFileSelection(e) {
-        this.file = e.target.files[0];
-        this.label.innerText = this.file.name;
         this.previewComponent(e);
     }
 }

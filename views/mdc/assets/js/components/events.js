@@ -4,6 +4,7 @@ import {VReplaces} from './events/replaces';
 import {VDialog} from './events/dialog';
 import {VErrors} from './events/errors';
 import {VToggleVisibility} from './events/toggle_visibility';
+import {VPromptIfDirty} from './events/prompt_if_dirty';
 import {VSnackbarEvent} from './events/snackbar';
 import {VNavigates} from './events/navigates';
 import {VClears} from './events/clears';
@@ -50,13 +51,19 @@ export class VEvents {
                 typeof responseURL !== 'undefined') {
                 window.location = responseURL;
             }
-
         }).catch(function(results) {
             console.log('If you got here it may not be what you think:',
                 results);
 
-            var result = results.pop();
-            new VErrors(event).displayErrors(result);
+            let result = results;
+
+            if (typeof results.pop === 'function') {
+                result = results.pop();
+            }
+
+            if (!result.squelch) {
+                new VErrors(event).displayErrors(result);
+            }
         });
     }
 
@@ -81,6 +88,8 @@ export class VEvents {
                 return new VDialog(options, params, event);
             case 'toggle_visibility':
                 return new VToggleVisibility(options, params, event);
+            case 'prompt_if_dirty':
+                return new VPromptIfDirty(options, params, event);
             case 'remove':
                 return new VRemoves(options, params, event);
             case 'snackbar':

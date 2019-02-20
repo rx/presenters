@@ -1,8 +1,9 @@
-<div class="mdc-form-field">
+<div class="v-form-field mdc-form-field">
   <div id="<%= comp.id %>"
        <% if comp.tag %>
        data-input-tag="<%= comp.tag %>"
        <% end %>
+       data-original-value="<%=comp.checked%>"
        class="v-radio mdc-radio v-input">
     <input class="mdc-radio__native-control"
            type="radio"

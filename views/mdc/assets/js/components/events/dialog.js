@@ -7,17 +7,36 @@ export class VDialog {
 
     call(results) {
         const dialog = document.querySelector('#' + this.dialogId);
-        if (dialog && dialog.vComponent) {
+
+        if (!(dialog && dialog.vComponent)) {
+            const err = new Error(
+                `Unable to find dialog ${this.dialogId}. `
+                + 'Did you forget to attach it?'
+            );
+
+            results.push({
+                action: 'dialog',
+                contentType: 'v/errors',
+                content: {exception: err.message},
+            });
+
+            return new Promise((_, reject) => reject(results));
+        }
+
+        return new Promise(function(resolve, reject) {
+            const comp = dialog.vComponent.mdcComponent;
+
+            comp.listen('MDCDialog:closed', (event) => {
+                results.push({
+                    action: 'dialog',
+                    statusCode: 200,
+                    dialogAction: event.detail.action,
+                });
+
+                resolve(results);
+            });
+
             dialog.vComponent.open();
-        }
-        else {
-            console.error('Unable to find dialog with id: ' +
-                this.dialogId + '. Usually this means you forgot ' +
-                'to attach it to the currently rendered page.');
-        }
-        return new Promise(function(resolve) {
-            results.push({action: 'dialog', statusCode: 200});
-            resolve(results);
         });
     }
 }

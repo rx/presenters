@@ -1,47 +1,49 @@
 <% if comp
-     leading_icon = comp.icon && comp.icon.position.select{|p| eq(p, :left)}.any?
-     trailing_icon = comp.icon && comp.icon.position.select{|p| eq(p, :right)}.any?
+     leading_icon = comp.icon && comp.icon.position.select {|p| eq(p, :left)}.any?
+     trailing_icon = comp.icon && comp.icon.position.select {|p| eq(p, :right)}.any?
 %>
   <div id="<%= comp.id %>"
        <% if comp.tag %>
        data-input-tag="<%= comp.tag %>"
        <% end %>
+       data-original-value="<%=comp.value%>"
        class="v-input v-text-field mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-leading-icon' if leading_icon %>
             <%= 'mdc-text-field--with-trailing-icon' if trailing_icon %>
             <%= 'mdc-text-field--disabled' if comp.disabled %>
             <%= 'is-invalid is-dirty' if comp.error %>"
-            style="<%= 'width:100%' if comp.full_width %>">
+       style="<%= 'width:100%' if comp.full_width %>">
 
-  <input id="<%= comp.id %>-input"
-         name="<%= comp.name %>"
-         type="<%= comp.password ? 'password' : 'text' %>"
-         value="<%= comp.value %>"
-         class="mdc-text-field__input"
-         aria-controls="<%= comp.id %>-input-helper-text"
-         <%= 'required' if comp.required %>
-         <%= 'invalid' if comp.error %>
-         <%= "pattern='#{comp.pattern}'" if comp.pattern %>
-         autocomplete="<%= comp.auto_complete ? 'on' : 'off'%>"
-         list="<%= comp.id %>-list"
-         <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id:  "#{comp.id}-input"} %>>
+    <input id="<%= comp.id %>-input"
+           name="<%= comp.name %>"
+           type="<%= comp.password ? 'password' : 'text' %>"
+           value="<%= comp.value %>"
+           class="mdc-text-field__input"
+           aria-controls="<%= comp.id %>-input-helper-text"
+           <%= 'required' if comp.required %>
+           <%= 'invalid' if comp.error %>
+           <%= "pattern='#{comp.pattern}'" if comp.pattern %>
+           autocomplete="<%= comp.auto_complete ? 'on' : 'off' %>"
+           list="<%= comp.id %>-list"
+           <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id:  "#{comp.id}-input"} %>>
 
-  <label class="mdc-floating-label" for="<%= comp.id %>-input"><%= comp.label %></label>
-  <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"} %>
-  <div class="mdc-notched-outline">
-    <svg>
-      <path class="mdc-notched-outline__path"/>
-    </svg>
+    <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"} %>
+
+    <div class="mdc-notched-outline">
+      <div class="mdc-notched-outline__leading"></div>
+      <div class="mdc-notched-outline__notch">
+        <label for="<%= comp.id %>-input" class="mdc-floating-label"><%= comp.label %></label>
+      </div>
+      <div class="mdc-notched-outline__trailing"></div>
+    </div>
+    <datalist id="<%= comp.id %>-list">
+    </datalist>
   </div>
-  <div class="mdc-notched-outline__idle"></div>
-  <datalist id="<%= comp.id %>-list">
-  </datalist>
-</div>
-<% if comp.error || comp.hint %>
-<p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg" aria-hidden="true">
-  <%= comp.error || comp.hint %>
-</p>
-<% end %>
-<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+  <% if comp.error || comp.hint %>
+    <p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg" aria-hidden="true">
+      <%= comp.error || comp.hint %>
+    </p>
+  <% end %>
+  <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 <% end %>
 

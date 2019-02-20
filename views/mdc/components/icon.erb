@@ -20,6 +20,8 @@
 %>
   <i id="<%= comp.id %>"
      class="<%= class_name %> <%= icon_class_name %> <%= size_class %>
+     class="<%= class_name %> <%= icon_class_name %>
+            <%= 'v-hidden' if comp.respond_to?(:hidden) && comp.hidden %>
             <%= 'v-actionable' if comp.events %>
             <%= color_classname(comp) %>"
       <%= "data-#{data}" if data %>

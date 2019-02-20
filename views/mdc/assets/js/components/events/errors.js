@@ -121,6 +121,7 @@ export class VErrors {
 
         // add the newly created element and its content into the DOM
         if (errorsDiv) {
+            errorsDiv.scrollIntoView();
             errorsDiv.parentElement.insertBefore(newDiv, errorsDiv);
             return true;
         } else {

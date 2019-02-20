@@ -1,11 +1,15 @@
-<div id="<%= comp.id %>"
+<% if comp
+     position_classes = comp.position.map {|p| "v-content-position-#{p}"}.join(' ')
+%>
+  <div id="<%= comp.id %>"
      <% if comp.tag %>
      data-input-tag="<%= comp.tag %>"
      <% end %>
      class="v-content
+            <%= position_classes %>
             <%= 'v-hidden' if comp.hidden %>
-            <%= comp.float  ? 'v-content--float' : 'v-content--relative'%>
-               "
+            <%= comp.float  ? 'v-content--float' : 'v-content--relative'%>"
+     <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
      style="<% if comp.width %>width: <%= comp.width %><% end %>">
   <% if comp.shows_errors %>
     <div class="v-errors">
@@ -15,3 +19,4 @@
     </div>
   <% end %>
 </div>
+<% end %>

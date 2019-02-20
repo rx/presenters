@@ -15,16 +15,39 @@ export class VBase extends VUrls {
         return document.getElementById(this.options.__parent_id__);
     }
 
-    inputValues(form) {
-        let params = [];
+    taggedInputs() {
+        const inputTag = this.options.input_tag;
 
-        // If tagged input is asked for. Fetch all the matching tag elements and then call any bound components
+        if (!inputTag) {
+            return [];
+        }
+
+        const selector = `[data-input-tag="${inputTag}"]`;
+        const inputs = document.querySelectorAll(selector);
+
+        if (inputs.length < 1) {
+            console.warn(
+                `input_tag ${inputTag} matched 0 elements. Are you sure`
+                + 'you\'ve specified the correct value?'
+            );
+        }
+
+        return inputs;
+    }
+
+    inputValues(form) {
+        const params = [];
+
+        // If tagged input is asked for, fetch all the matching tag elements
+        // and then call any bound components:
         if (this.options.input_tag !== undefined) {
-            var taggedInputs = document.querySelectorAll('[data-input-tag=' + this.options.input_tag + ']');
-            for (let input of taggedInputs) {
-                if (input.vComponent && typeof input.vComponent.prepareSubmit === 'function') {
-                    input.vComponent.prepareSubmit(params);
-                }
+            const inputs = Array.from(this.taggedInputs())
+                .filter((input) => input.vComponent)
+                .map((input) => input.vComponent)
+                .filter((comp) => typeof comp.prepareSubmit === 'function');
+
+            for (const component of inputs) {
+                component.prepareSubmit(params);
             }
         }
         // Let input components push parameters
@@ -47,5 +70,15 @@ export class VBase extends VUrls {
             errors = comp.validate();
         }
         return errors;
+    }
+
+    closestContainer() {
+        const comp = this.component();
+
+        if (!(comp && comp.element)) {
+            return null;
+        }
+
+        return comp.element.closest('[data-is-container="true"]');
     }
 }

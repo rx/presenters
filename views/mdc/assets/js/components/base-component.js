@@ -1,3 +1,5 @@
+import {VErrors} from "./events/errors";
+
 export class VBaseComponent {
     constructor(element, mdcComponent) {
         this.element = element;
@@ -6,6 +8,12 @@ export class VBaseComponent {
 
     validate(formData) {
         return true;
+    }
+    show() {}
+    hide() {}
+
+    clearErrors() {
+        new VErrors().clearErrors();
     }
 }
 

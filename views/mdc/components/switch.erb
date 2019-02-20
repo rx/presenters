@@ -1,11 +1,12 @@
 <% class_name = '' unless local_variables.include? :class_name
 %>
 
-<div class="mdc-form-field">
+<div class="v-form-field mdc-form-field">
   <div id="<%= comp.id %>"
        <% if comp.tag %>
        data-input-tag="<%= comp.tag %>"
        <% end %>
+       data-original-value="<%=comp.checked%>"
        class="v-switch v-input mdc-switch
       <%= 'mdc-switch--disabled' if comp.disabled %>
       <%= class_name %>">

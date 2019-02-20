@@ -23,6 +23,7 @@ import {initGrid} from './grid';
 import {initTabBars} from './tab-bars';
 import {initTables} from './data-tables';
 import {initFileInputs} from './file-inputs';
+import {initFormFields} from './form-fields';
 import {initImages} from './images';
 import {initTypogrophy} from './typogrophy';
 import {initPlugins} from './plugins';
@@ -53,6 +54,7 @@ export function initialize() {
     initTabBars();
     initTables();
     initFileInputs();
+    initFormFields();
     initImages();
     initTypogrophy();
     initPlugins();

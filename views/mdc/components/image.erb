@@ -2,6 +2,15 @@
      position_classes = comp.position.map {|p| "v-image-position-#{p}"}.join(' ') %>
 <img id="<%= comp.id %>"
      class="v-image <%=position_classes%>"
-     src="<%= comp.url %>" height="<%= comp.height %>" width="<%= comp.width %>" border="0" alt="">
+     src="<%= comp.url %>"
+     <% if comp.height %>
+     height="<%= comp.height %>"
+     <% end %>
+     <% if comp.width %>
+     width="<%= comp.width %>"
+     <% end %>
+     alt=""
+     border="<%= comp.border %>"
+     style="<%= "border-radius: #{comp.border_radius};" if comp.border_radius %>">
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 <% end %>

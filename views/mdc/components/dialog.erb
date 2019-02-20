@@ -16,42 +16,44 @@
   <div class="mdc-dialog__container">
     <div class="mdc-dialog__surface"
          style="<%= "width: #{comp.width}" if comp.width %>
-                <%= "height: #{comp.height}" if comp.height %>">
+           <%= "height: #{comp.height}" if comp.height %>">
       <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
       <% if comp.title %>
         <h2 class="mdc-dialog__title" id="my-dialog-title"><%= expand_text(comp.title.text) %></h2>
       <% end %>
-      <% if forms.size == 1 %>
-        <form role="form"
-              <% if form.tag %>
-              data-input-tag="<%= form.tag %>"
-              <% end %>
-              id="<%= form.id %>"
-              class="v-has-errors v-form"
-              style='width: 100%'
-              onsubmit="javascript:void(0);return false;"
-              <%= erb :"components/event", :locals => {comp: form, events: form.events, parent_id: form.id} %>>
-      <% end %>
-      <div class="v-errors">
-        <div class="mdc-dialog__content" id="my-dialog-content">
+
+      <div class="mdc-dialog__content" id="my-dialog-content">
+        <div class="v-errors">
+          <% if forms.size == 1 %>
+            <form role="form"
+                  <% if form.tag %>
+                  data-input-tag="<%= form.tag %>"
+                  <% end %>
+                  id="<%= form.id %>"
+                  class="v-form"
+                  style='width: 100%'
+                  onsubmit="javascript:void(0);return false;"
+                  <%= erb :"components/event", :locals => {comp: form, events: form.events, parent_id: form.id} %>>
+          <% end %>
           <% components.each do |dcomp| %>
             <%= erb :"components/#{dcomp.type}", :locals => {:comp => dcomp} %>
           <% end %>
+          <% if forms.size == 1 %>
+            </form>
+          <% end %>
+
+          <% if buttons.any? %>
+            <footer class="mdc-dialog__actions">
+              <% buttons.each do |button| %>
+                <%= erb :"components/button",
+                        :locals => {:comp => button,
+                                    :class_name => "mdc-dialog__button",
+                                    :data_attributes => "data-mdc-dialog-action='#{button.id}'"} %>
+              <% end %>
+            </footer>
+          <% end %>
         </div>
-        <% if buttons.any? %>
-          <footer class="mdc-dialog__actions">
-            <% buttons.each do |button| %>
-              <%= erb :"components/button",
-                      :locals => {:comp => button,
-                                  :class_name => "mdc-dialog__button",
-                                  :data_attributes => "data-mdc-dialog-action='#{button.id}'"} %>
-            <% end %>
-          </footer>
-        <% end %>
       </div>
-      <% if forms.size == 1 %>
-        </form>
-      <% end %>
     </div>
   </div>
   <div class="mdc-dialog__scrim"></div>
