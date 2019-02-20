@@ -19,7 +19,7 @@ $v-expansion-bg: #fff;
     &::after {
       font-family: "Material Icons";
       content: "\e313";
-      font-size: 24px;
+      font-size: $mdc-headline5-font-size;
       font-weight: normal;
       font-style: normal;
       display: inline-flex;
@@ -118,7 +118,7 @@ $v-expansion-bg: #fff;
   align-items: center;
   height: 48px;
   padding: 0 24px;
-  font-size: 15px;
+  font-size: $mdc-subtitle1-font-size;
   font-weight: 400;
   outline: none;
 

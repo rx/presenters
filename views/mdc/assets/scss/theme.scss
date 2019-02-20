@@ -12,6 +12,23 @@ $v-drawer-color: #71818c;
 
 $v-title-background: #EBF0F4;
 
+// Font size variables for size and naming
+// consistency with default Material sizes
+// See @material/typography
+$mdc-headline1-font-size: 6rem;      // 96sp
+$mdc-headline2-font-size: 3.75rem;   // 60sp
+$mdc-headline3-font-size: 3rem;      // 48px
+$mdc-headline4-font-size: 2.125rem;  // 34sp
+$mdc-headline5-font-size: 1.5rem;    // 24sp
+$mdc-headline6-font-size: 1.25rem;   // 20sp
+$mdc-subtitle1-font-size: 1rem;      // 16sp
+$mdc-subtitle2-font-size: .875rem;   // 14sp
+$mdc-body1-font-size:     1rem;      // 16sp
+$mdc-body2-font-size:     .875rem;   // 14sp
+$mdc-caption-font-size:   .75rem;    // 12sp
+$mdc-button-font-size:    .875rem;   // 14sp
+$mdc-overline-font-size:  .75rem;    // 12sp
+
 // Variables for matching Material blue-gray-orange theme
 $v-input-border-radius: 4px;
 $v-input-border-color: rgba(0, 0, 0, 0.24);
@@ -34,9 +51,9 @@ h1.v-page-title {
   color: $v-drawer-color;
   margin: 0px;
   padding: 24px;
-  font-size: 30px;
+  font-size: $mdc-headline4-font-size;
   i {
-    font-size: 30px;
+    font-size: $mdc-headline4-font-size;
     vertical-align: middle;
   }
 }

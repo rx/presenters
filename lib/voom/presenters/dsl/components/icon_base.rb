@@ -12,10 +12,10 @@ module Voom
           def initialize(**attribs_, &block)
             super(type: :icon,
                   **attribs_, &block)
-            @icon = attribs.delete(:icon)
+            @icon     = attribs.delete(:icon)
             @color    = attribs.delete(:color)
-            @size    = attribs.delete(:size)
-            @position    = Array(attribs.delete(:position)).compact
+            @size     = attribs.delete(:size){ :default }
+            @position = Array(attribs.delete(:position)).compact
           end
         end
       end

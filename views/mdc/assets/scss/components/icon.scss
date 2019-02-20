@@ -31,4 +31,23 @@
   color: $mdc-theme-secondary;
 }
 
+.v-icon-size-x-small {
+  font-size: $mdc-subtitle1-font-size;
+}
+.v-icon-size-small {
+  font-size: $mdc-headline6-font-size;
+}
+.v-icon-size-default, .v-icon-size-medium {
+  font-size: $mdc-headline5-font-size;
+}
+.v-icon-size-large {
+  font-size: $mdc-headline4-font-size;
+}
+.v-icon-size-x-large {
+  font-size: $mdc-headline3-font-size;
+}
+.v-icon-size-xx-large {
+  font-size: $mdc-headline1-font-size;
+}
+
 
