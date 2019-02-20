@@ -29,7 +29,7 @@ module Voom
         private
 
         def initialize_plugins
-          @plugins = @pom.send(:_plugins_)
+          @plugins = @pom.send(:plugins)
           self.class.include_plugins(:WebClientComponents, plugins: @plugins)
         end
       end

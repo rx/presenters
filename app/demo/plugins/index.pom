@@ -1,12 +1,17 @@
 Voom::Presenters.define(:index, namespace: :plugins) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
-  attach :events_drawer
+  attach :plugin_drawer
   plugin :foo
 
   indented_grid do
-    display 'Plugins'
+    display 'Sample Plugin'
     body 'You can extend the presenters by writing a plugin.'
+    body 'Plugins can fully extend and override built in presenter behavior.'
+    blank
+    icon 'fa-hand-point-left', position: :left
+    subheading 'Select a plugin to get started'
+    blank
     body 'For a complete example checkout the sample '\
                '[foo_presenter_plugin](https://github.com/rx/foo_presenter_plugin).'
     foo(random_fact)

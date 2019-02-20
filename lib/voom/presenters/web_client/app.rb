@@ -103,7 +103,7 @@ module Voom
           end
 
           def custom_css(path)
-            CustomCss.new(path, root: self.class.root).render
+            CustomCss.new(path, root: Presenters::Settings.config.presenters.root).render
           end
         end
 

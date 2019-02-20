@@ -49,17 +49,6 @@ module Voom
                                **attribs, &block)
           end
 
-          # def overflow_menu(**attribs, &block)
-          #   return @overflow_menu if locked?
-          #   icon = attribs.delete(:icon){:more_vert}
-          #   position = attribs.delete(:position){ [:top, :right]}
-          #   @overflow_menu = Components::Button.new(parent: self,
-          #                                                    icon: icon,
-          #                                                    position: position,
-          #                                                    context: context,
-          #                                                    **attribs, &block)
-          # end
-
           class Media < Base
             attr_reader :height, :width, :color
 

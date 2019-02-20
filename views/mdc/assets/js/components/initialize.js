@@ -24,6 +24,8 @@ import {initTabBars} from './tab-bars';
 import {initTables} from './data-tables';
 import {initFileInputs} from './file-inputs';
 import {initFormFields} from './form-fields';
+import {initImages} from './images';
+import {initTypogrophy} from './typogrophy';
 import {initPlugins} from './plugins';
 
 export function initialize() {
@@ -53,6 +55,8 @@ export function initialize() {
     initTables();
     initFileInputs();
     initFormFields();
+    initImages();
+    initTypogrophy();
     initPlugins();
     // This needs to be last, because it relies on the components installed above.
     initEvents();

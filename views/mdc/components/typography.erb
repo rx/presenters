@@ -2,7 +2,7 @@
    position_classes = comp.position.map {|p| "v-typography-position-#{p}"}.join(' ')
 %>
 <div id="<%= comp.id %>"
-     class="mdc-typography--<%= "#{type}#{comp.level}" %>
+     class="v-typography mdc-typography--<%= "#{type}#{comp.level}" %>
            <%= class_name %>
            <%= position_classes %>
            <%= 'v-actionable' if comp.events %>"

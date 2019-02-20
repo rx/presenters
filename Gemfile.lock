@@ -4,6 +4,12 @@ GIT
   specs:
     foo_presenter_plugin (0.0.1)
 
+GIT
+  remote: git://github.com/rx/image_crop_presenter_plugin.git
+  revision: 7364b6d427dd80b16b64cd5734439b91d1563c9b
+  specs:
+    image_crop_presenter_plugin (0.1.0)
+
 PATH
   remote: .
   specs:
@@ -109,6 +115,7 @@ DEPENDENCIES
   bundler (~> 1.13)
   foo_presenter_plugin!
   gem-release (~> 2.0)
+  image_crop_presenter_plugin!
   pry
   rack (>= 2.0.6)
   rack-test (~> 0.8)

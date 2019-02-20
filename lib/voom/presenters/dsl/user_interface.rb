@@ -47,28 +47,27 @@ module Voom
           @components = []
           @footer = nil
           @namespace = namespace
-          @__plugins__ = []
+          @plugins = []
           add_global_helpers
           initialize_plugins
         end
 
-        def page(title=nil, **attribs, &block)
+        def page(title = nil, **attribs, &block)
           return @page if locked?
           @page = Components::Page.new(parent: self, **attribs, &block)
         end
 
-        def header(title=nil, **attribs, &block)
+        def header(title = nil, **attribs, &block)
           return @header if locked?
           @header = Components::Header.new(parent: self, title: title,
                                            **attribs, &block)
         end
 
-        def drawer(name=nil, **attribs, &block)
+        def drawer(name = nil, **attribs, &block)
           return @drawer if locked?
           @drawer = Components::Drawer.new(parent: self, title: name,
                                            **attribs, &block)
         end
-
 
 
         def footer(**attribs, &block)
@@ -106,8 +105,14 @@ module Voom
         end
 
         def plugin(*plugin_names)
-          @__plugins__.push(*plugin_names)
+          @plugins.push(*plugin_names)
         end
+
+        def plugins
+          return @plugins if locked?
+          return @plugins if @plugins
+        end
+        alias _plugins_ plugins
 
         private
 
@@ -124,10 +129,6 @@ module Voom
           return @helpers if @helpers
         end
 
-        def _plugins_
-          return @__plugins__ if @__plugins__
-        end
-
         def yield_block
           return @_yield_block_ if @_yield_block_
           @parent.send(:yield_block) if @parent
@@ -140,7 +141,7 @@ module Voom
         end
 
         def initialize_plugins
-          self.class.include_plugins(:DSLComponents, :DSLHelpers, plugins: @__plugins__)
+          self.class.include_plugins(:DSLComponents, :DSLHelpers, plugins: @plugins)
         end
 
         def lock!
