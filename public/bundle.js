@@ -4497,7 +4497,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__file_inputs__ = __webpack_require__(404);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__form_fields__ = __webpack_require__(405);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__images__ = __webpack_require__(407);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__typogrophy__ = __webpack_require__(408);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__typography__ = __webpack_require__(408);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__plugins__ = __webpack_require__(409);
 
 
@@ -4557,7 +4557,7 @@ function initialize() {
     Object(__WEBPACK_IMPORTED_MODULE_24__file_inputs__["a" /* initFileInputs */])();
     Object(__WEBPACK_IMPORTED_MODULE_25__form_fields__["a" /* initFormFields */])();
     Object(__WEBPACK_IMPORTED_MODULE_26__images__["a" /* initImages */])();
-    Object(__WEBPACK_IMPORTED_MODULE_27__typogrophy__["a" /* initTypogrophy */])();
+    Object(__WEBPACK_IMPORTED_MODULE_27__typography__["a" /* initTypography */])();
     Object(__WEBPACK_IMPORTED_MODULE_28__plugins__["a" /* initPlugins */])();
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_4__events__["b" /* initEvents */])();
@@ -80990,6 +80990,8 @@ var VHiddenField = function (_VBaseComponent) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(10);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -81011,8 +81013,46 @@ var VContent = function (_eventHandlerMixin) {
     function VContent(element, mdcComponent) {
         _classCallCheck(this, VContent);
 
-        return _possibleConstructorReturn(this, (VContent.__proto__ || Object.getPrototypeOf(VContent)).call(this, element, mdcComponent));
+        var _this = _possibleConstructorReturn(this, (VContent.__proto__ || Object.getPrototypeOf(VContent)).call(this, element, mdcComponent));
+
+        if (element.dataset.float === 'true') {
+            VContent.hideOnClickOutside(element);
+            VContent.hideOnEscape(element);
+        }
+        return _this;
     }
+
+    _createClass(VContent, null, [{
+        key: 'hideOnClickOutside',
+        value: function hideOnClickOutside(element) {
+            var outsideClickListener = function outsideClickListener(event) {
+                // or use: event.target.closest(selector) === null
+                if (!element.contains(event.target) && VContent.isVisible(element)) {
+                    element.classList.add('v-hidden');
+                }
+            };
+
+            document.addEventListener('click', outsideClickListener);
+        }
+    }, {
+        key: 'hideOnEscape',
+        value: function hideOnEscape(element) {
+            var escapeKeyListener = function escapeKeyListener(event) {
+                // or use: event.target.closest(selector) === null
+                if (event.which === 27) {
+                    element.classList.add('v-hidden');
+                }
+            };
+
+            document.addEventListener('keydown', escapeKeyListener);
+        }
+    }, {
+        key: 'isVisible',
+        value: function isVisible(elem) {
+            // source (2018-03-11): https://github.com/jquery/jquery/blob/master/src/css/hiddenVisibleSelectors.js
+            return !!elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
+        }
+    }]);
 
     return VContent;
 }(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_container__["a" /* VBaseContainer */]));
@@ -87777,15 +87817,15 @@ var VFileInput = function (_eventHandlerMixin) {
             var _loop = function _loop(previewId) {
                 var elem = document.getElementById(previewId);
                 if (elem && elem.vComponent && elem.vComponent.preview) {
-                    var filename = e.target.files[0];
+                    _this2.file = e.target.files[0];
                     var fr = new FileReader();
                     fr.onload = function (e) {
                         _this2.previewSelection(e, elem.vComponent);
                     };
                     if (_this2.accept.startsWith('text')) {
-                        fr.readAsText(filename);
+                        fr.readAsText(_this2.file);
                     } else {
-                        fr.readAsDataURL(filename);
+                        fr.readAsDataURL(_this2.file);
                     }
                 } else {
                     console.log('WARNING: Unable to find previewable element with id: ' + previewId + '\n1) Make sure you have an element with that id on your page\n2) Make sure the Componenet or Plugin supports the preview option for the request mime type');
@@ -90435,8 +90475,8 @@ var VImage = function (_eventHandlerMixin) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = initTypogrophy;
-/* unused harmony export VTypogrophy */
+/* harmony export (immutable) */ __webpack_exports__["a"] = initTypography;
+/* unused harmony export VTypography */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(10);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -90451,21 +90491,21 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-function initTypogrophy() {
-    console.log('\tTypogrophy');
-    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])('.v-typography', VTypogrophy);
+function initTypography() {
+    console.log('\tTypography');
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])('.v-typography', VTypography);
 }
 
-var VTypogrophy = function (_eventHandlerMixin) {
-    _inherits(VTypogrophy, _eventHandlerMixin);
+var VTypography = function (_eventHandlerMixin) {
+    _inherits(VTypography, _eventHandlerMixin);
 
-    function VTypogrophy(element) {
-        _classCallCheck(this, VTypogrophy);
+    function VTypography(element) {
+        _classCallCheck(this, VTypography);
 
-        return _possibleConstructorReturn(this, (VTypogrophy.__proto__ || Object.getPrototypeOf(VTypogrophy)).call(this, element));
+        return _possibleConstructorReturn(this, (VTypography.__proto__ || Object.getPrototypeOf(VTypography)).call(this, element));
     }
 
-    _createClass(VTypogrophy, [{
+    _createClass(VTypography, [{
         key: 'preview',
         value: function preview(result, acceptsMimeTypes, file) {
             this.element.innerText = file.name;
@@ -90477,7 +90517,7 @@ var VTypogrophy = function (_eventHandlerMixin) {
         }
     }]);
 
-    return VTypogrophy;
+    return VTypography;
 }(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]));
 
 /***/ }),
