@@ -28,10 +28,13 @@ unless defined?(Voom::Presenter::Railtie)
         }
 
         WATCH = -> {
-          filewatcher = Filewatcher.new(Rails.root.join('app', '**', '*.pom'))
+          return unless Rails.env.development?
+          path = Rails.root.join('app', '**', '*.pom')
+          puts "Watching #{path} for changes..."
+          filewatcher = Filewatcher.new(path)
           Thread.new(filewatcher) do |fw|
             fw.watch do |f|
-              puts "Updated file: #{f}"
+              puts "Detected updated POM file: #{f}"
               BOOT.call
             end
           end
@@ -40,7 +43,7 @@ unless defined?(Voom::Presenter::Railtie)
         config.after_initialize do
           BOOT.call
           require_dependency Voom::Presenter::Engine.root.join('lib', 'voom-presenters').to_s
-          WATCH.call # if DEV
+          WATCH.call
         end
       end
     end
