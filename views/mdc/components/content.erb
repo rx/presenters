@@ -2,6 +2,7 @@
      position_classes = comp.position.map {|p| "v-content-position-#{p}"}.join(' ')
 %>
   <div id="<%= comp.id %>"
+       data-float="<%= comp.float %>"
      <% if comp.tag %>
      data-input-tag="<%= comp.tag %>"
      <% end %>
