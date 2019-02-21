@@ -13,7 +13,7 @@ Voom::Presenters.define(:floating_card) do
       end
     end
     content id: :card, hidden: true, float: true do
-      card do
+      card width: '330px' do
         media do
           title "Hi I'm floating"
           button icon: :close do
