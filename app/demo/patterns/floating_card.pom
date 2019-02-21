@@ -12,7 +12,7 @@ Voom::Presenters.define(:floating_card) do
         toggle_visibility :card
       end
     end
-    content id: :card, hidden: true do
+    content id: :card, hidden: true, float: true do
       card do
         media do
           title "Hi I'm floating"
