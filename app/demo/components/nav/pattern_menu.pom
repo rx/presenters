@@ -1,7 +1,7 @@
 Voom::Presenters.define('pattern_menu') do
   helpers Voom::Presenters::Helpers::Inflector
   menu side: :left do
-    %i(search_select).sort.each do |pattern|
+    %i(search_select floating_card).sort.each do |pattern|
       item titleize(pattern) do
         event :click do
           loads pattern
