@@ -1,12 +1,13 @@
 include Voom::Trace
 trace {"Loading Presenters Settings"}
 require 'voom/presenters/helpers/route'
+require 'dry-configurable'
 
 unless defined?(Voom::Presenters::Settings)
   module Voom
     module Presenters
       class Settings
-        extend Dry::Configurable
+        extend ::Dry::Configurable
         setting :presenters do
           setting :root, []
           # You can add helpers that will automatically be included
