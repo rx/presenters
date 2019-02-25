@@ -17,7 +17,7 @@ module Voom
 
         def render
           results = ""
-          (@plugins||[]).each do |plugin|
+          ((@plugins||[]) + Voom::Presenters::Settings.config.presenters.plugins).each do |plugin|
             header_method = :"render_header_#{plugin}"
             results << send(header_method,
                  @pom,
