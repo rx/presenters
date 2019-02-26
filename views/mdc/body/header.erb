@@ -1,32 +1,33 @@
-<header id="<%= header.id %>" class="mdl-layout__header">
-  <div class="mdl-layout-icon"></div>
-  <div class="mdl-layout__header-row">
-
-    <span class="mdc-typography--title
-                <%= 'v-actionable' if header.title&.events %>"
-          <%= erb :"components/event", :locals => {comp: header, events: header.title&.events, parent_id: header.title&.event_parent_id} %>>
-      <%= expand_text(header.title&.text) %>
-    </span>
-    <%= erb :"components/icon", :locals => {comp: header.title&.icon } if header.title&.icon %>
-    <div class="mdl-layout-spacer"></div>
-    <% if header.nav %>
-      <nav class="mdl-navigation">
-       <% header.nav.items.each do |item| %>
-         <a class="mdl-navigation__link"
-            id="<%= item.id %>"
-            href="javascript:void(0)"
-            <%= erb :"components/event", :locals => {comp: item, events: item.events, parent_id: item.event_parent_id} %>>
-            <%= erb :"components/icon", :locals => {comp: item.icon, class_name: nil} %>
-            <%= item.text %>
-          </a>
-        <% end %>
-      </nav>
-    <% end %>
-    <% if header.button %>
-      <%= erb :"components/button", :locals => {comp: header.button, parent_id: header.id} %>
-    <% end %>
-    <% if header.menu %>
-      <%= erb :"components/menu", :locals => {comp: header.menu, parent_id: header.id} %>
-    <% end %>
+<header class="v-header mdc-top-app-bar drawer-top-app-bar">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <% if drawer %>
+        <button class="material-icons mdc-top-app-bar__navigation-icon mdc-ripple-upgraded--unbounded mdc-ripple-upgraded" style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">menu</button>
+      <% end %>
+      <span class="mdc-top-app-bar__title <%= 'v-actionable' if header.title&.events %>"
+            <%= erb :"components/event", :locals => {comp: header, events: header.title&.events, parent_id: header.title&.event_parent_id} %>>
+        <%= expand_text(header.title&.text) %>
+      </span>
+    </section>
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+      <% if header.nav %>
+        <nav class="v-navigation">
+          <% header.nav.items.each do |item| %>
+            <a id="<%= item.id %>"
+               class="mdc-list-item <%= 'mdc-list-item--activated' if item.selected %>"
+               href="javascript:void(0)"
+               tabindex="0"
+               aria-selected="true"
+               <%= erb :"components/event", :locals => {comp: item, events: item.events, parent_id: item.event_parent_id} %>>
+              <%= erb :"components/icon", :locals => {comp: item.icon, class_name: 'mdc-list-item__graphic'} %>
+              <%= item.text %>
+            </a>
+          <% end %>
+        </nav>
+      <% end %>
+      <% if header.button %>
+        <%= erb :"components/button", :locals => {comp: header.button, parent_id: header.id} %>
+      <% end %>
+    </section>
   </div>
 </header>

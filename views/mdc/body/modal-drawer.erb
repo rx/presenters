@@ -1,0 +1,23 @@
+<aside class="v-drawer__modal mdc-drawer mdc-drawer--modal">
+  <% if drawer.title || drawer.subtitle %>
+    <div class="mdc-drawer__header">
+  <% end %>
+    <% if drawer.title  %>
+      <h3 class="mdc-drawer__title"><%= expand_text(drawer.title.text) %></h3>
+    <% end %>
+    <% if drawer.subtitle %>
+      <h6 class="mdc-drawer__subtitle"><%= expand_text(drawer.subtitle.text) %></h6>
+    <% end %>
+  <% if drawer.title || drawer.subtitle %>
+    </div>
+  <% end %>
+  <div class="mdc-drawer__content">
+        <nav class="mdc-list">
+        <% drawer.menu&.items&.each do |item|%>
+          <%= erb :"body/drawer/#{item.type}", :locals => {item: item} %>
+        <% end %>
+      </nav>
+      <%= erb :"components/render", :locals => {:components => drawer.components, :scope => nil} %>
+  </div>
+</aside>
+<div class="mdc-drawer-scrim"></div>

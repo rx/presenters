@@ -1,0 +1,17 @@
+@import "@material/top-app-bar/mdc-top-app-bar";
+
+.mdc-top-app-bar {
+  position: relative;
+
+}
+
+.v-navigation {
+  overflow: hidden;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}

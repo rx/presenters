@@ -10,7 +10,7 @@ Voom::Presenters.define('component_menu') do
       content icons images datetime_fields date_fields time_fields
       maps file_inputs avatars
     ).sort.each do |comp|
-      item titleize(comp) do
+      item titleize(comp), selected: context['_presenter_']== comp.to_s do
         event :click do
           loads comp
         end
