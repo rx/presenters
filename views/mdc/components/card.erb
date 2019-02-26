@@ -11,7 +11,9 @@
 >
   <% if comp.media %>
     <div class="v-errors">
-      <div class="mdc-card__media v-card-media
+      <div id="<%=comp.media.id%>"
+           class="mdc-card__media v-card-media
+                <%= 'v-hidden' if comp.media.hidden %>
                 <%= 'mdc-card__media--square' if false && comp.media.width == comp.media.height %>"
            style="<%= "width: #{comp.media.width};" if comp.media.width%>
                <%= "height: #{comp.media.height};" if comp.media.height  %>

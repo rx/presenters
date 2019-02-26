@@ -40,7 +40,6 @@
 #
 require 'filewatcher'
 
-p 'railite'
 module Voom
   module Presenter
     class Engine < ::Rails::Engine

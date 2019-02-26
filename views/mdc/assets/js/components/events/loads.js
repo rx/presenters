@@ -1,4 +1,5 @@
 import {VUrls} from '../../utils/urls';
+import {expandParams} from "./action_parameter";
 
 export class VLoads extends VUrls{
     constructor(options, url, params, event) {
@@ -10,6 +11,7 @@ export class VLoads extends VUrls{
     }
 
     call(results) {
+        expandParams(results, this.params);
         var url = this.buildURL(this.url, this.params);
         var newWindow = this.options['target'] === '_blank';
         var promiseObj = new Promise(function (resolve) {

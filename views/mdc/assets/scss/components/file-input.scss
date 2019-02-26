@@ -1,11 +1,11 @@
-.v-file-input {
-  align-items: center !important;
-  display: inline-block;
-  padding: 16px;
-  position: relative;
-  width: 450px;
-}
-
+//.v-file-input {
+//  align-items: center !important;
+//  display: inline-block;
+//  padding: 16px;
+//  position: relative;
+//  width: 450px;
+//}
+//
 .v-file-input > [type='file'] {
   cursor: pointer;
   height: 100%;
@@ -14,9 +14,5 @@
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 10;
-}
-
-.v-file-input > label {
-  line-height: 36px;
+  z-index: 1;
 }

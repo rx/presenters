@@ -8873,25 +8873,7 @@ svg.mdc-button__icon {
 .mdc-list-item__primary-text {
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
-  display: block;
-  margin-top: 0;
-  /* @alternate */
-  line-height: normal;
-  margin-bottom: -20px;
-  display: block; }
-  .mdc-list-item__primary-text::before {
-    display: inline-block;
-    width: 0;
-    height: 32px;
-    content: "";
-    vertical-align: 0; }
-  .mdc-list-item__primary-text::after {
-    display: inline-block;
-    width: 0;
-    height: 20px;
-    content: "";
-    vertical-align: -20px; }
+  overflow: hidden; }
   .mdc-list--dense .mdc-list-item__primary-text {
     display: block;
     margin-top: 0;
@@ -11234,8 +11216,10 @@ select {
   position: absolute;
   bottom: 0; }
 
-.v-card__media-menu .v-button-icon-position-top {
-  top: 8px; }
+.v-card__media-menu {
+  z-index: 2; }
+  .v-card__media-menu .v-button-icon-position-top {
+    top: 8px; }
 
 .v-card--actions {
   margin-right: 10px;
@@ -14306,13 +14290,6 @@ span.flatpickr-weekday {
 i:focus.v-datetime--clear {
   outline: none; }
 
-.v-file-input {
-  align-items: center !important;
-  display: inline-block;
-  padding: 16px;
-  position: relative;
-  width: 450px; }
-
 .v-file-input > [type='file'] {
   cursor: pointer;
   height: 100%;
@@ -14321,10 +14298,7 @@ i:focus.v-datetime--clear {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 10; }
-
-.v-file-input > label {
-  line-height: 36px; }
+  z-index: 1; }
 
 .v-rich-text-area-container {
   position: relative;

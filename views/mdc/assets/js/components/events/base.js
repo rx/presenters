@@ -35,7 +35,7 @@ export class VBase extends VUrls {
         return inputs;
     }
 
-    inputValues(form) {
+    inputValues() {
         const params = [];
 
         // If tagged input is asked for, fetch all the matching tag elements
