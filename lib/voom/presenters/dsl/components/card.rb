@@ -50,7 +50,8 @@ module Voom
           end
 
           class Media < Base
-            attr_reader :height, :width, :color, :hidden
+            include Mixins::Attaches
+            attr_reader :height, :width, :color, :hidden, :components
 
             def initialize(**attribs_, &block)
               super(type: :media, **attribs_, &block)
@@ -59,6 +60,7 @@ module Voom
               @color = attribs.delete(:color)
               @hidden = attribs.delete(:hidden){false}
 
+              @components = []
               expand!
             end
 

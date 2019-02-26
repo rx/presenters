@@ -18,6 +18,7 @@
            style="<%= "width: #{comp.media.width};" if comp.media.width%>
                <%= "height: #{comp.media.height};" if comp.media.height  %>
              <%= "background-color: #{comp.media.color};" if comp.media.color %>">
+        <%= erb :"components/render", :locals => {:components => comp.media.components, :scope => nil} %>
         <%= erb :"components/button", :locals => {:comp => comp.media.button, class_name: "v-card__media-menu"} %>
         <%= erb :"components/image", :locals => {:comp => comp.media.image, class_name: 'v-card-media-image'} %>
         <%= erb :"components/avatar", :locals => {:comp => comp.media.avatar, class_name: 'v-card-media-avatar'} %>
