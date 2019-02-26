@@ -28,7 +28,7 @@ export class VFileInput extends eventHandlerMixin(VBaseComponent) {
     }
 
     value() {
-        return this.input.value;
+        return this.input.files[0];
     }
 
     previewComponent(e) {

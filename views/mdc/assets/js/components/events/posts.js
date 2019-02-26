@@ -46,7 +46,7 @@ export class VPosts extends VBase {
             FD.append(name, encode(this.params[name]));
         }
 
-        var inputValues = this.inputValues(form);
+        var inputValues = this.inputValues();
         for (var input of inputValues) {
             FD.append(input[0], input[1]);
         }

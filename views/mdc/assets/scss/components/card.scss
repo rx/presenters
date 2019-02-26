@@ -46,7 +46,8 @@
 .v-card-media-image, .v-card-media-avatar {
 }
 
-.v-card__media-menu{
+.v-card__media-menu {
+  z-index: 2;
   .v-button-icon-position-top {
     top: 8px;
   }
