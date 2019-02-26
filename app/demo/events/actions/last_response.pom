@@ -5,8 +5,8 @@ Voom::Presenters.define(:last_response_action) do
 
   indented_grid do
     heading 'Last Response'
-    body 'You can access the last response and forward its data to a snackbar or posts|updates|deletes.'
-
+    body 'You can access the last response and forward its data to a snackbar or posts|updates|deletes|replaces|loads.'
+    title 'Posts'
     button 'quote' do
       event :click do
         posts '_echo_', {quote: 'Compromise is the shared hypotenuse of the conjoined triangles of success.'}
@@ -14,6 +14,27 @@ Voom::Presenters.define(:last_response_action) do
         snackbar last_response.echo.quote
       end
     end
+
+    title 'Replaces'
+    button 'replaces' do
+      event :click do
+        posts '_echo_', {quote: 'Compromise is the shared hypotenuse of the conjoined triangles of success.'}
+        replaces :replace_me, :replace_text, text: last_response.quote
+      end
+    end
+    attach :replace_text
+
+    blank
+    title "Loads another presesnter"
+    text "Will reload this page passing a value from the last response of another action"
+    text "Quote from last response: {c:blue}#{context.fetch(:quote, nil)}{/c}" unless context.fetch(:quote, nil).nil?
+    button 'Reloads this page' do
+      event :click do
+        posts '_echo_', {quote: 'Compromise is the shared hypotenuse of the conjoined triangles of success.'}
+        loads :last_response_action, reloaded: true, quote: last_response.quote
+      end
+    end
+    heading context['reloaded'] ? "Reloaded" : 'Loaded'
   end
   attach :code, file: __FILE__
 end

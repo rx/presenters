@@ -50,13 +50,14 @@ module Voom
           end
 
           class Media < Base
-            attr_reader :height, :width, :color
+            attr_reader :height, :width, :color, :hidden
 
             def initialize(**attribs_, &block)
               super(type: :media, **attribs_, &block)
               @height = attribs.delete(:height)
               @width = attribs.delete(:width)
               @color = attribs.delete(:color)
+              @hidden = attribs.delete(:hidden){false}
 
               expand!
             end

@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/rx/image_crop_presenter_plugin.git
-  revision: 7364b6d427dd80b16b64cd5734439b91d1563c9b
+  revision: 40d7a1ac42d642490bc272d2a33f8786c25f5d6b
   specs:
     image_crop_presenter_plugin (0.1.0)
 

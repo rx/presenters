@@ -1,4 +1,4 @@
-import {VSnackbar} from '../snackbar';
+import {expandParams} from './action_parameter';
 import {VBase} from './base';
 import {initialize} from '../initialize';
 
@@ -21,6 +21,7 @@ export class VReplaces extends VBase {
         }
         var elementId = this.element_id;
         var nodeToReplace = document.getElementById(elementId);
+        expandParams(results, this.params);
         var url = this.buildURL(this.url, this.params, this.inputValues(), [['grid_nesting', this.options.grid_nesting]]);
         let delayAmt = this.event instanceof InputEvent ? 500 : 0;
 
