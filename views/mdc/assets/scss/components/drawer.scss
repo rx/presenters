@@ -1,0 +1,31 @@
+@import 'node_modules/@material/layout-grid/variables';
+@import 'node_modules/@material/layout-grid/mixins';
+@import "@material/drawer/mdc-drawer";
+@import '../media';
+
+.mdc-drawer--modal {
+  --v-drawer-active:yes;
+  @include lg {
+    --v-drawer-active:no;
+  }
+}
+
+.mdc-drawer--dismissible.mdc-drawer--open {
+  display: none;
+  width: 0;
+  --v-drawer-active:no;
+  @include lg {
+    --v-drawer-active:yes;
+    display: flex;
+    width: 256px;
+  }
+}
+
+.mdc-drawer.mdc-drawer--open:not(.mdc-drawer--closing) + .mdc-drawer-app-content {
+  margin-left: 0;
+  margin-right: 0;
+  @include lg {
+    margin-left: 256px;
+    margin-right: 0;
+   }
+}

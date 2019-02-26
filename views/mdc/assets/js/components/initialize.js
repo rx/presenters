@@ -4,6 +4,9 @@ import {initDateTime} from './datetime';
 import {initTextFields} from './text-fields';
 import {initEvents} from './events';
 import {initLists} from './lists';
+import {initDrawer} from './drawer';
+import {initHeader} from './header';
+
 import {initIconToggles} from './icon-toggles';
 import {initMenus} from './menus';
 import {initSelects} from './selects';
@@ -35,6 +38,8 @@ export function initialize() {
     initDateTime();// MUST BE BEFORE initTextFields
     initTextFields();
     initLists();
+    initDrawer();
+    initHeader();
     initIconToggles();
     initMenus();
     initSelects();

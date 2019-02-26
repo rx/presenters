@@ -22,7 +22,7 @@
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "webpack": "^3.12.0",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.2.0"
   },
   "dependencies": {
     "@material/animation": "^0.41.0",
@@ -31,6 +31,7 @@
     "@material/card": "^0.43.0",
     "@material/chips": "^0.43.0",
     "@material/dialog": "^0.43.0",
+    "@material/drawer": "^0.44.1",
     "@material/elevation": "^0.43.0",
     "@material/fab": "^0.43.0",
     "@material/floating-label": "^0.43.0",
@@ -52,6 +53,7 @@
     "@material/tab-scroller": "^0.43.0",
     "@material/textfield": "^0.43.0",
     "@material/toolbar": "^0.43.0",
+    "@material/top-app-bar": "^0.44.1",
     "@material/typography": "^0.43.0",
     "babel-polyfill": "^6.26.0",
     "detect-browser": "^3.0.1",

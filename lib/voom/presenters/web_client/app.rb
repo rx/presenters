@@ -176,7 +176,7 @@ module Voom
         end
 
         def scrub_context(params, _session, _env)
-          %i(splat captures _presenter_ grid_nesting input_tag _namespace1_ _namespace2_).each do |key|
+          %i(splat captures  grid_nesting input_tag).each do |key|
             params.delete(key) {params.delete(key.to_s)}
           end
           params
