@@ -23,7 +23,7 @@ export class VBaseToggle extends eventHandlerMixin(VBaseComponent) {
     }
 
     value() {
-        return this.input.dataset.on;
+        return this.input.value;
     }
 
     offValue() {
@@ -35,6 +35,6 @@ export class VBaseToggle extends eventHandlerMixin(VBaseComponent) {
     }
 
     setValue(value) {
-        this.input.dataset.on = value;
+        this.input.value = value;
     }
 }

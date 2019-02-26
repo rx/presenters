@@ -8,12 +8,11 @@
     <input class="mdc-radio__native-control"
            type="radio"
            id="<%= comp.id %>-input"
-           value="<%= comp.value %>"
+           <% if comp.value %>value="<%= comp.value %>"<% end %>
            name="<%= comp.name %>"
            <%if comp.checked%> checked<%end%><%if comp.disabled%> disabled<%end%>
            <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id}%>
-           data-off="<%= comp.off_value %>"
-           data-on="<%= comp.on_value %>">
+           data-off="<%= comp.off_value %>">
     <div class="mdc-radio__background">
       <div class="mdc-radio__outer-circle"></div>
       <div class="mdc-radio__inner-circle"></div>

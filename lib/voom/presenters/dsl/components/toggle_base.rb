@@ -12,7 +12,6 @@ module Voom
                         :checked,
                         :value,
                         :disabled,
-                        :on_value,
                         :off_value
          
           def initialize(**attribs_, &block)
@@ -22,7 +21,6 @@ module Voom
             @checked = attribs.delete(:checked) { false }
             @value = attribs.delete(:value)
             @disabled = attribs.delete(:disabled) { false }
-            @on_value = attribs.delete(:on_value) { 'on' }
             @off_value = attribs.delete(:off_value)
           end
         end

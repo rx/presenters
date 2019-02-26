@@ -2822,7 +2822,7 @@ var VBaseToggle = function (_eventHandlerMixin) {
     }, {
         key: 'value',
         value: function value() {
-            return this.input.dataset.on;
+            return this.input.value;
         }
     }, {
         key: 'offValue',
@@ -2837,7 +2837,7 @@ var VBaseToggle = function (_eventHandlerMixin) {
     }, {
         key: 'setValue',
         value: function setValue(value) {
-            this.input.dataset.on = value;
+            this.input.value = value;
         }
     }]);
 
