@@ -71,13 +71,21 @@ Voom::Presenters.define(:toggles) do
           end
         end
         blank
-        body 'A switch component can take `on_value` and `off_value` attributes to represent both states. '\
-             'The default is "on" and `nil`.'
-        switch name: :miller_lite, on_value: 'Great taste' , off_value: 'Less filling' do
+        body 'Toggle components (switches, checkboxes, radio buttons, and icon toggles)',
+             'can take `on_value` and `off_value` attributes to represent both states. ',
+             'The default is `"on"` and `nil`.'
+        switch name: :miller_lite, on_value: 'Great taste', off_value: 'Less filling' do
           event :change do
             replaces :context_list, :context_list
           end
         end
+
+        icon_toggle 'format_bold', checked: true, name: :icon_toggle, on_value: :foo, off_value: :bar do
+          event :change do
+            replaces :context_list, :context_list
+          end
+        end
+
         blank
         headline 'Posts in Form', level: 3
         body 'This demonstrates that a change event on **ANY** form input will send all the form inputs to the event action. '\
