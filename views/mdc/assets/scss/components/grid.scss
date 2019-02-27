@@ -10,6 +10,7 @@
   overflow-y: hidden;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -52,15 +53,16 @@
     }
 
     @each $top, $tsize in $tops {
-          @each $right, $rsize in $rights {
-            @each $bottom, $bsize in $bottoms {
-              @each $left, $lsize in $lefts {
-                .v-col__padding-#{$bottom}-#{$left}-#{$right}-#{$top} {
-                  padding: $tsize/2 $rsize/2 $bsize/2 $lsize/2;
-                }
-              }
+      @each $right, $rsize in $rights {
+        @each $bottom, $bsize in $bottoms {
+          @each $left, $lsize in $lefts {
+            .v-col__padding-#{$bottom}-#{$left}-#{$right}-#{$top} {
+              padding: $tsize/2 $rsize/2 $bsize/2 $lsize/2;
             }
           }
         }
+      }
+    }
   }
 }
+

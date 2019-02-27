@@ -1,11 +1,12 @@
 <div class="v-rich-text-area-container v-input"
+     id="<%= comp.id %>"
      <% if comp.tag %>
      data-input-tag="<%= comp.tag %>"
      <% end %>
      data-original-value="<%=comp.value%>">
-  <label for="<%= comp.id %>"><%= expand_text(comp.label) %></label>
+  <label for="<%= comp.id %>-rta"><%= expand_text(comp.label) %></label>
   <div class="v-rich-text-area"
-       id="<%= comp.id %>"
+       id="<%= comp.id %>-rta"
        style="<%= 'width:100%;' if comp.full_width %>
               <%= "height:#{comp.height};" %>"
        data-name="<%= comp.name %>"

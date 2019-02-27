@@ -5076,7 +5076,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
+// import {initTooltip} from './tooltip';
 
 
 function initialize() {
@@ -5110,6 +5110,7 @@ function initialize() {
     Object(__WEBPACK_IMPORTED_MODULE_27__form_fields__["a" /* initFormFields */])();
     Object(__WEBPACK_IMPORTED_MODULE_28__images__["a" /* initImages */])();
     Object(__WEBPACK_IMPORTED_MODULE_29__typography__["a" /* initTypography */])();
+    // initTooltip();
     Object(__WEBPACK_IMPORTED_MODULE_30__plugins__["a" /* initPlugins */])();
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_4__events__["b" /* initEvents */])();
@@ -67379,8 +67380,9 @@ var VRichTextArea = function (_eventHandlerMixin) {
             modules: {
                 toolbar: toolbarOptions
             },
-            theme: 'snow' //,
-            // placeholder: this.quillEditorElement.dataset.placeholder
+            theme: 'snow',
+            placeholder: _this.quillEditorElement.dataset.placeholder
+
         });
         return _this;
     }

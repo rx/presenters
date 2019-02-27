@@ -6,7 +6,6 @@ import {initEvents} from './events';
 import {initLists} from './lists';
 import {initDrawer} from './drawer';
 import {initHeader} from './header';
-
 import {initIconToggles} from './icon-toggles';
 import {initMenus} from './menus';
 import {initSelects} from './selects';
@@ -29,6 +28,7 @@ import {initFileInputs} from './file-inputs';
 import {initFormFields} from './form-fields';
 import {initImages} from './images';
 import {initTypography} from './typography';
+// import {initTooltip} from './tooltip';
 import {initPlugins} from './plugins';
 
 export function initialize() {
@@ -62,6 +62,7 @@ export function initialize() {
     initFormFields();
     initImages();
     initTypography();
+    // initTooltip();
     initPlugins();
     // This needs to be last, because it relies on the components installed above.
     initEvents();
