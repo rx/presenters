@@ -7,7 +7,12 @@ module Voom
       module Components
         # Base class used by toggle classes
         class ToggleBase < Input
-          attr_accessor :text, :text_color, :checked, :value, :disabled
+          attr_accessor :text,
+                        :text_color,
+                        :checked,
+                        :value,
+                        :disabled,
+                        :off_value
          
           def initialize(**attribs_, &block)
             super(**attribs_, &block)
@@ -16,6 +21,7 @@ module Voom
             @checked = attribs.delete(:checked) { false }
             @value = attribs.delete(:value)
             @disabled = attribs.delete(:disabled) { false }
+            @off_value = attribs.delete(:off_value)
           end
         end
       end
