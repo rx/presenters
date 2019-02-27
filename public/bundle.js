@@ -2578,11 +2578,6 @@ var VBase = function (_VUrls) {
                     }
                 }
             }
-            // Let input components push parameters
-            var vComp = this.component();
-            if (vComp && typeof vComp.prepareSubmit === 'function') {
-                vComp.prepareSubmit(params);
-            }
             return params;
         }
     }, {
