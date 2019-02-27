@@ -80,12 +80,6 @@ Voom::Presenters.define(:toggles) do
           end
         end
 
-        icon_toggle 'format_bold', checked: true, name: :icon_toggle, on_value: :foo, off_value: :bar do
-          event :change do
-            replaces :context_list, :context_list
-          end
-        end
-
         blank
         headline 'Posts in Form', level: 3
         body 'This demonstrates that a change event on **ANY** form input will send all the form inputs to the event action. '\
