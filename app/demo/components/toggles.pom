@@ -71,7 +71,7 @@ Voom::Presenters.define(:toggles) do
           end
         end
         blank
-        body 'Toggle components (switches, checkboxes, radio buttons, and icon toggles)',
+        body 'Toggle components (switches, checkboxes, and icon toggles)',
              'can take `on_value` and `off_value` attributes to represent both states. ',
              'The default is `"on"` and `nil`.'
         switch name: :miller_lite, on_value: 'Great taste', off_value: 'Less filling' do
