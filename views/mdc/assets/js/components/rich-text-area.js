@@ -69,6 +69,6 @@ export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
     }
 
     isDirty() {
-        return this.value() != this.element.dataset.originalValue;
+        return this.value() !== this.element.dataset.originalValue;
     }
 }

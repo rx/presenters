@@ -67421,7 +67421,7 @@ var VRichTextArea = function (_eventHandlerMixin) {
     }, {
         key: "isDirty",
         value: function isDirty() {
-            return this.value() != this.element.dataset.originalValue;
+            return this.value() !== this.element.dataset.originalValue;
         }
     }]);
 
