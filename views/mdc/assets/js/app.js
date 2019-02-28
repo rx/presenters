@@ -21,4 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
     require('babel-polyfill');
 
     require('./components/initialize').initialize();
+
+    // Focus first valid input control
+    const focusable = document.querySelectorAll('.v-focusable');
+    for (var i = 0; i < focusable.length; i++) {
+        if (focusable[i] && focusable[i].vComponent) {
+            if (focusable[i].vComponent.focus()) {
+                break;
+            }
+        }
+    }
 });

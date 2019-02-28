@@ -11745,7 +11745,7 @@ var VTextField = function (_visibilityObserverMi) {
     }, {
         key: 'isDirty',
         value: function isDirty() {
-            return this.value() != this.element.dataset.originalValue;
+            return this.value() !== this.element.dataset.originalValue;
         }
     }, {
         key: 'show',
@@ -11756,6 +11756,22 @@ var VTextField = function (_visibilityObserverMi) {
         key: 'preview',
         value: function preview(result, acceptsMimeTypes) {
             this.setValue(result);
+        }
+
+        // Return true if focus is able to be set, false otherwise
+
+    }, {
+        key: 'focus',
+        value: function focus() {
+            if (this.isHidden() || this.input.disabled) return false;
+            this.input.focus();
+            return true;
+        }
+    }, {
+        key: 'isHidden',
+        value: function isHidden() {
+            var style = window.getComputedStyle(this.element);
+            return style.display === 'none';
         }
     }]);
 
@@ -20659,6 +20675,16 @@ document.addEventListener('DOMContentLoaded', function () {
     __webpack_require__(160);
 
     __webpack_require__(139).initialize();
+
+    // Focus first valid input control
+    var focusable = document.querySelectorAll('.v-focusable');
+    for (var i = 0; i < focusable.length; i++) {
+        if (focusable[i] && focusable[i].vComponent) {
+            if (focusable[i].vComponent.focus()) {
+                break;
+            }
+        }
+    }
 });
 
 /***/ }),
