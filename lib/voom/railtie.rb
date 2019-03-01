@@ -69,7 +69,12 @@ module Voom
         Thread.new(filewatcher) do |fw|
           fw.watch do |f|
             puts "Detected updated POM file: #{f}"
-            BOOT.call
+            begin
+              BOOT.call
+            rescue Exception => exc
+              puts exc.backtrace
+              puts exc.message
+            end
           end
         end
       } unless defined?(WATCH)
