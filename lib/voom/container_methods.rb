@@ -1,4 +1,5 @@
-require  'voom/symbol/to_str'
+require 'voom/symbol/to_str'
+require 'dry-container'
 
 module Voom
   module ContainerMethods
