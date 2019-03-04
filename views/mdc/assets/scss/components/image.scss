@@ -28,3 +28,14 @@
   margin-right: auto;
 }
 
+.v-image-fit-cover {
+  object-fit: cover;
+}
+
+.v-image-fit-fill {
+  object-fit: fill;
+}
+
+.v-image-fit-contain {
+  object-fit: contain;
+}
