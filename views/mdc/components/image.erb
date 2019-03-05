@@ -1,7 +1,9 @@
 <% if comp
-     position_classes = comp.position.map {|p| "v-image-position-#{p}"}.join(' ') %>
+     position_classes = comp.position.map {|p| "v-image-position-#{p}"}.join(' ')
+     fit_class = comp.fit ? "v-image-fit-#{comp.fit}" : ''
+%>
 <img id="<%= comp.id %>"
-     class="v-image <%=position_classes%>"
+     class="v-image <%=position_classes%> <%= fit_class %>"
      src="<%= comp.url %>"
      <% if comp.height %>
      height="<%= comp.height %>"
@@ -12,5 +14,5 @@
      alt=""
      border="<%= comp.border %>"
      style="<%= "border-radius: #{comp.border_radius};" if comp.border_radius %>">
-<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+<%= erb :"components/tooltip" , :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 <% end %>

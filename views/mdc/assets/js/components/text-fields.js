@@ -84,12 +84,26 @@ export class VTextField extends visibilityObserverMixin(
     }
 
     isDirty() {
-        return this.value() != this.element.dataset.originalValue;
+        return this.value() !== this.element.dataset.originalValue;
     }
 
-    show() {this.mdcComponent.layout();}
+    show() {
+        this.mdcComponent.layout();
+    }
 
     preview(result, acceptsMimeTypes) {
         this.setValue(result);
+    }
+
+    // Return true if focus is able to be set, false otherwise
+    focus() {
+        if (this.isHidden() || this.input.disabled) return false;
+        this.input.focus();
+        return true;
+    }
+
+    isHidden() {
+        const style = window.getComputedStyle(this.element);
+        return (style.display === 'none');
     }
 }
