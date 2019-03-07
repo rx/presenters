@@ -15,9 +15,9 @@ module Voom
           def initialize(type: nil, **attribs_, &block)
             @button_type = h(type) || ((attribs_[:icon] && !attribs_[:text]) ? :icon : nil) || :flat
             super(type: :button, **attribs_, &block)
-            self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
-            @text = attribs.delete(:text)
             @color = attribs.delete(:color)
+            self.icon(attribs.delete(:icon), color: color) if attribs.key?(:icon)
+            @text = attribs.delete(:text)
             @disabled = attribs.delete(:disabled) {false}
             @hidden = attribs.delete(:hidden) {false}
             @size = attribs.delete(:size)
@@ -29,9 +29,7 @@ module Voom
 
           def icon(icon = nil, **attribs, &block)
             return @icon if locked?
-            @icon = Components::Icon.new(parent: self, icon: icon,
-                                         **attribs, &block)
-
+            @icon = Components::Icon.new(parent: self, icon: icon, **attribs, &block)
           end
 
           def image(image = nil, **attribs, &block)

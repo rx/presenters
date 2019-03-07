@@ -10,8 +10,6 @@
          <%= 'v-hidden' if comp.hidden %>
          <%=class_name%>
          <%= position_classes %>
-         <%= 'mdl-button--colored' if eq(comp.color, :primary) %>
-         <%= 'mdl-button--accent' if eq(comp.color, :secondary) %>
          <%= 'v-menu-click' if comp.menu%>"
         style = "<%= color_style(comp) %>"
         <%= 'disabled' if comp.disabled %>

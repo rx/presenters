@@ -149,11 +149,11 @@ var VBaseComponent = function () {
             return true;
         }
     }, {
-        key: "show",
-        value: function show() {}
+        key: "onShow",
+        value: function onShow() {}
     }, {
-        key: "hide",
-        value: function hide() {}
+        key: "onHide",
+        value: function onHide() {}
     }, {
         key: "clearErrors",
         value: function clearErrors() {
@@ -1569,8 +1569,8 @@ var VBaseContainer = function (_VBaseComponent) {
             }
         }
     }, {
-        key: 'show',
-        value: function show() {
+        key: 'onShow',
+        value: function onShow() {
             var _iteratorNormalCompletion3 = true;
             var _didIteratorError3 = false;
             var _iteratorError3 = undefined;
@@ -1579,8 +1579,8 @@ var VBaseContainer = function (_VBaseComponent) {
                 for (var _iterator3 = this.inputs()[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
                     var input = _step3.value;
 
-                    if (input.vComponent && input.vComponent.show) {
-                        input.vComponent.show();
+                    if (input.vComponent && input.vComponent.onShow) {
+                        input.vComponent.onShow();
                     }
                 }
             } catch (err) {
@@ -1598,6 +1598,7 @@ var VBaseContainer = function (_VBaseComponent) {
                 }
             }
         }
+
         // Called whenever a container is about to be submitted.
         // returns true on success
         // returns on failure return an error object that can be processed by VErrors:
@@ -11748,8 +11749,8 @@ var VTextField = function (_visibilityObserverMi) {
             return this.value() !== this.element.dataset.originalValue;
         }
     }, {
-        key: 'show',
-        value: function show() {
+        key: 'onShow',
+        value: function onShow() {
             this.mdcComponent.layout();
         }
     }, {
@@ -34192,6 +34193,9 @@ var VDialog = function (_VBaseContainer) {
             element.vComponent.clearErrors();
         });
 
+        dialog.listen('MDCDialog:opened', function () {
+            element.vComponent.onShow();
+        });
         return _this;
     }
 
@@ -40609,7 +40613,7 @@ var VToggleVisibility = function () {
                         elem.classList.toggle("v-hidden");
                     }
                     if (elem && elem.vComponent && elem.vComponent.show) {
-                        elem.classList.contains('v-hidden') ? elem.vComponent.hide() : elem.vComponent.show();
+                        elem.classList.contains('v-hidden') ? elem.vComponent.onHide() : elem.vComponent.onShow();
                     }
                     results.push({ action: 'toggle_visibility', statusCode: 200 });
                     resolve(results);
@@ -96812,6 +96816,8 @@ var VTypography = function (_eventHandlerMixin) {
 /* unused harmony export VPluginComponent */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(10);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
@@ -96878,6 +96884,13 @@ var VPluginComponent = function (_eventHandlerMixin) {
         value: function clear() {
             if (this.element.vPlugin && this.element.vPlugin.name) {
                 return this.element.vPlugin.clear();
+            }
+        }
+    }, {
+        key: 'onShow',
+        value: function onShow() {
+            if (this.element.vPlugin && _typeof(this.element.vPlugin.onShow)) {
+                return this.element.vPlugin.onShow();
             }
         }
     }, {

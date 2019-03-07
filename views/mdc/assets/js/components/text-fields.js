@@ -87,7 +87,7 @@ export class VTextField extends visibilityObserverMixin(
         return this.value() !== this.element.dataset.originalValue;
     }
 
-    show() {
+    onShow() {
         this.mdcComponent.layout();
     }
 
