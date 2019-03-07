@@ -27,18 +27,10 @@ export class VBaseContainer extends VBaseComponent {
         }
     }
 
-    show() {
+    onShow() {
         for (const input of this.inputs()) {
-            if (input.vComponent && input.vComponent.show) {
-                input.vComponent.show();
-            }
-        }
-    }
-
-    reset() {
-        for (const input of this.inputs()) {
-            if (input.vComponent && input.vComponent.reset) {
-                input.vComponent.reset();
+            if (input.vComponent && input.vComponent.onShow) {
+                input.vComponent.onShow();
             }
         }
     }

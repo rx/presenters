@@ -9,9 +9,8 @@ export class VBaseComponent {
     validate(formData) {
         return true;
     }
-    show() {}
-    hide() {}
-    reset() {}
+    onShow() {}
+    onHide() {}
 
     clearErrors() {
         new VErrors().clearErrors();

@@ -10,7 +10,9 @@ Voom::Presenters.define(:image_crop, namespace: :plugins) do
     title 'Drag and drop with cropper preview'
     grid do
       column 6 do
-        image_crop id: :event_image, image: 'https://cdn.mos.cms.futurecdn.net/4f6d31c116fdada59a5cb16d136e3068-970-80.jpg' do
+        image_crop id: :event_image,
+                   aspect_ratio: 1.0,
+                   image: 'https://cdn.mos.cms.futurecdn.net/4f6d31c116fdada59a5cb16d136e3068-970-80.jpg' do
         end
       end
       column 6 do

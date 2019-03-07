@@ -27,7 +27,7 @@ export class VDialog extends VBaseContainer {
         });
 
         dialog.listen('MDCDialog:opened', function() {
-            element.vComponent.reset();
+            element.vComponent.onShow();
         });
     }
 
