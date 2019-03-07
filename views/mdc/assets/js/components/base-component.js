@@ -11,6 +11,7 @@ export class VBaseComponent {
     }
     show() {}
     hide() {}
+    reset() {}
 
     clearErrors() {
         new VErrors().clearErrors();

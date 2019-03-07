@@ -155,6 +155,9 @@ var VBaseComponent = function () {
         key: "hide",
         value: function hide() {}
     }, {
+        key: "reset",
+        value: function reset() {}
+    }, {
         key: "clearErrors",
         value: function clearErrors() {
             new __WEBPACK_IMPORTED_MODULE_0__events_errors__["a" /* VErrors */]().clearErrors();
@@ -1598,17 +1601,9 @@ var VBaseContainer = function (_VBaseComponent) {
                 }
             }
         }
-        // Called whenever a container is about to be submitted.
-        // returns true on success
-        // returns on failure return an error object that can be processed by VErrors:
-        //    { email: ["email must be filled", "email must be from your domain"] }
-        //    { :page: ["must be filled"] }
-
     }, {
-        key: 'validate',
-        value: function validate(form, params) {
-            console.log('Form validate', form, params);
-            var errors = [];
+        key: 'reset',
+        value: function reset() {
             var _iteratorNormalCompletion4 = true;
             var _didIteratorError4 = false;
             var _iteratorError4 = undefined;
@@ -1617,11 +1612,8 @@ var VBaseContainer = function (_VBaseComponent) {
                 for (var _iterator4 = this.inputs()[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
                     var input = _step4.value;
 
-                    if (input.vComponent && input.vComponent.validate) {
-                        var result = input.vComponent.validate(form, params);
-                        if (result !== true) {
-                            errors.push(result);
-                        }
+                    if (input.vComponent && input.vComponent.reset) {
+                        input.vComponent.reset();
                     }
                 }
             } catch (err) {
@@ -1635,6 +1627,48 @@ var VBaseContainer = function (_VBaseComponent) {
                 } finally {
                     if (_didIteratorError4) {
                         throw _iteratorError4;
+                    }
+                }
+            }
+        }
+
+        // Called whenever a container is about to be submitted.
+        // returns true on success
+        // returns on failure return an error object that can be processed by VErrors:
+        //    { email: ["email must be filled", "email must be from your domain"] }
+        //    { :page: ["must be filled"] }
+
+    }, {
+        key: 'validate',
+        value: function validate(form, params) {
+            console.log('Form validate', form, params);
+            var errors = [];
+            var _iteratorNormalCompletion5 = true;
+            var _didIteratorError5 = false;
+            var _iteratorError5 = undefined;
+
+            try {
+                for (var _iterator5 = this.inputs()[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                    var input = _step5.value;
+
+                    if (input.vComponent && input.vComponent.validate) {
+                        var result = input.vComponent.validate(form, params);
+                        if (result !== true) {
+                            errors.push(result);
+                        }
+                    }
+                }
+            } catch (err) {
+                _didIteratorError5 = true;
+                _iteratorError5 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                        _iterator5.return();
+                    }
+                } finally {
+                    if (_didIteratorError5) {
+                        throw _iteratorError5;
                     }
                 }
             }
@@ -34192,6 +34226,9 @@ var VDialog = function (_VBaseContainer) {
             element.vComponent.clearErrors();
         });
 
+        dialog.listen('MDCDialog:opened', function () {
+            element.vComponent.reset();
+        });
         return _this;
     }
 
@@ -96812,6 +96849,8 @@ var VTypography = function (_eventHandlerMixin) {
 /* unused harmony export VPluginComponent */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(10);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
@@ -96878,6 +96917,13 @@ var VPluginComponent = function (_eventHandlerMixin) {
         value: function clear() {
             if (this.element.vPlugin && this.element.vPlugin.name) {
                 return this.element.vPlugin.clear();
+            }
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            if (this.element.vPlugin && _typeof(this.element.vPlugin.reset)) {
+                return this.element.vPlugin.reset();
             }
         }
     }, {
