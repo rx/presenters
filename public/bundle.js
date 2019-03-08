@@ -49468,9 +49468,8 @@ function initSelects() {
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])('.v-select', VSelect, __WEBPACK_IMPORTED_MODULE_0__material_select__["MDCSelect"]);
 }
 
-// export class VSelect extends visibilityObserverMixin(eventHandlerMixin(VBaseComponent)) {
-var VSelect = function (_eventHandlerMixin) {
-    _inherits(VSelect, _eventHandlerMixin);
+var VSelect = function (_visibilityObserverMi) {
+    _inherits(VSelect, _visibilityObserverMi);
 
     function VSelect(element, mdcComponent) {
         _classCallCheck(this, VSelect);
@@ -49479,7 +49478,7 @@ var VSelect = function (_eventHandlerMixin) {
 
         _this.select = element.querySelector('select');
         _this.select.vComponent = _this;
-        //this.recalcWhenVisible(this);
+        _this.recalcWhenVisible(_this);
         return _this;
     }
 
@@ -49525,7 +49524,7 @@ var VSelect = function (_eventHandlerMixin) {
     }]);
 
     return VSelect;
-}(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]));
+}(Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__["a" /* visibilityObserverMixin */])(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */])));
 
 /***/ }),
 /* 395 */

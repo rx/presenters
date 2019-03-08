@@ -9,13 +9,12 @@ export function initSelects() {
 }
 
 
-// export class VSelect extends visibilityObserverMixin(eventHandlerMixin(VBaseComponent)) {
-export class VSelect extends eventHandlerMixin(VBaseComponent) {
+export class VSelect extends visibilityObserverMixin(eventHandlerMixin(VBaseComponent)) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
         this.select = element.querySelector('select');
         this.select.vComponent = this;
-        //this.recalcWhenVisible(this);
+        this.recalcWhenVisible(this);
     }
 
     prepareSubmit(params) {
