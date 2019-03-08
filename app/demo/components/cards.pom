@@ -55,8 +55,8 @@ Voom::Presenters.define(:cards) do
               color: :white, position: :top
       end
       actions do
-        button 'Add to Calendar'
-        button icon: :event
+        button 'Add to Calendar', color: :secondary
+        button icon: :event, color: :secondary
       end
     end
 
