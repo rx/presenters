@@ -50,6 +50,10 @@ export class VBase extends VUrls {
                 component.prepareSubmit(params);
             }
         }
+        let vComp = this.component();
+        if (vComp && typeof vComp.prepareSubmit === 'function') {
+            vComp.prepareSubmit(params);
+        }
         return params;
     }
 

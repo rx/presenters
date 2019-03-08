@@ -52,7 +52,7 @@ Voom::Presenters.define(:text_fields) do
     card do
       headline 'Field Level Events'
       title 'Text Fields'
-      body 'This demonstrates that a change event will submit the  field value to the event action. '\
+      body 'This demonstrates that a change event will submit the field value to the event action. '\
                  'This works with posts and replace actions'
       text_field name: :myfield do
         label 'Data to post'

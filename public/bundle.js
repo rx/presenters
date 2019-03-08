@@ -2578,6 +2578,10 @@ var VBase = function (_VUrls) {
                     }
                 }
             }
+            var vComp = this.component();
+            if (vComp && typeof vComp.prepareSubmit === 'function') {
+                vComp.prepareSubmit(params);
+            }
             return params;
         }
     }, {
@@ -2798,13 +2802,6 @@ var VBaseToggle = function (_eventHandlerMixin) {
     }
 
     _createClass(VBaseToggle, [{
-        key: 'prepareSubmit',
-        value: function prepareSubmit(params) {
-            if (this.submittedValue()) {
-                params.push([this.name(), this.submittedValue()]);
-            }
-        }
-    }, {
         key: 'submittedValue',
         value: function submittedValue() {
             return this.input.checked ? this.value() : this.offValue();
@@ -40253,6 +40250,7 @@ var VPosts = function (_VBase) {
             }
 
             var inputValues = this.inputValues();
+            console.log(inputValues);
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
             var _iteratorError = undefined;
@@ -46556,6 +46554,8 @@ var MDCTopAppBarFoundation = function (_MDCTopAppBarBaseFoun) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_toggle__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_icon_toggle__ = __webpack_require__(392);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_icon_toggle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_icon_toggle__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -46579,6 +46579,15 @@ var VIconToggle = function (_VBaseToggle) {
 
         return _possibleConstructorReturn(this, (VIconToggle.__proto__ || Object.getPrototypeOf(VIconToggle)).call(this, element, mdcComponent));
     }
+
+    _createClass(VIconToggle, [{
+        key: 'prepareSubmit',
+        value: function prepareSubmit(params) {
+            if (this.submittedValue()) {
+                params.push([this.name(), this.submittedValue()]);
+            }
+        }
+    }]);
 
     return VIconToggle;
 }(__WEBPACK_IMPORTED_MODULE_1__base_toggle__["a" /* VBaseToggle */]);
@@ -49455,8 +49464,9 @@ function initSelects() {
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])('.v-select', VSelect, __WEBPACK_IMPORTED_MODULE_0__material_select__["MDCSelect"]);
 }
 
-var VSelect = function (_visibilityObserverMi) {
-    _inherits(VSelect, _visibilityObserverMi);
+// export class VSelect extends visibilityObserverMixin(eventHandlerMixin(VBaseComponent)) {
+var VSelect = function (_eventHandlerMixin) {
+    _inherits(VSelect, _eventHandlerMixin);
 
     function VSelect(element, mdcComponent) {
         _classCallCheck(this, VSelect);
@@ -49465,7 +49475,7 @@ var VSelect = function (_visibilityObserverMi) {
 
         _this.select = element.querySelector('select');
         _this.select.vComponent = _this;
-        _this.recalcWhenVisible(_this);
+        //this.recalcWhenVisible(this);
         return _this;
     }
 
@@ -49511,7 +49521,7 @@ var VSelect = function (_visibilityObserverMi) {
     }]);
 
     return VSelect;
-}(Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__["a" /* visibilityObserverMixin */])(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */])));
+}(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]));
 
 /***/ }),
 /* 395 */
@@ -64697,6 +64707,13 @@ var VSwitch = function (_VBaseToggle) {
     }
 
     _createClass(VSwitch, [{
+        key: 'prepareSubmit',
+        value: function prepareSubmit(params) {
+            if (this.submittedValue()) {
+                params.push([this.name(), this.submittedValue()]);
+            }
+        }
+    }, {
         key: 'isDirty',
         value: function isDirty() {
             return String(this.input.checked) != this.element.dataset.originalValue;
@@ -82472,6 +82489,13 @@ var VRadio = function (_VBaseToggle) {
     }
 
     _createClass(VRadio, [{
+        key: 'prepareSubmit',
+        value: function prepareSubmit(params) {
+            if (this.submittedValue()) {
+                params.push([this.name(), this.submittedValue()]);
+            }
+        }
+    }, {
         key: 'isDirty',
         value: function isDirty() {
             return String(this.input.checked) != this.element.dataset.originalValue;
