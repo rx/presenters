@@ -62,6 +62,25 @@ Voom::Presenters.define(:text_fields) do
       end
       attach :context_list
     end
+    blank
+    card do
+      form do
+        headline 'Form Level Events'
+        title 'Array of Text Fields'
+        text_field name: 'myfield[]' do
+          label 'Data to post'
+        end
+        text_field name: 'myfield[]' do
+          label 'More data to post'
+        end
+        button 'Submit' do
+          event :click do
+            posts '/_echo_'
+            snackbar 'Posted to _echo_'
+          end
+        end
+      end
+    end
     
     attach :code, file: __FILE__
   end
