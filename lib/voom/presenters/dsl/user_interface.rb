@@ -107,6 +107,7 @@ module Voom
 
         def plugin(*plugin_names)
           @__plugins__.push(*plugin_names)
+          self.class.include_plugins(:DSLComponents, :DSLHelpers, plugins: plugin_names)
         end
 
         private
