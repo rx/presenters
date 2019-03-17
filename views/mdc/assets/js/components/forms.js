@@ -2,9 +2,9 @@ import {eventHandlerMixin} from "./mixins/event-handler";
 import {VBaseContainer} from "./base-container";
 import {hookupComponents} from "./base-component";
 
-export function initForms() {
+export function initForms(e) {
     console.log('\tForms');
-    hookupComponents('.v-form', VForm, null);
+    hookupComponents(e, '.v-form', VForm, null);
 }
 
 export class VForm extends eventHandlerMixin(VBaseContainer) {

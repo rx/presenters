@@ -59,9 +59,9 @@ function updateSelectionCount(component, count) {
     }
 }
 
-export function initLists() {
+export function initLists(e) {
     console.log('\tLists');
-    let components = document.querySelectorAll('.mdc-list');
+    let components = e.querySelectorAll('.mdc-list');
     if (components) {
         for (let component of components) {
             let selectAllLineItem = component.querySelector('.v-checkbox--select-control');

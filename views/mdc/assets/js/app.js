@@ -1,3 +1,4 @@
+
 import isCompatible from './utils/compatibility';
 import config from './config';
 
@@ -15,12 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.documentElement.classList.remove('incompatible-browser');
 
-    window.dialogPolyfill = require('./dialog-polyfill');
     require('material-design-lite/material');
     require('./mdl-stepper');
     require('babel-polyfill');
 
-    require('./components/initialize').initialize();
+    require('./components/initialize').initialize(document);
 
     // Focus first valid input control
     const focusable = document.querySelectorAll('.v-focusable');

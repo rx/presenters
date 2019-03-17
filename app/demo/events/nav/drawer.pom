@@ -1,7 +1,7 @@
 Voom::Presenters.define(:events_drawer) do
   helpers Voom::Presenters::Helpers::Inflector
 
-  events = %i[field_level_events form_level_events tagged_input].sort
+  events = %i[field_level_events form_level_events tagged_input parallel_events].sort
   actions = %i[dialog replaces loads toggle_visibility snackbar updates deletes posts clear last_response prompt_if_dirty].sort
 
   drawer 'Events' do

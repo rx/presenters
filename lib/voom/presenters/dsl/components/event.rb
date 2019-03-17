@@ -24,7 +24,7 @@ module Voom
 
           attr_accessor :event, :actions
           # Alias common event names
-          EVENT_MAP = {focus: :focusin, blur: :focusout}
+          EVENT_MAP = {focus: :focusin, blur: :focusout, onload: :after_init}
 
           def initialize(**attribs_, &block)
             super(type: :event, **attribs_, &block)

@@ -2,9 +2,9 @@ import {VBaseComponent} from './base-component';
 import {hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
-export function initImages() {
+export function initImages(e) {
     console.log('\tImages');
-    hookupComponents('.v-image', VImage);
+    hookupComponents(e, '.v-image', VImage);
 }
 
 export class VImage extends eventHandlerMixin(VBaseComponent) {

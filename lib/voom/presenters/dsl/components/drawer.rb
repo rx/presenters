@@ -13,7 +13,7 @@ module Voom
 
           def initialize(**attribs_, &block)
             super(type: :drawer, **attribs_, &block)
-            self.title(attribs.delete(:title)) if attribs.key?(:title)
+            self.title(attribs.delete(:title)) if attribs.fetch(:title){nil}
             @components = []
 
             expand!

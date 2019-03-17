@@ -2,9 +2,9 @@ import {hookupComponents} from './base-component';
 import {VBaseToggle} from './base-toggle';
 import {MDCIconToggle} from '@material/icon-toggle';
 
-export function initIconToggles() {
+export function initIconToggles(e) {
     console.log('\tIcon Toggles');
-    hookupComponents('.v-icon-toggle', VIconToggle, MDCIconToggle);
+    hookupComponents(e, '.v-icon-toggle', VIconToggle, MDCIconToggle);
 }
 
 export class VIconToggle extends VBaseToggle {

@@ -4,9 +4,9 @@ import {VBaseContainer} from './base-container';
 import {hookupComponents} from './base-component';
 import {MDCDialog} from '@material/dialog';
 
-export function initDialogs() {
+export function initDialogs(e) {
     console.log('\tDialogs');
-    hookupComponents('.v-dialog', VDialog, MDCDialog);
+    hookupComponents(e, '.v-dialog', VDialog, MDCDialog);
 }
 
 export class VDialog extends VBaseContainer {

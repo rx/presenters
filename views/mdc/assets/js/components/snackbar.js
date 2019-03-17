@@ -2,9 +2,9 @@ import {MDCSnackbar, MDCSnackbarFoundation} from '@material/snackbar';
 import {VBaseComponent, hookupComponents} from './base-component';
 
 
-export function initSnackbar() {
+export function initSnackbar(e) {
     console.log('\tSnackbar');
-    hookupComponents('.v-snackbar', VSnackbar, MDCSnackbar);
+    hookupComponents(e, '.v-snackbar', VSnackbar, MDCSnackbar);
 }
 
 // This class displays a page level message

@@ -4,9 +4,9 @@ import { VTextField } from './text-fields';
 import { hookupComponents } from './base-component';
 import appConfig from '../config';
 
-export function initDateTime() {
+export function initDateTime(e) {
     console.log('\tDateTime');
-    hookupComponents('.v-datetime', VDateTime, MDCTextField);
+    hookupComponents(e, '.v-datetime', VDateTime, MDCTextField);
 }
 export class VDateTime extends VTextField {
     constructor(element, mdcComponent) {

@@ -73,7 +73,10 @@ module Voom
                                                  **attributes, &block)
             end
 
-            alias text body
+            def text(*text, level: 1, **attributes, &block)
+              return @text if defined? @text
+              body(*text, level: 1, **attributes, &block)
+            end
 
             def blank(level: 1, **attributes, &block)
               self << Components::Typography.new(parent: self, type: :body, text: ['&nbsp;'], level: level,

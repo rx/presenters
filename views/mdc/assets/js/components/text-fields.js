@@ -3,9 +3,9 @@ import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 import {visibilityObserverMixin} from './mixins/visibility-observer';
 
-export function initTextFields() {
+export function initTextFields(e) {
     console.log('\tTextFields');
-    hookupComponents('.v-text-field', VTextField, MDCTextField);
+    hookupComponents(e, '.v-text-field', VTextField, MDCTextField);
 }
 
 export class VTextField extends visibilityObserverMixin(

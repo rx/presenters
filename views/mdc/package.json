@@ -55,6 +55,7 @@
     "@material/toolbar": "^0.43.0",
     "@material/top-app-bar": "^0.44.1",
     "@material/typography": "^0.43.0",
+    "@webcomponents/webcomponentsjs": "^2.2.7",
     "babel-polyfill": "^6.26.0",
     "detect-browser": "^3.0.1",
     "flatpickr": "^4.5.2",

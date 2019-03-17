@@ -2,9 +2,9 @@ import {VBaseComponent} from './base-component';
 import {hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
-export function initTypography() {
+export function initTypography(e) {
     console.log('\tTypography');
-    hookupComponents('.v-typography', VTypography);
+    hookupComponents(e, '.v-typography', VTypography);
 }
 
 

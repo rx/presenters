@@ -19,9 +19,9 @@ function createTableRowSelectHandler(component, listElements, selectAll) {
     }
 }
 
-export function initTables() {
+export function initTables(e) {
     console.log('\tTables');
-    let components = document.querySelectorAll('.mdl-data-table');
+    let components = e.querySelectorAll('.mdl-data-table');
     if (components) {
         for (let component of components) {
             let selectAllRow = component.querySelector('.v-checkbox--select-control');

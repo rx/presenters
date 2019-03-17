@@ -4,10 +4,10 @@ export let eventHandlerMixin = Base => class extends Base {
         if (typeof this.eventsHandler === 'undefined') {
             this.eventsHandler = {};
         }
-        if (!this.eventsHandler[eventName]) {
-            // Delegate to the component if possible
-            this.eventsHandler[eventName] = eventHandler;
-            this.element.addEventListener(eventName, eventHandler);
+        if (typeof this.eventsHandler[eventName] === 'undefined') {
+            this.eventsHandler[eventName] = [];
         }
+        this.eventsHandler[eventName].push(eventHandler);
+        this.element.addEventListener(eventName, eventHandler);
     }
 };

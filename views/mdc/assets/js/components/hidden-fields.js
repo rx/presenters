@@ -1,8 +1,8 @@
 import {VBaseComponent, hookupComponents} from './base-component';
 
-export function initHiddenFields() {
+export function initHiddenFields(e) {
     console.log('\tHiddenFields');
-    hookupComponents('.v-hidden-field', VHiddenField, null);
+    hookupComponents(e, '.v-hidden-field', VHiddenField, null);
 }
 
 export class VHiddenField extends VBaseComponent {

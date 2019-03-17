@@ -1,0 +1,44 @@
+Voom::Presenters.define(:parallel_content) do
+  content id: context['id'] do
+    heading6 Time.now
+  end
+end
+
+Voom::Presenters.define(:parallel_events) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+   attach :events_drawer
+
+  indented_grid do
+    display 'Parallel Events'
+    body 'This demonstrates multiple event handlers for the same event, running in parallel.
+          It also shows the onload event running in parallel.'
+
+    event :onload do
+      replaces :first, :parallel_content, id: :first
+    end
+    event :onload do
+      replaces :second, :parallel_content, id: :second
+    end
+
+    button :load_in_parallel do
+      event :click do
+        replaces :third, :parallel_content, id: :third
+      end
+      event :click do
+        replaces :forth, :parallel_content, id: :forth
+      end
+
+      event :click do
+        replaces :fifth, :parallel_content, id: :fifth
+      end
+    end
+
+    content id: :first
+    content id: :second
+    content id: :third
+    content id: :forth
+    content id: :fifth
+  end
+  attach :code, file: __FILE__
+end

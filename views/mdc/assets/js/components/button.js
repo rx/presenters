@@ -3,9 +3,9 @@ import {VBaseComponent} from './base-component';
 import {hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
-export function initButtons() {
+export function initButtons(e) {
     console.log('\tButtons');
-    hookupComponents('.v-js-ripple-button', VButton, MDCRipple);
+    hookupComponents(e, '.v-js-ripple-button', VButton, MDCRipple);
 }
 
 

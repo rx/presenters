@@ -4,6 +4,7 @@ export class VBaseComponent {
     constructor(element, mdcComponent) {
         this.element = element;
         this.mdcComponent = mdcComponent;
+        this.element.classList.add('v-component');
     }
 
     validate(formData) {
@@ -17,9 +18,9 @@ export class VBaseComponent {
     }
 }
 
-export function hookupComponents(selector, VoomClass, MdcClass) {
+export function hookupComponents(root, selector, VoomClass, MdcClass) {
 
-    const components = document.querySelectorAll(selector);
+    const components = root.querySelectorAll(selector);
     for (let i = 0; i < components.length; i++) {
         const component = components[i];
         if (!component.mdcComponent) {
@@ -28,7 +29,8 @@ export function hookupComponents(selector, VoomClass, MdcClass) {
                 mdcInstance = new MdcClass(component);
             }
             if (!component.vComponent) {
-                component.vComponent = new VoomClass(component, mdcInstance);
+                component.vComponent = new VoomClass(component, mdcInstance, root);
+                component.vComponent.root = root;
             }
         }
     }

@@ -14,9 +14,9 @@ function createMenuHandler(menu, element) {
     };
 }
 
-export function initMenus() {
+export function initMenus(e) {
     console.log('\tMenus');
-    hookupComponents('.v-menu', VMenu, MDCMenu);
+    hookupComponents(e, '.v-menu', VMenu, MDCMenu);
 }
 
 export class VMenu extends eventHandlerMixin(VBaseComponent) {

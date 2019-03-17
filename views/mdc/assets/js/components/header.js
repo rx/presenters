@@ -3,15 +3,20 @@ import {VBaseComponent} from './base-component';
 import {hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
-export function initHeader() {
+export function initHeader(e) {
     console.log('\tHeader');
-    hookupComponents('.v-header', VHeader, MDCTopAppBar);
+    hookupComponents(e, '.v-header', VHeader, MDCTopAppBar);
 }
 
 
 export class VHeader extends eventHandlerMixin(VBaseComponent) {
-    constructor(element, mdcComponent) {
+    constructor(element, mdcComponent, root) {
         super(element, mdcComponent);
+        element.addEventListener('MDCTopAppBar:nav', function() {
+            var event = new Event('topbarclicked',{bubbles: true, composed: true});
+            // Dispatch the event.
+            element.dispatchEvent(event);
+        });
     }
 }
 

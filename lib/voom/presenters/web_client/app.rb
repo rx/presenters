@@ -55,6 +55,14 @@ module Voom
             attrib.to_s == value.to_s
           end
 
+          def h(text)
+            Rack::Utils.escape_html(text)
+          end
+
+          def include?(array, value)
+            array.map(&:to_s).include?(value.to_s)
+          end
+
           def unique_id(comp)
             "#{comp.id}-#{SecureRandom.hex(4)}"
           end

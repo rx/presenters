@@ -2,9 +2,9 @@ import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from "./mixins/event-handler";
 import {MDCTabBar} from '@material/tab-bar';
 
-export function initTabBars() {
+export function initTabBars(e) {
     console.log('\tTab Bars');
-    hookupComponents('.v-tab-bar', VTabBar, MDCTabBar);
+    hookupComponents(e, '.v-tab-bar', VTabBar, MDCTabBar);
 }
 
 export class VTabBar extends eventHandlerMixin(VBaseComponent) {

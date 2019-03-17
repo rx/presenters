@@ -101,7 +101,8 @@ export class VEvents {
             case 'stepper':
                 return new VStepperEvent(options, params, event);
             default:
-                return new VPluginEventAction(action_type, options, params, event);
+                return new VPluginEventAction(action_type, options, params,
+                    event);
         }
     }
 }
@@ -115,10 +116,10 @@ function createEventHandler(actionsData) {
     };
 }
 
-export function initEvents() {
+export function initEvents(e) {
     console.log('\tEvents');
 
-    var events = document.querySelectorAll('[data-events]');
+    var events = e.querySelectorAll('[data-events]');
     for (var i = 0; i < events.length; i++) {
         var eventElem = events[i];
         var eventsData = JSON.parse(eventElem.dataset.events);
@@ -143,21 +144,21 @@ export function initEvents() {
                 if (typeof eventElem.eventsHandler === 'undefined') {
                     eventElem.eventsHandler = {};
                 }
-                if (!eventElem.eventsHandler[eventName]) {
-                    // Delegate to the component if possible
-                    eventElem.eventsHandler[eventName] = eventHandler;
-                    eventOptions.passive = true;
-                    eventElem.addEventListener(eventName, eventHandler,
-                        eventOptions);
+                if (typeof eventElem.eventsHandler[eventName] === 'undefined') {
+                    eventElem.eventsHandler[eventName] = [];
                 }
+                eventElem.eventsHandler[eventName].push(eventHandler);
+                eventOptions.passive = true;
+                eventElem.addEventListener(eventName, eventHandler,
+                    eventOptions);
             }
         }
     }
-    fireAfterLoad();
+    fireAfterLoad(e);
 }
 
-function fireAfterLoad() {
-    var events = document.querySelectorAll('[data-events]');
+function fireAfterLoad(e) {
+    var events = e.querySelectorAll('[data-events]');
     for (var i = 0; i < events.length; i++) {
         var eventElem = events[i];
         var eventsData = JSON.parse(eventElem.dataset.events);

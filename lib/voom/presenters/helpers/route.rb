@@ -11,6 +11,7 @@ module Voom
           presenter = presenter.gsub(':','/')
           router.url(render: presenter, context: params)
         end
+        alias presenter_path presenters_path
       end
     end
   end

@@ -2,9 +2,9 @@ import {hookupComponents} from './base-component';
 import {VBaseToggle} from './base-toggle';
 import {MDCCheckbox} from '@material/checkbox';
 
-export function initCheckboxes() {
+export function initCheckboxes(e) {
     console.log('\tCheckboxes');
-    hookupComponents('.v-checkbox', VCheckbox, MDCCheckbox);
+    hookupComponents(e, '.v-checkbox', VCheckbox, MDCCheckbox);
 }
 
 export class VCheckbox extends VBaseToggle {

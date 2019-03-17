@@ -3,9 +3,9 @@ import {VBaseComponent} from './base-component';
 import {hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
-export function initTooltips() {
+export function initTooltips(e) {
     console.log('\tTooltips');
-    hookupComponents('.v-tooltip', VTooltip, MDCTooltip);
+    hookupComponents(e, '.v-tooltip', VTooltip, MDCTooltip);
 }
 
 export class VTooltip extends eventHandlerMixin(VBaseComponent) {

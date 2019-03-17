@@ -2,6 +2,8 @@ import {VBase} from './base';
 import appConfig from '../../config';
 import {expandParams} from './action_parameter';
 import {encode} from './encode';
+import {eventRoot} from './event_root';
+
 
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
@@ -54,13 +56,14 @@ export class VPosts extends VBase {
         const httpRequest = new XMLHttpRequest();
         const url = this.url;
         const callHeaders = this.headers;
+        const event = this.event;
         if (!httpRequest) {
             throw new Error(
                 'Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
         }
 
         let snackbarCallback = function(contentType, response) {
-            const snackbar = document.querySelector('.mdc-snackbar').vComponent;
+            const snackbar = eventRoot(event).querySelector('.mdc-snackbar').vComponent;
             if (contentType && contentType.indexOf('application/json') !== -1) {
                 const messages = JSON.parse(response).messages;
                 if (snackbar && messages && messages.snackbar) {
@@ -93,9 +96,9 @@ export class VPosts extends VBase {
                     }
                     else if (contentType && contentType.indexOf('text/html') !==
                         -1) {
-                        document.open(contentType);
-                        document.write(httpRequest.responseText);
-                        document.close();
+                        eventRoot(event).open(contentType);
+                        eventRoot(event).write(httpRequest.responseText);
+                        eventRoot(event).close();
                         results.push({
                             action: 'posts',
                             method: this.method,

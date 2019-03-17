@@ -1,9 +1,9 @@
 import {VBaseContainer} from "./base-container";
 import {hookupComponents} from "./base-component";
 
-export function initCards() {
+export function initCards(e) {
     console.log('\tCards');
-    hookupComponents('.v-card', VCard, null);
+    hookupComponents(e,'.v-card', VCard, null);
 }
 
 export class VCard extends VBaseContainer {

@@ -3,10 +3,10 @@ import {MDCChipSet} from '@material/chips';
 import {eventHandlerMixin} from "./mixins/event-handler";
 import {VBaseComponent, hookupComponents} from './base-component';
 
-export function initChips() {
+export function initChips(e) {
     console.log('\tChips');
-    hookupComponents('.v-chip', VChip, MDCChip);
-    hookupComponents('.v-chip-set', VChipSet, MDCChipSet);
+    hookupComponents(e, '.v-chip', VChip, MDCChip);
+    hookupComponents(e, '.v-chip-set', VChipSet, MDCChipSet);
 }
 
 export class VChip extends eventHandlerMixin(VBaseComponent) {

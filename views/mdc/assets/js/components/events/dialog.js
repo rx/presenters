@@ -1,3 +1,5 @@
+import {eventRoot} from './event_root';
+
 export class VDialog {
     constructor(options, params, event) {
         this.dialogId = options.target;
@@ -6,7 +8,7 @@ export class VDialog {
     }
 
     call(results) {
-        const dialog = document.querySelector('#' + this.dialogId);
+        const dialog = eventRoot(this.event).querySelector('#' + this.dialogId);
 
         if (!(dialog && dialog.vComponent)) {
             const err = new Error(

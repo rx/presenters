@@ -1,9 +1,9 @@
 import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
-export function initPlugins() {
+export function initPlugins(e) {
     console.log('\tPlugins');
-    hookupComponents('.v-plugin', VPluginComponent);
+    hookupComponents(e, '.v-plugin', VPluginComponent);
 }
 
 // Delegating plugin class. Allows a plugin to define a class-name as a data

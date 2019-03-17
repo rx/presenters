@@ -22,9 +22,9 @@ var toolbarOptions = [
     ['clean']                                         // remove formatting button
 ];
 
-export function initRichTextArea() {
+export function initRichTextArea(e) {
     console.log('\tRich Text Area');
-    hookupComponents('.v-rich-text-area-container', VRichTextArea, null);
+    hookupComponents(e, '.v-rich-text-area-container', VRichTextArea, null);
 }
 
 export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {

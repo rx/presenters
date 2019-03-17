@@ -4,9 +4,9 @@ import {MDCSlider} from '@material/slider';
 import {visibilityObserverMixin} from './mixins/visibility-observer';
 import {VEvents} from './events';
 
-export function initSliders() {
+export function initSliders(e) {
     console.log('\tSliders');
-    hookupComponents('.v-slider', VSlider, MDCSlider);
+    hookupComponents(e, '.v-slider', VSlider, MDCSlider);
 }
 
 export class VSlider extends visibilityObserverMixin(eventHandlerMixin(VBaseComponent)) {

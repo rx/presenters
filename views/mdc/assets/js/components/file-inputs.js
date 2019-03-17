@@ -1,9 +1,9 @@
 import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
-export function initFileInputs() {
+export function initFileInputs(e) {
     console.log('\tFile Inputs');
-    hookupComponents('.v-file-input', VFileInput, null);
+    hookupComponents(e, '.v-file-input', VFileInput, null);
 }
 
 export class VFileInput extends eventHandlerMixin(VBaseComponent) {

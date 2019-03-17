@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-if ENV['VOOM_ENV']=='integration_testing'
+if ENV['VOOM_ENV'] == 'integration_testing'
   require 'simplecov'
   if ENV['CIRCLE_ARTIFACTS']
     dir = File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
@@ -17,11 +17,20 @@ require 'voom/presenters/web_client/app'
 require 'voom/presenters/demo/search'
 require 'voom/presenters/demo/echo'
 
+require 'rack/cors'
+use Rack::Cors do
+  allow do
+    origins '*'
+    resource '*', headers: :any, methods: [:get, :post, :options]
+  end
+end
+
 use Voom::Presenters::Demo::Search
 use Voom::Presenters::Demo::Echo
 
 use Voom::Presenters::WebClient::App
 run Voom::Presenters::Api::App
+
 
 Voom::Presenters::Settings.configure do |config|
   config.presenters.root = File.join(ENV['VOOM_ROOT'], 'app')

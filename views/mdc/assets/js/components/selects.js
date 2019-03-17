@@ -3,9 +3,9 @@ import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 import {visibilityObserverMixin} from "./mixins/visibility-observer";
 
-export function initSelects() {
+export function initSelects(e) {
     console.log('\tSelects');
-    hookupComponents('.v-select', VSelect, MDCSelect);
+    hookupComponents(e, '.v-select', VSelect, MDCSelect);
 }
 
 
