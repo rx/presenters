@@ -2,6 +2,9 @@ require_relative '../helpers/indented_grid'
 
 Voom::Presenters.define(:drawers) do
   helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  page_title 'Drawers'
+
   drawer do
     menu do
       item 'About (Drawer)' do
@@ -24,14 +27,9 @@ Voom::Presenters.define(:drawers) do
     end
   end
 
-  unless context['naked']
-    attach :top_nav
-    page_title 'Drawers'
+  indented_grid do
+    headline 'Drawers'
 
-    indented_grid do
-      headline 'Drawers'
-
-      attach :code, file: __FILE__
-    end
+    attach :code, file: __FILE__
   end
 end

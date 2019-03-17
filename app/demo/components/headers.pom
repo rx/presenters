@@ -2,42 +2,40 @@ require_relative '../helpers/indented_grid'
 
 Voom::Presenters.define(:headers) do
   helpers Demo::Helpers::IndentedGrid
-
+  
   attach :top_nav
-  unless context['naked']
-    attach :component_drawer
+  attach :component_drawer
 
 
-    header 'Presenters Demo' do
-      nav do
-        item 'About (Header)' do
-          event :click do
-            loads :index
-          end
-        end
+  header 'Presenters Demo' do
+    nav do
+      item 'About (Header)' do
+              event :click do
+                loads :index
+              end
+            end
 
-        item 'Components (Header)' do
-          event :click do
-            loads :components
-          end
-        end
+            item 'Components (Header)' do
+              event :click do
+                loads :components
+              end
+            end
 
-        item 'Styles (Header)' do
-          event :click do
-            loads :styles
-          end
-        end
-      end
+            item 'Styles (Header)' do
+              event :click do
+                loads :styles
+              end
+            end
     end
-    page_title 'Page about headers' do
-      icon :subtitles
-    end
+  end
+  page_title 'Page about headers' do
+    icon :subtitles
+  end
 
 
-    indented_grid do
-      headline 'Headers'
-
-      attach :code, file: __FILE__
-    end
+  indented_grid do
+    headline 'Headers'
+    
+    attach :code, file: __FILE__
   end
 end
