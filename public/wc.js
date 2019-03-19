@@ -25675,9 +25675,10 @@ var VReplaces = function (_VBase) {
                                 console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                                 if (httpRequest.status === 200) {
                                     var _nodeToReplace = document.getElementById(elementId);
-                                    _nodeToReplace.outerHTML = httpRequest.responseText;
-                                    var newNode = document.getElementById(elementId);
-                                    Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["a" /* initialize */])(newNode);
+                                    var newDiv = document.createElement('div');
+                                    newDiv.innerHTML = httpRequest.responseText;
+                                    _nodeToReplace.parentElement.replaceChild(newDiv, _nodeToReplace);
+                                    Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["a" /* initialize */])(newDiv);
 
                                     results.push({
                                         action: 'replaces',
