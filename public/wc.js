@@ -25446,13 +25446,22 @@ var VPosts = function (_VBase) {
             }
 
             var snackbarCallback = function snackbarCallback(contentType, response) {
-                var snackbar = Object(__WEBPACK_IMPORTED_MODULE_4__event_root__["a" /* eventRoot */])(event).querySelector('.mdc-snackbar').vComponent;
-                if (contentType && contentType.indexOf('application/json') !== -1) {
+                var snackbar = Object(__WEBPACK_IMPORTED_MODULE_4__event_root__["a" /* eventRoot */])(event).querySelector('.mdc-snackbar');
+
+                if (!(snackbar && snackbar.vComponent)) {
+                    return;
+                }
+
+                var snackbarComponent = snackbar.vComponent;
+
+                if (contentType && contentType.includes('application/json')) {
                     var messages = JSON.parse(response).messages;
-                    if (snackbar && messages && messages.snackbar) {
-                        var message = messages.snackbar.join('<br/>');
+
+                    if (messages && messages.snackbar) {
+                        var message = messages.snackbar.join('<br>');
+
                         if (message !== '') {
-                            snackbar.display(message);
+                            snackbarComponent.display(message);
                         }
                     }
                 }
