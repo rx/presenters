@@ -64,7 +64,7 @@ export class VEvents {
             }
 
             if (!result.squelch) {
-                new VErrors(root).displayErrors(result);
+                new VErrors(root, event).displayErrors(result);
             }
         });
     }

@@ -1065,14 +1065,15 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var VErrors = function () {
-    function VErrors(root) {
+    function VErrors(root, event) {
         _classCallCheck(this, VErrors);
 
         this.root = root;
+        this.event = event;
     }
 
     _createClass(VErrors, [{
-        key: "clearErrors",
+        key: 'clearErrors',
         value: function clearErrors() {
             var errorMessages = this.root.querySelectorAll('.v-error-message');
 
@@ -1098,7 +1099,7 @@ var VErrors = function () {
         // {exception: 'Something bad happened' }
 
     }, {
-        key: "stringsToArrays",
+        key: 'stringsToArrays',
         value: function stringsToArrays(value) {
             if (Array.isArray(value) || value.constructor === Object) {
                 return value;
@@ -1106,7 +1107,7 @@ var VErrors = function () {
             return new Array(value);
         }
     }, {
-        key: "normalizeErrors",
+        key: 'normalizeErrors',
         value: function normalizeErrors(errors) {
             var _this = this;
 
@@ -1122,7 +1123,7 @@ var VErrors = function () {
         // [http_status, content_type, resultText]
 
     }, {
-        key: "displayErrors",
+        key: 'displayErrors',
         value: function displayErrors(result) {
             var httpStatus = result.statusCode;
             var contentType = result.contentType;
@@ -1130,9 +1131,9 @@ var VErrors = function () {
 
             var responseErrors = null;
 
-            if (contentType && contentType.indexOf("application/json") !== -1) {
+            if (contentType && contentType.indexOf('application/json') !== -1) {
                 responseErrors = JSON.parse(resultText);
-            } else if (contentType && contentType.indexOf("v/errors") !== -1) {
+            } else if (contentType && contentType.indexOf('v/errors') !== -1) {
                 responseErrors = resultText;
             }
 
@@ -1179,9 +1180,9 @@ var VErrors = function () {
                     }
                 }
             } else if (httpStatus === 0) {
-                this.prependErrors(["Unable to contact server. Please check that you are online and retry."]);
+                this.prependErrors(['Unable to contact server. Please check that you are online and retry.']);
             } else {
-                this.prependErrors(["The server returned an unexpected response! Status:" + httpStatus]);
+                this.prependErrors(['The server returned an unexpected response! Status:' + httpStatus]);
             }
         }
 
@@ -1189,7 +1190,7 @@ var VErrors = function () {
         // Returns true if it was able to set the error on the control
 
     }, {
-        key: "displayInputError",
+        key: 'displayInputError',
         value: function displayInputError(divId, messages) {
             var currentEl = this.root.getElementById(divId);
             if (currentEl && currentEl.mdcComponent) {
@@ -1206,11 +1207,11 @@ var VErrors = function () {
         // Used to display an error message without their being an input field to attach the error to
 
     }, {
-        key: "prependErrors",
+        key: 'prependErrors',
         value: function prependErrors(messages) {
             var errorsDiv = this.findNearestErrorDiv();
             // create a new div element
-            var newDiv = this.root.createElement("div");
+            var newDiv = this.root.createElement('div');
             newDiv.className = 'v-error-message';
             // and give it some content
 
@@ -1250,16 +1251,16 @@ var VErrors = function () {
                 errorsDiv.parentElement.insertBefore(newDiv, errorsDiv);
                 return true;
             } else {
-                console.error("Unable to display Errors! ", messages);
+                console.error('Unable to display Errors! ', messages);
             }
             return false;
         }
     }, {
-        key: "findNearestErrorDiv",
+        key: 'findNearestErrorDiv',
         value: function findNearestErrorDiv() {
             var errorsDiv = null;
-            var currentDiv = this.event.target;
-            if (currentDiv) {
+            if (this.event) {
+                var currentDiv = this.event.target;
                 errorsDiv = currentDiv.closest('.v-errors');
             } else {
                 errorsDiv = this.root.querySelector('.v-errors');
@@ -8264,7 +8265,7 @@ var VEvents = function () {
                 }
 
                 if (!result.squelch) {
-                    new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](root).displayErrors(result);
+                    new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](root, event).displayErrors(result);
                 }
             });
         }
