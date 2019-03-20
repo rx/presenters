@@ -6,24 +6,25 @@ import {VErrors} from './events/errors';
 import {VToggleVisibility} from './events/toggle_visibility';
 import {VPromptIfDirty} from './events/prompt_if_dirty';
 import {VSnackbarEvent} from './events/snackbar';
-import {VNavigates} from './events/navigates';
 import {VClears} from './events/clears';
 import {VRemoves} from './events/removes';
 import {VStepperEvent} from './events/stepper';
 import {VPluginEventAction} from './events/plugin';
+import getRoot from './root_document';
 
 export class VEvents {
-    //[[type, url, target, params]]
-    constructor(actions, event) {
+    // [[type, url, target, params]]
+    constructor(actions, event, root) {
         this.event = event;
+        this.root = root;
         this.actions = actions.map((action) => {
-            return this.constructor.action_class(action, event);
+            return this.constructor.action_class(action, event, root);
         });
     }
 
     call() {
         // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
-        var fnlist = this.actions.map((action) => {
+        const fnlist = this.actions.map((action) => {
             return function(results) {
                 return Promise.resolve(action.call(results));
             };
@@ -31,18 +32,19 @@ export class VEvents {
 
         // Execute a list of Promise return functions in series
         function pseries(list) {
-            var p = Promise.resolve([]);
+            const p = Promise.resolve([]);
             return list.reduce(function(pacc, fn) {
                 return pacc = pacc.then(fn);
             }, p);
         }
 
-        var event = this.event;
+        const event = this.event;
+        const root = this.root;
 
         pseries(fnlist).then(function(results) {
-            var result = results.pop();
-            var contentType = result.contentType;
-            var responseURL = result.responseURL;
+            const result = results.pop();
+            const contentType = result.contentType;
+            const responseURL = result.responseURL;
 
             if (event.target.dialog) {
                 event.target.dialog.close();
@@ -62,12 +64,12 @@ export class VEvents {
             }
 
             if (!result.squelch) {
-                new VErrors(event).displayErrors(result);
+                new VErrors(root).displayErrors(result);
             }
         });
     }
 
-    static action_class(action, event) {
+    static action_class(action, event, root) {
         const action_type = action[0];
         const url = action[1];
         const options = action[2];
@@ -75,44 +77,42 @@ export class VEvents {
 
         switch (action_type) {
             case 'loads':
-                return new VLoads(options, url, params, event);
+                return new VLoads(options, url, params, event, root);
             case 'replaces':
-                return new VReplaces(options, url, params, event);
+                return new VReplaces(options, url, params, event, root);
             case 'post':
-                return new VPosts(options, url, params, 'POST', event);
+                return new VPosts(options, url, params, 'POST', event, root);
             case 'update':
-                return new VPosts(options, url, params, 'PUT', event);
+                return new VPosts(options, url, params, 'PUT', event, root);
             case 'delete':
-                return new VPosts(options, url, params, 'DELETE', event);
+                return new VPosts(options, url, params, 'DELETE', event, root);
             case 'dialog':
-                return new VDialog(options, params, event);
+                return new VDialog(options, params, event, root);
             case 'toggle_visibility':
-                return new VToggleVisibility(options, params, event);
+                return new VToggleVisibility(options, params, event, root);
             case 'prompt_if_dirty':
-                return new VPromptIfDirty(options, params, event);
+                return new VPromptIfDirty(options, params, event, root);
             case 'remove':
-                return new VRemoves(options, params, event);
+                return new VRemoves(options, params, event, root);
             case 'snackbar':
-                return new VSnackbarEvent(options, params, event);
-            case 'navigates':
-                return new VNavigates(options, params, event);
+                return new VSnackbarEvent(options, params, event, root);
             case 'clear':
-                return new VClears(options, params, event);
+                return new VClears(options, params, event, root);
             case 'stepper':
-                return new VStepperEvent(options, params, event);
+                return new VStepperEvent(options, params, event, root);
             default:
                 return new VPluginEventAction(action_type, options, params,
-                    event);
+                    event, root);
         }
     }
 }
 
 // This is used to get a proper binding of the actionData
 // https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
-function createEventHandler(actionsData) {
+function createEventHandler(actionsData, root) {
     return function(event) {
         event.stopPropagation();
-        new VEvents(actionsData, event).call();
+        new VEvents(actionsData, event, root).call();
     };
 }
 
@@ -128,12 +128,12 @@ export function initEvents(e) {
             var eventName = eventData[0];
             var eventOptions = eventData[2];
             var actionsData = eventData[1];
-            var eventHandler = createEventHandler(actionsData);
+            var eventHandler = createEventHandler(actionsData, getRoot(e));
             // allow overide of event handler by component
             if (eventElem.vComponent &&
                 eventElem.vComponent.createEventHandler) {
                 eventHandler = eventElem.vComponent.createEventHandler(
-                    actionsData);
+                    actionsData, getRoot(e));
             }
             // Delegate to the component if possible
             if (eventElem.vComponent &&

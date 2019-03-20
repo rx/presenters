@@ -2,17 +2,18 @@ import {VErrors} from './errors';
 import {VUrls} from '../../utils/urls';
 
 export class VBase extends VUrls {
-    constructor(options) {
+    constructor(options, root) {
         super();
         this.options = options;
+        this.root = root;
     }
 
     clearErrors() {
-        new VErrors().clearErrors();
+        new VErrors(this.root).clearErrors();
     }
 
     parentElement() {
-        return document.getElementById(this.options.__parent_id__);
+        return this.root.getElementById(this.options.__parent_id__);
     }
 
     taggedInputs() {
@@ -23,7 +24,7 @@ export class VBase extends VUrls {
         }
 
         const selector = `[data-input-tag="${inputTag}"]`;
-        const inputs = document.querySelectorAll(selector);
+        const inputs = this.root.querySelectorAll(selector);
 
         if (inputs.length < 1) {
             console.warn(

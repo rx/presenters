@@ -20,13 +20,13 @@ function shouldHalt(action) {
 }
 
 export class VPromptIfDirty extends VBase {
-    constructor(options, params, event) {
-        super(options);
+    constructor(options, params, event, root) {
+        super(options, root);
 
         this.targetId = options.target;
         this.params = params;
         this.event = event;
-        this.dialog = new VDialog(this.options, this.params, this.event);
+        this.dialog = new VDialog(this.options, this.params, this.event, root);
     }
 
     call(results) {

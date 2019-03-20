@@ -1,11 +1,12 @@
 import {expandParam} from './action_parameter';
 
 export class VSnackbarEvent {
-    constructor(options, params, event) {
+    constructor(options, params, event, root) {
         this.options = options;
         this.text = params.text;
         this.event = event;
-        const snackbarElem = document.querySelector('.mdc-snackbar');
+        this.root = root;
+        const snackbarElem = this.root.querySelector('.mdc-snackbar');
         this.snackbar = snackbarElem.vComponent;
     }
 

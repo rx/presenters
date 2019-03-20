@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     require('./mdl-stepper');
     require('babel-polyfill');
 
-    require('./components/initialize').initialize(document);
+    require('./components/initialize').initialize(document, true);
 
     // Focus first valid input control
     const focusable = document.querySelectorAll('.v-focusable');

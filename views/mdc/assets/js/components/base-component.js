@@ -1,7 +1,8 @@
-import {VErrors} from "./events/errors";
+import {VErrors} from './events/errors';
 
 export class VBaseComponent {
     constructor(element, mdcComponent) {
+        this.root = element.ownerDocument;
         this.element = element;
         this.mdcComponent = mdcComponent;
         this.element.classList.add('v-component');
@@ -10,16 +11,19 @@ export class VBaseComponent {
     validate(formData) {
         return true;
     }
-    onShow() {}
-    onHide() {}
+
+    onShow() {
+    }
+
+    onHide() {
+    }
 
     clearErrors() {
-        new VErrors().clearErrors();
+        new VErrors(this.root).clearErrors();
     }
 }
 
 export function hookupComponents(root, selector, VoomClass, MdcClass) {
-
     const components = root.querySelectorAll(selector);
     for (let i = 0; i < components.length; i++) {
         const component = components[i];
@@ -29,7 +33,8 @@ export function hookupComponents(root, selector, VoomClass, MdcClass) {
                 mdcInstance = new MdcClass(component);
             }
             if (!component.vComponent) {
-                component.vComponent = new VoomClass(component, mdcInstance, root);
+                component.vComponent = new VoomClass(component, mdcInstance,
+                    root);
                 component.vComponent.root = root;
             }
         }

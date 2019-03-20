@@ -12,7 +12,7 @@ export function initDrawer(e) {
 class VDrawer extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
-        const header = document.querySelector('.v-header');
+        const header = this.root.querySelector('.v-header');
         if (header) {
             header.addEventListener('MDCTopAppBar:nav',
                 () => {

@@ -1,12 +1,12 @@
 export class VErrors {
-    constructor(event) {
-        this.event = event;
+    constructor(root) {
+        this.root = root;
     }
 
     clearErrors() {
-        var errorMessages = document.querySelectorAll('.v-error-message');
+        const errorMessages = this.root.querySelectorAll('.v-error-message');
 
-        for (var i = 0; i < errorMessages.length; i++) {
+        for (let i = 0; i < errorMessages.length; i++) {
             errorMessages[i].remove();
         }
     }
@@ -89,10 +89,10 @@ export class VErrors {
     // Sets the helper text on the field
     // Returns true if it was able to set the error on the control
     displayInputError(divId, messages) {
-        var currentEl = document.getElementById(divId);
+        var currentEl = this.root.getElementById(divId);
         if (currentEl && currentEl.mdcComponent) {
             currentEl.mdcComponent.helperTextContent = messages.join(', ');
-            var helperText = document.getElementById(divId + '-input-helper-text');
+            var helperText = this.root.getElementById(divId + '-input-helper-text');
             helperText.classList.add('mdc-text-field--invalid',
                 'mdc-text-field-helper-text--validation-msg',
                 'mdc-text-field-helper-text--persistent');
@@ -107,14 +107,14 @@ export class VErrors {
     prependErrors(messages) {
         var errorsDiv = this.findNearestErrorDiv();
         // create a new div element
-        var newDiv = document.createElement("div");
+        var newDiv = this.root.createElement("div");
         newDiv.className = 'v-error-message';
         // and give it some content
 
         for (var message of messages) {
-            var newContent = document.createTextNode(message);
+            var newContent = this.root.createTextNode(message);
             newDiv.appendChild(newContent);
-            let br = document.createElement('br');
+            let br = this.root.createElement('br');
             // add the text node to the newly created div
             newDiv.appendChild(br);
         }
@@ -136,7 +136,7 @@ export class VErrors {
         if(currentDiv) {
             errorsDiv = currentDiv.closest('.v-errors')
         }else{
-            errorsDiv = document.querySelector('.v-errors');
+            errorsDiv = this.root.querySelector('.v-errors');
         }
         return errorsDiv;
     }

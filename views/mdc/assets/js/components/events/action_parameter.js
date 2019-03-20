@@ -26,8 +26,9 @@ export function expandParam(results, value) {
 }
 
 export function expandParams(results, o) {
-    Object.keys(o).forEach(function (k) {
-        if (o[k] !== null && typeof o[k] === 'object' && o[k].type !== 'action_parameter') {
+    Object.keys(o).forEach(function(k) {
+        if (o[k] !== null && typeof o[k] === 'object' && o[k].type !==
+            'action_parameter') {
             expandParams(results, o[k]);
             return;
         }

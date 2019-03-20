@@ -2,14 +2,12 @@ import {VBase} from './base';
 import appConfig from '../../config';
 import {expandParams} from './action_parameter';
 import {encode} from './encode';
-import {eventRoot} from './event_root';
-
 
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
 export class VPosts extends VBase {
-    constructor(options, url, params, method, event) {
-        super(options);
+    constructor(options, url, params, method, event, root) {
+        super(options, root);
         this.url = url;
         this.params = params;
         this.method = method;
@@ -56,14 +54,14 @@ export class VPosts extends VBase {
         const httpRequest = new XMLHttpRequest();
         const url = this.url;
         const callHeaders = this.headers;
-        const event = this.event;
+        const root = this.root;
         if (!httpRequest) {
             throw new Error(
                 'Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
         }
 
         let snackbarCallback = function(contentType, response) {
-            const snackbar = eventRoot(event).querySelector('.mdc-snackbar').vComponent;
+            const snackbar = root.querySelector('.mdc-snackbar').vComponent;
             if (contentType && contentType.indexOf('application/json') !== -1) {
                 const messages = JSON.parse(response).messages;
                 if (snackbar && messages && messages.snackbar) {
@@ -96,9 +94,9 @@ export class VPosts extends VBase {
                     }
                     else if (contentType && contentType.indexOf('text/html') !==
                         -1) {
-                        eventRoot(event).open(contentType);
-                        eventRoot(event).write(httpRequest.responseText);
-                        eventRoot(event).close();
+                        root.open(contentType);
+                        root.write(httpRequest.responseText);
+                        root.close();
                         results.push({
                             action: 'posts',
                             method: this.method,

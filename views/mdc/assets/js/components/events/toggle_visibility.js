@@ -1,15 +1,16 @@
-export class VToggleVisibility  {
-    constructor(options, params, event) {
+export class VToggleVisibility {
+    constructor(options, params, event, root) {
         this.targetId = options.target;
         this.params = params;
         this.event = event;
+        this.root = root;
     }
 
     call(results) {
-        let targetId = this.targetId;
-        let action = this.params.action;
-        let delayAmt = this.event instanceof FocusEvent ? 500 : 0;
-        let elem = document.getElementById(targetId);
+        const targetId = this.targetId;
+        const action = this.params.action;
+        const delayAmt = this.event instanceof FocusEvent ? 500 : 0;
+        const elem = this.root.getElementById(targetId);
 
         if (!elem) {
             const err = new Error(
@@ -26,21 +27,25 @@ export class VToggleVisibility  {
             return new Promise((_, reject) => reject(results));
         }
 
-        let promiseObj = new Promise(function (resolve) {
+        const promiseObj = new Promise(function(resolve) {
             clearTimeout(elem.vTimeout);
-            elem.vTimeout = setTimeout(function(){
-                console.log("Toggling visibility on: " + targetId);
+            elem.vTimeout = setTimeout(function() {
+                console.log('Toggling visibility on: ' + targetId);
                 if (action === 'show') {
-                    elem.classList.remove("v-hidden");
-                } else if (action === 'hide') {
-                    elem.classList.add("v-hidden");
-                } else {
-                    elem.classList.toggle("v-hidden");
+                    elem.classList.remove('v-hidden');
                 }
-                if(elem && elem.vComponent && elem.vComponent.show){
-                    elem.classList.contains('v-hidden') ?  elem.vComponent.onHide() : elem.vComponent.onShow();
+                else if (action === 'hide') {
+                    elem.classList.add('v-hidden');
                 }
-                results.push({action:'toggle_visibility', statusCode: 200});
+                else {
+                    elem.classList.toggle('v-hidden');
+                }
+                if (elem && elem.vComponent && elem.vComponent.show) {
+                    elem.classList.contains('v-hidden') ?
+                        elem.vComponent.onHide() :
+                        elem.vComponent.onShow();
+                }
+                results.push({action: 'toggle_visibility', statusCode: 200});
                 resolve(results);
             }, delayAmt);
         });

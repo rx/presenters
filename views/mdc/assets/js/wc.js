@@ -33,7 +33,7 @@ class FlowMatic extends HTMLElement {
 
             this.attachShadow({mode: 'open'}).
                 appendChild(templateContent.cloneNode(true));
-            initialize(this.shadowRoot);
+            initialize(this.shadowRoot, true);
         });
         oReq.open('GET', `${this.dataset.comp}`);
         oReq.send();

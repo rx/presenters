@@ -31,7 +31,7 @@ import {initTypography} from './typography';
 // import {initTooltip} from './tooltip';
 import {initPlugins} from './plugins';
 
-export function initialize(root) {
+export function initialize(root, setRoot) {
     console.log('Initializing');
     initButtons(root);
     initDialogs(root);

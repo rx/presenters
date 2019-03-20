@@ -1,9 +1,10 @@
 export class VPluginEventAction {
-    constructor(actionType, options, params, event) {
+    constructor(actionType, options, params, event, root) {
         this.actionType = actionType;
         this.options = options;
         this.params = params;
         this.event = event;
+        this.root = root;
     }
 
     call(results) {
@@ -11,7 +12,7 @@ export class VPluginEventAction {
         const options = this.options;
         const params = this.params;
         const event = this.event;
-        console.log('Calling plugin');
-        return window[actionType](options, params, event, results);
+        return this.root.defaultView[actionType](options, params, event,
+            results);
     }
 }

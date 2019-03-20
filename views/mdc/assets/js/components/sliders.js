@@ -1,5 +1,5 @@
 import {VBaseComponent, hookupComponents} from './base-component';
-import {eventHandlerMixin} from "./mixins/event-handler";
+import {eventHandlerMixin} from './mixins/event-handler';
 import {MDCSlider} from '@material/slider';
 import {visibilityObserverMixin} from './mixins/visibility-observer';
 import {VEvents} from './events';
@@ -9,7 +9,8 @@ export function initSliders(e) {
     hookupComponents(e, '.v-slider', VSlider, MDCSlider);
 }
 
-export class VSlider extends visibilityObserverMixin(eventHandlerMixin(VBaseComponent)) {
+export class VSlider extends visibilityObserverMixin(
+    eventHandlerMixin(VBaseComponent)) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
         this.recalcWhenVisible(this);
@@ -21,11 +22,11 @@ export class VSlider extends visibilityObserverMixin(eventHandlerMixin(VBaseComp
     }
 
     name() {
-        return this.element.getAttribute('data-name')
+        return this.element.getAttribute('data-name');
     }
 
     value() {
-        return this.mdcComponent.value
+        return this.mdcComponent.value;
     }
 
     clear() {
@@ -49,9 +50,10 @@ export class VSlider extends visibilityObserverMixin(eventHandlerMixin(VBaseComp
 
 
     createEventHandler(actionsData) {
-        return function (event) {
+        return function(event) {
             // The MDC slider was firing duplicate change events - this prevents that
-            if (!this.lastEvent || (event.timeStamp - this.lastEvent.timeStamp) > 10.0) {
+            if (!this.lastEvent ||
+                (event.timeStamp - this.lastEvent.timeStamp) > 10.0) {
                 new VEvents(actionsData, event).call();
             }
             this.lastEvent = event;

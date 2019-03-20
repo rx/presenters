@@ -5,8 +5,8 @@ import {initialize} from '../initialize';
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
 export class VReplaces extends VBase {
-    constructor(options, url, params, event) {
-        super(options);
+    constructor(options, url, params, event, root) {
+        super(options, root);
         this.element_id = options.target;
         this.url = url;
         this.params = params;
@@ -15,22 +15,26 @@ export class VReplaces extends VBase {
 
     call(results) {
         this.clearErrors();
-        var httpRequest = new XMLHttpRequest();
+        const httpRequest = new XMLHttpRequest();
         if (!httpRequest) {
             throw new Error(
-                'Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
+                'Cannot talk to server! Please upgrade your browser ' +
+                'to one that supports XMLHttpRequest.');
         }
-        var elementId = this.element_id;
-        var nodeToReplace = document.getElementById(elementId);
+        const root = this.root;
+        const elementId = this.element_id;
+        const nodeToReplace = root.getElementById(elementId);
         expandParams(results, this.params);
-        var url = this.buildURL(this.url, this.params, this.inputValues(),
+        const url = this.buildURL(this.url, this.params, this.inputValues(),
             [['grid_nesting', this.options.grid_nesting]]);
-        let delayAmt = this.event instanceof InputEvent ? 500 : 0;
+        const delayAmt = this.event instanceof InputEvent ? 500 : 0;
 
-        var promiseObj = new Promise(function(resolve, reject) {
+        return new Promise(function(resolve, reject) {
             if (!nodeToReplace) {
                 let msg = 'Unable to located node: \'' + elementId + '\'' +
-                    ' This usually the result of issuing a replaces action and specifying a element id that does not currently exist on the page.';
+                    ' This usually the result of issuing a replaces action ' +
+                    'and specifying a element id that does not currently ' +
+                    'exist on the page.';
                 console.error(msg);
                 results.push({
                     action: 'replaces',
@@ -48,9 +52,9 @@ export class VReplaces extends VBase {
                             console.log(httpRequest.status + ':' +
                                 this.getResponseHeader('content-type'));
                             if (httpRequest.status === 200) {
-                                const nodeToReplace = document.getElementById(
+                                const nodeToReplace = root.getElementById(
                                     elementId);
-                                const newDiv = document.createElement('div');
+                                const newDiv = root.createElement('div');
                                 newDiv.innerHTML = httpRequest.responseText;
                                 nodeToReplace.parentElement.replaceChild(newDiv,
                                     nodeToReplace);
@@ -84,7 +88,5 @@ export class VReplaces extends VBase {
                 }, delayAmt);
             }
         });
-        return promiseObj;
     }
-
 }
