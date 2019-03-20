@@ -22,7 +22,7 @@ module Voom
             @hidden = attribs.delete(:hidden) {false}
             @size = attribs.delete(:size)
             @full_width = attribs.delete(:full_width) {false}
-            @position = Array(attribs.delete(:position)).compact
+            @position = Array(default_position).compact
             expand!
             @event_parent_id = self.parent(:form)&.id || id
           end
@@ -43,6 +43,10 @@ module Voom
           end
 
           private
+
+          def default_position
+            attribs.delete(:position){button_type == :fab ? %i(top right) : nil}
+          end
 
           def menu_position
             position.include?(:right) ? :right : nil

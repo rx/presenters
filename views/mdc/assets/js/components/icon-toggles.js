@@ -11,4 +11,10 @@ export class VIconToggle extends VBaseToggle {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
     }
+
+    prepareSubmit(params) {
+        if (this.submittedValue()) {
+            params.push([this.name(), this.submittedValue()]);
+        }
+    }
 }
