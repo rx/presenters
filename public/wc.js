@@ -81,26 +81,27 @@ var VBaseComponent = function () {
     function VBaseComponent(element, mdcComponent) {
         _classCallCheck(this, VBaseComponent);
 
+        this.root = element.ownerDocument;
         this.element = element;
         this.mdcComponent = mdcComponent;
         this.element.classList.add('v-component');
     }
 
     _createClass(VBaseComponent, [{
-        key: "validate",
+        key: 'validate',
         value: function validate(formData) {
             return true;
         }
     }, {
-        key: "onShow",
+        key: 'onShow',
         value: function onShow() {}
     }, {
-        key: "onHide",
+        key: 'onHide',
         value: function onHide() {}
     }, {
-        key: "clearErrors",
+        key: 'clearErrors',
         value: function clearErrors() {
-            new __WEBPACK_IMPORTED_MODULE_0__events_errors__["a" /* VErrors */]().clearErrors();
+            new __WEBPACK_IMPORTED_MODULE_0__events_errors__["a" /* VErrors */](this.root).clearErrors();
         }
     }]);
 
@@ -108,7 +109,6 @@ var VBaseComponent = function () {
 }();
 
 function hookupComponents(root, selector, VoomClass, MdcClass) {
-
     var components = root.querySelectorAll(selector);
     for (var i = 0; i < components.length; i++) {
         var component = components[i];
@@ -690,24 +690,25 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var VBase = function (_VUrls) {
     _inherits(VBase, _VUrls);
 
-    function VBase(options) {
+    function VBase(options, root) {
         _classCallCheck(this, VBase);
 
         var _this = _possibleConstructorReturn(this, (VBase.__proto__ || Object.getPrototypeOf(VBase)).call(this));
 
         _this.options = options;
+        _this.root = root;
         return _this;
     }
 
     _createClass(VBase, [{
         key: 'clearErrors',
         value: function clearErrors() {
-            new __WEBPACK_IMPORTED_MODULE_0__errors__["a" /* VErrors */]().clearErrors();
+            new __WEBPACK_IMPORTED_MODULE_0__errors__["a" /* VErrors */](this.root).clearErrors();
         }
     }, {
         key: 'parentElement',
         value: function parentElement() {
-            return document.getElementById(this.options.__parent_id__);
+            return this.root.getElementById(this.options.__parent_id__);
         }
     }, {
         key: 'taggedInputs',
@@ -719,7 +720,7 @@ var VBase = function (_VUrls) {
             }
 
             var selector = '[data-input-tag="' + inputTag + '"]';
-            var inputs = document.querySelectorAll(selector);
+            var inputs = this.root.querySelectorAll(selector);
 
             if (inputs.length < 1) {
                 console.warn('input_tag ' + inputTag + ' matched 0 elements. Are you sure' + 'you\'ve specified the correct value?');
@@ -1072,16 +1073,16 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var VErrors = function () {
-    function VErrors(event) {
+    function VErrors(root) {
         _classCallCheck(this, VErrors);
 
-        this.event = event;
+        this.root = root;
     }
 
     _createClass(VErrors, [{
         key: "clearErrors",
         value: function clearErrors() {
-            var errorMessages = document.querySelectorAll('.v-error-message');
+            var errorMessages = this.root.querySelectorAll('.v-error-message');
 
             for (var i = 0; i < errorMessages.length; i++) {
                 errorMessages[i].remove();
@@ -1198,10 +1199,10 @@ var VErrors = function () {
     }, {
         key: "displayInputError",
         value: function displayInputError(divId, messages) {
-            var currentEl = document.getElementById(divId);
+            var currentEl = this.root.getElementById(divId);
             if (currentEl && currentEl.mdcComponent) {
                 currentEl.mdcComponent.helperTextContent = messages.join(', ');
-                var helperText = document.getElementById(divId + '-input-helper-text');
+                var helperText = this.root.getElementById(divId + '-input-helper-text');
                 helperText.classList.add('mdc-text-field--invalid', 'mdc-text-field-helper-text--validation-msg', 'mdc-text-field-helper-text--persistent');
                 currentEl.mdcComponent.valid = false;
                 return true;
@@ -1217,7 +1218,7 @@ var VErrors = function () {
         value: function prependErrors(messages) {
             var errorsDiv = this.findNearestErrorDiv();
             // create a new div element
-            var newDiv = document.createElement("div");
+            var newDiv = this.root.createElement("div");
             newDiv.className = 'v-error-message';
             // and give it some content
 
@@ -1229,9 +1230,9 @@ var VErrors = function () {
                 for (var _iterator2 = messages[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
                     var message = _step2.value;
 
-                    var newContent = document.createTextNode(message);
+                    var newContent = this.root.createTextNode(message);
                     newDiv.appendChild(newContent);
-                    var br = document.createElement('br');
+                    var br = this.root.createElement('br');
                     // add the text node to the newly created div
                     newDiv.appendChild(br);
                 }
@@ -1269,7 +1270,7 @@ var VErrors = function () {
             if (currentDiv) {
                 errorsDiv = currentDiv.closest('.v-errors');
             } else {
-                errorsDiv = document.querySelector('.v-errors');
+                errorsDiv = this.root.querySelector('.v-errors');
             }
             return errorsDiv;
         }
@@ -1328,7 +1329,7 @@ var visibilityObserverMixin = function visibilityObserverMixin(Base) {
                         }
                     });
                     vComponent.mutationObserver.vComponent = vComponent;
-                    vComponent.mutationObserver.observe(document.documentElement, {
+                    vComponent.mutationObserver.observe(vComponent.root.documentElement, {
                         attributes: true,
                         subtree: true
                     });
@@ -1519,7 +1520,7 @@ var MDCFoundation = function () {
 // import {initTooltip} from './tooltip';
 
 
-function initialize(root) {
+function initialize(root, setRoot) {
     console.log('Initializing');
     Object(__WEBPACK_IMPORTED_MODULE_0__button__["a" /* initButtons */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_1__dialogs__["a" /* initDialogs */])(root);
@@ -8192,11 +8193,11 @@ var VTextField = function (_visibilityObserverMi) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visibility__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__events_prompt_if_dirty__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_snackbar__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_navigates__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__events_clears__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__events_removes__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__events_stepper__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__events_plugin__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_clears__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__events_removes__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__events_stepper__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__events_plugin__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__root_document__ = __webpack_require__(100);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -8216,15 +8217,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 var VEvents = function () {
-    //[[type, url, target, params]]
-    function VEvents(actions, event) {
+    // [[type, url, target, params]]
+    function VEvents(actions, event, root) {
         var _this = this;
 
         _classCallCheck(this, VEvents);
 
         this.event = event;
+        this.root = root;
         this.actions = actions.map(function (action) {
-            return _this.constructor.action_class(action, event);
+            return _this.constructor.action_class(action, event, root);
         });
     }
 
@@ -8247,6 +8249,7 @@ var VEvents = function () {
             }
 
             var event = this.event;
+            var root = this.root;
 
             pseries(fnlist).then(function (results) {
                 var result = results.pop();
@@ -8269,13 +8272,13 @@ var VEvents = function () {
                 }
 
                 if (!result.squelch) {
-                    new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](event).displayErrors(result);
+                    new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](root).displayErrors(result);
                 }
             });
         }
     }], [{
         key: 'action_class',
-        value: function action_class(action, event) {
+        value: function action_class(action, event, root) {
             var action_type = action[0];
             var url = action[1];
             var options = action[2];
@@ -8283,33 +8286,31 @@ var VEvents = function () {
 
             switch (action_type) {
                 case 'loads':
-                    return new __WEBPACK_IMPORTED_MODULE_0__events_loads__["a" /* VLoads */](options, url, params, event);
+                    return new __WEBPACK_IMPORTED_MODULE_0__events_loads__["a" /* VLoads */](options, url, params, event, root);
                 case 'replaces':
-                    return new __WEBPACK_IMPORTED_MODULE_2__events_replaces__["a" /* VReplaces */](options, url, params, event);
+                    return new __WEBPACK_IMPORTED_MODULE_2__events_replaces__["a" /* VReplaces */](options, url, params, event, root);
                 case 'post':
-                    return new __WEBPACK_IMPORTED_MODULE_1__events_posts__["a" /* VPosts */](options, url, params, 'POST', event);
+                    return new __WEBPACK_IMPORTED_MODULE_1__events_posts__["a" /* VPosts */](options, url, params, 'POST', event, root);
                 case 'update':
-                    return new __WEBPACK_IMPORTED_MODULE_1__events_posts__["a" /* VPosts */](options, url, params, 'PUT', event);
+                    return new __WEBPACK_IMPORTED_MODULE_1__events_posts__["a" /* VPosts */](options, url, params, 'PUT', event, root);
                 case 'delete':
-                    return new __WEBPACK_IMPORTED_MODULE_1__events_posts__["a" /* VPosts */](options, url, params, 'DELETE', event);
+                    return new __WEBPACK_IMPORTED_MODULE_1__events_posts__["a" /* VPosts */](options, url, params, 'DELETE', event, root);
                 case 'dialog':
-                    return new __WEBPACK_IMPORTED_MODULE_3__events_dialog__["a" /* VDialog */](options, params, event);
+                    return new __WEBPACK_IMPORTED_MODULE_3__events_dialog__["a" /* VDialog */](options, params, event, root);
                 case 'toggle_visibility':
-                    return new __WEBPACK_IMPORTED_MODULE_5__events_toggle_visibility__["a" /* VToggleVisibility */](options, params, event);
+                    return new __WEBPACK_IMPORTED_MODULE_5__events_toggle_visibility__["a" /* VToggleVisibility */](options, params, event, root);
                 case 'prompt_if_dirty':
-                    return new __WEBPACK_IMPORTED_MODULE_6__events_prompt_if_dirty__["a" /* VPromptIfDirty */](options, params, event);
+                    return new __WEBPACK_IMPORTED_MODULE_6__events_prompt_if_dirty__["a" /* VPromptIfDirty */](options, params, event, root);
                 case 'remove':
-                    return new __WEBPACK_IMPORTED_MODULE_10__events_removes__["a" /* VRemoves */](options, params, event);
+                    return new __WEBPACK_IMPORTED_MODULE_9__events_removes__["a" /* VRemoves */](options, params, event, root);
                 case 'snackbar':
-                    return new __WEBPACK_IMPORTED_MODULE_7__events_snackbar__["a" /* VSnackbarEvent */](options, params, event);
-                case 'navigates':
-                    return new __WEBPACK_IMPORTED_MODULE_8__events_navigates__["a" /* VNavigates */](options, params, event);
+                    return new __WEBPACK_IMPORTED_MODULE_7__events_snackbar__["a" /* VSnackbarEvent */](options, params, event, root);
                 case 'clear':
-                    return new __WEBPACK_IMPORTED_MODULE_9__events_clears__["a" /* VClears */](options, params, event);
+                    return new __WEBPACK_IMPORTED_MODULE_8__events_clears__["a" /* VClears */](options, params, event, root);
                 case 'stepper':
-                    return new __WEBPACK_IMPORTED_MODULE_11__events_stepper__["a" /* VStepperEvent */](options, params, event);
+                    return new __WEBPACK_IMPORTED_MODULE_10__events_stepper__["a" /* VStepperEvent */](options, params, event, root);
                 default:
-                    return new __WEBPACK_IMPORTED_MODULE_12__events_plugin__["a" /* VPluginEventAction */](action_type, options, params, event);
+                    return new __WEBPACK_IMPORTED_MODULE_11__events_plugin__["a" /* VPluginEventAction */](action_type, options, params, event, root);
             }
         }
     }]);
@@ -8319,10 +8320,10 @@ var VEvents = function () {
 
 // This is used to get a proper binding of the actionData
 // https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
-function createEventHandler(actionsData) {
+function createEventHandler(actionsData, root) {
     return function (event) {
         event.stopPropagation();
-        new VEvents(actionsData, event).call();
+        new VEvents(actionsData, event, root).call();
     };
 }
 
@@ -8338,10 +8339,10 @@ function initEvents(e) {
             var eventName = eventData[0];
             var eventOptions = eventData[2];
             var actionsData = eventData[1];
-            var eventHandler = createEventHandler(actionsData);
+            var eventHandler = createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_12__root_document__["a" /* default */])(e));
             // allow overide of event handler by component
             if (eventElem.vComponent && eventElem.vComponent.createEventHandler) {
-                eventHandler = eventElem.vComponent.createEventHandler(actionsData);
+                eventHandler = eventElem.vComponent.createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_12__root_document__["a" /* default */])(e));
             }
             // Delegate to the component if possible
             if (eventElem.vComponent && eventElem.vComponent.initEventListener) {
@@ -8503,41 +8504,30 @@ var VUrls = function () {
 }();
 
 /***/ }),
-/* 20 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = eventRoot;
-function eventRoot(e) {
-    return e.target.shadowRoot || (e.currentTarget || e.target).closest('.v-component').vComponent.root || document;
-}
-
-/***/ }),
+/* 20 */,
 /* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VDialog; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__event_root__ = __webpack_require__(20);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-
-
 var VDialog = function () {
-    function VDialog(options, params, event) {
+    function VDialog(options, params, event, root) {
         _classCallCheck(this, VDialog);
 
         this.dialogId = options.target;
         this.params = params;
         this.event = event;
+        this.root = root;
     }
 
     _createClass(VDialog, [{
         key: 'call',
         value: function call(results) {
-            var dialog = Object(__WEBPACK_IMPORTED_MODULE_0__event_root__["a" /* eventRoot */])(this.event).querySelector('#' + this.dialogId);
+            var dialog = this.root.querySelector('#' + this.dialogId);
 
             if (!(dialog && dialog.vComponent)) {
                 var err = new Error('Unable to find dialog ' + this.dialogId + '. ' + 'Did you forget to attach it?');
@@ -17114,7 +17104,7 @@ var FlowMatic = function (_HTMLElement) {
                 var templateContent = template.content;
 
                 _this2.attachShadow({ mode: 'open' }).appendChild(templateContent.cloneNode(true));
-                Object(__WEBPACK_IMPORTED_MODULE_0__components_initialize__["a" /* initialize */])(_this2.shadowRoot);
+                Object(__WEBPACK_IMPORTED_MODULE_0__components_initialize__["a" /* initialize */])(_this2.shadowRoot, true);
             });
             oReq.open('GET', '' + this.dataset.comp);
             oReq.send();
@@ -25303,11 +25293,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var VLoads = function (_VUrls) {
     _inherits(VLoads, _VUrls);
 
-    function VLoads(options, url, params, event) {
+    function VLoads(options, url, params, event, root) {
         _classCallCheck(this, VLoads);
 
         var _this = _possibleConstructorReturn(this, (VLoads.__proto__ || Object.getPrototypeOf(VLoads)).call(this));
 
+        _this.root = root;
         _this.options = options;
         _this.params = params;
         _this.url = url;
@@ -25319,15 +25310,14 @@ var VLoads = function (_VUrls) {
         key: 'call',
         value: function call(results) {
             Object(__WEBPACK_IMPORTED_MODULE_1__action_parameter__["b" /* expandParams */])(results, this.params);
+            var root = this.root;
             var url = this.buildURL(this.url, this.params);
             var newWindow = this.options['target'] === '_blank';
-            var promiseObj = new Promise(function (resolve) {
-                console.log("Loading page: " + url);
+            return new Promise(function (resolve) {
                 results.push({ action: 'loads', statusCode: 200 });
                 resolve(results);
-                newWindow ? window.open(url) : window.location = url;
+                newWindow ? root.defaultView.open(url) : root.defaultView.location = url;
             });
-            return promiseObj;
         }
     }]);
 
@@ -25344,7 +25334,6 @@ var VLoads = function (_VUrls) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__action_parameter__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__encode__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__event_root__ = __webpack_require__(20);
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -25360,16 +25349,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
 var VPosts = function (_VBase) {
     _inherits(VPosts, _VBase);
 
-    function VPosts(options, url, params, method, event) {
+    function VPosts(options, url, params, method, event, root) {
         _classCallCheck(this, VPosts);
 
-        var _this = _possibleConstructorReturn(this, (VPosts.__proto__ || Object.getPrototypeOf(VPosts)).call(this, options));
+        var _this = _possibleConstructorReturn(this, (VPosts.__proto__ || Object.getPrototypeOf(VPosts)).call(this, options, root));
 
         _this.url = url;
         _this.params = params;
@@ -25440,13 +25428,13 @@ var VPosts = function (_VBase) {
             var httpRequest = new XMLHttpRequest();
             var url = this.url;
             var callHeaders = this.headers;
-            var event = this.event;
+            var root = this.root;
             if (!httpRequest) {
                 throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
             }
 
             var snackbarCallback = function snackbarCallback(contentType, response) {
-                var snackbar = Object(__WEBPACK_IMPORTED_MODULE_4__event_root__["a" /* eventRoot */])(event).querySelector('.mdc-snackbar').vComponent;
+                var snackbar = root.querySelector('.mdc-snackbar').vComponent;
                 if (contentType && contentType.indexOf('application/json') !== -1) {
                     var messages = JSON.parse(response).messages;
                     if (snackbar && messages && messages.snackbar) {
@@ -25476,9 +25464,9 @@ var VPosts = function (_VBase) {
                             resolve(results);
                             // Response is an html error page
                         } else if (contentType && contentType.indexOf('text/html') !== -1) {
-                            Object(__WEBPACK_IMPORTED_MODULE_4__event_root__["a" /* eventRoot */])(event).open(contentType);
-                            Object(__WEBPACK_IMPORTED_MODULE_4__event_root__["a" /* eventRoot */])(event).write(httpRequest.responseText);
-                            Object(__WEBPACK_IMPORTED_MODULE_4__event_root__["a" /* eventRoot */])(event).close();
+                            root.open(contentType);
+                            root.write(httpRequest.responseText);
+                            root.close();
                             results.push({
                                 action: 'posts',
                                 method: this.method,
@@ -25630,10 +25618,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var VReplaces = function (_VBase) {
     _inherits(VReplaces, _VBase);
 
-    function VReplaces(options, url, params, event) {
+    function VReplaces(options, url, params, event, root) {
         _classCallCheck(this, VReplaces);
 
-        var _this = _possibleConstructorReturn(this, (VReplaces.__proto__ || Object.getPrototypeOf(VReplaces)).call(this, options));
+        var _this = _possibleConstructorReturn(this, (VReplaces.__proto__ || Object.getPrototypeOf(VReplaces)).call(this, options, root));
 
         _this.element_id = options.target;
         _this.url = url;
@@ -25648,17 +25636,18 @@ var VReplaces = function (_VBase) {
             this.clearErrors();
             var httpRequest = new XMLHttpRequest();
             if (!httpRequest) {
-                throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
+                throw new Error('Cannot talk to server! Please upgrade your browser ' + 'to one that supports XMLHttpRequest.');
             }
+            var root = this.root;
             var elementId = this.element_id;
-            var nodeToReplace = document.getElementById(elementId);
+            var nodeToReplace = root.getElementById(elementId);
             Object(__WEBPACK_IMPORTED_MODULE_0__action_parameter__["b" /* expandParams */])(results, this.params);
             var url = this.buildURL(this.url, this.params, this.inputValues(), [['grid_nesting', this.options.grid_nesting]]);
             var delayAmt = this.event instanceof InputEvent ? 500 : 0;
 
-            var promiseObj = new Promise(function (resolve, reject) {
+            return new Promise(function (resolve, reject) {
                 if (!nodeToReplace) {
-                    var msg = 'Unable to located node: \'' + elementId + '\'' + ' This usually the result of issuing a replaces action and specifying a element id that does not currently exist on the page.';
+                    var msg = 'Unable to located node: \'' + elementId + '\'' + ' This usually the result of issuing a replaces action ' + 'and specifying a element id that does not currently ' + 'exist on the page.';
                     console.error(msg);
                     results.push({
                         action: 'replaces',
@@ -25674,8 +25663,8 @@ var VReplaces = function (_VBase) {
                             if (httpRequest.readyState === XMLHttpRequest.DONE) {
                                 console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                                 if (httpRequest.status === 200) {
-                                    var _nodeToReplace = document.getElementById(elementId);
-                                    var newDiv = document.createElement('div');
+                                    var _nodeToReplace = root.getElementById(elementId);
+                                    var newDiv = root.createElement('div');
                                     newDiv.innerHTML = httpRequest.responseText;
                                     _nodeToReplace.parentElement.replaceChild(newDiv, _nodeToReplace);
                                     Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["a" /* initialize */])(newDiv);
@@ -25705,7 +25694,6 @@ var VReplaces = function (_VBase) {
                     }, delayAmt);
                 }
             });
-            return promiseObj;
         }
     }]);
 
@@ -25723,12 +25711,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var VToggleVisibility = function () {
-    function VToggleVisibility(options, params, event) {
+    function VToggleVisibility(options, params, event, root) {
         _classCallCheck(this, VToggleVisibility);
 
         this.targetId = options.target;
         this.params = params;
         this.event = event;
+        this.root = root;
     }
 
     _createClass(VToggleVisibility, [{
@@ -25737,7 +25726,7 @@ var VToggleVisibility = function () {
             var targetId = this.targetId;
             var action = this.params.action;
             var delayAmt = this.event instanceof FocusEvent ? 500 : 0;
-            var elem = document.getElementById(targetId);
+            var elem = this.root.getElementById(targetId);
 
             if (!elem) {
                 var err = new Error('Unable to locate node ' + targetId + '!' + ' Did you forget to attach it?');
@@ -25756,13 +25745,13 @@ var VToggleVisibility = function () {
             var promiseObj = new Promise(function (resolve) {
                 clearTimeout(elem.vTimeout);
                 elem.vTimeout = setTimeout(function () {
-                    console.log("Toggling visibility on: " + targetId);
+                    console.log('Toggling visibility on: ' + targetId);
                     if (action === 'show') {
-                        elem.classList.remove("v-hidden");
+                        elem.classList.remove('v-hidden');
                     } else if (action === 'hide') {
-                        elem.classList.add("v-hidden");
+                        elem.classList.add('v-hidden');
                     } else {
-                        elem.classList.toggle("v-hidden");
+                        elem.classList.toggle('v-hidden');
                     }
                     if (elem && elem.vComponent && elem.vComponent.show) {
                         elem.classList.contains('v-hidden') ? elem.vComponent.onHide() : elem.vComponent.onShow();
@@ -25839,15 +25828,15 @@ function shouldHalt(action) {
 var VPromptIfDirty = function (_VBase) {
     _inherits(VPromptIfDirty, _VBase);
 
-    function VPromptIfDirty(options, params, event) {
+    function VPromptIfDirty(options, params, event, root) {
         _classCallCheck(this, VPromptIfDirty);
 
-        var _this = _possibleConstructorReturn(this, (VPromptIfDirty.__proto__ || Object.getPrototypeOf(VPromptIfDirty)).call(this, options));
+        var _this = _possibleConstructorReturn(this, (VPromptIfDirty.__proto__ || Object.getPrototypeOf(VPromptIfDirty)).call(this, options, root));
 
         _this.targetId = options.target;
         _this.params = params;
         _this.event = event;
-        _this.dialog = new __WEBPACK_IMPORTED_MODULE_1__dialog__["a" /* VDialog */](_this.options, _this.params, _this.event);
+        _this.dialog = new __WEBPACK_IMPORTED_MODULE_1__dialog__["a" /* VDialog */](_this.options, _this.params, _this.event, root);
         return _this;
     }
 
@@ -25947,13 +25936,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 var VSnackbarEvent = function () {
-    function VSnackbarEvent(options, params, event) {
+    function VSnackbarEvent(options, params, event, root) {
         _classCallCheck(this, VSnackbarEvent);
 
         this.options = options;
         this.text = params.text;
         this.event = event;
-        var snackbarElem = document.querySelector('.mdc-snackbar');
+        this.root = root;
+        var snackbarElem = this.root.querySelector('.mdc-snackbar');
         this.snackbar = snackbarElem.vComponent;
     }
 
@@ -25975,40 +25965,7 @@ var VSnackbarEvent = function () {
 }();
 
 /***/ }),
-/* 43 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VNavigates; });
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var VNavigates = function () {
-    function VNavigates(options, params, event) {
-        _classCallCheck(this, VNavigates);
-
-        this.target = options.target;
-        this.params = params;
-        this.event = event;
-    }
-
-    _createClass(VNavigates, [{
-        key: 'call',
-        value: function call(results) {
-            return new Promise(function (resolve) {
-                console.log('Navigating back');
-                results.push({ action: 'navigates', statusCode: 200 });
-                history.back();
-                resolve(results);
-            });
-        }
-    }]);
-
-    return VNavigates;
-}();
-
-/***/ }),
+/* 43 */,
 /* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -26019,20 +25976,22 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var VClears = function () {
-    function VClears(options, params, event) {
+    function VClears(options, params, event, root) {
         _classCallCheck(this, VClears);
 
         this.target = options.target;
         this.ids = params.ids;
         this.event = event;
+        this.root = root;
     }
 
     _createClass(VClears, [{
-        key: "call",
+        key: 'call',
         value: function call(results) {
             var ids = this.ids;
-            var promiseObj = new Promise(function (resolve) {
-                console.log("Clearing");
+            var root = this.root;
+            return new Promise(function (resolve) {
+                console.log('Clearing');
                 results.push({ action: 'clears', statusCode: 200 });
                 var _iteratorNormalCompletion = true;
                 var _didIteratorError = false;
@@ -26042,11 +26001,11 @@ var VClears = function () {
                     for (var _iterator = ids[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                         var id = _step.value;
 
-                        var elem = document.getElementById(id);
+                        var elem = root.getElementById(id);
                         if (elem && elem.vComponent && elem.vComponent.clear) {
                             elem.vComponent.clear();
                         } else {
-                            console.log("Unable to clear element with id: " + id + "! Check to make sure you passed the correct id, and that the control/input can be cleared.");
+                            console.log('Unable to clear element with id: ' + id + '! Check to make sure you passed the correct id, and ' + 'that the control/input can be cleared.');
                         }
                     }
                 } catch (err) {
@@ -26066,7 +26025,6 @@ var VClears = function () {
 
                 resolve(results);
             });
-            return promiseObj;
         }
     }]);
 
@@ -26084,19 +26042,21 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var VRemoves = function () {
-    function VRemoves(options, params, event) {
+    function VRemoves(options, params, event, root) {
         _classCallCheck(this, VRemoves);
 
         this.target = options.target;
         this.ids = params.ids;
         this.event = event;
+        this.root = root;
     }
 
     _createClass(VRemoves, [{
         key: 'call',
         value: function call(results) {
             var ids = this.ids;
-            var promiseObj = new Promise(function (resolve) {
+            var root = this.root;
+            return new Promise(function (resolve) {
                 results.push({ action: 'removes', statusCode: 200 });
                 var _iteratorNormalCompletion = true;
                 var _didIteratorError = false;
@@ -26106,7 +26066,7 @@ var VRemoves = function () {
                     for (var _iterator = ids[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                         var id = _step.value;
 
-                        var elem = document.getElementById(id);
+                        var elem = root.getElementById(id);
                         elem.parentNode.removeChild(elem);
                     }
                 } catch (err) {
@@ -26126,7 +26086,6 @@ var VRemoves = function () {
 
                 resolve(results);
             });
-            return promiseObj;
         }
     }]);
 
@@ -26153,10 +26112,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var VStepperEvent = function (_VBase) {
     _inherits(VStepperEvent, _VBase);
 
-    function VStepperEvent(options, params, event) {
+    function VStepperEvent(options, params, event, root) {
         _classCallCheck(this, VStepperEvent);
 
-        var _this = _possibleConstructorReturn(this, (VStepperEvent.__proto__ || Object.getPrototypeOf(VStepperEvent)).call(this, options));
+        var _this = _possibleConstructorReturn(this, (VStepperEvent.__proto__ || Object.getPrototypeOf(VStepperEvent)).call(this, options, root));
 
         _this.params = params;
         _this.event = event;
@@ -26166,16 +26125,15 @@ var VStepperEvent = function (_VBase) {
     _createClass(VStepperEvent, [{
         key: 'call',
         value: function call(results) {
-            var parentElem = document.getElementById(this.params.stepper_id);
+            var parentElem = this.root.getElementById(this.params.stepper_id);
             var component = parentElem.vComponent;
-            var nav_action = this.params.navigate;
+            var navAction = this.params.navigate;
 
-            var promiseObj = new Promise(function (resolve) {
-                component.navigate(nav_action);
+            return new Promise(function (resolve) {
+                component.navigate(navAction);
                 results.push({ action: 'stepper', statusCode: 200 });
                 resolve(results);
             });
-            return promiseObj;
         }
     }]);
 
@@ -26193,24 +26151,24 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var VPluginEventAction = function () {
-    function VPluginEventAction(actionType, options, params, event) {
+    function VPluginEventAction(actionType, options, params, event, root) {
         _classCallCheck(this, VPluginEventAction);
 
         this.actionType = actionType;
         this.options = options;
         this.params = params;
         this.event = event;
+        this.root = root;
     }
 
     _createClass(VPluginEventAction, [{
-        key: 'call',
+        key: "call",
         value: function call(results) {
             var actionType = this.actionType;
             var options = this.options;
             var params = this.params;
             var event = this.event;
-            console.log('Calling plugin');
-            return window[actionType](options, params, event, results);
+            return this.root.defaultView[actionType](options, params, event, results);
         }
     }]);
 
@@ -26462,7 +26420,7 @@ var VDrawer = function (_eventHandlerMixin) {
 
         var _this = _possibleConstructorReturn(this, (VDrawer.__proto__ || Object.getPrototypeOf(VDrawer)).call(this, element, mdcComponent));
 
-        var header = document.querySelector('.v-header');
+        var header = _this.root.querySelector('.v-header');
         if (header) {
             header.addEventListener('MDCTopAppBar:nav', function () {
                 if (_this.isActive()) {
@@ -79261,7 +79219,7 @@ var VFileInput = function (_eventHandlerMixin) {
             if (!this.preview) return null;
 
             var _loop = function _loop(previewId) {
-                var elem = document.getElementById(previewId);
+                var elem = _this2.root.getElementById(previewId);
                 if (elem && elem.vComponent && elem.vComponent.preview) {
                     _this2.file = e.target.files[0];
                     var fr = new FileReader();
@@ -85203,6 +85161,21 @@ process.chdir = function (dir) {
 process.umask = function () {
     return 0;
 };
+
+/***/ }),
+/* 100 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = getRoot;
+function getRoot(element) {
+    if (element instanceof HTMLDocument) return element;
+    var rootElement = element.ownerDocument;
+    if (!rootElement) {
+        rootElement = element.shadowRoot();
+    }
+    return rootElement;
+}
 
 /***/ })
 /******/ ]);
