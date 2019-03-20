@@ -1,6 +1,7 @@
 export class VErrors {
-    constructor(root) {
+    constructor(root, event) {
         this.root = root;
+        this.event = event;
     }
 
     clearErrors() {
