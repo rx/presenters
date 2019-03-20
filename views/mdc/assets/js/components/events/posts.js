@@ -47,7 +47,6 @@ export class VPosts extends VBase {
         }
 
         var inputValues = this.inputValues();
-        console.log(inputValues);
         for (var input of inputValues) {
             FD.append(input[0], input[1]);
         }
