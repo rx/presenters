@@ -50,7 +50,6 @@ export class VBase extends VUrls {
                 component.prepareSubmit(params);
             }
         }
-        // Let input components push parameters
         let vComp = this.component();
         if (vComp && typeof vComp.prepareSubmit === 'function') {
             vComp.prepareSubmit(params);

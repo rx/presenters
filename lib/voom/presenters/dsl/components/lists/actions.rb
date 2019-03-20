@@ -12,7 +12,6 @@ module Voom
               expand!
             end
 
-
             def icon(icon=nil, **attribs, &block)
               action = Lists::Action.new(parent: self)
               action.icon(icon, **attribs, &block)

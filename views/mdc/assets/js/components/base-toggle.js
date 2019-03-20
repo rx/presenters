@@ -8,12 +8,6 @@ export class VBaseToggle extends eventHandlerMixin(VBaseComponent) {
         this.input = element.querySelector('input');
     }
 
-    prepareSubmit(params) {
-        if (this.submittedValue()) {
-            params.push([this.name(), this.submittedValue()]);
-        }
-    }
-
     submittedValue() {
         return this.input.checked ? this.value() : this.offValue();
     }
