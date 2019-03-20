@@ -3,9 +3,9 @@ module Voom
     module DSL
       module Components
         module Mixins
-          module Content
-            def content(**attributes, &block)
-              self << Components::Content.new(parent: self, **attributes, &block)
+          module Progress
+            def progress(**attributes, &block)
+              self << Components::Progress.new(parent: self, **attributes, &block)
             end
           end
         end
