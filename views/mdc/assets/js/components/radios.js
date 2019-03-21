@@ -12,12 +12,6 @@ export class VRadio extends VBaseToggle {
         super(element, mdcComponent);
     }
 
-    prepareSubmit(params) {
-        if (this.submittedValue()) {
-            params.push([this.name(), this.submittedValue()]);
-        }
-    }
-
     isDirty() {
         return String(this.input.checked) != this.element.dataset.originalValue;
     }
