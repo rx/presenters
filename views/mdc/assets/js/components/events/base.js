@@ -41,7 +41,7 @@ export class VBase extends VUrls {
 
         // If tagged input is asked for, fetch all the matching tag elements
         // and then call any bound components:
-        if (this.options.input_tag !== undefined) {
+        if (this.options.input_tag) {
             const inputs = Array.from(this.taggedInputs())
                 .filter((input) => input.vComponent)
                 .map((input) => input.vComponent)
