@@ -1,20 +1,26 @@
 @import "@material/fab/mdc-fab";
+@import "@material/layout-grid/mdc-layout-grid";
+
+$fab-offsets: (
+  top: 2.25em,
+  right: 0.00em,
+  bottom: 0.00em,
+  left: 0.00em
+);
 
 .v-fab--absolute {
   position: absolute;
-  z-index: 10;
 }
 
-$fab-positions: (
-  top: -3%,
-  right: -5%,
-  bottom: -5%,
-  left: -6%
-);
+@each $size in map-keys($mdc-layout-grid-columns) {
+  @include mdc-layout-grid-media-query_($size) {
+    $gutter: map-get($mdc-layout-grid-default-gutter, $size);
 
-@each $position, $offset in $fab-positions {
-  .mdc-fab.v-button-fab-position-#{$position} {
-    position: absolute;
-    #{$position}: #{$offset};
+    @each $position, $offset in $fab-offsets {
+      .mdc-fab.v-button-fab-position-#{$position} {
+        position: absolute;
+        #{$position}: calc(#{-1 * $mdc-fab-height / 2} + #{$offset});
+      }
+    }
   }
 }
