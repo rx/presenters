@@ -32,23 +32,30 @@ export class VPosts extends VBase {
             });
         }
 
-        var FD = null;
-        var form = this.form();
-        if (form) {
-            FD = new FormData(form);
-        }
-        else {
-            FD = new FormData();
-        }
-        // Add params from presenter
-        expandParams(results, this.params);
-        for (const name in this.params) {
-            FD.append(name, encode(this.params[name]));
+        // Manually build the FormData.
+        // Passing in a <form> element (if available) would skip over
+        // unchecked toggle elements, which would be unexpected if the user
+        // has specified a value for the toggle's `off_value` attribute.
+        const formData = new FormData();
+
+        // NB: `inputValues` will appropriately handle `input_tag`.
+        for (const [name, value] of this.inputValues()) {
+            formData.append(name, value);
         }
 
-        var inputValues = this.inputValues();
-        for (var input of inputValues) {
-            FD.append(input[0], input[1]);
+        // Add params from presenter:
+        expandParams(results, this.params);
+
+        for (const [name, value] of Object.entries(this.params)) {
+            formData.append(name, encode(value));
+        }
+
+        // log dupes:
+        // TODO: remove me (debug)
+        for (const [k, v] of formData) {
+            console.log(`${k}: ${v}`);
+        }
+
         }
 
         const httpRequest = new XMLHttpRequest();
@@ -135,7 +142,7 @@ export class VPosts extends VBase {
             }
 
             // Send our FormData object; HTTP headers are set automatically
-            httpRequest.send(FD);
+            httpRequest.send(formData);
         });
     }
 
