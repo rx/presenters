@@ -19208,7 +19208,7 @@ var VDialog = function (_VBaseContainer) {
         var _this = _possibleConstructorReturn(this, (VDialog.__proto__ || Object.getPrototypeOf(VDialog)).call(this, element, mdcComponent));
 
         var dialog = mdcComponent;
-        var dialogButtons = element.querySelectorAll('button:not([disabled])');
+        var dialogButtons = element.querySelectorAll('.mdc-dialog__actions button:not([disabled])');
         for (var j = 0; j != dialogButtons.length; j++) {
             var dialogButton = dialogButtons[j];
             if (!dialogButton.dialog) {
