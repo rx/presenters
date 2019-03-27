@@ -56,6 +56,13 @@ export class VPosts extends VBase {
             console.log(`${k}: ${v}`);
         }
 
+        const paramCount = Array.from(formData).length;
+
+        if (paramCount < 1) {
+            console.warn(
+                'Creating request with no data!'
+                + ' Are you sure you\'ve hooked everything up correctly?'
+            );
         }
 
         const httpRequest = new XMLHttpRequest();
