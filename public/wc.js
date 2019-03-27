@@ -224,10 +224,7 @@ var VBaseContainer = function (_VBaseComponent) {
     function VBaseContainer(element, mdcComponent) {
         _classCallCheck(this, VBaseContainer);
 
-        var _this = _possibleConstructorReturn(this, (VBaseContainer.__proto__ || Object.getPrototypeOf(VBaseContainer)).call(this, element, mdcComponent));
-
-        element.dataset.isContainer = true;
-        return _this;
+        return _possibleConstructorReturn(this, (VBaseContainer.__proto__ || Object.getPrototypeOf(VBaseContainer)).call(this, element, mdcComponent));
     }
 
     _createClass(VBaseContainer, [{
@@ -774,7 +771,7 @@ var VBase = function (_VUrls) {
                 } else if (!comp.respondTo('inputs')) {
                     // Defer to the component's closest content container if the
                     // component itself does not respond to `inputs`:
-                    comp = this.closestContent();
+                    comp = this.closestContainer();
                 }
             }
 
@@ -843,9 +840,9 @@ var VBase = function (_VUrls) {
             return [];
         }
     }, {
-        key: 'closestContent',
-        value: function closestContent() {
-            var element = this.closestContentElement();
+        key: 'closestContainer',
+        value: function closestContainer() {
+            var element = this.closestContainerElement();
 
             if (!element) {
                 return null;
@@ -854,15 +851,15 @@ var VBase = function (_VUrls) {
             return element.vComponent;
         }
     }, {
-        key: 'closestContentElement',
-        value: function closestContentElement() {
+        key: 'closestContainerElement',
+        value: function closestContainerElement() {
             var comp = this.component();
 
             if (!(comp && comp.element)) {
                 return null;
             }
 
-            return comp.element.closest('.v-content');
+            return comp.element.closest('[data-is-container]');
         }
     }]);
 
@@ -25481,14 +25478,13 @@ var VPosts = function (_VBase) {
             var url = this.url;
             var callHeaders = this.headers;
             var root = this.root;
-
             if (!httpRequest) {
                 throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
             }
 
             var snackbarCallback = function snackbarCallback(contentType, response) {
                 var snackbar = root.querySelector('.mdc-snackbar').vComponent;
-                if (contentType && contentType.includes('application/json')) {
+                if (contentType && contentType.indexOf('application/json') !== -1) {
                     var messages = JSON.parse(response).messages;
                     if (snackbar && messages && messages.snackbar) {
                         var message = messages.snackbar.join('<br/>');
@@ -25516,7 +25512,7 @@ var VPosts = function (_VBase) {
                             snackbarCallback(contentType, httpRequest.responseText);
                             resolve(results);
                             // Response is an html error page
-                        } else if (contentType && contentType.includes('text/html')) {
+                        } else if (contentType && contentType.indexOf('text/html') !== -1) {
                             root.open(contentType);
                             root.write(httpRequest.responseText);
                             root.close();
@@ -72487,7 +72483,10 @@ var VContent = function (_eventHandlerMixin) {
     function VContent(element, mdcComponent) {
         _classCallCheck(this, VContent);
 
-        return _possibleConstructorReturn(this, (VContent.__proto__ || Object.getPrototypeOf(VContent)).call(this, element, mdcComponent));
+        var _this = _possibleConstructorReturn(this, (VContent.__proto__ || Object.getPrototypeOf(VContent)).call(this, element, mdcComponent));
+
+        element.setAttribute('data-is-container', '');
+        return _this;
     }
 
     return VContent;

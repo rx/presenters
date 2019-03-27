@@ -70,7 +70,7 @@ export class VBase extends VUrls {
             else if (!comp.respondTo('inputs')) {
                 // Defer to the component's closest content container if the
                 // component itself does not respond to `inputs`:
-                comp = this.closestContent();
+                comp = this.closestContainer();
             }
         }
 
@@ -127,8 +127,8 @@ export class VBase extends VUrls {
         return [];
     }
 
-    closestContent() {
-        const element = this.closestContentElement();
+    closestContainer() {
+        const element = this.closestContainerElement();
 
         if (!element) {
             return null;
@@ -137,13 +137,13 @@ export class VBase extends VUrls {
         return element.vComponent;
     }
 
-    closestContentElement() {
+    closestContainerElement() {
         const comp = this.component();
 
         if (!(comp && comp.element)) {
             return null;
         }
 
-        return comp.element.closest('.v-content');
+        return comp.element.closest('[data-is-container]');
     }
 }
