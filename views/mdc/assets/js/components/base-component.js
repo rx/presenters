@@ -21,6 +21,10 @@ export class VBaseComponent {
     clearErrors() {
         new VErrors(this.root).clearErrors();
     }
+
+    respondTo(method) {
+        return typeof this[method] === 'function';
+    }
 }
 
 export function hookupComponents(root, selector, VoomClass, MdcClass) {
