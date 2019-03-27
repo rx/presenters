@@ -16,6 +16,11 @@ export class VBase extends VUrls {
         return this.root.getElementById(this.options.__parent_id__);
     }
 
+    /**
+     * taggedInputs retrieves all components matching this event's input_tag
+     * value.
+     * @return {NodeList}
+     */
     taggedInputs() {
         const inputTag = this.options.input_tag;
 
@@ -36,49 +41,109 @@ export class VBase extends VUrls {
         return inputs;
     }
 
+    /**
+     * inputs retrieves relevant elements for this event.
+     *
+     * 1. If an `input_tag` has been provided, all matching elements are
+     *    included.
+     * 2. If this component is an element, it is included.
+     * 3. If this component has inputs, its elements are included. If not,
+     *    the elements of the nearest content container are included.
+     * @return {Array<HTMLElement>}
+     */
+    inputs() {
+        let elements = [];
+
+        // Collect tagged elements, if applicable:
+        if (this.options.input_tag) {
+            elements = Array.from(this.taggedInputs());
+        }
+
+        let comp = this.component();
+
+        if (comp) {
+            // Include ourselves if we're a form component (but not a
+            // container):
+            if (comp.respondTo('prepareSubmit') && !comp.respondTo('inputs')) {
+                elements.push(comp.element);
+            }
+            else if (!comp.respondTo('inputs')) {
+                // Defer to the component's closest content container if the
+                // component itself does not respond to `inputs`:
+                comp = this.closestContent();
+            }
+        }
+
+        if (comp
+            && comp.respondTo('inputs')
+            // skip if we've previously grabbed elements via input_tag:
+            && comp.element.dataset.inputTag !== this.options.input_tag
+        ) {
+            elements = elements.concat(...comp.inputs());
+        }
+
+        return elements;
+    }
+
+    /**
+     * inputComponents retrieves the Component for each of this event's
+     * relevant input elements.
+     * @return {Array<VBaseComponent>}
+     */
+    inputComponents() {
+        return this.inputs()
+            .filter((element) => element.vComponent)
+            .map((element) => element.vComponent);
+    }
+
+    /**
+     * inputValues retrieves submit values for each of this event's relevant
+     * input elements.
+     * @return {Array}
+     */
     inputValues() {
         const params = [];
 
-        // If tagged input is asked for, fetch all the matching tag elements
-        // and then call any bound components:
-        if (this.options.input_tag) {
-            const inputs = Array.from(this.taggedInputs())
-                .filter((input) => input.vComponent)
-                .map((input) => input.vComponent)
-                .filter((comp) => typeof comp.prepareSubmit === 'function');
+        this.inputComponents()
+            .filter((comp) => comp.respondTo('prepareSubmit'))
+            .map((comp) => comp.prepareSubmit(params));
 
-            for (const component of inputs) {
-                component.prepareSubmit(params);
-            }
-        }
-        let vComp = this.component();
-        if (vComp && typeof vComp.prepareSubmit === 'function') {
-            vComp.prepareSubmit(params);
-        }
         return params;
     }
 
     component() {
-        let parent = this.parentElement();
+        const parent = this.parentElement();
+
         return parent ? parent.vComponent : null;
     }
 
     validate() {
-        let errors = [];
-        let comp = this.component();
+        const comp = this.component();
+
         if (comp) {
-            errors = comp.validate();
+            return comp.validate();
         }
-        return errors;
+
+        return [];
     }
 
-    closestContainer() {
+    closestContent() {
+        const element = this.closestContentElement();
+
+        if (!element) {
+            return null;
+        }
+
+        return element.vComponent;
+    }
+
+    closestContentElement() {
         const comp = this.component();
 
         if (!(comp && comp.element)) {
             return null;
         }
 
-        return comp.element.closest('[data-is-container="true"]');
+        return comp.element.closest('.v-content');
     }
 }
