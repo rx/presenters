@@ -1,6 +1,6 @@
 module Support
   module Host
-    HOSTS = %w[localhost:9292 localhost:9393].freeze
+    HOSTS = %w[127.0.0.1:9292 127.0.0.1:9393].freeze
 
     def host
       ENV.fetch('INTEGRATION_HOST') do
@@ -18,7 +18,7 @@ module Support
     end
 
     def check_for_server(host)
-      system("ps aux | grep [t]cp://#{host}")
+      system("ps aux | grep [t]cp://#{host} > /dev/null")
     end
 
   end
