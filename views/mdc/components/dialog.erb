@@ -18,14 +18,14 @@
          <% if comp.width || comp.height %>
               style="<%= "width: #{comp.width.to_i.to_s == comp.width ? comp.width + 'px' : comp.width}; " if comp.width %>
                 <%= "height: #{comp.height.to_i.to_s == comp.height ? comp.height + 'px' : comp.height}; " if comp.height %>"
-        <% end %>
+        <% end %>>
 
       <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
       <% if comp.title %>
-        <h2 class="mdc-dialog__title" id="my-dialog-title"><%= expand_text(comp.title.text) %></h2>
+        <h2 class="mdc-dialog__title"><%= expand_text(comp.title.text) %></h2>
       <% end %>
 
-      <div class="mdc-dialog__content" id="my-dialog-content">
+      <div class="mdc-dialog__content">
         <div class="v-errors">
           <% if forms.size == 1 %>
             <form role="form"
