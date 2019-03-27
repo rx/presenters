@@ -12,13 +12,13 @@ describe "Demo - Selectable List", :integration do
     select_all = checkbox(class_name: 'v-checkbox--select-control')
     # Select
     select_all.click
-    b.inputs(class_name: 'v-list-item--selectable-checkbox').each do |elem|
-      expect(elem.set?).to eq(true)
+    b.checkboxes(class_name: 'v-list-item--selectable-checkbox').each do |checkbox|
+      expect(checkbox.checked?).to eq(true)
     end
     # Deselect
     select_all.click
-    b.inputs(class_name: 'v-list-item--selectable-checkbox').each do |elem|
-      expect(elem.set?).to eq(false)
+    b.checkboxes(class_name: 'v-list-item--selectable-checkbox').each do |checkbox|
+      expect(checkbox.checked?).to eq(false)
     end
   end
 
