@@ -74,12 +74,21 @@ export class VPosts extends VBase {
                 'Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
         }
 
-        let snackbarCallback = function(contentType, response) {
-            const snackbar = root.querySelector('.mdc-snackbar').vComponent;
-            if (contentType && contentType.indexOf('application/json') !== -1) {
+        const snackbarCallback = function(contentType, response) {
+            const element = root.querySelector('.mdc-snackbar');
+
+            if (!(element && element.vComponent)) {
+                return;
+            }
+
+            const snackbar = element.vComponent;
+
+            if (contentType && contentType.includes('application/json')) {
                 const messages = JSON.parse(response).messages;
-                if (snackbar && messages && messages.snackbar) {
+
+                if (messages && messages.snackbar) {
                     const message = messages.snackbar.join('<br/>');
+
                     if (message !== '') {
                         snackbar.display(message);
                     }
