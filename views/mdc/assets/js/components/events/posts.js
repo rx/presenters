@@ -50,12 +50,6 @@ export class VPosts extends VBase {
             formData.append(name, encode(value));
         }
 
-        // log dupes:
-        // TODO: remove me (debug)
-        for (const [k, v] of formData) {
-            console.log(`${k}: ${v}`);
-        }
-
         const paramCount = Array.from(formData).length;
 
         if (paramCount < 1) {
@@ -63,6 +57,11 @@ export class VPosts extends VBase {
                 'Creating request with no data!'
                 + ' Are you sure you\'ve hooked everything up correctly?'
             );
+        }
+        else {
+            // log dupes:
+            // TODO: remove me (debug)
+            console.table(Array.from(formData));
         }
 
         const httpRequest = new XMLHttpRequest();
