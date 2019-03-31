@@ -42,47 +42,62 @@ export class VBase extends VUrls {
     }
 
     /**
-     * inputs retrieves relevant elements for this event.
+     * inputs retrieves relevant input elements for this event.
      *
-     * 1. If an `input_tag` has been provided, all matching elements are
-     *    included.
-     * 2. If this component is an element, it is included.
-     * 3. If this component has inputs, its elements are included. If not,
-     *    the elements of the nearest content container are included.
+     * - If an `input_tag` has been provided, all matching tagged elements are
+     *   included.
+     * - If this component is a input element, it is included.
+     * - If this component has input elements, its input elements are included.
+     *   If not, the input elements of the nearest container (dialog or content)
+     *   are included.
      * @return {Array<HTMLElement>}
      */
     inputs() {
-        let elements = [];
+        const components = [];
 
-        // Collect tagged elements, if applicable:
+        // Collect tagged components, if applicable:
         if (this.options.input_tag) {
-            elements = Array.from(this.taggedInputs());
+            const taggedComponents = Array.from(this.taggedInputs())
+                .filter((element) => element.vComponent)
+                .map((element) => element.vComponent);
+
+            components.push(taggedComponents);
         }
 
         let comp = this.component();
 
         if (comp) {
-            // Include ourselves if we're a form component (but not a
-            // container):
+            // Include ourselves if we're a form field component, but not a
+            // container:
             if (comp.respondTo('prepareSubmit') && !comp.respondTo('inputs')) {
-                elements.push(comp.element);
+                components.push(comp);
             }
             else if (!comp.respondTo('inputs')) {
-                // Defer to the component's closest content container if the
-                // component itself does not respond to `inputs`:
+                // Defer to the component's closest container (dialog or
+                // content) if the component itself does not respond to
+                // `inputs`:
                 comp = this.closestContainer();
             }
         }
 
-        if (comp
-            && comp.respondTo('inputs')
-            // skip if we've previously grabbed elements via input_tag:
-            && comp.element.dataset.inputTag !== this.options.input_tag
-        ) {
-            elements = elements.concat(...comp.inputs());
+        if (comp && comp.respondTo('inputs')) {
+            components.push(comp);
         }
 
-        return elements;
+        // Map components to elements.
+        // Containers are mapped to their child elements.
+        // Form field components are mapped to their own element.
+        const elements = components.flat().flatMap((comp) => {
+            if (comp.respondTo('inputs')) {
+                return Array.from(comp.inputs());
+            }
+            else if (comp.respondTo('prepareSubmit')) {
+                return comp.element;
+            }
+        });
+
+        // Deduplicate:
+        return Array.from(new Set(elements));
     }
 
     /**

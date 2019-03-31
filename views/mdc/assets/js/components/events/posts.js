@@ -58,11 +58,6 @@ export class VPosts extends VBase {
                 + ' Are you sure you\'ve hooked everything up correctly?'
             );
         }
-        else {
-            // log dupes:
-            // TODO: remove me (debug)
-            console.table(Array.from(formData));
-        }
 
         const httpRequest = new XMLHttpRequest();
         const url = this.url;

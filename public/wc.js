@@ -680,8 +680,6 @@ function expandParams(results, o) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_urls__ = __webpack_require__(19);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -741,49 +739,74 @@ var VBase = function (_VUrls) {
         }
 
         /**
-         * inputs retrieves relevant elements for this event.
+         * inputs retrieves relevant input elements for this event. The resulting
+         * array of elements is guaranteed to be unique.
          *
-         * 1. If an `input_tag` has been provided, all matching elements are
-         *    included.
-         * 2. If this component is an element, it is included.
-         * 3. If this component has inputs, its elements are included. If not,
-         *    the elements of the nearest content container are included.
+         * - If an `input_tag` has been provided, all matching tagged elements are
+         *   included.
+         * - If this component is a input element, it is included.
+         * - If this component has input elements, its input elements are included.
+         *   If not, the input elements of the nearest container (dialog or content)
+         *   are included.
          * @return {Array<HTMLElement>}
          */
 
     }, {
         key: 'inputs',
         value: function inputs() {
-            var elements = [];
+            var components = [];
 
-            // Collect tagged elements, if applicable:
+            // Collect tagged components, if applicable:
             if (this.options.input_tag) {
-                elements = Array.from(this.taggedInputs());
+                var taggedComponents = Array.from(this.taggedInputs()).filter(function (element) {
+                    return element.vComponent;
+                }).map(function (element) {
+                    return element.vComponent;
+                });
+
+                components.push(taggedComponents);
             }
 
             var comp = this.component();
 
             if (comp) {
-                // Include ourselves if we're a form component (but not a
-                // container):
+                // Include ourselves if we're a form field component, but not a
+                // container:
                 if (comp.respondTo('prepareSubmit') && !comp.respondTo('inputs')) {
-                    elements.push(comp.element);
+                    components.push(comp);
                 } else if (!comp.respondTo('inputs')) {
-                    // Defer to the component's closest content container if the
-                    // component itself does not respond to `inputs`:
+                    // Defer to the component's closest container (dialog or
+                    // content) if the component itself does not respond to
+                    // `inputs`:
                     comp = this.closestContainer();
                 }
             }
 
-            if (comp && comp.respondTo('inputs')
-            // skip if we've previously grabbed elements via input_tag:
-            && comp.element.dataset.inputTag !== this.options.input_tag) {
-                var _elements;
-
-                elements = (_elements = elements).concat.apply(_elements, _toConsumableArray(comp.inputs()));
+            if (comp && comp.respondTo('inputs')) {
+                components.push(comp);
             }
 
-            return elements;
+            // Map components to elements.
+            // Containers are mapped to their child elements.
+            // Form field components are mapped to their own element.
+            var elements = components.flat().flatMap(function (comp) {
+                if (comp.respondTo('inputs')) {
+                    return Array.from(comp.inputs());
+                } else if (comp.respondTo('prepareSubmit')) {
+                    return comp.element;
+                }
+            });
+
+            // Deduplicate:
+            var uniques = Array.from(new Set(elements));
+
+            if (uniques.length > 0) {
+                console.table(uniques.map(function (e) {
+                    return e.id;
+                }));
+            }
+
+            return uniques;
         }
 
         /**
