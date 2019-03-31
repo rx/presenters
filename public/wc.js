@@ -17177,6 +17177,9 @@ var FlowMatic = function (_HTMLElement) {
 
                 _this2.attachShadow({ mode: 'open' }).appendChild(templateContent.cloneNode(true));
                 Object(__WEBPACK_IMPORTED_MODULE_0__components_initialize__["a" /* initialize */])(_this2.shadowRoot, true);
+
+                var event = new CustomEvent('flow-matic-loaded', { bubbles: true });
+                _this2.dispatchEvent(event);
             });
             oReq.open('GET', '' + this.dataset.comp);
             oReq.send();

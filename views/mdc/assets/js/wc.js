@@ -23,7 +23,6 @@ class FlowMatic extends HTMLElement {
         super();
     }
 
-
     loadComponent() {
         const oReq = new XMLHttpRequest();
         oReq.addEventListener('load', (r) => {
@@ -34,6 +33,9 @@ class FlowMatic extends HTMLElement {
             this.attachShadow({mode: 'open'}).
                 appendChild(templateContent.cloneNode(true));
             initialize(this.shadowRoot, true);
+
+            const event = new CustomEvent('flow-matic-loaded', { bubbles: true });
+            this.dispatchEvent(event);
         });
         oReq.open('GET', `${this.dataset.comp}`);
         oReq.send();
