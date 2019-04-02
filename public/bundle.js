@@ -161,6 +161,11 @@ var VBaseComponent = function () {
         value: function clearErrors() {
             new __WEBPACK_IMPORTED_MODULE_0__events_errors__["a" /* VErrors */](this.root).clearErrors();
         }
+    }, {
+        key: 'respondTo',
+        value: function respondTo(method) {
+            return typeof this[method] === 'function';
+        }
     }]);
 
     return VBaseComponent;
@@ -2491,6 +2496,8 @@ function expandParams(results, o) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_urls__ = __webpack_require__(144);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -2523,6 +2530,13 @@ var VBase = function (_VUrls) {
         value: function parentElement() {
             return this.root.getElementById(this.options.__parent_id__);
         }
+
+        /**
+         * taggedInputs retrieves all components matching this event's input_tag
+         * value.
+         * @return {NodeList}
+         */
+
     }, {
         key: 'taggedInputs',
         value: function taggedInputs() {
@@ -2541,80 +2555,127 @@ var VBase = function (_VUrls) {
 
             return inputs;
         }
+
+        /**
+         * inputs retrieves relevant elements for this event.
+         *
+         * 1. If an `input_tag` has been provided, all matching elements are
+         *    included.
+         * 2. If this component is an element, it is included.
+         * 3. If this component has inputs, its elements are included. If not,
+         *    the elements of the nearest content container are included.
+         * @return {Array<HTMLElement>}
+         */
+
+    }, {
+        key: 'inputs',
+        value: function inputs() {
+            var elements = [];
+
+            // Collect tagged elements, if applicable:
+            if (this.options.input_tag) {
+                elements = Array.from(this.taggedInputs());
+            }
+
+            var comp = this.component();
+
+            if (comp) {
+                // Include ourselves if we're a form component (but not a
+                // container):
+                if (comp.respondTo('prepareSubmit') && !comp.respondTo('inputs')) {
+                    elements.push(comp.element);
+                } else if (!comp.respondTo('inputs')) {
+                    // Defer to the component's closest content container if the
+                    // component itself does not respond to `inputs`:
+                    comp = this.closestContent();
+                }
+            }
+
+            if (comp && comp.respondTo('inputs')
+            // skip if we've previously grabbed elements via input_tag:
+            && comp.element.dataset.inputTag !== this.options.input_tag) {
+                var _elements;
+
+                elements = (_elements = elements).concat.apply(_elements, _toConsumableArray(comp.inputs()));
+            }
+
+            return elements;
+        }
+
+        /**
+         * inputComponents retrieves the Component for each of this event's
+         * relevant input elements.
+         * @return {Array<VBaseComponent>}
+         */
+
+    }, {
+        key: 'inputComponents',
+        value: function inputComponents() {
+            return this.inputs().filter(function (element) {
+                return element.vComponent;
+            }).map(function (element) {
+                return element.vComponent;
+            });
+        }
+
+        /**
+         * inputValues retrieves submit values for each of this event's relevant
+         * input elements.
+         * @return {Array}
+         */
+
     }, {
         key: 'inputValues',
         value: function inputValues() {
             var params = [];
 
-            // If tagged input is asked for, fetch all the matching tag elements
-            // and then call any bound components:
-            if (this.options.input_tag !== undefined) {
-                var inputs = Array.from(this.taggedInputs()).filter(function (input) {
-                    return input.vComponent;
-                }).map(function (input) {
-                    return input.vComponent;
-                }).filter(function (comp) {
-                    return typeof comp.prepareSubmit === 'function';
-                });
+            this.inputComponents().filter(function (comp) {
+                return comp.respondTo('prepareSubmit');
+            }).map(function (comp) {
+                return comp.prepareSubmit(params);
+            });
 
-                var _iteratorNormalCompletion = true;
-                var _didIteratorError = false;
-                var _iteratorError = undefined;
-
-                try {
-                    for (var _iterator = inputs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                        var component = _step.value;
-
-                        component.prepareSubmit(params);
-                    }
-                } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
-                } finally {
-                    try {
-                        if (!_iteratorNormalCompletion && _iterator.return) {
-                            _iterator.return();
-                        }
-                    } finally {
-                        if (_didIteratorError) {
-                            throw _iteratorError;
-                        }
-                    }
-                }
-            }
-            // Let input components push parameters
-            var vComp = this.component();
-            if (vComp && typeof vComp.prepareSubmit === 'function') {
-                vComp.prepareSubmit(params);
-            }
             return params;
         }
     }, {
         key: 'component',
         value: function component() {
             var parent = this.parentElement();
+
             return parent ? parent.vComponent : null;
         }
     }, {
         key: 'validate',
         value: function validate() {
-            var errors = [];
             var comp = this.component();
+
             if (comp) {
-                errors = comp.validate();
+                return comp.validate();
             }
-            return errors;
+
+            return [];
         }
     }, {
-        key: 'closestContainer',
-        value: function closestContainer() {
+        key: 'closestContent',
+        value: function closestContent() {
+            var element = this.closestContentElement();
+
+            if (!element) {
+                return null;
+            }
+
+            return element.vComponent;
+        }
+    }, {
+        key: 'closestContentElement',
+        value: function closestContentElement() {
             var comp = this.component();
 
             if (!(comp && comp.element)) {
                 return null;
             }
 
-            return comp.element.closest('[data-is-container="true"]');
+            return comp.element.closest('.v-content');
         }
     }]);
 
@@ -3787,7 +3848,7 @@ var VErrors = function () {
     }
 
     _createClass(VErrors, [{
-        key: "clearErrors",
+        key: 'clearErrors',
         value: function clearErrors() {
             var errorMessages = this.root.querySelectorAll('.v-error-message');
 
@@ -3813,7 +3874,7 @@ var VErrors = function () {
         // {exception: 'Something bad happened' }
 
     }, {
-        key: "stringsToArrays",
+        key: 'stringsToArrays',
         value: function stringsToArrays(value) {
             if (Array.isArray(value) || value.constructor === Object) {
                 return value;
@@ -3821,7 +3882,7 @@ var VErrors = function () {
             return new Array(value);
         }
     }, {
-        key: "normalizeErrors",
+        key: 'normalizeErrors',
         value: function normalizeErrors(errors) {
             var _this = this;
 
@@ -3837,7 +3898,7 @@ var VErrors = function () {
         // [http_status, content_type, resultText]
 
     }, {
-        key: "displayErrors",
+        key: 'displayErrors',
         value: function displayErrors(result) {
             var httpStatus = result.statusCode;
             var contentType = result.contentType;
@@ -3845,9 +3906,9 @@ var VErrors = function () {
 
             var responseErrors = null;
 
-            if (contentType && contentType.indexOf("application/json") !== -1) {
+            if (contentType && contentType.indexOf('application/json') !== -1) {
                 responseErrors = JSON.parse(resultText);
-            } else if (contentType && contentType.indexOf("v/errors") !== -1) {
+            } else if (contentType && contentType.indexOf('v/errors') !== -1) {
                 responseErrors = resultText;
             }
 
@@ -3894,9 +3955,9 @@ var VErrors = function () {
                     }
                 }
             } else if (httpStatus === 0) {
-                this.prependErrors(["Unable to contact server. Please check that you are online and retry."]);
+                this.prependErrors(['Unable to contact server. Please check that you are online and retry.']);
             } else {
-                this.prependErrors(["The server returned an unexpected response! Status:" + httpStatus]);
+                this.prependErrors(['The server returned an unexpected response! Status:' + httpStatus]);
             }
         }
 
@@ -3904,7 +3965,7 @@ var VErrors = function () {
         // Returns true if it was able to set the error on the control
 
     }, {
-        key: "displayInputError",
+        key: 'displayInputError',
         value: function displayInputError(divId, messages) {
             var currentEl = this.root.getElementById(divId);
             if (currentEl && currentEl.mdcComponent) {
@@ -3921,11 +3982,11 @@ var VErrors = function () {
         // Used to display an error message without their being an input field to attach the error to
 
     }, {
-        key: "prependErrors",
+        key: 'prependErrors',
         value: function prependErrors(messages) {
             var errorsDiv = this.findNearestErrorDiv();
             // create a new div element
-            var newDiv = this.root.createElement("div");
+            var newDiv = this.root.createElement('div');
             newDiv.className = 'v-error-message';
             // and give it some content
 
@@ -3965,16 +4026,16 @@ var VErrors = function () {
                 errorsDiv.parentElement.insertBefore(newDiv, errorsDiv);
                 return true;
             } else {
-                console.error("Unable to display Errors! ", messages);
+                console.error('Unable to display Errors! ', messages);
             }
             return false;
         }
     }, {
-        key: "findNearestErrorDiv",
+        key: 'findNearestErrorDiv',
         value: function findNearestErrorDiv() {
             var errorsDiv = null;
-            var currentDiv = this.event.target;
-            if (currentDiv) {
+            if (this.event) {
+                var currentDiv = this.event.target;
                 errorsDiv = currentDiv.closest('.v-errors');
             } else {
                 errorsDiv = this.root.querySelector('.v-errors');
@@ -33965,7 +34026,7 @@ var VDialog = function (_VBaseContainer) {
         var _this = _possibleConstructorReturn(this, (VDialog.__proto__ || Object.getPrototypeOf(VDialog)).call(this, element, mdcComponent));
 
         var dialog = mdcComponent;
-        var dialogButtons = element.querySelectorAll('button:not([disabled])');
+        var dialogButtons = element.querySelectorAll('.mdc-dialog__actions button:not([disabled])');
         for (var j = 0; j != dialogButtons.length; j++) {
             var dialogButton = dialogButtons[j];
             if (!dialogButton.dialog) {
@@ -40033,30 +40094,30 @@ var VPosts = function (_VBase) {
                 });
             }
 
-            var FD = null;
-            var form = this.form();
-            if (form) {
-                FD = new FormData(form);
-            } else {
-                FD = new FormData();
-            }
-            // Add params from presenter
-            Object(__WEBPACK_IMPORTED_MODULE_2__action_parameter__["b" /* expandParams */])(results, this.params);
-            for (var name in this.params) {
-                FD.append(name, Object(__WEBPACK_IMPORTED_MODULE_3__encode__["a" /* encode */])(this.params[name]));
-            }
+            // Manually build the FormData.
+            // Passing in a <form> element (if available) would skip over
+            // unchecked toggle elements, which would be unexpected if the user
+            // has specified a value for the toggle's `off_value` attribute.
+            var formData = new FormData();
 
-            var inputValues = this.inputValues();
+            // NB: `inputValues` will appropriately handle `input_tag`.
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
             var _iteratorError = undefined;
 
             try {
-                for (var _iterator = inputValues[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var input = _step.value;
+                for (var _iterator = this.inputValues()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var _ref = _step.value;
 
-                    FD.append(input[0], input[1]);
+                    var _ref2 = _slicedToArray(_ref, 2);
+
+                    var name = _ref2[0];
+                    var value = _ref2[1];
+
+                    formData.append(name, value);
                 }
+
+                // Add params from presenter:
             } catch (err) {
                 _didIteratorError = true;
                 _iteratorError = err;
@@ -40070,6 +40131,77 @@ var VPosts = function (_VBase) {
                         throw _iteratorError;
                     }
                 }
+            }
+
+            Object(__WEBPACK_IMPORTED_MODULE_2__action_parameter__["b" /* expandParams */])(results, this.params);
+
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+                for (var _iterator2 = Object.entries(this.params)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var _ref3 = _step2.value;
+
+                    var _ref4 = _slicedToArray(_ref3, 2);
+
+                    var _name = _ref4[0];
+                    var _value = _ref4[1];
+
+                    formData.append(_name, Object(__WEBPACK_IMPORTED_MODULE_3__encode__["a" /* encode */])(_value));
+                }
+
+                // log dupes:
+                // TODO: remove me (debug)
+            } catch (err) {
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
+                    }
+                } finally {
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
+                    }
+                }
+            }
+
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
+
+            try {
+                for (var _iterator3 = formData[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var _ref5 = _step3.value;
+
+                    var _ref6 = _slicedToArray(_ref5, 2);
+
+                    var k = _ref6[0];
+                    var v = _ref6[1];
+
+                    console.log(k + ': ' + v);
+                }
+            } catch (err) {
+                _didIteratorError3 = true;
+                _iteratorError3 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                        _iterator3.return();
+                    }
+                } finally {
+                    if (_didIteratorError3) {
+                        throw _iteratorError3;
+                    }
+                }
+            }
+
+            var paramCount = Array.from(formData).length;
+
+            if (paramCount < 1) {
+                console.warn('Creating request with no data!' + ' Are you sure you\'ve hooked everything up correctly?');
             }
 
             var httpRequest = new XMLHttpRequest();
@@ -40140,70 +40272,70 @@ var VPosts = function (_VBase) {
 
                 var configHeaders = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].get('request.headers.POST', {});
 
-                var _iteratorNormalCompletion2 = true;
-                var _didIteratorError2 = false;
-                var _iteratorError2 = undefined;
+                var _iteratorNormalCompletion4 = true;
+                var _didIteratorError4 = false;
+                var _iteratorError4 = undefined;
 
                 try {
-                    for (var _iterator2 = Object.entries(configHeaders)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                        var _ref = _step2.value;
+                    for (var _iterator4 = Object.entries(configHeaders)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                        var _ref7 = _step4.value;
 
-                        var _ref2 = _slicedToArray(_ref, 2);
+                        var _ref8 = _slicedToArray(_ref7, 2);
 
-                        var key = _ref2[0];
-                        var value = _ref2[1];
+                        var key = _ref8[0];
+                        var _value2 = _ref8[1];
 
-                        httpRequest.setRequestHeader(key, value);
+                        httpRequest.setRequestHeader(key, _value2);
                     }
                 } catch (err) {
-                    _didIteratorError2 = true;
-                    _iteratorError2 = err;
+                    _didIteratorError4 = true;
+                    _iteratorError4 = err;
                 } finally {
                     try {
-                        if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                            _iterator2.return();
+                        if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                            _iterator4.return();
                         }
                     } finally {
-                        if (_didIteratorError2) {
-                            throw _iteratorError2;
+                        if (_didIteratorError4) {
+                            throw _iteratorError4;
                         }
                     }
                 }
 
                 if (callHeaders) {
-                    var _iteratorNormalCompletion3 = true;
-                    var _didIteratorError3 = false;
-                    var _iteratorError3 = undefined;
+                    var _iteratorNormalCompletion5 = true;
+                    var _didIteratorError5 = false;
+                    var _iteratorError5 = undefined;
 
                     try {
-                        for (var _iterator3 = Object.entries(callHeaders)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                            var _ref3 = _step3.value;
+                        for (var _iterator5 = Object.entries(callHeaders)[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                            var _ref9 = _step5.value;
 
-                            var _ref4 = _slicedToArray(_ref3, 2);
+                            var _ref10 = _slicedToArray(_ref9, 2);
 
-                            var _key = _ref4[0];
-                            var _value = _ref4[1];
+                            var _key = _ref10[0];
+                            var _value3 = _ref10[1];
 
-                            httpRequest.setRequestHeader(_key, _value);
+                            httpRequest.setRequestHeader(_key, _value3);
                         }
                     } catch (err) {
-                        _didIteratorError3 = true;
-                        _iteratorError3 = err;
+                        _didIteratorError5 = true;
+                        _iteratorError5 = err;
                     } finally {
                         try {
-                            if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                                _iterator3.return();
+                            if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                                _iterator5.return();
                             }
                         } finally {
-                            if (_didIteratorError3) {
-                                throw _iteratorError3;
+                            if (_didIteratorError5) {
+                                throw _iteratorError5;
                             }
                         }
                     }
                 }
 
                 // Send our FormData object; HTTP headers are set automatically
-                httpRequest.send(FD);
+                httpRequest.send(formData);
             });
         }
     }, {
@@ -40508,11 +40640,7 @@ var VPromptIfDirty = function (_VBase) {
             var _this2 = this;
 
             // We're in a dirty state if any dirtyable inputs are dirty:
-            var dirty = Array.from(this.inputs()).filter(function (input) {
-                return input.vComponent;
-            }).map(function (input) {
-                return input.vComponent;
-            }).filter(function (comp) {
+            var dirty = this.inputComponents().filter(function (comp) {
                 return comp.isDirty;
             }).map(function (comp) {
                 return comp.isDirty();
@@ -40547,37 +40675,6 @@ var VPromptIfDirty = function (_VBase) {
                     return resolve(results);
                 });
             });
-        }
-
-        /**
-         * inputs returns an array of Voom components.
-         * If an input_tag has been specified, the array contains input
-         * components tagged with the specified input_tag.
-         * Otherwise, the array contains the nearest container's input
-         * components.
-         * @throws Error if No input_tag is specified and a nearest container
-         *               cannot be found.
-         * @return {array} An array of input components
-         */
-
-    }, {
-        key: 'inputs',
-        value: function inputs() {
-            var container = this.closestContainer();
-            var inputTag = this.options.input_tag;
-
-            // A specified input_tag has priority over the nearest container:
-            if (inputTag) {
-                return this.taggedInputs();
-            }
-
-            // If no nearest container can be found, bail:
-            if (!(container && container.vComponent)) {
-                throw new Error('Unable to find a nearest container! Try using an input_tag.');
-            }
-
-            // Otherwise, use the nearest container's input elements:
-            return container.vComponent.inputs();
         }
     }]);
 
