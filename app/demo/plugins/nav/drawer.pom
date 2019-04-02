@@ -7,7 +7,7 @@ Voom::Presenters.define(:plugin_drawer, namespace: :plugins) do
           loads :index
         end
       end
-      %i(image_crop).sort.each do |comp|
+      %i(image_crop chart).sort.each do |comp|
         item titleize(comp) do
           event :click do
             loads comp

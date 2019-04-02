@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/rx/chart_presenter_plugin.git
+  revision: d0ac4282ab0243ee5522f36a6bb3a58ee401e2ff
+  specs:
+    chart_presenter_plugin (0.1.0)
+
+GIT
   remote: git://github.com/rx/foo_presenter_plugin.git
   revision: 0a7667c788a57d3b1960245892fa7925852bb27e
   specs:
@@ -120,6 +126,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.13)
+  chart_presenter_plugin!
   foo_presenter_plugin!
   gem-release (~> 2.0)
   image_crop_presenter_plugin!
