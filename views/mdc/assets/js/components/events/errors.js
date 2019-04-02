@@ -53,9 +53,10 @@ export class VErrors {
 
         var responseErrors = null;
 
-        if (contentType && contentType.indexOf("application/json") !== -1) {
+        if (contentType && contentType.indexOf('application/json') !== -1) {
             responseErrors = JSON.parse(resultText);
-        } else if (contentType && contentType.indexOf("v/errors") !== -1) {
+        }
+        else if (contentType && contentType.indexOf('v/errors') !== -1) {
             responseErrors = resultText;
         }
 
@@ -64,12 +65,13 @@ export class VErrors {
                 responseErrors = [responseErrors];
             }
             for (var response of responseErrors) {
-                var pageErrors = Object.values(this.normalizeErrors(response)).reduce(function (previous, value) {
-                    if (Array.isArray(value) && value.length > 0) {
-                        previous.push(value.join('<br/>'));
-                    }
-                    return previous;
-                }, []);
+                var pageErrors = Object.values(this.normalizeErrors(response)).
+                    reduce(function(previous, value) {
+                        if (Array.isArray(value) && value.length > 0) {
+                            previous.push(value.join('<br/>'));
+                        }
+                        return previous;
+                    }, []);
                 var fieldErrors = this.normalizeErrors(response.errors);
 
                 for (var field in fieldErrors) {
@@ -80,10 +82,15 @@ export class VErrors {
                 }
                 this.prependErrors(pageErrors);
             }
-        } else if (httpStatus === 0) {
-            this.prependErrors(["Unable to contact server. Please check that you are online and retry."]);
-        } else  {
-            this.prependErrors(["The server returned an unexpected response! Status:" + httpStatus]);
+        }
+        else if (httpStatus === 0) {
+            this.prependErrors(
+                ['Unable to contact server. Please check that you are online and retry.']);
+        }
+        else {
+            this.prependErrors([
+                'The server returned an unexpected response! Status:' +
+                httpStatus]);
         }
     }
 
@@ -93,7 +100,8 @@ export class VErrors {
         var currentEl = this.root.getElementById(divId);
         if (currentEl && currentEl.mdcComponent) {
             currentEl.mdcComponent.helperTextContent = messages.join(', ');
-            var helperText = this.root.getElementById(divId + '-input-helper-text');
+            var helperText = this.root.getElementById(
+                divId + '-input-helper-text');
             helperText.classList.add('mdc-text-field--invalid',
                 'mdc-text-field-helper-text--validation-msg',
                 'mdc-text-field-helper-text--persistent');
@@ -108,7 +116,7 @@ export class VErrors {
     prependErrors(messages) {
         var errorsDiv = this.findNearestErrorDiv();
         // create a new div element
-        var newDiv = this.root.createElement("div");
+        var newDiv = this.root.createElement('div');
         newDiv.className = 'v-error-message';
         // and give it some content
 
@@ -125,18 +133,20 @@ export class VErrors {
             errorsDiv.scrollIntoView();
             errorsDiv.parentElement.insertBefore(newDiv, errorsDiv);
             return true;
-        } else {
-            console.error("Unable to display Errors! ", messages);
+        }
+        else {
+            console.error('Unable to display Errors! ', messages);
         }
         return false;
     }
 
     findNearestErrorDiv() {
         let errorsDiv = null;
-        const currentDiv = this.event.target;
-        if(currentDiv) {
-            errorsDiv = currentDiv.closest('.v-errors')
-        }else{
+        if (this.event) {
+            const currentDiv = this.event.target;
+            errorsDiv = currentDiv.closest('.v-errors');
+        }
+        else {
             errorsDiv = this.root.querySelector('.v-errors');
         }
         return errorsDiv;

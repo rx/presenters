@@ -2,7 +2,7 @@ require "watir_helper"
 
 describe "Demo Index", :integration do
   before do
-    goto "http://localhost:9292/index"
+    goto "#{host}/index"
   end
 
   it "has heading" do

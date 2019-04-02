@@ -13,7 +13,7 @@ export class VDialog extends VBaseContainer {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
         const dialog = mdcComponent;
-        const dialogButtons = element.querySelectorAll('button:not([disabled])');
+        const dialogButtons = element.querySelectorAll('.mdc-dialog__actions button:not([disabled])');
         for (let j = 0; j != dialogButtons.length; j++) {
             const dialogButton = dialogButtons[j];
             if (!dialogButton.dialog) {
