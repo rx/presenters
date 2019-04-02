@@ -1,0 +1,23 @@
+require_relative '../helpers/indented_grid'
+
+Voom::Presenters.define(:progress) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :component_drawer
+  page_title 'Progress'
+
+  indented_grid do
+    progress id: :progress_bar, hidden: true
+    button :start do
+      event :click do
+        show :progress_bar
+      end
+    end
+    button :stop do
+      event :click do
+        hide :progress_bar
+      end
+    end
+    attach :code, file: __FILE__
+  end
+end

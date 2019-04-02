@@ -15,7 +15,7 @@ export class VToggleVisibility {
         if (!elem) {
             const err = new Error(
                 `Unable to locate node ${targetId}!`
-                + ' Did you forget to attach it?'
+                + ' Did you forget to attach it?',
             );
 
             results.push({
@@ -31,19 +31,37 @@ export class VToggleVisibility {
             clearTimeout(elem.vTimeout);
             elem.vTimeout = setTimeout(function() {
                 console.log('Toggling visibility on: ' + targetId);
+
                 if (action === 'show') {
-                    elem.classList.remove('v-hidden');
+                    if (elem.vComponent && elem.vComponent.show) {
+                        elem.vComponent.show();
+                    }
+                    else {
+                        elem.classList.remove('v-hidden');
+                    }
                 }
                 else if (action === 'hide') {
-                    elem.classList.add('v-hidden');
+                    if (elem.vComponent && elem.vComponent.hide) {
+                        elem.vComponent.hide();
+                    }
+                    else {
+                        elem.classList.add('v-hidden');
+                    }
                 }
                 else {
-                    elem.classList.toggle('v-hidden');
+                    if (elem.vComponent && elem.vComponent.toggleVisibility) {
+                        elem.vComponent.toggleVisibility();
+                    }
+                    else {
+                        elem.classList.toggle('v-hidden');
+                    }
                 }
-                if (elem && elem.vComponent && elem.vComponent.show) {
-                    elem.classList.contains('v-hidden') ?
-                        elem.vComponent.onHide() :
-                        elem.vComponent.onShow();
+                if (elem.classList.contains('v-hidden') && elem.vComponent &&
+                    elem.vComponent.onHide) {
+                    elem.vComponent.onHide();
+                }
+                else if (elem.vComponent && elem.vComponent.onShow) {
+                    elem.vComponent.onShow();
                 }
                 results.push({action: 'toggle_visibility', statusCode: 200});
                 resolve(results);

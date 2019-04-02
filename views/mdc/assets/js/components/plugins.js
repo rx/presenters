@@ -52,7 +52,7 @@ export class VPluginComponent extends eventHandlerMixin(VBaseComponent) {
     }
 
     onShow() {
-        if (this.element.vPlugin && typeof this.element.vPlugin.onShow) {
+        if (this.element.vPlugin && this.element.vPlugin.onShow) {
             return this.element.vPlugin.onShow();
         }
     }
