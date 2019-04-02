@@ -224,10 +224,7 @@ var VBaseContainer = function (_VBaseComponent) {
     function VBaseContainer(element, mdcComponent) {
         _classCallCheck(this, VBaseContainer);
 
-        var _this = _possibleConstructorReturn(this, (VBaseContainer.__proto__ || Object.getPrototypeOf(VBaseContainer)).call(this, element, mdcComponent));
-
-        element.dataset.isContainer = true;
-        return _this;
+        return _possibleConstructorReturn(this, (VBaseContainer.__proto__ || Object.getPrototypeOf(VBaseContainer)).call(this, element, mdcComponent));
     }
 
     _createClass(VBaseContainer, [{
@@ -683,8 +680,6 @@ function expandParams(results, o) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_urls__ = __webpack_require__(20);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -744,49 +739,65 @@ var VBase = function (_VUrls) {
         }
 
         /**
-         * inputs retrieves relevant elements for this event.
+         * inputs retrieves relevant input elements for this event.
          *
-         * 1. If an `input_tag` has been provided, all matching elements are
-         *    included.
-         * 2. If this component is an element, it is included.
-         * 3. If this component has inputs, its elements are included. If not,
-         *    the elements of the nearest content container are included.
+         * - If an `input_tag` has been provided, all matching tagged elements are
+         *   included.
+         * - If this component is a input element, it is included.
+         * - If this component has input elements, its input elements are included.
+         *   If not, the input elements of the nearest container (dialog or content)
+         *   are included.
          * @return {Array<HTMLElement>}
          */
 
     }, {
         key: 'inputs',
         value: function inputs() {
-            var elements = [];
+            var components = [];
 
-            // Collect tagged elements, if applicable:
+            // Collect tagged components, if applicable:
             if (this.options.input_tag) {
-                elements = Array.from(this.taggedInputs());
+                var taggedComponents = Array.from(this.taggedInputs()).filter(function (element) {
+                    return element.vComponent;
+                }).map(function (element) {
+                    return element.vComponent;
+                });
+
+                components.push(taggedComponents);
             }
 
             var comp = this.component();
 
             if (comp) {
-                // Include ourselves if we're a form component (but not a
-                // container):
+                // Include ourselves if we're a form field component, but not a
+                // container:
                 if (comp.respondTo('prepareSubmit') && !comp.respondTo('inputs')) {
-                    elements.push(comp.element);
+                    components.push(comp);
                 } else if (!comp.respondTo('inputs')) {
-                    // Defer to the component's closest content container if the
-                    // component itself does not respond to `inputs`:
-                    comp = this.closestContent();
+                    // Defer to the component's closest container (dialog or
+                    // content) if the component itself does not respond to
+                    // `inputs`:
+                    comp = this.closestContainer();
                 }
             }
 
-            if (comp && comp.respondTo('inputs')
-            // skip if we've previously grabbed elements via input_tag:
-            && comp.element.dataset.inputTag !== this.options.input_tag) {
-                var _elements;
-
-                elements = (_elements = elements).concat.apply(_elements, _toConsumableArray(comp.inputs()));
+            if (comp && comp.respondTo('inputs')) {
+                components.push(comp);
             }
 
-            return elements;
+            // Map components to elements.
+            // Containers are mapped to their child elements.
+            // Form field components are mapped to their own element.
+            var elements = components.flat().flatMap(function (comp) {
+                if (comp.respondTo('inputs')) {
+                    return Array.from(comp.inputs());
+                } else if (comp.respondTo('prepareSubmit')) {
+                    return comp.element;
+                }
+            });
+
+            // Deduplicate:
+            return Array.from(new Set(elements));
         }
 
         /**
@@ -843,9 +854,9 @@ var VBase = function (_VUrls) {
             return [];
         }
     }, {
-        key: 'closestContent',
-        value: function closestContent() {
-            var element = this.closestContentElement();
+        key: 'closestContainer',
+        value: function closestContainer() {
+            var element = this.closestContainerElement();
 
             if (!element) {
                 return null;
@@ -854,15 +865,15 @@ var VBase = function (_VUrls) {
             return element.vComponent;
         }
     }, {
-        key: 'closestContentElement',
-        value: function closestContentElement() {
+        key: 'closestContainerElement',
+        value: function closestContainerElement() {
             var comp = this.component();
 
             if (!(comp && comp.element)) {
                 return null;
             }
 
-            return comp.element.closest('.v-content');
+            return comp.element.closest('[data-is-container]');
         }
     }]);
 
@@ -26059,9 +26070,6 @@ var VPosts = function (_VBase) {
 
                     formData.append(_name, Object(__WEBPACK_IMPORTED_MODULE_3__encode__["a" /* encode */])(_value));
                 }
-
-                // log dupes:
-                // TODO: remove me (debug)
             } catch (err) {
                 _didIteratorError2 = true;
                 _iteratorError2 = err;
@@ -26073,36 +26081,6 @@ var VPosts = function (_VBase) {
                 } finally {
                     if (_didIteratorError2) {
                         throw _iteratorError2;
-                    }
-                }
-            }
-
-            var _iteratorNormalCompletion3 = true;
-            var _didIteratorError3 = false;
-            var _iteratorError3 = undefined;
-
-            try {
-                for (var _iterator3 = formData[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                    var _ref5 = _step3.value;
-
-                    var _ref6 = _slicedToArray(_ref5, 2);
-
-                    var k = _ref6[0];
-                    var v = _ref6[1];
-
-                    console.log(k + ': ' + v);
-                }
-            } catch (err) {
-                _didIteratorError3 = true;
-                _iteratorError3 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                        _iterator3.return();
-                    }
-                } finally {
-                    if (_didIteratorError3) {
-                        throw _iteratorError3;
                     }
                 }
             }
@@ -26122,11 +26100,20 @@ var VPosts = function (_VBase) {
             }
 
             var snackbarCallback = function snackbarCallback(contentType, response) {
-                var snackbar = root.querySelector('.mdc-snackbar').vComponent;
-                if (contentType && contentType.indexOf('application/json') !== -1) {
+                var element = root.querySelector('.mdc-snackbar');
+
+                if (!(element && element.vComponent)) {
+                    return;
+                }
+
+                var snackbar = element.vComponent;
+
+                if (contentType && contentType.includes('application/json')) {
                     var messages = JSON.parse(response).messages;
-                    if (snackbar && messages && messages.snackbar) {
+
+                    if (messages && messages.snackbar) {
                         var message = messages.snackbar.join('<br/>');
+
                         if (message !== '') {
                             snackbar.display(message);
                         }
@@ -26181,63 +26168,63 @@ var VPosts = function (_VBase) {
 
                 var configHeaders = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].get('request.headers.POST', {});
 
-                var _iteratorNormalCompletion4 = true;
-                var _didIteratorError4 = false;
-                var _iteratorError4 = undefined;
+                var _iteratorNormalCompletion3 = true;
+                var _didIteratorError3 = false;
+                var _iteratorError3 = undefined;
 
                 try {
-                    for (var _iterator4 = Object.entries(configHeaders)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                        var _ref7 = _step4.value;
+                    for (var _iterator3 = Object.entries(configHeaders)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                        var _ref5 = _step3.value;
 
-                        var _ref8 = _slicedToArray(_ref7, 2);
+                        var _ref6 = _slicedToArray(_ref5, 2);
 
-                        var key = _ref8[0];
-                        var _value2 = _ref8[1];
+                        var key = _ref6[0];
+                        var _value2 = _ref6[1];
 
                         httpRequest.setRequestHeader(key, _value2);
                     }
                 } catch (err) {
-                    _didIteratorError4 = true;
-                    _iteratorError4 = err;
+                    _didIteratorError3 = true;
+                    _iteratorError3 = err;
                 } finally {
                     try {
-                        if (!_iteratorNormalCompletion4 && _iterator4.return) {
-                            _iterator4.return();
+                        if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                            _iterator3.return();
                         }
                     } finally {
-                        if (_didIteratorError4) {
-                            throw _iteratorError4;
+                        if (_didIteratorError3) {
+                            throw _iteratorError3;
                         }
                     }
                 }
 
                 if (callHeaders) {
-                    var _iteratorNormalCompletion5 = true;
-                    var _didIteratorError5 = false;
-                    var _iteratorError5 = undefined;
+                    var _iteratorNormalCompletion4 = true;
+                    var _didIteratorError4 = false;
+                    var _iteratorError4 = undefined;
 
                     try {
-                        for (var _iterator5 = Object.entries(callHeaders)[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-                            var _ref9 = _step5.value;
+                        for (var _iterator4 = Object.entries(callHeaders)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                            var _ref7 = _step4.value;
 
-                            var _ref10 = _slicedToArray(_ref9, 2);
+                            var _ref8 = _slicedToArray(_ref7, 2);
 
-                            var _key = _ref10[0];
-                            var _value3 = _ref10[1];
+                            var _key = _ref8[0];
+                            var _value3 = _ref8[1];
 
                             httpRequest.setRequestHeader(_key, _value3);
                         }
                     } catch (err) {
-                        _didIteratorError5 = true;
-                        _iteratorError5 = err;
+                        _didIteratorError4 = true;
+                        _iteratorError4 = err;
                     } finally {
                         try {
-                            if (!_iteratorNormalCompletion5 && _iterator5.return) {
-                                _iterator5.return();
+                            if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                                _iterator4.return();
                             }
                         } finally {
-                            if (_didIteratorError5) {
-                                throw _iteratorError5;
+                            if (_didIteratorError4) {
+                                throw _iteratorError4;
                             }
                         }
                     }
@@ -73137,7 +73124,10 @@ var VContent = function (_eventHandlerMixin) {
     function VContent(element, mdcComponent) {
         _classCallCheck(this, VContent);
 
-        return _possibleConstructorReturn(this, (VContent.__proto__ || Object.getPrototypeOf(VContent)).call(this, element, mdcComponent));
+        var _this = _possibleConstructorReturn(this, (VContent.__proto__ || Object.getPrototypeOf(VContent)).call(this, element, mdcComponent));
+
+        element.setAttribute('data-is-container', '');
+        return _this;
     }
 
     return VContent;

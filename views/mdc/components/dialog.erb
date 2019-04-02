@@ -11,8 +11,9 @@
      class="v-dialog mdc-dialog"
      role="alertdialog"
      aria-modal="true"
-     aria-labelledby="my-dialog-title"
-     aria-describedby="my-dialog-content">
+     aria-labelledby="<%= comp.id %>-title"
+     aria-describedby="<%= comp.id %>-content"
+     data-is-container>
   <div class="mdc-dialog__container">
     <div class="mdc-dialog__surface"
          <% if comp.width || comp.height %>
@@ -22,10 +23,10 @@
 
       <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
       <% if comp.title %>
-        <h2 class="mdc-dialog__title" id="my-dialog-title"><%= expand_text(comp.title.text) %></h2>
+        <h2 class="mdc-dialog__title" id="<%= comp.id %>-title"><%= expand_text(comp.title.text) %></h2>
       <% end %>
 
-      <div class="mdc-dialog__content" id="my-dialog-content">
+      <div class="mdc-dialog__content" id="<%= comp.id %>-content">
         <div class="v-errors">
           <% if forms.size == 1 %>
             <form role="form"
