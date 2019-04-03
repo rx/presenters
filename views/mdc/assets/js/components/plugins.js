@@ -51,6 +51,12 @@ export class VPluginComponent extends eventHandlerMixin(VBaseComponent) {
         }
     }
 
+    reset() {
+        if (this.element.vPlugin && this.element.vPlugin.name) {
+            return this.element.vPlugin.reset();
+        }
+    }
+
     onShow() {
         if (this.element.vPlugin && this.element.vPlugin.onShow) {
             return this.element.vPlugin.onShow();

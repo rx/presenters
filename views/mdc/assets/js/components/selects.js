@@ -42,6 +42,10 @@ export class VSelect extends visibilityObserverMixin(eventHandlerMixin(VBaseComp
         }
     }
 
+    reset() {
+        this.select.value = this.element.dataset.originalValue;
+    }
+
     setValue(value) {
         this.select.value = value;
     }

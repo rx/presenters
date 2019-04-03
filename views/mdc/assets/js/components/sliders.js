@@ -33,6 +33,10 @@ export class VSlider extends visibilityObserverMixin(
         this.setValue(0);
     }
 
+    reset() {
+        this.setValue(this.element.dataset.originalValue);
+    }
+
     setValue(value) {
         this.mdcComponent.value = value;
     }

@@ -79,6 +79,10 @@ export class VTextField extends visibilityObserverMixin(
         }
     }
 
+    reset() {
+        this.input.value = this.element.dataset.originalValue;
+    }
+
     setValue(value) {
         this.input.value = value;
     }
