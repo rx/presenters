@@ -1140,9 +1140,46 @@ module.exports = g;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VErrors; });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/**
+ * mapObject transforms an object's key-value pairs via the provided function.
+ * @param {Object} object
+ * @param {Function} fn A mapping function suitable for use with Array.map
+ * @return {Object}
+ */
+function mapObject(object, fn) {
+    return Object.entries(object).map(fn).reduce(function (obj, _ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            k = _ref2[0],
+            v = _ref2[1];
+
+        return Object.assign(obj, _defineProperty({}, [k], v));
+    }, {});
+}
+
+/*
+    Attempt to interpret and serialize the following cases for display:
+
+    A: Rails errors:
+        { "name": ["Requires name"] }
+
+    B: Validation errors:
+        1. { :email => ["must be filled"] }
+        2. { :fees => 0 => { :fee => ["must be filled", "must be greater than zero"] } }
+
+    C: Custom errors and client-side exceptions:
+        1. { :email => "must be filled" }
+        2. { exception: 'Something bad happened' }
+ */
 
 var VErrors = function () {
     function VErrors(root, event) {
@@ -1161,66 +1198,89 @@ var VErrors = function () {
                 errorMessages[i].remove();
             }
         }
-
-        // Rails errors
-        // {
-        //   "name": [
-        //     "Requires name"
-        //   ]
-        // }
-
-        // Validation errors
-        // { :email => ["must be filled"] }
-
-        // Custom errors
-        // { :email => "must be filled" }
-
-        // Exceptions
-        // {exception: 'Something bad happened' }
-
     }, {
-        key: 'stringsToArrays',
-        value: function stringsToArrays(value) {
-            if (Array.isArray(value) || value.constructor === Object) {
-                return value;
-            }
-            return new Array(value);
-        }
-    }, {
-        key: 'normalizeErrors',
-        value: function normalizeErrors(errors) {
+        key: 'normalize',
+        value: function normalize(errors) {
             var _this = this;
 
-            if (errors && errors.constructor === Object) {
-                return Object.keys(errors).reduce(function (previous, key) {
-                    previous[key] = _this.stringsToArrays(errors[key]);
-                    return previous;
-                }, {});
+            if (!errors) {
+                return {};
             }
-            return [];
+
+            return mapObject(errors, function (_ref3) {
+                var _ref4 = _slicedToArray(_ref3, 2),
+                    k = _ref4[0],
+                    v = _ref4[1];
+
+                var result = null;
+
+                // Case C, a single key-value pair:
+                if (typeof v === 'string') {
+                    // Normalize case C into case A/B-1:
+                    v = [v];
+                }
+
+                if (Array.isArray(v)) {
+                    // Case A and B-1: an array of error messages:
+                    result = v.join(', ');
+                } else if (v.constructor === Object) {
+                    // Case B-2: a nested structure:
+                    result = _this.normalize(v);
+                } else {
+                    throw new Error('Cannot normalize value of type ' + (typeof v === 'undefined' ? 'undefined' : _typeof(v)));
+                }
+
+                return [k, result];
+            });
         }
+    }, {
+        key: 'flatten',
+        value: function flatten(errors) {
+            var _this2 = this;
 
-        // [http_status, content_type, resultText]
+            var object = mapObject(errors, function (_ref5) {
+                var _ref6 = _slicedToArray(_ref5, 2),
+                    k = _ref6[0],
+                    v = _ref6[1];
 
+                var result = null;
+
+                if (typeof v === 'string') {
+                    result = v;
+                } else if (v.constructor === Object) {
+                    result = _this2.flatten(v);
+                } else {
+                    throw new Error('Cannot flatten value of type ' + (typeof v === 'undefined' ? 'undefined' : _typeof(v)));
+                }
+
+                return [k, result];
+            });
+
+            return Object.values(object).flat();
+        }
     }, {
         key: 'displayErrors',
         value: function displayErrors(result) {
-            var httpStatus = result.statusCode;
-            var contentType = result.contentType;
-            var resultText = result.content;
+            var _this3 = this;
+
+            var statusCode = result.statusCode,
+                contentType = result.contentType,
+                content = result.content;
+
 
             var responseErrors = null;
 
-            if (contentType && contentType.indexOf('application/json') !== -1) {
-                responseErrors = JSON.parse(resultText);
-            } else if (contentType && contentType.indexOf('v/errors') !== -1) {
-                responseErrors = resultText;
+            if (contentType && contentType.includes('application/json')) {
+                responseErrors = JSON.parse(content);
+            } else if (contentType && contentType.includes('v/errors')) {
+                responseErrors = content;
             }
 
             if (responseErrors) {
                 if (!Array.isArray(responseErrors)) {
                     responseErrors = [responseErrors];
                 }
+
                 var _iteratorNormalCompletion = true;
                 var _didIteratorError = false;
                 var _iteratorError = undefined;
@@ -1229,21 +1289,15 @@ var VErrors = function () {
                     for (var _iterator = responseErrors[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                         var response = _step.value;
 
-                        var pageErrors = Object.values(this.normalizeErrors(response)).reduce(function (previous, value) {
-                            if (Array.isArray(value) && value.length > 0) {
-                                previous.push(value.join('<br/>'));
-                            }
-                            return previous;
-                        }, []);
-                        var fieldErrors = this.normalizeErrors(response.errors);
+                        var pageErrors = this.flatten(this.normalize(response));
+                        var fieldErrors = this.flatten(this.normalize(response.errors)).filter(function (field, _, errors) {
+                            return !_this3.displayInputError(field, errors[field]);
+                        });
+                        var errors = pageErrors.concat(fieldErrors).filter(Boolean).filter(function (s) {
+                            return s.length > 0;
+                        });
 
-                        for (var field in fieldErrors) {
-                            if (!this.displayInputError(field, fieldErrors[field])) {
-                                // Collect errors that can't be displayed at the field level
-                                pageErrors.push(fieldErrors[field]);
-                            }
-                        }
-                        this.prependErrors(pageErrors);
+                        this.prependErrors(Array.from(new Set(errors)));
                     }
                 } catch (err) {
                     _didIteratorError = true;
@@ -1259,10 +1313,10 @@ var VErrors = function () {
                         }
                     }
                 }
-            } else if (httpStatus === 0) {
+            } else if (statusCode === 0) {
                 this.prependErrors(['Unable to contact server. Please check that you are online and retry.']);
             } else {
-                this.prependErrors(['The server returned an unexpected response! Status:' + httpStatus]);
+                this.prependErrors(['The server returned an unexpected response! Status: ' + statusCode]);
             }
         }
 
@@ -1271,81 +1325,64 @@ var VErrors = function () {
 
     }, {
         key: 'displayInputError',
-        value: function displayInputError(divId, messages) {
-            var currentEl = this.root.getElementById(divId);
-            if (currentEl && currentEl.mdcComponent) {
-                currentEl.mdcComponent.helperTextContent = messages.join(', ');
-                var helperText = this.root.getElementById(divId + '-input-helper-text');
-                helperText.classList.add('mdc-text-field--invalid', 'mdc-text-field-helper-text--validation-msg', 'mdc-text-field-helper-text--persistent');
-                currentEl.mdcComponent.valid = false;
-                return true;
+        value: function displayInputError(id, messages) {
+            var currentEl = this.root.getElementById(id);
+
+            if (!(currentEl && currentEl.mdcComponent)) {
+                return false;
             }
-            return false;
+
+            currentEl.mdcComponent.helperTextContent = messages.join(', ');
+
+            var helperText = this.root.getElementById(id + '-input-helper-text');
+
+            if (!helperText) {
+                return false;
+            }
+
+            helperText.classList.add('mdc-text-field--invalid', 'mdc-text-field-helper-text--validation-msg', 'mdc-text-field-helper-text--persistent');
+            currentEl.mdcComponent.valid = false;
+
+            return true;
         }
 
         // Creates a div before the element with the same id as the error
-        // Used to display an error message without their being an input field to attach the error to
+        // Used to display an error message without their being an input field to
+        // attach the error to
 
     }, {
         key: 'prependErrors',
         value: function prependErrors(messages) {
             var errorsDiv = this.findNearestErrorDiv();
-            // create a new div element
-            var newDiv = this.root.createElement('div');
-            newDiv.className = 'v-error-message';
-            // and give it some content
 
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
-
-            try {
-                for (var _iterator2 = messages[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var message = _step2.value;
-
-                    var newContent = this.root.createTextNode(message);
-                    newDiv.appendChild(newContent);
-                    var br = this.root.createElement('br');
-                    // add the text node to the newly created div
-                    newDiv.appendChild(br);
-                }
-
-                // add the newly created element and its content into the DOM
-            } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                        _iterator2.return();
-                    }
-                } finally {
-                    if (_didIteratorError2) {
-                        throw _iteratorError2;
-                    }
-                }
-            }
-
-            if (errorsDiv) {
-                errorsDiv.scrollIntoView();
-                errorsDiv.parentElement.insertBefore(newDiv, errorsDiv);
-                return true;
-            } else {
+            if (!errorsDiv) {
                 console.error('Unable to display Errors! ', messages);
+
+                return false;
             }
-            return false;
+
+            var newDiv = this.root.createElement('div');
+
+            newDiv.classList.add('v-error-message');
+            newDiv.insertAdjacentHTML('beforeend', messages.join('<br>'));
+
+            // add the newly created element and its content into the DOM
+            if (errorsDiv.clientTop < 10) {
+                errorsDiv.scrollIntoView();
+            }
+
+            errorsDiv.insertAdjacentElement('beforebegin', newDiv);
+
+            return true;
         }
     }, {
         key: 'findNearestErrorDiv',
         value: function findNearestErrorDiv() {
-            var errorsDiv = null;
-            if (this.event) {
-                var currentDiv = this.event.target;
-                errorsDiv = currentDiv.closest('.v-errors');
-            } else {
-                errorsDiv = this.root.querySelector('.v-errors');
+            if (this.event && this.event.target) {
+                return this.event.target.closest('.v-errors');
             }
-            return errorsDiv;
+
+            return this.root.querySelector('.v-errors');
         }
     }]);
 
