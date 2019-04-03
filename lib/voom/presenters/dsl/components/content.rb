@@ -14,6 +14,7 @@ require 'voom/presenters/dsl/components/mixins/icons'
 require 'voom/presenters/dsl/components/mixins/dialogs'
 require 'voom/presenters/dsl/components/mixins/file_inputs'
 require 'voom/presenters/dsl/components/mixins/avatar'
+require 'voom/presenters/dsl/components/mixins/padding'
 
 module Voom
   module Presenters
@@ -34,7 +35,7 @@ module Voom
           include Mixins::FileInputs
           include Mixins::Avatar
 
-          attr_reader :hidden, :float, :components, :shows_errors, :width, :position, :text_align
+          attr_reader :hidden, :float, :components, :shows_errors, :width, :position, :text_align, :padding
 
           def initialize(**attribs_, &block)
             super(type: :content, **attribs_, &block)
@@ -45,8 +46,14 @@ module Voom
             @shows_errors = attribs.delete(:shows_errors){false}
             @position = Array(attribs.delete(:position)).compact
             @text_align = attribs.delete(:text_align){'left'}
+            padding = attribs.delete(:padding) {nil}
+            @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
             expand!
           end
+
+          private
+          include Mixins::Padding
+
         end
       end
     end

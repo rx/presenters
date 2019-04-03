@@ -1,22 +1,33 @@
 <% if comp
      position_classes = comp.position.map {|p| "v-content-position-#{p}"}.join(' ')
+
+     def _padding_array_(padding, nesting)
+       return (%i(top0 right0 bottom0 left0)-padding.map{|p|"#{p}0".to_sym}+padding.map(&:to_sym)).sort if padding
+       nesting >1 ? %i(top right0 bottom left0).sort : []
+     end
+
+     def _padding_classes_(padding, nesting, grid_or_column)
+       "v-#{grid_or_column}__padding-#{_padding_array_(padding, nesting).join('-')}"
+     end
 %>
   <div id="<%= comp.id %>"
-     <% if comp.tag %>
-     data-input-tag="<%= comp.tag %>"
-     <% end %>
-     class="v-content
+       <% if comp.tag %>
+       data-input-tag="<%= comp.tag %>"
+       <% end %>
+       class="v-content
             <%= position_classes %>
+            <%= _padding_classes_(comp.padding, @grid_nesting, :grid) %>
             <%= 'v-hidden' if comp.hidden %>
-            <%= comp.float  ? 'v-content--float' : 'v-content--relative'%>"
-     <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
-     style="text-align: <%= comp.text_align %>; <% if comp.width %>width: <%= comp.width %><% end %>">
-  <% if comp.shows_errors %>
-    <div class="v-errors">
-  <% end %>
-     <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
-  <% if comp.shows_errors %>
-    </div>
-  <% end %>
-</div>
+            <%= comp.float ? 'v-content--float' : 'v-content--relative' %>"
+       <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
+       style="text-align: <%= comp.text_align %>; <% if comp.width %>width: <%= comp.width %>
+         <% end %>">
+    <% if comp.shows_errors %>
+      <div class="v-errors">
+    <% end %>
+    <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
+    <% if comp.shows_errors %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
