@@ -61,7 +61,7 @@ module Voom
             include Mixins::Avatar
 
 
-            attr_reader :size, :desktop, :tablet, :phone, :color, :components, :padding
+            attr_reader :size, :desktop, :tablet, :phone, :color, :components, :padding, :position
 
             def initialize(**attribs_, &block)
               super(type: :column, **attribs_, &block)
@@ -70,6 +70,7 @@ module Voom
               @tablet = attribs.delete(:tablet)
               @phone = attribs.delete(:phone)
               @color = attribs.delete(:color)
+              @position = validate_position(attribs.delete(:position){:left})
               @components = []
               padding = attribs.delete(:padding) {nil}
               @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
@@ -77,7 +78,12 @@ module Voom
             end
             private
             include Mixins::Padding
-
+            def validate_position(position)
+              valid_positions = %i(right left)
+              raise "Invalid value for column position: #{position}. "\
+                      "Valid values are #{valid_positions.join(' ,')}." unless valid_positions.include?(position)
+              position
+            end
           end
         end
       end

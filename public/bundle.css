@@ -8198,6 +8198,10 @@ svg.mdc-button__icon {
   .v-col__padding-bottom0-left0-right0-top0 {
     padding: 0 0 0 0; } }
 
+.v-grid-column-align-right {
+  margin-right: 0;
+  margin-left: auto; }
+
 .mdc-floating-label {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;

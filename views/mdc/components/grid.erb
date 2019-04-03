@@ -7,6 +7,10 @@
    def _padding_classes_(padding, nesting, grid_or_column)
      "v-#{grid_or_column}__padding-#{_padding_array_(padding, nesting).join('-')}"
    end
+
+    def _position_class_(position)
+      "v-grid-column-align-#{position}"
+    end
 %>
 <div id="<%= comp.id %>"
      <% if comp.tag %>
@@ -28,7 +32,7 @@
       end
     %>
       <div id="<%= col.id %>" class="v-column mdc-layout-grid__cell <%= span %>
-                          <%= _padding_classes_(col.padding, 0, :col) %> v-column--relative"
+                          <%= _padding_classes_(col.padding, 0, :col) %> v-column--relative <%= _position_class_(col.position) %>"
            style="<%= "background-color: #{col.color};" if col.color %>"
            <%= erb :"components/event", :locals => {comp: col, events: col.events, parent_id: col.event_parent_id} %>>
         <%= erb :"components/render", :locals => {:components => col.components, :scope => nil} %>
