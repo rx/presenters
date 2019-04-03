@@ -40,6 +40,8 @@ export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
             placeholder: this.quillEditorElement.dataset.placeholder
 
         });
+
+        this.element.dataset.originalValue = this.value();
     }
 
     prepareSubmit(params) {

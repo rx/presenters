@@ -53205,6 +53205,8 @@ var VRichTextArea = function (_eventHandlerMixin) {
             placeholder: _this.quillEditorElement.dataset.placeholder
 
         });
+
+        _this.element.dataset.originalValue = _this.value();
         return _this;
     }
 
