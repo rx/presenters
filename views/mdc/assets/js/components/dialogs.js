@@ -12,17 +12,18 @@ export function initDialogs(e) {
 export class VDialog extends VBaseContainer {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
+
         const dialog = mdcComponent;
         const dialogButtons = element.querySelectorAll('.mdc-dialog__actions button:not([disabled])');
-        for (let j = 0; j != dialogButtons.length; j++) {
-            const dialogButton = dialogButtons[j];
+
+        for (const dialogButton of dialogButtons) {
             if (!dialogButton.dialog) {
                 dialogButton.dialog = dialog;
             }
         }
 
         dialog.listen('MDCDialog:closing', function() {
-            element.vComponent.clear();
+            element.vComponent.reset();
             element.vComponent.clearErrors();
         });
 
