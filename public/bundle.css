@@ -6685,7 +6685,8 @@ h1.v-page-title {
   margin-left: auto; }
 
 .v-fab--absolute {
-  position: absolute; }
+  position: absolute;
+  z-index: 1; }
 
 @media (min-width: 840px) {
   .mdc-fab.v-button-fab-position-top {
