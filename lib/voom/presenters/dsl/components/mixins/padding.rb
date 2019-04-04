@@ -17,7 +17,7 @@ module Voom
 
             def validate_padding(padding_)
               validation_msg = 'Padding must either be true or :full, :all, false or :none, '\
-                             'or an array containing zero ore more of the following :top, :right, :bottom, :left!'
+                             'or an array containing zero or more of the following :top, :right, :bottom, :left!'
               if padding_.respond_to?(:pop)
                 raise Errors::ParameterValidation, validation_msg if (padding_ - %i(top right bottom left)).any?
               else

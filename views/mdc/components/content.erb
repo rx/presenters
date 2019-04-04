@@ -1,14 +1,19 @@
 <% if comp
-     position_classes = comp.position.map {|p| "v-content-position-#{p}"}.join(' ')
+    position_classes = comp.position.map {|p| "v-content-position-#{p}"}.join(' ')
 
-     def _padding_array_(padding, nesting)
-       return (%i(top0 right0 bottom0 left0)-padding.map{|p|"#{p}0".to_sym}+padding.map(&:to_sym)).sort if padding
-       nesting >1 ? %i(top right0 bottom left0).sort : []
+    def _padding_array_(padding)
+      return [] unless padding
+
+      default = %i[top0 right0 bottom0 left0]
+      specified = padding.map { |p| "#{p}0".to_sym }
+      effective = default - specified + padding
+
+      effective.sort
      end
 
-     def _padding_classes_(padding, nesting, grid_or_column)
-       "v-#{grid_or_column}__padding-#{_padding_array_(padding, nesting).join('-')}"
-     end
+    def _padding_classes_(padding, grid_or_column)
+      "v-#{grid_or_column}__padding-#{_padding_array_(padding).join('-')}"
+    end
 %>
   <div id="<%= comp.id %>"
        <% if comp.tag %>
@@ -16,7 +21,7 @@
        <% end %>
        class="v-content
             <%= position_classes %>
-            <%= _padding_classes_(comp.padding, @grid_nesting, :grid) %>
+            <%= _padding_classes_(comp.padding, :grid) %>
             <%= 'v-hidden' if comp.hidden %>
             <%= comp.float ? 'v-content--float' : 'v-content--relative' %>"
        <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
