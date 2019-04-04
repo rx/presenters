@@ -20,8 +20,7 @@ module Voom
             @selected = attribs.delete(:selected)
             @border = attribs.delete(:border){0}
             @border_radius = attribs.delete(:border_radius){nil}
-            @fit = attribs.delete(:fit){nil}
-            raise_parameter_validation "Invalid Image Fit Type specified: #{fit}" unless VALID_FIT_TYPES.include? fit
+            @fit = validate_fit(attribs.delete(:fit))
             @url = build_url
             expand!
           end
@@ -33,6 +32,15 @@ module Voom
             @parent.router.url(render: image, context: {})
           end
 
+          def validate_fit(fit)
+            return unless fit
+
+            fit = fit.to_sym
+
+            raise_parameter_validation "Invalid image fit specified: #{fit}" unless VALID_FIT_TYPES.include?(fit)
+
+            fit
+          end
         end
       end
     end
