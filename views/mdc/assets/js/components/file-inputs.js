@@ -34,7 +34,8 @@ export class VFileInput extends eventHandlerMixin(VBaseComponent) {
     previewComponent(e) {
         if (!this.preview) return null;
         for (const previewId of this.preview) {
-            const elem = this.root.getElementById(previewId);
+            const elem = this.root.querySelector(`#${previewId}`);
+
             if (elem && elem.vComponent && elem.vComponent.preview) {
                 this.file = e.target.files[0];
                 const fr = new FileReader();
