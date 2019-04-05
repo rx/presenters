@@ -93982,7 +93982,8 @@ var VFileInput = function (_eventHandlerMixin) {
             if (!this.preview) return null;
 
             var _loop = function _loop(previewId) {
-                var elem = _this2.root.getElementById(previewId);
+                var elem = _this2.root.querySelector('#' + previewId);
+
                 if (elem && elem.vComponent && elem.vComponent.preview) {
                     _this2.file = e.target.files[0];
                     var fr = new FileReader();
