@@ -8202,6 +8202,21 @@ svg.mdc-button__icon {
   margin-right: 0;
   margin-left: auto; }
 
+@media (min-width: 840px) {
+  div.v-gutter-none {
+    grid-gap: 0;
+    gap: 0; } }
+
+@media (min-width: 480px) and (max-width: 839px) {
+  div.v-gutter-none {
+    grid-gap: 0;
+    gap: 0; } }
+
+@media (max-width: 479px) {
+  div.v-gutter-none {
+    grid-gap: 0;
+    gap: 0; } }
+
 .mdc-floating-label {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
@@ -11775,9 +11790,6 @@ select {
 
 .v-card-media {
   position: relative; }
-
-.v-card-content {
-  padding: 10px 10px; }
 
 .v-card-title {
   padding: 10px 10px 0px 10px; }
