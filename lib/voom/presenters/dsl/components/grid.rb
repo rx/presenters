@@ -76,8 +76,7 @@ module Voom
             include Mixins::FileInputs
             include Mixins::Avatar
 
-
-            attr_reader :size, :desktop, :tablet, :phone, :color, :components, :padding, :align
+            attr_reader :size, :desktop, :tablet, :phone, :color, :components, :padding, :align, :overflow
 
             def initialize(**attribs_, &block)
               super(type: :column, **attribs_, &block)
@@ -87,6 +86,7 @@ module Voom
               @phone = attribs.delete(:phone)
               @color = attribs.delete(:color)
               @align = validate_alignment(attribs.delete(:align) {:left})
+              @overflow = attribs.delete(:overflow){true}
               @components = []
               padding = attribs.delete(:padding) {nil}
               @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil

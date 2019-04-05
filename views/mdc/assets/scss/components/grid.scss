@@ -1,5 +1,9 @@
 @import "@material/layout-grid/mdc-layout-grid";
 
+.v-column-hide-overflow {
+  overflow: hidden;
+}
+
 .v-column--relative {
   position: relative;
 }
