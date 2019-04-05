@@ -91,6 +91,10 @@ module Voom
             @parent.send(:_helpers_) if @parent
           end
 
+          def plugin(*plugin_names)
+            @parent.send(:plugin, *plugin_names) if @parent
+          end
+
           def _plugins_
             @parent.send(:_plugins_) if @parent
           end
