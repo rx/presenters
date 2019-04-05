@@ -1,10 +1,13 @@
 require 'voom/presenters/plugins'
+require 'voom/trace'
+include Voom::Trace
 
 module Voom
   module Presenters
     module Pluggable
       def include_plugins(*layers, plugins: Array(Voom::Presenters::Settings.config.presenters.plugins),
                           plugin_method: method(:include))
+        trace {"Loading plugins: #{plugins.inspect} from #{self.inspect}"}
         (plugins||[]).each do |plugin|
           plugin(plugin, *layers, plugin_method: plugin_method)
         end
