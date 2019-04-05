@@ -29,7 +29,8 @@
   <% end %>
   <div class="v-errors">
     <% if comp.components.any? %>
-      <div class="v-card-content">
+      <div class="v-card-content
+                  <%= _padding_classes_(comp.padding, subclass: :col) %>">
         <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
       </div>
     <% end %>

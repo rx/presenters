@@ -10,6 +10,7 @@ require 'voom/presenters/errors/unprocessable'
 require_relative 'component_renderer'
 require_relative 'plugin_headers'
 require_relative 'custom_css'
+require_relative 'helpers/padding'
 
 module Voom
   module Presenters
@@ -23,7 +24,7 @@ module Voom
         configure do
           enable :logging
         end
-
+        helpers PaddingHelpers
         helpers do
           def render_component(scope, comp, components, index)
             ComponentRenderer.new(comp, render: method(:render), scope: scope, components: components, index: index).render

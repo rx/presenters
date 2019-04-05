@@ -12,6 +12,7 @@ require 'voom/presenters/dsl/components/mixins/snackbars'
 require 'voom/presenters/dsl/components/mixins/date_time_fields'
 require 'voom/presenters/dsl/components/mixins/chips'
 require 'voom/presenters/dsl/components/mixins/file_inputs'
+require 'voom/presenters/dsl/components/mixins/padding'
 
 module Voom
   module Presenters
@@ -28,7 +29,7 @@ module Voom
           include Mixins::Chips
           include Mixins::FileInputs
 
-          attr_reader :height, :width, :selected, :components, :shows_errors
+          attr_reader :height, :width, :selected, :components, :shows_errors, :padding
 
 
           def initialize(**attribs_, &block)
@@ -38,6 +39,8 @@ module Voom
             @selected = attribs.delete(:selected) {false}
             self.text(attribs.delete(:text)) if attribs.key?(:text)
             @shows_errors = attribs.delete(:shows_errors){true}
+            padding = attribs.delete(:padding) {:all}
+            @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
 
             @components = []
             expand!
@@ -120,6 +123,9 @@ module Voom
                                                  **options, &block)
             end
           end
+
+          private
+          include Mixins::Padding
         end
       end
     end
