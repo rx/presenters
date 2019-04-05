@@ -7990,6 +7990,9 @@ svg.mdc-button__icon {
   margin-right: 0;
   margin-left: auto; }
 
+.v-column-hide-overflow {
+  overflow: hidden; }
+
 .v-column--relative {
   position: relative; }
 
@@ -14377,6 +14380,9 @@ select {
 
 .v-paging__count + .v-paging__next {
   margin-left: 68px; }
+
+.v-separator {
+  margin: 0; }
 
 .flatpickr-calendar {
   background: transparent;
