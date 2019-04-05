@@ -24,7 +24,7 @@ module Voom
           include Mixins::Dialogs
           include Mixins::Snackbars
 
-          attr_accessor :columns, :color, :padding, :wide
+          attr_accessor :columns, :color, :padding, :wide, :gutter
 
           def initialize(color: nil, **attribs_, &block)
             super(type: :grid, **attribs_, &block)
@@ -33,6 +33,7 @@ module Voom
             padding = attribs.delete(:padding) {nil}
             @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
             @wide = attribs.delete(:wide) {false}
+            @gutter = coerce_gutter(attribs.delete(:gutter) {nil})
             expand!
           end
 
@@ -43,6 +44,21 @@ module Voom
           end
 
           private
+
+          def coerce_gutter(gutter)
+            case gutter
+            when true, :full, :all
+              true
+            when false, :none
+              false
+            when nil
+              nil
+            else
+              raise Errors::ParameterValidation, "Grid gutter was: #{gutter}. "\
+                          'Allowed gutter values are true, false, :full, :all, :none! and nil'
+            end
+          end
+
           include Mixins::Padding
           class Column < EventBase
             include Mixins::Common
@@ -61,7 +77,7 @@ module Voom
             include Mixins::Avatar
 
 
-            attr_reader :size, :desktop, :tablet, :phone, :color, :components, :padding, :position
+            attr_reader :size, :desktop, :tablet, :phone, :color, :components, :padding, :align
 
             def initialize(**attribs_, &block)
               super(type: :column, **attribs_, &block)
@@ -70,19 +86,22 @@ module Voom
               @tablet = attribs.delete(:tablet)
               @phone = attribs.delete(:phone)
               @color = attribs.delete(:color)
-              @position = validate_position(attribs.delete(:position){:left})
+              @align = validate_alignment(attribs.delete(:align) {:left})
               @components = []
               padding = attribs.delete(:padding) {nil}
               @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
               expand!
             end
+
             private
+
             include Mixins::Padding
-            def validate_position(position)
-              valid_positions = %i(right left)
-              raise "Invalid value for column position: #{position}. "\
-                      "Valid values are #{valid_positions.join(' ,')}." unless valid_positions.include?(position)
-              position
+
+            def validate_alignment(align)
+              valid_alignment = %i(right left)
+              raise "Invalid value for column alignment: #{align}. "\
+                      "Valid values are #{valid_alignment.join(' ,')}." unless valid_alignment.include?(align)
+              align
             end
           end
         end

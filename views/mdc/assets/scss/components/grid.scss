@@ -67,6 +67,15 @@
 }
 
 .v-grid-column-align-right {
-    margin-right: 0;
-    margin-left: auto;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+@each $size in map-keys($mdc-layout-grid-columns) {
+  @include mdc-layout-grid-media-query_($size) {
+    div.v-gutter-none {
+      grid-gap: 0;
+      gap: 0;
+    }
+  }
 }
