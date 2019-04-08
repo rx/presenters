@@ -7,8 +7,8 @@ module Voom
     module Pluggable
       def include_plugins(*layers, plugins: Array(Voom::Presenters::Settings.config.presenters.plugins),
                           plugin_method: method(:include))
-        trace {"Loading plugins: #{plugins.inspect} from #{self.inspect}"}
-        (plugins||[]).each do |plugin|
+        trace {"Loading plugins: #{plugins.uniq.inspect} from #{self.inspect}"}
+        (plugins&.uniq||[]).each do |plugin|
           plugin(plugin, *layers, plugin_method: plugin_method)
         end
       end
