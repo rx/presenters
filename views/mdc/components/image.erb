@@ -3,7 +3,7 @@
      fit_class = comp.fit ? "v-image-fit-#{comp.fit}" : ''
 %>
 <img id="<%= comp.id %>"
-     class="v-image <%=position_classes%> <%= fit_class %>"
+     class="v-image <%=position_classes%> <%= fit_class %> <%= 'v-actionable' if comp.events %>"
      src="<%= comp.url %>"
      <% if comp.height %>
      height="<%= comp.height %>"
@@ -13,6 +13,7 @@
      <% end %>
      alt=""
      border="<%= comp.border %>"
-     style="<%= "border-radius: #{comp.border_radius};" if comp.border_radius %>">
+     style="<%= "border-radius: #{comp.border_radius};" if comp.border_radius %>"
+     <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
 <%= erb :"components/tooltip" , :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 <% end %>
