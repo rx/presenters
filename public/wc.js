@@ -232,6 +232,15 @@ var VBaseContainer = function (_VBaseComponent) {
         value: function inputs() {
             return this.element.querySelectorAll('.v-input');
         }
+    }, {
+        key: 'inputComponents',
+        value: function inputComponents() {
+            return Array.from(this.inputs()).filter(function (element) {
+                return element.vComponent;
+            }).map(function (element) {
+                return element.vComponent;
+            });
+        }
 
         // Called to collect data for submission
 
@@ -243,11 +252,11 @@ var VBaseContainer = function (_VBaseComponent) {
             var _iteratorError = undefined;
 
             try {
-                for (var _iterator = this.inputs()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var input = _step.value;
+                for (var _iterator = this.inputComponents()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var comp = _step.value;
 
-                    if (input.vComponent && input.vComponent.prepareSubmit) {
-                        input.vComponent.prepareSubmit(params);
+                    if (comp.respondTo('prepareSubmit')) {
+                        comp.prepareSubmit(params);
                     }
                 }
             } catch (err) {
@@ -273,11 +282,11 @@ var VBaseContainer = function (_VBaseComponent) {
             var _iteratorError2 = undefined;
 
             try {
-                for (var _iterator2 = this.inputs()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var input = _step2.value;
+                for (var _iterator2 = this.inputComponents()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var comp = _step2.value;
 
-                    if (input.vComponent && input.vComponent.clear) {
-                        input.vComponent.clear();
+                    if (comp.respondTo('clear')) {
+                        comp.clear();
                     }
                 }
             } catch (err) {
@@ -296,18 +305,18 @@ var VBaseContainer = function (_VBaseComponent) {
             }
         }
     }, {
-        key: 'onShow',
-        value: function onShow() {
+        key: 'reset',
+        value: function reset() {
             var _iteratorNormalCompletion3 = true;
             var _didIteratorError3 = false;
             var _iteratorError3 = undefined;
 
             try {
-                for (var _iterator3 = this.inputs()[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                    var input = _step3.value;
+                for (var _iterator3 = this.inputComponents()[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var comp = _step3.value;
 
-                    if (input.vComponent && input.vComponent.onShow) {
-                        input.vComponent.onShow();
+                    if (comp.respondTo('reset')) {
+                        comp.reset();
                     }
                 }
             } catch (err) {
@@ -325,31 +334,19 @@ var VBaseContainer = function (_VBaseComponent) {
                 }
             }
         }
-
-        // Called whenever a container is about to be submitted.
-        // returns true on success
-        // returns on failure return an error object that can be processed by VErrors:
-        //    { email: ["email must be filled", "email must be from your domain"] }
-        //    { :page: ["must be filled"] }
-
     }, {
-        key: 'validate',
-        value: function validate(form, params) {
-            console.log('Form validate', form, params);
-            var errors = [];
+        key: 'onShow',
+        value: function onShow() {
             var _iteratorNormalCompletion4 = true;
             var _didIteratorError4 = false;
             var _iteratorError4 = undefined;
 
             try {
-                for (var _iterator4 = this.inputs()[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                    var input = _step4.value;
+                for (var _iterator4 = this.inputComponents()[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                    var comp = _step4.value;
 
-                    if (input.vComponent && input.vComponent.validate) {
-                        var result = input.vComponent.validate(form, params);
-                        if (result !== true) {
-                            errors.push(result);
-                        }
+                    if (comp.respondTo('onShow')) {
+                        comp.onShow();
                     }
                 }
             } catch (err) {
@@ -366,6 +363,51 @@ var VBaseContainer = function (_VBaseComponent) {
                     }
                 }
             }
+        }
+
+        // Called whenever a container is about to be submitted.
+        // returns true on success
+        // returns on failure return an error object that can be processed by VErrors:
+        //    { email: ["email must be filled", "email must be from your domain"] }
+        //    { :page: ["must be filled"] }
+
+    }, {
+        key: 'validate',
+        value: function validate(form, params) {
+            console.log('Form validate', form, params);
+
+            var errors = [];
+
+            var _iteratorNormalCompletion5 = true;
+            var _didIteratorError5 = false;
+            var _iteratorError5 = undefined;
+
+            try {
+                for (var _iterator5 = this.inputComponents()[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                    var comp = _step5.value;
+
+                    if (comp.respondTo('validate')) {
+                        var result = comp.validate(form, params);
+
+                        if (result !== true) {
+                            errors.push(result);
+                        }
+                    }
+                }
+            } catch (err) {
+                _didIteratorError5 = true;
+                _iteratorError5 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                        _iterator5.return();
+                    }
+                } finally {
+                    if (_didIteratorError5) {
+                        throw _iteratorError5;
+                    }
+                }
+            }
 
             return errors;
         }
@@ -373,12 +415,8 @@ var VBaseContainer = function (_VBaseComponent) {
         key: 'isDirty',
         value: function isDirty() {
             // A container is dirty if any of its dirtyable inputs is dirty:
-            return Array.from(this.inputs()).filter(function (element) {
-                return element.vComponent;
-            }).map(function (element) {
-                return element.vComponent;
-            }).filter(function (component) {
-                return component.isDirty;
+            return this.inputComponents().filter(function (component) {
+                return component.respondTo('isDirty');
             }).map(function (component) {
                 return component.isDirty();
             }).some(Boolean);
@@ -1096,6 +1134,11 @@ var VBaseToggle = function (_eventHandlerMixin) {
         key: 'clear',
         value: function clear() {
             this.input.checked = false;
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            this.input.checked = this.element.dataset.originalValue;
         }
     }, {
         key: 'setValue',
@@ -8509,6 +8552,11 @@ var VTextField = function (_visibilityObserverMi) {
             if (this.value() !== '') {
                 this.setValue(null);
             }
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            this.input.value = this.element.dataset.originalValue;
         }
     }, {
         key: 'setValue',
@@ -19845,15 +19893,36 @@ var VDialog = function (_VBaseContainer) {
 
         var dialog = mdcComponent;
         var dialogButtons = element.querySelectorAll('.mdc-dialog__actions button:not([disabled])');
-        for (var j = 0; j != dialogButtons.length; j++) {
-            var dialogButton = dialogButtons[j];
-            if (!dialogButton.dialog) {
-                dialogButton.dialog = dialog;
+
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            for (var _iterator = dialogButtons[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var dialogButton = _step.value;
+
+                if (!dialogButton.dialog) {
+                    dialogButton.dialog = dialog;
+                }
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
             }
         }
 
         dialog.listen('MDCDialog:closing', function () {
-            element.vComponent.clear();
+            element.vComponent.reset();
             element.vComponent.clearErrors();
         });
 
@@ -23570,6 +23639,11 @@ var VDateTime = function (_VTextField) {
             }
 
             this.mdcComponent.foundation_.deactivateFocus();
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            this.fp.setDate(this.element.dataset.originalValue);
         }
     }, {
         key: 'open',
@@ -35292,6 +35366,11 @@ var VSelect = function (_visibilityObserverMi) {
                 });
                 this.select.dispatchEvent(event);
             }
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            this.select.value = this.element.dataset.originalValue;
         }
     }, {
         key: 'setValue',
@@ -53237,6 +53316,11 @@ var VRichTextArea = function (_eventHandlerMixin) {
             }
         }
     }, {
+        key: "reset",
+        value: function reset() {
+            this.setValue(this.element.dataset.originalValue);
+        }
+    }, {
         key: "setValue",
         value: function setValue(value) {
             this.quill.root.innerHTML = value;
@@ -70922,6 +71006,11 @@ var VSlider = function (_visibilityObserverMi) {
             this.setValue(0);
         }
     }, {
+        key: 'reset',
+        value: function reset() {
+            this.setValue(this.element.dataset.originalValue);
+        }
+    }, {
         key: 'setValue',
         value: function setValue(value) {
             this.mdcComponent.value = value;
@@ -73079,6 +73168,11 @@ var VHiddenField = function (_VBaseComponent) {
         key: 'clear',
         value: function clear() {
             this.setValue('');
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            this.element.value = this.element.dataset.originalValue;
         }
     }, {
         key: 'setValue',
@@ -82674,6 +82768,13 @@ var VPluginComponent = function (_eventHandlerMixin) {
         value: function clear() {
             if (this.element.vPlugin && this.element.vPlugin.name) {
                 return this.element.vPlugin.clear();
+            }
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            if (this.element.vPlugin && this.element.vPlugin.name) {
+                return this.element.vPlugin.reset();
             }
         }
     }, {

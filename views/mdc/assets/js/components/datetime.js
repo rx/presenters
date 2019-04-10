@@ -47,6 +47,10 @@ export class VDateTime extends VTextField {
         this.mdcComponent.foundation_.deactivateFocus();
     }
 
+    reset() {
+        this.fp.setDate(this.element.dataset.originalValue);
+    }
+
     open() {
         this.fp.open();
     }

@@ -34,6 +34,10 @@ export class VBaseToggle extends eventHandlerMixin(VBaseComponent) {
         this.input.checked = false;
     }
 
+    reset() {
+        this.input.checked = this.element.dataset.originalValue;
+    }
+
     setValue(value) {
         this.input.value = value;
     }
