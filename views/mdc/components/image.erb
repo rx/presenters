@@ -14,9 +14,10 @@
      }.compact
 %>
 <img id="<%= comp.id %>"
-     class="v-image <%= fit_class %>"
+     class="v-image <%= fit_class %> <%= 'v-actionable' if comp.events %>"
      src="<%= comp.url %>"
      <% if comp.description %>alt="<%= comp.description %>"<% end %>
-     style="<%= styles.map { |k, v| "#{k}: #{v}" }.join('; ') %>">
+     style="<%= styles.map { |k, v| "#{k}: #{v}" }.join('; ') %>"
+     <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
 <%= erb :"components/tooltip" , :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 <% end %>
