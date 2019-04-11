@@ -3919,7 +3919,7 @@ function mapObject(object, fn) {
     Attempt to interpret and serialize the following cases for display:
 
     A: Rails errors:
-        { "name": ["Requires name"] }
+        1. { "name": ["Requires name"] }
 
     B: Validation errors:
         1. { :email => ["must be filled"] }
@@ -3928,6 +3928,9 @@ function mapObject(object, fn) {
     C: Custom errors and client-side exceptions:
         1. { :email => "must be filled" }
         2. { exception: 'Something bad happened' }
+
+    D: Logical errors:
+        1. "undefined method `map' for nil:NilClass"
  */
 
 var VErrors = function () {
@@ -3947,6 +3950,15 @@ var VErrors = function () {
                 errorMessages[i].remove();
             }
         }
+
+        /**
+         * normalize attempts to convert the various error structures described
+         * above into a single consistent structure by replacing error arrays
+         * with joined strings.
+         * @param {Object} errors
+         * @return {Object}
+         */
+
     }, {
         key: 'normalize',
         value: function normalize(errors) {
@@ -3954,6 +3966,11 @@ var VErrors = function () {
 
             if (!errors) {
                 return {};
+            }
+
+            // Normalize case D into case C-1:
+            if (typeof errors === 'string') {
+                errors = { error: errors };
             }
 
             return mapObject(errors, function (_ref3) {
@@ -3982,10 +3999,27 @@ var VErrors = function () {
                 return [k, result];
             });
         }
+
+        /**
+         * flatten attempts to extract all human-readable error messages from an
+         * arbitrary error structure, yielding a flat array of strings.
+         * @param {Object} errors
+         * @return {Array<String>}
+         */
+
     }, {
         key: 'flatten',
         value: function flatten(errors) {
             var _this2 = this;
+
+            if (!errors) {
+                return [];
+            }
+
+            // Normalize case D into case C-1:
+            if (typeof errors === 'string') {
+                errors = { error: errors };
+            }
 
             var object = mapObject(errors, function (_ref5) {
                 var _ref6 = _slicedToArray(_ref5, 2),
