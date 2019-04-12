@@ -11,6 +11,7 @@ require_relative 'component_renderer'
 require_relative 'plugin_headers'
 require_relative 'custom_css'
 require_relative 'helpers/padding'
+require_relative 'helpers/expand_hash'
 
 module Voom
   module Presenters
@@ -25,6 +26,7 @@ module Voom
           enable :logging
         end
         helpers PaddingHelpers
+        helpers ExpandHash
         helpers do
           def render_component(scope, comp, components, index)
             ComponentRenderer.new(comp, render: method(:render), scope: scope, components: components, index: index).render

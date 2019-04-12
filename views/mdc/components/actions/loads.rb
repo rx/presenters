@@ -1,4 +1,4 @@
-require_relative 'mixins/expand_hash'
+require 'voom/presenters/web_client/helpers/expand_hash'
 
 module WebClient
   module Actions
