@@ -16,7 +16,7 @@ module Voom
       def self.define(name, namespace, &block)
         namespace = Array(namespace).map(&:to_s)
         fq_name = namespace.any? ? namespace.join(':') + ':' + name.to_s : name.to_s
-        registry[fq_name] = Voom::Presenters::DSL::Definition.new(namespace, &block)
+        registry[fq_name] = Voom::Presenters::DSL::Definition.new(name, namespace, &block)
       end
 
       def self.load(directory)

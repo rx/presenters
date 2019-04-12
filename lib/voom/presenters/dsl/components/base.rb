@@ -71,6 +71,10 @@ module Voom
             @parent.send(:router)
           end
 
+          def name
+            @parent.send(:name)
+          end
+
           def namespace
             @parent.send(:namespace)
           end
