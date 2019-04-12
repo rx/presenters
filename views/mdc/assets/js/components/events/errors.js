@@ -10,12 +10,11 @@ function mapObject(object, fn) {
         .reduce((obj, [k, v]) => Object.assign(obj, {[[k]]: v}), {});
 }
 
-
 /*
     Attempt to interpret and serialize the following cases for display:
 
     A: Rails errors:
-        { "name": ["Requires name"] }
+        1. { "name": ["Requires name"] }
 
     B: Validation errors:
         1. { :email => ["must be filled"] }
@@ -24,6 +23,9 @@ function mapObject(object, fn) {
     C: Custom errors and client-side exceptions:
         1. { :email => "must be filled" }
         2. { exception: 'Something bad happened' }
+
+    D: Logical errors:
+        1. "undefined method `map' for nil:NilClass"
  */
 
 export class VErrors {
@@ -40,9 +42,21 @@ export class VErrors {
         }
     }
 
+    /**
+     * normalize attempts to convert the various error structures described
+     * above into a single consistent structure by replacing error arrays
+     * with joined strings.
+     * @param {Object} errors
+     * @return {Object}
+     */
     normalize(errors) {
         if (!errors) {
             return {};
+        }
+
+        // Normalize case D into case C-1:
+        if (typeof errors === 'string') {
+            errors = {error: errors};
         }
 
         return mapObject(errors, ([k, v]) => {
@@ -70,7 +84,22 @@ export class VErrors {
         });
     }
 
+    /**
+     * flatten attempts to extract all human-readable error messages from an
+     * arbitrary error structure, yielding a flat array of strings.
+     * @param {Object} errors
+     * @return {Array<String>}
+     */
     flatten(errors) {
+        if (!errors) {
+            return [];
+        }
+
+        // Normalize case D into case C-1:
+        if (typeof errors === 'string') {
+            errors = {error: errors};
+        }
+
         const object = mapObject(errors, ([k, v]) => {
             let result = null;
 
