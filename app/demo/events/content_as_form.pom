@@ -182,15 +182,15 @@ Voom::Presenters.define(:content_as_form) do
 
         content do
           text_field name: 'inputs[]' do
-            value SecureRandom.hex
+            value 'Value1'
           end
 
           text_field name: 'inputs[]' do
-            value SecureRandom.hex
+            value 'Value2'
           end
 
           text_field name: 'inputs[]' do
-            value SecureRandom.hex
+            value 'Value3'
           end
 
           checkbox name: :on, value: true, off_value: false, text: 'Checkbox'
