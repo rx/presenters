@@ -1,6 +1,9 @@
 import {expandParams} from './action_parameter';
 import {VBase} from './base';
 import {initialize} from '../initialize';
+import {cleanup} from '../cleanup';
+
+
 
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
@@ -54,11 +57,12 @@ export class VReplaces extends VBase {
                             if (httpRequest.status === 200) {
                                 const nodeToReplace = root.getElementById(
                                     elementId);
-                                const newDiv = root.createElement('div');
-                                newDiv.innerHTML = httpRequest.responseText;
-                                nodeToReplace.parentElement.replaceChild(newDiv,
-                                    nodeToReplace);
-                                initialize(newDiv);
+                                cleanup(nodeToReplace);
+                                // const newDiv = root.createElement('div');
+                                nodeToReplace.innerHTML = httpRequest.responseText;
+                                // nodeToReplace.parentElement.replaceChild(newDiv,
+                                //     nodeToReplace);
+                                initialize(nodeToReplace);
 
                                 results.push({
                                     action: 'replaces',

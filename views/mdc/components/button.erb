@@ -4,8 +4,8 @@
   data_attributes = '' unless local_variables.include? :data_attributes
 %>
 <% if comp
-     position_classes = comp.position.map {|p| "v-button-position-#{p}"}.join(' ')
-     class_name = "#{class_name} #{comp.full_width ? 'v-button-full-width' : nil}"
+     padding_class = _padding_classes_(comp.padding, subclass: comp.dense ? :col : :grid)
+     class_name = "#{class_name} #{padding_class} #{comp.full_width ? 'v-button-full-width' : nil}"
 %>
   <% if comp.menu %>
     <div class="mdc-menu-anchor">
