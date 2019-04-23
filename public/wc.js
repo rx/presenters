@@ -35422,7 +35422,7 @@ var VSelect = function (_visibilityObserverMi) {
     }, {
         key: 'value',
         value: function value() {
-            return this.select.options.length === 0 ? null : this.select.options[this.select.selectedIndex].value;
+            return this.select.options.length === 0 || this.select.selectedIndex === 0 ? null : this.select.options[this.select.selectedIndex].value;
         }
     }, {
         key: 'clear',
