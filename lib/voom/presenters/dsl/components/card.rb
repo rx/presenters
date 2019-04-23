@@ -13,6 +13,7 @@ require 'voom/presenters/dsl/components/mixins/date_time_fields'
 require 'voom/presenters/dsl/components/mixins/chips'
 require 'voom/presenters/dsl/components/mixins/file_inputs'
 require 'voom/presenters/dsl/components/mixins/padding'
+require 'voom/presenters/dsl/components/mixins/dialogs'
 
 module Voom
   module Presenters
@@ -28,6 +29,7 @@ module Voom
           include Mixins::Snackbars
           include Mixins::Chips
           include Mixins::FileInputs
+          include Mixins::Dialogs
 
           attr_reader :height, :width, :selected, :components, :shows_errors, :padding
 

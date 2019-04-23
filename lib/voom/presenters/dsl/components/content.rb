@@ -35,7 +35,8 @@ module Voom
           include Mixins::FileInputs
           include Mixins::Avatar
 
-          attr_reader :hidden, :float, :components, :shows_errors, :width, :position, :text_align, :padding, :dense
+          attr_reader :hidden, :float, :components, :shows_errors, :width, :position,
+                      :text_align, :padding, :dense, :inline
 
           def initialize(**attribs_, &block)
             super(type: :content, **attribs_, &block)
@@ -49,6 +50,7 @@ module Voom
             padding = attribs.delete(:padding) {nil}
             @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
             @dense = attribs.delete(:dense) { true }
+            @inline = attribs.delete(:inline){false}
             expand!
           end
 

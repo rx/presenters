@@ -70,6 +70,7 @@
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VBaseComponent; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = hookupComponents;
+/* harmony export (immutable) */ __webpack_exports__["c"] = unhookComponents;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_errors__ = __webpack_require__(11);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -108,6 +109,9 @@ var VBaseComponent = function () {
         value: function respondTo(method) {
             return typeof this[method] === 'function';
         }
+    }, {
+        key: 'destroy',
+        value: function destroy() {}
     }]);
 
     return VBaseComponent;
@@ -128,6 +132,25 @@ function hookupComponents(root, selector, VoomClass, MdcClass) {
             }
         }
     }
+}
+
+/* Inverse of hookupComponents.
+    Used by replaces to cleanup.
+ */
+function unhookComponents(element) {
+    var components = element.querySelectorAll('.v-component');
+    components.forEach(function (element) {
+        if (element.mdcComponent) {
+            element.mdcComponent.destroy();
+            delete element.mdcComponent;
+            element.mdcComponent = null;
+            if (element.vComponent) {
+                element.vComponent.destroy();
+                delete element.vComponent;
+                element.vComponent = null;
+            }
+        }
+    });
 }
 
 /***/ }),
@@ -2000,11 +2023,10 @@ function __importDefault(mod) {
 
 
 
-// import {initTooltip} from './tooltip';
 
 
 
-function initialize(root, setRoot) {
+function initialize(root) {
     console.log('Initializing');
     Object(__WEBPACK_IMPORTED_MODULE_0__button__["a" /* initButtons */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_1__dialogs__["a" /* initDialogs */])(root);
@@ -2036,7 +2058,6 @@ function initialize(root, setRoot) {
     Object(__WEBPACK_IMPORTED_MODULE_28__images__["a" /* initImages */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_29__typography__["a" /* initTypography */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_31__progress__["a" /* initProgress */])(root);
-    // initTooltip();
     Object(__WEBPACK_IMPORTED_MODULE_30__plugins__["a" /* initPlugins */])(root);
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_4__events__["b" /* initEvents */])(root);
@@ -8675,6 +8696,7 @@ var VTextField = function (_visibilityObserverMi) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VEvents; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = initEvents;
+/* harmony export (immutable) */ __webpack_exports__["c"] = removeEvents;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_loads__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_posts__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replaces__ = __webpack_require__(41);
@@ -8851,6 +8873,32 @@ function initEvents(e) {
         }
     }
     fireAfterLoad(e);
+}
+
+/* Inverse of initEvents.
+*  Removes events from a given dom element and all its children
+ * Used by replaces to cleanup event handling for elements that have been
+ * replaced. */
+function removeEvents(e) {
+    console.log('\tRemoving Events');
+
+    var events = e.querySelectorAll('[data-events]');
+
+    var _loop = function _loop(i) {
+        var eventElem = events[i];
+        if (eventElem.eventsHandler) {
+            Object.keys(eventElem.eventsHandler).forEach(function (eventName) {
+                var listeners = eventElem.eventsHandler[eventName];
+                listeners.forEach(function (eventHandler) {
+                    eventElem.removeEventListener(eventName, eventHandler);
+                });
+            });
+        }
+    };
+
+    for (var i = 0; i < events.length; i++) {
+        _loop(i);
+    }
 }
 
 function fireAfterLoad(e) {
@@ -26387,6 +26435,7 @@ function encode(value) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__action_parameter__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cleanup__ = __webpack_require__(108);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26394,6 +26443,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -26450,10 +26500,12 @@ var VReplaces = function (_VBase) {
                                 console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                                 if (httpRequest.status === 200) {
                                     var _nodeToReplace = root.getElementById(elementId);
-                                    var newDiv = root.createElement('div');
-                                    newDiv.innerHTML = httpRequest.responseText;
-                                    _nodeToReplace.parentElement.replaceChild(newDiv, _nodeToReplace);
-                                    Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["a" /* initialize */])(newDiv);
+                                    Object(__WEBPACK_IMPORTED_MODULE_3__cleanup__["a" /* cleanup */])(_nodeToReplace);
+                                    // const newDiv = root.createElement('div');
+                                    _nodeToReplace.innerHTML = httpRequest.responseText;
+                                    // nodeToReplace.parentElement.replaceChild(newDiv,
+                                    //     nodeToReplace);
+                                    Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["a" /* initialize */])(_nodeToReplace);
 
                                     results.push({
                                         action: 'replaces',
@@ -86410,6 +86462,24 @@ process.chdir = function (dir) {
 process.umask = function () {
     return 0;
 };
+
+/***/ }),
+/* 108 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = cleanup;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(0);
+
+
+
+function cleanup(root) {
+    console.log('Cleaning up');
+    // Order matters here
+    Object(__WEBPACK_IMPORTED_MODULE_0__events__["c" /* removeEvents */])(root);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* unhookComponents */])(root);
+}
 
 /***/ })
 /******/ ]);
