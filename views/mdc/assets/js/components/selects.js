@@ -26,7 +26,7 @@ export class VSelect extends visibilityObserverMixin(eventHandlerMixin(VBaseComp
     }
 
     value() {
-        return this.select.options.length === 0 ? null : this.select.options[this.select.selectedIndex].value;
+        return this.select.options.length === 0 || this.select.selectedIndex === -1 ? null : this.select.options[this.select.selectedIndex].value;
     }
 
     clear() {

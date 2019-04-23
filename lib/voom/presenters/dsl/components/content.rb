@@ -35,8 +35,17 @@ module Voom
           include Mixins::FileInputs
           include Mixins::Avatar
 
-          attr_reader :hidden, :float, :components, :shows_errors, :width, :position,
-                      :text_align, :padding, :dense, :inline
+          attr_reader :hidden,
+                      :float,
+                      :components,
+                      :shows_errors,
+                      :width,
+                      :height,
+                      :position,
+                      :text_align,
+                      :padding,
+                      :dense,
+                      :inline
 
           def initialize(**attribs_, &block)
             super(type: :content, **attribs_, &block)
@@ -44,6 +53,7 @@ module Voom
             @hidden = attribs.delete(:hidden){false}
             @float = attribs.delete(:float){false}
             @width = attribs.delete(:width){nil}
+            @height = attribs.delete(:height){nil}
             @shows_errors = attribs.delete(:shows_errors){false}
             @position = Array(attribs.delete(:position)).compact
             @text_align = attribs.delete(:text_align){'left'}

@@ -13,7 +13,8 @@
        <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
        style="text-align: <%= comp.text_align %>;
              <%= "display: inline;" if comp.inline %>
-             <%= "width: #{comp.width}" if comp.width %>">
+             <%= "width: #{comp.width};" if comp.width %>
+             <%= "height : #{comp.height };" if comp.height  %>">
     <% if comp.shows_errors %>
       <div class="v-errors">
     <% end %>
