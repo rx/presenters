@@ -157,28 +157,6 @@ export function initEvents(e) {
     fireAfterLoad(e);
 }
 
-/* Inverse of initEvents.
-*  Removes events from a given dom element and all its children
- * Used by replaces to cleanup event handling for elements that have been
- * replaced. */
-export function removeEvents(e) {
-    console.log('\tRemoving Events');
-
-    const events = e.querySelectorAll('[data-events]');
-    for (let i = 0; i < events.length; i++) {
-        const eventElem = events[i];
-        if (eventElem.eventsHandler) {
-            Object.keys(eventElem.eventsHandler).forEach(function(eventName) {
-                const listeners = eventElem.eventsHandler[eventName];
-                listeners.forEach(function(eventHandler) {
-                    eventElem.removeEventListener(eventName, eventHandler);
-                });
-            });
-        }
-    }
-}
-
-
 function fireAfterLoad(e) {
     var events = e.querySelectorAll('[data-events]');
     for (var i = 0; i < events.length; i++) {

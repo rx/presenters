@@ -25,9 +25,6 @@ export class VBaseComponent {
     respondTo(method) {
         return typeof this[method] === 'function';
     }
-
-    destroy() {
-    }
 }
 
 export function hookupComponents(root, selector, VoomClass, MdcClass) {
@@ -46,24 +43,5 @@ export function hookupComponents(root, selector, VoomClass, MdcClass) {
             }
         }
     }
-}
-
-/* Inverse of hookupComponents.
-    Used by replaces to cleanup.
- */
-export function unhookComponents(element) {
-    const components = element.querySelectorAll('.v-component');
-    components.forEach(function(element) {
-        if (element.mdcComponent) {
-            element.mdcComponent.destroy();
-            delete element.mdcComponent;
-            element.mdcComponent = null;
-            if (element.vComponent) {
-                element.vComponent.destroy();
-                delete element.vComponent;
-                element.vComponent = null;
-            }
-        }
-    });
 }
 

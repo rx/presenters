@@ -28,10 +28,11 @@ import {initFileInputs} from './file-inputs';
 import {initFormFields} from './form-fields';
 import {initImages} from './images';
 import {initTypography} from './typography';
+// import {initTooltip} from './tooltip';
 import {initPlugins} from './plugins';
 import {initProgress} from './progress';
 
-export function initialize(root) {
+export function initialize(root, setRoot) {
     console.log('Initializing');
     initButtons(root);
     initDialogs(root);
@@ -63,6 +64,7 @@ export function initialize(root) {
     initImages(root);
     initTypography(root);
     initProgress(root);
+    // initTooltip();
     initPlugins(root);
     // This needs to be last, because it relies on the components installed above.
     initEvents(root);
