@@ -54,7 +54,7 @@ export class VReplaces extends VBase {
                             if (httpRequest.status === 200) {
                                 const nodeToReplace = root.getElementById(
                                     elementId);
-                                const newDiv = root.createElement('div');
+                                const newDiv = root.createElement('span');
                                 newDiv.innerHTML = httpRequest.responseText;
                                 nodeToReplace.parentElement.replaceChild(newDiv,
                                     nodeToReplace);
