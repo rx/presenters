@@ -9,6 +9,7 @@ import {VSnackbarEvent} from './events/snackbar';
 import {VClears} from './events/clears';
 import {VRemoves} from './events/removes';
 import {VStepperEvent} from './events/stepper';
+import {VNavigates} from './events/navigates';
 import {VPluginEventAction} from './events/plugin';
 import getRoot from './root_document';
 
@@ -100,6 +101,8 @@ export class VEvents {
                 return new VClears(options, params, event, root);
             case 'stepper':
                 return new VStepperEvent(options, params, event, root);
+            case 'navigates':
+                return new VNavigates(options, params, event, root);
             default:
                 return new VPluginEventAction(action_type, options, params,
                     event, root);
