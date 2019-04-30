@@ -112,16 +112,22 @@ module Voom
           end
 
           class Actions < Base
-            attr_accessor :buttons
+            attr_accessor :buttons, :switches
 
             def initialize(**attribs_, &block)
               super(type: :action, **attribs_, &block)
               @buttons = []
+              @switches = []
               expand!
             end
 
             def button(text=nil, **options, &block)
               @buttons << Components::Button.new(parent: self, text: text,
+                                                 **options, &block)
+            end
+
+            def switch(text=nil, **options, &block)
+              @switches << Components::Switch.new(parent: self, text: text,
                                                  **options, &block)
             end
           end

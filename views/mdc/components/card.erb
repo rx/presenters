@@ -46,6 +46,9 @@
           <% end %>
         </div>
         <div class="mdc-card__action-icons">
+          <% comp.actions.switches.each do |switch| %>
+            <%= erb :"components/switch", :locals => {:comp => switch, class_name: 'mdc-card__action'} %>
+          <% end %>
           <% action_icons.each do |button| %>
             <%= erb :"components/button", :locals => {:comp => button, class_name: 'mdc-card__action mdc-card__action--icon'} %>
           <% end %>
