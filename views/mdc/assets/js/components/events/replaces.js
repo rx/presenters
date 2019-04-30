@@ -52,13 +52,9 @@ export class VReplaces extends VBase {
                             console.log(httpRequest.status + ':' +
                                 this.getResponseHeader('content-type'));
                             if (httpRequest.status === 200) {
-                                const nodeToReplace = root.getElementById(
-                                    elementId);
-                                const newDiv = root.createElement('span');
-                                newDiv.innerHTML = httpRequest.responseText;
-                                nodeToReplace.parentElement.replaceChild(newDiv,
-                                    nodeToReplace);
-                                initialize(newDiv);
+                                nodeToReplace.outerHTML = httpRequest.responseText;
+                                const replacedNode = root.getElementById(elementId);
+                                initialize(replacedNode);
 
                                 results.push({
                                     action: 'replaces',
