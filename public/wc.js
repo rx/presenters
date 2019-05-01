@@ -26428,8 +26428,6 @@ function encode(value) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(15);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26451,43 +26449,7 @@ function htmlToNodes(html) {
 
     template.innerHTML = html.trim();
 
-    return template.content.childNodes;
-}
-
-// Replace a target node with a list of nodes.
-function replaceWith(target) {
-    var parent = target.parentNode;
-
-    for (var _len = arguments.length, nodes = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        nodes[_key - 1] = arguments[_key];
-    }
-
-    var i = nodes.length;
-    var currentNode = void 0;
-
-    if (!parent) {
-        return;
-    }
-
-    if (!i) {
-        parent.removeChild(target);
-    }
-
-    while (i--) {
-        currentNode = nodes[i];
-
-        if ((typeof currentNode === 'undefined' ? 'undefined' : _typeof(currentNode)) !== 'object') {
-            currentNode = target.ownerDocument.createTextNode(currentNode);
-        } else if (currentNode.parentNode) {
-            currentNode.parentNode.removeChild(currentNode);
-        }
-
-        if (i === 0) {
-            parent.replaceChild(currentNode, target);
-        } else {
-            parent.insertBefore(target.previousSibling, currentNode);
-        }
-    }
+    return template.content.children;
 }
 
 // Replaces a given element with the contents of the call to the url.
@@ -26548,7 +26510,7 @@ var VReplaces = function (_VBase) {
                                     // "dead" list.
                                     var newNodes = Array.from(htmlToNodes(httpRequest.responseText, root));
 
-                                    replaceWith.apply(undefined, [nodeToReplace].concat(_toConsumableArray(newNodes)));
+                                    nodeToReplace.replaceWith.apply(nodeToReplace, _toConsumableArray(newNodes));
 
                                     var _iteratorNormalCompletion = true;
                                     var _didIteratorError = false;

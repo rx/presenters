@@ -9,40 +9,7 @@ function htmlToNodes(html, root = document) {
 
     template.innerHTML = html.trim();
 
-    return template.content.childNodes;
-}
-
-// Replace a target node with a list of nodes.
-function replaceWith(target, ...nodes) {
-    const parent = target.parentNode;
-    let i = nodes.length;
-    let currentNode;
-
-    if (!parent) {
-        return;
-    }
-
-    if (!i) {
-        parent.removeChild(target);
-    }
-
-    while (i--) {
-        currentNode = nodes[i];
-
-        if (typeof currentNode !== 'object') {
-            currentNode = target.ownerDocument.createTextNode(currentNode);
-        }
-        else if (currentNode.parentNode) {
-            currentNode.parentNode.removeChild(currentNode);
-        }
-
-        if (i === 0) {
-            parent.replaceChild(currentNode, target);
-        }
-        else {
-            parent.insertBefore(target.previousSibling, currentNode);
-        }
-    }
+    return template.content.children;
 }
 
 // Replaces a given element with the contents of the call to the url.
@@ -106,7 +73,7 @@ export class VReplaces extends VBase {
                                     root
                                 ));
 
-                                replaceWith(nodeToReplace, ...newNodes);
+                                nodeToReplace.replaceWith(...newNodes)
 
                                 for (const node of newNodes) {
                                     initialize(node);
