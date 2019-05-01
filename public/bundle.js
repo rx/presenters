@@ -40519,6 +40519,10 @@ function encode(value) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(140);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -40528,6 +40532,54 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
+// Create a NodeList from raw HTML.
+// Whitespace is trimmed to avoid creating superfluous text nodes.
+function htmlToNodes(html) {
+    var root = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+
+    var template = root.createElement('template');
+
+    template.innerHTML = html.trim();
+
+    return template.content.childNodes;
+}
+
+// Replace a target node with a list of nodes.
+function replaceWith(target) {
+    var parent = target.parentNode;
+
+    for (var _len = arguments.length, nodes = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        nodes[_key - 1] = arguments[_key];
+    }
+
+    var i = nodes.length;
+    var currentNode = void 0;
+
+    if (!parent) {
+        return;
+    }
+
+    if (!i) {
+        parent.removeChild(target);
+    }
+
+    while (i--) {
+        currentNode = nodes[i];
+
+        if ((typeof currentNode === 'undefined' ? 'undefined' : _typeof(currentNode)) !== 'object') {
+            currentNode = target.ownerDocument.createTextNode(currentNode);
+        } else if (currentNode.parentNode) {
+            currentNode.parentNode.removeChild(currentNode);
+        }
+
+        if (i === 0) {
+            parent.replaceChild(currentNode, target);
+        } else {
+            parent.insertBefore(target.previousSibling, currentNode);
+        }
+    }
+}
 
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
@@ -40579,9 +40631,40 @@ var VReplaces = function (_VBase) {
                             if (httpRequest.readyState === XMLHttpRequest.DONE) {
                                 console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                                 if (httpRequest.status === 200) {
-                                    nodeToReplace.outerHTML = httpRequest.responseText;
-                                    var replacedNode = root.getElementById(elementId);
-                                    Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["initialize"])(replacedNode);
+                                    // NodeList.childNodes is "live", meaning DOM
+                                    // changes to its entries will mutate the list
+                                    // itself.
+                                    // (see: https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
+                                    // Array.from clones the entries, creating a
+                                    // "dead" list.
+                                    var newNodes = Array.from(htmlToNodes(httpRequest.responseText, root));
+
+                                    replaceWith.apply(undefined, [nodeToReplace].concat(_toConsumableArray(newNodes)));
+
+                                    var _iteratorNormalCompletion = true;
+                                    var _didIteratorError = false;
+                                    var _iteratorError = undefined;
+
+                                    try {
+                                        for (var _iterator = newNodes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                                            var node = _step.value;
+
+                                            Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["initialize"])(node);
+                                        }
+                                    } catch (err) {
+                                        _didIteratorError = true;
+                                        _iteratorError = err;
+                                    } finally {
+                                        try {
+                                            if (!_iteratorNormalCompletion && _iterator.return) {
+                                                _iterator.return();
+                                            }
+                                        } finally {
+                                            if (_didIteratorError) {
+                                                throw _iteratorError;
+                                            }
+                                        }
+                                    }
 
                                     results.push({
                                         action: 'replaces',

@@ -2,6 +2,49 @@ import {expandParams} from './action_parameter';
 import {VBase} from './base';
 import {initialize} from '../initialize';
 
+// Create a NodeList from raw HTML.
+// Whitespace is trimmed to avoid creating superfluous text nodes.
+function htmlToNodes(html, root = document) {
+    const template = root.createElement('template');
+
+    template.innerHTML = html.trim();
+
+    return template.content.childNodes;
+}
+
+// Replace a target node with a list of nodes.
+function replaceWith(target, ...nodes) {
+    const parent = target.parentNode;
+    let i = nodes.length;
+    let currentNode;
+
+    if (!parent) {
+        return;
+    }
+
+    if (!i) {
+        parent.removeChild(target);
+    }
+
+    while (i--) {
+        currentNode = nodes[i];
+
+        if (typeof currentNode !== 'object') {
+            currentNode = target.ownerDocument.createTextNode(currentNode);
+        }
+        else if (currentNode.parentNode) {
+            currentNode.parentNode.removeChild(currentNode);
+        }
+
+        if (i === 0) {
+            parent.replaceChild(currentNode, target);
+        }
+        else {
+            parent.insertBefore(target.previousSibling, currentNode);
+        }
+    }
+}
+
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
 export class VReplaces extends VBase {
@@ -52,9 +95,22 @@ export class VReplaces extends VBase {
                             console.log(httpRequest.status + ':' +
                                 this.getResponseHeader('content-type'));
                             if (httpRequest.status === 200) {
-                                nodeToReplace.outerHTML = httpRequest.responseText;
-                                const replacedNode = root.getElementById(elementId);
-                                initialize(replacedNode);
+                                // NodeList.childNodes is "live", meaning DOM
+                                // changes to its entries will mutate the list
+                                // itself.
+                                // (see: https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
+                                // Array.from clones the entries, creating a
+                                // "dead" list.
+                                const newNodes = Array.from(htmlToNodes(
+                                    httpRequest.responseText,
+                                    root
+                                ));
+
+                                replaceWith(nodeToReplace, ...newNodes);
+
+                                for (const node of newNodes) {
+                                    initialize(node);
+                                }
 
                                 results.push({
                                     action: 'replaces',
