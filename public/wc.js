@@ -114,17 +114,42 @@ var VBaseComponent = function () {
 }();
 
 function hookupComponents(root, selector, VoomClass, MdcClass) {
-    var components = root.querySelectorAll(selector);
-    for (var i = 0; i < components.length; i++) {
-        var component = components[i];
-        if (!component.mdcComponent) {
-            var mdcInstance = null;
-            if (MdcClass != null) {
-                mdcInstance = new MdcClass(component);
+    var components = Array.from(root.querySelectorAll(selector));
+
+    if (root && typeof root.matches === 'function' && root.matches(selector)) {
+        components.unshift(root);
+    }
+
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = components[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var component = _step.value;
+
+            if (component.mdcComponent) {
+                continue;
             }
+
+            var mdcInstance = typeof MdcClass === 'function' ? new MdcClass(component) : null;
+
             if (!component.vComponent) {
                 component.vComponent = new VoomClass(component, mdcInstance, root);
                 component.vComponent.root = root;
+            }
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
             }
         }
     }
