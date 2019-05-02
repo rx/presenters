@@ -1,3 +1,5 @@
+/* global require */
+
 import {initialize} from './components/initialize';
 
 // Webcomponent polyfil
@@ -79,4 +81,5 @@ class FlowMatic extends HTMLElement {
     }
 }
 
+require('material-design-lite/material');
 document.registerElement('flow-matic', FlowMatic);
