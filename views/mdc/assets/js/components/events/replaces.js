@@ -73,7 +73,7 @@ export class VReplaces extends VBase {
                                     root
                                 ));
 
-                                nodeToReplace.replaceWith(...newNodes)
+                                nodeToReplace.replaceWith(...newNodes);
 
                                 for (const node of newNodes) {
                                     initialize(node);
