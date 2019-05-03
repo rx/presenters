@@ -3,6 +3,7 @@ require 'voom/presenters/dsl/components/mixins/grids'
 require 'voom/presenters/dsl/components/mixins/append'
 require 'voom/presenters/dsl/components/mixins/typography'
 require 'voom/presenters/dsl/components/mixins/icons'
+require 'voom/presenters/dsl/components/mixins/buttons'
 
 module Voom
   module Presenters
@@ -13,6 +14,7 @@ module Voom
           include Mixins::Append
           include Components::Mixins::Typography
           include Components::Mixins::Icons
+          include Components::Mixins::Buttons
 
           attr_accessor :components
 
