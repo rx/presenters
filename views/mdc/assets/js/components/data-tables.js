@@ -20,7 +20,7 @@ function createTableRowSelectHandler(component, listElements, selectAll) {
 }
 
 export function initTables(e) {
-    console.log('\tTables');
+    console.debug('\tTables');
     let components = e.querySelectorAll('.mdl-data-table');
     if (components) {
         for (let component of components) {

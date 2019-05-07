@@ -120,7 +120,7 @@ function createEventHandler(actionsData, root) {
 }
 
 export function initEvents(e) {
-    console.log('\tEvents');
+    console.debug('\tEvents');
 
     var events = e.querySelectorAll('[data-events]');
     for (var i = 0; i < events.length; i++) {

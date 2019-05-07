@@ -2,7 +2,7 @@ import {hookupComponents, VBaseComponent} from './base-component';
 import {MDCLinearProgress} from '@material/linear-progress';
 
 export function initProgress(e) {
-    console.log('\tProgress');
+    console.debug('\tProgress');
     hookupComponents(e, '.v-progress', VProgress, MDCLinearProgress);
 }
 

@@ -6,7 +6,7 @@ import {hookupComponents} from './base-component';
 import {MDCDialog} from '@material/dialog';
 
 export function initDialogs(e) {
-    console.log('\tDialogs');
+    console.debug('\tDialogs');
     hookupComponents(e, '.v-dialog', VDialog, MDCDialog);
 }
 

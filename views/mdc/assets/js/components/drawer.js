@@ -4,7 +4,7 @@ import {hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
 export function initDrawer(e) {
-    console.log('\tDrawer');
+    console.debug('\tDrawer');
     hookupComponents(e, '.v-drawer__modal', VModalDrawer, MDCDrawer);
     hookupComponents(e, '.v-drawer__dismissible', VDismissibleDrawer, MDCDrawer);
 }

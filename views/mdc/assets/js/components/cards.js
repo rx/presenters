@@ -2,7 +2,7 @@ import {VBaseContainer} from "./base-container";
 import {hookupComponents} from "./base-component";
 
 export function initCards(e) {
-    console.log('\tCards');
+    console.debug('\tCards');
     hookupComponents(e,'.v-card', VCard, null);
 }
 
