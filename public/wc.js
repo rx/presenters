@@ -17830,6 +17830,8 @@ module.exports = __webpack_require__(30);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_initialize__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__webcomponents_webcomponentsjs_custom_elements_es5_adapter_js__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__webcomponents_webcomponentsjs_custom_elements_es5_adapter_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__webcomponents_webcomponentsjs_custom_elements_es5_adapter_js__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -17842,9 +17844,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+// The Adapter is required when transpiling classes to ES5 code.
+// https://github.com/webcomponents/webcomponentsjs/tree/v2.2.7#custom-elements-es5-adapterjs
+
+
 // Webcomponent polyfil
 window.WebComponents = window.WebComponents || {};
-window.WebComponents.root = __webpack_require__(106);
+window.WebComponents.root = __webpack_require__(107);
 
 function loadFont(src) {
     var lnk = document.createElement('link');
@@ -17889,69 +17895,25 @@ var FlowMatic = function (_HTMLElement) {
             oReq.send();
         }
     }, {
-        key: 'createdCallback',
-        value: function createdCallback() {
-            var _this3 = this;
-
-            console.log('flow-matic element added to page.');
-            if (!this.dataset.comp) {
-                // Select the node that will be observed for mutations
-                var targetNode = this;
-
-                // Options for the observer (which mutations to observe)
-                var config = { attributes: true };
-
-                var loadComponent = function loadComponent() {
-                    _this3.loadComponent();
-                };
-                // Callback function to execute when mutations are observed
-                var callback = function callback(mutationsList, observer) {
-                    var _iteratorNormalCompletion = true;
-                    var _didIteratorError = false;
-                    var _iteratorError = undefined;
-
-                    try {
-                        for (var _iterator = mutationsList[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                            var mutation = _step.value;
-
-                            if (mutation.type === 'attributes' && mutation.attributeName === 'data-comp') {
-                                console.log('The ' + mutation.attributeName + ' attribute was modified.');
-                                loadComponent(targetNode);
-                                observer.disconnect();
-                            }
-                        }
-                    } catch (err) {
-                        _didIteratorError = true;
-                        _iteratorError = err;
-                    } finally {
-                        try {
-                            if (!_iteratorNormalCompletion && _iterator.return) {
-                                _iterator.return();
-                            }
-                        } finally {
-                            if (_didIteratorError) {
-                                throw _iteratorError;
-                            }
-                        }
-                    }
-                };
-
-                // Create an observer instance linked to the callback function
-                var observer = new MutationObserver(callback);
-
-                // Start observing the target node for configured mutations
-                observer.observe(targetNode, config);
-            } else {
-                this.loadComponent(this);
+        key: 'attributeChangedCallback',
+        value: function attributeChangedCallback() {
+            if (this.dataset.comp) {
+                this.loadComponent();
             }
+        }
+    }], [{
+        key: 'observedAttributes',
+        get: function get() {
+            // A list of attribute names to observe via attributeChangedCallback.
+            return ['data-comp'];
         }
     }]);
 
     return FlowMatic;
 }(HTMLElement);
 
-__webpack_require__(110);
-document.registerElement('flow-matic', FlowMatic);
+__webpack_require__(111);
+customElements.define('flow-matic', FlowMatic);
 
 /***/ }),
 /* 31 */
@@ -83472,6 +83434,29 @@ var strings = {
 
 /***/ }),
 /* 106 */
+/***/ (function(module, exports) {
+
+/**
+@license @nocompile
+Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+(function () {
+  'use strict';
+
+  (function () {
+    if (void 0 === window.Reflect || void 0 === window.customElements || window.customElements.hasOwnProperty('polyfillWrapFlushCallback')) return;var a = HTMLElement;window.HTMLElement = function HTMLElement() {
+      return Reflect.construct(a, [], this.constructor);
+    }, HTMLElement.prototype = a.prototype, HTMLElement.prototype.constructor = HTMLElement, Object.setPrototypeOf(HTMLElement, a);
+  })();
+})();
+
+/***/ }),
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -86155,10 +86140,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 }).call(this);
 
 //# sourceMappingURL=webcomponents-bundle.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(107).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(108).setImmediate))
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = typeof global !== "undefined" && global || typeof self !== "undefined" && self || window;
@@ -86210,7 +86195,7 @@ exports._unrefActive = exports.active = function (item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(108);
+__webpack_require__(109);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -86219,7 +86204,7 @@ exports.clearImmediate = typeof self !== "undefined" && self.clearImmediate || t
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -86404,10 +86389,10 @@ exports.clearImmediate = typeof self !== "undefined" && self.clearImmediate || t
     attachTo.setImmediate = setImmediate;
     attachTo.clearImmediate = clearImmediate;
 })(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(109)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(110)))
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -86597,7 +86582,7 @@ process.umask = function () {
 };
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports) {
 
 ;(function() {
