@@ -1,6 +1,7 @@
 // This is used to get a proper binding of the actionData
 // https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
 import {VBaseContainer} from './base-container';
+import {eventHandlerMixin} from './mixins/event-handler';
 import {hookupComponents} from './base-component';
 import {MDCDialog} from '@material/dialog';
 
@@ -9,7 +10,7 @@ export function initDialogs(e) {
     hookupComponents(e, '.v-dialog', VDialog, MDCDialog);
 }
 
-export class VDialog extends VBaseContainer {
+export class VDialog extends eventHandlerMixin(VBaseContainer) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
 
