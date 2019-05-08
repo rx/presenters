@@ -4,7 +4,7 @@ import {eventHandlerMixin} from './mixins/event-handler';
 import {visibilityObserverMixin} from './mixins/visibility-observer';
 
 export function initTextFields(e) {
-    console.log('\tTextFields');
+    console.debug('\tTextFields');
     hookupComponents(e, '.v-text-field', VTextField, MDCTextField);
 }
 

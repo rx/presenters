@@ -5,7 +5,7 @@ import { hookupComponents } from './base-component';
 import appConfig from '../config';
 
 export function initDateTime(e) {
-    console.log('\tDateTime');
+    console.debug('\tDateTime');
     hookupComponents(e, '.v-datetime', VDateTime, MDCTextField);
 }
 export class VDateTime extends VTextField {

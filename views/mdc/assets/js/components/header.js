@@ -4,7 +4,7 @@ import {hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
 export function initHeader(e) {
-    console.log('\tHeader');
+    console.debug('\tHeader');
     hookupComponents(e, '.v-header', VHeader, MDCTopAppBar);
 }
 

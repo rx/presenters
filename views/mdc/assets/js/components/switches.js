@@ -3,7 +3,7 @@ import {VBaseToggle} from './base-toggle';
 import {MDCSwitch} from '@material/switch';
 
 export function initSwitches(e) {
-    console.log('\tSwitches');
+    console.debug('\tSwitches');
     hookupComponents(e, '.v-switch', VSwitch, MDCSwitch);
 }
 

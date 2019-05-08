@@ -3,7 +3,7 @@ import {hookupComponents} from "./base-component";
 import {eventHandlerMixin} from './mixins/event-handler';
 
 export function initContent(e) {
-    console.log('\tContent');
+    console.debug('\tContent');
     hookupComponents(e, '.v-content', VContent, null);
 }
 

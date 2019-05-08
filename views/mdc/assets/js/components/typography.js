@@ -3,7 +3,7 @@ import {hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
 export function initTypography(e) {
-    console.log('\tTypography');
+    console.debug('\tTypography');
     hookupComponents(e, '.v-typography', VTypography);
 }
 

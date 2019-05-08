@@ -4,7 +4,7 @@ import {eventHandlerMixin} from './mixins/event-handler';
 import {visibilityObserverMixin} from "./mixins/visibility-observer";
 
 export function initSelects(e) {
-    console.log('\tSelects');
+    console.debug('\tSelects');
     hookupComponents(e, '.v-select', VSelect, MDCSelect);
 }
 

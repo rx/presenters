@@ -2,7 +2,7 @@ import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
 export function initFileInputs(e) {
-    console.log('\tFile Inputs');
+    console.debug('\tFile Inputs');
     hookupComponents(e, '.v-file-input', VFileInput, null);
 }
 
