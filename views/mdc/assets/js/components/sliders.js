@@ -53,12 +53,12 @@ export class VSlider extends visibilityObserverMixin(
     }
 
 
-    createEventHandler(actionsData) {
+    createEventHandler(actionsData, root) {
         return function(event) {
             // The MDC slider was firing duplicate change events - this prevents that
             if (!this.lastEvent ||
                 (event.timeStamp - this.lastEvent.timeStamp) > 10.0) {
-                new VEvents(actionsData, event).call();
+                new VEvents(actionsData, event, root).call();
             }
             this.lastEvent = event;
         };
