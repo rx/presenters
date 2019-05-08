@@ -84,22 +84,4 @@ export class VBaseContainer extends VBaseComponent {
             .map((component) => component.isDirty())
             .some(Boolean);
     }
-
-    actionsHalted() {
-        for (const comp of this.components()) {
-            comp.actionsHalted();
-        }
-    }
-
-    actionsSucceeded() {
-        for (const comp of this.components()) {
-            comp.actionsSucceeded();
-        }
-    }
-
-    actionsFinished() {
-        for (const comp of this.components()) {
-            comp.actionsFinished();
-        }
-    }
 }
