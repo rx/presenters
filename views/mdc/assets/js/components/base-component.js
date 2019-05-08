@@ -12,11 +12,12 @@ export class VBaseComponent {
         return true;
     }
 
-    onShow() {
-    }
+    onShow() {}
 
-    onHide() {
-    }
+    onHide() {}
+
+    // Invoked after event handlers have been initialized.
+    afterInit() {}
 
 
     actionsHalted() {
