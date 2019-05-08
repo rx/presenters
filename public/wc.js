@@ -117,19 +117,13 @@ var VBaseComponent = function () {
         }
     }, {
         key: 'actionsHalted',
-        value: function actionsHalted() {
-            console.debug('VBaseComponent.prototype.actionsHalted');
-        }
+        value: function actionsHalted() {}
     }, {
         key: 'actionsSucceeded',
-        value: function actionsSucceeded() {
-            console.debug('VBaseComponent.prototype.actionsSucceeded');
-        }
+        value: function actionsSucceeded() {}
     }, {
         key: 'actionsFinished',
-        value: function actionsFinished() {
-            console.debug('VBaseComponent.prototype.actionsFinished');
-        }
+        value: function actionsFinished() {}
     }, {
         key: 'hasHandlers',
         value: function hasHandlers() {

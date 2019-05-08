@@ -30,15 +30,12 @@ export class VBaseComponent {
     }
 
     actionsHalted() {
-        console.debug('VBaseComponent.prototype.actionsHalted');
     }
 
     actionsSucceeded() {
-        console.debug('VBaseComponent.prototype.actionsSucceeded');
     }
 
     actionsFinished() {
-        console.debug('VBaseComponent.prototype.actionsFinished');
     }
 
     hasHandlers() {
