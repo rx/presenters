@@ -146,6 +146,43 @@ var VBaseComponent = function () {
     }, {
         key: 'onHide',
         value: function onHide() {}
+
+        // Invoked after event handlers have been initialized.
+
+    }, {
+        key: 'afterInit',
+        value: function afterInit() {}
+    }, {
+        key: 'parentComponent',
+        value: function parentComponent(selector) {
+            var element = this.element.closest(selector);
+
+            if (!(element && element.vComponent)) {
+                return null;
+            }
+
+            return element.vComponent;
+        }
+    }, {
+        key: 'actionsHalted',
+        value: function actionsHalted() {
+            console.debug('VBaseComponent.prototype.actionsHalted');
+        }
+    }, {
+        key: 'actionsSucceeded',
+        value: function actionsSucceeded() {
+            console.debug('VBaseComponent.prototype.actionsSucceeded');
+        }
+    }, {
+        key: 'actionsFinished',
+        value: function actionsFinished() {
+            console.debug('VBaseComponent.prototype.actionsFinished');
+        }
+    }, {
+        key: 'hasHandlers',
+        value: function hasHandlers() {
+            return this.eventsHandler && Object.keys(this.eventsHandler).length > 0;
+        }
     }, {
         key: 'clearErrors',
         value: function clearErrors() {
@@ -155,6 +192,11 @@ var VBaseComponent = function () {
         key: 'respondTo',
         value: function respondTo(method) {
             return typeof this[method] === 'function';
+        }
+    }, {
+        key: 'is',
+        value: function is(name) {
+            return this.constructor.name === name;
         }
     }]);
 
@@ -1530,6 +1572,15 @@ var VBaseContainer = function (_VBaseComponent) {
     }
 
     _createClass(VBaseContainer, [{
+        key: 'components',
+        value: function components() {
+            return Array.from(this.element.querySelectorAll('.v-component')).filter(function (element) {
+                return element.vComponent;
+            }).map(function (element) {
+                return element.vComponent;
+            });
+        }
+    }, {
         key: 'inputs',
         value: function inputs() {
             return this.element.querySelectorAll('.v-input');
@@ -1722,6 +1773,90 @@ var VBaseContainer = function (_VBaseComponent) {
             }).map(function (component) {
                 return component.isDirty();
             }).some(Boolean);
+        }
+    }, {
+        key: 'actionsHalted',
+        value: function actionsHalted() {
+            var _iteratorNormalCompletion6 = true;
+            var _didIteratorError6 = false;
+            var _iteratorError6 = undefined;
+
+            try {
+                for (var _iterator6 = this.components()[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+                    var comp = _step6.value;
+
+                    comp.actionsHalted();
+                }
+            } catch (err) {
+                _didIteratorError6 = true;
+                _iteratorError6 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion6 && _iterator6.return) {
+                        _iterator6.return();
+                    }
+                } finally {
+                    if (_didIteratorError6) {
+                        throw _iteratorError6;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'actionsSucceeded',
+        value: function actionsSucceeded() {
+            var _iteratorNormalCompletion7 = true;
+            var _didIteratorError7 = false;
+            var _iteratorError7 = undefined;
+
+            try {
+                for (var _iterator7 = this.components()[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+                    var comp = _step7.value;
+
+                    comp.actionsSucceeded();
+                }
+            } catch (err) {
+                _didIteratorError7 = true;
+                _iteratorError7 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion7 && _iterator7.return) {
+                        _iterator7.return();
+                    }
+                } finally {
+                    if (_didIteratorError7) {
+                        throw _iteratorError7;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'actionsFinished',
+        value: function actionsFinished() {
+            var _iteratorNormalCompletion8 = true;
+            var _didIteratorError8 = false;
+            var _iteratorError8 = undefined;
+
+            try {
+                for (var _iterator8 = this.components()[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+                    var comp = _step8.value;
+
+                    comp.actionsFinished();
+                }
+            } catch (err) {
+                _didIteratorError8 = true;
+                _iteratorError8 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion8 && _iterator8.return) {
+                        _iterator8.return();
+                    }
+                } finally {
+                    if (_didIteratorError8) {
+                        throw _iteratorError8;
+                    }
+                }
+            }
         }
     }]);
 
@@ -5701,7 +5836,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 function initialize(root, setRoot) {
-    console.log('Initializing');
+    console.debug('Initializing components');
+
+    var start = performance.now();
+
     Object(__WEBPACK_IMPORTED_MODULE_0__button__["a" /* initButtons */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_1__dialogs__["a" /* initDialogs */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_2__datetime__["a" /* initDateTime */])(root); // MUST BE BEFORE initTextFields
@@ -5734,8 +5872,12 @@ function initialize(root, setRoot) {
     Object(__WEBPACK_IMPORTED_MODULE_32__progress__["a" /* initProgress */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_30__tooltip__["a" /* initTooltips */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_31__plugins__["a" /* initPlugins */])(root);
+
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_4__events__["b" /* initEvents */])(root);
+
+    var end = performance.now();
+    console.debug('Done in %s ms', (end - start).toFixed(2));
 }
 
 /***/ }),
@@ -12175,7 +12317,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initTextFields(e) {
-    console.log('\tTextFields');
+    console.debug('\tTextFields');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-text-field', VTextField, __WEBPACK_IMPORTED_MODULE_0__material_textfield__["MDCTextField"]);
 }
 
@@ -12374,7 +12516,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var VEvents = function () {
     // [[type, url, target, params]]
-    function VEvents(actions, event, root) {
+    function VEvents(actions, event, root, vComponent) {
         var _this = this;
 
         _classCallCheck(this, VEvents);
@@ -12384,11 +12526,14 @@ var VEvents = function () {
         this.actions = actions.map(function (action) {
             return _this.constructor.action_class(action, event, root);
         });
+        this.vComponent = vComponent;
     }
 
     _createClass(VEvents, [{
         key: 'call',
         value: function call() {
+            var _this2 = this;
+
             // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
             var fnlist = this.actions.map(function (action) {
                 return function (results) {
@@ -12404,20 +12549,16 @@ var VEvents = function () {
                 }, p);
             }
 
-            var event = this.event;
-            var root = this.root;
-
             pseries(fnlist).then(function (results) {
                 var result = results.pop();
                 var contentType = result.contentType;
                 var responseURL = result.responseURL;
 
-                if (event.target.dialog) {
-                    event.target.dialog.close();
-                }
                 if (contentType && contentType.indexOf('text/html') !== -1 && typeof responseURL !== 'undefined') {
                     window.location = responseURL;
                 }
+
+                _this2.vComponent.actionsSucceeded(_this2);
             }).catch(function (results) {
                 console.log('If you got here it may not be what you think:', results);
 
@@ -12428,8 +12569,12 @@ var VEvents = function () {
                 }
 
                 if (!result.squelch) {
-                    new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](root, event).displayErrors(result);
+                    new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](_this2.root, _this2.event).displayErrors(result);
                 }
+
+                _this2.vComponent.actionsHalted(_this2);
+            }).finally(function () {
+                _this2.vComponent.actionsFinished(_this2);
             });
         }
     }], [{
@@ -12481,12 +12626,12 @@ var VEvents = function () {
 function createEventHandler(actionsData, root) {
     return function (event) {
         event.stopPropagation();
-        new VEvents(actionsData, event, root).call();
+        new VEvents(actionsData, event, root, this.vComponent).call();
     };
 }
 
 function initEvents(e) {
-    console.log('\tEvents');
+    console.debug('\tEvents');
 
     var events = e.querySelectorAll('[data-events]');
     for (var i = 0; i < events.length; i++) {
@@ -12498,13 +12643,16 @@ function initEvents(e) {
             var eventOptions = eventData[2];
             var actionsData = eventData[1];
             var eventHandler = createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e));
+            var vComponent = eventElem.vComponent;
+
             // allow overide of event handler by component
-            if (eventElem.vComponent && eventElem.vComponent.createEventHandler) {
-                eventHandler = eventElem.vComponent.createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e));
+            if (vComponent && vComponent.createEventHandler) {
+                eventHandler = vComponent.createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e));
             }
+
             // Delegate to the component if possible
-            if (eventElem.vComponent && eventElem.vComponent.initEventListener) {
-                eventElem.vComponent.initEventListener(eventName, eventHandler);
+            if (vComponent && vComponent.initEventListener) {
+                vComponent.initEventListener(eventName, eventHandler);
             } else {
                 if (typeof eventElem.eventsHandler === 'undefined') {
                     eventElem.eventsHandler = {};
@@ -12515,6 +12663,10 @@ function initEvents(e) {
                 eventElem.eventsHandler[eventName].push(eventHandler);
                 eventOptions.passive = true;
                 eventElem.addEventListener(eventName, eventHandler, eventOptions);
+            }
+
+            if (vComponent) {
+                vComponent.afterInit();
             }
         }
     }
@@ -32168,7 +32320,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initButtons(e) {
-    console.log('\tButtons');
+    console.debug('\tButtons');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-js-ripple-button', VButton, __WEBPACK_IMPORTED_MODULE_0__material_ripple__["MDCRipple"]);
 }
 
@@ -32189,6 +32341,39 @@ var VButton = function (_eventHandlerMixin) {
             } else {
                 console.log('WARNING: Attempted to preview an image on a Button (id: ' + this.element.id + ') that is NOT an image button.\nMake sure you set the type: :image on the button.');
             }
+        }
+    }, {
+        key: 'actionsHalted',
+        value: function actionsHalted(vEvent) {
+            var parentDialog = this.parentComponent('.v-dialog');
+
+            if (!parentDialog) {
+                return;
+            }
+
+            parentDialog.actionsHalted(vEvent);
+        }
+    }, {
+        key: 'actionsSucceeded',
+        value: function actionsSucceeded(vEvent) {
+            var parentDialog = this.parentComponent('.v-dialog');
+
+            if (!parentDialog) {
+                return;
+            }
+
+            parentDialog.actionsSucceeded(vEvent);
+        }
+    }, {
+        key: 'actionsFinished',
+        value: function actionsFinished(vEvent) {
+            var parentDialog = this.parentComponent('.v-dialog');
+
+            if (!parentDialog) {
+                return;
+            }
+
+            parentDialog.actionsFinished(vEvent);
         }
     }]);
 
@@ -34155,9 +34340,10 @@ var VButton = function (_eventHandlerMixin) {
 /* harmony export (immutable) */ __webpack_exports__["a"] = initDialogs;
 /* unused harmony export VDialog */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_dialog__ = __webpack_require__(366);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_dialog___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_dialog__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_dialog__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_dialog___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__material_dialog__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34166,64 +34352,94 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// This is used to get a proper binding of the actionData
-// https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
 
 
 
 
-function initDialogs(e) {
-    console.log('\tDialogs');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-dialog', VDialog, __WEBPACK_IMPORTED_MODULE_2__material_dialog__["MDCDialog"]);
+
+// Here be dragons.
+
+/**
+ * Causes the bound dialog's adapter to emit a closing event when applicable.
+ * @param {String} action
+ * @this {VDialog}
+ */
+function beforeClose() {
+    var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+    var mdcDialog = this.mdcComponent;
+
+    if (this.shouldNotifyClosing) {
+        mdcDialog.foundation_.adapter_.notifyClosing(action);
+        this.shouldNotifyClosing = false;
+    }
 }
 
-var VDialog = function (_VBaseContainer) {
-    _inherits(VDialog, _VBaseContainer);
+/**
+ * Actually closes the bound dialog.
+ * @param {String} action
+ * @this {MDCDialogFoundation}
+ */
+function hideDialog() {
+    var _this = this;
+
+    var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+    this.isOpen_ = false;
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_3__material_dialog__["MDCDialogFoundation"].cssClasses.CLOSING);
+    this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_3__material_dialog__["MDCDialogFoundation"].cssClasses.OPEN);
+    this.adapter_.removeBodyClass(__WEBPACK_IMPORTED_MODULE_3__material_dialog__["MDCDialogFoundation"].cssClasses.SCROLL_LOCK);
+
+    cancelAnimationFrame(this.animationFrame_);
+    this.animationFrame_ = 0;
+
+    clearTimeout(this.animationTimer_);
+    this.animationTimer_ = setTimeout(function () {
+        _this.adapter_.releaseFocus();
+        _this.handleAnimationTimerEnd_();
+        _this.adapter_.notifyClosed(action);
+    }, __WEBPACK_IMPORTED_MODULE_3__material_dialog__["MDCDialogFoundation"].numbers.DIALOG_ANIMATION_CLOSE_TIME_MS);
+}
+
+function initDialogs(e) {
+    console.debug('\tDialogs');
+    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-dialog', VDialog, __WEBPACK_IMPORTED_MODULE_3__material_dialog__["MDCDialog"]);
+}
+
+var VDialog = function (_eventHandlerMixin) {
+    _inherits(VDialog, _eventHandlerMixin);
 
     function VDialog(element, mdcComponent) {
         _classCallCheck(this, VDialog);
 
-        var _this = _possibleConstructorReturn(this, (VDialog.__proto__ || Object.getPrototypeOf(VDialog)).call(this, element, mdcComponent));
+        // Closeable state:
+        var _this2 = _possibleConstructorReturn(this, (VDialog.__proto__ || Object.getPrototypeOf(VDialog)).call(this, element, mdcComponent));
 
-        var dialog = mdcComponent;
-        var dialogButtons = element.querySelectorAll('.mdc-dialog__actions button:not([disabled])');
+        _this2.shouldNotifyClosing = true;
+        _this2.canClose = false;
 
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
+        mdcComponent.listen('MDCDialog:opened', _this2.onShow.bind(_this2));
 
-        try {
-            for (var _iterator = dialogButtons[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                var dialogButton = _step.value;
+        mdcComponent.listen('MDCDialog:closed', function () {
+            _this2.reset();
+            _this2.clearErrors();
 
-                if (!dialogButton.dialog) {
-                    dialogButton.dialog = dialog;
-                }
-            }
-        } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
-        } finally {
-            try {
-                if (!_iteratorNormalCompletion && _iterator.return) {
-                    _iterator.return();
-                }
-            } finally {
-                if (_didIteratorError) {
-                    throw _iteratorError;
-                }
-            }
-        }
-
-        dialog.listen('MDCDialog:closing', function () {
-            element.vComponent.reset();
-            element.vComponent.clearErrors();
+            // Reset closeable state:
+            _this2.shouldNotifyClosing = true;
+            _this2.canClose = false;
         });
 
-        dialog.listen('MDCDialog:opened', function () {
-            element.vComponent.onShow();
+        mdcComponent.listen('MDCDialog:closing', function (mdcEvent) {
+            var action = mdcEvent.detail.action || '';
+            var event = new CustomEvent('close', {
+                cancelable: true,
+                bubbles: true,
+                detail: { action: action }
+            });
+
+            _this2.element.dispatchEvent(event);
         });
-        return _this;
+        return _this2;
     }
 
     _createClass(VDialog, [{
@@ -34234,12 +34450,58 @@ var VDialog = function (_VBaseContainer) {
     }, {
         key: 'close',
         value: function close() {
-            this.mdcComponent.close();
+            var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+            action = action || '';
+
+            beforeClose.call(this, action);
+
+            if (this.canClose) {
+                hideDialog.call(this.mdcComponent.foundation_, action);
+            }
+        }
+    }, {
+        key: 'actionsSucceeded',
+        value: function actionsSucceeded(vEvent) {
+            // A successful run-to-completion of an event chain should always
+            // attempt to close the dialog.
+            this.shouldNotifyClosing = false;
+            this.canClose = true;
+
+            this.close(vEvent.event.detail.action);
+        }
+    }, {
+        key: 'actionsHalted',
+        value: function actionsHalted() {
+            // A halted event chain should not close the dialog.
+            this.shouldNotifyClosing = true;
+            this.canClose = false;
+        }
+    }, {
+        key: 'afterInit',
+        value: function afterInit() {
+            var dialogHasHandlers = this.hasHandlers();
+            var buttonsHaveHandlers = this.buttons.map(function (c) {
+                return c.hasHandlers();
+            }).some(Boolean);
+
+            if (dialogHasHandlers || buttonsHaveHandlers) {
+                // Stub in our own dialog close method to ensure events run to
+                // completion before the dialog is closed:
+                this.mdcComponent.foundation_.close = this.close.bind(this);
+            }
+        }
+    }, {
+        key: 'buttons',
+        get: function get() {
+            return this.components().filter(function (c) {
+                return c.is('VButton');
+            });
         }
     }]);
 
     return VDialog;
-}(__WEBPACK_IMPORTED_MODULE_0__base_container__["a" /* VBaseContainer */]);
+}(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_container__["a" /* VBaseContainer */]));
 
 /***/ }),
 /* 366 */
@@ -37888,7 +38150,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initDateTime(e) {
-    console.log('\tDateTime');
+    console.debug('\tDateTime');
     Object(__WEBPACK_IMPORTED_MODULE_3__base_component__["b" /* hookupComponents */])(e, '.v-datetime', VDateTime, __WEBPACK_IMPORTED_MODULE_1__material_textfield__["MDCTextField"]);
 }
 var VDateTime = function (_VTextField) {
@@ -41306,7 +41568,7 @@ function updateSelectionCount(component, count) {
 }
 
 function initLists(e) {
-    console.log('\tLists');
+    console.debug('\tLists');
     var components = e.querySelectorAll('.mdc-list');
     if (components) {
         var _iteratorNormalCompletion3 = true;
@@ -41422,7 +41684,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initDrawer(e) {
-    console.log('\tDrawer');
+    console.debug('\tDrawer');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-drawer__modal', VModalDrawer, __WEBPACK_IMPORTED_MODULE_0__material_drawer__["MDCDrawer"]);
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-drawer__dismissible', VDismissibleDrawer, __WEBPACK_IMPORTED_MODULE_0__material_drawer__["MDCDrawer"]);
 }
@@ -44832,7 +45094,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initHeader(e) {
-    console.log('\tHeader');
+    console.debug('\tHeader');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-header', VHeader, __WEBPACK_IMPORTED_MODULE_0__material_top_app_bar_index__["a" /* MDCTopAppBar */]);
 }
 
@@ -46708,7 +46970,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initIconToggles(e) {
-    console.log('\tIcon Toggles');
+    console.debug('\tIcon Toggles');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-icon-toggle', VIconToggle, __WEBPACK_IMPORTED_MODULE_2__material_icon_toggle__["MDCIconToggle"]);
 }
 
@@ -49543,7 +49805,7 @@ function createMenuHandler(menu, element) {
 }
 
 function initMenus(e) {
-    console.log('\tMenus');
+    console.debug('\tMenus');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-menu', VMenu, __WEBPACK_IMPORTED_MODULE_0__material_menu__["MDCMenu"]);
 }
 
@@ -49592,7 +49854,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initSelects(e) {
-    console.log('\tSelects');
+    console.debug('\tSelects');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-select', VSelect, __WEBPACK_IMPORTED_MODULE_0__material_select__["MDCSelect"]);
 }
 
@@ -59917,7 +60179,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initChips(e) {
-    console.log('\tChips');
+    console.debug('\tChips');
     Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-chip', VChip, __WEBPACK_IMPORTED_MODULE_0__material_chips__["MDCChip"]);
     Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-chip-set', VChipSet, __WEBPACK_IMPORTED_MODULE_0__material_chips__["MDCChipSet"]);
 }
@@ -59954,7 +60216,7 @@ var VChip = function (_eventHandlerMixin) {
     }, {
         key: 'clear',
         value: function clear() {
-            console.log('\tChip clear is a no-op');
+            console.debug('Chip clear is a no-op');
         }
     }, {
         key: 'setValue',
@@ -59997,7 +60259,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initCards(e) {
-    console.log('\tCards');
+    console.debug('\tCards');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-card', VCard, null);
 }
 
@@ -60034,7 +60296,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initForms(e) {
-    console.log('\tForms');
+    console.debug('\tForms');
     Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-form', VForm, null);
 }
 
@@ -60072,7 +60334,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initSnackbar(e) {
-    console.log('\tSnackbar');
+    console.debug('\tSnackbar');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-snackbar', VSnackbar, __WEBPACK_IMPORTED_MODULE_0__material_snackbar__["MDCSnackbar"]);
 }
 
@@ -61663,7 +61925,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initCheckboxes(e) {
-    console.log('\tCheckboxes');
+    console.debug('\tCheckboxes');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-checkbox', VCheckbox, __WEBPACK_IMPORTED_MODULE_2__material_checkbox__["MDCCheckbox"]);
 }
 
@@ -64829,7 +65091,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initSwitches(e) {
-    console.log('\tSwitches');
+    console.debug('\tSwitches');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-switch', VSwitch, __WEBPACK_IMPORTED_MODULE_2__material_switch__["MDCSwitch"]);
 }
 
@@ -67535,7 +67797,7 @@ var toolbarOptions = [['bold', 'italic', 'underline', 'strike'], // toggled butt
 ];
 
 function initRichTextArea(e) {
-    console.log('\tRich Text Area');
+    console.debug('\tRich Text Area');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-rich-text-area-container', VRichTextArea, null);
 }
 
@@ -82530,7 +82792,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initSteppers(e) {
-    console.log('\tStepper');
+    console.debug('\tStepper');
     Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-stepper', VStepper, null);
 }
 
@@ -82611,7 +82873,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initRadios(e) {
-    console.log('\tRadios');
+    console.debug('\tRadios');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-radio', VRadio, __WEBPACK_IMPORTED_MODULE_2__material_radio__["MDCRadio"]);
 }
 
@@ -85241,7 +85503,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initSliders(e) {
-    console.log('\tSliders');
+    console.debug('\tSliders');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-slider', VSlider, __WEBPACK_IMPORTED_MODULE_2__material_slider__["MDCSlider"]);
 }
 
@@ -87405,7 +87667,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initHiddenFields(e) {
-    console.log('\tHiddenFields');
+    console.debug('\tHiddenFields');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-hidden-field', VHiddenField, null);
 }
 
@@ -87482,7 +87744,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initContent(e) {
-    console.log('\tContent');
+    console.debug('\tContent');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-content', VContent, null);
 }
 
@@ -87523,7 +87785,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initGrid(e) {
-    console.log('\tGrid');
+    console.debug('\tGrid');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-grid', VGrid, null);
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-column', VColumn, null);
 }
@@ -87574,7 +87836,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initTabBars(e) {
-    console.log('\tTab Bars');
+    console.debug('\tTab Bars');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-tab-bar', VTabBar, __WEBPACK_IMPORTED_MODULE_2__material_tab_bar__["MDCTabBar"]);
 }
 
@@ -94133,7 +94395,7 @@ function createTableRowSelectHandler(component, listElements, selectAll) {
 }
 
 function initTables(e) {
-    console.log('\tTables');
+    console.debug('\tTables');
     var components = e.querySelectorAll('.mdl-data-table');
     if (components) {
         var _iteratorNormalCompletion3 = true;
@@ -94213,7 +94475,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initFileInputs(e) {
-    console.log('\tFile Inputs');
+    console.debug('\tFile Inputs');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-file-input', VFileInput, null);
 }
 
@@ -94349,7 +94611,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initFormFields(e) {
-    console.log('\tForm Fields');
+    console.debug('\tForm Fields');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-form-field', VFormField, __WEBPACK_IMPORTED_MODULE_2__material_form_field__["MDCFormField"]);
 }
 
@@ -96892,7 +97154,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initImages(e) {
-    console.log('\tImages');
+    console.debug('\tImages');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-image', VImage);
 }
 
@@ -96937,7 +97199,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initTypography(e) {
-    console.log('\tTypography');
+    console.debug('\tTypography');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-typography', VTypography);
 }
 
@@ -96987,7 +97249,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initTooltips(e) {
-    console.log('\tTooltips');
+    console.debug('\tTooltips');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-tooltip', VTooltip, MaterialTooltip);
 }
 
@@ -97026,7 +97288,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initPlugins(e) {
-    console.log('\tPlugins');
+    console.debug('\tPlugins');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-plugin', VPluginComponent);
 }
 
@@ -97141,7 +97403,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initProgress(e) {
-    console.log('\tProgress');
+    console.debug('\tProgress');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-progress', VProgress, __WEBPACK_IMPORTED_MODULE_1__material_linear_progress__["a" /* MDCLinearProgress */]);
 }
 
