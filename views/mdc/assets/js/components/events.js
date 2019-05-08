@@ -15,12 +15,13 @@ import getRoot from './root_document';
 
 export class VEvents {
     // [[type, url, target, params]]
-    constructor(actions, event, root) {
+    constructor(actions, event, root, vComponent) {
         this.event = event;
         this.root = root;
         this.actions = actions.map((action) => {
             return this.constructor.action_class(action, event, root);
         });
+        this.vComponent = vComponent;
     }
 
     call() {
@@ -39,22 +40,18 @@ export class VEvents {
             }, p);
         }
 
-        const event = this.event;
-        const root = this.root;
-
-        pseries(fnlist).then(function(results) {
+        pseries(fnlist).then((results) => {
             const result = results.pop();
             const contentType = result.contentType;
             const responseURL = result.responseURL;
 
-            if (event.target.dialog) {
-                event.target.dialog.close();
-            }
             if (contentType && contentType.indexOf('text/html') !== -1 &&
                 typeof responseURL !== 'undefined') {
                 window.location = responseURL;
             }
-        }).catch(function(results) {
+
+            this.vComponent.actionsSucceeded(this);
+        }).catch((results) => {
             console.log('If you got here it may not be what you think:',
                 results);
 
@@ -65,8 +62,12 @@ export class VEvents {
             }
 
             if (!result.squelch) {
-                new VErrors(root, event).displayErrors(result);
+                new VErrors(this.root, this.event).displayErrors(result);
             }
+
+            this.vComponent.actionsHalted();
+        }).finally(() => {
+            this.vComponent.actionsFinished();
         });
     }
 
@@ -115,7 +116,7 @@ export class VEvents {
 function createEventHandler(actionsData, root) {
     return function(event) {
         event.stopPropagation();
-        new VEvents(actionsData, event, root).call();
+        new VEvents(actionsData, event, root, this.vComponent).call();
     };
 }
 

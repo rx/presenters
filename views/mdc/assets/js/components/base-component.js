@@ -18,6 +18,18 @@ export class VBaseComponent {
     onHide() {
     }
 
+
+    actionsHalted() {
+        console.debug('VBaseComponent.prototype.actionsHalted');
+    }
+
+    actionsSucceeded() {
+        console.debug('VBaseComponent.prototype.actionsSucceeded');
+    }
+
+    actionsFinished() {
+        console.debug('VBaseComponent.prototype.actionsFinished');
+    }
     clearErrors() {
         new VErrors(this.root).clearErrors();
     }
