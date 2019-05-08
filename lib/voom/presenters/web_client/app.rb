@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'honeybadger' if ENV.fetch('HONEYBADGER_API_KEY'){false}
 require 'uri'
 require 'redcarpet'
 require "dry/inflector"
