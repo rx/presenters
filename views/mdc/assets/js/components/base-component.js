@@ -52,6 +52,10 @@ export class VBaseComponent {
     respondTo(method) {
         return typeof this[method] === 'function';
     }
+
+    is(name) {
+        return this.constructor.name === name;
+    }
 }
 
 export function hookupComponents(root, selector, VoomClass, MdcClass) {
