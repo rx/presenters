@@ -19,6 +19,15 @@ export class VBaseComponent {
     // Invoked after event handlers have been initialized.
     afterInit() {}
 
+    parentComponent(selector) {
+        const element = this.element.closest(selector);
+
+        if (!(element && element.vComponent)) {
+            return null;
+        }
+
+        return element.vComponent;
+    }
 
     actionsHalted() {
         console.debug('VBaseComponent.prototype.actionsHalted');
