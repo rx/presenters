@@ -8954,7 +8954,9 @@ var VEvents = function () {
                     window.location = responseURL;
                 }
 
-                _this2.vComponent.actionsSucceeded(_this2);
+                if (_this2.vComponent) {
+                    _this2.vComponent.actionsSucceeded(_this2);
+                }
             }).catch(function (results) {
                 console.log('If you got here it may not be what you think:', results);
 
@@ -8968,9 +8970,13 @@ var VEvents = function () {
                     new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](_this2.root, _this2.event).displayErrors(result);
                 }
 
-                _this2.vComponent.actionsHalted(_this2);
+                if (_this2.vComponent) {
+                    _this2.vComponent.actionsHalted(_this2);
+                }
             }).finally(function () {
-                _this2.vComponent.actionsFinished(_this2);
+                if (_this2.vComponent) {
+                    _this2.vComponent.actionsFinished(_this2);
+                }
             });
         }
     }], [{
@@ -9019,10 +9025,10 @@ var VEvents = function () {
 
 // This is used to get a proper binding of the actionData
 // https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
-function createEventHandler(actionsData, root) {
+function createEventHandler(actionsData, root, vComponent) {
     return function (event) {
         event.stopPropagation();
-        new VEvents(actionsData, event, root, this.vComponent).call();
+        new VEvents(actionsData, event, root, vComponent).call();
     };
 }
 
@@ -9038,12 +9044,12 @@ function initEvents(e) {
             var eventName = eventData[0];
             var eventOptions = eventData[2];
             var actionsData = eventData[1];
-            var eventHandler = createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e));
             var vComponent = eventElem.vComponent;
+            var eventHandler = createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e), vComponent);
 
             // allow overide of event handler by component
             if (vComponent && vComponent.createEventHandler) {
-                eventHandler = vComponent.createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e));
+                eventHandler = vComponent.createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e), vComponent);
             }
 
             // Delegate to the component if possible

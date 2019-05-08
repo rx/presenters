@@ -50,7 +50,9 @@ export class VEvents {
                 window.location = responseURL;
             }
 
-            this.vComponent.actionsSucceeded(this);
+            if (this.vComponent) {
+                this.vComponent.actionsSucceeded(this);
+            }
         }).catch((results) => {
             console.log('If you got here it may not be what you think:',
                 results);
@@ -65,9 +67,13 @@ export class VEvents {
                 new VErrors(this.root, this.event).displayErrors(result);
             }
 
-            this.vComponent.actionsHalted(this);
+            if (this.vComponent) {
+                this.vComponent.actionsHalted(this);
+            }
         }).finally(() => {
-            this.vComponent.actionsFinished(this);
+            if (this.vComponent) {
+                this.vComponent.actionsFinished(this);
+            }
         });
     }
 
@@ -113,10 +119,10 @@ export class VEvents {
 
 // This is used to get a proper binding of the actionData
 // https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
-function createEventHandler(actionsData, root) {
+function createEventHandler(actionsData, root, vComponent) {
     return function(event) {
         event.stopPropagation();
-        new VEvents(actionsData, event, root, this.vComponent).call();
+        new VEvents(actionsData, event, root, vComponent).call();
     };
 }
 
@@ -132,13 +138,13 @@ export function initEvents(e) {
             var eventName = eventData[0];
             var eventOptions = eventData[2];
             var actionsData = eventData[1];
-            var eventHandler = createEventHandler(actionsData, getRoot(e));
             const vComponent = eventElem.vComponent;
+            var eventHandler = createEventHandler(actionsData, getRoot(e), vComponent);
 
             // allow overide of event handler by component
             if (vComponent && vComponent.createEventHandler) {
                 eventHandler = vComponent.createEventHandler(
-                    actionsData, getRoot(e));
+                    actionsData, getRoot(e), vComponent);
             }
 
             // Delegate to the component if possible
