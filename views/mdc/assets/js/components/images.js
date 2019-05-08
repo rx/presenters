@@ -3,7 +3,7 @@ import {hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
 export function initImages(e) {
-    console.log('\tImages');
+    console.debug('\tImages');
     hookupComponents(e, '.v-image', VImage);
 }
 

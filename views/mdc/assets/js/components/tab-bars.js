@@ -3,7 +3,7 @@ import {eventHandlerMixin} from "./mixins/event-handler";
 import {MDCTabBar} from '@material/tab-bar';
 
 export function initTabBars(e) {
-    console.log('\tTab Bars');
+    console.debug('\tTab Bars');
     hookupComponents(e, '.v-tab-bar', VTabBar, MDCTabBar);
 }
 

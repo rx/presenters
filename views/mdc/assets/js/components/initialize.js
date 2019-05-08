@@ -33,7 +33,10 @@ import {initPlugins} from './plugins';
 import {initProgress} from './progress';
 
 export function initialize(root, setRoot) {
-    console.log('Initializing');
+    console.debug('Initializing components');
+
+    const start = performance.now();
+
     initButtons(root);
     initDialogs(root);
     initDateTime(root);// MUST BE BEFORE initTextFields
@@ -66,6 +69,10 @@ export function initialize(root, setRoot) {
     initProgress(root);
     initTooltips(root);
     initPlugins(root);
+
     // This needs to be last, because it relies on the components installed above.
     initEvents(root);
+
+    const end = performance.now();
+    console.debug('Done in %s ms', (end - start).toFixed(2));
 }

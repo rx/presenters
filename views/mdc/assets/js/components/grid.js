@@ -3,7 +3,7 @@ import {hookupComponents} from "./base-component";
 import {eventHandlerMixin} from './mixins/event-handler';
 
 export function initGrid(e) {
-    console.log('\tGrid');
+    console.debug('\tGrid');
     hookupComponents(e, '.v-grid', VGrid, null);
     hookupComponents(e, '.v-column', VColumn, null);
 }

@@ -3,7 +3,7 @@ import {VBaseToggle} from './base-toggle';
 import {MDCIconToggle} from '@material/icon-toggle';
 
 export function initIconToggles(e) {
-    console.log('\tIcon Toggles');
+    console.debug('\tIcon Toggles');
     hookupComponents(e, '.v-icon-toggle', VIconToggle, MDCIconToggle);
 }
 

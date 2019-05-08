@@ -5,7 +5,7 @@ import {hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
 export function initTooltips(e) {
-    console.log('\tTooltips');
+    console.debug('\tTooltips');
     hookupComponents(e, '.v-tooltip', VTooltip, MaterialTooltip);
 }
 

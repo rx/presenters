@@ -60,7 +60,7 @@ function updateSelectionCount(component, count) {
 }
 
 export function initLists(e) {
-    console.log('\tLists');
+    console.debug('\tLists');
     let components = e.querySelectorAll('.mdc-list');
     if (components) {
         for (let component of components) {

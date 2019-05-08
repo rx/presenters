@@ -5,6 +5,12 @@ export class VBaseContainer extends VBaseComponent {
         super(element, mdcComponent);
     }
 
+    components() {
+        return Array.from(this.element.querySelectorAll('.v-component'))
+            .filter((element) => element.vComponent)
+            .map((element) => element.vComponent);
+    }
+
     inputs() {
         return this.element.querySelectorAll('.v-input');
     }
@@ -77,5 +83,23 @@ export class VBaseContainer extends VBaseComponent {
             .filter((component) => component.respondTo('isDirty'))
             .map((component) => component.isDirty())
             .some(Boolean);
+    }
+
+    actionsHalted() {
+        for (const comp of this.components()) {
+            comp.actionsHalted();
+        }
+    }
+
+    actionsSucceeded() {
+        for (const comp of this.components()) {
+            comp.actionsSucceeded();
+        }
+    }
+
+    actionsFinished() {
+        for (const comp of this.components()) {
+            comp.actionsFinished();
+        }
     }
 }
