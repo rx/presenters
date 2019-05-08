@@ -65,9 +65,9 @@ export class VEvents {
                 new VErrors(this.root, this.event).displayErrors(result);
             }
 
-            this.vComponent.actionsHalted();
+            this.vComponent.actionsHalted(this);
         }).finally(() => {
-            this.vComponent.actionsFinished();
+            this.vComponent.actionsFinished(this);
         });
     }
 

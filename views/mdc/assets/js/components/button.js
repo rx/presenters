@@ -24,5 +24,35 @@ export class VButton extends eventHandlerMixin(VBaseComponent) {
 Make sure you set the type: :image on the button.`);
         }
     }
+
+    actionsHalted(vEvent) {
+        const parentDialog = this.parentComponent('.v-dialog');
+
+        if (!parentDialog) {
+            return;
+        }
+
+        parentDialog.actionsHalted(vEvent);
+    }
+
+    actionsSucceeded(vEvent) {
+        const parentDialog = this.parentComponent('.v-dialog');
+
+        if (!parentDialog) {
+            return;
+        }
+
+        parentDialog.actionsSucceeded(vEvent);
+    }
+
+    actionsFinished(vEvent) {
+        const parentDialog = this.parentComponent('.v-dialog');
+
+        if (!parentDialog) {
+            return;
+        }
+
+        parentDialog.actionsFinished(vEvent);
+    }
 }
 
