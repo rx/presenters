@@ -40,6 +40,11 @@ export class VBaseComponent {
     actionsFinished() {
         console.debug('VBaseComponent.prototype.actionsFinished');
     }
+
+    hasHandlers() {
+        return this.eventsHandler && Object.keys(this.eventsHandler).length > 0;
+    }
+
     clearErrors() {
         new VErrors(this.root).clearErrors();
     }
