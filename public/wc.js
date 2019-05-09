@@ -183,15 +183,15 @@ var eventHandlerMixin = function eventHandlerMixin(Base) {
             key: 'initEventListener',
 
             // idempotent event handling initialization
-            value: function initEventListener(eventName, eventHandler) {
-                if (typeof this.eventsHandler === 'undefined') {
-                    this.eventsHandler = {};
+            value: function initEventListener(eventName, eventHandler, eventOptions) {
+                if (typeof this.element.eventsHandler === 'undefined') {
+                    this.element.eventsHandler = {};
                 }
-                if (typeof this.eventsHandler[eventName] === 'undefined') {
-                    this.eventsHandler[eventName] = [];
+                if (typeof this.element.eventsHandler[eventName] === 'undefined') {
+                    this.element.eventsHandler[eventName] = [];
                 }
-                this.eventsHandler[eventName].push(eventHandler);
-                this.element.addEventListener(eventName, eventHandler);
+                this.element.eventsHandler[eventName].push(eventHandler);
+                this.element.addEventListener(eventName, eventHandler, eventOptions);
             }
         }]);
 
@@ -8892,15 +8892,16 @@ function initEvents(e) {
             var eventData = eventsData[j];
             var eventName = eventData[0];
             var eventOptions = eventData[2];
+            eventOptions.passive = true;
             var actionsData = eventData[1];
             var eventHandler = createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e));
-            // allow overide of event handler by component
+            // allow override of event handler by component
             if (eventElem.vComponent && eventElem.vComponent.createEventHandler) {
                 eventHandler = eventElem.vComponent.createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e));
             }
             // Delegate to the component if possible
             if (eventElem.vComponent && eventElem.vComponent.initEventListener) {
-                eventElem.vComponent.initEventListener(eventName, eventHandler);
+                eventElem.vComponent.initEventListener(eventName, eventHandler, eventOptions);
             } else {
                 if (typeof eventElem.eventsHandler === 'undefined') {
                     eventElem.eventsHandler = {};
@@ -8909,7 +8910,6 @@ function initEvents(e) {
                     eventElem.eventsHandler[eventName] = [];
                 }
                 eventElem.eventsHandler[eventName].push(eventHandler);
-                eventOptions.passive = true;
                 eventElem.addEventListener(eventName, eventHandler, eventOptions);
             }
         }
@@ -35488,8 +35488,7 @@ var VMenu = function (_eventHandlerMixin) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__material_select__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_visibility_observer__ = __webpack_require__(12);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35497,7 +35496,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -35569,7 +35567,7 @@ var VSelect = function (_visibilityObserverMi) {
     }]);
 
     return VSelect;
-}(Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__["a" /* visibilityObserverMixin */])(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */])));
+}(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_visibility_observer__["a" /* visibilityObserverMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]));
 
 /***/ }),
 /* 66 */

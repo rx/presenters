@@ -6,7 +6,8 @@
             <%= 'mdc-list--avatar-list' if comp.lines.select{|line| eq(line.type, :line) && line.avatar }.any? %>
             <%= 'v-list__border' if comp.border %>"
       style="<%= "background-color: #{comp.color};" if comp.color %>"
-      data-total-lines="<%= comp.total_lines %>">
+      data-total-lines="<%= comp.total_lines %>"
+      <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id}%>>
 <% end %>
 <% for line in comp.lines %>
   <%= erb :"components/list/#{line.type}", :locals => {:list => comp, :line => line} %>
