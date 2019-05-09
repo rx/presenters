@@ -12,10 +12,34 @@ export class VBaseComponent {
         return true;
     }
 
-    onShow() {
+    onShow() {}
+
+    onHide() {}
+
+    // Invoked after event handlers have been initialized.
+    afterInit() {}
+
+    parentComponent(selector) {
+        const element = this.element.closest(selector);
+
+        if (!(element && element.vComponent)) {
+            return null;
+        }
+
+        return element.vComponent;
     }
 
-    onHide() {
+    actionsHalted() {
+    }
+
+    actionsSucceeded() {
+    }
+
+    actionsFinished() {
+    }
+
+    hasHandlers() {
+        return this.eventsHandler && Object.keys(this.eventsHandler).length > 0;
     }
 
     clearErrors() {
@@ -24,6 +48,10 @@ export class VBaseComponent {
 
     respondTo(method) {
         return typeof this[method] === 'function';
+    }
+
+    is(name) {
+        return this.constructor.name === name;
     }
 }
 

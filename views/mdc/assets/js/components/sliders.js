@@ -5,7 +5,7 @@ import {visibilityObserverMixin} from './mixins/visibility-observer';
 import {VEvents} from './events';
 
 export function initSliders(e) {
-    console.log('\tSliders');
+    console.debug('\tSliders');
     hookupComponents(e, '.v-slider', VSlider, MDCSlider);
 }
 

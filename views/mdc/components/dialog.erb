@@ -13,7 +13,8 @@
      aria-modal="true"
      aria-labelledby="<%= comp.id %>-title"
      aria-describedby="<%= comp.id %>-content"
-     data-is-container>
+     data-is-container
+     <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
   <div class="mdc-dialog__container">
     <div class="mdc-dialog__surface"
          <% if comp.width || comp.height %>

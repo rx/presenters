@@ -15,7 +15,7 @@ function createMenuHandler(menu, element) {
 }
 
 export function initMenus(e) {
-    console.log('\tMenus');
+    console.debug('\tMenus');
     hookupComponents(e, '.v-menu', VMenu, MDCMenu);
 }
 

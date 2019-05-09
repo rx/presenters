@@ -4,7 +4,7 @@ import {eventHandlerMixin} from "./mixins/event-handler";
 import {VBaseComponent, hookupComponents} from './base-component';
 
 export function initChips(e) {
-    console.log('\tChips');
+    console.debug('\tChips');
     hookupComponents(e, '.v-chip', VChip, MDCChip);
     hookupComponents(e, '.v-chip-set', VChipSet, MDCChipSet);
 }
@@ -30,7 +30,7 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
     }
 
     clear(){
-        console.log('\tChip clear is a no-op');
+        console.debug('Chip clear is a no-op');
     }
 
     setValue(value){

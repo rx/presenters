@@ -23,7 +23,7 @@ var toolbarOptions = [
 ];
 
 export function initRichTextArea(e) {
-    console.log('\tRich Text Area');
+    console.debug('\tRich Text Area');
     hookupComponents(e, '.v-rich-text-area-container', VRichTextArea, null);
 }
 

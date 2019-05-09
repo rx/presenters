@@ -5,7 +5,7 @@ import {hookupComponents} from './base-component';
 import {MDCFormField} from '@material/form-field';
 
 export function initFormFields(e) {
-    console.log('\tForm Fields');
+    console.debug('\tForm Fields');
     hookupComponents(e, '.v-form-field', VFormField, MDCFormField);
 }
 
