@@ -1,4 +1,10 @@
+/* global require */
+
 import {initialize} from './components/initialize';
+
+// The Adapter is required when transpiling classes to ES5 code.
+// https://github.com/webcomponents/webcomponentsjs/tree/v2.2.7#custom-elements-es5-adapterjs
+import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js';
 
 // Webcomponent polyfil
 window.WebComponents = window.WebComponents || {};
@@ -41,42 +47,18 @@ class FlowMatic extends HTMLElement {
         oReq.send();
     }
 
-    createdCallback() {
-        console.log('flow-matic element added to page.');
-        if (!this.dataset.comp) {
-            // Select the node that will be observed for mutations
-            const targetNode = this;
+    static get observedAttributes() {
+        // A list of attribute names to observe via attributeChangedCallback.
+        return ['data-comp'];
+    }
 
-            // Options for the observer (which mutations to observe)
-            const config = {attributes: true};
-
-            const loadComponent = () => {
-                this.loadComponent();
-            };
-            // Callback function to execute when mutations are observed
-            const callback = function(mutationsList, observer) {
-                for (const mutation of mutationsList) {
-                    if (mutation.type === 'attributes' &&
-                        mutation.attributeName === 'data-comp') {
-                        console.log('The ' + mutation.attributeName +
-                            ' attribute was modified.');
-                        loadComponent(targetNode);
-                        observer.disconnect();
-                    }
-                }
-            };
-
-            // Create an observer instance linked to the callback function
-            const observer = new MutationObserver(callback);
-
-            // Start observing the target node for configured mutations
-            observer.observe(targetNode, config);
-        }
-        else {
-            this.loadComponent(this);
+    attributeChangedCallback() {
+        if (this.dataset.comp) {
+            this.loadComponent();
         }
 
     }
 }
 
-document.registerElement('flow-matic', FlowMatic);
+require('material-design-lite/material');
+customElements.define('flow-matic', FlowMatic);

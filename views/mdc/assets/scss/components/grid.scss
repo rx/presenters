@@ -1,5 +1,9 @@
 @import "@material/layout-grid/mdc-layout-grid";
 
+.v-column-hide-overflow {
+  overflow: hidden;
+}
+
 .v-column--relative {
   position: relative;
 }
@@ -66,3 +70,16 @@
   }
 }
 
+.v-grid-column-align-right {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+@each $size in map-keys($mdc-layout-grid-columns) {
+  @include mdc-layout-grid-media-query_($size) {
+    div.v-gutter-none {
+      grid-gap: 0;
+      gap: 0;
+    }
+  }
+}

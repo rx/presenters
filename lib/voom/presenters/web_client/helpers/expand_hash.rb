@@ -8,6 +8,8 @@ module ExpandHash
     HashExt.traverse(h.to_h) do |k,v|
       if !v.is_a?(Array) && v.respond_to?(:to_h)
         v = v.is_a?(OpenStruct) ? expand_hash(v.to_h) : v.to_h
+      elsif v.is_a?(Array)
+        v = v.map {|v| v.is_a?(OpenStruct) ? expand_hash(v.to_h) : v}
       elsif v.respond_to?(:to_hash)
         v = v.to_hash
       end

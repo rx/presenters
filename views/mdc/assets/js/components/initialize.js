@@ -28,12 +28,15 @@ import {initFileInputs} from './file-inputs';
 import {initFormFields} from './form-fields';
 import {initImages} from './images';
 import {initTypography} from './typography';
-// import {initTooltip} from './tooltip';
+import {initTooltips} from './tooltip';
 import {initPlugins} from './plugins';
 import {initProgress} from './progress';
 
 export function initialize(root, setRoot) {
-    console.log('Initializing');
+    console.debug('Initializing components');
+
+    const start = performance.now();
+
     initButtons(root);
     initDialogs(root);
     initDateTime(root);// MUST BE BEFORE initTextFields
@@ -64,8 +67,12 @@ export function initialize(root, setRoot) {
     initImages(root);
     initTypography(root);
     initProgress(root);
-    // initTooltip();
+    initTooltips(root);
     initPlugins(root);
+
     // This needs to be last, because it relies on the components installed above.
     initEvents(root);
+
+    const end = performance.now();
+    console.debug('Done in %s ms', (end - start).toFixed(2));
 }

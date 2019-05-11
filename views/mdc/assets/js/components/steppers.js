@@ -4,7 +4,7 @@ import {hookupComponents} from "./base-component";
 
 
 export function initSteppers(e) {
-    console.log('\tStepper');
+    console.debug('\tStepper');
     hookupComponents(e, '.v-stepper', VStepper, null);
 }
 

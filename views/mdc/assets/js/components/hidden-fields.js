@@ -1,7 +1,7 @@
 import {VBaseComponent, hookupComponents} from './base-component';
 
 export function initHiddenFields(e) {
-    console.log('\tHiddenFields');
+    console.debug('\tHiddenFields');
     hookupComponents(e, '.v-hidden-field', VHiddenField, null);
 }
 
@@ -15,19 +15,23 @@ export class VHiddenField extends VBaseComponent {
         params.push([this.name(), this.value()]);
     }
 
-    name(){
+    name() {
         return this.element.name;
     }
 
-    value(){
+    value() {
         return this.element.value;
     }
 
-    clear(){
+    clear() {
         this.setValue('');
     }
 
-    setValue(value){
+    reset() {
+        this.element.value = this.element.dataset.originalValue;
+    }
+
+    setValue(value) {
         this.element.value = value;
     }
 

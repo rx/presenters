@@ -30,7 +30,8 @@
   <% end %>
   <div class="v-errors">
     <% if comp.components.any? %>
-      <div class="v-card-content">
+      <div class="v-card-content
+                  <%= _padding_classes_(comp.padding, subclass: :col) %>">
         <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
       </div>
     <% end %>
@@ -48,6 +49,9 @@
         <div class="mdc-card__action-icons">
           <% action_icons.each do |button| %>
             <%= erb :"components/button", :locals => {:comp => button, class_name: 'mdc-card__action mdc-card__action--icon'} %>
+          <% end %>
+          <% comp.actions.switches.each do |switch| %>
+            <%= erb :"components/switch", :locals => {:comp => switch, class_name: 'mdc-card__action'} %>
           <% end %>
         </div>
       </div>

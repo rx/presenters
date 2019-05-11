@@ -6685,7 +6685,8 @@ h1.v-page-title {
   margin-left: auto; }
 
 .v-fab--absolute {
-  position: absolute; }
+  position: absolute;
+  z-index: 1; }
 
 @media (min-width: 840px) {
   .mdc-fab.v-button-fab-position-top {
@@ -7989,6 +7990,9 @@ svg.mdc-button__icon {
   margin-right: 0;
   margin-left: auto; }
 
+.v-column-hide-overflow {
+  overflow: hidden; }
+
 .v-column--relative {
   position: relative; }
 
@@ -8196,6 +8200,25 @@ svg.mdc-button__icon {
     padding: 0 0 0 8px; }
   .v-col__padding-bottom0-left0-right0-top0 {
     padding: 0 0 0 0; } }
+
+.v-grid-column-align-right {
+  margin-right: 0;
+  margin-left: auto; }
+
+@media (min-width: 840px) {
+  div.v-gutter-none {
+    grid-gap: 0;
+    gap: 0; } }
+
+@media (min-width: 480px) and (max-width: 839px) {
+  div.v-gutter-none {
+    grid-gap: 0;
+    gap: 0; } }
+
+@media (max-width: 479px) {
+  div.v-gutter-none {
+    grid-gap: 0;
+    gap: 0; } }
 
 .mdc-floating-label {
   font-family: Roboto, sans-serif;
@@ -11771,9 +11794,6 @@ select {
 .v-card-media {
   position: relative; }
 
-.v-card-content {
-  padding: 10px 10px; }
-
 .v-card-title {
   padding: 10px 10px 0px 10px; }
 
@@ -14195,37 +14215,23 @@ select {
 .mdc-form-field > label.v-switch__label {
   padding-left: 11px; }
 
-.v-image-position-left {
-  position: absolute;
-  left: 0;
-  bottom: 0; }
+.v-image {
+  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%; }
 
-.v-image-position-top {
-  position: absolute;
-  top: 0; }
+.v-image--fit-contain {
+  object-fit: contain; }
 
-.v-image-position-right {
-  position: absolute;
-  right: 0;
-  bottom: 0; }
-
-.v-image-position-bottom {
-  position: absolute;
-  bottom: 0; }
-
-.v-image-position-center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto; }
-
-.v-image-fit-cover {
+.v-image--fit-cover {
   object-fit: cover; }
 
-.v-image-fit-fill {
+.v-image--fit-fill {
   object-fit: fill; }
 
-.v-image-fit-contain {
-  object-fit: contain; }
+.v-image--fit-fit {
+  object-fit: scale-down; }
 
 .v-icon-position-left {
   float: left;
@@ -14360,6 +14366,9 @@ select {
 
 .v-paging__count + .v-paging__next {
   margin-left: 68px; }
+
+.v-separator {
+  margin: 0; }
 
 .flatpickr-calendar {
   background: transparent;
@@ -16690,3 +16699,6 @@ span.flatpickr-weekday {
 .v-hidden,
 .incompatible-browser .compatibility-wrapper * {
   display: none; }
+
+:not(.mdc-list--non-interactive) > :not(.mdc-list-item--disabled).mdc-list-item:hover::before {
+  filter: opacity(100%); }

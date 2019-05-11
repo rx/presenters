@@ -94,8 +94,7 @@ module Voom
             end
 
             def separator(**attributes, &block)
-              self << Components::Typography.new(parent: self, type: :body, text: ['---'],
-                                                 **attributes, &block)
+              self << Components::Separator.new(parent: self, **attributes, &block)
             end
 
             def link(text, url, **attributes, &block)

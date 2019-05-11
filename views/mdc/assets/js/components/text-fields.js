@@ -4,7 +4,7 @@ import {eventHandlerMixin} from './mixins/event-handler';
 import {visibilityObserverMixin} from './mixins/visibility-observer';
 
 export function initTextFields(e) {
-    console.log('\tTextFields');
+    console.debug('\tTextFields');
     hookupComponents(e, '.v-text-field', VTextField, MDCTextField);
 }
 
@@ -77,6 +77,10 @@ export class VTextField extends visibilityObserverMixin(
         if (this.value() !== '') {
             this.setValue(null);
         }
+    }
+
+    reset() {
+        this.input.value = this.element.dataset.originalValue;
     }
 
     setValue(value) {

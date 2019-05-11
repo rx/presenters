@@ -12,10 +12,34 @@ export class VBaseComponent {
         return true;
     }
 
-    onShow() {
+    onShow() {}
+
+    onHide() {}
+
+    // Invoked after event handlers have been initialized.
+    afterInit() {}
+
+    parentComponent(selector) {
+        const element = this.element.closest(selector);
+
+        if (!(element && element.vComponent)) {
+            return null;
+        }
+
+        return element.vComponent;
     }
 
-    onHide() {
+    actionsHalted() {
+    }
+
+    actionsSucceeded() {
+    }
+
+    actionsFinished() {
+    }
+
+    hasHandlers() {
+        return this.eventsHandler && Object.keys(this.eventsHandler).length > 0;
     }
 
     // Invoked after event handlers have been initialized.
@@ -84,22 +108,31 @@ export class VBaseComponent {
     respondTo(method) {
         return typeof this[method] === 'function';
     }
+
+    is(name) {
+        return this.constructor.name === name;
+    }
 }
 
 export function hookupComponents(root, selector, VoomClass, MdcClass) {
-    const components = root.querySelectorAll(selector);
-    for (let i = 0; i < components.length; i++) {
-        const component = components[i];
-        if (!component.mdcComponent) {
-            let mdcInstance = null;
-            if (MdcClass != null) {
-                mdcInstance = new MdcClass(component);
-            }
-            if (!component.vComponent) {
-                component.vComponent = new VoomClass(component, mdcInstance,
-                    root);
-                component.vComponent.root = root;
-            }
+    const components = Array.from(root.querySelectorAll(selector));
+
+    if (root && typeof root.matches === 'function' && root.matches(selector)) {
+        components.unshift(root);
+    }
+
+    for (const component of components) {
+        if (component.mdcComponent) {
+            continue;
+        }
+
+        const mdcInstance = typeof MdcClass === 'function'
+            ? new MdcClass(component)
+            : null;
+
+        if (!component.vComponent) {
+            component.vComponent = new VoomClass(component, mdcInstance, root);
+            component.vComponent.root = root;
         }
     }
 }

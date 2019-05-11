@@ -10,6 +10,7 @@ $fab-offsets: (
 
 .v-fab--absolute {
   position: absolute;
+  z-index: 1;
 }
 
 @each $size in map-keys($mdc-layout-grid-columns) {

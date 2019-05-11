@@ -20,32 +20,6 @@ module Voom
   module Presenters
     module DSL
       module Components
-        module Padding
-          def coerce_padding(padding)
-            case padding
-              when true, :full, :all
-                [:top, :right, :bottom, :left]
-              when false, :none
-                []
-              else
-                Array(padding)
-            end
-          end
-
-          def validate_padding(padding_)
-            validation_msg = 'Padding must either be true or :full, :all, false or :none, '\
-                             'or an array containing zero ore more of the following :top, :right, :bottom, :left!'
-            if padding_.respond_to?(:pop)
-              raise Errors::ParameterValidation, validation_msg if (padding_ - %i(top right bottom left)).any?
-            else
-              raise Errors::ParameterValidation, validation_msg unless padding_===true ||
-                  padding_===false ||
-                  %i(full none).include(padding_)
-            end
-            padding_
-          end
-
-        end
         class Grid < EventBase
           include Mixins::Attaches
           include Mixins::Dialogs
@@ -65,6 +39,7 @@ module Voom
             padding = attribs.delete(:padding) {nil}
             @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
             @wide = attribs.delete(:wide) {false}
+            @gutter = coerce_gutter(attribs.delete(:gutter) {nil})
             expand!
           end
 
@@ -75,7 +50,22 @@ module Voom
           end
 
           private
-          include Padding
+
+          def coerce_gutter(gutter)
+            case gutter
+            when true, :full, :all
+              true
+            when false, :none
+              false
+            when nil
+              nil
+            else
+              raise Errors::ParameterValidation, "Grid gutter was: #{gutter}. "\
+                          'Allowed gutter values are true, false, :full, :all, :none! and nil'
+            end
+          end
+
+          include Mixins::Padding
           class Column < EventBase
             include Mixins::Common
             include Mixins::Icons
@@ -92,7 +82,6 @@ module Voom
             include Mixins::FileInputs
             include Mixins::Avatar
             include Mixins::Progress
-            include Padding
 
             attr_reader :size,
                         :desktop,
@@ -111,12 +100,24 @@ module Voom
               @tablet = attribs.delete(:tablet)
               @phone = attribs.delete(:phone)
               @color = attribs.delete(:color)
+              @align = validate_alignment(attribs.delete(:align) {:left})
+              @overflow = attribs.delete(:overflow){true}
               @components = []
               padding = attribs.delete(:padding) {nil}
               @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
               expand!
             end
 
+            private
+
+            include Mixins::Padding
+
+            def validate_alignment(align)
+              valid_alignment = %i(right left)
+              raise "Invalid value for column alignment: #{align}. "\
+                      "Valid values are #{valid_alignment.join(' ,')}." unless valid_alignment.include?(align)
+              align
+            end
           end
         end
       end

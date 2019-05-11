@@ -3,7 +3,7 @@ import {VBaseToggle} from './base-toggle';
 import {MDCCheckbox} from '@material/checkbox';
 
 export function initCheckboxes(e) {
-    console.log('\tCheckboxes');
+    console.debug('\tCheckboxes');
     hookupComponents(e, '.v-checkbox', VCheckbox, MDCCheckbox);
 }
 

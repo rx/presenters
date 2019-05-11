@@ -15,8 +15,8 @@ module Voom
             super(type: :menu, **attribs_, &block)
             @title = title
             @items = []
-            @position = attribs.delete(:position) || :left
-            @placement = attribs.delete(:placement) || :default
+            @position = attribs.delete(:position){:left}
+            @placement = attribs.delete(:placement){:default}
             @color = attribs.delete(:color)
             @open = attributes.delete(:open) {false}
             expand!

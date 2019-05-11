@@ -23,7 +23,7 @@ var toolbarOptions = [
 ];
 
 export function initRichTextArea(e) {
-    console.log('\tRich Text Area');
+    console.debug('\tRich Text Area');
     hookupComponents(e, '.v-rich-text-area-container', VRichTextArea, null);
 }
 
@@ -40,6 +40,8 @@ export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
             placeholder: this.quillEditorElement.dataset.placeholder
 
         });
+
+        this.element.dataset.originalValue = this.value();
     }
 
     prepareSubmit(params) {
@@ -62,6 +64,10 @@ export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
         if (this.value() !== '') {
             this.setValue('');
         }
+    }
+
+    reset() {
+        this.setValue(this.element.dataset.originalValue);
     }
 
     setValue(value) {

@@ -4,7 +4,7 @@ import {eventHandlerMixin} from './mixins/event-handler';
 import {visibilityObserverMixin} from "./mixins/visibility-observer";
 
 export function initSelects(e) {
-    console.log('\tSelects');
+    console.debug('\tSelects');
     hookupComponents(e, '.v-select', VSelect, MDCSelect);
 }
 
@@ -26,7 +26,7 @@ export class VSelect extends visibilityObserverMixin(eventHandlerMixin(VBaseComp
     }
 
     value() {
-        return this.select.options.length === 0 ? null : this.select.options[this.select.selectedIndex].value;
+        return this.select.options.length === 0 || this.select.selectedIndex === -1 ? null : this.select.options[this.select.selectedIndex].value;
     }
 
     clear() {
@@ -40,6 +40,10 @@ export class VSelect extends visibilityObserverMixin(eventHandlerMixin(VBaseComp
               });
             this.select .dispatchEvent(event);
         }
+    }
+
+    reset() {
+        this.select.value = this.element.dataset.originalValue;
     }
 
     setValue(value) {

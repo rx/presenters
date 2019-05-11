@@ -113,16 +113,6 @@ module.exports = $export;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(5);
-module.exports = function (it) {
-  if (!isObject(it)) throw TypeError(it + ' is not an object!');
-  return it;
-};
-
-/***/ }),
-/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -165,10 +155,7 @@ var VBaseComponent = function () {
     }, {
         key: 'parentComponent',
         value: function parentComponent(selector) {
-            if (!this.element.parentElement) {
-                return null;
-            }
-            var element = this.element.parentElement.closest(selector);
+            var element = this.element.closest(selector);
 
             if (!(element && element.vComponent)) {
                 return null;
@@ -176,52 +163,15 @@ var VBaseComponent = function () {
 
             return element.vComponent;
         }
-
-        // Event actions results bubble up to their containers
-
-    }, {
-        key: 'actionsStarted',
-        value: function actionsStarted(vEvent) {
-            var ev = new Event('V:actionsStarted', {
-                bubbles: true,
-                cancelable: false,
-                detail: vEvent
-            });
-            this.element.dispatchEvent(ev);
-        }
-
-        // Event actions results bubble up to their containers
-
     }, {
         key: 'actionsHalted',
-        value: function actionsHalted(vEvent) {
-            var ev = new Event('V:actionsHalted', {
-                bubbles: true,
-                cancelable: false,
-                detail: vEvent
-            });
-            this.element.dispatchEvent(ev);
-        }
+        value: function actionsHalted() {}
     }, {
         key: 'actionsSucceeded',
-        value: function actionsSucceeded(vEvent) {
-            var ev = new CustomEvent('V:actionsSucceeded', {
-                bubbles: true,
-                cancelable: false,
-                detail: vEvent
-            });
-            this.element.dispatchEvent(ev);
-        }
+        value: function actionsSucceeded() {}
     }, {
         key: 'actionsFinished',
-        value: function actionsFinished(vEvent) {
-            var ev = new CustomEvent('V:actionsFinished', {
-                bubbles: true,
-                cancelable: false,
-                detail: vEvent
-            });
-            this.element.dispatchEvent(ev);
-        }
+        value: function actionsFinished() {}
     }, {
         key: 'hasHandlers',
         value: function hasHandlers() {
@@ -237,27 +187,67 @@ var VBaseComponent = function () {
         value: function respondTo(method) {
             return typeof this[method] === 'function';
         }
+    }, {
+        key: 'is',
+        value: function is(name) {
+            return this.constructor.name === name;
+        }
     }]);
 
     return VBaseComponent;
 }();
 
 function hookupComponents(root, selector, VoomClass, MdcClass) {
-    var components = root.querySelectorAll(selector);
-    for (var i = 0; i < components.length; i++) {
-        var component = components[i];
-        if (!component.mdcComponent) {
-            var mdcInstance = null;
-            if (MdcClass != null) {
-                mdcInstance = new MdcClass(component);
+    var components = Array.from(root.querySelectorAll(selector));
+
+    if (root && typeof root.matches === 'function' && root.matches(selector)) {
+        components.unshift(root);
+    }
+
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = components[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var component = _step.value;
+
+            if (component.mdcComponent) {
+                continue;
             }
+
+            var mdcInstance = typeof MdcClass === 'function' ? new MdcClass(component) : null;
+
             if (!component.vComponent) {
                 component.vComponent = new VoomClass(component, mdcInstance, root);
                 component.vComponent.root = root;
             }
         }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
     }
 }
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(5);
+module.exports = function (it) {
+  if (!isObject(it)) throw TypeError(it + ' is not an object!');
+  return it;
+};
 
 /***/ }),
 /* 3 */
@@ -321,7 +311,7 @@ module.exports = !__webpack_require__(4)(function () {
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var IE8_DOM_DEFINE = __webpack_require__(106);
 var toPrimitive = __webpack_require__(25);
 var dP = Object.defineProperty;
@@ -1420,7 +1410,7 @@ module.exports = function (index, length) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var dPs = __webpack_require__(109);
 var enumBugKeys = __webpack_require__(79);
 var IE_PROTO = __webpack_require__(78)('IE_PROTO');
@@ -1513,7 +1503,7 @@ module.exports = function (it, Constructor, name, forbiddenField) {
 var ctx = __webpack_require__(22);
 var call = __webpack_require__(120);
 var isArrayIter = __webpack_require__(92);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var toLength = __webpack_require__(9);
 var getIterFn = __webpack_require__(94);
 var BREAK = {};
@@ -1555,7 +1545,7 @@ module.exports = function (target, src, safe) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VBaseContainer; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1572,11 +1562,7 @@ var VBaseContainer = function (_VBaseComponent) {
     function VBaseContainer(element, mdcComponent) {
         _classCallCheck(this, VBaseContainer);
 
-        var _this = _possibleConstructorReturn(this, (VBaseContainer.__proto__ || Object.getPrototypeOf(VBaseContainer)).call(this, element, mdcComponent));
-
-        element.dataset.isContainer = true;
-        _this.element.classList.add('v-container');
-        return _this;
+        return _possibleConstructorReturn(this, (VBaseContainer.__proto__ || Object.getPrototypeOf(VBaseContainer)).call(this, element, mdcComponent));
     }
 
     _createClass(VBaseContainer, [{
@@ -1593,6 +1579,15 @@ var VBaseContainer = function (_VBaseComponent) {
         value: function inputs() {
             return this.element.querySelectorAll('.v-input');
         }
+    }, {
+        key: 'inputComponents',
+        value: function inputComponents() {
+            return Array.from(this.inputs()).filter(function (element) {
+                return element.vComponent;
+            }).map(function (element) {
+                return element.vComponent;
+            });
+        }
 
         // Called to collect data for submission
 
@@ -1604,11 +1599,11 @@ var VBaseContainer = function (_VBaseComponent) {
             var _iteratorError = undefined;
 
             try {
-                for (var _iterator = this.inputs()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var input = _step.value;
+                for (var _iterator = this.inputComponents()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var comp = _step.value;
 
-                    if (input.vComponent && input.vComponent.prepareSubmit) {
-                        input.vComponent.prepareSubmit(params);
+                    if (comp.respondTo('prepareSubmit')) {
+                        comp.prepareSubmit(params);
                     }
                 }
             } catch (err) {
@@ -1634,11 +1629,11 @@ var VBaseContainer = function (_VBaseComponent) {
             var _iteratorError2 = undefined;
 
             try {
-                for (var _iterator2 = this.inputs()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var input = _step2.value;
+                for (var _iterator2 = this.inputComponents()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var comp = _step2.value;
 
-                    if (input.vComponent && input.vComponent.clear) {
-                        input.vComponent.clear();
+                    if (comp.respondTo('clear')) {
+                        comp.clear();
                     }
                 }
             } catch (err) {
@@ -1657,18 +1652,18 @@ var VBaseContainer = function (_VBaseComponent) {
             }
         }
     }, {
-        key: 'onShow',
-        value: function onShow() {
+        key: 'reset',
+        value: function reset() {
             var _iteratorNormalCompletion3 = true;
             var _didIteratorError3 = false;
             var _iteratorError3 = undefined;
 
             try {
-                for (var _iterator3 = this.inputs()[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                    var input = _step3.value;
+                for (var _iterator3 = this.inputComponents()[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var comp = _step3.value;
 
-                    if (input.vComponent && input.vComponent.onShow) {
-                        input.vComponent.onShow();
+                    if (comp.respondTo('reset')) {
+                        comp.reset();
                     }
                 }
             } catch (err) {
@@ -1686,20 +1681,9 @@ var VBaseContainer = function (_VBaseComponent) {
                 }
             }
         }
-
-        // Called whenever a container is about to be submitted.
-        // returns true on success
-        // returns on failure return an error object that can be processed by VErrors:
-        //    { email: ["email must be filled", "email must be from your domain"] }
-        //    { :page: ["must be filled"] }
-
     }, {
-        key: 'validate',
-        value: function validate(form, params) {
-            console.debug('Form validate', form, params);
-
-            var errors = [];
-
+        key: 'onShow',
+        value: function onShow() {
             var _iteratorNormalCompletion4 = true;
             var _didIteratorError4 = false;
             var _iteratorError4 = undefined;
@@ -1708,11 +1692,8 @@ var VBaseContainer = function (_VBaseComponent) {
                 for (var _iterator4 = this.inputComponents()[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
                     var comp = _step4.value;
 
-                    if (comp.respondTo('validate')) {
-                        var result = comp.validate(form, params);
-                        if (result !== true) {
-                            errors.push(result);
-                        }
+                    if (comp.respondTo('onShow')) {
+                        comp.onShow();
                     }
                 }
             } catch (err) {
@@ -1729,6 +1710,51 @@ var VBaseContainer = function (_VBaseComponent) {
                     }
                 }
             }
+        }
+
+        // Called whenever a container is about to be submitted.
+        // returns true on success
+        // returns on failure return an error object that can be processed by VErrors:
+        //    { email: ["email must be filled", "email must be from your domain"] }
+        //    { :page: ["must be filled"] }
+
+    }, {
+        key: 'validate',
+        value: function validate(form, params) {
+            console.log('Form validate', form, params);
+
+            var errors = [];
+
+            var _iteratorNormalCompletion5 = true;
+            var _didIteratorError5 = false;
+            var _iteratorError5 = undefined;
+
+            try {
+                for (var _iterator5 = this.inputComponents()[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                    var comp = _step5.value;
+
+                    if (comp.respondTo('validate')) {
+                        var result = comp.validate(form, params);
+
+                        if (result !== true) {
+                            errors.push(result);
+                        }
+                    }
+                }
+            } catch (err) {
+                _didIteratorError5 = true;
+                _iteratorError5 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                        _iterator5.return();
+                    }
+                } finally {
+                    if (_didIteratorError5) {
+                        throw _iteratorError5;
+                    }
+                }
+            }
 
             return errors;
         }
@@ -1736,12 +1762,8 @@ var VBaseContainer = function (_VBaseComponent) {
         key: 'isDirty',
         value: function isDirty() {
             // A container is dirty if any of its dirtyable inputs is dirty:
-            return Array.from(this.inputs()).filter(function (element) {
-                return element.vComponent;
-            }).map(function (element) {
-                return element.vComponent;
-            }).filter(function (component) {
-                return component.isDirty;
+            return this.inputComponents().filter(function (component) {
+                return component.respondTo('isDirty');
             }).map(function (component) {
                 return component.isDirty();
             }).some(Boolean);
@@ -2235,7 +2257,7 @@ module.exports = function (exec, skipClosing) {
 
 // 21.2.5.3 get RegExp.prototype.flags
 
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 module.exports = function () {
   var that = anObject(this);
   var result = '';
@@ -2292,7 +2314,7 @@ module.exports = function (KEY, length, exec) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var aFunction = __webpack_require__(13);
 var SPECIES = __webpack_require__(6)('species');
 module.exports = function (O, D) {
@@ -2579,8 +2601,6 @@ function expandParams(results, o) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_urls__ = __webpack_require__(144);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -2640,49 +2660,65 @@ var VBase = function (_VUrls) {
         }
 
         /**
-         * inputs retrieves relevant elements for this event.
+         * inputs retrieves relevant input elements for this event.
          *
-         * 1. If an `input_tag` has been provided, all matching elements are
-         *    included.
-         * 2. If this component is an element, it is included.
-         * 3. If this component has inputs, its elements are included. If not,
-         *    the elements of the nearest content container are included.
+         * - If an `input_tag` has been provided, all matching tagged elements are
+         *   included.
+         * - If this component is a input element, it is included.
+         * - If this component has input elements, its input elements are included.
+         *   If not, the input elements of the nearest container (dialog or content)
+         *   are included.
          * @return {Array<HTMLElement>}
          */
 
     }, {
         key: 'inputs',
         value: function inputs() {
-            var elements = [];
+            var components = [];
 
-            // Collect tagged elements, if applicable:
+            // Collect tagged components, if applicable:
             if (this.options.input_tag) {
-                elements = Array.from(this.taggedInputs());
+                var taggedComponents = Array.from(this.taggedInputs()).filter(function (element) {
+                    return element.vComponent;
+                }).map(function (element) {
+                    return element.vComponent;
+                });
+
+                components.push(taggedComponents);
             }
 
             var comp = this.component();
 
             if (comp) {
-                // Include ourselves if we're a form component (but not a
-                // container):
+                // Include ourselves if we're a form field component, but not a
+                // container:
                 if (comp.respondTo('prepareSubmit') && !comp.respondTo('inputs')) {
-                    elements.push(comp.element);
+                    components.push(comp);
                 } else if (!comp.respondTo('inputs')) {
-                    // Defer to the component's closest content container if the
-                    // component itself does not respond to `inputs`:
-                    comp = this.closestContent();
+                    // Defer to the component's closest container (dialog or
+                    // content) if the component itself does not respond to
+                    // `inputs`:
+                    comp = this.closestContainer();
                 }
             }
 
-            if (comp && comp.respondTo('inputs')
-            // skip if we've previously grabbed elements via input_tag:
-            && comp.element.dataset.inputTag !== this.options.input_tag) {
-                var _elements;
-
-                elements = (_elements = elements).concat.apply(_elements, _toConsumableArray(comp.inputs()));
+            if (comp && comp.respondTo('inputs')) {
+                components.push(comp);
             }
 
-            return elements;
+            // Map components to elements.
+            // Containers are mapped to their child elements.
+            // Form field components are mapped to their own element.
+            var elements = components.flat().flatMap(function (comp) {
+                if (comp.respondTo('inputs')) {
+                    return Array.from(comp.inputs());
+                } else if (comp.respondTo('prepareSubmit')) {
+                    return comp.element;
+                }
+            });
+
+            // Deduplicate:
+            return Array.from(new Set(elements));
         }
 
         /**
@@ -2739,9 +2775,9 @@ var VBase = function (_VUrls) {
             return [];
         }
     }, {
-        key: 'closestContent',
-        value: function closestContent() {
-            var element = this.closestContentElement();
+        key: 'closestContainer',
+        value: function closestContainer() {
+            var element = this.closestContainerElement();
 
             if (!element) {
                 return null;
@@ -2750,15 +2786,15 @@ var VBase = function (_VUrls) {
             return element.vComponent;
         }
     }, {
-        key: 'closestContentElement',
-        value: function closestContentElement() {
+        key: 'closestContainerElement',
+        value: function closestContainerElement() {
             var comp = this.component();
 
             if (!(comp && comp.element)) {
                 return null;
             }
 
-            return comp.element.closest('.v-content');
+            return comp.element.closest('[data-is-container]');
         }
     }]);
 
@@ -2925,7 +2961,7 @@ var MDCTopAppBarBaseFoundation = function (_MDCFoundation) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VBaseToggle; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(10);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -2981,6 +3017,11 @@ var VBaseToggle = function (_eventHandlerMixin) {
         key: 'clear',
         value: function clear() {
             this.input.checked = false;
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            this.input.checked = this.element.dataset.originalValue;
         }
     }, {
         key: 'setValue',
@@ -3076,7 +3117,7 @@ module.exports = document && document.documentElement;
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
 var isObject = __webpack_require__(5);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var check = function check(O, proto) {
   anObject(O);
   if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
@@ -3918,9 +3959,49 @@ exports[DATA_VIEW] = $DataView;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VErrors; });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/**
+ * mapObject transforms an object's key-value pairs via the provided function.
+ * @param {Object} object
+ * @param {Function} fn A mapping function suitable for use with Array.map
+ * @return {Object}
+ */
+function mapObject(object, fn) {
+    return Object.entries(object).map(fn).reduce(function (obj, _ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            k = _ref2[0],
+            v = _ref2[1];
+
+        return Object.assign(obj, _defineProperty({}, [k], v));
+    }, {});
+}
+
+/*
+    Attempt to interpret and serialize the following cases for display:
+
+    A: Rails errors:
+        1. { "name": ["Requires name"] }
+
+    B: Validation errors:
+        1. { :email => ["must be filled"] }
+        2. { :fees => 0 => { :fee => ["must be filled", "must be greater than zero"] } }
+
+    C: Custom errors and client-side exceptions:
+        1. { :email => "must be filled" }
+        2. { exception: 'Something bad happened' }
+
+    D: Logical errors:
+        1. "undefined method `map' for nil:NilClass"
+ */
 
 var VErrors = function () {
     function VErrors(root, event) {
@@ -3940,65 +4021,119 @@ var VErrors = function () {
             }
         }
 
-        // Rails errors
-        // {
-        //   "name": [
-        //     "Requires name"
-        //   ]
-        // }
-
-        // Validation errors
-        // { :email => ["must be filled"] }
-
-        // Custom errors
-        // { :email => "must be filled" }
-
-        // Exceptions
-        // {exception: 'Something bad happened' }
+        /**
+         * normalize attempts to convert the various error structures described
+         * above into a single consistent structure by replacing error arrays
+         * with joined strings.
+         * @param {Object} errors
+         * @return {Object}
+         */
 
     }, {
-        key: 'stringsToArrays',
-        value: function stringsToArrays(value) {
-            if (Array.isArray(value) || value.constructor === Object) {
-                return value;
-            }
-            return new Array(value);
-        }
-    }, {
-        key: 'normalizeErrors',
-        value: function normalizeErrors(errors) {
+        key: 'normalize',
+        value: function normalize(errors) {
             var _this = this;
 
-            if (errors && errors.constructor === Object) {
-                return Object.keys(errors).reduce(function (previous, key) {
-                    previous[key] = _this.stringsToArrays(errors[key]);
-                    return previous;
-                }, {});
+            if (!errors) {
+                return {};
             }
-            return [];
+
+            // Normalize case D into case C-1:
+            if (typeof errors === 'string') {
+                errors = { error: errors };
+            }
+
+            return mapObject(errors, function (_ref3) {
+                var _ref4 = _slicedToArray(_ref3, 2),
+                    k = _ref4[0],
+                    v = _ref4[1];
+
+                var result = null;
+
+                // Case C, a single key-value pair:
+                if (typeof v === 'string') {
+                    // Normalize case C into case A/B-1:
+                    v = [v];
+                }
+
+                if (Array.isArray(v)) {
+                    // Case A and B-1: an array of error messages:
+                    result = v.join(', ');
+                } else if (v.constructor === Object) {
+                    // Case B-2: a nested structure:
+                    result = _this.normalize(v);
+                } else {
+                    throw new Error('Cannot normalize value of type ' + (typeof v === 'undefined' ? 'undefined' : _typeof(v)));
+                }
+
+                return [k, result];
+            });
         }
 
-        // [http_status, content_type, resultText]
+        /**
+         * flatten attempts to extract all human-readable error messages from an
+         * arbitrary error structure, yielding a flat array of strings.
+         * @param {Object} errors
+         * @return {Array<String>}
+         */
 
+    }, {
+        key: 'flatten',
+        value: function flatten(errors) {
+            var _this2 = this;
+
+            if (!errors) {
+                return [];
+            }
+
+            // Normalize case D into case C-1:
+            if (typeof errors === 'string') {
+                errors = { error: errors };
+            }
+
+            var object = mapObject(errors, function (_ref5) {
+                var _ref6 = _slicedToArray(_ref5, 2),
+                    k = _ref6[0],
+                    v = _ref6[1];
+
+                var result = null;
+
+                if (typeof v === 'string') {
+                    result = v;
+                } else if (v.constructor === Object) {
+                    result = _this2.flatten(v);
+                } else {
+                    throw new Error('Cannot flatten value of type ' + (typeof v === 'undefined' ? 'undefined' : _typeof(v)));
+                }
+
+                return [k, result];
+            });
+
+            return Object.values(object).flat();
+        }
     }, {
         key: 'displayErrors',
         value: function displayErrors(result) {
-            var httpStatus = result.statusCode;
-            var contentType = result.contentType;
-            var resultText = result.content;
+            var _this3 = this;
+
+            var statusCode = result.statusCode,
+                contentType = result.contentType,
+                content = result.content;
+
 
             var responseErrors = null;
 
-            if (contentType && contentType.indexOf('application/json') !== -1) {
-                responseErrors = JSON.parse(resultText);
-            } else if (contentType && contentType.indexOf('v/errors') !== -1) {
-                responseErrors = resultText;
+            if (contentType && contentType.includes('application/json')) {
+                responseErrors = JSON.parse(content);
+            } else if (contentType && contentType.includes('v/errors')) {
+                responseErrors = content;
             }
 
             if (responseErrors) {
                 if (!Array.isArray(responseErrors)) {
                     responseErrors = [responseErrors];
                 }
+
                 var _iteratorNormalCompletion = true;
                 var _didIteratorError = false;
                 var _iteratorError = undefined;
@@ -4007,21 +4142,15 @@ var VErrors = function () {
                     for (var _iterator = responseErrors[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                         var response = _step.value;
 
-                        var pageErrors = Object.values(this.normalizeErrors(response)).reduce(function (previous, value) {
-                            if (Array.isArray(value) && value.length > 0) {
-                                previous.push(value.join('<br/>'));
-                            }
-                            return previous;
-                        }, []);
-                        var fieldErrors = this.normalizeErrors(response.errors);
+                        var pageErrors = this.flatten(this.normalize(response));
+                        var fieldErrors = this.flatten(this.normalize(response.errors)).filter(function (field, _, errors) {
+                            return !_this3.displayInputError(field, errors[field]);
+                        });
+                        var errors = pageErrors.concat(fieldErrors).filter(Boolean).filter(function (s) {
+                            return s.length > 0;
+                        });
 
-                        for (var field in fieldErrors) {
-                            if (!this.displayInputError(field, fieldErrors[field])) {
-                                // Collect errors that can't be displayed at the field level
-                                pageErrors.push(fieldErrors[field]);
-                            }
-                        }
-                        this.prependErrors(pageErrors);
+                        this.prependErrors(Array.from(new Set(errors)));
                     }
                 } catch (err) {
                     _didIteratorError = true;
@@ -4037,10 +4166,10 @@ var VErrors = function () {
                         }
                     }
                 }
-            } else if (httpStatus === 0) {
+            } else if (statusCode === 0) {
                 this.prependErrors(['Unable to contact server. Please check that you are online and retry.']);
             } else {
-                this.prependErrors(['The server returned an unexpected response! Status:' + httpStatus]);
+                this.prependErrors(['The server returned an unexpected response! Status: ' + statusCode]);
             }
         }
 
@@ -4049,81 +4178,64 @@ var VErrors = function () {
 
     }, {
         key: 'displayInputError',
-        value: function displayInputError(divId, messages) {
-            var currentEl = this.root.getElementById(divId);
-            if (currentEl && currentEl.mdcComponent) {
-                currentEl.mdcComponent.helperTextContent = messages.join(', ');
-                var helperText = this.root.getElementById(divId + '-input-helper-text');
-                helperText.classList.add('mdc-text-field--invalid', 'mdc-text-field-helper-text--validation-msg', 'mdc-text-field-helper-text--persistent');
-                currentEl.mdcComponent.valid = false;
-                return true;
+        value: function displayInputError(id, messages) {
+            var currentEl = this.root.getElementById(id);
+
+            if (!(currentEl && currentEl.mdcComponent)) {
+                return false;
             }
-            return false;
+
+            currentEl.mdcComponent.helperTextContent = messages.join(', ');
+
+            var helperText = this.root.getElementById(id + '-input-helper-text');
+
+            if (!helperText) {
+                return false;
+            }
+
+            helperText.classList.add('mdc-text-field--invalid', 'mdc-text-field-helper-text--validation-msg', 'mdc-text-field-helper-text--persistent');
+            currentEl.mdcComponent.valid = false;
+
+            return true;
         }
 
         // Creates a div before the element with the same id as the error
-        // Used to display an error message without their being an input field to attach the error to
+        // Used to display an error message without their being an input field to
+        // attach the error to
 
     }, {
         key: 'prependErrors',
         value: function prependErrors(messages) {
             var errorsDiv = this.findNearestErrorDiv();
-            // create a new div element
-            var newDiv = this.root.createElement('div');
-            newDiv.className = 'v-error-message';
-            // and give it some content
 
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
-
-            try {
-                for (var _iterator2 = messages[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var message = _step2.value;
-
-                    var newContent = this.root.createTextNode(message);
-                    newDiv.appendChild(newContent);
-                    var br = this.root.createElement('br');
-                    // add the text node to the newly created div
-                    newDiv.appendChild(br);
-                }
-
-                // add the newly created element and its content into the DOM
-            } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                        _iterator2.return();
-                    }
-                } finally {
-                    if (_didIteratorError2) {
-                        throw _iteratorError2;
-                    }
-                }
-            }
-
-            if (errorsDiv) {
-                errorsDiv.scrollIntoView();
-                errorsDiv.parentElement.insertBefore(newDiv, errorsDiv);
-                return true;
-            } else {
+            if (!errorsDiv) {
                 console.error('Unable to display Errors! ', messages);
+
+                return false;
             }
-            return false;
+
+            var newDiv = this.root.createElement('div');
+
+            newDiv.classList.add('v-error-message');
+            newDiv.insertAdjacentHTML('beforeend', messages.join('<br>'));
+
+            // add the newly created element and its content into the DOM
+            if (errorsDiv.clientTop < 10) {
+                errorsDiv.scrollIntoView();
+            }
+
+            errorsDiv.insertAdjacentElement('beforebegin', newDiv);
+
+            return true;
         }
     }, {
         key: 'findNearestErrorDiv',
         value: function findNearestErrorDiv() {
-            var errorsDiv = null;
-            if (this.event) {
-                var currentDiv = this.event.target;
-                errorsDiv = currentDiv.closest('.v-errors');
-            } else {
-                errorsDiv = this.root.querySelector('.v-errors');
+            if (this.event && this.event.target) {
+                return this.event.target.closest('.v-errors');
             }
-            return errorsDiv;
+
+            return this.root.querySelector('.v-errors');
         }
     }]);
 
@@ -4675,7 +4787,7 @@ module.exports = function (object, names) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(8);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var getKeys = __webpack_require__(37);
 
 module.exports = __webpack_require__(7) ? Object.defineProperties : function defineProperties(O, Properties) {
@@ -4904,7 +5016,7 @@ module.exports = Math.fround || function fround(x) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 module.exports = function (iterator, fn, value, entries) {
   try {
     return entries ? fn(anObject(value)[0], value[1]) : fn(value);
@@ -5016,7 +5128,7 @@ module.exports = function (exec) {
 /* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var isObject = __webpack_require__(5);
 var newPromiseCapability = __webpack_require__(100);
 
@@ -5311,7 +5423,7 @@ if (fails(function () {
 
 var redefineAll = __webpack_require__(44);
 var getWeak = __webpack_require__(32).getWeak;
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var isObject = __webpack_require__(5);
 var anInstance = __webpack_require__(42);
 var forOf = __webpack_require__(43);
@@ -5414,7 +5526,7 @@ module.exports = function (it) {
 // all object keys, includes non-enumerable and symbols
 var gOPN = __webpack_require__(40);
 var gOPS = __webpack_require__(58);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var Reflect = __webpack_require__(3).Reflect;
 module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
   var keys = gOPN.f(anObject(it));
@@ -5571,33 +5683,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datetime__ = __webpack_require__(367);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text_fields__ = __webpack_require__(142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lists__ = __webpack_require__(381);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__drawer__ = __webpack_require__(382);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__header__ = __webpack_require__(384);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__icon_toggles__ = __webpack_require__(392);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__menus__ = __webpack_require__(394);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__selects__ = __webpack_require__(395);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__chips__ = __webpack_require__(397);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__cards__ = __webpack_require__(398);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__forms__ = __webpack_require__(399);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__snackbar__ = __webpack_require__(400);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__checkboxes__ = __webpack_require__(402);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__switches__ = __webpack_require__(404);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__rich_text_area__ = __webpack_require__(406);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__steppers__ = __webpack_require__(412);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__radios__ = __webpack_require__(413);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__sliders__ = __webpack_require__(415);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__hidden_fields__ = __webpack_require__(417);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__content__ = __webpack_require__(418);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__grid__ = __webpack_require__(419);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__tab_bars__ = __webpack_require__(420);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__data_tables__ = __webpack_require__(422);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__file_inputs__ = __webpack_require__(423);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__form_fields__ = __webpack_require__(424);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__images__ = __webpack_require__(426);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__typography__ = __webpack_require__(427);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__plugins__ = __webpack_require__(428);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__progress__ = __webpack_require__(429);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lists__ = __webpack_require__(382);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__drawer__ = __webpack_require__(383);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__header__ = __webpack_require__(385);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__icon_toggles__ = __webpack_require__(393);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__menus__ = __webpack_require__(395);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__selects__ = __webpack_require__(396);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__chips__ = __webpack_require__(398);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__cards__ = __webpack_require__(399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__forms__ = __webpack_require__(400);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__snackbar__ = __webpack_require__(401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__checkboxes__ = __webpack_require__(403);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__switches__ = __webpack_require__(405);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__rich_text_area__ = __webpack_require__(407);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__steppers__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__radios__ = __webpack_require__(414);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__sliders__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__hidden_fields__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__content__ = __webpack_require__(419);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__grid__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__tab_bars__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__data_tables__ = __webpack_require__(423);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__file_inputs__ = __webpack_require__(424);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__form_fields__ = __webpack_require__(425);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__images__ = __webpack_require__(427);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__typography__ = __webpack_require__(428);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__tooltip__ = __webpack_require__(429);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__plugins__ = __webpack_require__(430);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__progress__ = __webpack_require__(431);
 
 
 
@@ -5628,12 +5741,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-// import {initTooltip} from './tooltip';
+
 
 
 
 function initialize(root, setRoot) {
-    console.log('Initializing');
+    console.debug('Initializing components');
+
+    var start = performance.now();
+
     Object(__WEBPACK_IMPORTED_MODULE_0__button__["a" /* initButtons */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_1__dialogs__["a" /* initDialogs */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_2__datetime__["a" /* initDateTime */])(root); // MUST BE BEFORE initTextFields
@@ -5663,11 +5779,15 @@ function initialize(root, setRoot) {
     Object(__WEBPACK_IMPORTED_MODULE_27__form_fields__["a" /* initFormFields */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_28__images__["a" /* initImages */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_29__typography__["a" /* initTypography */])(root);
-    Object(__WEBPACK_IMPORTED_MODULE_31__progress__["a" /* initProgress */])(root);
-    // initTooltip();
-    Object(__WEBPACK_IMPORTED_MODULE_30__plugins__["a" /* initPlugins */])(root);
+    Object(__WEBPACK_IMPORTED_MODULE_32__progress__["a" /* initProgress */])(root);
+    Object(__WEBPACK_IMPORTED_MODULE_30__tooltip__["a" /* initTooltips */])(root);
+    Object(__WEBPACK_IMPORTED_MODULE_31__plugins__["a" /* initPlugins */])(root);
+
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_4__events__["b" /* initEvents */])(root);
+
+    var end = performance.now();
+    console.debug('Done in %s ms', (end - start).toFixed(2));
 }
 
 /***/ }),
@@ -12090,7 +12210,7 @@ function initialize(root, setRoot) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VTextField; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_textfield__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_textfield___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__material_textfield__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__ = __webpack_require__(103);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -12107,7 +12227,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initTextFields(e) {
-    console.log('\tTextFields');
+    console.debug('\tTextFields');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-text-field', VTextField, __WEBPACK_IMPORTED_MODULE_0__material_textfield__["MDCTextField"]);
 }
 
@@ -12138,7 +12258,7 @@ var VTextField = function (_visibilityObserverMi) {
     _createClass(VTextField, [{
         key: 'validate',
         value: function validate(formData) {
-            console.debug('TextField validate', formData);
+            console.log('TextField validate', formData);
             var isValid = this.input.checkValidity();
             if (isValid) {
                 return true;
@@ -12160,7 +12280,7 @@ var VTextField = function (_visibilityObserverMi) {
                     var name = this.name();
                     var id = name + '_id';
                     params.push([id, key]);
-                    console.debug('TextField prepareSubmit added:' + id + '=' + key);
+                    console.log('TextField prepareSubmit added:' + id + '=' + key);
                 }
             }
             params.push([this.name(), this.value()]);
@@ -12217,6 +12337,11 @@ var VTextField = function (_visibilityObserverMi) {
             if (this.value() !== '') {
                 this.setValue(null);
             }
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            this.input.value = this.element.dataset.originalValue;
         }
     }, {
         key: 'setValue',
@@ -12277,8 +12402,9 @@ var VTextField = function (_visibilityObserverMi) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_clears__ = __webpack_require__(376);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__events_removes__ = __webpack_require__(377);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__events_stepper__ = __webpack_require__(378);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__events_plugin__ = __webpack_require__(379);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__root_document__ = __webpack_require__(380);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__events_navigates__ = __webpack_require__(379);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__events_plugin__ = __webpack_require__(380);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__root_document__ = __webpack_require__(381);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12297,9 +12423,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 
+
 var VEvents = function () {
     // [[type, url, target, params]]
-    function VEvents(actions, event, root) {
+    function VEvents(actions, event, root, vComponent) {
         var _this = this;
 
         _classCallCheck(this, VEvents);
@@ -12309,11 +12436,14 @@ var VEvents = function () {
         this.actions = actions.map(function (action) {
             return _this.constructor.action_class(action, event, root);
         });
+        this.vComponent = vComponent;
     }
 
     _createClass(VEvents, [{
         key: 'call',
         value: function call() {
+            var _this2 = this;
+
             // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
             var fnlist = this.actions.map(function (action) {
                 return function (results) {
@@ -12329,23 +12459,17 @@ var VEvents = function () {
                 }, p);
             }
 
-            var event = this.event;
-            var root = this.root;
-
-            if (this.vComponent) {
-                this.vComponent.actionsStarted(this);
-            }
-
             pseries(fnlist).then(function (results) {
                 var result = results.pop();
                 var contentType = result.contentType;
                 var responseURL = result.responseURL;
 
-                if (event.target.dialog) {
-                    event.target.dialog.close();
-                }
                 if (contentType && contentType.indexOf('text/html') !== -1 && typeof responseURL !== 'undefined') {
                     window.location = responseURL;
+                }
+
+                if (_this2.vComponent) {
+                    _this2.vComponent.actionsSucceeded(_this2);
                 }
             }).catch(function (results) {
                 console.log('If you got here it may not be what you think:', results);
@@ -12357,7 +12481,15 @@ var VEvents = function () {
                 }
 
                 if (!result.squelch) {
-                    new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](root, event).displayErrors(result);
+                    new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](_this2.root, _this2.event).displayErrors(result);
+                }
+
+                if (_this2.vComponent) {
+                    _this2.vComponent.actionsHalted(_this2);
+                }
+            }).finally(function () {
+                if (_this2.vComponent) {
+                    _this2.vComponent.actionsFinished(_this2);
                 }
             });
         }
@@ -12394,8 +12526,10 @@ var VEvents = function () {
                     return new __WEBPACK_IMPORTED_MODULE_8__events_clears__["a" /* VClears */](options, params, event, root);
                 case 'stepper':
                     return new __WEBPACK_IMPORTED_MODULE_10__events_stepper__["a" /* VStepperEvent */](options, params, event, root);
+                case 'navigates':
+                    return new __WEBPACK_IMPORTED_MODULE_11__events_navigates__["a" /* VNavigates */](options, params, event, root);
                 default:
-                    return new __WEBPACK_IMPORTED_MODULE_11__events_plugin__["a" /* VPluginEventAction */](action_type, options, params, event, root);
+                    return new __WEBPACK_IMPORTED_MODULE_12__events_plugin__["a" /* VPluginEventAction */](action_type, options, params, event, root);
             }
         }
     }]);
@@ -12405,15 +12539,15 @@ var VEvents = function () {
 
 // This is used to get a proper binding of the actionData
 // https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
-function createEventHandler(actionsData, root) {
+function createEventHandler(actionsData, root, vComponent) {
     return function (event) {
         event.stopPropagation();
-        new VEvents(actionsData, event, root).call();
+        new VEvents(actionsData, event, root, vComponent).call();
     };
 }
 
 function initEvents(e) {
-    console.log('\tEvents');
+    console.debug('\tEvents');
 
     var events = e.querySelectorAll('[data-events]');
     for (var i = 0; i < events.length; i++) {
@@ -12425,14 +12559,16 @@ function initEvents(e) {
             var eventOptions = eventData[2];
             var actionsData = eventData[1];
             var vComponent = eventElem.vComponent;
-            var eventHandler = createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_12__root_document__["a" /* default */])(e), vComponent);
+            var eventHandler = createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e), vComponent);
+
             // allow overide of event handler by component
-            if (eventElem.vComponent && eventElem.vComponent.createEventHandler) {
-                eventHandler = eventElem.vComponent.createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_12__root_document__["a" /* default */])(e));
+            if (vComponent && vComponent.createEventHandler) {
+                eventHandler = vComponent.createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e), vComponent);
             }
+
             // Delegate to the component if possible
-            if (eventElem.vComponent && eventElem.vComponent.initEventListener) {
-                eventElem.vComponent.initEventListener(eventName, eventHandler);
+            if (vComponent && vComponent.initEventListener) {
+                vComponent.initEventListener(eventName, eventHandler);
             } else {
                 if (typeof eventElem.eventsHandler === 'undefined') {
                     eventElem.eventsHandler = {};
@@ -12443,6 +12579,10 @@ function initEvents(e) {
                 eventElem.eventsHandler[eventName].push(eventHandler);
                 eventOptions.passive = true;
                 eventElem.addEventListener(eventName, eventHandler, eventOptions);
+            }
+
+            if (vComponent) {
+                vComponent.afterInit();
             }
         }
     }
@@ -21219,9 +21359,9 @@ var MDCFoundation = /** @class */function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCLinearProgressFoundation; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_animation_util__ = __webpack_require__(433);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_animation_util__ = __webpack_require__(435);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_base_foundation__ = __webpack_require__(151);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(434);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(436);
 /**
  * @license
  * Copyright 2017 Google Inc.
@@ -27171,7 +27311,7 @@ var wksExt = __webpack_require__(107);
 var wksDefine = __webpack_require__(77);
 var enumKeys = __webpack_require__(164);
 var isArray = __webpack_require__(59);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var isObject = __webpack_require__(5);
 var toIObject = __webpack_require__(18);
 var toPrimitive = __webpack_require__(25);
@@ -28739,7 +28879,7 @@ if (!(TO_PRIMITIVE in proto)) __webpack_require__(14)(proto, TO_PRIMITIVE, __web
 "use strict";
 
 
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var toPrimitive = __webpack_require__(25);
 var NUMBER = 'number';
 
@@ -29234,7 +29374,7 @@ __webpack_require__(41)('RegExp');
 
 
 __webpack_require__(124);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var $flags = __webpack_require__(62);
 var DESCRIPTORS = __webpack_require__(7);
 var TO_STRING = 'toString';
@@ -29699,7 +29839,7 @@ __webpack_require__(66)(WEAK_SET, function (get) {
 var $export = __webpack_require__(0);
 var $typed = __webpack_require__(67);
 var buffer = __webpack_require__(101);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var toAbsoluteIndex = __webpack_require__(38);
 var toLength = __webpack_require__(9);
 var isObject = __webpack_require__(5);
@@ -29848,7 +29988,7 @@ __webpack_require__(30)('Float64', 8, function (init) {
 // 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
 var $export = __webpack_require__(0);
 var aFunction = __webpack_require__(13);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var rApply = (__webpack_require__(3).Reflect || {}).apply;
 var fApply = Function.apply;
 // MS Edge argumentsList argument is optional
@@ -29870,7 +30010,7 @@ $export($export.S + $export.F * !__webpack_require__(4)(function () {
 var $export = __webpack_require__(0);
 var create = __webpack_require__(39);
 var aFunction = __webpack_require__(13);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var isObject = __webpack_require__(5);
 var fails = __webpack_require__(4);
 var bind = __webpack_require__(112);
@@ -29926,7 +30066,7 @@ $export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
 // 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
 var dP = __webpack_require__(8);
 var $export = __webpack_require__(0);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var toPrimitive = __webpack_require__(25);
 
 // MS Edge has broken Reflect.defineProperty - throwing instead of returning false
@@ -29954,7 +30094,7 @@ $export($export.S + $export.F * __webpack_require__(4)(function () {
 // 26.1.4 Reflect.deleteProperty(target, propertyKey)
 var $export = __webpack_require__(0);
 var gOPD = __webpack_require__(19).f;
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 
 $export($export.S, 'Reflect', {
   deleteProperty: function deleteProperty(target, propertyKey) {
@@ -29972,7 +30112,7 @@ $export($export.S, 'Reflect', {
 // 26.1.5 Reflect.enumerate(target)
 
 var $export = __webpack_require__(0);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var Enumerate = function Enumerate(iterated) {
   this._t = anObject(iterated); // target
   this._i = 0; // next index
@@ -30008,7 +30148,7 @@ var getPrototypeOf = __webpack_require__(20);
 var has = __webpack_require__(17);
 var $export = __webpack_require__(0);
 var isObject = __webpack_require__(5);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 
 function get(target, propertyKey /* , receiver */) {
   var receiver = arguments.length < 3 ? target : arguments[2];
@@ -30027,7 +30167,7 @@ $export($export.S, 'Reflect', { get: get });
 // 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
 var gOPD = __webpack_require__(19);
 var $export = __webpack_require__(0);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 
 $export($export.S, 'Reflect', {
   getOwnPropertyDescriptor: function getOwnPropertyDescriptor(target, propertyKey) {
@@ -30042,7 +30182,7 @@ $export($export.S, 'Reflect', {
 // 26.1.8 Reflect.getPrototypeOf(target)
 var $export = __webpack_require__(0);
 var getProto = __webpack_require__(20);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 
 $export($export.S, 'Reflect', {
   getPrototypeOf: function getPrototypeOf(target) {
@@ -30069,7 +30209,7 @@ $export($export.S, 'Reflect', {
 
 // 26.1.10 Reflect.isExtensible(target)
 var $export = __webpack_require__(0);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var $isExtensible = Object.isExtensible;
 
 $export($export.S, 'Reflect', {
@@ -30094,7 +30234,7 @@ $export($export.S, 'Reflect', { ownKeys: __webpack_require__(133) });
 
 // 26.1.12 Reflect.preventExtensions(target)
 var $export = __webpack_require__(0);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var $preventExtensions = Object.preventExtensions;
 
 $export($export.S, 'Reflect', {
@@ -30120,7 +30260,7 @@ var getPrototypeOf = __webpack_require__(20);
 var has = __webpack_require__(17);
 var $export = __webpack_require__(0);
 var createDesc = __webpack_require__(35);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var isObject = __webpack_require__(5);
 
 function set(target, propertyKey, V /* , receiver */) {
@@ -30845,7 +30985,7 @@ $export($export.S, 'Promise', { 'try': function _try(callbackfn) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(31);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var toMetaKey = metadata.key;
 var ordinaryDefineOwnMetadata = metadata.set;
 
@@ -30858,7 +30998,7 @@ metadata.exp({ defineMetadata: function defineMetadata(metadataKey, metadataValu
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(31);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var toMetaKey = metadata.key;
 var getOrCreateMetadataMap = metadata.map;
 var store = metadata.store;
@@ -30878,7 +31018,7 @@ metadata.exp({ deleteMetadata: function deleteMetadata(metadataKey, target /* , 
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(31);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var getPrototypeOf = __webpack_require__(20);
 var ordinaryHasOwnMetadata = metadata.has;
 var ordinaryGetOwnMetadata = metadata.get;
@@ -30902,7 +31042,7 @@ metadata.exp({ getMetadata: function getMetadata(metadataKey, target /* , target
 var Set = __webpack_require__(129);
 var from = __webpack_require__(138);
 var metadata = __webpack_require__(31);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var getPrototypeOf = __webpack_require__(20);
 var ordinaryOwnMetadataKeys = metadata.keys;
 var toMetaKey = metadata.key;
@@ -30924,7 +31064,7 @@ metadata.exp({ getMetadataKeys: function getMetadataKeys(target /* , targetKey *
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(31);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var ordinaryGetOwnMetadata = metadata.get;
 var toMetaKey = metadata.key;
 
@@ -30937,7 +31077,7 @@ metadata.exp({ getOwnMetadata: function getOwnMetadata(metadataKey, target /* , 
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(31);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var ordinaryOwnMetadataKeys = metadata.keys;
 var toMetaKey = metadata.key;
 
@@ -30950,7 +31090,7 @@ metadata.exp({ getOwnMetadataKeys: function getOwnMetadataKeys(target /* , targe
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(31);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var getPrototypeOf = __webpack_require__(20);
 var ordinaryHasOwnMetadata = metadata.has;
 var toMetaKey = metadata.key;
@@ -30971,7 +31111,7 @@ metadata.exp({ hasMetadata: function hasMetadata(metadataKey, target /* , target
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(31);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var ordinaryHasOwnMetadata = metadata.has;
 var toMetaKey = metadata.key;
 
@@ -30984,7 +31124,7 @@ metadata.exp({ hasOwnMetadata: function hasOwnMetadata(metadataKey, target /* , 
 /***/ (function(module, exports, __webpack_require__) {
 
 var $metadata = __webpack_require__(31);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var aFunction = __webpack_require__(13);
 var toMetaKey = $metadata.key;
 var ordinaryDefineOwnMetadata = $metadata.set;
@@ -31026,7 +31166,7 @@ var core = __webpack_require__(21);
 var microtask = __webpack_require__(99)();
 var OBSERVABLE = __webpack_require__(6)('observable');
 var aFunction = __webpack_require__(13);
-var anObject = __webpack_require__(1);
+var anObject = __webpack_require__(2);
 var anInstance = __webpack_require__(42);
 var redefineAll = __webpack_require__(44);
 var hide = __webpack_require__(14);
@@ -32080,7 +32220,7 @@ module.exports = function (regExp, replace) {
 /* unused harmony export VButton */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple__ = __webpack_require__(364);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__material_ripple__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(10);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -32096,7 +32236,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initButtons(e) {
-    console.log('\tButtons');
+    console.debug('\tButtons');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-js-ripple-button', VButton, __WEBPACK_IMPORTED_MODULE_0__material_ripple__["MDCRipple"]);
 }
 
@@ -32115,8 +32255,41 @@ var VButton = function (_eventHandlerMixin) {
             if (this.element.classList.contains('v-button-image')) {
                 this.element.style.backgroundImage = 'url(\'' + result + '\')';
             } else {
-                console.warn('WARNING: Attempted to preview an image on a Button (id: ' + this.element.id + ') that is NOT an image button.\nMake sure you set the type: :image on the button.');
+                console.log('WARNING: Attempted to preview an image on a Button (id: ' + this.element.id + ') that is NOT an image button.\nMake sure you set the type: :image on the button.');
             }
+        }
+    }, {
+        key: 'actionsHalted',
+        value: function actionsHalted(vEvent) {
+            var parentDialog = this.parentComponent('.v-dialog');
+
+            if (!parentDialog) {
+                return;
+            }
+
+            parentDialog.actionsHalted(vEvent);
+        }
+    }, {
+        key: 'actionsSucceeded',
+        value: function actionsSucceeded(vEvent) {
+            var parentDialog = this.parentComponent('.v-dialog');
+
+            if (!parentDialog) {
+                return;
+            }
+
+            parentDialog.actionsSucceeded(vEvent);
+        }
+    }, {
+        key: 'actionsFinished',
+        value: function actionsFinished(vEvent) {
+            var parentDialog = this.parentComponent('.v-dialog');
+
+            if (!parentDialog) {
+                return;
+            }
+
+            parentDialog.actionsFinished(vEvent);
         }
     }]);
 
@@ -34083,12 +34256,11 @@ var VButton = function (_eventHandlerMixin) {
 /* harmony export (immutable) */ __webpack_exports__["a"] = initDialogs;
 /* unused harmony export VDialog */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_dialog__ = __webpack_require__(366);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_dialog___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_dialog__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_dialog__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_dialog___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__material_dialog__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -34096,43 +34268,94 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// This is used to get a proper binding of the actionData
-// https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
 
 
 
 
-function initDialogs(e) {
-    console.log('\tDialogs');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-dialog', VDialog, __WEBPACK_IMPORTED_MODULE_2__material_dialog__["MDCDialog"]);
+
+// Here be dragons.
+
+/**
+ * Causes the bound dialog's adapter to emit a closing event when applicable.
+ * @param {String} action
+ * @this {VDialog}
+ */
+function beforeClose() {
+    var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+    var mdcDialog = this.mdcComponent;
+
+    if (this.shouldNotifyClosing) {
+        mdcDialog.foundation_.adapter_.notifyClosing(action);
+        this.shouldNotifyClosing = false;
+    }
 }
 
-var VDialog = function (_VBaseContainer) {
-    _inherits(VDialog, _VBaseContainer);
+/**
+ * Actually closes the bound dialog.
+ * @param {String} action
+ * @this {MDCDialogFoundation}
+ */
+function hideDialog() {
+    var _this = this;
+
+    var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+    this.isOpen_ = false;
+    this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_3__material_dialog__["MDCDialogFoundation"].cssClasses.CLOSING);
+    this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_3__material_dialog__["MDCDialogFoundation"].cssClasses.OPEN);
+    this.adapter_.removeBodyClass(__WEBPACK_IMPORTED_MODULE_3__material_dialog__["MDCDialogFoundation"].cssClasses.SCROLL_LOCK);
+
+    cancelAnimationFrame(this.animationFrame_);
+    this.animationFrame_ = 0;
+
+    clearTimeout(this.animationTimer_);
+    this.animationTimer_ = setTimeout(function () {
+        _this.adapter_.releaseFocus();
+        _this.handleAnimationTimerEnd_();
+        _this.adapter_.notifyClosed(action);
+    }, __WEBPACK_IMPORTED_MODULE_3__material_dialog__["MDCDialogFoundation"].numbers.DIALOG_ANIMATION_CLOSE_TIME_MS);
+}
+
+function initDialogs(e) {
+    console.debug('\tDialogs');
+    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-dialog', VDialog, __WEBPACK_IMPORTED_MODULE_3__material_dialog__["MDCDialog"]);
+}
+
+var VDialog = function (_eventHandlerMixin) {
+    _inherits(VDialog, _eventHandlerMixin);
 
     function VDialog(element, mdcComponent) {
         _classCallCheck(this, VDialog);
 
-        var _this = _possibleConstructorReturn(this, (VDialog.__proto__ || Object.getPrototypeOf(VDialog)).call(this, element, mdcComponent));
+        // Closeable state:
+        var _this2 = _possibleConstructorReturn(this, (VDialog.__proto__ || Object.getPrototypeOf(VDialog)).call(this, element, mdcComponent));
 
-        var dialog = mdcComponent;
-        var dialogButtons = element.querySelectorAll('.mdc-dialog__actions button:not([disabled])');
-        for (var j = 0; j != dialogButtons.length; j++) {
-            var dialogButton = dialogButtons[j];
-            if (!dialogButton.dialog) {
-                dialogButton.dialog = dialog;
-            }
-        }
+        _this2.shouldNotifyClosing = true;
+        _this2.canClose = false;
 
-        dialog.listen('MDCDialog:closing', function () {
-            element.vComponent.clear();
-            element.vComponent.clearErrors();
+        mdcComponent.listen('MDCDialog:opened', _this2.onShow.bind(_this2));
+
+        mdcComponent.listen('MDCDialog:closed', function () {
+            _this2.reset();
+            _this2.clearErrors();
+
+            // Reset closeable state:
+            _this2.shouldNotifyClosing = true;
+            _this2.canClose = false;
         });
 
-        dialog.listen('MDCDialog:opened', function () {
-            element.vComponent.onShow();
+        mdcComponent.listen('MDCDialog:closing', function (mdcEvent) {
+            var action = mdcEvent.detail.action || '';
+            var event = new CustomEvent('close', {
+                cancelable: true,
+                bubbles: true,
+                detail: { action: action }
+            });
+
+            _this2.element.dispatchEvent(event);
         });
-        return _this;
+        return _this2;
     }
 
     _createClass(VDialog, [{
@@ -34162,15 +34385,13 @@ var VDialog = function (_VBaseContainer) {
             this.canClose = true;
 
             this.close(vEvent.event.detail.action);
-            _get(VDialog.prototype.__proto__ || Object.getPrototypeOf(VDialog.prototype), 'actionsSucceeded', this).call(this, vEvent); // Bubble up
         }
     }, {
         key: 'actionsHalted',
-        value: function actionsHalted(vEvent) {
+        value: function actionsHalted() {
             // A halted event chain should not close the dialog.
             this.shouldNotifyClosing = true;
             this.canClose = false;
-            _get(VDialog.prototype.__proto__ || Object.getPrototypeOf(VDialog.prototype), 'actionsHalted', this).call(this, vEvent); // Bubble up
         }
     }, {
         key: 'afterInit',
@@ -34196,7 +34417,7 @@ var VDialog = function (_VBaseContainer) {
     }]);
 
     return VDialog;
-}(__WEBPACK_IMPORTED_MODULE_0__base_container__["a" /* VBaseContainer */]);
+}(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_container__["a" /* VBaseContainer */]));
 
 /***/ }),
 /* 366 */
@@ -37828,7 +38049,7 @@ var VDialog = function (_VBaseContainer) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_textfield__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_textfield___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__material_textfield__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__text_fields__ = __webpack_require__(142);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config__ = __webpack_require__(55);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -37845,7 +38066,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initDateTime(e) {
-    console.log('\tDateTime');
+    console.debug('\tDateTime');
     Object(__WEBPACK_IMPORTED_MODULE_3__base_component__["b" /* hookupComponents */])(e, '.v-datetime', VDateTime, __WEBPACK_IMPORTED_MODULE_1__material_textfield__["MDCTextField"]);
 }
 var VDateTime = function (_VTextField) {
@@ -37890,6 +38111,11 @@ var VDateTime = function (_VTextField) {
             }
 
             this.mdcComponent.foundation_.deactivateFocus();
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            this.fp.setDate(this.element.dataset.originalValue);
         }
     }, {
         key: 'open',
@@ -40232,12 +40458,6 @@ var VPosts = function (_VBase) {
                 });
             }
 
-            var ev = new Event('V:postStarted', {
-                bubbles: true,
-                cancelable: false,
-                detail: this
-            });
-            this.event.target.dispatchEvent(ev);
             // Manually build the FormData.
             // Passing in a <form> element (if available) would skip over
             // unchecked toggle elements, which would be unexpected if the user
@@ -40294,9 +40514,6 @@ var VPosts = function (_VBase) {
 
                     formData.append(_name, Object(__WEBPACK_IMPORTED_MODULE_3__encode__["a" /* encode */])(_value));
                 }
-
-                // log dupes:
-                // TODO: remove me (debug)
             } catch (err) {
                 _didIteratorError2 = true;
                 _iteratorError2 = err;
@@ -40312,36 +40529,6 @@ var VPosts = function (_VBase) {
                 }
             }
 
-            var _iteratorNormalCompletion3 = true;
-            var _didIteratorError3 = false;
-            var _iteratorError3 = undefined;
-
-            try {
-                for (var _iterator3 = formData[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                    var _ref5 = _step3.value;
-
-                    var _ref6 = _slicedToArray(_ref5, 2);
-
-                    var k = _ref6[0];
-                    var v = _ref6[1];
-
-                    console.log(k + ': ' + v);
-                }
-            } catch (err) {
-                _didIteratorError3 = true;
-                _iteratorError3 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                        _iterator3.return();
-                    }
-                } finally {
-                    if (_didIteratorError3) {
-                        throw _iteratorError3;
-                    }
-                }
-            }
-
             var paramCount = Array.from(formData).length;
 
             if (paramCount < 1) {
@@ -40352,17 +40539,25 @@ var VPosts = function (_VBase) {
             var url = this.url;
             var callHeaders = this.headers;
             var root = this.root;
-            var vEvent = this;
             if (!httpRequest) {
                 throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
             }
 
             var snackbarCallback = function snackbarCallback(contentType, response) {
-                var snackbar = root.querySelector('.mdc-snackbar').vComponent;
-                if (contentType && contentType.indexOf('application/json') !== -1) {
+                var element = root.querySelector('.mdc-snackbar');
+
+                if (!(element && element.vComponent)) {
+                    return;
+                }
+
+                var snackbar = element.vComponent;
+
+                if (contentType && contentType.includes('application/json')) {
                     var messages = JSON.parse(response).messages;
-                    if (snackbar && messages && messages.snackbar) {
+
+                    if (messages && messages.snackbar) {
                         var message = messages.snackbar.join('<br/>');
+
                         if (message !== '') {
                             snackbar.display(message);
                         }
@@ -40374,25 +40569,16 @@ var VPosts = function (_VBase) {
                 httpRequest.onreadystatechange = function (event) {
                     if (httpRequest.readyState === XMLHttpRequest.DONE) {
                         var contentType = this.getResponseHeader('content-type');
-                        console.debug(httpRequest.status + ':' + contentType);
-
-                        var result = {
-                            action: 'posts',
-                            method: this.method,
-                            statusCode: httpRequest.status,
-                            contentType: contentType,
-                            content: httpRequest.responseText,
-                            responseURL: httpRequest.responseURL
-                        };
-
-                        var _ev = new Event('V:postFinished', {
-                            bubbles: true,
-                            cancelable: false,
-                            detail: { event: vEvent, result: result }
-                        });
-                        vEvent.event.target.dispatchEvent(_ev);
+                        console.log(httpRequest.status + ':' + contentType);
                         if (httpRequest.status >= 200 && httpRequest.status < 300) {
-                            results.push(result);
+                            results.push({
+                                action: 'posts',
+                                method: this.method,
+                                statusCode: httpRequest.status,
+                                contentType: contentType,
+                                content: httpRequest.responseText,
+                                responseURL: httpRequest.responseURL
+                            });
                             snackbarCallback(contentType, httpRequest.responseText);
                             resolve(results);
                             // Response is an html error page
@@ -40400,10 +40586,23 @@ var VPosts = function (_VBase) {
                             root.open(contentType);
                             root.write(httpRequest.responseText);
                             root.close();
-                            results.push(result);
+                            results.push({
+                                action: 'posts',
+                                method: this.method,
+                                statusCode: httpRequest.status,
+                                contentType: contentType,
+                                content: httpRequest.responseText,
+                                responseURL: httpRequest.responseURL
+                            });
                             resolve(results);
                         } else {
-                            results.push(result);
+                            results.push({
+                                action: 'posts',
+                                method: this.method,
+                                statusCode: httpRequest.status,
+                                contentType: contentType,
+                                content: httpRequest.responseText
+                            });
                             reject(results);
                         }
                     }
@@ -40413,63 +40612,63 @@ var VPosts = function (_VBase) {
 
                 var configHeaders = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].get('request.headers.POST', {});
 
-                var _iteratorNormalCompletion4 = true;
-                var _didIteratorError4 = false;
-                var _iteratorError4 = undefined;
+                var _iteratorNormalCompletion3 = true;
+                var _didIteratorError3 = false;
+                var _iteratorError3 = undefined;
 
                 try {
-                    for (var _iterator4 = Object.entries(configHeaders)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                        var _ref7 = _step4.value;
+                    for (var _iterator3 = Object.entries(configHeaders)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                        var _ref5 = _step3.value;
 
-                        var _ref8 = _slicedToArray(_ref7, 2);
+                        var _ref6 = _slicedToArray(_ref5, 2);
 
-                        var key = _ref8[0];
-                        var _value2 = _ref8[1];
+                        var key = _ref6[0];
+                        var _value2 = _ref6[1];
 
                         httpRequest.setRequestHeader(key, _value2);
                     }
                 } catch (err) {
-                    _didIteratorError4 = true;
-                    _iteratorError4 = err;
+                    _didIteratorError3 = true;
+                    _iteratorError3 = err;
                 } finally {
                     try {
-                        if (!_iteratorNormalCompletion4 && _iterator4.return) {
-                            _iterator4.return();
+                        if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                            _iterator3.return();
                         }
                     } finally {
-                        if (_didIteratorError4) {
-                            throw _iteratorError4;
+                        if (_didIteratorError3) {
+                            throw _iteratorError3;
                         }
                     }
                 }
 
                 if (callHeaders) {
-                    var _iteratorNormalCompletion5 = true;
-                    var _didIteratorError5 = false;
-                    var _iteratorError5 = undefined;
+                    var _iteratorNormalCompletion4 = true;
+                    var _didIteratorError4 = false;
+                    var _iteratorError4 = undefined;
 
                     try {
-                        for (var _iterator5 = Object.entries(callHeaders)[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-                            var _ref9 = _step5.value;
+                        for (var _iterator4 = Object.entries(callHeaders)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                            var _ref7 = _step4.value;
 
-                            var _ref10 = _slicedToArray(_ref9, 2);
+                            var _ref8 = _slicedToArray(_ref7, 2);
 
-                            var _key = _ref10[0];
-                            var _value3 = _ref10[1];
+                            var _key = _ref8[0];
+                            var _value3 = _ref8[1];
 
                             httpRequest.setRequestHeader(_key, _value3);
                         }
                     } catch (err) {
-                        _didIteratorError5 = true;
-                        _iteratorError5 = err;
+                        _didIteratorError4 = true;
+                        _iteratorError4 = err;
                     } finally {
                         try {
-                            if (!_iteratorNormalCompletion5 && _iterator5.return) {
-                                _iterator5.return();
+                            if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                                _iterator4.return();
                             }
                         } finally {
-                            if (_didIteratorError5) {
-                                throw _iteratorError5;
+                            if (_didIteratorError4) {
+                                throw _iteratorError4;
                             }
                         }
                     }
@@ -40523,6 +40722,8 @@ function encode(value) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(140);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -40532,6 +40733,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
+// Create a NodeList from raw HTML.
+// Whitespace is trimmed to avoid creating superfluous text nodes.
+function htmlToNodes(html) {
+    var root = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+
+    var template = root.createElement('template');
+
+    template.innerHTML = html.trim();
+
+    return template.content.children;
+}
 
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
@@ -40581,13 +40794,42 @@ var VReplaces = function (_VBase) {
                     nodeToReplace.vTimeout = setTimeout(function () {
                         httpRequest.onreadystatechange = function () {
                             if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                                console.debug(httpRequest.status + ':' + this.getResponseHeader('content-type'));
+                                console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                                 if (httpRequest.status === 200) {
-                                    var _nodeToReplace = root.getElementById(elementId);
-                                    var newDiv = root.createElement('div');
-                                    newDiv.innerHTML = httpRequest.responseText;
-                                    _nodeToReplace.parentElement.replaceChild(newDiv, _nodeToReplace);
-                                    Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["initialize"])(newDiv);
+                                    // NodeList.childNodes is "live", meaning DOM
+                                    // changes to its entries will mutate the list
+                                    // itself.
+                                    // (see: https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
+                                    // Array.from clones the entries, creating a
+                                    // "dead" list.
+                                    var newNodes = Array.from(htmlToNodes(httpRequest.responseText, root));
+
+                                    nodeToReplace.replaceWith.apply(nodeToReplace, _toConsumableArray(newNodes));
+
+                                    var _iteratorNormalCompletion = true;
+                                    var _didIteratorError = false;
+                                    var _iteratorError = undefined;
+
+                                    try {
+                                        for (var _iterator = newNodes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                                            var node = _step.value;
+
+                                            Object(__WEBPACK_IMPORTED_MODULE_2__initialize__["initialize"])(node);
+                                        }
+                                    } catch (err) {
+                                        _didIteratorError = true;
+                                        _iteratorError = err;
+                                    } finally {
+                                        try {
+                                            if (!_iteratorNormalCompletion && _iterator.return) {
+                                                _iterator.return();
+                                            }
+                                        } finally {
+                                            if (_didIteratorError) {
+                                                throw _iteratorError;
+                                            }
+                                        }
+                                    }
 
                                     results.push({
                                         action: 'replaces',
@@ -40607,7 +40849,7 @@ var VReplaces = function (_VBase) {
                                 }
                             }
                         };
-                        console.debug('GET:' + url);
+                        console.log('GET:' + url);
                         httpRequest.open('GET', url, true);
                         httpRequest.setRequestHeader('X-NO-LAYOUT', true);
                         httpRequest.send();
@@ -40665,7 +40907,7 @@ var VToggleVisibility = function () {
             var promiseObj = new Promise(function (resolve) {
                 clearTimeout(elem.vTimeout);
                 elem.vTimeout = setTimeout(function () {
-                    console.debug('Toggling visibility on: ' + targetId);
+                    console.log('Toggling visibility on: ' + targetId);
 
                     if (action === 'show') {
                         if (elem.vComponent && elem.vComponent.show) {
@@ -40853,7 +41095,7 @@ var VSnackbarEvent = function () {
             var snackbar = this.snackbar;
             var message = Object(__WEBPACK_IMPORTED_MODULE_0__action_parameter__["a" /* expandParam */])(results, this.text);
             return new Promise(function (resolve) {
-                console.debug('Showing snackbar');
+                console.log('Showing snackbar');
                 snackbar.display(message);
                 results.push({ action: 'snackbar', statusCode: 200 });
                 resolve(results);
@@ -40890,7 +41132,7 @@ var VClears = function () {
             var ids = this.ids;
             var root = this.root;
             return new Promise(function (resolve) {
-                console.debug('Clearing');
+                console.log('Clearing');
                 results.push({ action: 'clears', statusCode: 200 });
                 var _iteratorNormalCompletion = true;
                 var _didIteratorError = false;
@@ -40904,7 +41146,7 @@ var VClears = function () {
                         if (elem && elem.vComponent && elem.vComponent.clear) {
                             elem.vComponent.clear();
                         } else {
-                            console.warn('Unable to clear element with id: ' + id + '! Check to make sure you passed the correct id, and ' + 'that the control/input can be cleared.');
+                            console.log('Unable to clear element with id: ' + id + '! Check to make sure you passed the correct id, and ' + 'that the control/input can be cleared.');
                         }
                     }
                 } catch (err) {
@@ -41044,6 +41286,43 @@ var VStepperEvent = function (_VBase) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VNavigates; });
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var VNavigates = function () {
+  function VNavigates(options, params, event, root) {
+    _classCallCheck(this, VNavigates);
+
+    this.direction = params.direction;
+  }
+
+  _createClass(VNavigates, [{
+    key: 'call',
+    value: function call(results) {
+      var direction = this.direction;
+      return new Promise(function (resolve) {
+        results.push({ action: 'navigates', statusCode: 200 });
+        resolve(results);
+        switch (direction) {
+          case 'back':
+            window.history.back();
+          case 'forward':
+            window.history.forward();
+        }
+      });
+    }
+  }]);
+
+  return VNavigates;
+}();
+
+/***/ }),
+/* 380 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VPluginEventAction; });
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -41075,7 +41354,7 @@ var VPluginEventAction = function () {
 }();
 
 /***/ }),
-/* 380 */
+/* 381 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41090,7 +41369,7 @@ function getRoot(element) {
 }
 
 /***/ }),
-/* 381 */
+/* 382 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41205,7 +41484,7 @@ function updateSelectionCount(component, count) {
 }
 
 function initLists(e) {
-    console.log('\tLists');
+    console.debug('\tLists');
     var components = e.querySelectorAll('.mdc-list');
     if (components) {
         var _iteratorNormalCompletion3 = true;
@@ -41296,16 +41575,16 @@ function initLists(e) {
 }
 
 /***/ }),
-/* 382 */
+/* 383 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initDrawer;
 /* unused harmony export VModalDrawer */
 /* unused harmony export VDismissibleDrawer */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_drawer__ = __webpack_require__(383);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_drawer__ = __webpack_require__(384);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_drawer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__material_drawer__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(10);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -41321,7 +41600,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initDrawer(e) {
-    console.log('\tDrawer');
+    console.debug('\tDrawer');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-drawer__modal', VModalDrawer, __WEBPACK_IMPORTED_MODULE_0__material_drawer__["MDCDrawer"]);
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-drawer__dismissible', VDismissibleDrawer, __WEBPACK_IMPORTED_MODULE_0__material_drawer__["MDCDrawer"]);
 }
@@ -41383,7 +41662,7 @@ var VDismissibleDrawer = function (_VDrawer2) {
 }(VDrawer);
 
 /***/ }),
-/* 383 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -44710,14 +44989,14 @@ var VDismissibleDrawer = function (_VDrawer2) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
 
 /***/ }),
-/* 384 */
+/* 385 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initHeader;
 /* unused harmony export VHeader */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_top_app_bar_index__ = __webpack_require__(385);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_top_app_bar_index__ = __webpack_require__(386);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(10);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -44731,7 +45010,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initHeader(e) {
-    console.log('\tHeader');
+    console.debug('\tHeader');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-header', VHeader, __WEBPACK_IMPORTED_MODULE_0__material_top_app_bar_index__["a" /* MDCTopAppBar */]);
 }
 
@@ -44755,19 +45034,19 @@ var VHeader = function (_eventHandlerMixin) {
 }(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]));
 
 /***/ }),
-/* 385 */
+/* 386 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTopAppBar; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adapter__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_base_component__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__ = __webpack_require__(386);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__ = __webpack_require__(387);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fixed_foundation__ = __webpack_require__(389);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__short_foundation__ = __webpack_require__(390);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__standard_foundation__ = __webpack_require__(391);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fixed_foundation__ = __webpack_require__(390);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__short_foundation__ = __webpack_require__(391);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__standard_foundation__ = __webpack_require__(392);
 /* unused harmony reexport MDCTopAppBarBaseFoundation */
 /* unused harmony reexport MDCTopAppBarFoundation */
 /* unused harmony reexport MDCFixedTopAppBarFoundation */
@@ -44974,7 +45253,7 @@ var MDCTopAppBar = function (_MDCComponent) {
 
 
 /***/ }),
-/* 386 */
+/* 387 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44982,7 +45261,7 @@ var MDCTopAppBar = function (_MDCComponent) {
 /* unused harmony export RippleCapableSurface */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(147);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(387);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(388);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(148);
 /* unused harmony reexport MDCRippleFoundation */
 /* unused harmony reexport util */
@@ -45231,13 +45510,13 @@ RippleCapableSurface.prototype.disabled;
 
 
 /***/ }),
-/* 387 */
+/* 388 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(147);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(388);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(389);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(148);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -46018,7 +46297,7 @@ var MDCRippleFoundation = function (_MDCFoundation) {
 /* harmony default export */ __webpack_exports__["a"] = (MDCRippleFoundation);
 
 /***/ }),
-/* 388 */
+/* 389 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46079,7 +46358,7 @@ var numbers = {
 
 
 /***/ }),
-/* 389 */
+/* 390 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46191,7 +46470,7 @@ var MDCFixedTopAppBarFoundation = function (_MDCTopAppBarFoundati) {
 /* harmony default export */ __webpack_exports__["a"] = (MDCFixedTopAppBarFoundation);
 
 /***/ }),
-/* 390 */
+/* 391 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46313,7 +46592,7 @@ var MDCShortTopAppBarFoundation = function (_MDCTopAppBarBaseFoun) {
 /* harmony default export */ __webpack_exports__["a"] = (MDCShortTopAppBarFoundation);
 
 /***/ }),
-/* 391 */
+/* 392 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46586,15 +46865,15 @@ var MDCTopAppBarFoundation = function (_MDCTopAppBarBaseFoun) {
 /* harmony default export */ __webpack_exports__["a"] = (MDCTopAppBarFoundation);
 
 /***/ }),
-/* 392 */
+/* 393 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initIconToggles;
 /* unused harmony export VIconToggle */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_toggle__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_icon_toggle__ = __webpack_require__(393);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_icon_toggle__ = __webpack_require__(394);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_icon_toggle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_icon_toggle__);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -46607,7 +46886,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initIconToggles(e) {
-    console.log('\tIcon Toggles');
+    console.debug('\tIcon Toggles');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-icon-toggle', VIconToggle, __WEBPACK_IMPORTED_MODULE_2__material_icon_toggle__["MDCIconToggle"]);
 }
 
@@ -46624,7 +46903,7 @@ var VIconToggle = function (_VBaseToggle) {
 }(__WEBPACK_IMPORTED_MODULE_1__base_toggle__["a" /* VBaseToggle */]);
 
 /***/ }),
-/* 393 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -49410,7 +49689,7 @@ var VIconToggle = function (_VBaseToggle) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
 
 /***/ }),
-/* 394 */
+/* 395 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49418,7 +49697,7 @@ var VIconToggle = function (_VBaseToggle) {
 /* unused harmony export VMenu */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_menu__ = __webpack_require__(149);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_menu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__material_menu__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(10);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -49442,7 +49721,7 @@ function createMenuHandler(menu, element) {
 }
 
 function initMenus(e) {
-    console.log('\tMenus');
+    console.debug('\tMenus');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-menu', VMenu, __WEBPACK_IMPORTED_MODULE_0__material_menu__["MDCMenu"]);
 }
 
@@ -49466,15 +49745,15 @@ var VMenu = function (_eventHandlerMixin) {
 }(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]));
 
 /***/ }),
-/* 395 */
+/* 396 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSelects;
 /* unused harmony export VSelect */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select__ = __webpack_require__(396);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select__ = __webpack_require__(397);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__material_select__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__ = __webpack_require__(103);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -49491,7 +49770,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initSelects(e) {
-    console.log('\tSelects');
+    console.debug('\tSelects');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-select', VSelect, __WEBPACK_IMPORTED_MODULE_0__material_select__["MDCSelect"]);
 }
 
@@ -49522,7 +49801,7 @@ var VSelect = function (_visibilityObserverMi) {
     }, {
         key: 'value',
         value: function value() {
-            return this.select.options.length === 0 ? null : this.select.options[this.select.selectedIndex].value;
+            return this.select.options.length === 0 || this.select.selectedIndex === -1 ? null : this.select.options[this.select.selectedIndex].value;
         }
     }, {
         key: 'clear',
@@ -49537,6 +49816,11 @@ var VSelect = function (_visibilityObserverMi) {
                 });
                 this.select.dispatchEvent(event);
             }
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            this.select.value = this.element.dataset.originalValue;
         }
     }, {
         key: 'setValue',
@@ -49554,7 +49838,7 @@ var VSelect = function (_visibilityObserverMi) {
 }(Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__["a" /* visibilityObserverMixin */])(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */])));
 
 /***/ }),
-/* 396 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -59786,7 +60070,7 @@ var VSelect = function (_visibilityObserverMi) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
 
 /***/ }),
-/* 397 */
+/* 398 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59796,7 +60080,7 @@ var VSelect = function (_visibilityObserverMi) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__material_chips__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(1);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -59811,7 +60095,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initChips(e) {
-    console.log('\tChips');
+    console.debug('\tChips');
     Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-chip', VChip, __WEBPACK_IMPORTED_MODULE_0__material_chips__["MDCChip"]);
     Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-chip-set', VChipSet, __WEBPACK_IMPORTED_MODULE_0__material_chips__["MDCChipSet"]);
 }
@@ -59848,7 +60132,7 @@ var VChip = function (_eventHandlerMixin) {
     }, {
         key: 'clear',
         value: function clear() {
-            console.log('\tChip clear is a no-op');
+            console.debug('Chip clear is a no-op');
         }
     }, {
         key: 'setValue',
@@ -59873,14 +60157,14 @@ var VChipSet = function (_eventHandlerMixin2) {
 }(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_2__base_component__["a" /* VBaseComponent */]));
 
 /***/ }),
-/* 398 */
+/* 399 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initCards;
 /* unused harmony export VCard */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(1);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -59891,7 +60175,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initCards(e) {
-    console.log('\tCards');
+    console.debug('\tCards');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-card', VCard, null);
 }
 
@@ -59908,7 +60192,7 @@ var VCard = function (_VBaseContainer) {
 }(__WEBPACK_IMPORTED_MODULE_0__base_container__["a" /* VBaseContainer */]);
 
 /***/ }),
-/* 399 */
+/* 400 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59916,7 +60200,7 @@ var VCard = function (_VBaseContainer) {
 /* unused harmony export VForm */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_event_handler__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_container__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(1);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -59928,7 +60212,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initForms(e) {
-    console.log('\tForms');
+    console.debug('\tForms');
     Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-form', VForm, null);
 }
 
@@ -59945,15 +60229,15 @@ var VForm = function (_eventHandlerMixin) {
 }(Object(__WEBPACK_IMPORTED_MODULE_0__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_container__["a" /* VBaseContainer */]));
 
 /***/ }),
-/* 400 */
+/* 401 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSnackbar;
 /* unused harmony export VSnackbar */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_snackbar__ = __webpack_require__(401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_snackbar__ = __webpack_require__(402);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_snackbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__material_snackbar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(1);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -59966,7 +60250,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initSnackbar(e) {
-    console.log('\tSnackbar');
+    console.debug('\tSnackbar');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-snackbar', VSnackbar, __WEBPACK_IMPORTED_MODULE_0__material_snackbar__["MDCSnackbar"]);
 }
 
@@ -60000,7 +60284,7 @@ var VSnackbar = function (_VBaseComponent) {
 }(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]);
 
 /***/ }),
-/* 401 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -61534,15 +61818,15 @@ var VSnackbar = function (_VBaseComponent) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
 
 /***/ }),
-/* 402 */
+/* 403 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initCheckboxes;
 /* unused harmony export VCheckbox */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_toggle__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_checkbox__ = __webpack_require__(403);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_checkbox__ = __webpack_require__(404);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_checkbox__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -61557,7 +61841,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initCheckboxes(e) {
-    console.log('\tCheckboxes');
+    console.debug('\tCheckboxes');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-checkbox', VCheckbox, __WEBPACK_IMPORTED_MODULE_2__material_checkbox__["MDCCheckbox"]);
 }
 
@@ -61584,7 +61868,7 @@ var VCheckbox = function (_VBaseToggle) {
 }(__WEBPACK_IMPORTED_MODULE_1__base_toggle__["a" /* VBaseToggle */]);
 
 /***/ }),
-/* 403 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -64700,15 +64984,15 @@ var VCheckbox = function (_VBaseToggle) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
 
 /***/ }),
-/* 404 */
+/* 405 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSwitches;
 /* unused harmony export VSwitch */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_toggle__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_switch__ = __webpack_require__(405);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_switch__ = __webpack_require__(406);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_switch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_switch__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -64723,7 +65007,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initSwitches(e) {
-    console.log('\tSwitches');
+    console.debug('\tSwitches');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-switch', VSwitch, __WEBPACK_IMPORTED_MODULE_2__material_switch__["MDCSwitch"]);
 }
 
@@ -64747,7 +65031,7 @@ var VSwitch = function (_VBaseToggle) {
 }(__WEBPACK_IMPORTED_MODULE_1__base_toggle__["a" /* VBaseToggle */]);
 
 /***/ }),
-/* 405 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -67392,15 +67676,15 @@ var VSwitch = function (_VBaseToggle) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
 
 /***/ }),
-/* 406 */
+/* 407 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initRichTextArea;
 /* unused harmony export VRichTextArea */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_quill__ = __webpack_require__(407);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_quill__ = __webpack_require__(408);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_quill__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(10);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -67429,7 +67713,7 @@ var toolbarOptions = [['bold', 'italic', 'underline', 'strike'], // toggled butt
 ];
 
 function initRichTextArea(e) {
-    console.log('\tRich Text Area');
+    console.debug('\tRich Text Area');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-rich-text-area-container', VRichTextArea, null);
 }
 
@@ -67450,6 +67734,8 @@ var VRichTextArea = function (_eventHandlerMixin) {
             placeholder: _this.quillEditorElement.dataset.placeholder
 
         });
+
+        _this.element.dataset.originalValue = _this.value();
         return _this;
     }
 
@@ -67480,6 +67766,11 @@ var VRichTextArea = function (_eventHandlerMixin) {
             }
         }
     }, {
+        key: "reset",
+        value: function reset() {
+            this.setValue(this.element.dataset.originalValue);
+        }
+    }, {
         key: "setValue",
         value: function setValue(value) {
             this.quill.root.innerHTML = value;
@@ -67495,7 +67786,7 @@ var VRichTextArea = function (_eventHandlerMixin) {
 }(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]));
 
 /***/ }),
-/* 407 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer, module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -80422,10 +80713,10 @@ var VRichTextArea = function (_eventHandlerMixin) {
     /******/)["default"]
   );
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(408).Buffer, __webpack_require__(12)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(409).Buffer, __webpack_require__(12)(module)))
 
 /***/ }),
-/* 408 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -80439,9 +80730,9 @@ var VRichTextArea = function (_eventHandlerMixin) {
 
 
 
-var base64 = __webpack_require__(409);
-var ieee754 = __webpack_require__(410);
-var isArray = __webpack_require__(411);
+var base64 = __webpack_require__(410);
+var ieee754 = __webpack_require__(411);
+var isArray = __webpack_require__(412);
 
 exports.Buffer = Buffer;
 exports.SlowBuffer = SlowBuffer;
@@ -82169,7 +82460,7 @@ function isnan(val) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(75)))
 
 /***/ }),
-/* 409 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82296,7 +82587,7 @@ function fromByteArray(uint8) {
 }
 
 /***/ }),
-/* 410 */
+/* 411 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -82385,7 +82676,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 };
 
 /***/ }),
-/* 411 */
+/* 412 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -82395,7 +82686,7 @@ module.exports = Array.isArray || function (arr) {
 };
 
 /***/ }),
-/* 412 */
+/* 413 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82403,7 +82694,7 @@ module.exports = Array.isArray || function (arr) {
 /* unused harmony export VStepper */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_event_handler__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_container__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(1);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -82417,7 +82708,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initSteppers(e) {
-    console.log('\tStepper');
+    console.debug('\tStepper');
     Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-stepper', VStepper, null);
 }
 
@@ -82475,15 +82766,15 @@ var VStepper = function (_eventHandlerMixin) {
 }(Object(__WEBPACK_IMPORTED_MODULE_0__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_container__["a" /* VBaseContainer */]));
 
 /***/ }),
-/* 413 */
+/* 414 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initRadios;
 /* unused harmony export VRadio */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_toggle__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_radio__ = __webpack_require__(414);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_radio__ = __webpack_require__(415);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_radio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_radio__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -82498,7 +82789,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initRadios(e) {
-    console.log('\tRadios');
+    console.debug('\tRadios');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-radio', VRadio, __WEBPACK_IMPORTED_MODULE_2__material_radio__["MDCRadio"]);
 }
 
@@ -82522,7 +82813,7 @@ var VRadio = function (_VBaseToggle) {
 }(__WEBPACK_IMPORTED_MODULE_1__base_toggle__["a" /* VBaseToggle */]);
 
 /***/ }),
-/* 414 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -85099,15 +85390,15 @@ var VRadio = function (_VBaseToggle) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
 
 /***/ }),
-/* 415 */
+/* 416 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initSliders;
 /* unused harmony export VSlider */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_slider__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_slider__ = __webpack_require__(417);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_slider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_slider__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(143);
@@ -85128,7 +85419,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initSliders(e) {
-    console.log('\tSliders');
+    console.debug('\tSliders');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-slider', VSlider, __WEBPACK_IMPORTED_MODULE_2__material_slider__["MDCSlider"]);
 }
 
@@ -85165,6 +85456,11 @@ var VSlider = function (_visibilityObserverMi) {
             this.setValue(0);
         }
     }, {
+        key: 'reset',
+        value: function reset() {
+            this.setValue(this.element.dataset.originalValue);
+        }
+    }, {
         key: 'setValue',
         value: function setValue(value) {
             this.mdcComponent.value = value;
@@ -85184,11 +85480,11 @@ var VSlider = function (_visibilityObserverMi) {
         }
     }, {
         key: 'createEventHandler',
-        value: function createEventHandler(actionsData) {
+        value: function createEventHandler(actionsData, root) {
             return function (event) {
                 // The MDC slider was firing duplicate change events - this prevents that
                 if (!this.lastEvent || event.timeStamp - this.lastEvent.timeStamp > 10.0) {
-                    new __WEBPACK_IMPORTED_MODULE_4__events__["a" /* VEvents */](actionsData, event).call();
+                    new __WEBPACK_IMPORTED_MODULE_4__events__["a" /* VEvents */](actionsData, event, root).call();
                 }
                 this.lastEvent = event;
             };
@@ -85199,7 +85495,7 @@ var VSlider = function (_visibilityObserverMi) {
 }(Object(__WEBPACK_IMPORTED_MODULE_3__mixins_visibility_observer__["a" /* visibilityObserverMixin */])(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */])));
 
 /***/ }),
-/* 416 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -87269,13 +87565,13 @@ var VSlider = function (_visibilityObserverMi) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
 
 /***/ }),
-/* 417 */
+/* 418 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initHiddenFields;
 /* unused harmony export VHiddenField */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -87287,7 +87583,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initHiddenFields(e) {
-    console.log('\tHiddenFields');
+    console.debug('\tHiddenFields');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-hidden-field', VHiddenField, null);
 }
 
@@ -87324,6 +87620,11 @@ var VHiddenField = function (_VBaseComponent) {
             this.setValue('');
         }
     }, {
+        key: 'reset',
+        value: function reset() {
+            this.element.value = this.element.dataset.originalValue;
+        }
+    }, {
         key: 'setValue',
         value: function setValue(value) {
             this.element.value = value;
@@ -87339,14 +87640,14 @@ var VHiddenField = function (_VBaseComponent) {
 }(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]);
 
 /***/ }),
-/* 418 */
+/* 419 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initContent;
 /* unused harmony export VContent */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(10);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -87359,7 +87660,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initContent(e) {
-    console.log('\tContent');
+    console.debug('\tContent');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-content', VContent, null);
 }
 
@@ -87369,14 +87670,17 @@ var VContent = function (_eventHandlerMixin) {
     function VContent(element, mdcComponent) {
         _classCallCheck(this, VContent);
 
-        return _possibleConstructorReturn(this, (VContent.__proto__ || Object.getPrototypeOf(VContent)).call(this, element, mdcComponent));
+        var _this = _possibleConstructorReturn(this, (VContent.__proto__ || Object.getPrototypeOf(VContent)).call(this, element, mdcComponent));
+
+        element.setAttribute('data-is-container', '');
+        return _this;
     }
 
     return VContent;
 }(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_container__["a" /* VBaseContainer */]));
 
 /***/ }),
-/* 419 */
+/* 420 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87384,7 +87688,7 @@ var VContent = function (_eventHandlerMixin) {
 /* unused harmony export VGrid */
 /* unused harmony export VColumn */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(10);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -87397,7 +87701,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initGrid(e) {
-    console.log('\tGrid');
+    console.debug('\tGrid');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-grid', VGrid, null);
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-column', VColumn, null);
 }
@@ -87427,15 +87731,15 @@ var VColumn = function (_eventHandlerMixin2) {
 }(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_container__["a" /* VBaseContainer */]));
 
 /***/ }),
-/* 420 */
+/* 421 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initTabBars;
 /* unused harmony export VTabBar */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_tab_bar__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_tab_bar__ = __webpack_require__(422);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_tab_bar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_tab_bar__);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -87448,7 +87752,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initTabBars(e) {
-    console.log('\tTab Bars');
+    console.debug('\tTab Bars');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-tab-bar', VTabBar, __WEBPACK_IMPORTED_MODULE_2__material_tab_bar__["MDCTabBar"]);
 }
 
@@ -87465,7 +87769,7 @@ var VTabBar = function (_eventHandlerMixin) {
 }(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]));
 
 /***/ }),
-/* 421 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -93937,7 +94241,7 @@ var VTabBar = function (_eventHandlerMixin) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
 
 /***/ }),
-/* 422 */
+/* 423 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -94007,7 +94311,7 @@ function createTableRowSelectHandler(component, listElements, selectAll) {
 }
 
 function initTables(e) {
-    console.log('\tTables');
+    console.debug('\tTables');
     var components = e.querySelectorAll('.mdl-data-table');
     if (components) {
         var _iteratorNormalCompletion3 = true;
@@ -94067,13 +94371,13 @@ function initTables(e) {
 }
 
 /***/ }),
-/* 423 */
+/* 424 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initFileInputs;
 /* unused harmony export VFileInput */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(10);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -94087,7 +94391,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initFileInputs(e) {
-    console.log('\tFile Inputs');
+    console.debug('\tFile Inputs');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-file-input', VFileInput, null);
 }
 
@@ -94133,7 +94437,8 @@ var VFileInput = function (_eventHandlerMixin) {
             if (!this.preview) return null;
 
             var _loop = function _loop(previewId) {
-                var elem = _this2.root.getElementById(previewId);
+                var elem = _this2.root.querySelector('#' + previewId);
+
                 if (elem && elem.vComponent && elem.vComponent.preview) {
                     _this2.file = e.target.files[0];
                     var fr = new FileReader();
@@ -94146,7 +94451,7 @@ var VFileInput = function (_eventHandlerMixin) {
                         fr.readAsDataURL(_this2.file);
                     }
                 } else {
-                    console.warn('WARNING: Unable to find previewable element with id: ' + previewId + '\n1) Make sure you have an element with that id on your page\n2) Make sure the Componenet or Plugin supports the preview option for the request mime type');
+                    console.log('WARNING: Unable to find previewable element with id: ' + previewId + '\n1) Make sure you have an element with that id on your page\n2) Make sure the Componenet or Plugin supports the preview option for the request mime type');
                 }
             };
 
@@ -94199,15 +94504,15 @@ var VFileInput = function (_eventHandlerMixin) {
 }(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]));
 
 /***/ }),
-/* 424 */
+/* 425 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initFormFields;
 /* unused harmony export VFormField */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_form_field__ = __webpack_require__(425);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_form_field__ = __webpack_require__(426);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_form_field___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_form_field__);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -94222,7 +94527,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initFormFields(e) {
-    console.log('\tForm Fields');
+    console.debug('\tForm Fields');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-form-field', VFormField, __WEBPACK_IMPORTED_MODULE_2__material_form_field__["MDCFormField"]);
 }
 
@@ -94239,7 +94544,7 @@ var VFormField = function (_VBaseContainer) {
 }(__WEBPACK_IMPORTED_MODULE_0__base_container__["a" /* VBaseContainer */]);
 
 /***/ }),
-/* 425 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -96744,13 +97049,13 @@ var VFormField = function (_VBaseContainer) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
 
 /***/ }),
-/* 426 */
+/* 427 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initImages;
 /* unused harmony export VImage */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(10);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -96765,7 +97070,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initImages(e) {
-    console.log('\tImages');
+    console.debug('\tImages');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-image', VImage);
 }
 
@@ -96789,13 +97094,13 @@ var VImage = function (_eventHandlerMixin) {
 }(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]));
 
 /***/ }),
-/* 427 */
+/* 428 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initTypography;
 /* unused harmony export VTypography */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(10);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -96810,7 +97115,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initTypography(e) {
-    console.log('\tTypography');
+    console.debug('\tTypography');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-typography', VTypography);
 }
 
@@ -96839,13 +97144,51 @@ var VTypography = function (_eventHandlerMixin) {
 }(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]));
 
 /***/ }),
-/* 428 */
+/* 429 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initTooltips;
+/* unused harmony export VTooltip */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(10);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/* global MaterialTooltip */
+
+
+
+
+
+function initTooltips(e) {
+    console.debug('\tTooltips');
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-tooltip', VTooltip, MaterialTooltip);
+}
+
+var VTooltip = function (_eventHandlerMixin) {
+    _inherits(VTooltip, _eventHandlerMixin);
+
+    function VTooltip(element, mdcComponent) {
+        _classCallCheck(this, VTooltip);
+
+        return _possibleConstructorReturn(this, (VTooltip.__proto__ || Object.getPrototypeOf(VTooltip)).call(this, element, mdcComponent));
+    }
+
+    return VTooltip;
+}(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]));
+
+/***/ }),
+/* 430 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initPlugins;
 /* unused harmony export VPluginComponent */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(10);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -96861,7 +97204,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initPlugins(e) {
-    console.log('\tPlugins');
+    console.debug('\tPlugins');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-plugin', VPluginComponent);
 }
 
@@ -96880,14 +97223,14 @@ var VPluginComponent = function (_eventHandlerMixin) {
         if (pluginClassName) {
             var PluginClass = null;
             if (!/^[$_a-z][$_a-z0-9.]*$/i.test(pluginClassName)) {
-                console.error('Invalid class name: $(pluginClassName)');
+                console.log('Invalid class name: $(pluginClassName)');
             } else {
                 PluginClass = eval(pluginClassName);
             }
             if (PluginClass) {
                 _this.element.vPlugin = new PluginClass(element);
             } else {
-                console.error('Unable to find a plugin class with name ' + pluginClassName);
+                console.log('Unable to find a plugin class with name ' + pluginClassName);
             }
         }
         return _this;
@@ -96913,6 +97256,13 @@ var VPluginComponent = function (_eventHandlerMixin) {
         value: function clear() {
             if (this.element.vPlugin && this.element.vPlugin.name) {
                 return this.element.vPlugin.clear();
+            }
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            if (this.element.vPlugin && this.element.vPlugin.name) {
+                return this.element.vPlugin.reset();
             }
         }
     }, {
@@ -96949,14 +97299,14 @@ var VPluginComponent = function (_eventHandlerMixin) {
 }(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]));
 
 /***/ }),
-/* 429 */
+/* 431 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initProgress;
 /* unused harmony export VProgress */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_linear_progress__ = __webpack_require__(430);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_linear_progress__ = __webpack_require__(432);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -96969,7 +97319,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function initProgress(e) {
-    console.log('\tProgress');
+    console.debug('\tProgress');
     Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-progress', VProgress, __WEBPACK_IMPORTED_MODULE_1__material_linear_progress__["a" /* MDCLinearProgress */]);
 }
 
@@ -96982,12 +97332,6 @@ var VProgress = function (_VBaseComponent) {
         var _this = _possibleConstructorReturn(this, (VProgress.__proto__ || Object.getPrototypeOf(VProgress)).call(this, element, mdcComponent));
 
         element.dataset.hidden === 'true' ? _this.hide() : _this.show();
-        _this.root.addEventListener('V:postStarted', function (e) {
-            _this.show();
-        });
-        _this.root.addEventListener('V:postFinished', function (e) {
-            _this.hide();
-        });
         return _this;
     }
 
@@ -97007,11 +97351,11 @@ var VProgress = function (_VBaseComponent) {
 }(__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* VBaseComponent */]);
 
 /***/ }),
-/* 430 */
+/* 432 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__component__ = __webpack_require__(431);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__component__ = __webpack_require__(433);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__component__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(152);
 /* unused harmony namespace reexport */
@@ -97042,13 +97386,13 @@ var VProgress = function (_VBaseComponent) {
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 431 */
+/* 433 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCLinearProgress; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_base_component__ = __webpack_require__(432);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_base_component__ = __webpack_require__(434);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(152);
 /**
  * @license
@@ -97149,7 +97493,7 @@ var MDCLinearProgress = /** @class */function (_super) {
 //# sourceMappingURL=component.js.map
 
 /***/ }),
-/* 432 */
+/* 434 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -97260,7 +97604,7 @@ var MDCComponent = /** @class */function () {
 //# sourceMappingURL=component.js.map
 
 /***/ }),
-/* 433 */
+/* 435 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -97353,7 +97697,7 @@ function getCorrectEventName(windowObj, eventType) {
 //# sourceMappingURL=util.js.map
 
 /***/ }),
-/* 434 */
+/* 436 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

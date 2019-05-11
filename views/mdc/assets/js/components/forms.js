@@ -3,7 +3,7 @@ import {VBaseContainer} from "./base-container";
 import {hookupComponents} from "./base-component";
 
 export function initForms(e) {
-    console.log('\tForms');
+    console.debug('\tForms');
     hookupComponents(e, '.v-form', VForm, null);
 }
 

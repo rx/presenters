@@ -9,17 +9,19 @@ import {VSnackbarEvent} from './events/snackbar';
 import {VClears} from './events/clears';
 import {VRemoves} from './events/removes';
 import {VStepperEvent} from './events/stepper';
+import {VNavigates} from './events/navigates';
 import {VPluginEventAction} from './events/plugin';
 import getRoot from './root_document';
 
 export class VEvents {
     // [[type, url, target, params]]
-    constructor(actions, event, root) {
+    constructor(actions, event, root, vComponent) {
         this.event = event;
         this.root = root;
         this.actions = actions.map((action) => {
             return this.constructor.action_class(action, event, root);
         });
+        this.vComponent = vComponent;
     }
 
     call() {
@@ -50,14 +52,15 @@ export class VEvents {
             const contentType = result.contentType;
             const responseURL = result.responseURL;
 
-            if (event.target.dialog) {
-                event.target.dialog.close();
-            }
             if (contentType && contentType.indexOf('text/html') !== -1 &&
                 typeof responseURL !== 'undefined') {
                 window.location = responseURL;
             }
-        }).catch(function(results) {
+
+            if (this.vComponent) {
+                this.vComponent.actionsSucceeded(this);
+            }
+        }).catch((results) => {
             console.log('If you got here it may not be what you think:',
                 results);
 
@@ -68,7 +71,15 @@ export class VEvents {
             }
 
             if (!result.squelch) {
-                new VErrors(root, event).displayErrors(result);
+                new VErrors(this.root, this.event).displayErrors(result);
+            }
+
+            if (this.vComponent) {
+                this.vComponent.actionsHalted(this);
+            }
+        }).finally(() => {
+            if (this.vComponent) {
+                this.vComponent.actionsFinished(this);
             }
         });
     }
@@ -104,6 +115,8 @@ export class VEvents {
                 return new VClears(options, params, event, root);
             case 'stepper':
                 return new VStepperEvent(options, params, event, root);
+            case 'navigates':
+                return new VNavigates(options, params, event, root);
             default:
                 return new VPluginEventAction(action_type, options, params,
                     event, root);
@@ -113,15 +126,15 @@ export class VEvents {
 
 // This is used to get a proper binding of the actionData
 // https://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
-function createEventHandler(actionsData, root) {
+function createEventHandler(actionsData, root, vComponent) {
     return function(event) {
         event.stopPropagation();
-        new VEvents(actionsData, event, root).call();
+        new VEvents(actionsData, event, root, vComponent).call();
     };
 }
 
 export function initEvents(e) {
-    console.log('\tEvents');
+    console.debug('\tEvents');
 
     var events = e.querySelectorAll('[data-events]');
     for (var i = 0; i < events.length; i++) {
@@ -133,18 +146,17 @@ export function initEvents(e) {
             var eventOptions = eventData[2];
             var actionsData = eventData[1];
             const vComponent = eventElem.vComponent;
-            var eventHandler = createEventHandler(actionsData, getRoot(e),
-                vComponent);
+            var eventHandler = createEventHandler(actionsData, getRoot(e), vComponent);
+
             // allow overide of event handler by component
-            if (eventElem.vComponent &&
-                eventElem.vComponent.createEventHandler) {
-                eventHandler = eventElem.vComponent.createEventHandler(
-                    actionsData, getRoot(e));
+            if (vComponent && vComponent.createEventHandler) {
+                eventHandler = vComponent.createEventHandler(
+                    actionsData, getRoot(e), vComponent);
             }
+
             // Delegate to the component if possible
-            if (eventElem.vComponent &&
-                eventElem.vComponent.initEventListener) {
-                eventElem.vComponent.initEventListener(eventName, eventHandler);
+            if (vComponent && vComponent.initEventListener) {
+                vComponent.initEventListener(eventName, eventHandler);
             }
             else {
                 if (typeof eventElem.eventsHandler === 'undefined') {
@@ -157,6 +169,10 @@ export function initEvents(e) {
                 eventOptions.passive = true;
                 eventElem.addEventListener(eventName, eventHandler,
                     eventOptions);
+            }
+
+            if (vComponent) {
+                vComponent.afterInit();
             }
         }
     }

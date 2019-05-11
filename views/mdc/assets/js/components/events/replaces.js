@@ -2,6 +2,16 @@ import {expandParams} from './action_parameter';
 import {VBase} from './base';
 import {initialize} from '../initialize';
 
+// Create a NodeList from raw HTML.
+// Whitespace is trimmed to avoid creating superfluous text nodes.
+function htmlToNodes(html, root = document) {
+    const template = root.createElement('template');
+
+    template.innerHTML = html.trim();
+
+    return template.content.children;
+}
+
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
 export class VReplaces extends VBase {
@@ -52,13 +62,22 @@ export class VReplaces extends VBase {
                             console.debug(httpRequest.status + ':' +
                                 this.getResponseHeader('content-type'));
                             if (httpRequest.status === 200) {
-                                const nodeToReplace = root.getElementById(
-                                    elementId);
-                                const newDiv = root.createElement('div');
-                                newDiv.innerHTML = httpRequest.responseText;
-                                nodeToReplace.parentElement.replaceChild(newDiv,
-                                    nodeToReplace);
-                                initialize(newDiv);
+                                // NodeList.childNodes is "live", meaning DOM
+                                // changes to its entries will mutate the list
+                                // itself.
+                                // (see: https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
+                                // Array.from clones the entries, creating a
+                                // "dead" list.
+                                const newNodes = Array.from(htmlToNodes(
+                                    httpRequest.responseText,
+                                    root
+                                ));
+
+                                nodeToReplace.replaceWith(...newNodes);
+
+                                for (const node of newNodes) {
+                                    initialize(node);
+                                }
 
                                 results.push({
                                     action: 'replaces',

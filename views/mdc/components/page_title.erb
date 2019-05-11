@@ -1,4 +1,4 @@
-<h1 class="v-page-title">
+<h1 id=<%= comp.id %> class="v-page-title">
   <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
   <%= expand_text(comp.text) %>
 </h1>

@@ -2,7 +2,7 @@ import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
 export function initFileInputs(e) {
-    console.log('\tFile Inputs');
+    console.debug('\tFile Inputs');
     hookupComponents(e, '.v-file-input', VFileInput, null);
 }
 
@@ -34,7 +34,8 @@ export class VFileInput extends eventHandlerMixin(VBaseComponent) {
     previewComponent(e) {
         if (!this.preview) return null;
         for (const previewId of this.preview) {
-            const elem = this.root.getElementById(previewId);
+            const elem = this.root.querySelector(`#${previewId}`);
+
             if (elem && elem.vComponent && elem.vComponent.preview) {
                 this.file = e.target.files[0];
                 const fr = new FileReader();

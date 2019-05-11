@@ -2,7 +2,7 @@ import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
 export function initPlugins(e) {
-    console.log('\tPlugins');
+    console.debug('\tPlugins');
     hookupComponents(e, '.v-plugin', VPluginComponent);
 }
 
@@ -48,6 +48,12 @@ export class VPluginComponent extends eventHandlerMixin(VBaseComponent) {
     clear() {
         if (this.element.vPlugin && this.element.vPlugin.name) {
             return this.element.vPlugin.clear();
+        }
+    }
+
+    reset() {
+        if (this.element.vPlugin && this.element.vPlugin.name) {
+            return this.element.vPlugin.reset();
         }
     }
 

@@ -5,7 +5,7 @@ import {visibilityObserverMixin} from './mixins/visibility-observer';
 import {VEvents} from './events';
 
 export function initSliders(e) {
-    console.log('\tSliders');
+    console.debug('\tSliders');
     hookupComponents(e, '.v-slider', VSlider, MDCSlider);
 }
 
@@ -33,6 +33,10 @@ export class VSlider extends visibilityObserverMixin(
         this.setValue(0);
     }
 
+    reset() {
+        this.setValue(this.element.dataset.originalValue);
+    }
+
     setValue(value) {
         this.mdcComponent.value = value;
     }
@@ -49,12 +53,12 @@ export class VSlider extends visibilityObserverMixin(
     }
 
 
-    createEventHandler(actionsData) {
+    createEventHandler(actionsData, root) {
         return function(event) {
             // The MDC slider was firing duplicate change events - this prevents that
             if (!this.lastEvent ||
                 (event.timeStamp - this.lastEvent.timeStamp) > 10.0) {
-                new VEvents(actionsData, event).call();
+                new VEvents(actionsData, event, root).call();
             }
             this.lastEvent = event;
         };

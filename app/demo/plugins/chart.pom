@@ -1,0 +1,258 @@
+Voom::Presenters.define(:chart, namespace: :plugins) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :plugin_drawer
+  plugin :chart
+
+  page_title 'Chart'
+
+  indented_grid do
+    text 'Based on the [c3 charting library](https://c3js.org/examples.html).'
+
+    title 'Line Chart'
+    text '[Line chart with sequential data](https://c3js.org/samples/simple_multiple.html).'
+    chart data: {
+        columns: [
+            ['data1', 30, 200, 100, 400, 150, 250],
+            ['data2', 50, 20, 10, 40, 15, 25]
+        ]
+    }
+
+    title 'Timeseries Chart'
+    text '[Simple line chart with timeseries data](https://c3js.org/samples/timeseries.html).'
+    chart data: {
+        x: 'x',
+        columns: [
+            # ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
+            ['x', '20130101', '20130102', '20130103', '20130104', '20130105', '20130106'],
+            ['data1', 30, 200, 100, 400, 150, 250],
+            ['data2', 130, 340, 200, 500, 250, 350]
+        ]
+    },
+          axis: {
+              x: {
+                  type: 'timeseries',
+                  tick: {
+                      format: '%Y-%m-%d'
+                  }
+              }
+          }
+
+    title 'Spline Chart'
+    text '[Display as Spline Chart](https://c3js.org/samples/chart_spline.html).'
+    chart data: {
+        columns: [
+            ['data1', 30, 200, 100, 400, 150, 250],
+            ['data2', 130, 100, 140, 200, 150, 50]
+        ],
+        type: 'spline'
+    }
+
+    title 'Simple XY Line Chart'
+    text '[Simple line chart with custom x](https://c3js.org/samples/simple_xy.html).'
+    chart data: {
+        x: 'x',
+        columns: [
+            ['x', 30, 50, 100, 230, 300, 310],
+            ['data1', 30, 200, 100, 400, 150, 250],
+            ['data2', 130, 300, 200, 300, 250, 450]
+        ]
+    }
+
+    title 'Multiple XY Line Chart'
+    text '[Multiple line chart with multiple custom x](https://c3js.org/samples/simple_xy_multiple.html).'
+    chart data: {
+        xs: {
+            'data1': 'x1',
+            'data2': 'x2',
+        },
+        columns: [
+            ['x1', 10, 30, 45, 50, 70, 100],
+            ['x2', 30, 50, 75, 100, 120],
+            ['data1', 30, 200, 100, 400, 150, 250],
+            ['data2', 20, 180, 240, 100, 190]
+        ]
+    }
+
+    title 'Line Chart with Regions'
+    text '[Set regions for each data with style](https://c3js.org/samples/simple_regions.html).'
+    chart data: {
+        columns: [
+            ['data1', 30, 200, 100, 400, 150, 250],
+            ['data2', 50, 20, 10, 40, 15, 25]
+        ],
+        regions: {
+            'data1': [{'start': 1, 'end': 2, 'style': 'dashed'}, {'start': 3}],
+            'data2': [{'end': 3}]
+        }
+    }
+
+    title 'Step Chart'
+    text '[Display as Step Chart](https://c3js.org/samples/chart_step.html).'
+    chart data: {
+        columns: [
+            ['data1', 300, 350, 300, 0, 0, 100],
+            ['data2', 130, 100, 140, 200, 150, 50]
+        ],
+        types: {
+            data1: 'step',
+            data2: 'area-step'
+        }
+    }
+
+    title 'Area Chart'
+    text '[Display as Area Chart](https://c3js.org/samples/chart_area.html).'
+    chart data: {
+        columns: [
+            ['data1', 300, 350, 300, 0, 0, 0],
+            ['data2', 130, 100, 140, 200, 150, 50]
+        ],
+        types: {
+            data1: 'area',
+            data2: 'area-spline'
+        }
+    }
+
+    title 'Stacked Area Chart'
+    text '[Display as Stacked Area Chart](https://c3js.org/samples/chart_area_stacked.html).'
+    chart data: {
+        columns: [
+            ['data1', 300, 350, 300, 0, 0, 120],
+            ['data2', 130, 100, 140, 200, 150, 50]
+        ],
+        types: {
+            data1: 'area-spline',
+            data2: 'area-spline'
+        },
+        groups: [['data1', 'data2']]
+    }
+
+    title 'Bar Chart'
+    text '[Display as Bar Chart](https://c3js.org/samples/chart_bar.html).'
+    chart data: {
+        columns: [
+            ['data1', 30, 200, 100, 400, 150, 250],
+            ['data2', 130, 100, 140, 200, 150, 50]
+        ],
+        type: 'bar'
+    },
+          bar: {
+              width: {
+                  ratio: 0.5
+              }
+          }
+
+    title 'Stacked Bar Chart'
+    text '[Display as Stacked Bar Chart](https://c3js.org/samples/chart_bar_stacked.html).'
+    chart data: {
+        columns: [
+            ['data1', -30, 200, 200, 400, -150, 250],
+            ['data2', 130, 100, -100, 200, -150, 50],
+            ['data3', -230, 200, 200, -300, 250, 250]
+        ],
+        type: 'bar',
+        groups: [
+            ['data1', 'data2']
+        ]
+    },
+          grid: {
+              y: {
+                  lines: [{value: 0}]
+              }
+          }
+
+    title 'Scatter Plot'
+    text '[Display as Scatter Plot](https://c3js.org/samples/chart_scatter.html).'
+    chart data: {
+        xs: {
+            setosa: 'setosa_x',
+            versicolor: 'versicolor_x',
+        },
+        columns: [
+            ["setosa_x", 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4, 3.0, 3.0, 4.0, 4.4, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.6, 3.3, 3.4, 3.0, 3.4, 3.5, 3.4, 3.2, 3.1, 3.4, 4.1, 4.2, 3.1, 3.2, 3.5, 3.6, 3.0, 3.4, 3.5, 2.3, 3.2, 3.5, 3.8, 3.0, 3.8, 3.2, 3.7, 3.3],
+            ["versicolor_x", 3.2, 3.2, 3.1, 2.3, 2.8, 2.8, 3.3, 2.4, 2.9, 2.7, 2.0, 3.0, 2.2, 2.9, 2.9, 3.1, 3.0, 2.7, 2.2, 2.5, 3.2, 2.8, 2.5, 2.8, 2.9, 3.0, 2.8, 3.0, 2.9, 2.6, 2.4, 2.4, 2.7, 2.7, 3.0, 3.4, 3.1, 2.3, 3.0, 2.5, 2.6, 3.0, 2.6, 2.3, 2.7, 3.0, 2.9, 2.9, 2.5, 2.8],
+            ["setosa", 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2],
+            ["versicolor", 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.8, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.7, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3],
+        ],
+        type: 'scatter'
+    },
+          axis: {
+              x: {
+                  label: 'Sepal.Width',
+                  tick: {
+                      fit: false
+                  }
+              },
+              y: {
+                  label: 'Petal.Width'
+              }
+          }
+
+    title 'Pie Chart'
+    text '[Display as Pie Chart](https://c3js.org/samples/chart_pie.html).'
+    chart data: {
+        columns: [
+            ['data1', 30],
+            ['data2', 120],
+        ],
+        type: 'pie'
+    }
+
+    title 'Donut Chart'
+    text '[Display as Donut Chart](https://c3js.org/samples/chart_donut.html).'
+    chart data: {
+        columns: [
+            ['data1', 30],
+            ['data2', 120],
+        ],
+        type: 'donut',
+    },
+          donut: {
+              title: "Iris Petal Width"
+          }
+
+
+    title 'Gauge Chart'
+    text '[Display as Gauge Chart](https://c3js.org/samples/chart_gauge.html).'
+    chart data: {
+        columns: [
+            ['data', 91.4]
+        ],
+        type: 'gauge'
+    },
+          color: {
+              pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'],
+              threshold: {
+                  values: [30, 60, 90, 100]
+              }
+          },
+          size: {
+              height: 180
+          }
+
+    title 'Combination Chart'
+    text '[Display all kinda charts up in here](https://c3js.org/samples/chart_combination.html).'
+    chart data: {
+        columns: [
+            ['data1', 30, 20, 50, 40, 60, 50],
+            ['data2', 200, 130, 90, 240, 130, 220],
+            ['data3', 300, 200, 160, 400, 250, 250],
+            ['data4', 200, 130, 90, 240, 130, 220],
+            ['data5', 130, 120, 150, 140, 160, 150],
+            ['data6', 90, 70, 20, 50, 60, 120],
+        ],
+        type: 'bar',
+        types: {
+            data3: 'spline',
+            data4: 'line',
+            data6: 'area',
+        },
+        groups: [
+            ['data1', 'data2']
+        ]
+    }
+
+  end
+  attach :code, file: __FILE__
+end
+

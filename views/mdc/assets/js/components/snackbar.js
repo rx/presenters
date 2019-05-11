@@ -3,7 +3,7 @@ import {VBaseComponent, hookupComponents} from './base-component';
 
 
 export function initSnackbar(e) {
-    console.log('\tSnackbar');
+    console.debug('\tSnackbar');
     hookupComponents(e, '.v-snackbar', VSnackbar, MDCSnackbar);
 }
 
