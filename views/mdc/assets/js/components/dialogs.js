@@ -98,46 +98,6 @@ export class VDialog extends eventHandlerMixin(VBaseContainer) {
         this.canClose = true;
 
         this.close(vEvent.event.detail.action);
-    }
-
-    actionsHalted() {
-        // A halted event chain should not close the dialog.
-        this.shouldNotifyClosing = true;
-        this.canClose = false;
-    }
-
-    get buttons() {
-        return this.components().filter((c) => c.is('VButton'));
-    }
-
-    afterInit() {
-        const dialogHasHandlers = this.hasHandlers();
-        const buttonsHaveHandlers = this.buttons
-            .map((c) => c.hasHandlers())
-            .some(Boolean);
-
-        if (dialogHasHandlers || buttonsHaveHandlers) {
-            // Stub in our own dialog close method to ensure events run to
-            // completion before the dialog is closed:
-            this.mdcComponent.foundation_.close = this.close.bind(this);
-        }
-    close(action = '') {
-        action = action || '';
-
-        beforeClose.call(this, action);
-
-        if (this.canClose) {
-            hideDialog.call(this.mdcComponent.foundation_, action);
-        }
-    }
-
-    actionsSucceeded(vEvent) {
-        // A successful run-to-completion of an event chain should always
-        // attempt to close the dialog.
-        this.shouldNotifyClosing = false;
-        this.canClose = true;
-
-        this.close(vEvent.event.detail.action);
         super.actionsSucceeded(vEvent); // Bubble up
     }
 
