@@ -13,11 +13,6 @@ export class VBaseComponent {
     }
 
     onShow() {
-<<<<<<< Updated upstream
-    }
-
-    onHide() {
-=======
     }
 
     onHide() {
@@ -80,7 +75,6 @@ export class VBaseComponent {
 
     hasHandlers() {
         return this.eventsHandler && Object.keys(this.eventsHandler).length > 0;
->>>>>>> Stashed changes
     }
 
     clearErrors() {

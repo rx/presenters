@@ -35,10 +35,6 @@ export class VDialog extends VBaseContainer {
         this.mdcComponent.open();
     }
 
-<<<<<<< Updated upstream
-    close() {
-        this.mdcComponent.close();
-=======
     close(action = '') {
         action = action || '';
 
@@ -81,6 +77,5 @@ export class VDialog extends VBaseContainer {
             // completion before the dialog is closed:
             this.mdcComponent.foundation_.close = this.close.bind(this);
         }
->>>>>>> Stashed changes
     }
 }
