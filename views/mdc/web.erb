@@ -1,9 +1,5 @@
-<<<<<<< Updated upstream
-<div <%= erb :"components/event", :locals => {comp: @pom, events: @pom.events, parent_id: nil} %>></div>
-=======
 <% if @pom.events&.any? %>
 <div style='display: inline;'
      <%= erb :"components/event", :locals => {comp: @pom, events: @pom.events, parent_id: nil} %>></div>
 <% end %>
->>>>>>> Stashed changes
 <%= erb :"components/render", :locals => {:components => @pom.components, :scope=> nil} %>

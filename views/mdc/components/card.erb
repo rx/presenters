@@ -8,12 +8,8 @@
          <%= "height: #{comp.height};" if comp.height%>
        <%= "outline: medium solid rgb(63,81,181);" if comp.selected %>"
      <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
-<<<<<<< Updated upstream
->
-=======
      data-is-container>
   <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(top both))%>
->>>>>>> Stashed changes
   <% if comp.media %>
     <div class="v-errors">
       <div id="<%=comp.media.id%>"

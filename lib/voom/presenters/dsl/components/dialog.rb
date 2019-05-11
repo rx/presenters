@@ -14,11 +14,8 @@ module Voom
           include Mixins::Attaches
           include Mixins::Steppers
           include Mixins::Sliders
-<<<<<<< Updated upstream
-=======
           include Mixins::Event
           include Mixins::Progress
->>>>>>> Stashed changes
 
           attr_accessor :width,
                         :height,

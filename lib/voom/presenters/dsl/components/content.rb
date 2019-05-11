@@ -14,12 +14,8 @@ require 'voom/presenters/dsl/components/mixins/icons'
 require 'voom/presenters/dsl/components/mixins/dialogs'
 require 'voom/presenters/dsl/components/mixins/file_inputs'
 require 'voom/presenters/dsl/components/mixins/avatar'
-<<<<<<< Updated upstream
-=======
 require 'voom/presenters/dsl/components/mixins/padding'
 require 'voom/presenters/dsl/components/mixins/progress'
-
->>>>>>> Stashed changes
 
 module Voom
   module Presenters

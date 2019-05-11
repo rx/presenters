@@ -13,7 +13,6 @@ require 'voom/presenters/dsl/components/actions/navigates'
 require 'voom/presenters/dsl/components/actions/stepper'
 require 'voom/presenters/errors/parameter_validation'
 require_relative 'mixins/last_response'
-require_relative 'mixins/actions/progress'
 
 module Voom
   module Presenters
@@ -22,7 +21,6 @@ module Voom
         class Event < Base
           extend Pluggable
           include_plugins(:DSLEventActions)
-          include Mixins::Actions::Progress
 
           attr_accessor :event, :actions
           # Alias common event names
