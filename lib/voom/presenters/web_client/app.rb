@@ -63,6 +63,10 @@ module Voom
             array.map(&:to_s).include?(value.to_s)
           end
 
+          def includes_one?(array1, array2)
+            (array2-array1).size != array2.size
+          end
+
           def unique_id(comp)
             "#{comp.id}-#{SecureRandom.hex(4)}"
           end

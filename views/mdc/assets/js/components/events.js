@@ -38,10 +38,18 @@ export class VEvents {
             }, p);
         }
 
+<<<<<<< Updated upstream
         const event = this.event;
         const root = this.root;
 
         pseries(fnlist).then(function(results) {
+=======
+        if (this.vComponent) {
+            this.vComponent.actionsStarted(this);
+        }
+
+        pseries(fnlist).then((results) => {
+>>>>>>> Stashed changes
             const result = results.pop();
             const contentType = result.contentType;
             const responseURL = result.responseURL;
@@ -128,7 +136,14 @@ export function initEvents(e) {
             var eventName = eventData[0];
             var eventOptions = eventData[2];
             var actionsData = eventData[1];
+<<<<<<< Updated upstream
             var eventHandler = createEventHandler(actionsData, getRoot(e));
+=======
+            const vComponent = eventElem.vComponent;
+            var eventHandler = createEventHandler(actionsData, getRoot(e),
+                vComponent);
+
+>>>>>>> Stashed changes
             // allow overide of event handler by component
             if (eventElem.vComponent &&
                 eventElem.vComponent.createEventHandler) {

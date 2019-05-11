@@ -16,6 +16,7 @@ require 'voom/presenters/api/app'
 require 'voom/presenters/web_client/app'
 require 'voom/presenters/demo/search'
 require 'voom/presenters/demo/echo'
+require 'voom/presenters/demo/slow'
 
 require 'rack/cors'
 use Rack::Cors do
@@ -27,6 +28,7 @@ end
 
 use Voom::Presenters::Demo::Search
 use Voom::Presenters::Demo::Echo
+use Voom::Presenters::Demo::Slow
 
 use Voom::Presenters::WebClient::App
 run Voom::Presenters::Api::App

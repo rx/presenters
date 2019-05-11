@@ -16,7 +16,7 @@ export class VPluginComponent extends eventHandlerMixin(VBaseComponent) {
         if (pluginClassName) {
             var PluginClass = null;
             if (!/^[$_a-z][$_a-z0-9.]*$/i.test(pluginClassName)) {
-                console.log(`Invalid class name: $(pluginClassName)`);
+                console.error(`Invalid class name: $(pluginClassName)`);
             }
             else {
                 PluginClass = eval(pluginClassName);
@@ -25,7 +25,7 @@ export class VPluginComponent extends eventHandlerMixin(VBaseComponent) {
                 this.element.vPlugin = new PluginClass(element);
             }
             else {
-                console.log(
+                console.error(
                     `Unable to find a plugin class with name ${pluginClassName}`);
             }
 

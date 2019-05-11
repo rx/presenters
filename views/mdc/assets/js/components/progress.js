@@ -10,6 +10,12 @@ export class VProgress extends VBaseComponent {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
         element.dataset.hidden === 'true' ? this.hide() : this.show();
+        this.root.addEventListener('V:postStarted', (e) => {
+            this.show();
+        });
+        this.root.addEventListener('V:postFinished', (e) => {
+            this.hide();
+        });
     }
 
     show() {

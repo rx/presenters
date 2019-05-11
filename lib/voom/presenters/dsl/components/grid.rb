@@ -13,6 +13,12 @@ require 'voom/presenters/dsl/components/mixins/steppers'
 require 'voom/presenters/dsl/components/mixins/sliders'
 require 'voom/presenters/dsl/components/mixins/file_inputs'
 require 'voom/presenters/dsl/components/mixins/avatar'
+<<<<<<< Updated upstream
+=======
+require 'voom/presenters/dsl/components/mixins/padding'
+require 'voom/presenters/dsl/components/mixins/progress'
+
+>>>>>>> Stashed changes
 
 module Voom
   module Presenters
@@ -48,8 +54,17 @@ module Voom
           include Mixins::Attaches
           include Mixins::Dialogs
           include Mixins::Snackbars
+          include Mixins::Progress
 
+<<<<<<< Updated upstream
           attr_accessor :columns, :color, :padding, :wide
+=======
+          attr_reader   :columns,
+                        :color,
+                        :padding,
+                        :wide,
+                        :gutter
+>>>>>>> Stashed changes
 
           def initialize(color: nil, **attribs_, &block)
             super(type: :grid, **attribs_, &block)
@@ -84,10 +99,23 @@ module Voom
             include Mixins::Sliders
             include Mixins::FileInputs
             include Mixins::Avatar
+            include Mixins::Progress
 
+<<<<<<< Updated upstream
             include Padding
 
             attr_reader :size, :desktop, :tablet, :phone, :color, :components, :padding
+=======
+            attr_reader :size,
+                        :desktop,
+                        :tablet,
+                        :phone,
+                        :color,
+                        :components,
+                        :padding,
+                        :align,
+                        :overflow
+>>>>>>> Stashed changes
 
             def initialize(**attribs_, &block)
               super(type: :column, **attribs_, &block)

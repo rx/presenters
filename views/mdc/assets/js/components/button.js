@@ -19,7 +19,7 @@ export class VButton extends eventHandlerMixin(VBaseComponent) {
             this.element.style.backgroundImage = `url('${result}')`;
         }
         else {
-            console.log(
+            console.warn(
                 `WARNING: Attempted to preview an image on a Button (id: ${this.element.id}) that is NOT an image button.
 Make sure you set the type: :image on the button.`);
         }

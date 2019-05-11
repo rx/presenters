@@ -12,6 +12,12 @@ require 'voom/presenters/dsl/components/mixins/snackbars'
 require 'voom/presenters/dsl/components/mixins/date_time_fields'
 require 'voom/presenters/dsl/components/mixins/chips'
 require 'voom/presenters/dsl/components/mixins/file_inputs'
+<<<<<<< Updated upstream
+=======
+require 'voom/presenters/dsl/components/mixins/padding'
+require 'voom/presenters/dsl/components/mixins/dialogs'
+require 'voom/presenters/dsl/components/mixins/progress'
+>>>>>>> Stashed changes
 
 module Voom
   module Presenters
@@ -27,8 +33,20 @@ module Voom
           include Mixins::Snackbars
           include Mixins::Chips
           include Mixins::FileInputs
+<<<<<<< Updated upstream
 
           attr_reader :height, :width, :selected, :components, :shows_errors
+=======
+          include Mixins::Dialogs
+          include Mixins::Progress
+
+          attr_reader :height,
+                      :width,
+                      :selected,
+                      :components,
+                      :shows_errors,
+                      :padding
+>>>>>>> Stashed changes
 
 
           def initialize(**attribs_, &block)
@@ -38,7 +56,12 @@ module Voom
             @selected = attribs.delete(:selected) {false}
             self.text(attribs.delete(:text)) if attribs.key?(:text)
             @shows_errors = attribs.delete(:shows_errors){true}
+<<<<<<< Updated upstream
 
+=======
+            padding = attribs.delete(:padding) {:all}
+            @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
+>>>>>>> Stashed changes
             @components = []
             expand!
           end

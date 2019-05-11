@@ -156,6 +156,80 @@ var VBaseComponent = function () {
     }, {
         key: 'onHide',
         value: function onHide() {}
+<<<<<<< Updated upstream
+=======
+
+        // Invoked after event handlers have been initialized.
+
+    }, {
+        key: 'afterInit',
+        value: function afterInit() {}
+    }, {
+        key: 'parentComponent',
+        value: function parentComponent(selector) {
+            if (!this.element.parentElement) {
+                return null;
+            }
+            var element = this.element.parentElement.closest(selector);
+
+            if (!(element && element.vComponent)) {
+                return null;
+            }
+
+            return element.vComponent;
+        }
+
+        // Event actions results bubble up to their containers
+
+    }, {
+        key: 'actionsStarted',
+        value: function actionsStarted(vEvent) {
+            var ev = new Event('V:actionsStarted', {
+                bubbles: true,
+                cancelable: false,
+                detail: vEvent
+            });
+            this.element.dispatchEvent(ev);
+        }
+
+        // Event actions results bubble up to their containers
+
+    }, {
+        key: 'actionsHalted',
+        value: function actionsHalted(vEvent) {
+            var ev = new Event('V:actionsHalted', {
+                bubbles: true,
+                cancelable: false,
+                detail: vEvent
+            });
+            this.element.dispatchEvent(ev);
+        }
+    }, {
+        key: 'actionsSucceeded',
+        value: function actionsSucceeded(vEvent) {
+            var ev = new CustomEvent('V:actionsSucceeded', {
+                bubbles: true,
+                cancelable: false,
+                detail: vEvent
+            });
+            this.element.dispatchEvent(ev);
+        }
+    }, {
+        key: 'actionsFinished',
+        value: function actionsFinished(vEvent) {
+            var ev = new CustomEvent('V:actionsFinished', {
+                bubbles: true,
+                cancelable: false,
+                detail: vEvent
+            });
+            this.element.dispatchEvent(ev);
+        }
+    }, {
+        key: 'hasHandlers',
+        value: function hasHandlers() {
+            return this.eventsHandler && Object.keys(this.eventsHandler).length > 0;
+        }
+>>>>>>> Stashed changes
     }, {
         key: 'clearErrors',
         value: function clearErrors() {
@@ -1503,7 +1577,11 @@ var VBaseContainer = function (_VBaseComponent) {
 
         var _this = _possibleConstructorReturn(this, (VBaseContainer.__proto__ || Object.getPrototypeOf(VBaseContainer)).call(this, element, mdcComponent));
 
+<<<<<<< Updated upstream
         element.dataset.isContainer = true;
+=======
+        _this.element.classList.add('v-container');
+>>>>>>> Stashed changes
         return _this;
     }
 
@@ -1615,7 +1693,12 @@ var VBaseContainer = function (_VBaseComponent) {
     }, {
         key: 'validate',
         value: function validate(form, params) {
+<<<<<<< Updated upstream
             console.log('Form validate', form, params);
+=======
+            console.debug('Form validate', form, params);
+
+>>>>>>> Stashed changes
             var errors = [];
             var _iteratorNormalCompletion4 = true;
             var _didIteratorError4 = false;
@@ -12055,7 +12138,7 @@ var VTextField = function (_visibilityObserverMi) {
     _createClass(VTextField, [{
         key: 'validate',
         value: function validate(formData) {
-            console.log('TextField validate', formData);
+            console.debug('TextField validate', formData);
             var isValid = this.input.checkValidity();
             if (isValid) {
                 return true;
@@ -12077,7 +12160,7 @@ var VTextField = function (_visibilityObserverMi) {
                     var name = this.name();
                     var id = name + '_id';
                     params.push([id, key]);
-                    console.log('TextField prepareSubmit added:' + id + '=' + key);
+                    console.debug('TextField prepareSubmit added:' + id + '=' + key);
                 }
             }
             params.push([this.name(), this.value()]);
@@ -12246,8 +12329,14 @@ var VEvents = function () {
                 }, p);
             }
 
+<<<<<<< Updated upstream
             var event = this.event;
             var root = this.root;
+=======
+            if (this.vComponent) {
+                this.vComponent.actionsStarted(this);
+            }
+>>>>>>> Stashed changes
 
             pseries(fnlist).then(function (results) {
                 var result = results.pop();
@@ -32027,7 +32116,7 @@ var VButton = function (_eventHandlerMixin) {
             if (this.element.classList.contains('v-button-image')) {
                 this.element.style.backgroundImage = 'url(\'' + result + '\')';
             } else {
-                console.log('WARNING: Attempted to preview an image on a Button (id: ' + this.element.id + ') that is NOT an image button.\nMake sure you set the type: :image on the button.');
+                console.warn('WARNING: Attempted to preview an image on a Button (id: ' + this.element.id + ') that is NOT an image button.\nMake sure you set the type: :image on the button.');
             }
         }
     }]);
@@ -34000,6 +34089,8 @@ var VButton = function (_eventHandlerMixin) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_dialog___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_dialog__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -34053,7 +34144,59 @@ var VDialog = function (_VBaseContainer) {
     }, {
         key: 'close',
         value: function close() {
+<<<<<<< Updated upstream
             this.mdcComponent.close();
+=======
+            var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+            action = action || '';
+
+            beforeClose.call(this, action);
+
+            if (this.canClose) {
+                hideDialog.call(this.mdcComponent.foundation_, action);
+            }
+        }
+    }, {
+        key: 'actionsSucceeded',
+        value: function actionsSucceeded(vEvent) {
+            // A successful run-to-completion of an event chain should always
+            // attempt to close the dialog.
+            this.shouldNotifyClosing = false;
+            this.canClose = true;
+
+            this.close(vEvent.event.detail.action);
+            _get(VDialog.prototype.__proto__ || Object.getPrototypeOf(VDialog.prototype), 'actionsSucceeded', this).call(this, vEvent); // Bubble up
+        }
+    }, {
+        key: 'actionsHalted',
+        value: function actionsHalted(vEvent) {
+            // A halted event chain should not close the dialog.
+            this.shouldNotifyClosing = true;
+            this.canClose = false;
+            _get(VDialog.prototype.__proto__ || Object.getPrototypeOf(VDialog.prototype), 'actionsHalted', this).call(this, vEvent); // Bubble up
+        }
+    }, {
+        key: 'afterInit',
+        value: function afterInit() {
+            var dialogHasHandlers = this.hasHandlers();
+            var buttonsHaveHandlers = this.buttons.map(function (c) {
+                return c.hasHandlers();
+            }).some(Boolean);
+
+            if (dialogHasHandlers || buttonsHaveHandlers) {
+                // Stub in our own dialog close method to ensure events run to
+                // completion before the dialog is closed:
+                this.mdcComponent.foundation_.close = this.close.bind(this);
+            }
+        }
+    }, {
+        key: 'buttons',
+        get: function get() {
+            return this.components().filter(function (c) {
+                return c.is('VButton');
+            });
+>>>>>>> Stashed changes
         }
     }]);
 
@@ -40094,6 +40237,12 @@ var VPosts = function (_VBase) {
                 });
             }
 
+            var ev = new Event('V:postStarted', {
+                bubbles: true,
+                cancelable: false,
+                detail: this
+            });
+            this.event.target.dispatchEvent(ev);
             // Manually build the FormData.
             // Passing in a <form> element (if available) would skip over
             // unchecked toggle elements, which would be unexpected if the user
@@ -40208,6 +40357,7 @@ var VPosts = function (_VBase) {
             var url = this.url;
             var callHeaders = this.headers;
             var root = this.root;
+            var vEvent = this;
             if (!httpRequest) {
                 throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
             }
@@ -40229,16 +40379,25 @@ var VPosts = function (_VBase) {
                 httpRequest.onreadystatechange = function (event) {
                     if (httpRequest.readyState === XMLHttpRequest.DONE) {
                         var contentType = this.getResponseHeader('content-type');
-                        console.log(httpRequest.status + ':' + contentType);
+                        console.debug(httpRequest.status + ':' + contentType);
+
+                        var result = {
+                            action: 'posts',
+                            method: this.method,
+                            statusCode: httpRequest.status,
+                            contentType: contentType,
+                            content: httpRequest.responseText,
+                            responseURL: httpRequest.responseURL
+                        };
+
+                        var _ev = new Event('V:postFinished', {
+                            bubbles: true,
+                            cancelable: false,
+                            detail: { event: vEvent, result: result }
+                        });
+                        vEvent.event.target.dispatchEvent(_ev);
                         if (httpRequest.status >= 200 && httpRequest.status < 300) {
-                            results.push({
-                                action: 'posts',
-                                method: this.method,
-                                statusCode: httpRequest.status,
-                                contentType: contentType,
-                                content: httpRequest.responseText,
-                                responseURL: httpRequest.responseURL
-                            });
+                            results.push(result);
                             snackbarCallback(contentType, httpRequest.responseText);
                             resolve(results);
                             // Response is an html error page
@@ -40246,23 +40405,10 @@ var VPosts = function (_VBase) {
                             root.open(contentType);
                             root.write(httpRequest.responseText);
                             root.close();
-                            results.push({
-                                action: 'posts',
-                                method: this.method,
-                                statusCode: httpRequest.status,
-                                contentType: contentType,
-                                content: httpRequest.responseText,
-                                responseURL: httpRequest.responseURL
-                            });
+                            results.push(result);
                             resolve(results);
                         } else {
-                            results.push({
-                                action: 'posts',
-                                method: this.method,
-                                statusCode: httpRequest.status,
-                                contentType: contentType,
-                                content: httpRequest.responseText
-                            });
+                            results.push(result);
                             reject(results);
                         }
                     }
@@ -40440,7 +40586,7 @@ var VReplaces = function (_VBase) {
                     nodeToReplace.vTimeout = setTimeout(function () {
                         httpRequest.onreadystatechange = function () {
                             if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                                console.log(httpRequest.status + ':' + this.getResponseHeader('content-type'));
+                                console.debug(httpRequest.status + ':' + this.getResponseHeader('content-type'));
                                 if (httpRequest.status === 200) {
                                     var _nodeToReplace = root.getElementById(elementId);
                                     var newDiv = root.createElement('div');
@@ -40466,7 +40612,7 @@ var VReplaces = function (_VBase) {
                                 }
                             }
                         };
-                        console.log('GET:' + url);
+                        console.debug('GET:' + url);
                         httpRequest.open('GET', url, true);
                         httpRequest.setRequestHeader('X-NO-LAYOUT', true);
                         httpRequest.send();
@@ -40524,7 +40670,7 @@ var VToggleVisibility = function () {
             var promiseObj = new Promise(function (resolve) {
                 clearTimeout(elem.vTimeout);
                 elem.vTimeout = setTimeout(function () {
-                    console.log('Toggling visibility on: ' + targetId);
+                    console.debug('Toggling visibility on: ' + targetId);
 
                     if (action === 'show') {
                         if (elem.vComponent && elem.vComponent.show) {
@@ -40712,7 +40858,7 @@ var VSnackbarEvent = function () {
             var snackbar = this.snackbar;
             var message = Object(__WEBPACK_IMPORTED_MODULE_0__action_parameter__["a" /* expandParam */])(results, this.text);
             return new Promise(function (resolve) {
-                console.log('Showing snackbar');
+                console.debug('Showing snackbar');
                 snackbar.display(message);
                 results.push({ action: 'snackbar', statusCode: 200 });
                 resolve(results);
@@ -40749,7 +40895,7 @@ var VClears = function () {
             var ids = this.ids;
             var root = this.root;
             return new Promise(function (resolve) {
-                console.log('Clearing');
+                console.debug('Clearing');
                 results.push({ action: 'clears', statusCode: 200 });
                 var _iteratorNormalCompletion = true;
                 var _didIteratorError = false;
@@ -40763,7 +40909,7 @@ var VClears = function () {
                         if (elem && elem.vComponent && elem.vComponent.clear) {
                             elem.vComponent.clear();
                         } else {
-                            console.log('Unable to clear element with id: ' + id + '! Check to make sure you passed the correct id, and ' + 'that the control/input can be cleared.');
+                            console.warn('Unable to clear element with id: ' + id + '! Check to make sure you passed the correct id, and ' + 'that the control/input can be cleared.');
                         }
                     }
                 } catch (err) {
@@ -94005,7 +94151,7 @@ var VFileInput = function (_eventHandlerMixin) {
                         fr.readAsDataURL(_this2.file);
                     }
                 } else {
-                    console.log('WARNING: Unable to find previewable element with id: ' + previewId + '\n1) Make sure you have an element with that id on your page\n2) Make sure the Componenet or Plugin supports the preview option for the request mime type');
+                    console.warn('WARNING: Unable to find previewable element with id: ' + previewId + '\n1) Make sure you have an element with that id on your page\n2) Make sure the Componenet or Plugin supports the preview option for the request mime type');
                 }
             };
 
@@ -96739,14 +96885,14 @@ var VPluginComponent = function (_eventHandlerMixin) {
         if (pluginClassName) {
             var PluginClass = null;
             if (!/^[$_a-z][$_a-z0-9.]*$/i.test(pluginClassName)) {
-                console.log('Invalid class name: $(pluginClassName)');
+                console.error('Invalid class name: $(pluginClassName)');
             } else {
                 PluginClass = eval(pluginClassName);
             }
             if (PluginClass) {
                 _this.element.vPlugin = new PluginClass(element);
             } else {
-                console.log('Unable to find a plugin class with name ' + pluginClassName);
+                console.error('Unable to find a plugin class with name ' + pluginClassName);
             }
         }
         return _this;
@@ -96841,6 +96987,12 @@ var VProgress = function (_VBaseComponent) {
         var _this = _possibleConstructorReturn(this, (VProgress.__proto__ || Object.getPrototypeOf(VProgress)).call(this, element, mdcComponent));
 
         element.dataset.hidden === 'true' ? _this.hide() : _this.show();
+        _this.root.addEventListener('V:postStarted', function (e) {
+            _this.show();
+        });
+        _this.root.addEventListener('V:postFinished', function (e) {
+            _this.hide();
+        });
         return _this;
     }
 
