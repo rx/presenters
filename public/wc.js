@@ -98,8 +98,6 @@ var VBaseComponent = function () {
     }, {
         key: 'onHide',
         value: function onHide() {}
-<<<<<<< Updated upstream
-=======
 
         // Invoked after event handlers have been initialized.
 
@@ -171,7 +169,6 @@ var VBaseComponent = function () {
         value: function hasHandlers() {
             return this.eventsHandler && Object.keys(this.eventsHandler).length > 0;
         }
->>>>>>> Stashed changes
     }, {
         key: 'clearErrors',
         value: function clearErrors() {
@@ -300,15 +297,21 @@ var VBaseContainer = function (_VBaseComponent) {
 
         var _this = _possibleConstructorReturn(this, (VBaseContainer.__proto__ || Object.getPrototypeOf(VBaseContainer)).call(this, element, mdcComponent));
 
-<<<<<<< Updated upstream
         element.dataset.isContainer = true;
-=======
         _this.element.classList.add('v-container');
->>>>>>> Stashed changes
         return _this;
     }
 
     _createClass(VBaseContainer, [{
+        key: 'components',
+        value: function components() {
+            return Array.from(this.element.querySelectorAll('.v-component')).filter(function (element) {
+                return element.vComponent;
+            }).map(function (element) {
+                return element.vComponent;
+            });
+        }
+    }, {
         key: 'inputs',
         value: function inputs() {
             return this.element.querySelectorAll('.v-input');
@@ -416,23 +419,20 @@ var VBaseContainer = function (_VBaseComponent) {
     }, {
         key: 'validate',
         value: function validate(form, params) {
-<<<<<<< Updated upstream
-            console.log('Form validate', form, params);
-=======
             console.debug('Form validate', form, params);
 
->>>>>>> Stashed changes
             var errors = [];
+
             var _iteratorNormalCompletion4 = true;
             var _didIteratorError4 = false;
             var _iteratorError4 = undefined;
 
             try {
-                for (var _iterator4 = this.inputs()[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                    var input = _step4.value;
+                for (var _iterator4 = this.inputComponents()[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                    var comp = _step4.value;
 
-                    if (input.vComponent && input.vComponent.validate) {
-                        var result = input.vComponent.validate(form, params);
+                    if (comp.respondTo('validate')) {
+                        var result = comp.validate(form, params);
                         if (result !== true) {
                             errors.push(result);
                         }
@@ -8725,14 +8725,12 @@ var VEvents = function () {
                 }, p);
             }
 
-<<<<<<< Updated upstream
             var event = this.event;
             var root = this.root;
-=======
+
             if (this.vComponent) {
                 this.vComponent.actionsStarted(this);
             }
->>>>>>> Stashed changes
 
             pseries(fnlist).then(function (results) {
                 var result = results.pop();
@@ -8822,7 +8820,8 @@ function initEvents(e) {
             var eventName = eventData[0];
             var eventOptions = eventData[2];
             var actionsData = eventData[1];
-            var eventHandler = createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_12__root_document__["a" /* default */])(e));
+            var vComponent = eventElem.vComponent;
+            var eventHandler = createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_12__root_document__["a" /* default */])(e), vComponent);
             // allow overide of event handler by component
             if (eventElem.vComponent && eventElem.vComponent.createEventHandler) {
                 eventHandler = eventElem.vComponent.createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_12__root_document__["a" /* default */])(e));
@@ -19951,9 +19950,6 @@ var VDialog = function (_VBaseContainer) {
     }, {
         key: 'close',
         value: function close() {
-<<<<<<< Updated upstream
-            this.mdcComponent.close();
-=======
             var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
             action = action || '';
@@ -20003,7 +19999,6 @@ var VDialog = function (_VBaseContainer) {
             return this.components().filter(function (c) {
                 return c.is('VButton');
             });
->>>>>>> Stashed changes
         }
     }]);
 
