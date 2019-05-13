@@ -7,12 +7,13 @@ module Voom
       # This class is held in the container. When a request to render a UI comes in
       # It creates a new UserInterface instance, binding it to the router and context of the request
       class Definition
+        attr_reader :name, :namespace
         def initialize(name, namespace, &block)
           @block = block
           @name = name
           @namespace = namespace
         end
-
+        
         def build
           self
         end
