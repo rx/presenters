@@ -68,7 +68,7 @@ module Voom
           end
 
           def includes_one?(array1, array2)
-            (array2-array1).size != array2.size
+            (array2.map(&:to_sym)-array1.map(&:to_sym)).size != array2.size
           end
 
           def unique_id(comp)
