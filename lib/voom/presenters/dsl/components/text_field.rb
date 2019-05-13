@@ -17,7 +17,6 @@ module Voom
             @auto_complete = attribs.delete(:auto_complete){ true }
             label(attribs.delete(:label))if attribs.key?(:label)
             value(attribs.delete(:value))if attribs.key?(:value)
-            @auto_complete = attribs.delete(:auto_complete){ true }
             expand!
           end
 
