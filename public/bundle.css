@@ -14249,6 +14249,9 @@ select {
   position: absolute;
   bottom: 8px; }
 
+.v-icon-position-center {
+  line-height: 4; }
+
 .v-icon__fa {
   font-size: 24px; }
 
