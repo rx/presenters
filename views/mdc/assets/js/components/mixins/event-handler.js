@@ -1,13 +1,13 @@
 export let eventHandlerMixin = Base => class extends Base {
     // idempotent event handling initialization
-    initEventListener(eventName, eventHandler) {
-        if (typeof this.eventsHandler === 'undefined') {
-            this.eventsHandler = {};
+    initEventListener(eventName, eventHandler, eventOptions) {
+        if (typeof this.element.eventsHandler === 'undefined') {
+            this.element.eventsHandler = {};
         }
-        if (typeof this.eventsHandler[eventName] === 'undefined') {
-            this.eventsHandler[eventName] = [];
+        if (typeof this.element.eventsHandler[eventName] === 'undefined') {
+            this.element.eventsHandler[eventName] = [];
         }
-        this.eventsHandler[eventName].push(eventHandler);
-        this.element.addEventListener(eventName, eventHandler);
+        this.element.eventsHandler[eventName].push(eventHandler);
+        this.element.addEventListener(eventName, eventHandler, eventOptions);
     }
 };

@@ -1,6 +1,5 @@
 import {MDCSelect} from '@material/select';
 import {VBaseComponent, hookupComponents} from './base-component';
-import {eventHandlerMixin} from './mixins/event-handler';
 import {visibilityObserverMixin} from "./mixins/visibility-observer";
 
 export function initSelects(e) {
@@ -8,8 +7,7 @@ export function initSelects(e) {
     hookupComponents(e, '.v-select', VSelect, MDCSelect);
 }
 
-
-export class VSelect extends visibilityObserverMixin(eventHandlerMixin(VBaseComponent)) {
+export class VSelect extends visibilityObserverMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
         this.select = element.querySelector('select');

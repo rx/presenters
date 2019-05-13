@@ -144,19 +144,19 @@ export function initEvents(e) {
             var eventData = eventsData[j];
             var eventName = eventData[0];
             var eventOptions = eventData[2];
+            eventOptions.passive = true;
             var actionsData = eventData[1];
             const vComponent = eventElem.vComponent;
             var eventHandler = createEventHandler(actionsData, getRoot(e), vComponent);
-
-            // allow overide of event handler by component
+            // allow override of event handler by component
             if (vComponent && vComponent.createEventHandler) {
                 eventHandler = vComponent.createEventHandler(
                     actionsData, getRoot(e), vComponent);
             }
-
             // Delegate to the component if possible
-            if (vComponent && vComponent.initEventListener) {
-                vComponent.initEventListener(eventName, eventHandler);
+            if (vComponent &&
+                vComponent.initEventListener) {
+                vComponent.initEventListener(eventName, eventHandler, eventOptions);
             }
             else {
                 if (typeof eventElem.eventsHandler === 'undefined') {
@@ -166,7 +166,6 @@ export function initEvents(e) {
                     eventElem.eventsHandler[eventName] = [];
                 }
                 eventElem.eventsHandler[eventName].push(eventHandler);
-                eventOptions.passive = true;
                 eventElem.addEventListener(eventName, eventHandler,
                     eventOptions);
             }
