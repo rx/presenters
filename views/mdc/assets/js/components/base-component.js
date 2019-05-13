@@ -12,34 +12,10 @@ export class VBaseComponent {
         return true;
     }
 
-    onShow() {}
-
-    onHide() {}
-
-    // Invoked after event handlers have been initialized.
-    afterInit() {}
-
-    parentComponent(selector) {
-        const element = this.element.closest(selector);
-
-        if (!(element && element.vComponent)) {
-            return null;
-        }
-
-        return element.vComponent;
+    onShow() {
     }
 
-    actionsHalted() {
-    }
-
-    actionsSucceeded() {
-    }
-
-    actionsFinished() {
-    }
-
-    hasHandlers() {
-        return this.eventsHandler && Object.keys(this.eventsHandler).length > 0;
+    onHide() {
     }
 
     // Invoked after event handlers have been initialized.

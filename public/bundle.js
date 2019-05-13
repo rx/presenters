@@ -155,37 +155,6 @@ var VBaseComponent = function () {
     }, {
         key: 'parentComponent',
         value: function parentComponent(selector) {
-            var element = this.element.closest(selector);
-
-            if (!(element && element.vComponent)) {
-                return null;
-            }
-
-            return element.vComponent;
-        }
-    }, {
-        key: 'actionsHalted',
-        value: function actionsHalted() {}
-    }, {
-        key: 'actionsSucceeded',
-        value: function actionsSucceeded() {}
-    }, {
-        key: 'actionsFinished',
-        value: function actionsFinished() {}
-    }, {
-        key: 'hasHandlers',
-        value: function hasHandlers() {
-            return this.eventsHandler && Object.keys(this.eventsHandler).length > 0;
-        }
-
-        // Invoked after event handlers have been initialized.
-
-    }, {
-        key: 'afterInit',
-        value: function afterInit() {}
-    }, {
-        key: 'parentComponent',
-        value: function parentComponent(selector) {
             if (!this.element.parentElement) {
                 return null;
             }
