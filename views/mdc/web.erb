@@ -1,5 +1,5 @@
 <% if @pom.events&.any? %>
-<div style='display: inline;'
+<div style='display: none;'
      <%= erb :"components/event", :locals => {comp: @pom, events: @pom.events, parent_id: nil} %>></div>
 <% end %>
 <%= erb :"components/render", :locals => {:components => @pom.components, :scope=> nil} %>
