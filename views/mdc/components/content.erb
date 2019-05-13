@@ -9,12 +9,13 @@
             <%= position_classes %>
             <%= _padding_classes_(comp.padding, subclass: comp.dense ? :col : :grid) %>
             <%= 'v-hidden' if comp.hidden %>
-            <%= comp.float ? 'v-content--float' : 'v-content--relative' %>"
-       <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
+            <%= comp.float  ? 'v-content--float' : 'v-content--relative'%>"
+     <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
        style="text-align: <%= comp.text_align %>;
              <%= "display: inline;" if comp.inline %>
              <%= "width: #{comp.width};" if comp.width %>
              <%= "height : #{comp.height };" if comp.height  %>">
+    <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(top both)) %>
     <% if comp.shows_errors %>
       <div class="v-errors">
     <% end %>
@@ -22,5 +23,6 @@
     <% if comp.shows_errors %>
       </div>
     <% end %>
+    <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(bottom both)) %>
   </div>
 <% end %>

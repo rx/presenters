@@ -5,7 +5,8 @@ module Voom
         module Mixins
           module Progress
             def progress(**attributes, &block)
-              self << Components::Progress.new(parent: self, **attributes, &block)
+              return @progress if locked?
+              @progress = Components::Progress.new(parent: self, **attributes, &block)
             end
           end
         end

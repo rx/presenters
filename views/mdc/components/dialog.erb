@@ -21,6 +21,7 @@
               style="<%= "width: #{comp.width.to_i.to_s == comp.width ? comp.width + 'px' : comp.width}; " if comp.width %>
                 <%= "height: #{comp.height.to_i.to_s == comp.height ? comp.height + 'px' : comp.height}; " if comp.height %>"
         <% end %>>
+      <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(top both))%>
 
       <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
       <% if comp.title %>
@@ -59,6 +60,7 @@
           <% end %>
         </div>
       </div>
+      <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(bottom both))%>
     </div>
   </div>
   <div class="mdc-dialog__scrim"></div>

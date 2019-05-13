@@ -10,7 +10,7 @@ export class VClears {
         const ids = this.ids;
         const root = this.root;
         return new Promise(function(resolve) {
-            console.log('Clearing');
+            console.debug('Clearing');
             results.push({action: 'clears', statusCode: 200});
             for (const id of ids) {
                 const elem = root.getElementById(id);
@@ -18,7 +18,7 @@ export class VClears {
                     elem.vComponent.clear();
                 }
                 else {
-                    console.log('Unable to clear element with id: ' + id +
+                    console.warn('Unable to clear element with id: ' + id +
                         '! Check to make sure you passed the correct id, and ' +
                         'that the control/input can be cleared.');
                 }

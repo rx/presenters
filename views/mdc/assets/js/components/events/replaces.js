@@ -59,7 +59,7 @@ export class VReplaces extends VBase {
                 nodeToReplace.vTimeout = setTimeout(function() {
                     httpRequest.onreadystatechange = function() {
                         if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                            console.log(httpRequest.status + ':' +
+                            console.debug(httpRequest.status + ':' +
                                 this.getResponseHeader('content-type'));
                             if (httpRequest.status === 200) {
                                 // NodeList.childNodes is "live", meaning DOM
@@ -100,7 +100,7 @@ export class VReplaces extends VBase {
                             }
                         }
                     };
-                    console.log('GET:' + url);
+                    console.debug('GET:' + url);
                     httpRequest.open('GET', url, true);
                     httpRequest.setRequestHeader('X-NO-LAYOUT', true);
                     httpRequest.send();
