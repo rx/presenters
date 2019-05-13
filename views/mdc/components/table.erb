@@ -1,4 +1,5 @@
-<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"
+  <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id}%>>
   <% if comp.header %>
     <thead>
       <%= erb :"components/table/header", :locals => {:row=> comp.header} %>
