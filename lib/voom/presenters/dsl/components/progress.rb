@@ -11,7 +11,16 @@ module Voom
             super(type: :progress, **attribs_, &block)
             @hidden = attribs.delete(:hidden) {true}
             @position = attribs.delete(:position) {:top}
-            raise(Errors::ParameterValidation, "Position (#{@position}:#{Array(@position)-%i(top bottom both)}) must be either :top, :bottom or :both") unless (Array(@position)-%i(top bottom both)).empty?
+            validate_position(@position)
+          end
+
+          private
+
+          def validate_position(position)
+            unless (Array(position) - %i(top bottom both)).empty?
+              raise(Errors::ParameterValidation,
+                    "Position (#{position}) must be either :top, :bottom or :both")
+            end
           end
         end
       end
