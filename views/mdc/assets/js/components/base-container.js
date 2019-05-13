@@ -3,6 +3,8 @@ import {VBaseComponent} from './base-component';
 export class VBaseContainer extends VBaseComponent {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
+        element.dataset.isContainer = true;
+        this.element.classList.add('v-container');
     }
 
     components() {
@@ -60,7 +62,7 @@ export class VBaseContainer extends VBaseComponent {
     //    { email: ["email must be filled", "email must be from your domain"] }
     //    { :page: ["must be filled"] }
     validate(form, params) {
-        console.log('Form validate', form, params);
+        console.debug('Form validate', form, params);
 
         const errors = [];
 
@@ -73,7 +75,6 @@ export class VBaseContainer extends VBaseComponent {
                 }
             }
         }
-
         return errors;
     }
 

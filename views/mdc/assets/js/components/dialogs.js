@@ -98,12 +98,14 @@ export class VDialog extends eventHandlerMixin(VBaseContainer) {
         this.canClose = true;
 
         this.close(vEvent.event.detail.action);
+        super.actionsSucceeded(vEvent); // Bubble up
     }
 
-    actionsHalted() {
+    actionsHalted(vEvent) {
         // A halted event chain should not close the dialog.
         this.shouldNotifyClosing = true;
         this.canClose = false;
+        super.actionsHalted(vEvent); // Bubble up
     }
 
     get buttons() {

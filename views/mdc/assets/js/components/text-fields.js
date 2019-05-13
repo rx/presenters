@@ -26,7 +26,7 @@ export class VTextField extends visibilityObserverMixin(
     //    { email: ["email must be filled", "email must be from your domain"] }
     //    { :page: ["must be filled"] }
     validate(formData) {
-        console.log('TextField validate', formData);
+        console.debug('TextField validate', formData);
         let isValid = this.input.checkValidity();
         if (isValid) {
             return true;
@@ -45,7 +45,7 @@ export class VTextField extends visibilityObserverMixin(
                 var name = this.name();
                 var id = name + '_id';
                 params.push([id, key]);
-                console.log('TextField prepareSubmit added:' + id + '=' + key);
+                console.debug('TextField prepareSubmit added:' + id + '=' + key);
             }
         }
         params.push([this.name(), this.value()]);

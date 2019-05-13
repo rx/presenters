@@ -7,17 +7,63 @@ Voom::Presenters.define(:progress) do
   page_title 'Progress'
 
   indented_grid do
-    progress id: :progress_bar, hidden: true
+    body <<~DOC
+      Linear Progress bars have special placement and event handling behavior.     
+
+      They automatically show themselves when an posts/updates/deletes action starts and hide themselves when an it finishes. 
+
+      All you need to do is place your progress bars where you want them. (You can have more than one.)
+
+      The following components allow progress bars:  `cards`, `content`, `dialog`, and `grid or column`.
+
+      You can position them on top and/or on the bottom using `position: :top|:bottom|:both`
+    DOC
+    title 'Card'
+    card do
+      progress
+      text 'card progress'
+    end
+
+    title 'Content'
+    content do
+      text 'content progress - top and bottom'
+      progress position: :both
+    end
+
+    title 'Dialog'
+    dialog id: :progress_dlg do
+      text 'dialog progress - bottom'
+      progress position: :bottom
+      button :start do
+        event :click do
+          posts '/_slow_', seconds: 5
+          snackbar 'done'
+        end
+      end
+    end
+    button :open do
+      event :click do
+        dialog :progress_dlg
+      end
+    end
+
+    title 'Grid'
+    grid do
+      progress
+      column 6 do
+        progress position: :bottom
+        text 'column progress bottom'
+      end
+    end
+
     button :start do
       event :click do
-        show :progress_bar
+        posts '/_slow_', seconds: 5
+        snackbar 'done'
       end
     end
-    button :stop do
-      event :click do
-        hide :progress_bar
-      end
-    end
+
+
     attach :code, file: __FILE__
   end
 end

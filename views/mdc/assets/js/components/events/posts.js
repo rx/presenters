@@ -32,6 +32,12 @@ export class VPosts extends VBase {
             });
         }
 
+        const ev = new Event('V:postStarted', {
+            bubbles: true,
+            cancelable: false,
+            detail: this,
+        });
+        this.event.target.dispatchEvent(ev);
         // Manually build the FormData.
         // Passing in a <form> element (if available) would skip over
         // unchecked toggle elements, which would be unexpected if the user
@@ -55,7 +61,7 @@ export class VPosts extends VBase {
         if (paramCount < 1) {
             console.warn(
                 'Creating request with no data!'
-                + ' Are you sure you\'ve hooked everything up correctly?'
+                + ' Are you sure you\'ve hooked everything up correctly?',
             );
         }
 
@@ -63,6 +69,7 @@ export class VPosts extends VBase {
         const url = this.url;
         const callHeaders = this.headers;
         const root = this.root;
+        const vEvent = this;
         if (!httpRequest) {
             throw new Error(
                 'Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
@@ -94,16 +101,25 @@ export class VPosts extends VBase {
             httpRequest.onreadystatechange = function(event) {
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
                     const contentType = this.getResponseHeader('content-type');
-                    console.log(httpRequest.status + ':' + contentType);
+                    console.debug(httpRequest.status + ':' + contentType);
+
+                    const result = {
+                        action: 'posts',
+                        method: this.method,
+                        statusCode: httpRequest.status,
+                        contentType: contentType,
+                        content: httpRequest.responseText,
+                        responseURL: httpRequest.responseURL,
+                    };
+
+                    const ev = new Event('V:postFinished', {
+                        bubbles: true,
+                        cancelable: false,
+                        detail: {event: vEvent, result: result},
+                    });
+                    vEvent.event.target.dispatchEvent(ev);
                     if (httpRequest.status >= 200 && httpRequest.status < 300) {
-                        results.push({
-                            action: 'posts',
-                            method: this.method,
-                            statusCode: httpRequest.status,
-                            contentType: contentType,
-                            content: httpRequest.responseText,
-                            responseURL: httpRequest.responseURL,
-                        });
+                        results.push(result);
                         snackbarCallback(contentType,
                             httpRequest.responseText);
                         resolve(results);
@@ -114,24 +130,11 @@ export class VPosts extends VBase {
                         root.open(contentType);
                         root.write(httpRequest.responseText);
                         root.close();
-                        results.push({
-                            action: 'posts',
-                            method: this.method,
-                            statusCode: httpRequest.status,
-                            contentType: contentType,
-                            content: httpRequest.responseText,
-                            responseURL: httpRequest.responseURL,
-                        });
+                        results.push(result);
                         resolve(results);
                     }
                     else {
-                        results.push({
-                            action: 'posts',
-                            method: this.method,
-                            statusCode: httpRequest.status,
-                            contentType: contentType,
-                            content: httpRequest.responseText,
-                        });
+                        results.push(result);
                         reject(results);
                     }
                 }

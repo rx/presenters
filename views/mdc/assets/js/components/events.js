@@ -40,6 +40,13 @@ export class VEvents {
             }, p);
         }
 
+        const event = this.event;
+        const root = this.root;
+
+        if (this.vComponent) {
+            this.vComponent.actionsStarted(this);
+        }
+
         pseries(fnlist).then((results) => {
             const result = results.pop();
             const contentType = result.contentType;

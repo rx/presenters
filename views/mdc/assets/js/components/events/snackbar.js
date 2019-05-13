@@ -14,7 +14,7 @@ export class VSnackbarEvent {
         const snackbar = this.snackbar;
         const message = expandParam(results, this.text);
         return new Promise(function(resolve) {
-            console.log('Showing snackbar');
+            console.debug('Showing snackbar');
             snackbar.display(message);
             results.push({action: 'snackbar', statusCode: 200});
             resolve(results);

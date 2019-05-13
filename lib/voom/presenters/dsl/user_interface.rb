@@ -79,6 +79,10 @@ module Voom
                                            **attribs, &block)
         end
 
+        def progress(**attributes, &block)
+          self << Components::Progress.new(parent: self, **attributes, &block)
+        end
+
         def attach(presenter, **params, &yield_block)
           pom = super
           @header ||= pom.header

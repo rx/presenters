@@ -15,6 +15,8 @@ module Voom
             @password = attribs.delete(:password){ false }
             @disabled = attribs.delete(:disabled){ false }
             @auto_complete = attribs.delete(:auto_complete){ true }
+            label(attribs.delete(:label))if attribs.key?(:label)
+            value(attribs.delete(:value))if attribs.key?(:value)
             expand!
           end
 
@@ -48,7 +50,7 @@ module Voom
             return @error if locked?
             @error = error
           end
-          
+
           private
           def json_regexp(regexp)
             str = regexp.inspect.

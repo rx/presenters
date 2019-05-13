@@ -15,6 +15,7 @@ require 'voom/presenters/dsl/components/mixins/dialogs'
 require 'voom/presenters/dsl/components/mixins/file_inputs'
 require 'voom/presenters/dsl/components/mixins/avatar'
 require 'voom/presenters/dsl/components/mixins/padding'
+require 'voom/presenters/dsl/components/mixins/progress'
 
 module Voom
   module Presenters
@@ -34,6 +35,7 @@ module Voom
           include Mixins::Dialogs
           include Mixins::FileInputs
           include Mixins::Avatar
+          include Mixins::Progress
 
           attr_reader :hidden,
                       :float,

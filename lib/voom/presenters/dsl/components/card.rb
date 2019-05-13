@@ -14,6 +14,7 @@ require 'voom/presenters/dsl/components/mixins/chips'
 require 'voom/presenters/dsl/components/mixins/file_inputs'
 require 'voom/presenters/dsl/components/mixins/padding'
 require 'voom/presenters/dsl/components/mixins/dialogs'
+require 'voom/presenters/dsl/components/mixins/progress'
 
 module Voom
   module Presenters
@@ -30,9 +31,14 @@ module Voom
           include Mixins::Chips
           include Mixins::FileInputs
           include Mixins::Dialogs
+          include Mixins::Progress
 
-          attr_reader :height, :width, :selected, :components, :shows_errors, :padding
-
+          attr_reader :height,
+                      :width,
+                      :selected,
+                      :components,
+                      :shows_errors,
+                      :padding
 
           def initialize(**attribs_, &block)
             super(type: :card, **attribs_, &block)
@@ -40,7 +46,7 @@ module Voom
             @width = attribs.delete(:width)
             @selected = attribs.delete(:selected) {false}
             self.text(attribs.delete(:text)) if attribs.key?(:text)
-            @shows_errors = attribs.delete(:shows_errors){true}
+            @shows_errors = attribs.delete(:shows_errors) {true}
             padding = attribs.delete(:padding) {:all}
             @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
 
@@ -63,7 +69,7 @@ module Voom
               @height = attribs.delete(:height)
               @width = attribs.delete(:width)
               @color = attribs.delete(:color)
-              @hidden = attribs.delete(:hidden){false}
+              @hidden = attribs.delete(:hidden) {false}
 
               @components = []
               expand!
@@ -89,14 +95,14 @@ module Voom
                                    **attribs, &block)
             end
 
-            def image(image=nil, **attribs, &block)
+            def image(image = nil, **attribs, &block)
               return @image if locked?
               @image = Image.new(parent: self, image: image, **attribs, &block)
             end
 
-            def button(icon=nil, **attributes, &block)
+            def button(icon = nil, **attributes, &block)
               return @button if locked?
-              @button = Components::Button.new(icon: icon, position:[:top, :right], parent: self, **attributes, &block)
+              @button = Components::Button.new(icon: icon, position: [:top, :right], parent: self, **attributes, &block)
             end
           end
 
@@ -121,18 +127,19 @@ module Voom
               expand!
             end
 
-            def button(text=nil, **options, &block)
+            def button(text = nil, **options, &block)
               @buttons << Components::Button.new(parent: self, text: text,
                                                  **options, &block)
             end
 
-            def switch(text=nil, **options, &block)
+            def switch(text = nil, **options, &block)
               @switches << Components::Switch.new(parent: self, text: text,
-                                                 **options, &block)
+                                                  **options, &block)
             end
           end
 
           private
+
           include Mixins::Padding
         end
       end

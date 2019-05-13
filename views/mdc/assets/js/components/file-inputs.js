@@ -51,7 +51,7 @@ export class VFileInput extends eventHandlerMixin(VBaseComponent) {
 
             }
             else {
-                console.log(
+                console.warn(
                     `WARNING: Unable to find previewable element with id: ${previewId}
 1) Make sure you have an element with that id on your page
 2) Make sure the Componenet or Plugin supports the preview option for the request mime type`);

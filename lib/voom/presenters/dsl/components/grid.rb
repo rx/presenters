@@ -14,6 +14,7 @@ require 'voom/presenters/dsl/components/mixins/sliders'
 require 'voom/presenters/dsl/components/mixins/file_inputs'
 require 'voom/presenters/dsl/components/mixins/avatar'
 require 'voom/presenters/dsl/components/mixins/padding'
+require 'voom/presenters/dsl/components/mixins/progress'
 
 module Voom
   module Presenters
@@ -23,8 +24,13 @@ module Voom
           include Mixins::Attaches
           include Mixins::Dialogs
           include Mixins::Snackbars
+          include Mixins::Progress
 
-          attr_accessor :columns, :color, :padding, :wide, :gutter
+          attr_reader   :columns,
+                        :color,
+                        :padding,
+                        :wide,
+                        :gutter
 
           def initialize(color: nil, **attribs_, &block)
             super(type: :grid, **attribs_, &block)
@@ -75,8 +81,17 @@ module Voom
             include Mixins::Sliders
             include Mixins::FileInputs
             include Mixins::Avatar
+            include Mixins::Progress
 
-            attr_reader :size, :desktop, :tablet, :phone, :color, :components, :padding, :align, :overflow
+            attr_reader :size,
+                        :desktop,
+                        :tablet,
+                        :phone,
+                        :color,
+                        :components,
+                        :padding,
+                        :align,
+                        :overflow
 
             def initialize(**attribs_, &block)
               super(type: :column, **attribs_, &block)

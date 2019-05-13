@@ -15,8 +15,7 @@
             <%= 'v-grid__wide' if comp.wide %>"
      style="<%= "background-color: #{comp.color};" if comp.color %>"
      <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
-  <% unless @grid_nesting > 1 %>
-  <% end %>
+  <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(top both))%>
 
   <div class="<%= @gutters.last ? nil : 'v-gutter-none' %> mdc-layout-grid__inner">
     <% comp.columns.each do |col|
@@ -30,10 +29,13 @@
                           <%= _padding_classes_(col.padding, 0, subclass: :col) %> v-column--relative <%= _alignment_class_(col.align) %>"
            style="<%= "background-color: #{col.color};" if col.color %>"
            <%= erb :"components/event", :locals => {comp: col, events: col.events, parent_id: col.event_parent_id} %>>
+        <%= erb(:"components/progress", :locals => {:comp => col.progress}) if col.progress && includes_one?(Array(col.progress.position), %i(top both))%>
         <%= erb :"components/render", :locals => {:components => col.components, :scope => nil} %>
+        <%= erb(:"components/progress", :locals => {:comp => col.progress}) if col.progress && includes_one?(Array(col.progress.position), %i(bottom both))%>
       </div>
     <% end %>
   </div>
+  <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(bottom both))%>
 </div>
 <% @grid_nesting -= 1
    @gutters.pop

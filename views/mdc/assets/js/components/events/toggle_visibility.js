@@ -30,7 +30,7 @@ export class VToggleVisibility {
         const promiseObj = new Promise(function(resolve) {
             clearTimeout(elem.vTimeout);
             elem.vTimeout = setTimeout(function() {
-                console.log('Toggling visibility on: ' + targetId);
+                console.debug('Toggling visibility on: ' + targetId);
 
                 if (action === 'show') {
                     if (elem.vComponent && elem.vComponent.show) {

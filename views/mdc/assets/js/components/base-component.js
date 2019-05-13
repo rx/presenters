@@ -12,15 +12,21 @@ export class VBaseComponent {
         return true;
     }
 
-    onShow() {}
+    onShow() {
+    }
 
-    onHide() {}
+    onHide() {
+    }
 
     // Invoked after event handlers have been initialized.
-    afterInit() {}
+    afterInit() {
+    }
 
     parentComponent(selector) {
-        const element = this.element.closest(selector);
+        if (!this.element.parentElement) {
+            return null;
+        }
+        const element = this.element.parentElement.closest(selector);
 
         if (!(element && element.vComponent)) {
             return null;
@@ -29,13 +35,42 @@ export class VBaseComponent {
         return element.vComponent;
     }
 
-    actionsHalted() {
+    // Event actions results bubble up to their containers
+    actionsStarted(vEvent) {
+        const ev = new Event('V:actionsStarted', {
+            bubbles: true,
+            cancelable: false,
+            detail: vEvent,
+        });
+        this.element.dispatchEvent(ev);
     }
 
-    actionsSucceeded() {
+    // Event actions results bubble up to their containers
+    actionsHalted(vEvent) {
+        const ev = new Event('V:actionsHalted', {
+            bubbles: true,
+            cancelable: false,
+            detail: vEvent,
+        });
+        this.element.dispatchEvent(ev);
     }
 
-    actionsFinished() {
+    actionsSucceeded(vEvent) {
+        const ev = new CustomEvent('V:actionsSucceeded', {
+            bubbles: true,
+            cancelable: false,
+            detail: vEvent,
+        });
+        this.element.dispatchEvent(ev);
+    }
+
+    actionsFinished(vEvent) {
+        const ev = new CustomEvent('V:actionsFinished', {
+            bubbles: true,
+            cancelable: false,
+            detail: vEvent,
+        });
+        this.element.dispatchEvent(ev);
     }
 
     hasHandlers() {
