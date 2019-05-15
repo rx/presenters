@@ -29582,15 +29582,6 @@ var VHeader = function (_eventHandlerMixin) {
             // Dispatch the event.
             element.dispatchEvent(event);
         });
-
-        // This should be removed when possible.
-        if (root.querySelector('#breadcrumbs')) {
-            var vRoot = root.querySelector('.v-root');
-
-            if (vRoot) {
-                vRoot.classList.add('v-root--breadcrumbs-present');
-            }
-        }
         return _this;
     }
 
