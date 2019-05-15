@@ -8,7 +8,6 @@ export function initHeader(e) {
     hookupComponents(e, '.v-header', VHeader, MDCTopAppBar);
 }
 
-
 export class VHeader extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent, root) {
         super(element, mdcComponent);
@@ -17,6 +16,15 @@ export class VHeader extends eventHandlerMixin(VBaseComponent) {
             // Dispatch the event.
             element.dispatchEvent(event);
         });
+
+        // This should be removed when possible.
+        if (root.querySelector('#breadcrumbs')) {
+            const vRoot = root.querySelector('.v-root');
+
+            if (vRoot) {
+                vRoot.classList.add('v-root--breadcrumbs-present');
+            }
+        }
     }
 }
 
