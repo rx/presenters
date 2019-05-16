@@ -29578,7 +29578,7 @@ var VHeader = function (_eventHandlerMixin) {
         var _this = _possibleConstructorReturn(this, (VHeader.__proto__ || Object.getPrototypeOf(VHeader)).call(this, element, mdcComponent));
 
         element.addEventListener('MDCTopAppBar:nav', function () {
-            var event = new Event('topbarclicked', { bubbles: true, composed: true });
+            var event = new Event('v:header:item-click', { bubbles: true, composed: true });
             // Dispatch the event.
             element.dispatchEvent(event);
         });
