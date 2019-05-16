@@ -8,16 +8,13 @@ export function initHeader(e) {
     hookupComponents(e, '.v-header', VHeader, MDCTopAppBar);
 }
 
-
 export class VHeader extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent, root) {
         super(element, mdcComponent);
         element.addEventListener('MDCTopAppBar:nav', function() {
-            var event = new Event('topbarclicked',{bubbles: true, composed: true});
+            var event = new Event('v:header:item-click',{bubbles: true, composed: true});
             // Dispatch the event.
             element.dispatchEvent(event);
         });
     }
 }
-
-

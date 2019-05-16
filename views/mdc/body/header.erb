@@ -1,6 +1,7 @@
 <%
   placement_classes = []
-  placement_classes << 'mdc-top-app-bar--fixed' if header.placement == :fixed
+  placement_classes << 'v-header--fixed mdc-top-app-bar--fixed' if header.placement == :fixed
+  placement_classes << 'v-header--static' if header.placement == :static
 %>
 <header class="v-header mdc-top-app-bar <%= placement_classes.join(' ') %> drawer-top-app-bar">
   <div class="mdc-top-app-bar__row">

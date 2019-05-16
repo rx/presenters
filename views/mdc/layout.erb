@@ -18,11 +18,20 @@
   <%= custom_css(env['REQUEST_PATH']) %>
 </head>
 <body class="mdc-typography">
-<div class="v-root compatibility-wrapper">
+<%
+  header = @pom.header
+  drawer = @pom.drawer
+  footer = @pom.footer
 
-<% header = @pom.header
-   drawer = @pom.drawer
-   footer = @pom.footer %>
+  root_classes = []
+  root_classes << 'v-root--header-present' if header
+  root_classes << 'v-root--drawer-present' if drawer
+  root_classes << 'v-root--footer-present' if footer
+
+  drawer_wrapper_class = drawer ? 'drawer-main-content' : 'mdc-top-app-bar--fixed-adjust'
+%>
+
+<div class="v-root compatibility-wrapper <%= root_classes.join(' ') %>">
 
 <% if drawer %>
   <div class="drawer-frame-root">
@@ -32,9 +41,7 @@
 <% if header %>
   <%= erb :"body/header", :locals => {header:header, drawer: drawer} %>
 <% end %>
-<% if drawer %>
-  <div class="drawer-main-content">
-<% end %>
+  <div class="<%= drawer_wrapper_class %>">
   <% if drawer %>
       <%= erb :"body/modal-drawer", :locals => {drawer: drawer} %>
   <% end %>
@@ -43,8 +50,8 @@
     <%= yield %>
   </div>
 </div>
-<% if drawer %>
     </div>
+<% if drawer %>
   </div>
 </div>
 <% end %>

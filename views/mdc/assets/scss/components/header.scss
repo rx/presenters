@@ -1,7 +1,12 @@
 @import "@material/top-app-bar/mdc-top-app-bar";
 
-.mdc-top-app-bar {
+.v-header.v-header--static {
   position: relative;
+}
+
+.v-header.v-header--fixed {
+  position: fixed;
+  top: 0;
 }
 
 .v-navigation {
@@ -13,4 +18,16 @@
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   box-sizing: border-box;
+}
+
+// Since fixed elements reserve no space for themselves in the document, the
+// content area must have additional margin.
+.v-header.v-header--fixed + .drawer-main-content {
+  margin-top: $mdc-top-app-bar-row-height;
+}
+
+@media (max-width: $mdc-top-app-bar-mobile-breakpoint) {
+  .v-header.v-header--fixed + .drawer-main-content {
+    margin-top: $mdc-top-app-bar-mobile-row-height;
+  }
 }
