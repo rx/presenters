@@ -10065,8 +10065,12 @@ a.mdc-list-item {
   .mdc-top-app-bar--fixed-adjust {
     padding-top: 56px; } }
 
-.mdc-top-app-bar {
+.v-header.v-header--static {
   position: relative; }
+
+.v-header.v-header--fixed {
+  position: fixed;
+  top: 0; }
 
 .v-navigation {
   overflow: hidden;
@@ -10077,6 +10081,13 @@ a.mdc-list-item {
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   box-sizing: border-box; }
+
+.v-header.v-header--fixed + .drawer-main-content {
+  margin-top: 64px; }
+
+@media (max-width: 599px) {
+  .v-header.v-header--fixed + .drawer-main-content {
+    margin-top: 56px; } }
 
 .mdc-drawer {
   border-color: rgba(0, 0, 0, 0.12);
@@ -10323,6 +10334,23 @@ a.mdc-list-item {
   .mdc-drawer--closing + .mdc-drawer-scrim {
     transition-duration: 200ms;
     opacity: 0; }
+
+.drawer-frame-root {
+  display: flex;
+  height: 100vh; }
+
+.drawer-frame-root .mdc-drawer {
+  position: fixed; }
+
+.mdc-drawer-app-content {
+  width: 100%; }
+
+.mdc-drawer--open:not(.mdc-drawer--closing) + .mdc-drawer-app-content > .mdc-top-app-bar.mdc-top-app-bar--fixed {
+  width: 100%; }
+
+@media (min-width: 992px) {
+  .mdc-drawer--open:not(.mdc-drawer--closing) + .mdc-drawer-app-content > .mdc-top-app-bar.mdc-top-app-bar--fixed {
+    width: calc(100% - 256px); } }
 
 .mdc-drawer--modal {
   --v-drawer-active:yes; }
