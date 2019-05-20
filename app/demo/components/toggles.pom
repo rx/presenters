@@ -29,7 +29,12 @@ Voom::Presenters.define(:toggles) do
     end
     grid do
       column 6 do
-        switch
+        switch do
+          tooltip 'I will reset my state when clicked as a result of a failed event action'
+          event :click do
+            posts '_echo_', status: 500
+          end
+        end
       end
     end
     grid do
