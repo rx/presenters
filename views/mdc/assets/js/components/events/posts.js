@@ -32,7 +32,7 @@ export class VPosts extends VBase {
             });
         }
 
-        const ev = new Event('V:postStarted', {
+        const ev = new CustomEvent('V:postStarted', {
             bubbles: true,
             cancelable: false,
             detail: this,
@@ -112,7 +112,7 @@ export class VPosts extends VBase {
                         responseURL: httpRequest.responseURL,
                     };
 
-                    const ev = new Event('V:postFinished', {
+                    const ev = new CustomEvent('V:postFinished', {
                         bubbles: true,
                         cancelable: false,
                         detail: {event: vEvent, result: result},

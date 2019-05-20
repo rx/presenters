@@ -1214,6 +1214,13 @@ var VBaseToggle = function (_eventHandlerMixin) {
         var _this = _possibleConstructorReturn(this, (VBaseToggle.__proto__ || Object.getPrototypeOf(VBaseToggle)).call(this, element, mdcComponent));
 
         _this.input = element.querySelector('input');
+
+        element.addEventListener('V:postFinished', function (event) {
+            if (event.detail.result.statusCode >= 400) {
+                // Revert to previous checked state on failed post.
+                _this.mdcComponent.checked = !_this.mdcComponent.checked;
+            }
+        });
         return _this;
     }
 
@@ -26385,7 +26392,7 @@ var VPosts = function (_VBase) {
                 });
             }
 
-            var ev = new Event('V:postStarted', {
+            var ev = new CustomEvent('V:postStarted', {
                 bubbles: true,
                 cancelable: false,
                 detail: this
@@ -26514,7 +26521,7 @@ var VPosts = function (_VBase) {
                             responseURL: httpRequest.responseURL
                         };
 
-                        var _ev = new Event('V:postFinished', {
+                        var _ev = new CustomEvent('V:postFinished', {
                             bubbles: true,
                             cancelable: false,
                             detail: { event: vEvent, result: result }
