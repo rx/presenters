@@ -10082,13 +10082,6 @@ a.mdc-list-item {
   flex-wrap: nowrap;
   box-sizing: border-box; }
 
-.v-header.v-header--fixed + .drawer-main-content {
-  margin-top: 64px; }
-
-@media (max-width: 599px) {
-  .v-header.v-header--fixed + .drawer-main-content {
-    margin-top: 56px; } }
-
 .mdc-drawer {
   border-color: rgba(0, 0, 0, 0.12);
   background-color: #fff;
