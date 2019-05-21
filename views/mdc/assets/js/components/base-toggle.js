@@ -7,11 +7,9 @@ export class VBaseToggle extends eventHandlerMixin(VBaseComponent) {
 
         this.input = element.querySelector('input');
 
-        element.addEventListener('V:postFinished', (event) => {
-            if (event.detail.result.statusCode >= 400) {
-                // Revert to previous checked state on failed post.
-                this.mdcComponent.checked = !this.mdcComponent.checked;
-            }
+        element.addEventListener('V:postFailed', (event) => {
+            // Revert to previous checked state on failed post.
+            this.mdcComponent.checked = !this.mdcComponent.checked;
         });
     }
 
