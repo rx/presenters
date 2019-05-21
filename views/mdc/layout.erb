@@ -27,10 +27,7 @@
   root_classes << 'v-root--header-present' if header
   root_classes << 'v-root--drawer-present' if drawer
   root_classes << 'v-root--footer-present' if footer
-
-  drawer_wrapper_class = drawer ? 'drawer-main-content' : 'mdc-top-app-bar--fixed-adjust'
 %>
-
 <div class="v-root compatibility-wrapper <%= root_classes.join(' ') %>">
 
 <% if drawer %>
@@ -41,8 +38,8 @@
 <% if header %>
   <%= erb :"body/header", :locals => {header:header, drawer: drawer} %>
 <% end %>
-  <div class="<%= drawer_wrapper_class %>">
   <% if drawer %>
+    <div class="drawer-main-content">
       <%= erb :"body/modal-drawer", :locals => {drawer: drawer} %>
   <% end %>
 <div class="v-page-content page-content">
@@ -50,8 +47,8 @@
     <%= yield %>
   </div>
 </div>
-    </div>
 <% if drawer %>
+    </div>
   </div>
 </div>
 <% end %>
