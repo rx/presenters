@@ -3294,11 +3294,9 @@ var VBaseToggle = function (_eventHandlerMixin) {
 
         _this.input = element.querySelector('input');
 
-        element.addEventListener('V:postFinished', function (event) {
-            if (event.detail.result.statusCode >= 400) {
-                // Revert to previous checked state on failed post.
-                _this.mdcComponent.checked = !_this.mdcComponent.checked;
-            }
+        element.addEventListener('V:postFailed', function (event) {
+            // Revert to previous checked state on failed post.
+            _this.mdcComponent.checked = !_this.mdcComponent.checked;
         });
         return _this;
     }
@@ -42105,27 +42103,36 @@ var VPosts = function (_VBase) {
                             responseURL: httpRequest.responseURL
                         };
 
-                        var _ev = new CustomEvent('V:postFinished', {
+                        var postFailed = httpRequest.status >= 400;
+                        var _ev = new CustomEvent(postFailed ? 'V:postFailed' : 'V:postSucceeded', {
                             bubbles: true,
                             cancelable: false,
                             detail: { event: vEvent, result: result }
                         });
                         vEvent.event.target.dispatchEvent(_ev);
+
                         if (httpRequest.status >= 200 && httpRequest.status < 300) {
                             results.push(result);
                             snackbarCallback(contentType, httpRequest.responseText);
                             resolve(results);
-                            // Response is an html error page
-                        } else if (contentType && contentType.indexOf('text/html') !== -1) {
-                            root.open(contentType);
-                            root.write(httpRequest.responseText);
-                            root.close();
-                            results.push(result);
-                            resolve(results);
-                        } else {
-                            results.push(result);
-                            reject(results);
                         }
+                        // Response is an html error page
+                        else if (contentType && contentType.indexOf('text/html') !== -1) {
+                                root.open(contentType);
+                                root.write(httpRequest.responseText);
+                                root.close();
+                                results.push(result);
+                                resolve(results);
+                            } else {
+                                results.push(result);
+                                reject(results);
+                            }
+                        var evFinished = new CustomEvent('V:postFinished', {
+                            bubbles: true,
+                            cancelable: false,
+                            detail: { event: vEvent, result: result }
+                        });
+                        vEvent.event.target.dispatchEvent(evFinished);
                     }
                 };
                 // Set up our request
