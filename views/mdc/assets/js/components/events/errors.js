@@ -1,3 +1,5 @@
+import 'core-js/features/array/flat';
+
 /**
  * mapObject transforms an object's key-value pairs via the provided function.
  * @param {Object} object

@@ -1,3 +1,5 @@
+import 'core-js/features/array/flat';
+import 'core-js/features/array/flat-map';
 import {VErrors} from './errors';
 import {VUrls} from '../../utils/urls';
 
