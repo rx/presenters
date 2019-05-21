@@ -32,7 +32,7 @@ export class VPosts extends VBase {
             });
         }
 
-        const ev = new Event('V:postStarted', {
+        const ev = new CustomEvent('V:postStarted', {
             bubbles: true,
             cancelable: false,
             detail: this,
@@ -112,21 +112,23 @@ export class VPosts extends VBase {
                         responseURL: httpRequest.responseURL,
                     };
 
-                    const ev = new Event('V:postFinished', {
+
+                    var postFailed = httpRequest.status >= 400;
+                    const ev = new CustomEvent(postFailed ? 'V:postFailed' : 'V:postSucceeded', {
                         bubbles: true,
                         cancelable: false,
                         detail: {event: vEvent, result: result},
                     });
                     vEvent.event.target.dispatchEvent(ev);
+
                     if (httpRequest.status >= 200 && httpRequest.status < 300) {
                         results.push(result);
                         snackbarCallback(contentType,
                             httpRequest.responseText);
                         resolve(results);
-                        // Response is an html error page
                     }
-                    else if (contentType && contentType.indexOf('text/html') !==
-                        -1) {
+                    // Response is an html error page
+                    else if (contentType && contentType.indexOf('text/html') !== -1) {
                         root.open(contentType);
                         root.write(httpRequest.responseText);
                         root.close();
@@ -137,6 +139,12 @@ export class VPosts extends VBase {
                         results.push(result);
                         reject(results);
                     }
+                    const evFinished = new CustomEvent('V:postFinished', {
+                        bubbles: true,
+                        cancelable: false,
+                        detail: {event: vEvent, result: result},
+                    });
+                    vEvent.event.target.dispatchEvent(evFinished);
                 }
             };
             // Set up our request
