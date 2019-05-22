@@ -346,7 +346,6 @@ var VBaseContainer = function (_VBaseComponent) {
 
         var _this = _possibleConstructorReturn(this, (VBaseContainer.__proto__ || Object.getPrototypeOf(VBaseContainer)).call(this, element, mdcComponent));
 
-        element.dataset.isContainer = true;
         _this.element.classList.add('v-container');
         return _this;
     }
@@ -74689,10 +74688,7 @@ var VContent = function (_eventHandlerMixin) {
     function VContent(element, mdcComponent) {
         _classCallCheck(this, VContent);
 
-        var _this = _possibleConstructorReturn(this, (VContent.__proto__ || Object.getPrototypeOf(VContent)).call(this, element, mdcComponent));
-
-        element.setAttribute('data-is-container', '');
-        return _this;
+        return _possibleConstructorReturn(this, (VContent.__proto__ || Object.getPrototypeOf(VContent)).call(this, element, mdcComponent));
     }
 
     return VContent;
