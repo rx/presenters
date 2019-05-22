@@ -10,6 +10,5 @@ export function initContent(e) {
 export class VContent extends eventHandlerMixin(VBaseContainer) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
-        element.setAttribute('data-is-container', '');
     }
 }
