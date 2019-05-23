@@ -62,12 +62,14 @@ function updateSelectionCount(component, count) {
 export function initLists(e) {
     console.debug('\tLists');
     let components = e.querySelectorAll('.mdc-list');
+    if (components.length === 0 && e.offsetParent.vComponent !== undefined) {
+        components = document.querySelectorAll('.mdc-list');
+    }
     if (components) {
         for (let component of components) {
             let selectAllLineItem = component.querySelector('.v-checkbox--select-control');
             let selectableLineItems = component.querySelectorAll('.v-list-item--selectable-checkbox');
             if (selectAllLineItem && selectableLineItems) {
-
                 for (let element of component.querySelectorAll('.toggle-total-set')) {
                     // Clone and replace element to prevent duplicate event handlers when additional records are loaded/paged
                     let new_element = element.cloneNode(true);
@@ -81,6 +83,7 @@ export function initLists(e) {
                     element.addEventListener('change', createListItemSelectHandler(component, selectableLineItems, selectAllLineItem));
                 }
                 updateSelectionCount(component, selectableLineItems.length);
+                toggleSelectTotalInput(component);
             }
         }
     }
