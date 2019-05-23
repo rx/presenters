@@ -18,7 +18,7 @@
   <div class="mdc-dialog__container">
     <div class="mdc-dialog__surface"
          <% if comp.width || comp.height %>
-              style="<%= "width: #{comp.width.to_i.to_s == comp.width ? comp.width + 'px' : comp.width}; " if comp.width %>
+              style="<%= "max-width: none; width: #{comp.width.to_i.to_s == comp.width ? comp.width + 'px' : comp.width}; " if comp.width %>
                 <%= "height: #{comp.height.to_i.to_s == comp.height ? comp.height + 'px' : comp.height}; " if comp.height %>"
         <% end %>>
       <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(top both))%>
