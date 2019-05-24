@@ -12,11 +12,20 @@ function htmlToNodes(html, root = document) {
     return template.content.children;
 }
 
+function assertXHRSupport() {
+    if (typeof window.XMLHttpRequest !== 'function') {
+        throw new Error('Support for XMLHttpRequest is required');
+    }
+}
+
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
 export class VReplaces extends VBase {
     constructor(options, url, params, event, root) {
         super(options, root);
+
+        assertXHRSupport();
+
         this.element_id = options.target;
         this.url = url;
         this.params = params;
@@ -25,15 +34,12 @@ export class VReplaces extends VBase {
 
     call(results) {
         this.clearErrors();
+
         const httpRequest = new XMLHttpRequest();
-        if (!httpRequest) {
-            throw new Error(
-                'Cannot talk to server! Please upgrade your browser ' +
-                'to one that supports XMLHttpRequest.');
-        }
         const root = this.root;
         const elementId = this.element_id;
         const nodeToReplace = root.getElementById(elementId);
+
         expandParams(results, this.params);
         const url = this.buildURL(this.url, this.params, this.inputValues(),
             [['grid_nesting', this.options.grid_nesting]]);
