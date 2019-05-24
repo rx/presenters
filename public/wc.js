@@ -27754,6 +27754,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+var MOUSE_DELAY_AMOUNT = 0; // ms
+var KEYBOARD_DELAY_AMOUNT = 500; // ms
+
 // Create a NodeList from raw HTML.
 // Whitespace is trimmed to avoid creating superfluous text nodes.
 function htmlToNodes(html) {
@@ -27766,6 +27769,20 @@ function htmlToNodes(html) {
     return template.content.children;
 }
 
+function assertXHRSupport() {
+    if (typeof window.XMLHttpRequest !== 'function') {
+        throw new Error('Support for XMLHttpRequest is required');
+    }
+}
+
+function delayAmount(event) {
+    if (typeof window['InputEvent'] === 'function') {
+        return event instanceof InputEvent ? KEYBOARD_DELAY_AMOUNT : MOUSE_DELAY_AMOUNT;
+    }
+
+    return event instanceof MouseEvent ? MOUSE_DELAY_AMOUNT : KEYBOARD_DELAY_AMOUNT;
+}
+
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
 var VReplaces = function (_VBase) {
@@ -27775,6 +27792,8 @@ var VReplaces = function (_VBase) {
         _classCallCheck(this, VReplaces);
 
         var _this = _possibleConstructorReturn(this, (VReplaces.__proto__ || Object.getPrototypeOf(VReplaces)).call(this, options, root));
+
+        assertXHRSupport();
 
         _this.element_id = options.target;
         _this.url = url;
@@ -27787,16 +27806,16 @@ var VReplaces = function (_VBase) {
         key: 'call',
         value: function call(results) {
             this.clearErrors();
+
             var httpRequest = new XMLHttpRequest();
-            if (!httpRequest) {
-                throw new Error('Cannot talk to server! Please upgrade your browser ' + 'to one that supports XMLHttpRequest.');
-            }
             var root = this.root;
             var elementId = this.element_id;
             var nodeToReplace = root.getElementById(elementId);
+
             Object(__WEBPACK_IMPORTED_MODULE_0__action_parameter__["b" /* expandParams */])(results, this.params);
+
             var url = this.buildURL(this.url, this.params, this.inputValues(), [['grid_nesting', this.options.grid_nesting]]);
-            var delayAmt = this.event instanceof InputEvent ? 500 : 0;
+            var delayAmt = delayAmount(this.event);;
 
             return new Promise(function (resolve, reject) {
                 if (!nodeToReplace) {

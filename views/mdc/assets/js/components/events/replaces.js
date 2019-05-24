@@ -2,6 +2,9 @@ import {expandParams} from './action_parameter';
 import {VBase} from './base';
 import {initialize} from '../initialize';
 
+const MOUSE_DELAY_AMOUNT = 0; // ms
+const KEYBOARD_DELAY_AMOUNT = 500; // ms
+
 // Create a NodeList from raw HTML.
 // Whitespace is trimmed to avoid creating superfluous text nodes.
 function htmlToNodes(html, root = document) {
@@ -12,11 +15,28 @@ function htmlToNodes(html, root = document) {
     return template.content.children;
 }
 
+function assertXHRSupport() {
+    if (typeof window.XMLHttpRequest !== 'function') {
+        throw new Error('Support for XMLHttpRequest is required');
+    }
+}
+
+function delayAmount(event) {
+    if (typeof window['InputEvent'] === 'function') {
+        return event instanceof InputEvent ? KEYBOARD_DELAY_AMOUNT : MOUSE_DELAY_AMOUNT;
+    }
+
+    return event instanceof MouseEvent ? MOUSE_DELAY_AMOUNT : KEYBOARD_DELAY_AMOUNT;
+}
+
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
 export class VReplaces extends VBase {
     constructor(options, url, params, event, root) {
         super(options, root);
+
+        assertXHRSupport();
+
         this.element_id = options.target;
         this.url = url;
         this.params = params;
@@ -25,19 +45,17 @@ export class VReplaces extends VBase {
 
     call(results) {
         this.clearErrors();
+
         const httpRequest = new XMLHttpRequest();
-        if (!httpRequest) {
-            throw new Error(
-                'Cannot talk to server! Please upgrade your browser ' +
-                'to one that supports XMLHttpRequest.');
-        }
         const root = this.root;
         const elementId = this.element_id;
         const nodeToReplace = root.getElementById(elementId);
+
         expandParams(results, this.params);
+
         const url = this.buildURL(this.url, this.params, this.inputValues(),
             [['grid_nesting', this.options.grid_nesting]]);
-        const delayAmt = this.event instanceof InputEvent ? 500 : 0;
+        const delayAmt = delayAmount(this.event);;
 
         return new Promise(function(resolve, reject) {
             if (!nodeToReplace) {
