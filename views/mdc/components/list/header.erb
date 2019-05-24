@@ -2,6 +2,9 @@
            v-list-item--header
            v-list-item--selectable-header"
     id="<%= line.id %>">
+  <div class="v-input v-checkbox v-hidden">
+    <input class="mdc-checkbox__native-control" type="checkbox" id="select-total" name="all" value="true" data-indeterminate="false"/>
+  </div>
   <%= erb :"components/checkbox", :locals => {:comp => line.checkbox, :class_name => 'v-checkbox--select-control'} if line.checkbox %>
   <span class="mdc-list-item__text">
     <%= expand_text(line.text&.text) %>
@@ -22,7 +25,6 @@
 
 <% if line.total_lines > 0 %>
   <li class="mdc-list-item hidden" id="list-item-select-all-header">
-    <input type="checkbox" name="all" value="true" id="select-total" style="display: none;" />
     <span class="mdc-list-item__secondary-text" id="list-item-select-all-toggle-off">
       All <span id="page-selection-count">10</span> records on this page are selected. <a href="#" class="toggle-total-set" data-select="on">Select all <%= line.total_lines %> records.</a>
     </span>

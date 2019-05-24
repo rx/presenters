@@ -43063,6 +43063,9 @@ function updateSelectionCount(component, count) {
 function initLists(e) {
     console.debug('\tLists');
     var components = e.querySelectorAll('.mdc-list');
+    if (components.length === 0 && e.offsetParent.vComponent !== undefined) {
+        components = document.querySelectorAll('.mdc-list');
+    }
     if (components) {
         var _iteratorNormalCompletion3 = true;
         var _didIteratorError3 = false;
@@ -43080,7 +43083,6 @@ function initLists(e) {
                     var _iteratorError4 = undefined;
 
                     try {
-
                         for (var _iterator4 = component.querySelectorAll('.toggle-total-set')[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
                             var element = _step4.value;
 
@@ -43132,6 +43134,7 @@ function initLists(e) {
                     }
 
                     updateSelectionCount(component, selectableLineItems.length);
+                    toggleSelectTotalInput(component);
                 }
             }
         } catch (err) {
