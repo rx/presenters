@@ -28525,9 +28525,11 @@ function updateSelectionCount(component, count) {
 function initLists(e) {
     console.debug('\tLists');
     var components = e.querySelectorAll('.mdc-list');
-    if (components.length === 0 && e.offsetParent.vComponent !== undefined) {
+
+    if (components.length === 0 && e.offsetParent && e.offsetParent.vComponent !== undefined) {
         components = document.querySelectorAll('.mdc-list');
     }
+
     if (components) {
         var _iteratorNormalCompletion3 = true;
         var _didIteratorError3 = false;
