@@ -25,15 +25,21 @@ export function expandParam(results, value) {
     }
 }
 
-export function expandParams(results, o) {
-    Object.keys(o).forEach(function(k) {
-        if (o[k] !== null && typeof o[k] === 'object' && o[k].type !==
-            'action_parameter') {
-            expandParams(results, o[k]);
-            return;
+export function expandParams(results, params) {
+    const expandedParams = {};
+
+    for (const [key, value] of Object.entries(params)) {
+        if (typeof value !== 'object') {
+            continue;
         }
-        if (o[k].type && o[k].type === 'action_parameter') {
-            o[k] = expandParam(results, o[k]);
+
+        if (value.type === 'action_parameter') {
+            expandedParams[key] = expandParam(results, value);
         }
-    });
+        else {
+            expandedParams[key] = expandParams(results, value);
+        }
+    }
+
+    return expandedParams;
 }
