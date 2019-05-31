@@ -3,6 +3,9 @@ import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 import {visibilityObserverMixin} from './mixins/visibility-observer';
 
+const AFTER_INPUT_EVENT = 'after_input';
+const AFTER_INPUT_TIMEOUT = 500; // ms
+
 export function initTextFields(e) {
     console.debug('\tTextFields');
     hookupComponents(e, '.v-text-field', VTextField, MDCTextField);
@@ -12,12 +15,19 @@ export class VTextField extends visibilityObserverMixin(
     eventHandlerMixin(VBaseComponent)) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
-        this.input = element.querySelector('input');
-        if (this.input == null) {
-            this.input = element.querySelector('textarea');
-        }
+
+        this.input = element.querySelector('input,textarea');
         this.input.vComponent = this;
+        this.afterInputTimeout = null;
+
         this.recalcWhenVisible(this);
+
+        this.input.addEventListener('input', (event) => {
+            clearTimeout(this.afterInputTimeout);
+            this.afterInputTimeout = setTimeout(() => {
+                this.element.dispatchEvent(new Event(AFTER_INPUT_EVENT));
+            }, AFTER_INPUT_TIMEOUT)
+        });
     }
 
     // Called whenever a form is about to be submitted.
