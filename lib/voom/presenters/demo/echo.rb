@@ -9,8 +9,8 @@ module Voom
         post('/_echo_') do
           content_type :json
           params[:echo] = JSON.parse(params[:echo]) if params[:echo]
-          JSON.dump(params)
           status(params[:status]) if params[:status]
+          JSON.dump(params)
         end
 
         post('/_echo_snackbar_') do
