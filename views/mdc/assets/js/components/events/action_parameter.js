@@ -29,7 +29,7 @@ export function expandParams(results, params) {
     const expandedParams = {};
 
     for (const [key, value] of Object.entries(params)) {
-        if (typeof value !== 'object') {
+        if (value !== null && typeof value !== 'object') {
             continue;
         }
 
