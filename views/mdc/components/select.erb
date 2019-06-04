@@ -10,6 +10,7 @@
     <i class="mdc-select__dropdown-icon"></i>
     <select id="<%= comp.id %>"
             <% if comp.name %> name="<%= comp.name %>" <% end %>
+            <% if comp.required %>required<% end %>
             class="mdc-select__native-control"
             <%= erb(:"components/event", locals: {comp: comp,
                                                   events: comp.events,

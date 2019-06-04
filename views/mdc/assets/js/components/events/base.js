@@ -75,8 +75,8 @@ export class VBase extends VUrls {
                 components.push(comp);
             }
             else if (!comp.respondTo('inputs')) {
-                // Defer to the component's closest container (dialog or
-                // content) if the component itself does not respond to
+                // Defer to the component's closest container (card, content,
+                // dialog, or form) if the component itself does not respond to
                 // `inputs`:
                 comp = this.closestContainer();
             }

@@ -50,9 +50,9 @@ export class VPosts extends VBase {
         }
 
         // Add params from presenter:
-        expandParams(results, this.params);
+        const expandedParams = expandParams(results, this.params);
 
-        for (const [name, value] of Object.entries(this.params)) {
+        for (const [name, value] of Object.entries(expandedParams)) {
             formData.append(name, encode(value));
         }
 

@@ -12,9 +12,9 @@ export class VLoads extends VUrls {
     }
 
     call(results) {
-        expandParams(results, this.params);
+        const expandedParams = expandParams(results, this.params);
         const root = this.root;
-        const url = this.buildURL(this.url, this.params);
+        const url = this.buildURL(this.url, expandedParams);
         const newWindow = this.options['target'] === '_blank';
         return new Promise(function(resolve) {
             results.push({action: 'loads', statusCode: 200});

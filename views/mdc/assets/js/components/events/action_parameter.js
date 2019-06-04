@@ -16,24 +16,47 @@ class VActionParameter {
     }
 }
 
-export function expandParam(results, value) {
-    if (value.type && value.type === 'action_parameter') {
-        return new VActionParameter(value).fetchValue(results);
-    }
-    else {
-        return value;
-    }
+function isObject(thing) {
+    return thing && typeof thing === 'object';
 }
 
-export function expandParams(results, o) {
-    Object.keys(o).forEach(function(k) {
-        if (o[k] !== null && typeof o[k] === 'object' && o[k].type !==
-            'action_parameter') {
-            expandParams(results, o[k]);
-            return;
+/**
+ * expandParam resolves an parameter `value` to a primitive value
+ * according to the given path for the parameter in `results`.
+ * If the `value` is not an action_parameter, it is returned unaltered.
+ * @param {Object} results An action's results
+ * @param {*} value The value of the parameter
+ * @return {*} A resolved primitive value
+ */
+export function expandParam(results, value) {
+    if (isObject(value) && value.type === 'action_parameter') {
+        return new VActionParameter(value).fetchValue(results);
+    }
+
+    return value;
+}
+
+/**
+ * expandParams resolves all values in `params` to primitive values.
+ *
+ * Primitive values are passed through unaltered.
+ * Values of action_parameter parameters are resolved to primitive values
+ * via `results`.
+ * @param {Object} results An action's results
+ * @param {Object} params An action's parameters
+ * @return {Object}
+ */
+export function expandParams(results, params) {
+    const expandedParams = {};
+
+    for (const [key, value] of Object.entries(params)) {
+        if (!isObject(value) || value.type === 'action_parameter') {
+            expandedParams[key] = expandParam(results, value);
         }
-        if (o[k].type && o[k].type === 'action_parameter') {
-            o[k] = expandParam(results, o[k]);
+        else {
+            expandedParams[key] = expandParams(results, value);
         }
-    });
+    }
+
+    return expandedParams;
 }
