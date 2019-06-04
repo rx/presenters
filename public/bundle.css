@@ -14236,6 +14236,9 @@ select {
 .mdc-form-field > label.v-switch__label {
   padding-left: 11px; }
 
+.mdc-switch--checked .mdc-switch__native-control {
+  margin-left: 20px; }
+
 .v-image {
   display: inline-block;
   width: 100%;
