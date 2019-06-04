@@ -916,6 +916,8 @@ module.exports = function (it) {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = expandParam;
 /* harmony export (immutable) */ __webpack_exports__["b"] = expandParams;
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -948,24 +950,74 @@ var VActionParameter = function () {
     return VActionParameter;
 }();
 
-function expandParam(results, value) {
-    if (value.type && value.type === 'action_parameter') {
-        return new VActionParameter(value).fetchValue(results);
-    } else {
-        return value;
-    }
+function isObject(thing) {
+    return thing && (typeof thing === 'undefined' ? 'undefined' : _typeof(thing)) === 'object';
 }
 
-function expandParams(results, o) {
-    Object.keys(o).forEach(function (k) {
-        if (o[k] !== null && _typeof(o[k]) === 'object' && o[k].type !== 'action_parameter') {
-            expandParams(results, o[k]);
-            return;
+/**
+ * expandParam resolves an parameter `value` to a primitive value
+ * according to the given path for the parameter in `results`.
+ * If the `value` is not an action_parameter, it is returned unaltered.
+ * @param {Object} results An action's results
+ * @param {*} value The value of the parameter
+ * @return {*} A resolved primitive value
+ */
+function expandParam(results, value) {
+    if (isObject(value) && value.type === 'action_parameter') {
+        return new VActionParameter(value).fetchValue(results);
+    }
+
+    return value;
+}
+
+/**
+ * expandParams resolves all values in `params` to primitive values.
+ *
+ * Primitive values are passed through unaltered.
+ * Values of action_parameter parameters are resolved to primitive values
+ * via `results`.
+ * @param {Object} results An action's results
+ * @param {Object} params An action's parameters
+ * @return {Object}
+ */
+function expandParams(results, params) {
+    var expandedParams = {};
+
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = Object.entries(params)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var _ref = _step.value;
+
+            var _ref2 = _slicedToArray(_ref, 2);
+
+            var key = _ref2[0];
+            var value = _ref2[1];
+
+            if (!isObject(value) || value.type === 'action_parameter') {
+                expandedParams[key] = expandParam(results, value);
+            } else {
+                expandedParams[key] = expandParams(results, value);
+            }
         }
-        if (o[k].type && o[k].type === 'action_parameter') {
-            o[k] = expandParam(results, o[k]);
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
         }
-    });
+    }
+
+    return expandedParams;
 }
 
 /***/ }),
@@ -1078,8 +1130,8 @@ var VBase = function (_VUrls) {
                 if (comp.respondTo('prepareSubmit') && !comp.respondTo('inputs')) {
                     components.push(comp);
                 } else if (!comp.respondTo('inputs')) {
-                    // Defer to the component's closest container (dialog or
-                    // content) if the component itself does not respond to
+                    // Defer to the component's closest container (card, content,
+                    // dialog, or form) if the component itself does not respond to
                     // `inputs`:
                     comp = this.closestContainer();
                 }
@@ -9238,6 +9290,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+var AFTER_INPUT_EVENT = 'after_input';
+var AFTER_INPUT_TIMEOUT = 500; // ms
+
 function initTextFields(e) {
     console.debug('\tTextFields');
     Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-text-field', VTextField, __WEBPACK_IMPORTED_MODULE_0__material_textfield__["MDCTextField"]);
@@ -9251,12 +9306,18 @@ var VTextField = function (_visibilityObserverMi) {
 
         var _this = _possibleConstructorReturn(this, (VTextField.__proto__ || Object.getPrototypeOf(VTextField)).call(this, element, mdcComponent));
 
-        _this.input = element.querySelector('input');
-        if (_this.input == null) {
-            _this.input = element.querySelector('textarea');
-        }
+        _this.input = element.querySelector('input,textarea');
         _this.input.vComponent = _this;
+        _this.afterInputTimeout = null;
+
         _this.recalcWhenVisible(_this);
+
+        _this.input.addEventListener('input', function (event) {
+            clearTimeout(_this.afterInputTimeout);
+            _this.afterInputTimeout = setTimeout(function () {
+                _this.element.dispatchEvent(new Event(AFTER_INPUT_EVENT));
+            }, AFTER_INPUT_TIMEOUT);
+        });
         return _this;
     }
 
@@ -27339,9 +27400,9 @@ var VLoads = function (_VUrls) {
     _createClass(VLoads, [{
         key: 'call',
         value: function call(results) {
-            Object(__WEBPACK_IMPORTED_MODULE_1__action_parameter__["b" /* expandParams */])(results, this.params);
+            var expandedParams = Object(__WEBPACK_IMPORTED_MODULE_1__action_parameter__["b" /* expandParams */])(results, this.params);
             var root = this.root;
-            var url = this.buildURL(this.url, this.params);
+            var url = this.buildURL(this.url, expandedParams);
             var newWindow = this.options['target'] === '_blank';
             return new Promise(function (resolve) {
                 results.push({ action: 'loads', statusCode: 200 });
@@ -27461,14 +27522,14 @@ var VPosts = function (_VBase) {
                 }
             }
 
-            Object(__WEBPACK_IMPORTED_MODULE_2__action_parameter__["b" /* expandParams */])(results, this.params);
+            var expandedParams = Object(__WEBPACK_IMPORTED_MODULE_2__action_parameter__["b" /* expandParams */])(results, this.params);
 
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
             var _iteratorError2 = undefined;
 
             try {
-                for (var _iterator2 = Object.entries(this.params)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                for (var _iterator2 = Object.entries(expandedParams)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
                     var _ref3 = _step2.value;
 
                     var _ref4 = _slicedToArray(_ref3, 2);
@@ -27811,10 +27872,9 @@ var VReplaces = function (_VBase) {
             var root = this.root;
             var elementId = this.element_id;
             var nodeToReplace = root.getElementById(elementId);
+            var expandedParams = Object(__WEBPACK_IMPORTED_MODULE_0__action_parameter__["b" /* expandParams */])(results, this.params);
 
-            Object(__WEBPACK_IMPORTED_MODULE_0__action_parameter__["b" /* expandParams */])(results, this.params);
-
-            var url = this.buildURL(this.url, this.params, this.inputValues(), [['grid_nesting', this.options.grid_nesting]]);
+            var url = this.buildURL(this.url, expandedParams, this.inputValues(), [['grid_nesting', this.options.grid_nesting]]);
             var delayAmt = delayAmount(this.event);;
 
             return new Promise(function (resolve, reject) {
