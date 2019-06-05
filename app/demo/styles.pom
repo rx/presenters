@@ -34,6 +34,8 @@ Voom::Presenters.define(:styles) do
     separator
     body 'Line above me is a separator'
     link 'You can have a link', 'https://www.google.com/search?q=link&source=lnms&tbm=isch&sa=X&ved=0ahUKEwipr4zY_JXdAhVNXK0KHWFNCdYQ_AUICigB&biw=1651&bih=932'
+    blank
+    link 'I open in a new tab or window', 'https://example.com', target: :blank
 
   end
   attach :code, file: __FILE__
