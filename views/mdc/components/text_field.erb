@@ -1,6 +1,7 @@
 <% if comp
      leading_icon = comp.icon && comp.icon.position.select {|p| eq(p, :left)}.any?
      trailing_icon = comp.icon && comp.icon.position.select {|p| eq(p, :right)}.any?
+     auto_complete = comp.auto_complete&.to_sym == :off ? 'extra-off' : comp.auto_complete
 %>
   <div id="<%= comp.id %>"
        <% if comp.tag %>
@@ -23,7 +24,7 @@
            <%= 'required' if comp.required %>
            <%= 'invalid' if comp.error %>
            <%= "pattern='#{comp.pattern}'" if comp.pattern %>
-           autocomplete="<%= comp.auto_complete ? 'on' : 'off' %>"
+           autocomplete="<%= auto_complete %>"
            list="<%= comp.id %>-list"
            <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id:  "#{comp.id}-input"} %>>
 
