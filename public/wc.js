@@ -18732,7 +18732,15 @@ var VButton = function (_eventHandlerMixin) {
     function VButton(element, mdcComponent) {
         _classCallCheck(this, VButton);
 
-        return _possibleConstructorReturn(this, (VButton.__proto__ || Object.getPrototypeOf(VButton)).call(this, element, mdcComponent));
+        var _this = _possibleConstructorReturn(this, (VButton.__proto__ || Object.getPrototypeOf(VButton)).call(this, element, mdcComponent));
+
+        _this.element.addEventListener('V:postStarted', function (e) {
+            return _this.disable();
+        });
+        _this.element.addEventListener('V:postFinished', function (e) {
+            return _this.enable();
+        });
+        return _this;
     }
 
     _createClass(VButton, [{
@@ -18743,6 +18751,16 @@ var VButton = function (_eventHandlerMixin) {
             } else {
                 console.warn('WARNING: Attempted to preview an image on a Button (id: ' + this.element.id + ') that is NOT an image button.\nMake sure you set the type: :image on the button.');
             }
+        }
+    }, {
+        key: 'disable',
+        value: function disable() {
+            this.element.setAttribute('disabled', 'disabled');
+        }
+    }, {
+        key: 'enable',
+        value: function enable() {
+            this.element.removeAttribute('disabled');
         }
     }, {
         key: 'actionsHalted',
