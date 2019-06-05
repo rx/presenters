@@ -12,6 +12,9 @@ export function initButtons(e) {
 export class VButton extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
+
+        this.element.addEventListener('V:postStarted', (e) => this.disable());
+        this.element.addEventListener('V:postFinished', (e) => this.enable());
     }
 
     preview(result, acceptsMimeTypes, file) {
@@ -23,6 +26,14 @@ export class VButton extends eventHandlerMixin(VBaseComponent) {
                 `WARNING: Attempted to preview an image on a Button (id: ${this.element.id}) that is NOT an image button.
 Make sure you set the type: :image on the button.`);
         }
+    }
+
+    disable() {
+        this.element.setAttribute('disabled', 'disabled');
+    }
+
+    enable() {
+        this.element.removeAttribute('disabled');
     }
 
     actionsHalted(vEvent) {
