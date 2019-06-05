@@ -1,0 +1,16 @@
+/* Sample palette */
+$palette-colors: (
+  red: #FFEBEE,
+  yellow: #FFFDE7,
+  green: #E8F5E9
+);
+
+@function palette($color) {
+  @return map-get($palette-colors, $color);
+}
+
+@each $name, $color in $palette-colors {
+  .v-color__#{$name} {
+    color: $color !important;
+  }
+}

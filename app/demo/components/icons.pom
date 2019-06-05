@@ -45,6 +45,8 @@ Voom::Presenters.define(:icons) do
           icon :thumb_up, color: :primary
           body '**secondary**'
           icon :thumb_up, color: :secondary
+          body '**custom from palette**'
+          icon :thumb_up, color: :red
           body '**custom**'
           icon :thumb_up, color: :hotpink
         end
