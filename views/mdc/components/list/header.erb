@@ -5,7 +5,7 @@
   <div class="v-input v-checkbox v-hidden">
     <input class="mdc-checkbox__native-control" type="checkbox" id="select-total" name="all" value="true" data-indeterminate="false"/>
   </div>
-  <%= erb :"components/checkbox", :locals => {:comp => line.checkbox, :class_name => 'v-checkbox--select-control'} if line.checkbox %>
+  <%= erb :"components/checkbox", :locals => {:comp => line.checkbox, :class_name => 'v-checkbox--select-control', :dirtyable => false} if line.checkbox %>
   <span class="mdc-list-item__text">
     <%= expand_text(line.text&.text) %>
 

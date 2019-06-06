@@ -11,7 +11,7 @@
      <% if comp.step %>
      data-step="<%= comp.step %>"
      <% end %>
-     data-original-value="<%=comp.value%>"
+     <% if comp.dirtyable %>data-original-value="<%=comp.value%>"<% end %>
      aria-valuemin="<%= comp.value_min %>"
      aria-valuemax="<%= comp.value_max %>"
      aria-valuenow="<%= comp.value unless comp.value.nil? %>"
