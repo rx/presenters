@@ -6986,7 +6986,7 @@ svg.mdc-button__icon {
   height: 32px;
   font-size: .8125rem; }
 
-.v-button-image {
+.v-button.v-button--image {
   width: 150px;
   height: 45px;
   background-color: #fff !important;
@@ -6995,7 +6995,7 @@ svg.mdc-button__icon {
   background-position-x: 18%;
   background-position-y: center;
   border-radius: 10px; }
-  .v-button-image > i {
+  .v-button.v-button--image > i {
     position: absolute;
     margin-right: 0 !important;
     color: #263138; }
@@ -13707,6 +13707,9 @@ select {
 .mdc-linear-progress--indeterminate.mdc-linear-progress--reversed .mdc-linear-progress__secondary-bar {
   right: -54.888891%;
   left: auto; }
+
+.v-tooltip {
+  text-transform: initial; }
 
 .v-expansion {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
