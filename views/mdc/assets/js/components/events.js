@@ -13,6 +13,8 @@ import {VNavigates} from './events/navigates';
 import {VPluginEventAction} from './events/plugin';
 import getRoot from './root_document';
 
+const EVENTS_SELECTOR = '[data-events]';
+
 export class VEvents {
     // [[type, url, target, params]]
     constructor(actions, event, root, vComponent) {
@@ -133,12 +135,21 @@ function createEventHandler(actionsData, root, vComponent) {
     };
 }
 
+function getEventElements(root) {
+    const elements = Array.from(root.querySelectorAll(EVENTS_SELECTOR));
+
+    // Include `root` if it has events:
+    if (typeof root.matches === 'function' && root.matches(EVENTS_SELECTOR)) {
+        elements.unshift(root);
+    }
+
+    return elements;
+}
+
 export function initEvents(e) {
     console.debug('\tEvents');
 
-    var events = e.querySelectorAll('[data-events]');
-    for (var i = 0; i < events.length; i++) {
-        var eventElem = events[i];
+    for (const eventElem of getEventElements(e)) {
         var eventsData = JSON.parse(eventElem.dataset.events);
         for (var j = 0; j < eventsData.length; j++) {
             var eventData = eventsData[j];
@@ -179,9 +190,7 @@ export function initEvents(e) {
 }
 
 function fireAfterLoad(e) {
-    var events = e.querySelectorAll('[data-events]');
-    for (var i = 0; i < events.length; i++) {
-        var eventElem = events[i];
+    for (const eventElem of getEventElements(e)) {
         var eventsData = JSON.parse(eventElem.dataset.events);
         for (var j = 0; j < eventsData.length; j++) {
             var eventData = eventsData[j];
