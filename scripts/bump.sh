@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Docs: https://github.com/svenfuchs/gem-release#gem-release
-gem bump
+BUMP_LEVEL="${BUMP_LEVEL:-minor}"  # major, minor, patch, pre
+# https://github.com/gregorym/bump
+gem bump $BUMP_LEVEL --no-commit
 
