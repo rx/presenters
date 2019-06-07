@@ -13335,6 +13335,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 
+var EVENTS_SELECTOR = '[data-events]';
+
 var VEvents = function () {
     // [[type, url, target, params]]
     function VEvents(actions, event, root, vComponent) {
@@ -13464,59 +13466,109 @@ function createEventHandler(actionsData, root, vComponent) {
     };
 }
 
+function getEventElements(root) {
+    var elements = Array.from(root.querySelectorAll(EVENTS_SELECTOR));
+
+    // Include `root` if it has events:
+    if (typeof root.matches === 'function' && root.matches(EVENTS_SELECTOR)) {
+        elements.unshift(root);
+    }
+
+    return elements;
+}
+
 function initEvents(e) {
     console.debug('\tEvents');
 
-    var events = e.querySelectorAll('[data-events]');
-    for (var i = 0; i < events.length; i++) {
-        var eventElem = events[i];
-        var eventsData = JSON.parse(eventElem.dataset.events);
-        for (var j = 0; j < eventsData.length; j++) {
-            var eventData = eventsData[j];
-            var eventName = eventData[0];
-            var eventOptions = eventData[2];
-            eventOptions.passive = true;
-            var actionsData = eventData[1];
-            var vComponent = eventElem.vComponent;
-            var eventHandler = createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e), vComponent);
-            // allow override of event handler by component
-            if (vComponent && vComponent.createEventHandler) {
-                eventHandler = vComponent.createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e), vComponent);
-            }
-            // Delegate to the component if possible
-            if (vComponent && vComponent.initEventListener) {
-                vComponent.initEventListener(eventName, eventHandler, eventOptions);
-            } else {
-                if (typeof eventElem.eventsHandler === 'undefined') {
-                    eventElem.eventsHandler = {};
-                }
-                if (typeof eventElem.eventsHandler[eventName] === 'undefined') {
-                    eventElem.eventsHandler[eventName] = [];
-                }
-                eventElem.eventsHandler[eventName].push(eventHandler);
-                eventElem.addEventListener(eventName, eventHandler, eventOptions);
-            }
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
 
-            if (vComponent) {
-                vComponent.afterInit();
+    try {
+        for (var _iterator = getEventElements(e)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var eventElem = _step.value;
+
+            var eventsData = JSON.parse(eventElem.dataset.events);
+            for (var j = 0; j < eventsData.length; j++) {
+                var eventData = eventsData[j];
+                var eventName = eventData[0];
+                var eventOptions = eventData[2];
+                eventOptions.passive = true;
+                var actionsData = eventData[1];
+                var vComponent = eventElem.vComponent;
+                var eventHandler = createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e), vComponent);
+                // allow override of event handler by component
+                if (vComponent && vComponent.createEventHandler) {
+                    eventHandler = vComponent.createEventHandler(actionsData, Object(__WEBPACK_IMPORTED_MODULE_13__root_document__["a" /* default */])(e), vComponent);
+                }
+                // Delegate to the component if possible
+                if (vComponent && vComponent.initEventListener) {
+                    vComponent.initEventListener(eventName, eventHandler, eventOptions);
+                } else {
+                    if (typeof eventElem.eventsHandler === 'undefined') {
+                        eventElem.eventsHandler = {};
+                    }
+                    if (typeof eventElem.eventsHandler[eventName] === 'undefined') {
+                        eventElem.eventsHandler[eventName] = [];
+                    }
+                    eventElem.eventsHandler[eventName].push(eventHandler);
+                    eventElem.addEventListener(eventName, eventHandler, eventOptions);
+                }
+
+                if (vComponent) {
+                    vComponent.afterInit();
+                }
+            }
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
             }
         }
     }
+
     fireAfterLoad(e);
 }
 
 function fireAfterLoad(e) {
-    var events = e.querySelectorAll('[data-events]');
-    for (var i = 0; i < events.length; i++) {
-        var eventElem = events[i];
-        var eventsData = JSON.parse(eventElem.dataset.events);
-        for (var j = 0; j < eventsData.length; j++) {
-            var eventData = eventsData[j];
-            var eventName = eventData[0];
-            if (eventName === 'after_init') {
-                var event = new Event('after_init');
-                // Dispatch the event.
-                eventElem.dispatchEvent(event);
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+        for (var _iterator2 = getEventElements(e)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var eventElem = _step2.value;
+
+            var eventsData = JSON.parse(eventElem.dataset.events);
+            for (var j = 0; j < eventsData.length; j++) {
+                var eventData = eventsData[j];
+                var eventName = eventData[0];
+                if (eventName === 'after_init') {
+                    var event = new Event('after_init');
+                    // Dispatch the event.
+                    eventElem.dispatchEvent(event);
+                }
+            }
+        }
+    } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                _iterator2.return();
+            }
+        } finally {
+            if (_didIteratorError2) {
+                throw _iteratorError2;
             }
         }
     }
@@ -33382,7 +33434,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initButtons(e) {
     console.debug('\tButtons');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-js-ripple-button', VButton, __WEBPACK_IMPORTED_MODULE_0__material_ripple__["MDCRipple"]);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-button', VButton, __WEBPACK_IMPORTED_MODULE_0__material_ripple__["MDCRipple"]);
 }
 
 var VButton = function (_eventHandlerMixin) {
@@ -33405,7 +33457,7 @@ var VButton = function (_eventHandlerMixin) {
     _createClass(VButton, [{
         key: 'preview',
         value: function preview(result, acceptsMimeTypes, file) {
-            if (this.element.classList.contains('v-button-image')) {
+            if (this.element.classList.contains('v-button--image')) {
                 this.element.style.backgroundImage = 'url(\'' + result + '\')';
             } else {
                 console.warn('WARNING: Attempted to preview an image on a Button (id: ' + this.element.id + ') that is NOT an image button.\nMake sure you set the type: :image on the button.');

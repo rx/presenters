@@ -5,7 +5,7 @@ import {eventHandlerMixin} from './mixins/event-handler';
 
 export function initButtons(e) {
     console.debug('\tButtons');
-    hookupComponents(e, '.v-js-ripple-button', VButton, MDCRipple);
+    hookupComponents(e, '.v-button', VButton, MDCRipple);
 }
 
 
@@ -18,7 +18,7 @@ export class VButton extends eventHandlerMixin(VBaseComponent) {
     }
 
     preview(result, acceptsMimeTypes, file) {
-        if (this.element.classList.contains('v-button-image')) {
+        if (this.element.classList.contains('v-button--image')) {
             this.element.style.backgroundImage = `url('${result}')`;
         }
         else {
