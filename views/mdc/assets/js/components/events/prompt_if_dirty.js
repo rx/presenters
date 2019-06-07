@@ -20,20 +20,18 @@ function shouldHalt(action) {
 }
 
 export class VPromptIfDirty extends VBase {
-    constructor(options, params, event) {
-        super(options);
+    constructor(options, params, event, root) {
+        super(options, root);
 
         this.targetId = options.target;
         this.params = params;
         this.event = event;
-        this.dialog = new VDialog(this.options, this.params, this.event);
+        this.dialog = new VDialog(this.options, this.params, this.event, root);
     }
 
     call(results) {
         // We're in a dirty state if any dirtyable inputs are dirty:
-        const dirty = Array.from(this.inputs())
-            .filter((input) => input.vComponent)
-            .map((input) => input.vComponent)
+        const dirty = this.inputComponents()
             .filter((comp) => comp.isDirty)
             .map((comp) => comp.isDirty())
             .some(Boolean);
@@ -65,35 +63,5 @@ export class VPromptIfDirty extends VBase {
                 return resolve(results);
             });
         });
-    }
-
-    /**
-     * inputs returns an array of Voom components.
-     * If an input_tag has been specified, the array contains input
-     * components tagged with the specified input_tag.
-     * Otherwise, the array contains the nearest container's input
-     * components.
-     * @throws Error if No input_tag is specified and a nearest container
-     *               cannot be found.
-     * @return {array} An array of input components
-     */
-    inputs() {
-        const container = this.closestContainer();
-        const inputTag = this.options.input_tag;
-
-        // A specified input_tag has priority over the nearest container:
-        if (inputTag) {
-            return this.taggedInputs();
-        }
-
-        // If no nearest container can be found, bail:
-        if (!(container && container.vComponent)) {
-            throw new Error(
-                'Unable to find a nearest container! Try using an input_tag.'
-            );
-        }
-
-        // Otherwise, use the nearest container's input elements:
-        return container.vComponent.inputs();
     }
 }

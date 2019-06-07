@@ -1,15 +1,16 @@
 import {VBaseComponent, hookupComponents} from './base-component';
-import {eventHandlerMixin} from "./mixins/event-handler";
+import {eventHandlerMixin} from './mixins/event-handler';
 import {MDCSlider} from '@material/slider';
 import {visibilityObserverMixin} from './mixins/visibility-observer';
 import {VEvents} from './events';
 
-export function initSliders() {
-    console.log('\tSliders');
-    hookupComponents('.v-slider', VSlider, MDCSlider);
+export function initSliders(e) {
+    console.debug('\tSliders');
+    hookupComponents(e, '.v-slider', VSlider, MDCSlider);
 }
 
-export class VSlider extends visibilityObserverMixin(eventHandlerMixin(VBaseComponent)) {
+export class VSlider extends visibilityObserverMixin(
+    eventHandlerMixin(VBaseComponent)) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
         this.recalcWhenVisible(this);
@@ -21,15 +22,19 @@ export class VSlider extends visibilityObserverMixin(eventHandlerMixin(VBaseComp
     }
 
     name() {
-        return this.element.getAttribute('data-name')
+        return this.element.getAttribute('data-name');
     }
 
     value() {
-        return this.mdcComponent.value
+        return this.mdcComponent.value;
     }
 
     clear() {
         this.setValue(0);
+    }
+
+    reset() {
+        this.setValue(this.element.dataset.originalValue);
     }
 
     setValue(value) {
@@ -48,11 +53,12 @@ export class VSlider extends visibilityObserverMixin(eventHandlerMixin(VBaseComp
     }
 
 
-    createEventHandler(actionsData) {
-        return function (event) {
+    createEventHandler(actionsData, root) {
+        return function(event) {
             // The MDC slider was firing duplicate change events - this prevents that
-            if (!this.lastEvent || (event.timeStamp - this.lastEvent.timeStamp) > 10.0) {
-                new VEvents(actionsData, event).call();
+            if (!this.lastEvent ||
+                (event.timeStamp - this.lastEvent.timeStamp) > 10.0) {
+                new VEvents(actionsData, event, root).call();
             }
             this.lastEvent = event;
         };

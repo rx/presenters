@@ -1,5 +1,6 @@
 @import 'material.blue_grey-orange.min';
 @import "theme";
+@import "palette";
 
 // MDC
 @import "components/fab";
@@ -21,6 +22,8 @@
 @import "components/radio";
 @import "components/slider";
 @import "components/tab-bars";
+@import "components/progress";
+@import "components/tooltip";
 
 // Custom
 @import "components/expansion-panel"; // MDL derivative
@@ -32,7 +35,7 @@
 @import "components/icon";
 @import "components/content";
 @import "components/data-table";
-
+@import "components/separator";
 @import "components/datetime";
 @import "components/file-input";
 @import "components/rich-text-area";

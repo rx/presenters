@@ -3,16 +3,16 @@ import {VBaseComponent} from './base-component';
 import {hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
-export function initDrawer() {
-    console.log('\tDrawer');
-    hookupComponents('.v-drawer__modal', VModalDrawer, MDCDrawer);
-    hookupComponents('.v-drawer__dismissible', VDismissibleDrawer, MDCDrawer);
+export function initDrawer(e) {
+    console.debug('\tDrawer');
+    hookupComponents(e, '.v-drawer__modal', VModalDrawer, MDCDrawer);
+    hookupComponents(e, '.v-drawer__dismissible', VDismissibleDrawer, MDCDrawer);
 }
 
 class VDrawer extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
-        const header = document.querySelector('.v-header');
+        const header = this.root.querySelector('.v-header');
         if (header) {
             header.addEventListener('MDCTopAppBar:nav',
                 () => {

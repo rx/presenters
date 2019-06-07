@@ -1,16 +1,19 @@
 export class VNavigates {
-    constructor(options, params, event) {
-        this.target = options.target;
-        this.params = params;
-        this.event = event;
-    }
+  constructor(options, params, event, root) {
+    this.direction = params.direction;
+  }
 
-    call(results) {
-        return new Promise(function (resolve) {
-            console.log('Navigating back');
-            results.push({action: 'navigates', statusCode: 200});
-            history.back();
-            resolve(results);
-        });
-    }
+  call(results) {
+    const direction = this.direction;
+    return new Promise(function(resolve) {
+      results.push({action: 'navigates', statusCode: 200});
+      resolve(results);
+      switch (direction) {
+        case 'back':
+          window.history.back();
+        case 'forward':
+          window.history.forward();
+      }
+    });
+  }
 }

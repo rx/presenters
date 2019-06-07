@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'honeybadger' if ENV.fetch('HONEYBADGER_API_KEY'){false}
 require 'uri'
 require 'redcarpet'
 require "dry/inflector"
@@ -10,6 +11,8 @@ require 'voom/presenters/errors/unprocessable'
 require_relative 'component_renderer'
 require_relative 'plugin_headers'
 require_relative 'custom_css'
+require_relative 'helpers/padding'
+require_relative 'helpers/expand_hash'
 
 module Voom
   module Presenters
@@ -23,7 +26,8 @@ module Voom
         configure do
           enable :logging
         end
-
+        helpers PaddingHelpers
+        helpers ExpandHash
         helpers do
           def render_component(scope, comp, components, index)
             ComponentRenderer.new(comp, render: method(:render), scope: scope, components: components, index: index).render
@@ -55,6 +59,18 @@ module Voom
             attrib.to_s == value.to_s
           end
 
+          def h(text)
+            Rack::Utils.escape_html(text)
+          end
+
+          def include?(array, value)
+            array.map(&:to_s).include?(value.to_s)
+          end
+
+          def includes_one?(array1, array2)
+            (array2.map(&:to_sym)-array1.map(&:to_sym)).size != array2.size
+          end
+
           def unique_id(comp)
             "#{comp.id}-#{SecureRandom.hex(4)}"
           end
@@ -65,7 +81,8 @@ module Voom
 
           def color_classname(comp)
             return "v-#{comp.type}__primary" if eq(comp.color, :primary)
-            "v-#{comp.type}__secondary" if eq(comp.color, :secondary)
+            return "v-#{comp.type}__secondary" if eq(comp.color, :secondary)
+            "v-color__#{comp.color}"
           end
 
           def color_style(comp, affects = nil)

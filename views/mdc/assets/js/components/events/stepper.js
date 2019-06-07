@@ -1,23 +1,21 @@
 import {VBase} from './base';
 
 export class VStepperEvent extends VBase {
-
-    constructor(options, params, event) {
-        super(options);
+    constructor(options, params, event, root) {
+        super(options, root);
         this.params = params;
         this.event = event;
     }
 
     call(results) {
-        let parentElem = document.getElementById(this.params.stepper_id);
-        let component = parentElem.vComponent;
-        let nav_action = this.params.navigate;
+        const parentElem = this.root.getElementById(this.params.stepper_id);
+        const component = parentElem.vComponent;
+        const navAction = this.params.navigate;
 
-        let promiseObj = new Promise(function (resolve) {
-            component.navigate(nav_action);
-            results.push({action:'stepper', statusCode: 200});
+        return new Promise(function(resolve) {
+            component.navigate(navAction);
+            results.push({action: 'stepper', statusCode: 200});
             resolve(results);
         });
-        return promiseObj;
     }
 }

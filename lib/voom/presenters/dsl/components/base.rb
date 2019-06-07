@@ -71,6 +71,10 @@ module Voom
             @parent.send(:router)
           end
 
+          def name
+            @parent.send(:name)
+          end
+
           def namespace
             @parent.send(:namespace)
           end
@@ -89,6 +93,10 @@ module Voom
 
           def _helpers_
             @parent.send(:_helpers_) if @parent
+          end
+
+          def plugin(*plugin_names)
+            @parent.send(:plugin, *plugin_names) if @parent
           end
 
           def _plugins_

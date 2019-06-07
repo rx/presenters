@@ -5,5 +5,5 @@
          aria-selected="true"
           <%= erb :"components/event", :locals => {comp: item, events: item.events, parent_id: item.event_parent_id} %>>
          <%= erb :"components/icon", :locals => {comp: item.icon, class_name: 'mdc-list-item__graphic'} %>
-         <%= item.text %>
+         <%= expand_text item.text %>
         </a>

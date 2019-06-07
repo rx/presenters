@@ -29,6 +29,7 @@ if defined?(Rails)
             end
             path
           end
+          alias presenter_path presenters_path
         end
       end
     end

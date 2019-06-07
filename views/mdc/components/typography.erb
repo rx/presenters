@@ -6,8 +6,9 @@
            <%= class_name %>
            <%= position_classes %>
            <%= 'v-actionable' if comp.events %>"
-     style = "<%= "color: #{comp.color};" if comp.color %>"
+     style = "<%= "color: #{comp.color};" if comp.color %>
+              <%= "display: inline;" if comp.inline %>"
      <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
-  <%= expand_text(comp.text) %></div>
+  <%= expand_text(comp.text) %>
+</div>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
-<%= erb :"components/icon", :locals => {comp: comp.icon} if comp.icon %>

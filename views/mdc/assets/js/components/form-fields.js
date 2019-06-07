@@ -4,9 +4,9 @@ import {VBaseContainer} from './base-container';
 import {hookupComponents} from './base-component';
 import {MDCFormField} from '@material/form-field';
 
-export function initFormFields() {
-    console.log('\tForm Fields');
-    hookupComponents('.v-form-field', VFormField, MDCFormField);
+export function initFormFields(e) {
+    console.debug('\tForm Fields');
+    hookupComponents(e, '.v-form-field', VFormField, MDCFormField);
 }
 
 export class VFormField extends VBaseContainer {

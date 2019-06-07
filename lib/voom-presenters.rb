@@ -1,6 +1,5 @@
 require 'zeitwerk'
 
-p 'Loading voom-presenters'
 class MyInflector < Zeitwerk::GemInflector
   def camelize(basename, _abspath)
     case basename

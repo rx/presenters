@@ -1,8 +1,12 @@
 @import "@material/top-app-bar/mdc-top-app-bar";
 
-.mdc-top-app-bar {
+.v-header.v-header--static {
   position: relative;
+}
 
+.v-header.v-header--fixed {
+  position: fixed;
+  top: 0;
 }
 
 .v-navigation {

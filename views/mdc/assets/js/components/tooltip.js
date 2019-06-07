@@ -1,11 +1,12 @@
-import {MDCTooltip} from '@material/tooltip';
+/* global MaterialTooltip */
+
 import {VBaseComponent} from './base-component';
 import {hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
-export function initTooltips() {
-    console.log('\tTooltips');
-    hookupComponents('.v-tooltip', VTooltip, MDCTooltip);
+export function initTooltips(e) {
+    console.debug('\tTooltips');
+    hookupComponents(e, '.v-tooltip', VTooltip, MaterialTooltip);
 }
 
 export class VTooltip extends eventHandlerMixin(VBaseComponent) {

@@ -2,10 +2,10 @@ import {VBaseContainer} from "./base-container";
 import {hookupComponents} from "./base-component";
 import {eventHandlerMixin} from './mixins/event-handler';
 
-export function initGrid() {
-    console.log('\tGrid');
-    hookupComponents('.v-grid', VGrid, null);
-    hookupComponents('.v-column', VColumn, null);
+export function initGrid(e) {
+    console.debug('\tGrid');
+    hookupComponents(e, '.v-grid', VGrid, null);
+    hookupComponents(e, '.v-column', VColumn, null);
 }
 
 export class VGrid extends eventHandlerMixin(VBaseContainer) {

@@ -7,6 +7,7 @@ require 'voom/presenters/dsl/components/mixins/snackbars'
 require 'voom/presenters/dsl/components/mixins/text_fields'
 require 'voom/presenters/dsl/components/mixins/date_time_fields'
 require 'voom/presenters/dsl/components/mixins/attaches'
+require 'voom/presenters/dsl/components/mixins/event'
 require 'voom/presenters/dsl/invalid_presenter'
 require 'voom/presenters/pluggable'
 
@@ -27,17 +28,18 @@ module Voom
         include Components::Mixins::TextFields
         include Components::Mixins::DateTimeFields
         include Components::Mixins::Attaches
+        include Components::Mixins::Event
         extend Pluggable
         include_plugins(:DSLComponents, :DSLHelpers)
 
         include Voom::Serializer
         include Voom::Trace
 
-        attr_reader :router, :context, :components, :namespace
+        attr_reader :router, :context, :components, :name, :namespace
         private :context, :router, :namespace
         alias params context
 
-        def initialize(context:, parent: nil, router: nil, namespace: [], &block)
+        def initialize(context:, parent: nil, router: nil, name: nil, namespace: [], &block)
           @parent = parent
           @router = router || @parent&.send(:router)
           @context = context
@@ -46,6 +48,7 @@ module Voom
           @drawer = nil
           @components = []
           @footer = nil
+          @name = name
           @namespace = namespace
           @plugins = []
           add_global_helpers
@@ -74,6 +77,10 @@ module Voom
           return @footer if locked?
           @footer = Components::Footer.new(parent: self,
                                            **attribs, &block)
+        end
+
+        def progress(**attributes, &block)
+          self << Components::Progress.new(parent: self, **attributes, &block)
         end
 
         def attach(presenter, **params, &yield_block)

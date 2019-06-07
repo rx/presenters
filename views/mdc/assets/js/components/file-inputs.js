@@ -1,9 +1,9 @@
 import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
-export function initFileInputs() {
-    console.log('\tFile Inputs');
-    hookupComponents('.v-file-input', VFileInput, null);
+export function initFileInputs(e) {
+    console.debug('\tFile Inputs');
+    hookupComponents(e, '.v-file-input', VFileInput, null);
 }
 
 export class VFileInput extends eventHandlerMixin(VBaseComponent) {
@@ -34,7 +34,8 @@ export class VFileInput extends eventHandlerMixin(VBaseComponent) {
     previewComponent(e) {
         if (!this.preview) return null;
         for (const previewId of this.preview) {
-            const elem = document.getElementById(previewId);
+            const elem = this.root.querySelector(`#${previewId}`);
+
             if (elem && elem.vComponent && elem.vComponent.preview) {
                 this.file = e.target.files[0];
                 const fr = new FileReader();
@@ -50,7 +51,7 @@ export class VFileInput extends eventHandlerMixin(VBaseComponent) {
 
             }
             else {
-                console.log(
+                console.warn(
                     `WARNING: Unable to find previewable element with id: ${previewId}
 1) Make sure you have an element with that id on your page
 2) Make sure the Componenet or Plugin supports the preview option for the request mime type`);

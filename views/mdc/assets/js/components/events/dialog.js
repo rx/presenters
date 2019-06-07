@@ -1,12 +1,13 @@
 export class VDialog {
-    constructor(options, params, event) {
+    constructor(options, params, event, root) {
         this.dialogId = options.target;
         this.params = params;
         this.event = event;
+        this.root = root;
     }
 
     call(results) {
-        const dialog = document.querySelector('#' + this.dialogId);
+        const dialog = this.root.querySelector('#' + this.dialogId);
 
         if (!(dialog && dialog.vComponent)) {
             const err = new Error(

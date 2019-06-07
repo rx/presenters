@@ -6,6 +6,11 @@ export class VBaseToggle extends eventHandlerMixin(VBaseComponent) {
         super(element, mdcComponent);
 
         this.input = element.querySelector('input');
+
+        element.addEventListener('V:postFailed', (event) => {
+            // Revert to previous checked state on failed post.
+            this.mdcComponent.checked = !this.mdcComponent.checked;
+        });
     }
 
     prepareSubmit(params) {
@@ -32,6 +37,10 @@ export class VBaseToggle extends eventHandlerMixin(VBaseComponent) {
 
     clear() {
         this.input.checked = false;
+    }
+
+    reset() {
+        this.input.checked = this.element.dataset.originalValue;
     }
 
     setValue(value) {

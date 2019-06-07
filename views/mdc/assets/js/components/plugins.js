@@ -1,9 +1,9 @@
 import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 
-export function initPlugins() {
-    console.log('\tPlugins');
-    hookupComponents('.v-plugin', VPluginComponent);
+export function initPlugins(e) {
+    console.debug('\tPlugins');
+    hookupComponents(e, '.v-plugin', VPluginComponent);
 }
 
 // Delegating plugin class. Allows a plugin to define a class-name as a data
@@ -16,7 +16,7 @@ export class VPluginComponent extends eventHandlerMixin(VBaseComponent) {
         if (pluginClassName) {
             var PluginClass = null;
             if (!/^[$_a-z][$_a-z0-9.]*$/i.test(pluginClassName)) {
-                console.log(`Invalid class name: $(pluginClassName)`);
+                console.error(`Invalid class name: $(pluginClassName)`);
             }
             else {
                 PluginClass = eval(pluginClassName);
@@ -25,7 +25,7 @@ export class VPluginComponent extends eventHandlerMixin(VBaseComponent) {
                 this.element.vPlugin = new PluginClass(element);
             }
             else {
-                console.log(
+                console.error(
                     `Unable to find a plugin class with name ${pluginClassName}`);
             }
 
@@ -51,8 +51,14 @@ export class VPluginComponent extends eventHandlerMixin(VBaseComponent) {
         }
     }
 
+    reset() {
+        if (this.element.vPlugin && this.element.vPlugin.name) {
+            return this.element.vPlugin.reset();
+        }
+    }
+
     onShow() {
-        if (this.element.vPlugin && typeof this.element.vPlugin.onShow) {
+        if (this.element.vPlugin && this.element.vPlugin.onShow) {
             return this.element.vPlugin.onShow();
         }
     }

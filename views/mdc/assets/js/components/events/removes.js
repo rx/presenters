@@ -1,20 +1,21 @@
 export class VRemoves {
-    constructor(options, params, event) {
+    constructor(options, params, event, root) {
         this.target = options.target;
         this.ids = params.ids;
         this.event = event;
+        this.root = root;
     }
 
     call(results) {
-        let ids = this.ids;
-        var promiseObj = new Promise(function (resolve) {
+        const ids = this.ids;
+        const root = this.root;
+        return new Promise(function(resolve) {
             results.push({action: 'removes', statusCode: 200});
-            for (const id of ids){
-                let elem = document.getElementById(id);
+            for (const id of ids) {
+                const elem = root.getElementById(id);
                 elem.parentNode.removeChild(elem);
             }
             resolve(results);
         });
-        return promiseObj;
     }
 }

@@ -1,12 +1,10 @@
 module Support
   module Host
-    HOSTS = ['localhost:9292']
+    HOSTS = %w[127.0.0.1:9292 127.0.0.1:9393].freeze
 
     def host
       ENV.fetch('INTEGRATION_HOST') do
-        host = HOSTS.select do |host|
-          check_for_server(host)
-        end.compact.first
+        host = HOSTS.find { |h| check_for_server(h) }
         host ? "http://#{host}" : nil
       end
     end
@@ -20,7 +18,7 @@ module Support
     end
 
     def check_for_server(host)
-      system("ps aux | grep [t]cp://#{host}")
+      system("ps aux | grep [t]cp://#{host} > /dev/null")
     end
 
   end

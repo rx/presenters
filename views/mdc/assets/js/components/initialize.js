@@ -28,42 +28,51 @@ import {initFileInputs} from './file-inputs';
 import {initFormFields} from './form-fields';
 import {initImages} from './images';
 import {initTypography} from './typography';
-// import {initTooltip} from './tooltip';
+import {initTooltips} from './tooltip';
 import {initPlugins} from './plugins';
+import {initProgress} from './progress';
 
-export function initialize() {
-    console.log('Initializing');
-    initButtons();
-    initDialogs();
-    initDateTime();// MUST BE BEFORE initTextFields
-    initTextFields();
-    initLists();
-    initDrawer();
-    initHeader();
-    initIconToggles();
-    initMenus();
-    initSelects();
-    initChips();
-    initCards();
-    initForms();
-    initSnackbar();
-    initCheckboxes();
-    initSwitches();
-    initRichTextArea();
-    initSteppers();
-    initRadios();
-    initSliders();
-    initHiddenFields();
-    initContent();
-    initGrid();
-    initTabBars();
-    initTables();
-    initFileInputs();
-    initFormFields();
-    initImages();
-    initTypography();
-    // initTooltip();
-    initPlugins();
+export function initialize(root, setRoot) {
+    console.debug('Initializing components');
+
+    const start = performance.now();
+
+    initButtons(root);
+    initDialogs(root);
+    initDateTime(root);// MUST BE BEFORE initTextFields
+    initTextFields(root);
+    initLists(root);
+    initDrawer(root);
+    initHeader(root);
+    initIconToggles(root);
+    initMenus(root);
+    initSelects(root);
+    initChips(root);
+    initCards(root);
+    initForms(root);
+    initSnackbar(root);
+    initCheckboxes(root);
+    initSwitches(root);
+    initRichTextArea(root);
+    initSteppers(root);
+    initRadios(root);
+    initSliders(root);
+    initHiddenFields(root);
+    initContent(root);
+    initGrid(root);
+    initTabBars(root);
+    initTables(root);
+    initFileInputs(root);
+    initFormFields(root);
+    initImages(root);
+    initTypography(root);
+    initProgress(root);
+    initTooltips(root);
+    initPlugins(root);
+
     // This needs to be last, because it relies on the components installed above.
-    initEvents();
+    initEvents(root);
+
+    const end = performance.now();
+    console.debug('Done in %s ms', (end - start).toFixed(2));
 }

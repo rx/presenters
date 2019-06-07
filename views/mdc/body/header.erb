@@ -1,8 +1,13 @@
-<header class="v-header mdc-top-app-bar drawer-top-app-bar">
+<%
+  placement_classes = []
+  placement_classes << 'v-header--fixed mdc-top-app-bar--fixed' if eq(header.placement,:fixed)
+  placement_classes << 'v-header--static' if eq(header.placement, :static)
+%>
+<header class="v-header mdc-top-app-bar <%= placement_classes.join(' ') %> drawer-top-app-bar">
   <div class="mdc-top-app-bar__row">
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
       <% if drawer %>
-        <button class="material-icons mdc-top-app-bar__navigation-icon mdc-ripple-upgraded--unbounded mdc-ripple-upgraded" style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">menu</button>
+        <button class="material-icons mdc-top-app-bar__navigation-icon">menu</button>
       <% end %>
       <span class="mdc-top-app-bar__title <%= 'v-actionable' if header.title&.events %>"
             <%= erb :"components/event", :locals => {comp: header, events: header.title&.events, parent_id: header.title&.event_parent_id} %>>
@@ -31,3 +36,4 @@
     </section>
   </div>
 </header>
+<% if eq(header.placement, :fixed) %><div class="mdc-top-app-bar--fixed-adjust"></div><% end %>

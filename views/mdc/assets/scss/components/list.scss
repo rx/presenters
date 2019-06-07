@@ -19,6 +19,15 @@
 
 .mdc-list-item__meta {
   white-space: nowrap;
+  /*
+    Attempt to make tooltips display on icons in a list line action.
+    This works but the positioning can be off. Fixed position elements inside flex
+    elements just doesn't work well. This need a Javascript solution long-term.
+   */
+  .mdl-tooltip.is-active {
+    top: 50% !important;
+    left: 78% !important;
+  }
 }
 
 .v-list-switch-action {

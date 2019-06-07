@@ -11,8 +11,8 @@ require 'voom/presenters/dsl/components/actions/snackbar'
 require 'voom/presenters/dsl/components/actions/clear'
 require 'voom/presenters/dsl/components/actions/navigates'
 require 'voom/presenters/dsl/components/actions/stepper'
-require_relative 'mixins/last_response'
 require 'voom/presenters/errors/parameter_validation'
+require_relative 'mixins/last_response'
 
 module Voom
   module Presenters
@@ -24,7 +24,7 @@ module Voom
 
           attr_accessor :event, :actions
           # Alias common event names
-          EVENT_MAP = {focus: :focusin, blur: :focusout}
+          EVENT_MAP = {focus: :focusin, blur: :focusout, onload: :after_init}
 
           def initialize(**attribs_, &block)
             super(type: :event, **attribs_, &block)

@@ -73,7 +73,10 @@ module Voom
                                                  **attributes, &block)
             end
 
-            alias text body
+            def text(*text, level: 1, **attributes, &block)
+              return @text if defined? @text
+              body(*text, level: 1, **attributes, &block)
+            end
 
             def blank(level: 1, **attributes, &block)
               self << Components::Typography.new(parent: self, type: :body, text: ['&nbsp;'], level: level,
@@ -91,13 +94,11 @@ module Voom
             end
 
             def separator(**attributes, &block)
-              self << Components::Typography.new(parent: self, type: :body, text: ['---'],
-                                                 **attributes, &block)
+              self << Components::Separator.new(parent: self, **attributes, &block)
             end
 
             def link(text, url, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :body, text: ["[#{text}](#{url})"],
-                                                 **attributes, &block)
+              self << Components::Link.new(parent: self, text: text, url: url, **attributes, &block)
             end
           end
         end

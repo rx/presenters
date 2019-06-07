@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/rx/chart_presenter_plugin.git
+  revision: c3ab36396e93ec483c28cb446436328d37dc1c07
+  specs:
+    chart_presenter_plugin (0.1.0)
+
+GIT
   remote: git://github.com/rx/foo_presenter_plugin.git
   revision: 0a7667c788a57d3b1960245892fa7925852bb27e
   specs:
@@ -24,7 +30,7 @@ PATH
       sinatra (>= 1.4, < 3.0)
       tzinfo (~> 1.2)
       tzinfo-data (~> 1.2018)
-      zeitwerk
+      zeitwerk (~> 1.4.3)
 
 GEM
   remote: https://rubygems.org/
@@ -32,14 +38,17 @@ GEM
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.2)
-    concurrent-ruby (1.1.4)
+    concurrent-ruby (1.1.5)
     diff-lcs (1.3)
     docile (1.3.1)
-    dry-configurable (0.7.0)
+    dry-configurable (0.8.2)
       concurrent-ruby (~> 1.0)
+      dry-core (~> 0.4, >= 0.4.7)
     dry-container (0.7.0)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1, >= 0.1.3)
+    dry-core (0.4.7)
+      concurrent-ruby (~> 1.0)
     dry-inflector (0.1.2)
     ffi (1.9.25)
     filewatcher (1.1.1)
@@ -57,6 +66,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     rack (2.0.6)
+    rack-cors (1.0.2)
     rack-protection (2.0.5)
       rack
     rack-test (0.8.3)
@@ -101,7 +111,7 @@ GEM
     tilt (2.0.9)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2018.9)
+    tzinfo-data (1.2019.1)
       tzinfo (>= 1.0.0)
     watir (6.10.3)
       selenium-webdriver (~> 3.4, >= 3.4.1)
@@ -112,18 +122,20 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (~> 1.0)
       selenium-webdriver (~> 3.0)
-    zeitwerk (1.3.1)
+    zeitwerk (1.4.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bundler (~> 1.13)
+  chart_presenter_plugin!
   foo_presenter_plugin!
   gem-release (~> 2.0)
   image_crop_presenter_plugin!
   pry
   rack (>= 2.0.6)
+  rack-cors
   rack-test (~> 0.8)
   rake (~> 11.3)
   rspec
@@ -137,7 +149,7 @@ DEPENDENCIES
   webdrivers (~> 3.0)
 
 RUBY VERSION
-   ruby 2.5.3p105
+   ruby 2.5.5p157
 
 BUNDLED WITH
    1.17.3

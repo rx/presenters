@@ -1,9 +1,7 @@
 <div id="<%= comp.id %>" class="v-input v-text-field mdc-text-field mdc-text-field--textarea
             <%= ' is-invalid is-dirty' if comp.error %>"
-     <% if comp.tag %>
-     data-input-tag="<%= comp.tag %>"
-     <% end %>
-     data-original-value="<%=comp.value%>"
+     <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+     <% if comp.dirtyable %>data-original-value="<%=comp.value%>"<% end %>
      style="<%= 'width:100%' if comp.full_width %>">
   <textarea id="<%= comp.id %>-input"
             name="<%= comp.name %>"

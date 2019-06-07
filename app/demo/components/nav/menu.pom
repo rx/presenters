@@ -8,9 +8,9 @@ Voom::Presenters.define('component_menu') do
       toggles chips snackbar badges tooltips
       hidden_fields text_areas steppers sliders tab_bars
       content icons images datetime_fields date_fields time_fields
-      maps file_inputs avatars
+      maps file_inputs avatars progress
     ).sort.each do |comp|
-      item titleize(comp), selected: context['_presenter_']== comp.to_s do
+      item titleize(comp) do
         event :click do
           loads comp
         end

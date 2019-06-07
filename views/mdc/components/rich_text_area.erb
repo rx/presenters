@@ -1,9 +1,7 @@
 <div class="v-rich-text-area-container v-input"
      id="<%= comp.id %>"
-     <% if comp.tag %>
-     data-input-tag="<%= comp.tag %>"
-     <% end %>
-     data-original-value="<%==comp.value%>">
+     <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+     <% if comp.dirtyable %>data-original-value="<%= h(comp.value) %>"><% end %>
   <label for="<%= comp.id %>-rta"><%= expand_text(comp.label) %></label>
   <div class="v-rich-text-area"
        id="<%= comp.id %>-rta"

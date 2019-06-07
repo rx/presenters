@@ -17,3 +17,6 @@ end
 
 gem 'foo_presenter_plugin',  github:'rx/foo_presenter_plugin'
 gem 'image_crop_presenter_plugin',  github:'rx/image_crop_presenter_plugin'
+gem 'chart_presenter_plugin',  github:'rx/chart_presenter_plugin'
+gem 'rack-cors'
+gem 'honeybadger' if ENV.fetch('HONEYBADGER_API_KEY'){false}
