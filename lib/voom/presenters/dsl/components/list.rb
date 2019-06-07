@@ -38,7 +38,7 @@ module Voom
             return unless @selectable && !@lines_only
             @lines << Lists::Header.new(parent: self,
                                         total_lines: @total_lines,
-                                        checkbox: {text: text})
+                                        checkbox: {text: text, dirtyable: false})
           end
 
           def line(text=nil, **attribs, &block)

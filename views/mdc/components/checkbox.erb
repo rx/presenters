@@ -1,16 +1,13 @@
 <% class_name = '' unless local_variables.include? :class_name %>
-
 <div class="v-form-field mdc-form-field">
   <div id="<%= comp.id %>"
-       <% if comp.tag %>
-       data-input-tag="<%= comp.tag %>"
-       <% end %>
-       data-original-value="<%=comp.checked%>"
+       <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+       <% if comp.dirtyable %>data-original-value="<%=comp.checked%>"<% end %>
        class="v-checkbox mdc-checkbox v-input">
     <input type="checkbox"
            id="<%= comp.id %>-input"
            name="<%= comp.name %>"
-           data-indeterminate=<%=comp.indeterminate%>
+           data-indeterminate="<%=comp.indeterminate%>"
            <% if comp.value %>value="<%= comp.value %>"<% end %>
            class="mdc-checkbox__native-control
                  <%= class_name %>"

@@ -2,7 +2,7 @@
   <div id="<%= comp.id %>" class="v-input v-file-input"
        data-preview=<%= JSON.generate(Array(comp.preview)) %>
            data-accept="<%= comp.accept %>"
-       data-original-value="<%= comp.value %>"
+       <% if comp.dirtyable %>data-original-value="<%= comp.value %>"<% end %>
 
 
        <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id} %>>

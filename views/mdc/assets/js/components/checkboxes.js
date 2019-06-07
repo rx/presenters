@@ -14,6 +14,11 @@ export class VCheckbox extends VBaseToggle {
     }
 
     isDirty() {
+        // If the checkbox is cannot be dirtied, it is never dirty.
+        if (!this.element.hasAttribute('data-original-value')) {
+            return false;
+        }
+
         return String(this.input.checked) != this.element.dataset.originalValue;
     }
 }
