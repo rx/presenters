@@ -39,3 +39,39 @@
     }
   }
 }
+
+$fontSizes: (
+  xx-small: 'Tiny',
+  x-small: 'Small',
+  medium: 'Normal',
+  large: 'Large',
+  x-large: 'Huge',
+);
+
+@each $size, $text in $fontSizes {
+  .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="#{$size}"]::before {
+    content: $text;
+    font-size: $size;
+  }
+}
+
+// // https://stackoverflow.com/a/43808486
+// .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="x-small"]::before {
+//     content: 'Small';
+//     font-size: 0.75em !important;
+// }
+
+// .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="normal"]::before {
+//     content: 'Normal';
+//     font-size: 1em !important;
+// }
+
+// .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="large"]::before {
+//     content: 'Large';
+//     font-size: 1.5em !important;
+// }
+
+// .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="x-large"]::before {
+//     content: 'Huge';
+//     font-size: 2em !important;
+// }
