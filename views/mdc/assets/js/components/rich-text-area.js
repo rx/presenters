@@ -3,11 +3,10 @@ import {HorizontalRuleBlot} from './rich-text-area/horizontal-rule-blot';
 import {hookupComponents, VBaseComponent} from "./base-component";
 import {eventHandlerMixin} from "./mixins/event-handler";
 
-// These Blots will be registered with Quill:
+// These Blots will be registered with Quill.
 const blots = [
     HorizontalRuleBlot,
 ];
-
 const toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'],
     [{ 'color': [] }],
@@ -15,7 +14,6 @@ const toolbarOptions = [
     ['blockquote', 'horizontal-rule'],
     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
     [{ 'script': 'sub'}, { 'script': 'super' }],
-    [{ 'indent': '-1'}, { 'indent': '+1' }],
     [{ 'direction': 'rtl' }],
     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
     [{ 'size': ['small', false, 'large', 'huge'] }],
