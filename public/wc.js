@@ -9573,6 +9573,8 @@ var VEvents = function () {
                 this.vComponent.actionsStarted(this);
             }
 
+            new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](root).clearErrors();
+
             pseries(fnlist).then(function (results) {
                 var result = results.pop();
                 var contentType = result.contentType;
