@@ -1,12 +1,18 @@
 import Quill from "quill";
+import {HorizontalRuleBlot} from './rich-text-area/horizontal-rule-blot';
 import {hookupComponents, VBaseComponent} from "./base-component";
 import {eventHandlerMixin} from "./mixins/event-handler";
 
-var toolbarOptions = [
+// These Blots will be registered with Quill:
+const blots = [
+    HorizontalRuleBlot,
+];
+
+const toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'],
     [{ 'color': [] }],
     [{ 'align': [] }],
-    ['blockquote'],
+    ['blockquote', 'horizontal-rule'],
     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
     [{ 'script': 'sub'}, { 'script': 'super' }],
     [{ 'indent': '-1'}, { 'indent': '+1' }],
@@ -20,6 +26,7 @@ var toolbarOptions = [
 export function initRichTextArea(e) {
     console.debug('\tRich Text Area');
     hookupComponents(e, '.v-rich-text-area-container', VRichTextArea, null);
+    registerBlots();
 }
 
 export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
@@ -28,15 +35,13 @@ export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
 
         this.quillEditorElement = element.querySelector('.v-rich-text-area');
         this.quill = new Quill(this.quillEditorElement, {
-            modules: {
-                toolbar: toolbarOptions
-            },
+            modules: {toolbar: toolbarOptions},
             theme: 'snow',
             placeholder: this.quillEditorElement.dataset.placeholder
-
         });
-
         this.element.dataset.originalValue = this.value();
+
+        hookupCustomToolbarButtons(this);
     }
 
     prepareSubmit(params) {
@@ -71,5 +76,36 @@ export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
 
     isDirty() {
         return this.value() !== this.element.dataset.originalValue;
+    }
+}
+
+function hookupCustomToolbarButtons(vRichTextArea) {
+    for (const blotClass of blots) {
+        const {name, action} = blotClass;
+        const buttons = vRichTextArea.element.querySelectorAll(`.ql-${name}`);
+
+        for (const button of buttons) {
+            // Invoke the Blot's action when button is clicked:
+            button.addEventListener('click', (event) => {
+                action(vRichTextArea.quill, event);
+            });
+        }
+    }
+}
+
+const blotRegistry = new WeakSet();
+
+function registerBlots() {
+    for (const blot of blots) {
+        if (blotRegistry.has(blot)) {
+            continue;
+        }
+
+        // Set required Blot attributes:
+        blot.blotName = blot.name;
+        blot.tagName = blot.tag;
+
+        Quill.register(blot);
+        blotRegistry.add(blot)
     }
 }

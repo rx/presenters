@@ -13,6 +13,10 @@
       border-top-left-radius: $v-input-border-radius;
       border-top-right-radius: $v-input-border-radius;
     }
+
+    .ql-horizontal-rule:after {
+      content: '—–';
+    }
   }
   .v-rich-text-area {
     height: 350px;
