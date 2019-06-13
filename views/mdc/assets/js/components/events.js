@@ -49,6 +49,8 @@ export class VEvents {
             this.vComponent.actionsStarted(this);
         }
 
+        new VErrors(root).clearErrors();
+
         pseries(fnlist).then((results) => {
             const result = results.pop();
             const contentType = result.contentType;
