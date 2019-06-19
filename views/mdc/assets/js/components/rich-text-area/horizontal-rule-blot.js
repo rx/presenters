@@ -17,7 +17,7 @@ export class HorizontalRuleBlot extends Embed {
         const range = quill.getSelection(true);
 
         quill.insertText(range.index, '\n', Quill.sources.USER);
-        quill.insertEmbed(range.index + 1, name, true, Quill.sources.USER);
+        quill.insertEmbed(range.index + 1, HorizontalRuleBlot.name, true, Quill.sources.USER);
         quill.setSelection(range.index + 2, Quill.sources.SILENT);
     }
 };
