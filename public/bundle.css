@@ -15123,6 +15123,8 @@ i:focus.v-datetime--clear {
       border-color: rgba(0, 0, 0, 0.24);
       border-top-left-radius: 4px;
       border-top-right-radius: 4px; }
+    .v-rich-text-area-container .ql-toolbar .ql-horizontal-rule:after {
+      content: '\2014\2013'; }
   .v-rich-text-area-container .v-rich-text-area {
     height: 350px; }
     .v-rich-text-area-container .v-rich-text-area.ql-snow {
@@ -15133,6 +15135,26 @@ i:focus.v-datetime--clear {
     border-color: rgba(0, 0, 0, 0.87); }
   .v-rich-text-area-container:hover .v-rich-text-area.ql-snow {
     border-color: rgba(0, 0, 0, 0.87); }
+
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="xx-small"]::before {
+  content: "Tiny";
+  font-size: xx-small; }
+
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="x-small"]::before {
+  content: "Small";
+  font-size: x-small; }
+
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="medium"]::before {
+  content: "Normal";
+  font-size: medium; }
+
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="large"]::before {
+  content: "Large";
+  font-size: large; }
+
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="x-large"]::before {
+  content: "Huge";
+  font-size: x-large; }
 
 .flatpickr-calendar {
   background: transparent;
