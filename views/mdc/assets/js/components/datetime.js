@@ -81,7 +81,9 @@ export class VDateTime extends VTextField {
     // }
 
     isDirty() {
-        return this.fp.input.value !== this.element.dataset.originalValue;
+        const currVal = new Date(this.fp.input.value);
+        const prevVal = new Date(this.element.dataset.originalValue);
+        return currVal.getTime() !== prevVal.getTime();
     }
 }
 
