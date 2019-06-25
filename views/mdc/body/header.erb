@@ -11,7 +11,7 @@
       <% end %>
       <span class="mdc-top-app-bar__title <%= 'v-actionable' if header.title&.events %>"
             <%= erb :"components/event", :locals => {comp: header, events: header.title&.events, parent_id: header.title&.event_parent_id} %>>
-        <%= expand_text(header.title&.text) %>
+        <%= expand_text(header.title&.text, markdown: header.title&.markdown) %>
       </span>
     </section>
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">

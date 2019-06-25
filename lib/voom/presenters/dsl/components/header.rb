@@ -46,7 +46,7 @@ module Voom
             placement = value.to_sym
 
             unless VALID_PLACEMENTS.include?(placement)
-              raise Errors::ParameterValidation, "Invalid placement specified: #{placement}" 
+              raise Errors::ParameterValidation, "Invalid placement specified: #{placement}"
             end
 
             placement

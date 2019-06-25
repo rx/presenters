@@ -21,15 +21,15 @@
                <%= 'v-menu-click' if line.menu && line.actions.any? %>">
 
     <% if line.text %>
-      <span class="<%= primary_text_class %>"><%= expand_text(line.text&.text) %></span>
+      <span class="<%= primary_text_class %>"><%= expand_text(line.text&.text, markdown: line.text&.markdown) %></span>
     <% end %>
 
     <% if line.subtitle %>
-      <span class="mdc-list-item__secondary-text"><%= expand_text(line.subtitle&.text) %></span>
+      <span class="mdc-list-item__secondary-text"><%= expand_text(line.subtitle&.text, markdown: line.subtitle&.markdown) %></span>
     <% end %>
 
     <% if line.body %>
-      <span class="mdc-list-item__secondary-text"><%= expand_text(line.body&.text) %></span>
+      <span class="mdc-list-item__secondary-text"><%= expand_text(line.body&.text, markdown: line.body&.markdown) %></span>
     <% end %>
   </span>
   <%= erb :"components/list/actions", :locals => {:line => line} %>

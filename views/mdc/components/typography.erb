@@ -9,6 +9,6 @@
      style = "<%= "color: #{comp.color};" if comp.color %>
               <%= "display: inline;" if comp.inline %>"
      <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
-  <%= expand_text(comp.text) %>
+  <%= expand_text(comp.text, markdown: comp.markdown) %>
 </div>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
