@@ -15,10 +15,10 @@ module Voom
           include Mixins::Append
           include Mixins::Attaches
           include Mixins::Event
-          
+
           attr_reader :lines, :lines_only, :color, :border, :selectable, :total_lines, :dense
           attr_accessor :components
-          
+
           def initialize(**attribs_, &block)
             super(type: :list, **attribs_, &block)
             @color  = attribs.delete(:color) { nil }
@@ -53,5 +53,3 @@ module Voom
     end
   end
 end
-
-

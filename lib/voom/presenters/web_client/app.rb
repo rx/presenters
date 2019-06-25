@@ -75,8 +75,12 @@ module Voom
             "#{comp.id}-#{SecureRandom.hex(4)}"
           end
 
-          def expand_text(text)
-            self.markdown(Array(text).join("\n\n")) #.gsub("\n\n", "<br/>")
+          def expand_text(text, markdown: true)
+            if markdown
+              self.markdown(Array(text).join("\n\n")) #.gsub("\n\n", "<br/>")
+            else
+              Array(text).join('<br/>')
+            end
           end
 
           def color_classname(comp)
