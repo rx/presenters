@@ -38072,7 +38072,9 @@ var VDateTime = function (_VTextField) {
     }, {
         key: 'isDirty',
         value: function isDirty() {
-            return this.fp.input.value !== this.element.dataset.originalValue;
+            var currVal = new Date(this.fp.input.value);
+            var prevVal = new Date(this.element.dataset.originalValue);
+            return currVal.getTime() !== prevVal.getTime();
         }
     }]);
 
