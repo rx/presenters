@@ -1,5 +1,9 @@
 @import "@material/layout-grid/mdc-layout-grid";
 
+.v-column-hide-overflow {
+  overflow: hidden;
+}
+
 .v-column--relative {
   position: relative;
 }
@@ -10,6 +14,7 @@
   overflow-y: hidden;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -52,15 +57,29 @@
     }
 
     @each $top, $tsize in $tops {
-          @each $right, $rsize in $rights {
-            @each $bottom, $bsize in $bottoms {
-              @each $left, $lsize in $lefts {
-                .v-col__padding-#{$bottom}-#{$left}-#{$right}-#{$top} {
-                  padding: $tsize/2 $rsize/2 $bsize/2 $lsize/2;
-                }
-              }
+      @each $right, $rsize in $rights {
+        @each $bottom, $bsize in $bottoms {
+          @each $left, $lsize in $lefts {
+            .v-col__padding-#{$bottom}-#{$left}-#{$right}-#{$top} {
+              padding: $tsize/2 $rsize/2 $bsize/2 $lsize/2;
             }
           }
         }
+      }
+    }
+  }
+}
+
+.v-grid-column-align-right {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+@each $size in map-keys($mdc-layout-grid-columns) {
+  @include mdc-layout-grid-media-query_($size) {
+    div.v-gutter-none {
+      grid-gap: 0;
+      gap: 0;
+    }
   }
 }

@@ -1,37 +1,31 @@
 <% class_name = '' unless local_variables.include? :class_name %>
-
-<div class="mdc-form-field">
-<div
-<% if comp.tag %>
-data-input-tag="<%= comp.tag %>"
-<% end %>
-class="v-checkbox mdc-checkbox v-input">
-  <input type="checkbox"
-         id="<%= comp.id %>"
-         name="<%= comp.name %>"
-         data-indeterminate=<%=comp.indeterminate%>
-         <% if comp.value %>
-          value="<%= comp.value %>"
-         <% end %>
-         class="mdc-checkbox__native-control
-               <%= class_name %>"
-         <% if comp.checked %> checked
-         <% end %>
-  <% if comp.disabled %> disabled
-         <% end %>
-         <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
-         />
-  <div class="mdc-checkbox__background">
-    <svg class="mdc-checkbox__checkmark"
-         viewBox="0 0 24 24">
-      <path class="mdc-checkbox__checkmark-path"
-            fill="none"
-            stroke="white"
-            d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-    </svg>
-    <div class="mdc-checkbox__mixedmark"></div>
+<div class="v-form-field mdc-form-field">
+  <div id="<%= comp.id %>"
+       <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+       <% if comp.dirtyable %>data-original-value="<%=comp.checked%>"<% end %>
+       class="v-checkbox mdc-checkbox v-input">
+    <input type="checkbox"
+           id="<%= comp.id %>-input"
+           name="<%= comp.name %>"
+           data-indeterminate="<%=comp.indeterminate%>"
+           <% if comp.value %>value="<%= comp.value %>"<% end %>
+           class="mdc-checkbox__native-control
+                 <%= class_name %>"
+           <% if comp.checked %>checked<% end %>
+           <% if comp.disabled %>disabled<% end %>
+           data-off="<%= comp.off_value %>"
+           <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
+    <div class="mdc-checkbox__background">
+      <svg class="mdc-checkbox__checkmark"
+           viewBox="0 0 24 24">
+        <path class="mdc-checkbox__checkmark-path"
+              fill="none"
+              stroke="white"
+              d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+      </svg>
+      <div class="mdc-checkbox__mixedmark"></div>
+    </div>
   </div>
-</div>
-<label class="v-checkbox__label" id="<%= comp.id %>-label" for="<%= comp.id %>"><%= comp.text %></label>
+  <label id="<%= comp.id %>-label" for="<%= comp.id %>-input" style="<%= "color: #{comp.text_color};" if comp.text_color %>"><%= comp.text %></label>
 </div>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

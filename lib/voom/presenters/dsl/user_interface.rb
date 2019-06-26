@@ -7,6 +7,7 @@ require 'voom/presenters/dsl/components/mixins/snackbars'
 require 'voom/presenters/dsl/components/mixins/text_fields'
 require 'voom/presenters/dsl/components/mixins/date_time_fields'
 require 'voom/presenters/dsl/components/mixins/attaches'
+require 'voom/presenters/dsl/components/mixins/event'
 require 'voom/presenters/dsl/invalid_presenter'
 require 'voom/presenters/pluggable'
 
@@ -27,17 +28,18 @@ module Voom
         include Components::Mixins::TextFields
         include Components::Mixins::DateTimeFields
         include Components::Mixins::Attaches
+        include Components::Mixins::Event
         extend Pluggable
         include_plugins(:DSLComponents, :DSLHelpers)
 
         include Voom::Serializer
         include Voom::Trace
 
-        attr_reader :router, :context, :components, :namespace
+        attr_reader :router, :context, :components, :name, :namespace
         private :context, :router, :namespace
         alias params context
 
-        def initialize(context:, parent: nil, router: nil, namespace: [], &block)
+        def initialize(context:, parent: nil, router: nil, name: nil, namespace: [], &block)
           @parent = parent
           @router = router || @parent&.send(:router)
           @context = context
@@ -46,35 +48,39 @@ module Voom
           @drawer = nil
           @components = []
           @footer = nil
+          @name = name
           @namespace = namespace
-          @__plugins__ = []
+          @plugins = []
           add_global_helpers
           initialize_plugins
         end
 
-        def page(title=nil, **attribs, &block)
+        def page(title = nil, **attribs, &block)
           return @page if locked?
           @page = Components::Page.new(parent: self, **attribs, &block)
         end
 
-        def header(title=nil, **attribs, &block)
+        def header(title = nil, **attribs, &block)
           return @header if locked?
           @header = Components::Header.new(parent: self, title: title,
                                            **attribs, &block)
         end
 
-        def drawer(name=nil, **attribs, &block)
+        def drawer(name = nil, **attribs, &block)
           return @drawer if locked?
           @drawer = Components::Drawer.new(parent: self, title: name,
                                            **attribs, &block)
         end
 
 
-
         def footer(**attribs, &block)
           return @footer if locked?
           @footer = Components::Footer.new(parent: self,
                                            **attribs, &block)
+        end
+
+        def progress(**attributes, &block)
+          self << Components::Progress.new(parent: self, **attributes, &block)
         end
 
         def attach(presenter, **params, &yield_block)
@@ -106,8 +112,15 @@ module Voom
         end
 
         def plugin(*plugin_names)
-          @__plugins__.push(*plugin_names)
+          @plugins.push(*plugin_names)
+          self.class.include_plugins(:DSLComponents, :DSLHelpers, plugins: plugin_names)
         end
+
+        def plugins
+          return @plugins if locked?
+          return @plugins if @plugins
+        end
+        alias _plugins_ plugins
 
         private
 
@@ -124,10 +137,6 @@ module Voom
           return @helpers if @helpers
         end
 
-        def _plugins_
-          return @__plugins__ if @__plugins__
-        end
-
         def yield_block
           return @_yield_block_ if @_yield_block_
           @parent.send(:yield_block) if @parent
@@ -140,7 +149,7 @@ module Voom
         end
 
         def initialize_plugins
-          self.class.include_plugins(:DSLComponents, :DSLHelpers, plugins: @__plugins__)
+          self.class.include_plugins(:DSLComponents, :DSLHelpers, plugins: @plugins)
         end
 
         def lock!

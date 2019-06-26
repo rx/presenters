@@ -10,7 +10,7 @@ module Voom
       include Helpers::Time
       include Helpers::Date
       include Helpers::Redact
-      if defined?(Rails)
+      if defined?(::Rails)
         require 'voom/presenters/helpers/rails'
         include Voom::Presenters::Helpers::Rails
       end

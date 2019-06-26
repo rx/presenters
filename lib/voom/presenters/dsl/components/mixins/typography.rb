@@ -14,6 +14,37 @@ module Voom
                                                  **attributes, &block)
             end
 
+            def headline1(*text, level: nil, **attributes, &block)
+              headline(*text, level: 1, **attributes, &block)
+            end
+            alias heading1 headline1
+
+            def headline2(*text, level: nil, **attributes, &block)
+              headline(*text, level: 2, **attributes, &block)
+            end
+            alias heading2 headline2
+
+            def headline3(*text, level: nil, **attributes, &block)
+              headline(*text, level: 3, **attributes, &block)
+            end
+            alias heading3 headline3
+
+            def headline4(*text, level: nil, **attributes, &block)
+              headline(*text, level: 4, **attributes, &block)
+            end
+            alias heading3 headline4
+
+            def headline5(*text, level: nil, **attributes, &block)
+              headline(*text, level: 5, **attributes, &block)
+            end
+            alias heading5 headline5
+
+            def headline6(*text, level: nil, **attributes, &block)
+              headline(*text, level: 6, **attributes, &block)
+            end
+            alias heading6 headline6
+
+
             alias heading headline
             alias display headline
 
@@ -25,17 +56,26 @@ module Voom
               self << Components::Typography.new(parent: self, type: :subtitle, text: text, level: level,
                                                  **attributes, &block)
             end
+            alias subtitle1 subtitle
+
+            def subtitle2(*text, level: 2, **attributes, &block)
+              subtitle(*text, leve: level, **attributes, &block)
+            end
 
             alias subheading subtitle
 
             def page_title(*text, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :page_title, text: text,
-                                                 level: 1, **attributes, &block)
+              self << Components::PageTitle.new(parent: self, text: text, level: 1, **attributes, &block)
             end
 
             def body(*text, level: 1, **attributes, &block)
               self << Components::Typography.new(parent: self, type: :body, text: text, level: level,
                                                  **attributes, &block)
+            end
+
+            def text(*text, level: 1, **attributes, &block)
+              return @text if defined? @text
+              body(*text, level: 1, **attributes, &block)
             end
 
             def blank(level: 1, **attributes, &block)
@@ -54,13 +94,11 @@ module Voom
             end
 
             def separator(**attributes, &block)
-              self << Components::Typography.new(parent: self, type: :body, text: ['---'],
-                                                 **attributes, &block)
+              self << Components::Separator.new(parent: self, **attributes, &block)
             end
 
             def link(text, url, **attributes, &block)
-              self << Components::Typography.new(parent: self, type: :body, text: ["[#{text}](#{url})"],
-                                                 **attributes, &block)
+              self << Components::Link.new(parent: self, text: text, url: url, **attributes, &block)
             end
           end
         end

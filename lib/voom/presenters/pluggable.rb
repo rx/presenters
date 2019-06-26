@@ -1,11 +1,14 @@
 require 'voom/presenters/plugins'
+require 'voom/trace'
+include Voom::Trace
 
 module Voom
   module Presenters
     module Pluggable
       def include_plugins(*layers, plugins: Array(Voom::Presenters::Settings.config.presenters.plugins),
                           plugin_method: method(:include))
-        plugins.each do |plugin|
+        trace {"Loading plugins: #{plugins.uniq.inspect} from #{self.inspect}"}
+        (plugins&.uniq||[]).each do |plugin|
           plugin(plugin, *layers, plugin_method: plugin_method)
         end
       end
@@ -16,7 +19,7 @@ module Voom
       def plugin_module(plugin)
         module_name = plugin.to_s.gsub(/(^|_)(.)/) {|x| x[-1..-1].upcase}
         unless Voom::Presenters::Plugins.const_defined?(module_name, false)
-          require "voom/presenters/plugins/#{plugin}"
+          load "voom/presenters/plugins/#{plugin}.rb"
         end
         Voom::Presenters::Plugins.const_get(module_name)
       end

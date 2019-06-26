@@ -1,0 +1,7 @@
+Voom::Presenters.define(:discard_dialog) do
+  dialog id: :discard_dialog do
+    title 'Discard unsaved changes?'
+    button :discard, id: :discard_button
+    button :cancel, type: :raised, id: :cancel_button
+  end
+end

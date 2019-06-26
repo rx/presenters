@@ -111,6 +111,12 @@ Voom::Presenters.define(:dialogs) do
             dialog :multi_form_dialog
           end
         end
+        body 'Dialog with height and width'
+        button 'Height/Width' do
+          event :click do
+            dialog :height_width_dialog
+          end
+        end
 
       end
       column 6 do
@@ -129,6 +135,11 @@ Voom::Presenters.define(:dialogs) do
       title "Dialog with Form"
       dlg_form
       dlg_form
+    end
+
+    dialog id: :height_width_dialog, height: '500px', width: '500px' do
+      title "Dialog with set dimensions"
+      body "MDC dialogs have default styles of max-width 560px (for 592px viewport or larger) and min-width 280px."
     end
 
 

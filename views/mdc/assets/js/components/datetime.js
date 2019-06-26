@@ -4,6 +4,10 @@ import { VTextField } from './text-fields';
 import { hookupComponents } from './base-component';
 import appConfig from '../config';
 
+export function initDateTime(e) {
+    console.debug('\tDateTime');
+    hookupComponents(e, '.v-datetime', VDateTime, MDCTextField);
+}
 export class VDateTime extends VTextField {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
@@ -33,7 +37,6 @@ export class VDateTime extends VTextField {
         this.fp.mdc_text_field = mdcComponent;
 
         element.addEventListener('click', () => this.toggle());
-        // element.addEventListener('change', () => this.checkDefaults());
     }
 
     clear() {
@@ -42,6 +45,10 @@ export class VDateTime extends VTextField {
         }
 
         this.mdcComponent.foundation_.deactivateFocus();
+    }
+
+    reset() {
+        this.fp.setDate(this.element.dataset.originalValue);
     }
 
     open() {
@@ -72,9 +79,12 @@ export class VDateTime extends VTextField {
     //         }
     //     }
     // }
+
+    isDirty() {
+        const currVal = new Date(this.fp.input.value);
+        const prevVal = new Date(this.element.dataset.originalValue);
+        return currVal.getTime() !== prevVal.getTime();
+    }
 }
 
-export function initDateTime() {
-    console.log('\tDateTime');
-    hookupComponents('.v-datetime', VDateTime, MDCTextField);
-}
+

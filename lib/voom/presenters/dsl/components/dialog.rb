@@ -1,19 +1,28 @@
 require 'voom/presenters/dsl/components/mixins/common'
 require 'voom/presenters/dsl/components/mixins/attaches'
 require 'voom/presenters/dsl/components/mixins/steppers'
+require 'voom/presenters/dsl/components/mixins/event'
 require 'voom/presenters/dsl/components/mixins/sliders'
+require 'voom/presenters/dsl/components/mixins/progress'
+
 
 module Voom
   module Presenters
     module DSL
       module Components
-        class Dialog < Base
+        class Dialog < EventBase
           include Mixins::Common
           include Mixins::Attaches
           include Mixins::Steppers
           include Mixins::Sliders
+          include Mixins::Event
+          include Mixins::Progress
 
-          attr_accessor :width, :height, :buttons, :components, :shows_errors
+          attr_accessor :width,
+                        :height,
+                        :buttons,
+                        :components,
+                        :shows_errors
 
           def initialize(**attribs_, &block)
             super(type: :dialog, **attribs_, &block)
@@ -29,7 +38,7 @@ module Voom
           def title(*title, **options, &block)
             return @title if locked?
             @title = Components::Typography.new(parent: self, type: :title,
-                                                text: title, 
+                                                text: title,
                                                                  **options, &block)
           end
 

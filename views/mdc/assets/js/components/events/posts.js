@@ -6,8 +6,8 @@ import {encode} from './encode';
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
 export class VPosts extends VBase {
-    constructor(options, url, params, method, event) {
-        super(options);
+    constructor(options, url, params, method, event, root) {
+        super(options, root);
         this.url = url;
         this.params = params;
         this.method = method;
@@ -32,39 +32,64 @@ export class VPosts extends VBase {
             });
         }
 
-        var FD = null;
-        var form = this.form();
-        if (form) {
-            FD = new FormData(form);
-        }
-        else {
-            FD = new FormData();
-        }
-        // Add params from presenter
-        expandParams(results, this.params);
-        for (const name in this.params) {
-            FD.append(name, encode(this.params[name]));
+        const ev = new CustomEvent('V:postStarted', {
+            bubbles: true,
+            cancelable: false,
+            detail: this,
+        });
+        this.event.target.dispatchEvent(ev);
+        // Manually build the FormData.
+        // Passing in a <form> element (if available) would skip over
+        // unchecked toggle elements, which would be unexpected if the user
+        // has specified a value for the toggle's `off_value` attribute.
+        const formData = new FormData();
+
+        // NB: `inputValues` will appropriately handle `input_tag`.
+        for (const [name, value] of this.inputValues()) {
+            formData.append(name, value);
         }
 
-        var inputValues = this.inputValues(form);
-        for (var input of inputValues) {
-            FD.append(input[0], input[1]);
+        // Add params from presenter:
+        const expandedParams = expandParams(results, this.params);
+
+        for (const [name, value] of Object.entries(expandedParams)) {
+            formData.append(name, encode(value));
+        }
+
+        const paramCount = Array.from(formData).length;
+
+        if (paramCount < 1) {
+            console.warn(
+                'Creating request with no data!'
+                + ' Are you sure you\'ve hooked everything up correctly?',
+            );
         }
 
         const httpRequest = new XMLHttpRequest();
         const url = this.url;
         const callHeaders = this.headers;
+        const root = this.root;
+        const vEvent = this;
         if (!httpRequest) {
             throw new Error(
                 'Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
         }
 
-        let snackbarCallback = function(contentType, response) {
-            const snackbar = document.querySelector('.mdc-snackbar').vComponent;
-            if (contentType && contentType.indexOf('application/json') !== -1) {
+        const snackbarCallback = function(contentType, response) {
+            const element = root.querySelector('.mdc-snackbar');
+
+            if (!(element && element.vComponent)) {
+                return;
+            }
+
+            const snackbar = element.vComponent;
+
+            if (contentType && contentType.includes('application/json')) {
                 const messages = JSON.parse(response).messages;
-                if (snackbar && messages && messages.snackbar) {
+
+                if (messages && messages.snackbar) {
                     const message = messages.snackbar.join('<br/>');
+
                     if (message !== '') {
                         snackbar.display(message);
                     }
@@ -76,46 +101,50 @@ export class VPosts extends VBase {
             httpRequest.onreadystatechange = function(event) {
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
                     const contentType = this.getResponseHeader('content-type');
-                    console.log(httpRequest.status + ':' + contentType);
+                    console.debug(httpRequest.status + ':' + contentType);
+
+                    const result = {
+                        action: 'posts',
+                        method: this.method,
+                        statusCode: httpRequest.status,
+                        contentType: contentType,
+                        content: httpRequest.responseText,
+                        responseURL: httpRequest.responseURL,
+                    };
+
+
+                    var postFailed = httpRequest.status >= 400;
+                    const ev = new CustomEvent(postFailed ? 'V:postFailed' : 'V:postSucceeded', {
+                        bubbles: true,
+                        cancelable: false,
+                        detail: {event: vEvent, result: result},
+                    });
+                    vEvent.event.target.dispatchEvent(ev);
+
                     if (httpRequest.status >= 200 && httpRequest.status < 300) {
-                        results.push({
-                            action: 'posts',
-                            method: this.method,
-                            statusCode: httpRequest.status,
-                            contentType: contentType,
-                            content: httpRequest.responseText,
-                            responseURL: httpRequest.responseURL,
-                        });
+                        results.push(result);
                         snackbarCallback(contentType,
                             httpRequest.responseText);
                         resolve(results);
-                        // Response is an html error page
                     }
-                    else if (contentType && contentType.indexOf('text/html') !==
-                        -1) {
-                        document.open(contentType);
-                        document.write(httpRequest.responseText);
-                        document.close();
-                        results.push({
-                            action: 'posts',
-                            method: this.method,
-                            statusCode: httpRequest.status,
-                            contentType: contentType,
-                            content: httpRequest.responseText,
-                            responseURL: httpRequest.responseURL,
-                        });
+                    // Response is an html error page
+                    else if (contentType && contentType.indexOf('text/html') !== -1) {
+                        root.open(contentType);
+                        root.write(httpRequest.responseText);
+                        root.close();
+                        results.push(result);
                         resolve(results);
                     }
                     else {
-                        results.push({
-                            action: 'posts',
-                            method: this.method,
-                            statusCode: httpRequest.status,
-                            contentType: contentType,
-                            content: httpRequest.responseText,
-                        });
+                        results.push(result);
                         reject(results);
                     }
+                    const evFinished = new CustomEvent('V:postFinished', {
+                        bubbles: true,
+                        cancelable: false,
+                        detail: {event: vEvent, result: result},
+                    });
+                    vEvent.event.target.dispatchEvent(evFinished);
                 }
             };
             // Set up our request
@@ -134,7 +163,7 @@ export class VPosts extends VBase {
             }
 
             // Send our FormData object; HTTP headers are set automatically
-            httpRequest.send(FD);
+            httpRequest.send(formData);
         });
     }
 

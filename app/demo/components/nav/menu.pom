@@ -24,6 +24,7 @@ Voom::Presenters.define('component_menu') do
       lists
       maps
       menus
+      progress
       selects
       sliders
       snackbar

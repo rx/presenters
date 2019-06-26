@@ -3,9 +3,9 @@ import {VBaseContainer} from "./base-container";
 import {hookupComponents} from "./base-component";
 
 
-export function initSteppers() {
-    console.log('\tStepper');
-    hookupComponents('.v-stepper', VStepper, null);
+export function initSteppers(e) {
+    console.debug('\tStepper');
+    hookupComponents(e, '.v-stepper', VStepper, null);
 }
 
 export class VStepper extends eventHandlerMixin(VBaseContainer) {

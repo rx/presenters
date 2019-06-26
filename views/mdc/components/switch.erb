@@ -1,11 +1,10 @@
 <% class_name = '' unless local_variables.include? :class_name
 %>
 
-<div class="mdc-form-field">
+<div class="v-form-field mdc-form-field">
   <div id="<%= comp.id %>"
-       <% if comp.tag %>
-       data-input-tag="<%= comp.tag %>"
-       <% end %>
+       <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+       <% if comp.dirtyable %>data-original-value="<%=comp.checked%>"<% end %>
        class="v-switch v-input mdc-switch
       <%= 'mdc-switch--disabled' if comp.disabled %>
       <%= class_name %>">
@@ -17,9 +16,10 @@
                type="checkbox"
                class="mdc-switch__native-control"
                role="switch"
+               <% if comp.value %>value="<%= comp.value %>"<% end %>
                data-off="<%= comp.off_value %>"
-               data-on="<%= comp.on_value %>"
                <%= ' checked ' if comp.checked %>
+               <%= ' disabled ' if comp.disabled %>
                <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>/>
       </div>
     </div>

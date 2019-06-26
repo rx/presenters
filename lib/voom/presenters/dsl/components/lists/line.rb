@@ -20,14 +20,14 @@ module Voom
               super(type: :line, **attribs_, &block)
               @selected = attribs.delete(:selected) {false}
               @selectable = attribs.delete(:selectable) {false}
-              self.text(attribs.delete(:text)) if attribs.key?(:text)
-              self.subtitle(attribs.delete(:subtitle)) if attribs.key?(:subtitle)
-              self.info(attribs.delete(:info)) if attribs.key?(:info)
-              self.body(attribs.delete(:body)) if attribs.key?(:body)
+              self.text(attribs.delete(:text), attribs) if attribs[:text]
+              self.subtitle(attribs.delete(:subtitle)) if attribs[:subtitle]
+              self.info(attribs.delete(:info)) if attribs[:info]
+              self.body(attribs.delete(:body)) if attribs[:body]
               self.avatar(attribs.delete(:avatar)) if attribs.key?(:avatar)
               self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
               self.checkbox(attribs.delete(:checkbox)) if attribs.key?(:checkbox) && !@selectable
-              self.checkbox(attribs.slice(:name, :value, :checked)) if @selectable
+              self.checkbox(attribs.slice(:name, :value, :checked, :dirtyable)) if @selectable
 
               @actions = []
               expand!
@@ -37,6 +37,7 @@ module Voom
               return @text if locked?
               @text = Components::Typography.new(parent: self, type: :text, text: text, **attribs, &block)
             end
+            alias title text
 
             def subtitle(*text, **attribs, &block)
               return @subtitle if locked?

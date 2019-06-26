@@ -7,10 +7,12 @@ require 'voom/presenters/dsl/components/actions/remove'
 require 'voom/presenters/dsl/components/actions/dialog'
 require 'voom/presenters/dsl/components/actions/toggle_visibility'
 require 'voom/presenters/dsl/components/actions/autocomplete'
+require 'voom/presenters/dsl/components/actions/prompt_if_dirty'
 require 'voom/presenters/dsl/components/actions/snackbar'
 require 'voom/presenters/dsl/components/actions/clear'
 require 'voom/presenters/dsl/components/actions/navigates'
 require 'voom/presenters/dsl/components/actions/stepper'
+require 'voom/presenters/errors/parameter_validation'
 require_relative 'mixins/last_response'
 
 module Voom
@@ -23,7 +25,7 @@ module Voom
 
           attr_accessor :event, :actions
           # Alias common event names
-          EVENT_MAP = {focus: :focusin, blur: :focusout}
+          EVENT_MAP = {focus: :focusin, blur: :focusout, onload: :after_init}
 
           def initialize(**attribs_, &block)
             super(type: :event, **attribs_, &block)
@@ -89,6 +91,13 @@ module Voom
             self << Actions::ToggleVisibility.new(parent: self,
                                                   target: component_id,
                                                   params: params, &block)
+          end
+
+          def prompt_if_dirty(dialog_id, input_tag: nil, **params, &block)
+            self << Actions::PromptIfDirty.new(parent: self,
+                                               target: dialog_id,
+                                               input_tag: input_tag,
+                                               params: params, &block)
           end
 
           # Removes the component and all its children

@@ -1,20 +1,25 @@
 <div id="<%= comp.id %>" class="v-input v-text-field mdc-text-field mdc-text-field--textarea
-            <%= ' is-invalid is-dirty' if comp.error%>"
-     <% if comp.tag %>
-     data-input-tag="<%= comp.tag %>"
-     <% end %>
+            <%= ' is-invalid is-dirty' if comp.error %>"
+     <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+     <% if comp.dirtyable %>data-original-value="<%=comp.value%>"<% end %>
      style="<%= 'width:100%' if comp.full_width %>">
   <textarea id="<%= comp.id %>-input"
             name="<%= comp.name %>"
             class="mdc-text-field__input"
             rows="<%= comp.rows %>"
-            cols="<%= comp.cols %>"> <%= comp.value %> </textarea>
-  <label for="<%= comp.id %>-input" class="mdc-floating-label"><%= expand_text(comp.label) %></label>
+            cols="<%= comp.cols %>"><%= comp.value %></textarea>
+  <div class="mdc-notched-outline">
+    <div class="mdc-notched-outline__leading"></div>
+    <div class="mdc-notched-outline__notch">
+      <label for="<%= comp.id %>-input" class="mdc-floating-label"><%= expand_text(comp.label) %></label>
+    </div>
+    <div class="mdc-notched-outline__trailing"></div>
+  </div>
 </div>
 <% if comp.error || comp.hint %>
-<p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg" aria-hidden="true">
-  <%= comp.error || comp.hint %>
-</p>
+  <p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg" aria-hidden="true">
+    <%= comp.error || comp.hint %>
+  </p>
 <% end %>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 

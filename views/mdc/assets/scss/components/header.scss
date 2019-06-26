@@ -1,0 +1,21 @@
+@import "@material/top-app-bar/mdc-top-app-bar";
+
+.v-header.v-header--static {
+  position: relative;
+}
+
+.v-header.v-header--fixed {
+  position: fixed;
+  top: 0;
+}
+
+.v-navigation {
+  overflow: hidden;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}

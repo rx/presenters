@@ -7,9 +7,9 @@ Voom::Presenters.define(:selects) do
   page_title 'Select Fields'
 
   indented_grid do
-    form do
-      select do
-        label 'Text...'
+    content do
+      select full_width: false do
+        label 'Default (outlined) style ...'
         option do
           value 'value1'
           text 'First value'
@@ -18,10 +18,28 @@ Voom::Presenters.define(:selects) do
           value 'value2'
           text 'Second value'
         end
-        event :change do
-          snackbar 'item changed'
-        end
+        # event :change do
+        #   snackbar 'item changed'
+        # end
       end
+      blank
+
+      select outlined: false do
+        label 'Alternate style ...'
+        option do
+          value 'value1'
+          text 'First value'
+        end
+        option do
+          value 'value2'
+          text 'Second value'
+        end
+        # event :change do
+        #   snackbar 'item changed'
+        # end
+      end
+
+
     end
     
     attach :code, file: __FILE__

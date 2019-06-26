@@ -10,6 +10,8 @@ module Voom
     module DSL
       module Components
         class Table < Base
+          include Mixins::Common
+          include Mixins::Event
           attr_accessor :header, :rows, :selectable, :border
 
           def initialize(**attribs_, &block)

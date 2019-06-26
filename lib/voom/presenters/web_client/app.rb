@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'honeybadger' if ENV.fetch('HONEYBADGER_API_KEY'){false}
 require 'uri'
 require 'redcarpet'
 require "dry/inflector"
@@ -8,6 +9,10 @@ require 'voom/presenters/web_client/router'
 require 'voom/presenters/web_client/markdown_render'
 require 'voom/presenters/errors/unprocessable'
 require_relative 'component_renderer'
+require_relative 'plugin_headers'
+require_relative 'custom_css'
+require_relative 'helpers/padding'
+require_relative 'helpers/expand_hash'
 
 module Voom
   module Presenters
@@ -21,7 +26,8 @@ module Voom
         configure do
           enable :logging
         end
-
+        helpers PaddingHelpers
+        helpers ExpandHash
         helpers do
           def render_component(scope, comp, components, index)
             ComponentRenderer.new(comp, render: method(:render), scope: scope, components: components, index: index).render
@@ -53,17 +59,34 @@ module Voom
             attrib.to_s == value.to_s
           end
 
+          def h(text)
+            Rack::Utils.escape_html(text)
+          end
+
+          def include?(array, value)
+            array.map(&:to_s).include?(value.to_s)
+          end
+
+          def includes_one?(array1, array2)
+            (array2.map(&:to_sym)-array1.map(&:to_sym)).size != array2.size
+          end
+
           def unique_id(comp)
             "#{comp.id}-#{SecureRandom.hex(4)}"
           end
 
-          def expand_text(text)
-            self.markdown(Array(text).join("\n\n")) #.gsub("\n\n", "<br/>")
+          def expand_text(text, markdown: true)
+            if markdown
+              self.markdown(Array(text).join("\n\n")) #.gsub("\n\n", "<br/>")
+            else
+              Array(text).join('<br/>')
+            end
           end
 
           def color_classname(comp)
             return "v-#{comp.type}__primary" if eq(comp.color, :primary)
-            "v-#{comp.type}__secondary" if eq(comp.color, :secondary)
+            return "v-#{comp.type}__secondary" if eq(comp.color, :secondary)
+            "v-color__#{comp.color}"
           end
 
           def color_style(comp, affects = nil)
@@ -96,17 +119,12 @@ module Voom
             end
           end
 
-          def custom_css
-            custom_css_path = Presenters::Settings.config.presenters.web_client.custom_css
-            Dir.glob(custom_css_path).map do |file|
-              _build_css_link_(file)
-            end.join("\n") if custom_css_path
+          def plugin_headers(pom)
+            PluginHeaders.new(pom: pom, render: method(:render)).render
           end
 
-          def _build_css_link_(path)
-            (<<~CSS)
-              <link rel="stylesheet" href="#{env['SCRIPT_NAME']}#{path.sub('public/','')}">
-            CSS
+          def custom_css(path)
+            CustomCss.new(path, root: Presenters::Settings.config.presenters.root).render
           end
 
           def custom_js
@@ -122,6 +140,7 @@ module Voom
             JS
           end
         end
+
 
         get '/' do
           pass unless Presenters::App.registered?('index')
@@ -191,7 +210,7 @@ module Voom
         end
 
         def scrub_context(params, _session, _env)
-          %i(splat captures _presenter_ grid_nesting input_tag _namespace1_ _namespace2_).each do |key|
+          %i(splat captures  grid_nesting input_tag).each do |key|
             params.delete(key) {params.delete(key.to_s)}
           end
           params

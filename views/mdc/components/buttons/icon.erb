@@ -6,12 +6,10 @@
 
 <button id="<%= comp.id %>"
         <%= data_attributes %>
-        class="mdl-button mdl-js-button mdl-button--icon
+        class="v-button v-button--icon mdl-button v-js-ripple-button mdl-js-button mdl-button--icon
          <%= 'v-hidden' if comp.hidden %>
          <%=class_name%>
          <%= position_classes %>
-         <%= 'mdl-button--colored' if eq(comp.color, :primary) %>
-         <%= 'mdl-button--accent' if eq(comp.color, :secondary) %>
          <%= 'v-menu-click' if comp.menu%>"
         style = "<%= color_style(comp) %>"
         <%= 'disabled' if comp.disabled %>
@@ -19,6 +17,6 @@
         <%= erb :'components/event', :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} unless comp.disabled %>>
   <%= erb :'components/icon', :locals => {comp: comp.icon} %>
   <%= comp.text %>
+  <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 </button>
-<%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 <%= erb :"components/menu", :locals => {comp: comp.menu, parent_id: comp.id} %>

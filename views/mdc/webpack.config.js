@@ -45,4 +45,16 @@ module.exports.push({
       loader: 'babel-loader'
     }]
   },
-});
+},
+    {
+      entry: ["./assets/js/wc.js"],
+      output: {
+        filename: "../../public/wc.js"
+      },
+      module: {
+        loaders: [{
+          test: /\.js$/,
+          loader: 'babel-loader'
+        }]
+      },
+    });

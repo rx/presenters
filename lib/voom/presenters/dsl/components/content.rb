@@ -13,6 +13,9 @@ require 'voom/presenters/dsl/components/mixins/chips'
 require 'voom/presenters/dsl/components/mixins/icons'
 require 'voom/presenters/dsl/components/mixins/dialogs'
 require 'voom/presenters/dsl/components/mixins/file_inputs'
+require 'voom/presenters/dsl/components/mixins/avatar'
+require 'voom/presenters/dsl/components/mixins/padding'
+require 'voom/presenters/dsl/components/mixins/progress'
 
 module Voom
   module Presenters
@@ -31,17 +34,41 @@ module Voom
           include Mixins::Icons
           include Mixins::Dialogs
           include Mixins::FileInputs
+          include Mixins::Avatar
+          include Mixins::Progress
 
-          attr_reader :hidden, :float, :components, :shows_errors
-         
+          attr_reader :hidden,
+                      :float,
+                      :components,
+                      :shows_errors,
+                      :width,
+                      :height,
+                      :position,
+                      :text_align,
+                      :padding,
+                      :dense,
+                      :inline
+
           def initialize(**attribs_, &block)
             super(type: :content, **attribs_, &block)
             @components = []
             @hidden = attribs.delete(:hidden){false}
             @float = attribs.delete(:float){false}
+            @width = attribs.delete(:width){nil}
+            @height = attribs.delete(:height){nil}
             @shows_errors = attribs.delete(:shows_errors){false}
+            @position = Array(attribs.delete(:position)).compact
+            @text_align = attribs.delete(:text_align){'left'}
+            padding = attribs.delete(:padding) {nil}
+            @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
+            @dense = attribs.delete(:dense) { true }
+            @inline = attribs.delete(:inline){false}
             expand!
           end
+
+          private
+          include Mixins::Padding
+
         end
       end
     end

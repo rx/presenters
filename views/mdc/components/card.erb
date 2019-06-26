@@ -8,24 +8,30 @@
          <%= "height: #{comp.height};" if comp.height%>
        <%= "outline: medium solid rgb(63,81,181);" if comp.selected %>"
      <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
->
+     data-is-container>
+  <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(top both))%>
   <% if comp.media %>
     <div class="v-errors">
-      <div class="mdc-card__media v-card-media
+      <div id="<%=comp.media.id%>"
+           class="mdc-card__media v-card-media
+                <%= 'v-hidden' if comp.media.hidden %>
                 <%= 'mdc-card__media--square' if false && comp.media.width == comp.media.height %>"
            style="<%= "width: #{comp.media.width};" if comp.media.width%>
                <%= "height: #{comp.media.height};" if comp.media.height  %>
              <%= "background-color: #{comp.media.color};" if comp.media.color %>">
+        <%= erb :"components/render", :locals => {:components => comp.media.components, :scope => nil} %>
         <%= erb :"components/button", :locals => {:comp => comp.media.button, class_name: "v-card__media-menu"} %>
         <%= erb :"components/image", :locals => {:comp => comp.media.image, class_name: 'v-card-media-image'} %>
         <%= erb :"components/avatar", :locals => {:comp => comp.media.avatar, class_name: 'v-card-media-avatar'} %>
         <%= erb :"components/headline", :locals => {:comp => comp.media.title, class_name: "v-card-title"} %>
+        <%= erb :"components/headline", :locals => {:comp => comp.media.subtitle, class_name: "v-card-title"} %>
       </div>
     </div>
   <% end %>
   <div class="v-errors">
     <% if comp.components.any? %>
-      <div class="v-card-content">
+      <div class="v-card-content
+                  <%= _padding_classes_(comp.padding, subclass: :col) %>">
         <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
       </div>
     <% end %>
@@ -44,9 +50,13 @@
           <% action_icons.each do |button| %>
             <%= erb :"components/button", :locals => {:comp => button, class_name: 'mdc-card__action mdc-card__action--icon'} %>
           <% end %>
+          <% comp.actions.switches.each do |switch| %>
+            <%= erb :"components/switch", :locals => {:comp => switch, class_name: 'mdc-card__action'} %>
+          <% end %>
         </div>
       </div>
     <% end %>
   </div>
+  <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(bottom both))%>
 </div>
 

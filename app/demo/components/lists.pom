@@ -63,7 +63,9 @@ Voom::Presenters.define(:lists) do
           text actor.name
           avatar :person
           actions do
-            icon :star
+            icon :stardo do
+              tooltip 'Person'
+            end
           end
         end
       end

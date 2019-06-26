@@ -1,12 +1,14 @@
+require 'voom/trace'
 include Voom::Trace
 trace {"Loading Presenters Settings"}
 require 'voom/presenters/helpers/route'
+require 'dry-configurable'
 
 unless defined?(Voom::Presenters::Settings)
   module Voom
     module Presenters
       class Settings
-        extend Dry::Configurable
+        extend ::Dry::Configurable
         setting :presenters do
           setting :root, []
           # You can add helpers that will automatically be included
@@ -28,9 +30,8 @@ unless defined?(Voom::Presenters::Settings)
             #   }
             # end
             setting :prepare_context, []
-            # Application level assets locations
-            setting     :custom_css, 'public/presenters/*.css'
-            setting     :custom_js,  'public/presenters/*.js'
+            # Relative to the root
+            setting :custom_css, '../public/presenters'
           end
           setting :plugins, [:google_maps]
           setting :components do
@@ -58,7 +59,7 @@ unless defined?(Voom::Presenters::Settings)
                 setting :level, 6
               end
               setting :rich_text_area do
-                setting :rows, 25
+                setting :rows, 6
               end
             end
           end

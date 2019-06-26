@@ -13,7 +13,7 @@ describe 'helpers' do
 
     context 'module' do
       module TestingHelpers
-        def foo
+        def gfoo
           :foo
         end
       end

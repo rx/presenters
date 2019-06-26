@@ -1,0 +1,56 @@
+@import 'node_modules/@material/layout-grid/variables';
+@import 'node_modules/@material/layout-grid/mixins';
+@import "@material/drawer/mdc-drawer";
+@import '../media';
+
+.drawer-frame-root {
+  display: flex;
+  height: 100vh;
+}
+
+.drawer-frame-root .mdc-drawer {
+  position: fixed;
+}
+
+.mdc-drawer-app-content {
+  width: 100%;
+}
+
+.mdc-drawer--open:not(.mdc-drawer--closing) + .mdc-drawer-app-content > .mdc-top-app-bar.mdc-top-app-bar--fixed {
+    width: 100%;
+}
+
+// The width of the fixed header must be reduced when the drawer is present and
+// open.
+.mdc-drawer--open:not(.mdc-drawer--closing) + .mdc-drawer-app-content > .mdc-top-app-bar.mdc-top-app-bar--fixed {
+  @include lg {
+    width: calc(100% - 256px);
+  }
+}
+
+.mdc-drawer--modal {
+  --v-drawer-active:yes;
+  @include lg {
+    --v-drawer-active:no;
+  }
+}
+
+.mdc-drawer--dismissible.mdc-drawer--open {
+  display: none;
+  width: 0;
+  --v-drawer-active:no;
+  @include lg {
+    --v-drawer-active:yes;
+    display: flex;
+    width: 256px;
+  }
+}
+
+.mdc-drawer.mdc-drawer--open:not(.mdc-drawer--closing) + .mdc-drawer-app-content {
+  margin-left: 0;
+  margin-right: 0;
+  @include lg {
+    margin-left: 256px;
+    margin-right: 0;
+   }
+}
