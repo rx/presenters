@@ -17,11 +17,7 @@
          <%= 'v-menu-click' if comp.menu%>"
          style = "<%= color_style(comp) %>"
          <%= data_attributes %>
-<<<<<<< HEAD
 <%= 'disabled ' if comp.disabled %>
-=======
-        <%= 'disabled' if comp.disabled %>
->>>>>>> master
 <%= "type='#{eq(comp.button_type, :raised) ? 'submit' : 'button'}'" %>
 <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} unless comp.disabled %>>
   <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-button__icon'} %>
