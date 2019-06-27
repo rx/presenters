@@ -2,6 +2,8 @@
      <% if comp.tag %>
      data-input-tag="<%= comp.tag %>"
      <% end %>
+     <%= draggable_attributes(comp) %>
+     <%= drop_zone_attributes(comp) %>
     class="v-card card-<%= comp.id %> mdc-card
            <%= 'v-actionable' if comp.events %>"
      style="<%= "width: #{comp.width};" if comp.width%>
