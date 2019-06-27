@@ -56,9 +56,11 @@ export const DnD = function () {
             if (e.stopPropagation) {
                 e.stopPropagation();
             }
+            this.classList.remove('v-dnd-over');
+            this.classList.remove('v-dnd-moving');
             return false;
         },
-        dragEnd = function () {
+        dragEnd = function (e) {
             this.classList.remove('v-dnd-over');
             this.classList.remove('v-dnd-moving');
         };

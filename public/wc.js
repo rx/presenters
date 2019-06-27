@@ -85214,9 +85214,11 @@ var DnD = function () {
         if (e.stopPropagation) {
             e.stopPropagation();
         }
+        this.classList.remove('v-dnd-over');
+        this.classList.remove('v-dnd-moving');
         return false;
     },
-        dragEnd = function dragEnd() {
+        dragEnd = function dragEnd(e) {
         this.classList.remove('v-dnd-over');
         this.classList.remove('v-dnd-moving');
     };
