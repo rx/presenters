@@ -1,0 +1,90 @@
+require_relative '../helpers/indented_grid'
+
+Voom::Presenters.define(:drag_drop) do
+  helpers Demo::Helpers::IndentedGrid
+
+  attach :top_nav
+  attach :pattern_drawer
+  page_title 'Drag and Drop Example'
+
+  helpers do
+    def dragons
+      [OpenStruct.new(name: 'Jabberwocky', body: 'Alice in Wonderland, Alice Through the Looking Glass'),
+       OpenStruct.new(name: 'Hydra', body: 'Hercules, Jason and the Argonauts'),
+       OpenStruct.new(name: 'Drogon, Viserion, Rhaegal', body: 'Game of Thrones'),
+       OpenStruct.new(name: 'Spike', body: 'My Little Pony: The Movie')]
+    end
+
+  end
+
+  indented_grid do
+
+    grid do
+      column 6 do
+        headline 'Select a Dragon'
+        list do
+          dragons.each do |dragon|
+            line draggable: { zone: :drag_zone_1, list_item_id: :some_id, dragon_name: dragon.name } do
+              text dragon.name
+              subtitle "Appeared in: #{dragon.body}"
+
+              event :drag do
+                snackbar "#{dragon.name} is a real drag!"
+              end
+
+              event :dragend do
+                snackbar "Done dragging #{dragon.name} around!"
+              end
+
+              event :drop do
+                snackbar "Something was dropped on the head of: #{dragon.name}"
+              end
+            end
+          end
+        end
+      end
+      column 6 do
+
+        attach :drop_zone
+
+        content drop_zone: {zone: 'drag_zone_2'}, padding: :top do
+          card do
+            blank
+            text "Try to drop something here"
+            blank
+          end
+
+          # event :drop do
+          #   snackbar 'Something dropped on me, what could it be!'
+          #   posts '_echo_', {quote: 'Compromise is the shared hypotenuse of the conjoined triangles of success.'}
+          # end
+          #
+          # event :dragenter do
+          #   snackbar 'Something is over me!'
+          # end
+
+        end
+
+      end
+    end
+
+    attach :code, file: __FILE__
+  end
+end
+
+Voom::Presenters.define(:drop_zone) do
+
+  content id: :drop_zone, drop_zone: {zone: 'drag_zone_1'} do
+    card do
+      blank
+      text "Drop a dragon here..."
+      text "Last dropped dragon: **#{context.fetch(:dragon_name)}**" if context.key?(:dragon_name)
+      blank
+    end
+
+    event :drop do
+      # posts '_echo_'
+      replaces :drop_zone, :drop_zone#, dragon_name: last_response.dragon_name
+    end
+  end
+end

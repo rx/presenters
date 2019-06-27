@@ -43,7 +43,7 @@ export class VReplaces extends VBase {
         this.event = event;
     }
 
-    call(results) {
+    call(results, eventParams=[]) {
         this.clearErrors();
 
         const httpRequest = new XMLHttpRequest();
@@ -52,7 +52,7 @@ export class VReplaces extends VBase {
         const nodeToReplace = root.getElementById(elementId);
         const expandedParams = expandParams(results, this.params);
 
-        const url = this.buildURL(this.url, expandedParams, this.inputValues(),
+        const url = this.buildURL(this.url, expandedParams, this.inputValues(), eventParams,
             [['grid_nesting', this.options.grid_nesting]]);
         const delayAmt = delayAmount(this.event);;
 

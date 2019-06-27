@@ -13,6 +13,7 @@ require_relative 'plugin_headers'
 require_relative 'custom_css'
 require_relative 'helpers/padding'
 require_relative 'helpers/expand_hash'
+require_relative 'helpers/drag_and_drop'
 
 module Voom
   module Presenters
@@ -28,6 +29,7 @@ module Voom
         end
         helpers PaddingHelpers
         helpers ExpandHash
+        helpers DragAndDropHelpers
         helpers do
           def render_component(scope, comp, components, index)
             ComponentRenderer.new(comp, render: method(:render), scope: scope, components: components, index: index).render

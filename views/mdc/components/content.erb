@@ -5,6 +5,8 @@
        <% if comp.tag %>
        data-input-tag="<%= comp.tag %>"
        <% end %>
+       <%= draggable_attributes(comp) %>
+       <%= drop_zone_attributes(comp) %>
        class="v-content
             <%= position_classes %>
             <%= _padding_classes_(comp.padding, subclass: comp.dense ? :col : :grid) %>

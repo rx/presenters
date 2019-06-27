@@ -22,11 +22,13 @@ module Voom
           extend Pluggable
           include_plugins(:DSLComponents, :DSLHelpers)
 
-          attr_reader :type, :id, :tag, :attributes
+          attr_reader :type, :id, :tag, :attributes, :draggable, :drop_zone
 
           alias attribs attributes
 
           def initialize(type:, parent:, id: nil, tag: nil, **attributes, &block)
+            @draggable = attributes.delete(:draggable) {nil}
+            @drop_zone = attributes.delete(:drop_zone){nil}
             @id = h(id) || generate_id
             @tag = tag
             @type = h(type)
