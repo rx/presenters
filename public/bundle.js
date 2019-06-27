@@ -6218,7 +6218,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__tooltip__ = __webpack_require__(497);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__plugins__ = __webpack_require__(498);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__progress__ = __webpack_require__(499);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__drag_n_drop__ = __webpack_require__(506);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__drag_n_drop__ = __webpack_require__(505);
 
 
 
@@ -99703,6 +99703,20 @@ var strings = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initDragAndDrop;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_drag_n_drop__ = __webpack_require__(506);
+
+
+function initDragAndDrop(e) {
+    __WEBPACK_IMPORTED_MODULE_0__utils_drag_n_drop__["a" /* DnD */].initDraggables('[draggable=true]');
+    __WEBPACK_IMPORTED_MODULE_0__utils_drag_n_drop__["a" /* DnD */].initDropZones('[data-dropzone]');
+}
+
+/***/ }),
+/* 506 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DnD; });
 var DnD = function () {
     var initDraggables = function initDraggables(selector) {
@@ -99769,20 +99783,6 @@ var DnD = function () {
         initDropZones: initDropZones
     };
 }();
-
-/***/ }),
-/* 506 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = initDragAndDrop;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_drag_n_drop__ = __webpack_require__(505);
-
-
-function initDragAndDrop(e) {
-    __WEBPACK_IMPORTED_MODULE_0__utils_drag_n_drop__["a" /* DnD */].initDraggables('[draggable=true]');
-    __WEBPACK_IMPORTED_MODULE_0__utils_drag_n_drop__["a" /* DnD */].initDropZones('[data-dropzone]');
-}
 
 /***/ })
 /******/ ]);

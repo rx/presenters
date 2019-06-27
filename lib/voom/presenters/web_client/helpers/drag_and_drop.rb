@@ -11,9 +11,8 @@ module DragAndDropHelpers
   def drop_zone_attributes(comp)
     drop_zone_attributes = ''
     if comp.drop_zone
-      zone = comp.drop_zone.fetch(:zone, nil)
-      params = comp.drop_zone.reject { |k,_| k == :zone }
-      drop_zone_attributes = "data-dropzone='#{zone}' data-drop_params='#{params.to_json}'"
+      zone = comp.drop_zone[:zone]
+      drop_zone_attributes = "data-dropzone='#{zone}' data-drop_params='#{comp.drop_zone.to_json}'"
     end
     drop_zone_attributes
   end
