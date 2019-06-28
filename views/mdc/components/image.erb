@@ -18,6 +18,7 @@
      src="<%= comp.url %>"
      <% if comp.description %>alt="<%= comp.description %>"<% end %>
      style="<%= styles.map { |k, v| "#{k}: #{v}" }.join('; ') %>"
+     draggable=false
      <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
 <%= erb :"components/tooltip" , :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 <% end %>
