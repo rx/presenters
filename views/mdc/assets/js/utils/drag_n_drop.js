@@ -19,15 +19,17 @@ export const DnD = function () {
         },
         dragStart = function (e) {
             var dragParamData = e.target.dataset.drag_params;
-            e.dataTransfer.setData("text/plain", dragParamData);
-            let zone = JSON.parse(dragParamData).zone;
-            if (zone != null){
-                e.dataTransfer.setData(zone, '');
+            if(typeof dragParamData !== 'undefined'){
+                e.dataTransfer.setData("text/plain", dragParamData);
+                let zone = JSON.parse(dragParamData).zone;
+                if (zone != null){
+                    e.dataTransfer.setData(zone, '');
+                }
+                e.dataTransfer.effectAllowed = 'move';
+                e.target.classList.add('v-dnd-moving');
             }
-            e.dataTransfer.effectAllowed = 'move';
         },
         drag = function (e) {
-            e.target.classList.add('v-dnd-moving');
         },
         dragOver = function (e) {
             let targetZone = this.dataset.dropzone;

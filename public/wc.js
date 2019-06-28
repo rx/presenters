@@ -85181,16 +85181,17 @@ var DnD = function () {
     },
         dragStart = function dragStart(e) {
         var dragParamData = e.target.dataset.drag_params;
-        e.dataTransfer.setData("text/plain", dragParamData);
-        var zone = JSON.parse(dragParamData).zone;
-        if (zone != null) {
-            e.dataTransfer.setData(zone, '');
+        if (typeof dragParamData !== 'undefined') {
+            e.dataTransfer.setData("text/plain", dragParamData);
+            var zone = JSON.parse(dragParamData).zone;
+            if (zone != null) {
+                e.dataTransfer.setData(zone, '');
+            }
+            e.dataTransfer.effectAllowed = 'move';
+            e.target.classList.add('v-dnd-moving');
         }
-        e.dataTransfer.effectAllowed = 'move';
     },
-        drag = function drag(e) {
-        e.target.classList.add('v-dnd-moving');
-    },
+        drag = function drag(e) {},
         dragOver = function dragOver(e) {
         var targetZone = this.dataset.dropzone;
         if (targetZone == null || e.dataTransfer.types.includes(targetZone)) {
