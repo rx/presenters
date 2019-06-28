@@ -9556,8 +9556,8 @@ var VEvents = function () {
 
             var event = this.event;
             var eventParams = void 0;
-            if (event instanceof DragEvent && event.type === 'drop') {
-                console.log('Drop Data Params: ' + event.dataTransfer.getData('text/plain'));
+            if (event.type === 'drop' && event.dataTransfer) {
+                //console.log('Drop Data Params: ' + event.dataTransfer.getData('text/plain'));
                 eventParams = JSON.parse(event.dataTransfer.getData('text/plain'));
             }
 

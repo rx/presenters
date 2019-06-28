@@ -29,8 +29,8 @@ export class VEvents {
     call() {
         const event = this.event;
         let eventParams;
-        if(event instanceof DragEvent && event.type === 'drop'){
-            console.log('Drop Data Params: ' + event.dataTransfer.getData('text/plain'));
+        if(event.type === 'drop' && event.dataTransfer){
+            //console.log('Drop Data Params: ' + event.dataTransfer.getData('text/plain'));
             eventParams = JSON.parse(event.dataTransfer.getData('text/plain'));
         }
 
