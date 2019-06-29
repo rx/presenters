@@ -99772,6 +99772,9 @@ var DnD = function () {
         if (e.stopPropagation) {
             e.stopPropagation();
         }
+        if (e.preventDefault) {
+            e.preventDefault();
+        }
         this.classList.remove('v-dnd-over');
         this.classList.remove('v-dnd-moving');
         return false;
