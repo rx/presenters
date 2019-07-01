@@ -31,6 +31,7 @@ import {initTypography} from './typography';
 import {initTooltips} from './tooltip';
 import {initPlugins} from './plugins';
 import {initProgress} from './progress';
+import {initDragAndDrop} from './drag_n_drop';
 
 export function initialize(root, setRoot) {
     console.debug('Initializing components');
@@ -69,6 +70,7 @@ export function initialize(root, setRoot) {
     initProgress(root);
     initTooltips(root);
     initPlugins(root);
+    initDragAndDrop(root);
 
     // This needs to be last, because it relies on the components installed above.
     initEvents(root);

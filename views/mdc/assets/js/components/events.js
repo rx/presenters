@@ -27,10 +27,17 @@ export class VEvents {
     }
 
     call() {
+        const event = this.event;
+        let eventParams;
+        if(event.type === 'drop' && event.dataTransfer){
+            //console.log('Drop Data Params: ' + event.dataTransfer.getData('text/plain'));
+            eventParams = JSON.parse(event.dataTransfer.getData('text/plain'));
+        }
+
         // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
         const fnlist = this.actions.map((action) => {
             return function(results) {
-                return Promise.resolve(action.call(results));
+                return Promise.resolve(action.call(results, eventParams));
             };
         });
 
@@ -42,14 +49,11 @@ export class VEvents {
             }, p);
         }
 
-        const event = this.event;
-        const root = this.root;
-
         if (this.vComponent) {
             this.vComponent.actionsStarted(this);
         }
 
-        new VErrors(root).clearErrors();
+        new VErrors(this.root).clearErrors();
 
         pseries(fnlist).then((results) => {
             const result = results.pop();

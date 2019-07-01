@@ -13711,6 +13711,17 @@ select {
 .v-tooltip {
   text-transform: initial; }
 
+.v-dnd-moving {
+  opacity: 0.25;
+  border: dashed 1px red;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -o-transform: scale(0.8); }
+
+.v-dnd-over {
+  border: 2px dashed #000; }
+
 .v-expansion {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
   .v-expansion__summary {

@@ -17,6 +17,7 @@ require 'voom/presenters/web_client/app'
 require 'voom/presenters/demo/search'
 require 'voom/presenters/demo/echo'
 require 'voom/presenters/demo/slow'
+require 'voom/presenters/demo/dragon_drop'
 
 require 'rack/cors'
 use Rack::Cors do
@@ -26,17 +27,22 @@ use Rack::Cors do
   end
 end
 
+Voom::Presenters::Settings.configure do |config|
+  config.presenters.root = File.join(ENV['VOOM_ROOT'], 'app')
+  config.presenters.web_client.prepare_context << ->(context, session, _env) {
+    context.merge(session: session)
+  }
+end
+
 use Voom::Presenters::Demo::Search
 use Voom::Presenters::Demo::Echo
 use Voom::Presenters::Demo::Slow
+use Voom::Presenters::Demo::DragonDrop
 
 use Voom::Presenters::WebClient::App
 run Voom::Presenters::Api::App
 
 
-Voom::Presenters::Settings.configure do |config|
-  config.presenters.root = File.join(ENV['VOOM_ROOT'], 'app')
-end
 Voom::Presenters::App.boot!
 
 

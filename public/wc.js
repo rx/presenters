@@ -2380,6 +2380,8 @@ function __importDefault(mod) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__tooltip__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__plugins__ = __webpack_require__(162);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__progress__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__drag_n_drop__ = __webpack_require__(169);
+
 
 
 
@@ -2451,6 +2453,7 @@ function initialize(root, setRoot) {
     Object(__WEBPACK_IMPORTED_MODULE_32__progress__["a" /* initProgress */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_30__tooltip__["a" /* initTooltips */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_31__plugins__["a" /* initPlugins */])(root);
+    Object(__WEBPACK_IMPORTED_MODULE_33__drag_n_drop__["a" /* initDragAndDrop */])(root);
 
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_4__events__["b" /* initEvents */])(root);
@@ -9551,10 +9554,17 @@ var VEvents = function () {
         value: function call() {
             var _this2 = this;
 
+            var event = this.event;
+            var eventParams = void 0;
+            if (event.type === 'drop' && event.dataTransfer) {
+                //console.log('Drop Data Params: ' + event.dataTransfer.getData('text/plain'));
+                eventParams = JSON.parse(event.dataTransfer.getData('text/plain'));
+            }
+
             // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
             var fnlist = this.actions.map(function (action) {
                 return function (results) {
-                    return Promise.resolve(action.call(results));
+                    return Promise.resolve(action.call(results, eventParams));
                 };
             });
 
@@ -9566,14 +9576,11 @@ var VEvents = function () {
                 }, p);
             }
 
-            var event = this.event;
-            var root = this.root;
-
             if (this.vComponent) {
                 this.vComponent.actionsStarted(this);
             }
 
-            new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](root).clearErrors();
+            new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](this.root).clearErrors();
 
             pseries(fnlist).then(function (results) {
                 var result = results.pop();
@@ -31596,7 +31603,7 @@ module.exports = __webpack_require__(68);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_initialize__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__webcomponents_webcomponentsjs_custom_elements_es5_adapter_js__ = __webpack_require__(169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__webcomponents_webcomponentsjs_custom_elements_es5_adapter_js__ = __webpack_require__(170);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__webcomponents_webcomponentsjs_custom_elements_es5_adapter_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__webcomponents_webcomponentsjs_custom_elements_es5_adapter_js__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -31616,7 +31623,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 // Webcomponent polyfil
 window.WebComponents = window.WebComponents || {};
-window.WebComponents.root = __webpack_require__(170);
+window.WebComponents.root = __webpack_require__(171);
 
 function loadFont(src) {
     var lnk = document.createElement('link');
@@ -31678,7 +31685,7 @@ var FlowMatic = function (_HTMLElement) {
     return FlowMatic;
 }(HTMLElement);
 
-__webpack_require__(174);
+__webpack_require__(175);
 customElements.define('flow-matic', FlowMatic);
 
 /***/ }),
@@ -40464,7 +40471,7 @@ var VPosts = function (_VBase) {
 
     _createClass(VPosts, [{
         key: 'call',
-        value: function call(results) {
+        value: function call(results, eventParams) {
             this.clearErrors();
             var errors = this.validate();
             var method = this.method;
@@ -40509,8 +40516,6 @@ var VPosts = function (_VBase) {
 
                     formData.append(name, value);
                 }
-
-                // Add params from presenter:
             } catch (err) {
                 _didIteratorError = true;
                 _iteratorError = err;
@@ -40526,34 +40531,67 @@ var VPosts = function (_VBase) {
                 }
             }
 
+            if (eventParams) {
+                var _iteratorNormalCompletion2 = true;
+                var _didIteratorError2 = false;
+                var _iteratorError2 = undefined;
+
+                try {
+                    for (var _iterator2 = Object.entries(eventParams)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                        var _ref3 = _step2.value;
+
+                        var _ref4 = _slicedToArray(_ref3, 2);
+
+                        var _name = _ref4[0];
+                        var _value = _ref4[1];
+
+                        formData.append(_name, _value);
+                    }
+                } catch (err) {
+                    _didIteratorError2 = true;
+                    _iteratorError2 = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                            _iterator2.return();
+                        }
+                    } finally {
+                        if (_didIteratorError2) {
+                            throw _iteratorError2;
+                        }
+                    }
+                }
+            }
+
+            // Add params from presenter:
             var expandedParams = Object(__WEBPACK_IMPORTED_MODULE_2__action_parameter__["b" /* expandParams */])(results, this.params);
 
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
 
             try {
-                for (var _iterator2 = Object.entries(expandedParams)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var _ref3 = _step2.value;
+                for (var _iterator3 = Object.entries(expandedParams)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var _ref5 = _step3.value;
 
-                    var _ref4 = _slicedToArray(_ref3, 2);
+                    var _ref6 = _slicedToArray(_ref5, 2);
 
-                    var _name = _ref4[0];
-                    var _value = _ref4[1];
+                    var _name2 = _ref6[0];
+                    var _value2 = _ref6[1];
 
-                    formData.append(_name, Object(__WEBPACK_IMPORTED_MODULE_3__encode__["a" /* encode */])(_value));
+                    formData.append(_name2, Object(__WEBPACK_IMPORTED_MODULE_3__encode__["a" /* encode */])(_value2));
                 }
             } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
+                _didIteratorError3 = true;
+                _iteratorError3 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                        _iterator2.return();
+                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                        _iterator3.return();
                     }
                 } finally {
-                    if (_didIteratorError2) {
-                        throw _iteratorError2;
+                    if (_didIteratorError3) {
+                        throw _iteratorError3;
                     }
                 }
             }
@@ -40647,63 +40685,63 @@ var VPosts = function (_VBase) {
 
                 var configHeaders = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].get('request.headers.POST', {});
 
-                var _iteratorNormalCompletion3 = true;
-                var _didIteratorError3 = false;
-                var _iteratorError3 = undefined;
+                var _iteratorNormalCompletion4 = true;
+                var _didIteratorError4 = false;
+                var _iteratorError4 = undefined;
 
                 try {
-                    for (var _iterator3 = Object.entries(configHeaders)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                        var _ref5 = _step3.value;
+                    for (var _iterator4 = Object.entries(configHeaders)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                        var _ref7 = _step4.value;
 
-                        var _ref6 = _slicedToArray(_ref5, 2);
+                        var _ref8 = _slicedToArray(_ref7, 2);
 
-                        var key = _ref6[0];
-                        var _value2 = _ref6[1];
+                        var key = _ref8[0];
+                        var _value3 = _ref8[1];
 
-                        httpRequest.setRequestHeader(key, _value2);
+                        httpRequest.setRequestHeader(key, _value3);
                     }
                 } catch (err) {
-                    _didIteratorError3 = true;
-                    _iteratorError3 = err;
+                    _didIteratorError4 = true;
+                    _iteratorError4 = err;
                 } finally {
                     try {
-                        if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                            _iterator3.return();
+                        if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                            _iterator4.return();
                         }
                     } finally {
-                        if (_didIteratorError3) {
-                            throw _iteratorError3;
+                        if (_didIteratorError4) {
+                            throw _iteratorError4;
                         }
                     }
                 }
 
                 if (callHeaders) {
-                    var _iteratorNormalCompletion4 = true;
-                    var _didIteratorError4 = false;
-                    var _iteratorError4 = undefined;
+                    var _iteratorNormalCompletion5 = true;
+                    var _didIteratorError5 = false;
+                    var _iteratorError5 = undefined;
 
                     try {
-                        for (var _iterator4 = Object.entries(callHeaders)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                            var _ref7 = _step4.value;
+                        for (var _iterator5 = Object.entries(callHeaders)[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                            var _ref9 = _step5.value;
 
-                            var _ref8 = _slicedToArray(_ref7, 2);
+                            var _ref10 = _slicedToArray(_ref9, 2);
 
-                            var _key = _ref8[0];
-                            var _value3 = _ref8[1];
+                            var _key = _ref10[0];
+                            var _value4 = _ref10[1];
 
-                            httpRequest.setRequestHeader(_key, _value3);
+                            httpRequest.setRequestHeader(_key, _value4);
                         }
                     } catch (err) {
-                        _didIteratorError4 = true;
-                        _iteratorError4 = err;
+                        _didIteratorError5 = true;
+                        _iteratorError5 = err;
                     } finally {
                         try {
-                            if (!_iteratorNormalCompletion4 && _iterator4.return) {
-                                _iterator4.return();
+                            if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                                _iterator5.return();
                             }
                         } finally {
-                            if (_didIteratorError4) {
-                                throw _iteratorError4;
+                            if (_didIteratorError5) {
+                                throw _iteratorError5;
                             }
                         }
                     }
@@ -40870,6 +40908,8 @@ var VReplaces = function (_VBase) {
     _createClass(VReplaces, [{
         key: 'call',
         value: function call(results) {
+            var eventParams = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
             this.clearErrors();
 
             var httpRequest = new XMLHttpRequest();
@@ -40878,7 +40918,7 @@ var VReplaces = function (_VBase) {
             var nodeToReplace = root.getElementById(elementId);
             var expandedParams = Object(__WEBPACK_IMPORTED_MODULE_0__action_parameter__["b" /* expandParams */])(results, this.params);
 
-            var url = this.buildURL(this.url, expandedParams, this.inputValues(), [['grid_nesting', this.options.grid_nesting]]);
+            var url = this.buildURL(this.url, expandedParams, this.inputValues(), eventParams, [['grid_nesting', this.options.grid_nesting]]);
             var delayAmt = delayAmount(this.event);;
 
             return new Promise(function (resolve, reject) {
@@ -85103,6 +85143,140 @@ var strings = {
 
 /***/ }),
 /* 169 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = initDragAndDrop;
+function createDragStartHandler() {
+    return function (e) {
+        var dragParamData = e.target.dataset.drag_params;
+        if (typeof dragParamData !== 'undefined') {
+            e.dataTransfer.setData("text/plain", dragParamData);
+            var zone = JSON.parse(dragParamData).zone;
+            if (zone != null) {
+                e.dataTransfer.setData(zone, '');
+            }
+            e.dataTransfer.effectAllowed = 'move';
+            e.target.classList.add('v-dnd-moving');
+        }
+    };
+}
+
+// function createDragHandler() {
+//     return function (e) { }
+// }
+
+function createDragOverHandler() {
+    return function (e) {
+        var targetZone = this.dataset.dropzone;
+        if (targetZone == null || e.dataTransfer.types.includes(targetZone)) {
+            // We are allowing a drop if we are here
+            // Note that during a dragover event the event/dataTransfer object is in a protected and as a result
+            // cannot be read. However, we can interogate the set of types that it contains. My hack/workaround
+            // is that during dragStart I add the zone as a type and look for that here
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            this.classList.add('v-dnd-over');
+        } else {
+            this.classList.remove('v-dnd-over');
+        }
+    };
+}
+
+// function createDragEnterHandler() {
+//     return function (e) {}
+// }
+
+function createDragLeaveHandler() {
+    return function () {
+        this.classList.remove('v-dnd-over');
+    };
+}
+
+function createDropHandler() {
+    return function (e) {
+        if (e.stopPropagation) {
+            e.stopPropagation();
+        }
+        if (e.preventDefault) {
+            e.preventDefault();
+        }
+        this.classList.remove('v-dnd-over');
+        this.classList.remove('v-dnd-moving');
+        return false;
+    };
+}
+
+function createDragEndHandler() {
+    return function (e) {
+        this.classList.remove('v-dnd-over');
+        this.classList.remove('v-dnd-moving');
+    };
+}
+
+function initDragAndDrop(e) {
+
+    var draggables = document.querySelectorAll('[draggable=true]');
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = draggables[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var elem = _step.value;
+
+            elem.addEventListener("dragstart", createDragStartHandler(), false);
+            // elem.addEventListener("drag", createDragHandler(), false);
+            elem.addEventListener("dragend", createDragEndHandler(), false);
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
+    }
+
+    var dropZones = document.querySelectorAll('[data-dropzone]');
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+        for (var _iterator2 = dropZones[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var _elem = _step2.value;
+
+            _elem.addEventListener("dragover", createDragOverHandler(), false);
+            _elem.addEventListener("drop", createDropHandler(), false);
+            // elem.addEventListener("dragenter", createDragEnterHandler(), false);
+            _elem.addEventListener("dragleave", createDragLeaveHandler(), false);
+        }
+    } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                _iterator2.return();
+            }
+        } finally {
+            if (_didIteratorError2) {
+                throw _iteratorError2;
+            }
+        }
+    }
+}
+
+/***/ }),
+/* 170 */
 /***/ (function(module, exports) {
 
 /**
@@ -85125,7 +85299,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 })();
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -87809,10 +87983,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 }).call(this);
 
 //# sourceMappingURL=webcomponents-bundle.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(171).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(172).setImmediate))
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = typeof global !== "undefined" && global || typeof self !== "undefined" && self || window;
@@ -87864,7 +88038,7 @@ exports._unrefActive = exports.active = function (item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(172);
+__webpack_require__(173);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -87873,7 +88047,7 @@ exports.clearImmediate = typeof self !== "undefined" && self.clearImmediate || t
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -88058,10 +88232,10 @@ exports.clearImmediate = typeof self !== "undefined" && self.clearImmediate || t
     attachTo.setImmediate = setImmediate;
     attachTo.clearImmediate = clearImmediate;
 })(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(173)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(174)))
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -88251,7 +88425,7 @@ process.umask = function () {
 };
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports) {
 
 ;(function() {
