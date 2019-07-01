@@ -13,6 +13,7 @@ Voom::Presenters.define(:drag_drop) do
   helpers do
     def dragons
       session = context[:session]
+      return [] if session.nil?
       session[:dragons] ||=
           [{id: 1, sort: 4, name: 'Jabberwocky', body: 'Alice in Wonderland, Alice Through the Looking Glass'},
            {id: 2, sort: 3, name: 'Hydra', body: 'Hercules, Jason and the Argonauts'},
