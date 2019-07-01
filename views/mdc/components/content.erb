@@ -1,4 +1,6 @@
-<% if comp
+<%
+  require_relative "drag_and_drop/drag_and_drop"
+  if comp
      position_classes = comp.position.map {|p| "v-content-position-#{p}"}.join(' ')
 %>
   <div id="<%= comp.id %>"

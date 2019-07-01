@@ -31603,7 +31603,7 @@ module.exports = __webpack_require__(68);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_initialize__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__webcomponents_webcomponentsjs_custom_elements_es5_adapter_js__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__webcomponents_webcomponentsjs_custom_elements_es5_adapter_js__ = __webpack_require__(170);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__webcomponents_webcomponentsjs_custom_elements_es5_adapter_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__webcomponents_webcomponentsjs_custom_elements_es5_adapter_js__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -31623,7 +31623,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 // Webcomponent polyfil
 window.WebComponents = window.WebComponents || {};
-window.WebComponents.root = __webpack_require__(172);
+window.WebComponents.root = __webpack_require__(171);
 
 function loadFont(src) {
     var lnk = document.createElement('link');
@@ -31685,7 +31685,7 @@ var FlowMatic = function (_HTMLElement) {
     return FlowMatic;
 }(HTMLElement);
 
-__webpack_require__(176);
+__webpack_require__(175);
 customElements.define('flow-matic', FlowMatic);
 
 /***/ }),
@@ -85147,39 +85147,8 @@ var strings = {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initDragAndDrop;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_drag_n_drop__ = __webpack_require__(170);
-
-
-function initDragAndDrop(e) {
-    __WEBPACK_IMPORTED_MODULE_0__utils_drag_n_drop__["a" /* DnD */].initDraggables('[draggable=true]');
-    __WEBPACK_IMPORTED_MODULE_0__utils_drag_n_drop__["a" /* DnD */].initDropZones('[data-dropzone]');
-}
-
-/***/ }),
-/* 170 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DnD; });
-var DnD = function () {
-    var initDraggables = function initDraggables(selector) {
-        var draggables = document.querySelectorAll(selector);
-        [].forEach.call(draggables, function (elem) {
-            elem.addEventListener("dragstart", dragStart, false);
-            elem.addEventListener("drag", drag, false);
-            elem.addEventListener("dragend", dragEnd, false);
-        });
-    },
-        initDropZones = function initDropZones(selector) {
-        var dropZones = document.querySelectorAll(selector);
-        [].forEach.call(dropZones, function (elem) {
-            elem.addEventListener("dragover", dragOver, false);
-            elem.addEventListener("drop", drop, false);
-            elem.addEventListener("dragenter", dragEnter, false);
-            elem.addEventListener("dragleave", dragLeave, false);
-        });
-    },
-        dragStart = function dragStart(e) {
+function createDragStartHandler() {
+    return function (e) {
         var dragParamData = e.target.dataset.drag_params;
         if (typeof dragParamData !== 'undefined') {
             e.dataTransfer.setData("text/plain", dragParamData);
@@ -85190,9 +85159,15 @@ var DnD = function () {
             e.dataTransfer.effectAllowed = 'move';
             e.target.classList.add('v-dnd-moving');
         }
-    },
-        drag = function drag(e) {},
-        dragOver = function dragOver(e) {
+    };
+}
+
+// function createDragHandler() {
+//     return function (e) { }
+// }
+
+function createDragOverHandler() {
+    return function (e) {
         var targetZone = this.dataset.dropzone;
         if (targetZone == null || e.dataTransfer.types.includes(targetZone)) {
             // We are allowing a drop if we are here
@@ -85206,12 +85181,21 @@ var DnD = function () {
         } else {
             this.classList.remove('v-dnd-over');
         }
-    },
-        dragEnter = function dragEnter(e) {},
-        dragLeave = function dragLeave() {
+    };
+}
+
+// function createDragEnterHandler() {
+//     return function (e) {}
+// }
+
+function createDragLeaveHandler() {
+    return function () {
         this.classList.remove('v-dnd-over');
-    },
-        drop = function drop(e) {
+    };
+}
+
+function createDropHandler() {
+    return function (e) {
         if (e.stopPropagation) {
             e.stopPropagation();
         }
@@ -85221,20 +85205,78 @@ var DnD = function () {
         this.classList.remove('v-dnd-over');
         this.classList.remove('v-dnd-moving');
         return false;
-    },
-        dragEnd = function dragEnd(e) {
+    };
+}
+
+function createDragEndHandler() {
+    return function (e) {
         this.classList.remove('v-dnd-over');
         this.classList.remove('v-dnd-moving');
     };
+}
 
-    return {
-        initDraggables: initDraggables,
-        initDropZones: initDropZones
-    };
-}();
+function initDragAndDrop(e) {
+
+    var draggables = document.querySelectorAll('[draggable=true]');
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = draggables[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var elem = _step.value;
+
+            elem.addEventListener("dragstart", createDragStartHandler(), false);
+            // elem.addEventListener("drag", createDragHandler(), false);
+            elem.addEventListener("dragend", createDragEndHandler(), false);
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
+    }
+
+    var dropZones = document.querySelectorAll('[data-dropzone]');
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+        for (var _iterator2 = dropZones[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var _elem = _step2.value;
+
+            _elem.addEventListener("dragover", createDragOverHandler(), false);
+            _elem.addEventListener("drop", createDropHandler(), false);
+            // elem.addEventListener("dragenter", createDragEnterHandler(), false);
+            _elem.addEventListener("dragleave", createDragLeaveHandler(), false);
+        }
+    } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                _iterator2.return();
+            }
+        } finally {
+            if (_didIteratorError2) {
+                throw _iteratorError2;
+            }
+        }
+    }
+}
 
 /***/ }),
-/* 171 */
+/* 170 */
 /***/ (function(module, exports) {
 
 /**
@@ -85257,7 +85299,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 })();
 
 /***/ }),
-/* 172 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -87941,10 +87983,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 }).call(this);
 
 //# sourceMappingURL=webcomponents-bundle.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(173).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(172).setImmediate))
 
 /***/ }),
-/* 173 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = typeof global !== "undefined" && global || typeof self !== "undefined" && self || window;
@@ -87996,7 +88038,7 @@ exports._unrefActive = exports.active = function (item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(174);
+__webpack_require__(173);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -88005,7 +88047,7 @@ exports.clearImmediate = typeof self !== "undefined" && self.clearImmediate || t
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 174 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -88190,10 +88232,10 @@ exports.clearImmediate = typeof self !== "undefined" && self.clearImmediate || t
     attachTo.setImmediate = setImmediate;
     attachTo.clearImmediate = clearImmediate;
 })(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(175)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(174)))
 
 /***/ }),
-/* 175 */
+/* 174 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -88383,7 +88425,7 @@ process.umask = function () {
 };
 
 /***/ }),
-/* 176 */
+/* 175 */
 /***/ (function(module, exports) {
 
 ;(function() {

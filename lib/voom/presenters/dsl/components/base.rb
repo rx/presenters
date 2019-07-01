@@ -28,7 +28,7 @@ module Voom
 
           def initialize(type:, parent:, id: nil, tag: nil, **attributes, &block)
             @draggable = attributes.delete(:draggable) {nil}
-            @drop_zone = attributes.delete(:drop_zone){nil}
+            @drop_zone = attributes.delete(:drop_zone) {nil}
             @id = h(id) || generate_id
             @tag = tag
             @type = h(type)

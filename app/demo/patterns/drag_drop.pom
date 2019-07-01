@@ -1,4 +1,7 @@
 require_relative '../helpers/indented_grid'
+require 'net/http'
+require 'json'
+require 'ostruct'
 
 Voom::Presenters.define(:drag_drop) do
   helpers Demo::Helpers::IndentedGrid
@@ -9,24 +12,26 @@ Voom::Presenters.define(:drag_drop) do
 
   helpers do
     def dragons
-      [OpenStruct.new(name: 'Jabberwocky', body: 'Alice in Wonderland, Alice Through the Looking Glass'),
-       OpenStruct.new(name: 'Hydra', body: 'Hercules, Jason and the Argonauts'),
-       OpenStruct.new(name: 'Drogon, Viserion, Rhaegal', body: 'Game of Thrones'),
-       OpenStruct.new(name: 'Spike', body: 'My Little Pony: The Movie')]
+      session = context[:session]
+      session[:dragons] ||=
+          [{id: 1, sort: 4, name: 'Jabberwocky', body: 'Alice in Wonderland, Alice Through the Looking Glass'},
+           {id: 2, sort: 3, name: 'Hydra', body: 'Hercules, Jason and the Argonauts'},
+           {id: 3, sort: 2, name: 'Drogon, Viserion, Rhaegal', body: 'Game of Thrones'},
+           {id: 4, sort: 1, name: 'Spike', body: 'My Little Pony: The Movie'}].to_json
+      JSON.parse(session[:dragons], object_class: OpenStruct)
     end
-
   end
 
   indented_grid do
-
     grid do
-      column 6 do
+      column 7 do
         headline 'Select a Dragon'
+        subtitle 'Drag and Drop to reorder the dragons, or drop on card to right to learn more about your Dragon'
         list do
-          dragons.each do |dragon|
-            line draggable: { zone: :drag_zone_1, list_item_id: :some_id, dragon_name: dragon.name } do
+          dragons.sort_by(&:sort).each do |dragon|
+            line draggable: {zone: :drag_zone_1, source_id: dragon.id, dragon_name: dragon.name, dragon_info: dragon.body},
+                 drop_zone: {zone: :drag_zone_1} do
               text dragon.name
-              subtitle "Appeared in: #{dragon.body}"
 
               event :drag do
                 snackbar "#{dragon.name} is a real drag!"
@@ -37,34 +42,22 @@ Voom::Presenters.define(:drag_drop) do
               end
 
               event :drop do
-                snackbar "Something was dropped on the head of: #{dragon.name}"
+                posts '_dragon_drop_change_order_', target_id: dragon.id
+                loads :drag_drop
               end
             end
           end
         end
       end
-      column 6 do
-
+      column 5 do
         attach :drop_zone
-
-        content drop_zone: {zone: 'drag_zone_2'}, padding: :top do
+        content drop_zone: {zone: :drag_zone_2}, padding: :top do
           card do
             blank
             text "Try to drop something here"
             blank
           end
-
-          # event :drop do
-          #   snackbar 'Something dropped on me, what could it be!'
-          #   posts '_echo_', {quote: 'Compromise is the shared hypotenuse of the conjoined triangles of success.'}
-          # end
-          #
-          # event :dragenter do
-          #   snackbar 'Something is over me!'
-          # end
-
         end
-
       end
     end
 
@@ -79,12 +72,13 @@ Voom::Presenters.define(:drop_zone) do
       blank
       text "Drop a dragon here..."
       text "Last dropped dragon: **#{context.fetch(:dragon_name)}**" if context.key?(:dragon_name)
+      text "Appeard In: **#{context.fetch(:dragon_info)}**" if context.key?(:dragon_info)
       blank
     end
 
     event :drop do
       # posts '_echo_'
-      replaces :drop_zone, :drop_zone#, dragon_name: last_response.dragon_name
+      replaces :drop_zone, :drop_zone #, dragon_name: last_response.dragon_name
     end
   end
 end

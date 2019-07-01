@@ -18,7 +18,7 @@ unless defined?(Voom::Presenters::Settings)
           #   config.presenters.helpers << &->{ def foo; :foo; end } # Passing a block
           # end
           setting :helpers, [Voom::Presenters::Helpers::Route]
-          setting :deep_freeze, true
+          setting :deep_freeze, false
           setting :id_generator, ->(node) {"id-#{SecureRandom.hex}"}
           setting :web_client do
             # Add lambda's to modify the context for the presenters

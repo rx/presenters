@@ -99704,39 +99704,8 @@ var strings = {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initDragAndDrop;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_drag_n_drop__ = __webpack_require__(506);
-
-
-function initDragAndDrop(e) {
-    __WEBPACK_IMPORTED_MODULE_0__utils_drag_n_drop__["a" /* DnD */].initDraggables('[draggable=true]');
-    __WEBPACK_IMPORTED_MODULE_0__utils_drag_n_drop__["a" /* DnD */].initDropZones('[data-dropzone]');
-}
-
-/***/ }),
-/* 506 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DnD; });
-var DnD = function () {
-    var initDraggables = function initDraggables(selector) {
-        var draggables = document.querySelectorAll(selector);
-        [].forEach.call(draggables, function (elem) {
-            elem.addEventListener("dragstart", dragStart, false);
-            elem.addEventListener("drag", drag, false);
-            elem.addEventListener("dragend", dragEnd, false);
-        });
-    },
-        initDropZones = function initDropZones(selector) {
-        var dropZones = document.querySelectorAll(selector);
-        [].forEach.call(dropZones, function (elem) {
-            elem.addEventListener("dragover", dragOver, false);
-            elem.addEventListener("drop", drop, false);
-            elem.addEventListener("dragenter", dragEnter, false);
-            elem.addEventListener("dragleave", dragLeave, false);
-        });
-    },
-        dragStart = function dragStart(e) {
+function createDragStartHandler() {
+    return function (e) {
         var dragParamData = e.target.dataset.drag_params;
         if (typeof dragParamData !== 'undefined') {
             e.dataTransfer.setData("text/plain", dragParamData);
@@ -99747,9 +99716,15 @@ var DnD = function () {
             e.dataTransfer.effectAllowed = 'move';
             e.target.classList.add('v-dnd-moving');
         }
-    },
-        drag = function drag(e) {},
-        dragOver = function dragOver(e) {
+    };
+}
+
+// function createDragHandler() {
+//     return function (e) { }
+// }
+
+function createDragOverHandler() {
+    return function (e) {
         var targetZone = this.dataset.dropzone;
         if (targetZone == null || e.dataTransfer.types.includes(targetZone)) {
             // We are allowing a drop if we are here
@@ -99763,12 +99738,21 @@ var DnD = function () {
         } else {
             this.classList.remove('v-dnd-over');
         }
-    },
-        dragEnter = function dragEnter(e) {},
-        dragLeave = function dragLeave() {
+    };
+}
+
+// function createDragEnterHandler() {
+//     return function (e) {}
+// }
+
+function createDragLeaveHandler() {
+    return function () {
         this.classList.remove('v-dnd-over');
-    },
-        drop = function drop(e) {
+    };
+}
+
+function createDropHandler() {
+    return function (e) {
         if (e.stopPropagation) {
             e.stopPropagation();
         }
@@ -99778,17 +99762,75 @@ var DnD = function () {
         this.classList.remove('v-dnd-over');
         this.classList.remove('v-dnd-moving');
         return false;
-    },
-        dragEnd = function dragEnd(e) {
+    };
+}
+
+function createDragEndHandler() {
+    return function (e) {
         this.classList.remove('v-dnd-over');
         this.classList.remove('v-dnd-moving');
     };
+}
 
-    return {
-        initDraggables: initDraggables,
-        initDropZones: initDropZones
-    };
-}();
+function initDragAndDrop(e) {
+
+    var draggables = document.querySelectorAll('[draggable=true]');
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = draggables[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var elem = _step.value;
+
+            elem.addEventListener("dragstart", createDragStartHandler(), false);
+            // elem.addEventListener("drag", createDragHandler(), false);
+            elem.addEventListener("dragend", createDragEndHandler(), false);
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
+    }
+
+    var dropZones = document.querySelectorAll('[data-dropzone]');
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+        for (var _iterator2 = dropZones[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var _elem = _step2.value;
+
+            _elem.addEventListener("dragover", createDragOverHandler(), false);
+            _elem.addEventListener("drop", createDropHandler(), false);
+            // elem.addEventListener("dragenter", createDragEnterHandler(), false);
+            _elem.addEventListener("dragleave", createDragLeaveHandler(), false);
+        }
+    } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                _iterator2.return();
+            }
+        } finally {
+            if (_didIteratorError2) {
+                throw _iteratorError2;
+            }
+        }
+    }
+}
 
 /***/ })
 /******/ ]);
