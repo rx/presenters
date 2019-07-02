@@ -13744,6 +13744,17 @@ select {
 .v-tooltip {
   text-transform: initial; }
 
+.v-dnd-moving {
+  opacity: 0.25;
+  border: dashed 1px red;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none; }
+
+.v-dnd-over {
+  border: 2px dashed #000; }
+
 .v-expansion {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
   .v-expansion__summary {

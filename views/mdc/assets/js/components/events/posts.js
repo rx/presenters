@@ -15,7 +15,7 @@ export class VPosts extends VBase {
         this.headers = options.headers;
     }
 
-    call(results) {
+    call(results, eventParams) {
         this.clearErrors();
         let errors = this.validate();
         let method = this.method;
@@ -47,6 +47,12 @@ export class VPosts extends VBase {
         // NB: `inputValues` will appropriately handle `input_tag`.
         for (const [name, value] of this.inputValues()) {
             formData.append(name, value);
+        }
+
+        if (eventParams){
+            for (const [name, value] of Object.entries(eventParams)) {
+                formData.append(name, value);
+            }
         }
 
         // Add params from presenter:

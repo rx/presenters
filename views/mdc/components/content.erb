@@ -1,10 +1,14 @@
-<% if comp
+<%
+  require_relative "drag_and_drop/drag_and_drop"
+  if comp
      position_classes = comp.position.map {|p| "v-content-position-#{p}"}.join(' ')
 %>
   <div id="<%= comp.id %>"
        <% if comp.tag %>
        data-input-tag="<%= comp.tag %>"
        <% end %>
+       <%= draggable_attributes(comp) %>
+       <%= drop_zone_attributes(comp) %>
        class="v-content
             <%= position_classes %>
             <%= _padding_classes_(comp.padding, subclass: comp.dense ? :col : :grid) %>
