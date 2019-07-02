@@ -13714,10 +13714,10 @@ select {
 .v-dnd-moving {
   opacity: 0.25;
   border: dashed 1px red;
-  -webkit-transform: scale(0.8);
-  -moz-transform: scale(0.8);
-  -ms-transform: scale(0.8);
-  -o-transform: scale(0.8); }
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none; }
 
 .v-dnd-over {
   border: 2px dashed #000; }
