@@ -34,15 +34,17 @@ Voom::Presenters::Settings.configure do |config|
   }
 end
 
+if ENV.fetch('HONEYBADGER_API_KEY', false)
+  use Honeybadger::Rack::UserInformer
+  use Honeybadger::Rack::UserFeedback
+end
+
 use Voom::Presenters::Demo::Search
 use Voom::Presenters::Demo::Echo
 use Voom::Presenters::Demo::Slow
 use Voom::Presenters::Demo::DragonDrop
-
 use Voom::Presenters::WebClient::App
-run Voom::Presenters::Api::App
-
+use Voom::Presenters::Api::App
+run Voom::Presenters::WebClient::App
 
 Voom::Presenters::App.boot!
-
-
