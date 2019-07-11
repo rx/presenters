@@ -25,6 +25,7 @@ module Voom
         set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE'] || 'mdc')}
         configure do
           enable :logging
+          disable :show_exceptions if ENV.fetch('PRESENTERS_ENABLE_ERROR_PAGE','true')!='true'
         end
         helpers PaddingHelpers
         helpers ExpandHash
@@ -201,6 +202,12 @@ module Voom
             params.delete(key) {params.delete(key.to_s)}
           end
           params
+        end
+
+
+        error StandardError do
+          error_file = File.join('public', '500.html')
+          File.read(error_file) if File.exists?(error_file)
         end
       end
     end
