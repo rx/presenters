@@ -69,7 +69,6 @@ This project is in a pre-beta status. It is changing frequently as the first use
 Any use should be for internal use only until the status becomes beta.
 
 [![CircleCI](https://circleci.com/gh/rx/presenters.svg?style=svg)](https://circleci.com/gh/rx/presenters)
-[![Maintainability](https://api.codeclimate.com/v1/badges/8fcea717485230e60f27/maintainability)](https://codeclimate.com/github/rx/presenters/maintainability)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=plastic)](https://raw.githubusercontent.com/rx/presenters/master/LICENSE)
     
 ## Usage
@@ -85,15 +84,52 @@ For rails: Mount the web-client in your rails config/routes.rb
     mount ::Voom::Presenters::Api::App,       at: '/'
      
    
-Create the file app/presenters/index.pom with the contents:
+Create the file app/presenters/hellow_world.pom with the contents:
     
-    Voom::Presenters.define(:index) do
+    Voom::Presenters.define(:hellow_world) do
       heading 'hello world'
     end   
 
-Start your rails server and goto http://localhost:3000
+Start your rails server and goto http://localhost:3000/hello_world
 
-Use the demo to get example code to drop into your presetners.
+Use the [Demo](https://powerful-bastion-96181.herokuapp.com) to get example code to drop into your presetners.
+
+
+## Settings
+
+Many of the presenters [settings](https://github.com/rx/presenters/blob/251f450f11f75332a74ff8d0729e7552b17f88ba/lib/voom/presenters/settings.rb) can be customized. You do this with an initializer to set them.
+
+The initializer needs to be loaded after the base settings are loaded.
+
+    # For example:
+    Voom::Presenters::Settings.configure do |config|
+      config.presenters.web_client.prepare_context << ->(context, session, _env){
+        identity_id = session[:aaa_identity]
+        context.merge(aaa_identity: identity_id)
+      }
+    end
+    
+## WebClient 
+
+### Custom Error Pages
+
+Exceptions will load the public/500.html from the current working directory of the process.
+
+If you are running mounted in Rails, this will be there and you shouldn't have to do anything.
+
+To see the page in development set the environment variable PRESENTERS_ENABLE_ERROR_PAGE=false and goto the route `/boom`.
+
+> Attribution: Error page was ported from [Rails](https://github.com/rails/rails/blob/b2eb1d1c55a59fee1e6c4cba7030d8ceb524267c/railties/lib/rails/generators/rails/app/templates/public/500.html).
+
+### Environment Variables
+
+| Environment Variable        | Description|
+|---                          |---|
+|PRESENTERS_ENABLE_ERROR_PAGE | This will turn on/off the sinatra error page during development. Good for testing Custom Error pages.|
+
+## Honeybadger
+
+Presenters supports honeybadger for error reporting out of the box. Just set HONEYBADGER_API_KEY in your environment.
 
 ## Contributing
 
