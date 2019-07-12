@@ -20,12 +20,6 @@ unless defined?(Voom::Presenters::Settings)
           setting :helpers, [Voom::Presenters::Helpers::Route]
           setting :deep_freeze, false
           setting :id_generator, ->(node) {"id-#{SecureRandom.hex}"}
-          setting :api_client do
-            setting :error_logger, ->(file, e, _params, _presenter_name) {
-              msg = ["#{Time.now.strftime("%Y-%m-%d %H:%M:%S")} - #{e.class} - #{e.message}:", *e.backtrace].join("\n\t")
-              file.puts(msg)
-            }
-          end
           setting :web_client do
             # Add lambda's to modify the context for the presenters
             # For example:
@@ -38,10 +32,6 @@ unless defined?(Voom::Presenters::Settings)
             setting :prepare_context, []
             # Relative to the root
             setting :custom_css, '../public/presenters'
-            setting :error_logger, ->(file, e, _params, _presenter_name) {
-              msg = ["#{Time.now.strftime("%Y-%m-%d %H:%M:%S")} - #{e.class} - #{e.message}:", *e.backtrace].join("\n\t")
-              file.puts(msg)
-            }
           end
           setting :plugins, [:google_maps]
           setting :components do
@@ -73,6 +63,13 @@ unless defined?(Voom::Presenters::Settings)
               end
             end
           end
+          setting :error_logger, ->(file, e, _params, _presenter_name) {
+            msg = [
+              "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")} - #{e.class} - #{e.message}:",
+              *e.backtrace
+            ].join("\n\t")
+            file.puts(msg)
+          }
         end
 
         def self.default(type, key)

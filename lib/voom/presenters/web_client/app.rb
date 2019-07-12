@@ -178,7 +178,7 @@ module Voom
             response.headers['X-Frame-Options'] = 'ALLOWALL' if ENV['ALLOWALL_FRAME_OPTIONS']
             erb :web, layout: layout
           rescue StandardError => e
-            Presenters::Settings.config.presenters.web_client.error_logger.call(
+            Presenters::Settings.config.presenters.error_logger.call(
               @env['rack.errors'],
               e,
               params,

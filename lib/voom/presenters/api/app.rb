@@ -40,7 +40,7 @@ module Voom
             content_type :json
             JSON.dump(pom.to_hash)
           rescue StandardError => e
-            Presenters::Settings.config.presenters.api_client.error_logger.call(
+            Presenters::Settings.config.presenters.error_logger.call(
               @env['rack.errors'],
               e,
               params,
