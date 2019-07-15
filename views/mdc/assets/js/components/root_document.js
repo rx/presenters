@@ -1,8 +1,16 @@
 export default function getRoot(element) {
-    if (element instanceof HTMLDocument) return element;
-    let rootElement = element.ownerDocument;
-    if (!rootElement) {
-        rootElement = element.shadowRoot();
+    let e = element;
+    while (e && e.nodeType != 11) { // 11 = DOCUMENT_FRAGMENT_NODE
+        e = e.parentNode;
     }
-    return rootElement;
+    let shadowRoot = null;
+    if (e) {
+        shadowRoot = e.host.shadowRoot;
+    }
+
+    let documentRoot = null;
+    if (element.nodeType == 9) {
+        documentRoot = element;
+    }
+    return shadowRoot || documentRoot || element.ownerDocument;
 }
