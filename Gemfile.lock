@@ -28,7 +28,7 @@ PATH
       nokogiri (>= 1.7.2)
       redcarpet (~> 3.4)
       sinatra (>= 1.4, < 3.0)
-      tzinfo (~> 1.2)
+      tzinfo (>= 1.1, < 2.0)
       tzinfo-data (~> 1.2018)
       zeitwerk (~> 1.4.3)
 
