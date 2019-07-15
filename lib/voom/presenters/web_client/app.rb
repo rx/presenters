@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'honeybadger' if ENV.fetch('HONEYBADGER_API_KEY'){false}
+require 'honeybadger' if ENV.fetch('HONEYBADGER_API_KEY') {false}
 require 'uri'
 require 'redcarpet'
 require "dry/inflector"
@@ -25,7 +25,7 @@ module Voom
         set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE'] || 'mdc')}
         configure do
           enable :logging
-          disable :show_exceptions if ENV.fetch('PRESENTERS_ENABLE_ERROR_PAGE','true')!='true'
+          disable :show_exceptions if Presenters::Settings.config.presenters.root # ENV.fetch('PRESENTERS_ENABLE_ERROR_PAGE','true')!='true'
         end
         helpers PaddingHelpers
         helpers ExpandHash
@@ -69,7 +69,7 @@ module Voom
           end
 
           def includes_one?(array1, array2)
-            (array2.map(&:to_sym)-array1.map(&:to_sym)).size != array2.size
+            (array2.map(&:to_sym) - array1.map(&:to_sym)).size != array2.size
           end
 
           def unique_id(comp)
@@ -190,6 +190,7 @@ module Voom
         def prepare_context
           prepare_context = Presenters::Settings.config.presenters.web_client.prepare_context.dup
           prepare_context.push(method(:scrub_context))
+          prepare_context.push(method(:add_request_context))
           context = params.dup
           prepare_context.reduce(context) do |params, context_proc|
             context = context_proc.call(params, session, env)
@@ -202,6 +203,10 @@ module Voom
             params.delete(key) {params.delete(key.to_s)}
           end
           params
+        end
+
+        def add_request_context(params, _session, _env)
+          params.merge(request: request)
         end
 
 
