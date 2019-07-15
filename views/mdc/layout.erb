@@ -12,8 +12,8 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
   <!-- Place favicon.ico in the root directory -->
   <!--MDC-->
-  <link rel="stylesheet" href="<%= env['SCRIPT_NAME'] %>bundle.css">
-  <script defer src="<%= env['SCRIPT_NAME'] %>bundle.js"></script>
+  <link rel="stylesheet" type='text/css' href="<%= request.base_url %>/bundle.css">
+  <script defer src="<%= request.base_url %>/bundle.js"></script>
   <%= plugin_headers(@pom) %>
   <%= custom_css(env['REQUEST_PATH']) %>
 </head>
