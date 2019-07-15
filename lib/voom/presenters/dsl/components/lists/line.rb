@@ -80,6 +80,12 @@ module Voom
                                                    &block)
             end
 
+            def hidden_field(**attributes, &block)
+              return @hidden_field if locked?
+
+              @hidden_field = Components::HiddenField.new(parent: self, **attributes, &block)
+            end
+
             def menu(**attributes, &block)
               return @menu if locked?
               @menu = Components::Menu.new(parent: self, **attributes, &block)
