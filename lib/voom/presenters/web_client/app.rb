@@ -25,7 +25,7 @@ module Voom
         set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE'] || 'mdc')}
         configure do
           enable :logging
-          disable :show_exceptions if Presenters::Settings.config.presenters.root # ENV.fetch('PRESENTERS_ENABLE_ERROR_PAGE','true')!='true'
+          disable :show_exceptions if Presenters::Settings.config.presenters.web_client.enable_error_page
         end
         helpers PaddingHelpers
         helpers ExpandHash
