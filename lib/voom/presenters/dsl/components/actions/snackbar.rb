@@ -1,5 +1,3 @@
-require 'voom/presenters/dsl/components/actions/base'
-
 module Voom
   module Presenters
     module DSL

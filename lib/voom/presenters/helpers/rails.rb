@@ -1,8 +1,4 @@
 if defined?(Rails)
-  require 'voom/presenters/helpers/rails/currency'
-  require 'voom/presenters/helpers/rails/model_table'
-  require 'voom/presenters/namespace'
-
   module Voom
     module Presenters
       module Helpers

@@ -1,5 +1,4 @@
 require 'erb'
-require 'voom/presenters/pluggable'
 
 module Voom
   module Presenters

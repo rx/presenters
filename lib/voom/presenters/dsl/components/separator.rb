@@ -1,5 +1,3 @@
-require 'voom/presenters/dsl/components/mixins/padding'
-
 module Voom
   module Presenters
     module DSL

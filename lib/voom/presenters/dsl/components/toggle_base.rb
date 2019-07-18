@@ -1,6 +1,3 @@
-require 'voom/presenters/dsl/components/mixins/event'
-require 'voom/presenters/dsl/components/input'
-
 module Voom
   module Presenters
     module DSL
@@ -13,7 +10,7 @@ module Voom
                         :value,
                         :disabled,
                         :off_value
-         
+
           def initialize(**attribs_, &block)
             super(**attribs_, &block)
             @text = attribs.delete(:text)

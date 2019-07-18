@@ -1,21 +1,3 @@
-require 'voom/presenters/dsl/components/menu'
-require 'voom/presenters/dsl/components/typography'
-require 'voom/presenters/dsl/components/avatar'
-require 'voom/presenters/dsl/components/mixins/common'
-require 'voom/presenters/dsl/components/mixins/event'
-require 'voom/presenters/dsl/components/mixins/attaches'
-require 'voom/presenters/dsl/components/mixins/avatar'
-require 'voom/presenters/dsl/components/mixins/text_fields'
-require 'voom/presenters/dsl/components/mixins/icons'
-require 'voom/presenters/dsl/components/mixins/selects'
-require 'voom/presenters/dsl/components/mixins/snackbars'
-require 'voom/presenters/dsl/components/mixins/date_time_fields'
-require 'voom/presenters/dsl/components/mixins/chips'
-require 'voom/presenters/dsl/components/mixins/file_inputs'
-require 'voom/presenters/dsl/components/mixins/padding'
-require 'voom/presenters/dsl/components/mixins/dialogs'
-require 'voom/presenters/dsl/components/mixins/progress'
-
 module Voom
   module Presenters
     module DSL

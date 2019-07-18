@@ -1,9 +1,8 @@
-require 'voom/presenters/web_client/helpers/expand_hash'
-
 module WebClient
   module Actions
     class Replaces
-      include ExpandHash
+      include Voom::Presenters::WebClient::Helpers::ExpandHash
+
       def call(action, parent_id, grid_nesting, *)
         # Type, URL, Options, Params (passed into javascript event/action classes)
         [action.type, action.url,

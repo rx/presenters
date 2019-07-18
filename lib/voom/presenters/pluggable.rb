@@ -1,5 +1,3 @@
-require 'voom/presenters/plugins'
-require 'voom/trace'
 include Voom::Trace
 
 module Voom

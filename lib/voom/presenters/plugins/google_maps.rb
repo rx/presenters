@@ -4,7 +4,6 @@ module Voom
       module GoogleMaps
           module DSLComponents
             def google_map(**attributes, &block)
-              require_relative 'google_maps/google_map'
               self << GoogleMap.new(parent: self, **attributes, &block)
             end
           end

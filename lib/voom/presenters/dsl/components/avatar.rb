@@ -1,7 +1,3 @@
-require 'voom/presenters/dsl/components/event_base'
-require 'voom/presenters/dsl/components/mixins/event'
-require 'voom/presenters/dsl/components/mixins/tooltips'
-
 module Voom
   module Presenters
     module DSL

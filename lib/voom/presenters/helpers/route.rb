@@ -1,5 +1,3 @@
-require 'voom/presenters/namespace'
-
 module Voom
   module Presenters
     module Helpers
