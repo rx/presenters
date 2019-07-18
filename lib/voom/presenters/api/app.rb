@@ -30,13 +30,22 @@ module Voom
 
         private
 
+        # analogous to Voom::Presenters::WebClient::App#render_presenter
         def render_presenter(presenter)
-          # puts "/presenters/api/#{params[:version]}/#{params[:presenter]}/"
-          # puts "Parameters: #{params.inspect}"
-          presenter = Voom::Presenters::App[presenter].call
-          pom = presenter.expand(router: router, context: prepare_context)
-          content_type :json
-          JSON.dump(pom.to_hash)
+          begin
+            presenter = Voom::Presenters::App[presenter].call
+            pom = presenter.expand(router: router, context: prepare_context)
+            content_type :json
+            JSON.dump(pom.to_hash)
+          rescue StandardError => e
+            Presenters::Settings.config.presenters.error_logger.call(
+              @env['rack.errors'],
+              e,
+              params,
+              presenter.name
+            )
+            raise e
+          end
         end
 
         def router

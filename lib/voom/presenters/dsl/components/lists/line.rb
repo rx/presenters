@@ -7,6 +7,8 @@ module Voom
             extend Gem::Deprecate
             include Mixins::Tooltips
 
+            CHECKBOX_ATTRIBUTES = %i[name value checked dirtyable value off_value].freeze
+
             attr_accessor :selected, :selectable
 
             def initialize(**attribs_, &block)
@@ -19,8 +21,12 @@ module Voom
               self.body(attribs.delete(:body)) if attribs[:body]
               self.avatar(attribs.delete(:avatar)) if attribs.key?(:avatar)
               self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
-              self.checkbox(attribs.delete(:checkbox)) if attribs.key?(:checkbox) && !@selectable
-              self.checkbox(attribs.slice(:name, :value, :checked, :dirtyable)) if @selectable
+
+              if @selectable
+                self.checkbox(attribs.slice(*CHECKBOX_ATTRIBUTES))
+              elsif attribs.key?(:checkbox)
+                self.checkbox(attribs.delete(:checkbox))
+              end
 
               @actions = []
               expand!
@@ -61,11 +67,22 @@ module Voom
 
             def checkbox(**attributes, &block)
               return @checkbox if locked?
-              field_name = @selectable ? "#{attributes.delete(:name)}[]" : attributes.delete(:name)
+
+              # Append [] if the list is selectable and the checkbox's name
+              # doesn't already include brackets:
+              field_name = attributes.delete(:name).to_s
+              field_name << '[]' if @selectable && !field_name.include?('[')
+
               @checkbox = Components::Checkbox.new(parent: self,
                                                    name: field_name,
                                                    **attributes,
                                                    &block)
+            end
+
+            def hidden_field(**attributes, &block)
+              return @hidden_field if locked?
+
+              @hidden_field = Components::HiddenField.new(parent: self, **attributes, &block)
             end
 
             def menu(**attributes, &block)
