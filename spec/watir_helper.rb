@@ -2,11 +2,10 @@ require 'spec_helper'
 # Configuration for watir-rspec
 require "watir/rspec"
 require 'webdrivers'
+require_relative 'support/integration/chrome_75_capabilities_patch'
 require_relative 'support/integration/js_errors'
 require_relative 'support/integration/browser'
 require_relative 'support/integration/host'
-
-
 
 RSpec.configure do |config|
   # Use Watir::RSpec::HtmlFormatter to get links to the screenshots, html and
@@ -17,11 +16,13 @@ RSpec.configure do |config|
   config.include Support::Browser
   config.include Support::JSErrors
   config.include Support::Host
-  
+
   # Open up the browser for each example.
   config.before :all, :integration do
     skip startup_instructions unless host
-    @browser = Watir::Browser.new
+
+    # https://github.com/SeleniumHQ/selenium/issues/7270
+    @browser = Watir::Browser.new(:chrome, 'goog:loggingPrefs' => { browser: 'ALL' })
   end
 
   # Close that browser after each example.
