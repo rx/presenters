@@ -46,7 +46,7 @@ Or to run locally:
     git clone git@github.com:rx/presenters.git
     cd presenters/
     bundle install
-    rackup
+    bundle exec rackup
 
     open http://localhost:9292
     
