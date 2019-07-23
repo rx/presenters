@@ -8,8 +8,18 @@ Voom::Presenters.define(:dialogs) do
         text_field name: :myfield do
           label 'Data to post'
         end
-        time_field min_time: "9:00" do
-          label 'Time Field'
+        grid do
+          column 4 do
+            date_field do
+              label 'Date Field'
+            end
+          end
+          column 4
+          column 4 do
+            time_field do
+              label 'Time Field'
+            end
+          end
         end
         text_field name: :myfield2 do
           label 'More Data to post'
