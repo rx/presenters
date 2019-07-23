@@ -28,3 +28,7 @@ i:focus.v-datetime--clear {
     outline: none;
 }
 
+.v-datetime.mdc-text-field--focused {
+  z-index: 99;
+}
+

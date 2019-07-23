@@ -36,7 +36,12 @@ export class VDateTime extends VTextField {
         this.fp = flatpickr(this.input, config);
         this.fp.mdc_text_field = mdcComponent;
 
-        element.addEventListener('click', () => this.toggle());
+        element.addEventListener('click', (e) => {
+            var clickedElem = e.target;
+            if (clickedElem.classList.contains('flatpickr-input')) {
+                this.toggle()
+            }
+        });
     }
 
     clear() {

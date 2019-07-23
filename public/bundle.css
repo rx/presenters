@@ -15112,6 +15112,9 @@ span.flatpickr-weekday {
 i:focus.v-datetime--clear {
   outline: none; }
 
+.v-datetime.mdc-text-field--focused {
+  z-index: 99; }
+
 .v-file-input > [type='file'] {
   cursor: pointer;
   height: 100%;
