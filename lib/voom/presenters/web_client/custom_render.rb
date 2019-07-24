@@ -1,3 +1,5 @@
+require 'redcarpet'
+
 module Voom::Presenters::WebClient
   class CustomRender < Redcarpet::Render::Safe
     # include Redcarpet::Render::SmartyPants
