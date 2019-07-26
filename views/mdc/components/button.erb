@@ -8,7 +8,7 @@
      class_name = "#{class_name} #{padding_class} #{comp.full_width ? 'v-button-full-width' : nil}"
 %>
   <% if comp.menu %>
-    <span class="mdc-menu-anchor">
+    <div class="v-menu-anchor">
   <% end %>
   <% case comp.button_type.to_sym
         when :fab %>
@@ -21,7 +21,7 @@
             <%= erb :"components/buttons/button", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} %>
   <% end %>
   <% if comp.menu %>
-    </span>
+    </div>
   <% end %>
 <% end %>
 

@@ -18,6 +18,6 @@
   <%= erb :'components/icon', :locals => {comp: comp.icon} %>
   <%= comp.text %>
   <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
-  <%= erb :"components/menu", :locals => {comp: comp.menu, parent_id: comp.id} %>
 </button>
+<%= erb :"components/menu", :locals => {comp: comp.menu, parent_id: comp.id} %>
 

@@ -1,6 +1,10 @@
 @import "@material/menu-surface/mdc-menu-surface";
 @import "@material/menu/mdc-menu";
 
+.v-menu-anchor {
+  display: inline;
+}
+
 .v-menu-link {
   &:hover, &:visited, &:link, &:active {
     color: inherit;

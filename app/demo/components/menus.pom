@@ -17,10 +17,22 @@ Voom::Presenters.define(:menus) do
       column 5 do
         card height: '300px' do
           button icon: :more_vert do
-            menu id: :left_menu do
+            menu do
               item 'Some Dialog Action' do
                 event :click do
-                  hide :left_menu
+                  dialog :hello_world
+                end
+              end
+              item 'Another Action'
+              divider
+              item 'Disabled Action', disabled: true
+              item 'Yet Another Action'
+            end
+          end
+          button icon: :more_vert do
+            menu do
+              item 'Some Dialog Action' do
+                event :click do
                   dialog :hello_world
                 end
               end
