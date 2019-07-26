@@ -1,6 +1,7 @@
 import {VBaseContainer} from "./base-container";
-import {hookupComponents} from "./base-component";
+import {hookupComponents, VBaseComponent} from "./base-component";
 import {eventHandlerMixin} from './mixins/event-handler';
+import {visibilityObserverMixin} from "./mixins/visibility-observer";
 
 export function initGrid(e) {
     console.debug('\tGrid');
@@ -8,14 +9,28 @@ export function initGrid(e) {
     hookupComponents(e, '.v-column', VColumn, null);
 }
 
-export class VGrid extends eventHandlerMixin(VBaseContainer) {
+export class VGrid extends visibilityObserverMixin(
+    eventHandlerMixin(VBaseComponent)) {
+
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
+        this.recalcWhenVisible(this);
+    }
+
+    onShow() {
+        this.mdcComponent.layout();
     }
 }
 
-export class VColumn extends eventHandlerMixin(VBaseContainer) {
+export class VColumn extends visibilityObserverMixin(
+    eventHandlerMixin(VBaseComponent)) {
+
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
+        this.recalcWhenVisible(this);
+    }
+
+    onShow() {
+        this.mdcComponent.layout();
     }
 }
