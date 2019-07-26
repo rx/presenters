@@ -31766,6 +31766,8 @@ var VButton = function (_eventHandlerMixin) {
 
         var _this = _possibleConstructorReturn(this, (VButton.__proto__ || Object.getPrototypeOf(VButton)).call(this, element, mdcComponent));
 
+        mdcComponent.unbounded = true;
+
         _this.element.addEventListener('V:postStarted', function (e) {
             return _this.disable();
         });
@@ -49930,11 +49932,15 @@ var VIconToggle = function (_VBaseToggle) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_menu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__material_menu__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events__ = __webpack_require__(57);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -49969,8 +49975,22 @@ var VMenu = function (_eventHandlerMixin) {
             var menulink = anchor.querySelector('.v-menu-click');
             menulink.addEventListener('click', createMenuHandler(mdcComponent, element));
         }
+        // function createEventHandler(actionsData, root, vComponent) {
+        // this.element.addEventListener('V:actionsStarted', (e) => this.hide());
         return _this;
     }
+
+    _createClass(VMenu, [{
+        key: 'show',
+        value: function show() {
+            this.mdcComponent.open = true;
+        }
+    }, {
+        key: 'hide',
+        value: function hide() {
+            this.mdcComponent.open = false;
+        }
+    }]);
 
     return VMenu;
 }(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]));

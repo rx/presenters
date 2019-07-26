@@ -13,6 +13,8 @@ export class VButton extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
 
+        mdcComponent.unbounded = true;
+
         this.element.addEventListener('V:postStarted', (e) => this.disable());
         this.element.addEventListener('V:postFinished', (e) => this.enable());
     }
