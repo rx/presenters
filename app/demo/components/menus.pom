@@ -29,19 +29,6 @@ Voom::Presenters.define(:menus) do
               item 'Yet Another Action'
             end
           end
-          button icon: :more_vert do
-            menu do
-              item 'Some Dialog Action' do
-                event :click do
-                  dialog :hello_world
-                end
-              end
-              item 'Another Action'
-              divider
-              item 'Disabled Action', disabled: true
-              item 'Yet Another Action'
-            end
-          end
         end
       end
       column 5 do
