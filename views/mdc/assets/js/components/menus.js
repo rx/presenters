@@ -24,7 +24,7 @@ export class VMenu extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
 
-        var anchor = element.closest('.v-menu-anchor');
+        var anchor = element.closest('.mdc-menu-anchor');
         if (anchor) {
             var menulink = anchor.querySelector('.v-menu-click');
             menulink.addEventListener('click', createMenuHandler(mdcComponent, element));
