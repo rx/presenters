@@ -64532,8 +64532,13 @@ var VMenu = function (_eventHandlerMixin) {
             var menulink = anchor.querySelector('.v-menu-click');
             menulink.addEventListener('click', createMenuHandler(mdcComponent, element));
         }
-        // function createEventHandler(actionsData, root, vComponent) {
-        // this.element.addEventListener('V:actionsStarted', (e) => this.hide());
+
+        // Ensure that the menu surface closes when an item is clicked
+        element.addEventListener('click', function (event) {
+            if (_this.mdcComponent.open) {
+                _this.hide();
+            }
+        }, { capture: true });
         return _this;
     }
 

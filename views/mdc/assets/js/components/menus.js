@@ -28,9 +28,16 @@ export class VMenu extends eventHandlerMixin(VBaseComponent) {
         if (anchor) {
             var menulink = anchor.querySelector('.v-menu-click');
             menulink.addEventListener('click', createMenuHandler(mdcComponent, element));
+
+
         }
-        // function createEventHandler(actionsData, root, vComponent) {
-        // this.element.addEventListener('V:actionsStarted', (e) => this.hide());
+
+        // Ensure that the menu surface closes when an item is clicked
+        element.addEventListener('click', (event) => {
+            if(this.mdcComponent.open) {
+                this.hide()
+            }
+        }, { capture: true });
     }
 
     show() {
