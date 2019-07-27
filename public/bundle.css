@@ -10691,7 +10691,7 @@ a.mdc-list-item {
 .mdc-menu-item--selected .mdc-menu__selection-group-icon {
   display: inline; }
 
-.v-menu-anchor {
+.mdc-menu-anchor {
   display: inline; }
 
 .v-menu-link:hover, .v-menu-link:visited, .v-menu-link:link, .v-menu-link:active {
