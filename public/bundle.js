@@ -64511,7 +64511,6 @@ function createMenuHandler(menu, element) {
         menu.setAnchorMargin({ left: offset });
         menu.setAnchorCorner(placement);
         menu.open = !menu.open;
-        event.stopPropagation();
     };
 }
 

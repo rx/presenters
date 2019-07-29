@@ -12,7 +12,6 @@ function createMenuHandler(menu, element) {
         menu.setAnchorMargin({left: offset});
         menu.setAnchorCorner(placement);
         menu.open = !menu.open;
-        event.stopPropagation();
     };
 }
 
@@ -29,8 +28,6 @@ export class VMenu extends eventHandlerMixin(VBaseComponent) {
         if (anchor) {
             var menulink = anchor.querySelector('.v-menu-click');
             menulink.addEventListener('click', createMenuHandler(mdcComponent, element));
-
-
         }
 
         // Ensure that the menu surface closes when an item is clicked
