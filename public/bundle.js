@@ -64510,6 +64510,7 @@ function createMenuHandler(menu, element) {
         var placement = element.dataset.placement === 'contextual' ? __WEBPACK_IMPORTED_MODULE_0__material_menu__["Corner"].TOP_LEFT : __WEBPACK_IMPORTED_MODULE_0__material_menu__["Corner"].BOTTOM_LEFT;
         menu.setAnchorMargin({ left: offset });
         menu.setAnchorCorner(placement);
+        menu.setAbsolutePosition(event.clientX, event.clientY);
         menu.open = !menu.open;
     };
 }
@@ -64531,6 +64532,7 @@ var VMenu = function (_eventHandlerMixin) {
         if (anchor) {
             var menulink = anchor.querySelector('.v-menu-click');
             menulink.addEventListener('click', createMenuHandler(mdcComponent, element));
+            mdcComponent.hoistMenuToBody();
         }
 
         // Ensure that the menu surface closes when an item is clicked
@@ -64541,6 +64543,7 @@ var VMenu = function (_eventHandlerMixin) {
                 }
             }
         }, { capture: true });
+
         return _this;
     }
 
