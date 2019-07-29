@@ -49948,12 +49948,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function createMenuHandler(menu, element) {
-    return function () {
+    return function (event) {
         var offset = parseInt(element.dataset.rightOffset);
         var placement = element.dataset.placement === 'contextual' ? __WEBPACK_IMPORTED_MODULE_0__material_menu__["Corner"].TOP_LEFT : __WEBPACK_IMPORTED_MODULE_0__material_menu__["Corner"].BOTTOM_LEFT;
         menu.setAnchorMargin({ left: offset });
         menu.setAnchorCorner(placement);
         menu.open = !menu.open;
+        event.stopPropagation();
     };
 }
 

@@ -6,12 +6,13 @@ import {VEvents} from "./events";
 
 
 function createMenuHandler(menu, element) {
-    return function () {
+    return function (event) {
         let offset = parseInt(element.dataset.rightOffset);
         let placement = element.dataset.placement === 'contextual' ? Corner.TOP_LEFT : Corner.BOTTOM_LEFT;
         menu.setAnchorMargin({left: offset});
         menu.setAnchorCorner(placement);
         menu.open = !menu.open;
+        event.stopPropagation();
     };
 }
 
