@@ -33,7 +33,9 @@ export class VMenu extends eventHandlerMixin(VBaseComponent) {
         // Ensure that the menu surface closes when an item is clicked
         element.addEventListener('click', (event) => {
             if(this.mdcComponent.open) {
-                this.hide()
+                if(event.target.classList.contains('v-menu-link')) {
+                    this.hide()
+                }
             }
         }, { capture: true });
     }

@@ -64536,7 +64536,9 @@ var VMenu = function (_eventHandlerMixin) {
         // Ensure that the menu surface closes when an item is clicked
         element.addEventListener('click', function (event) {
             if (_this.mdcComponent.open) {
-                _this.hide();
+                if (event.target.classList.contains('v-menu-link')) {
+                    _this.hide();
+                }
             }
         }, { capture: true });
         return _this;
