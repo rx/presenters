@@ -11,6 +11,7 @@ function createMenuHandler(menu, element) {
         let placement = element.dataset.placement === 'contextual' ? Corner.TOP_LEFT : Corner.BOTTOM_LEFT;
         menu.setAnchorMargin({left: offset});
         menu.setAnchorCorner(placement);
+        menu.setAbsolutePosition(event.clientX, event.clientY);
         menu.open = !menu.open;
     };
 }
@@ -28,6 +29,7 @@ export class VMenu extends eventHandlerMixin(VBaseComponent) {
         if (anchor) {
             var menulink = anchor.querySelector('.v-menu-click');
             menulink.addEventListener('click', createMenuHandler(mdcComponent, element));
+            mdcComponent.hoistMenuToBody();
         }
 
         // Ensure that the menu surface closes when an item is clicked
@@ -38,6 +40,7 @@ export class VMenu extends eventHandlerMixin(VBaseComponent) {
                 }
             }
         }, { capture: true });
+
     }
 
     show() {
