@@ -8,9 +8,9 @@ gem 'pry', group: :development
 group :test do
   gem 'rspec'
   gem 'rspec-html-matchers'
-  gem 'watir', '~> 6.10.3'
-  gem "webdrivers", "~> 3.0"
-  gem 'watir-rspec'
+  gem 'watir', '~> 6.16'
+  gem 'webdrivers', '~> 4.1'
+  gem 'watir-rspec', '~> 3.0'
   gem 'rspec_junit_formatter'
   gem 'simplecov', require: false
 end

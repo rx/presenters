@@ -13,14 +13,15 @@
           <%= 'v-list-item--selectable' if line.selectable %>"
     id="<%= line.id %>"
     <%= draggable_attributes(line) %>
-    <%= drop_zone_attributes(line) %>
-    <%= erb :"components/event", :locals => {comp: line, events: line.events, parent_id: line.event_parent_id} %>>
+    <%= drop_zone_attributes(line) %>>
+  <%= erb :"components/list/hidden_field", :locals => {:line => line} %>
   <%= erb :"components/list/checkbox", :locals => {:line => line} %>
   <%= erb :"components/list/icon", :locals => {:line => line} %>
   <%= erb :"components/list/avatar", :locals => {:line => line} %>
-  <span class="mdc-list-item__text
+  <div class="v-list-content mdc-list-item__text
                <%= 'v-actionable' if line.events %>
-               <%= 'v-menu-click' if line.menu && line.actions.any? %>">
+               <%= 'v-menu-click' if line.menu && line.actions.any? %>"
+               <%= erb :"components/event", :locals => {comp: line, events: line.events, parent_id: line.event_parent_id} %>>
 
     <% if line.text %>
       <span class="<%= primary_text_class %>"><%= expand_text(line.text&.text, markdown: line.text&.markdown) %></span>
@@ -33,7 +34,7 @@
     <% if line.body %>
       <span class="mdc-list-item__secondary-text"><%= expand_text(line.body&.text, markdown: line.body&.markdown) %></span>
     <% end %>
-  </span>
+  </div>
   <%= erb :"components/list/actions", :locals => {:line => line} %>
 </li>
 <% if line.menu %>

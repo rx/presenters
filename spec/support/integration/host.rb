@@ -1,10 +1,12 @@
 module Support
   module Host
-    HOSTS = %w[127.0.0.1:9292 127.0.0.1:9393].freeze
+    HOSTS = %w[127.0.0.1 localhost].freeze
+    PORTS = %w[9292 9393].freeze
+    ADDRESSES = HOSTS.product(PORTS).map { |a| a.join(':') }.freeze
 
     def host
       ENV.fetch('INTEGRATION_HOST') do
-        host = HOSTS.find { |h| check_for_server(h) }
+        host = ADDRESSES.find { |a| check_for_server(a) }
         host ? "http://#{host}" : nil
       end
     end
@@ -17,8 +19,9 @@ module Support
       INSTRUCTIONS
     end
 
-    def check_for_server(host)
-      system("ps aux | grep [t]cp://#{host} > /dev/null")
+    def check_for_server(address)
+      _, port = address.split(':')
+      system("lsof -i :#{port} > /dev/null")
     end
 
   end
