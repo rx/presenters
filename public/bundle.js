@@ -64536,13 +64536,13 @@ var VMenu = function (_eventHandlerMixin) {
         }
 
         // Ensure that the menu surface closes when an item is clicked
-        // element.addEventListener('click', (event) => {
-        //     if(this.mdcComponent.open) {
-        //         if(event.target.classList.contains('v-menu-link')) {
-        //             this.hide()
-        //         }
-        //     }
-        // }, { capture: true });
+        element.addEventListener('click', function (event) {
+            if (_this.mdcComponent.open) {
+                if (event.target.classList.contains('v-menu-link')) {
+                    _this.hide();
+                }
+            }
+        }, { capture: true });
 
         return _this;
     }
