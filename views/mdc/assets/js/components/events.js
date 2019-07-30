@@ -53,7 +53,7 @@ export class VEvents {
             this.vComponent.actionsStarted(this);
         }
 
-        new VErrors(this.root, this.event).clearErrors();
+        new VErrors(this.root).clearErrors();
 
         pseries(fnlist).then((results) => {
             const result = results.pop();
@@ -209,5 +209,4 @@ function fireAfterLoad(e) {
         }
     }
 }
-
 

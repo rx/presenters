@@ -199,7 +199,8 @@ export class VErrors {
 
             return false;
         }
-        const newDiv = this.root.document.createElement('div');
+
+        const newDiv = this.root.createElement('div');
 
         newDiv.classList.add('v-error-message');
         newDiv.insertAdjacentHTML('beforeend', messages.join('<br>'));
@@ -215,11 +216,10 @@ export class VErrors {
     }
 
     findNearestErrorDiv() {
-        let errDiv = null;
-        if (this.event && this.event.path[0]) {
-            errDiv = this.event.path[0].closest('.v-errors');
+        if (this.event && this.event.target) {
+            return this.event.target.closest('.v-errors');
         }
 
-        return errDiv || this.root.querySelector('.v-errors');
+        return this.root.querySelector('.v-errors');
     }
 }
