@@ -1741,7 +1741,8 @@ var VErrors = function () {
 
                 return false;
             }
-            var newDiv = this.root.document.createElement('div');
+
+            var newDiv = this.root.createElement('div');
 
             newDiv.classList.add('v-error-message');
             newDiv.insertAdjacentHTML('beforeend', messages.join('<br>'));
@@ -1758,12 +1759,11 @@ var VErrors = function () {
     }, {
         key: 'findNearestErrorDiv',
         value: function findNearestErrorDiv() {
-            var errDiv = null;
-            if (this.event && this.event.path[0]) {
-                errDiv = this.event.path[0].closest('.v-errors');
+            if (this.event && this.event.target) {
+                return this.event.target.closest('.v-errors');
             }
 
-            return errDiv || this.root.querySelector('.v-errors');
+            return this.root.querySelector('.v-errors');
         }
     }]);
 
@@ -1998,7 +1998,7 @@ var VEvents = function () {
                 this.vComponent.actionsStarted(this);
             }
 
-            new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](this.root, this.event).clearErrors();
+            new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](this.root).clearErrors();
 
             pseries(fnlist).then(function (results) {
                 var result = results.pop();
@@ -40574,7 +40574,7 @@ var VPosts = function (_VBase) {
                 cancelable: false,
                 detail: this
             });
-            this.event.path[0].dispatchEvent(ev);
+            this.event.target.dispatchEvent(ev);
             // Manually build the FormData.
             // Passing in a <form> element (if available) would skip over
             // unchecked toggle elements, which would be unexpected if the user
@@ -40735,7 +40735,7 @@ var VPosts = function (_VBase) {
                             cancelable: false,
                             detail: { event: vEvent, result: result }
                         });
-                        vEvent.event.path[0].dispatchEvent(_ev);
+                        vEvent.event.target.dispatchEvent(_ev);
 
                         if (httpRequest.status >= 200 && httpRequest.status < 300) {
                             results.push(result);
@@ -40744,9 +40744,9 @@ var VPosts = function (_VBase) {
                         }
                         // Response is an html error page
                         else if (contentType && contentType.indexOf('text/html') !== -1) {
-                                root.document.open(contentType);
-                                root.document.write(httpRequest.responseText);
-                                root.document.close();
+                                root.open(contentType);
+                                root.write(httpRequest.responseText);
+                                root.close();
                                 results.push(result);
                                 resolve(results);
                             } else {
@@ -40758,7 +40758,7 @@ var VPosts = function (_VBase) {
                             cancelable: false,
                             detail: { event: vEvent, result: result }
                         });
-                        vEvent.event.path[0].dispatchEvent(evFinished);
+                        vEvent.event.target.dispatchEvent(evFinished);
                     }
                 };
                 // Set up our request
@@ -41588,23 +41588,12 @@ var VPluginEventAction = function () {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = getRoot;
 function getRoot(element) {
-    var e = element;
-    while (e && e.nodeType != 11) {
-        // 11 = DOCUMENT_FRAGMENT_NODE
-        e = e.parentNode;
+    if (element instanceof HTMLDocument) return element;
+    var rootElement = element.ownerDocument;
+    if (!rootElement) {
+        rootElement = element.shadowRoot();
     }
-    var shadowRoot = null;
-    if (e) {
-        shadowRoot = e.host.shadowRoot;
-    }
-
-    var documentRoot = null;
-    if (element.nodeType == 9) {
-        documentRoot = element;
-    }
-    var root = shadowRoot || documentRoot || element.ownerDocument;
-    root.document = documentRoot || element.ownerDocument;
-    return root;
+    return rootElement;
 }
 
 /***/ }),
