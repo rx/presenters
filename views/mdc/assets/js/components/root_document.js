@@ -12,5 +12,7 @@ export default function getRoot(element) {
     if (element.nodeType == 9) {
         documentRoot = element;
     }
-    return shadowRoot || documentRoot || element.ownerDocument;
+    const root = shadowRoot || documentRoot || element.ownerDocument;
+    root.document = documentRoot || element.ownerDocument;
+    return root;
 }

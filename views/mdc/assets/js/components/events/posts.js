@@ -37,7 +37,7 @@ export class VPosts extends VBase {
             cancelable: false,
             detail: this,
         });
-        this.event.target.dispatchEvent(ev);
+        this.event.path[0].dispatchEvent(ev);
         // Manually build the FormData.
         // Passing in a <form> element (if available) would skip over
         // unchecked toggle elements, which would be unexpected if the user
@@ -125,7 +125,7 @@ export class VPosts extends VBase {
                         cancelable: false,
                         detail: {event: vEvent, result: result},
                     });
-                    vEvent.event.target.dispatchEvent(ev);
+                    vEvent.event.path[0].dispatchEvent(ev);
 
                     if (httpRequest.status >= 200 && httpRequest.status < 300) {
                         results.push(result);
@@ -135,9 +135,9 @@ export class VPosts extends VBase {
                     }
                     // Response is an html error page
                     else if (contentType && contentType.indexOf('text/html') !== -1) {
-                        root.open(contentType);
-                        root.write(httpRequest.responseText);
-                        root.close();
+                        root.document.open(contentType);
+                        root.document.write(httpRequest.responseText);
+                        root.document.close();
                         results.push(result);
                         resolve(results);
                     }
@@ -150,7 +150,7 @@ export class VPosts extends VBase {
                         cancelable: false,
                         detail: {event: vEvent, result: result},
                     });
-                    vEvent.event.target.dispatchEvent(evFinished);
+                    vEvent.event.path[0].dispatchEvent(evFinished);
                 }
             };
             // Set up our request
