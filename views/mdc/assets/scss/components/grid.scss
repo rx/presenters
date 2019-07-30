@@ -25,22 +25,30 @@
     $gutter: map-get($mdc-layout-grid-default-gutter, $size);
 
     $tops: (
-            top: $gutter,
+            top3: $gutter,
+            top2: $gutter/2,
+            top1: $gutter/4,
             top0: 0
     );
 
     $rights: (
-            right: $gutter,
+            right3: $gutter,
+            right2: $gutter/2,
+            right1: $gutter/4,
             right0: 0
     );
 
     $bottoms: (
-            bottom: $gutter,
+            bottom3: $gutter,
+            bottom2: $gutter/2,
+            bottom1: $gutter/4,
             bottom0: 0
     );
 
     $lefts: (
-            left: $gutter,
+            left3: $gutter,
+            left2: $gutter/2,
+            left1: $gutter/4,
             left0: 0
     );
 
@@ -48,20 +56,8 @@
       @each $right, $rsize in $rights {
         @each $bottom, $bsize in $bottoms {
           @each $left, $lsize in $lefts {
-            .v-grid__padding-#{$bottom}-#{$left}-#{$right}-#{$top} {
-              padding: $tsize $rsize $bsize $lsize;
-            }
-          }
-        }
-      }
-    }
-
-    @each $top, $tsize in $tops {
-      @each $right, $rsize in $rights {
-        @each $bottom, $bsize in $bottoms {
-          @each $left, $lsize in $lefts {
-            .v-col__padding-#{$bottom}-#{$left}-#{$right}-#{$top} {
-              padding: $tsize/2 $rsize/2 $bsize/2 $lsize/2;
+            .v-padding-#{$bottom}-#{$left}-#{$right}-#{$top} {
+              padding: $tsize $rsize $bsize $lsize !important;
             }
           }
         }

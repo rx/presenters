@@ -12,7 +12,7 @@ module Voom
 
           BUTTON_TYPES = %i(raised flat fab icon)
 
-          attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :position, :full_width, :hidden, :padding, :dense
+          attr_accessor :text, :icon, :button_type, :color, :disabled, :size, :position, :full_width, :hidden, :padding
 
           def initialize(type: nil, **attribs_, &block)
             @button_type = h(type) || ((attribs_[:icon] && !attribs_[:text]) ? :icon : nil) || :flat
@@ -26,8 +26,7 @@ module Voom
             @full_width = attribs.delete(:full_width) {false}
             @position = Array(default_position).compact
             padding = attribs.delete(:padding) {nil}
-            @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
-            @dense = attribs.delete(:dense) { true }
+            @padding = validate_padding(coerce_padding(padding, default_level: 1)).uniq if padding != nil
             expand!
             @event_parent_id = self.parent(:form)&.id || id
           end
