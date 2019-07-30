@@ -26,7 +26,7 @@ module Voom
             @full_width = attribs.delete(:full_width) {false}
             @position = Array(default_position).compact
             padding = attribs.delete(:padding) {nil}
-            @padding = validate_padding(coerce_padding(padding, default_level: 1)).uniq if padding != nil
+            @padding = validate_padding(coerce_padding(padding, default_level: 2)).uniq if padding != nil
             expand!
             @event_parent_id = self.parent(:form)&.id || id
           end
