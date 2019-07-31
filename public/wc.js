@@ -70,6 +70,7 @@
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VBaseComponent; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = hookupComponents;
+/* harmony export (immutable) */ __webpack_exports__["c"] = unhookupComponents;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_errors__ = __webpack_require__(20);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -88,6 +89,14 @@ var VBaseComponent = function () {
     }
 
     _createClass(VBaseComponent, [{
+        key: 'destroy',
+        value: function destroy() {
+            // Work in progress - this will ultimately be cleaning up other items like events, etc. (more to come)
+            if (this.mdcComponent && this.mdcComponent.destroy) {
+                this.mdcComponent.destroy();
+            }
+        }
+    }, {
         key: 'validate',
         value: function validate(formData) {
             return true;
@@ -226,6 +235,37 @@ function hookupComponents(root, selector, VoomClass, MdcClass) {
         } finally {
             if (_didIteratorError) {
                 throw _iteratorError;
+            }
+        }
+    }
+}
+
+function unhookupComponents(root, selector) {
+    var components = Array.from(root.querySelectorAll(selector));
+
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+        for (var _iterator2 = components[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var component = _step2.value;
+
+            if (component.vComponent) {
+                component.vComponent.destroy();
+            }
+        }
+    } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                _iterator2.return();
+            }
+        } finally {
+            if (_didIteratorError2) {
+                throw _iteratorError2;
             }
         }
     }
@@ -1917,6 +1957,7 @@ var visibilityObserverMixin = function visibilityObserverMixin(Base) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VEvents; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = initEvents;
+/* harmony export (immutable) */ __webpack_exports__["c"] = removeEvents;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_loads__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_posts__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replaces__ = __webpack_require__(106);
@@ -2159,23 +2200,46 @@ function initEvents(e) {
     fireAfterLoad(e);
 }
 
-function fireAfterLoad(e) {
+function removeEvents(elem) {
+    console.debug('\tuninitEvents');
+
     var _iteratorNormalCompletion2 = true;
     var _didIteratorError2 = false;
     var _iteratorError2 = undefined;
 
     try {
-        for (var _iterator2 = getEventElements(e)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        for (var _iterator2 = getEventElements(elem)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
             var eventElem = _step2.value;
 
             var eventsData = JSON.parse(eventElem.dataset.events);
             for (var j = 0; j < eventsData.length; j++) {
                 var eventData = eventsData[j];
                 var eventName = eventData[0];
-                if (eventName === 'after_init') {
-                    var event = new Event('after_init');
-                    // Dispatch the event.
-                    eventElem.dispatchEvent(event);
+                var eventOptions = eventData[2];
+                eventOptions.passive = true;
+                var _iteratorNormalCompletion3 = true;
+                var _didIteratorError3 = false;
+                var _iteratorError3 = undefined;
+
+                try {
+                    for (var _iterator3 = eventElem.eventsHandler[eventName][Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                        var handler = _step3.value;
+
+                        eventElem.removeEventListener(eventName, handler, eventOptions);
+                    }
+                } catch (err) {
+                    _didIteratorError3 = true;
+                    _iteratorError3 = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                            _iterator3.return();
+                        }
+                    } finally {
+                        if (_didIteratorError3) {
+                            throw _iteratorError3;
+                        }
+                    }
                 }
             }
         }
@@ -2190,6 +2254,42 @@ function fireAfterLoad(e) {
         } finally {
             if (_didIteratorError2) {
                 throw _iteratorError2;
+            }
+        }
+    }
+}
+
+function fireAfterLoad(e) {
+    var _iteratorNormalCompletion4 = true;
+    var _didIteratorError4 = false;
+    var _iteratorError4 = undefined;
+
+    try {
+        for (var _iterator4 = getEventElements(e)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+            var eventElem = _step4.value;
+
+            var eventsData = JSON.parse(eventElem.dataset.events);
+            for (var j = 0; j < eventsData.length; j++) {
+                var eventData = eventsData[j];
+                var eventName = eventData[0];
+                if (eventName === 'after_init') {
+                    var event = new Event('after_init');
+                    // Dispatch the event.
+                    eventElem.dispatchEvent(event);
+                }
+            }
+        }
+    } catch (err) {
+        _didIteratorError4 = true;
+        _iteratorError4 = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                _iterator4.return();
+            }
+        } finally {
+            if (_didIteratorError4) {
+                throw _iteratorError4;
             }
         }
     }
@@ -40928,6 +41028,7 @@ function encode(value) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__action_parameter__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initialize__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__uninitialize__ = __webpack_require__(179);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -40937,6 +41038,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -41031,6 +41133,8 @@ var VReplaces = function (_VBase) {
                                     // Array.from clones the entries, creating a
                                     // "dead" list.
                                     var newNodes = Array.from(htmlToNodes(httpRequest.responseText, root));
+
+                                    Object(__WEBPACK_IMPORTED_MODULE_3__uninitialize__["a" /* uninitialize */])(nodeToReplace);
 
                                     nodeToReplace.replaceWith.apply(nodeToReplace, _toConsumableArray(newNodes));
 
@@ -49926,6 +50030,7 @@ var VIconToggle = function (_VBaseToggle) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["b"] = uninitMenus;
 /* harmony export (immutable) */ __webpack_exports__["a"] = initMenus;
 /* unused harmony export VMenu */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_menu__ = __webpack_require__(63);
@@ -49934,6 +50039,8 @@ var VIconToggle = function (_VBaseToggle) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events__ = __webpack_require__(28);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -49946,59 +50053,84 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
 function createMenuHandler(menu, element) {
     return function (event) {
         var offset = parseInt(element.dataset.rightOffset);
         var placement = element.dataset.placement === 'contextual' ? __WEBPACK_IMPORTED_MODULE_0__material_menu__["Corner"].TOP_LEFT : __WEBPACK_IMPORTED_MODULE_0__material_menu__["Corner"].BOTTOM_LEFT;
+        menu.setAbsolutePosition(event.clientX, event.clientY);
         menu.setAnchorMargin({ left: offset });
         menu.setAnchorCorner(placement);
-        menu.setAbsolutePosition(event.clientX, event.clientY);
         menu.open = !menu.open;
     };
 }
 
-function initMenus(e) {
+function createSurfaceClickHandler(mdcMenu) {
+    return function (event) {
+        if (mdcMenu.open) {
+            if (event.target.classList.contains('v-menu-link')) {
+                mdcMenu.open = false;
+            }
+        }
+    };
+}
+
+function uninitMenus(root) {
+    console.debug('\tUninit Menus');
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* unhookupComponents */])(root, '.v-menu');
+}
+
+function initMenus(root) {
     console.debug('\tMenus');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-menu', VMenu, __WEBPACK_IMPORTED_MODULE_0__material_menu__["MDCMenu"]);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(root, '.v-menu', VMenu, null);
 }
 
 var VMenu = function (_eventHandlerMixin) {
     _inherits(VMenu, _eventHandlerMixin);
 
-    function VMenu(element, mdcComponent) {
+    function VMenu(element) {
         _classCallCheck(this, VMenu);
 
-        var _this = _possibleConstructorReturn(this, (VMenu.__proto__ || Object.getPrototypeOf(VMenu)).call(this, element, mdcComponent));
+        var _this = _possibleConstructorReturn(this, (VMenu.__proto__ || Object.getPrototypeOf(VMenu)).call(this, element));
 
-        var anchor = element.closest('.mdc-menu-anchor');
-        if (anchor) {
-            var menulink = anchor.querySelector('.v-menu-click');
-            menulink.addEventListener('click', createMenuHandler(mdcComponent, element));
-            mdcComponent.hoistMenuToBody();
-        }
+        _this.hoistedMenuElement = element.querySelector('.mdc-menu');
+        _this.mdcComponent = new __WEBPACK_IMPORTED_MODULE_0__material_menu__["MDCMenu"](_this.hoistedMenuElement);
+
+        Object(__WEBPACK_IMPORTED_MODULE_3__events__["b" /* initEvents */])(_this.hoistedMenuElement);
 
         // Ensure that the menu surface closes when an item is clicked
-        element.addEventListener('click', function (event) {
-            if (_this.mdcComponent.open) {
-                if (event.target.classList.contains('v-menu-link')) {
-                    _this.hide();
-                }
-            }
-        }, { capture: true });
+        _this.hoistedMenuElement.addEventListener('click', createSurfaceClickHandler(_this.mdcComponent), { capture: true });
 
+        var link = _this.menulink();
+        if (link) {
+            link.addEventListener('click', createMenuHandler(_this.mdcComponent, element));
+        }
+        _this.mdcComponent.hoistMenuToBody();
         return _this;
     }
 
     _createClass(VMenu, [{
-        key: 'show',
-        value: function show() {
-            this.mdcComponent.open = true;
+        key: "destroy",
+        value: function destroy() {
+            _get(VMenu.prototype.__proto__ || Object.getPrototypeOf(VMenu.prototype), "destroy", this).call(this);
+            Object(__WEBPACK_IMPORTED_MODULE_3__events__["c" /* removeEvents */])(this.hoistedMenuElement);
+
+            var link = this.menulink();
+            if (link) {
+                link.removeEventListener('click', createMenuHandler(this.mdcComponent, this.element));
+            }
+
+            this.hoistedMenuElement.removeEventListener('click', createSurfaceClickHandler(), { capture: true });
+            this.hoistedMenuElement.parentNode.removeChild(this.hoistedMenuElement);
         }
     }, {
-        key: 'hide',
-        value: function hide() {
-            this.mdcComponent.open = false;
+        key: "menulink",
+        value: function menulink() {
+            var anchor = this.element.closest('.mdc-menu-anchor');
+            var link = null;
+            if (anchor) {
+                link = anchor.querySelector('.v-menu-click');
+            }
+            return link;
         }
     }]);
 
@@ -92570,6 +92702,22 @@ componentHandler.register({
 });
 }());
 
+
+/***/ }),
+/* 178 */,
+/* 179 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = uninitialize;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__menus__ = __webpack_require__(129);
+
+
+function uninitialize(root) {
+    console.debug('Uninitializing components');
+
+    Object(__WEBPACK_IMPORTED_MODULE_0__menus__["b" /* uninitMenus */])(root);
+}
 
 /***/ })
 /******/ ]);

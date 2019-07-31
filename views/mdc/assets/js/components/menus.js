@@ -1,53 +1,76 @@
-import {MDCMenu} from '@material/menu';
-import {Corner} from '@material/menu';
-import {hookupComponents, VBaseComponent} from "./base-component";
+import {MDCMenu, Corner} from '@material/menu';
+import {hookupComponents, unhookupComponents, VBaseComponent} from "./base-component";
 import {eventHandlerMixin} from "./mixins/event-handler";
-import {VEvents} from "./events";
-
+import {initEvents, removeEvents} from "./events"
 
 function createMenuHandler(menu, element) {
     return function (event) {
         let offset = parseInt(element.dataset.rightOffset);
         let placement = element.dataset.placement === 'contextual' ? Corner.TOP_LEFT : Corner.BOTTOM_LEFT;
+        menu.setAbsolutePosition(event.clientX, event.clientY);
         menu.setAnchorMargin({left: offset});
         menu.setAnchorCorner(placement);
-        menu.setAbsolutePosition(event.clientX, event.clientY);
         menu.open = !menu.open;
     };
 }
 
-export function initMenus(e) {
+function createSurfaceClickHandler(mdcMenu) {
+    return function (event) {
+        if (mdcMenu.open) {
+            if (event.target.classList.contains('v-menu-link')) {
+                mdcMenu.open = false;
+            }
+        }
+    };
+}
+
+export function uninitMenus(root) {
+    console.debug('\tUninit Menus');
+    unhookupComponents(root, '.v-menu');
+}
+
+export function initMenus(root) {
     console.debug('\tMenus');
-    hookupComponents(e, '.v-menu', VMenu, MDCMenu);
+    hookupComponents(root, '.v-menu', VMenu, null);
 }
 
 export class VMenu extends eventHandlerMixin(VBaseComponent) {
-    constructor(element, mdcComponent) {
-        super(element, mdcComponent);
+    constructor(element) {
+        super(element);
+        this.hoistedMenuElement = element.querySelector('.mdc-menu');
+        this.mdcComponent = new MDCMenu(this.hoistedMenuElement);
 
-        var anchor = element.closest('.mdc-menu-anchor');
-        if (anchor) {
-            var menulink = anchor.querySelector('.v-menu-click');
-            menulink.addEventListener('click', createMenuHandler(mdcComponent, element));
-            mdcComponent.hoistMenuToBody();
-        }
+        initEvents(this.hoistedMenuElement);
 
         // Ensure that the menu surface closes when an item is clicked
-        element.addEventListener('click', (event) => {
-            if(this.mdcComponent.open) {
-                if(event.target.classList.contains('v-menu-link')) {
-                    this.hide()
-                }
-            }
-        }, { capture: true });
+        this.hoistedMenuElement.addEventListener('click', createSurfaceClickHandler(this.mdcComponent), { capture: true });
 
+        var link = this.menulink();
+        if (link) {
+            link.addEventListener('click', createMenuHandler(this.mdcComponent, element));
+        }
+        this.mdcComponent.hoistMenuToBody();
     }
 
-    show() {
-        this.mdcComponent.open = true;
+    destroy() {
+        super.destroy();
+        removeEvents(this.hoistedMenuElement);
+
+        var link = this.menulink();
+        if (link) {
+            link.removeEventListener('click', createMenuHandler(this.mdcComponent, this.element));
+        }
+
+        this.hoistedMenuElement.removeEventListener('click', createSurfaceClickHandler(), { capture: true });
+        this.hoistedMenuElement.parentNode.removeChild(this.hoistedMenuElement);
     }
 
-    hide() {
-        this.mdcComponent.open = false;
+    menulink() {
+        var anchor = this.element.closest('.mdc-menu-anchor');
+        var link = null;
+        if (anchor) {
+            link = anchor.querySelector('.v-menu-click');
+        }
+        return link;
     }
 }

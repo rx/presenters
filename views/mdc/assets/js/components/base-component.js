@@ -8,6 +8,13 @@ export class VBaseComponent {
         this.element.classList.add('v-component');
     }
 
+    destroy() {
+        // Work in progress - this will ultimately be cleaning up other items like events, etc. (more to come)
+        if(this.mdcComponent && this.mdcComponent.destroy) {
+            this.mdcComponent.destroy();
+        }
+    }
+
     validate(formData) {
         return true;
     }
@@ -113,3 +120,12 @@ export function hookupComponents(root, selector, VoomClass, MdcClass) {
     }
 }
 
+export function unhookupComponents(root, selector) {
+    const components = Array.from(root.querySelectorAll(selector));
+
+    for (const component of components) {
+        if (component.vComponent) {
+            component.vComponent.destroy();
+        }
+    }
+}

@@ -1,4 +1,7 @@
 <% if comp %>
+  <div class='v-menu'
+       data-placement="<%= comp.placement %>"
+       <%= "data-right-offset=9999" if eq(comp.position, :right) %>>
   <% if comp.label %>
     <div class="mdc-menu-anchor">
       <span class="v-menu-click">
@@ -7,11 +10,9 @@
       </span>
   <% end %>
   <div id="<%= comp.id %>"
-       class="mdc-menu mdc-menu-surface v-menu
+       class="mdc-menu mdc-menu-surface
               <%='mdc-menu--open' if comp.open %>"
-       style="position: absolute;" tabindex="-1"
-       data-placement="<%= comp.placement %>"
-       <%= "data-right-offset=9999" if eq(comp.position, :right) %>>
+       style="position: absolute;" tabindex="-1">
     <ul class="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
       <% comp.items.each do |item| %>
         <% unless eq(item.type, :divider) %>
@@ -34,4 +35,5 @@
   <% if comp.label %>
     </div>
   <% end %>
+  </div>
 <% end %>
