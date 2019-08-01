@@ -1,11 +1,6 @@
 @import "@material/list/mdc-list";
 @import "@material/theme/mixins";
 
-.v-list-content {
-  display: inline;
-  width: 100%;
-}
-
 .v-list-item--with-avatar {
   @include mdc-theme-prop(color, white);
   @include mdc-theme-prop(background-color, text-icon-on-background);
