@@ -10,7 +10,8 @@
 <li class="v-list-item mdc-list-item
           <%= 'mdc-list-item--selected' if line.selected %>
           <%= 'v-menu-click' if line.menu && line.actions.empty?%>
-          <%= 'v-list-item--selectable' if line.selectable %>"
+          <%= 'v-list-item--selectable' if line.selectable %>
+          <%= 'v-dnd-draggable' if line.draggable %>"
     id="<%= line.id %>"
     <%= draggable_attributes(line) %>
     <%= drop_zone_attributes(line) %>
