@@ -195,6 +195,23 @@ export function initEvents(e) {
     fireAfterLoad(e);
 }
 
+export function removeEvents(elem) {
+    console.debug('\tuninitEvents');
+
+    for (const eventElem of getEventElements(elem)) {
+        let eventsData = JSON.parse(eventElem.dataset.events);
+        for (var j = 0; j < eventsData.length; j++) {
+            let eventData = eventsData[j];
+            let eventName = eventData[0];
+            let eventOptions = eventData[2];
+            eventOptions.passive = true;
+            for( const handler of eventElem.eventsHandler[eventName]) {
+                eventElem.removeEventListener(eventName, handler,  eventOptions);
+            }
+        }
+    }
+}
+
 function fireAfterLoad(e) {
     for (const eventElem of getEventElements(e)) {
         var eventsData = JSON.parse(eventElem.dataset.events);

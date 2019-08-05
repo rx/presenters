@@ -11197,10 +11197,6 @@ a.mdc-list-item {
   /* @alternate */
   color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87)); }
 
-.v-list-content {
-  display: inline;
-  width: 100%; }
-
 .v-list-item--with-avatar {
   color: white;
   background-color: rgba(0, 0, 0, 0.38);

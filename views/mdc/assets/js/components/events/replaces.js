@@ -1,6 +1,7 @@
 import {expandParams} from './action_parameter';
 import {VBase} from './base';
 import {initialize} from '../initialize';
+import {uninitialize} from '../uninitialize';
 
 const MOUSE_DELAY_AMOUNT = 0; // ms
 const KEYBOARD_DELAY_AMOUNT = 500; // ms
@@ -89,6 +90,8 @@ export class VReplaces extends VBase {
                                     httpRequest.responseText,
                                     root
                                 ));
+
+                                uninitialize(nodeToReplace);
 
                                 nodeToReplace.replaceWith(...newNodes);
 
