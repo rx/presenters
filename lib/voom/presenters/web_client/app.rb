@@ -23,6 +23,7 @@ module Voom
         set :router_, WebClient::Router
         set :bind, '0.0.0.0'
         set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE'] || 'mdc')}
+        set :dump_errors, false
         configure do
           enable :logging
         end
@@ -180,6 +181,7 @@ module Voom
 
         private
 
+        # analogous to Voom::Presenters::Api::App#render_presenter
         def render_presenter(presenter)
           @grid_nesting = Integer(params[:grid_nesting] || 0)
 
@@ -188,6 +190,14 @@ module Voom
             layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
             response.headers['X-Frame-Options'] = 'ALLOWALL' if ENV['ALLOWALL_FRAME_OPTIONS']
             erb :web, layout: layout
+          rescue StandardError => e
+            Presenters::Settings.config.presenters.error_logger.call(
+              @env['rack.errors'],
+              e,
+              params,
+              presenter.name
+            )
+            raise e
           rescue Presenters::Errors::Unprocessable => e
             content_type :json
             status 422

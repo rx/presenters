@@ -63,6 +63,13 @@ unless defined?(Voom::Presenters::Settings)
               end
             end
           end
+          setting :error_logger, ->(file, e, _params, _presenter_name) {
+            msg = [
+              "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")} - #{e.class} - #{e.message}:",
+              *e.backtrace
+            ].join("\n\t")
+            file.puts(msg)
+          }
         end
 
         def self.default(type, key)

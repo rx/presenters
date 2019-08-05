@@ -62,9 +62,27 @@ Voom::Presenters.define(:lists) do
         line do
           text actor.name
           avatar :person
+
+          event :click do
+            loads 'http://www.yahoo.com', target: '_blank'
+          end
+
           actions do
             icon :stardo do
               tooltip 'Person'
+            end
+            button icon: :more_vert do
+              menu position: :right do
+                item 'Some Action' do
+                  event :click do
+                    snackbar 'Hey there'
+                  end
+                end
+                item 'Another Action'
+                divider
+                item 'Disabled Action', disabled: true
+                item 'Yet Another Action'
+              end
             end
           end
         end
