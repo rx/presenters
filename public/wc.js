@@ -85418,6 +85418,7 @@ function createDragStartHandler() {
                 e.dataTransfer.setData(zone, '');
             }
             e.dataTransfer.effectAllowed = 'move';
+            e.target.classList.remove('v-dnd-draggable');
             e.target.classList.add('v-dnd-moving');
         }
     };
@@ -85465,6 +85466,7 @@ function createDropHandler() {
         }
         this.classList.remove('v-dnd-over');
         this.classList.remove('v-dnd-moving');
+        this.classList.add('v-dnd-draggable');
         return false;
     };
 }
@@ -85473,6 +85475,7 @@ function createDragEndHandler() {
     return function (e) {
         this.classList.remove('v-dnd-over');
         this.classList.remove('v-dnd-moving');
+        this.classList.add('v-dnd-draggable');
     };
 }
 

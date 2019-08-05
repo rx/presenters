@@ -13820,7 +13820,11 @@ select {
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
-  -ms-user-select: none; }
+  -ms-user-select: none;
+  cursor: move; }
+
+.v-dnd-draggable {
+  cursor: grab; }
 
 .v-dnd-over {
   border: 2px dashed #000; }
