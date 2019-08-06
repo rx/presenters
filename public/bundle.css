@@ -5953,23 +5953,6 @@ h1.v-page-title {
     font-size: 2.125rem;
     vertical-align: middle; }
 
-#cart_menu {
-  position: relative; }
-  #cart_menu .mdl-badge {
-    position: absolute;
-    left: 30px;
-    top: 8px;
-    z-index: 9; }
-  #cart_menu .v-menu-click {
-    font-size: 35px;
-    width: 50px;
-    height: 50px; }
-    #cart_menu .v-menu-click .material-icons {
-      transform: translate(-19px, -19px);
-      font-size: 38px;
-      line-height: 38px;
-      width: 38px; }
-
 .mdl-layout__drawer {
   background-color: #37424a;
   border-right: 1px solid #37424a;
