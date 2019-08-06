@@ -10874,6 +10874,10 @@ a.mdc-list-item {
 .v-typography-position-center {
   text-align: center; }
 
+.v-typography > .v-icon-size-default {
+  font-size: inherit;
+  line-height: inherit; }
+
 @keyframes mdc-select-float-native-control {
   0% {
     transform: translateY(8px);
