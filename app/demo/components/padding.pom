@@ -1,0 +1,76 @@
+require_relative '../helpers/indented_grid'
+
+Voom::Presenters.define(:layouts) do
+  helpers Demo::Helpers::IndentedGrid
+
+  attach :top_nav
+  attach :component_drawer
+  page_title 'Layouts'
+
+  indented_grid do
+
+    headline 'Grid'
+
+    grid do
+      (1..12).each do |size|
+        column 1, color: :lightgray do
+          body '1'
+        end
+      end
+    end
+
+    grid do
+      (1..3).each do |size|
+        column 4, color: :lightgray do
+          body '4'
+        end
+      end
+    end
+
+    grid do
+      column 6, color: :lightgray do
+        body '6 wide with sub-grid of 12'
+        grid do
+          (1..12).each do |size|
+            column 1, color: :white do
+              body '1'
+            end
+          end
+        end
+      end
+      column 4, color: :lightgray do
+        body '4'
+      end
+      column 2, color: :lightgray do
+        body '2'
+      end
+    end
+
+    headline 'Grid Padding'
+    body 'You can control the grid padding with the `padding` attribute.',
+    'By default a top most grid has padding on all four sides.',
+     'A nested grid has top and bottom padding only. (No right and left padding.)',
+     'Vaid values are `:all`, `:none` and an array that specifies sides to pad: `[:top, :right, :bottom, :left]`. (Same as `:none`)',
+    'You can also pad columns. Column padding is half as wide as grid padding.  '
+    grid padding: :top do
+      column 6, color: :lightgray do
+        body '6 wide with sub-grid of 12'
+        grid padding: :none do
+          (1..12).each do |size|
+            column 1, color: :white do
+              body '1'
+            end
+          end
+        end
+      end
+      column 4, color: :lightgray, padding: [:top, :left, :bottom] do
+        body '4'
+      end
+      column 2, color: :lightgray do
+        body '2'
+      end
+    end
+
+    attach :code, file: __FILE__
+  end
+end
