@@ -13,6 +13,7 @@
             <%= position_classes %>
             <%= _padding_classes_(comp.padding) %>
             <%= 'v-hidden' if comp.hidden %>
+            <%= 'v-dnd-draggable' if comp.draggable %>
             <%= comp.float  ? 'v-content--float' : 'v-content--relative'%>"
      <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
        style="text-align: <%= comp.text_align %>;
