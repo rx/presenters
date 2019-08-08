@@ -34,6 +34,16 @@ Voom::Presenters.define(:avatars) do
         end
       end
 
+      grid do
+        column 6 do
+          headline 'Colors'
+          body '**darkslategrey icon with custom green background**'
+          avatar :person, size: :large, background_color: :green, color: :darkslategrey
+          body '**translucent image with deep pink background**'
+          avatar 'img/demo/rx.png', background_color: :deeppink, size: :large
+        end
+      end
+
     end
   end
 

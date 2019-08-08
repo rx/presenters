@@ -5,6 +5,7 @@ require 'voom/presenters/dsl/components/mixins/content'
 require 'voom/presenters/dsl/components/mixins/append'
 require 'voom/presenters/dsl/components/mixins/attaches'
 require 'voom/presenters/dsl/components/mixins/event'
+require 'voom/presenters/dsl/components/mixins/color'
 
 module Voom
   module Presenters
@@ -15,13 +16,20 @@ module Voom
           include Mixins::Append
           include Mixins::Attaches
           include Mixins::Event
+          include Mixins::Color
 
-          attr_reader :lines, :lines_only, :color, :border, :selectable, :total_lines, :dense
+          attr_reader :lines,
+                      :lines_only,
+                      :color,
+                      :border,
+                      :selectable,
+                      :total_lines,
+                      :dense
           attr_accessor :components
 
           def initialize(**attribs_, &block)
             super(type: :list, **attribs_, &block)
-            @color  = attribs.delete(:color) { nil }
+            @color = validate_color(attribs.delete(:color) { nil })
             @border = attribs.delete(:border) { nil }
 
             @lines_only = attribs.delete(:lines_only) { false }

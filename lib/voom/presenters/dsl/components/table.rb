@@ -4,6 +4,7 @@ require 'voom/presenters/dsl/components/mixins/tooltips'
 require 'voom/presenters/dsl/components/mixins/chips'
 require 'voom/presenters/dsl/components/mixins/selects'
 require 'voom/presenters/dsl/components/mixins/icons'
+require 'voom/presenters/dsl/components/mixins/color'
 
 module Voom
   module Presenters
@@ -39,12 +40,15 @@ module Voom
           end
 
           class Row < Base
-            attr_accessor :columns, :color, :checkbox
+            include Mixins::Color
+            attr_accessor :columns,
+                          :color,
+                          :checkbox
 
             def initialize(type:, **attribs_, &block)
               super(type: type, **attribs_, &block)
               @columns = []
-              @color = attribs.delete(:color)
+              @color = validate_color(attribs.delete(:color) { nil })
               self.checkbox(attribs.slice(:name, :value, :checked)) if @parent.selectable
               expand!
             end

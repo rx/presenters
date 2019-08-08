@@ -11,6 +11,7 @@
        <%= drop_zone_attributes(comp) %>
        class="v-content
             <%= position_classes %>
+            <%= color_classname(comp, :background) %>
             <%= _padding_classes_(comp.padding, subclass: comp.dense ? :col : :grid) %>
             <%= 'v-hidden' if comp.hidden %>
             <%= 'v-dnd-draggable' if comp.draggable %>
@@ -19,7 +20,8 @@
        style="text-align: <%= comp.text_align %>;
              <%= "display: inline;" if comp.inline %>
              <%= "width: #{comp.width};" if comp.width %>
-             <%= "height : #{comp.height };" if comp.height  %>"
+             <%= "height: #{comp.height };" if comp.height  %>
+             <%= "#{color_style(comp,:background)}" if comp.color%>"
        data-is-container>
     <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(top both)) %>
     <% if comp.shows_errors %>

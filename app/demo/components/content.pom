@@ -13,7 +13,7 @@ Voom::Presenters.define(:content) do
         headline 'Posts in Form'
         body 'This demonstrates that a change event on **ANY** form input will send all the form inputs to the event action. '\
              'This works with posts and replace actions'
-        content do
+        content color: :green do
           text_field name: :myfield do
             label 'Data to post'
           end

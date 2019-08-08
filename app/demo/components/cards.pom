@@ -48,7 +48,7 @@ Voom::Presenters.define(:cards) do
 
     headline 'Event'
     card width: '330px' do
-      media height: '230px', color: :MidnightBlue do
+      media height: '230px', color: :midnightblue do
         title ['Featured event:',
                "May 24, 2016",
                "7-11pm"],

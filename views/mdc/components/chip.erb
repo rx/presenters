@@ -26,7 +26,7 @@
        <% if comp.value %>
          data-value="<%= comp.value %>"
        <% end %>
-       style = "<%= color_style(comp, 'background-') %>"
+       style = "<%= color_style(comp, :background) %>"
        tabindex="0"
        <%= erb(:"components/event", locals: {comp: comp,
                                              events: comp.events,

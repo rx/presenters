@@ -10,6 +10,7 @@
          <%= 'v-hidden' if comp.hidden %>
          <%=class_name%>
          <%= position_classes %>
+         <%= color_classname(comp) %>
          <%= 'v-menu-click' if comp.menu%>"
         style = "<%= color_style(comp) %>"
         <%= 'disabled' if comp.disabled %>

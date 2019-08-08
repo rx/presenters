@@ -12,6 +12,7 @@ require_relative 'component_renderer'
 require_relative 'plugin_headers'
 require_relative 'custom_css'
 require_relative 'helpers/padding'
+require_relative 'helpers/colors'
 require_relative 'helpers/expand_hash'
 
 module Voom
@@ -28,6 +29,7 @@ module Voom
           enable :logging
         end
         helpers PaddingHelpers
+        helpers ColorHelpers
         helpers ExpandHash
         helpers do
           def render_component(scope, comp, components, index)
@@ -82,16 +84,6 @@ module Voom
             else
               Array(text).join('<br/>')
             end
-          end
-
-          def color_classname(comp)
-            return "v-#{comp.type}__primary" if eq(comp.color, :primary)
-            return "v-#{comp.type}__secondary" if eq(comp.color, :secondary)
-            "v-color__#{comp.color}"
-          end
-
-          def color_style(comp, affects = nil)
-            "#{affects}color: #{comp.color};" unless %w(primary secondary).include?(comp.color.to_s) || comp.color.nil?
           end
 
           def snake_to_camel(hash, except: [])

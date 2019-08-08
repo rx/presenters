@@ -15,6 +15,7 @@ require 'voom/presenters/dsl/components/mixins/file_inputs'
 require 'voom/presenters/dsl/components/mixins/avatar'
 require 'voom/presenters/dsl/components/mixins/padding'
 require 'voom/presenters/dsl/components/mixins/progress'
+require 'voom/presenters/dsl/components/mixins/color'
 
 module Voom
   module Presenters
@@ -25,6 +26,7 @@ module Voom
           include Mixins::Dialogs
           include Mixins::Snackbars
           include Mixins::Progress
+          include Mixins::Color
 
           attr_reader   :columns,
                         :color,
@@ -35,7 +37,7 @@ module Voom
           def initialize(color: nil, **attribs_, &block)
             super(type: :grid, **attribs_, &block)
             @columns = []
-            @color = h(color)
+            @color = validate_color(attribs.delete(:color) { nil })
             padding = attribs.delete(:padding) {nil}
             @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
             @wide = attribs.delete(:wide) {false}
@@ -82,6 +84,7 @@ module Voom
             include Mixins::FileInputs
             include Mixins::Avatar
             include Mixins::Progress
+            include Mixins::Color
 
             attr_reader :size,
                         :desktop,
@@ -99,7 +102,7 @@ module Voom
               @desktop = attribs.delete(:desktop)
               @tablet = attribs.delete(:tablet)
               @phone = attribs.delete(:phone)
-              @color = attribs.delete(:color)
+              @color = validate_color(attribs.delete(:color) { nil })
               @align = validate_alignment(attribs.delete(:align) {:left})
               @overflow = attribs.delete(:overflow){true}
               @components = []

@@ -13,8 +13,10 @@
           <%= 'v-secondary-filled-button' if eq(comp.button_type, :raised) && eq(comp.color, :secondary) %>
           <%= 'v-secondary-text-button' if eq(comp.button_type, :flat) && eq(comp.color, :secondary) %>
           <%=  position_classes %>
+          <%= color_classname(comp) %>
           <%= 'v-menu-click' if comp.menu%>"
-  style="background-image: url(<%= comp.image.url %>);"
+  style="background-image: url(<%= comp.image.url %>);
+         <%= color_style(comp) %>"
   <%= 'disabled' if comp.disabled %>
   <%= "type='#{eq(comp.button_type, :raised) ? 'submit' : 'button'}'" %>
   <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} unless comp.disabled %>>

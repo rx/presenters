@@ -5970,11 +5970,32 @@ h1.v-page-title {
 .v-color__red {
   color: #FFEBEE !important; }
 
+.v-background-color__red {
+  background-color: #FFEBEE !important; }
+
 .v-color__yellow {
   color: #FFFDE7 !important; }
 
+.v-background-color__yellow {
+  background-color: #FFFDE7 !important; }
+
 .v-color__green {
   color: #E8F5E9 !important; }
+
+.v-background-color__green {
+  background-color: #E8F5E9 !important; }
+
+.v-color__primary {
+  color: #5488b2; }
+
+.v-color__secondary {
+  color: #E58D36; }
+
+.v-background-color__primary {
+  background-color: #5488b2; }
+
+.v-background-color__secondary {
+  background-color: #E58D36; }
 
 @keyframes mdc-ripple-fg-radius-in {
   from {
@@ -11706,16 +11727,6 @@ select {
 .mdc-chip__icon.v-icon-position-right {
   float: none;
   padding-left: 0; }
-
-.v-chip__primary {
-  background-color: #5488b2; }
-  .v-chip__primary:not(:disabled) {
-    color: white;
-    /* @alternate */
-    color: var(--mdc-theme-text-primary-on-dark, white); }
-
-.v-chip__secondary {
-  background-color: #E58D36; }
 
 .mdc-card {
   background-color: #fff;

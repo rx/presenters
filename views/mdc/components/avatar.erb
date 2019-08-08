@@ -11,13 +11,19 @@
     <span class="<%=class_name%> <%=position_classes%> <%= size_class %>">
       <img id="<%= comp.id %>"
            class="v-avatar
+               <%= color_classname(comp, :background) %>
                <%= 'v-actionable' if events %>"
+           style="<%= color_style(comp, :background) %>"
          src="<%= comp.avatar %>"
          <%= erb :"components/event", :locals => {comp: comp, events: events, parent_id: comp.event_parent_id} %> />
       <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
     </span>
   <% else %>
-    <span class="v-avatar <%=position_classes%> <%= size_class %>">
+    <span class="v-avatar
+                 <%=position_classes%>
+                 <%= color_classname(comp, :background) %>
+                 <%= size_class %>"
+          style="<%= color_style(comp, :background) %>">
     <%= erb :"components/icon", :locals => {comp: comp, icon_name: comp.avatar, parent_id: comp.event_parent_id, position: []} %>
     </span>
   <% end %>

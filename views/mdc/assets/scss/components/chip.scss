@@ -19,12 +19,3 @@
   //position: absolute;
   //bottom: 0;
 }
-
-.v-chip__primary {
-  background-color: $mdc-theme-primary;
-  @include mdc-button-ink-color(text-primary-on-dark);
-}
-
-.v-chip__secondary {
-  background-color: $mdc-theme-secondary;
-}

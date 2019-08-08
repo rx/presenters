@@ -3,13 +3,20 @@ require 'voom/presenters/dsl/components/mixins/tooltips'
 require 'voom/presenters/dsl/components/mixins/attaches'
 require 'voom/presenters/dsl/components/mixins/buttons'
 require 'voom/presenters/dsl/components/mixins/typography'
+require 'voom/presenters/dsl/components/mixins/color'
 
 module Voom
   module Presenters
     module DSL
       module Components
         class Menu < Base
-          attr_accessor :items, :title, :position, :placement, :color, :open
+          include Mixins::Color
+          attr_accessor :items,
+                        :title,
+                        :position,
+                        :placement,
+                        :color,
+                        :open
 
           def initialize(title=nil, **attribs_, &block)
             super(type: :menu, **attribs_, &block)
@@ -17,7 +24,7 @@ module Voom
             @items = []
             @position = attribs.delete(:position){:left}
             @placement = attribs.delete(:placement){:default}
-            @color = attribs.delete(:color)
+            @color = validate_color(attribs.delete(:color) { nil })
             @open = attributes.delete(:open) {false}
             expand!
           end

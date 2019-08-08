@@ -1,9 +1,14 @@
+require 'voom/presenters/dsl/components/mixins/color'
+
 module Voom
   module Presenters
     module DSL
       module Components
         class Page < Base
-          attr_accessor :title, :background_color
+          include Mixins::Color
+          attr_accessor :title,
+                        :background_color
+          alias color background_color
 
           def initialize(**attribs_, &block)
             super(type: :page,
@@ -18,7 +23,7 @@ module Voom
 
           def background_color(color=nil)
             return @background_color if locked?
-            @background_color = color
+            @background_color = validate_color(color)
           end
 
         end

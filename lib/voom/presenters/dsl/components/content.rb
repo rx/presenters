@@ -16,6 +16,7 @@ require 'voom/presenters/dsl/components/mixins/file_inputs'
 require 'voom/presenters/dsl/components/mixins/avatar'
 require 'voom/presenters/dsl/components/mixins/padding'
 require 'voom/presenters/dsl/components/mixins/progress'
+require 'voom/presenters/dsl/components/mixins/color'
 
 module Voom
   module Presenters
@@ -36,6 +37,7 @@ module Voom
           include Mixins::FileInputs
           include Mixins::Avatar
           include Mixins::Progress
+          include Mixins::Color
 
           attr_reader :hidden,
                       :float,
@@ -47,7 +49,8 @@ module Voom
                       :text_align,
                       :padding,
                       :dense,
-                      :inline
+                      :inline,
+                      :color
 
           def initialize(**attribs_, &block)
             super(type: :content, **attribs_, &block)
@@ -63,6 +66,7 @@ module Voom
             @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
             @dense = attribs.delete(:dense) { true }
             @inline = attribs.delete(:inline){false}
+            @color = validate_color(attribs.delete(:color) { nil })
             expand!
           end
 

@@ -8,7 +8,7 @@ Voom::Presenters.define(:buttons) do
 
   indented_grid do
 
-    
+
     # Raised buttons
     headline 'Raised Button'
     button 'Button', type: :raised
@@ -16,22 +16,15 @@ Voom::Presenters.define(:buttons) do
     subheading 'Disabled'
     button 'Button', type: :raised, disabled: true
 
-    subheading ' Accent colored'
-    button 'Button', type: :raised, color: :secondary
-
     headline 'Flat button'
     button 'Button'
 
     subheading 'Disabled'
     button 'Button', type: :flat, disabled: true
 
-    subheading 'Accent colored flat'
-    button 'Button', type: :flat, color: :secondary
-
-    subheading 'Aligned'
+    subheading 'Aligned (floating)'
     grid do
       column 3 do
-        button 'Not Aligned'
         button 'Right', position: :right
         button 'Left', position: :left
       end
@@ -40,9 +33,6 @@ Voom::Presenters.define(:buttons) do
     # Icon Buttons
     headline 'Icon button'
     button icon: :mood
-    subheading 'Colored'
-    button icon: :mood, color: :primary
-    button icon: :mood, color: :secondary
 
     subheading 'with text'
     button "I'm happy", icon: :mood
@@ -57,6 +47,16 @@ Voom::Presenters.define(:buttons) do
       image 'http://geotix.com/application/files/3514/5564/7308/MyNorthTicketsLogo.png'
       icon :link
     end
+
+    headline 'Colors'
+    subheading 'Icons'
+    button icon: :mood, color: :primary
+    button icon: :mood, color: :secondary
+    subheading 'Raised - Accent colored'
+    button 'Button', type: :raised, color: :secondary
+    subheading 'Flat - Accent colored'
+    button 'Button', type: :flat, color: :secondary
+
 
     attach :code, file: __FILE__
   end

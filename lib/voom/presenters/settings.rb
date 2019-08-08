@@ -35,6 +35,8 @@ unless defined?(Voom::Presenters::Settings)
           end
           setting :plugins, [:google_maps]
           setting :components do
+            # This setting will validate colors against a known set of classes
+            setting :valid_color_classes, %i(primary secondary red yellow green)
             setting :defaults do
               setting :datetime do
                 setting :format, 'M j, y h:i K'

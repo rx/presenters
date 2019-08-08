@@ -13,4 +13,24 @@ $palette-colors: (
   .v-color__#{$name} {
     color: $color !important;
   }
+
+  .v-background-color__#{$name} {
+      background-color: $color !important;
+    }
+}
+
+.v-color__primary {
+  color: $mdc-theme-primary;
+}
+
+.v-color__secondary {
+  color: $mdc-theme-secondary;
+}
+
+.v-background-color__primary {
+  background-color: $mdc-theme-primary;
+}
+
+.v-background-color__secondary {
+  background-color: $mdc-theme-secondary;
 }

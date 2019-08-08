@@ -15,6 +15,7 @@ require 'voom/presenters/dsl/components/mixins/file_inputs'
 require 'voom/presenters/dsl/components/mixins/padding'
 require 'voom/presenters/dsl/components/mixins/dialogs'
 require 'voom/presenters/dsl/components/mixins/progress'
+require 'voom/presenters/dsl/components/mixins/color'
 
 module Voom
   module Presenters
@@ -62,13 +63,14 @@ module Voom
 
           class Media < Base
             include Mixins::Attaches
+            include Mixins::Color
             attr_reader :height, :width, :color, :hidden, :components
 
             def initialize(**attribs_, &block)
               super(type: :media, **attribs_, &block)
               @height = attribs.delete(:height)
               @width = attribs.delete(:width)
-              @color = attribs.delete(:color)
+              @color = validate_color(attribs.delete(:color) { nil })
               @hidden = attribs.delete(:hidden) {false}
 
               @components = []

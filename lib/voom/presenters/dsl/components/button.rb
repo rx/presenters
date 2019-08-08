@@ -1,6 +1,7 @@
 require 'voom/presenters/dsl/components/mixins/common'
 require 'voom/presenters/dsl/components/mixins/tooltips'
 require 'voom/presenters/dsl/components/mixins/padding'
+require 'voom/presenters/dsl/components/mixins/color'
 
 module Voom
   module Presenters
@@ -9,6 +10,7 @@ module Voom
         class Button < EventBase
           include Mixins::Tooltips
           include Mixins::Padding
+          include Mixins::Color
 
           BUTTON_TYPES = %i(raised flat fab icon)
 
@@ -17,7 +19,7 @@ module Voom
           def initialize(type: nil, **attribs_, &block)
             @button_type = h(type) || ((attribs_[:icon] && !attribs_[:text]) ? :icon : nil) || :flat
             super(type: :button, **attribs_, &block)
-            @color = attribs.delete(:color)
+            @color = validate_color(attribs.delete(:color) { nil })
             self.icon(attribs.delete(:icon), color: color) if attribs.key?(:icon)
             @text = attribs.delete(:text)
             @disabled = attribs.delete(:disabled) {false}
