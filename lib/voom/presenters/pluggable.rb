@@ -28,7 +28,6 @@ module Voom
         m = plugin.is_a?(Module) ? plugin : plugin_module(plugin)
         @plugins ||= []
         layers.each do |layer|
-          trace {"Method plugin layer(#{m.inspect}::#{layer.inspect}) exists?(#{m.const_defined?(layer, false)})"}
           if m.const_defined?(layer, false) && !@plugins.include?(m.const_get(layer))
             @plugins << m.const_get(layer)
             trace {"Injecting plugin(#{m.const_get(layer).inspect}) into #{self.inspect}!"}
