@@ -41,6 +41,10 @@ export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
         });
         this.element.dataset.originalValue = this.value();
 
+        if (element.hasAttribute('disabled')) {
+            this.quill.enable(false);
+        }
+
         hookupCustomToolbarButtons(this);
     }
 

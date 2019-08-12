@@ -1,7 +1,9 @@
 <% if comp
   float_label = comp.options.select{|o| o.selected }.any?
 %>
-  <div class="mdc-select <%= 'mdc-select--outlined' if comp.outlined %> v-select v-input"
+  <div class="mdc-select v-select v-input
+              <%= 'mdc-select--outlined' if comp.outlined %>
+              <% if comp.disabled %>mdc-select--disabled<% end %>"
        <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
        <% if comp.dirtyable %>data-original-value="<%=comp.value%>"<% end %>
        <%= 'style="width: 100%;"' if comp.full_width %>>
@@ -9,6 +11,7 @@
     <select id="<%= comp.id %>"
             <% if comp.name %> name="<%= comp.name %>" <% end %>
             <% if comp.required %>required<% end %>
+            <% if comp.disabled %>disabled<% end %>
             class="mdc-select__native-control"
             <%= erb(:"components/event", locals: {comp: comp,
                                                   events: comp.events,

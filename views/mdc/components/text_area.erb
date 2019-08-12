@@ -1,5 +1,6 @@
 <div id="<%= comp.id %>" class="v-input v-text-field mdc-text-field mdc-text-field--textarea
-            <%= ' is-invalid is-dirty' if comp.error %>"
+            <%= ' is-invalid is-dirty' if comp.error %>
+            <% if comp.disabled %>mdc-text-field--disabled<% end %>"
      <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
      <% if comp.dirtyable %>data-original-value="<%=comp.value%>"<% end %>
      style="<%= 'width:100%' if comp.full_width %>">
@@ -7,7 +8,8 @@
             name="<%= comp.name %>"
             class="mdc-text-field__input"
             rows="<%= comp.rows %>"
-            cols="<%= comp.cols %>"><%= comp.value %></textarea>
+            cols="<%= comp.cols %>"
+            <% if comp.disabled %>disabled<% end %>><%= comp.value %></textarea>
   <div class="mdc-notched-outline">
     <div class="mdc-notched-outline__leading"></div>
     <div class="mdc-notched-outline__notch">
