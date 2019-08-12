@@ -1,7 +1,8 @@
 import {VBaseComponent} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
+import {dirtyableMixin} from './mixins/dirtyable';
 
-export class VBaseToggle extends eventHandlerMixin(VBaseComponent) {
+export class VBaseToggle extends dirtyableMixin(eventHandlerMixin(VBaseComponent)) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
 
@@ -11,6 +12,8 @@ export class VBaseToggle extends eventHandlerMixin(VBaseComponent) {
             // Revert to previous checked state on failed post.
             this.mdcComponent.checked = !this.mdcComponent.checked;
         });
+
+        this.originalValue = this.input.checked;
     }
 
     prepareSubmit(params) {
@@ -40,10 +43,14 @@ export class VBaseToggle extends eventHandlerMixin(VBaseComponent) {
     }
 
     reset() {
-        this.input.checked = this.element.dataset.originalValue;
+        this.input.checked = this.originalValue;
     }
 
     setValue(value) {
         this.input.value = value;
+    }
+
+    isDirty() {
+        return this.dirtyable && this.input.checked !== this.originalValue;
     }
 }

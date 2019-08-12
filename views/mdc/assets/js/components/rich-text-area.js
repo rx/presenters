@@ -2,6 +2,7 @@ import Quill from "quill";
 import {HorizontalRuleBlot} from './rich-text-area/horizontal-rule-blot';
 import {hookupComponents, VBaseComponent} from "./base-component";
 import {eventHandlerMixin} from "./mixins/event-handler";
+import {dirtyableMixin} from './mixins/dirtyable';
 
 // These Blots will be registered with Quill.
 const blots = [
@@ -29,7 +30,7 @@ export function initRichTextArea(e) {
     registerBlots();
 }
 
-export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
+export class VRichTextArea extends dirtyableMixin(eventHandlerMixin(VBaseComponent)) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
 
@@ -39,7 +40,7 @@ export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
             theme: 'snow',
             placeholder: this.quillEditorElement.dataset.placeholder
         });
-        this.element.dataset.originalValue = this.value();
+        this.originalValue = this.value();
 
         hookupCustomToolbarButtons(this);
     }
@@ -53,8 +54,8 @@ export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
     }
 
     value() {
-        // If the quill editor is empty calling innerHTML will still return '<p><br/></p>' which it
-        // uses to represent an empty doc.
+        // If the quill editor is empty calling innerHTML will still return
+        // '<p><br/></p>' which it uses to represent an empty doc.
         var doc = this.quill.root.innerHTML;
         return doc == QUILL_EMPTY_DOC ? '' : doc;
     }
@@ -66,7 +67,7 @@ export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
     }
 
     reset() {
-        this.setValue(this.element.dataset.originalValue);
+        this.setValue(this.originalValue);
     }
 
     setValue(value) {
@@ -74,7 +75,8 @@ export class VRichTextArea extends eventHandlerMixin(VBaseComponent) {
     }
 
     isDirty() {
-        return this.value() !== this.element.dataset.originalValue;
+        return this.dirtyable
+            && this.value().localeCompare(this.originalValue) !== 0;
     }
 }
 

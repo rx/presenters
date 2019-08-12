@@ -4,7 +4,7 @@
 <div class="v-form-field mdc-form-field">
   <div id="<%= comp.id %>"
        <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
-       <% if comp.dirtyable %>data-original-value="<%=comp.checked%>"<% end %>
+       <% if comp.dirtyable %>data-dirtyable<% end %>
        class="v-switch v-input mdc-switch
       <%= 'mdc-switch--disabled' if comp.disabled %>
       <%= class_name %>">
