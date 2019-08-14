@@ -11,7 +11,7 @@
        <%= drop_zone_attributes(comp) %>
        class="v-content
             <%= position_classes %>
-            <%= _padding_classes_(comp.padding, subclass: comp.dense ? :col : :grid) %>
+            <%= _padding_classes_(comp.padding) %>
             <%= 'v-hidden' if comp.hidden %>
             <%= 'v-dnd-draggable' if comp.draggable %>
             <%= comp.float  ? 'v-content--float' : 'v-content--relative'%>"
