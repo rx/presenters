@@ -17,7 +17,7 @@ module Voom
         configure do
           enable :logging
         end
-        helpers Helpers::Padding
+        helpers Helpers::PaddingHelpers
         helpers Helpers::ExpandHash
         helpers do
           def render_component(scope, comp, components, index)

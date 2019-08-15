@@ -7,6 +7,7 @@ module Voom
           include Mixins::Dialogs
           include Mixins::Snackbars
           include Mixins::Progress
+          include Mixins::Padding
 
           attr_reader   :columns,
                         :color,
@@ -19,7 +20,7 @@ module Voom
             @columns = []
             @color = h(color)
             padding = attribs.delete(:padding) {nil}
-            @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
+            @padding = validate_padding(coerce_padding(padding, default_level: 3)).uniq if padding != nil
             @wide = attribs.delete(:wide) {false}
             @gutter = coerce_gutter(attribs.delete(:gutter) {nil})
             expand!
@@ -64,6 +65,7 @@ module Voom
             include Mixins::FileInputs
             include Mixins::Avatar
             include Mixins::Progress
+            include Mixins::Padding
 
             attr_reader :size,
                         :desktop,
@@ -89,10 +91,6 @@ module Voom
               @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
               expand!
             end
-
-            private
-
-            include Mixins::Padding
 
             def validate_alignment(align)
               valid_alignment = %i(right left)

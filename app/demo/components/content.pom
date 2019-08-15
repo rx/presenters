@@ -4,28 +4,83 @@ Voom::Presenters.define(:content) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
-  page_title 'Forms'
+  page_title 'Content'
 
-  grid do
-    column 1
-    column 4 do
-      card do
-        headline 'Posts in Form'
-        body 'This demonstrates that a change event on **ANY** form input will send all the form inputs to the event action. '\
-             'This works with posts and replace actions'
-        content do
-          text_field name: :myfield do
-            label 'Data to post'
-          end
-          text_field name: :myfield2 do
-            label 'More Data to post'
-          end
-          event :change do
-            replaces  :context_list, :context_list
-          end
-        end
-        attach :context_list
+  indented_grid do
+    headline 'Content blocks are wrappers for content and layout'
+    body %(They have many uses this demo will outline their attributes and their common use cases.)
+    blank
+    body %(See the [padding demo](#{presenters_path(:padding)}) for example on how padding works in content blocks.)
+    blank
+
+    title 'Content as a block element'
+    content do
+      text 'A content block with no attributes can turn an inline element into a block element', inline: true
+    end
+    text '..continuing text', inline: true
+    blank
+
+    title 'Attribute: `inline`'
+    content inline: true do
+      text 'A content block with inline ... this is effecdtively a no-op, and a silly example that only shows the difference between block and inline content blocks.', inline: true
+    end
+    text '..continuing text', inline: true
+    blank
+
+    title 'Attribute: `hidden`'
+    text 'A content block can be hidden and shown in response to page events.'
+    content id: :peekaboo, hidden: true do
+      title 'Peekabo'
+    end
+    button :show_hide do
+      event :click do
+        toggle_visibility :peekaboo
       end
     end
+    blank
+
+    title 'Attributes: `width` and `height`'
+    text 'A content block can set its width and height. Units can be pixels, rems or percentages.'
+    content width: '50%', height: '8rem' do
+      card do
+        title "I'm wider! and taller!"
+      end
+    end
+    blank
+
+    title 'Attributes: `position`'
+    text 'A content block can be positioned to be :top, :right, :bottom, :left or a combination of the container its inside'
+    content id: :parent, width: '50%', height: '8rem' do
+      content position: [:bottom, :right] do
+        card do
+          title "I'm on the bottom right"
+        end
+      end
+    end
+    blank
+
+    title 'Attributes: `text_align`'
+    text %(A content block can define how its typography will be alligned inside it.
+               Valid values: left|right|center|justify)
+    content width: '50%', height: '8rem' do
+      content text_align: :center do
+        title "I'm centered text", inline: 'true'
+        title ".. me 2", inline: 'true'
+      end
+    end
+    blank
+
+    title 'Attribute: `float`'
+    text 'A content block can float above the other content. This is useful for things like type ahead previews. Or hovering previews.'
+    content float: true do
+      card do
+        title "I'm floating!"
+      end
+    end
+    text "xxxxxxxxxxxxxxxx I'm text that is obscured by the floating card in the content block above me"
+    blank
+
+
+    attach :code, file: __FILE__
   end
 end
