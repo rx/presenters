@@ -1,18 +1,20 @@
 import {MDCSelect} from '@material/select';
 import {VBaseComponent, hookupComponents} from './base-component';
 import {visibilityObserverMixin} from "./mixins/visibility-observer";
+import {dirtyableMixin} from './mixins/dirtyable';
 
 export function initSelects(e) {
     console.debug('\tSelects');
     hookupComponents(e, '.v-select', VSelect, MDCSelect);
 }
 
-export class VSelect extends visibilityObserverMixin(VBaseComponent) {
+export class VSelect extends dirtyableMixin(visibilityObserverMixin(VBaseComponent)) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
         this.select = element.querySelector('select');
         this.select.vComponent = this;
         this.recalcWhenVisible(this);
+        this.originalValue = this.value();
     }
 
     prepareSubmit(params) {
@@ -41,7 +43,7 @@ export class VSelect extends visibilityObserverMixin(VBaseComponent) {
     }
 
     reset() {
-        this.select.value = this.element.dataset.originalValue;
+        this.select.value = this.originalValue;
     }
 
     setValue(value) {
@@ -49,6 +51,6 @@ export class VSelect extends visibilityObserverMixin(VBaseComponent) {
     }
 
     isDirty() {
-        return this.value() != this.element.dataset.originalValue;
+        return this.dirtyable && this.value() !== this.originalValue;
     }
 }
