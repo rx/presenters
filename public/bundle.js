@@ -82708,15 +82708,18 @@ var VRichTextArea = function (_dirtyableMixin) {
 
         var _this = _possibleConstructorReturn(this, (VRichTextArea.__proto__ || Object.getPrototypeOf(VRichTextArea)).call(this, element, mdcComponent));
 
-        _this.quillEditorElement = element.querySelector('.v-rich-text-area');
-        _this.quill = new __WEBPACK_IMPORTED_MODULE_0_quill___default.a(_this.quillEditorElement, {
+        _this.quillWrapper = element.querySelector('.v-rich-text-area');
+        _this.quill = new __WEBPACK_IMPORTED_MODULE_0_quill___default.a(_this.quillWrapper, {
             modules: { toolbar: toolbarOptions },
+            bounds: _this.quillWrapper,
             theme: 'snow',
-            placeholder: _this.quillEditorElement.dataset.placeholder
+            placeholder: _this.quillWrapper.dataset.placeholder
         });
         _this.originalValue = _this.value();
+        _this.quillEditor = _this.quillWrapper.querySelector('.ql-editor');
 
         hookupCustomToolbarButtons(_this);
+        adjustEditorStyles(_this);
         return _this;
     }
 
@@ -82728,7 +82731,7 @@ var VRichTextArea = function (_dirtyableMixin) {
     }, {
         key: "name",
         value: function name() {
-            return this.quillEditorElement.dataset.name;
+            return this.quillWrapper.dataset.name;
         }
     }, {
         key: "value",
@@ -82764,6 +82767,15 @@ var VRichTextArea = function (_dirtyableMixin) {
 
     return VRichTextArea;
 }(Object(__WEBPACK_IMPORTED_MODULE_4__mixins_dirtyable__["a" /* dirtyableMixin */])(Object(__WEBPACK_IMPORTED_MODULE_3__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_2__base_component__["a" /* VBaseComponent */])));
+
+function adjustEditorStyles(richTextArea) {
+    // The editor element is not created until Quill has been initialized, so
+    // its styles must be adjusted dynamically post-construction.
+    var initialHeight = richTextArea.element.dataset.initialHeight;
+
+    richTextArea.quillEditor.style.height = initialHeight;
+    richTextArea.quillEditor.style.minHeight = initialHeight;
+}
 
 var blotRegistry = new WeakSet();
 

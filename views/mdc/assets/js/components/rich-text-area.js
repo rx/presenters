@@ -34,15 +34,18 @@ export class VRichTextArea extends dirtyableMixin(eventHandlerMixin(VBaseCompone
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
 
-        this.quillEditorElement = element.querySelector('.v-rich-text-area');
-        this.quill = new Quill(this.quillEditorElement, {
+        this.quillWrapper = element.querySelector('.v-rich-text-area');
+        this.quill = new Quill(this.quillWrapper, {
             modules: {toolbar: toolbarOptions},
+            bounds: this.quillWrapper,
             theme: 'snow',
-            placeholder: this.quillEditorElement.dataset.placeholder
+            placeholder: this.quillWrapper.dataset.placeholder
         });
         this.originalValue = this.value();
+        this.quillEditor = this.quillWrapper.querySelector('.ql-editor');
 
         hookupCustomToolbarButtons(this);
+        adjustEditorStyles(this);
     }
 
     prepareSubmit(params) {
@@ -50,7 +53,7 @@ export class VRichTextArea extends dirtyableMixin(eventHandlerMixin(VBaseCompone
     }
 
     name() {
-        return this.quillEditorElement.dataset.name;
+        return this.quillWrapper.dataset.name;
     }
 
     value() {
@@ -78,6 +81,15 @@ export class VRichTextArea extends dirtyableMixin(eventHandlerMixin(VBaseCompone
         return this.dirtyable
             && this.value().localeCompare(this.originalValue) !== 0;
     }
+}
+
+function adjustEditorStyles(richTextArea) {
+    // The editor element is not created until Quill has been initialized, so
+    // its styles must be adjusted dynamically post-construction.
+    const initialHeight = richTextArea.element.dataset.initialHeight;
+
+    richTextArea.quillEditor.style.height = initialHeight;
+    richTextArea.quillEditor.style.minHeight = initialHeight;
 }
 
 const blotRegistry = new WeakSet();
