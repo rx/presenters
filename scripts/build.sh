@@ -6,5 +6,5 @@ export NVM_DIR="$HOME/.nvm"
 nvm install `cat .nvmrc`
 nvm use `cat .nvmrc`
 npm install
-npx webpack
+npx webpack  $1
 
