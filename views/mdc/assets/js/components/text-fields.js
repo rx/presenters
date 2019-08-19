@@ -2,6 +2,7 @@ import {MDCTextField} from '@material/textfield';
 import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
 import {visibilityObserverMixin} from './mixins/visibility-observer';
+import {dirtyableMixin} from './mixins/dirtyable';
 
 const AFTER_INPUT_EVENT = 'after_input';
 const AFTER_INPUT_TIMEOUT = 500; // ms
@@ -11,8 +12,9 @@ export function initTextFields(e) {
     hookupComponents(e, '.v-text-field', VTextField, MDCTextField);
 }
 
-export class VTextField extends visibilityObserverMixin(
-    eventHandlerMixin(VBaseComponent)) {
+export class VTextField extends dirtyableMixin(
+    visibilityObserverMixin(
+    eventHandlerMixin(VBaseComponent))) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
 
@@ -28,6 +30,8 @@ export class VTextField extends visibilityObserverMixin(
                 this.element.dispatchEvent(new Event(AFTER_INPUT_EVENT));
             }, AFTER_INPUT_TIMEOUT)
         });
+
+        this.originalValue = this.value();
     }
 
     // Called whenever a form is about to be submitted.
@@ -90,7 +94,7 @@ export class VTextField extends visibilityObserverMixin(
     }
 
     reset() {
-        this.input.value = this.element.dataset.originalValue;
+        this.input.value = this.originalValue;
     }
 
     setValue(value) {
@@ -98,7 +102,8 @@ export class VTextField extends visibilityObserverMixin(
     }
 
     isDirty() {
-        return this.value() !== this.element.dataset.originalValue;
+        return this.dirtyable
+            && this.value().localeCompare(this.originalValue) !== 0;
     }
 
     onShow() {

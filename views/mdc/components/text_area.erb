@@ -2,7 +2,7 @@
             <%= ' is-invalid is-dirty' if comp.error %>
             <% if comp.disabled %>mdc-text-field--disabled<% end %>"
      <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
-     <% if comp.dirtyable %>data-original-value="<%=comp.value%>"<% end %>
+     <% if comp.dirtyable %>data-dirtyable<% end %>
      style="<%= 'width:100%' if comp.full_width %>">
   <textarea id="<%= comp.id %>-input"
             name="<%= comp.name %>"

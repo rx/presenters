@@ -1,12 +1,13 @@
 import {VBaseComponent, hookupComponents} from './base-component';
 import {eventHandlerMixin} from './mixins/event-handler';
+import {dirtyableMixin} from './mixins/dirtyable';
 
 export function initFileInputs(e) {
     console.debug('\tFile Inputs');
     hookupComponents(e, '.v-file-input', VFileInput, null);
 }
 
-export class VFileInput extends eventHandlerMixin(VBaseComponent) {
+export class VFileInput extends dirtyableMixin(eventHandlerMixin(VBaseComponent)) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
 
@@ -17,6 +18,7 @@ export class VFileInput extends eventHandlerMixin(VBaseComponent) {
             element.addEventListener(e, (e) => this.handleFileSelection(e),
                 false);
         });
+        this.originalValue = this.input.value;
     }
 
     prepareSubmit(params) {
@@ -64,7 +66,7 @@ export class VFileInput extends eventHandlerMixin(VBaseComponent) {
     }
 
     isDirty() {
-        return this.input.value != this.element.dataset.originalValue;
+        return this.dirtyable && this.input.value !== this.originalValue;
     }
 
     // From an example based on: https://www.quirksmode.org/dom/inputfile.html
