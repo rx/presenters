@@ -68163,6 +68163,10 @@ var VRichTextArea = function (_dirtyableMixin) {
         _this.originalValue = _this.value();
         _this.quillEditor = _this.quillWrapper.querySelector('.ql-editor');
 
+        if (element.hasAttribute('disabled')) {
+            _this.quill.enable(false);
+        }
+
         hookupCustomToolbarButtons(_this);
 
         // Fix-ups:

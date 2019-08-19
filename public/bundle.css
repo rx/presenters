@@ -12038,6 +12038,10 @@ a.mdc-list-item {
 .mdc-menu-anchor {
   display: inline; }
 
+.mdc-list-item.mdc-list-item--disabled .v-menu-link {
+  cursor: inherit;
+  pointer-events: none; }
+
 .v-menu-link:hover, .v-menu-link:visited, .v-menu-link:link, .v-menu-link:active {
   color: inherit;
   text-decoration: none;
@@ -16580,6 +16584,10 @@ i:focus.v-datetime--clear {
 .v-rich-text-area-container {
   position: relative;
   width: 100%; }
+  .v-rich-text-area-container[disabled] {
+    opacity: 0.67;
+    cursor: default;
+    pointer-events: none; }
   .v-rich-text-area-container label {
     display: block;
     margin-top: 16px; }

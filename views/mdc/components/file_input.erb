@@ -6,7 +6,12 @@
 
 
        <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id} %>>
-    <input id="<%= comp.id %>-input" name="<%= comp.name %>" type="file" accept="<%= comp.accept %>">
+    <input id="<%= comp.id %>-input"
+           name="<%= comp.name %>"
+           type="file"
+           accept="<%= comp.accept %>"
+           <% if comp.disabled %>disabled<% end %>
+    >
     <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
   </div>
 <% end %>
