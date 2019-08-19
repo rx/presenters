@@ -8,6 +8,7 @@ export function initDateTime(e) {
     console.debug('\tDateTime');
     hookupComponents(e, '.v-datetime', VDateTime, MDCTextField);
 }
+
 export class VDateTime extends VTextField {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
@@ -37,6 +38,7 @@ export class VDateTime extends VTextField {
         this.fp.mdc_text_field = mdcComponent;
 
         element.addEventListener('click', () => this.toggle());
+        this.originalValue = this.fp.input.value;
     }
 
     clear() {
@@ -48,7 +50,7 @@ export class VDateTime extends VTextField {
     }
 
     reset() {
-        this.fp.setDate(this.element.dataset.originalValue);
+        this.fp.setDate(this.originalValue);
     }
 
     open() {
@@ -81,8 +83,13 @@ export class VDateTime extends VTextField {
     // }
 
     isDirty() {
+        if (!this.dirtyable) {
+            return false;
+        }
+
         const currVal = new Date(this.fp.input.value);
-        const prevVal = new Date(this.element.dataset.originalValue);
+        const prevVal = new Date(this.originalValue);
+
         return currVal.getTime() !== prevVal.getTime();
     }
 }

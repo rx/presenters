@@ -11,8 +11,4 @@ export class VSwitch extends VBaseToggle {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
     }
-
-    isDirty() {
-        return String(this.input.checked) != this.element.dataset.originalValue;
-    }
 }
