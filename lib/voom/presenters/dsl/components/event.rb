@@ -53,6 +53,15 @@ module Voom
                                           params: params, &block)
           end
 
+          def inserts(target, presenter, input_tag: nil, **params, &block)
+            self << Actions::Replaces.new(parent: self,
+                                          target: target,
+                                          presenter: presenter,
+                                          input_tag: input_tag,
+                                          insert: true,
+                                          params: params, &block)
+          end
+
           # Method can be one of :post, :put, :delete or :patch
           def posts(path, input_tag: nil, headers: nil, **params, &block)
             self << Actions::Posts.new(parent: self,

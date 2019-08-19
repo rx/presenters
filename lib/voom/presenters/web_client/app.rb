@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'honeybadger' if ENV.fetch('HONEYBADGER_API_KEY'){false}
+require 'honeybadger' if ENV.fetch('HONEYBADGER_API_KEY') {false}
 require 'uri'
 require 'redcarpet'
 require "dry/inflector"
@@ -69,7 +69,7 @@ module Voom
           end
 
           def includes_one?(array1, array2)
-            (array2.map(&:to_sym)-array1.map(&:to_sym)).size != array2.size
+            (array2.map(&:to_sym) - array1.map(&:to_sym)).size != array2.size
           end
 
           def unique_id(comp)
@@ -158,14 +158,6 @@ module Voom
           render_presenter(presenter)
         end
 
-        # Forms engine demo
-        post '/__post__/:presenter' do
-          @pom = JSON.parse(request.body.read, object_class: OpenStruct)
-          @grid_nesting = Integer(params[:grid_nesting] || 0)
-          layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
-          erb :web, layout: layout
-        end
-
         private
 
         # analogous to Voom::Presenters::Api::App#render_presenter
@@ -179,10 +171,10 @@ module Voom
             erb :web, layout: layout
           rescue StandardError => e
             Presenters::Settings.config.presenters.error_logger.call(
-              @env['rack.errors'],
-              e,
-              params,
-              presenter.name
+                @env['rack.errors'],
+                e,
+                params,
+                presenter.name
             )
             raise e
           rescue Presenters::Errors::Unprocessable => e

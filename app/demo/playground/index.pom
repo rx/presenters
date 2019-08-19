@@ -1,0 +1,44 @@
+Voom::Presenters.define(:index, namespace: :playground) do
+  attach :top_nav
+
+
+  page_title 'Presenters Playground' do
+    icon :settings
+  end
+
+
+  grid do
+    column 1
+    column 5 do
+      body 'In the Playground you can try any presenters code you like.'
+      tab_bar do
+        tab 'JSON', selected: true do
+          text_area name: :pom, rows: 20, full_width: true do
+            label 'Editor'
+            hint 'Try out presenters POM'
+            event :input do
+              inserts :results, '__post__/a'
+            end
+          end
+        end
+        tab 'POM' do
+          text_area name: :pom, rows: 20, full_width: true do
+            label 'Editor'
+            hint 'Try out presenters POM'
+            event :input do
+              inserts :results, '__post__/a'
+            end
+          end
+        end
+      end
+    end
+    column 5 do
+      content id: :results
+    end
+  end
+end
+
+
+Voom::Presenters.define(:button, namespace: :playground) do
+  button :hi
+end

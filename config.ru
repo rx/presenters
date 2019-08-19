@@ -14,6 +14,7 @@ libdir = File.join(ENV['VOOM_ROOT'], 'lib')
 $:.unshift(libdir) unless $:.include?(libdir)
 require 'voom/presenters/api/app'
 require 'voom/presenters/web_client/app'
+require 'voom/presenters/web_client/form_engine'
 require 'voom/presenters/demo/search'
 require 'voom/presenters/demo/echo'
 require 'voom/presenters/demo/slow'
@@ -40,8 +41,8 @@ use Voom::Presenters::Demo::Slow
 use Voom::Presenters::Demo::DragonDrop
 
 use Voom::Presenters::WebClient::App
+use Voom::Presenters::WebClient::FormEngine
 run Voom::Presenters::Api::App
-
 
 Voom::Presenters::App.boot!
 

@@ -1,6 +1,6 @@
 <% class_name = '' unless local_variables.include? :class_name
-   position_classes = comp.position.map {|p| "v-button-position-#{p}"}.join(' ')
-   text_align = comp.position.select {|p| eq(p, :left)}.any? && eq(comp.button_type, :flat)
+   position_classes = comp.position&.map {|p| "v-button-position-#{p}"}&.join(' ')
+   text_align = comp.position&.select {|p| eq(p, :left)}&.any? && eq(comp.button_type, :flat)
    event_parent_id = nil unless local_variables.include? :event_parent_id
    data_attributes = '' unless local_variables.include? :data_attributes
 %>

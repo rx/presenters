@@ -4924,7 +4924,7 @@ var VEvents = function () {
                 var contentType = result.contentType;
                 var responseURL = result.responseURL;
 
-                if (contentType && contentType.indexOf('text/html') !== -1 && typeof responseURL !== 'undefined') {
+                if (result.statusCode < 500 && contentType && contentType.indexOf('text/html') !== -1 && typeof responseURL !== 'undefined') {
                     window.location = responseURL;
                 }
 
@@ -51159,9 +51159,10 @@ var VPosts = function (_VBase) {
                         }
                         // Response is an html error page
                         else if (contentType && contentType.indexOf('text/html') !== -1) {
-                                root.open(contentType);
-                                root.write(httpRequest.responseText);
-                                root.close();
+                                // root.open(contentType);
+                                // root.write(httpRequest.responseText);
+                                // root.close();
+                                console.log(httpRequest.responseText);
                                 results.push(result);
                                 resolve(results);
                             } else {
@@ -51417,11 +51418,13 @@ var VReplaces = function (_VBase) {
             var httpRequest = new XMLHttpRequest();
             var root = this.root;
             var elementId = this.element_id;
+            var insert = this.options.insert;
             var nodeToReplace = root.getElementById(elementId);
             var expandedParams = Object(__WEBPACK_IMPORTED_MODULE_0__action_parameter__["b" /* expandParams */])(results, this.params);
 
             var url = this.buildURL(this.url, expandedParams, this.inputValues(), eventParams, [['grid_nesting', this.options.grid_nesting]]);
-            var delayAmt = delayAmount(this.event);;
+            var delayAmt = delayAmount(this.event);
+            ;
 
             return new Promise(function (resolve, reject) {
                 if (!nodeToReplace) {
@@ -51449,10 +51452,19 @@ var VReplaces = function (_VBase) {
                                     // "dead" list.
                                     var newNodes = Array.from(htmlToNodes(httpRequest.responseText, root));
 
-                                    Object(__WEBPACK_IMPORTED_MODULE_3__uninitialize__["a" /* uninitialize */])(nodeToReplace);
-
-                                    nodeToReplace.replaceWith.apply(nodeToReplace, _toConsumableArray(newNodes));
-
+                                    // Insert the node inside the target
+                                    if (insert) {
+                                        while (nodeToReplace.firstChild) {
+                                            Object(__WEBPACK_IMPORTED_MODULE_3__uninitialize__["a" /* uninitialize */])(nodeToReplace);
+                                            nodeToReplace.removeChild(nodeToReplace.firstChild);
+                                        }
+                                        nodeToReplace.append.apply(nodeToReplace, _toConsumableArray(newNodes));
+                                    }
+                                    // Replace the target
+                                    else {
+                                            Object(__WEBPACK_IMPORTED_MODULE_3__uninitialize__["a" /* uninitialize */])(nodeToReplace);
+                                            nodeToReplace.replaceWith.apply(nodeToReplace, _toConsumableArray(newNodes));
+                                        }
                                     var _iteratorNormalCompletion = true;
                                     var _didIteratorError = false;
                                     var _iteratorError = undefined;

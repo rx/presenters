@@ -9,8 +9,11 @@ module Voom
           class Replaces < Actions::Base
             include Namespace
 
+            attr_reader :insert
+
             def initialize(**attribs_, &block)
               super(type: :replaces, **attribs_, &block)
+              @insert = attribs.delete(:insert){false}
             end
 
             def url

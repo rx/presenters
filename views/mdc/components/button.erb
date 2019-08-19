@@ -9,7 +9,7 @@
   <% if comp.menu %>
     <div class="mdc-menu-anchor">
   <% end %>
-  <% case comp.button_type.to_sym
+  <% case comp.button_type&.to_sym
         when :fab %>
             <%= erb :"components/buttons/fab", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} %>
      <% when :icon %>

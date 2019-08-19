@@ -60,7 +60,8 @@ export class VEvents {
             const contentType = result.contentType;
             const responseURL = result.responseURL;
 
-            if (contentType && contentType.indexOf('text/html') !== -1 &&
+            if (result.statusCode < 500 &&
+                contentType && contentType.indexOf('text/html') !== -1 &&
                 typeof responseURL !== 'undefined') {
                 window.location = responseURL;
             }

@@ -135,9 +135,10 @@ export class VPosts extends VBase {
                     }
                     // Response is an html error page
                     else if (contentType && contentType.indexOf('text/html') !== -1) {
-                        root.open(contentType);
-                        root.write(httpRequest.responseText);
-                        root.close();
+                        // root.open(contentType);
+                        // root.write(httpRequest.responseText);
+                        // root.close();
+                        console.log(httpRequest.responseText);
                         results.push(result);
                         resolve(results);
                     }

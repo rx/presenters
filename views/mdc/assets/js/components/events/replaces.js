@@ -24,10 +24,14 @@ function assertXHRSupport() {
 
 function delayAmount(event) {
     if (typeof window['InputEvent'] === 'function') {
-        return event instanceof InputEvent ? KEYBOARD_DELAY_AMOUNT : MOUSE_DELAY_AMOUNT;
+        return event instanceof InputEvent ?
+            KEYBOARD_DELAY_AMOUNT :
+            MOUSE_DELAY_AMOUNT;
     }
 
-    return event instanceof MouseEvent ? MOUSE_DELAY_AMOUNT : KEYBOARD_DELAY_AMOUNT;
+    return event instanceof MouseEvent ?
+        MOUSE_DELAY_AMOUNT :
+        KEYBOARD_DELAY_AMOUNT;
 }
 
 // Replaces a given element with the contents of the call to the url.
@@ -44,18 +48,21 @@ export class VReplaces extends VBase {
         this.event = event;
     }
 
-    call(results, eventParams=[]) {
+    call(results, eventParams = []) {
         this.clearErrors();
 
         const httpRequest = new XMLHttpRequest();
         const root = this.root;
         const elementId = this.element_id;
+        const insert = this.options.insert;
         const nodeToReplace = root.getElementById(elementId);
         const expandedParams = expandParams(results, this.params);
 
-        const url = this.buildURL(this.url, expandedParams, this.inputValues(), eventParams,
+        const url = this.buildURL(this.url, expandedParams, this.inputValues(),
+            eventParams,
             [['grid_nesting', this.options.grid_nesting]]);
-        const delayAmt = delayAmount(this.event);;
+        const delayAmt = delayAmount(this.event);
+        ;
 
         return new Promise(function(resolve, reject) {
             if (!nodeToReplace) {
@@ -88,13 +95,23 @@ export class VReplaces extends VBase {
                                 // "dead" list.
                                 const newNodes = Array.from(htmlToNodes(
                                     httpRequest.responseText,
-                                    root
+                                    root,
                                 ));
 
-                                uninitialize(nodeToReplace);
-
-                                nodeToReplace.replaceWith(...newNodes);
-
+                                // Insert the node inside the target
+                                if (insert) {
+                                    while (nodeToReplace.firstChild) {
+                                        uninitialize(nodeToReplace);
+                                        nodeToReplace.removeChild(
+                                            nodeToReplace.firstChild);
+                                    }
+                                    nodeToReplace.append(...newNodes);
+                                }
+                                // Replace the target
+                                else {
+                                    uninitialize(nodeToReplace);
+                                    nodeToReplace.replaceWith(...newNodes);
+                                }
                                 for (const node of newNodes) {
                                     initialize(node);
                                 }
