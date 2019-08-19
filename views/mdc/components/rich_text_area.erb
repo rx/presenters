@@ -1,12 +1,13 @@
 <div class="v-rich-text-area-container v-input"
      id="<%= comp.id %>"
      <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
-     <% if comp.dirtyable %>data-original-value="<%= h(comp.value) %>"><% end %>
+     <% if comp.dirtyable %>data-dirtyable<% end %>
+     <% if comp.height %>data-initial-height="<%= comp.height %>"<% end %>
+     <% if comp.resizable %>data-resizable<% end %>>
   <label for="<%= comp.id %>-rta"><%= expand_text(comp.label) %></label>
   <div class="v-rich-text-area"
        id="<%= comp.id %>-rta"
-       style="<%= 'width:100%;' if comp.full_width %>
-              <%= "height:#{comp.height};" %>"
+       style="<%= 'width: 100%;' if comp.full_width %>"
        data-name="<%= comp.name %>"
        <%= "data-placeholder='#{comp.placeholder}'" if comp.placeholder %>>
     <%= comp.value %>
@@ -15,5 +16,6 @@
   <p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg" aria-hidden="true">
     <%= comp.error || comp.hint %>
   </p>
+  <div class="v-hidden v-rich-text-area--fixed-up-content" hidden aria-hidden="true"></div>
   <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 </div>

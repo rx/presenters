@@ -3,7 +3,7 @@
 %>
   <div class="mdc-select <%= 'mdc-select--outlined' if comp.outlined %> v-select v-input"
        <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
-       <% if comp.dirtyable %>data-original-value="<%=comp.value%>"<% end %>
+       <% if comp.dirtyable %>data-dirtyable<% end %>
        <%= 'style="width: 100%;"' if comp.full_width %>>
     <i class="mdc-select__dropdown-icon"></i>
     <select id="<%= comp.id %>"

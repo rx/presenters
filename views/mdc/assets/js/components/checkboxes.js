@@ -12,13 +12,4 @@ export class VCheckbox extends VBaseToggle {
         super(element, mdcComponent);
         this.mdcComponent.indeterminate = (this.input.dataset.indeterminate === 'true');
     }
-
-    isDirty() {
-        // If the checkbox is cannot be dirtied, it is never dirty.
-        if (!this.element.hasAttribute('data-original-value')) {
-            return false;
-        }
-
-        return String(this.input.checked) != this.element.dataset.originalValue;
-    }
 }
