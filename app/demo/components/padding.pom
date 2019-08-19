@@ -1,0 +1,96 @@
+require_relative '../helpers/indented_grid'
+
+Voom::Presenters.define(:padding) do
+  helpers Demo::Helpers::IndentedGrid
+
+  attach :top_nav
+  attach :component_drawer
+  page_title 'Padding'
+
+  indented_grid do
+
+    headline 'Padding'
+    text %(Block containers (grid/column, content, card) have default padding that can be modified.)
+    blank
+    text %(There are four levels of padding: 0 = off, 1 = gutter_width/4, 2 = gutter_width/2, 3 = gutter_width)
+    text %(You can also specify :all, :none or true (same as :all) and false (same as :none))
+    text %(Each block container defines its default values (top,bottom,right,left) padding differently.)
+
+
+    blank
+    title 'Grid padding'
+    text %(Top level grid padding by default is level 3: top3, right3, bottom3, left3.
+          Specifying padding: top is the same as padding: top3.)
+    text %(Column padding defaults to :none. The definition of column padding for [top,bottom,right,left] is equal to [top2,right2,bottom2,left2])
+  end
+  grid color: :darkgrey do
+    column 12, color: :lightgray do
+      body 'top level default grid padding'
+    end
+  end
+  indented_grid do
+    blank
+    text %(A grid nested in another grid turns off padding for the right and left by default: top3, right0, bottom3: left0.)
+
+    grid color: :darkgrey do
+      column 12, color: :lightgray do
+        body 'nested default level grid padding'
+      end
+    end
+    blank
+    text %(You can control the padding for each dimension.)
+
+    grid color: :darkgrey, padding: [:left0, :top3, :bottom2, :right1] do
+      column 12, color: :lightgray, padding: [:left3, :top1, :bottom2, :right0] do
+        body 'Custom padding (view source to see this)'
+      end
+    end
+    blank
+
+    title 'Content padding'
+    text %(A content block by default has `:none` padding. The default level is level 2. So :all is equal to [:top2,:right2,:bottom2,:left2])
+    grid color: :darkgrey, padding: :none do
+      column 12, color: :lightgray, padding: :none do
+        content do
+          body 'No padding'
+        end
+      end
+    end
+    blank
+    grid color: :darkgrey, padding: :none do
+      column 12, color: :lightgray, padding: :none do
+        content padding: :all do
+          body 'default :all padding is level 2'
+        end
+      end
+    end
+    blank
+    grid color: :darkgrey, padding: :none do
+      column 12, color: :lightgray, padding: :none do
+        content padding: [:top3, :bottom0, :right1, :left2] do
+          body 'Custom padding'
+        end
+      end
+    end
+    blank
+    title 'Card padding'
+    text %(A card defaults its padding to `:all`. The default level is level 2. So :all is equal to [:top2,:right2,:bottom2,:left2])
+    grid color: :darkgrey, padding: :none do
+      column 12, color: :lightgray, padding: :none do
+        card do
+          body 'Defaults to :all, level2'
+        end
+      end
+    end
+    blank
+    grid color: :darkgrey, padding: :none do
+      column 12, color: :lightgray, padding: :none do
+        card padding: [:top3, :bottom0, :right1, :left2] do
+          body 'Custom padding'
+        end
+      end
+    end
+    blank
+    attach :code, file: __FILE__
+  end
+end

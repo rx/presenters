@@ -2,7 +2,7 @@
 <div class="v-form-field mdc-form-field">
   <div id="<%= comp.id %>"
        <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
-       <% if comp.dirtyable %>data-original-value="<%=comp.checked%>"<% end %>
+       <% if comp.dirtyable %>data-dirtyable<% end %>
        class="v-checkbox mdc-checkbox v-input">
     <input type="checkbox"
            id="<%= comp.id %>-input"
