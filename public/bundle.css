@@ -16584,15 +16584,11 @@ i:focus.v-datetime--clear {
 .v-rich-text-area-container {
   position: relative;
   width: 100%; }
-<<<<<<< HEAD
   .v-rich-text-area-container[disabled] {
     opacity: 0.67;
     cursor: default;
     pointer-events: none; }
-  .v-rich-text-area-container > label {
-=======
   .v-rich-text-area-container label {
->>>>>>> master
     display: block;
     margin-top: 16px; }
   .v-rich-text-area-container .ql-toolbar {
