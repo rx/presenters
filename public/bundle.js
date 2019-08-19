@@ -82691,13 +82691,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // These Blots will be registered with Quill.
 var blots = [__WEBPACK_IMPORTED_MODULE_1__rich_text_area_horizontal_rule_blot__["a" /* HorizontalRuleBlot */]];
 var toolbarOptions = [['bold', 'italic', 'underline', 'strike'], [{ 'color': [] }], [{ 'align': [] }], ['blockquote', 'horizontal-rule'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], [{ 'script': 'sub' }, { 'script': 'super' }], [{ 'direction': 'rtl' }], [{ 'header': [1, 2, 3, 4, 5, 6, false] }], [{ 'size': ['xx-small', false, 'large', 'x-large'] }], ['link', 'image', 'video'], ['clean']];
-var QUILL_EMPTY_DOC = "<p><br></p>";
+var EMPTY_VALUE = '';
 
 function initRichTextArea(e) {
     console.debug('\tRich Text Area');
     Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-rich-text-area-container', VRichTextArea, null);
-    configureQuill();
-    registerBlots();
 }
 
 var VRichTextArea = function (_dirtyableMixin) {
@@ -82708,6 +82706,9 @@ var VRichTextArea = function (_dirtyableMixin) {
 
         var _this = _possibleConstructorReturn(this, (VRichTextArea.__proto__ || Object.getPrototypeOf(VRichTextArea)).call(this, element, mdcComponent));
 
+        configureQuill();
+        registerBlots();
+
         _this.quillWrapper = element.querySelector('.v-rich-text-area');
         _this.quill = new __WEBPACK_IMPORTED_MODULE_0_quill___default.a(_this.quillWrapper, {
             modules: { toolbar: toolbarOptions },
@@ -82715,10 +82716,20 @@ var VRichTextArea = function (_dirtyableMixin) {
             theme: 'snow',
             placeholder: _this.quillWrapper.dataset.placeholder
         });
+        _this.fixedUpContentElement = element.querySelector('.v-rich-text-area--fixed-up-content');
         _this.originalValue = _this.value();
         _this.quillEditor = _this.quillWrapper.querySelector('.ql-editor');
 
         hookupCustomToolbarButtons(_this);
+
+        // Fix-ups:
+        _this.updateFixedContentElement();
+        _this.quill.on('text-change', function () {
+            return _this.updateFixedContentElement();
+        });
+
+        _this.element.dataset.originalValue = _this.value();
+
         adjustEditorStyles(_this);
         return _this;
     }
@@ -82736,16 +82747,15 @@ var VRichTextArea = function (_dirtyableMixin) {
     }, {
         key: "value",
         value: function value() {
-            // If the quill editor is empty calling innerHTML will still return
-            // '<p><br/></p>' which it uses to represent an empty doc.
-            var doc = this.quill.root.innerHTML;
-            return doc == QUILL_EMPTY_DOC ? '' : doc;
+            var document = this.fixedUpContentElement.innerHTML;
+
+            return this.quill.editor.isBlank() ? EMPTY_VALUE : document;
         }
     }, {
         key: "clear",
         value: function clear() {
-            if (this.value() !== '') {
-                this.setValue('');
+            if (this.value() !== EMPTY_VALUE) {
+                this.setValue(EMPTY_VALUE);
             }
         }
     }, {
@@ -82762,6 +82772,13 @@ var VRichTextArea = function (_dirtyableMixin) {
         key: "isDirty",
         value: function isDirty() {
             return this.dirtyable && this.value().localeCompare(this.originalValue) !== 0;
+        }
+    }, {
+        key: "updateFixedContentElement",
+        value: function updateFixedContentElement() {
+            var rawDocument = this.quill.root.innerHTML;
+
+            this.fixedUpContentElement.innerHTML = convertLists(rawDocument);
         }
     }]);
 
@@ -82909,6 +82926,68 @@ function configureQuill() {
             }
         }
     }
+}
+
+// Quill 1 is not capable of generating structurally-sound nested lists. Instead
+// of generated nested list elements, all list items are generated at the same
+// level. Indentation and list item numbers are handled by various `indent` CSS
+// classes and CSS counters. Eugh.
+// see https://github.com/quilljs/quill/issues/979
+
+// from https://github.com/quilljs/quill/issues/979#issuecomment-381151479.
+function convertLists(richtext) {
+    var tempEl = window.document.createElement('div');
+    tempEl.setAttribute('style', 'display: none;');
+    tempEl.innerHTML = richtext;
+
+    ['ul', 'ol'].forEach(function (type) {
+        var startTag = "::start" + type + "::::/start" + type + "::";
+        var endTag = "::end" + type + "::::/end" + type + "::";
+
+        // Grab each list, and work on it in turn
+        Array.from(tempEl.querySelectorAll(type)).forEach(function (outerListEl) {
+            var listChildren = Array.from(outerListEl.children).filter(function (el) {
+                return el.tagName === 'LI';
+            });
+
+            // Account for the fact that the first li might not be at level 0
+            var firstLi = listChildren[0];
+            firstLi.before(startTag.repeat(getListLevel(firstLi)));
+
+            // Now work through each li in this list
+            listChildren.forEach(function (listEl, index) {
+                var currentLiLevel = getListLevel(listEl);
+                if (index < listChildren.length - 1) {
+                    var difference = getListLevel(listChildren[index + 1]) - currentLiLevel;
+
+                    // we only need to add tags if the level is changing
+                    if (difference > 0) {
+                        listChildren[index + 1].before(startTag.repeat(difference));
+                    } else if (difference < 0) {
+                        listEl.after(endTag.repeat(-difference));
+                    }
+                } else {
+                    listEl.after(endTag);
+                }
+            });
+            outerListEl.after(endTag);
+        });
+    });
+
+    //  Get the content in the element and replace the temporary tags with new ones
+    var newContent = tempEl.innerHTML;
+    newContent = newContent.replace(/::startul::::\/startul::/g, '<ul>');
+    newContent = newContent.replace(/::endul::::\/endul::/g, '</ul>');
+    newContent = newContent.replace(/::startol::::\/startol::/g, '<ol>');
+    newContent = newContent.replace(/::endol::::\/endol::/g, '</ol>');
+
+    tempEl.remove();
+    return newContent;
+}
+
+function getListLevel(el) {
+    var className = el.className || '0';
+    return +className.replace(/[^\d]/g, '');
 }
 
 /***/ }),
