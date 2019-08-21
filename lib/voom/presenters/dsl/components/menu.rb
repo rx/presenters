@@ -45,13 +45,16 @@ module Voom
             include Mixins::Tooltips
             include Mixins::Typography
 
-            attr_accessor :text, :disabled, :selected
+            attr_accessor :text, :disabled, :selected, :position, :size, :color
 
             def initialize(**attribs_, &block)
               super(type: :item, **attribs_, &block)
               @text = attribs.delete(:text)
               @disabled = attribs.delete(:disabled)
               @selected = attribs.delete(:selected) {false}
+              @position = validate_position(attribs.delete(:position) { :top })
+              @size = validate_size(attribs.delete(:size) { :normal })
+              @color = attribs.delete(:color) { :primary }
               @components = []
               expand!
             end
@@ -60,6 +63,37 @@ module Voom
               return @icon if locked?
               @icon = Icon.new(parent: self, icon: icon,
                                **attribs, &block)
+            end
+
+            private
+
+            VALID_POSITIONS = %i[top bottom].freeze
+            VALID_SIZES = %i[normal small].freeze
+
+            def validate_position(value)
+              return unless value
+
+              v = value.to_sym
+
+              unless VALID_POSITIONS.include?(v)
+                raise Errors::ParameterValidation,
+                      "Invalid item position! Valid positions include #{VALID_POSITIONS.join(', ')}"
+              end
+
+              v
+            end
+
+            def validate_size(value)
+              return unless value
+
+              v = value.to_sym
+
+              unless VALID_SIZES.include?(v)
+                raise Errors::ParameterValidation,
+                      "Invalid item size! Valid sizes include #{VALID_SIZES.join(', ')}"
+              end
+
+              v
             end
           end
 
