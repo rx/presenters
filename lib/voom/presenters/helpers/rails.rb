@@ -19,7 +19,7 @@ if defined?(Rails)
             presenter = _expand_namespace_(presenter, namespace)
             presenter = presenter.gsub(':','/')
 
-            path = voom_presenters_web_client_app_path(params)
+            path = voom_presenters_web_client_app_url(params, host: router.base_url)
             if path.include?('?')
               path = path.sub('?', "#{presenter}?")
             else
