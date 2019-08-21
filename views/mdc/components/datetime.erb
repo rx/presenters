@@ -3,7 +3,7 @@
 %>
 <div id="<%= comp.id %>"
      <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
-     <% if comp.dirtyable %>data-original-value="<%=comp.value%>"<% end %>
+     <% if comp.dirtyable %>data-dirtyable<% end %>
      class="v-input v-datetime mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-trailing-icon' if comp.clear_icon %>
             <%= 'mdc-text-field--disabled' if comp.disabled %>

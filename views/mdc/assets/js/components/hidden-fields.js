@@ -1,13 +1,15 @@
 import {VBaseComponent, hookupComponents} from './base-component';
+import {dirtyableMixin} from './mixins/dirtyable';
 
 export function initHiddenFields(e) {
     console.debug('\tHiddenFields');
     hookupComponents(e, '.v-hidden-field', VHiddenField, null);
 }
 
-export class VHiddenField extends VBaseComponent {
+export class VHiddenField extends dirtyableMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
+        this.originalValue = this.value();
     }
 
     // Called to collect data for submission
@@ -28,7 +30,7 @@ export class VHiddenField extends VBaseComponent {
     }
 
     reset() {
-        this.element.value = this.element.dataset.originalValue;
+        this.element.value = this.originalValue;
     }
 
     setValue(value) {
@@ -36,6 +38,7 @@ export class VHiddenField extends VBaseComponent {
     }
 
     isDirty() {
-        return this.value() != this.element.dataset.originalValue;
+        return this.dirtyable
+            && this.value() !== this.originalValue;
     }
 }
