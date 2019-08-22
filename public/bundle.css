@@ -11836,19 +11836,19 @@ a.mdc-list-item {
   display: flex;
   flex-direction: column; }
 
-.v-drawer.v-drawer--full-height.mdc-drawer--modal {
+.mdc-drawer.v-drawer.mdc-drawer--modal {
   top: 0; }
 
-.v-drawer.v-drawer--full-height .mdc-drawer__content .v-list.v-list--full-height {
-  height: 100%; }
+.mdc-drawer.v-drawer.v-drawer--full-height .mdc-drawer__content .v-list.v-list--full-height {
+  min-height: 100%; }
 
-.v-drawer .mdc-drawer__content .v-list .v-list--bottom-wrapper {
+.mdc-drawer.v-drawer .mdc-drawer__content .v-list .v-list--bottom-wrapper {
   margin-top: auto; }
 
 .mdc-drawer.v-drawer .v-list-item--size-small {
   font-size: 0.80rem; }
 
-.v-drawer .v-list-item.v-item__secondary {
+.mdc-drawer.v-drawer .v-list-item.v-item__secondary:not(.mdc-list-item--activated) {
   color: rgba(0, 0, 0, 0.54);
   /* @alternate */
   color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54)); }
