@@ -13,7 +13,7 @@ module Voom
                         :value,
                         :disabled,
                         :off_value
-         
+
           def initialize(**attribs_, &block)
             super(**attribs_, &block)
             @text = attribs.delete(:text)

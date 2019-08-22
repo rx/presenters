@@ -3,7 +3,8 @@
      <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
      <% if comp.dirtyable %>data-dirtyable<% end %>
      <% if comp.height %>data-initial-height="<%= comp.height %>"<% end %>
-     <% if comp.resizable %>data-resizable<% end %>>
+     <% if comp.resizable %>data-resizable<% end %>
+     <% if comp.disabled %>disabled<% end %>>
   <label for="<%= comp.id %>-rta"><%= expand_text(comp.label) %></label>
   <div class="v-rich-text-area"
        id="<%= comp.id %>-rta"
