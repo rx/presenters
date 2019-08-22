@@ -41,29 +41,8 @@ module Voom
 
           private
 
-          class Item < EventBase
-            include Mixins::Tooltips
-            include Mixins::Typography
-
-            attr_accessor :text, :disabled, :selected, :position, :size, :color
-
-            def initialize(**attribs_, &block)
-              super(type: :item, **attribs_, &block)
-              @text = attribs.delete(:text)
-              @disabled = attribs.delete(:disabled)
-              @selected = attribs.delete(:selected) {false}
-              @position = validate_position(attribs.delete(:position) { :top })
-              @size = validate_size(attribs.delete(:size) { :normal })
-              @color = attribs.delete(:color) { :primary }
-              @components = []
-              expand!
-            end
-
-            def icon(icon=nil, **attribs, &block)
-              return @icon if locked?
-              @icon = Icon.new(parent: self, icon: icon,
-                               **attribs, &block)
-            end
+          module BaseMenuItem
+            attr_reader :position, :size, :color
 
             private
 
@@ -97,15 +76,49 @@ module Voom
             end
           end
 
+          class Item < EventBase
+            include Mixins::Tooltips
+            include Mixins::Typography
+            include BaseMenuItem
+
+            attr_accessor :text, :disabled, :selected
+
+            def initialize(**attribs_, &block)
+              super(type: :item, **attribs_, &block)
+              @text = attribs.delete(:text)
+              @disabled = attribs.delete(:disabled)
+              @selected = attribs.delete(:selected) {false}
+              @position = validate_position(attribs.delete(:position) { :top })
+              @size = validate_size(attribs.delete(:size) { :normal })
+              @color = attribs.delete(:color) { :primary }
+              @components = []
+              expand!
+            end
+
+            def icon(icon=nil, **attribs, &block)
+              return @icon if locked?
+              @icon = Icon.new(parent: self, icon: icon,
+                               **attribs, &block)
+            end
+          end
+
           class Label < Item
             def initialize(**attribs, &block)
               super(type: :label, **attribs, &block)
+              @position = validate_position(attribs.delete(:position) { :top })
+              @size = validate_size(attribs.delete(:size) { :normal })
+              @color = attribs.delete(:color) { :primary }
             end
           end
 
           class Divider < Base
+            include BaseMenuItem
+
             def initialize(**attribs, &block)
               super(type: :divider, **attribs, &block)
+              @position = validate_position(attribs.delete(:position) { :top })
+              @size = validate_size(attribs.delete(:size) { :normal })
+              @color = attribs.delete(:color) { :primary }
             end
           end
         end
