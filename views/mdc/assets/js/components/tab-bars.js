@@ -1,5 +1,5 @@
 import {VBaseComponent, hookupComponents} from './base-component';
-import {eventHandlerMixin} from "./mixins/event-handler";
+import {eventHandlerMixin} from './mixins/event-handler';
 import {MDCTabBar} from '@material/tab-bar';
 
 export function initTabBars(e) {
@@ -10,5 +10,20 @@ export function initTabBars(e) {
 export class VTabBar extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
+
+        mdcComponent.listen('MDCTabBar:activated', (event) => {
+            console.log(event);
+            const tabs = element.parentElement.querySelectorAll('.v-tab-content');
+
+            tabs.forEach(function(element) {
+                if (Number(element.dataset.tabId) == event.detail.index) {
+                    element.classList.remove('v-hidden');
+                }
+                else {
+                    element.classList.add('v-hidden');
+                }
+                console.log(element);
+            });
+        });
     }
 }
