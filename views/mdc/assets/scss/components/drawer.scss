@@ -77,6 +77,6 @@
   font-size: 0.80rem;
 }
 
-.v-drawer .v-list-item.v-item__secondary {
+.mdc-drawer.v-drawer .v-list-item.v-item__secondary:not(.mdc-list-item--activated) {
   @include mdc-list-item-primary-text-ink-color(text-secondary-on-background);
 }
