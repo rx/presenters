@@ -9,11 +9,8 @@
             class="mdc-text-field__input"
             rows="<%= comp.rows %>"
             cols="<%= comp.cols %>"
-<<<<<<< HEAD
+            <% if comp.disabled %>disabled<% end %>
             <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id:  "#{comp.id}-input"} %>><%= comp.value %></textarea>
-=======
-            <% if comp.disabled %>disabled<% end %>><%= comp.value %></textarea>
->>>>>>> master
   <div class="mdc-notched-outline">
     <div class="mdc-notched-outline__leading"></div>
     <div class="mdc-notched-outline__notch">
