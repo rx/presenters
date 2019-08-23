@@ -46,7 +46,6 @@ module Voom
                       :position,
                       :text_align,
                       :padding,
-                      :dense,
                       :inline
 
           def initialize(**attribs_, &block)
@@ -61,7 +60,6 @@ module Voom
             @text_align = attribs.delete(:text_align){'left'}
             padding = attribs.delete(:padding) {nil}
             @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
-            @dense = attribs.delete(:dense) { true }
             @inline = attribs.delete(:inline){false}
             expand!
           end

@@ -3,19 +3,20 @@ import {eventHandlerMixin} from './mixins/event-handler';
 import {MDCSlider} from '@material/slider';
 import {visibilityObserverMixin} from './mixins/visibility-observer';
 import {VEvents} from './events';
+import {dirtyableMixin} from './mixins/dirtyable';
 
 export function initSliders(e) {
     console.debug('\tSliders');
     hookupComponents(e, '.v-slider', VSlider, MDCSlider);
 }
 
-export class VSlider extends visibilityObserverMixin(
-    eventHandlerMixin(VBaseComponent)) {
+export class VSlider extends dirtyableMixin(visibilityObserverMixin(
+    eventHandlerMixin(VBaseComponent))) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
         this.recalcWhenVisible(this);
+        this.originalValue = this.value();
     }
-
 
     prepareSubmit(params) {
         params.push([this.name(), this.value()]);
@@ -34,7 +35,7 @@ export class VSlider extends visibilityObserverMixin(
     }
 
     reset() {
-        this.setValue(this.element.dataset.originalValue);
+        this.setValue(this.originalValue);
     }
 
     setValue(value) {
@@ -42,7 +43,7 @@ export class VSlider extends visibilityObserverMixin(
     }
 
     isDirty() {
-        return this.value() != this.element.dataset.originalValue;
+        return this.dirtyable && this.value() !== this.originalValue;
     }
 
     initEventListener(eventName, eventHandler) {

@@ -1,10 +1,25 @@
+.v-rich-text-area-container[data-resizable] {
+  .ql-editor {
+    overflow-y: scroll;
+    resize: vertical;
+  }
+}
+
 .v-rich-text-area-container {
   position: relative;
   width: 100%;
-  > label {
+
+  &[disabled] {
+    opacity: 0.67; // closely approximates MDC
+    cursor: default;
+    pointer-events: none;
+  }
+
+  label {
     display: block;
     margin-top: 16px;
   }
+
   .ql-toolbar {
     margin-top: 16px;
 
@@ -18,20 +33,22 @@
       content: '—–';
     }
   }
+
   .v-rich-text-area {
-    height: 350px;
     &.ql-snow {
       border-color: $v-input-border-color;
       border-bottom-left-radius: $v-input-border-radius;
       border-bottom-right-radius: $v-input-border-radius;
     }
   }
+
   &:hover {
     .ql-toolbar {
       &.ql-snow {
         border-color: $v-input-hover-border-color;
       }
     }
+
     .v-rich-text-area {
       &.ql-snow {
         border-color: $v-input-hover-border-color;
@@ -54,24 +71,3 @@ $fontSizes: (
     font-size: $size;
   }
 }
-
-// // https://stackoverflow.com/a/43808486
-// .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="x-small"]::before {
-//     content: 'Small';
-//     font-size: 0.75em !important;
-// }
-
-// .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="normal"]::before {
-//     content: 'Normal';
-//     font-size: 1em !important;
-// }
-
-// .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="large"]::before {
-//     content: 'Large';
-//     font-size: 1.5em !important;
-// }
-
-// .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="x-large"]::before {
-//     content: 'Huge';
-//     font-size: 2em !important;
-// }

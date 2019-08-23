@@ -28,6 +28,11 @@ Voom::Presenters.define(:sliders) do
       end
     end
 
+    title 'Disabled slider'
+    slider disabled: true, value_min: 0, value_max: 100 do
+      value 42
+    end
+
     button 'Show hidden slider', type: :flat, color: :secondary do
       event :click do
         toggle_visibility :hidden_slider, action: :show

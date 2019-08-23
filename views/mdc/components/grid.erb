@@ -26,7 +26,7 @@
      %>
       <div id="<%= col.id %>" class="v-column mdc-layout-grid__cell <%= span %>
                           <%= col.overflow ? nil : 'v-column-hide-overflow' %>
-                          <%= _padding_classes_(col.padding, 0, subclass: :col) %> v-column--relative <%= _alignment_class_(col.align) %>"
+                          <%= _padding_classes_(col.padding) %> v-column--relative <%= _alignment_class_(col.align) %>"
            style="<%= "background-color: #{col.color};" if col.color %>"
            <%= erb :"components/event", :locals => {comp: col, events: col.events, parent_id: col.event_parent_id} %>>
         <%= erb(:"components/progress", :locals => {:comp => col.progress}) if col.progress && includes_one?(Array(col.progress.position), %i(top both))%>
