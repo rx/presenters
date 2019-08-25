@@ -9,6 +9,12 @@
   position: relative;
   width: 100%;
 
+  &[disabled] {
+    opacity: 0.67; // closely approximates MDC
+    cursor: default;
+    pointer-events: none;
+  }
+
   label {
     display: block;
     margin-top: 16px;

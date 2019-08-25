@@ -10,7 +10,10 @@
     border-radius: 5px;
 }
 
-.v-hidden,
+.v-hidden {
+    display: none;
+    visibility: hidden;
+}
 .incompatible-browser .compatibility-wrapper * {
     display: none;
 }

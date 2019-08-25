@@ -46,6 +46,10 @@ export class VRichTextArea extends dirtyableMixin(eventHandlerMixin(VBaseCompone
         this.originalValue = this.value();
         this.quillEditor = this.quillWrapper.querySelector('.ql-editor');
 
+        if (element.hasAttribute('disabled')) {
+            this.quill.enable(false);
+        }
+
         hookupCustomToolbarButtons(this);
 
         // Fix-ups:
