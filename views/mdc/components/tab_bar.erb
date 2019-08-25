@@ -27,19 +27,9 @@
     </div>
   </div>
 </div>
-<<<<<<< HEAD
-<% comp.tabs.each do |tab|
-  next unless tab.components.any? %>
-  <div class="v-tab-content <%=tab.selected ? nil : 'v-hidden' %>">
-    <%= erb :"components/render", :locals => {:components => tab.components, :scope=> nil} if tab.components.any? %>
-  </div>
-<% end %>
-
-=======
 <% comp.tabs.each_with_index do |tab, index|
   next unless tab.components.any? %>
   <div class="v-tab-content <%=tab.selected ? nil : 'v-hidden' %>" data-tab-id="<%=index%>">
     <%= erb :"components/render", :locals => {:components => tab.components, :scope=> nil} if tab.components.any? %>
   </div>
 <% end %>
->>>>>>> master
