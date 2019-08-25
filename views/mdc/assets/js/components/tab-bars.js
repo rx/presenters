@@ -15,7 +15,7 @@ export class VTabBar extends eventHandlerMixin(VBaseComponent) {
             const tabs = element.parentElement.querySelectorAll(
                 '.v-tab-content');
 
-            tabs.forEach(function(element) {
+            for (const element of tabs) {
                 if (Number(element.dataset.tabId) == event.detail.index) {
                     element.classList.remove('v-hidden');
                 }
