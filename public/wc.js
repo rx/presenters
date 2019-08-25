@@ -75576,13 +75576,34 @@ var VTabBar = function (_eventHandlerMixin) {
         mdcComponent.listen('MDCTabBar:activated', function (event) {
             var tabs = element.parentElement.querySelectorAll('.v-tab-content');
 
-            tabs.forEach(function (element) {
-                if (Number(element.dataset.tabId) == event.detail.index) {
-                    element.classList.remove('v-hidden');
-                } else {
-                    element.classList.add('v-hidden');
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = tabs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var _element = _step.value;
+
+                    if (Number(_element.dataset.tabId) == event.detail.index) {
+                        _element.classList.remove('v-hidden');
+                    } else {
+                        _element.classList.add('v-hidden');
+                    }
                 }
-            });
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
         });
         return _this;
     }

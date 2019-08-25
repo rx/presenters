@@ -22,7 +22,7 @@ export class VTabBar extends eventHandlerMixin(VBaseComponent) {
                 else {
                     element.classList.add('v-hidden');
                 }
-            });
+            }
         });
     }
 }
