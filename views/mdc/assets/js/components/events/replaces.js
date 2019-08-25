@@ -62,7 +62,6 @@ export class VReplaces extends VBase {
             eventParams,
             [['grid_nesting', this.options.grid_nesting]]);
         const delayAmt = delayAmount(this.event);
-        ;
 
         return new Promise(function(resolve, reject) {
             if (!nodeToReplace) {
