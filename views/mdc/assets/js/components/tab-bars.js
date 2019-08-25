@@ -12,8 +12,8 @@ export class VTabBar extends eventHandlerMixin(VBaseComponent) {
         super(element, mdcComponent);
 
         mdcComponent.listen('MDCTabBar:activated', (event) => {
-            console.log(event);
-            const tabs = element.parentElement.querySelectorAll('.v-tab-content');
+            const tabs = element.parentElement.querySelectorAll(
+                '.v-tab-content');
 
             tabs.forEach(function(element) {
                 if (Number(element.dataset.tabId) == event.detail.index) {
@@ -22,7 +22,6 @@ export class VTabBar extends eventHandlerMixin(VBaseComponent) {
                 else {
                     element.classList.add('v-hidden');
                 }
-                console.log(element);
             });
         });
     }

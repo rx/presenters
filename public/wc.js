@@ -75574,7 +75574,6 @@ var VTabBar = function (_eventHandlerMixin) {
         var _this = _possibleConstructorReturn(this, (VTabBar.__proto__ || Object.getPrototypeOf(VTabBar)).call(this, element, mdcComponent));
 
         mdcComponent.listen('MDCTabBar:activated', function (event) {
-            console.log(event);
             var tabs = element.parentElement.querySelectorAll('.v-tab-content');
 
             tabs.forEach(function (element) {
@@ -75583,7 +75582,6 @@ var VTabBar = function (_eventHandlerMixin) {
                 } else {
                     element.classList.add('v-hidden');
                 }
-                console.log(element);
             });
         });
         return _this;

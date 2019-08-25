@@ -43,7 +43,7 @@ Voom::Presenters.define(:tab_bars) do
       end
     end
     separator
-    
+
     title 'Content is automatically displayed/hidden'
     tab_bar do
       tab 'One', selected: true do
@@ -53,7 +53,7 @@ Voom::Presenters.define(:tab_bars) do
         heading3 'Tab 2'
       end
       tab 'Three' do
-        heading3 'Tab 3'
+        #heading3 'Tab 3'
       end
     end
 
