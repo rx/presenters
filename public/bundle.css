@@ -17621,7 +17621,10 @@ i:focus.v-datetime--clear {
   font-weight: bold;
   border-radius: 5px; }
 
-.v-hidden,
+.v-hidden {
+  display: none;
+  visibility: hidden; }
+
 .incompatible-browser .compatibility-wrapper * {
   display: none; }
 
