@@ -41,9 +41,45 @@ module Voom
 
           private
 
+          module BaseMenuItem
+            attr_reader :position, :size, :color
+
+            private
+
+            VALID_POSITIONS = %i[top bottom].freeze
+            VALID_SIZES = %i[normal small].freeze
+
+            def validate_position(value)
+              return unless value
+
+              v = value.to_sym
+
+              unless VALID_POSITIONS.include?(v)
+                raise Errors::ParameterValidation,
+                      "Invalid item position! Valid positions include #{VALID_POSITIONS.join(', ')}"
+              end
+
+              v
+            end
+
+            def validate_size(value)
+              return unless value
+
+              v = value.to_sym
+
+              unless VALID_SIZES.include?(v)
+                raise Errors::ParameterValidation,
+                      "Invalid item size! Valid sizes include #{VALID_SIZES.join(', ')}"
+              end
+
+              v
+            end
+          end
+
           class Item < EventBase
             include Mixins::Tooltips
             include Mixins::Typography
+            include BaseMenuItem
 
             attr_accessor :text, :disabled, :selected
 
@@ -52,6 +88,9 @@ module Voom
               @text = attribs.delete(:text)
               @disabled = attribs.delete(:disabled)
               @selected = attribs.delete(:selected) {false}
+              @position = validate_position(attribs.delete(:position) { :top })
+              @size = validate_size(attribs.delete(:size) { :normal })
+              @color = attribs.delete(:color) { :primary }
               @components = []
               expand!
             end
@@ -66,12 +105,20 @@ module Voom
           class Label < Item
             def initialize(**attribs, &block)
               super(type: :label, **attribs, &block)
+              @position = validate_position(attribs.delete(:position) { :top })
+              @size = validate_size(attribs.delete(:size) { :normal })
+              @color = attribs.delete(:color) { :primary }
             end
           end
 
           class Divider < Base
+            include BaseMenuItem
+
             def initialize(**attribs, &block)
               super(type: :divider, **attribs, &block)
+              @position = validate_position(attribs.delete(:position) { :top })
+              @size = validate_size(attribs.delete(:size) { :normal })
+              @color = attribs.delete(:color) { :primary }
             end
           end
         end
