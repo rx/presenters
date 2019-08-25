@@ -85,8 +85,11 @@ module Voom
           end
 
           def color_classname(comp)
+            return unless comp&.color
+
             return "v-#{comp.type}__primary" if eq(comp.color, :primary)
             return "v-#{comp.type}__secondary" if eq(comp.color, :secondary)
+
             "v-color__#{comp.color}"
           end
 
@@ -185,7 +188,7 @@ module Voom
         end
 
         def router
-          settings.router_.new(base_url: "#{request.script_name}")
+          settings.router_.new(base_url: "#{request.base_url}")
         end
 
         def prepare_context
