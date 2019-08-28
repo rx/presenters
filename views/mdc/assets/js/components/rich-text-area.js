@@ -43,7 +43,6 @@ export class VRichTextArea extends dirtyableMixin(eventHandlerMixin(VBaseCompone
             placeholder: this.quillWrapper.dataset.placeholder
         });
         this.fixedUpContentElement = element.querySelector('.v-rich-text-area--fixed-up-content')
-        this.originalValue = this.value();
         this.quillEditor = this.quillWrapper.querySelector('.ql-editor');
 
         if (element.hasAttribute('disabled')) {
@@ -57,6 +56,7 @@ export class VRichTextArea extends dirtyableMixin(eventHandlerMixin(VBaseCompone
         this.quill.on('text-change', () => this.updateFixedContentElement());
 
         adjustEditorStyles(this);
+        this.originalValue = this.value();
     }
 
     prepareSubmit(params) {
