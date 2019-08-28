@@ -56,8 +56,6 @@ export class VRichTextArea extends dirtyableMixin(eventHandlerMixin(VBaseCompone
         this.updateFixedContentElement();
         this.quill.on('text-change', () => this.updateFixedContentElement());
 
-        this.element.dataset.originalValue = this.value();
-
         adjustEditorStyles(this);
     }
 
