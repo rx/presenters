@@ -44,6 +44,7 @@ module Voom
 
           class Media < Base
             include Mixins::Attaches
+            include Mixins::Common
             attr_reader :height, :width, :color, :hidden, :components
 
             def initialize(**attribs_, &block)

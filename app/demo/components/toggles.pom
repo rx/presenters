@@ -39,7 +39,9 @@ Voom::Presenters.define(:toggles) do
     end
     grid do
       column 6 do
-        switch disabled: true
+        switch disabled: true do
+          tooltip 'I am disabled'
+        end
       end
     end
     grid do

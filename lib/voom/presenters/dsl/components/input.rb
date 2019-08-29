@@ -6,16 +6,17 @@ module Voom
           include Mixins::Tooltips
 
           attr_reader :name,
-                      :dirtyable
+                      :dirtyable,
+                      :disabled
 
           def initialize(**attribs_, &block)
             super(**attribs_, &block)
             @name = attribs.delete(:name)
             @dirtyable = attribs.delete(:dirtyable) { true }
+            @disabled = attribs.delete(:disabled) { false }
           end
         end
       end
     end
   end
 end
-
