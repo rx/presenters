@@ -11,7 +11,6 @@ module Voom
                         :text_color,
                         :checked,
                         :value,
-                        :disabled,
                         :off_value
 
           def initialize(**attribs_, &block)
@@ -20,7 +19,6 @@ module Voom
             @text_color = attribs.delete(:text_color)
             @checked = attribs.delete(:checked) { false }
             @value = attribs.delete(:value)
-            @disabled = attribs.delete(:disabled) { false }
             @off_value = attribs.delete(:off_value)
           end
         end
