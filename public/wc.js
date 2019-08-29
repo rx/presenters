@@ -1516,7 +1516,7 @@ var VBaseToggle = function (_dirtyableMixin) {
 
         var _this = _possibleConstructorReturn(this, (VBaseToggle.__proto__ || Object.getPrototypeOf(VBaseToggle)).call(this, element, mdcComponent));
 
-        _this.input = element.querySelector('input');
+        _this.input = element.querySelector('input') || element;
 
         element.addEventListener('V:postFailed', function (event) {
             // Revert to previous checked state on failed post.
