@@ -68196,7 +68196,6 @@ var VRichTextArea = function (_dirtyableMixin) {
             placeholder: _this.quillWrapper.dataset.placeholder
         });
         _this.fixedUpContentElement = element.querySelector('.v-rich-text-area--fixed-up-content');
-        _this.originalValue = _this.value();
         _this.quillEditor = _this.quillWrapper.querySelector('.ql-editor');
 
         if (element.hasAttribute('disabled')) {
@@ -68211,9 +68210,8 @@ var VRichTextArea = function (_dirtyableMixin) {
             return _this.updateFixedContentElement();
         });
 
-        _this.element.dataset.originalValue = _this.value();
-
         adjustEditorStyles(_this);
+        _this.originalValue = _this.value();
         return _this;
     }
 
