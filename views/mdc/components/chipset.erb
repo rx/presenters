@@ -1,0 +1,8 @@
+<% if comp
+    variant_class = ''
+    variant_class = "mdc-chip-set--#{comp.variant}" unless comp.variant.nil?
+%>
+    <div class="v-chip-set mdc-chip-set <%= variant_class %>">
+      <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
+   </div>
+<% end %>

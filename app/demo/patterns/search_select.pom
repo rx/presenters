@@ -4,10 +4,10 @@ module Demo
   module Helpers
     module SearchSelectDemo
       def searches
-        search = context.fetch(:search) {nil}
-        searches = context.fetch(:searches) {[]}
+        search = context.fetch(:search) { nil }
+        searches = context.fetch(:searches) { [] }
         searches << search unless search.nil? || search == ''
-        searches.select{|s| s != ''}
+        searches.select { |s| s != '' }
       end
     end
   end
@@ -26,7 +26,7 @@ Voom::Presenters.define(:search_select) do
         grid do
           column 4 do
             content do
-              text_field id: :search_field,  name: :search, full_width: false do
+              text_field id: :search_field, name: :search, full_width: false do
                 label 'Search Tickets'
                 event :input do
                   replaces :ticket_list, :ticket_list, input_tag: :input_data_container
@@ -64,11 +64,11 @@ Voom::Presenters.define(:ticket_list) do
 
     def tickets
       re = Regexp.union(searches)
-      ticket_data.select {|ticket| re.match(ticket.event_name)}
+      ticket_data.select { |ticket| re.match(ticket.event_name) }
     end
 
     def ticket_ids
-      context.fetch(:ticket_id) {[]}
+      context.fetch(:ticket_id) { [] }
     end
   end
 
@@ -88,13 +88,15 @@ end
 Voom::Presenters.define(:completed_searches) do
   helpers Demo::Helpers::SearchSelectDemo
   content id: :completed_searches do
-    searches.each do |search|
-      chip color: :primary, name: 'searches[]', value: search, id: search do
-        text search
-        icon :delete, position: :right do
-          event :click do
-            remove search
-            replaces :ticket_list, :ticket_list, input_tag: :input_data_container
+    chipset do
+      searches.each do |search|
+        chip color: :primary, name: 'searches[]', value: search, id: search do
+          text search
+          icon :delete, position: :right do
+            event :click do
+              remove search
+              replaces :ticket_list, :ticket_list, input_tag: :input_data_container
+            end
           end
         end
       end
