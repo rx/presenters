@@ -1,0 +1,9 @@
+@import "@material/icon-button/mdc-icon-button";
+
+.v-icon-button--off {
+  color: black;
+}
+
+.v-icon-button--on {
+  color: $mdc-theme-primary;
+}

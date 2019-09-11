@@ -1,5 +1,5 @@
 require 'voom/presenters/dsl/components/icon'
-require 'voom/presenters/dsl/components/icon_toggle'
+require 'voom/presenters/dsl/components/icon_button'
 
 
 module Voom
@@ -51,11 +51,12 @@ module Voom
                                    **attribs, &block)
             end
 
-            def icon_toggle(icon=nil, **attribs, &block)
-              return @icon_toggle if locked?
-              @action_type = :icon_toggle
-              @icon_toggle = IconToggle.new(parent: self, icon: icon, **attribs, &block)
+            def icon_button(icon=nil, **attribs, &block)
+              return @icon_button if locked?
+              @action_type = :icon_button
+              @icon_button = IconButton.new(parent: self, icon: icon, **attribs, &block)
             end
+            alias icon_toggle icon_button
 
             def button(text=nil, **attribs, &block)
               return @button if locked?

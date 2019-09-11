@@ -86,8 +86,11 @@ Voom::Presenters.define(:tooltips) do
     radio_button do
       tooltip 'select it'
     end
-    icon_toggle 'format_italic' do
+    icon_button 'format_italic' do
       tooltip 'toggle it'
+    end
+    icon_toggle 'format_italic' do
+      tooltip 'icon_toggle can still be used for icon_button'
     end
     switch do
       tooltip 'switch it'

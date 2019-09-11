@@ -104,7 +104,7 @@ Voom::Presenters.define(:lists) do
               when 2
                 switch
               when 3
-                icon_toggle :star
+                icon_button :star
             end
           end
         end
@@ -145,7 +145,7 @@ Voom::Presenters.define(:lists) do
           avatar :person
           info 'actor' if index == 0
           actions do
-            icon_toggle :star 
+            icon_button :star
           end
           subtitle "#{actor.episodes} episodes"
         end

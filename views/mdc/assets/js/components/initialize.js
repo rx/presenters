@@ -6,7 +6,7 @@ import {initEvents} from './events';
 import {initLists} from './lists';
 import {initDrawer} from './drawer';
 import {initHeader} from './header';
-import {initIconToggles} from './icon-toggles';
+import {initIconButtons} from './icon-buttons';
 import {initMenus} from './menus';
 import {initSelects} from './selects';
 import {initChips} from './chips';
@@ -45,7 +45,7 @@ export function initialize(root, setRoot) {
     initLists(root);
     initDrawer(root);
     initHeader(root);
-    initIconToggles(root);
+    initIconButtons(root);
     initMenus(root);
     initSelects(root);
     initChips(root);

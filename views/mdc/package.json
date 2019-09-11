@@ -36,7 +36,7 @@
     "@material/fab": "^3.1.0",
     "@material/floating-label": "^3.1.0",
     "@material/form-field": "^3.1.0",
-    "@material/icon-toggle": "^0.44.1",
+    "@material/icon-button": "^3.1.0",
     "@material/layout-grid": "^3.1.0",
     "@material/line-ripple": "^3.1.0",
     "@material/linear-progress": "^3.1.0",
