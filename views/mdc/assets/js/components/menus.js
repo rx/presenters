@@ -50,7 +50,7 @@ export class VMenu extends eventHandlerMixin(VBaseComponent) {
         if (link) {
             link.addEventListener('click', createMenuHandler(this.mdcComponent, element));
         }
-        if (this.hoistedMenuElement.getAttribute('data-hoist') != 'true') {
+        if (this.hoistedMenuElement.getAttribute('data-hoist') != 'false') {
             this.mdcComponent.hoistMenuToBody();
         }
     }

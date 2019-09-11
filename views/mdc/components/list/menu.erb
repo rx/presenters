@@ -1,6 +1,6 @@
 <div id="<%= comp.id %>"
       class="mdc-menu v-menu"
-      <%= 'data-hoist="true"' if comp.hoisted %>
+      <%= 'data-hoist="false"' if !comp.hoisted %>
       data-placement="contextual"
       style="position: absolute;"
       tabindex="-1">

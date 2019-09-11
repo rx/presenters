@@ -10199,7 +10199,7 @@ var VMenu = function (_eventHandlerMixin) {
         if (link) {
             link.addEventListener('click', createMenuHandler(_this.mdcComponent, element));
         }
-        if (_this.hoistedMenuElement.getAttribute('data-hoist') == 'true') {
+        if (_this.hoistedMenuElement.getAttribute('data-hoist') != 'false') {
             _this.mdcComponent.hoistMenuToBody();
         }
         return _this;
