@@ -12,6 +12,7 @@
   <div id="<%= comp.id %>"
        class="mdc-menu mdc-menu-surface
               <%='mdc-menu--open' if comp.open %>"
+       <%= 'data-hoist="false"' if !comp.hoisted %>
        style="position: absolute;" tabindex="-1">
     <ul class="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
       <% comp.items.each do |item| %>
