@@ -1,16 +1,16 @@
 <button id="<%= comp.id %>"
-   class="v-icon-button mdc-icon-button material-icons
-       <%= 'mdc-icon-toggle--disabled' if comp.disabled %>"
+   class="v-icon-toggle mdc-icon-button
+       <%= 'mdc-icon-button--on' if comp.checked %>"
+   <%= 'disabled' if comp.disabled %>"
    role="button"
    aria-disabled="<%= comp.disabled %>"
    aria-pressed="<%= comp.checked %>"
    data-checked="<%= comp.checked %>"
    aria-label="" tabindex="0"
    data-name="<%= comp.name %>"
-   data-toggle-on='{"label": "", "content": "<%= comp.icon %>" ,"cssClass": "v-icon-button--on"}'
-   data-toggle-off='{"label": "", "content": "<%= comp.icon  %>", "cssClass": "v-icon-button--off"}'
    data-off="<%= comp.off_value %>"
    <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
-  <%= comp.icon  %>
+  <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"><%= comp.on_icon  %></i>
+  <i class="material-icons mdc-icon-button__icon"><%= comp.icon  %></i>
 </button>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

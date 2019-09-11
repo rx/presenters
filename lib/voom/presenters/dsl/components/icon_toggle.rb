@@ -4,12 +4,13 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class IconButton < ToggleBase
-          attr_accessor :icon, :selected, :disabled
+        class IconToggle < ToggleBase
+          attr_accessor :icon, :on_icon, :disabled
 
           def initialize(**attribs_, &block)
-            super(type: :icon_button, **attribs_, &block)
+            super(type: :icon_toggle, **attribs_, &block)
             @icon = attribs.delete(:icon)
+            @on_icon = attribs.delete(:on_icon) { @icon }
             @selected = attribs.delete(:selected) { false }
             @disabled = attribs.delete(:disabled) { false }
             expand!

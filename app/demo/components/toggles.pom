@@ -18,8 +18,22 @@ Voom::Presenters.define(:toggles) do
     radio_button name: :radio, value: 'two', text: "Two"
 
     title 'ICON TOGGLE'
-    icon_toggle 'format_bold', checked: true
-    icon_toggle 'format_italic'
+
+    icon_toggle :format_italic do
+      tooltip 'toggle it - uses same icon'
+    end
+
+    icon_toggle :check_box_outline_blank, on_icon: :check_box do
+      tooltip 'toggle it - uses on and off icons'
+    end
+
+    icon_toggle :check_box_outline_blank, on_icon: :check_box, checked: true do
+      tooltip 'toggle it - already in a checked state'
+    end
+
+    icon_toggle :toggle_off, on_icon: :toggle_on, disabled: true do
+      tooltip 'Im disabled'
+    end
 
     title 'SWITCH'
     grid do

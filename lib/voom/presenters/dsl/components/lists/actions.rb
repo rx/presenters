@@ -43,12 +43,11 @@ module Voom
               @actions << action
             end
 
-            def icon_button(icon=nil, **attribs, &block)
+            def icon_toggle(icon=nil, **attribs, &block)
               action = Lists::Action.new(parent: self)
-              action.icon_button(icon, **attribs, &block)
+              action.icon_toggle(icon, **attribs, &block)
               @actions << action
             end
-            alias icon_toggle icon_button
 
             def button(text=nil, **attribs, &block)
               action = Lists::Action.new(parent: self)

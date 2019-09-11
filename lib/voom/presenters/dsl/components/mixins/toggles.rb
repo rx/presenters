@@ -22,13 +22,12 @@ module Voom
                                  **attribs, &block)
             end
 
-            def icon_button(icon, **attribs, &block)
+            def icon_toggle(icon, **attribs, &block)
               trace { attribs.inspect }
-              self << IconButton.new(parent: self,
+              self << IconToggle.new(parent: self,
                                      icon: icon,
                                      **attribs, &block)
             end
-            alias icon_toggle icon_button
           end
         end
       end
