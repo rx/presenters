@@ -35287,6 +35287,10 @@ var VChip = function (_eventHandlerMixin) {
         _this.element.addEventListener('click', function (e) {
             if (_this.selectable) {
                 _this.mdcComponent.selected = !_this.mdcComponent.selected;
+
+                var event = new Event(_this.mdcComponent.selected ? 'select' : 'deselect');
+
+                _this.element.dispatchEvent(event);
             }
         });
         return _this;

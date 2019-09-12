@@ -19,6 +19,10 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
         this.element.addEventListener('click', (e) => {
             if (this.selectable) {
                 this.mdcComponent.selected = !this.mdcComponent.selected;
+
+                const event = new Event(this.mdcComponent.selected ? 'select' : 'deselect');
+
+                this.element.dispatchEvent(event);
             }
         });
     }
