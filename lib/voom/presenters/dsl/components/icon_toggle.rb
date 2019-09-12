@@ -5,7 +5,7 @@ module Voom
     module DSL
       module Components
         class IconToggle < ToggleBase
-          attr_accessor :icon, :on_icon
+          attr_accessor :icon, :on_icon, :selected
 
           def initialize(**attribs_, &block)
             super(type: :icon_toggle, **attribs_, &block)
