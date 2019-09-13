@@ -5,6 +5,9 @@ import {VBaseComponent, hookupComponentsManually} from './base-component';
 
 export const EVENT_SELECT = 'select';
 export const EVENT_DESELECT = 'deselect';
+export const EVENT_TRAILING_ICON_CLICK = 'trailing_icon_click';
+
+const SELECTABLE_VARIANT_CLASS = 'v-chip-set--selectable-variant';
 
 export function initChips(e) {
     console.debug('\tChips');
@@ -17,7 +20,7 @@ export function initChips(e) {
     // call for chips is not needed.
 
     hookupComponentsManually(e, '.v-chip-set', function(element) {
-        const selectable = element.classList.contains('v-chip-set--has-variant');
+        const selectable = element.classList.contains(SELECTABLE_VARIANT_CLASS);
         const chipFactory = voomChipFactoryFactory(selectable);
         const mdcComponent = new MDCChipSet(element, undefined, chipFactory);
 
@@ -28,9 +31,6 @@ export function initChips(e) {
 export class VChip extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
-
-        let parentClassList = element.parentElement.classList;
-        this.selectable = parentClassList.contains('mdc-chip-set--choice') || parentClassList.contains('mdc-chip-set--filter');
 
         this.element.addEventListener('click', (e) => {
             if (this.selectable) {
@@ -44,14 +44,29 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
                 this.element.dispatchEvent(selectionEvent);
             }
         });
+
+        if (this.trailingIcon) {
+            this.trailingIcon.addEventListener('click', (e) => {
+                // Don't propagate click upwards to chip <button>:
+                e.stopPropagation();
+
+                const clickEvent = new Event(EVENT_TRAILING_ICON_CLICK);
+
+                this.element.dispatchEvent(clickEvent);
+            });
+        }
+    }
+
+    get trailingIcon() {
+        return this.element.querySelector(
+            '.mdc-chip__icon.mdc-chip__icon--trailing'
+        );
     }
 
     // Called to collect data for submission
     prepareSubmit(params) {
-        if(this.value() !== ''){
-            if(!this.selectable || (this.selectable && this.mdcComponent.selected)) {
-                params.push([this.name(), this.value()]);
-            }
+        if (this.shouldSubmitParams) {
+            params.push([this.name(), this.value()]);
         }
     }
 
@@ -69,6 +84,16 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
 
     setValue(value) {
         this.element.setAttribute('data-value', value);
+    }
+
+    get shouldSubmitParams() {
+        return this.value() && (!this.selectable || this.mdcComponent.selected);
+    }
+
+    get selectable() {
+        return this.element.parentElement.classList.contains(
+            SELECTABLE_VARIANT_CLASS
+        );
     }
 }
 

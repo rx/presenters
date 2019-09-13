@@ -1,8 +1,8 @@
-<% if comp
-    variant_class = ''
-    variant_class = "mdc-chip-set--#{comp.variant}" unless comp.variant.nil?
+<%
+    variant_classes = []
+    variant_classes << "mdc-chip-set--#{comp.variant}" if comp.variant
+    variant_classes << 'v-chip-set--selectable-variant' if comp.variant == :select || comp.variant == :filter
 %>
-    <div class="v-chip-set mdc-chip-set <%= variant_class %>">
-      <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
-   </div>
-<% end %>
+<div class="v-chip-set mdc-chip-set <%= variant_classes.join(' ') %>">
+  <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
+</div>
