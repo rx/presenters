@@ -36632,7 +36632,7 @@ var VPosts = function (_VBase) {
 
                 var snackbar = element.vComponent;
 
-                if (contentType && contentType.includes('application/json')) {
+                if (contentType && contentType.includes('application/json') && response.length > 0) {
                     var messages = JSON.parse(response).messages;
 
                     if (messages && messages.snackbar) {

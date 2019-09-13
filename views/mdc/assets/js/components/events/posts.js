@@ -90,7 +90,7 @@ export class VPosts extends VBase {
 
             const snackbar = element.vComponent;
 
-            if (contentType && contentType.includes('application/json')) {
+            if (contentType && contentType.includes('application/json') && response.length > 0) {
                 const messages = JSON.parse(response).messages;
 
                 if (messages && messages.snackbar) {

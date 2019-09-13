@@ -10,6 +10,7 @@ module Voom
           def initialize(**attribs_, &block)
             super(type: :hidden_field,
                   **attribs_, &block)
+            self.value(attribs.delete(:value)) if attribs.key?(:value)
             expand!
           end
 
