@@ -1,15 +1,28 @@
 import {MDCChip} from '@material/chips';
 import {MDCChipSet} from '@material/chips';
-import {eventHandlerMixin} from "./mixins/event-handler";
-import {VBaseComponent, hookupComponents} from './base-component';
+import {eventHandlerMixin} from './mixins/event-handler';
+import {VBaseComponent, hookupComponentsManually} from './base-component';
 
 export const EVENT_SELECT = 'select';
 export const EVENT_DESELECT = 'deselect';
 
 export function initChips(e) {
     console.debug('\tChips');
-    hookupComponents(e, '.v-chip-set', VChipSet, MDCChipSet);
-    hookupComponents(e, '.v-chip', VChip, MDCChip);
+
+    // The chip set > chips hierarchy is established differently than other
+    // components: a chip set constructs and manages Chip components for its
+    // chip elements.
+    //
+    // Because the chip set constructs chips on its own, a `hookupComponents`
+    // call for chips is not needed.
+
+    hookupComponentsManually(e, '.v-chip-set', function(element) {
+        const selectable = element.classList.contains('v-chip-set--has-variant');
+        const chipFactory = voomChipFactoryFactory(selectable);
+        const mdcComponent = new MDCChipSet(element, undefined, chipFactory);
+
+        return new VChipSet(element, mdcComponent);
+    });
 }
 
 export class VChip extends eventHandlerMixin(VBaseComponent) {
@@ -42,21 +55,31 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
         }
     }
 
-    name(){
+    name() {
         return this.element.getAttribute('data-name');
     }
 
-    value(){
+    value() {
         return this.element.getAttribute('data-value');
     }
 
-    clear(){
+    clear() {
         console.debug('Chip clear is a no-op');
     }
 
-    setValue(value){
+    setValue(value) {
         this.element.setAttribute('data-value', value);
     }
+}
+
+// Returns a function which constructs VChip components.
+function voomChipFactoryFactory(selectable) {
+    return function(element) {
+        const mdcComponent = new MDCChip(element);
+        mdcComponent.shouldRemoveOnTrailingIconClick = !selectable;
+
+        return new VChip(element, mdcComponent);
+    };
 }
 
 export class VChipSet extends eventHandlerMixin(VBaseComponent) {
