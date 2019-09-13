@@ -1,20 +1,3 @@
-require 'voom/presenters/dsl/components/actions/loads'
-require 'voom/presenters/dsl/components/actions/replaces'
-require 'voom/presenters/dsl/components/actions/posts'
-require 'voom/presenters/dsl/components/actions/updates'
-require 'voom/presenters/dsl/components/actions/deletes'
-require 'voom/presenters/dsl/components/actions/remove'
-require 'voom/presenters/dsl/components/actions/dialog'
-require 'voom/presenters/dsl/components/actions/toggle_visibility'
-require 'voom/presenters/dsl/components/actions/autocomplete'
-require 'voom/presenters/dsl/components/actions/prompt_if_dirty'
-require 'voom/presenters/dsl/components/actions/snackbar'
-require 'voom/presenters/dsl/components/actions/clear'
-require 'voom/presenters/dsl/components/actions/navigates'
-require 'voom/presenters/dsl/components/actions/stepper'
-require 'voom/presenters/errors/parameter_validation'
-require_relative 'mixins/last_response'
-
 module Voom
   module Presenters
     module DSL

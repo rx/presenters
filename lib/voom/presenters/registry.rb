@@ -1,5 +1,3 @@
-require 'voom/trace'
-
 module Voom
   module Presenters
     class Registry

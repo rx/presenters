@@ -1,7 +1,3 @@
-require 'voom/presenters/dsl/components/input'
-require 'voom/presenters/dsl/components/mixins/append'
-require 'voom/presenters/dsl/components/mixins/grids'
-
 module Voom
   module Presenters
     module DSL

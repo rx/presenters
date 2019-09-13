@@ -5,6 +5,7 @@ ruby `cat .ruby-version`
 gemspec
 
 gem 'pry', group: :development
+
 group :test do
   gem 'rspec'
   gem 'rspec-html-matchers'

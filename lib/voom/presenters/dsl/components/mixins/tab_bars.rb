@@ -7,6 +7,8 @@ module Voom
             def tab_bar(**attribs, &block)
               self << Components::TabBar.new(parent: self, **attribs, &block)
             end
+
+            alias tabs tab_bar
           end
         end
       end

@@ -1,20 +1,3 @@
-require 'voom/presenters/dsl/components/hidden_field'
-require 'voom/presenters/dsl/components/text_field'
-require 'voom/presenters/dsl/components/text_area'
-require 'voom/presenters/dsl/components/mixins/event'
-require 'voom/presenters/dsl/components/mixins/grids'
-require 'voom/presenters/dsl/components/mixins/append'
-require 'voom/presenters/dsl/components/mixins/text_fields'
-require 'voom/presenters/dsl/components/mixins/selects'
-require 'voom/presenters/dsl/components/mixins/buttons'
-require 'voom/presenters/dsl/components/mixins/toggles'
-require 'voom/presenters/dsl/components/mixins/attaches'
-require 'voom/presenters/dsl/components/mixins/expansion_panels'
-require 'voom/presenters/dsl/components/mixins/content'
-require 'voom/presenters/dsl/components/mixins/typography'
-require 'voom/presenters/dsl/components/mixins/date_time_fields'
-require 'voom/presenters/dsl/components/mixins/file_inputs'
-
 module Voom
   module Presenters
     module DSL

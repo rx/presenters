@@ -1,8 +1,4 @@
 if defined?(Rails)
-  require 'voom/presenters/helpers/rails/currency'
-  require 'voom/presenters/helpers/rails/model_table'
-  require 'voom/presenters/namespace'
-
   module Voom
     module Presenters
       module Helpers
@@ -11,15 +7,18 @@ if defined?(Rails)
           include Voom::Presenters::Helpers::Rails::Currency
           include Voom::Presenters::Helpers::Rails::ModelTable
           include Namespace
+
           def default_url_options
             {}
           end
 
-          def presenters_path(presenter, **params)
+          def presenters_path(presenter, host: false, **params)
             presenter = _expand_namespace_(presenter, namespace)
-            presenter = presenter.gsub(':','/')
+            presenter = presenter.gsub(':', '/')
 
-            path = voom_presenters_web_client_app_path(params)
+            path = host ? voom_presenters_web_client_app_url(params, host: router.base_url) :
+                          voom_presenters_web_client_app_path(params)
+
             if path.include?('?')
               path = path.sub('?', "#{presenter}?")
             else
@@ -29,7 +28,14 @@ if defined?(Rails)
             end
             path
           end
+
           alias presenter_path presenters_path
+
+          def presenters_url(presenter, host: true, **params)
+            presenters_path(presenter, host: host, **params)
+          end
+
+          alias presenter_url presenters_url
         end
       end
     end

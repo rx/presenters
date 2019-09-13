@@ -10,14 +10,7 @@ end
 
 ENV['VOOM_ROOT'] = File.expand_path(__dir__)
 ENV['GOOGLE_API_KEY'] = 'AIzaSyDhSgj9XSBLY5E9Rx5pP2ILQ7IXnD4uX2Q'
-libdir = File.join(ENV['VOOM_ROOT'], 'lib')
-$:.unshift(libdir) unless $:.include?(libdir)
-require 'voom/presenters/api/app'
-require 'voom/presenters/web_client/app'
-require 'voom/presenters/demo/search'
-require 'voom/presenters/demo/echo'
-require 'voom/presenters/demo/slow'
-require 'voom/presenters/demo/dragon_drop'
+require 'voom'
 
 require 'rack/cors'
 use Rack::Cors do

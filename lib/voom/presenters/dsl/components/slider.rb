@@ -1,5 +1,3 @@
-require 'voom/presenters/dsl/components/input'
-
 module Voom
   module Presenters
     module DSL

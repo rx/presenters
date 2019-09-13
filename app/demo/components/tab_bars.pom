@@ -42,6 +42,21 @@ Voom::Presenters.define(:tab_bars) do
         end
       end
     end
+    separator
+
+    title 'Content is automatically displayed/hidden'
+    tab_bar do
+      tab 'One', selected: true do
+        heading3 'Tab 1'
+      end
+      tab 'Two' do
+        heading3 'Tab 2'
+      end
+      tab 'Three' do
+        heading3 'Tab 3'
+      end
+    end
+
   end
 
   attach :code, file: __FILE__

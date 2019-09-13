@@ -1,11 +1,3 @@
-require 'voom/presenters/dsl/components/mixins/common'
-require 'voom/presenters/dsl/components/mixins/attaches'
-require 'voom/presenters/dsl/components/mixins/steppers'
-require 'voom/presenters/dsl/components/mixins/event'
-require 'voom/presenters/dsl/components/mixins/sliders'
-require 'voom/presenters/dsl/components/mixins/progress'
-
-
 module Voom
   module Presenters
     module DSL

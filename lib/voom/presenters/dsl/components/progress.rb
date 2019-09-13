@@ -1,5 +1,3 @@
-require 'voom/presenters/dsl/components/base'
-
 module Voom
   module Presenters
     module DSL

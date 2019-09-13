@@ -3442,7 +3442,7 @@ var VBaseToggle = function (_dirtyableMixin) {
 
         var _this = _possibleConstructorReturn(this, (VBaseToggle.__proto__ || Object.getPrototypeOf(VBaseToggle)).call(this, element, mdcComponent));
 
-        _this.input = element.querySelector('input');
+        _this.input = element.querySelector('input') || element;
 
         element.addEventListener('V:postFailed', function (event) {
             // Revert to previous checked state on failed post.
@@ -82885,7 +82885,6 @@ var VRichTextArea = function (_dirtyableMixin) {
             placeholder: _this.quillWrapper.dataset.placeholder
         });
         _this.fixedUpContentElement = element.querySelector('.v-rich-text-area--fixed-up-content');
-        _this.originalValue = _this.value();
         _this.quillEditor = _this.quillWrapper.querySelector('.ql-editor');
 
         if (element.hasAttribute('disabled')) {
@@ -82900,9 +82899,8 @@ var VRichTextArea = function (_dirtyableMixin) {
             return _this.updateFixedContentElement();
         });
 
-        _this.element.dataset.originalValue = _this.value();
-
         adjustEditorStyles(_this);
+        _this.originalValue = _this.value();
         return _this;
     }
 
@@ -90260,7 +90258,41 @@ var VTabBar = function (_eventHandlerMixin) {
     function VTabBar(element, mdcComponent) {
         _classCallCheck(this, VTabBar);
 
-        return _possibleConstructorReturn(this, (VTabBar.__proto__ || Object.getPrototypeOf(VTabBar)).call(this, element, mdcComponent));
+        var _this = _possibleConstructorReturn(this, (VTabBar.__proto__ || Object.getPrototypeOf(VTabBar)).call(this, element, mdcComponent));
+
+        mdcComponent.listen('MDCTabBar:activated', function (event) {
+            var tabs = element.parentElement.querySelectorAll('.v-tab-content');
+
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = tabs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var _element = _step.value;
+
+                    if (Number(_element.dataset.tabId) == event.detail.index) {
+                        _element.classList.remove('v-hidden');
+                    } else {
+                        _element.classList.add('v-hidden');
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        });
+        return _this;
     }
 
     return VTabBar;

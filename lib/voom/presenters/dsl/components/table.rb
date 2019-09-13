@@ -1,10 +1,3 @@
-require 'voom/presenters/dsl/components/mixins/common'
-require 'voom/presenters/dsl/components/mixins/event'
-require 'voom/presenters/dsl/components/mixins/tooltips'
-require 'voom/presenters/dsl/components/mixins/chips'
-require 'voom/presenters/dsl/components/mixins/selects'
-require 'voom/presenters/dsl/components/mixins/icons'
-
 module Voom
   module Presenters
     module DSL

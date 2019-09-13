@@ -1,5 +1,3 @@
-require_relative 'registry'
-
 module Voom
   module Presenters
     class App

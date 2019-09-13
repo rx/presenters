@@ -1,18 +1,8 @@
 require 'sinatra'
-require 'honeybadger' if ENV.fetch('HONEYBADGER_API_KEY'){false}
+require 'honeybadger' if ENV['HONEYBADGER_API_KEY']
 require 'uri'
 require 'redcarpet'
-require "dry/inflector"
-require 'voom/trace'
-require 'voom/presenters/app'
-require 'voom/presenters/web_client/router'
-require 'voom/presenters/web_client/markdown_render'
-require 'voom/presenters/errors/unprocessable'
-require_relative 'component_renderer'
-require_relative 'plugin_headers'
-require_relative 'custom_css'
-require_relative 'helpers/padding'
-require_relative 'helpers/expand_hash'
+require 'dry/inflector'
 
 module Voom
   module Presenters
@@ -27,8 +17,8 @@ module Voom
         configure do
           enable :logging
         end
-        helpers PaddingHelpers
-        helpers ExpandHash
+        helpers Helpers::PaddingHelpers
+        helpers Helpers::ExpandHash
         helpers do
           def render_component(scope, comp, components, index)
             ComponentRenderer.new(comp, render: method(:render), scope: scope, components: components, index: index).render
@@ -85,8 +75,11 @@ module Voom
           end
 
           def color_classname(comp)
+            return unless comp&.color
+
             return "v-#{comp.type}__primary" if eq(comp.color, :primary)
             return "v-#{comp.type}__secondary" if eq(comp.color, :secondary)
+
             "v-color__#{comp.color}"
           end
 
@@ -206,7 +199,7 @@ module Voom
         end
 
         def router
-          settings.router_.new(base_url: "#{request.script_name}")
+          settings.router_.new(base_url: "#{request.base_url}")
         end
 
         def prepare_context
