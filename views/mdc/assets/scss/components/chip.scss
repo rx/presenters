@@ -1,24 +1,8 @@
 @import "@material/chips/mdc-chips";
 
-%selected-shared {
-  @include mdc-chip-fill-color($mdc-theme-primary);
-  @include mdc-chip-ink-color(text-primary-on-dark);
+button.mdc-chip {
+  border: none;
 }
-
-.mdc-chip--selected {
-  @extend %selected-shared;
-}
-
-.mdc-chip-set--choice {
-  .mdc-chip {
-    @include mdc-chip-selected-ink-color-without-ripple_(text-primary-on-dark, $query: mdc-feature-all());
-  }
-
-  .mdc-chip--selected {
-    @extend %selected-shared;
-  }
-}
-
 
 .mdc-chip__icon.v-icon-position-left {
   float: none;
