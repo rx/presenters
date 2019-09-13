@@ -3,6 +3,9 @@ import {MDCChipSet} from '@material/chips';
 import {eventHandlerMixin} from "./mixins/event-handler";
 import {VBaseComponent, hookupComponents} from './base-component';
 
+export const EVENT_SELECT = 'select';
+export const EVENT_DESELECT = 'deselect';
+
 export function initChips(e) {
     console.debug('\tChips');
     hookupComponents(e, '.v-chip-set', VChipSet, MDCChipSet);
@@ -19,6 +22,13 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
         this.element.addEventListener('click', (e) => {
             if (this.selectable) {
                 this.mdcComponent.selected = !this.mdcComponent.selected;
+
+                const eventType = this.mdcComponent.selected
+                    ? EVENT_SELECT
+                    : EVENT_DESELECT;
+                const selectionEvent = new Event(eventType);
+
+                this.element.dispatchEvent(selectionEvent);
             }
         });
     }
