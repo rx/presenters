@@ -49853,8 +49853,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initChips(e) {
     console.debug('\tChips');
-    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-chip-set', VChipSet, __WEBPACK_IMPORTED_MODULE_0__material_chips__["b" /* MDCChipSet */]);
     Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-chip', VChip, __WEBPACK_IMPORTED_MODULE_0__material_chips__["a" /* MDCChip */]);
+    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-chip-set', VChipSet, __WEBPACK_IMPORTED_MODULE_0__material_chips__["b" /* MDCChipSet */]);
 }
 
 var VChip = function (_eventHandlerMixin) {
@@ -49863,17 +49863,7 @@ var VChip = function (_eventHandlerMixin) {
     function VChip(element, mdcComponent) {
         _classCallCheck(this, VChip);
 
-        var _this = _possibleConstructorReturn(this, (VChip.__proto__ || Object.getPrototypeOf(VChip)).call(this, element, mdcComponent));
-
-        var parentClassList = element.parentElement.classList;
-        _this.selectable = parentClassList.contains('mdc-chip-set--choice') || parentClassList.contains('mdc-chip-set--filter');
-
-        _this.element.addEventListener('click', function (e) {
-            if (_this.selectable) {
-                _this.mdcComponent.selected = !_this.mdcComponent.selected;
-            }
-        });
-        return _this;
+        return _possibleConstructorReturn(this, (VChip.__proto__ || Object.getPrototypeOf(VChip)).call(this, element, mdcComponent));
     }
 
     // Called to collect data for submission
@@ -49883,9 +49873,7 @@ var VChip = function (_eventHandlerMixin) {
         key: 'prepareSubmit',
         value: function prepareSubmit(params) {
             if (this.value() !== '') {
-                if (!this.selectable || this.selectable && this.mdcComponent.selected) {
-                    params.push([this.name(), this.value()]);
-                }
+                params.push([this.name(), this.value()]);
             }
         }
     }, {
