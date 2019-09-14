@@ -5,34 +5,19 @@ import {VBaseComponent, hookupComponents} from './base-component';
 
 export function initChips(e) {
     console.debug('\tChips');
-    hookupComponents(e, '.v-chip-set', VChipSet, MDCChipSet);
     hookupComponents(e, '.v-chip', VChip, MDCChip);
+    hookupComponents(e, '.v-chip-set', VChipSet, MDCChipSet);
 }
 
 export class VChip extends eventHandlerMixin(VBaseComponent) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
-
-        let parentClassList = element.parentElement.classList;
-        this.selectable = parentClassList.contains('mdc-chip-set--choice') || parentClassList.contains('mdc-chip-set--filter');
-
-        this.element.addEventListener('click', (e) => {
-            if (this.selectable) {
-                this.mdcComponent.selected = !this.mdcComponent.selected;
-
-                const event = new Event(this.mdcComponent.selected ? 'select' : 'deselect');
-
-                this.element.dispatchEvent(event);
-            }
-        });
     }
 
     // Called to collect data for submission
     prepareSubmit(params) {
         if(this.value() !== ''){
-            if(!this.selectable || (this.selectable && this.mdcComponent.selected)) {
-                params.push([this.name(), this.value()]);
-            }
+            params.push([this.name(), this.value()]);
         }
     }
 
