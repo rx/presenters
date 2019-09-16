@@ -143,6 +143,7 @@ var VBaseComponent = function () {
 
         this.root = element.ownerDocument;
         this.element = element;
+        this.element.vComponent = this;
         this.mdcComponent = mdcComponent;
         this.element.classList.add('v-component');
     }
