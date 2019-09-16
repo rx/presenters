@@ -7098,7 +7098,8 @@ svg.mdc-button__icon {
   .v-button.v-button--image > i {
     position: absolute;
     margin-right: 0 !important;
-    color: #263138; }
+    color: #263138;
+    line-height: 1; }
 
 .mdc-button.v-secondary-filled-button:not(:disabled) {
   background-color: #E58D36; }
@@ -7162,9 +7163,6 @@ svg.mdc-button__icon {
 .v-button-position-left {
   position: absolute;
   left: 0; }
-
-.v-button-text-align-left {
-  padding-left: 0; }
 
 .v-button-position-right {
   position: absolute;
