@@ -9,8 +9,8 @@ module Voom
               @components << comp
             end
 
-            def yield_to(&block)
-              instance_eval(&block) if block
+            def yield_to(*args, &block)
+              instance_exec(*args, &block) if block_given?
             end
           end
         end
