@@ -39,22 +39,11 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
                 const eventType = this.mdcComponent.selected
                     ? EVENT_SELECT
                     : EVENT_DESELECT;
-                const selectionEvent = new Event(eventType);
+                const selectionEvent = new Event(eventType, {bubbles: false});
 
                 this.element.dispatchEvent(selectionEvent);
             }
         });
-
-        if (this.trailingIcon) {
-            this.trailingIcon.addEventListener('click', (e) => {
-                // Don't propagate click upwards to chip <button>:
-                e.stopPropagation();
-
-                const clickEvent = new Event(EVENT_TRAILING_ICON_CLICK);
-
-                this.element.dispatchEvent(clickEvent);
-            });
-        }
     }
 
     get trailingIcon() {

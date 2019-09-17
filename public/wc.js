@@ -60650,22 +60650,11 @@ var VChip = function (_eventHandlerMixin) {
                 _this.mdcComponent.selected = !_this.mdcComponent.selected;
 
                 var eventType = _this.mdcComponent.selected ? EVENT_SELECT : EVENT_DESELECT;
-                var selectionEvent = new Event(eventType);
+                var selectionEvent = new Event(eventType, { bubbles: false });
 
                 _this.element.dispatchEvent(selectionEvent);
             }
         });
-
-        if (_this.trailingIcon) {
-            _this.trailingIcon.addEventListener('click', function (e) {
-                // Don't propagate click upwards to chip <button>:
-                e.stopPropagation();
-
-                var clickEvent = new Event(EVENT_TRAILING_ICON_CLICK);
-
-                _this.element.dispatchEvent(clickEvent);
-            });
-        }
         return _this;
     }
 

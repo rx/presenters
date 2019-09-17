@@ -25,7 +25,7 @@
        tabindex="0"
        <%= erb(:"components/event", locals: {comp: comp,
                                              events: comp.events,
-                                             parent_id: comp.id}) unless child_events %>>
+                                             parent_id: comp.id}) %>>
     <%= erb(:"components/icon", :locals => {comp: leading_icon,
                                             class_name: 'mdc-chip__icon mdc-chip__icon--leading',
                                             events: child_events ? (leading_icon&.events || comp.events) : nil}) %>
