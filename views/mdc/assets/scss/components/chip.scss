@@ -1,5 +1,9 @@
 @import "@material/chips/mdc-chips";
 
+button.mdc-chip {
+  border: none;
+}
+
 .mdc-chip__icon.v-icon-position-left {
   float: none;
   padding-right: 0;
