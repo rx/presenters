@@ -2,7 +2,7 @@ import {VErrors} from './events/errors';
 
 export class VBaseComponent {
     constructor(element, mdcComponent) {
-        this.root = element.ownerDocument;
+        this.root = getRootNode(element);
         this.element = element;
         this.element.vComponent = this;
         this.mdcComponent = mdcComponent;
@@ -144,4 +144,17 @@ export function unhookupComponents(root, selector) {
             element.vComponent.destroy();
         }
     }
+}
+
+// Retrieve the element's owning document or shadow root.
+function getRootNode(node) {
+    if (!node.parentNode || isShadowRoot(node)) {
+        return node;
+    }
+
+    return getRootNode(node.parentNode);
+}
+
+function isShadowRoot(node) {
+    return node.constructor.name === 'ShadowRoot';
 }
