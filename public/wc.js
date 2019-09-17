@@ -83,7 +83,7 @@ var VBaseComponent = function () {
     function VBaseComponent(element, mdcComponent) {
         _classCallCheck(this, VBaseComponent);
 
-        this.root = element.ownerDocument;
+        this.root = getRootNode(element);
         this.element = element;
         this.element.vComponent = this;
         this.mdcComponent = mdcComponent;
@@ -227,8 +227,7 @@ function hookupComponentsManually(root, selector, fn) {
                 continue;
             }
 
-            element.vComponent = fn(element);
-            element.vComponent.root = root;
+            fn(element);
         }
     } catch (err) {
         _didIteratorError = true;
@@ -287,6 +286,19 @@ function unhookupComponents(root, selector) {
             }
         }
     }
+}
+
+// Retrieve the element's owning document or shadow root.
+function getRootNode(node) {
+    if (!node.parentNode || isShadowRoot(node)) {
+        return node;
+    }
+
+    return getRootNode(node.parentNode);
+}
+
+function isShadowRoot(node) {
+    return node.constructor.name === 'ShadowRoot';
 }
 
 /***/ }),
@@ -60695,6 +60707,8 @@ var VChip = function (_eventHandlerMixin) {
     }, {
         key: 'shouldSubmitParams',
         get: function get() {
+            // Selectable chips (those within a :filter or :choice chipset) which
+            // are not currently selected do not submit their value.
             return this.value() && (!this.selectable || this.mdcComponent.selected);
         }
     }, {

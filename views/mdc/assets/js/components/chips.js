@@ -87,6 +87,8 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
     }
 
     get shouldSubmitParams() {
+        // Selectable chips (those within a :filter or :choice chipset) which
+        // are not currently selected do not submit their value.
         return this.value() && (!this.selectable || this.mdcComponent.selected);
     }
 

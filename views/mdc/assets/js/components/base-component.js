@@ -118,8 +118,7 @@ export function hookupComponentsManually(root, selector, fn) {
             continue;
         }
 
-        element.vComponent = fn(element);
-        element.vComponent.root = root;
+        fn(element);
     }
 }
 
