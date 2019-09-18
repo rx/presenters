@@ -4,7 +4,7 @@ module Voom
       module Components
         class Chip < EventBase
           include Mixins::Tooltips
-          attr_reader :icons, :color, :name, :value
+          attr_reader :icons, :color, :name, :value, :chipset_variant, :selected
 
           def initialize(**attribs_, &block)
             super(type: :chip,
@@ -15,7 +15,9 @@ module Voom
             @color = attribs.delete(:color)
             @name = attribs.delete(:name)
             @value = attribs.delete(:value)
+            @selected = attribs.delete(:selected){false}
             expand!
+            @chipset_variant = self.parent(:chipset)&.variant.to_s
           end
 
           def text(*text, **attribs, &block)

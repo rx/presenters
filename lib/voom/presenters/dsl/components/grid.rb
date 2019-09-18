@@ -54,7 +54,7 @@ module Voom
             include Mixins::Icons
             include Mixins::Attaches
             include Mixins::Dialogs
-            include Mixins::Chips
+            include Mixins::Chipset
             include Mixins::TextFields
             include Mixins::DateTimeFields
             include Mixins::Selects

@@ -11,7 +11,7 @@ module Voom
           include Mixins::Snackbars
           include Mixins::Steppers
           include Mixins::Sliders
-          include Mixins::Chips
+          include Mixins::Chipset
           include Mixins::Icons
           include Mixins::Dialogs
           include Mixins::FileInputs
