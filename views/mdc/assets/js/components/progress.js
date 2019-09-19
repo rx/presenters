@@ -16,6 +16,9 @@ export class VProgress extends VBaseComponent {
         this.root.addEventListener('V:postFinished', (e) => {
             this.hide();
         });
+        this.root.addEventListener('V:eventsHalted', (e) => {
+            this.hide();
+        });
     }
 
     show() {

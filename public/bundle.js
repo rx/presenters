@@ -5005,6 +5005,13 @@ var VEvents = function () {
                 }, p);
             }
 
+            var ev = new CustomEvent('V:eventsStarted', {
+                bubbles: true,
+                cancelable: false,
+                detail: this
+            });
+            this.event.target.dispatchEvent(ev);
+
             if (this.vComponent) {
                 this.vComponent.actionsStarted(this);
             }
@@ -5019,6 +5026,13 @@ var VEvents = function () {
                 if (contentType && contentType.indexOf('text/html') !== -1 && typeof responseURL !== 'undefined') {
                     window.location = responseURL;
                 }
+
+                var ev = new CustomEvent('V:eventsSucceeded', {
+                    bubbles: true,
+                    cancelable: false,
+                    detail: _this2
+                });
+                _this2.event.target.dispatchEvent(ev);
 
                 if (_this2.vComponent) {
                     _this2.vComponent.actionsSucceeded(_this2);
@@ -5036,10 +5050,24 @@ var VEvents = function () {
                     new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](_this2.root, _this2.event).displayErrors(result);
                 }
 
+                var ev = new CustomEvent('V:eventsHalted', {
+                    bubbles: true,
+                    cancelable: false,
+                    detail: _this2
+                });
+                _this2.event.target.dispatchEvent(ev);
+
                 if (_this2.vComponent) {
                     _this2.vComponent.actionsHalted(_this2);
                 }
             }).finally(function () {
+                var ev = new CustomEvent('V:eventsFinished', {
+                    bubbles: true,
+                    cancelable: false,
+                    detail: _this2
+                });
+                _this2.event.target.dispatchEvent(ev);
+
                 if (_this2.vComponent) {
                     _this2.vComponent.actionsFinished(_this2);
                 }
@@ -99866,6 +99894,9 @@ var VProgress = function (_VBaseComponent) {
             _this.show();
         });
         _this.root.addEventListener('V:postFinished', function (e) {
+            _this.hide();
+        });
+        _this.root.addEventListener('V:eventsHalted', function (e) {
             _this.hide();
         });
         return _this;
