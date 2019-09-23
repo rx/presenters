@@ -17,14 +17,12 @@ export class VLoads extends VBase {
         // see when the download ID has been updated by the
         // response headers.
         const cookieTimer = setInterval(() => {
-            console.log('This was called!');
             // The local cookie cache is defined in the browser
             // as one large string; we need to search for the
             // name-value pattern with the above ID.
             const cookiePattern = new RegExp(('downloadID=' + downloadID), 'i');
 
             if (!downloadID) {
-                console.log('!downloadID');
                 clearInterval(cookieTimer);
                 return f();
             }
@@ -32,11 +30,12 @@ export class VLoads extends VBase {
             // If the local cookies have been updated, clear
             // the timer and call the promise!
             else if (document.cookie.search(cookiePattern) >= 0) {
-                console.log('Found download cookie!');
                 clearInterval(cookieTimer);
                 return f();
             }
-            console.log('File still downloading (Make sure you set the downloadID in your cookie?)...', new Date().getTime());
+            console.debug(
+                'File still downloading (Make sure you set the downloadID in your cookie?)...',
+                new Date().getTime());
         }, downloadID ? 500 : 0);
     }
 
@@ -52,7 +51,6 @@ export class VLoads extends VBase {
                 this.inputValues(),
                 downloadID ? {download_id: downloadID} : null);
             this.waitForDownload(downloadID, () => {
-                console.log('This worked!');
                 results.push({action: 'loads', statusCode: 200});
                 resolve(results);
             });
