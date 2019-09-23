@@ -54,7 +54,7 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
 
     // Called to collect data for submission
     prepareSubmit(params) {
-        if (this.shouldSubmitParams) {
+        if (this.shouldSubmitParams()) {
             params.push([this.name(), this.value()]);
         }
     }
@@ -75,10 +75,11 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
         this.element.setAttribute('data-value', value);
     }
 
-    get shouldSubmitParams() {
+    shouldSubmitParams() {
         // Selectable chips (those within a :filter or :choice chipset) which
         // are not currently selected do not submit their value.
-        return this.value() && (!this.selectable || this.mdcComponent.selected);
+        return this.name() && this.value()
+            && (!this.selectable || this.mdcComponent.selected);
     }
 
     get selectable() {
