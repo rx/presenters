@@ -127,9 +127,10 @@ module.exports = function (it) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VBaseComponent; });
-/* harmony export (immutable) */ __webpack_exports__["c"] = hookupComponentsManually;
-/* harmony export (immutable) */ __webpack_exports__["b"] = hookupComponents;
-/* harmony export (immutable) */ __webpack_exports__["d"] = unhookupComponents;
+/* harmony export (immutable) */ __webpack_exports__["d"] = hookupComponentsManually;
+/* harmony export (immutable) */ __webpack_exports__["c"] = hookupComponents;
+/* harmony export (immutable) */ __webpack_exports__["e"] = unhookupComponents;
+/* harmony export (immutable) */ __webpack_exports__["b"] = getRootNode;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_errors__ = __webpack_require__(115);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -4942,9 +4943,11 @@ var visibilityObserverMixin = function visibilityObserverMixin(Base) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__events_navigates__ = __webpack_require__(452);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__events_plugin__ = __webpack_require__(453);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__root_document__ = __webpack_require__(454);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__drag_n_drop__ = __webpack_require__(509);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 
 
 
@@ -4985,9 +4988,11 @@ var VEvents = function () {
 
             var event = this.event;
             var eventParams = void 0;
+
             if (event.type === 'drop' && event.dataTransfer) {
-                //console.log('Drop Data Params: ' + event.dataTransfer.getData('text/plain'));
-                eventParams = JSON.parse(event.dataTransfer.getData('text/plain'));
+                eventParams = JSON.parse(event.dataTransfer.getData(__WEBPACK_IMPORTED_MODULE_14__drag_n_drop__["a" /* DRAG_DATA_MIME_TYPE */]));
+            } else if (event.type === 'dropped') {
+                eventParams = event.detail;
             }
 
             // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
@@ -6803,7 +6808,7 @@ function initialize(root, setRoot) {
     Object(__WEBPACK_IMPORTED_MODULE_32__progress__["a" /* initProgress */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_30__tooltip__["a" /* initTooltips */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_31__plugins__["a" /* initPlugins */])(root);
-    Object(__WEBPACK_IMPORTED_MODULE_33__drag_n_drop__["a" /* initDragAndDrop */])(root);
+    Object(__WEBPACK_IMPORTED_MODULE_33__drag_n_drop__["b" /* initDragAndDrop */])(root);
 
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_4__events__["b" /* initEvents */])(root);
@@ -13684,7 +13689,7 @@ var AFTER_INPUT_TIMEOUT = 500; // ms
 
 function initTextFields(e) {
     console.debug('\tTextFields');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-text-field', VTextField, __WEBPACK_IMPORTED_MODULE_0__material_textfield__["MDCTextField"]);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* hookupComponents */])(e, '.v-text-field', VTextField, __WEBPACK_IMPORTED_MODULE_0__material_textfield__["MDCTextField"]);
 }
 
 var VTextField = function (_dirtyableMixin) {
@@ -13900,12 +13905,12 @@ function createSurfaceClickHandler(mdcMenu) {
 
 function uninitMenus(root) {
     console.debug('\tUninit Menus');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["d" /* unhookupComponents */])(root, '.v-menu');
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["e" /* unhookupComponents */])(root, '.v-menu');
 }
 
 function initMenus(root) {
     console.debug('\tMenus');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(root, '.v-menu', VMenu, null);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* hookupComponents */])(root, '.v-menu', VMenu, null);
 }
 
 var VMenu = function (_eventHandlerMixin) {
@@ -42275,7 +42280,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initButtons(e) {
     console.debug('\tButtons');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-button', VButton, __WEBPACK_IMPORTED_MODULE_0__material_ripple__["MDCRipple"]);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* hookupComponents */])(e, '.v-button', VButton, __WEBPACK_IMPORTED_MODULE_0__material_ripple__["MDCRipple"]);
 }
 
 var VButton = function (_eventHandlerMixin) {
@@ -44838,7 +44843,7 @@ function hideDialog() {
 
 function initDialogs(e) {
     console.debug('\tDialogs');
-    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-dialog', VDialog, __WEBPACK_IMPORTED_MODULE_3__material_dialog__["MDCDialog"]);
+    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["c" /* hookupComponents */])(e, '.v-dialog', VDialog, __WEBPACK_IMPORTED_MODULE_3__material_dialog__["MDCDialog"]);
 }
 
 var VDialog = function (_eventHandlerMixin) {
@@ -48592,7 +48597,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initDateTime(e) {
     console.debug('\tDateTime');
-    Object(__WEBPACK_IMPORTED_MODULE_3__base_component__["b" /* hookupComponents */])(e, '.v-datetime', VDateTime, __WEBPACK_IMPORTED_MODULE_1__material_textfield__["MDCTextField"]);
+    Object(__WEBPACK_IMPORTED_MODULE_3__base_component__["c" /* hookupComponents */])(e, '.v-datetime', VDateTime, __WEBPACK_IMPORTED_MODULE_1__material_textfield__["MDCTextField"]);
 }
 
 var VDateTime = function (_VTextField) {
@@ -56792,8 +56797,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initDrawer(e) {
     console.debug('\tDrawer');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-drawer__modal', VModalDrawer, __WEBPACK_IMPORTED_MODULE_0__material_drawer__["MDCDrawer"]);
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-drawer__dismissible', VDismissibleDrawer, __WEBPACK_IMPORTED_MODULE_0__material_drawer__["MDCDrawer"]);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* hookupComponents */])(e, '.v-drawer__modal', VModalDrawer, __WEBPACK_IMPORTED_MODULE_0__material_drawer__["MDCDrawer"]);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* hookupComponents */])(e, '.v-drawer__dismissible', VDismissibleDrawer, __WEBPACK_IMPORTED_MODULE_0__material_drawer__["MDCDrawer"]);
 }
 
 var VDrawer = function (_eventHandlerMixin) {
@@ -60202,7 +60207,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initHeader(e) {
     console.debug('\tHeader');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-header', VHeader, __WEBPACK_IMPORTED_MODULE_0__material_top_app_bar_index__["a" /* MDCTopAppBar */]);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* hookupComponents */])(e, '.v-header', VHeader, __WEBPACK_IMPORTED_MODULE_0__material_top_app_bar_index__["a" /* MDCTopAppBar */]);
 }
 
 var VHeader = function (_eventHandlerMixin) {
@@ -62078,7 +62083,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initIconToggles(e) {
     console.debug('\tIcon Toggles');
-    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-icon-toggle', VIconToggle, __WEBPACK_IMPORTED_MODULE_2__material_icon_toggle__["MDCIconToggle"]);
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["c" /* hookupComponents */])(e, '.v-icon-toggle', VIconToggle, __WEBPACK_IMPORTED_MODULE_2__material_icon_toggle__["MDCIconToggle"]);
 }
 
 var VIconToggle = function (_VBaseToggle) {
@@ -64906,7 +64911,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initSelects(e) {
     console.debug('\tSelects');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-select', VSelect, __WEBPACK_IMPORTED_MODULE_0__material_select__["MDCSelect"]);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* hookupComponents */])(e, '.v-select', VSelect, __WEBPACK_IMPORTED_MODULE_0__material_select__["MDCSelect"]);
 }
 
 var VSelect = function (_dirtyableMixin) {
@@ -75249,7 +75254,7 @@ function initChips(e) {
     // Because the chip set constructs chips on its own, a `hookupComponents`
     // call for chips is not needed.
 
-    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["c" /* hookupComponentsManually */])(e, '.v-chip-set', function (element) {
+    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["d" /* hookupComponentsManually */])(e, '.v-chip-set', function (element) {
         var selectable = element.classList.contains(SELECTABLE_VARIANT_CLASS);
         var chipFactory = voomChipFactoryFactory(selectable);
         var mdcComponent = new __WEBPACK_IMPORTED_MODULE_0__material_chips__["MDCChipSet"](element, undefined, chipFactory);
@@ -75373,7 +75378,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initCards(e) {
     console.debug('\tCards');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-card', VCard, null);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* hookupComponents */])(e, '.v-card', VCard, null);
 }
 
 var VCard = function (_VBaseContainer) {
@@ -75410,7 +75415,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initForms(e) {
     console.debug('\tForms');
-    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-form', VForm, null);
+    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["c" /* hookupComponents */])(e, '.v-form', VForm, null);
 }
 
 var VForm = function (_eventHandlerMixin) {
@@ -75448,7 +75453,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initSnackbar(e) {
     console.debug('\tSnackbar');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-snackbar', VSnackbar, __WEBPACK_IMPORTED_MODULE_0__material_snackbar__["MDCSnackbar"]);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* hookupComponents */])(e, '.v-snackbar', VSnackbar, __WEBPACK_IMPORTED_MODULE_0__material_snackbar__["MDCSnackbar"]);
 }
 
 // This class displays a page level message
@@ -77037,7 +77042,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initCheckboxes(e) {
     console.debug('\tCheckboxes');
-    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-checkbox', VCheckbox, __WEBPACK_IMPORTED_MODULE_2__material_checkbox__["MDCCheckbox"]);
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["c" /* hookupComponents */])(e, '.v-checkbox', VCheckbox, __WEBPACK_IMPORTED_MODULE_2__material_checkbox__["MDCCheckbox"]);
 }
 
 var VCheckbox = function (_VBaseToggle) {
@@ -80194,7 +80199,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initSwitches(e) {
     console.debug('\tSwitches');
-    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-switch', VSwitch, __WEBPACK_IMPORTED_MODULE_2__material_switch__["MDCSwitch"]);
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["c" /* hookupComponents */])(e, '.v-switch', VSwitch, __WEBPACK_IMPORTED_MODULE_2__material_switch__["MDCSwitch"]);
 }
 
 var VSwitch = function (_VBaseToggle) {
@@ -82888,7 +82893,7 @@ var EMPTY_VALUE = '';
 
 function initRichTextArea(e) {
     console.debug('\tRich Text Area');
-    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-rich-text-area-container', VRichTextArea, null);
+    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["c" /* hookupComponents */])(e, '.v-rich-text-area-container', VRichTextArea, null);
 }
 
 var VRichTextArea = function (_dirtyableMixin) {
@@ -85234,7 +85239,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initSteppers(e) {
     console.debug('\tStepper');
-    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-stepper', VStepper, null);
+    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["c" /* hookupComponents */])(e, '.v-stepper', VStepper, null);
 }
 
 var VStepper = function (_eventHandlerMixin) {
@@ -85313,7 +85318,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initRadios(e) {
     console.debug('\tRadios');
-    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-radio', VRadio, __WEBPACK_IMPORTED_MODULE_2__material_radio__["MDCRadio"]);
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["c" /* hookupComponents */])(e, '.v-radio', VRadio, __WEBPACK_IMPORTED_MODULE_2__material_radio__["MDCRadio"]);
 }
 
 var VRadio = function (_VBaseToggle) {
@@ -87938,7 +87943,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initSliders(e) {
     console.debug('\tSliders');
-    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-slider', VSlider, __WEBPACK_IMPORTED_MODULE_2__material_slider__["MDCSlider"]);
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["c" /* hookupComponents */])(e, '.v-slider', VSlider, __WEBPACK_IMPORTED_MODULE_2__material_slider__["MDCSlider"]);
 }
 
 var VSlider = function (_dirtyableMixin) {
@@ -90105,7 +90110,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initHiddenFields(e) {
     console.debug('\tHiddenFields');
-    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-hidden-field', VHiddenField, null);
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["c" /* hookupComponents */])(e, '.v-hidden-field', VHiddenField, null);
 }
 
 var VHiddenField = function (_dirtyableMixin) {
@@ -90185,7 +90190,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initContent(e) {
     console.debug('\tContent');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-content', VContent, null);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* hookupComponents */])(e, '.v-content', VContent, null);
 }
 
 var VContent = function (_eventHandlerMixin) {
@@ -90223,8 +90228,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initGrid(e) {
     console.debug('\tGrid');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-grid', VGrid, null);
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-column', VColumn, null);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* hookupComponents */])(e, '.v-grid', VGrid, null);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* hookupComponents */])(e, '.v-column', VColumn, null);
 }
 
 var VGrid = function (_eventHandlerMixin) {
@@ -90274,7 +90279,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initTabBars(e) {
     console.debug('\tTab Bars');
-    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-tab-bar', VTabBar, __WEBPACK_IMPORTED_MODULE_2__material_tab_bar__["MDCTabBar"]);
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["c" /* hookupComponents */])(e, '.v-tab-bar', VTabBar, __WEBPACK_IMPORTED_MODULE_2__material_tab_bar__["MDCTabBar"]);
 }
 
 var VTabBar = function (_eventHandlerMixin) {
@@ -96949,7 +96954,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initFileInputs(e) {
     console.debug('\tFile Inputs');
-    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-file-input', VFileInput, null);
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["c" /* hookupComponents */])(e, '.v-file-input', VFileInput, null);
 }
 
 var VFileInput = function (_dirtyableMixin) {
@@ -97086,7 +97091,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initFormFields(e) {
     console.debug('\tForm Fields');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["b" /* hookupComponents */])(e, '.v-form-field', VFormField, __WEBPACK_IMPORTED_MODULE_2__material_form_field__["MDCFormField"]);
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* hookupComponents */])(e, '.v-form-field', VFormField, __WEBPACK_IMPORTED_MODULE_2__material_form_field__["MDCFormField"]);
 }
 
 var VFormField = function (_VBaseContainer) {
@@ -99629,7 +99634,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initImages(e) {
     console.debug('\tImages');
-    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-image', VImage);
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["c" /* hookupComponents */])(e, '.v-image', VImage);
 }
 
 var VImage = function (_eventHandlerMixin) {
@@ -99674,7 +99679,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initTypography(e) {
     console.debug('\tTypography');
-    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-typography', VTypography);
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["c" /* hookupComponents */])(e, '.v-typography', VTypography);
 }
 
 var VTypography = function (_eventHandlerMixin) {
@@ -99724,7 +99729,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initTooltips(e) {
     console.debug('\tTooltips');
-    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-tooltip', VTooltip, MaterialTooltip);
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["c" /* hookupComponents */])(e, '.v-tooltip', VTooltip, MaterialTooltip);
 }
 
 var VTooltip = function (_eventHandlerMixin) {
@@ -99763,7 +99768,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initPlugins(e) {
     console.debug('\tPlugins');
-    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-plugin', VPluginComponent);
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["c" /* hookupComponents */])(e, '.v-plugin', VPluginComponent);
 }
 
 // Delegating plugin class. Allows a plugin to define a class-name as a data
@@ -99878,7 +99883,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function initProgress(e) {
     console.debug('\tProgress');
-    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* hookupComponents */])(e, '.v-progress', VProgress, __WEBPACK_IMPORTED_MODULE_1__material_linear_progress__["a" /* MDCLinearProgress */]);
+    Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["c" /* hookupComponents */])(e, '.v-progress', VProgress, __WEBPACK_IMPORTED_MODULE_1__material_linear_progress__["a" /* MDCLinearProgress */]);
 }
 
 var VProgress = function (_VBaseComponent) {
@@ -100308,81 +100313,147 @@ var strings = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = initDragAndDrop;
-function createDragStartHandler() {
-    return function (e) {
-        var dragParamData = e.target.dataset.drag_params;
-        if (typeof dragParamData !== 'undefined') {
-            e.dataTransfer.setData("text/plain", dragParamData);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DRAG_DATA_MIME_TYPE; });
+/* unused harmony export EVENT_DROPPED */
+/* harmony export (immutable) */ __webpack_exports__["b"] = initDragAndDrop;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
+/*
+    A drag data store (DragEvent.prototype.dataTransfer.items) can be in one of
+    three modes:
+
+    1. read/write, during a `dragstart` event: items can be read and added
+    2. read-only, during a `drop` event: items can be read, but not added
+    3. protected, during all other types of DragEvent: items cannot be read
+       or added.
+
+    (see https://html.spec.whatwg.org/multipage/dnd.html#concept-dnd-rw)
+
+    Thus, attempting to mutate the store during events other than `dragstart`
+    fails silently: no error is raised, but items are not added.
+
+
+    To read items in protected mode, serialize data as a string and store it as
+    a key instead of as a value. This makes it accessible via
+    `dataTransfer.types`:
+
+    // in a dragstart handler:
+    event.dataTransfer.setData(JSON.stringify(foo), '');
+
+    // in a later read-only or protected DragEvent handler:
+    const json = event.dataTransfer.types[someIndex];
+    const foo = JSON.stringify(json);
+
+
+    There is no workaround for attempting mutating a drag data store not in
+    read/write mode.
+ */
+
+
+
+var DRAG_DATA_MIME_TYPE = 'application/x.voom-drag-data+json';
+var EVENT_DROPPED = 'dropped';
+
+var ELEMENT_ID_MIME_TYPE = 'text/x.voom-element-id';
+
+function createDragStartHandler(root, element) {
+    return function (event) {
+        var dragParamData = event.target.dataset.drag_params;
+
+        if (dragParamData) {
+            event.dataTransfer.setData(DRAG_DATA_MIME_TYPE, dragParamData);
+
             var zone = JSON.parse(dragParamData).zone;
-            if (zone != null) {
-                e.dataTransfer.setData(zone, '');
+
+            if (zone) {
+                event.dataTransfer.setData(zone, '');
             }
-            e.dataTransfer.effectAllowed = 'move';
-            e.target.classList.remove('v-dnd-draggable');
-            e.target.classList.add('v-dnd-moving');
+
+            event.dataTransfer.effectAllowed = 'move';
+            event.target.classList.remove('v-dnd-draggable');
+            event.target.classList.add('v-dnd-moving');
+
+            event.dataTransfer.setData(ELEMENT_ID_MIME_TYPE, element.id);
         }
     };
 }
 
-// function createDragHandler() {
-//     return function (e) { }
-// }
+function createDragOverHandler(root, element) {
+    return function (event) {
+        var dropZone = element.dataset.dropzone;
 
-function createDragOverHandler() {
-    return function (e) {
-        var targetZone = this.dataset.dropzone;
-        if (targetZone == null || e.dataTransfer.types.includes(targetZone)) {
-            // We are allowing a drop if we are here
-            // Note that during a dragover event the event/dataTransfer object is in a protected and as a result
-            // cannot be read. However, we can interogate the set of types that it contains. My hack/workaround
-            // is that during dragStart I add the zone as a type and look for that here
-            if (e.preventDefault) {
-                e.preventDefault();
+        if (dropZone == null || event.dataTransfer.types.includes(dropZone)) {
+            if (event.preventDefault) {
+                event.preventDefault();
             }
-            this.classList.add('v-dnd-over');
+            element.classList.add('v-dnd-over');
         } else {
-            this.classList.remove('v-dnd-over');
+            element.classList.remove('v-dnd-over');
         }
     };
 }
 
-// function createDragEnterHandler() {
-//     return function (e) {}
-// }
-
-function createDragLeaveHandler() {
-    return function () {
-        this.classList.remove('v-dnd-over');
+function createDragLeaveHandler(root, element) {
+    return function (event) {
+        element.classList.remove('v-dnd-over');
     };
 }
 
-function createDropHandler() {
-    return function (e) {
-        if (e.stopPropagation) {
-            e.stopPropagation();
+function createDropHandler(root, element) {
+    // When an element is upgraded to a Voom component after being replaced via
+    // `replaces`, root may refer to the replaced element itself instead of the
+    // element's root node.
+    // Since a valid drop zone may exist anywhere on the page, it is not
+    // guaranteed that root contains the element being dragged.
+    // getRootNode will fetch `root`'s actual root node (document or shadow
+    // DOM root).
+    var trueRoot = Object(__WEBPACK_IMPORTED_MODULE_0__base_component__["b" /* getRootNode */])(root);
+
+    return function (event) {
+        event.stopPropagation();
+        event.preventDefault();
+
+        var id = event.dataTransfer.getData(ELEMENT_ID_MIME_TYPE);
+        var draggedElement = id ? trueRoot.querySelector('#' + id) : null;
+        var dragParams = {};
+
+        if (draggedElement) {
+            dragParams = JSON.parse(draggedElement.dataset.drag_params);
         }
-        if (e.preventDefault) {
-            e.preventDefault();
-        }
-        this.classList.remove('v-dnd-over');
-        this.classList.remove('v-dnd-moving');
-        this.classList.add('v-dnd-draggable');
+
+        element.classList.remove('v-dnd-over', 'v-dnd-moving');
+        element.classList.add('v-dnd-draggable');
+
+        // Emit a "dropped" event for the element being dragged:
+        // The drag_params of the dragged element are merged with the
+        // drop_params of the drop zone.
+        var dropZoneParams = JSON.parse(element.dataset.drop_params);
+        var params = Object.assign({}, dragParams, dropZoneParams);
+        var droppedEvent = new CustomEvent(EVENT_DROPPED, { detail: params });
+
+        draggedElement.dispatchEvent(droppedEvent);
+
         return false;
     };
 }
 
-function createDragEndHandler() {
-    return function (e) {
-        this.classList.remove('v-dnd-over');
-        this.classList.remove('v-dnd-moving');
-        this.classList.add('v-dnd-draggable');
+function createDragEndHandler(root, element) {
+    return function (event) {
+        element.classList.remove('v-dnd-over', 'v-dnd-moving');
+        element.classList.add('v-dnd-draggable');
     };
 }
 
-function initDragAndDrop(e) {
+var DRAGGABLE_SELECTOR = '[draggable=true]';
+var DROP_ZONE_SELECTOR = '[data-dropzone]';
 
-    var draggables = document.querySelectorAll('[draggable=true]');
+function initDragAndDrop(root) {
+    var draggables = Array.from(root.querySelectorAll(DRAGGABLE_SELECTOR));
+
+    if (typeof root.matches === 'function' && root.matches(DRAGGABLE_SELECTOR)) {
+        console.log('root matches DRAGGABLE_SELECTOR');
+        draggables.unshift(root);
+    }
+
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
     var _iteratorError = undefined;
@@ -100391,9 +100462,8 @@ function initDragAndDrop(e) {
         for (var _iterator = draggables[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
             var elem = _step.value;
 
-            elem.addEventListener("dragstart", createDragStartHandler(), false);
-            // elem.addEventListener("drag", createDragHandler(), false);
-            elem.addEventListener("dragend", createDragEndHandler(), false);
+            elem.addEventListener('dragstart', createDragStartHandler(root, elem));
+            elem.addEventListener('dragend', createDragEndHandler(root, elem));
         }
     } catch (err) {
         _didIteratorError = true;
@@ -100410,7 +100480,13 @@ function initDragAndDrop(e) {
         }
     }
 
-    var dropZones = document.querySelectorAll('[data-dropzone]');
+    var dropZones = Array.from(root.querySelectorAll(DROP_ZONE_SELECTOR));
+
+    if (typeof root.matches === 'function' && root.matches(DROP_ZONE_SELECTOR)) {
+        console.log('root matches DROP_ZONE_SELECTOR');
+        dropZones.unshift(root);
+    }
+
     var _iteratorNormalCompletion2 = true;
     var _didIteratorError2 = false;
     var _iteratorError2 = undefined;
@@ -100419,10 +100495,9 @@ function initDragAndDrop(e) {
         for (var _iterator2 = dropZones[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
             var _elem = _step2.value;
 
-            _elem.addEventListener("dragover", createDragOverHandler(), false);
-            _elem.addEventListener("drop", createDropHandler(), false);
-            // elem.addEventListener("dragenter", createDragEnterHandler(), false);
-            _elem.addEventListener("dragleave", createDragLeaveHandler(), false);
+            _elem.addEventListener('dragover', createDragOverHandler(root, _elem));
+            _elem.addEventListener('drop', createDropHandler(root, _elem));
+            _elem.addEventListener('dragleave', createDragLeaveHandler(root, _elem));
         }
     } catch (err) {
         _didIteratorError2 = true;

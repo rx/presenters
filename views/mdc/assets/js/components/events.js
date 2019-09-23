@@ -12,6 +12,7 @@ import {VStepperEvent} from './events/stepper';
 import {VNavigates} from './events/navigates';
 import {VPluginEventAction} from './events/plugin';
 import getRoot from './root_document';
+import {DRAG_DATA_MIME_TYPE} from './drag_n_drop';
 
 const EVENTS_SELECTOR = '[data-events]';
 
@@ -29,9 +30,12 @@ export class VEvents {
     call() {
         const event = this.event;
         let eventParams;
+
         if (event.type === 'drop' && event.dataTransfer) {
-            //console.log('Drop Data Params: ' + event.dataTransfer.getData('text/plain'));
-            eventParams = JSON.parse(event.dataTransfer.getData('text/plain'));
+            eventParams = JSON.parse(event.dataTransfer.getData(DRAG_DATA_MIME_TYPE));
+        }
+        else if (event.type === 'dropped') {
+            eventParams = event.detail;
         }
 
         // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
