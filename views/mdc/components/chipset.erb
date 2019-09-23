@@ -4,7 +4,11 @@
     variant_classes << 'v-chip-set--selectable-variant' if eq(comp.variant, :select) || eq(comp.variant, :filter)
 %>
 <div id="<%= comp.id %>"
-     class="v-chip-set mdc-chip-set <%= variant_classes.join(' ') %>"
+     class="v-chip-set mdc-chip-set
+            <%= variant_classes.join(' ') %>
+            <% if comp.draggable %>v-dnd-draggable<% end %>"
+     <%= draggable_attributes(comp) %>
+     <%= drop_zone_attributes(comp) %>
      <%= erb(:"components/event", locals: {comp: comp,
                                            events: comp.events,
                                            parent_id: comp.id}) %>>

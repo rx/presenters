@@ -14,7 +14,8 @@
        class="v-chip v-input mdc-chip
               <%= color_classname(comp) %>
               <%= 'mdc-chip--selected' if comp.selected %>
-              v-menu-click"
+              v-menu-click
+              <% if comp.draggable %>v-dnd-draggable<% end %>"
        <% if comp.name %>
          data-name="<%= comp.name %>"
        <% end %>
@@ -22,6 +23,8 @@
          data-value="<%= comp.value %>"
        <% end %>
        style = "<%= color_style(comp, 'background-') %>"
+       <%= draggable_attributes(comp) %>
+       <%= drop_zone_attributes(comp) %>
        tabindex="0"
        <%= erb(:"components/event", locals: {comp: comp,
                                              events: comp.events,
