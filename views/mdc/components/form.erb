@@ -1,12 +1,3 @@
-<%
-  def buttons?(components)
-    buttons(components).any?
-  end
-
-  def buttons(components)
-    components.select {|c| eq(c.type, :button)}
-  end
-%>
 <form role="form"
       <% if comp.tag %>
       data-input-tag="<%= comp.tag %>"

@@ -17,6 +17,7 @@ module Voom
         configure do
           enable :logging
         end
+        helpers Helpers::FormHelpers
         helpers Helpers::PaddingHelpers
         helpers Helpers::ExpandHash
         helpers do

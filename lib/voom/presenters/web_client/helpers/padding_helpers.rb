@@ -13,5 +13,9 @@ module Voom::Presenters::WebClient::Helpers
     def _padding_classes_(padding, nesting=0)
       "v-padding-#{_padding_array_(padding, nesting).join('-')}"
     end
+
+    def _alignment_class_(align)
+      "v-grid-column-align-#{align}"
+    end
   end
 end
