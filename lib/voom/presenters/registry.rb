@@ -45,7 +45,6 @@ module Voom
 
       def self.register(name, definition)
         return Voom::Presenters::App.register(name: name, presenter: definition) unless Voom::Presenters::App.registered?(name)
-        logger.warn {"Warning attempted to redefine the presenter: #{name}!"}
       end
 
       def self.build(definition)
