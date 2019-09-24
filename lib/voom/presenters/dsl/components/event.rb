@@ -6,6 +6,7 @@ require 'voom/presenters/dsl/components/actions/deletes'
 require 'voom/presenters/dsl/components/actions/remove'
 require 'voom/presenters/dsl/components/actions/dialog'
 require 'voom/presenters/dsl/components/actions/toggle_visibility'
+require 'voom/presenters/dsl/components/actions/resets'
 require 'voom/presenters/dsl/components/actions/prompt_if_dirty'
 require 'voom/presenters/dsl/components/actions/snackbar'
 require 'voom/presenters/dsl/components/actions/clear'
@@ -88,6 +89,12 @@ module Voom
 
           def toggle_visibility(component_id, **params, &block)
             self << Actions::ToggleVisibility.new(parent: self,
+                                                  target: component_id,
+                                                  params: params, &block)
+          end
+
+          def resets(component_id, **params, &block)
+            self << Actions::Resets.new(parent: self,
                                                   target: component_id,
                                                   params: params, &block)
           end

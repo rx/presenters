@@ -10,6 +10,7 @@ import {VClears} from './events/clears';
 import {VRemoves} from './events/removes';
 import {VStepperEvent} from './events/stepper';
 import {VNavigates} from './events/navigates';
+import {VResets} from './events/resets';
 import {VPluginEventAction} from './events/plugin';
 import getRoot from './root_document';
 
@@ -125,6 +126,8 @@ export class VEvents {
                 return new VStepperEvent(options, params, event, root);
             case 'navigates':
                 return new VNavigates(options, params, event, root);
+            case 'resets':
+                return new VResets(options, params, event, root);
             default:
                 return new VPluginEventAction(action_type, options, params,
                     event, root);
