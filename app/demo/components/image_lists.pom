@@ -1,0 +1,20 @@
+Voom::Presenters.define(:image_lists) do
+  attach :top_nav
+  attach :component_drawer
+  page_title 'Icons'
+
+  grid do
+    column 1
+    column 10 do
+
+      image_list width: 60, height: 60 do
+        image 'img/demo/dog.png', label: 'Dog'
+        image 'img/demo/dog.png', label: 'Dog'
+        image 'img/demo/dog.png', label: 'Cat'
+        image 'img/demo/dog.png'
+        image 'img/demo/dog.png'
+        image 'img/demo/dog.png'
+      end
+    end
+  end
+end
