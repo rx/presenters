@@ -9,7 +9,7 @@ module Voom
     module DSL
       module Components
         class Menu < Base
-          attr_accessor :items, :title, :position, :placement, :color, :open
+          attr_accessor :items, :title, :position, :placement, :color, :open, :hoisted
 
           def initialize(title=nil, **attribs_, &block)
             super(type: :menu, **attribs_, &block)
@@ -19,6 +19,7 @@ module Voom
             @placement = attribs.delete(:placement){:default}
             @color = attribs.delete(:color)
             @open = attributes.delete(:open) {false}
+            @hoisted = attributes.delete(:hoisted) {true}
             expand!
           end
 

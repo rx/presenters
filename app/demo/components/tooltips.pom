@@ -5,7 +5,7 @@ Voom::Presenters.define(:tooltips) do
   attach :top_nav
   attach :component_drawer
   page_title 'Tooltips'
-  
+
   indented_grid do
     headline 'Avatars'
     subheading 'Cards'
@@ -54,8 +54,10 @@ Voom::Presenters.define(:tooltips) do
     end
 
     headline 'Chips'
-    chip 'Hover over me' do
-      tooltip 'I have this tip!'
+    chipset do
+      chip 'Hover over me' do
+        tooltip 'I have this tip!'
+      end
     end
 
     headline 'Tables'
@@ -96,7 +98,7 @@ Voom::Presenters.define(:tooltips) do
 
 
     headline 'Styles', level: 3
-    
+
     headline 'Headline' do
       tooltip 'I do nothing.'
     end
