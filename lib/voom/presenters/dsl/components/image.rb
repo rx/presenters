@@ -21,6 +21,7 @@ module Voom
                         :width,
                         :max_width,
                         :border,
+                        :border_color,
                         :border_radius,
                         :fit,
                         :position
@@ -40,6 +41,7 @@ module Voom
             @max_height = validate_size(attribs.delete(:max_height))
 
             @border = attribs.delete(:border)
+            @border_color = attribs.delete(:border_color)
             @border_radius = attribs.delete(:border_radius)
 
             @fit = validate_fit(attribs.delete(:fit) { :contain })

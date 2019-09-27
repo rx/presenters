@@ -4,22 +4,22 @@ module Voom
       module Components
         class ImageList < Base
 
-          attr_reader :images, :width, :height
+          attr_reader :images, :columns, :list_type
 
           def initialize(**attribs_, &block)
             super(type: :image_list, **attribs_, &block)
             @images = []
-            @width = attribs_.delete(:width){ 60 }
-            @height = attribs_.delete(:height){ 60 }
+            @columns = attribs_.delete(:columns){ 5 }
+            @list_type = attribs_.delete(:list_type){ 'standard' }
+            @border_attribs = attribs_.slice(:border, :border_color, :border_radius)
+            expand!
           end
 
-          def image(image=nil, label=nil, **attribs, &block)
+          def image(image=nil, **attribs, &block)
+            combined_attribs = attribs.merge(@border_attribs)
             @images << ImageListItem.new(parent: self,
                                          image: image,
-                                         label: label,
-                                         width: @width,
-                                         height: @height,
-                                         **attribs,
+                                         **combined_attribs,
                                          &block)
           end
 
@@ -29,7 +29,8 @@ module Voom
 
             def initialize(**attribs_, &block)
               super(type: :image_list_item, **attribs_, &block)
-              @label = attribs_.delete(:label, nil)
+              @label = attribs_.delete(:label){ nil }
+              expand!
             end
 
           end

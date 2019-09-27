@@ -9,6 +9,7 @@ require 'voom/presenters/dsl/components/mixins/menus'
 require 'voom/presenters/dsl/components/mixins/google_maps'
 require 'voom/presenters/dsl/components/mixins/tab_bars'
 require 'voom/presenters/dsl/components/mixins/images'
+require 'voom/presenters/dsl/components/mixins/image_lists'
 require 'voom/presenters/dsl/components/mixins/dialogs'
 
 module Voom
@@ -27,6 +28,7 @@ module Voom
             include Mixins::Menus
             include Mixins::TabBars
             include Mixins::Images
+            include Mixins::ImageLists
             include Mixins::Dialogs
 
             def badge(badge=nil, **attributes, &block)
