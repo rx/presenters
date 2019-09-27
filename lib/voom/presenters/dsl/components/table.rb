@@ -1,7 +1,7 @@
 require 'voom/presenters/dsl/components/mixins/common'
 require 'voom/presenters/dsl/components/mixins/event'
 require 'voom/presenters/dsl/components/mixins/tooltips'
-require 'voom/presenters/dsl/components/mixins/chips'
+require 'voom/presenters/dsl/components/mixins/chipset'
 require 'voom/presenters/dsl/components/mixins/selects'
 require 'voom/presenters/dsl/components/mixins/icons'
 
@@ -65,7 +65,7 @@ module Voom
 
             class Column < EventBase
               include Mixins::Tooltips
-              include Mixins::Chips
+              include Mixins::Chipset
               include Mixins::Selects
               include Mixins::Icons
 

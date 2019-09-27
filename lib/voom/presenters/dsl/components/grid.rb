@@ -4,7 +4,7 @@ require 'voom/presenters/dsl/components/mixins/icons'
 require 'voom/presenters/dsl/components/mixins/event'
 require 'voom/presenters/dsl/components/mixins/attaches'
 require 'voom/presenters/dsl/components/mixins/dialogs'
-require 'voom/presenters/dsl/components/mixins/chips'
+require 'voom/presenters/dsl/components/mixins/chipset'
 require 'voom/presenters/dsl/components/mixins/snackbars'
 require 'voom/presenters/dsl/components/mixins/selects'
 require 'voom/presenters/dsl/components/mixins/text_fields'
@@ -72,7 +72,7 @@ module Voom
             include Mixins::Icons
             include Mixins::Attaches
             include Mixins::Dialogs
-            include Mixins::Chips
+            include Mixins::Chipset
             include Mixins::TextFields
             include Mixins::DateTimeFields
             include Mixins::Selects

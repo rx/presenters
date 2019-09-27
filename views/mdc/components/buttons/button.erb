@@ -1,11 +1,8 @@
 <% class_name = '' unless local_variables.include? :class_name
-   position_classes = comp.position&.map {|p| "v-button-position-#{p}"}&.join(' ')
-   text_align = comp.position&.select {|p| eq(p, :left)}&.any? && eq(comp.button_type, :flat)
+   position_classes = comp.position.map {|p| "v-button-position-#{p}"}.join(' ')
    event_parent_id = nil unless local_variables.include? :event_parent_id
    data_attributes = '' unless local_variables.include? :data_attributes
 %>
-
-
 <button id="<%= comp.id %>"
          class="v-button v-button--button mdc-button <%=class_name%>
          <%= 'v-hidden' if comp.hidden %>
@@ -13,7 +10,6 @@
          <%= 'v-secondary-filled-button' if eq(comp.button_type, :raised) && eq(comp.color, :secondary) %>
          <%= 'v-secondary-text-button' if eq(comp.button_type, :flat) && eq(comp.color, :secondary) %>
          <%=  position_classes %>
-         <%= "v-button-text-align-left" if text_align %>
          <%= 'v-menu-click' if comp.menu%>"
          style = "<%= color_style(comp) %>"
          <%= data_attributes %>

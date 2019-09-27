@@ -14,6 +14,7 @@
     position: absolute;
     margin-right: 0 !important;
     color: $v-header-background;
+    line-height: 1;
   }
 }
 
@@ -30,10 +31,6 @@
 .v-button-position-left {
   position: absolute;
   left: 0;
-}
-
-.v-button-text-align-left {
- padding-left: 0;
 }
 
 .v-button-position-right {

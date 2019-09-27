@@ -6,7 +6,7 @@ export class VBaseToggle extends dirtyableMixin(eventHandlerMixin(VBaseComponent
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
 
-        this.input = element.querySelector('input');
+        this.input = element.querySelector('input') || element;
 
         element.addEventListener('V:postFailed', (event) => {
             // Revert to previous checked state on failed post.

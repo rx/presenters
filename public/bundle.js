@@ -127,8 +127,9 @@ module.exports = function (it) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VBaseComponent; });
+/* harmony export (immutable) */ __webpack_exports__["c"] = hookupComponentsManually;
 /* harmony export (immutable) */ __webpack_exports__["b"] = hookupComponents;
-/* harmony export (immutable) */ __webpack_exports__["c"] = unhookupComponents;
+/* harmony export (immutable) */ __webpack_exports__["d"] = unhookupComponents;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_errors__ = __webpack_require__(115);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -140,8 +141,9 @@ var VBaseComponent = function () {
     function VBaseComponent(element, mdcComponent) {
         _classCallCheck(this, VBaseComponent);
 
-        this.root = element.ownerDocument;
+        this.root = getRootNode(element);
         this.element = element;
+        this.element.vComponent = this;
         this.mdcComponent = mdcComponent;
         this.element.classList.add('v-component');
     }
@@ -256,31 +258,34 @@ var VBaseComponent = function () {
     return VBaseComponent;
 }();
 
-function hookupComponents(root, selector, VoomClass, MdcClass) {
-    var components = Array.from(root.querySelectorAll(selector));
+function getCandidateElements(root, selector) {
+    var elements = Array.from(root.querySelectorAll(selector));
 
     if (root && typeof root.matches === 'function' && root.matches(selector)) {
-        components.unshift(root);
+        elements.unshift(root);
     }
+
+    return elements;
+}
+
+// `fn` is a unary function accepting a HTMLElement and returning an instance of
+// VBaseComponent.
+function hookupComponentsManually(root, selector, fn) {
+    var elements = getCandidateElements(root, selector);
 
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
     var _iteratorError = undefined;
 
     try {
-        for (var _iterator = components[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var component = _step.value;
+        for (var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var element = _step.value;
 
-            if (component.mdcComponent) {
+            if (element.mdcComponent || element.vComponent) {
                 continue;
             }
 
-            var mdcInstance = typeof MdcClass === 'function' ? new MdcClass(component) : null;
-
-            if (!component.vComponent) {
-                component.vComponent = new VoomClass(component, mdcInstance, root);
-                component.vComponent.root = root;
-            }
+            fn(element);
         }
     } catch (err) {
         _didIteratorError = true;
@@ -298,19 +303,31 @@ function hookupComponents(root, selector, VoomClass, MdcClass) {
     }
 }
 
+function hookupComponents(root, selector, VoomClass, MDCClass) {
+    var ctor = componentFactory(VoomClass, MDCClass);
+    hookupComponentsManually(root, selector, ctor);
+}
+
+// Returns a function capable of constructing a Voom component.
+function componentFactory(VoomClass, MDCClass) {
+    return function (element) {
+        return new VoomClass(element, typeof MDCClass === 'function' ? new MDCClass(element) : null);
+    };
+}
+
 function unhookupComponents(root, selector) {
-    var components = Array.from(root.querySelectorAll(selector));
+    var elements = getCandidateElements(root, selector);
 
     var _iteratorNormalCompletion2 = true;
     var _didIteratorError2 = false;
     var _iteratorError2 = undefined;
 
     try {
-        for (var _iterator2 = components[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-            var component = _step2.value;
+        for (var _iterator2 = elements[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var element = _step2.value;
 
-            if (component.vComponent) {
-                component.vComponent.destroy();
+            if (element.vComponent) {
+                element.vComponent.destroy();
             }
         }
     } catch (err) {
@@ -327,6 +344,19 @@ function unhookupComponents(root, selector) {
             }
         }
     }
+}
+
+// Retrieve the element's owning document or shadow root.
+function getRootNode(node) {
+    if (!node.parentNode || isShadowRoot(node)) {
+        return node;
+    }
+
+    return getRootNode(node.parentNode);
+}
+
+function isShadowRoot(node) {
+    return node.constructor.name === 'ShadowRoot';
 }
 
 /***/ }),
@@ -3442,7 +3472,7 @@ var VBaseToggle = function (_dirtyableMixin) {
 
         var _this = _possibleConstructorReturn(this, (VBaseToggle.__proto__ || Object.getPrototypeOf(VBaseToggle)).call(this, element, mdcComponent));
 
-        _this.input = element.querySelector('input');
+        _this.input = element.querySelector('input') || element;
 
         element.addEventListener('V:postFailed', function (event) {
             // Revert to previous checked state on failed post.
@@ -4975,6 +5005,13 @@ var VEvents = function () {
                 }, p);
             }
 
+            var ev = new CustomEvent('V:eventsStarted', {
+                bubbles: true,
+                cancelable: false,
+                detail: this
+            });
+            this.event.target.dispatchEvent(ev);
+
             if (this.vComponent) {
                 this.vComponent.actionsStarted(this);
             }
@@ -4989,6 +5026,13 @@ var VEvents = function () {
                 if (result.statusCode < 500 && contentType && contentType.indexOf('text/html') !== -1 && typeof responseURL !== 'undefined') {
                     window.location = responseURL;
                 }
+
+                var ev = new CustomEvent('V:eventsSucceeded', {
+                    bubbles: true,
+                    cancelable: false,
+                    detail: _this2
+                });
+                _this2.event.target.dispatchEvent(ev);
 
                 if (_this2.vComponent) {
                     _this2.vComponent.actionsSucceeded(_this2);
@@ -5006,10 +5050,24 @@ var VEvents = function () {
                     new __WEBPACK_IMPORTED_MODULE_4__events_errors__["a" /* VErrors */](_this2.root, _this2.event).displayErrors(result);
                 }
 
+                var ev = new CustomEvent('V:eventsHalted', {
+                    bubbles: true,
+                    cancelable: false,
+                    detail: _this2
+                });
+                _this2.event.target.dispatchEvent(ev);
+
                 if (_this2.vComponent) {
                     _this2.vComponent.actionsHalted(_this2);
                 }
             }).finally(function () {
+                var ev = new CustomEvent('V:eventsFinished', {
+                    bubbles: true,
+                    cancelable: false,
+                    detail: _this2
+                });
+                _this2.event.target.dispatchEvent(ev);
+
                 if (_this2.vComponent) {
                     _this2.vComponent.actionsFinished(_this2);
                 }
@@ -13842,7 +13900,7 @@ function createSurfaceClickHandler(mdcMenu) {
 
 function uninitMenus(root) {
     console.debug('\tUninit Menus');
-    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["c" /* unhookupComponents */])(root, '.v-menu');
+    Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["d" /* unhookupComponents */])(root, '.v-menu');
 }
 
 function initMenus(root) {
@@ -13870,7 +13928,9 @@ var VMenu = function (_eventHandlerMixin) {
         if (link) {
             link.addEventListener('click', createMenuHandler(_this.mdcComponent, element));
         }
-        _this.mdcComponent.hoistMenuToBody();
+        if (_this.hoistedMenuElement.getAttribute('data-hoist') != 'false') {
+            _this.mdcComponent.hoistMenuToBody();
+        }
         return _this;
     }
 
@@ -50861,14 +50921,12 @@ var VLoads = function (_VBase) {
             // see when the download ID has been updated by the
             // response headers.
             var cookieTimer = setInterval(function () {
-                console.log('This was called!');
                 // The local cookie cache is defined in the browser
                 // as one large string; we need to search for the
                 // name-value pattern with the above ID.
                 var cookiePattern = new RegExp('downloadID=' + downloadID, 'i');
 
                 if (!downloadID) {
-                    console.log('!downloadID');
                     clearInterval(cookieTimer);
                     return f();
                 }
@@ -50876,11 +50934,10 @@ var VLoads = function (_VBase) {
                 // If the local cookies have been updated, clear
                 // the timer and call the promise!
                 else if (document.cookie.search(cookiePattern) >= 0) {
-                        console.log('Found download cookie!');
                         clearInterval(cookieTimer);
                         return f();
                     }
-                console.log('File still downloading (Make sure you set the downloadID in your cookie?)...', new Date().getTime());
+                console.debug('File still downloading (Make sure you set the downloadID in your cookie?)...', new Date().getTime());
             }, downloadID ? 500 : 0);
         }
     }, {
@@ -50896,7 +50953,6 @@ var VLoads = function (_VBase) {
                 }
                 var url = _this2.buildURL(_this2.url, expandedParams, _this2.inputValues(), downloadID ? { download_id: downloadID } : null);
                 _this2.waitForDownload(downloadID, function () {
-                    console.log('This worked!');
                     results.push({ action: 'loads', statusCode: 200 });
                     resolve(results);
                 });
@@ -75161,6 +75217,9 @@ var VSelect = function (_dirtyableMixin) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export EVENT_SELECT */
+/* unused harmony export EVENT_DESELECT */
+/* unused harmony export EVENT_TRAILING_ICON_CLICK */
 /* harmony export (immutable) */ __webpack_exports__["a"] = initChips;
 /* unused harmony export VChip */
 /* unused harmony export VChipSet */
@@ -75181,10 +75240,29 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+var EVENT_SELECT = 'select';
+var EVENT_DESELECT = 'deselect';
+var EVENT_TRAILING_ICON_CLICK = 'trailing_icon_click';
+
+var SELECTABLE_VARIANT_CLASS = 'v-chip-set--selectable-variant';
+
 function initChips(e) {
     console.debug('\tChips');
-    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-chip', VChip, __WEBPACK_IMPORTED_MODULE_0__material_chips__["MDCChip"]);
-    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["b" /* hookupComponents */])(e, '.v-chip-set', VChipSet, __WEBPACK_IMPORTED_MODULE_0__material_chips__["MDCChipSet"]);
+
+    // The chip set > chips hierarchy is established differently than other
+    // components: a chip set constructs and manages Chip components for its
+    // chip elements.
+    //
+    // Because the chip set constructs chips on its own, a `hookupComponents`
+    // call for chips is not needed.
+
+    Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["c" /* hookupComponentsManually */])(e, '.v-chip-set', function (element) {
+        var selectable = element.classList.contains(SELECTABLE_VARIANT_CLASS);
+        var chipFactory = voomChipFactoryFactory(selectable);
+        var mdcComponent = new __WEBPACK_IMPORTED_MODULE_0__material_chips__["MDCChipSet"](element, undefined, chipFactory);
+
+        return new VChipSet(element, mdcComponent);
+    });
 }
 
 var VChip = function (_eventHandlerMixin) {
@@ -75193,16 +75271,28 @@ var VChip = function (_eventHandlerMixin) {
     function VChip(element, mdcComponent) {
         _classCallCheck(this, VChip);
 
-        return _possibleConstructorReturn(this, (VChip.__proto__ || Object.getPrototypeOf(VChip)).call(this, element, mdcComponent));
+        var _this = _possibleConstructorReturn(this, (VChip.__proto__ || Object.getPrototypeOf(VChip)).call(this, element, mdcComponent));
+
+        _this.element.addEventListener('click', function (e) {
+            if (_this.selectable) {
+                _this.mdcComponent.selected = !_this.mdcComponent.selected;
+
+                var eventType = _this.mdcComponent.selected ? EVENT_SELECT : EVENT_DESELECT;
+                var selectionEvent = new Event(eventType, { bubbles: false });
+
+                _this.element.dispatchEvent(selectionEvent);
+            }
+        });
+        return _this;
     }
-
-    // Called to collect data for submission
-
 
     _createClass(VChip, [{
         key: 'prepareSubmit',
+
+
+        // Called to collect data for submission
         value: function prepareSubmit(params) {
-            if (this.value() !== '') {
+            if (this.shouldSubmitParams) {
                 params.push([this.name(), this.value()]);
             }
         }
@@ -75226,10 +75316,37 @@ var VChip = function (_eventHandlerMixin) {
         value: function setValue(value) {
             this.element.setAttribute('data-value', value);
         }
+    }, {
+        key: 'trailingIcon',
+        get: function get() {
+            return this.element.querySelector('.mdc-chip__icon.mdc-chip__icon--trailing');
+        }
+    }, {
+        key: 'shouldSubmitParams',
+        get: function get() {
+            // Selectable chips (those within a :filter or :choice chipset) which
+            // are not currently selected do not submit their value.
+            return this.value() && (!this.selectable || this.mdcComponent.selected);
+        }
+    }, {
+        key: 'selectable',
+        get: function get() {
+            return this.element.parentElement.classList.contains(SELECTABLE_VARIANT_CLASS);
+        }
     }]);
 
     return VChip;
 }(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_2__base_component__["a" /* VBaseComponent */]));
+
+// Returns a function which constructs VChip components.
+function voomChipFactoryFactory(selectable) {
+    return function (element) {
+        var mdcComponent = new __WEBPACK_IMPORTED_MODULE_0__material_chips__["MDCChip"](element);
+        mdcComponent.shouldRemoveOnTrailingIconClick = !selectable;
+
+        return new VChip(element, mdcComponent);
+    };
+}
 
 var VChipSet = function (_eventHandlerMixin2) {
     _inherits(VChipSet, _eventHandlerMixin2);
@@ -82800,7 +82917,6 @@ var VRichTextArea = function (_dirtyableMixin) {
             placeholder: _this.quillWrapper.dataset.placeholder
         });
         _this.fixedUpContentElement = element.querySelector('.v-rich-text-area--fixed-up-content');
-        _this.originalValue = _this.value();
         _this.quillEditor = _this.quillWrapper.querySelector('.ql-editor');
 
         if (element.hasAttribute('disabled')) {
@@ -82815,9 +82931,8 @@ var VRichTextArea = function (_dirtyableMixin) {
             return _this.updateFixedContentElement();
         });
 
-        _this.element.dataset.originalValue = _this.value();
-
         adjustEditorStyles(_this);
+        _this.originalValue = _this.value();
         return _this;
     }
 
@@ -99786,6 +99901,9 @@ var VProgress = function (_VBaseComponent) {
             _this.show();
         });
         _this.root.addEventListener('V:postFinished', function (e) {
+            _this.hide();
+        });
+        _this.root.addEventListener('V:eventsHalted', function (e) {
             _this.hide();
         });
         return _this;
