@@ -36,7 +36,7 @@ module Voom
               headline(*text, level: 4, **attributes, &block)
             end
 
-            alias heading3 headline4
+            alias heading4 headline4
 
             def headline5(*text, level: nil, **attributes, &block)
               headline(*text, level: 5, **attributes, &block)
