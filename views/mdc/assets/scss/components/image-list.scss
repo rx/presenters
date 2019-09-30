@@ -1,0 +1,10 @@
+@import "@material/image-list/mdc-image-list";
+
+@for $size from 1 through 12  {
+  .v-image-list-standard-#{$size}, .v-image-list-text-protection-#{$size} {
+    @include mdc-image-list-standard-columns($size);
+  }
+  .v-image-list-masonry-#{$size} {
+    @include mdc-image-list-masonry-columns($size);
+  }
+}

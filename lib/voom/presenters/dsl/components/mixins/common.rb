@@ -14,6 +14,7 @@ module Voom
             include Mixins::Menus
             include Mixins::TabBars
             include Mixins::Images
+            include Mixins::ImageLists
             include Mixins::Dialogs
 
             def badge(badge=nil, **attributes, &block)

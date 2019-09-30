@@ -8,6 +8,8 @@ module Voom
 
             def initialize(**attribs_, &block)
               super(type: :loads, **attribs_, &block)
+              option_value = attribs.delete(:wait_for_download){:not_found}
+              @options.merge!(wait_for_download: option_value) unless option_value==:not_found
             end
 
             def url
@@ -18,7 +20,7 @@ module Voom
 
             def parse_presenter
               return options[:presenter] if options[:presenter].match(/^https?\:\/\//)
-              _expand_namespace_(options[:presenter], namespace).gsub(':','/')
+              _expand_namespace_(options[:presenter], namespace).gsub(':', '/')
             end
           end
         end

@@ -21,11 +21,13 @@ module Voom
             @actions << comp
           end
 
-          def loads(presenter = nil, path: nil, target: nil, **params, &block)
+          def loads(presenter = nil, path: nil, target: nil, input_tag: nil, wait_for_download: nil, **params, &block)
             self << Actions::Loads.new(parent: self,
                                        presenter: presenter,
                                        path: path,
                                        target: target,
+                                       input_tag: input_tag,
+                                       wait_for_download: wait_for_download,
                                        params: params, &block)
           end
 

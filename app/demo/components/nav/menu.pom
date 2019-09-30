@@ -20,6 +20,8 @@ Voom::Presenters.define('component_menu') do
       headers
       hidden_fields
       icons
+      images
+      image_lists
       layouts
       lists
       maps

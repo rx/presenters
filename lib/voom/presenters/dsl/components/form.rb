@@ -15,6 +15,7 @@ module Voom
           include Mixins::Content
           include Mixins::Typography
           include Mixins::FileInputs
+          include Mixins::Images
 
           attr_reader :components, :shows_errors
 
