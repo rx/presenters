@@ -46,6 +46,7 @@ module Voom
                                        wait_for_download: wait_for_download,
                                        params: params, &block)
           end
+          alias load loads
 
           def replaces(target, presenter, input_tag: nil, **params, &block)
             self << Actions::Replaces.new(parent: self,
@@ -54,6 +55,17 @@ module Voom
                                           input_tag: input_tag,
                                           params: params, &block)
           end
+          alias replace replaces
+
+          def inserts(target, presenter, input_tag: nil, **params, &block)
+            self << Actions::Replaces.new(parent: self,
+                                          target: target,
+                                          presenter: presenter,
+                                          input_tag: input_tag,
+                                          insert: true,
+                                          params: params, &block)
+          end
+          alias insert inserts
 
           def inserts(target, presenter, input_tag: nil, **params, &block)
             self << Actions::Replaces.new(parent: self,
@@ -72,8 +84,9 @@ module Voom
                                        headers: headers,
                                        params: params, &block)
           end
-
+          alias post posts
           alias creates posts
+          alias create posts
 
           def updates(path, input_tag: nil, headers: nil, **params, &block)
             self << Actions::Updates.new(parent: self,
@@ -82,6 +95,7 @@ module Voom
                                          headers: headers,
                                          params: params, &block)
           end
+          alias update updates
 
           def deletes(path, input_tag: nil, headers: nil, **params, &block)
             self << Actions::Deletes.new(parent: self,
@@ -90,6 +104,7 @@ module Voom
                                          headers: headers,
                                          params: params, &block)
           end
+          alias delete deletes
 
           def dialog(dialog_id, **params, &block)
             self << Actions::Dialog.new(parent: self,

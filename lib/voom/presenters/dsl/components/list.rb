@@ -5,6 +5,7 @@ require 'voom/presenters/dsl/components/mixins/content'
 require 'voom/presenters/dsl/components/mixins/append'
 require 'voom/presenters/dsl/components/mixins/attaches'
 require 'voom/presenters/dsl/components/mixins/event'
+require 'voom/presenters/dsl/components/mixins/dialogs'
 
 module Voom
   module Presenters
@@ -15,6 +16,7 @@ module Voom
           include Mixins::Append
           include Mixins::Attaches
           include Mixins::Event
+          include Mixins::Dialogs
 
           attr_reader :lines, :lines_only, :color, :border, :selectable, :total_lines, :dense
           attr_accessor :components

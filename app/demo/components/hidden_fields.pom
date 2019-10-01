@@ -2,7 +2,7 @@ require_relative '../helpers/indented_grid'
 
 Voom::Presenters.define(:hidden_fields) do
   helpers Demo::Helpers::IndentedGrid
-  
+
   attach :top_nav
   attach :component_drawer
   page_title 'Hidden'
@@ -11,6 +11,8 @@ Voom::Presenters.define(:hidden_fields) do
       hidden_field name: :idoit_id do
         value 'do it!'
       end
+
+      hidden_field name: :active, value: true
     end
 
     attach :code, file: __FILE__
