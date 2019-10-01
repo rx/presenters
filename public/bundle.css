@@ -15399,6 +15399,12 @@ button.mdc-chip {
   .v-image-list-masonry-12 .mdc-image-list__item {
     margin-bottom: 16px; }
 
+.v-image-list__border-primary {
+  border-color: #5488b2; }
+
+.v-image-list__border-secondary {
+  border-color: #E58D36; }
+
 .v-expansion {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
   .v-expansion__summary {

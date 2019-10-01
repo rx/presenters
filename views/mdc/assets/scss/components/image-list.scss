@@ -8,3 +8,11 @@
     @include mdc-image-list-masonry-columns($size);
   }
 }
+
+.v-image-list__border-primary {
+  border-color: $mdc-theme-primary;
+}
+
+.v-image-list__border-secondary {
+  border-color: $mdc-theme-secondary;
+}

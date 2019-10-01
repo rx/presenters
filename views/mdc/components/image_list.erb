@@ -10,15 +10,17 @@
   <% for image in comp.images %>
     <%
       styles = {
-        'border' => ("#{image.border} solid" if image.border),
-        'border-color' => (image.border_color if image.border_color),
-        'border-radius' => (image.border_radius if image.border_radius),
+        'border-width' => ("#{image.border}" if image.border),
+        'border-style' => ('solid' if image.border),
+        'border-radius' => (image.border_radius if image.border_radius)
       }.compact
     %>
-    <li class="mdc-image-list__item">
+    <li class="mdc-image-list__item" <%= "style='margin: #{comp.spacing}'" if comp.spacing %>>
       <% if comp.list_type != 'masonry' %><div class="mdc-image-list__image-aspect-container"><% end %>
         <img id="<%= image.id %>"
-             class="mdc-image-list__image <%= 'v-actionable' if image.events %>"
+             class="mdc-image-list__image
+                    <%= 'v-actionable' if image.events %>
+                    <%= "v-image-list__border-#{image.border_color}"  if image.border_color %>"
              src="<%= image.url %>"
              <% if image.description %>alt="<%= image.description %>"<% end %>
              style="<%= styles.map { |k, v| "#{k}: #{v}" }.join('; ') %>"
