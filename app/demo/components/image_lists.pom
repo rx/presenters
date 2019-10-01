@@ -61,7 +61,7 @@ Voom::Presenters.define(:image_lists) do
             image 'img/demo/dog.png', label: 'Round', border_radius: '50%'
             image 'img/demo/image_card.jpg', label: 'Rounded Corners', border_radius: '5%'
             image 'img/demo/dog.png', label: 'Thick Border', border: '10px'
-            image 'img/demo/image_card.jpg', label: 'Thin red border', border: '1px', border_color: 'red'
+            image 'img/demo/image_card.jpg', label: 'Thin secondary border', border: '1px', border_color: :secondary
           end
         end
       end
@@ -70,6 +70,19 @@ Voom::Presenters.define(:image_lists) do
         column 12 do
           headline 'Image attributes applied globally'
           image_list list_type: 'standard', columns: 4, border_radius: '50%' do
+            image 'img/demo/image_card.jpg'
+            image 'img/demo/dog.png'
+            image 'img/demo/image_card.jpg'
+            image 'img/demo/dog.png'
+            image 'img/demo/image_card.jpg'
+          end
+        end
+      end
+
+      grid do
+        column 12 do
+          headline 'Primary color border with spacing'
+          image_list list_type: 'standard', columns: 4, border: '2px', border_color: :primary, spacing: '10px' do
             image 'img/demo/image_card.jpg'
             image 'img/demo/dog.png'
             image 'img/demo/image_card.jpg'

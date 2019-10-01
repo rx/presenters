@@ -4,13 +4,14 @@ module Voom
       module Components
         class ImageList < Base
 
-          attr_reader :images, :columns, :list_type
+          attr_reader :images, :columns, :list_type, :spacing
 
           def initialize(**attribs_, &block)
             super(type: :image_list, **attribs_, &block)
             @images = []
             @columns = attribs_.delete(:columns){ 5 }
             @list_type = attribs_.delete(:list_type){ 'standard' }
+            @spacing = attribs_.delete(:spacing)
             @border_attribs = attribs_.slice(:border, :border_color, :border_radius)
             expand!
           end
