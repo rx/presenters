@@ -5103,7 +5103,7 @@ var VEvents = function () {
                 case 'remove':
                     return new __WEBPACK_IMPORTED_MODULE_10__events_removes__["a" /* VRemoves */](options, params, event, root);
                 case 'snackbar':
-                    return new __WEBPACK_IMPORTED_MODULE_8__events_snackbar__["a" /* VSnackbarEvent */](options, params, event);
+                    return new __WEBPACK_IMPORTED_MODULE_8__events_snackbar__["a" /* VSnackbarEvent */](options, params, event, root);
                 case 'autocomplete':
                     return new __WEBPACK_IMPORTED_MODULE_6__events_autocomplete__["a" /* VAutoComplete */](options, url, params, event);
                 case 'clear':

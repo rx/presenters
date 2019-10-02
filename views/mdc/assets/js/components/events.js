@@ -148,7 +148,7 @@ export class VEvents {
             case 'remove':
                 return new VRemoves(options, params, event, root);
             case 'snackbar':
-                return new VSnackbarEvent(options, params, event);
+                return new VSnackbarEvent(options, params, event, root);
             case 'autocomplete':
                 return new VAutoComplete(options, url, params, event);
             case 'clear':
