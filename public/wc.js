@@ -41908,7 +41908,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 var VSnackbarEvent = function () {
-    function VSnackbarEvent(options, params, event, root) {
+    function VSnackbarEvent(options, params, event) {
+        var root = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : document;
+
         _classCallCheck(this, VSnackbarEvent);
 
         this.options = options;
