@@ -15,11 +15,15 @@
      aria-describedby="<%= comp.id %>-content"
      data-is-container
      <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
-  <div class="mdc-dialog__container">
+  <div class="mdc-dialog__container"
+    <% if comp.percent_width || comp.percent_height %>
+      style="<%= "max-width: none; width: #{comp.percent_width}; " if comp.percent_width %>
+        <%= "height: #{comp.percent_height}; " if comp.percent_height %>"
+    <% end %>>
     <div class="mdc-dialog__surface"
-         <% if comp.width || comp.height %>
-              style="<%= "max-width: none; width: #{comp.width.to_i.to_s == comp.width ? comp.width + 'px' : comp.width}; " if comp.width %>
-                <%= "height: #{comp.height.to_i.to_s == comp.height ? comp.height + 'px' : comp.height}; " if comp.height %>"
+         <% if comp.px_width || comp.px_height  || comp.percent_width%>
+              style="max-width: none;<%= " width: #{comp.px_width.to_i.to_s == comp.px_width ? comp.px_width + 'px' : comp.px_width}; " if comp.px_width %>
+                <%= "height: #{comp.px_height.to_i.to_s == comp.px_height ? comp.px_height + 'px' : comp.px_height}; " if comp.px_height %>"
         <% end %>>
       <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(top both))%>
       <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->

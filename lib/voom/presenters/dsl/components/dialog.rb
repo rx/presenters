@@ -10,16 +10,22 @@ module Voom
           include Mixins::Event
           include Mixins::Progress
 
-          attr_accessor :width,
-                        :height,
+          attr_accessor :percent_width,
+                        :percent_height,
+                        :px_width,
+                        :px_height,
                         :buttons,
                         :components,
                         :shows_errors
 
           def initialize(**attribs_, &block)
             super(type: :dialog, **attribs_, &block)
-            @width = attribs.delete(:width)
-            @height = attribs.delete(:height)
+            width = attribs.delete(:width)
+            height = attribs.delete(:height)
+            @percent_width = width&.end_with?("%") ? width : nil
+            @percent_height = height&.end_with?("%") ? height : nil
+            @px_width = !width&.end_with?("%") ? width : nil
+            @px_height = !height&.end_with?("%") ? height : nil
             @shows_errors = attribs.delete(:shows_errors){true}
 
             @buttons = []
