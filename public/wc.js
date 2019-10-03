@@ -30242,9 +30242,13 @@ var VDialog = function (_eventHandlerMixin) {
             // A successful run-to-completion of an event chain should always
             // attempt to close the dialog.
             this.shouldNotifyClosing = false;
-            this.canClose = true;
 
-            this.close(vEvent.event.detail.action);
+            // We should only be closing the dialog for components that are marked as mdcDialogActions
+            var dialogAction = vEvent.vComponent.element.dataset.mdcDialogAction;
+            if (dialogAction !== undefined) {
+                this.canClose = true;
+                this.close(vEvent.event.detail.action);
+            }
             _get(VDialog.prototype.__proto__ || Object.getPrototypeOf(VDialog.prototype), 'actionsSucceeded', this).call(this, vEvent); // Bubble up
         }
     }, {
