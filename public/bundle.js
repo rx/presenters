@@ -76980,6 +76980,8 @@ var EVENT_DESELECT = 'deselect';
 var EVENT_TRAILING_ICON_CLICK = 'trailing_icon_click';
 
 var SELECTABLE_VARIANT_CLASS = 'v-chip-set--selectable-variant';
+var CHIP_BEHAVIOR_AUTO_REMOVE = 'auto_remove';
+var CHIP_BEHAVIOR_NO_AUTO_REMOVE = 'no_auto_remove';
 
 function initChips(e) {
     console.debug('\tChips');
@@ -76992,8 +76994,7 @@ function initChips(e) {
     // call for chips is not needed.
 
     Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["d" /* hookupComponentsManually */])(e, '.v-chip-set', function (element) {
-        var selectable = element.classList.contains(SELECTABLE_VARIANT_CLASS);
-        var chipFactory = voomChipFactoryFactory(selectable);
+        var chipFactory = voomChipFactoryFactory(CHIP_BEHAVIOR_NO_AUTO_REMOVE);
         var mdcComponent = new __WEBPACK_IMPORTED_MODULE_0__material_chips__["MDCChipSet"](element, undefined, chipFactory);
 
         return new VChipSet(element, mdcComponent);
@@ -77074,10 +77075,14 @@ var VChip = function (_eventHandlerMixin) {
 }(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_2__base_component__["a" /* VBaseComponent */]));
 
 // Returns a function which constructs VChip components.
-function voomChipFactoryFactory(selectable) {
+function voomChipFactoryFactory() {
+    var behavior = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : CHIP_BEHAVIOR_AUTO_REMOVE;
+
+    var autoRemove = behavior === CHIP_BEHAVIOR_AUTO_REMOVE;
+
     return function (element) {
         var mdcComponent = new __WEBPACK_IMPORTED_MODULE_0__material_chips__["MDCChip"](element);
-        mdcComponent.shouldRemoveOnTrailingIconClick = !selectable;
+        mdcComponent.shouldRemoveOnTrailingIconClick = autoRemove;
 
         return new VChip(element, mdcComponent);
     };
