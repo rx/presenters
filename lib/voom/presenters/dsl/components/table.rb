@@ -68,6 +68,7 @@ module Voom
               include Mixins::Chipset
               include Mixins::Selects
               include Mixins::Icons
+              include Mixins::Content
 
               attr_accessor :numeric, :color, :components
 
