@@ -10252,7 +10252,7 @@ var VDialog = function () {
     const foo = JSON.stringify(json);
 
 
-    There is no workaround for attempting mutating a drag data store not in
+    There is no workaround for attempting to mutate a drag data store not in
     read/write mode.
  */
 
@@ -10358,7 +10358,6 @@ function initDragAndDrop(root) {
     var draggables = Array.from(root.querySelectorAll(DRAGGABLE_SELECTOR));
 
     if (typeof root.matches === 'function' && root.matches(DRAGGABLE_SELECTOR)) {
-        console.log('root matches DRAGGABLE_SELECTOR');
         draggables.unshift(root);
     }
 
@@ -10391,7 +10390,6 @@ function initDragAndDrop(root) {
     var dropZones = Array.from(root.querySelectorAll(DROP_ZONE_SELECTOR));
 
     if (typeof root.matches === 'function' && root.matches(DROP_ZONE_SELECTOR)) {
-        console.log('root matches DROP_ZONE_SELECTOR');
         dropZones.unshift(root);
     }
 
