@@ -30243,8 +30243,8 @@ var VDialog = function (_eventHandlerMixin) {
             // attempt to close the dialog.
             this.shouldNotifyClosing = false;
 
-            // We should only be closing the dialog for components that are marked as mdcDialogActions
-            var dialogAction = vEvent.vComponent.element.dataset.mdcDialogAction;
+            // We should only be closing the dialog for components marked as autoClose
+            var dialogAction = vEvent.vComponent.element.dataset.autoClose;
             if (dialogAction !== undefined) {
                 this.canClose = true;
                 this.close(vEvent.event.detail.action);
