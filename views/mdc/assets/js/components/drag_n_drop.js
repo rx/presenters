@@ -154,6 +154,17 @@ export function initDragAndDrop(root) {
 }
 
 /**
+ * hasDragDropData determines whether the provided event has previously-set
+ * drag-n-drop data available.
+ * @param {Event} event
+ * @return {Boolean}
+ */
+export function hasDragDropData(event) {
+    return event.type === 'drop' && event.dataTransfer
+        || event.type === EVENT_DROPPED && event.detail;
+}
+
+/**
  * extractDragDropData attempts to extract a payload of drag-n-drop data from
  * the provided event previously set during  a `dragstart` event.
  * @param {Event} event

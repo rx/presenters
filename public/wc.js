@@ -2109,7 +2109,11 @@ var VEvents = function () {
             var _this2 = this;
 
             var event = this.event;
-            var eventParams = Object(__WEBPACK_IMPORTED_MODULE_14__drag_n_drop__["a" /* extractDragDropData */])(event);
+            var eventParams = {};
+
+            if (Object(__WEBPACK_IMPORTED_MODULE_14__drag_n_drop__["b" /* hasDragDropData */])(event)) {
+                eventParams = Object.assign(eventParams, Object(__WEBPACK_IMPORTED_MODULE_14__drag_n_drop__["a" /* extractDragDropData */])(event));
+            }
 
             // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
             var fnlist = this.actions.map(function (action) {
@@ -2964,7 +2968,7 @@ function initialize(root, setRoot) {
     Object(__WEBPACK_IMPORTED_MODULE_32__progress__["a" /* initProgress */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_30__tooltip__["a" /* initTooltips */])(root);
     Object(__WEBPACK_IMPORTED_MODULE_31__plugins__["a" /* initPlugins */])(root);
-    Object(__WEBPACK_IMPORTED_MODULE_33__drag_n_drop__["b" /* initDragAndDrop */])(root);
+    Object(__WEBPACK_IMPORTED_MODULE_33__drag_n_drop__["c" /* initDragAndDrop */])(root);
 
     // This needs to be last, because it relies on the components installed above.
     Object(__WEBPACK_IMPORTED_MODULE_4__events__["b" /* initEvents */])(root);
@@ -10222,7 +10226,8 @@ var VDialog = function () {
 
 "use strict";
 /* unused harmony export EVENT_DROPPED */
-/* harmony export (immutable) */ __webpack_exports__["b"] = initDragAndDrop;
+/* harmony export (immutable) */ __webpack_exports__["c"] = initDragAndDrop;
+/* harmony export (immutable) */ __webpack_exports__["b"] = hasDragDropData;
 /* harmony export (immutable) */ __webpack_exports__["a"] = extractDragDropData;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(0);
 /*
@@ -10419,6 +10424,16 @@ function initDragAndDrop(root) {
             }
         }
     }
+}
+
+/**
+ * hasDragDropData determines whether the provided event has previously-set
+ * drag-n-drop data available.
+ * @param {Event} event
+ * @return {Boolean}
+ */
+function hasDragDropData(event) {
+    return event.type === 'drop' && event.dataTransfer || event.type === EVENT_DROPPED && event.detail;
 }
 
 /**
