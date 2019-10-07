@@ -31,9 +31,9 @@
 
 import {getRootNode} from './base-component';
 
-export const DRAG_DATA_MIME_TYPE = 'application/x.voom-drag-data+json';
 export const EVENT_DROPPED = 'dropped';
 
+const DRAG_DATA_MIME_TYPE = 'application/x.voom-drag-data+json';
 const ELEMENT_ID_MIME_TYPE = 'text/x.voom-element-id';
 
 function createDragStartHandler(root, element) {
@@ -155,3 +155,19 @@ export function initDragAndDrop(root) {
     }
 }
 
+/**
+ * extractDragDropData attempts to extract a payload of drag-n-drop data from
+ * the provided event previously set during  a `dragstart` event.
+ * @param {Event} event
+ * @return {Object}
+ */
+export function extractDragDropData(event) {
+    if (event.type === 'drop' && event.dataTransfer) {
+        return JSON.parse(event.dataTransfer.getData(DRAG_DATA_MIME_TYPE));
+    }
+    else if (event.type === EVENT_DROPPED) {
+        return event.detail;
+    }
+
+    return {};
+}

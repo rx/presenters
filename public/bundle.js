@@ -4987,13 +4987,7 @@ var VEvents = function () {
             var _this2 = this;
 
             var event = this.event;
-            var eventParams = void 0;
-
-            if (event.type === 'drop' && event.dataTransfer) {
-                eventParams = JSON.parse(event.dataTransfer.getData(__WEBPACK_IMPORTED_MODULE_14__drag_n_drop__["a" /* DRAG_DATA_MIME_TYPE */]));
-            } else if (event.type === 'dropped') {
-                eventParams = event.detail;
-            }
+            var eventParams = Object(__WEBPACK_IMPORTED_MODULE_14__drag_n_drop__["a" /* extractDragDropData */])(event);
 
             // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
             var fnlist = this.actions.map(function (action) {
@@ -14033,9 +14027,9 @@ var VDialog = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DRAG_DATA_MIME_TYPE; });
 /* unused harmony export EVENT_DROPPED */
 /* harmony export (immutable) */ __webpack_exports__["b"] = initDragAndDrop;
+/* harmony export (immutable) */ __webpack_exports__["a"] = extractDragDropData;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_component__ = __webpack_require__(2);
 /*
     A drag data store (DragEvent.prototype.dataTransfer.items) can be in one of
@@ -14070,9 +14064,9 @@ var VDialog = function () {
 
 
 
-var DRAG_DATA_MIME_TYPE = 'application/x.voom-drag-data+json';
 var EVENT_DROPPED = 'dropped';
 
+var DRAG_DATA_MIME_TYPE = 'application/x.voom-drag-data+json';
 var ELEMENT_ID_MIME_TYPE = 'text/x.voom-element-id';
 
 function createDragStartHandler(root, element) {
@@ -14233,6 +14227,22 @@ function initDragAndDrop(root) {
             }
         }
     }
+}
+
+/**
+ * extractDragDropData attempts to extract a payload of drag-n-drop data from
+ * the provided event previously set during  a `dragstart` event.
+ * @param {Event} event
+ * @return {Object}
+ */
+function extractDragDropData(event) {
+    if (event.type === 'drop' && event.dataTransfer) {
+        return JSON.parse(event.dataTransfer.getData(DRAG_DATA_MIME_TYPE));
+    } else if (event.type === EVENT_DROPPED) {
+        return event.detail;
+    }
+
+    return {};
 }
 
 /***/ }),
