@@ -17663,6 +17663,9 @@ i:focus.v-datetime--clear {
   display: none;
   visibility: hidden; }
 
+.v-nowrap {
+  white-space: nowrap; }
+
 .incompatible-browser .compatibility-wrapper * {
   display: none; }
 

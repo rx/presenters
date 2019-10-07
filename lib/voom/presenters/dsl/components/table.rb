@@ -12,11 +12,12 @@ module Voom
         class Table < Base
           include Mixins::Common
           include Mixins::Event
-          attr_accessor :header, :rows, :selectable
+          attr_accessor :header, :rows, :selectable, :width
 
           def initialize(**attribs_, &block)
             super(type: :table, **attribs_, &block)
             @selectable = attribs.delete(:selectable)
+            @width = attribs.delete(:width)
             @rows = []
             expand!
           end
@@ -68,6 +69,7 @@ module Voom
               include Mixins::Chipset
               include Mixins::Selects
               include Mixins::Icons
+              include Mixins::Content
 
               attr_accessor :numeric, :color, :components
 
