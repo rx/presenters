@@ -60,11 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-<<<<<<< HEAD
-/******/ 	return __webpack_require__(__webpack_require__.s = 197);
-=======
-/******/ 	return __webpack_require__(__webpack_require__.s = 199);
->>>>>>> Ensure chips have a name before submitting values
+/******/ 	return __webpack_require__(__webpack_require__.s = 198);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -565,11 +561,7 @@ var global = __webpack_require__(3);
 var hide = __webpack_require__(14);
 var has = __webpack_require__(17);
 var SRC = __webpack_require__(37)('src');
-<<<<<<< HEAD
-var $toString = __webpack_require__(208);
-=======
-var $toString = __webpack_require__(210);
->>>>>>> Ensure chips have a name before submitting values
+var $toString = __webpack_require__(209);
 var TO_STRING = 'toString';
 var TPL = ('' + $toString).split(TO_STRING);
 
@@ -2196,10 +2188,10 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VBase; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js_features_array_flat__ = __webpack_require__(163);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js_features_array_flat___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_core_js_features_array_flat__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_core_js_features_array_flat_map__ = __webpack_require__(436);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_core_js_features_array_flat_map__ = __webpack_require__(437);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_core_js_features_array_flat_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_core_js_features_array_flat_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__errors__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_urls__ = __webpack_require__(440);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_urls__ = __webpack_require__(441);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2632,11 +2624,7 @@ var strings = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_config__ = __webpack_require__(202);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_config__ = __webpack_require__(204);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_config__ = __webpack_require__(203);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0__utils_config__["a" /* default */]({
@@ -3164,11 +3152,7 @@ module.exports = function (it) {
 
 var global = __webpack_require__(26);
 var setGlobal = __webpack_require__(118);
-<<<<<<< HEAD
-var IS_PURE = __webpack_require__(414);
-=======
-var IS_PURE = __webpack_require__(416);
->>>>>>> Ensure chips have a name before submitting values
+var IS_PURE = __webpack_require__(415);
 
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || setGlobal(SHARED, {});
@@ -3307,225 +3291,6 @@ function expandParams(results, params) {
 }
 
 /***/ }),
-<<<<<<< HEAD
-=======
-/* 85 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VBase; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js_features_array_flat__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js_features_array_flat___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_core_js_features_array_flat__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_core_js_features_array_flat_map__ = __webpack_require__(439);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_core_js_features_array_flat_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_core_js_features_array_flat_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__errors__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_urls__ = __webpack_require__(188);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-
-var VBase = function (_VUrls) {
-    _inherits(VBase, _VUrls);
-
-    function VBase(options, root) {
-        _classCallCheck(this, VBase);
-
-        var _this = _possibleConstructorReturn(this, (VBase.__proto__ || Object.getPrototypeOf(VBase)).call(this));
-
-        _this.options = options;
-        _this.root = root;
-        return _this;
-    }
-
-    _createClass(VBase, [{
-        key: 'clearErrors',
-        value: function clearErrors() {
-            new __WEBPACK_IMPORTED_MODULE_2__errors__["a" /* VErrors */](this.root).clearErrors();
-        }
-    }, {
-        key: 'parentElement',
-        value: function parentElement() {
-            return this.root.getElementById(this.options.__parent_id__);
-        }
-
-        /**
-         * taggedInputs retrieves all components matching this event's input_tag
-         * value.
-         * @return {NodeList}
-         */
-
-    }, {
-        key: 'taggedInputs',
-        value: function taggedInputs() {
-            var inputTag = this.options.input_tag;
-
-            if (!inputTag) {
-                return [];
-            }
-
-            var selector = '[data-input-tag="' + inputTag + '"]';
-            var inputs = this.root.querySelectorAll(selector);
-
-            if (inputs.length < 1) {
-                console.warn('input_tag ' + inputTag + ' matched 0 elements. Are you sure' + 'you\'ve specified the correct value?');
-            }
-
-            return inputs;
-        }
-
-        /**
-         * inputs retrieves relevant input elements for this event.
-         *
-         * - If an `input_tag` has been provided, all matching tagged elements are
-         *   included.
-         * - If this component is a input element, it is included.
-         * - If this component has input elements, its input elements are included.
-         *   If not, the input elements of the nearest container (dialog or content)
-         *   are included.
-         * @return {Array<HTMLElement>}
-         */
-
-    }, {
-        key: 'inputs',
-        value: function inputs() {
-            var components = [];
-
-            // Collect tagged components, if applicable:
-            if (this.options.input_tag) {
-                var taggedComponents = Array.from(this.taggedInputs()).filter(function (element) {
-                    return element.vComponent;
-                }).map(function (element) {
-                    return element.vComponent;
-                });
-
-                components.push(taggedComponents);
-            }
-
-            var comp = this.component();
-
-            if (comp) {
-                // Include ourselves if we're a form field component, but not a
-                // container:
-                if (comp.respondTo('prepareSubmit') && !comp.respondTo('inputs')) {
-                    components.push(comp);
-                } else if (!comp.respondTo('inputs')) {
-                    // Defer to the component's closest container (card, content,
-                    // dialog, or form) if the component itself does not respond to
-                    // `inputs`:
-                    comp = this.closestContainer();
-                }
-            }
-
-            if (comp && comp.respondTo('inputs')) {
-                components.push(comp);
-            }
-
-            // Map components to elements.
-            // Containers are mapped to their child elements.
-            // Form field components are mapped to their own element.
-            var elements = components.flat().flatMap(function (comp) {
-                if (comp.respondTo('inputs')) {
-                    return Array.from(comp.inputs());
-                } else if (comp.respondTo('prepareSubmit')) {
-                    return comp.element;
-                }
-            });
-
-            // Deduplicate:
-            return Array.from(new Set(elements));
-        }
-
-        /**
-         * inputComponents retrieves the Component for each of this event's
-         * relevant input elements.
-         * @return {Array<VBaseComponent>}
-         */
-
-    }, {
-        key: 'inputComponents',
-        value: function inputComponents() {
-            return this.inputs().filter(function (element) {
-                return element.vComponent;
-            }).map(function (element) {
-                return element.vComponent;
-            });
-        }
-
-        /**
-         * inputValues retrieves submit values for each of this event's relevant
-         * input elements.
-         * @return {Array}
-         */
-
-    }, {
-        key: 'inputValues',
-        value: function inputValues() {
-            var params = [];
-
-            this.inputComponents().filter(function (comp) {
-                return comp.respondTo('prepareSubmit');
-            }).map(function (comp) {
-                return comp.prepareSubmit(params);
-            });
-
-            return params;
-        }
-    }, {
-        key: 'component',
-        value: function component() {
-            var parent = this.parentElement();
-
-            return parent ? parent.vComponent : null;
-        }
-    }, {
-        key: 'validate',
-        value: function validate() {
-            var comp = this.component();
-
-            if (comp) {
-                return comp.validate();
-            }
-
-            return [];
-        }
-    }, {
-        key: 'closestContainer',
-        value: function closestContainer() {
-            var element = this.closestContainerElement();
-
-            if (!element) {
-                return null;
-            }
-
-            return element.vComponent;
-        }
-    }, {
-        key: 'closestContainerElement',
-        value: function closestContainerElement() {
-            var comp = this.component();
-
-            if (!(comp && comp.element)) {
-                return null;
-            }
-
-            return comp.element.closest('[data-is-container]');
-        }
-    }]);
-
-    return VBase;
-}(__WEBPACK_IMPORTED_MODULE_3__utils_urls__["a" /* VUrls */]);
-
-/***/ }),
->>>>>>> Ensure chips have a name before submitting values
 /* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4099,11 +3864,7 @@ module.exports = __webpack_require__(21).getIteratorMethod = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
-<<<<<<< HEAD
-var speciesConstructor = __webpack_require__(297);
-=======
-var speciesConstructor = __webpack_require__(299);
->>>>>>> Ensure chips have a name before submitting values
+var speciesConstructor = __webpack_require__(298);
 
 module.exports = function (original, length) {
   return new (speciesConstructor(original))(length);
@@ -5025,11 +4786,7 @@ var VErrors = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 // toObject with fallback for non-array-like ES3 strings
-<<<<<<< HEAD
-var IndexedObject = __webpack_require__(412);
-=======
-var IndexedObject = __webpack_require__(414);
->>>>>>> Ensure chips have a name before submitting values
+var IndexedObject = __webpack_require__(413);
 var requireObjectCoercible = __webpack_require__(168);
 
 module.exports = function (it) {
@@ -5172,17 +4929,10 @@ var visibilityObserverMixin = function visibilityObserverMixin(Base) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VEvents; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = initEvents;
 /* harmony export (immutable) */ __webpack_exports__["c"] = removeEvents;
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_loads__ = __webpack_require__(435);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_posts__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replaces__ = __webpack_require__(443);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_dialog__ = __webpack_require__(189);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_loads__ = __webpack_require__(437);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_posts__ = __webpack_require__(438);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__events_loads__ = __webpack_require__(436);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__events_posts__ = __webpack_require__(442);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events_replaces__ = __webpack_require__(444);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_dialog__ = __webpack_require__(190);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events_dialog__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events_errors__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_toggle_visibility__ = __webpack_require__(447);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__events_prompt_if_dirty__ = __webpack_require__(448);
@@ -5193,7 +4943,7 @@ var visibilityObserverMixin = function visibilityObserverMixin(Base) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__events_navigates__ = __webpack_require__(453);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__events_plugin__ = __webpack_require__(454);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__root_document__ = __webpack_require__(455);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__drag_n_drop__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__drag_n_drop__ = __webpack_require__(190);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -6952,52 +6702,16 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["initialize"] = initialize;
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button__ = __webpack_require__(407);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialogs__ = __webpack_require__(431);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datetime__ = __webpack_require__(433);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text_fields__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lists__ = __webpack_require__(455);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__drawer__ = __webpack_require__(456);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__header__ = __webpack_require__(458);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__icon_toggles__ = __webpack_require__(466);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__menus__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__selects__ = __webpack_require__(468);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__chips__ = __webpack_require__(470);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__cards__ = __webpack_require__(471);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__forms__ = __webpack_require__(472);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__snackbar__ = __webpack_require__(473);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__checkboxes__ = __webpack_require__(475);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__switches__ = __webpack_require__(477);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__rich_text_area__ = __webpack_require__(479);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__steppers__ = __webpack_require__(485);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__radios__ = __webpack_require__(486);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__sliders__ = __webpack_require__(488);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__hidden_fields__ = __webpack_require__(490);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__content__ = __webpack_require__(491);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__grid__ = __webpack_require__(492);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__tab_bars__ = __webpack_require__(493);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__data_tables__ = __webpack_require__(495);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__file_inputs__ = __webpack_require__(496);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__form_fields__ = __webpack_require__(497);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__images__ = __webpack_require__(499);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__typography__ = __webpack_require__(500);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__tooltip__ = __webpack_require__(501);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__plugins__ = __webpack_require__(502);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__progress__ = __webpack_require__(503);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__drag_n_drop__ = __webpack_require__(509);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button__ = __webpack_require__(409);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialogs__ = __webpack_require__(433);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datetime__ = __webpack_require__(435);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button__ = __webpack_require__(408);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialogs__ = __webpack_require__(432);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datetime__ = __webpack_require__(434);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text_fields__ = __webpack_require__(187);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__events__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lists__ = __webpack_require__(456);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__drawer__ = __webpack_require__(457);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__header__ = __webpack_require__(459);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__icon_toggles__ = __webpack_require__(467);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__menus__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__menus__ = __webpack_require__(188);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__selects__ = __webpack_require__(469);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__chips__ = __webpack_require__(471);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__cards__ = __webpack_require__(472);
@@ -7021,8 +6735,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__tooltip__ = __webpack_require__(502);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__plugins__ = __webpack_require__(503);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__progress__ = __webpack_require__(504);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__drag_n_drop__ = __webpack_require__(191);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__drag_n_drop__ = __webpack_require__(190);
 
 
 
@@ -7108,11 +6821,7 @@ function initialize(root, setRoot) {
 /* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(409);
-=======
-module.exports = __webpack_require__(411);
->>>>>>> Ensure chips have a name before submitting values
+module.exports = __webpack_require__(410);
 
 /***/ }),
 /* 164 */
@@ -7123,17 +6832,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var global = __webpack_require__(26);
 var getOwnPropertyDescriptor = __webpack_require__(165).f;
 var hide = __webpack_require__(62);
-<<<<<<< HEAD
-var redefine = __webpack_require__(413);
+var redefine = __webpack_require__(414);
 var setGlobal = __webpack_require__(118);
-var copyConstructorProperties = __webpack_require__(417);
-var isForced = __webpack_require__(424);
-=======
-var redefine = __webpack_require__(415);
-var setGlobal = __webpack_require__(118);
-var copyConstructorProperties = __webpack_require__(419);
-var isForced = __webpack_require__(426);
->>>>>>> Ensure chips have a name before submitting values
+var copyConstructorProperties = __webpack_require__(418);
+var isForced = __webpack_require__(425);
 
 /*
   options.target      - name of the target object
@@ -7187,11 +6889,7 @@ module.exports = function (options, source) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(58);
-<<<<<<< HEAD
-var propertyIsEnumerableModule = __webpack_require__(411);
-=======
-var propertyIsEnumerableModule = __webpack_require__(413);
->>>>>>> Ensure chips have a name before submitting values
+var propertyIsEnumerableModule = __webpack_require__(412);
 var createPropertyDescriptor = __webpack_require__(166);
 var toIndexedObject = __webpack_require__(116);
 var toPrimitive = __webpack_require__(169);
@@ -7332,11 +7030,7 @@ module.exports = function (key) {
 /* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-var path = __webpack_require__(419);
-=======
-var path = __webpack_require__(421);
->>>>>>> Ensure chips have a name before submitting values
+var path = __webpack_require__(420);
 var global = __webpack_require__(26);
 
 var aFunction = function aFunction(variable) {
@@ -7353,11 +7047,7 @@ module.exports = function (namespace, method) {
 
 var has = __webpack_require__(61);
 var toIndexedObject = __webpack_require__(116);
-<<<<<<< HEAD
-var indexOf = __webpack_require__(421).indexOf;
-=======
-var indexOf = __webpack_require__(423).indexOf;
->>>>>>> Ensure chips have a name before submitting values
+var indexOf = __webpack_require__(422).indexOf;
 var hiddenKeys = __webpack_require__(119);
 
 module.exports = function (object, names) {
@@ -7512,11 +7202,7 @@ module.exports = function (originalArray, length) {
 var global = __webpack_require__(26);
 var shared = __webpack_require__(83);
 var uid = __webpack_require__(174);
-<<<<<<< HEAD
-var NATIVE_SYMBOL = __webpack_require__(425);
-=======
-var NATIVE_SYMBOL = __webpack_require__(427);
->>>>>>> Ensure chips have a name before submitting values
+var NATIVE_SYMBOL = __webpack_require__(426);
 
 var _Symbol = global.Symbol;
 var store = shared('wks');
@@ -7530,11 +7216,7 @@ module.exports = function (name) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var wellKnownSymbol = __webpack_require__(183);
-<<<<<<< HEAD
-var create = __webpack_require__(427);
-=======
-var create = __webpack_require__(429);
->>>>>>> Ensure chips have a name before submitting values
+var create = __webpack_require__(428);
 var hide = __webpack_require__(62);
 
 var UNSCOPABLES = wellKnownSymbol('unscopables');
@@ -14554,7 +14236,7 @@ function initDragAndDrop(root) {
 }
 
 /***/ }),
-/* 192 */
+/* 191 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14732,11 +14414,7 @@ var MDCComponent = function () {
 /* harmony default export */ __webpack_exports__["a"] = (MDCComponent);
 
 /***/ }),
-<<<<<<< HEAD
-/* 191 */
-=======
-/* 193 */
->>>>>>> Ensure chips have a name before submitting values
+/* 192 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14917,11 +14595,7 @@ var MDCRippleAdapter = function () {
 /* unused harmony default export */ var _unused_webpack_default_export = (MDCRippleAdapter);
 
 /***/ }),
-<<<<<<< HEAD
-/* 192 */
-=======
-/* 194 */
->>>>>>> Ensure chips have a name before submitting values
+/* 193 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15102,11 +14776,7 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
 
 
 /***/ }),
-<<<<<<< HEAD
-/* 193 */
-=======
-/* 195 */
->>>>>>> Ensure chips have a name before submitting values
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -18689,11 +18359,7 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
 
 /***/ }),
-<<<<<<< HEAD
-/* 194 */
-=======
-/* 196 */
->>>>>>> Ensure chips have a name before submitting values
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer, module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -31623,11 +31289,7 @@ function getNormalizedEventCoords(ev, pageOffset, clientRect) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(481).Buffer, __webpack_require__(12)(module)))
 
 /***/ }),
-<<<<<<< HEAD
-/* 195 */
-=======
-/* 197 */
->>>>>>> Ensure chips have a name before submitting values
+/* 196 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31712,25 +31374,15 @@ var MDCFoundation = /** @class */function () {
 //# sourceMappingURL=foundation.js.map
 
 /***/ }),
-<<<<<<< HEAD
-/* 196 */
-=======
-/* 198 */
->>>>>>> Ensure chips have a name before submitting values
+/* 197 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCLinearProgressFoundation; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(125);
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_animation_util__ = __webpack_require__(507);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_base_foundation__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(508);
-=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_animation_util__ = __webpack_require__(508);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_base_foundation__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_base_foundation__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(509);
->>>>>>> Ensure chips have a name before submitting values
 /**
  * @license
  * Copyright 2017 Google Inc.
@@ -31858,36 +31510,20 @@ var MDCLinearProgressFoundation = /** @class */function (_super) {
 //# sourceMappingURL=foundation.js.map
 
 /***/ }),
-<<<<<<< HEAD
-/* 197 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(198);
-
-
-/***/ }),
 /* 198 */
-=======
-/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(200);
+module.exports = __webpack_require__(199);
 
 
 /***/ }),
-/* 200 */
->>>>>>> Ensure chips have a name before submitting values
+/* 199 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_compatibility__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_compatibility__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(66);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_compatibility__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(65);
->>>>>>> Ensure chips have a name before submitting values
 
 
 
@@ -31903,15 +31539,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.documentElement.classList.remove('incompatible-browser');
 
-<<<<<<< HEAD
-    __webpack_require__(203);
     __webpack_require__(204);
     __webpack_require__(205);
-=======
-    __webpack_require__(205);
     __webpack_require__(206);
-    __webpack_require__(207);
->>>>>>> Ensure chips have a name before submitting values
 
     __webpack_require__(162).initialize(document, true);
 
@@ -31927,19 +31557,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 199 */
+/* 200 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_detect_browser__ = __webpack_require__(200);
-=======
-/* 201 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_detect_browser__ = __webpack_require__(202);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_detect_browser__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_detect_browser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_detect_browser__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(66);
 
@@ -31953,11 +31575,7 @@ var isCompatible = browser && incompatibleList.indexOf(name) < 0;
 /* harmony default export */ __webpack_exports__["a"] = (isCompatible);
 
 /***/ }),
-<<<<<<< HEAD
-/* 200 */
-=======
-/* 202 */
->>>>>>> Ensure chips have a name before submitting values
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {function detect() {
@@ -32041,17 +31659,10 @@ module.exports = {
   getNodeVersion: getNodeVersion,
   parseUserAgent: parseUserAgent
 };
-<<<<<<< HEAD
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(201)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(202)))
 
 /***/ }),
-/* 201 */
-=======
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(203)))
-
-/***/ }),
-/* 203 */
->>>>>>> Ensure chips have a name before submitting values
+/* 202 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -32241,11 +31852,7 @@ process.umask = function () {
 };
 
 /***/ }),
-<<<<<<< HEAD
-/* 202 */
-=======
-/* 204 */
->>>>>>> Ensure chips have a name before submitting values
+/* 203 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32347,11 +31954,7 @@ var VConfig = function () {
 /* harmony default export */ __webpack_exports__["a"] = (VConfig);
 
 /***/ }),
-<<<<<<< HEAD
-/* 203 */
-=======
-/* 205 */
->>>>>>> Ensure chips have a name before submitting values
+/* 204 */
 /***/ (function(module, exports) {
 
 ;(function() {
@@ -36353,11 +35956,7 @@ componentHandler.register({
 
 
 /***/ }),
-<<<<<<< HEAD
-/* 204 */
-=======
-/* 206 */
->>>>>>> Ensure chips have a name before submitting values
+/* 205 */
 /***/ (function(module, exports) {
 
 /*
@@ -37472,27 +37071,17 @@ componentHandler.register({
 /******/]);
 
 /***/ }),
-<<<<<<< HEAD
-/* 205 */
-=======
-/* 207 */
->>>>>>> Ensure chips have a name before submitting values
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-<<<<<<< HEAD
-__webpack_require__(206);
-
-__webpack_require__(403);
-=======
-__webpack_require__(208);
->>>>>>> Ensure chips have a name before submitting values
+__webpack_require__(207);
 
 __webpack_require__(404);
 
-__webpack_require__(406);
+__webpack_require__(405);
 
 if (global._babelPolyfill) {
   throw new Error("only one instance of babel-polyfill is allowed");
@@ -37517,19 +37106,11 @@ define(String.prototype, "padRight", "".padEnd);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(67)))
 
 /***/ }),
-<<<<<<< HEAD
-/* 206 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(207);
-__webpack_require__(210);
+__webpack_require__(208);
 __webpack_require__(211);
-=======
-/* 208 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(209);
->>>>>>> Ensure chips have a name before submitting values
 __webpack_require__(212);
 __webpack_require__(213);
 __webpack_require__(214);
@@ -37604,29 +37185,17 @@ __webpack_require__(282);
 __webpack_require__(283);
 __webpack_require__(284);
 __webpack_require__(285);
-<<<<<<< HEAD
-__webpack_require__(287);
-__webpack_require__(288);
-__webpack_require__(290);
-__webpack_require__(291);
-=======
 __webpack_require__(286);
-__webpack_require__(287);
+__webpack_require__(288);
 __webpack_require__(289);
-__webpack_require__(290);
->>>>>>> Ensure chips have a name before submitting values
+__webpack_require__(291);
 __webpack_require__(292);
 __webpack_require__(293);
 __webpack_require__(294);
 __webpack_require__(295);
 __webpack_require__(296);
-<<<<<<< HEAD
-__webpack_require__(298);
-__webpack_require__(299);
-=======
 __webpack_require__(297);
-__webpack_require__(298);
->>>>>>> Ensure chips have a name before submitting values
+__webpack_require__(299);
 __webpack_require__(300);
 __webpack_require__(301);
 __webpack_require__(302);
@@ -37638,38 +37207,21 @@ __webpack_require__(307);
 __webpack_require__(308);
 __webpack_require__(309);
 __webpack_require__(310);
-<<<<<<< HEAD
-__webpack_require__(108);
 __webpack_require__(311);
-__webpack_require__(145);
+__webpack_require__(108);
 __webpack_require__(312);
+__webpack_require__(145);
+__webpack_require__(313);
 __webpack_require__(146);
-__webpack_require__(313);
-=======
-__webpack_require__(311);
-__webpack_require__(312);
-__webpack_require__(108);
-__webpack_require__(313);
-__webpack_require__(145);
->>>>>>> Ensure chips have a name before submitting values
 __webpack_require__(314);
-__webpack_require__(146);
 __webpack_require__(315);
 __webpack_require__(316);
 __webpack_require__(317);
-<<<<<<< HEAD
+__webpack_require__(318);
 __webpack_require__(149);
 __webpack_require__(151);
 __webpack_require__(152);
-__webpack_require__(318);
 __webpack_require__(319);
-=======
-__webpack_require__(318);
-__webpack_require__(319);
-__webpack_require__(149);
-__webpack_require__(151);
-__webpack_require__(152);
->>>>>>> Ensure chips have a name before submitting values
 __webpack_require__(320);
 __webpack_require__(321);
 __webpack_require__(322);
@@ -37753,19 +37305,11 @@ __webpack_require__(399);
 __webpack_require__(400);
 __webpack_require__(401);
 __webpack_require__(402);
-<<<<<<< HEAD
-module.exports = __webpack_require__(21);
-
-/***/ }),
-/* 207 */
-=======
 __webpack_require__(403);
-__webpack_require__(404);
 module.exports = __webpack_require__(21);
 
 /***/ }),
-/* 209 */
->>>>>>> Ensure chips have a name before submitting values
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37787,13 +37331,8 @@ var uid = __webpack_require__(37);
 var wks = __webpack_require__(6);
 var wksExt = __webpack_require__(127);
 var wksDefine = __webpack_require__(89);
-<<<<<<< HEAD
-var enumKeys = __webpack_require__(209);
+var enumKeys = __webpack_require__(210);
 var isArray = __webpack_require__(70);
-=======
-var enumKeys = __webpack_require__(211);
-var isArray = __webpack_require__(69);
->>>>>>> Ensure chips have a name before submitting values
 var anObject = __webpack_require__(1);
 var isObject = __webpack_require__(5);
 var toObject = __webpack_require__(10);
@@ -38034,21 +37573,13 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-<<<<<<< HEAD
-/* 208 */
-=======
-/* 210 */
->>>>>>> Ensure chips have a name before submitting values
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(53)('native-function-to-string', Function.toString);
 
 /***/ }),
-<<<<<<< HEAD
-/* 209 */
-=======
-/* 211 */
->>>>>>> Ensure chips have a name before submitting values
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
@@ -38070,11 +37601,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-<<<<<<< HEAD
-/* 210 */
-=======
-/* 212 */
->>>>>>> Ensure chips have a name before submitting values
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -38082,11 +37609,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Object', { create: __webpack_require__(40) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 211 */
-=======
-/* 213 */
->>>>>>> Ensure chips have a name before submitting values
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -38094,11 +37617,7 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F * !__webpack_require__(8), 'Object', { defineProperty: __webpack_require__(9).f });
 
 /***/ }),
-<<<<<<< HEAD
-/* 212 */
-=======
-/* 214 */
->>>>>>> Ensure chips have a name before submitting values
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -38106,11 +37625,7 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F * !__webpack_require__(8), 'Object', { defineProperties: __webpack_require__(129) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 213 */
-=======
-/* 215 */
->>>>>>> Ensure chips have a name before submitting values
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
@@ -38124,11 +37639,7 @@ __webpack_require__(29)('getOwnPropertyDescriptor', function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 214 */
-=======
-/* 216 */
->>>>>>> Ensure chips have a name before submitting values
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 Object.getPrototypeOf(O)
@@ -38142,11 +37653,7 @@ __webpack_require__(29)('getPrototypeOf', function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 215 */
-=======
-/* 217 */
->>>>>>> Ensure chips have a name before submitting values
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 Object.keys(O)
@@ -38160,11 +37667,7 @@ __webpack_require__(29)('keys', function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 216 */
-=======
-/* 218 */
->>>>>>> Ensure chips have a name before submitting values
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 Object.getOwnPropertyNames(O)
@@ -38173,11 +37676,7 @@ __webpack_require__(29)('getOwnPropertyNames', function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 217 */
-=======
-/* 219 */
->>>>>>> Ensure chips have a name before submitting values
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.5 Object.freeze(O)
@@ -38191,11 +37690,7 @@ __webpack_require__(29)('freeze', function ($freeze) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 218 */
-=======
-/* 220 */
->>>>>>> Ensure chips have a name before submitting values
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.17 Object.seal(O)
@@ -38209,11 +37704,7 @@ __webpack_require__(29)('seal', function ($seal) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 219 */
-=======
-/* 221 */
->>>>>>> Ensure chips have a name before submitting values
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.15 Object.preventExtensions(O)
@@ -38227,11 +37718,7 @@ __webpack_require__(29)('preventExtensions', function ($preventExtensions) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 220 */
-=======
-/* 222 */
->>>>>>> Ensure chips have a name before submitting values
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.12 Object.isFrozen(O)
@@ -38244,11 +37731,7 @@ __webpack_require__(29)('isFrozen', function ($isFrozen) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 221 */
-=======
-/* 223 */
->>>>>>> Ensure chips have a name before submitting values
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.13 Object.isSealed(O)
@@ -38261,11 +37744,7 @@ __webpack_require__(29)('isSealed', function ($isSealed) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 222 */
-=======
-/* 224 */
->>>>>>> Ensure chips have a name before submitting values
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.11 Object.isExtensible(O)
@@ -38278,11 +37757,7 @@ __webpack_require__(29)('isExtensible', function ($isExtensible) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 223 */
-=======
-/* 225 */
->>>>>>> Ensure chips have a name before submitting values
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
@@ -38291,11 +37766,7 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F, 'Object', { assign: __webpack_require__(131) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 224 */
-=======
-/* 226 */
->>>>>>> Ensure chips have a name before submitting values
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.10 Object.is(value1, value2)
@@ -38303,11 +37774,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Object', { is: __webpack_require__(132) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 225 */
-=======
-/* 227 */
->>>>>>> Ensure chips have a name before submitting values
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
@@ -38315,11 +37782,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(93).set });
 
 /***/ }),
-<<<<<<< HEAD
-/* 226 */
-=======
-/* 228 */
->>>>>>> Ensure chips have a name before submitting values
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38336,11 +37799,7 @@ if (test + '' != '[object z]') {
 }
 
 /***/ }),
-<<<<<<< HEAD
-/* 227 */
-=======
-/* 229 */
->>>>>>> Ensure chips have a name before submitting values
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
@@ -38349,11 +37808,7 @@ var $export = __webpack_require__(0);
 $export($export.P, 'Function', { bind: __webpack_require__(133) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 228 */
-=======
-/* 230 */
->>>>>>> Ensure chips have a name before submitting values
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(9).f;
@@ -38374,11 +37829,7 @@ NAME in FProto || __webpack_require__(8) && dP(FProto, NAME, {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 229 */
-=======
-/* 231 */
->>>>>>> Ensure chips have a name before submitting values
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38399,11 +37850,7 @@ if (!(HAS_INSTANCE in FunctionProto)) __webpack_require__(9).f(FunctionProto, HA
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 230 */
-=======
-/* 232 */
->>>>>>> Ensure chips have a name before submitting values
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -38412,11 +37859,7 @@ var $parseInt = __webpack_require__(135);
 $export($export.G + $export.F * (parseInt != $parseInt), { parseInt: $parseInt });
 
 /***/ }),
-<<<<<<< HEAD
-/* 231 */
-=======
-/* 233 */
->>>>>>> Ensure chips have a name before submitting values
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -38425,11 +37868,7 @@ var $parseFloat = __webpack_require__(136);
 $export($export.G + $export.F * (parseFloat != $parseFloat), { parseFloat: $parseFloat });
 
 /***/ }),
-<<<<<<< HEAD
-/* 232 */
-=======
-/* 234 */
->>>>>>> Ensure chips have a name before submitting values
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38507,11 +37946,7 @@ if (!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')) {
 }
 
 /***/ }),
-<<<<<<< HEAD
-/* 233 */
-=======
-/* 235 */
->>>>>>> Ensure chips have a name before submitting values
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38627,11 +38062,7 @@ $export($export.P + $export.F * (!!$toFixed && (0.00008.toFixed(3) !== '0.000' |
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 234 */
-=======
-/* 236 */
->>>>>>> Ensure chips have a name before submitting values
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38656,11 +38087,7 @@ $export($export.P + $export.F * ($fails(function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 235 */
-=======
-/* 237 */
->>>>>>> Ensure chips have a name before submitting values
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.1 Number.EPSILON
@@ -38669,11 +38096,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', { EPSILON: Math.pow(2, -52) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 236 */
-=======
-/* 238 */
->>>>>>> Ensure chips have a name before submitting values
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.2 Number.isFinite(number)
@@ -38687,11 +38110,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 237 */
-=======
-/* 239 */
->>>>>>> Ensure chips have a name before submitting values
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.3 Number.isInteger(number)
@@ -38700,11 +38119,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', { isInteger: __webpack_require__(138) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 238 */
-=======
-/* 240 */
->>>>>>> Ensure chips have a name before submitting values
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.4 Number.isNaN(number)
@@ -38718,11 +38133,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 239 */
-=======
-/* 241 */
->>>>>>> Ensure chips have a name before submitting values
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.5 Number.isSafeInteger(number)
@@ -38737,11 +38148,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 240 */
-=======
-/* 242 */
->>>>>>> Ensure chips have a name before submitting values
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.6 Number.MAX_SAFE_INTEGER
@@ -38750,11 +38157,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', { MAX_SAFE_INTEGER: 0x1fffffffffffff });
 
 /***/ }),
-<<<<<<< HEAD
-/* 241 */
-=======
-/* 243 */
->>>>>>> Ensure chips have a name before submitting values
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.10 Number.MIN_SAFE_INTEGER
@@ -38763,11 +38166,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', { MIN_SAFE_INTEGER: -0x1fffffffffffff });
 
 /***/ }),
-<<<<<<< HEAD
-/* 242 */
-=======
-/* 244 */
->>>>>>> Ensure chips have a name before submitting values
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -38776,11 +38175,7 @@ var $parseFloat = __webpack_require__(136);
 $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', { parseFloat: $parseFloat });
 
 /***/ }),
-<<<<<<< HEAD
-/* 243 */
-=======
-/* 245 */
->>>>>>> Ensure chips have a name before submitting values
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -38789,11 +38184,7 @@ var $parseInt = __webpack_require__(135);
 $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', { parseInt: $parseInt });
 
 /***/ }),
-<<<<<<< HEAD
-/* 244 */
-=======
-/* 246 */
->>>>>>> Ensure chips have a name before submitting values
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.3 Math.acosh(x)
@@ -38813,11 +38204,7 @@ $export($export.S + $export.F * !($acosh
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 245 */
-=======
-/* 247 */
->>>>>>> Ensure chips have a name before submitting values
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.5 Math.asinh(x)
@@ -38832,11 +38219,7 @@ function asinh(x) {
 $export($export.S + $export.F * !($asinh && 1 / $asinh(0) > 0), 'Math', { asinh: asinh });
 
 /***/ }),
-<<<<<<< HEAD
-/* 246 */
-=======
-/* 248 */
->>>>>>> Ensure chips have a name before submitting values
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.7 Math.atanh(x)
@@ -38851,11 +38234,7 @@ $export($export.S + $export.F * !($atanh && 1 / $atanh(-0) < 0), 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 247 */
-=======
-/* 249 */
->>>>>>> Ensure chips have a name before submitting values
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.9 Math.cbrt(x)
@@ -38869,11 +38248,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 248 */
-=======
-/* 250 */
->>>>>>> Ensure chips have a name before submitting values
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.11 Math.clz32(x)
@@ -38886,11 +38261,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 249 */
-=======
-/* 251 */
->>>>>>> Ensure chips have a name before submitting values
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.12 Math.cosh(x)
@@ -38904,11 +38275,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 250 */
-=======
-/* 252 */
->>>>>>> Ensure chips have a name before submitting values
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.14 Math.expm1(x)
@@ -38918,11 +38285,7 @@ var $expm1 = __webpack_require__(98);
 $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', { expm1: $expm1 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 251 */
-=======
-/* 253 */
->>>>>>> Ensure chips have a name before submitting values
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.16 Math.fround(x)
@@ -38931,11 +38294,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Math', { fround: __webpack_require__(140) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 252 */
-=======
-/* 254 */
->>>>>>> Ensure chips have a name before submitting values
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
@@ -38966,11 +38325,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 253 */
-=======
-/* 255 */
->>>>>>> Ensure chips have a name before submitting values
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.18 Math.imul(x, y)
@@ -38992,11 +38347,7 @@ $export($export.S + $export.F * __webpack_require__(4)(function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 254 */
-=======
-/* 256 */
->>>>>>> Ensure chips have a name before submitting values
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.21 Math.log10(x)
@@ -39009,11 +38360,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 255 */
-=======
-/* 257 */
->>>>>>> Ensure chips have a name before submitting values
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.20 Math.log1p(x)
@@ -39022,11 +38369,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Math', { log1p: __webpack_require__(139) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 256 */
-=======
-/* 258 */
->>>>>>> Ensure chips have a name before submitting values
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.22 Math.log2(x)
@@ -39039,11 +38382,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 257 */
-=======
-/* 259 */
->>>>>>> Ensure chips have a name before submitting values
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.28 Math.sign(x)
@@ -39052,11 +38391,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Math', { sign: __webpack_require__(97) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 258 */
-=======
-/* 260 */
->>>>>>> Ensure chips have a name before submitting values
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.30 Math.sinh(x)
@@ -39074,11 +38409,7 @@ $export($export.S + $export.F * __webpack_require__(4)(function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 259 */
-=======
-/* 261 */
->>>>>>> Ensure chips have a name before submitting values
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.33 Math.tanh(x)
@@ -39095,11 +38426,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 260 */
-=======
-/* 262 */
->>>>>>> Ensure chips have a name before submitting values
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.34 Math.trunc(x)
@@ -39112,11 +38439,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 261 */
-=======
-/* 263 */
->>>>>>> Ensure chips have a name before submitting values
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -39142,11 +38465,7 @@ $export($export.S + $export.F * (!!$fromCodePoint && $fromCodePoint.length != 1)
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 262 */
-=======
-/* 264 */
->>>>>>> Ensure chips have a name before submitting values
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -39169,11 +38488,7 @@ $export($export.S, 'String', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 263 */
-=======
-/* 265 */
->>>>>>> Ensure chips have a name before submitting values
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39187,11 +38502,7 @@ __webpack_require__(51)('trim', function ($trim) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 264 */
-=======
-/* 266 */
->>>>>>> Ensure chips have a name before submitting values
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39215,11 +38526,7 @@ __webpack_require__(99)(String, 'String', function (iterated) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 265 */
-=======
-/* 267 */
->>>>>>> Ensure chips have a name before submitting values
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39235,11 +38542,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 266 */
-=======
-/* 268 */
->>>>>>> Ensure chips have a name before submitting values
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39264,11 +38567,7 @@ $export($export.P + $export.F * __webpack_require__(102)(ENDS_WITH), 'String', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 267 */
-=======
-/* 269 */
->>>>>>> Ensure chips have a name before submitting values
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39286,11 +38585,7 @@ $export($export.P + $export.F * __webpack_require__(102)(INCLUDES), 'String', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 268 */
-=======
-/* 270 */
->>>>>>> Ensure chips have a name before submitting values
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -39301,11 +38596,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 269 */
-=======
-/* 271 */
->>>>>>> Ensure chips have a name before submitting values
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39328,11 +38619,7 @@ $export($export.P + $export.F * __webpack_require__(102)(STARTS_WITH), 'String',
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 270 */
-=======
-/* 272 */
->>>>>>> Ensure chips have a name before submitting values
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39346,11 +38633,7 @@ __webpack_require__(16)('anchor', function (createHTML) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 271 */
-=======
-/* 273 */
->>>>>>> Ensure chips have a name before submitting values
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39364,11 +38647,7 @@ __webpack_require__(16)('big', function (createHTML) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 272 */
-=======
-/* 274 */
->>>>>>> Ensure chips have a name before submitting values
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39382,11 +38661,7 @@ __webpack_require__(16)('blink', function (createHTML) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 273 */
-=======
-/* 275 */
->>>>>>> Ensure chips have a name before submitting values
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39400,11 +38675,7 @@ __webpack_require__(16)('bold', function (createHTML) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 274 */
-=======
-/* 276 */
->>>>>>> Ensure chips have a name before submitting values
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39418,11 +38689,7 @@ __webpack_require__(16)('fixed', function (createHTML) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 275 */
-=======
-/* 277 */
->>>>>>> Ensure chips have a name before submitting values
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39436,11 +38703,7 @@ __webpack_require__(16)('fontcolor', function (createHTML) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 276 */
-=======
-/* 278 */
->>>>>>> Ensure chips have a name before submitting values
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39454,11 +38717,7 @@ __webpack_require__(16)('fontsize', function (createHTML) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 277 */
-=======
-/* 279 */
->>>>>>> Ensure chips have a name before submitting values
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39472,11 +38731,7 @@ __webpack_require__(16)('italics', function (createHTML) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 278 */
-=======
-/* 280 */
->>>>>>> Ensure chips have a name before submitting values
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39490,11 +38745,7 @@ __webpack_require__(16)('link', function (createHTML) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 279 */
-=======
-/* 281 */
->>>>>>> Ensure chips have a name before submitting values
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39508,11 +38759,7 @@ __webpack_require__(16)('small', function (createHTML) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 280 */
-=======
-/* 282 */
->>>>>>> Ensure chips have a name before submitting values
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39526,11 +38773,7 @@ __webpack_require__(16)('strike', function (createHTML) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 281 */
-=======
-/* 283 */
->>>>>>> Ensure chips have a name before submitting values
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39544,11 +38787,7 @@ __webpack_require__(16)('sub', function (createHTML) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 282 */
-=======
-/* 284 */
->>>>>>> Ensure chips have a name before submitting values
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39562,11 +38801,7 @@ __webpack_require__(16)('sup', function (createHTML) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 283 */
-=======
-/* 285 */
->>>>>>> Ensure chips have a name before submitting values
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.3.3.1 / 15.9.4.4 Date.now()
@@ -39577,11 +38812,7 @@ $export($export.S, 'Date', { now: function now() {
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 284 */
-=======
-/* 286 */
->>>>>>> Ensure chips have a name before submitting values
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39605,20 +38836,12 @@ $export($export.P + $export.F * __webpack_require__(4)(function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 285 */
-=======
-/* 287 */
->>>>>>> Ensure chips have a name before submitting values
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.3.4.36 / 15.9.5.43 Date.prototype.toISOString()
 var $export = __webpack_require__(0);
-<<<<<<< HEAD
-var toISOString = __webpack_require__(286);
-=======
-var toISOString = __webpack_require__(288);
->>>>>>> Ensure chips have a name before submitting values
+var toISOString = __webpack_require__(287);
 
 // PhantomJS / old WebKit has a broken implementations
 $export($export.P + $export.F * (Date.prototype.toISOString !== toISOString), 'Date', {
@@ -39626,11 +38849,7 @@ $export($export.P + $export.F * (Date.prototype.toISOString !== toISOString), 'D
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 286 */
-=======
-/* 288 */
->>>>>>> Ensure chips have a name before submitting values
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39660,11 +38879,7 @@ module.exports = fails(function () {
 } : $toISOString;
 
 /***/ }),
-<<<<<<< HEAD
-/* 287 */
-=======
-/* 289 */
->>>>>>> Ensure chips have a name before submitting values
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DateProto = Date.prototype;
@@ -39681,27 +38896,16 @@ if (new Date(NaN) + '' != INVALID_DATE) {
 }
 
 /***/ }),
-<<<<<<< HEAD
-/* 288 */
-=======
-/* 290 */
->>>>>>> Ensure chips have a name before submitting values
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var TO_PRIMITIVE = __webpack_require__(6)('toPrimitive');
 var proto = Date.prototype;
 
-<<<<<<< HEAD
-if (!(TO_PRIMITIVE in proto)) __webpack_require__(14)(proto, TO_PRIMITIVE, __webpack_require__(289));
+if (!(TO_PRIMITIVE in proto)) __webpack_require__(14)(proto, TO_PRIMITIVE, __webpack_require__(290));
 
 /***/ }),
-/* 289 */
-=======
-if (!(TO_PRIMITIVE in proto)) __webpack_require__(14)(proto, TO_PRIMITIVE, __webpack_require__(291));
-
-/***/ }),
-/* 291 */
->>>>>>> Ensure chips have a name before submitting values
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39717,11 +38921,7 @@ module.exports = function (hint) {
 };
 
 /***/ }),
-<<<<<<< HEAD
-/* 290 */
-=======
-/* 292 */
->>>>>>> Ensure chips have a name before submitting values
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
@@ -39730,11 +38930,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Array', { isArray: __webpack_require__(70) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 291 */
-=======
-/* 293 */
->>>>>>> Ensure chips have a name before submitting values
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39780,11 +38976,7 @@ $export($export.S + $export.F * !__webpack_require__(73)(function (iter) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 292 */
-=======
-/* 294 */
->>>>>>> Ensure chips have a name before submitting values
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39811,11 +39003,7 @@ $export($export.S + $export.F * __webpack_require__(4)(function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 293 */
-=======
-/* 295 */
->>>>>>> Ensure chips have a name before submitting values
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39834,11 +39022,7 @@ $export($export.P + $export.F * (__webpack_require__(54) != Object || !__webpack
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 294 */
-=======
-/* 296 */
->>>>>>> Ensure chips have a name before submitting values
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39872,11 +39056,7 @@ $export($export.P + $export.F * __webpack_require__(4)(function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 295 */
-=======
-/* 297 */
->>>>>>> Ensure chips have a name before submitting values
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39904,11 +39084,7 @@ $export($export.P + $export.F * (fails(function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 296 */
-=======
-/* 298 */
->>>>>>> Ensure chips have a name before submitting values
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39926,11 +39102,7 @@ $export($export.P + $export.F * !STRICT, 'Array', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 297 */
-=======
-/* 299 */
->>>>>>> Ensure chips have a name before submitting values
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(5);
@@ -39951,11 +39123,7 @@ module.exports = function (original) {
 };
 
 /***/ }),
-<<<<<<< HEAD
-/* 298 */
-=======
-/* 300 */
->>>>>>> Ensure chips have a name before submitting values
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39972,11 +39140,7 @@ $export($export.P + $export.F * !__webpack_require__(25)([].map, true), 'Array',
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 299 */
-=======
-/* 301 */
->>>>>>> Ensure chips have a name before submitting values
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39993,11 +39157,7 @@ $export($export.P + $export.F * !__webpack_require__(25)([].filter, true), 'Arra
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 300 */
-=======
-/* 302 */
->>>>>>> Ensure chips have a name before submitting values
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40014,11 +39174,7 @@ $export($export.P + $export.F * !__webpack_require__(25)([].some, true), 'Array'
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 301 */
-=======
-/* 303 */
->>>>>>> Ensure chips have a name before submitting values
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40035,11 +39191,7 @@ $export($export.P + $export.F * !__webpack_require__(25)([].every, true), 'Array
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 302 */
-=======
-/* 304 */
->>>>>>> Ensure chips have a name before submitting values
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40056,11 +39208,7 @@ $export($export.P + $export.F * !__webpack_require__(25)([].reduce, true), 'Arra
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 303 */
-=======
-/* 305 */
->>>>>>> Ensure chips have a name before submitting values
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40077,11 +39225,7 @@ $export($export.P + $export.F * !__webpack_require__(25)([].reduceRight, true), 
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 304 */
-=======
-/* 306 */
->>>>>>> Ensure chips have a name before submitting values
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40102,11 +39246,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(25)($nati
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 305 */
-=======
-/* 307 */
->>>>>>> Ensure chips have a name before submitting values
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40136,11 +39276,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(25)($nati
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 306 */
-=======
-/* 308 */
->>>>>>> Ensure chips have a name before submitting values
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
@@ -40151,11 +39287,7 @@ $export($export.P, 'Array', { copyWithin: __webpack_require__(143) });
 __webpack_require__(35)('copyWithin');
 
 /***/ }),
-<<<<<<< HEAD
-/* 307 */
-=======
-/* 309 */
->>>>>>> Ensure chips have a name before submitting values
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
@@ -40166,11 +39298,7 @@ $export($export.P, 'Array', { fill: __webpack_require__(107) });
 __webpack_require__(35)('fill');
 
 /***/ }),
-<<<<<<< HEAD
-/* 308 */
-=======
-/* 310 */
->>>>>>> Ensure chips have a name before submitting values
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40193,11 +39321,7 @@ $export($export.P + $export.F * forced, 'Array', {
 __webpack_require__(35)(KEY);
 
 /***/ }),
-<<<<<<< HEAD
-/* 309 */
-=======
-/* 311 */
->>>>>>> Ensure chips have a name before submitting values
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40220,21 +39344,13 @@ $export($export.P + $export.F * forced, 'Array', {
 __webpack_require__(35)(KEY);
 
 /***/ }),
-<<<<<<< HEAD
-/* 310 */
-=======
-/* 312 */
->>>>>>> Ensure chips have a name before submitting values
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(42)('Array');
 
 /***/ }),
-<<<<<<< HEAD
-/* 311 */
-=======
-/* 313 */
->>>>>>> Ensure chips have a name before submitting values
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(3);
@@ -40283,11 +39399,7 @@ if (__webpack_require__(8) && (!CORRECT_NEW || __webpack_require__(4)(function (
 __webpack_require__(42)('RegExp');
 
 /***/ }),
-<<<<<<< HEAD
-/* 312 */
-=======
-/* 314 */
->>>>>>> Ensure chips have a name before submitting values
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40320,11 +39432,7 @@ if (__webpack_require__(4)(function () {
 }
 
 /***/ }),
-<<<<<<< HEAD
-/* 313 */
-=======
-/* 315 */
->>>>>>> Ensure chips have a name before submitting values
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40369,11 +39477,7 @@ __webpack_require__(75)('match', 1, function (defined, MATCH, $match, maybeCallN
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 314 */
-=======
-/* 316 */
->>>>>>> Ensure chips have a name before submitting values
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40500,11 +39604,7 @@ __webpack_require__(75)('replace', 2, function (defined, REPLACE, $replace, mayb
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 315 */
-=======
-/* 317 */
->>>>>>> Ensure chips have a name before submitting values
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40540,11 +39640,7 @@ __webpack_require__(75)('search', 1, function (defined, SEARCH, $search, maybeCa
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 316 */
-=======
-/* 318 */
->>>>>>> Ensure chips have a name before submitting values
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40667,11 +39763,7 @@ __webpack_require__(75)('split', 2, function (defined, SPLIT, $split, maybeCallN
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 317 */
-=======
-/* 319 */
->>>>>>> Ensure chips have a name before submitting values
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40961,11 +40053,7 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(73)(function
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 318 */
-=======
-/* 320 */
->>>>>>> Ensure chips have a name before submitting values
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40988,11 +40076,7 @@ __webpack_require__(77)(WEAK_SET, function (get) {
 }, weak, false, true);
 
 /***/ }),
-<<<<<<< HEAD
-/* 319 */
-=======
-/* 321 */
->>>>>>> Ensure chips have a name before submitting values
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41045,11 +40129,7 @@ $export($export.P + $export.U + $export.F * __webpack_require__(4)(function () {
 __webpack_require__(42)(ARRAY_BUFFER);
 
 /***/ }),
-<<<<<<< HEAD
-/* 320 */
-=======
-/* 322 */
->>>>>>> Ensure chips have a name before submitting values
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -41058,11 +40138,7 @@ $export($export.G + $export.W + $export.F * !__webpack_require__(78).ABV, {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 321 */
-=======
-/* 323 */
->>>>>>> Ensure chips have a name before submitting values
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(31)('Int8', 1, function (init) {
@@ -41072,11 +40148,7 @@ __webpack_require__(31)('Int8', 1, function (init) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 322 */
-=======
-/* 324 */
->>>>>>> Ensure chips have a name before submitting values
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(31)('Uint8', 1, function (init) {
@@ -41086,11 +40158,7 @@ __webpack_require__(31)('Uint8', 1, function (init) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 323 */
-=======
-/* 325 */
->>>>>>> Ensure chips have a name before submitting values
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(31)('Uint8', 1, function (init) {
@@ -41100,11 +40168,7 @@ __webpack_require__(31)('Uint8', 1, function (init) {
 }, true);
 
 /***/ }),
-<<<<<<< HEAD
-/* 324 */
-=======
-/* 326 */
->>>>>>> Ensure chips have a name before submitting values
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(31)('Int16', 2, function (init) {
@@ -41114,11 +40178,7 @@ __webpack_require__(31)('Int16', 2, function (init) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 325 */
-=======
-/* 327 */
->>>>>>> Ensure chips have a name before submitting values
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(31)('Uint16', 2, function (init) {
@@ -41128,11 +40188,7 @@ __webpack_require__(31)('Uint16', 2, function (init) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 326 */
-=======
-/* 328 */
->>>>>>> Ensure chips have a name before submitting values
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(31)('Int32', 4, function (init) {
@@ -41142,11 +40198,7 @@ __webpack_require__(31)('Int32', 4, function (init) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 327 */
-=======
-/* 329 */
->>>>>>> Ensure chips have a name before submitting values
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(31)('Uint32', 4, function (init) {
@@ -41156,11 +40208,7 @@ __webpack_require__(31)('Uint32', 4, function (init) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 328 */
-=======
-/* 330 */
->>>>>>> Ensure chips have a name before submitting values
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(31)('Float32', 4, function (init) {
@@ -41170,11 +40218,7 @@ __webpack_require__(31)('Float32', 4, function (init) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 329 */
-=======
-/* 331 */
->>>>>>> Ensure chips have a name before submitting values
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(31)('Float64', 8, function (init) {
@@ -41184,11 +40228,7 @@ __webpack_require__(31)('Float64', 8, function (init) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 330 */
-=======
-/* 332 */
->>>>>>> Ensure chips have a name before submitting values
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
@@ -41209,11 +40249,7 @@ $export($export.S + $export.F * !__webpack_require__(4)(function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 331 */
-=======
-/* 333 */
->>>>>>> Ensure chips have a name before submitting values
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
@@ -41270,11 +40306,7 @@ $export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 332 */
-=======
-/* 334 */
->>>>>>> Ensure chips have a name before submitting values
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
@@ -41302,11 +40334,7 @@ $export($export.S + $export.F * __webpack_require__(4)(function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 333 */
-=======
-/* 335 */
->>>>>>> Ensure chips have a name before submitting values
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.4 Reflect.deleteProperty(target, propertyKey)
@@ -41322,11 +40350,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 334 */
-=======
-/* 336 */
->>>>>>> Ensure chips have a name before submitting values
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41361,11 +40385,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 335 */
-=======
-/* 337 */
->>>>>>> Ensure chips have a name before submitting values
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.6 Reflect.get(target, propertyKey [, receiver])
@@ -41387,11 +40407,7 @@ function get(target, propertyKey /* , receiver */) {
 $export($export.S, 'Reflect', { get: get });
 
 /***/ }),
-<<<<<<< HEAD
-/* 336 */
-=======
-/* 338 */
->>>>>>> Ensure chips have a name before submitting values
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
@@ -41406,11 +40422,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 337 */
-=======
-/* 339 */
->>>>>>> Ensure chips have a name before submitting values
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.8 Reflect.getPrototypeOf(target)
@@ -41425,11 +40437,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 338 */
-=======
-/* 340 */
->>>>>>> Ensure chips have a name before submitting values
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.9 Reflect.has(target, propertyKey)
@@ -41442,11 +40450,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 339 */
-=======
-/* 341 */
->>>>>>> Ensure chips have a name before submitting values
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.10 Reflect.isExtensible(target)
@@ -41462,11 +40466,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 340 */
-=======
-/* 342 */
->>>>>>> Ensure chips have a name before submitting values
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.11 Reflect.ownKeys(target)
@@ -41475,11 +40475,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Reflect', { ownKeys: __webpack_require__(155) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 341 */
-=======
-/* 343 */
->>>>>>> Ensure chips have a name before submitting values
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.12 Reflect.preventExtensions(target)
@@ -41500,11 +40496,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 342 */
-=======
-/* 344 */
->>>>>>> Ensure chips have a name before submitting values
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
@@ -41542,11 +40534,7 @@ function set(target, propertyKey, V /* , receiver */) {
 $export($export.S, 'Reflect', { set: set });
 
 /***/ }),
-<<<<<<< HEAD
-/* 343 */
-=======
-/* 345 */
->>>>>>> Ensure chips have a name before submitting values
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.14 Reflect.setPrototypeOf(target, proto)
@@ -41566,11 +40554,7 @@ if (setProto) $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 344 */
-=======
-/* 346 */
->>>>>>> Ensure chips have a name before submitting values
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41589,11 +40573,7 @@ $export($export.P, 'Array', {
 __webpack_require__(35)('includes');
 
 /***/ }),
-<<<<<<< HEAD
-/* 345 */
-=======
-/* 347 */
->>>>>>> Ensure chips have a name before submitting values
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41622,11 +40602,7 @@ $export($export.P, 'Array', {
 __webpack_require__(35)('flatMap');
 
 /***/ }),
-<<<<<<< HEAD
-/* 346 */
-=======
-/* 348 */
->>>>>>> Ensure chips have a name before submitting values
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41654,11 +40630,7 @@ $export($export.P, 'Array', {
 __webpack_require__(35)('flatten');
 
 /***/ }),
-<<<<<<< HEAD
-/* 347 */
-=======
-/* 349 */
->>>>>>> Ensure chips have a name before submitting values
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41675,11 +40647,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 348 */
-=======
-/* 350 */
->>>>>>> Ensure chips have a name before submitting values
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41700,11 +40668,7 @@ $export($export.P + $export.F * WEBKIT_BUG, 'String', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 349 */
-=======
-/* 351 */
->>>>>>> Ensure chips have a name before submitting values
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41725,11 +40689,7 @@ $export($export.P + $export.F * WEBKIT_BUG, 'String', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 350 */
-=======
-/* 352 */
->>>>>>> Ensure chips have a name before submitting values
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41743,11 +40703,7 @@ __webpack_require__(51)('trimLeft', function ($trim) {
 }, 'trimStart');
 
 /***/ }),
-<<<<<<< HEAD
-/* 351 */
-=======
-/* 353 */
->>>>>>> Ensure chips have a name before submitting values
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41761,11 +40717,7 @@ __webpack_require__(51)('trimRight', function ($trim) {
 }, 'trimEnd');
 
 /***/ }),
-<<<<<<< HEAD
-/* 352 */
-=======
-/* 354 */
->>>>>>> Ensure chips have a name before submitting values
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41802,31 +40754,19 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 353 */
-=======
-/* 355 */
->>>>>>> Ensure chips have a name before submitting values
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(89)('asyncIterator');
 
 /***/ }),
-<<<<<<< HEAD
-/* 354 */
-=======
-/* 356 */
->>>>>>> Ensure chips have a name before submitting values
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(89)('observable');
 
 /***/ }),
-<<<<<<< HEAD
-/* 355 */
-=======
-/* 357 */
->>>>>>> Ensure chips have a name before submitting values
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-getownpropertydescriptors
@@ -41853,11 +40793,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 356 */
-=======
-/* 358 */
->>>>>>> Ensure chips have a name before submitting values
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
@@ -41871,11 +40807,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 357 */
-=======
-/* 359 */
->>>>>>> Ensure chips have a name before submitting values
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
@@ -41889,11 +40821,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 358 */
-=======
-/* 360 */
->>>>>>> Ensure chips have a name before submitting values
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41912,11 +40840,7 @@ __webpack_require__(8) && $export($export.P + __webpack_require__(79), 'Object',
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 359 */
-=======
-/* 361 */
->>>>>>> Ensure chips have a name before submitting values
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41935,11 +40859,7 @@ __webpack_require__(8) && $export($export.P + __webpack_require__(79), 'Object',
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 360 */
-=======
-/* 362 */
->>>>>>> Ensure chips have a name before submitting values
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41964,11 +40884,7 @@ __webpack_require__(8) && $export($export.P + __webpack_require__(79), 'Object',
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 361 */
-=======
-/* 363 */
->>>>>>> Ensure chips have a name before submitting values
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41993,11 +40909,7 @@ __webpack_require__(8) && $export($export.P + __webpack_require__(79), 'Object',
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 362 */
-=======
-/* 364 */
->>>>>>> Ensure chips have a name before submitting values
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
@@ -42006,11 +40918,7 @@ var $export = __webpack_require__(0);
 $export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(159)('Map') });
 
 /***/ }),
-<<<<<<< HEAD
-/* 363 */
-=======
-/* 365 */
->>>>>>> Ensure chips have a name before submitting values
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
@@ -42019,99 +40927,63 @@ var $export = __webpack_require__(0);
 $export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(159)('Set') });
 
 /***/ }),
-<<<<<<< HEAD
-/* 364 */
-=======
-/* 366 */
->>>>>>> Ensure chips have a name before submitting values
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.of
 __webpack_require__(80)('Map');
 
 /***/ }),
-<<<<<<< HEAD
-/* 365 */
-=======
-/* 367 */
->>>>>>> Ensure chips have a name before submitting values
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-set.of
 __webpack_require__(80)('Set');
 
 /***/ }),
-<<<<<<< HEAD
-/* 366 */
-=======
-/* 368 */
->>>>>>> Ensure chips have a name before submitting values
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-weakmap.of
 __webpack_require__(80)('WeakMap');
 
 /***/ }),
-<<<<<<< HEAD
-/* 367 */
-=======
-/* 369 */
->>>>>>> Ensure chips have a name before submitting values
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-weakset.of
 __webpack_require__(80)('WeakSet');
 
 /***/ }),
-<<<<<<< HEAD
-/* 368 */
-=======
-/* 370 */
->>>>>>> Ensure chips have a name before submitting values
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.from
 __webpack_require__(81)('Map');
 
 /***/ }),
-<<<<<<< HEAD
-/* 369 */
-=======
-/* 371 */
->>>>>>> Ensure chips have a name before submitting values
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-set.from
 __webpack_require__(81)('Set');
 
 /***/ }),
-<<<<<<< HEAD
-/* 370 */
-=======
-/* 372 */
->>>>>>> Ensure chips have a name before submitting values
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-weakmap.from
 __webpack_require__(81)('WeakMap');
 
 /***/ }),
-<<<<<<< HEAD
-/* 371 */
-=======
-/* 373 */
->>>>>>> Ensure chips have a name before submitting values
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-weakset.from
 __webpack_require__(81)('WeakSet');
 
 /***/ }),
-<<<<<<< HEAD
-/* 372 */
-=======
-/* 374 */
->>>>>>> Ensure chips have a name before submitting values
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-global
@@ -42120,11 +40992,7 @@ var $export = __webpack_require__(0);
 $export($export.G, { global: __webpack_require__(3) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 373 */
-=======
-/* 375 */
->>>>>>> Ensure chips have a name before submitting values
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-global
@@ -42133,11 +41001,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'System', { global: __webpack_require__(3) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 374 */
-=======
-/* 376 */
->>>>>>> Ensure chips have a name before submitting values
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/ljharb/proposal-is-error
@@ -42151,11 +41015,7 @@ $export($export.S, 'Error', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 375 */
-=======
-/* 377 */
->>>>>>> Ensure chips have a name before submitting values
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://rwaldron.github.io/proposal-math-extensions/
@@ -42168,11 +41028,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 376 */
-=======
-/* 378 */
->>>>>>> Ensure chips have a name before submitting values
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://rwaldron.github.io/proposal-math-extensions/
@@ -42181,11 +41037,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Math', { DEG_PER_RAD: Math.PI / 180 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 377 */
-=======
-/* 379 */
->>>>>>> Ensure chips have a name before submitting values
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://rwaldron.github.io/proposal-math-extensions/
@@ -42199,11 +41051,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 378 */
-=======
-/* 380 */
->>>>>>> Ensure chips have a name before submitting values
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://rwaldron.github.io/proposal-math-extensions/
@@ -42218,11 +41066,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 379 */
-=======
-/* 381 */
->>>>>>> Ensure chips have a name before submitting values
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -42238,11 +41082,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 380 */
-=======
-/* 382 */
->>>>>>> Ensure chips have a name before submitting values
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -42258,11 +41098,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 381 */
-=======
-/* 383 */
->>>>>>> Ensure chips have a name before submitting values
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -42283,11 +41119,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 382 */
-=======
-/* 384 */
->>>>>>> Ensure chips have a name before submitting values
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://rwaldron.github.io/proposal-math-extensions/
@@ -42296,11 +41128,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Math', { RAD_PER_DEG: 180 / Math.PI });
 
 /***/ }),
-<<<<<<< HEAD
-/* 383 */
-=======
-/* 385 */
->>>>>>> Ensure chips have a name before submitting values
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://rwaldron.github.io/proposal-math-extensions/
@@ -42314,11 +41142,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 384 */
-=======
-/* 386 */
->>>>>>> Ensure chips have a name before submitting values
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://rwaldron.github.io/proposal-math-extensions/
@@ -42327,11 +41151,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Math', { scale: __webpack_require__(161) });
 
 /***/ }),
-<<<<<<< HEAD
-/* 385 */
-=======
-/* 387 */
->>>>>>> Ensure chips have a name before submitting values
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -42352,11 +41172,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 386 */
-=======
-/* 388 */
->>>>>>> Ensure chips have a name before submitting values
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // http://jfbastien.github.io/papers/Math.signbit.html
@@ -42368,11 +41184,7 @@ $export($export.S, 'Math', { signbit: function signbit(x) {
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 387 */
-=======
-/* 389 */
->>>>>>> Ensure chips have a name before submitting values
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42400,11 +41212,7 @@ $export($export.P + $export.R, 'Promise', { 'finally': function _finally(onFinal
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 388 */
-=======
-/* 390 */
->>>>>>> Ensure chips have a name before submitting values
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42423,11 +41231,7 @@ $export($export.S, 'Promise', { 'try': function _try(callbackfn) {
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 389 */
-=======
-/* 391 */
->>>>>>> Ensure chips have a name before submitting values
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(32);
@@ -42440,11 +41244,7 @@ metadata.exp({ defineMetadata: function defineMetadata(metadataKey, metadataValu
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 390 */
-=======
-/* 392 */
->>>>>>> Ensure chips have a name before submitting values
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(32);
@@ -42464,11 +41264,7 @@ metadata.exp({ deleteMetadata: function deleteMetadata(metadataKey, target /* , 
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 391 */
-=======
-/* 393 */
->>>>>>> Ensure chips have a name before submitting values
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(32);
@@ -42490,11 +41286,7 @@ metadata.exp({ getMetadata: function getMetadata(metadataKey, target /* , target
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 392 */
-=======
-/* 394 */
->>>>>>> Ensure chips have a name before submitting values
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Set = __webpack_require__(151);
@@ -42518,11 +41310,7 @@ metadata.exp({ getMetadataKeys: function getMetadataKeys(target /* , targetKey *
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 393 */
-=======
-/* 395 */
->>>>>>> Ensure chips have a name before submitting values
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(32);
@@ -42535,11 +41323,7 @@ metadata.exp({ getOwnMetadata: function getOwnMetadata(metadataKey, target /* , 
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 394 */
-=======
-/* 396 */
->>>>>>> Ensure chips have a name before submitting values
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(32);
@@ -42552,11 +41336,7 @@ metadata.exp({ getOwnMetadataKeys: function getOwnMetadataKeys(target /* , targe
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 395 */
-=======
-/* 397 */
->>>>>>> Ensure chips have a name before submitting values
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(32);
@@ -42577,11 +41357,7 @@ metadata.exp({ hasMetadata: function hasMetadata(metadataKey, target /* , target
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 396 */
-=======
-/* 398 */
->>>>>>> Ensure chips have a name before submitting values
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata = __webpack_require__(32);
@@ -42594,11 +41370,7 @@ metadata.exp({ hasOwnMetadata: function hasOwnMetadata(metadataKey, target /* , 
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 397 */
-=======
-/* 399 */
->>>>>>> Ensure chips have a name before submitting values
+/* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $metadata = __webpack_require__(32);
@@ -42614,11 +41386,7 @@ $metadata.exp({ metadata: function metadata(metadataKey, metadataValue) {
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 398 */
-=======
-/* 400 */
->>>>>>> Ensure chips have a name before submitting values
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510-globalasap-for-enqueuing-a-microtask
@@ -42635,11 +41403,7 @@ $export($export.G, {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 399 */
-=======
-/* 401 */
->>>>>>> Ensure chips have a name before submitting values
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42855,11 +41619,7 @@ $export($export.G, { Observable: $Observable });
 __webpack_require__(42)('Observable');
 
 /***/ }),
-<<<<<<< HEAD
-/* 400 */
-=======
-/* 402 */
->>>>>>> Ensure chips have a name before submitting values
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // ie9- setTimeout & setInterval additional parameters fix
@@ -42884,11 +41644,7 @@ $export($export.G + $export.B + $export.F * MSIE, {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 401 */
-=======
-/* 403 */
->>>>>>> Ensure chips have a name before submitting values
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -42899,11 +41655,7 @@ $export($export.G + $export.B, {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 402 */
-=======
-/* 404 */
->>>>>>> Ensure chips have a name before submitting values
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $iterators = __webpack_require__(108);
@@ -42968,11 +41720,7 @@ for (var collections = getKeys(DOMIterables), i = 0; i < collections.length; i++
 }
 
 /***/ }),
-<<<<<<< HEAD
-/* 403 */
-=======
-/* 405 */
->>>>>>> Ensure chips have a name before submitting values
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -43682,45 +42430,26 @@ for (var collections = getKeys(DOMIterables), i = 0; i < collections.length; i++
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(67), __webpack_require__(12)(module)))
 
 /***/ }),
-<<<<<<< HEAD
-/* 404 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(405);
-module.exports = __webpack_require__(21).RegExp.escape;
-
-/***/ }),
 /* 405 */
-=======
-/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(407);
+__webpack_require__(406);
 module.exports = __webpack_require__(21).RegExp.escape;
 
 /***/ }),
-/* 407 */
->>>>>>> Ensure chips have a name before submitting values
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/benjamingr/RexExp.escape
 var $export = __webpack_require__(0);
-<<<<<<< HEAD
-var $re = __webpack_require__(406)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
-=======
-var $re = __webpack_require__(408)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
->>>>>>> Ensure chips have a name before submitting values
+var $re = __webpack_require__(407)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 
 $export($export.S, 'RegExp', { escape: function escape(it) {
     return $re(it);
   } });
 
 /***/ }),
-<<<<<<< HEAD
-/* 406 */
-=======
-/* 408 */
->>>>>>> Ensure chips have a name before submitting values
+/* 407 */
 /***/ (function(module, exports) {
 
 module.exports = function (regExp, replace) {
@@ -43733,21 +42462,13 @@ module.exports = function (regExp, replace) {
 };
 
 /***/ }),
-<<<<<<< HEAD
-/* 407 */
-=======
-/* 409 */
->>>>>>> Ensure chips have a name before submitting values
+/* 408 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initButtons;
 /* unused harmony export VButton */
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple__ = __webpack_require__(408);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple__ = __webpack_require__(410);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple__ = __webpack_require__(409);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__material_ripple__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__ = __webpack_require__(11);
@@ -43846,11 +42567,7 @@ var VButton = function (_eventHandlerMixin) {
 }(Object(__WEBPACK_IMPORTED_MODULE_2__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_1__base_component__["a" /* VBaseComponent */]));
 
 /***/ }),
-<<<<<<< HEAD
-/* 408 */
-=======
-/* 410 */
->>>>>>> Ensure chips have a name before submitting values
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -45802,29 +44519,17 @@ var VButton = function (_eventHandlerMixin) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
 
 /***/ }),
-<<<<<<< HEAD
-/* 409 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(410);
-__webpack_require__(426);
-=======
-/* 411 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(412);
-__webpack_require__(428);
->>>>>>> Ensure chips have a name before submitting values
+__webpack_require__(411);
+__webpack_require__(427);
 var entryUnbind = __webpack_require__(185);
 
 module.exports = entryUnbind('Array', 'flat');
 
 /***/ }),
-<<<<<<< HEAD
-/* 410 */
-=======
-/* 412 */
->>>>>>> Ensure chips have a name before submitting values
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45851,11 +44556,7 @@ $({ target: 'Array', proto: true }, {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 411 */
-=======
-/* 413 */
->>>>>>> Ensure chips have a name before submitting values
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45875,11 +44576,7 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 } : nativePropertyIsEnumerable;
 
 /***/ }),
-<<<<<<< HEAD
-/* 412 */
-=======
-/* 414 */
->>>>>>> Ensure chips have a name before submitting values
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var fails = __webpack_require__(59);
@@ -45897,11 +44594,7 @@ module.exports = fails(function () {
 } : Object;
 
 /***/ }),
-<<<<<<< HEAD
-/* 413 */
-=======
-/* 415 */
->>>>>>> Ensure chips have a name before submitting values
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(26);
@@ -45910,11 +44603,7 @@ var hide = __webpack_require__(62);
 var has = __webpack_require__(61);
 var setGlobal = __webpack_require__(118);
 var nativeFunctionToString = __webpack_require__(172);
-<<<<<<< HEAD
-var InternalStateModule = __webpack_require__(415);
-=======
-var InternalStateModule = __webpack_require__(417);
->>>>>>> Ensure chips have a name before submitting values
+var InternalStateModule = __webpack_require__(416);
 
 var getInternalState = InternalStateModule.get;
 var enforceInternalState = InternalStateModule.enforce;
@@ -45947,27 +44636,16 @@ shared('inspectSource', function (it) {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 414 */
-=======
-/* 416 */
->>>>>>> Ensure chips have a name before submitting values
+/* 415 */
 /***/ (function(module, exports) {
 
 module.exports = false;
 
 /***/ }),
-<<<<<<< HEAD
-/* 415 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var NATIVE_WEAK_MAP = __webpack_require__(416);
-=======
-/* 417 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var NATIVE_WEAK_MAP = __webpack_require__(418);
->>>>>>> Ensure chips have a name before submitting values
+var NATIVE_WEAK_MAP = __webpack_require__(417);
 var global = __webpack_require__(26);
 var isObject = __webpack_require__(60);
 var hide = __webpack_require__(62);
@@ -46030,11 +44708,7 @@ module.exports = {
 };
 
 /***/ }),
-<<<<<<< HEAD
-/* 416 */
-=======
-/* 418 */
->>>>>>> Ensure chips have a name before submitting values
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(26);
@@ -46045,19 +44719,11 @@ var WeakMap = global.WeakMap;
 module.exports = typeof WeakMap === 'function' && /native code/.test(nativeFunctionToString.call(WeakMap));
 
 /***/ }),
-<<<<<<< HEAD
-/* 417 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var has = __webpack_require__(61);
-var ownKeys = __webpack_require__(418);
-=======
-/* 419 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var has = __webpack_require__(61);
-var ownKeys = __webpack_require__(420);
->>>>>>> Ensure chips have a name before submitting values
+var ownKeys = __webpack_require__(419);
 var getOwnPropertyDescriptorModule = __webpack_require__(165);
 var definePropertyModule = __webpack_require__(117);
 
@@ -46072,23 +44738,13 @@ module.exports = function (target, source) {
 };
 
 /***/ }),
-<<<<<<< HEAD
-/* 418 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getBuiltIn = __webpack_require__(175);
-var getOwnPropertyNamesModule = __webpack_require__(420);
-var getOwnPropertySymbolsModule = __webpack_require__(423);
+var getOwnPropertyNamesModule = __webpack_require__(421);
+var getOwnPropertySymbolsModule = __webpack_require__(424);
 var anObject = __webpack_require__(82);
-=======
-/* 420 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var getBuiltIn = __webpack_require__(175);
-var getOwnPropertyNamesModule = __webpack_require__(422);
-var getOwnPropertySymbolsModule = __webpack_require__(425);
-var anObject = __webpack_require__(81);
->>>>>>> Ensure chips have a name before submitting values
 
 // all object keys, includes non-enumerable and symbols
 module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
@@ -46098,21 +44754,13 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 };
 
 /***/ }),
-<<<<<<< HEAD
-/* 419 */
-=======
-/* 421 */
->>>>>>> Ensure chips have a name before submitting values
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(26);
 
 /***/ }),
-<<<<<<< HEAD
-/* 420 */
-=======
-/* 422 */
->>>>>>> Ensure chips have a name before submitting values
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var internalObjectKeys = __webpack_require__(176);
@@ -46127,21 +44775,12 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 };
 
 /***/ }),
-<<<<<<< HEAD
-/* 421 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toIndexedObject = __webpack_require__(116);
 var toLength = __webpack_require__(84);
-var toAbsoluteIndex = __webpack_require__(422);
-=======
-/* 423 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toIndexedObject = __webpack_require__(116);
-var toLength = __webpack_require__(83);
-var toAbsoluteIndex = __webpack_require__(424);
->>>>>>> Ensure chips have a name before submitting values
+var toAbsoluteIndex = __webpack_require__(423);
 
 // `Array.prototype.{ indexOf, includes }` methods implementation
 var createMethod = function createMethod(IS_INCLUDES) {
@@ -46173,11 +44812,7 @@ module.exports = {
 };
 
 /***/ }),
-<<<<<<< HEAD
-/* 422 */
-=======
-/* 424 */
->>>>>>> Ensure chips have a name before submitting values
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(120);
@@ -46194,21 +44829,13 @@ module.exports = function (index, length) {
 };
 
 /***/ }),
-<<<<<<< HEAD
-/* 423 */
-=======
-/* 425 */
->>>>>>> Ensure chips have a name before submitting values
+/* 424 */
 /***/ (function(module, exports) {
 
 exports.f = Object.getOwnPropertySymbols;
 
 /***/ }),
-<<<<<<< HEAD
-/* 424 */
-=======
-/* 426 */
->>>>>>> Ensure chips have a name before submitting values
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var fails = __webpack_require__(59);
@@ -46231,11 +44858,7 @@ var POLYFILL = isForced.POLYFILL = 'P';
 module.exports = isForced;
 
 /***/ }),
-<<<<<<< HEAD
-/* 425 */
-=======
-/* 427 */
->>>>>>> Ensure chips have a name before submitting values
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var fails = __webpack_require__(59);
@@ -46247,11 +44870,7 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 426 */
-=======
-/* 428 */
->>>>>>> Ensure chips have a name before submitting values
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // this method was added to unscopables after implementation
@@ -46261,25 +44880,14 @@ var addToUnscopables = __webpack_require__(184);
 addToUnscopables('flat');
 
 /***/ }),
-<<<<<<< HEAD
-/* 427 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__(82);
-var defineProperties = __webpack_require__(428);
+var defineProperties = __webpack_require__(429);
 var enumBugKeys = __webpack_require__(121);
 var hiddenKeys = __webpack_require__(119);
-var html = __webpack_require__(430);
-=======
-/* 429 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__(81);
-var defineProperties = __webpack_require__(430);
-var enumBugKeys = __webpack_require__(121);
-var hiddenKeys = __webpack_require__(119);
-var html = __webpack_require__(432);
->>>>>>> Ensure chips have a name before submitting values
+var html = __webpack_require__(431);
 var documentCreateElement = __webpack_require__(171);
 var sharedKey = __webpack_require__(173);
 var IE_PROTO = sharedKey('IE_PROTO');
@@ -46327,22 +44935,13 @@ module.exports = Object.create || function create(O, Properties) {
 hiddenKeys[IE_PROTO] = true;
 
 /***/ }),
-<<<<<<< HEAD
-/* 428 */
-=======
-/* 430 */
->>>>>>> Ensure chips have a name before submitting values
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(58);
 var definePropertyModule = __webpack_require__(117);
-<<<<<<< HEAD
 var anObject = __webpack_require__(82);
-var objectKeys = __webpack_require__(429);
-=======
-var anObject = __webpack_require__(81);
-var objectKeys = __webpack_require__(431);
->>>>>>> Ensure chips have a name before submitting values
+var objectKeys = __webpack_require__(430);
 
 // `Object.defineProperties` method
 // https://tc39.github.io/ecma262/#sec-object.defineproperties
@@ -46358,11 +44957,7 @@ module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperti
 };
 
 /***/ }),
-<<<<<<< HEAD
-/* 429 */
-=======
-/* 431 */
->>>>>>> Ensure chips have a name before submitting values
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var internalObjectKeys = __webpack_require__(176);
@@ -46375,11 +44970,7 @@ module.exports = Object.keys || function keys(O) {
 };
 
 /***/ }),
-<<<<<<< HEAD
-/* 430 */
-=======
-/* 432 */
->>>>>>> Ensure chips have a name before submitting values
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getBuiltIn = __webpack_require__(175);
@@ -46387,11 +44978,7 @@ var getBuiltIn = __webpack_require__(175);
 module.exports = getBuiltIn('document', 'documentElement');
 
 /***/ }),
-<<<<<<< HEAD
-/* 431 */
-=======
-/* 433 */
->>>>>>> Ensure chips have a name before submitting values
+/* 432 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46400,11 +44987,7 @@ module.exports = getBuiltIn('document', 'documentElement');
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_container__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(2);
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_dialog__ = __webpack_require__(432);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_dialog__ = __webpack_require__(434);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_dialog__ = __webpack_require__(433);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_dialog___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__material_dialog__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -46574,11 +45157,7 @@ var VDialog = function (_eventHandlerMixin) {
 }(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_0__base_container__["a" /* VBaseContainer */]));
 
 /***/ }),
-<<<<<<< HEAD
-/* 432 */
-=======
-/* 434 */
->>>>>>> Ensure chips have a name before submitting values
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -50196,21 +48775,13 @@ var VDialog = function (_eventHandlerMixin) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
 
 /***/ }),
-<<<<<<< HEAD
-/* 433 */
-=======
-/* 435 */
->>>>>>> Ensure chips have a name before submitting values
+/* 434 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initDateTime;
 /* unused harmony export VDateTime */
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(434);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(436);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr__ = __webpack_require__(435);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_flatpickr__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_textfield__ = __webpack_require__(186);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_textfield___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__material_textfield__);
@@ -50336,11 +48907,7 @@ var VDateTime = function (_VTextField) {
 }(__WEBPACK_IMPORTED_MODULE_2__text_fields__["a" /* VTextField */]);
 
 /***/ }),
-<<<<<<< HEAD
-/* 434 */
-=======
-/* 436 */
->>>>>>> Ensure chips have a name before submitting values
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -52529,11 +51096,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = 
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 435 */
-=======
-/* 437 */
->>>>>>> Ensure chips have a name before submitting values
+/* 436 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52618,24 +51181,23 @@ var VLoads = function (_VBase) {
 }(__WEBPACK_IMPORTED_MODULE_1__base__["a" /* VBase */]);
 
 /***/ }),
-/* 436 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(437);
-
-/***/ }),
-<<<<<<< HEAD
 /* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(438);
+module.exports = __webpack_require__(438);
+
+/***/ }),
+/* 438 */
+/***/ (function(module, exports, __webpack_require__) {
+
 __webpack_require__(439);
+__webpack_require__(440);
 var entryUnbind = __webpack_require__(185);
 
 module.exports = entryUnbind('Array', 'flatMap');
 
 /***/ }),
-/* 438 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52663,7 +51225,7 @@ $({ target: 'Array', proto: true }, {
 });
 
 /***/ }),
-/* 439 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // this method was added to unscopables after implementation
@@ -52673,7 +51235,7 @@ var addToUnscopables = __webpack_require__(184);
 addToUnscopables('flatMap');
 
 /***/ }),
-/* 440 */
+/* 441 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52796,25 +51358,15 @@ var VUrls = function () {
 }();
 
 /***/ }),
-/* 441 */
-=======
-/* 438 */
->>>>>>> Ensure chips have a name before submitting values
+/* 442 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VPosts; });
-<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__action_parameter__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__encode__ = __webpack_require__(442);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__action_parameter__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__encode__ = __webpack_require__(443);
->>>>>>> Ensure chips have a name before submitting values
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -53150,65 +51702,7 @@ var VPosts = function (_VBase) {
 }(__WEBPACK_IMPORTED_MODULE_0__base__["a" /* VBase */]);
 
 /***/ }),
-<<<<<<< HEAD
-/* 442 */
-=======
-/* 439 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(440);
-
-/***/ }),
-/* 440 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(441);
-__webpack_require__(442);
-var entryUnbind = __webpack_require__(185);
-
-module.exports = entryUnbind('Array', 'flatMap');
-
-/***/ }),
-/* 441 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var $ = __webpack_require__(164);
-var flattenIntoArray = __webpack_require__(177);
-var toObject = __webpack_require__(181);
-var toLength = __webpack_require__(83);
-var aFunction = __webpack_require__(180);
-var arraySpeciesCreate = __webpack_require__(182);
-
-// `Array.prototype.flatMap` method
-// https://github.com/tc39/proposal-flatMap
-$({ target: 'Array', proto: true }, {
-  flatMap: function flatMap(callbackfn /* , thisArg */) {
-    var O = toObject(this);
-    var sourceLen = toLength(O.length);
-    var A;
-    aFunction(callbackfn);
-    A = arraySpeciesCreate(O, 0);
-    A.length = flattenIntoArray(A, O, O, sourceLen, 0, 1, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-    return A;
-  }
-});
-
-/***/ }),
-/* 442 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// this method was added to unscopables after implementation
-// in popular engines, so it's moved to a separate module
-var addToUnscopables = __webpack_require__(184);
-
-addToUnscopables('flatMap');
-
-/***/ }),
 /* 443 */
->>>>>>> Ensure chips have a name before submitting values
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61948,17 +60442,10 @@ var VHeader = function (_eventHandlerMixin) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTopAppBar; });
-<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adapter__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_base_component__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__ = __webpack_require__(460);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(65);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adapter__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_base_component__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_base_component__ = __webpack_require__(191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ripple_index__ = __webpack_require__(461);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(64);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fixed_foundation__ = __webpack_require__(464);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__short_foundation__ = __webpack_require__(465);
@@ -62175,17 +60662,10 @@ var MDCTopAppBar = function (_MDCComponent) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRipple; });
 /* unused harmony export RippleCapableSurface */
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(461);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(192);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(462);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(194);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(193);
 /* unused harmony reexport MDCRippleFoundation */
 /* unused harmony reexport util */
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -62438,15 +60918,9 @@ RippleCapableSurface.prototype.disabled;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(124);
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(462);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(192);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(463);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(194);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(193);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -76954,11 +75428,7 @@ var VSelect = function (_dirtyableMixin) {
 /* harmony export (immutable) */ __webpack_exports__["a"] = initChips;
 /* unused harmony export VChip */
 /* unused harmony export VChipSet */
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips__ = __webpack_require__(193);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips__ = __webpack_require__(195);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_chips___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__material_chips__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(2);
@@ -84608,11 +83078,7 @@ var VSwitch = function (_VBaseToggle) {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initRichTextArea;
 /* unused harmony export VRichTextArea */
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_quill__ = __webpack_require__(194);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_quill__ = __webpack_require__(196);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_quill__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_quill__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__rich_text_area_horizontal_rule_blot__ = __webpack_require__(485);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_component__ = __webpack_require__(2);
@@ -86912,11 +85378,7 @@ module.exports = Array.isArray || function (arr) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HorizontalRuleBlot; });
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_quill__ = __webpack_require__(194);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_quill__ = __webpack_require__(196);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_quill__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_quill__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -101679,11 +100141,7 @@ var VProgress = function (_VBaseComponent) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__component__ = __webpack_require__(506);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__component__["a"]; });
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(196);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(198);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(197);
 /* unused harmony namespace reexport */
 /**
  * @license
@@ -101718,13 +100176,8 @@ var VProgress = function (_VBaseComponent) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCLinearProgress; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(125);
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_base_component__ = __webpack_require__(506);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(196);
-=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_base_component__ = __webpack_require__(507);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(198);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(197);
 /**
  * @license
  * Copyright 2017 Google Inc.
@@ -101830,11 +100283,7 @@ var MDCLinearProgress = /** @class */function (_super) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(125);
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(195);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(197);
->>>>>>> Ensure chips have a name before submitting values
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(196);
 /**
  * @license
  * Copyright 2016 Google Inc.
