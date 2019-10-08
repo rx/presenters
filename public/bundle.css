@@ -15192,13 +15192,13 @@ button.mdc-chip {
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
-  cursor: move; }
+  cursor: move !important; }
 
 .v-dnd-draggable {
-  cursor: grab; }
+  cursor: grab !important; }
 
 .v-dnd-over {
-  border: 2px dashed #000; }
+  outline: 2px dashed #000 !important; }
 
 .v-expansion {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
@@ -17662,6 +17662,9 @@ i:focus.v-datetime--clear {
 .v-hidden {
   display: none;
   visibility: hidden; }
+
+.v-nowrap {
+  white-space: nowrap; }
 
 .incompatible-browser .compatibility-wrapper * {
   display: none; }

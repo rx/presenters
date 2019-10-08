@@ -5,13 +5,13 @@
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-    cursor: move;
+    cursor: move !important;
 }
 
 .v-dnd-draggable {
-    cursor: grab;
+    cursor: grab !important;
 }
 
 .v-dnd-over {
-    border: 2px dashed #000;
+    outline: 2px dashed #000 !important;
 }
