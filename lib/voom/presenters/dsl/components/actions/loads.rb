@@ -17,14 +17,27 @@ module Voom
             end
 
             def url
-              @parent.router.url(render: parse_presenter, command: options[:path], context: params)
+              return presenter if dynamic_url?
+              @parent.router.url(render: parse_presenter, context: params)
             end
 
             private
 
+            def presenter
+              options[:presenter]
+            end
+
             def parse_presenter
-              return options[:presenter] if options[:presenter].match(/^https?\:\/\//)
-              _expand_namespace_(options[:presenter], namespace).gsub(':', '/')
+              return presenter if presenter_url?
+              _expand_namespace_(presenter, namespace).gsub(':', '/')
+            end
+
+            def presenter_url?
+              presenter.match(/^https?\:\/\//)
+            end
+
+            def dynamic_url?
+              presenter.respond_to?(:dynamic_parameter)
             end
           end
         end

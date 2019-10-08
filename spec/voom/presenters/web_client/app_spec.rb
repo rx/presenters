@@ -63,7 +63,7 @@ describe Voom::Presenters::WebClient::App do
           }
         end
       end
-      
+
       it "render from pom" do
         keys = Voom::Presenters::App.keys
         keys.each do |key|
@@ -71,7 +71,7 @@ describe Voom::Presenters::WebClient::App do
           presenter = Voom::Presenters::App[key].call
           pom = presenter.expand(router: Voom::Presenters::WebClient::Router.new(base_url: ""), context: {'testing'=>true})
 
-          pom_json = JSON.dump(pom.to_hash)
+          pom_json = JSON.dump(pom.to_h)
           @ids.clear
           response_pom = post("__post__/#{key}", pom_json, {"CONTENT_TYPE" => "application/json"})
           pom = write_file(response_pom.body, 'response_pom.html')

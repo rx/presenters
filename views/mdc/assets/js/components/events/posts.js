@@ -71,7 +71,7 @@ export class VPosts extends VBase {
             );
         }
 
-        const httpRequest = new XMLHttpRequest();
+            const httpRequest = new XMLHttpRequest();
         const url = this.url;
         const callHeaders = this.headers;
         const root = this.root;

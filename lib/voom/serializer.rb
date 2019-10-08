@@ -2,18 +2,18 @@ require 'voom/parameters'
 require 'voom/trace'
 
 module Voom
-  # Simple serializer that will build add a to_hash method to an object by inspecting
+  # Simple serializer that will build add a to_h method to an object by inspecting
   # the intersection of its instance variables and public accessor methods.
   module Serializer
     include Trace
 
-    def to_hash(serializer=true)
+    def to_h(serializer=true)
       trace {self.class.to_s}
       return build_hash unless serializer
       begin
         serializer_name = "#{self.class.to_s}Serializer"
         serializer = Module.const_get(serializer_name)
-        serializer.new(self).to_hash
+        serializer.new(self).to_h
       rescue NameError
         build_hash
       end

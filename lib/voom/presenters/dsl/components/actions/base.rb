@@ -22,7 +22,7 @@ module Voom
             end
 
             def url
-              @parent.router.url(render: options[:presenter], command: options[:path], context: params)
+              @parent.router.url(render: options[:presenter] || options[:path], context: params)
             end
 
             private
@@ -36,7 +36,9 @@ module Voom
 
             def extract_dynamic_params(hash)
               HashExt.traverse(hash) do |k, v|
-                if v.respond_to?(:to_hash) || v.respond_to?(:dynamic_parameter)
+                if v.respond_to?(:dynamic_parameter)
+                  [k, v.to_h]
+                elsif  v.respond_to?(:to_hash)
                   [k, v.to_hash]
                 else
                   [nil, nil]

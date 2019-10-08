@@ -10,7 +10,7 @@ Voom::Presenters.define(:last_response_action) do
     button 'quote' do
       event :click do
         posts '_echo_', {quote: 'Compromise is the shared hypotenuse of the conjoined triangles of success.'}
-        posts '_echo_', echo: {quote: last_response.quote}, headers: {'X-Custom'=>'Boom!'}
+        posts '_echo_', echo: {quote: last_response.quote}, headers: {'X-Custom' => 'Boom!'}
         snackbar last_response.echo.quote
       end
     end
@@ -25,7 +25,7 @@ Voom::Presenters.define(:last_response_action) do
     attach :replace_text
 
     blank
-    title "Loads another presesnter"
+    title "Loads another presenter"
     text "Will reload this page passing a value from the last response of another action"
     text "Quote from last response: {c:blue}#{context.fetch(:quote, nil)}{/c}" unless context.fetch(:quote, nil).nil?
     button 'Reloads this page' do
@@ -35,6 +35,15 @@ Voom::Presenters.define(:last_response_action) do
       end
     end
     heading context['reloaded'] ? "Reloaded" : 'Loaded'
+
+    blank
+    title "Loads an url from a last_response"
+    button 'Load from echo' do
+      event :click do
+        posts '_echo_', {url: 'https://www.placecage.com'}
+        loads last_response.url, target: '_blank'
+      end
+    end
   end
   attach :code, file: __FILE__
 end

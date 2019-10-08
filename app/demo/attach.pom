@@ -1,0 +1,10 @@
+Voom::Presenters.define(:attach) do
+    attach :attach_me do
+      headline2 'world', inline: true
+    end
+end
+
+Voom::Presenters.define(:attach_me) do
+    headline1 'Hello', inline: true
+    yield_to(&yield_block)
+end

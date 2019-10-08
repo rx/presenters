@@ -10,7 +10,7 @@ module Voom
             _presenter_ = Voom::Presenters::App[presenter].call
             pom = _presenter_.expand(router: router, context: context)
             content_type :json
-            JSON.dump(pom.to_hash)
+            JSON.dump(pom.to_h)
           rescue StandardError => e
             Presenters::Settings.config.presenters.error_logger.call(
                 @env['rack.errors'],

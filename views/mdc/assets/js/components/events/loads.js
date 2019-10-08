@@ -1,4 +1,5 @@
 import {expandParams} from './action_parameter';
+import {expandParam} from './action_parameter';
 import {VBase} from './base';
 
 export class VLoads extends VBase {
@@ -41,13 +42,14 @@ export class VLoads extends VBase {
 
 
     call(results) {
+        const rootURL = expandParam(results, this.url);
         const expandedParams = expandParams(results, this.params);
         return new Promise((resolve) => {
             let downloadID = null;
             if (this.options['wait_for_download']) {
                 downloadID = (new Date()).getTime();
             }
-            const url = this.buildURL(this.url, expandedParams,
+            const url = this.buildURL(rootURL, expandedParams,
                 this.inputValues(),
                 downloadID ? {download_id: downloadID} : null);
             this.waitForDownload(downloadID, () => {

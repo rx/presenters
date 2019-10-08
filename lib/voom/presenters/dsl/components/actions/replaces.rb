@@ -18,7 +18,7 @@ module Voom
 
             def url
               presenter = _expand_namespace_(options[:presenter], namespace)
-              @parent.router.url(render: presenter, command: options[:path], context: params)
+              @parent.router.url(render: presenter, context: params)
             end
           end
         end

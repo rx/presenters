@@ -36341,6 +36341,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
 var VLoads = function (_VBase) {
     _inherits(VLoads, _VBase);
 
@@ -36388,13 +36389,14 @@ var VLoads = function (_VBase) {
         value: function call(results) {
             var _this2 = this;
 
+            var rootURL = Object(__WEBPACK_IMPORTED_MODULE_0__action_parameter__["a" /* expandParam */])(results, this.url);
             var expandedParams = Object(__WEBPACK_IMPORTED_MODULE_0__action_parameter__["b" /* expandParams */])(results, this.params);
             return new Promise(function (resolve) {
                 var downloadID = null;
                 if (_this2.options['wait_for_download']) {
                     downloadID = new Date().getTime();
                 }
-                var url = _this2.buildURL(_this2.url, expandedParams, _this2.inputValues(), downloadID ? { download_id: downloadID } : null);
+                var url = _this2.buildURL(rootURL, expandedParams, _this2.inputValues(), downloadID ? { download_id: downloadID } : null);
                 _this2.waitForDownload(downloadID, function () {
                     results.push({ action: 'loads', statusCode: 200 });
                     resolve(results);

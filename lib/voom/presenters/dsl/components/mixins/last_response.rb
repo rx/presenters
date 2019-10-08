@@ -9,7 +9,7 @@ module Voom
             # Defines a client side dynamic parameter used by an action
             # Example usage:
             #     updates forte_path, params: params
-            #     updates update_portal_path(portal_id: portal.id, token: last_response.token)
+            #     updates update_portal_path(portal_id: portal.id), token: last_response.token
             class ActionParameter
               include Voom::Serializer
 
@@ -34,8 +34,12 @@ module Voom
                 self
               end
 
+              def respond_to?(method_name, include_private = false)
+                method_name == :to_hash ? false : true
+              end
+
               def to_h
-                to_hash(false)
+                super(false)
               end
             end
 

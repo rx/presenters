@@ -36,7 +36,7 @@ describe 'reference' do
           }
         end
 
-        recurse(nil, pom.to_hash, pkey)
+        recurse(nil, pom.to_h, pkey)
         # expect(attribs).to eq([])
       end
     end
