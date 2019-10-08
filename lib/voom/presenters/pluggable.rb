@@ -7,7 +7,7 @@ module Voom
     module Pluggable
       def include_plugins(*layers, plugins: [],
                           plugin_method: method(:include))
-        plugins = plugins + Array(Voom::Presenters::Settings.config.presenters.plugins)
+        plugins = Array(plugins) + Array(Voom::Presenters::Settings.config.presenters.plugins)
         plugins.uniq.each do |plugin|
           plugin(plugin, *layers, plugin_method: plugin_method)
         end
