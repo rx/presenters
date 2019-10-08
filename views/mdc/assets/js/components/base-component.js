@@ -146,7 +146,7 @@ export function unhookupComponents(root, selector) {
 }
 
 // Retrieve the element's owning document or shadow root.
-function getRootNode(node) {
+export function getRootNode(node) {
     if (!node.parentNode || isShadowRoot(node)) {
         return node;
     }
