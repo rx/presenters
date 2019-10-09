@@ -85,7 +85,7 @@ module Voom
 
               def value(*value, **attribs, &block)
                 return @value if locked?
-                @numeric = numeric?(*value) if value.size ==1
+                @numeric = numeric?(*value) if value.size ==1 && !numeric
                 @value = Components::Typography.new(parent: self, type: :text, text: value, **attribs, &block)
               end
 
