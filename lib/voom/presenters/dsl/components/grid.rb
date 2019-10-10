@@ -13,7 +13,8 @@ module Voom
                         :color,
                         :padding,
                         :wide,
-                        :gutter
+                        :gutter,
+                        :height
 
           def initialize(color: nil, **attribs_, &block)
             super(type: :grid, **attribs_, &block)
@@ -23,6 +24,7 @@ module Voom
             @padding = validate_padding(coerce_padding(padding, default_level: 3)).uniq if padding != nil
             @wide = attribs.delete(:wide) {false}
             @gutter = coerce_gutter(attribs.delete(:gutter) {nil})
+            @height = attribs.delete(:height) {nil}
             expand!
           end
 
@@ -75,7 +77,8 @@ module Voom
                         :components,
                         :padding,
                         :align,
-                        :overflow
+                        :overflow,
+                        :height
 
             def initialize(**attribs_, &block)
               super(type: :column, **attribs_, &block)
@@ -89,6 +92,7 @@ module Voom
               @components = []
               padding = attribs.delete(:padding) {nil}
               @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
+              @height = attribs.delete(:height) {nil}
               expand!
             end
 

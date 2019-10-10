@@ -3,9 +3,10 @@ include Voom::Trace
 module Voom
   module Presenters
     module Pluggable
-      def include_plugins(*layers, plugins: Array(Voom::Presenters::Settings.config.presenters.plugins),
+      def include_plugins(*layers, plugins: [],
                           plugin_method: method(:include))
-        (plugins&.uniq || []).each do |plugin|
+        plugins = Array(plugins) + Array(Voom::Presenters::Settings.config.presenters.plugins)
+        plugins.uniq.each do |plugin|
           plugin(plugin, *layers, plugin_method: plugin_method)
         end
       end
@@ -24,10 +25,8 @@ module Voom
 
       def plugin(plugin, *layers, plugin_method: method(:include))
         m = plugin.is_a?(Module) ? plugin : plugin_module(plugin)
-        @plugins ||= []
         layers.each do |layer|
-          if m.const_defined?(layer, false) && !@plugins.include?(m.const_get(layer))
-            @plugins << m.const_get(layer)
+          if m.const_defined?(layer, false) && !self.const_defined?(layer, false)
             trace {"Injecting plugin(#{m.const_get(layer).inspect}) into #{self.inspect}!"}
             plugin_method.call(m.const_get(layer))
           end

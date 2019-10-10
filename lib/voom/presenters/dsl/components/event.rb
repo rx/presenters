@@ -3,9 +3,6 @@ module Voom
     module DSL
       module Components
         class Event < Base
-          extend Pluggable
-          include_plugins(:DSLEventActions)
-
           attr_accessor :event, :actions
           # Alias common event names
           EVENT_MAP = {focus: :focusin, blur: :focusout, onload: :after_init}
@@ -148,7 +145,7 @@ module Voom
           end
 
           def initialize_plugins
-            self.class.include_plugins(:DSLEventActions, plugins: _plugins_)
+            self.class.include_plugins(:DSLEventActions, :DSLHelpers, plugins: _plugins_)
           end
 
           def _plugins_

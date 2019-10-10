@@ -8,6 +8,8 @@ export const EVENT_DESELECT = 'deselect';
 export const EVENT_TRAILING_ICON_CLICK = 'trailing_icon_click';
 
 const SELECTABLE_VARIANT_CLASS = 'v-chip-set--selectable-variant';
+const CHIP_BEHAVIOR_AUTO_REMOVE = 'auto_remove';
+const CHIP_BEHAVIOR_NO_AUTO_REMOVE = 'no_auto_remove';
 
 export function initChips(e) {
     console.debug('\tChips');
@@ -20,8 +22,7 @@ export function initChips(e) {
     // call for chips is not needed.
 
     hookupComponentsManually(e, '.v-chip-set', function(element) {
-        const selectable = element.classList.contains(SELECTABLE_VARIANT_CLASS);
-        const chipFactory = voomChipFactoryFactory(selectable);
+        const chipFactory = voomChipFactoryFactory(CHIP_BEHAVIOR_NO_AUTO_REMOVE);
         const mdcComponent = new MDCChipSet(element, undefined, chipFactory);
 
         return new VChipSet(element, mdcComponent);
@@ -54,7 +55,7 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
 
     // Called to collect data for submission
     prepareSubmit(params) {
-        if (this.shouldSubmitParams) {
+        if (this.shouldSubmitParams()) {
             params.push([this.name(), this.value()]);
         }
     }
@@ -75,10 +76,11 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
         this.element.setAttribute('data-value', value);
     }
 
-    get shouldSubmitParams() {
+    shouldSubmitParams() {
         // Selectable chips (those within a :filter or :choice chipset) which
         // are not currently selected do not submit their value.
-        return this.value() && (!this.selectable || this.mdcComponent.selected);
+        return this.name() && this.value()
+            && (!this.selectable || this.mdcComponent.selected);
     }
 
     get selectable() {
@@ -89,10 +91,12 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
 }
 
 // Returns a function which constructs VChip components.
-function voomChipFactoryFactory(selectable) {
+function voomChipFactoryFactory(behavior = CHIP_BEHAVIOR_AUTO_REMOVE) {
+    const autoRemove = behavior === CHIP_BEHAVIOR_AUTO_REMOVE;
+
     return function(element) {
         const mdcComponent = new MDCChip(element);
-        mdcComponent.shouldRemoveOnTrailingIconClick = !selectable;
+        mdcComponent.shouldRemoveOnTrailingIconClick = autoRemove;
 
         return new VChip(element, mdcComponent);
     };

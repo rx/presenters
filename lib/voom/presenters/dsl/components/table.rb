@@ -5,12 +5,13 @@ module Voom
         class Table < Base
           include Mixins::Common
           include Mixins::Event
-          attr_accessor :header, :rows, :selectable, :border
+          attr_accessor :header, :rows, :selectable, :width, :border
 
           def initialize(**attribs_, &block)
             super(type: :table, **attribs_, &block)
             @selectable = attribs.delete(:selectable)
             @border = attribs.delete(:border){ true }
+            @width = attribs.delete(:width)
             @rows = []
             expand!
           end
@@ -69,6 +70,7 @@ module Voom
               include Mixins::Selects
               include Mixins::Icons
               include Mixins::Typography
+              include Mixins::Content
 
               attr_accessor :numeric, :color, :components, :colspan
 
@@ -85,6 +87,7 @@ module Voom
 
               def value(*value, **attribs, &block)
                 return @value if locked?
+                @numeric = numeric?(*value) if value.size ==1 && !numeric
                 @value = Components::Typography.new(parent: self, type: :text, text: value, **attribs, &block)
               end
 

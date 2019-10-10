@@ -2,7 +2,7 @@ module Voom
   module Presenters
     module DSL
       module Components
-        class Chipset < Base
+        class Chipset < EventBase
           include Mixins::Chips
           attr_reader :variant, :components
 

@@ -14,7 +14,6 @@ module Voom
           include Trace
           include Mixins::YieldTo
           extend Pluggable
-          include_plugins(:DSLComponents, :DSLHelpers)
 
           attr_reader :type, :id, :tag, :attributes, :draggable, :drop_zone
 

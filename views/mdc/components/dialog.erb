@@ -57,7 +57,7 @@
                 <%= erb :"components/button",
                         :locals => {:comp => button,
                                     :class_name => "mdc-dialog__button",
-                                    :data_attributes => "data-mdc-dialog-action='#{button.id}'"} %>
+                                    :data_attributes => "data-mdc-dialog-action='#{button.id}' data-auto-close"} %>
               <% end %>
             </footer>
           <% end %>
