@@ -3,7 +3,7 @@ Voom::Presenters.define(:response_content) do
     def params
       return {} unless context[:id]
 
-      { tag: context[:id] }
+      {tag: context[:id]}
     end
   end
 
@@ -245,7 +245,8 @@ Voom::Presenters.define(:dialog_a) do
       text_field name: :dialog_text_field do
         value 'whatever'
       end
-
+    end
+    actions do
       button 'Submit', type: :raised do
         event :click do
           posts '/_echo_'
@@ -262,9 +263,11 @@ Voom::Presenters.define(:dialog_b) do
         value 'whatever'
       end
 
-      button 'Submit, untagged content', type: :raised do
-        event :click do
-          posts '/_echo_'
+      actions do
+        button 'Submit, untagged content', type: :raised do
+          event :click do
+            posts '/_echo_'
+          end
         end
       end
     end
@@ -279,10 +282,12 @@ Voom::Presenters.define(:dialog_c) do
       end
     end
 
-    button 'Submit, input_tag', type: :raised do
-      event :click do
-        posts '/_echo_',
-              input_tag: :some_dialog_tag
+    actions do
+      button 'Submit, input_tag', type: :raised do
+        event :click do
+          posts '/_echo_',
+                input_tag: :some_dialog_tag
+        end
       end
     end
   end
@@ -298,9 +303,11 @@ Voom::Presenters.define(:dialog_d) do
       end
     end
 
-    button 'Submit, no viable container', type: :raised do
-      event :click do
-        posts '/_echo_'
+    actions do
+      button 'Submit, no viable container', type: :raised do
+        event :click do
+          posts '/_echo_'
+        end
       end
     end
   end

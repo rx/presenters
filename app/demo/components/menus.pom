@@ -8,7 +8,9 @@ Voom::Presenters.define(:menus) do
 
   dialog id: :hello_world do
     title "Hello World!"
-    button 'Close'
+    actions do
+      button 'Close'
+    end
   end
 
   indented_grid do
@@ -34,7 +36,7 @@ Voom::Presenters.define(:menus) do
       column 5 do
         card height: '300px' do
           button icon: :more_vert, position: :right do
-            menu  do
+            menu do
               item 'Some Action'
               item 'Another Action'
               divider

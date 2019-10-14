@@ -9,6 +9,7 @@ require 'voom/presenters/dsl/components/actions/toggle_visibility'
 require 'voom/presenters/dsl/components/actions/prompt_if_dirty'
 require 'voom/presenters/dsl/components/actions/snackbar'
 require 'voom/presenters/dsl/components/actions/clear'
+require 'voom/presenters/dsl/components/actions/close_dialog'
 require 'voom/presenters/dsl/components/actions/navigates'
 require 'voom/presenters/dsl/components/actions/stepper'
 require 'voom/presenters/errors/parameter_validation'
@@ -138,8 +139,13 @@ module Voom
             self << Actions::Clear.new(parent: self,
                                        params: params.merge(ids: ids), &block)
           end
-
           alias clears clear
+
+          def close_dialog(component_id, **params, &block)
+            self << Actions::CloseDialog.new(parent: self,
+                                        target: component_id,
+                                        params: params, &block)
+          end
 
           def stepper(navigate, **params, &block)
             self << Actions::Stepper.new(parent: self,
