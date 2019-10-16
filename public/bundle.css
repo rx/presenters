@@ -17671,3 +17671,12 @@ i:focus.v-datetime--clear {
 
 :not(.mdc-list--non-interactive) > :not(.mdc-list-item--disabled).mdc-list-item:hover::before {
   filter: opacity(100%); }
+
+.v-align-left {
+  text-align: left; }
+
+.v-align-center {
+  text-align: center; }
+
+.v-align-right {
+  text-align: right; }

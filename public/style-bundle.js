@@ -65,9 +65,9 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__.p + "../../public/bundle.css";
+throw new Error("Module build failed: \n    @include mdc-typography(body2, $query: $query);\n            ^\n      Wrong number of arguments (2 for 1) for `mdc-typography'\n      in /Users/kurt/dev/rx/presenters/views/mdc/node_modules/@material/data-table/_mixins.scss (line 42, column 14)");
 
 /***/ })
 /******/ ]);
