@@ -181,6 +181,7 @@ module Voom
 
           begin
             @pom = presenter.expand(router: router, context: prepare_context)
+            @base_url = request.base_url
             layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
             response.headers['X-Frame-Options'] = 'ALLOWALL' if ENV['ALLOWALL_FRAME_OPTIONS']
             erb :web, layout: layout
