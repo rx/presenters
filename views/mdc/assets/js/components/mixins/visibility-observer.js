@@ -25,7 +25,7 @@ export let visibilityObserverMixin = Base => class extends Base {
                     }
                 });
             vComponent.mutationObserver.vComponent = vComponent;
-            vComponent.mutationObserver.observe(vComponent.root.documentElement,
+            vComponent.mutationObserver.observe(vComponent.root.documentElement || vComponent.root.host,
                 {
                     attributes: true,
                     subtree: true,
