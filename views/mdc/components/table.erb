@@ -1,17 +1,19 @@
-<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"
-       style="<%= "width:#{comp.width};" if comp.width %>"
-  <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id}%>>
-  <% if comp.header %>
-    <thead>
-      <%= erb :"components/table/header", :locals => {:row=> comp.header} %>
-    </thead>
-  <% end %>
-  <tbody>
-      <% comp.rows.each do |row| %>
-        <%= erb :"components/table/row", :locals => {:row=> row} %>
-      <% end %>
-  </tbody>
-</table>
+<div class="v-data-table mdc-data-table">
+  <table class="mdc-data-table__table"
+         style="<%= "width:#{comp.width};" if comp.width %>"
+         <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id} %>>
+    <% if comp.header %>
+      <thead>
+      <%= erb :"components/table/header", :locals => {:row => comp.header} %>
+      </thead>
+    <% end %>
+    <tbody class="mdc-data-table__content">
+    <% comp.rows.each do |row| %>
+      <%= erb :"components/table/row", :locals => {:row => row} %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
 <% if comp.pagination %>
-  <%= erb :"components/table/pagination", :locals => {:comp=> comp.pagination} %>
+  <%= erb :"components/table/pagination", :locals => {:comp => comp.pagination} %>
 <% end %>

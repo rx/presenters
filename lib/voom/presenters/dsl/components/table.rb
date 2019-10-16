@@ -71,12 +71,12 @@ module Voom
               include Mixins::Icons
               include Mixins::Content
 
-              attr_accessor :numeric, :color, :components
+              attr_accessor :align, :color, :components
 
               def initialize(**attribs_, &block)
                 super(type: :column, **attribs_, &block)
                 value = attribs.delete(:value)
-                @numeric = attribs.delete(:numeric){numeric?(value)}
+                @align = validate_alignment(attribs.delete(:align){numeric?(value) ? :right : :left})
                 self.value(value) if value
                 @color = attribs.delete(:color)
                 @components = []
@@ -85,15 +85,26 @@ module Voom
 
               def value(*value, **attribs, &block)
                 return @value if locked?
-                @numeric = numeric?(*value) if value.size ==1 && !numeric
                 @value = Components::Typography.new(parent: self, type: :text, text: value, **attribs, &block)
               end
 
               private
+              VALID_ALIGNMENTS = %i[left center right].freeze
+
               def numeric?(value)
                 return true if value.is_a? Numeric
                 (value.to_s.strip.sub(/\D/, '') =~ /^[\$]?[-+]?(,?[0-9])*\.?[0-9]+$/) != nil
               end
+
+              def validate_alignment(value)
+                return :left if value.nil?
+                unless VALID_ALIGNMENTS.include?(value.to_sym)
+                  raise Errors::ParameterValidation,
+                        "Invalid column alignment! Valid alignements include #{VALID_ALIGNMENTS.join(', ')}"
+                end
+                value
+              end
+
             end
 
           end
