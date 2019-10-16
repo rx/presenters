@@ -1,25 +1,21 @@
 <% if comp
      leading_icon = comp.icons.select {|i| i.position.select{|p| eq(p, :left)}.any?}.first
      trailing_icon = comp.icons.select {|i| i.position.select{|p| eq(p, :right)}.any?}.first
-     first_chip = !eq(components[index-1]&.type, :chip)
-     last_chip = !eq(components[index+1]&.type, :chip)
-
      child_events = (leading_icon&.events || trailing_icon&.events || comp.text&.events||[]).any?
 %>
-  <% if first_chip %>
-    <div class="v-chip-set mdc-chip-set">
-  <% end %>
   <% if comp.menu %>
     <div class="mdc-menu-anchor">
   <% end %>
 
-  <div id="<%= comp.id %>"
+  <button id="<%= comp.id %>"
        <% if comp.tag %>
        data-input-tag="<%= comp.tag %>"
        <% end %>
        class="v-chip v-input mdc-chip
               <%= color_classname(comp) %>
-              v-menu-click"
+              <%= 'mdc-chip--selected' if comp.selected %>
+              v-menu-click
+              <% if comp.draggable %>v-dnd-draggable<% end %>"
        <% if comp.name %>
          data-name="<%= comp.name %>"
        <% end %>
@@ -27,24 +23,32 @@
          data-value="<%= comp.value %>"
        <% end %>
        style = "<%= color_style(comp, 'background-') %>"
+       <%= draggable_attributes(comp) %>
+       <%= drop_zone_attributes(comp) %>
        tabindex="0"
        <%= erb(:"components/event", locals: {comp: comp,
                                              events: comp.events,
-                                             parent_id: comp.id}) unless child_events %>>
+                                             parent_id: comp.id}) %>>
     <%= erb(:"components/icon", :locals => {comp: leading_icon,
                                             class_name: 'mdc-chip__icon mdc-chip__icon--leading',
                                             events: child_events ? (leading_icon&.events || comp.events) : nil}) %>
+    <% if comp.chipset_variant == 'filter' %>
+    <span class="mdc-chip__checkmark" >
+      <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+        <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+              d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+      </svg>
+    </span>
+    <% end %>
+
     <%= erb :"components/typography", :locals => {comp: comp.text, type: 'chip-text', class_name: 'mdc-chip__text'} %>
     <%= erb(:"components/icon", locals: {comp: trailing_icon,
                                          class_name: 'mdc-chip__icon mdc-chip__icon--trailing',
                                          events: child_events ? (trailing_icon&.events || comp.events) : nil}) %>
-  </div>
+  </button>
   <% if comp.menu %>
     <%= erb :"components/list/menu", :locals => {:comp => comp.menu} %>
   </div>
   <%end%>
-  <% if last_chip %>
-    </div>
-  <% end %>
   <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 <% end %>

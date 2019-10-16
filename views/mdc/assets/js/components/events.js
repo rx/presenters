@@ -12,6 +12,7 @@ import {VStepperEvent} from './events/stepper';
 import {VNavigates} from './events/navigates';
 import {VPluginEventAction} from './events/plugin';
 import getRoot from './root_document';
+import {hasDragDropData, extractDragDropData} from './drag_n_drop';
 
 const EVENTS_SELECTOR = '[data-events]';
 
@@ -28,10 +29,10 @@ export class VEvents {
 
     call() {
         const event = this.event;
-        let eventParams;
-        if(event.type === 'drop' && event.dataTransfer){
-            //console.log('Drop Data Params: ' + event.dataTransfer.getData('text/plain'));
-            eventParams = JSON.parse(event.dataTransfer.getData('text/plain'));
+        let eventParams = {};
+
+        if (hasDragDropData(event)) {
+            eventParams = Object.assign(eventParams, extractDragDropData(event));
         }
 
         // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
@@ -49,9 +50,17 @@ export class VEvents {
             }, p);
         }
 
+        const ev = new CustomEvent('V:eventsStarted', {
+            bubbles: true,
+            cancelable: false,
+            detail: this,
+        });
+        this.event.target.dispatchEvent(ev);
+
         if (this.vComponent) {
             this.vComponent.actionsStarted(this);
         }
+
 
         new VErrors(this.root).clearErrors();
 
@@ -64,6 +73,13 @@ export class VEvents {
                 typeof responseURL !== 'undefined') {
                 window.location = responseURL;
             }
+
+            const ev = new CustomEvent('V:eventsSucceeded', {
+                bubbles: true,
+                cancelable: false,
+                detail: this,
+            });
+            this.event.target.dispatchEvent(ev);
 
             if (this.vComponent) {
                 this.vComponent.actionsSucceeded(this);
@@ -82,10 +98,24 @@ export class VEvents {
                 new VErrors(this.root, this.event).displayErrors(result);
             }
 
+            const ev = new CustomEvent('V:eventsHalted', {
+                bubbles: true,
+                cancelable: false,
+                detail: this,
+            });
+            this.event.target.dispatchEvent(ev);
+
             if (this.vComponent) {
                 this.vComponent.actionsHalted(this);
             }
         }).finally(() => {
+            const ev = new CustomEvent('V:eventsFinished', {
+                bubbles: true,
+                cancelable: false,
+                detail: this,
+            });
+            this.event.target.dispatchEvent(ev);
+
             if (this.vComponent) {
                 this.vComponent.actionsFinished(this);
             }
@@ -164,7 +194,8 @@ export function initEvents(e) {
             eventOptions.passive = true;
             var actionsData = eventData[1];
             const vComponent = eventElem.vComponent;
-            var eventHandler = createEventHandler(actionsData, getRoot(e), vComponent);
+            var eventHandler = createEventHandler(actionsData, getRoot(e),
+                vComponent);
             // allow override of event handler by component
             if (vComponent && vComponent.createEventHandler) {
                 eventHandler = vComponent.createEventHandler(
@@ -173,7 +204,8 @@ export function initEvents(e) {
             // Delegate to the component if possible
             if (vComponent &&
                 vComponent.initEventListener) {
-                vComponent.initEventListener(eventName, eventHandler, eventOptions);
+                vComponent.initEventListener(eventName, eventHandler,
+                    eventOptions);
             }
             else {
                 if (typeof eventElem.eventsHandler === 'undefined') {
@@ -205,8 +237,8 @@ export function removeEvents(elem) {
             let eventName = eventData[0];
             let eventOptions = eventData[2];
             eventOptions.passive = true;
-            for( const handler of eventElem.eventsHandler[eventName]) {
-                eventElem.removeEventListener(eventName, handler,  eventOptions);
+            for (const handler of eventElem.eventsHandler[eventName]) {
+                eventElem.removeEventListener(eventName, handler, eventOptions);
             }
         }
     }

@@ -35,10 +35,11 @@
       </div>
     </div>
   <% end %>
-  <div class="v-errors">
+  <div class="v-errors" style="<%= "height: #{comp.height};" if comp.height%>">
     <% if comp.components.any? %>
       <div class="v-card-content
-                  <%= _padding_classes_(comp.padding, subclass: :col) %>">
+                  <%= _padding_classes_(comp.padding, subclass: :col) %>"
+                  style="<%= "height: #{comp.height};" if comp.height%>">
         <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
       </div>
     <% end %>

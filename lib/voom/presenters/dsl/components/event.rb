@@ -19,9 +19,6 @@ module Voom
     module DSL
       module Components
         class Event < Base
-          extend Pluggable
-          include_plugins(:DSLEventActions)
-
           attr_accessor :event, :actions
           # Alias common event names
           EVENT_MAP = {focus: :focusin, blur: :focusout, onload: :after_init}
@@ -37,11 +34,13 @@ module Voom
             @actions << comp
           end
 
-          def loads(presenter = nil, path: nil, target: nil, **params, &block)
+          def loads(presenter = nil, path: nil, target: nil, input_tag: nil, wait_for_download: nil, **params, &block)
             self << Actions::Loads.new(parent: self,
                                        presenter: presenter,
                                        path: path,
                                        target: target,
+                                       input_tag: input_tag,
+                                       wait_for_download: wait_for_download,
                                        params: params, &block)
           end
 
@@ -154,7 +153,7 @@ module Voom
           end
 
           def initialize_plugins
-            self.class.include_plugins(:DSLEventActions, plugins: _plugins_)
+            self.class.include_plugins(:DSLEventActions, :DSLHelpers, plugins: _plugins_)
           end
 
           def _plugins_

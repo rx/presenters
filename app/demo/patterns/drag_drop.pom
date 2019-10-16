@@ -46,6 +46,10 @@ Voom::Presenters.define(:drag_drop) do
                 posts '_dragon_drop_change_order_', target_id: dragon.id
                 loads :drag_drop
               end
+
+              event :dropped do
+                snackbar "Dropped the #{dragon.name}. Whoops!"
+              end
             end
           end
         end

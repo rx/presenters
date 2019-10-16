@@ -95,9 +95,13 @@ export class VDialog extends eventHandlerMixin(VBaseContainer) {
         // A successful run-to-completion of an event chain should always
         // attempt to close the dialog.
         this.shouldNotifyClosing = false;
-        this.canClose = true;
 
-        this.close(vEvent.event.detail.action);
+        // We should only be closing the dialog for components marked as autoClose
+        let dialogAction = vEvent.vComponent.element.dataset.autoClose;
+        if (dialogAction !== undefined) {
+            this.canClose = true;
+            this.close(vEvent.event.detail.action);
+        }
         super.actionsSucceeded(vEvent); // Bubble up
     }
 

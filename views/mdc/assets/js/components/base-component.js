@@ -2,8 +2,9 @@ import {VErrors} from './events/errors';
 
 export class VBaseComponent {
     constructor(element, mdcComponent) {
-        this.root = element.ownerDocument;
+        this.root = getRootNode(element);
         this.element = element;
+        this.element.vComponent = this;
         this.mdcComponent = mdcComponent;
         this.element.classList.add('v-component');
     }
@@ -97,35 +98,62 @@ export class VBaseComponent {
     }
 }
 
-export function hookupComponents(root, selector, VoomClass, MdcClass) {
-    const components = Array.from(root.querySelectorAll(selector));
+function getCandidateElements(root, selector) {
+    const elements = Array.from(root.querySelectorAll(selector));
 
     if (root && typeof root.matches === 'function' && root.matches(selector)) {
-        components.unshift(root);
+        elements.unshift(root);
     }
 
-    for (const component of components) {
-        if (component.mdcComponent) {
+    return elements;
+}
+
+// `fn` is a unary function accepting a HTMLElement and returning an instance of
+// VBaseComponent.
+export function hookupComponentsManually(root, selector, fn) {
+    const elements = getCandidateElements(root, selector);
+
+    for (const element of elements) {
+        if (element.mdcComponent || element.vComponent) {
             continue;
         }
 
-        const mdcInstance = typeof MdcClass === 'function'
-            ? new MdcClass(component)
-            : null;
+        fn(element);
+    }
+}
 
-        if (!component.vComponent) {
-            component.vComponent = new VoomClass(component, mdcInstance, root);
-            component.vComponent.root = root;
+export function hookupComponents(root, selector, VoomClass, MDCClass) {
+    const ctor = componentFactory(VoomClass, MDCClass);
+    hookupComponentsManually(root, selector, ctor);
+}
+
+// Returns a function capable of constructing a Voom component.
+function componentFactory(VoomClass, MDCClass) {
+    return (element) => new VoomClass(
+        element,
+        typeof MDCClass === 'function' ? new MDCClass(element) : null
+    );
+}
+
+export function unhookupComponents(root, selector) {
+    const elements = getCandidateElements(root, selector);
+
+    for (const element of elements) {
+        if (element.vComponent) {
+            element.vComponent.destroy();
         }
     }
 }
 
-export function unhookupComponents(root, selector) {
-    const components = Array.from(root.querySelectorAll(selector));
-
-    for (const component of components) {
-        if (component.vComponent) {
-            component.vComponent.destroy();
-        }
+// Retrieve the element's owning document or shadow root.
+export function getRootNode(node) {
+    if (!node.parentNode || isShadowRoot(node)) {
+        return node;
     }
+
+    return getRootNode(node.parentNode);
+}
+
+function isShadowRoot(node) {
+    return node.constructor.name === 'ShadowRoot';
 }
