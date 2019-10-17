@@ -54,8 +54,10 @@ Voom::Presenters.define(:tooltips) do
     end
 
     headline 'Chips'
-    chip 'Hover over me' do
-      tooltip 'I have this tip!'
+    chipset do
+      chip 'Hover over me' do
+        tooltip 'I have this tip!'
+      end
     end
 
     headline 'Tables'

@@ -54,10 +54,27 @@ module Voom
                                                      **options, &block)
           end
 
-          def button(text=nil, **attribs, &block)
-            @buttons << Button.new(parent: self, text: text,
+          def actions(**attribs, &block)
+            return @actions if locked?
+            @actions = Actions.new(parent: self,
                                    **attribs, &block)
           end
+
+          class Actions < Base
+            attr_accessor :buttons
+
+            def initialize(**attribs_, &block)
+              super(type: :action, **attribs_, &block)
+              @buttons = []
+              expand!
+            end
+
+            def button(text = nil, **options, &block)
+              @buttons << Components::Button.new(parent: self, text: text,
+                                                 **options, &block)
+            end
+          end
+
         end
       end
     end

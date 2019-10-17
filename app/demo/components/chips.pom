@@ -7,88 +7,95 @@ Voom::Presenters.define(:chips) do
   page_title 'Chips'
 
   indented_grid do
-    chip 'Chip 1'
-    chip 'Chip 1', color: :primary
-    chip 'Chip 2', color: :secondary
-    chip color: :hotpink do
-      text 'Chip 3', color: :white
+    chipset do
+      chip 'Chip 1'
+      chip 'Chip 1', color: :primary
+      chip 'Chip 2', color: :secondary
+      chip color: :hotpink do
+        text 'Chip 3', color: :white
+      end
+    end
+    subheading 'leading icon'
+    chipset do
+      chip 'Jane Smith', icon: :face
     end
 
-    subheading 'leading icon'
-    chip 'Jane Smith', icon: :face
-
     subheading 'trailing icon'
-    chip 'Jane Smith' do
-      icon :more_vert, position: :right
+    chipset do
+      chip 'Jane Smith' do
+        icon :more_vert, position: :right
+      end
     end
 
     subheading 'leading and trailing icon'
-    chip 'Jane Smith' do
-      icon :face, position: :left
-      icon :more_vert, position: :right
+    chipset do
+      chip 'Jane Smith' do
+        icon :face, position: :left
+        icon :more_vert, position: :right
+      end
     end
     heading 'Events'
 
-    chip 'Jane Smith' do
-      icon :face, position: :left
-      icon :more_vert, position: :right
-      event :click do
-        snackbar 'chip clicked!'
+    chipset do
+      chip 'Jane Smith' do
+        icon :face, position: :left
+        icon :more_vert, position: :right
+        event :click do
+          snackbar 'chip clicked!'
+        end
+      end
+      chip do
+        text 'Jane Smith' do
+          event :click do
+            snackbar 'text clicked'
+          end
+        end
+        icon :face, position: :left
+        icon :more_vert, position: :right
+        event :click do
+          snackbar 'chip clicked!'
+        end
+      end
+
+      chip do
+        text 'Jane Smith' do
+          event :click do
+            snackbar 'text clicked'
+          end
+        end
+        icon :face, position: :left do
+          event :click do
+            snackbar 'left icon clicked'
+          end
+        end
+        icon :more_vert, position: :right
+        event :click do
+          snackbar 'chip clicked!'
+        end
+      end
+
+      chip do
+        text 'Jane Smith' do
+          event :click do
+            snackbar 'text clicked'
+          end
+        end
+        icon :face, position: :left do
+          event :click do
+            snackbar 'left icon clicked'
+          end
+        end
+        icon :more_vert, position: :right do
+          event :click do
+            snackbar 'right icon clicked'
+          end
+        end
       end
     end
 
-    chip do
-      text 'Jane Smith' do
-        event :click do
-          snackbar 'text clicked'
-        end
-      end
-      icon :face, position: :left
-      icon :more_vert, position: :right
-      event :click do
-        snackbar 'chip clicked!'
-      end
-    end
-
-    chip do
-      text 'Jane Smith' do
-        event :click do
-          snackbar 'text clicked'
-        end
-      end
-      icon :face, position: :left do
-        event :click do
-          snackbar 'left icon clicked'
-        end
-      end
-      icon :more_vert, position: :right
-      event :click do
-        snackbar 'chip clicked!'
-      end
-    end
-
-    chip do
-      text 'Jane Smith' do
-        event :click do
-          snackbar 'text clicked'
-        end
-      end
-      icon :face, position: :left do
-        event :click do
-          snackbar 'left icon clicked'
-        end
-      end
-      icon :more_vert, position: :right do
-        event :click do
-          snackbar 'right icon clicked'
-        end
-      end
-    end
-
-    title 'Chips as input',id: :input_chips
+    title 'Chips as input', id: :input_chips
     body 'You can set the name and value attributes of a chip, they then can be posted.
           An example of this can be found in the [search select](/search_select) pattern demo.'
-
 
 
     attach :code, file: __FILE__
