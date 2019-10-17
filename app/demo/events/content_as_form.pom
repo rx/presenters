@@ -262,12 +262,11 @@ Voom::Presenters.define(:dialog_b) do
       text_field name: :dialog_text_field do
         value 'whatever'
       end
-
-      actions do
-        button 'Submit, untagged content', type: :raised do
-          event :click do
-            posts '/_echo_'
-          end
+    end
+    actions do
+      button 'Submit, untagged content', type: :raised do
+        event :click do
+          posts '/_echo_'
         end
       end
     end

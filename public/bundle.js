@@ -4940,7 +4940,7 @@ var visibilityObserverMixin = function visibilityObserverMixin(Base) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__events_prompt_if_dirty__ = __webpack_require__(448);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__events_snackbar__ = __webpack_require__(449);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_clears__ = __webpack_require__(450);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__events_close_dialog__ = __webpack_require__(511);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__events_close_dialog__ = __webpack_require__(451);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__events_removes__ = __webpack_require__(452);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__events_stepper__ = __webpack_require__(453);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__events_navigates__ = __webpack_require__(454);
@@ -56605,7 +56605,84 @@ var VClears = function () {
 }();
 
 /***/ }),
-/* 451 */,
+/* 451 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VCloseDialog; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base__ = __webpack_require__(53);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var VCloseDialog = function (_VBase) {
+    _inherits(VCloseDialog, _VBase);
+
+    function VCloseDialog(options, params, event, root) {
+        _classCallCheck(this, VCloseDialog);
+
+        var _this = _possibleConstructorReturn(this, (VCloseDialog.__proto__ || Object.getPrototypeOf(VCloseDialog)).call(this, options, root));
+
+        _this.elementId = options.target;
+        return _this;
+    }
+
+    _createClass(VCloseDialog, [{
+        key: 'call',
+        value: function call(results) {
+            var _this2 = this;
+
+            return new Promise(function (resolve) {
+                var elem = _this2.root.getElementById(_this2.elementId);
+                if (!elem) {
+                    var err = new Error('Unable to locate node ' + _this2.elementId + '!' + ' Did you forget to attach it?');
+
+                    results.push({
+                        action: 'close',
+                        contentType: 'v/errors',
+                        content: { exception: err.message }
+                    });
+
+                    return new Promise(function (_, reject) {
+                        return reject(results);
+                    });
+                }
+                if (!elem.vComponent || !elem.vComponent.respondTo('closeDialog')) {
+                    var _err = new Error('Element at node ' + _this2.elementId + ' does not contain a component that reponds to ' + 'the closeDialog() method. Are you targeting the correct element.');
+
+                    results.push({
+                        action: 'close_dialog',
+                        contentType: 'v/errors',
+                        content: { exception: _err.message }
+                    });
+
+                    return new Promise(function (_, reject) {
+                        return reject(results);
+                    });
+                }
+                elem.vComponent.closeDialog();
+
+                results.push({
+                    action: 'close_dialog',
+                    statusCode: 200
+                });
+
+                // Otherwise, proceed with the next action:
+                return resolve(results);
+            });
+        }
+    }]);
+
+    return VCloseDialog;
+}(__WEBPACK_IMPORTED_MODULE_0__base__["a" /* VBase */]);
+
+/***/ }),
 /* 452 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -100554,84 +100631,6 @@ var strings = {
     PRIMARY_BAR_SELECTOR: '.mdc-linear-progress__primary-bar'
 };
 //# sourceMappingURL=constants.js.map
-
-/***/ }),
-/* 511 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VCloseDialog; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base__ = __webpack_require__(53);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var VCloseDialog = function (_VBase) {
-    _inherits(VCloseDialog, _VBase);
-
-    function VCloseDialog(options, params, event, root) {
-        _classCallCheck(this, VCloseDialog);
-
-        var _this = _possibleConstructorReturn(this, (VCloseDialog.__proto__ || Object.getPrototypeOf(VCloseDialog)).call(this, options, root));
-
-        _this.elementId = options.target;
-        return _this;
-    }
-
-    _createClass(VCloseDialog, [{
-        key: 'call',
-        value: function call(results) {
-            var _this2 = this;
-
-            return new Promise(function (resolve) {
-                var elem = _this2.root.getElementById(_this2.elementId);
-                if (!elem) {
-                    var err = new Error('Unable to locate node ' + _this2.elementId + '!' + ' Did you forget to attach it?');
-
-                    results.push({
-                        action: 'close',
-                        contentType: 'v/errors',
-                        content: { exception: err.message }
-                    });
-
-                    return new Promise(function (_, reject) {
-                        return reject(results);
-                    });
-                }
-                if (!elem.vComponent || !elem.vComponent.respondTo('closeDialog')) {
-                    var _err = new Error('Element at node ' + _this2.elementId + ' does not contain a component that reponds to ' + 'the closeDialog() method. Are you targeting the correct element.');
-
-                    results.push({
-                        action: 'close_dialog',
-                        contentType: 'v/errors',
-                        content: { exception: _err.message }
-                    });
-
-                    return new Promise(function (_, reject) {
-                        return reject(results);
-                    });
-                }
-                elem.vComponent.closeDialog();
-
-                results.push({
-                    action: 'close_dialog',
-                    statusCode: 200
-                });
-
-                // Otherwise, proceed with the next action:
-                return resolve(results);
-            });
-        }
-    }]);
-
-    return VCloseDialog;
-}(__WEBPACK_IMPORTED_MODULE_0__base__["a" /* VBase */]);
 
 /***/ })
 /******/ ]);
