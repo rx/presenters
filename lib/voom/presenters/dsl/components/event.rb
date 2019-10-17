@@ -130,8 +130,13 @@ module Voom
             self << Actions::Clear.new(parent: self,
                                        params: params.merge(ids: ids), &block)
           end
-
           alias clears clear
+
+          def close_dialog(component_id, **params, &block)
+            self << Actions::CloseDialog.new(parent: self,
+                                        target: component_id,
+                                        params: params, &block)
+          end
 
           def stepper(navigate, **params, &block)
             self << Actions::Stepper.new(parent: self,

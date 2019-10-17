@@ -1,8 +1,5 @@
 <%
-  forms = comp.components.select {|c| eq(c.type, :form)}
-  form = forms.first
-  components = forms.size == 1 ? form.components.select {|c| !eq(c.type, :button)} : comp.components
-  buttons = forms.size == 1 ? form.components.select {|c| eq(c.type, :button)} : comp.buttons
+  dialog_action_buttons = Array(comp&.actions&.buttons)
 %>
 <div id="<%= comp.id %>"
      <% if comp.tag %>
@@ -33,27 +30,10 @@
 
       <div class="mdc-dialog__content" id="<%= comp.id %>-content">
         <div class="v-errors">
-          <% if forms.size == 1 %>
-            <form role="form"
-                  <% if form.tag %>
-                  data-input-tag="<%= form.tag %>"
-                  <% end %>
-                  id="<%= form.id %>"
-                  class="v-form"
-                  style='width: 100%'
-                  onsubmit="javascript:void(0);return false;"
-                  <%= erb :"components/event", :locals => {comp: form, events: form.events, parent_id: form.id} %>>
-          <% end %>
-          <% components.each do |dcomp| %>
-            <%= erb :"components/#{dcomp.type}", :locals => {:comp => dcomp} %>
-          <% end %>
-          <% if forms.size == 1 %>
-            </form>
-          <% end %>
-
-          <% if buttons.any? %>
+          <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
+          <% if dialog_action_buttons.any? %>
             <footer class="mdc-dialog__actions">
-              <% buttons.each do |button| %>
+              <% dialog_action_buttons.each do |button| %>
                 <%= erb :"components/button",
                         :locals => {:comp => button,
                                     :class_name => "mdc-dialog__button",

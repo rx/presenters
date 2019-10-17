@@ -34,10 +34,12 @@ Voom::Presenters.define(:progress) do
     dialog id: :progress_dlg do
       text 'dialog progress - bottom'
       progress position: :bottom
-      button :start do
-        event :click do
-          posts '/_slow_', seconds: 5
-          snackbar 'done'
+      actions do
+        button :start do
+          event :click do
+            posts '/_slow_', seconds: 5
+            snackbar 'done'
+          end
         end
       end
     end
