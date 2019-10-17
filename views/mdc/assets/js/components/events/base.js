@@ -82,7 +82,9 @@ export class VBase extends VUrls {
             }
         }
 
-        if (comp && comp.respondTo('inputs')) {
+        // If the caller requested tagged_inputs assume they only want those inputs posted and
+        // DO NOT include additional input from the component
+        if (comp && comp.respondTo('inputs') && !this.options.input_tag) {
             components.push(comp);
         }
 

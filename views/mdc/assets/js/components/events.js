@@ -7,6 +7,7 @@ import {VToggleVisibility} from './events/toggle_visibility';
 import {VPromptIfDirty} from './events/prompt_if_dirty';
 import {VSnackbarEvent} from './events/snackbar';
 import {VClears} from './events/clears';
+import {VCloseDialog} from './events/close_dialog';
 import {VRemoves} from './events/removes';
 import {VStepperEvent} from './events/stepper';
 import {VNavigates} from './events/navigates';
@@ -152,6 +153,8 @@ export class VEvents {
                 return new VSnackbarEvent(options, params, event, root);
             case 'clear':
                 return new VClears(options, params, event, root);
+            case 'close_dialog':
+                return new VCloseDialog(options, params, event, root);
             case 'stepper':
                 return new VStepperEvent(options, params, event, root);
             case 'navigates':
