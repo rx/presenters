@@ -56,9 +56,12 @@ export class VLoads extends VBase {
                 results.push({action: 'loads', statusCode: 200});
                 resolve(results);
             });
-            this.options['target'] === '_blank' ?
-                this.root.defaultView.open(url) :
-                this.root.defaultView.location = url;
+            // last_response can return NULL routes so we skip them
+            if (url) {
+                this.options['target'] === '_blank' ?
+                    this.root.defaultView.open(url) :
+                    this.root.defaultView.location = url;
+            }
         });
     }
 }

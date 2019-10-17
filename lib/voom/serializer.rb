@@ -23,7 +23,6 @@ module Voom
     def build_hash
       accessable = instance_variables.map {|i| i.to_s.gsub('@', '').to_sym} & methods
       accessable.reduce({}) do |hash, v|
-        trace {"#{v}:#{params.inspect}"}
         params = Parameters.new(method(v).parameters)
         unless params.required_args? || params.required_options?
           value = self.send(v)

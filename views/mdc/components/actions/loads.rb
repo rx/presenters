@@ -20,9 +20,7 @@ module WebClient
       end
 
       def expand_dynamic_parameters(opts)
-        opts.map
         opts.map { |k,v| [k, v.respond_to?(:dynamic_parameter) ? v.to_h : v] }.to_h
-
       end
     end
   end
