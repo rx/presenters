@@ -81,6 +81,10 @@ export class VDialog extends eventHandlerMixin(VBaseContainer) {
         this.mdcComponent.open();
     }
 
+    closeDialog() {
+        this.mdcComponent.close();
+    }
+
     close(action = '') {
         action = action || '';
 
