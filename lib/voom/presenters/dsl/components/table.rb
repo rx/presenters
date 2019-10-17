@@ -66,7 +66,7 @@ module Voom
 
             class Column < EventBase
               include Mixins::Tooltips
-              include Mixins::Chips
+              include Mixins::Chipset
               include Mixins::Selects
               include Mixins::Icons
               include Mixins::Content
