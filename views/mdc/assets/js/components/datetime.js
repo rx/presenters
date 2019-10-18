@@ -14,8 +14,12 @@ export class VDateTime extends VTextField {
         super(element, mdcComponent);
 
         const type = element.dataset.type;
+        const defaultConfig = {};
+        if (!this.root.documentElement) {
+          defaultConfig.appendTo = this.root.querySelector('.v-root');
+        }
         const config = Object.assign(
-            {},
+            defaultConfig,
             appConfig.get('component.datetime.flatpickr', {}),
             JSON.parse(element.dataset.config),
         );
