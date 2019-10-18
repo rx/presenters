@@ -8,11 +8,12 @@ module Voom
 
             def initialize(**attribs_, &block)
               super(type: :replaces, **attribs_, &block)
+              @host = @params.fetch(:host, false)
             end
 
             def url
               presenter = _expand_namespace_(options[:presenter], namespace)
-              @parent.router.url(render: presenter, command: options[:path], context: params)
+              @parent.router.url(render: presenter, command: options[:path], context: params, host: @host)
             end
           end
         end
