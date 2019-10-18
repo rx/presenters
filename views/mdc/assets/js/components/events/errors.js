@@ -200,7 +200,7 @@ export class VErrors {
             return false;
         }
 
-        const newDiv = this.root.createElement('div');
+        const newDiv = document.createElement('div');
 
         newDiv.classList.add('v-error-message');
         newDiv.insertAdjacentHTML('beforeend', messages.join('<br>'));
