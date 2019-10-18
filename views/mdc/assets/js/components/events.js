@@ -15,6 +15,7 @@ import {VNavigates} from './events/navigates';
 import {VPluginEventAction} from './events/plugin';
 import getRoot from './root_document';
 import {hasDragDropData, extractDragDropData} from './drag_n_drop';
+import {dispatchEventFromEvent} from './dispatch_event_from_event';
 
 const EVENTS_SELECTOR = '[data-events]';
 
@@ -57,7 +58,7 @@ export class VEvents {
             cancelable: false,
             detail: this,
         });
-        this.event.target.dispatchEvent(ev);
+        dispatchEventFromEvent(event, ev);
 
         if (this.vComponent) {
             this.vComponent.actionsStarted(this);
@@ -81,7 +82,7 @@ export class VEvents {
                 cancelable: false,
                 detail: this,
             });
-            this.event.target.dispatchEvent(ev);
+            dispatchEventFromEvent(event, ev);
 
             if (this.vComponent) {
                 this.vComponent.actionsSucceeded(this);
@@ -105,7 +106,7 @@ export class VEvents {
                 cancelable: false,
                 detail: this,
             });
-            this.event.target.dispatchEvent(ev);
+            dispatchEventFromEvent(event, ev);
 
             if (this.vComponent) {
                 this.vComponent.actionsHalted(this);
@@ -116,7 +117,7 @@ export class VEvents {
                 cancelable: false,
                 detail: this,
             });
-            this.event.target.dispatchEvent(ev);
+            dispatchEventFromEvent(event, ev);
 
             if (this.vComponent) {
                 this.vComponent.actionsFinished(this);

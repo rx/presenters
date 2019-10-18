@@ -2,6 +2,7 @@ import {VBase} from './base';
 import appConfig from '../../config';
 import {expandParams} from './action_parameter';
 import {encode} from './encode';
+import {dispatchEventFromEvent} from '../dispatch_event_from_event';
 
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
@@ -37,7 +38,7 @@ export class VPosts extends VBase {
             cancelable: false,
             detail: this,
         });
-        this.event.target.dispatchEvent(ev);
+        dispatchEventFromEvent(this.event, ev);
         // Manually build the FormData.
         // Passing in a <form> element (if available) would skip over
         // unchecked toggle elements, which would be unexpected if the user
@@ -125,7 +126,7 @@ export class VPosts extends VBase {
                         cancelable: false,
                         detail: {event: vEvent, result: result},
                     });
-                    vEvent.event.target.dispatchEvent(ev);
+                    dispatchEventFromEvent(vEvent.event, ev);
 
                     if (httpRequest.status >= 200 && httpRequest.status < 300) {
                         results.push(result);
@@ -150,7 +151,7 @@ export class VPosts extends VBase {
                         cancelable: false,
                         detail: {event: vEvent, result: result},
                     });
-                    vEvent.event.target.dispatchEvent(evFinished);
+                    dispatchEventFromEvent(vEvent.event, evFinished);
                 }
             };
             // Set up our request
