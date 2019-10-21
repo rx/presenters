@@ -13340,6 +13340,9 @@ button.mdc-chip {
   margin-left: 10px;
   position: relative; }
 
+.v-card-selected {
+  outline: medium solid #3f51b5; }
+
 .mdc-snackbar {
   z-index: 8;
   margin: 8px;
