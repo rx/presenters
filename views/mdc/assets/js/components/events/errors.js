@@ -217,7 +217,8 @@ export class VErrors {
 
     findNearestErrorDiv() {
         if (this.event && this.event.target) {
-            return this.event.target.closest('.v-errors');
+            const target = this.event.target.shadowRoot ? this.event.path[0] : this.event.target;
+            return target.closest('.v-errors');
         }
 
         return this.root.querySelector('.v-errors');
