@@ -3464,7 +3464,10 @@ var VBase = function (_VUrls) {
 
             // If the caller requested tagged_inputs assume they only want those inputs posted and
             // DO NOT include additional input from the component
-            if (comp && comp.respondTo('inputs') && !this.options.input_tag) {
+            // I reverted this temporarily as it caused some unintended behavior in. I am going to discuss with the dev
+            // team and revisit in a later release.
+            if (comp && comp.respondTo('inputs')) {
+                //} && !this.options.input_tag) {
                 components.push(comp);
             }
 
