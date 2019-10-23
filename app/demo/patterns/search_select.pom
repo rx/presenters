@@ -88,13 +88,15 @@ end
 Voom::Presenters.define(:completed_searches) do
   helpers Demo::Helpers::SearchSelectDemo
   content id: :completed_searches do
-    searches.each do |search|
-      chip color: :primary, name: 'searches[]', value: search, id: search do
-        text search
-        icon :delete, position: :right do
-          event :click do
-            remove search
-            replaces :ticket_list, :ticket_list, input_tag: :input_data_container
+    chipset do
+      searches.each do |search|
+        chip color: :primary, name: 'searches[]', value: search, id: search do
+          text search
+          icon :delete, position: :right do
+            event :click do
+              remove search
+              replaces :ticket_list, :ticket_list, input_tag: :input_data_container
+            end
           end
         end
       end
