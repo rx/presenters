@@ -11,7 +11,7 @@ module Voom
       end
 
       def url(render: nil, host: false, context:)
-        build_render_url(render,context.dup, host: host)
+        build_render_url(render, context.dup, host: host)
       end
 
       private
@@ -24,10 +24,12 @@ module Voom
       def build_render_url(render_, params, host:)
         return '#' unless render_
         render = render_.to_s
-        return render if render.start_with?('http')
-        render = render.gsub(':', '/')
-        seperator = render.start_with?('/') ? '' : '/'
-        url = "#{host ? base_url : nil}#{seperator}#{render}"
+        url = render
+        unless render.start_with?('http')
+          render = render.gsub(':', '/')
+          seperator = render.start_with?('/') ? '' : '/'
+          url = "#{host ? base_url : nil}#{seperator}#{render}"
+        end
         add_query_params(url, params)
       end
 
