@@ -11,7 +11,7 @@
 @import "components/list";
 @import "components/header";
 @import "components/drawer";
-@import "components/icon-toggles";
+@import "components/icon-button-toggles";
 @import "components/menu";
 @import "components/typography";
 @import "components/select";
@@ -25,17 +25,17 @@
 @import "components/progress";
 @import "components/tooltip";
 @import "components/drag_n_drop";
+@import "components/dialog";
+@import "components/data-table";
 
 // Custom
 @import "components/expansion-panel"; // MDL derivative
 //@import "components/table-pagination"; // WIP
 @import "components/avatar";
-@import "components/dialog";
 @import "components/switch";
 @import "components/image";
 @import "components/icon";
 @import "components/content";
-@import "components/data-table";
 @import "components/separator";
 @import "components/datetime";
 @import "components/file-input";

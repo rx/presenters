@@ -1,9 +1,12 @@
-<% class_name = '' unless local_variables.include? :class_name %>
+<% class_name = '' unless local_variables.include? :class_name
+   data_table_class_name = '' unless local_variables.include? :data_table_class_name
+%>
 <div class="v-form-field mdc-form-field">
   <div id="<%= comp.id %>"
        <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
        <% if comp.dirtyable %>data-dirtyable<% end %>
-       class="v-checkbox mdc-checkbox v-input">
+       class="v-checkbox mdc-checkbox v-input
+              <%= data_table_class_name %>">
     <input type="checkbox"
            id="<%= comp.id %>-input"
            name="<%= comp.name %>"

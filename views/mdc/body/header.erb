@@ -7,7 +7,7 @@
   <div class="mdc-top-app-bar__row">
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
       <% if drawer %>
-        <button class="material-icons mdc-top-app-bar__navigation-icon">menu</button>
+        <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
       <% end %>
       <span class="mdc-top-app-bar__title <%= 'v-actionable' if header.title&.events %>"
             <%= erb :"components/event", :locals => {comp: header, events: header.title&.events, parent_id: header.title&.event_parent_id} %>>

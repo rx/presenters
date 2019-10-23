@@ -1,4 +1,6 @@
-.mdl-data-table {
+@import "@material/data-table/mdc-data-table";
+
+.mdc-data-table {
   .mdc-list-item__graphic {
     margin-right: 0px;
   }
