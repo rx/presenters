@@ -15,7 +15,6 @@ Voom::Presenters.define(:chips) do
         text 'Chip 3', color: :white
       end
     end
-
     subheading 'leading icon'
     chipset do
       chip 'Jane Smith', icon: :face
@@ -24,7 +23,7 @@ Voom::Presenters.define(:chips) do
     subheading 'trailing icon'
     chipset do
       chip 'Jane Smith' do
-        icon :delete, position: :right
+        icon :more_vert, position: :right
       end
     end
 
@@ -32,20 +31,19 @@ Voom::Presenters.define(:chips) do
     chipset do
       chip 'Jane Smith' do
         icon :face, position: :left
-        icon :delete, position: :right
+        icon :more_vert, position: :right
       end
     end
-
     heading 'Events'
+
     chipset do
       chip 'Jane Smith' do
         icon :face, position: :left
-        icon :delete, position: :right
+        icon :more_vert, position: :right
         event :click do
           snackbar 'chip clicked!'
         end
       end
-
       chip do
         text 'Jane Smith' do
           event :click do
@@ -53,7 +51,7 @@ Voom::Presenters.define(:chips) do
           end
         end
         icon :face, position: :left
-        icon :delete, position: :right
+        icon :more_vert, position: :right
         event :click do
           snackbar 'chip clicked!'
         end
@@ -70,7 +68,7 @@ Voom::Presenters.define(:chips) do
             snackbar 'left icon clicked'
           end
         end
-        icon :delete, position: :right
+        icon :more_vert, position: :right
         event :click do
           snackbar 'chip clicked!'
         end
@@ -87,26 +85,12 @@ Voom::Presenters.define(:chips) do
             snackbar 'left icon clicked'
           end
         end
-        icon :delete, position: :right do
+        icon :more_vert, position: :right do
           event :click do
             snackbar 'right icon clicked'
           end
         end
       end
-    end
-
-    heading 'Choice'
-    chipset :choice do
-      chip 'Small', selected: true
-      chip 'Medium'
-      chip 'Large'
-    end
-
-    heading 'Filter'
-    chipset :filter do
-      chip 'Filter 1'
-      chip 'Filter 2'
-      chip 'Filter 3', selected: true
     end
 
     title 'Chips as input', id: :input_chips

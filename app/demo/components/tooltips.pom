@@ -5,7 +5,7 @@ Voom::Presenters.define(:tooltips) do
   attach :top_nav
   attach :component_drawer
   page_title 'Tooltips'
-
+  
   indented_grid do
     headline 'Avatars'
     subheading 'Cards'
@@ -86,9 +86,11 @@ Voom::Presenters.define(:tooltips) do
     radio_button do
       tooltip 'select it'
     end
-    icon_toggle 'format_italic' do
-      tooltip 'toggle it'
+
+    icon_toggle :star_border, on_icon: :star do
+      tooltip 'toggle it - uses on and off icons'
     end
+
     switch do
       tooltip 'switch it'
     end
@@ -98,7 +100,7 @@ Voom::Presenters.define(:tooltips) do
 
 
     headline 'Styles', level: 3
-
+    
     headline 'Headline' do
       tooltip 'I do nothing.'
     end

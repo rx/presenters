@@ -42,7 +42,7 @@ Voom::Presenters.define(:component_status) do
 
               ]
       table do
-        row do
+        header do
           items.each do |item|
             column color: item_color(item)
             column item[:text]
