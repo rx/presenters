@@ -27,60 +27,71 @@ Voom::Presenters.define(:tables) do
   end
 
   indented_grid do
-    grid do
-      column 12 do
-        content id: :drivers do
-          title 'Non-Selectable'
-          table do
-            header do
-              column 'Name'
-              column 'Team'
-              column 'Country'
-            end
-            drivers.each do |driver|
-              row do
-                column driver.name
-                column driver.team
-                column driver.country
-              end
-            end
-            pagination page_size: 5,
-                       total: drivers.count,
-                       current_page: context.fetch(:page){ 1 },
-                       replace_id: 'drivers',
-                       replace_presenter: 'drivers_presenter'
+    content padding: :bottom3 do
+      title 'Non-Selectable'
+      table do
+        header do
+          column 'Name'
+          column 'Team'
+          column 'Country'
+        end
+        drivers.each do |driver|
+          row do
+            column driver.name
+            column driver.team
+            column driver.country
+          end
+        end
+        pagination page_size: 5,
+                   total: drivers.count,
+                   current_page: context.fetch(:page) { 1 },
+                   replace_id: 'drivers',
+                   replace_presenter: 'drivers_presenter'
+      end
+    end
+
+    content padding: [:top3, :bottom3] do
+      title 'Headerless Table'
+      table do
+        drivers.each do |driver|
+          row do
+            column driver.name
+            column driver.team
+            column driver.country
           end
         end
       end
     end
 
-    form do
-      grid do
-        column 12 do
+    grid padding: :top3 do
+      column 6 do
+        form do
           title 'Selectable (with form)'
-          table selectable: true do
-            header do
-              column 'Material'
-              column 'Quantity'
-              column 'Unit price'
-            end
-            items.each do |item|
-              row name: :id, value: item.id do
-                column item.material
-                column item.quantity
-                column item.price
+          content padding: :bottom2 do
+            table selectable: true do
+              header do
+                column 'Material'
+                column 'Quantity'
+                column 'Unit price'
+              end
+              items.each do |item|
+                row name: :id, value: item.id do
+                  column item.material
+                  column item.quantity
+                  column item.price
+                end
               end
             end
           end
-        end
-        column 12 do
           button 'SUBMIT', type: :raised do
             event :click do
-              replaces  :context_list, :context_list
+              replaces :context_list, :context_list
             end
           end
-          attach :context_list
         end
+      end
+      column 6 do
+        attach :context_list
       end
     end
 
