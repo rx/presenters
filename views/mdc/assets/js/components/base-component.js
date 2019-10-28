@@ -49,6 +49,7 @@ export class VBaseComponent {
             bubbles: true,
             cancelable: false,
             detail: vEvent,
+            composed: true,
         });
         this.element.dispatchEvent(ev);
     }
@@ -59,6 +60,7 @@ export class VBaseComponent {
             bubbles: true,
             cancelable: false,
             detail: vEvent,
+            composed: true,
         });
         this.element.dispatchEvent(ev);
     }
@@ -68,6 +70,7 @@ export class VBaseComponent {
             bubbles: true,
             cancelable: false,
             detail: vEvent,
+            composed: true,
         });
         this.element.dispatchEvent(ev);
     }
@@ -77,6 +80,7 @@ export class VBaseComponent {
             bubbles: true,
             cancelable: false,
             detail: vEvent,
+            composed: true,
         });
         this.element.dispatchEvent(ev);
     }

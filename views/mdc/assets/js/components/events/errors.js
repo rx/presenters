@@ -1,4 +1,5 @@
 import 'core-js/features/array/flat';
+import {getEventTarget} from '../dispatch_event_from_event';
 
 /**
  * mapObject transforms an object's key-value pairs via the provided function.
@@ -217,7 +218,7 @@ export class VErrors {
 
     findNearestErrorDiv() {
         if (this.event && this.event.target) {
-            const target = this.event.target.shadowRoot ? this.event.path[0] : this.event.target;
+            const target = getEventTarget(this.event);
             return target.closest('.v-errors');
         }
 

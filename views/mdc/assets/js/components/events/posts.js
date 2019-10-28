@@ -37,6 +37,7 @@ export class VPosts extends VBase {
             bubbles: true,
             cancelable: false,
             detail: this,
+            composed: true,
         });
         dispatchEventFromEvent(this.event, ev);
         // Manually build the FormData.
@@ -125,6 +126,7 @@ export class VPosts extends VBase {
                         bubbles: true,
                         cancelable: false,
                         detail: {event: vEvent, result: result},
+                        composed: true,
                     });
                     dispatchEventFromEvent(vEvent.event, ev);
 
@@ -150,6 +152,7 @@ export class VPosts extends VBase {
                         bubbles: true,
                         cancelable: false,
                         detail: {event: vEvent, result: result},
+                        composed: true,
                     });
                     dispatchEventFromEvent(vEvent.event, evFinished);
                 }

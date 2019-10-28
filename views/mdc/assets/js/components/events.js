@@ -258,7 +258,7 @@ function fireAfterLoad(e) {
             var eventData = eventsData[j];
             var eventName = eventData[0];
             if (eventName === 'after_init') {
-                var event = new Event('after_init');
+                var event = new Event('after_init', { composed: true });
                 // Dispatch the event.
                 eventElem.dispatchEvent(event);
             }
