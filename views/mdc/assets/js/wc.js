@@ -34,11 +34,14 @@ class FlowMatic extends HTMLElement {
         oReq.addEventListener('load', (r) => {
             const template = document.createElement('template');
             template.innerHTML = oReq.responseText;
-            const templateContent = template.content;
 
             this.attachShadow({mode: 'open'}).
-                appendChild(templateContent.cloneNode(true));
-            initialize(this.shadowRoot, true);
+                appendChild(template.content);
+
+            this.loadScripts(this.shadowRoot)
+                .then(() => {
+                    initialize(this.shadowRoot, true);
+                });
 
             const event = new CustomEvent('flow-matic-loaded', { bubbles: true });
             this.dispatchEvent(event);
@@ -57,6 +60,44 @@ class FlowMatic extends HTMLElement {
             this.loadComponent();
         }
 
+    }
+
+    // Scripts that are part of the response and stuck into a template with innerHTML
+    // won't be parsed.  On top of that js from a plugin that has a remote dependency
+    // was being parsed before the remote script was loaded (everything was treated async).
+    // This function collects a promise for each remote script and once they're all loaded
+    // it adds the inline scripts.
+    loadScripts(root) {
+        const scripts = Array.from(root.querySelectorAll('script'));
+        const remoteScripts = scripts.filter((s) => { return s.hasAttribute('src'); });
+        const inlineScripts = scripts.filter((s) => { return !remoteScripts.includes(s); });
+        // load remote scripts
+        const remoteScriptPromises = remoteScripts.map((script) => {
+            return new Promise((resolve) => {
+                const newScript = this.loadScript(script);
+                newScript.addEventListener('load', () => {
+                  resolve();
+                });
+            });
+        });
+
+        // When all remote scripts are done, load inlines
+        return Promise.all(remoteScriptPromises).then(() => {
+            inlineScripts.forEach(this.loadScript);
+        });
+    }
+
+    // Browsers don't evaluate <script>s from innerHTML, so we need to add each of them.
+    // https://stackoverflow.com/questions/1197575/can-scripts-be-inserted-with-innerhtml
+    loadScript(script) {
+        const newScript = document.createElement('script');
+        for (var i = 0; i < script.attributes.length; i++) {
+            newScript.setAttribute(script.attributes[i].nodeName, script.attributes[i].nodeValue);
+        }
+        newScript.innerHTML = script.innerHTML;
+        document.head.appendChild(newScript);
+        document.head.removeChild(newScript);
+        return newScript;
     }
 }
 
