@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="<%= @base_url %>/<%= env['SCRIPT_NAME'] %>bundle.css">
   <script defer src="<%= @base_url %>/<%= env['SCRIPT_NAME'] %>bundle.js"></script>
   <%= plugin_headers(@pom) %>
-  <%= custom_css(env['REQUEST_PATH']) %>
+  <%= custom_css(env['REQUEST_PATH'], @base_url) %>
 </head>
 <body class="mdc-typography">
 <%

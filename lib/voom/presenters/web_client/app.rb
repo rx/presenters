@@ -118,8 +118,8 @@ module Voom
             PluginHeaders.new(pom: pom, render: method(:render)).render
           end
 
-          def custom_css(path)
-            CustomCss.new(path, root: Presenters::Settings.config.presenters.root).render
+          def custom_css(path, host=nil)
+            CustomCss.new(path, root: Presenters::Settings.config.presenters.root, host: host).render
           end
 
           def custom_js
