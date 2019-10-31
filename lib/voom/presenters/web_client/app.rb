@@ -169,6 +169,7 @@ module Voom
         post '/__post__/:presenter' do
           @pom = JSON.parse(request.body.read, object_class: OpenStruct)
           @grid_nesting = Integer(params[:grid_nesting] || 0)
+          @base_url = request.base_url
           layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
           erb :web, layout: layout
         end
