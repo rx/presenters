@@ -15,7 +15,7 @@ import {VNavigates} from './events/navigates';
 import {VPluginEventAction} from './events/plugin';
 import getRoot from './root_document';
 import {hasDragDropData, extractDragDropData} from './drag_n_drop';
-import {dispatchEventFromEvent} from './dispatch_event_from_event';
+import {getEventTarget} from './get_event_target';
 
 const EVENTS_SELECTOR = '[data-events]';
 
@@ -32,6 +32,7 @@ export class VEvents {
 
     call() {
         const event = this.event;
+        const target = getEventTarget(event);
         let eventParams = {};
 
         if (hasDragDropData(event)) {
@@ -58,7 +59,7 @@ export class VEvents {
             cancelable: false,
             detail: this,
         });
-        dispatchEventFromEvent(event, ev);
+        target.dispatchEvent(ev);
 
         if (this.vComponent) {
             this.vComponent.actionsStarted(this);
@@ -82,7 +83,7 @@ export class VEvents {
                 cancelable: false,
                 detail: this,
             });
-            dispatchEventFromEvent(event, ev);
+            target.dispatchEvent(ev);
 
             if (this.vComponent) {
                 this.vComponent.actionsSucceeded(this);
@@ -98,7 +99,7 @@ export class VEvents {
             }
 
             if (!result.squelch) {
-                new VErrors(this.root, this.event).displayErrors(result);
+                new VErrors(this.root, target).displayErrors(result);
             }
 
             const ev = new CustomEvent('V:eventsHalted', {
@@ -106,7 +107,7 @@ export class VEvents {
                 cancelable: false,
                 detail: this,
             });
-            dispatchEventFromEvent(event, ev);
+            target.dispatchEvent(ev);
 
             if (this.vComponent) {
                 this.vComponent.actionsHalted(this);
@@ -117,7 +118,7 @@ export class VEvents {
                 cancelable: false,
                 detail: this,
             });
-            dispatchEventFromEvent(event, ev);
+            target.dispatchEvent(ev);
 
             if (this.vComponent) {
                 this.vComponent.actionsFinished(this);

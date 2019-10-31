@@ -1,5 +1,4 @@
 import 'core-js/features/array/flat';
-import {getEventTarget} from '../dispatch_event_from_event';
 
 /**
  * mapObject transforms an object's key-value pairs via the provided function.
@@ -32,9 +31,9 @@ function mapObject(object, fn) {
  */
 
 export class VErrors {
-    constructor(root, event) {
+    constructor(root, target) {
         this.root = root;
-        this.event = event;
+        this.target = target;
     }
 
     clearErrors() {
@@ -217,9 +216,8 @@ export class VErrors {
     }
 
     findNearestErrorDiv() {
-        if (this.event && this.event.target) {
-            const target = getEventTarget(this.event);
-            return target.closest('.v-errors');
+        if (this.target) {
+            return this.target.closest('.v-errors');
         }
 
         return this.root.querySelector('.v-errors');
