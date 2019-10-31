@@ -46,21 +46,40 @@ module Voom
           end
           alias load loads
 
-          def replaces(target, presenter, input_tag: nil, **params, &block)
+          def replaces(target, presenter,
+                       input_tag: nil,
+                       insert: false,
+                       verb: :get,
+                       body: nil,
+                       encode_body: nil, # :json is valid
+                       **params, &block)
             self << Actions::Replaces.new(parent: self,
                                           target: target,
                                           presenter: presenter,
                                           input_tag: input_tag,
+                                          insert: insert,
+                                          verb: verb,
+                                          body: body,
+                                          encode_body: encode_body,
                                           params: params, &block)
           end
           alias replace replaces
 
-          def inserts(target, presenter, input_tag: nil, **params, &block)
+          def inserts(target, presenter,
+                      input_tag: nil,
+                      insert: true,
+                      verb: :get,
+                      body: nil,
+                      encode_body: nil, # :json is valid
+                      **params, &block)
             self << Actions::Replaces.new(parent: self,
                                           target: target,
                                           presenter: presenter,
                                           input_tag: input_tag,
-                                          insert: true,
+                                          insert: insert,
+                                          verb: verb,
+                                          body: body,
+                                          encode_body: encode_body,
                                           params: params, &block)
           end
           alias insert inserts

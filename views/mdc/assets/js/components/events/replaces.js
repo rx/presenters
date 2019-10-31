@@ -1,4 +1,5 @@
 import {expandParams} from './action_parameter';
+import {expandParam} from './action_parameter';
 import {VBase} from './base';
 import {initialize} from '../initialize';
 import {uninitialize} from '../uninitialize';
@@ -55,8 +56,14 @@ export class VReplaces extends VBase {
         const root = this.root;
         const elementId = this.element_id;
         const insert = this.options.insert;
+        const verb = this.options.verb.toUpperCase();
+        let body = this.options.body;
+        const encode_body = this.options.encode_body;
         const nodeToReplace = root.getElementById(elementId);
         const expandedParams = expandParams(results, this.params);
+        if (body) {
+            body = expandParam(results, body);
+        }
 
         const url = this.buildURL(this.url, expandedParams, this.inputValues(),
             eventParams,
@@ -136,10 +143,13 @@ export class VReplaces extends VBase {
                             }
                         }
                     };
-                    console.debug('GET:' + url);
-                    httpRequest.open('GET', url, true);
+                    console.debug(verb + ':' + url);
+                    httpRequest.open(verb, url, true);
                     httpRequest.setRequestHeader('X-NO-LAYOUT', true);
-                    httpRequest.send();
+                    if (encode_body === 'json') {
+                        body = JSON.stringify(body);
+                    }
+                    body ? httpRequest.send(body) : httpRequest.send();
                 }, delayAmt);
             }
         });

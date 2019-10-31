@@ -33,7 +33,8 @@ export class VEvents {
         let eventParams = {};
 
         if (hasDragDropData(event)) {
-            eventParams = Object.assign(eventParams, extractDragDropData(event));
+            eventParams = Object.assign(eventParams,
+                extractDragDropData(event));
         }
 
         // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries

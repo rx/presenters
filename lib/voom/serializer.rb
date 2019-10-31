@@ -27,7 +27,7 @@ module Voom
         unless params.required_args? || params.required_options?
           value = self.send(v)
           value = if value.kind_of?(Array)
-                    value.map {|v_| v_.respond_to?(:to_hash) ? v_.to_hash : v_}
+                    value.map {|v_| v_.respond_to?(:to_h) ? v_.to_h : v_}
                   elsif value.kind_of?(Hash)
                     value.map {|k, v_| v_.respond_to?(:to_hash) ? [k, v_.to_hash] : [k, v_]}.to_h
                   else

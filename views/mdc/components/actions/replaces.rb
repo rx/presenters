@@ -10,7 +10,10 @@ module WebClient
          action.options.to_h.merge({grid_nesting: grid_nesting,
                                     __parent_id__: parent_id,
                                     input_tag: action.options[:input_tag],
-                                    insert: action.insert}),
+                                    insert: action.insert,
+                                    verb: action.verb,
+                                    encode_body: action.encode_body})
+                            .merge(expand_hash(body: action.body)),
          expand_hash(action.dynamic_params)]
       end
     end
