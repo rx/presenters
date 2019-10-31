@@ -1,3 +1,5 @@
 export default function getRoot(element) {
-    return element.getRootNode();
+  if (element.parentNode === null) return element;
+
+  return getRoot(element.parentNode);
 }

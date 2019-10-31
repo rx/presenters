@@ -5,9 +5,15 @@ export function dispatchEventFromEvent(source, event) {
 
 export function getEventTarget(event) {
   if (typeof event.composedPath === 'function') {
-    const path = event.composedPath();
+    const compTarget = event.composedPath()[0];
 
-    return path[0] || event.path[0];
+    if (compTarget) {
+      return compTarget;
+    }
+
+    if (event.path && event.path[0]) {
+      return event.path[0];
+    }
   }
 
   return event.target;

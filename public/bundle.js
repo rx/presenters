@@ -6574,9 +6574,15 @@ function dispatchEventFromEvent(source, event) {
 
 function getEventTarget(event) {
   if (typeof event.composedPath === 'function') {
-    var path = event.composedPath();
+    var compTarget = event.composedPath()[0];
 
-    return path[0] || event.path[0];
+    if (compTarget) {
+      return compTarget;
+    }
+
+    if (event.path && event.path[0]) {
+      return event.path[0];
+    }
   }
 
   return event.target;
@@ -50004,7 +50010,9 @@ var VPluginEventAction = function () {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = getRoot;
 function getRoot(element) {
-    return element.getRootNode();
+  if (element.parentNode === null) return element;
+
+  return getRoot(element.parentNode);
 }
 
 /***/ }),
