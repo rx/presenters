@@ -12,7 +12,7 @@ export class VPluginEventAction {
         const options = this.options;
         const params = this.params;
         const event = this.event;
-        return this.root.defaultView[actionType](options, params, event,
+        return document.defaultView[actionType](options, params, event,
             results);
     }
 }

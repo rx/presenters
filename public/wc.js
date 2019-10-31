@@ -35458,7 +35458,7 @@ var VPluginEventAction = function () {
             var options = this.options;
             var params = this.params;
             var event = this.event;
-            return this.root.defaultView[actionType](options, params, event, results);
+            return document.defaultView[actionType](options, params, event, results);
         }
     }]);
 
