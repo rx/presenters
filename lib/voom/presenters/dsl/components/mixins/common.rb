@@ -10,6 +10,7 @@ require 'voom/presenters/dsl/components/mixins/google_maps'
 require 'voom/presenters/dsl/components/mixins/tab_bars'
 require 'voom/presenters/dsl/components/mixins/images'
 require 'voom/presenters/dsl/components/mixins/dialogs'
+require 'voom/presenters/dsl/components/mixins/tables'
 require 'voom/presenters/dsl/components/mixins/text_fields'
 
 module Voom
@@ -30,6 +31,7 @@ module Voom
             include Mixins::Images
             include Mixins::Dialogs
             include Mixins::TextFields
+            include Mixins::Tables
 
             def badge(badge=nil, **attributes, &block)
               self << Components::Badge.new(parent: self, badge: badge, **attributes, &block)
@@ -46,10 +48,6 @@ module Voom
             def list(**attributes, &block)
               self << Components::List.new(parent: self,
                                            **attributes, &block)
-            end
-
-            def table(**attributes, &block)
-              self << Components::Table.new(parent: self, **attributes, &block)
             end
 
             def avatar(avatar = nil, **attributes, &block)
