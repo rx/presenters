@@ -30,6 +30,11 @@ module Voom
             @options.select(&:_selected?).first&.value
           end
 
+          def hint(hint=nil)
+            return @hint if locked?
+            @hint = hint
+          end
+
           class Option < Base
             attr_reader :selected, :disabled
 
