@@ -1,20 +1,3 @@
-require 'voom/presenters/dsl/components/actions/loads'
-require 'voom/presenters/dsl/components/actions/replaces'
-require 'voom/presenters/dsl/components/actions/posts'
-require 'voom/presenters/dsl/components/actions/updates'
-require 'voom/presenters/dsl/components/actions/deletes'
-require 'voom/presenters/dsl/components/actions/remove'
-require 'voom/presenters/dsl/components/actions/dialog'
-require 'voom/presenters/dsl/components/actions/toggle_visibility'
-require 'voom/presenters/dsl/components/actions/prompt_if_dirty'
-require 'voom/presenters/dsl/components/actions/snackbar'
-require 'voom/presenters/dsl/components/actions/clear'
-require 'voom/presenters/dsl/components/actions/close_dialog'
-require 'voom/presenters/dsl/components/actions/navigates'
-require 'voom/presenters/dsl/components/actions/stepper'
-require 'voom/presenters/errors/parameter_validation'
-require_relative 'mixins/last_response'
-
 module Voom
   module Presenters
     module DSL
@@ -123,6 +106,14 @@ module Voom
           def snackbar(text, **params, &block)
             self << Actions::Snackbar.new(parent: self,
                                           params: params.merge(text: text), &block)
+          end
+
+          def autocomplete(path, **params, &block)
+            @actions << Actions::Autocomplete.new(parent: self,
+                                                 type: :autocomplete,
+                                                 path: path,
+                                                 target: "#{parent(:text_field).id}-list",
+                                                 params: params, &block)
           end
 
           def navigates(direction, **params, &block)

@@ -1,7 +1,7 @@
 import {expandParam} from './action_parameter';
 
 export class VSnackbarEvent {
-    constructor(options, params, event, root) {
+    constructor(options, params, event, root = document) {
         this.options = options;
         this.text = params.text;
         this.event = event;

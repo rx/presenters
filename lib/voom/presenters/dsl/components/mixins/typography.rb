@@ -1,5 +1,3 @@
-require 'voom/presenters/dsl/components/mixins/append'
-
 module Voom
   module Presenters
     module DSL

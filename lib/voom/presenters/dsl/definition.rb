@@ -1,5 +1,3 @@
-require 'voom/presenters/dsl/user_interface'
-
 module Voom
   module Presenters
     module DSL
@@ -13,7 +11,7 @@ module Voom
           @name = name
           @namespace = namespace
         end
-        
+
         def build
           self
         end

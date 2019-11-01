@@ -1,5 +1,3 @@
-require 'voom/presenters/dsl/components/input'
-
 module Voom
   module Presenters
     module DSL
@@ -30,6 +28,11 @@ module Voom
 
           def value
             @options.select(&:_selected?).first&.value
+          end
+
+          def hint(hint=nil)
+            return @hint if locked?
+            @hint = hint
           end
 
           class Option < Base

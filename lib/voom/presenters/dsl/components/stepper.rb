@@ -1,7 +1,3 @@
-require 'voom/presenters/helpers/errors'
-require 'voom/presenters/dsl/components/button'
-require 'voom/presenters/dsl/components/content'
-
 module Voom
   module Presenters
     module DSL

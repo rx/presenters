@@ -1,10 +1,3 @@
-require 'voom/presenters/dsl/components/mixins/common'
-require 'voom/presenters/dsl/components/mixins/event'
-require 'voom/presenters/dsl/components/mixins/tooltips'
-require 'voom/presenters/dsl/components/mixins/chipset'
-require 'voom/presenters/dsl/components/mixins/selects'
-require 'voom/presenters/dsl/components/mixins/icons'
-
 module Voom
   module Presenters
     module DSL
@@ -12,11 +5,12 @@ module Voom
         class Table < Base
           include Mixins::Common
           include Mixins::Event
-          attr_accessor :header, :rows, :selectable, :width
+          attr_accessor :header, :rows, :selectable, :width, :border
 
           def initialize(**attribs_, &block)
             super(type: :table, **attribs_, &block)
             @selectable = attribs.delete(:selectable)
+            @border = attribs.delete(:border){ true }
             @width = attribs.delete(:width)
             @rows = []
             expand!
@@ -25,6 +19,12 @@ module Voom
           def header(**attribs, &block)
             return @header if locked?
             @header = Row.new(parent: self, type: :header,
+                              **attribs, &block)
+          end
+
+          def footer(**attribs, &block)
+            return @footer if locked?
+            @footer = Row.new(parent: self, type: :footer,
                               **attribs, &block)
           end
 
@@ -69,9 +69,10 @@ module Voom
               include Mixins::Chipset
               include Mixins::Selects
               include Mixins::Icons
+              include Mixins::Typography
               include Mixins::Content
 
-              attr_accessor :align, :color, :components
+              attr_accessor :align, :color, :components, :colspan
 
               def initialize(**attribs_, &block)
                 super(type: :column, **attribs_, &block)
@@ -79,6 +80,7 @@ module Voom
                 @align = validate_alignment(attribs.delete(:align){numeric?(value) ? :right : :left})
                 self.value(value) if value
                 @color = attribs.delete(:color)
+                @colspan = attribs.delete(:colspan)
                 @components = []
                 expand!
               end

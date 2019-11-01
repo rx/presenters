@@ -1,10 +1,3 @@
-require 'voom/presenters/dsl/components/typography'
-require 'voom/presenters/dsl/components/mixins/grids'
-require 'voom/presenters/dsl/components/mixins/append'
-require 'voom/presenters/dsl/components/mixins/typography'
-require 'voom/presenters/dsl/components/mixins/icons'
-require 'voom/presenters/dsl/components/mixins/buttons'
-
 module Voom
   module Presenters
     module DSL

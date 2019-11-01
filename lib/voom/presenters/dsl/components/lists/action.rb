@@ -1,7 +1,3 @@
-require 'voom/presenters/dsl/components/icon'
-require 'voom/presenters/dsl/components/icon_toggle'
-
-
 module Voom
   module Presenters
     module DSL

@@ -1,5 +1,3 @@
-require 'voom/serializer'
-
 module Voom
   module Presenters
     module DSL

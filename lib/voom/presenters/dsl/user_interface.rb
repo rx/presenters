@@ -1,19 +1,4 @@
 require 'ice_nine'
-require 'voom/presenters/dsl/definer'
-require 'voom/presenters/dsl/components/mixins/common'
-require 'voom/presenters/dsl/components/mixins/helpers'
-require 'voom/presenters/dsl/components/mixins/dialogs'
-require 'voom/presenters/dsl/components/mixins/snackbars'
-require 'voom/presenters/dsl/components/mixins/text_fields'
-require 'voom/presenters/dsl/components/mixins/date_time_fields'
-require 'voom/presenters/dsl/components/mixins/attaches'
-require 'voom/presenters/dsl/components/mixins/event'
-require 'voom/presenters/dsl/invalid_presenter'
-require 'voom/presenters/pluggable'
-
-require 'voom/serializer'
-require 'voom/trace'
-
 
 module Voom
   module Presenters

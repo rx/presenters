@@ -1,4 +1,4 @@
-<div class="v-data-table mdc-data-table" style="<%= "width:#{comp.width};" if comp.width %>">
+<div class="v-data-table mdc-data-table <%= 'v-no-border' unless comp.border %>" style="<%= "width:#{comp.width};" if comp.width %>">
   <table class="mdc-data-table__table"
          <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id} %>>
     <% if comp.header %>

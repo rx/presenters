@@ -80,3 +80,12 @@
 .v-paging__count + .v-paging__next {
   margin-left: 68px;
 }
+
+.v-no-border {
+  border: none;
+  box-shadow: none;
+  tfoot td {
+    border-bottom: none;
+    border-top: none;
+  }
+}

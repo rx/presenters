@@ -1,11 +1,5 @@
 require 'securerandom'
 
-require 'voom/serializer'
-require 'voom/trace'
-require 'voom/presenters/dsl/lockable'
-require 'voom/presenters/dsl/components/mixins/yield_to'
-require 'voom/presenters/pluggable'
-
 module Voom
   module Presenters
     module DSL
