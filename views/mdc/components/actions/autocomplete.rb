@@ -1,4 +1,3 @@
-require_relative 'post'
 
 module WebClient
   module Actions

@@ -42,7 +42,7 @@ export class VAutoComplete extends VBase {
     }
 
     dataList() {
-        return document.getElementById(this.element_id);
+        return this.root.getElementById(this.element_id);
     }
 
     getData(funcProcessData) {
