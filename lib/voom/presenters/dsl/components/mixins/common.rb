@@ -16,6 +16,7 @@ module Voom
             include Mixins::Images
             include Mixins::ImageLists
             include Mixins::Dialogs
+            include Mixins::Tables
 
             def badge(badge=nil, **attributes, &block)
               self << Components::Badge.new(parent: self, badge: badge, **attributes, &block)
@@ -33,7 +34,7 @@ module Voom
               self << Components::List.new(parent: self,
                                            **attributes, &block)
             end
-
+            
             def table(**attributes, &block)
               self << Components::Table.new(parent: self, **attributes, &block)
             end

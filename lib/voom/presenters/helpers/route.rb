@@ -14,7 +14,7 @@ module Voom
 
         # Full qualified URL
         def presenters_url(presenter, **params)
-          presenters_path(presenter, host: true, **param)
+          presenters_path(presenter, host: true, **params)
         end
 
         alias presenter_url presenters_url
