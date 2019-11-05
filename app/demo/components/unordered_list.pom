@@ -1,0 +1,81 @@
+require_relative '../helpers/indented_grid'
+
+Voom::Presenters.define(:unordered_lists) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :component_drawer
+  page_title 'Unordered Lists'
+  helpers do
+    def actors
+      [OpenStruct.new(name: "Bryan Cranston", episodes: 62, body: 'Bryan Cranston played the role of Walter in Breaking Bad. He is also known for playing Hal in Malcom in the Middle.'),
+       OpenStruct.new(name: "Aaron Paul", episodes: 62, body: 'Aaron Paul played the role of Jesse in Breaking Bad. He also featured in the "Need For Speed" Movie'),
+       OpenStruct.new(name: "Bob Odenkirk", episodes: 62, body: 'Bob Odinkrik played the role of Saul in Breaking Bad. Due to public fondness for the character, Bob stars in his own show now, called "Better Call Saul".'),
+       OpenStruct.new(name: "Giancarlo Esposito", episodes: 24, body: 'Giancarlo Giuseppe Alessandro Esposito played the role of Gustavo "Gus" Fring on the AMC shows Breaking Bad and Better Call Saul.')]
+    end
+  end
+
+  indented_grid do
+
+    headline 'List with Default Bullets'
+    unordered_list do
+      actors.each do |actor|
+         list_item do
+          text actor.name
+        end
+      end
+    end
+
+    headline 'List with Numbers'
+    subtitle '_(Any valid `list-style` works)_'
+    unordered_list list_style: :decimal do
+      actors.each do |actor|
+        list_item do
+          text actor.name
+        end
+      end
+    end
+
+    headline 'Nested Lists'
+    unordered_list do
+      list_item do
+        text 'Breaking Bad'
+        unordered_list do
+          actors.each do |actor|
+            list_item {text actor.name}
+          end
+        end
+      end
+      list_item do
+        text 'The Wire'
+        unordered_list do
+          list_item { text 'Dominic West'}
+          list_item { text 'Wendell Pierce'}
+          list_item { text 'Michael K. Williams'}
+          list_item { text 'Sonja Sohn'}
+        end
+      end
+    end
+
+    headline 'List with Icons'
+    unordered_list do
+      list_item do
+        text 'Money'
+        icon :attach_money
+      end
+      list_item do
+        text 'No Money'
+        icon :money_off
+      end
+      list_item do
+        text 'Font Awesome'
+        icon 'fa-arrow-circle-right'
+      end
+      list_item do
+        text 'Cat'
+        icon 'fa-cat'
+      end
+    end
+
+  end
+
+end

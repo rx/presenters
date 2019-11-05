@@ -11,10 +11,10 @@ Voom::Presenters.define(:images) do
       image 'img/demo/welcome_card.jpg', width: 512, height: 176
 
       headline 'With a Border'
-      image 'img/demo/dog.png', border: 1
+      image 'img/demo/dog.png', border: '1px'
 
       headline 'With a Thick Border'
-      image 'img/demo/welcome_card.jpg', width: 512, height: 176, border: 10
+      image 'img/demo/welcome_card.jpg', width: 512, height: 176, border: '10px'
 
       headline 'Framed in a Circle'
       image 'img/demo/image_card.jpg', width: 200, height: 'auto', border_radius: '50%'

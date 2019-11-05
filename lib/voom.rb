@@ -13,13 +13,10 @@ end
 
 loader = Zeitwerk::Loader.for_gem
 loader.inflector = MyInflector.new(__FILE__)
-loader.ignore(__FILE__)
-# loader.logger = Logger.new($stderr)
-loader.reload
+#loader.logger = Logger.new($stderr)
+loader.setup
 
 module Voom
-  module Presenters
-  end
 end
 
 if defined?(::Rails)

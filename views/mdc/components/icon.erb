@@ -30,4 +30,5 @@
     <%= icon %>
   </i>
   <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+  <%= expand_text(comp.text) if comp.respond_to?(:text) %>
 <% end %>

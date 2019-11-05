@@ -1,5 +1,4 @@
 require 'uri'
-require 'voom/presenters/dsl/components/event_base'
 
 module Voom
   module Presenters

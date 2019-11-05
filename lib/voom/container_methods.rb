@@ -1,9 +1,8 @@
-require 'voom/symbol/to_str'
 require 'dry-container'
 
 module Voom
   module ContainerMethods
-    include Voom::Symbol
+    include Voom::Symbol::ToStr
 
     def registered_keys
       @registered_keys ||= []

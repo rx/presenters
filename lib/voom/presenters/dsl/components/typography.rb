@@ -1,6 +1,3 @@
-require 'voom/presenters/dsl/components/mixins/event'
-require 'voom/presenters/dsl/components/mixins/tooltips'
-
 module Voom
   module Presenters
     module DSL
@@ -20,6 +17,13 @@ module Voom
             @markdown = attribs.delete(:markdown) { true }
             expand!
           end
+
+          def icon(icon=nil, **attribs, &block)
+            return @icon if locked?
+            @icon = Components::Icon.new(parent: self, icon: icon,
+                                         **attribs, &block)
+          end
+
         end
       end
     end

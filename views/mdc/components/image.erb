@@ -8,7 +8,8 @@
           'min-height' => (comp.min_height if comp.min_height),
           'height' => (comp.height if comp.height),
           'max-height' => (comp.max_height if comp.max_height),
-          'border' => (comp.border if comp.border),
+          'border' => ("#{comp.border} solid" if comp.border),
+          'border-color' => (comp.border_color if comp.border_color),
           'border-radius' => (comp.border_radius if comp.border_radius),
           'object-position' => (position unless position.empty?)
      }.compact

@@ -1,7 +1,5 @@
-require 'voom/trace'
-include Voom::Trace
-trace {"Loading Presenters Settings"}
-require 'voom/presenters/helpers/route'
+#include Voom::Trace
+#trace {"Loading Presenters Settings"}
 require 'dry-configurable'
 
 unless defined?(Voom::Presenters::Settings)

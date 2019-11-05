@@ -1,11 +1,11 @@
 require 'sinatra/base'
-require 'voom/presenters/web_client/helpers/expand_hash'
 
 module Voom
   module Presenters
     module Demo
       class DragonDrop < Sinatra::Base
-        include ExpandHash
+        include Voom::Presenters::WebClient::Helpers::ExpandHash
+
         configure do
           enable :sessions
           set :session_secret, '0e53ba1da13aa8eb8cf3d361e67b70d79265edca'

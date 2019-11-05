@@ -1,0 +1,32 @@
+Voom::Presenters.define(:autocomplete_action) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :events_drawer
+
+  indented_grid do
+
+    heading 'Autocomplete'
+    title 'Work In Progress'
+    body 'Provides a text field that when typed into will fetch a set of items to select base on what was typed.',
+         'Useful for providing search clues as the user types.',
+         'The search command returned should either be an array of text terms found,
+              or optionally an id that will also be submitted using the same name as plus `_id` as the text field.'
+
+
+    heading 'Search'
+    content id: :search_field do
+      text_field name: :search, full_width: false do
+        label 'Search Silicon Valley'
+        event :input do
+          autocomplete '/_search_'
+        end
+        event :change do
+          replaces :context_list, :context_list, title: 'Search Results'
+        end
+      end
+    end
+    attach :context_list, title: 'Search Results'
+  end
+
+  attach :code, file: __FILE__
+end

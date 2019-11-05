@@ -1,5 +1,3 @@
-require 'voom/presenters/dsl/components/typography'
-
 module Voom::Presenters::DSL::Components
   class Link < Typography
 

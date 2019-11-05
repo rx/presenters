@@ -1,6 +1,3 @@
-require 'voom/presenters/dsl/components/base'
-require 'hash_ext/traverse'
-
 module Voom
   module Presenters
     module DSL
@@ -35,7 +32,7 @@ module Voom
             end
 
             def extract_dynamic_params(hash)
-              HashExt.traverse(hash) do |k, v|
+              HashExt::Traverse.traverse(hash) do |k, v|
                 if v.respond_to?(:dynamic_parameter)
                   [k, v.to_h]
                 elsif  v.respond_to?(:to_hash)
@@ -47,7 +44,7 @@ module Voom
             end
 
             def extract_params(hash)
-              HashExt.traverse(hash) do |k, v|
+              HashExt::Traverse.traverse(hash) do |k, v|
                 if v.respond_to?(:dynamic_parameter)
                   [nil, nil]
                 else

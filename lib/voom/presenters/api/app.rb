@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'honeybadger' if ENV.fetch('HONEYBADGER_API_KEY'){false}
 require 'json'
-require 'voom/presenters'
 require_relative 'router'
 require_relative 'render_presenter'
 

@@ -1,6 +1,3 @@
-require 'voom/presenters/helpers/errors'
-require 'voom/presenters/dsl/components/mixins/common'
-
 module Voom
   module Presenters
     module DSL

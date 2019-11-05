@@ -1,12 +1,3 @@
-require 'voom/presenters/dsl/components/lists/line'
-require 'voom/presenters/dsl/components/lists/separator'
-require 'voom/presenters/dsl/components/lists/header'
-require 'voom/presenters/dsl/components/mixins/content'
-require 'voom/presenters/dsl/components/mixins/append'
-require 'voom/presenters/dsl/components/mixins/attaches'
-require 'voom/presenters/dsl/components/mixins/event'
-require 'voom/presenters/dsl/components/mixins/dialogs'
-
 module Voom
   module Presenters
     module DSL

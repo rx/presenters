@@ -2,9 +2,6 @@
    @gutters ||= [true]
    # gutters once turned off are turned off for all nested grids
    @gutters.push comp.gutter.nil? ? @gutters.last : comp.gutter
-   def _alignment_class_(align)
-     "v-grid-column-align-#{align}"
-   end
 %>
 <div id="<%= comp.id %>"
      <% if comp.tag %>

@@ -1,0 +1,10 @@
+<ul id="<%= comp.id %>"
+  <% if comp.list_items.map{|li| li.icon ? 1 : 0}.sum > 0 %>
+    class="icon-ul"
+  <% else %>
+    style="<%= "list-style: #{comp.list_style}" if comp.list_style %>"
+  <% end %>>
+<% for item in comp.list_items %>
+  <%= erb :"components/unordered_list/list_item", :locals => {:list_item => item} %>
+<% end %>
+</ul>

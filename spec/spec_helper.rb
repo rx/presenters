@@ -7,7 +7,7 @@ SimpleCov.start
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 ENV['VOOM_ENV']='testing' unless ENV['VOOM_ENV']
-require 'voom-presenters'
+require 'voom'
 require 'rspec-html-matchers'
 
 require_relative 'support/directories'

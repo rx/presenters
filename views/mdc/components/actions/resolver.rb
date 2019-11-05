@@ -1,5 +1,4 @@
 require "dry/inflector"
-require 'voom/presenters/pluggable'
 
 module WebClient
   module Actions
