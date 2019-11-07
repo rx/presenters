@@ -19,7 +19,8 @@
        style="text-align: <%= comp.text_align %>;
              <%= "display: inline;" if comp.inline %>
              <%= "width: #{comp.width};" if comp.width %>
-             <%= "height : #{comp.height };" if comp.height  %>"
+             <%= "height : #{comp.height };" if comp.height  %>
+             <%= color_style(comp, 'background-', :background_color) %>"
        data-is-container>
     <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(top both)) %>
     <% if comp.shows_errors %>

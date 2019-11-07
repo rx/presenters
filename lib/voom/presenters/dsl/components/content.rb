@@ -27,7 +27,8 @@ module Voom
                       :position,
                       :text_align,
                       :padding,
-                      :inline
+                      :inline,
+                      :background_color
 
           def initialize(**attribs_, &block)
             super(type: :content, **attribs_, &block)
@@ -42,6 +43,7 @@ module Voom
             padding = attribs.delete(:padding) {nil}
             @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
             @inline = attribs.delete(:inline){false}
+            @background_color = attribs.delete(:background_color)
             expand!
           end
 
