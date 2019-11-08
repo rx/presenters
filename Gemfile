@@ -4,7 +4,12 @@ ruby `cat .ruby-version`
 # Specify your gem's dependencies in voom-console.gemspec
 gemspec
 
-gem 'pry', group: :development
+group :development do
+  gem 'byebug'
+  gem 'pry'
+  gem 'pry-byebug'
+end
+
 
 group :test do
   gem 'rspec'
