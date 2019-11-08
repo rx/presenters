@@ -49,46 +49,4 @@ describe Voom::Presenters::WebClient::App do
       end
     end
   end
-
-  describe 'POST' do
-    describe 'all pages' do
-      before do
-        @ids = {}
-        Voom::Presenters::Settings.configure do |config|
-          config.presenters.web_client.prepare_context =[]
-          config.presenters.id_generator = ->(node) {
-            id = @ids[node.type]||0
-            @ids[node.type] = id + 1
-            "id-#{id}"
-          }
-        end
-      end
-
-      it "render from pom" do
-        keys = Voom::Presenters::App.keys
-        keys.each do |key|
-          @ids.clear
-          presenter = Voom::Presenters::App[key].call
-          pom = presenter.expand(router: Voom::Presenters::WebClient::Router.new(base_url: ""), context: {'testing'=>true})
-
-          pom_json = JSON.dump(pom.to_h)
-          @ids.clear
-          response_pom = post("__post__/#{key}", pom_json, {"CONTENT_TYPE" => "application/json"})
-          pom = write_file(response_pom.body, 'response_pom.html')
-          expect(response_pom.status).to eq(200),pom
-
-          @ids.clear
-          response_get = get "/#{key}", 'testing'=>true
-          get = write_file(response_get.body, 'response_get.html')
-          expect(response_get.status).to eq(200),get
-          puts key
-
-
-          expect(response_pom.body).to eq(response_get.body), "#{key}: #{pom}\n#{get}"
-        end
-      end
-
-    end
-  end
-
 end
