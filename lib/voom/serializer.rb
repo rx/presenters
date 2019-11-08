@@ -31,7 +31,7 @@ module Voom
                   elsif value.kind_of?(Hash)
                     value.map {|k, v_| v_.respond_to?(:to_hash) ? [k, v_.to_hash] : [k, v_]}.to_h
                   else
-                    value.respond_to?(:to_hash) ? value.to_hash : value
+                    value.respond_to?(:to_h) ? value.to_h : value
                   end
           hash[v]= value
         end
