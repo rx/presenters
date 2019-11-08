@@ -101,7 +101,7 @@ module Voom
           end
 
           class Actions < Base
-            attr_accessor :buttons, :switches
+            attr_reader :buttons, :switches
 
             def initialize(**attribs_, &block)
               super(type: :action, **attribs_, &block)
