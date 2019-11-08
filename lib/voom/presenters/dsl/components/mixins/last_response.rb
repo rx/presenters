@@ -11,16 +11,13 @@ module Voom
             class ActionParameter
               include Voom::Serializer
 
-              attr_reader :type, :response_index, :value
+              attr_reader :type, :response_index, :value, :dynamic_parameter
 
               def initialize(index=0)
                 @value = []
                 @type = :action_parameter
                 @response_index = index
-              end
-
-              def dynamic_parameter
-                true
+                @dynamic_parameter = true
               end
 
               def type
