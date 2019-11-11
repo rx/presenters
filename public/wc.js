@@ -33727,7 +33727,7 @@ var VLoads = function (_VBase) {
                     results.push({ action: 'loads', statusCode: 200 });
                     resolve(results);
                 });
-                _this2.options['target'] === '_blank' ? _this2.root.defaultView.open(url) : _this2.root.defaultView.location = url;
+                _this2.options['target'] === '_blank' ? document.defaultView.open(url) : document.defaultView.location = url;
             });
         }
     }]);
