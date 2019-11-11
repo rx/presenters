@@ -84,8 +84,9 @@ module Voom
             "v-color__#{comp.color}"
           end
 
-          def color_style(comp, affects = nil)
-            "#{affects}color: #{comp.color};" unless %w(primary secondary).include?(comp.color.to_s) || comp.color.nil?
+          def color_style(comp, affects = nil, color_attr = :color)
+            color = comp.public_send(color_attr)
+            "#{affects}color: #{color};" unless %w(primary secondary).include?(color.to_s) || color.nil?
           end
 
           def snake_to_camel(hash, except: [])

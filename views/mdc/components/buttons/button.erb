@@ -12,7 +12,7 @@
          <%=  position_classes %>
          <%= 'v-menu-click' if comp.menu%>
          <%= 'v-nowrap' unless comp.wrap_text%>"
-         style = "<%= color_style(comp) %>"
+         style="<%= color_style(comp) %> <%= color_style(comp, 'background-', :background_color) %>"
          <%= data_attributes %>
 <%= 'disabled ' if comp.disabled %>
 <%= "type='#{eq(comp.button_type, :raised) ? 'submit' : 'button'}'" %>
