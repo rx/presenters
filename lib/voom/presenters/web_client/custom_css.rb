@@ -6,12 +6,13 @@ module Voom
       # It then looks for public/presenters/#{env['REQUEST_PATH']}.css
       class CustomCss
 
-        attr_reader :path, :root
-        private :path, :root
+        attr_reader :path, :root, :host
+        private :path, :root, :host
 
-        def initialize(path, root:)
+        def initialize(path, root:, host:)
           @path = path
           @root = root
+          @host = host
         end
 
         def render
@@ -45,7 +46,7 @@ module Voom
 
         def _build_css_link_(path)
           (<<~CSS)
-            <link rel="stylesheet" type="text/css" href="#{path.sub('public/', '')}">
+            <link rel="stylesheet" type="text/css" href="#{host}/#{path.sub('public/', '')}">
           CSS
         end
       end

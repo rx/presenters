@@ -12,10 +12,10 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
   <!-- Place favicon.ico in the root directory -->
   <!--MDC-->
-  <link rel="stylesheet" href="<%= env['SCRIPT_NAME'] %>bundle.css">
-  <script defer src="<%= env['SCRIPT_NAME'] %>bundle.js"></script>
+  <link rel="stylesheet" href="<%= @base_url %>/<%= env['SCRIPT_NAME'] %>bundle.css">
+  <script defer src="<%= @base_url %>/<%= env['SCRIPT_NAME'] %>bundle.js"></script>
   <%= plugin_headers(@pom) %>
-  <%= custom_css(env['REQUEST_PATH']) %>
+  <%= custom_css(env['REQUEST_PATH'], @base_url) %>
 </head>
 <body class="mdc-typography">
 <%
@@ -28,7 +28,7 @@
   root_classes << 'v-root--drawer-present' if drawer
   root_classes << 'v-root--footer-present' if footer
 %>
-<div class="v-root compatibility-wrapper <%= root_classes.join(' ') %>">
+<div class="v-root compatibility-wrapper mdc-typography <%= root_classes.join(' ') %>">
 
 <% if drawer %>
   <div class="drawer-frame-root">

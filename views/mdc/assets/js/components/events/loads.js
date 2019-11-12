@@ -55,8 +55,8 @@ export class VLoads extends VBase {
                 resolve(results);
             });
             this.options['target'] === '_blank' ?
-                this.root.defaultView.open(url) :
-                this.root.defaultView.location = url;
+                document.defaultView.open(url) :
+                document.defaultView.location = url;
         });
     }
 }

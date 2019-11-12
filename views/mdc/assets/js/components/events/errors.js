@@ -31,9 +31,9 @@ function mapObject(object, fn) {
  */
 
 export class VErrors {
-    constructor(root, event) {
+    constructor(root, target) {
         this.root = root;
-        this.event = event;
+        this.target = target;
     }
 
     clearErrors() {
@@ -200,7 +200,7 @@ export class VErrors {
             return false;
         }
 
-        const newDiv = this.root.createElement('div');
+        const newDiv = document.createElement('div');
 
         newDiv.classList.add('v-error-message');
         newDiv.insertAdjacentHTML('beforeend', messages.join('<br>'));
@@ -216,8 +216,8 @@ export class VErrors {
     }
 
     findNearestErrorDiv() {
-        if (this.event && this.event.target) {
-            return this.event.target.closest('.v-errors');
+        if (this.target) {
+            return this.target.closest('.v-errors');
         }
 
         return this.root.querySelector('.v-errors');

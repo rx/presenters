@@ -9,7 +9,7 @@ const KEYBOARD_DELAY_AMOUNT = 500; // ms
 // Create a NodeList from raw HTML.
 // Whitespace is trimmed to avoid creating superfluous text nodes.
 function htmlToNodes(html, root = document) {
-    const template = root.createElement('template');
+    const template = document.createElement('template');
 
     template.innerHTML = html.trim();
 

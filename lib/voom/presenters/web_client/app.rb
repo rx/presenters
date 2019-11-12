@@ -84,8 +84,9 @@ module Voom
             "v-color__#{comp.color}"
           end
 
-          def color_style(comp, affects = nil)
-            "#{affects}color: #{comp.color};" unless %w(primary secondary).include?(comp.color.to_s) || comp.color.nil?
+          def color_style(comp, affects = nil, color_attr = :color)
+            color = comp.public_send(color_attr)
+            "#{affects}color: #{color};" unless %w(primary secondary).include?(color.to_s) || color.nil?
           end
 
           def snake_to_camel(hash, except: [])
@@ -118,8 +119,8 @@ module Voom
             PluginHeaders.new(pom: pom, render: method(:render)).render
           end
 
-          def custom_css(path)
-            CustomCss.new(path, root: Presenters::Settings.config.presenters.root).render
+          def custom_css(path, host=nil)
+            CustomCss.new(path, root: Presenters::Settings.config.presenters.root, host: host).render
           end
 
           def custom_js
@@ -169,6 +170,7 @@ module Voom
         post '/__post__/:presenter' do
           @pom = JSON.parse(request.body.read, object_class: OpenStruct)
           @grid_nesting = Integer(params[:grid_nesting] || 0)
+          @base_url = request.base_url
           layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
           erb :web, layout: layout
         end
@@ -181,6 +183,7 @@ module Voom
 
           begin
             @pom = presenter.expand(router: router, context: prepare_context)
+            @base_url = request.base_url
             layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
             response.headers['X-Frame-Options'] = 'ALLOWALL' if ENV['ALLOWALL_FRAME_OPTIONS']
             erb :web, layout: layout

@@ -15,6 +15,7 @@ import {VNavigates} from './events/navigates';
 import {VPluginEventAction} from './events/plugin';
 import getRoot from './root_document';
 import {hasDragDropData, extractDragDropData} from './drag_n_drop';
+import {getEventTarget} from './get_event_target';
 
 const EVENTS_SELECTOR = '[data-events]';
 
@@ -31,6 +32,7 @@ export class VEvents {
 
     call() {
         const event = this.event;
+        const target = getEventTarget(event);
         let eventParams = {};
 
         if (hasDragDropData(event)) {
@@ -57,7 +59,7 @@ export class VEvents {
             cancelable: false,
             detail: this,
         });
-        this.event.target.dispatchEvent(ev);
+        target.dispatchEvent(ev);
 
         if (this.vComponent) {
             this.vComponent.actionsStarted(this);
@@ -81,7 +83,7 @@ export class VEvents {
                 cancelable: false,
                 detail: this,
             });
-            this.event.target.dispatchEvent(ev);
+            target.dispatchEvent(ev);
 
             if (this.vComponent) {
                 this.vComponent.actionsSucceeded(this);
@@ -97,7 +99,7 @@ export class VEvents {
             }
 
             if (!result.squelch) {
-                new VErrors(this.root, this.event).displayErrors(result);
+                new VErrors(this.root, target).displayErrors(result);
             }
 
             const ev = new CustomEvent('V:eventsHalted', {
@@ -105,7 +107,7 @@ export class VEvents {
                 cancelable: false,
                 detail: this,
             });
-            this.event.target.dispatchEvent(ev);
+            target.dispatchEvent(ev);
 
             if (this.vComponent) {
                 this.vComponent.actionsHalted(this);
@@ -116,7 +118,7 @@ export class VEvents {
                 cancelable: false,
                 detail: this,
             });
-            this.event.target.dispatchEvent(ev);
+            target.dispatchEvent(ev);
 
             if (this.vComponent) {
                 this.vComponent.actionsFinished(this);
@@ -257,7 +259,7 @@ function fireAfterLoad(e) {
             var eventData = eventsData[j];
             var eventName = eventData[0];
             if (eventName === 'after_init') {
-                var event = new Event('after_init');
+                var event = new Event('after_init', { composed: true });
                 // Dispatch the event.
                 eventElem.dispatchEvent(event);
             }
