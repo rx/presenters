@@ -68,6 +68,12 @@ class FlowMatic extends HTMLElement {
     // This function collects a promise for each remote script and once they're all loaded
     // it adds the inline scripts.
     loadScripts(root) {
+        if (window.FLOW_MATIC_SCRIPTS_LOADED) {
+          return Promise.resolve();
+        } else {
+          window.FLOW_MATIC_SCRIPTS_LOADED = true;
+        }
+
         const scripts = Array.from(root.querySelectorAll('script'));
         const remoteScripts = scripts.filter((s) => { return s.hasAttribute('src'); });
         const inlineScripts = scripts.filter((s) => { return !remoteScripts.includes(s); });
