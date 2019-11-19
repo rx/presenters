@@ -28978,6 +28978,12 @@ var FlowMatic = function (_HTMLElement) {
         value: function loadScripts(root) {
             var _this3 = this;
 
+            if (window.FLOW_MATIC_SCRIPTS_LOADED) {
+                return Promise.resolve();
+            } else {
+                window.FLOW_MATIC_SCRIPTS_LOADED = true;
+            }
+
             var scripts = Array.from(root.querySelectorAll('script'));
             var remoteScripts = scripts.filter(function (s) {
                 return s.hasAttribute('src');
