@@ -40,6 +40,13 @@ Voom::Presenters.define(:number_fields) do
       label 'Amount'
       icon :attach_money, position: :right
     end
+    blank
+
+    title 'Read Only'
+    number_field name: :readonly, readonly: true do
+      label 'Amount'
+      value '500'
+    end
 
     attach :code, file: __FILE__
   end

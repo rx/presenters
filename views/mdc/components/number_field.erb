@@ -19,6 +19,7 @@
            <%= "min='#{comp.min}'" if comp.min %>
            <%= "max='#{comp.max}'" if comp.max %>
            <%= "step='#{comp.step}'" if comp.step %>
+           <%= 'readonly' if comp.readonly %>
            value="<%= comp.value %>"
            class="mdc-text-field__input"
            aria-controls="<%= comp.id %>-input-helper-text"
