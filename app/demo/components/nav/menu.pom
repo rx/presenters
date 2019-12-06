@@ -24,6 +24,7 @@ Voom::Presenters.define('component_menu') do
       image_lists
       layouts
       lists
+      number_fields
       maps
       menus
       progress
