@@ -1,0 +1,53 @@
+require_relative '../helpers/indented_grid'
+
+Voom::Presenters.define(:number_fields) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :component_drawer
+  page_title 'Number Fields'
+
+  indented_grid do
+
+    title 'Basic'
+    number_field name: :text do
+      label 'Enter a number'
+      hint 'Enter text or scroll to your desired number'
+    end
+    blank
+
+    title 'Min/Max/Step'
+    number_field name: :min_max, min: 0, max: 100, step: 5 do
+      label 'Min/Max/Step'
+      hint 'Arrows will step in increments of 5'
+    end
+    blank
+
+    title 'Decimals'
+    number_field name: :decimal, min: 1.0, max: 100, step: 0.01 do
+      label 'Decimal'
+      hint 'Arrows will step in increments of .01'
+    end
+    blank
+
+    title 'With Leading Icon'
+    number_field name: :amount do
+      label 'Amount'
+      icon :attach_money, position: :left
+    end
+
+    title 'With Trailing Icon'
+    number_field name: :amount2 do
+      label 'Amount'
+      icon :attach_money, position: :right
+    end
+    blank
+
+    title 'Read Only'
+    number_field name: :readonly, readonly: true do
+      label 'Amount'
+      value '500'
+    end
+
+    attach :code, file: __FILE__
+  end
+end
