@@ -3,17 +3,20 @@ require 'honeybadger' if ENV['HONEYBADGER_API_KEY']
 require 'uri'
 require 'redcarpet'
 require 'dry/inflector'
+require 'voom/truthy'
 
 module Voom
   module Presenters
     module WebClient
       class App < Sinatra::Base
         include Trace
+        extend Truthy
         set :root, File.expand_path('../../../../..', __FILE__)
         set :router_, WebClient::Router
         set :bind, '0.0.0.0'
         set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE'] || 'mdc')}
         set :dump_errors, false
+        set :protection, :except => :frame_options if truthy?(ENV['PRESENTERS_DISABLE_X_FRAME_OPTIONS'])
         configure do
           enable :logging
         end
