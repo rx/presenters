@@ -13,10 +13,23 @@ Voom::Presenters.define(:text_fields) do
       label 'Text...'
     end
 
-    title 'Password'
-
-    text_field name: :password, password: true do
-      label 'Password'
+    title 'Restricted Input'
+    grid do
+      column 3 do
+        text_field name: :password, password: true do
+          label 'Password'
+        end
+      end
+      column 3 do
+        text_field name: :upper, case_type: :upper do
+          label 'Upper Only'
+        end
+      end
+      column 3 do
+        text_field name: :lower, case_type: :lower do
+          label 'Lower Only'
+        end
+      end
     end
 
     headline 'Numeric'

@@ -11,6 +11,7 @@
             <%= 'mdc-text-field--with-trailing-icon' if trailing_icon %>
             <%= 'mdc-text-field--disabled' if comp.disabled %>
             <%= 'is-invalid is-dirty' if comp.error %>"
+            data-case_type="<%= comp.case_type %>"
        style="<%= 'width:100%' if comp.full_width %>">
 
     <input id="<%= comp.id %>-input"

@@ -31,6 +31,12 @@ export class VTextField extends dirtyableMixin(
             }, AFTER_INPUT_TIMEOUT)
         });
 
+        let caseType = element.dataset.case_type;
+        if(caseType !== 'mixed'){
+            this.input.addEventListener('keyup', (e) => {
+                this.forceCase(caseType);
+            });
+        }
         this.originalValue = this.value();
     }
 
@@ -124,5 +130,13 @@ export class VTextField extends dirtyableMixin(
     isHidden() {
         const style = window.getComputedStyle(this.element);
         return (style.display === 'none');
+    }
+
+    forceCase(caseType){
+        if (caseType === 'upper') {
+            this.input.value = this.input.value.toUpperCase();
+        } else if (caseType === 'lower') {
+            this.input.value = this.input.value.toLowerCase();
+        }
     }
 }
