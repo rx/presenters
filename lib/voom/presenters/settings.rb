@@ -30,6 +30,7 @@ unless defined?(Voom::Presenters::Settings)
             setting :prepare_context, []
             # Relative to the root
             setting :custom_css, '../public/presenters'
+            setting :protect_from_forgery, false
           end
           setting :plugins, [:google_maps]
           setting :components do

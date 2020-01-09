@@ -58,6 +58,13 @@ export class VPosts extends VBase {
             }
         }
 
+        // Add CSRF authenticity token if present
+        const csrf_meta_token = document.querySelector('meta[name=csrf-token]');
+        const csrf_meta_param = document.querySelector('meta[name=csrf-param]');
+        if (csrf_meta_token && csrf_meta_param) {
+            formData.append(csrf_meta_param.content, csrf_meta_token.content);
+        }
+
         // Add params from presenter:
         const expandedParams = expandParams(results, this.params);
 

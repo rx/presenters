@@ -16,6 +16,7 @@
   <script defer src="<%= @base_url %>/<%= env['SCRIPT_NAME'] %>bundle.js"></script>
   <%= plugin_headers(@pom) %>
   <%= custom_css(env['REQUEST_PATH'], @base_url) %>
+  <%= @pom.csrf_meta_tags %>
 </head>
 <body class="mdc-typography">
 <%
