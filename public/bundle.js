@@ -48899,6 +48899,8 @@ var VReplaces = function (_VBase) {
     _createClass(VReplaces, [{
         key: 'call',
         value: function call(results) {
+            var _this2 = this;
+
             var eventParams = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
             this.clearErrors();
@@ -48909,10 +48911,10 @@ var VReplaces = function (_VBase) {
             var nodeToReplace = root.getElementById(elementId);
             var expandedParams = Object(__WEBPACK_IMPORTED_MODULE_0__action_parameter__["b" /* expandParams */])(results, this.params);
 
-            var paramsCollection = [expandedParams, eventParams, [['grid_nesting', this.options.grid_nesting]]];
-            if (this.options.include_input_values) {
-                paramsCollection.push(this.inputValues());
-            }
+            var inputVals = this.inputValues().filter(function (vals) {
+                return _this2.options.ignore_input_values.indexOf(vals[0]) == -1;
+            });
+            var paramsCollection = [expandedParams, eventParams, inputVals, [['grid_nesting', this.options.grid_nesting]]];
 
             var url = this.buildURL.apply(this, [this.url].concat(paramsCollection));
             var delayAmt = delayAmount(this.event);
