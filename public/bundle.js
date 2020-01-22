@@ -48909,7 +48909,12 @@ var VReplaces = function (_VBase) {
             var nodeToReplace = root.getElementById(elementId);
             var expandedParams = Object(__WEBPACK_IMPORTED_MODULE_0__action_parameter__["b" /* expandParams */])(results, this.params);
 
-            var url = this.buildURL(this.url, expandedParams, this.inputValues(), eventParams, [['grid_nesting', this.options.grid_nesting]]);
+            var paramsCollection = [expandedParams, eventParams, [['grid_nesting', this.options.grid_nesting]]];
+            if (this.options.include_input_values) {
+                paramsCollection.push(this.inputValues());
+            }
+
+            var url = this.buildURL.apply(this, [this.url].concat(paramsCollection));
             var delayAmt = delayAmount(this.event);
 
             return new Promise(function (resolve, reject) {

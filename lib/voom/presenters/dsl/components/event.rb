@@ -28,11 +28,12 @@ module Voom
                                        params: params, &block)
           end
 
-          def replaces(target, presenter, input_tag: nil, **params, &block)
+          def replaces(target, presenter, input_tag: nil, include_input_values: true, **params, &block)
             self << Actions::Replaces.new(parent: self,
                                           target: target,
                                           presenter: presenter,
                                           input_tag: input_tag,
+                                          include_input_values: include_input_values,
                                           params: params, &block)
           end
 
