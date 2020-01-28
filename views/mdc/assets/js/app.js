@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     require('material-design-lite/material');
     require('./mdl-stepper');
-    require('babel-polyfill');
+    require('idempotent-babel-polyfill');
 
     require('./components/initialize').initialize(document, true);
 

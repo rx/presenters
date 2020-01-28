@@ -40,9 +40,9 @@ export class VRichTextArea extends dirtyableMixin(eventHandlerMixin(VBaseCompone
             modules: {toolbar: toolbarOptions},
             bounds: this.quillWrapper,
             theme: 'snow',
-            placeholder: this.quillWrapper.dataset.placeholder
+            placeholder: this.quillWrapper.dataset.placeholder,
         });
-        this.fixedUpContentElement = element.querySelector('.v-rich-text-area--fixed-up-content')
+        this.fixedUpContentElement = element.querySelector('.v-rich-text-area--fixed-up-content');
         this.quillEditor = this.quillWrapper.querySelector('.ql-editor');
 
         if (element.hasAttribute('disabled')) {
