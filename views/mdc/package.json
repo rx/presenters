@@ -66,7 +66,7 @@
     "idempotent-babel-polyfill": "^7.4.4",
     "material-design-lite": "^1.3.0",
     "mdl-stepper": "^1.1.6",
-    "npm": "^6.11.3",
+    "npm": "^6.13.4",
     "quill": "^1.3.7",
     "url-parse": "^1.4.4"
   },
