@@ -1,3 +1,5 @@
+require 'base64'
+
 module Voom
   module Presenters
     module DSL
@@ -7,6 +9,7 @@ module Voom
         AUTHENTICITY_TOKEN_LENGTH = 32
 
         def authenticity_token_meta_tags(session)
+          return unless session
           [
               '<meta name="csrf-param" content="authenticity_token">',
               "<meta name=\"csrf-token\" content=\"#{form_authenticity_token(session)}\">"

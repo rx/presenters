@@ -28,7 +28,7 @@ module Voom
         def initialize(context:, parent: nil, router: nil, name: nil, namespace: [], &block)
           @parent = parent
           @router = router || @parent&.send(:router)
-          @context = context
+          @context = context || {}
           @block = block
           @header = nil
           @drawer = nil
@@ -37,7 +37,7 @@ module Voom
           @name = name
           @namespace = namespace
           @plugins = []
-          @csrf_meta_tags = authenticity_token_meta_tags(@context[:session])
+          @csrf_meta_tags = authenticity_token_meta_tags(@context.fetch(:session, nil))
           add_global_helpers
           initialize_plugins
         end
