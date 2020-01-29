@@ -6,10 +6,11 @@ module Voom
           class Line < EventBase
             extend Gem::Deprecate
             include Mixins::Tooltips
+            include Mixins::Dialogs
 
             CHECKBOX_ATTRIBUTES = %i[name value checked dirtyable value off_value].freeze
 
-            attr_accessor :selected, :selectable
+            attr_accessor :selected, :selectable, :components
 
             def initialize(**attribs_, &block)
               super(type: :line, **attribs_, &block)
@@ -27,7 +28,7 @@ module Voom
               elsif attribs.key?(:checkbox)
                 self.checkbox(attribs.delete(:checkbox))
               end
-
+              @components = []
               @actions = []
               expand!
             end

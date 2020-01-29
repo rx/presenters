@@ -43,3 +43,4 @@
 </div>
 <%end%>
 <%= erb :"components/tooltip", :locals => {comp: line.tooltip, parent_id: line.id} %>
+<%= erb :"components/render", :locals => {:components => line.components, :scope => nil} %>
