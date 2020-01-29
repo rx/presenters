@@ -9,7 +9,7 @@ module Voom
         def authenticity_token_meta_tags(session)
           [
               '<meta name="csrf-param" content="authenticity_token">',
-              "<meta name=\"csrf-token\" content=\"#{form_authenticity_token(session)}\""
+              "<meta name=\"csrf-token\" content=\"#{form_authenticity_token(session)}\">"
           ].join("\n").html_safe
         end
 
