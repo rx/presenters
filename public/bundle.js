@@ -48600,6 +48600,13 @@ var VPosts = function (_VBase) {
                 }
             }
 
+            // Add CSRF authenticity token if present
+            var csrf_meta_token = document.querySelector('meta[name=csrf-token]');
+            var csrf_meta_param = document.querySelector('meta[name=csrf-param]');
+            if (csrf_meta_token && csrf_meta_param) {
+                formData.append(csrf_meta_param.content, csrf_meta_token.content);
+            }
+
             // Add params from presenter:
             var expandedParams = Object(__WEBPACK_IMPORTED_MODULE_2__action_parameter__["b" /* expandParams */])(results, this.params);
 
