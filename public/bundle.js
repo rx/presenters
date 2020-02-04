@@ -53240,6 +53240,7 @@ var VRichTextArea = function (_dirtyableMixin) {
     _createClass(VRichTextArea, [{
         key: "prepareSubmit",
         value: function prepareSubmit(params) {
+            params.push(['rich_text_payload', 'true']);
             params.push([this.name(), this.value()]);
         }
     }, {
