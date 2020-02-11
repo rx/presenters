@@ -182,7 +182,18 @@ module Voom
           @grid_nesting = Integer(params[:grid_nesting] || 0)
 
           begin
-            @pom = presenter.expand(router: router, context: prepare_context)
+            before_render = Presenters::Settings.config.presenters.before_render
+            render_instead, ctx = before_render
+                                    .lazy
+                                    .map { |p| p.call(request) }
+                                    .detect(&:itself)
+
+            if Presenters::App.registered?(render_instead)
+              presenter = Presenters::App[render_instead].call
+            end
+
+            p = params.merge(ctx || {})
+            @pom = presenter.expand(router: router, context: prepare_context(p))
             @base_url = request.base_url
             layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
             response.headers['X-Frame-Options'] = 'ALLOWALL' if ENV['ALLOWALL_FRAME_OPTIONS']
@@ -206,10 +217,10 @@ module Voom
           settings.router_.new(base_url: "#{request.base_url}")
         end
 
-        def prepare_context
+        def prepare_context(base_params = params)
           prepare_context = Presenters::Settings.config.presenters.web_client.prepare_context.dup
           prepare_context.push(method(:scrub_context))
-          context = params.dup
+          context = base_params.dup
           prepare_context.reduce(context) do |params, context_proc|
             context = context_proc.call(params, session, env)
           end

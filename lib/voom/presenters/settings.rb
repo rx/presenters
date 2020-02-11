@@ -69,6 +69,7 @@ unless defined?(Voom::Presenters::Settings)
             ].join("\n\t")
             file.puts(msg)
           }
+          setting :before_render, [] # an array of `#call`ables
         end
 
         def self.default(type, key)
