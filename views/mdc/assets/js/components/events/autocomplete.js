@@ -4,8 +4,8 @@ import {VBase} from './base';
 // The elementId is a datalist
 // The url is called as a GET expecting json back
 export class VAutoComplete extends VBase {
-    constructor(options, url, params, event) {
-        super(options);
+    constructor(options, url, params, event, root) {
+        super(options, root);
         this.element_id = options.target;
         this.url = url;
         this.params = params;

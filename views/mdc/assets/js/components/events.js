@@ -154,7 +154,7 @@ export class VEvents {
             case 'snackbar':
                 return new VSnackbarEvent(options, params, event, root);
             case 'autocomplete':
-                return new VAutoComplete(options, url, params, event);
+                return new VAutoComplete(options, url, params, event, root);
             case 'clear':
                 return new VClears(options, params, event, root);
             case 'close_dialog':
