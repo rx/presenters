@@ -34129,6 +34129,10 @@ var VPosts = function (_VBase) {
                 throw new Error('Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
             }
 
+            if (formData.has('rich_text_payload')) {
+                callHeaders['X-Rich-Text-Payload'] = true;
+            }
+
             var snackbarCallback = function snackbarCallback(contentType, response) {
                 var element = root.querySelector('.mdc-snackbar');
 
@@ -38714,6 +38718,7 @@ var VRichTextArea = function (_dirtyableMixin) {
     _createClass(VRichTextArea, [{
         key: "prepareSubmit",
         value: function prepareSubmit(params) {
+            params.push(['rich_text_payload', 'true']);
             params.push([this.name(), this.value()]);
         }
     }, {
