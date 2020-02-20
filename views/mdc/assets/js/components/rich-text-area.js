@@ -60,6 +60,7 @@ export class VRichTextArea extends dirtyableMixin(eventHandlerMixin(VBaseCompone
     }
 
     prepareSubmit(params) {
+        params.push(['rich_text_payload', 'true']);
         params.push([this.name(), this.value()]);
     }
 

@@ -91,6 +91,10 @@ export class VPosts extends VBase {
                 'Cannot talk to server! Please upgrade your browser to one that supports XMLHttpRequest.');
         }
 
+        if (formData.has('rich_text_payload')) {
+            callHeaders['X-Rich-Text-Payload'] = true;
+        }
+
         const snackbarCallback = function(contentType, response) {
             const element = root.querySelector('.mdc-snackbar');
 
