@@ -20,5 +20,9 @@ export class VTypography extends eventHandlerMixin(VBaseComponent) {
     clear() {
         this.element.innerText = '';
     }
+
+    value() {
+        return this.element.innerText;
+    }
 }
 

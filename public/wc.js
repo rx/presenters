@@ -44919,6 +44919,11 @@ var VTypography = function (_eventHandlerMixin) {
         value: function clear() {
             this.element.innerText = '';
         }
+    }, {
+        key: 'value',
+        value: function value() {
+            return this.element.innerText;
+        }
     }]);
 
     return VTypography;
