@@ -159,7 +159,7 @@ module Voom
 
             def button(icon_name, page, replace_id = @replace_id, replace_presenter = @replace_presenter)
               __attribs__ = attribs.merge({page: page, page_size: @page_size})
-              Components::Icon.new(parent: self, icon: icon_name) do
+              Components::Button.new(parent: self, type: :icon, icon: icon_name) do
                 event :click do
                    replaces replace_id, replace_presenter, __attribs__
                 end
