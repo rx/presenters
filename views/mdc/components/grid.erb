@@ -1,38 +1,40 @@
 <% @grid_nesting += 1
-   def _padding_array_(padding, nesting)
-     return (%i(top0 right0 bottom0 left0)-padding.map{|p|"#{p}0".to_sym}+padding.map(&:to_sym)).sort if padding
-     nesting >1 ? %i(top right0 bottom left0).sort : []
-   end
-
-   def _padding_classes_(padding, nesting, grid_or_column)
-     "v-#{grid_or_column}__padding-#{_padding_array_(padding, nesting).join('-')}"
-   end
+   @gutters ||= [true]
+   # gutters once turned off are turned off for all nested grids
+   @gutters.push comp.gutter.nil? ? @gutters.last : comp.gutter
 %>
 <div id="<%= comp.id %>"
      <% if comp.tag %>
      data-input-tag="<%= comp.tag %>"
      <% end %>
      class="v-grid mdc-layout-grid
-            <%= _padding_classes_(comp.padding, @grid_nesting, :grid) %>
+            <%= _padding_classes_(comp.padding, @grid_nesting) %>
             <%= 'v-grid__wide' if comp.wide %>"
-     style="<%= "background-color: #{comp.color};" if comp.color %>">
-  <% unless @grid_nesting>1 %>
-  <% end %>
+     style="<%= "background-color: #{comp.color};" if comp.color %><%= "height:#{comp.height};" if comp.height %>"
+     <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
+  <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(top both))%>
 
-  <div class="mdc-layout-grid__inner">
+  <div class="<%= @gutters.last ? nil : 'v-gutter-none' %> mdc-layout-grid__inner"
+       style="<%= "height:#{comp.height};" if comp.height %>">
     <% comp.columns.each do |col|
       span = "mdc-layout-grid__cell--span-#{col.size}"
       %i(desktop tablet phone).each do |device|
         span << " mdc-layout-grid__cell--span-#{col.send(device)}-#{device}" if col.send(device)
       end
-    %>
+     %>
       <div id="<%= col.id %>" class="v-column mdc-layout-grid__cell <%= span %>
-                          <%= _padding_classes_(col.padding, 0, :col) %> v-column--relative"
-           style="<%= "background-color: #{col.color};" if col.color %>">
+                          <%= col.overflow ? nil : 'v-column-hide-overflow' %>
+                          <%= _padding_classes_(col.padding) %> v-column--relative <%= _alignment_class_(col.align) %>"
+           style="<%= "background-color: #{col.color};" if col.color %><%= "height:#{comp.height};" if comp.height %>"
+           <%= erb :"components/event", :locals => {comp: col, events: col.events, parent_id: col.event_parent_id} %>>
+        <%= erb(:"components/progress", :locals => {:comp => col.progress}) if col.progress && includes_one?(Array(col.progress.position), %i(top both))%>
         <%= erb :"components/render", :locals => {:components => col.components, :scope => nil} %>
+        <%= erb(:"components/progress", :locals => {:comp => col.progress}) if col.progress && includes_one?(Array(col.progress.position), %i(bottom both))%>
       </div>
     <% end %>
   </div>
+  <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(bottom both))%>
 </div>
 <% @grid_nesting -= 1
+   @gutters.pop
 %>

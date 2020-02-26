@@ -1,12 +1,10 @@
-require 'voom/presenters/dsl/components/text_field'
-
 module Voom
   module Presenters
     module DSL
       module Components
         class TextArea < TextField
           attr_reader :rows, :cols
-          
+
           def initialize(**attribs_, &block)
             super(type: :text_area, **attribs_, &block)
             @rows = attribs.delete(:rows) || default(:rows)

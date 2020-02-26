@@ -1,24 +1,31 @@
-require 'voom/presenters/dsl/components/mixins/common'
-require 'voom/presenters/dsl/components/mixins/attaches'
-require 'voom/presenters/dsl/components/mixins/steppers'
-require 'voom/presenters/dsl/components/mixins/sliders'
-
 module Voom
   module Presenters
     module DSL
       module Components
-        class Dialog < Base
+        class Dialog < EventBase
           include Mixins::Common
           include Mixins::Attaches
           include Mixins::Steppers
           include Mixins::Sliders
+          include Mixins::Event
+          include Mixins::Progress
 
-          attr_accessor :width, :height, :buttons, :components, :shows_errors
+          attr_accessor :percent_width,
+                        :percent_height,
+                        :px_width,
+                        :px_height,
+                        :buttons,
+                        :components,
+                        :shows_errors
 
           def initialize(**attribs_, &block)
             super(type: :dialog, **attribs_, &block)
-            @width = attribs.delete(:width)
-            @height = attribs.delete(:height)
+            width = attribs.delete(:width)
+            height = attribs.delete(:height)
+            @percent_width = width&.end_with?("%") ? width : nil
+            @percent_height = height&.end_with?("%") ? height : nil
+            @px_width = !width&.end_with?("%") ? width : nil
+            @px_height = !height&.end_with?("%") ? height : nil
             @shows_errors = attribs.delete(:shows_errors){true}
 
             @buttons = []
@@ -29,7 +36,7 @@ module Voom
           def title(*title, **options, &block)
             return @title if locked?
             @title = Components::Typography.new(parent: self, type: :title,
-                                                text: title, 
+                                                text: title,
                                                                  **options, &block)
           end
 
@@ -45,10 +52,27 @@ module Voom
                                                      **options, &block)
           end
 
-          def button(text=nil, **attribs, &block)
-            @buttons << Button.new(parent: self, text: text,
+          def actions(**attribs, &block)
+            return @actions if locked?
+            @actions = Actions.new(parent: self,
                                    **attribs, &block)
           end
+
+          class Actions < Base
+            attr_accessor :buttons
+
+            def initialize(**attribs_, &block)
+              super(type: :action, **attribs_, &block)
+              @buttons = []
+              expand!
+            end
+
+            def button(text = nil, **options, &block)
+              @buttons << Components::Button.new(parent: self, text: text,
+                                                 **options, &block)
+            end
+          end
+
         end
       end
     end

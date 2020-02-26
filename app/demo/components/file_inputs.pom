@@ -7,9 +7,45 @@ Voom::Presenters.define(:file_inputs) do
   page_title 'File Inputs'
 
   indented_grid do
-    form do
-      file_input name: :upload
+
+    file_input name: :event_image, preview: [:preview_id, :filename] do
+      grid do
+        column 6 do
+          card do
+            image width: 200, id: :preview_id
+              text id: :filename
+            text 'Drag and drop or click this button to upload'
+            button icon: :cloud_upload
+          end
+        end
+        column 6 do
+        end
+      end
     end
+
+
+    title 'Simple'
+    file_input name: :upload
+
+    title 'With image preview'
+    file_input preview: :image_id, accept: 'image/png, image/jpeg, image/gif, image/svg+xml'
+    image 'http://geotix.com/application/files/3514/5564/7308/MyNorthTicketsLogo.png', width: 100, id: :image_id
+
+    title 'With image button preview'
+    file_input preview: :button_id, accept: 'image/png, image/jpeg, image/gif, image/svg+xml'
+    button type: :image, id: :button_id do
+      image 'http://geotix.com/application/files/3514/5564/7308/MyNorthTicketsLogo.png'
+    end
+    text 'Note: it binds to the button id, not the nested image id.'
+
+    title 'With text_area preview'
+    file_input preview: :text_area_id, accept: 'text/plain, text/markdown'
+    text_area id: :text_area_id
+
+    title 'With image and file_name preview'
+    file_input preview: [:text_area_id2, :filename_id], accept: 'text/plain, text/markdown'
+    subtitle2 id: :filename_id
+    text_area id: :text_area_id2
 
     attach :code, file: __FILE__
   end

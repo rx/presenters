@@ -1,20 +1,17 @@
-require 'voom/presenters/dsl/components/mixins/common'
-require 'voom/presenters/dsl/components/mixins/event'
-require 'voom/presenters/dsl/components/mixins/tooltips'
-require 'voom/presenters/dsl/components/mixins/chips'
-require 'voom/presenters/dsl/components/mixins/selects'
-require 'voom/presenters/dsl/components/mixins/icons'
-
 module Voom
   module Presenters
     module DSL
       module Components
         class Table < Base
-          attr_accessor :header, :rows, :selectable
+          include Mixins::Common
+          include Mixins::Event
+          attr_accessor :header, :rows, :selectable, :width, :border
 
           def initialize(**attribs_, &block)
             super(type: :table, **attribs_, &block)
             @selectable = attribs.delete(:selectable)
+            @border = attribs.delete(:border){ true }
+            @width = attribs.delete(:width)
             @rows = []
             expand!
           end
@@ -22,6 +19,12 @@ module Voom
           def header(**attribs, &block)
             return @header if locked?
             @header = Row.new(parent: self, type: :header,
+                              **attribs, &block)
+          end
+
+          def footer(**attribs, &block)
+            return @footer if locked?
+            @footer = Row.new(parent: self, type: :footer,
                               **attribs, &block)
           end
 
@@ -63,33 +66,47 @@ module Voom
 
             class Column < EventBase
               include Mixins::Tooltips
-              include Mixins::Chips
+              include Mixins::Chipset
               include Mixins::Selects
               include Mixins::Icons
+              include Mixins::Typography
+              include Mixins::Content
 
-              attr_accessor :numeric, :color, :components
+              attr_accessor :align, :color, :components, :colspan
 
               def initialize(**attribs_, &block)
                 super(type: :column, **attribs_, &block)
                 value = attribs.delete(:value)
-                @numeric = attribs.delete(:numeric){numeric?(value)}
+                @align = validate_alignment(attribs.delete(:align){numeric?(value) ? :right : :left})
                 self.value(value) if value
                 @color = attribs.delete(:color)
+                @colspan = attribs.delete(:colspan)
                 @components = []
                 expand!
               end
 
               def value(*value, **attribs, &block)
                 return @value if locked?
-                @numeric = numeric?(*value) if value.size ==1
                 @value = Components::Typography.new(parent: self, type: :text, text: value, **attribs, &block)
               end
 
               private
+              VALID_ALIGNMENTS = %i[left center right].freeze
+
               def numeric?(value)
                 return true if value.is_a? Numeric
                 (value.to_s.strip.sub(/\D/, '') =~ /^[\$]?[-+]?(,?[0-9])*\.?[0-9]+$/) != nil
               end
+
+              def validate_alignment(value)
+                return :left if value.nil?
+                unless VALID_ALIGNMENTS.include?(value.to_sym)
+                  raise Errors::ParameterValidation,
+                        "Invalid column alignment! Valid alignements include #{VALID_ALIGNMENTS.join(', ')}"
+                end
+                value
+              end
+
             end
 
           end
@@ -142,7 +159,7 @@ module Voom
 
             def button(icon_name, page, replace_id = @replace_id, replace_presenter = @replace_presenter)
               __attribs__ = attribs.merge({page: page, page_size: @page_size})
-              Components::Icon.new(parent: self, icon: icon_name) do
+              Components::Button.new(parent: self, type: :icon, icon: icon_name) do
                 event :click do
                    replaces replace_id, replace_presenter, __attribs__
                 end

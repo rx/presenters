@@ -1,39 +1,14 @@
-import {VBaseComponent, hookupComponents} from './base-component';
-import {eventHandlerMixin} from "./mixins/event-handler";
+import {hookupComponents} from './base-component';
+import {VBaseToggle} from './base-toggle';
 import {MDCRadio} from "@material/radio";
 
-export function initRadios() {
-    console.log('\tRadios');
-    hookupComponents('.v-radio', VRadio, MDCRadio);
+export function initRadios(e) {
+    console.debug('\tRadios');
+    hookupComponents(e, '.v-radio', VRadio, MDCRadio);
 }
 
-export class VRadio extends eventHandlerMixin(VBaseComponent) {
+export class VRadio extends VBaseToggle {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
-        this.input = element.querySelector('input');
     }
-
-    prepareSubmit(params) {
-        if(this.input.checked) {
-            params.push([this.name(), this.value()]);
-        }
-    }
-
-    name(){
-        return this.input.name;
-    }
-
-    value(){
-        return this.input.value;
-    }
-
-    clear(){
-        this.setValue('');
-    }
-
-    setValue(value){
-        this.input.value = value;
-    }
-
-
 }

@@ -1,41 +1,101 @@
 require_relative '../helpers/indented_grid'
 
+Voom::Presenters.define(:static_header, namespace: :headers) do
+  helpers Demo::Helpers::IndentedGrid
+
+  attach :component_drawer
+
+  indented_grid do
+    text 'The **static header** disappears when scrolling.'
+    text 'It is the default header type and will never cover page content.'
+    text 'You can expand the **Show Source** area below to see it in action.'
+  end
+
+  header title: 'Static Header', placement: :static do
+    nav do
+      item 'Headers' do
+        event :click do
+          loads '/headers'
+        end
+      end
+    end
+  end
+
+  indented_grid do
+    headline 'Headers'
+    
+    attach :code, file: __FILE__
+  end
+end
+
+Voom::Presenters.define(:fixed_header, namespace: :headers) do
+  helpers Demo::Helpers::IndentedGrid
+
+  attach :component_drawer
+
+  indented_grid do
+    text 'The **fixed header** remains fixed to the top of the viewport when scrolling.'
+    text 'A header can be made fixed via `placement: :fixed`, and can cover page content.'
+    text 'You can expand the **Show Source** area below to see it in action.'
+  end
+
+  header title: 'Fixed Header', placement: :fixed do
+    nav do
+      item 'Headers' do
+        event :click do
+          loads '/headers'
+        end
+      end
+    end
+  end
+
+  indented_grid do
+    headline 'Headers'
+    
+    attach :code, file: __FILE__
+  end
+end
+
 Voom::Presenters.define(:headers) do
   helpers Demo::Helpers::IndentedGrid
   
   attach :top_nav
   attach :component_drawer
 
-
   header 'Presenters Demo' do
     nav do
       item 'About (Header)' do
-              event :click do
-                loads :index
-              end
-            end
+        event :click do
+          loads :index
+        end
+      end
 
-            item 'Components (Header)' do
-              event :click do
-                loads :components
-              end
-            end
+      item 'Components (Header)' do
+        event :click do
+          loads :components
+        end
+      end
 
-            item 'Styles (Header)' do
-              event :click do
-                loads :styles
-              end
-            end
+      item 'Styles (Header)' do
+        event :click do
+          loads :styles
+        end
+      end
     end
   end
+
   page_title 'Page about headers' do
     icon :subtitles
   end
 
-
   indented_grid do
     headline 'Headers'
-    
+
+    text '* [Static](/headers/static_header): Hides when the viewport is scrolled'
+    text '* [Fixed](/headers/fixed_header): Remains fixed at the top of the viewport'
+  end
+
+  indented_grid do
     attach :code, file: __FILE__
   end
 end

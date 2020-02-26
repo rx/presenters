@@ -5,7 +5,7 @@ Voom::Presenters.define(:icons) do
 
   helpers do
     def small_card(&block)
-      card height: '100px', width: '100px' do
+      card height: '100px', width: '100%' do
         yield_to(&block) # Special method that yields in the correct binding context
       end
     end
@@ -16,65 +16,96 @@ Voom::Presenters.define(:icons) do
     column 10 do
       body 'An icon is commonly used on a menu, button, chip, list or card. They can be used standalone as well.'
 
-      headline 'Plain'
-      title 'Material design icons'
-      body 'By default the icon name will be assumed to be [material design](https://material.io/icons/).'
-      icon :thumb_up
-
-      title 'Font awesome icons'
-      body "[Font awesome](https://fontawesome.com/icons?d=gallery) icons can also be used."\
-         'You provide the font awesome class.'
-      body 'For example: `fa-thumbs-up`:', level: 2
-      icon 'fa-thumbs-up'
-      body 'You can also optionally add the font awesome style prefix, if not provided it defaults to `fas` (solid).', level: 2
-      body 'For example: `far fa-thumbs-up`:', level: 2
-      icon 'far fa-thumbs-up'
-
-
-      headline 'Color'
-      title 'primary'
-      icon :thumb_up, color: :primary
-      title 'secondary'
-      icon :thumb_up, color: :secondary
-      title 'custom'
-      icon :thumb_up, color: :hotpink
-
-      headline 'Size'
-      body 'You can specify the size of an icon'
-      icon :thumb_up, color: :hotpink, size: '64px'
-
-      title 'Position'
-      body "'Icon's can be positioned to left, right, top, and bottom"
+      grid do
+        column 12 do
+          headline 'Plain'
+          subtitle 'Material design icons'
+          body 'By default the icon name will be assumed to be [material design](https://material.io/icons/).'
+          icon :thumb_up
+        end
+      end
 
       grid do
-        column 1 do
-          small_card do
-            icon :face, position: :left
-          end
+        column 12 do
+          headline 'Font awesome icons'
+          body "[Font awesome](https://fontawesome.com/icons?d=gallery) icons can also be used."\
+             'You provide the font awesome class.'
+          body 'For example: `fa-thumbs-up`:', level: 2
+          icon 'fa-thumbs-up'
+          body 'You can also optionally add the font awesome style prefix, if not provided it defaults to `fas` (solid).', level: 2
+          body 'For example: `far fa-thumbs-up`:', level: 2
+          icon 'far fa-thumbs-up'
         end
-        column 1 do
-          small_card do
-            icon :face, position: :right
-          end
+      end
+
+      grid do
+        column 12 do
+          headline 'Color'
+          body '**primary**'
+          icon :thumb_up, color: :primary
+          body '**secondary**'
+          icon :thumb_up, color: :secondary
+          body '**custom from palette**'
+          icon :thumb_up, color: :red
+          body '**custom**'
+          icon :thumb_up, color: :hotpink
         end
-        column 1 do
-          small_card do
-            icon :face, position: :top
-          end
+      end
+
+      grid do
+        column 12 do
+          headline 'Size'
+          body 'You can specify the size of an icon'
+          subtitle '**x-small**'
+          icon :thumb_up, size: 'x-small'
+          subtitle '**small**'
+          icon :thumb_up, size: 'small'
+          subtitle '**medium** (default)'
+          icon :thumb_up, size: 'medium'
+          subtitle '**large**'
+          icon :thumb_up, size: 'large'
+          subtitle '**x-large**'
+          icon :thumb_up, size: 'x-large'
+          subtitle '**xx-large**'
+          icon :thumb_up, size: 'xx-large'
         end
-        column 1 do
-          small_card do
-            icon :face, position: :bottom
-          end
-        end
-        column 1 do
-          small_card do
-            icon :face, position: [:top, :right]
-          end
-        end
-        column 1 do
-          small_card do
-            icon :face, position: [:bottom, :right]
+      end
+
+      grid do
+        column 12 do
+          headline 'Position'
+          body "Icon's can be positioned to the left, right, top, and bottom"
+          grid padding: false do
+            column 1 do
+              small_card do
+                icon :face, position: :left
+              end
+            end
+            column 1 do
+              small_card do
+                icon :face, position: :right
+              end
+            end
+            column 1 do
+              small_card do
+                icon :face, position: :top
+              end
+            end
+            column 1 do
+              small_card do
+                icon :face, position: :bottom
+              end
+            end
+            column 1 do
+              small_card do
+                icon :face, position: [:top, :right]
+              end
+            end
+            column 1 do
+              small_card do
+                icon :face, position: [:bottom, :right]
+              end
+            end
           end
         end
       end

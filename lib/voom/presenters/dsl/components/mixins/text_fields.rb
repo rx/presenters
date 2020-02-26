@@ -23,6 +23,11 @@ module Voom
               self << Components::RichTextArea.new(parent: self,
                                                    **attribs, &block)
             end
+
+            def number_field(**attribs, &block)
+              self << Components::NumberField.new(parent: self,
+                                                   **attribs, &block)
+            end
           end
         end
       end

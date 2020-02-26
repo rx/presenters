@@ -1,0 +1,313 @@
+Voom::Presenters.define(:response_content) do
+  helpers do
+    def params
+      return {} unless context[:id]
+
+      {tag: context[:id]}
+    end
+  end
+
+  content id: :response_content, **params do
+    text context[:content]
+  end
+end
+
+Voom::Presenters.define(:content_as_form) do
+  helpers Demo::Helpers::IndentedGrid
+
+  attach :top_nav
+  attach :events_drawer
+
+  attach :response_content
+
+  indented_grid do
+    card id: :form_1 do
+      title 'Form'
+      form do
+        text_field name: :text1 do
+          label 'Text 1'
+        end
+
+        checkbox name: :on, value: true, off_value: false, text: 'Checkbox'
+
+        blank
+
+        grid padding: :none do
+          column 12 do
+            button 'Submit, grid > column', type: :raised do
+              event :click do
+                posts '/_echo_'
+                replaces :response_content, :response_content,
+                         content: last_response,
+                         id: 1
+              end
+            end
+          end
+        end
+
+        content do
+          button 'Submit, content', type: :raised do
+            event :click do
+              posts '/_echo_'
+              replaces :response_content, :response_content,
+                       content: last_response,
+                       id: 2
+            end
+          end
+        end
+
+        button 'Submit', type: :raised do
+          event :click do
+            posts '/_echo_'
+            replaces :response_content, :response_content,
+                     content: last_response,
+                     id: 3
+          end
+        end
+      end
+    end
+  end
+
+  indented_grid do
+    card do
+      title 'Content'
+      content id: :content_1 do
+        text_field name: :text1 do
+          label 'Text 1'
+        end
+
+        checkbox name: :on, value: true, off_value: false, text: 'Checkbox'
+
+        blank
+
+        grid padding: :none do
+          column 12 do
+            button 'Submit, grid > column', type: :raised do
+              event :click do
+                posts '/_echo_'
+                replaces :response_content, :response_content,
+                         content: last_response,
+                         id: 1
+              end
+            end
+          end
+        end
+
+        content do
+          button 'Submit, content', type: :raised do
+            event :click do
+              posts '/_echo_'
+              replaces :response_content, :response_content,
+                       content: last_response,
+                       id: 2
+            end
+          end
+        end
+
+        button 'Submit', type: :raised do
+          event :click do
+            posts '/_echo_'
+            replaces :response_content, :response_content,
+                     content: last_response,
+                     id: 3
+          end
+        end
+      end
+    end
+  end
+
+  grid do
+    column 12 do
+      text_field id: :input_tag_extra, name: :whatever, tag: :test_input_tag do
+        value 'foo bar'
+      end
+    end
+  end
+
+  indented_grid do
+    card do
+      title 'Content with input_tag'
+      content id: :content_2, tag: :test_input_tag do
+        text_field name: :text1 do
+          label 'Text 1'
+        end
+
+        checkbox name: :on, value: true, off_value: false, text: 'Checkbox'
+
+        blank
+
+        grid padding: :none do
+          column 12 do
+            button 'Submit, grid > column', type: :raised do
+              event :click do
+                posts '/_echo_',
+                      input_tag: :test_input_tag
+                replaces :response_content, :response_content,
+                         content: last_response,
+                         id: 1
+              end
+            end
+          end
+        end
+
+        content do
+          button 'Submit, content', type: :raised do
+            event :click do
+              posts '/_echo_',
+                    input_tag: :test_input_tag
+              replaces :response_content, :response_content,
+                       content: last_response,
+                       id: 2
+            end
+          end
+        end
+
+        button 'Submit', type: :raised do
+          event :click do
+            posts '/_echo_',
+                  input_tag: :test_input_tag
+            replaces :response_content, :response_content,
+                     content: last_response,
+                     id: 3
+          end
+        end
+      end
+    end
+  end
+
+  indented_grid do
+    content id: :content_array do
+      card do
+        title 'Array'
+
+        content do
+          text_field name: 'inputs[]' do
+            value 'Value1'
+          end
+
+          text_field name: 'inputs[]' do
+            value 'Value2'
+          end
+
+          text_field name: 'inputs[]' do
+            value 'Value3'
+          end
+
+          checkbox name: :on, value: true, off_value: false, text: 'Checkbox'
+
+          button :submit, type: :raised do
+            event :click do
+              posts '/_echo_'
+              replaces :response_content, :response_content,
+                       content: last_response,
+                       id: 1
+            end
+          end
+        end
+      end
+    end
+  end
+
+  # Dialog tests:
+  attach :dialog_a
+  attach :dialog_b
+  attach :dialog_c
+  attach :dialog_d
+
+  button 'dialog_a' do
+    event :click do
+      dialog :dialog_a
+    end
+  end
+
+  button 'dialog_b' do
+    event :click do
+      dialog :dialog_b
+    end
+  end
+
+  button 'dialog_c' do
+    event :click do
+      dialog :dialog_c
+    end
+  end
+
+  button 'dialog_d' do
+    event :click do
+      dialog :dialog_d
+    end
+  end
+end
+
+Voom::Presenters.define(:dialog_a) do
+  dialog id: :dialog_a do
+    form do
+      text_field name: :dialog_text_field do
+        value 'whatever'
+      end
+    end
+    actions do
+      button 'Submit', type: :raised do
+        event :click do
+          posts '/_echo_'
+        end
+      end
+    end
+  end
+end
+
+Voom::Presenters.define(:dialog_b) do
+  dialog id: :dialog_b do
+    content do
+      text_field name: :dialog_text_field do
+        value 'whatever'
+      end
+    end
+    actions do
+      button 'Submit, untagged content', type: :raised do
+        event :click do
+          posts '/_echo_'
+        end
+      end
+    end
+  end
+end
+
+Voom::Presenters.define(:dialog_c) do
+  dialog id: :dialog_c do
+    content tag: :some_dialog_tag do
+      text_field name: :dialog_text_field do
+        value 'whatever'
+      end
+    end
+
+    actions do
+      button 'Submit, input_tag', type: :raised do
+        event :click do
+          posts '/_echo_',
+                input_tag: :some_dialog_tag
+        end
+      end
+    end
+  end
+end
+
+Voom::Presenters.define(:dialog_d) do
+  dialog id: :dialog_d do
+    grid do
+      column 12 do
+        text_field name: :dialog_text_field do
+          value 'whatever'
+        end
+      end
+    end
+
+    actions do
+      button 'Submit, no viable container', type: :raised do
+        event :click do
+          posts '/_echo_'
+        end
+      end
+    end
+  end
+end

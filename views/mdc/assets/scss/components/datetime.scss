@@ -1,4 +1,4 @@
-@import "vendor/flatpickr.min";
+@import "flatpickr/dist/flatpickr.min";
 
 .v-datetime {
   &.mdc-text-field--upgraded:not(.mdc-text-field--fullwidth):not(.mdc-text-field--box) {
@@ -27,4 +27,3 @@
 i:focus.v-datetime--clear {
     outline: none;
 }
-

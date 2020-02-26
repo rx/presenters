@@ -6,15 +6,25 @@ Voom::Presenters.define(:menus) do
   attach :component_drawer
   page_title 'Menus'
 
-  indented_grid do
+  dialog id: :hello_world do
+    title "Hello World!"
+    actions do
+      button 'Close'
+    end
+  end
 
+  indented_grid do
     grid do
       column 1
       column 5 do
         card height: '300px' do
           button icon: :more_vert do
-            menu do
-              item 'Some Action'
+            menu id: :dialog_test do
+              item 'Some Dialog Action' do
+                event :click do
+                  dialog :hello_world
+                end
+              end
               item 'Another Action'
               divider
               item 'Disabled Action', disabled: true
@@ -26,7 +36,7 @@ Voom::Presenters.define(:menus) do
       column 5 do
         card height: '300px' do
           button icon: :more_vert, position: :right do
-            menu  do
+            menu do
               item 'Some Action'
               item 'Another Action'
               divider

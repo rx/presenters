@@ -3,7 +3,7 @@ module Voom
     module Helpers
       module Inflector
         def inflector
-          @inflector ||= Dry::Inflector.new
+          @_inflector_ ||= Dry::Inflector.new
         end
 
         def humanize(text)

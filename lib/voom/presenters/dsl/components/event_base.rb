@@ -1,5 +1,3 @@
-require 'voom/presenters/dsl/components/mixins/event'
-
 module Voom
   module Presenters
     module DSL
@@ -9,7 +7,7 @@ module Voom
           attr_reader :event_parent_id
 
           def initialize(**attribs_, &block)
-            super(type: :icon, 
+            super(type: :icon,
                   **attribs_, &block)
             @event_parent_id = @id
           end

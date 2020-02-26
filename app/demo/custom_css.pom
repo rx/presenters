@@ -1,0 +1,37 @@
+require_relative 'helpers/indented_grid'
+
+Voom::Presenters.define(:custom_css) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+
+  page_title 'Custom CSS' do
+    icon :settings
+  end
+
+
+  indented_grid do
+    headline 'CSS', level: 1
+
+    body 'You can define custom CSS globally and for each namespace/presenter.'
+    blank
+    title 'Global CSS'
+    body 'Define global css in the file `public/presenters/global.css`. Styles defined here will be loaded after default styling.'
+
+    title 'Presenter CSS'
+    body 'Each `[namespace/]presenter` can have custom css.'
+    body 'Simply create a file `public/presenters/[namspace]/[presenter].css` that matches your namespace and presenter.'
+    body 'This page has a presenter css file that is located at: `public/presenters/custom_css.css`'
+
+    title 'Settings'
+    body 'You can set the default path to load css from using the following:'
+    body <<-HTML
+      ```
+        Voom::Presenters::Settings.configure do |config|
+          config.presenters.web_client.custom_css = 'public/presenters'
+        end
+    ```
+    HTML
+
+  end
+  attach :code, file: __FILE__
+end

@@ -1,10 +1,3 @@
-require 'voom/presenters/dsl/components/lists/line'
-require 'voom/presenters/dsl/components/lists/separator'
-require 'voom/presenters/dsl/components/lists/header'
-require 'voom/presenters/dsl/components/mixins/content'
-require 'voom/presenters/dsl/components/mixins/append'
-require 'voom/presenters/dsl/components/mixins/attaches'
-
 module Voom
   module Presenters
     module DSL
@@ -13,10 +6,11 @@ module Voom
           include Mixins::Content
           include Mixins::Append
           include Mixins::Attaches
-          
-          attr_reader :lines, :lines_only, :color, :border, :selectable, :total_lines
+          include Mixins::Event
+
+          attr_reader :lines, :lines_only, :color, :border, :selectable, :total_lines, :dense
           attr_accessor :components
-          
+
           def initialize(**attribs_, &block)
             super(type: :list, **attribs_, &block)
             @color  = attribs.delete(:color) { nil }
@@ -24,6 +18,7 @@ module Voom
 
             @lines_only = attribs.delete(:lines_only) { false }
             @selectable = attribs.delete(:selectable) { false }
+            @dense = attribs.delete(:dense) { false }
             @lines = []
             @components = []
             @total_lines = attribs.delete(:total_lines) || 0
@@ -35,7 +30,7 @@ module Voom
             return unless @selectable && !@lines_only
             @lines << Lists::Header.new(parent: self,
                                         total_lines: @total_lines,
-                                        checkbox: {text: text})
+                                        checkbox: {text: text, dirtyable: false})
           end
 
           def line(text=nil, **attribs, &block)
@@ -50,5 +45,3 @@ module Voom
     end
   end
 end
-
-

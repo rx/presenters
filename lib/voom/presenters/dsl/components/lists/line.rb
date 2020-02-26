@@ -1,10 +1,3 @@
-require 'voom/presenters/dsl/components/lists/actions'
-require 'voom/presenters/dsl/components/icon'
-require 'voom/presenters/dsl/components/avatar'
-require 'voom/presenters/dsl/components/typography'
-require 'voom/presenters/dsl/components/mixins/event'
-require 'voom/presenters/dsl/components/mixins/tooltips'
-
 module Voom
   module Presenters
     module DSL
@@ -13,22 +6,29 @@ module Voom
           class Line < EventBase
             extend Gem::Deprecate
             include Mixins::Tooltips
+            include Mixins::Dialogs
 
-            attr_accessor :selected, :selectable
+            CHECKBOX_ATTRIBUTES = %i[name value checked dirtyable value off_value].freeze
+
+            attr_accessor :selected, :selectable, :components
 
             def initialize(**attribs_, &block)
               super(type: :line, **attribs_, &block)
               @selected = attribs.delete(:selected) {false}
               @selectable = attribs.delete(:selectable) {false}
-              self.text(attribs.delete(:text)) if attribs.key?(:text)
-              self.subtitle(attribs.delete(:subtitle)) if attribs.key?(:subtitle)
-              self.info(attribs.delete(:info)) if attribs.key?(:info)
-              self.body(attribs.delete(:body)) if attribs.key?(:body)
+              self.text(attribs.delete(:text), attribs) if attribs[:text]
+              self.subtitle(attribs.delete(:subtitle)) if attribs[:subtitle]
+              self.info(attribs.delete(:info)) if attribs[:info]
+              self.body(attribs.delete(:body)) if attribs[:body]
               self.avatar(attribs.delete(:avatar)) if attribs.key?(:avatar)
               self.icon(attribs.delete(:icon)) if attribs.key?(:icon)
-              self.checkbox(attribs.delete(:checkbox)) if attribs.key?(:checkbox) && !@selectable
-              self.checkbox(attribs.slice(:name, :value, :checked)) if @selectable
 
+              if @selectable
+                self.checkbox(attribs.slice(*CHECKBOX_ATTRIBUTES))
+              elsif attribs.key?(:checkbox)
+                self.checkbox(attribs.delete(:checkbox))
+              end
+              @components = []
               @actions = []
               expand!
             end
@@ -37,6 +37,7 @@ module Voom
               return @text if locked?
               @text = Components::Typography.new(parent: self, type: :text, text: text, **attribs, &block)
             end
+            alias title text
 
             def subtitle(*text, **attribs, &block)
               return @subtitle if locked?
@@ -67,11 +68,22 @@ module Voom
 
             def checkbox(**attributes, &block)
               return @checkbox if locked?
-              field_name = @selectable ? "#{attributes.delete(:name)}[]" : attributes.delete(:name)
+
+              # Append [] if the list is selectable and the checkbox's name
+              # doesn't already include brackets:
+              field_name = attributes.delete(:name).to_s
+              field_name << '[]' if @selectable && !field_name.include?('[')
+
               @checkbox = Components::Checkbox.new(parent: self,
                                                    name: field_name,
                                                    **attributes,
                                                    &block)
+            end
+
+            def hidden_field(**attributes, &block)
+              return @hidden_field if locked?
+
+              @hidden_field = Components::HiddenField.new(parent: self, **attributes, &block)
             end
 
             def menu(**attributes, &block)

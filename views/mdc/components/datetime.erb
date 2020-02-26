@@ -2,9 +2,8 @@
   time_val = comp.value ? Array([comp.value]).join(', ') : nil
 %>
 <div id="<%= comp.id %>"
-     <% if comp.tag %>
-     data-input-tag="<%= comp.tag %>"
-     <% end %>
+     <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+     <% if comp.dirtyable %>data-dirtyable<% end %>
      class="v-input v-datetime mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-trailing-icon' if comp.clear_icon %>
             <%= 'mdc-text-field--disabled' if comp.disabled %>
@@ -23,21 +22,11 @@
          <%= 'invalid' if comp.error %>
          <%= "pattern='#{comp.pattern}'" if comp.pattern %>
          list="<%= comp.id %>-list"
-         <%= erb :"components/event", :locals => {events: comp.events, parent_id:  "#{comp.id}-input"} %>>
-  <label class="mdc-floating-label" for="<%= comp.id %>-input"><%= comp.label %></label>
+         <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id:  "#{comp.id}-input"} %>>
   <%= erb :"components/icon", :locals => {comp: comp.clear_icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"} %>
-  <div class="mdc-notched-outline">
-    <svg>
-      <path class="mdc-notched-outline__path"/>
-    </svg>
-  </div>
-  <div class="mdc-notched-outline__idle"></div>
+  <%= erb :"components/shared/input_label", :locals => {comp: comp} %>
   <datalist id="<%= comp.id %>-list">
   </datalist>
 </div>
-<% if comp.error || comp.hint %>
-<p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg" aria-hidden="true">
-  <%= comp.error || comp.hint %>
-</p>
-<% end %>
+<%= erb :"components/shared/hint_error_display", :locals => {comp: comp} %>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

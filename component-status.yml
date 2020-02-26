@@ -49,20 +49,20 @@
     Notes: 
 -
     Components: Data tables
-    Implementation: MDL
+    Implementation: MDC
     MDL: 
-    MDC: N
+    MDC: Y
     Priority: 
     Completeness: 2
     Notes: 
 -
     Components: Dialogs
-    Implementation: MDL
+    Implementation: MDC
     MDL: 
     MDC: Y
     Priority: High
-    Completeness: 1
-    Notes: Current implementation from MDL and polyfil does not work on iOS/Safari. Port to MDC.
+    Completeness: 2
+    Notes:
 -
     Components: Dividers
     Implementation: N
@@ -121,11 +121,11 @@
     Notes: Date, time, datetime are supported.
 -
     Components: Progress & activity
-    Implementation: N
+    Implementation: MDC
     MDL: 
     MDC: Y
-    Priority: medium
-    Completeness: 
+    Priority:
+    Completeness: 1
     Notes: 
 -
     Components: Selection controls/switches
@@ -210,10 +210,10 @@
            The list icons are not displaying tooltips.
            **Help wanted**
 -
-    Components: Widgets
-    Implementation: N
-    MDL: N
-    MDC: N
-    Priority: medium
-    Completeness: 
-    Notes: Need extension/plugin design with ace editor and charts as available plugins.
+    Components: Widgets/Plugins
+    Implementation: Various
+    MDL: N/A
+    MDC: N/A
+    Priority:
+    Completeness: 2
+    Notes: Handled by presenter plugins.

@@ -1,0 +1,45 @@
+Voom::Presenters.define(:images) do
+  attach :top_nav
+  attach :component_drawer
+  page_title 'Icons'
+
+  grid do
+    column 1
+    column 10 do
+
+      headline 'Plain'
+      image 'img/demo/welcome_card.jpg', width: 512, height: 176
+
+      headline 'With a Border'
+      image 'img/demo/dog.png', border: '1px'
+
+      headline 'With a Thick Border'
+      image 'img/demo/welcome_card.jpg', width: 512, height: 176, border: '10px'
+
+      headline 'Framed in a Circle'
+      image 'img/demo/image_card.jpg', width: 200, height: 'auto', border_radius: '50%'
+
+      headline 'With rounded corders'
+      image 'img/demo/image_card.jpg', width: 200, height: 'auto', border_radius: '5%'
+
+
+      headline 'Image Fit'
+      grid do
+        column 4 do
+          headline ':cover'
+            image 'img/demo/image_card.jpg', width: '100%', height: '256px', fit: :cover
+        end
+        column 4 do
+          headline ':fill'
+          image 'img/demo/image_card.jpg', width: '100%', height: '256px', fit: :fill
+        end
+        column 4 do
+          headline ':contain'
+          image 'img/demo/image_card.jpg', width: '100%', height: '256px', fit: :contain
+        end
+      end
+
+      attach :code, file: __FILE__
+    end
+  end
+end

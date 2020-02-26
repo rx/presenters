@@ -54,8 +54,10 @@ Voom::Presenters.define(:tooltips) do
     end
 
     headline 'Chips'
-    chip 'Hover over me' do
-      tooltip 'I have this tip!'
+    chipset do
+      chip 'Hover over me' do
+        tooltip 'I have this tip!'
+      end
     end
 
     headline 'Tables'
@@ -84,9 +86,11 @@ Voom::Presenters.define(:tooltips) do
     radio_button do
       tooltip 'select it'
     end
-    icon_toggle 'format_italic' do
-      tooltip 'toggle it'
+
+    icon_toggle :star_border, on_icon: :star do
+      tooltip 'toggle it - uses on and off icons'
     end
+
     switch do
       tooltip 'switch it'
     end

@@ -1,23 +1,22 @@
-include Voom::Trace
-trace {"Loading Presenters Settings"}
-require 'voom/presenters/helpers/route'
+#include Voom::Trace
+#trace {"Loading Presenters Settings"}
+require 'dry-configurable'
 
 unless defined?(Voom::Presenters::Settings)
   module Voom
     module Presenters
       class Settings
-        extend Dry::Configurable
+        extend ::Dry::Configurable
         setting :presenters do
           setting :root, []
           # You can add helpers that will automatically be included
-          # For example:
           # For example:
           # Voom::Presenters::Settings.configure do |config|
           #   config.presenters.helpers << YourHelperModule # Passing a module
           #   config.presenters.helpers << &->{ def foo; :foo; end } # Passing a block
           # end
           setting :helpers, [Voom::Presenters::Helpers::Route]
-          setting :deep_freeze, true
+          setting :deep_freeze, false
           setting :id_generator, ->(node) {"id-#{SecureRandom.hex}"}
           setting :web_client do
             # Add lambda's to modify the context for the presenters
@@ -29,8 +28,11 @@ unless defined?(Voom::Presenters::Settings)
             #   }
             # end
             setting :prepare_context, []
-            setting     :custom_css, 'public/presenters/*.css'
+            # Relative to the root
+            setting :custom_css, '../public/presenters'
+            setting :protect_from_forgery, false
           end
+          setting :plugins, [:google_maps]
           setting :components do
             setting :defaults do
               setting :datetime do
@@ -56,10 +58,18 @@ unless defined?(Voom::Presenters::Settings)
                 setting :level, 6
               end
               setting :rich_text_area do
-                setting :rows, 25
+                setting :rows, 6
               end
             end
           end
+          setting :error_logger, ->(file, e, _params, _presenter_name) {
+            msg = [
+              "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")} - #{e.class} - #{e.message}:",
+              *e.backtrace
+            ].join("\n\t")
+            file.puts(msg)
+          }
+          setting :before_render, [] # an array of `#call`ables
         end
 
         def self.default(type, key)

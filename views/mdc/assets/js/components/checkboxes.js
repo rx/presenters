@@ -1,38 +1,15 @@
+import {hookupComponents} from './base-component';
+import {VBaseToggle} from './base-toggle';
 import {MDCCheckbox} from '@material/checkbox';
-import {eventHandlerMixin} from "./mixins/event-handler";
-import {VBaseComponent, hookupComponents} from './base-component';
 
-export function initCheckboxes() {
-    console.log('\tCheckboxes');
-    hookupComponents('.v-checkbox', VCheckbox, MDCCheckbox);
+export function initCheckboxes(e) {
+    console.debug('\tCheckboxes');
+    hookupComponents(e, '.v-checkbox', VCheckbox, MDCCheckbox);
 }
 
-export class VCheckbox extends eventHandlerMixin(VBaseComponent) {
+export class VCheckbox extends VBaseToggle {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
-        this.input = element.querySelector('input');
         this.mdcComponent.indeterminate = (this.input.dataset.indeterminate === 'true');
-    }
-
-    prepareSubmit(params) {
-        if(this.input.checked) {
-            params.push([this.name(), this.value()]);
-        }
-    }
-
-    name(){
-        return this.input.name;
-    }
-
-    value(){
-        return this.input.value;
-    }
-
-    clear(){
-        this.input.checked = false
-    }
-
-    setValue(value){
-        this.input.value = value;
     }
 }

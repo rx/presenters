@@ -9,10 +9,6 @@
   position: relative;
 }
 
-.v-card-content {
-  padding: 10px 10px;
-}
-
 .v-card-title {
   padding: 10px 10px 0px 10px;
 }
@@ -46,7 +42,8 @@
 .v-card-media-image, .v-card-media-avatar {
 }
 
-.v-card__media-menu{
+.v-card__media-menu {
+  z-index: 2;
   .v-button-icon-position-top {
     top: 8px;
   }
@@ -56,4 +53,8 @@
   margin-right: 10px;
   margin-left: 10px;
   position: relative;
+}
+
+.v-card-selected {
+  outline: medium solid rgb(63,81,181);
 }

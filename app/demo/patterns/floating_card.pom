@@ -1,0 +1,29 @@
+require_relative '../helpers/indented_grid'
+
+Voom::Presenters.define(:floating_card) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :pattern_drawer
+
+  page_title 'Floating Card'
+  indented_grid do
+    button icon: :open_in_new do
+      event :click do
+        toggle_visibility :card
+      end
+    end
+    content id: :card, hidden: true, float: true do
+      card do
+        media do
+          title "Hi I'm floating"
+          button icon: :close do
+            event :click do
+              hide :card
+            end
+          end
+        end
+      end
+    end
+    attach :code, file: __FILE__
+  end
+end

@@ -1,7 +1,3 @@
-require 'voom/presenters/helpers/errors'
-require 'voom/presenters/dsl/components/button'
-require 'voom/presenters/dsl/components/content'
-
 module Voom
   module Presenters
     module DSL
@@ -77,12 +73,6 @@ module Voom
               def button(text = nil, stepper_type, **options, &block)
                 btn = StepperButton.new(stepper_type, parent: self, text: text,
                                                    **options, &block)
-
-                btn.instance_eval do
-                  event :click do
-                    stepper stepper_type
-                  end
-                end
                 @buttons << btn
               end
 

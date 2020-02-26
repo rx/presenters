@@ -1,14 +1,16 @@
 <% unless comp.lines_only %>
   <ul id="<%= comp.id %>"
       class="mdc-list
+            <%= 'mdc-list--dense' if comp.dense %>
             <%= 'mdc-list--two-line' if comp.lines.select{|line| eq(line.type, :line) && line.subtitle }.any? %>
             <%= 'mdc-list--avatar-list' if comp.lines.select{|line| eq(line.type, :line) && line.avatar }.any? %>
             <%= 'v-list__border' if comp.border %>"
       style="<%= "background-color: #{comp.color};" if comp.color %>"
-      data-total-lines="<%= comp.total_lines %>">
+      data-total-lines="<%= comp.total_lines %>"
+      <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id}%>>
 <% end %>
 <% for line in comp.lines %>
-  <%= erb :"components/list/#{line.type}", :locals => {:line => line} %>
+  <%= erb :"components/list/#{line.type}", :locals => {:list => comp, :line => line} %>
 <% end %>
 <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
 <% unless comp.lines_only %>

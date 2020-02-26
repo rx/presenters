@@ -3,7 +3,9 @@ Voom::Presenters.define(:show_dialog) do
     title "Show Dialog"
     body 'This is an example and event opening a dialog'
 
-    button 'Disabled action', disabled: true
-    button 'Close'
+    actions do
+      button 'Close'
+      button 'Disabled action', disabled: true
+    end
   end
 end

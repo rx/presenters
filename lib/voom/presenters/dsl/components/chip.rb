@@ -1,15 +1,11 @@
-require 'voom/presenters/dsl/components/icon_base'
-require 'voom/presenters/dsl/components/mixins/event'
-require 'voom/presenters/dsl/components/mixins/tooltips'
-
 module Voom
   module Presenters
     module DSL
       module Components
         class Chip < EventBase
           include Mixins::Tooltips
-          attr_reader :icons, :color, :name, :value
-          
+          attr_reader :icons, :color, :name, :value, :chipset_variant, :selected
+
           def initialize(**attribs_, &block)
             super(type: :chip,
                   **attribs_, &block)
@@ -19,7 +15,9 @@ module Voom
             @color = attribs.delete(:color)
             @name = attribs.delete(:name)
             @value = attribs.delete(:value)
+            @selected = attribs.delete(:selected){false}
             expand!
+            @chipset_variant = self.parent(:chipset)&.variant.to_s
           end
 
           def text(*text, **attribs, &block)
@@ -36,7 +34,7 @@ module Voom
             return @menu if locked?
             @menu = Components::Menu.new(parent: self, **attributes, &block)
           end
-          
+
           class Icon < Components::IconBase
 
             def initialize(**attribs_, &block)

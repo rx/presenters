@@ -1,6 +1,3 @@
-require 'voom/presenters/dsl/components/mixins/common'
-require 'voom/presenters/dsl/components/mixins/attaches'
-
 module Voom
   module Presenters
     module DSL

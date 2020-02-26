@@ -1,29 +1,14 @@
-<%
-  def buttons?(components)
-    buttons(components).any?
-  end
-
-  def buttons(components)
-    components.select {|c| eq(c.type, :button)}
-  end
-%>
 <form role="form"
       <% if comp.tag %>
       data-input-tag="<%= comp.tag %>"
       <% end %>
       id="<%= comp.id %>"
-      class="v-has-errors v-form"
+      class="v-form"
       style='width: 100%'
       onsubmit="javascript:void(0);return false;"
-      <%= erb :"components/event", :locals => {events: comp.events, parent_id: comp.id} %>>
+      <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id} %>
+      data-is-container>
   <div class="v-errors">
-    <%= erb :"components/render", :locals => {:components => comp.components.select {|c| !eq(c.type, :button)}, :scope => nil} %>
-    <% if buttons?(comp.components) %>
-      <footer class="mdc-dialog__actions">
-        <% buttons(comp.components).reverse.each do |button| %>
-          <%= erb :"components/button", :locals => {:comp => button} %>
-        <% end %>
-      </footer>
-    <% end %>
+    <%= erb :"components/render", :locals => {:components => comp.components, :scope => nil} %>
   </div>
 </form>

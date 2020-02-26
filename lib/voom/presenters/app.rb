@@ -34,13 +34,13 @@ module Voom
         def load(dir='app', root=ENV['VOOM_ROOT']||File.expand_path("../../../", __FILE__))
           path = File.expand_path(dir, root)
           trace {"Loading Presenters from: #{path}"}
-          Presenters::DSL.load(File.expand_path(dir, root))
-          Presenters::DSL.finalize
+          Presenters::Registry.load(File.expand_path(dir, root))
+          Presenters::Registry.finalize
         end
 
         def reset!
           super
-          Presenters::DSL.reset!
+          Presenters::Registry.reset!
         end
 
         private

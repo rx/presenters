@@ -4,13 +4,22 @@ import { VTextField } from './text-fields';
 import { hookupComponents } from './base-component';
 import appConfig from '../config';
 
+export function initDateTime(e) {
+    console.debug('\tDateTime');
+    hookupComponents(e, '.v-datetime', VDateTime, MDCTextField);
+}
+
 export class VDateTime extends VTextField {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
 
         const type = element.dataset.type;
+        const defaultConfig = {};
+        if (!this.root.documentElement) {
+          defaultConfig.appendTo = this.root.querySelector('.v-root');
+        }
         const config = Object.assign(
-            {},
+            defaultConfig,
             appConfig.get('component.datetime.flatpickr', {}),
             JSON.parse(element.dataset.config),
         );
@@ -33,7 +42,7 @@ export class VDateTime extends VTextField {
         this.fp.mdc_text_field = mdcComponent;
 
         element.addEventListener('click', () => this.toggle());
-        // element.addEventListener('change', () => this.checkDefaults());
+        this.originalValue = this.fp.input.value;
     }
 
     clear() {
@@ -42,6 +51,10 @@ export class VDateTime extends VTextField {
         }
 
         this.mdcComponent.foundation_.deactivateFocus();
+    }
+
+    reset() {
+        this.fp.setDate(this.originalValue);
     }
 
     open() {
@@ -72,9 +85,17 @@ export class VDateTime extends VTextField {
     //         }
     //     }
     // }
+
+    isDirty() {
+        if (!this.dirtyable) {
+            return false;
+        }
+
+        const currVal = new Date(this.fp.input.value);
+        const prevVal = new Date(this.originalValue);
+
+        return currVal.getTime() !== prevVal.getTime();
+    }
 }
 
-export function initDateTime() {
-    console.log('\tDateTime');
-    hookupComponents('.v-datetime', VDateTime, MDCTextField);
-}
+

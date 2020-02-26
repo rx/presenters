@@ -9,7 +9,7 @@ Voom::Presenters.define(:context_list) do
     end
 
     def scrubbed_context
-      scrubbed_keys = context.fetch(:exclude) {%w{title file hide_time}}
+      scrubbed_keys = context.fetch(:exclude) {%w{title file hide_time _presenter_ _namespace1_ session}}
       context.select {|k, _| !scrubbed_keys.include?(k.to_s)}
     end
   end

@@ -1,5 +1,3 @@
-require 'voom/presenters/dsl/components/lists/action'
-
 module Voom
   module Presenters
     module DSL
@@ -11,7 +9,6 @@ module Voom
               super(type: :actions, **attribs_, &block)
               expand!
             end
-
 
             def icon(icon=nil, **attribs, &block)
               action = Lists::Action.new(parent: self)

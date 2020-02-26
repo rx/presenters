@@ -1,5 +1,3 @@
-require 'voom/logger_methods'
-
 module Voom
   module Trace
     include Voom::LoggerMethods

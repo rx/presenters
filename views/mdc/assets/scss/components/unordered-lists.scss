@@ -1,0 +1,17 @@
+.icon-ul {
+  list-style-type: none;
+  margin-left: 2.5em;
+  padding-left: 0px;
+  > li {
+    position: relative;
+    margin-bottom: 6px;
+  }
+}
+.icon-li > i {
+  left: -2em;
+  position: absolute;
+  text-align: center;
+  width: 2em;
+  line-height: inherit;
+  font-size: 21px;
+}

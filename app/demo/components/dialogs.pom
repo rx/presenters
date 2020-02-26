@@ -8,14 +8,21 @@ Voom::Presenters.define(:dialogs) do
         text_field name: :myfield do
           label 'Data to post'
         end
+        grid padding: :none do
+          column 4, padding: :none do
+            date_field do
+              label 'Date Field'
+            end
+          end
+          column 4
+          column 4 do
+            time_field do
+              label 'Time Field'
+            end
+          end
+        end
         text_field name: :myfield2 do
           label 'More Data to post'
-        end
-        button 'Disabled action', disabled: true
-        button 'Update' do
-          event :click do
-            replaces :context_list, :context_list
-          end
         end
       end
     end
@@ -78,8 +85,10 @@ Voom::Presenters.define(:dialogs) do
       title "MDC Dialog"
       body 'This is an example of the Material Design Component for the web dialog component. Please use responsibly.'
 
-      button 'Disabled action', disabled: true
-      button 'Close'
+      actions do
+        button 'Close'
+        button 'Disabled action', disabled: true
+      end
     end
 
     body 'Dialog with width set'
@@ -93,12 +102,13 @@ Voom::Presenters.define(:dialogs) do
       title "MDC Dialog"
       body shakespeare
 
-      button 'Disabled action', disabled: true
-      button 'Close'
+      actions do
+        button 'Close'
+      end
     end
 
     grid do
-      column 6 do
+      column 9 do
         body 'Dialog with form'
         button 'With Form' do
           event :click do
@@ -111,27 +121,73 @@ Voom::Presenters.define(:dialogs) do
             dialog :multi_form_dialog
           end
         end
+        body 'Dialog with height and width'
+        button 'Height/Width' do
+          event :click do
+            dialog :height_width_dialog
+          end
+        end
 
       end
-      column 6 do
+      column 3 do
         attach :context_list
       end
     end
 
-    # A dialog with a single form uses the buttons on the dialog as the form buttons
     dialog id: :with_form do
       title "Dialog with Form"
       dlg_form
+      actions do
+        button 'Close'
+        button 'Update' do
+          event :click do
+            replaces :context_list, :context_list
+          end
+        end
+      end
     end
 
-    # A dialog with multiple forms does NOT use the form buttons as the dialog buttons.
     dialog id: :multi_form_dialog do
-      title "Dialog with Form"
-      dlg_form
-      dlg_form
+      title "Dialog with Multiple Forms"
+      subtitle
+      form do
+        text_field name: :myfield do
+          label 'Data to post'
+        end
+        text_field name: :myfield2 do
+          label 'More Data to post'
+        end
+        subtitle "These are normal buttons and will not automatically close the dialog. However, you can call 'close_dialog' to programatically close the dialog."
+        button 'Close' do
+          event :click do
+            close_dialog :multi_form_dialog
+          end
+        end
+        button 'Update (and remain open)' do
+          event :click do
+            replaces :context_list, :context_list
+          end
+        end
+      end
+      separator
+      content tag: :second_form_input do
+        dlg_form
+      end
+      subtitle 'The buttons below are Dialog Action buttons. When clicked, they will process any configured actions, then automatically clsoe the dialog.'
+      actions do
+        button 'Close'
+        button 'Update' do
+          event :click do
+            replaces :context_list, :context_list, input_tag: :second_form_input
+          end
+        end
+      end
     end
 
-
+    dialog id: :height_width_dialog, height: '500px', width: '500px' do
+      title "Dialog with set dimensions"
+      body "MDC dialogs have default styles of max-width 560px (for 592px viewport or larger) and min-width 280px."
+    end
   end
 
   attach :code, file: __FILE__

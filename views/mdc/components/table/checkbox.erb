@@ -1,14 +1,17 @@
 <% if row.checkbox %>
   <% if type == 'header' %>
-    <th>
+    <th class="mdc-data-table__header-cell mdc-data-table__header-cell--checkbox" role="columnheader" scope="col">
   <% else %>
-    <td style="<%= "background-color: #{row.color};" if row.color %>">
+    <td style="<%= "background-color: #{row.color};" if row.color %>" class="mdc-data-table__cell mdc-data-table__cell--checkbox">
   <% end %>
+  <% unless type == 'footer' %>
     <span class="mdc-list-item__graphic">
       <%= erb :"components/checkbox",
               :locals => {comp: row.checkbox,
-                          class_name: (type == 'header' ? 'v-checkbox--select-control' : 'v-table-item--selectable-checkbox')} %>
+                          class_name: (type == 'header' ? 'v-checkbox--select-control' : 'v-table-item--selectable-checkbox'),
+                          data_table_class_name: (type == 'header' ? 'mdc-data-table__header-row-checkbox' : 'mdc-data-table__row-checkbox')}  %>
     </span>
+  <% end %>
   <% if type == 'header' %>
     </th>
   <% else %>

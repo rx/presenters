@@ -1,37 +1,14 @@
-import {VBaseComponent, hookupComponents} from './base-component';
-import {eventHandlerMixin} from './mixins/event-handler';
+import {hookupComponents} from './base-component';
+import {VBaseToggle} from './base-toggle';
 import {MDCSwitch} from '@material/switch';
 
-export function initSwitches() {
-    console.log('\tSwitches');
-    hookupComponents('.v-switch', VSwitch, MDCSwitch);
+export function initSwitches(e) {
+    console.debug('\tSwitches');
+    hookupComponents(e, '.v-switch', VSwitch, MDCSwitch);
 }
 
-export class VSwitch extends eventHandlerMixin(VBaseComponent) {
+export class VSwitch extends VBaseToggle {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
-        this.input = element.querySelector('input');
-    }
-
-    prepareSubmit(params) {
-        if (this.input.checked) {
-            params.push([this.name(), this.value()]);
-        }
-    }
-
-    name() {
-        return this.input.name;
-    }
-
-    value() {
-        return this.input.value;
-    }
-
-    clear() {
-        this.input.checked = false;
-    }
-
-    setValue(value) {
-        this.input.value = value;
     }
 }

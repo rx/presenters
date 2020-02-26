@@ -1,17 +1,3 @@
-require 'voom/presenters/dsl/components/menu'
-require 'voom/presenters/dsl/components/typography'
-require 'voom/presenters/dsl/components/mixins/common'
-require 'voom/presenters/dsl/components/mixins/event'
-require 'voom/presenters/dsl/components/mixins/attaches'
-require 'voom/presenters/dsl/components/mixins/avatar'
-require 'voom/presenters/dsl/components/mixins/text_fields'
-require 'voom/presenters/dsl/components/mixins/icons'
-require 'voom/presenters/dsl/components/mixins/selects'
-require 'voom/presenters/dsl/components/mixins/snackbars'
-require 'voom/presenters/dsl/components/mixins/date_time_fields'
-require 'voom/presenters/dsl/components/mixins/chips'
-require 'voom/presenters/dsl/components/mixins/file_inputs'
-
 module Voom
   module Presenters
     module DSL
@@ -24,11 +10,17 @@ module Voom
           include Mixins::Icons
           include Mixins::Selects
           include Mixins::Snackbars
-          include Mixins::Chips
+          include Mixins::Chipset
           include Mixins::FileInputs
+          include Mixins::Dialogs
+          include Mixins::Progress
 
-          attr_reader :height, :width, :selected, :components, :shows_errors
-
+          attr_reader :height,
+                      :width,
+                      :selected,
+                      :components,
+                      :shows_errors,
+                      :padding
 
           def initialize(**attribs_, &block)
             super(type: :card, **attribs_, &block)
@@ -36,7 +28,9 @@ module Voom
             @width = attribs.delete(:width)
             @selected = attribs.delete(:selected) {false}
             self.text(attribs.delete(:text)) if attribs.key?(:text)
-            @shows_errors = attribs.delete(:shows_errors){true}
+            @shows_errors = attribs.delete(:shows_errors) {true}
+            padding = attribs.delete(:padding) {:all}
+            @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
 
             @components = []
             expand!
@@ -48,27 +42,19 @@ module Voom
                                **attribs, &block)
           end
 
-          # def overflow_menu(**attribs, &block)
-          #   return @overflow_menu if locked?
-          #   icon = attribs.delete(:icon){:more_vert}
-          #   position = attribs.delete(:position){ [:top, :right]}
-          #   @overflow_menu = Components::Button.new(parent: self,
-          #                                                    icon: icon,
-          #                                                    position: position,
-          #                                                    context: context,
-          #                                                    **attribs, &block)
-          # end
-
           class Media < Base
-            include Mixins::Avatar
-            attr_reader :height, :width, :color
+            include Mixins::Attaches
+            include Mixins::Common
+            attr_reader :height, :width, :color, :hidden, :components
 
             def initialize(**attribs_, &block)
               super(type: :media, **attribs_, &block)
               @height = attribs.delete(:height)
               @width = attribs.delete(:width)
               @color = attribs.delete(:color)
+              @hidden = attribs.delete(:hidden) {false}
 
+              @components = []
               expand!
             end
 
@@ -81,14 +67,25 @@ module Voom
                                       **attribs, &block)
             end
 
-            def image(image=nil, **attribs, &block)
+            def subtitle(*text, **attribs, &block)
+              return @subtitle if locked?
+              @subtitle = Components::Typography.new(parent: self, type: :subtitle, text: text, **attribs, &block)
+            end
+
+            def avatar(avatar = nil, **attribs, &block)
+              return @avatar if locked?
+              @avatar = Avatar.new(parent: self, avatar: avatar,
+                                   **attribs, &block)
+            end
+
+            def image(image = nil, **attribs, &block)
               return @image if locked?
               @image = Image.new(parent: self, image: image, **attribs, &block)
             end
 
-            def button(icon=nil, **attributes, &block)
+            def button(icon = nil, **attributes, &block)
               return @button if locked?
-              @button = Components::Button.new(icon: icon, position:[:top, :right], parent: self, **attributes, &block)
+              @button = Components::Button.new(icon: icon, position: [:top, :right], parent: self, **attributes, &block)
             end
           end
 
@@ -104,19 +101,29 @@ module Voom
           end
 
           class Actions < Base
-            attr_accessor :buttons
+            attr_accessor :buttons, :switches
 
             def initialize(**attribs_, &block)
               super(type: :action, **attribs_, &block)
               @buttons = []
+              @switches = []
               expand!
             end
 
-            def button(text=nil, **options, &block)
+            def button(text = nil, **options, &block)
               @buttons << Components::Button.new(parent: self, text: text,
                                                  **options, &block)
             end
+
+            def switch(text = nil, **options, &block)
+              @switches << Components::Switch.new(parent: self, text: text,
+                                                  **options, &block)
+            end
           end
+
+          private
+
+          include Mixins::Padding
         end
       end
     end

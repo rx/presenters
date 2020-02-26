@@ -1,38 +1,15 @@
+import {MDCDataTable} from '@material/data-table';
+import {hookupComponents} from "./base-component";
+import {eventHandlerMixin} from "./mixins/event-handler";
+import {VBaseContainer} from "./base-container";
 
-function createSelectAllHandler(component, target, listElements) {
-    return function() {
-        for (let element of listElements) {
-            element.checked = target.checked;
-        }
-    }
+export function initTables(e) {
+    console.debug('\tTables');
+    hookupComponents(e, '.v-data-table', VDataTable, MDCDataTable);
 }
 
-function createTableRowSelectHandler(component, listElements, selectAll) {
-    return function() {
-        let checked = 0;
-        let unchecked = 0;
-        for (let element of listElements) {
-            element.checked ? checked++ : unchecked++;
-        }
-        selectAll.indeterminate = (checked && unchecked);
-        selectAll.checked = (checked && !unchecked);
-    }
-}
-
-export function initTables() {
-    console.log('\tTables');
-    let components = document.querySelectorAll('.mdl-data-table');
-    if (components) {
-        for (let component of components) {
-            let selectAllRow = component.querySelector('.v-checkbox--select-control');
-            let selectableRows = component.querySelectorAll('.v-table-item--selectable-checkbox');
-            if (selectAllRow && selectableRows) {
-                selectAllRow.addEventListener('change', createSelectAllHandler(component, selectAllRow, selectableRows));
-
-                for (let element of selectableRows) {
-                    element.addEventListener('change', createTableRowSelectHandler(component, selectableRows, selectAllRow));
-                }
-            }
-        }
+export class VDataTable extends eventHandlerMixin(VBaseContainer) {
+    constructor(element, mdcComponent) {
+        super(element, mdcComponent);
     }
 }

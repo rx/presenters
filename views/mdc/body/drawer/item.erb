@@ -1,0 +1,13 @@
+<a id="<%= item.id %>"
+   class="mdc-list-item v-list-item
+          <% if item.selected %>mdc-list-item--activated<% end %>
+          <% if item.size %>v-list-item--size-<%= item.size %><% end %>
+          <%= color_classname(item) %>"
+   href="javascript:void(0)"
+   tabindex="0"
+   aria-selected="<%= item.selected %>"
+   style="<%= color_style(item) %>"
+  <%= erb :"components/event", :locals => {comp: item, events: item.events, parent_id: item.event_parent_id} %>>
+  <%= erb :"components/icon", :locals => {comp: item.icon, class_name: 'mdc-list-item__graphic'} %>
+  <%= expand_text item.text %>
+</a>

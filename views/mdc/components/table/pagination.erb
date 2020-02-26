@@ -6,10 +6,6 @@
   <span class="v-paging__count">
     <%= comp.range&.join(' - ') %> of <%= comp.total %>
   </span>
-  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon v-paging__prev">
-    <%= erb :"components/icon", :locals => {:comp=>comp.previous_button} %>
-  </button>
-  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon v-paging__next">
-    <%= erb :"components/icon", :locals => {:comp=>comp.next_button} %>
-  </button>
+  <%= erb :'components/button', locals: { comp: comp.previous_button, class_name: 'v-actionable v-button--pagination v-button--pagination--previous v-paging__prev' } %>
+  <%= erb :'components/button', locals: { comp: comp.next_button, class_name: 'v-actionable v-button--pagination v-button--pagination--next v-paging__next' } %>
 </div>

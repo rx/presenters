@@ -1,10 +1,9 @@
 @import "@material/textfield/mdc-text-field";
 @import "@material/notched-outline/mdc-notched-outline";
 
-.mdc-text-field__input {
-  .v-text-field {
-    padding: inherit;
-  }
+.mdc-text-field {
+  margin-top:16px;
+  margin-bottom: 8px;
 }
 
 .mdc-text-field--textarea:not(.mdc-text-field--disabled) {

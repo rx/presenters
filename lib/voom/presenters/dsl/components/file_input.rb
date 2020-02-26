@@ -1,19 +1,31 @@
-require 'voom/presenters/dsl/components/input'
-
 module Voom
   module Presenters
     module DSL
       module Components
         class FileInput < Input
-          attr_reader :button_label, :input_label
+          include Mixins::Append
+          include Mixins::Buttons
+          include Mixins::Grids
+
+          attr_reader :accept, :preview, :components
 
           def initialize(**attribs_, &block)
             super(type: :file_input, **attribs_, &block)
 
-            @button_label = attribs.delete(:button_label) { 'Choose a file' }
-            @input_label = attribs.delete(:input_label) { 'No file selected' }
-
+            @accept =  attribs.delete(:accept) { nil }
+            @preview = attribs.delete(:preview) { nil }
+            @components = []
             expand!
+            default_button
+          end
+
+          def value(value=nil)
+            return @value if locked?
+            @value = value
+          end
+          private
+          def default_button
+            button(icon: :cloud_upload) unless components.any?
           end
         end
       end

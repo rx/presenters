@@ -1,4 +1,14 @@
+@import "@material/menu-surface/mdc-menu-surface";
 @import "@material/menu/mdc-menu";
+
+.mdc-menu-anchor {
+  display: inline;
+}
+
+.mdc-list-item.mdc-list-item--disabled .v-menu-link {
+  cursor: inherit;
+  pointer-events: none;
+}
 
 .v-menu-link {
   &:hover, &:visited, &:link, &:active {
@@ -10,9 +20,9 @@
 
 .mdl-navigation__link {
   i {
-    font-size: 18px;
+    font-size: $mdc-headline6-font-size;
   }
   .v-icon__fa {
-    font-size: 18px;
+    font-size: $mdc-headline6-font-size;
   }
 }

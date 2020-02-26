@@ -1,9 +1,9 @@
 require "dry/inflector"
 
-module Voom
+module Voom::Symbol
   # Helper module for converting symbol naming to string.
   # It provides common conversions for variable naming (snake_case) and class naming (class_name)
-  module Symbol
+  module ToStr
     # Maps symbols to strings
     def sym_to_str(name)
       return name if name.is_a? ::String
@@ -23,7 +23,7 @@ module Voom
 
     private
     def inflector
-      @inflector ||= Dry::Inflector.new
+      @_inflector_ ||= Dry::Inflector.new
     end
   end
 end

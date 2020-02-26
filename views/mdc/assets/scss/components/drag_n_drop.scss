@@ -1,0 +1,17 @@
+.v-dnd-moving {
+    opacity: 0.25;
+    border: dashed 1px red;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    cursor: move !important;
+}
+
+.v-dnd-draggable {
+    cursor: grab !important;
+}
+
+.v-dnd-over {
+    outline: 2px dashed #000 !important;
+}

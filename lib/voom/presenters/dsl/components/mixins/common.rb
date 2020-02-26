@@ -1,16 +1,3 @@
-require 'voom/presenters/dsl/components/mixins/append'
-require 'voom/presenters/dsl/components/mixins/toggles'
-require 'voom/presenters/dsl/components/mixins/typography'
-require 'voom/presenters/dsl/components/mixins/grids'
-require 'voom/presenters/dsl/components/mixins/buttons'
-require 'voom/presenters/dsl/components/mixins/expansion_panels'
-require 'voom/presenters/dsl/components/mixins/content'
-require 'voom/presenters/dsl/components/mixins/menus'
-require 'voom/presenters/dsl/components/mixins/google_maps'
-require 'voom/presenters/dsl/components/mixins/tab_bars'
-require 'voom/presenters/dsl/components/mixins/images'
-require 'voom/presenters/dsl/components/mixins/icons'
-
 module Voom
   module Presenters
     module DSL
@@ -25,10 +12,12 @@ module Voom
             include Mixins::ExpansionPanels
             include Mixins::Content
             include Mixins::Menus
-            include Mixins::GoogleMaps
             include Mixins::TabBars
             include Mixins::Images
             include Mixins::Icons
+            include Mixins::ImageLists
+            include Mixins::Dialogs
+            include Mixins::Tables
             
             def badge(badge=nil, **attributes, &block)
               self << Components::Badge.new(parent: self, badge: badge, **attributes, &block)
@@ -46,9 +35,17 @@ module Voom
               self << Components::List.new(parent: self,
                                            **attributes, &block)
             end
-
+            
             def table(**attributes, &block)
               self << Components::Table.new(parent: self, **attributes, &block)
+            end
+
+            def unordered_list(**attributes, &block)
+              self << Components::UnorderedList.new(parent: self, **attributes, &block)
+            end
+
+            def avatar(avatar = nil, **attributes, &block)
+              self << Components::Avatar.new(parent: self, avatar: avatar, **attributes, &block)
             end
           end
         end

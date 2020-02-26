@@ -7,47 +7,59 @@
   <title><%= @pom.page.title if @pom.page %></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
   <!-- Place favicon.ico in the root directory -->
   <!--MDC-->
-  <link rel="stylesheet" href="<%= env['SCRIPT_NAME'] %>/bundle.css">
-  <script defer src="<%= env['SCRIPT_NAME'] %>/bundle.js"></script>
-  <%= custom_css %>
-
+  <link rel="stylesheet" href="<%= @base_url %>/<%= env['SCRIPT_NAME'] %>bundle.css">
+  <script defer src="<%= @base_url %>/<%= env['SCRIPT_NAME'] %>bundle.js"></script>
+  <%= plugin_headers(@pom) %>
+  <%= custom_css(env['REQUEST_PATH'], @base_url) %>
+  <%= @pom.csrf_meta_tags %>
 </head>
 <body class="mdc-typography">
-<div class="compatibility-wrapper">
-  <% header = @pom.header
-     drawer = @pom.drawer
-     footer = @pom.footer %>
-  <div class="mdl-layout mdl-js-layout
-    <% if header %>mdl-layout--fixed-header
-    <% end %>
-    <% if drawer %>mdl-layout--fixed-drawer
-    <% end %>">
-    <% if header %>
-      <%= erb :"body/header", :locals => {:header => header} %>
-    <% end %>
-    <% if drawer %>
-      <%= erb :"body/drawer", :locals => {:drawer => drawer} %>
-    <% end %>
-    <main class="mdl-layout__content"
-          style="<%= "background-color:#{@pom.page.background_color}" if @pom.page&.background_color %>">
-      <div class="page-content">
-        <div class="v-errors">
-          <%= yield %>
-        </div>
-      </div>
-    </main>
+<%
+  header = @pom.header
+  drawer = @pom.drawer
+  footer = @pom.footer
+
+  root_classes = []
+  root_classes << 'v-root--header-present' if header
+  root_classes << 'v-root--drawer-present' if drawer
+  root_classes << 'v-root--footer-present' if footer
+%>
+<div class="v-root compatibility-wrapper mdc-typography <%= root_classes.join(' ') %>">
+
+<% if drawer %>
+  <div class="drawer-frame-root">
+    <%= erb :"body/dismissable-drawer", :locals => {drawer: drawer} %>
+    <div class="mdc-drawer-app-content">
+<% end %>
+<% if header %>
+  <%= erb :"body/header", :locals => {header:header, drawer: drawer} %>
+<% end %>
+  <% if drawer %>
+    <div class="drawer-main-content">
+      <%= erb :"body/modal-drawer", :locals => {drawer: drawer} %>
+  <% end %>
+<div class="v-page-content page-content">
+  <div class="v-errors">
+    <%= yield %>
+  </div>
+</div>
+<% if drawer %>
+    </div>
+  </div>
+</div>
+<% end %>
+
     <%= erb :"body/snackbar" %>
     <% if footer %>
       <%= erb :"body/footer", :locals => {:footer => footer} %>
     <% end %>
-  </div>
 </div>
+
 <noscript><p>JavaScript must be enabled to continue.</p></noscript>
 </body>
 </html>
