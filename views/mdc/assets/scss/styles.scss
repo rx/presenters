@@ -11,8 +11,9 @@
 }
 
 .v-hidden {
-    display: none;
-    visibility: hidden;
+    //display: none;
+    transform: scale(0);
+    //visibility: hidden;
 }
 
 .v-nowrap {
