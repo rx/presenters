@@ -9,6 +9,7 @@
      <%= draggable_attributes(comp) %>
      <%= drop_zone_attributes(comp) %>
     class="v-card card-<%= comp.id %> mdc-card
+           <%= 'v-hidden' if comp.hidden %>
            <%= 'v-actionable' if comp.events && !comp.draggable %>
            <%= 'v-dnd-draggable' if comp.draggable %>
            <%= 'v-card-selected' if comp.selected %>"
