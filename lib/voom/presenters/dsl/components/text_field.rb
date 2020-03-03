@@ -3,14 +3,14 @@ module Voom
     module DSL
       module Components
         class TextField < Input
-          attr_reader :required, :full_width, :password, :auto_complete, :case_type
+          attr_reader :required, :full_width, :auto_complete, :case_type, :input_type
           VALID_CASE_TYPES = %i[mixed upper lower].freeze
 
           def initialize(**attribs_, &block)
             super(type: :text_field, **attribs_, &block)
             @required = attribs.delete(:required){ false }
             @full_width = attribs.delete(:full_width){ true }
-            @password = attribs.delete(:password){ false }
+            @input_type = attribs.delete(:password){ false } ? 'password' : attribs.delete(:input_type){ 'text' }
             @case_type = validate_case_type(attribs.delete(:case_type) { :mixed })
             @auto_complete = validate_auto_complete(attribs.delete(:auto_complete) { :off })
             label(attribs.delete(:label))if attribs.key?(:label)
