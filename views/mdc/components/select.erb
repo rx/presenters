@@ -7,6 +7,7 @@
        <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
        <% if comp.dirtyable %>data-dirtyable<% end %>
        <%= 'style="width: 100%;"' if comp.full_width %>>
+    <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-select__icon', parent_id: "#{comp.id}-input", size_class: '', position: []} %>
     <i class="mdc-select__dropdown-icon"></i>
     <select id="<%= comp.id %>"
             <% if comp.name %> name="<%= comp.name %>" <% end %>
