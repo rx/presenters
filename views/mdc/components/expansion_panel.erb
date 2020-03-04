@@ -1,11 +1,13 @@
 <details id = '<%= comp.id %>' class="v-expansion mdc-elevation--z3"<% if comp.open %> open<% end %>>
-  <summary class="v-expansion__summary"><span class="v-expansion__header"><%= expand_text(comp.text&.text) %></span>
-    <span class="v-expansion__secondary-content"><%=expand_text(comp.secondary_text&.text)%></span></summary>
+  <summary class="v-expansion__summary">
+    <% if comp.text&.text %>
+      <%= erb :"components/typography", :locals => {comp: comp.text, class_name: 'v-expansion__header', type: 'text', inline: comp.text&.inline} %>
+    <% end %>
+    <% if comp.secondary_text&.text %>
+      <%= erb :"components/typography", :locals => {comp: comp.secondary_text, class_name: 'v-expansion__secondary-content', type: 'text', inline: comp.secondary_text&.inline} %>
+    <% end %>
+  </summary>
   <div class="v-expansion__content">
     <%= erb :"components/render", :locals => {:components => comp.content.components, :scope=> nil} if comp.content %>
   </div>
-  <!--<div class="v-expansion__actions">-->
-    <!--<button class="mdc-button mdc-button&#45;&#45;raised mdc-button&#45;&#45;primary v-expansion__action">Save</button>-->
-    <!--<button class="mdc-button v-expansion__action">Cancel</button>-->
-  <!--</div>-->
 </details>
