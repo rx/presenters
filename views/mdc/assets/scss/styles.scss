@@ -11,12 +11,15 @@
 }
 
 .v-hidden {
+    display: none;
+    visibility: hidden;
+}
+
+button.v-button.mdc-dialog__button.v-hidden {
     width: 0 !important;
     min-width: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
-    display: none;
-    visibility: hidden;
 }
 
 .v-nowrap {
