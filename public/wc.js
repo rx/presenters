@@ -33981,6 +33981,8 @@ var VPosts = function (_VBase) {
     _createClass(VPosts, [{
         key: 'call',
         value: function call(results, eventParams) {
+            var _this2 = this;
+
             this.clearErrors();
             var errors = this.validate();
             var method = this.method;
@@ -34003,8 +34005,9 @@ var VPosts = function (_VBase) {
                 detail: this,
                 composed: true
             });
-            var target = Object(__WEBPACK_IMPORTED_MODULE_4__get_event_target__["a" /* getEventTarget */])(this.event);
-            target.dispatchEvent(ev);
+
+            this.dispatchLifecycleEvent(this.event, ev);
+
             // Manually build the FormData.
             // Passing in a <form> element (if available) would skip over
             // unchecked toggle elements, which would be unexpected if the user
@@ -34158,12 +34161,12 @@ var VPosts = function (_VBase) {
             return new Promise(function (resolve, reject) {
                 httpRequest.onreadystatechange = function (event) {
                     if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                        var contentType = this.getResponseHeader('content-type');
+                        var contentType = httpRequest.getResponseHeader('content-type');
                         console.debug(httpRequest.status + ':' + contentType);
 
                         var result = {
                             action: 'posts',
-                            method: this.method,
+                            method: httpRequest.method,
                             statusCode: httpRequest.status,
                             contentType: contentType,
                             content: httpRequest.responseText,
@@ -34177,7 +34180,7 @@ var VPosts = function (_VBase) {
                             detail: { event: vEvent, result: result },
                             composed: true
                         });
-                        target.dispatchEvent(_ev);
+                        _this2.dispatchLifecycleEvent(_this2.event, _ev);
 
                         if (httpRequest.status >= 200 && httpRequest.status < 300) {
                             results.push(result);
@@ -34201,7 +34204,7 @@ var VPosts = function (_VBase) {
                             detail: { event: vEvent, result: result },
                             composed: true
                         });
-                        target.dispatchEvent(evFinished);
+                        _this2.dispatchLifecycleEvent(_this2.event, evFinished);
                     }
                 };
                 // Set up our request
@@ -34288,6 +34291,22 @@ var VPosts = function (_VBase) {
                 return this.parentElement();
             }
             return null;
+        }
+    }, {
+        key: 'dispatchLifecycleEvent',
+        value: function dispatchLifecycleEvent(domEvent, lifecycleEvent) {
+            var target = Object(__WEBPACK_IMPORTED_MODULE_4__get_event_target__["a" /* getEventTarget */])(domEvent);
+
+            if (!target || !target.isConnected) {
+                // If an action has hidden `target` or its parent (via e.g.
+                // `hides :some_element`), it will no longer be connected to the DOM
+                // and its dispatched lifecycle events won't make it up to the root.
+                // Instead, dispatch straight from the root instead of bubbling up
+                // from the DOM event's target.
+                target = this.root;
+            }
+
+            return target.dispatchEvent(lifecycleEvent);
         }
     }]);
 

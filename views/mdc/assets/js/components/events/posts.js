@@ -39,8 +39,9 @@ export class VPosts extends VBase {
             detail: this,
             composed: true,
         });
-        const target = getEventTarget(this.event);
-        target.dispatchEvent(ev);
+
+        this.dispatchLifecycleEvent(this.event, ev);
+
         // Manually build the FormData.
         // Passing in a <form> element (if available) would skip over
         // unchecked toggle elements, which would be unexpected if the user
@@ -117,15 +118,15 @@ export class VPosts extends VBase {
             }
         };
 
-        return new Promise(function(resolve, reject) {
-            httpRequest.onreadystatechange = function(event) {
+        return new Promise((resolve, reject) => {
+            httpRequest.onreadystatechange = (event) => {
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                    const contentType = this.getResponseHeader('content-type');
+                    const contentType = httpRequest.getResponseHeader('content-type');
                     console.debug(httpRequest.status + ':' + contentType);
 
                     const result = {
                         action: 'posts',
-                        method: this.method,
+                        method: httpRequest.method,
                         statusCode: httpRequest.status,
                         contentType: contentType,
                         content: httpRequest.responseText,
@@ -140,7 +141,7 @@ export class VPosts extends VBase {
                         detail: {event: vEvent, result: result},
                         composed: true,
                     });
-                    target.dispatchEvent(ev);
+                    this.dispatchLifecycleEvent(this.event, ev);
 
                     if (httpRequest.status >= 200 && httpRequest.status < 300) {
                         results.push(result);
@@ -166,7 +167,7 @@ export class VPosts extends VBase {
                         detail: {event: vEvent, result: result},
                         composed: true,
                     });
-                    target.dispatchEvent(evFinished);
+                    this.dispatchLifecycleEvent(this.event, evFinished);
                 }
             };
             // Set up our request
@@ -199,5 +200,20 @@ export class VPosts extends VBase {
             return this.parentElement();
         }
         return null;
+    }
+
+    dispatchLifecycleEvent(domEvent, lifecycleEvent) {
+        let target = getEventTarget(domEvent);
+
+        if (!target || !target.isConnected) {
+            // If an action has hidden `target` or its parent (via e.g.
+            // `hides :some_element`), it will no longer be connected to the DOM
+            // and its dispatched lifecycle events won't make it up to the root.
+            // Instead, dispatch straight from the root instead of bubbling up
+            // from the DOM event's target.
+            target = this.root;
+        }
+
+        return target.dispatchEvent(lifecycleEvent);
     }
 }
