@@ -38,6 +38,9 @@ export class VEvents {
         if (hasDragDropData(event)) {
             eventParams = Object.assign(eventParams, extractDragDropData(event));
         }
+        else if (event.detail && event.detail.constructor === Object) {
+            eventParams = Object.assign(eventParams, event.detail);
+        }
 
         // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
         const fnlist = this.actions.map((action) => {

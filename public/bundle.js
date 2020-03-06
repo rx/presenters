@@ -7307,6 +7307,8 @@ var VEvents = function () {
 
             if (Object(__WEBPACK_IMPORTED_MODULE_16__drag_n_drop__["b" /* hasDragDropData */])(event)) {
                 eventParams = Object.assign(eventParams, Object(__WEBPACK_IMPORTED_MODULE_16__drag_n_drop__["a" /* extractDragDropData */])(event));
+            } else if (event.detail && event.detail.constructor === Object) {
+                eventParams = Object.assign(eventParams, event.detail);
             }
 
             // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
