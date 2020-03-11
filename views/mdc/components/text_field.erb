@@ -2,6 +2,7 @@
      leading_icon = comp.icon && comp.icon.position.select {|p| eq(p, :left)}.any?
      trailing_icon = comp.icon && comp.icon.position.select {|p| eq(p, :right)}.any?
      auto_complete = comp.auto_complete&.to_sym == :off ? 'extra-off' : comp.auto_complete
+     behavior = comp.behavior || 'text'
 %>
   <div id="<%= comp.id %>"
        <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
@@ -16,7 +17,7 @@
 
     <input id="<%= comp.id %>-input"
            name="<%= comp.name %>"
-           type="<%= comp.password ? 'password' : 'text' %>"
+           type="<%= behavior %>"
            value="<%= comp.value %>"
            class="mdc-text-field__input"
            aria-controls="<%= comp.id %>-input-helper-text"
