@@ -25,8 +25,15 @@ Voom::Presenters.define(:cards) do
       end
     end
 
-    headline 'Square'
-    card width: '330px' do
+    blank
+    headline 'Square', inline: true
+    switch checked: true do
+      tooltip 'Hide/Show Square Card'
+      event :click do
+        toggle_visibility 'square_card'
+      end
+    end
+    card id: 'square_card', width: '330px' do
       media height: '200px', color: '#46B6AC' do
         image 'img/demo/dog.png', position: [:bottom, :right]
         title 'Update', color: :white, position: :bottom
