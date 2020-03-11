@@ -24,8 +24,9 @@
             <%= 'v-actionable' if comp.events %>
             <%= color_classname(comp) %>"
       <%= "data-#{data}" if data %>
-       style = "<%= color_style(comp) %>"
-       <%= erb :"components/event", :locals => {comp: comp, events: events, parent_id: parent_id} %>>
+      style="<%= color_style(comp) %>"
+      <%= 'tabindex="0"' if comp.events %>
+      <%= erb :"components/event", :locals => {comp: comp, events: events, parent_id: parent_id} %>>
     <%= icon %>
   </i>
   <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
