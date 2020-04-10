@@ -34146,8 +34146,7 @@ var VPosts = function (_VBase) {
                 var snackbar = element.vComponent;
 
                 if (contentType && contentType.includes('application/json')) {
-                    var messages = JSON.parse(response).messages;
-
+                    var messages = JSON.parse(response).message;
                     if (messages && messages.snackbar) {
                         var message = messages.snackbar.join('<br/>');
 
