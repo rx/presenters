@@ -106,8 +106,7 @@ export class VPosts extends VBase {
             const snackbar = element.vComponent;
 
             if (contentType && contentType.includes('application/json')) {
-                const messages = JSON.parse(response).messages;
-
+                const messages = JSON.parse(response).message;
                 if (messages && messages.snackbar) {
                     const message = messages.snackbar.join('<br/>');
 
