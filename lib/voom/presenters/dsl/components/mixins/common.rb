@@ -14,10 +14,11 @@ module Voom
             include Mixins::Menus
             include Mixins::TabBars
             include Mixins::Images
+            include Mixins::Icons
             include Mixins::ImageLists
             include Mixins::Dialogs
             include Mixins::Tables
-
+            
             def badge(badge=nil, **attributes, &block)
               self << Components::Badge.new(parent: self, badge: badge, **attributes, &block)
             end

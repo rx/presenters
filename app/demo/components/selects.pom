@@ -39,6 +39,27 @@ Voom::Presenters.define(:selects) do
         # end
       end
 
+      blank
+
+      select full_width: false do
+        icon :filter_list
+        label 'Default (outlined) style ...'
+        option disabled: true do
+          text 'Pick One'
+        end
+        option do
+          value 'value1'
+          text '&nbsp;&nbsp;&nbsp;&nbsp;One value'
+        end
+        option do
+          value 'value2'
+          text '&nbsp;&nbsp;&nbsp;&nbsp;Second value'
+        end
+         event :change do
+           snackbar 'item changed'
+         end
+      end
+
 
     end
     

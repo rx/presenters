@@ -3,16 +3,22 @@ module Voom
     module DSL
       module Components
         class TextField < Input
-          attr_reader :required, :full_width, :auto_complete, :case_type, :input_type
+
+          attr_reader :required,
+                      :full_width,
+                      :auto_complete,
+                      :case_type,
+                      :behavior
+
           VALID_CASE_TYPES = %i[mixed upper lower].freeze
 
           def initialize(**attribs_, &block)
             super(type: :text_field, **attribs_, &block)
             @required = attribs.delete(:required){ false }
             @full_width = attribs.delete(:full_width){ true }
-            @input_type = attribs.delete(:password){ false } ? 'password' : attribs.delete(:input_type){ 'text' }
             @case_type = validate_case_type(attribs.delete(:case_type) { :mixed })
             @auto_complete = validate_auto_complete(attribs.delete(:auto_complete) { :off })
+            @behavior = determine_behavior(attribs.delete(:password), attribs.delete(:behavior))
             label(attribs.delete(:label))if attribs.key?(:label)
             value(attribs.delete(:value))if attribs.key?(:value)
             expand!
@@ -50,6 +56,7 @@ module Voom
           end
 
           private
+
           def json_regexp(regexp)
             str = regexp.inspect.
                 sub('\\A', '^').
@@ -82,9 +89,25 @@ module Voom
             case_type
           end
 
+          def determine_behavior(password, behavior)
+            unless password.nil?
+              logger.warn(
+                'The `password` attribute of text_field is deprecated. ' \
+                'Use `text_field behavior: :password` instead.'
+              )
+            end
+
+            case password
+            when nil
+              behavior
+            when true
+              :password
+            when false
+              :text
+            end
+          end
         end
       end
     end
   end
 end
-

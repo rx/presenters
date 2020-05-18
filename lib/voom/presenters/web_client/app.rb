@@ -75,13 +75,14 @@ module Voom
             end
           end
 
-          def color_classname(comp)
-            return unless comp&.color
+          def color_classname(comp, affects = nil, color_attr = :color)
+            color = comp&.public_send(color_attr)
+            return unless color
 
-            return "v-#{comp.type}__primary" if eq(comp.color, :primary)
-            return "v-#{comp.type}__secondary" if eq(comp.color, :secondary)
+            return "v-#{comp.type}__primary" if eq(color, :primary)
+            return "v-#{comp.type}__secondary" if eq(color, :secondary)
 
-            "v-color__#{comp.color}"
+            "v-#{affects}color__#{color}"
           end
 
           def color_style(comp, affects = nil, color_attr = :color)

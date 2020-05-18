@@ -11,7 +11,8 @@
          <%= 'v-secondary-text-button' if eq(comp.button_type, :flat) && eq(comp.color, :secondary) %>
          <%=  position_classes %>
          <%= 'v-menu-click' if comp.menu%>
-         <%= 'v-nowrap' unless comp.wrap_text%>"
+         <%= 'v-nowrap' unless comp.wrap_text%>
+         <%= color_classname(comp, 'background-', :background_color)%>"
          style="<%= color_style(comp) %> <%= color_style(comp, 'background-', :background_color) %>"
          <%= data_attributes %>
 <%= 'disabled ' if comp.disabled %>

@@ -35,6 +35,12 @@ module Voom
             @hint = hint
           end
 
+          def icon(icon=nil, **attribs, &block)
+            return @icon if locked?
+            @icon = Components::Icon.new(parent: self, icon: icon, position: attribs.delete(:position){:right},
+                                         **attribs, &block)
+          end
+
           class Option < Base
             attr_reader :selected, :disabled
 
