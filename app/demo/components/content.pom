@@ -21,10 +21,35 @@ Voom::Presenters.define(:content) do
     blank
 
     title 'Attribute: `inline`'
-    content inline: true do
-      text 'A content block with inline ... this is effecdtively a no-op, and a silly example that only shows the difference between block and inline content blocks.', inline: true
+    content padding: :bottom3 do
+      text 'Inline controls the behavior of the content block within its context. It does not afffect the layout or flow' +
+               'of components within it. This provides a powerful method for building custom layouts'
+      content do
+        content inline: true, width: '500px', background_color: :cyan, padding: :full do
+          card do
+            text 'Section One (Chips in a block)'
+            chipset do
+              chip 'Chip 1'
+              chip 'Chip 1', color: :primary
+              chip 'Chip 2', color: :secondary
+              chip color: :hotpink do
+                text 'Chip 3', color: :white
+              end
+            end
+          end
+        end
+        content inline: false, width: '20%', position: [:top, :right] do
+          card do
+            text 'Section Two'
+          end
+        end
+        content inline: true, width: '20%' do
+          card do
+            text 'Section Three'
+          end
+        end
+      end
     end
-    text '..continuing text', inline: true
     blank
 
     title 'Attribute: `hidden`'
