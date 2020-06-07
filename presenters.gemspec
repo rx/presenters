@@ -28,7 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'tzinfo', '>=1.1', '< 2.0'
   spec.add_runtime_dependency 'tzinfo-data', '~>1.2018'
   spec.add_runtime_dependency 'redcarpet', '~>3.4'
-  spec.add_runtime_dependency 'nokogiri', ">= 1.7.2"
   spec.add_runtime_dependency 'filewatcher', '~> 1.1.1'
   spec.add_runtime_dependency 'zeitwerk', '~> 2.1'
 
