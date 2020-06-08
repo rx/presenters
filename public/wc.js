@@ -4429,6 +4429,8 @@ var VEvents = function () {
 
             if (Object(__WEBPACK_IMPORTED_MODULE_16__drag_n_drop__["b" /* hasDragDropData */])(event)) {
                 eventParams = Object.assign(eventParams, Object(__WEBPACK_IMPORTED_MODULE_16__drag_n_drop__["a" /* extractDragDropData */])(event));
+            } else if (event.detail && event.detail.constructor === Object) {
+                eventParams = Object.assign(eventParams, event.detail);
             }
 
             // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
@@ -4544,7 +4546,7 @@ var VEvents = function () {
                 case 'snackbar':
                     return new __WEBPACK_IMPORTED_MODULE_8__events_snackbar__["a" /* VSnackbarEvent */](options, params, event, root);
                 case 'autocomplete':
-                    return new __WEBPACK_IMPORTED_MODULE_6__events_autocomplete__["a" /* VAutoComplete */](options, url, params, event);
+                    return new __WEBPACK_IMPORTED_MODULE_6__events_autocomplete__["a" /* VAutoComplete */](options, url, params, event, root);
                 case 'clear':
                     return new __WEBPACK_IMPORTED_MODULE_9__events_clears__["a" /* VClears */](options, params, event, root);
                 case 'close_dialog':
@@ -34927,10 +34929,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var VAutoComplete = function (_VBase) {
     _inherits(VAutoComplete, _VBase);
 
-    function VAutoComplete(options, url, params, event) {
+    function VAutoComplete(options, url, params, event, root) {
         _classCallCheck(this, VAutoComplete);
 
-        var _this = _possibleConstructorReturn(this, (VAutoComplete.__proto__ || Object.getPrototypeOf(VAutoComplete)).call(this, options));
+        var _this = _possibleConstructorReturn(this, (VAutoComplete.__proto__ || Object.getPrototypeOf(VAutoComplete)).call(this, options, root));
 
         _this.element_id = options.target;
         _this.url = url;

@@ -3,11 +3,13 @@ module Voom
     module DSL
       module Components
         class TextField < Input
+
           attr_reader :required,
                       :full_width,
                       :auto_complete,
                       :case_type,
                       :behavior
+
           VALID_CASE_TYPES = %i[mixed upper lower].freeze
 
           def initialize(**attribs_, &block)

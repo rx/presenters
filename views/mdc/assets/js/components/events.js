@@ -38,6 +38,9 @@ export class VEvents {
         if (hasDragDropData(event)) {
             eventParams = Object.assign(eventParams, extractDragDropData(event));
         }
+        else if (event.detail && event.detail.constructor === Object) {
+            eventParams = Object.assign(eventParams, event.detail);
+        }
 
         // Adapted from http://www.datchley.name/promise-patterns-anti-patterns/#executingpromisesinseries
         const fnlist = this.actions.map((action) => {
@@ -154,7 +157,7 @@ export class VEvents {
             case 'snackbar':
                 return new VSnackbarEvent(options, params, event, root);
             case 'autocomplete':
-                return new VAutoComplete(options, url, params, event);
+                return new VAutoComplete(options, url, params, event, root);
             case 'clear':
                 return new VClears(options, params, event, root);
             case 'close_dialog':
