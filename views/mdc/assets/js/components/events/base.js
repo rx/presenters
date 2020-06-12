@@ -138,14 +138,11 @@ export class VBase extends VUrls {
         return parent ? parent.vComponent : null;
     }
 
-    validate() {
-        const comp = this.component();
-
-        if (comp) {
-            return comp.validate();
-        }
-
-        return [];
+    validate(formData) {
+        return this.inputComponents()
+            .filter((comp) => comp.respondTo('validate'))
+            .map((comp) => comp.validate(formData))
+            .filter((errors) => errors !== true);
     }
 
     closestContainer() {

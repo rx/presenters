@@ -3451,14 +3451,14 @@ var VBase = function (_VUrls) {
         }
     }, {
         key: 'validate',
-        value: function validate() {
-            var comp = this.component();
-
-            if (comp) {
-                return comp.validate();
-            }
-
-            return [];
+        value: function validate(formData) {
+            return this.inputComponents().filter(function (comp) {
+                return comp.respondTo('validate');
+            }).map(function (comp) {
+                return comp.validate(formData);
+            }).filter(function (errors) {
+                return errors !== true;
+            });
         }
     }, {
         key: 'closestContainer',
@@ -13372,7 +13372,6 @@ var VTextField = function (_dirtyableMixin) {
     _createClass(VTextField, [{
         key: 'validate',
         value: function validate(formData) {
-            console.debug('TextField validate', formData);
             var isValid = this.input.checkValidity();
             if (isValid) {
                 return true;
@@ -48512,20 +48511,8 @@ var VPosts = function (_VBase) {
             var _this2 = this;
 
             this.clearErrors();
-            var errors = this.validate();
+            // let errors = this.validate();
             var method = this.method;
-            if (errors.length > 0) {
-                return new Promise(function (_, reject) {
-                    results.push({
-                        action: 'posts',
-                        method: method,
-                        statusCode: 400,
-                        contentType: 'v/errors',
-                        content: errors
-                    });
-                    reject(results);
-                });
-            }
 
             var ev = new CustomEvent('V:postStarted', {
                 bubbles: true,
@@ -48649,6 +48636,22 @@ var VPosts = function (_VBase) {
 
             if (paramCount < 1) {
                 console.warn('Creating request with no data!' + ' Are you sure you\'ve hooked everything up correctly?');
+            }
+
+            var errors = this.validate(formData);
+            console.log('Validation errors');
+            console.dir(errors);
+            if (errors.length > 0) {
+                return new Promise(function (_, reject) {
+                    results.push({
+                        action: 'posts',
+                        method: method,
+                        statusCode: 400,
+                        contentType: 'v/errors',
+                        content: errors
+                    });
+                    reject(results);
+                });
             }
 
             var httpRequest = new XMLHttpRequest();
@@ -59514,7 +59517,7 @@ function initPlugins(e) {
 }
 
 // Delegating plugin class. Allows a plugin to define a class-name as a data
-// element, then contstructs that class and deligates componeent lifecycle
+// element, then constructs that class and delegates component lifecycle
 // events to the class.
 var VPluginComponent = function (_eventHandlerMixin) {
     _inherits(VPluginComponent, _eventHandlerMixin);
@@ -59551,7 +59554,7 @@ var VPluginComponent = function (_eventHandlerMixin) {
     }, {
         key: 'validate',
         value: function validate(formData) {
-            if (this.element.vPlugin && this.element.vPlugin.name) {
+            if (this.element.vPlugin && this.element.vPlugin.validate) {
                 return this.element.vPlugin.validate(formData);
             }
             return _get(VPluginComponent.prototype.__proto__ || Object.getPrototypeOf(VPluginComponent.prototype), 'validate', this).call(this, formData);
@@ -59559,14 +59562,14 @@ var VPluginComponent = function (_eventHandlerMixin) {
     }, {
         key: 'clear',
         value: function clear() {
-            if (this.element.vPlugin && this.element.vPlugin.name) {
+            if (this.element.vPlugin && this.element.vPlugin.clear) {
                 return this.element.vPlugin.clear();
             }
         }
     }, {
         key: 'reset',
         value: function reset() {
-            if (this.element.vPlugin && this.element.vPlugin.name) {
+            if (this.element.vPlugin && this.element.vPlugin.reset) {
                 return this.element.vPlugin.reset();
             }
         }
