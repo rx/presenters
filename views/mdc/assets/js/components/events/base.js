@@ -142,7 +142,7 @@ export class VBase extends VUrls {
         return this.inputComponents()
             .filter((comp) => comp.respondTo('validate'))
             .map((comp) => comp.validate(formData))
-            .filter((errors) => errors !== true);
+            .filter((errors) => errors !== true && errors !== undefined);
     }
 
     closestContainer() {
