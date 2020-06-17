@@ -2170,7 +2170,7 @@ var VBase = function (_VUrls) {
             }).map(function (comp) {
                 return comp.validate(formData);
             }).filter(function (errors) {
-                return errors !== true;
+                return errors !== true && errors !== undefined;
             });
         }
     }, {
