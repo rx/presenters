@@ -78,7 +78,7 @@ module Voom
                 super(type: :column, **attribs_, &block)
                 value = attribs.delete(:value)
                 @align = validate_alignment(attribs.delete(:align){numeric?(value) ? :right : :left})
-                self.value(value) if value
+                self.value(value, **attribs.slice(:markdown)) if value
                 @color = attribs.delete(:color)
                 @colspan = attribs.delete(:colspan)
                 @components = []
