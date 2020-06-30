@@ -46,24 +46,23 @@ export class VTextField extends dirtyableMixin(
     //    { email: ["email must be filled", "email must be from your domain"] }
     //    { :page: ["must be filled"] }
     validate(formData) {
-        console.debug('TextField validate', formData);
-        let isValid = this.input.checkValidity();
+        const isValid = this.input.checkValidity();
         if (isValid) {
             return true;
         }
-        let errorMessage = {};
+        const errorMessage = {};
         errorMessage[this.input.id] = [this.input.validationMessage];
         return errorMessage;
     }
 
     // Called to collect data for submission
     prepareSubmit(params) {
-        var optionSelected = this.optionSelected();
+        const optionSelected = this.optionSelected();
         if (optionSelected) {
-            var key = optionSelected.dataset.key;
+            const key = optionSelected.dataset.key;
             if (key) {
-                var name = this.name();
-                var id = name + '_id';
+                const name = this.name();
+                const id = name + '_id';
                 params.push([id, key]);
                 console.debug('TextField prepareSubmit added:' + id + '=' + key);
             }
