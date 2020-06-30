@@ -6,8 +6,7 @@
      <% if comp.dirtyable %>data-dirtyable<% end %>
      class="v-input v-datetime mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-trailing-icon' if comp.clear_icon %>
-            <%= 'mdc-text-field--disabled' if comp.disabled %>
-            <%= 'is-invalid is-dirty' if comp.error %>"
+            <%= 'mdc-text-field--disabled' if comp.disabled %>"
      data-config='<%= snake_to_camel(to_hash(comp.config), except: %i(time_24hr)).to_json %>'
      data-type='<%= comp.type %>'
      style="<%= 'width:100%' if comp.full_width %>">
@@ -19,7 +18,6 @@
          aria-controls="<%= comp.id %>-input-helper-text"
          data-input
          <%= 'required' if comp.required %>
-         <%= 'invalid' if comp.error %>
          <%= "pattern='#{comp.pattern}'" if comp.pattern %>
          list="<%= comp.id %>-list"
          <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id:  "#{comp.id}-input"} %>>

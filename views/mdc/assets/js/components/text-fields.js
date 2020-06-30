@@ -14,25 +14,27 @@ export function initTextFields(e) {
 
 export class VTextField extends dirtyableMixin(
     visibilityObserverMixin(
-    eventHandlerMixin(VBaseComponent))) {
+        eventHandlerMixin(VBaseComponent))) {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
 
         this.input = element.querySelector('input,textarea');
         this.input.vComponent = this;
         this.afterInputTimeout = null;
+        this.helperDisplay = this.root.getElementById(`${element.id}-input-helper-text`);
+        this.origHelperText = this.helperDisplay.innerHTML;
 
         this.recalcWhenVisible(this);
 
         this.input.addEventListener('input', (event) => {
             clearTimeout(this.afterInputTimeout);
             this.afterInputTimeout = setTimeout(() => {
-                this.element.dispatchEvent(new Event(AFTER_INPUT_EVENT, { composed: true }));
-            }, AFTER_INPUT_TIMEOUT)
+                this.element.dispatchEvent(new Event(AFTER_INPUT_EVENT, {composed: true}));
+            }, AFTER_INPUT_TIMEOUT);
         });
 
-        let caseType = element.dataset.case_type;
-        if(caseType !== 'mixed'){
+        const caseType = element.dataset.case_type;
+        if (caseType !== 'mixed') {
             this.input.addEventListener('keyup', (e) => {
                 this.forceCase(caseType);
             });
@@ -46,12 +48,26 @@ export class VTextField extends dirtyableMixin(
     //    { email: ["email must be filled", "email must be from your domain"] }
     //    { :page: ["must be filled"] }
     validate(formData) {
+        console.debug('TextField validate', formData);
         const isValid = this.input.checkValidity();
         if (isValid) {
+            if (this.origHelperText !== '') {
+                this.helperDisplay.innerHTML = this.origHelperText;
+                this.helperDisplay.classList.remove('v-hidden', 'mdc-text-field-helper-text--validation-msg');
+                this.element.classList.remove('mdc-text-field--invalid');
+            }
+            else {
+                this.helperDisplay.classList.add('v-hidden');
+            }
             return true;
         }
+
+        const message = this.helperDisplay.dataset.validationError ?
+            this.helperDisplay.dataset.validationError :
+            this.input.validationMessage;
+
         const errorMessage = {};
-        errorMessage[this.input.id] = [this.input.validationMessage];
+        errorMessage[this.element.id] = [message];
         return errorMessage;
     }
 
@@ -71,11 +87,11 @@ export class VTextField extends dirtyableMixin(
     }
 
     optionSelected() {
-        var dataList = this.element.querySelector('datalist');
+        const dataList = this.element.querySelector('datalist');
         if (dataList) {
-            var parentElement = this.input;
+            const parentElement = this.input;
             // If we find the input inside our list, we submit the form
-            for (var element of dataList.children) {
+            for (const element of dataList.children) {
                 if (element.value === parentElement.value) {
                     return element;
                 }

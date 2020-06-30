@@ -3473,8 +3473,6 @@ var VErrors = function () {
     }, {
         key: 'displayErrors',
         value: function displayErrors(result) {
-            var _this3 = this;
-
             var statusCode = result.statusCode,
                 contentType = result.contentType,
                 content = result.content;
@@ -3501,15 +3499,16 @@ var VErrors = function () {
                     for (var _iterator = responseErrors[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                         var response = _step.value;
 
-                        var pageErrors = this.flatten(this.normalize(response));
-                        var fieldErrors = this.flatten(this.normalize(response.errors)).filter(function (field, _, errors) {
-                            return !_this3.displayInputError(field, errors[field]);
-                        });
-                        var errors = pageErrors.concat(fieldErrors).filter(Boolean).filter(function (s) {
-                            return s.length > 0;
-                        });
-
-                        this.prependErrors(Array.from(new Set(errors)));
+                        var normalizedResponse = this.normalize(response);
+                        for (var key in normalizedResponse) {
+                            // console.log(key, normalizedResponse[key]);
+                            if (!this.displayInputError(key, normalizedResponse[key])) {
+                                // If not handled at the field level, display at the page level
+                                if (normalizedResponse[key].length > 0) {
+                                    this.prependErrors([normalizedResponse[key]]);
+                                }
+                            }
+                        }
                     }
                 } catch (err) {
                     _didIteratorError = true;
@@ -3537,23 +3536,21 @@ var VErrors = function () {
 
     }, {
         key: 'displayInputError',
-        value: function displayInputError(id, messages) {
+        value: function displayInputError(id, message) {
             var currentEl = this.root.getElementById(id);
 
-            if (!(currentEl && currentEl.mdcComponent)) {
+            if (!currentEl) {
                 return false;
             }
 
-            currentEl.mdcComponent.helperTextContent = messages.join(', ');
-
             var helperText = this.root.getElementById(id + '-input-helper-text');
-
             if (!helperText) {
                 return false;
             }
 
-            helperText.classList.add('mdc-text-field--invalid', 'mdc-text-field-helper-text--validation-msg', 'mdc-text-field-helper-text--persistent');
-            currentEl.mdcComponent.valid = false;
+            helperText.innerHTML = message;
+            currentEl.classList.add('mdc-text-field--invalid');
+            helperText.classList.add('mdc-text-field-helper-text--validation-msg');
 
             return true;
         }
@@ -9477,6 +9474,8 @@ var VTextField = function (_dirtyableMixin) {
         _this.input = element.querySelector('input,textarea');
         _this.input.vComponent = _this;
         _this.afterInputTimeout = null;
+        _this.helperDisplay = _this.root.getElementById(element.id + '-input-helper-text');
+        _this.origHelperText = _this.helperDisplay.innerHTML;
 
         _this.recalcWhenVisible(_this);
 
@@ -9507,12 +9506,23 @@ var VTextField = function (_dirtyableMixin) {
     _createClass(VTextField, [{
         key: 'validate',
         value: function validate(formData) {
+            console.debug('TextField validate', formData);
             var isValid = this.input.checkValidity();
             if (isValid) {
+                if (this.origHelperText !== '') {
+                    this.helperDisplay.innerHTML = this.origHelperText;
+                    this.helperDisplay.classList.remove('v-hidden', 'mdc-text-field-helper-text--validation-msg');
+                    this.element.classList.remove('mdc-text-field--invalid');
+                } else {
+                    this.helperDisplay.classList.add('v-hidden');
+                }
                 return true;
             }
+
+            var message = this.helperDisplay.dataset.validationError ? this.helperDisplay.dataset.validationError : this.input.validationMessage;
+
             var errorMessage = {};
-            errorMessage[this.input.id] = [this.input.validationMessage];
+            errorMessage[this.element.id] = [message];
             return errorMessage;
         }
 
@@ -29093,6 +29103,9 @@ var VButton = function (_eventHandlerMixin) {
         _this.element.addEventListener('V:postStarted', function (e) {
             return _this.disable();
         });
+        _this.element.addEventListener('V:eventsHalted', function (e) {
+            return _this.enable();
+        });
         _this.element.addEventListener('V:postFinished', function (e) {
             return _this.enable();
         });
@@ -33987,7 +34000,6 @@ var VPosts = function (_VBase) {
             var _this2 = this;
 
             this.clearErrors();
-            // let errors = this.validate();
             var method = this.method;
 
             var ev = new CustomEvent('V:postStarted', {
