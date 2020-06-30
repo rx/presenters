@@ -8,7 +8,7 @@
                <%= 'v-actionable' if col.events %>"
         <%= erb :"components/event", :locals => {comp: col, events: col.events, parent_id: col.event_parent_id}%>
         style="<%= "background-color: #{col.color};" if col.color %>">
-      <%= expand_text(col.value&.text) %>
+      <%= expand_text(col.value&.text, markdown: col.value&.markdown) %>
       <%= erb :"components/render", :locals => {:components => col.components, :scope => nil} %>
     </td>
     <%= erb :"components/tooltip", :locals => {comp: col.tooltip, parent_id: col.id} %>
