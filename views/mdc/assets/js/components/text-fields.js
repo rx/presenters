@@ -22,7 +22,7 @@ export class VTextField extends dirtyableMixin(
         this.input.vComponent = this;
         this.afterInputTimeout = null;
         this.helperDisplay = this.root.getElementById(`${element.id}-input-helper-text`);
-        this.origHelperText = this.helperDisplay.innerHTML;
+        this.origHelperText = this.helperDisplay.innerHTML.trim();
 
         this.recalcWhenVisible(this);
 

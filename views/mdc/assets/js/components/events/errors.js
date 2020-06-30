@@ -180,6 +180,7 @@ export class VErrors {
         helperText.innerHTML = message;
         currentEl.classList.add('mdc-text-field--invalid');
         helperText.classList.add('mdc-text-field-helper-text--validation-msg');
+        helperText.classList.remove('v-hidden');
 
         return true;
     }

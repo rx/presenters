@@ -6429,6 +6429,7 @@ var VErrors = function () {
             helperText.innerHTML = message;
             currentEl.classList.add('mdc-text-field--invalid');
             helperText.classList.add('mdc-text-field-helper-text--validation-msg');
+            helperText.classList.remove('v-hidden');
 
             return true;
         }
@@ -13340,7 +13341,7 @@ var VTextField = function (_dirtyableMixin) {
         _this.input.vComponent = _this;
         _this.afterInputTimeout = null;
         _this.helperDisplay = _this.root.getElementById(element.id + '-input-helper-text');
-        _this.origHelperText = _this.helperDisplay.innerHTML;
+        _this.origHelperText = _this.helperDisplay.innerHTML.trim();
 
         _this.recalcWhenVisible(_this);
 
