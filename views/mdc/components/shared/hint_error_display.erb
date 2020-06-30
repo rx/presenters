@@ -1,7 +1,6 @@
 <div class="mdc-text-field-helper-line">
   <div id="<%= comp.id %>-input-helper-text"
-       class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent
-        <%= 'v-hidden' unless comp.hint %>"
+       class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent<%= ' v-hidden' unless comp.hint %>"
        role="alert"
        aria-live="polite"
        <% if comp.validation_error %>data-validation-error="<%= comp.validation_error %>"<% end %>>
