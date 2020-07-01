@@ -73,12 +73,10 @@ export class VErrors {
             if (Array.isArray(v)) {
                 // Case A and B-1: an array of error messages:
                 result = v.join(', ');
-            }
-            else if (v.constructor === Object) {
+            } else if (v.constructor === Object) {
                 // Case B-2: a nested structure:
                 result = this.normalize(v);
-            }
-            else {
+            } else {
                 throw new Error(`Cannot normalize value of type ${typeof v}`);
             }
 
@@ -107,11 +105,9 @@ export class VErrors {
 
             if (typeof v === 'string') {
                 result = v;
-            }
-            else if (v.constructor === Object) {
+            } else if (v.constructor === Object) {
                 result = this.flatten(v);
-            }
-            else {
+            } else {
                 throw new Error(`Cannot flatten value of type ${typeof v}`);
             }
 
@@ -128,8 +124,7 @@ export class VErrors {
 
         if (contentType && contentType.includes('application/json')) {
             responseErrors = JSON.parse(content);
-        }
-        else if (contentType && contentType.includes('v/errors')) {
+        } else if (contentType && contentType.includes('v/errors')) {
             responseErrors = content;
         }
 
@@ -140,23 +135,22 @@ export class VErrors {
 
             for (const response of responseErrors) {
                 const normalizedResponse = this.normalize(response);
-                for (const key in normalizedResponse) {
-                    // console.log(key, normalizedResponse[key]);
-                    if (!this.displayInputError(key, normalizedResponse[key])) {
+                const errors = normalizedResponse.errors ? normalizedResponse.errors : normalizedResponse;
+                for (const key in errors) {
+                    console.log(key, errors[key]);
+                    if (!this.displayInputError(key, errors[key])) {
                         // If not handled at the field level, display at the page level
-                        if (normalizedResponse[key].length > 0) {
-                            this.prependErrors([normalizedResponse[key]]);
+                        if (errors[key].length > 0) {
+                            this.prependErrors([errors[key]]);
                         }
                     }
                 }
             }
-        }
-        else if (statusCode === 0) {
+        } else if (statusCode === 0) {
             this.prependErrors(
                 ['Unable to contact server. Please check that you are online and retry.']
             );
-        }
-        else {
+        } else {
             this.prependErrors(
                 [`The server returned an unexpected response! Status: ${statusCode}`]
             );

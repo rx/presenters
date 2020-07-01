@@ -3500,12 +3500,13 @@ var VErrors = function () {
                         var response = _step.value;
 
                         var normalizedResponse = this.normalize(response);
-                        for (var key in normalizedResponse) {
-                            // console.log(key, normalizedResponse[key]);
-                            if (!this.displayInputError(key, normalizedResponse[key])) {
+                        var errors = normalizedResponse.errors ? normalizedResponse.errors : normalizedResponse;
+                        for (var key in errors) {
+                            console.log(key, errors[key]);
+                            if (!this.displayInputError(key, errors[key])) {
                                 // If not handled at the field level, display at the page level
-                                if (normalizedResponse[key].length > 0) {
-                                    this.prependErrors([normalizedResponse[key]]);
+                                if (errors[key].length > 0) {
+                                    this.prependErrors([errors[key]]);
                                 }
                             }
                         }
