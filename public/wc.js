@@ -30352,6 +30352,8 @@ var VDateTime = function (_VTextField) {
         };
         config.onClose = function onClose(selectedDates, dateStr, instance) {
             instance.mdc_text_field.foundation_.deactivateFocus();
+            var event = new Event('closed');
+            element.dispatchEvent(event);
         };
 
         _this.fp = __WEBPACK_IMPORTED_MODULE_0_flatpickr___default()(_this.input, config);

@@ -157,17 +157,21 @@ module Voom
               (@total.to_f / @page_size.to_f).ceil
             end
 
+            def unescaped(hash)
+              hash.transform_values { |v| v.is_a?(String) ? CGI::unescapeHTML(v) : v }
+            end
+
             def button(icon_name, page, replace_id = @replace_id, replace_presenter = @replace_presenter)
-              __attribs__ = attribs.merge({page: page, page_size: @page_size})
+              __attribs__ = unescaped(attribs.merge({page: page, page_size: @page_size}))
               Components::Button.new(parent: self, type: :icon, icon: icon_name) do
                 event :click do
-                   replaces replace_id, replace_presenter, __attribs__
+                  replaces replace_id, replace_presenter, __attribs__
                 end
               end
             end
 
             def select(options, current_option, total_records, replace_id = @replace_id, replace_presenter = @replace_presenter)
-              __attribs__ = attribs.reject{|key,val| [:page_size, :page].include? key }
+              __attribs__ = unescaped(attribs.reject{|key,val| [:page_size, :page].include? key })
               Components::Select.new(parent: self, name: :page_size, full_width: false) do
                 options.each do |num|
                   option selected: (num == current_option) do
