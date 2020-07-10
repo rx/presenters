@@ -34,7 +34,9 @@ module Voom
                        :locals => {comp: @comp,
                                    components: @components, index: @index}
         end
+
         private
+
         def initialize_plugins
           self.class.include_plugins(:WebClientComponents, plugins: @comp.send(:_plugins_))
         end

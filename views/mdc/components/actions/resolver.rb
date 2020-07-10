@@ -21,7 +21,7 @@ module WebClient
         # Deligate the action data to each action class
         # [Type, URL, Options, Params] these are passed into javascript event/action class constructors
         # Only the type need be canonical, the rest is defined between this class and its javascript
-        Object.const_get("::WebClient::Actions::#{inflector.camelize(@action.type)}").new
+        ::WebClient::Actions.const_get(inflector.camelize(@action.type)).new
       end
 
       private

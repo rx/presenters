@@ -11,7 +11,7 @@ module Voom
           attr_accessor :text, :icon, :button_type, :color, :background_color, :disabled, :size, :position, :full_width, :hidden, :wrap_text
 
           def initialize(type: nil, **attribs_, &block)
-            @button_type = h(type) || ((attribs_[:icon] && !attribs_[:text]) ? :icon : nil) || :flat
+            @button_type = type || ((attribs_[:icon] && !attribs_[:text]) ? :icon : nil) || :flat
             super(type: :button, **attribs_, &block)
             @color = attribs.delete(:color)
             @background_color = attribs.delete(:background_color)
