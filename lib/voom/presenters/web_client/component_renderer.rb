@@ -24,15 +24,18 @@ module Voom
         end
 
         def render
-          return send(:"render_#{@scope ? "_#{@scope}_" : nil}#{@comp.type}",
-                      @comp,
-                      components: @components,
+          comp = ComponentDecoratorFactory.build(@comp)
+          components = @components.map { |c| ComponentDecoratorFactory.build(c) }
+
+          return public_send(:"render_#{@scope ? "_#{@scope}_" : nil}#{@comp.type}",
+                      comp,
+                      components: components,
                       index: @index,
                       render: @render) if respond_to?(:"render_#{@comp.type}")
 
           @render.call :erb, :"components#{@scope ? "/#{@scope}" : nil}/#{@comp.type}",
-                       :locals => {comp: @comp,
-                                   components: @components, index: @index}
+                       :locals => {comp: comp,
+                                   components: components, index: @index}
         end
 
         private
