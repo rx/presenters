@@ -9,6 +9,14 @@ module Voom
           __getobj__.send(:_plugins_)
         end
 
+        def method_missing(meth, *args, &block)
+          if respond_to?(meth)
+            super
+          else
+            nil
+          end
+        end
+
         private
 
         HTML_ESCAPED_ATTRIBUTES = %i(
