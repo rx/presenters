@@ -197,7 +197,7 @@ module Voom
             @pom = presenter.expand(router: router, context: prepare_context(p))
             @base_url = request.base_url
             layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
-            response.headers['X-Frame-Options'] = 'ALLOWALL' if ENV['ALLOWALL_FRAME_OPTIONS']
+            response.headers['X-Frame-Options'] = 'ALLOWALL' if ENV['ALLOWALL_FRAME_OPTIONS'] || presenter.options.fetch(:allow_all_frame_options, false)
             erb :web, layout: layout
           rescue StandardError => e
             Presenters::Settings.config.presenters.error_logger.call(
