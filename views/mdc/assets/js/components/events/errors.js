@@ -105,9 +105,11 @@ export class VErrors {
 
             if (typeof v === 'string') {
                 result = v;
-            } else if (v.constructor === Object) {
+            }
+            else if (v.constructor === Object) {
                 result = this.flatten(v);
-            } else {
+            }
+            else {
                 throw new Error(`Cannot flatten value of type ${typeof v}`);
             }
 
@@ -124,7 +126,8 @@ export class VErrors {
 
         if (contentType && contentType.includes('application/json')) {
             responseErrors = JSON.parse(content);
-        } else if (contentType && contentType.includes('v/errors')) {
+        }
+        else if (contentType && contentType.includes('v/errors')) {
             responseErrors = content;
         }
 
@@ -136,21 +139,27 @@ export class VErrors {
             for (const response of responseErrors) {
                 const normalizedResponse = this.normalize(response);
                 const errors = normalizedResponse.errors ? normalizedResponse.errors : normalizedResponse;
-                for (const key in errors) {
-                    console.log(key, errors[key]);
-                    if (!this.displayInputError(key, errors[key])) {
-                        // If not handled at the field level, display at the page level
-                        if (errors[key].length > 0) {
-                            this.prependErrors([errors[key]]);
+                if (errors.constructor === String) {
+                    this.prependErrors([errors]);
+                }
+                else {
+                    for (const key in errors) {
+                        if (!this.displayInputError(key, errors[key])) {
+                            // If not handled at the field level, display at the page level
+                            if (errors[key].length > 0) {
+                                this.prependErrors([errors[key]]);
+                            }
                         }
                     }
                 }
             }
-        } else if (statusCode === 0) {
+        }
+        else if (statusCode === 0) {
             this.prependErrors(
                 ['Unable to contact server. Please check that you are online and retry.']
             );
-        } else {
+        }
+        else {
             this.prependErrors(
                 [`The server returned an unexpected response! Status: ${statusCode}`]
             );
@@ -160,13 +169,13 @@ export class VErrors {
     // Sets the helper text on the field
     // Returns true if it was able to set the error on the control
     displayInputError(id, message) {
-        const currentEl = this.root.getElementById(id);
+        const currentEl = this.root.getElementById(id) || this.root.getElementsByName(id)[0];
 
         if (!currentEl) {
             return false;
         }
 
-        const helperText = this.root.getElementById(`${id}-input-helper-text`);
+        const helperText = this.root.getElementById(`${currentEl.id}-helper-text`);
         if (!helperText) {
             return false;
         }
