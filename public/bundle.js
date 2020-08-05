@@ -6379,12 +6379,15 @@ var VErrors = function () {
 
                         var normalizedResponse = this.normalize(response);
                         var errors = normalizedResponse.errors ? normalizedResponse.errors : normalizedResponse;
-                        for (var key in errors) {
-                            console.log(key, errors[key]);
-                            if (!this.displayInputError(key, errors[key])) {
-                                // If not handled at the field level, display at the page level
-                                if (errors[key].length > 0) {
-                                    this.prependErrors([errors[key]]);
+                        if (errors.constructor === String) {
+                            this.prependErrors([errors]);
+                        } else {
+                            for (var key in errors) {
+                                if (!this.displayInputError(key, errors[key])) {
+                                    // If not handled at the field level, display at the page level
+                                    if (errors[key].length > 0) {
+                                        this.prependErrors([errors[key]]);
+                                    }
                                 }
                             }
                         }
@@ -6416,13 +6419,13 @@ var VErrors = function () {
     }, {
         key: 'displayInputError',
         value: function displayInputError(id, message) {
-            var currentEl = this.root.getElementById(id);
+            var currentEl = this.root.getElementById(id) || this.root.getElementsByName(id)[0];
 
             if (!currentEl) {
                 return false;
             }
 
-            var helperText = this.root.getElementById(id + '-input-helper-text');
+            var helperText = this.root.getElementById(currentEl.id + '-helper-text');
             if (!helperText) {
                 return false;
             }
