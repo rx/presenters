@@ -16,7 +16,7 @@
             class="mdc-select__native-control"
             <%= erb(:"components/event", locals: {comp: comp,
                                                   events: comp.events,
-                                                  parent_id: comp.id}) %>>
+                                                  parent_id: "#{comp.id}-input"}) %>>
       <% comp.options.each do |option| %>
         <option value="<%= option.value %>"
                 <%= 'disabled' if option.disabled %>
