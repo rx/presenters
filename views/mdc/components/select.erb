@@ -9,7 +9,7 @@
        <%= 'style="width: 100%;"' if comp.full_width %>>
     <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-select__icon', parent_id: "#{comp.id}-input", size_class: '', position: []} %>
     <i class="mdc-select__dropdown-icon"></i>
-    <select id="<%= comp.id %>"
+    <select id="<%= comp.id %>-input"
             <% if comp.name %> name="<%= comp.name %>" <% end %>
             <% if comp.required %>required<% end %>
             <% if comp.disabled %>disabled<% end %>
@@ -38,10 +38,6 @@
       <div class="mdc-line-ripple"></div>
     <% end %>
   </div>
-  <% if comp.hint %>
-    <p id="<%= comp.id %>-input-helper-text" class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg" aria-hidden="true">
-      <%= comp.hint %>
-    </p>
-  <% end %>
+  <%= erb :"components/shared/hint_error_display", :locals => {comp: comp} %>
   <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 <% end %>
