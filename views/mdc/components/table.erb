@@ -16,6 +16,11 @@
       <%= erb :"components/table/row", :locals => {:row => row} %>
     <% end %>
     </tbody>
+    <% if comp.footer %>
+      <tfoot>
+        <%= erb :"components/table/footer", :locals => {:row => comp.footer} %>
+      </tfoot>
+    <% end %>
   </table>
 </div>
 <% if comp.pagination %>
