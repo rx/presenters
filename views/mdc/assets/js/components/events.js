@@ -4,6 +4,7 @@ import {VReplaces} from './events/replaces';
 import {VDialog} from './events/dialog';
 import {VErrors} from './events/errors';
 import {VToggleVisibility} from './events/toggle_visibility';
+import {VToggleDisabled} from './events/toggle_disabled';
 import {VAutoComplete} from './events/autocomplete';
 import {VPromptIfDirty} from './events/prompt_if_dirty';
 import {VSnackbarEvent} from './events/snackbar';
@@ -150,6 +151,8 @@ export class VEvents {
                 return new VDialog(options, params, event, root);
             case 'toggle_visibility':
                 return new VToggleVisibility(options, params, event, root);
+            case 'toggle_disabled':
+                return new VToggleDisabled(options, params, event, root);
             case 'prompt_if_dirty':
                 return new VPromptIfDirty(options, params, event, root);
             case 'remove':

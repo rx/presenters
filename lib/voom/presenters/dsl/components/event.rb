@@ -76,6 +76,12 @@ module Voom
                                                   params: params, &block)
           end
 
+          def toggle_disabled(component_id, **params, &block)
+            self << Actions::ToggleDisabled.new(parent: self,
+                                                  target: component_id,
+                                                  params: params, &block)
+          end
+
           def prompt_if_dirty(dialog_id, input_tag: nil, **params, &block)
             self << Actions::PromptIfDirty.new(parent: self,
                                                target: dialog_id,
