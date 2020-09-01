@@ -145,6 +145,11 @@ module Voom
                                         params: params, &block)
           end
 
+          def post_message(msg, **params, &block)
+            self << Actions::PostMessage.new(parent: self,
+                                             params: params.merge(message: msg), &block)
+          end
+
           def stepper(navigate, **params, &block)
             self << Actions::Stepper.new(parent: self,
                                          params: params.merge(navigate: navigate, stepper_id: parent(:stepper).id), &block)
