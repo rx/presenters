@@ -6,6 +6,7 @@
 
 <button id="<%= comp.id %>"
         <%= data_attributes %>
+        data-disabled-on-post-finished="<%= comp.disabled_on_post_finished %>"
         class="v-button v-button--fab mdc-fab material-icons v-fab--absolute
           <%= 'v-hidden' if comp.hidden %>
           <%= class_name %>

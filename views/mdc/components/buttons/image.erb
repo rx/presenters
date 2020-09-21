@@ -7,7 +7,6 @@
 <button
   id="<%= comp.id %>"
   class="v-button v-button--image mdc-button <%=class_name%>
-          <%= data_attributes %>
           <%= 'v-hidden' if comp.hidden %>
           <%= 'mdc-button--raised' if eq(comp.button_type, :raised) %>
           <%= 'v-secondary-filled-button' if eq(comp.button_type, :raised) && eq(comp.color, :secondary) %>
@@ -15,6 +14,8 @@
           <%=  position_classes %>
           <%= 'v-menu-click' if comp.menu%>"
   style="background-image: url(<%= comp.image.url %>);"
+  <%= data_attributes %>
+  data-disabled-on-post-finished="<%= comp.disabled_on_post_finished %>"
   <%= 'disabled' if comp.disabled %>
   <%= "type='#{eq(comp.button_type, :raised) ? 'submit' : 'button'}'" %>
   <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} %>>

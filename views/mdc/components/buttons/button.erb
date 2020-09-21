@@ -15,6 +15,7 @@
          <%= color_classname(comp, 'background-', :background_color)%>"
          style="<%= color_style(comp) %> <%= color_style(comp, 'background-', :background_color) %>"
          <%= data_attributes %>
+        data-disabled-on-post-finished="<%= comp.disabled_on_post_finished %>"
 <%= 'disabled ' if comp.disabled %>
 <%= "type='#{eq(comp.button_type, :raised) ? 'submit' : 'button'}'" %>
 <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} %>>

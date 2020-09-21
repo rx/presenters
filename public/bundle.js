@@ -43747,9 +43747,16 @@ var VButton = function (_eventHandlerMixin) {
         _this.element.addEventListener('V:eventsHalted', function (e) {
             return _this.enable();
         });
-        _this.element.addEventListener('V:postFinished', function (e) {
-            return _this.enable();
-        });
+        if (_this.element.dataset.disabledOnPostFinished === 'false') {
+            _this.element.addEventListener('V:postFinished', function (e) {
+                return _this.enable();
+            });
+        } else {
+            _this.element.addEventListener('V:postFailed', function (e) {
+                return _this.enable();
+            });
+        }
+
         return _this;
     }
 
