@@ -15,6 +15,11 @@
     visibility: hidden;
 }
 
+div.mdc-text-field-helper-text.mdc-text-field-helper-text--persistent.v-hidden {
+    display: none;
+    visibility: hidden;
+}
+
 button.v-button.mdc-dialog__button.v-hidden {
     width: 0 !important;
     min-width: 0 !important;

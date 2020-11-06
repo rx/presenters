@@ -58,8 +58,10 @@ module Voom
             def checkbox(**attributes, &block)
               return @checkbox if locked?
               field_name = @type == :header ? 'all' : "#{attributes.delete(:name)}[]"
+              tag = @type == :header ? '' : @parent.tag
               @checkbox = Components::Checkbox.new(parent: self,
                                                    name: field_name,
+                                                   tag: tag,
                                                    **attributes,
                                                    &block)
             end
@@ -90,13 +92,13 @@ module Voom
                 @value = Components::Typography.new(parent: self, type: :text, text: value, **attribs, &block)
               end
 
+              def numeric?(_value = value&.text)
+                return true if _value.is_a? Numeric
+                (_value.to_s.strip.sub(/\D/, '') =~ /^[\$]?[-+]?(,?[0-9])*\.?[0-9]+$/) != nil
+              end
+
               private
               VALID_ALIGNMENTS = %i[left center right].freeze
-
-              def numeric?(value)
-                return true if value.is_a? Numeric
-                (value.to_s.strip.sub(/\D/, '') =~ /^[\$]?[-+]?(,?[0-9])*\.?[0-9]+$/) != nil
-              end
 
               def validate_alignment(value)
                 return :left if value.nil?

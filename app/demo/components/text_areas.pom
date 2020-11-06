@@ -9,22 +9,29 @@ Voom::Presenters.define(:text_areas) do
   indented_grid do
     headline 'Multiple line'
 
-    text_area name: :notes, rows: 3 do
-      label 'Text lines...'
-      hint 'Default behavior is full width'
+    form do
+      text_area name: :notes, rows: 3, required: true do
+        label 'Text lines...'
+        hint 'Default behavior is full width'
+      end
+
+      text_area name: :notes, rows: 5, cols: 60, full_width: false do
+        label 'Five by Sixty'
+        hint 'Or specify using rows and columns'
+      end
+
+      rich_text_area name: :notes, placeholder: 'Text entered here is saved as HTML', rows: 10 do
+        label 'Rich Text Area'
+        hint 'Default is full width and 25 rows'
+      end
+
+      button 'Submit' do
+        event :click do
+          posts '/_echo_'
+          snackbar 'Posted to _echo_'
+        end
+      end
     end
-
-
-    text_area name: :notes, rows: 5, cols: 60, full_width: false do
-      label 'Five by Sixty'
-      hint 'Or specify using rows and columns'
-    end
-
-    rich_text_area name: :notes, placeholder: 'Text entered here is saved as HTML', rows: 10 do
-      label 'Rich Text Area'
-      hint 'Default is full width and 25 rows'
-    end
-
 
     attach :code, file: __FILE__
   end

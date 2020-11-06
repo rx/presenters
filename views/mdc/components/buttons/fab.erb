@@ -6,6 +6,7 @@
 
 <button id="<%= comp.id %>"
         <%= data_attributes %>
+        data-disabled-on-post-finished="<%= comp.disabled_on_post_finished %>"
         class="v-button v-button--fab mdc-fab material-icons v-fab--absolute
           <%= 'v-hidden' if comp.hidden %>
           <%= class_name %>
@@ -13,7 +14,7 @@
           <%= 'mdc-fab--mini' if eq(comp.size, :small) %>"
         aria-label="<%= inflector.humanize(comp.icon.icon) %>"
         <%= 'disabled' if comp.disabled %>
-        <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} unless comp.disabled %>>
+        <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} %>>
   <span class="mdc-fab__icon">
   <%= comp.icon.icon %>
   </span>

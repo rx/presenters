@@ -50,11 +50,6 @@ module Voom
             @hint = hint
           end
 
-          def error(error=nil)
-            return @error if locked?
-            @error = error
-          end
-
           private
 
           def json_regexp(regexp)
