@@ -36,7 +36,7 @@ module Voom
         def global_namespace_css(path)
           return unless custom_css_path && path
           namespace_path = path.split('/').reject { |c| c.empty? }.first
-          css_file = File.join(custom_css_path, namespace_path)
+          css_file = File.join(custom_css_path, namespace_path ? namespace_path : '')
           css_file = File.join(css_file, 'global.css')
           full_path = File.join(root, css_file)
           trace {"Loading global namespace: #{full_path}"}
