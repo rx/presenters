@@ -19,6 +19,10 @@ module Voom
 
             private
 
+            def escape(attributes)
+              attributes
+            end
+
             def parse_presenter
               return options[:presenter] if options[:presenter].match(/^https?\:\/\//)
               _expand_namespace_(options[:presenter], namespace).gsub(':', '/')
