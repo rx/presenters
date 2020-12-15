@@ -9,8 +9,7 @@
        class="v-input v-text-field v-focusable mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-leading-icon' if leading_icon %>
             <%= 'mdc-text-field--with-trailing-icon' if trailing_icon %>
-            <%= 'mdc-text-field--disabled' if comp.disabled %>
-            <%= 'is-invalid is-dirty' if comp.error %>"
+            <%= 'mdc-text-field--disabled' if comp.disabled %>"
        style="<%= 'width:100%' if comp.full_width %>">
 
     <input id="<%= comp.id %>-input"
@@ -26,7 +25,6 @@
            <% if comp.disabled %>disabled
            <% end %>
            <%= 'required' if comp.required %>
-           <%= 'invalid' if comp.error %>
            <%= "pattern='#{comp.pattern}'" if comp.pattern %>
            autocomplete="<%= auto_complete %>"
            <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: "#{comp.id}-input"} %>>

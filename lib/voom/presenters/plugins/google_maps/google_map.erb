@@ -1,11 +1,10 @@
 <% if comp %>
   <img id="<%= comp.id %>"
-       class="v-google-map-image <%= comp.events ? 'v-actionable' : nil%>"
+       class="v-image v-google-map-image <%= comp.events ? 'v-actionable' : nil%>"
        src="<%= comp.url %>"
        border="0"
        height="<%= comp.height %>"
        width="<%= comp.width %>"
-
        alt=""
        <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id} %>>
 <% end %>

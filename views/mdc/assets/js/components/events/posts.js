@@ -18,7 +18,6 @@ export class VPosts extends VBase {
 
     call(results, eventParams) {
         this.clearErrors();
-        // let errors = this.validate();
         let method = this.method;
 
         const ev = new CustomEvent('V:postStarted', {

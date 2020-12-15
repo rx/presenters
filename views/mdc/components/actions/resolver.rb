@@ -18,7 +18,7 @@ module WebClient
       def resolve
         return method(:"action_data_#{@action.type}") if respond_to?(:"action_data_#{@action.type}")
         require_relative "#{@action.type}"
-        # Deligate the action data to each action class
+        # Delegate the action data to each action class
         # [Type, URL, Options, Params] these are passed into javascript event/action class constructors
         # Only the type need be canonical, the rest is defined between this class and its javascript
         ::WebClient::Actions.const_get(inflector.camelize(@action.type)).new

@@ -14,6 +14,7 @@ module Voom
         set :bind, '0.0.0.0'
         set :views, Proc.new {File.join(root, "views", ENV['VIEW_ENGINE'] || 'mdc')}
         set :dump_errors, false
+        set :protection, :except => :frame_options
         configure do
           enable :logging
         end
@@ -197,7 +198,7 @@ module Voom
             @pom = presenter.expand(router: router, context: prepare_context(p))
             @base_url = request.base_url
             layout = !(request.env['HTTP_X_NO_LAYOUT'] == 'true')
-            response.headers['X-Frame-Options'] = 'ALLOWALL' if ENV['ALLOWALL_FRAME_OPTIONS']
+            response.headers['X-Frame-Options'] = ENV['ALLOWALL_FRAME_OPTIONS'] || presenter.options.fetch(:allow_all_frame_options, false) ? 'ALLOWALL' : 'SAMEORIGIN'
             erb :web, layout: layout
           rescue StandardError => e
             Presenters::Settings.config.presenters.error_logger.call(
