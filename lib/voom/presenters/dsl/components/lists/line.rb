@@ -72,7 +72,7 @@ module Voom
               # Append [] if the list is selectable and the checkbox's name
               # doesn't already include brackets:
               field_name = attributes.delete(:name).to_s
-              field_name << '[]' if @selectable && !field_name.include?('[')
+              field_name += '[]' if @selectable && !field_name.include?('[')
 
               @checkbox = Components::Checkbox.new(parent: self,
                                                    name: field_name,

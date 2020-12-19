@@ -18,20 +18,7 @@ export class VPosts extends VBase {
 
     call(results, eventParams) {
         this.clearErrors();
-        let errors = this.validate();
         let method = this.method;
-        if (errors.length > 0) {
-            return new Promise(function(_, reject) {
-                results.push({
-                    action: 'posts',
-                    method: method,
-                    statusCode: 400,
-                    contentType: 'v/errors',
-                    content: errors,
-                });
-                reject(results);
-            });
-        }
 
         const ev = new CustomEvent('V:postStarted', {
             bubbles: true,
@@ -80,6 +67,22 @@ export class VPosts extends VBase {
                 'Creating request with no data!'
                 + ' Are you sure you\'ve hooked everything up correctly?',
             );
+        }
+
+        let errors = this.validate(formData);
+        console.log('Validation errors');
+        console.dir(errors);
+        if (errors.length > 0) {
+            return new Promise(function(_, reject) {
+                results.push({
+                    action: 'posts',
+                    method: method,
+                    statusCode: 400,
+                    contentType: 'v/errors',
+                    content: errors,
+                });
+                reject(results);
+            });
         }
 
         const httpRequest = new XMLHttpRequest();

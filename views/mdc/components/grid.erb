@@ -9,7 +9,8 @@
      <% end %>
      class="v-grid mdc-layout-grid
             <%= _padding_classes_(comp.padding, @grid_nesting) %>
-            <%= 'v-grid__wide' if comp.wide %>"
+            <%= 'v-grid__wide' if comp.wide %>
+            <%= comp.css_class.join(' ') %>"
      style="<%= "background-color: #{comp.color};" if comp.color %><%= "height:#{comp.height};" if comp.height %>"
      <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
   <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(top both))%>
@@ -24,7 +25,7 @@
      %>
       <div id="<%= col.id %>" class="v-column mdc-layout-grid__cell <%= span %>
                           <%= col.overflow ? nil : 'v-column-hide-overflow' %>
-                          <%= _padding_classes_(col.padding) %> v-column--relative <%= _alignment_class_(col.align) %>"
+                          <%= _padding_classes_(col.padding) %> v-column--relative <%= _alignment_class_(col.align) %> <%= col.css_class.join(' ') %>"
            style="<%= "background-color: #{col.color};" if col.color %><%= "height:#{comp.height};" if comp.height %>"
            <%= erb :"components/event", :locals => {comp: col, events: col.events, parent_id: col.event_parent_id} %>>
         <%= erb(:"components/progress", :locals => {:comp => col.progress}) if col.progress && includes_one?(Array(col.progress.position), %i(top both))%>

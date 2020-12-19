@@ -3,11 +3,13 @@ module Voom
     module DSL
       module Components
         class TextField < Input
+
           attr_reader :required,
                       :full_width,
                       :auto_complete,
                       :case_type,
                       :behavior
+
           VALID_CASE_TYPES = %i[mixed upper lower].freeze
 
           def initialize(**attribs_, &block)
@@ -48,9 +50,9 @@ module Voom
             @hint = hint
           end
 
-          def error(error=nil)
-            return @error if locked?
-            @error = error
+          def behavior
+            return "type=\"#{@behavior}\"" unless @behavior == 'currency'
+            return 'type="number" min="0.00" max="10000000000.00" step="0.01"'
           end
 
           private

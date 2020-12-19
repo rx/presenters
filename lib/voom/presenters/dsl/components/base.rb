@@ -15,18 +15,19 @@ module Voom
           include Mixins::YieldTo
           extend Pluggable
 
-          attr_reader :type, :id, :tag, :attributes, :draggable, :drop_zone
+          attr_reader :type, :id, :tag, :attributes, :draggable, :drop_zone, :css_class
 
           alias attribs attributes
 
           def initialize(type:, parent:, id: nil, tag: nil, **attributes, &block)
             @draggable = attributes.delete(:draggable) {nil}
             @drop_zone = attributes.delete(:drop_zone) {nil}
-            @id = h(id) || generate_id
+            @css_class = Array(attributes.delete(:class) {nil})
+            @id = id || generate_id
             @tag = tag
-            @type = h(type)
+            @type = type
             @parent = parent
-            @attributes = escape(attributes)
+            @attributes = attributes
             @block = block
             initialize_plugins
           end
@@ -40,15 +41,6 @@ module Voom
 
           def initialize_plugins
             self.class.include_plugins(:DSLComponents, :DSLHelpers, plugins: _plugins_)
-          end
-
-          def h(text)
-            return text unless text.is_a? String
-            CGI::escapeHTML(text)
-          end
-
-          def escape(attributes)
-            attributes.map {|k, v| [k, h(v)]}.to_h
           end
 
           def generate_id

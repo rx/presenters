@@ -36,6 +36,8 @@ export class VDateTime extends VTextField {
         };
         config.onClose = function onClose(selectedDates, dateStr, instance) {
             instance.mdc_text_field.foundation_.deactivateFocus();
+            const event = new Event('closed');
+            element.dispatchEvent(event);
         };
 
         this.fp = flatpickr(this.input, config);

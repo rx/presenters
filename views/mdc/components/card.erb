@@ -12,9 +12,12 @@
   class="v-card card-<%= comp.id %> mdc-card
            <%= 'v-actionable' if comp.events && !comp.draggable %>
            <%= 'v-dnd-draggable' if comp.draggable %>
-           <%= 'v-card-selected' if comp.selected %>"
+           <%= 'v-card-selected' if comp.selected %>
+           <%= comp.css_class.join(' ') %>
+           <%= color_classname(comp, 'background-', :background_color)%>"
   style="<%= "width: #{comp.width};" if comp.width%>
-    <%= "height: #{comp.height};" if comp.height %>"
+    <%= "height: #{comp.height};" if comp.height %>
+    <%= color_style(comp, 'background-', :background_color) %>"
   <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
   data-is-container>
     <%= erb(:"components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(top both)) %>

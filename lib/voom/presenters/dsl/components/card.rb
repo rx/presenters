@@ -21,7 +21,8 @@ module Voom
                       :components,
                       :shows_errors,
                       :padding,
-                      :hidden
+                      :hidden,
+                      :background_color
 
           def initialize(**attribs_, &block)
             super(type: :card, **attribs_, &block)
@@ -33,6 +34,7 @@ module Voom
             padding = attribs.delete(:padding) {:all}
             @padding = validate_padding(coerce_padding(padding)).uniq if padding != nil
             @hidden = attribs.delete(:hidden){false}
+            @background_color = attribs.delete(:background_color)
 
             @components = []
             expand!

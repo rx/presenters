@@ -7,7 +7,7 @@ export function initPlugins(e) {
 }
 
 // Delegating plugin class. Allows a plugin to define a class-name as a data
-// element, then contstructs that class and deligates componeent lifecycle
+// element, then constructs that class and delegates component lifecycle
 // events to the class.
 export class VPluginComponent extends eventHandlerMixin(VBaseComponent) {
     constructor(element) {
@@ -39,20 +39,20 @@ export class VPluginComponent extends eventHandlerMixin(VBaseComponent) {
     }
 
     validate(formData) {
-        if (this.element.vPlugin && this.element.vPlugin.name) {
+        if (this.element.vPlugin && this.element.vPlugin.validate) {
             return this.element.vPlugin.validate(formData);
         }
         return super.validate(formData);
     }
 
     clear() {
-        if (this.element.vPlugin && this.element.vPlugin.name) {
+        if (this.element.vPlugin && this.element.vPlugin.clear) {
             return this.element.vPlugin.clear();
         }
     }
 
     reset() {
-        if (this.element.vPlugin && this.element.vPlugin.name) {
+        if (this.element.vPlugin && this.element.vPlugin.reset) {
             return this.element.vPlugin.reset();
         }
     }
