@@ -4,11 +4,13 @@ import {VReplaces} from './events/replaces';
 import {VDialog} from './events/dialog';
 import {VErrors} from './events/errors';
 import {VToggleVisibility} from './events/toggle_visibility';
+import {VToggleDisabled} from './events/toggle_disabled';
 import {VAutoComplete} from './events/autocomplete';
 import {VPromptIfDirty} from './events/prompt_if_dirty';
 import {VSnackbarEvent} from './events/snackbar';
 import {VClears} from './events/clears';
 import {VCloseDialog} from './events/close_dialog';
+import {VPostMessage} from './events/post_message';
 import {VRemoves} from './events/removes';
 import {VStepperEvent} from './events/stepper';
 import {VNavigates} from './events/navigates';
@@ -150,6 +152,8 @@ export class VEvents {
                 return new VDialog(options, params, event, root);
             case 'toggle_visibility':
                 return new VToggleVisibility(options, params, event, root);
+            case 'toggle_disabled':
+                return new VToggleDisabled(options, params, event, root);
             case 'prompt_if_dirty':
                 return new VPromptIfDirty(options, params, event, root);
             case 'remove':
@@ -162,6 +166,8 @@ export class VEvents {
                 return new VClears(options, params, event, root);
             case 'close_dialog':
                 return new VCloseDialog(options, params, event, root);
+            case 'post_message':
+                return new VPostMessage(options, params, event, root);
             case 'stepper':
                 return new VStepperEvent(options, params, event, root);
             case 'navigates':

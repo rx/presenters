@@ -58,8 +58,10 @@ module Voom
             def checkbox(**attributes, &block)
               return @checkbox if locked?
               field_name = @type == :header ? 'all' : "#{attributes.delete(:name)}[]"
+              tag = @type == :header ? '' : @parent.tag
               @checkbox = Components::Checkbox.new(parent: self,
                                                    name: field_name,
+                                                   tag: tag,
                                                    **attributes,
                                                    &block)
             end
@@ -90,13 +92,13 @@ module Voom
                 @value = Components::Typography.new(parent: self, type: :text, text: value, **attribs, &block)
               end
 
+              def numeric?(_value = value&.text)
+                return true if _value.is_a? Numeric
+                (_value.to_s.strip.sub(/\D/, '') =~ /^[\$]?[-+]?(,?[0-9])*\.?[0-9]+$/) != nil
+              end
+
               private
               VALID_ALIGNMENTS = %i[left center right].freeze
-
-              def numeric?(value)
-                return true if value.is_a? Numeric
-                (value.to_s.strip.sub(/\D/, '') =~ /^[\$]?[-+]?(,?[0-9])*\.?[0-9]+$/) != nil
-              end
 
               def validate_alignment(value)
                 return :left if value.nil?
@@ -157,12 +159,8 @@ module Voom
               (@total.to_f / @page_size.to_f).ceil
             end
 
-            def unescaped(hash)
-              hash.transform_values { |v| v.is_a?(String) ? CGI::unescapeHTML(v) : v }
-            end
-
             def button(icon_name, page, replace_id = @replace_id, replace_presenter = @replace_presenter)
-              __attribs__ = unescaped(attribs.merge({page: page, page_size: @page_size}))
+              __attribs__ = attribs.merge({ page: page, page_size: @page_size })
               Components::Button.new(parent: self, type: :icon, icon: icon_name) do
                 event :click do
                   replaces replace_id, replace_presenter, __attribs__
@@ -171,7 +169,7 @@ module Voom
             end
 
             def select(options, current_option, total_records, replace_id = @replace_id, replace_presenter = @replace_presenter)
-              __attribs__ = unescaped(attribs.reject{|key,val| [:page_size, :page].include? key })
+              __attribs__ = attribs.reject{ |key,val| [:page_size, :page].include? key }
               Components::Select.new(parent: self, name: :page_size, full_width: false) do
                 options.each do |num|
                   option selected: (num == current_option) do

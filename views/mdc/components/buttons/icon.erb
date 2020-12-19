@@ -6,6 +6,7 @@
 
 <button id="<%= comp.id %>"
         <%= data_attributes %>
+        data-disabled-on-post-finished="<%= comp.disabled_on_post_finished %>"
         class="v-button v-button--icon mdl-button mdl-js-button mdl-button--icon
          <%= 'v-hidden' if comp.hidden %>
          <%=class_name%>
@@ -14,7 +15,7 @@
         style = "<%= color_style(comp) %>"
         <%= 'disabled' if comp.disabled %>
         <%= "type='#{eq(comp.button_type, :raised) ? 'submit' : 'button'}'" %>
-        <%= erb :'components/event', :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} unless comp.disabled %>>
+        <%= erb :'components/event', :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} %>>
   <%= erb :'components/icon', :locals => {comp: comp.icon} %>
   <%= comp.text %>
   <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>

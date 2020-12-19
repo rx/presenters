@@ -58,7 +58,7 @@ To see the POM:
 
 To use it, add this line to your Gemfile:
 
-    gem 'voom-presenters'
+    gem 'voom-presenters', github('rx/presenters'), require: false
 
 Create the file app/presenters/index.pom with the contents:
     
@@ -71,15 +71,18 @@ For rails: Mount the web-client in your rails config/routes.rb
 
     mount ::Voom::Presenters::WebClient::App, at: '/'
     # the api is optional
-    mount ::Voom::Presenters::Api::App,       at: '/'
-     
-   
+    # mount ::Voom::Presenters::Api::App,       at: '/'
+    
+Create an initializer `config/initializers/presenters.rb` with the following:
+    
+    require 'voom'
+
 ### Rack
 Presenters are rack based. If your framework uses a rack config file add the following:
 
     use Voom::Presenters::WebClient::App
-    use Voom::Presenters::Api::App
-   
+    # the api is optional        
+    # use Voom::Presenters::Api::App
 
 Start your app and goto [/hello_world](http://127.0.0.1:3000/hello_world)
 

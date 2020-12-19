@@ -1,2 +1,2 @@
 <%if comp.icon%><div class="material-icons mdl-badge--overlap mdl-badge" data-badge="<%=comp.badge%>"><%=comp.icon%></div>
-<%else%><span class="mdl-badge" data-badge="<%=comp.badge%>"><%=comp.text%></span><%end%>
+<%else%><span class="mdl-badge" data-badge="<%=comp.badge%>"><%=expand_text(comp.text)%></span><%end%>
