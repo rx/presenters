@@ -73,12 +73,10 @@ export class VErrors {
             if (Array.isArray(v)) {
                 // Case A and B-1: an array of error messages:
                 result = v.join(', ');
-            }
-            else if (v.constructor === Object) {
+            } else if (v.constructor === Object) {
                 // Case B-2: a nested structure:
                 result = this.normalize(v);
-            }
-            else {
+            } else {
                 throw new Error(`Cannot normalize value of type ${typeof v}`);
             }
 
@@ -139,14 +137,21 @@ export class VErrors {
             }
 
             for (const response of responseErrors) {
-                const pageErrors = this.flatten(this.normalize(response));
-                const fieldErrors = this.flatten(this.normalize(response.errors))
-                    .filter((field, _, errors) => !this.displayInputError(field, errors[field]));
-                const errors = pageErrors.concat(fieldErrors)
-                    .filter(Boolean)
-                    .filter((s) => s.length > 0);
-
-                this.prependErrors(Array.from(new Set(errors)));
+                const normalizedResponse = this.normalize(response);
+                const errors = normalizedResponse.errors ? normalizedResponse.errors : normalizedResponse;
+                if (errors.constructor === String) {
+                    this.prependErrors([errors]);
+                }
+                else {
+                    for (const key in errors) {
+                        if (!this.displayInputError(key, errors[key])) {
+                            // If not handled at the field level, display at the page level
+                            if (errors[key].length > 0) {
+                                this.prependErrors([errors[key]]);
+                            }
+                        }
+                    }
+                }
             }
         }
         else if (statusCode === 0) {
@@ -163,27 +168,22 @@ export class VErrors {
 
     // Sets the helper text on the field
     // Returns true if it was able to set the error on the control
-    displayInputError(id, messages) {
-        const currentEl = this.root.getElementById(id);
+    displayInputError(id, message) {
+        const currentEl = this.root.getElementById(id) || this.root.getElementsByName(id)[0];
 
-        if (!(currentEl && currentEl.mdcComponent)) {
+        if (!currentEl) {
             return false;
         }
 
-        currentEl.mdcComponent.helperTextContent = messages.join(', ');
-
-        const helperText = this.root.getElementById(`${id}-input-helper-text`);
-
+        const helperText = this.root.getElementById(`${currentEl.id}-helper-text`);
         if (!helperText) {
             return false;
         }
 
-        helperText.classList.add(
-            'mdc-text-field--invalid',
-            'mdc-text-field-helper-text--validation-msg',
-            'mdc-text-field-helper-text--persistent'
-        );
-        currentEl.mdcComponent.valid = false;
+        helperText.innerHTML = message;
+        currentEl.classList.add('mdc-text-field--invalid');
+        helperText.classList.add('mdc-text-field-helper-text--validation-msg');
+        helperText.classList.remove('v-hidden');
 
         return true;
     }

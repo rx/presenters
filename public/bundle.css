@@ -7335,7 +7335,7 @@ svg.mdc-button__icon {
   /* @alternate */
   background-color: var(--mdc-theme-secondary, #E58D36); }
 
-@keyframes mdc-checkbox-fade-in-background-ubd152b53 {
+@keyframes mdc-checkbox-fade-in-background-ua0608e5c {
   0% {
     border-color: rgba(0, 0, 0, 0.54);
     background-color: transparent; }
@@ -7347,7 +7347,7 @@ svg.mdc-button__icon {
     /* @alternate */
     background-color: var(--mdc-theme-secondary, #E58D36); } }
 
-@keyframes mdc-checkbox-fade-out-background-ubd152b53 {
+@keyframes mdc-checkbox-fade-out-background-ua0608e5c {
   0%,
   80% {
     border-color: #E58D36;
@@ -7361,10 +7361,10 @@ svg.mdc-button__icon {
     background-color: transparent; } }
 
 .mdc-checkbox--anim-unchecked-checked .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background, .mdc-checkbox--anim-unchecked-indeterminate .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background {
-  animation-name: mdc-checkbox-fade-in-background-ubd152b53; }
+  animation-name: mdc-checkbox-fade-in-background-ua0608e5c; }
 
 .mdc-checkbox--anim-checked-unchecked .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background, .mdc-checkbox--anim-indeterminate-unchecked .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background {
-  animation-name: mdc-checkbox-fade-out-background-ubd152b53; }
+  animation-name: mdc-checkbox-fade-out-background-ua0608e5c; }
 
 .mdc-checkbox__checkmark {
   color: #fff; }
@@ -10901,6 +10901,10 @@ svg.mdc-button__icon {
   border-color: rgba(0, 0, 0, 0.24); }
   .mdc-text-field--textarea:not(.mdc-text-field--disabled):hover {
     border-color: rgba(0, 0, 0, 0.87); }
+
+.mdc-text-field-helper-text--validation-msg {
+  color: #d50000 !important;
+  font-weight: bold !important; }
 
 .mdc-list {
   font-family: Roboto, sans-serif;
@@ -15881,7 +15885,7 @@ button.mdc-chip {
   /* @alternate */
   background-color: var(--mdc-theme-primary, #5488b2); }
 
-@keyframes mdc-checkbox-fade-in-background-uae5fee92 {
+@keyframes mdc-checkbox-fade-in-background-u89b9a6bd {
   0% {
     border-color: rgba(0, 0, 0, 0.54);
     background-color: transparent; }
@@ -15893,7 +15897,7 @@ button.mdc-chip {
     /* @alternate */
     background-color: var(--mdc-theme-primary, #5488b2); } }
 
-@keyframes mdc-checkbox-fade-out-background-uae5fee92 {
+@keyframes mdc-checkbox-fade-out-background-u89b9a6bd {
   0%,
   80% {
     border-color: #5488b2;
@@ -15909,12 +15913,12 @@ button.mdc-chip {
 .mdc-data-table__header-row-checkbox.mdc-checkbox--anim-unchecked-checked .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background, .mdc-data-table__header-row-checkbox.mdc-checkbox--anim-unchecked-indeterminate .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background,
 .mdc-data-table__row-checkbox.mdc-checkbox--anim-unchecked-checked .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background,
 .mdc-data-table__row-checkbox.mdc-checkbox--anim-unchecked-indeterminate .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background {
-  animation-name: mdc-checkbox-fade-in-background-uae5fee92; }
+  animation-name: mdc-checkbox-fade-in-background-u89b9a6bd; }
 
 .mdc-data-table__header-row-checkbox.mdc-checkbox--anim-checked-unchecked .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background, .mdc-data-table__header-row-checkbox.mdc-checkbox--anim-indeterminate-unchecked .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background,
 .mdc-data-table__row-checkbox.mdc-checkbox--anim-checked-unchecked .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background,
 .mdc-data-table__row-checkbox.mdc-checkbox--anim-indeterminate-unchecked .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background {
-  animation-name: mdc-checkbox-fade-out-background-uae5fee92; }
+  animation-name: mdc-checkbox-fade-out-background-u89b9a6bd; }
 
 .mdc-data-table .mdc-list-item__graphic {
   margin-right: 0px; }
@@ -18185,6 +18189,10 @@ i:focus.v-datetime--clear {
   border-radius: 5px; }
 
 .v-hidden {
+  display: none;
+  visibility: hidden; }
+
+div.mdc-text-field-helper-text.mdc-text-field-helper-text--persistent.v-hidden {
   display: none;
   visibility: hidden; }
 

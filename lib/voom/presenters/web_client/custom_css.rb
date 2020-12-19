@@ -17,7 +17,7 @@ module Voom
 
         def render
           return unless custom_css_path
-          [global_css, presenter_css(path)].join
+          [global_css, global_namespace_css(path), presenter_css(path)].join
         end
 
         private
@@ -30,6 +30,16 @@ module Voom
         def global_css
           css_file = File.join(custom_css_path, 'global.css')
           full_path = File.join(root, css_file)
+          _build_css_link_(css_file) if File.exists?(full_path)
+        end
+
+        def global_namespace_css(path)
+          return unless custom_css_path && path
+          namespace_path = path.split('/').reject { |c| c.empty? }.first
+          css_file = File.join(custom_css_path, namespace_path ? namespace_path : '')
+          css_file = File.join(css_file, 'global.css')
+          full_path = File.join(root, css_file)
+          trace {"Loading global namespace: #{full_path}"}
           _build_css_link_(css_file) if File.exists?(full_path)
         end
 
