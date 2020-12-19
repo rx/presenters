@@ -24,7 +24,7 @@ module Voom::Presenters::WebClient
     end
 
     def strip_trailing_br(doc)
-      return doc unless doc.reverse[0...BR.length]==BR.reverse
+      return doc unless doc[-BR.length..-1] == BR
       doc[0...doc.length-BR.length]
     end
   end

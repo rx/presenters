@@ -6,7 +6,7 @@ module Voom
           attr_accessor :footer_type, :menus
 
           def initialize(type: nil, **attribs_, &block)
-            @footer_type = h(type) ||  :small
+            @footer_type = type ||  :small
             super(type: :footer, **attribs_, &block)
             @menus = []
             expand!
@@ -14,7 +14,7 @@ module Voom
 
           def menu(title=nil, **attribs, &block)
             return @menus if locked?
-            @menus << Menu.new(title,parent: self, 
+            @menus << Menu.new(title,parent: self,
                                **attribs, &block)
           end
 
