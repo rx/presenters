@@ -1,7 +1,7 @@
 <%
   top_items = drawer.menu&.items&.select { |i| eq(i.position, :top) }
   bottom_items = drawer.menu&.items&.select { |i| eq(i.position, :bottom) }
-%> 
+%>
 <aside id="<%= drawer.id %>" class="v-drawer <% if bottom_items.any? %>v-drawer--full-height<% end %> v-drawer__modal mdc-drawer mdc-drawer--modal">
   <% if drawer.title || drawer.subtitle %>
     <div class="mdc-drawer__header">

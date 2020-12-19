@@ -11,10 +11,10 @@ module Voom
         @registry
       end
 
-      def self.define(name, namespace, &block)
+      def self.define(name, namespace, options, &block)
         namespace = Array(namespace).map(&:to_s)
         fq_name = namespace.any? ? namespace.join(':') + ':' + name.to_s : name.to_s
-        registry[fq_name] = Voom::Presenters::DSL::Definition.new(name, namespace, &block)
+        registry[fq_name] = Voom::Presenters::DSL::Definition.new(name, namespace, options, &block)
       end
 
       def self.load(directory)
@@ -52,12 +52,12 @@ module Voom
       end
     end
 
-    def self.define(name, namespace: nil, &block)
+    def self.define(name, namespace: nil, options: {}, &block)
       unless namespace
         namespace = name.to_s.split(':')
         name = namespace.pop
       end
-      Registry.define(name, namespace, &block)
+      Registry.define(name, namespace, options, &block)
     end
 
   end

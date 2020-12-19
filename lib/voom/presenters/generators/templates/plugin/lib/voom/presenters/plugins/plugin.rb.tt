@@ -1,0 +1,9 @@
+# Loads the plugin features
+# Helpers
+require_relative '<%= underscore(name) %>/helpers/<%= underscore(name) %>_helper'
+# Components
+require_relative '<%= underscore(name) %>/components/<%= underscore(name) %>_dsl'
+require_relative '<%= underscore(name) %>/web_client/components/<%= underscore(name) %>_render'
+# Actions
+require_relative '<%= underscore(name) %>/components/actions/<%= underscore(name) %>_dsl'
+require_relative '<%= underscore(name) %>/web_client/components/actions/<%= underscore(name) %>_data'
