@@ -12,3 +12,8 @@
     border-color: $v-input-hover-border-color;
   }
 }
+
+.mdc-text-field-helper-text--validation-msg {
+  color: #d50000 !important;
+  font-weight: bold !important;
+}

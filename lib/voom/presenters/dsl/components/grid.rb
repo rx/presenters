@@ -19,7 +19,7 @@ module Voom
           def initialize(color: nil, **attribs_, &block)
             super(type: :grid, **attribs_, &block)
             @columns = []
-            @color = h(color)
+            @color = color
             padding = attribs.delete(:padding) {nil}
             @padding = validate_padding(coerce_padding(padding, default_level: 3)).uniq if padding != nil
             @wide = attribs.delete(:wide) {false}

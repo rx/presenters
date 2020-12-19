@@ -34,11 +34,18 @@ module Voom
             def extract_dynamic_params(hash)
               HashExt::Traverse.traverse(hash) do |k, v|
                 if v.respond_to?(:to_hash) || v.respond_to?(:dynamic_parameter)
-                  [k, v.to_hash]
+                  [k, clean_dynamic_values(v.to_hash)]
                 else
                   [nil, nil]
                 end
               end
+            end
+
+            # This is an attempt to fix an intermittent bug where "params" would end up in the list of
+            # values when using `last_response`.
+            def clean_dynamic_values(hash)
+              hash[:value].delete(:params) if hash.has_key?(:value) && hash[:value].is_a?(Array)
+              hash
             end
 
             def extract_params(hash)

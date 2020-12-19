@@ -64,7 +64,7 @@ module Voom
             fit = fit.to_sym
 
             unless VALID_FIT_TYPES.include?(fit)
-              raise Errors::ParameterValidation, "Invalid image fit specified: #{fit}" 
+              raise Errors::ParameterValidation, "Invalid image fit specified: #{fit}"
             end
 
             fit

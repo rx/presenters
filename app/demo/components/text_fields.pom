@@ -41,15 +41,6 @@ Voom::Presenters.define(:text_fields) do
       hint 'Input should be a number!'
     end
 
-    title 'With Errors'
-    text_field name: :guess_me do
-      label 'Guess a number...'
-      pattern /-?[0-9]*(\.[0-9]+)?/
-      value '7'
-      error 'Input is not the right number!'
-    end
-
-
     title 'With Leading Icon'
     text_field name: :numeric do
       label 'Amount'
@@ -62,6 +53,28 @@ Voom::Presenters.define(:text_fields) do
       icon :remove_red_eye
     end
 
+    blank
+    card do
+      headline 'Client Side Validations'
+      body 'This demonstrates client side validations for text fields '
+      text_field id: :my_required_field, name: :field1, required: true do
+        label 'Data to post'
+        hint 'Hint: You must enter a valid number in the field above'
+        validation_error 'This is a custom validation error. This field is required and must be a number.'
+        pattern /-?[0-9]*(\.[0-9]+)?/
+      end
+      text_field name: :field2, required: true do
+        label 'More data to post'
+      end
+      button 'Submit' do
+        event :click do
+          posts '/_echo_'
+          snackbar 'Posted to _echo_'
+        end
+      end
+    end
+
+    blank
     card do
       headline 'Field Level Events'
       title 'Text Fields'
@@ -75,6 +88,7 @@ Voom::Presenters.define(:text_fields) do
       end
       attach :context_list
     end
+
     blank
     card do
       form do
@@ -94,7 +108,7 @@ Voom::Presenters.define(:text_fields) do
         end
       end
     end
-    
+
     attach :code, file: __FILE__
   end
 end
