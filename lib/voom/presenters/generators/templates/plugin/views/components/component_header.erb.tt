@@ -1,0 +1,20 @@
+<style>
+  <%%= File.read(File.expand_path('../assets/css/components/<%= underscore(name) %>.css', __dir__)  ) %>
+</style>
+
+<script>
+  // This file is defining the callback method that will be invoked when the custom plugin actionJs `actionJs` is encountered
+  <%%= File.read(File.expand_path('../assets/js/components/actions/<%= underscore(name) %>.js', __dir__)  ) %>
+  // This file is defining the plugin component that will be delegated to by the WebClient.
+  <%%= File.read(File.expand_path('../assets/js/components/<%= underscore(name) %>.js', __dir__)  ) %>
+
+  // Custom javascript specific to this sample plugin - sets the class name that causes the initial load to
+  // animate a transition (defined in the component.css.tt file)
+  function load() {
+    document.getElementById('random_fact').className = ' load';
+  }
+
+  window.onload = load;
+</script>
+
+

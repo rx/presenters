@@ -12,6 +12,9 @@ Voom::Presenters.define(:index, namespace: :plugins) do
     icon 'fa-hand-point-left', position: :left
     subheading 'Select a plugin to get started'
     blank
+    body 'The plugin generator is the easiest way to get started.'
+    body 'presenters generate plugin <your plugin name>'
+    blank
     body 'For a complete example checkout the sample '\
                '[foo_presenter_plugin](https://github.com/rx/foo_presenter_plugin).'
     foo(random_fact)
