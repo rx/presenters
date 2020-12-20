@@ -89,8 +89,7 @@ Start your app and goto [/hello_world](http://127.0.0.1:3000/hello_world)
 Use the [Demo] to get example code to drop into your presetners.
 
 ## Status
-This project is in a pre-beta status. It is changing frequently as the first user interfaces are being built with it.
-Any use should be for internal use only until the status becomes beta.
+This project is in a released status. 
 
 [![CircleCI](https://circleci.com/gh/rx/presenters.svg?style=svg)](https://circleci.com/gh/rx/presenters)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=plastic)](https://raw.githubusercontent.com/rx/presenters/master/LICENSE)
