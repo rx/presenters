@@ -1,18 +1,18 @@
 GIT
-  remote: git://github.com/rx/chart_presenter_plugin.git
-  revision: c3ab36396e93ec483c28cb446436328d37dc1c07
+  remote: https://github.com/rx/chart_presenter_plugin.git
+  revision: e2afb1cf0292ea92371cfc83be16b2ad95dee26d
   specs:
     chart_presenter_plugin (0.1.0)
 
 GIT
-  remote: git://github.com/rx/foo_presenter_plugin.git
-  revision: 0a7667c788a57d3b1960245892fa7925852bb27e
+  remote: https://github.com/rx/foo_presenter_plugin.git
+  revision: 313dddfef05f740990c509b89831b69730b4ce12
   specs:
     foo_presenter_plugin (0.0.1)
 
 GIT
-  remote: git://github.com/rx/image_crop_presenter_plugin.git
-  revision: fb11f3ed6523a0c11ad3f66727d83f1dee8a1154
+  remote: https://github.com/rx/image_crop_presenter_plugin.git
+  revision: c0814ffa5a0f40fd15d697e72a5bd4c9e4117d1e
   specs:
     image_crop_presenter_plugin (0.1.0)
 

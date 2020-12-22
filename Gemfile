@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby `cat .ruby-version`
 # Specify your gem's dependencies in voom-console.gemspec
