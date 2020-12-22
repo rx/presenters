@@ -3,8 +3,6 @@
   "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
-      ["semantic-release-rubygem", {
-            "updateGemfileLock": true
-            }]
+      "semantic-release-rubygem"
     ]
 }
