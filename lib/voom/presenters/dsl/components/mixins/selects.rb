@@ -8,6 +8,12 @@ module Voom
               self << Components::Select.new(parent: self,
                                              **attribs, &block)
             end
+
+            def multi_select(**attribs, &block)
+              self << Components::MultiSelect.new(parent: self,
+                                                  **attribs, &block)
+            end
+
           end
         end
       end

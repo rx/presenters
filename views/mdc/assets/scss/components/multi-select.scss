@@ -1,0 +1,20 @@
+.v-multi-select {
+  z-index: 1;
+  @extend .mdc-select;
+  @extend .v-select;
+  .v-multi-select--options-list {
+    position: absolute;
+    width: 100%;
+    top: 55px;
+    border: 1px solid #C2C2C2;
+    border-radius: 4px;
+    background: #FFFFFF;
+    > div {
+      display: block;
+    }
+  }
+  .v-multi-select--current-values {
+    padding: 19px;
+    overflow: hidden;
+  }
+}
