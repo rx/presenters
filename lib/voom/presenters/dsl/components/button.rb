@@ -12,7 +12,7 @@ module Voom
                         :size, :position, :full_width, :hidden, :wrap_text, :disabled_on_post_finished
 
           def initialize(type: nil, **attribs_, &block)
-            @button_type = h(type) || ((attribs_[:icon] && !attribs_[:text]) ? :icon : nil) || :flat
+            @button_type = type || ((attribs_[:icon] && !attribs_[:text]) ? :icon : nil) || :flat
             super(type: :button, **attribs_, &block)
             @color = attribs.delete(:color)
             @background_color = attribs.delete(:background_color)

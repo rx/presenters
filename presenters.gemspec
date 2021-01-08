@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'voom/presenters'
+require 'voom/presenters/version'
 
 Gem::Specification.new do |spec|
   spec.name = 'voom-presenters'
@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'filewatcher', '~> 1.1.1'
   spec.add_runtime_dependency 'zeitwerk', '~> 2.1'
 
+  spec.add_development_dependency 'thor', '~> 1.0.1'
   spec.add_development_dependency 'rack-test', '~>0.8'
   spec.add_development_dependency 'rack', '>= 2.0.6'
   spec.add_development_dependency 'pry', '~>0.10'

@@ -1,5 +1,5 @@
 module Voom
   module Presenters
-    VERSION = '0.5.1'.freeze
+    VERSION = '1.0.0'
   end
 end
