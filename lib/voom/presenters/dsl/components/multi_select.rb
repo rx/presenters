@@ -13,16 +13,14 @@ module Voom
             expand!
           end
 
-          def option(text=nil, **attribs, &block)
+          def check_option(**attribs, &block)
             @options << CheckOption.new(parent: self,
-                                   text: text,
-                                   name: @name,
-                                   tag:@tag,
-                                   **attribs, &block)
+                                    name: @name,
+                                    tag: @tag,
+                                    **attribs.except(:tag, :name), &block)
           end
 
           class CheckOption < EventBase
-            CHECKBOX_ATTRIBUTES = %i[name value checked dirtyable value off_value].freeze
 
             attr_reader :selected, :disabled
 
@@ -35,17 +33,16 @@ module Voom
               self.checkbox(name: "#{attribs[:name]}[]",
                             value: @value,
                             text: @text,
-                            tag: attribs.delete(:tag){ nil },
+                            tag: tag,
                             checked: @selected,
-                            disabled: @disabled)
+                            disabled: @disabled,
+                            &block)
               expand!
             end
 
             def checkbox(**attributes, &block)
               return @checkbox if locked?
-              field_name = "#{attributes[:name].to_s}[]"
               @checkbox = Components::Checkbox.new(parent: self,
-                                                   name: field_name,
                                                    **attributes,
                                                    &block)
             end
