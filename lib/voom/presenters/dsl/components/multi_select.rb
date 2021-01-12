@@ -17,6 +17,7 @@ module Voom
             @options << CheckOption.new(parent: self,
                                    text: text,
                                    name: @name,
+                                   tag:@tag,
                                    **attribs, &block)
           end
 
@@ -31,9 +32,10 @@ module Voom
               @text =      attribs.delete(:text)
               @selected =  attribs.delete(:selected){ true }
               @disabled =  attribs.delete(:disabled)
-              self.checkbox(name: attribs[:name],
+              self.checkbox(name: "#{attribs[:name]}[]",
                             value: @value,
                             text: @text,
+                            tag: attribs.delete(:tag){ nil },
                             checked: @selected,
                             disabled: @disabled)
               expand!
