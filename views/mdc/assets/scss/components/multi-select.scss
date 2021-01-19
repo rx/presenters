@@ -11,6 +11,9 @@
     background: #FFFFFF;
     > div {
       display: block;
+      label {
+        line-height: 3em;
+      }
     }
   }
   .v-multi-select--current-values {
