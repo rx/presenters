@@ -5,7 +5,7 @@ require 'voom/presenters/version'
 
 Gem::Specification.new do |spec|
   spec.name = 'voom-presenters'
-  spec.version = Voom::Presenters::VERSION
+  spec.version = Voom::Presenters::Version::VERSION
   spec.authors = ['Russell Edens']
   spec.email = ["russell@voomify.com\n"]
 
