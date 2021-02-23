@@ -20,6 +20,6 @@ module Voom
 end
 
 if defined?(::Rails)
-  # loader.logger = Rails.logger
-  load 'voom/railtie.rb'
+  # We need this class's file to be parsed, but we want to let Zeitwerk load it
+  Voom::Railtie
 end
