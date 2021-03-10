@@ -9,8 +9,10 @@
     border: 1px solid #C2C2C2;
     border-radius: 4px;
     background: #FFFFFF;
+    z-index: 99;
     > div {
       display: block;
+      text-align: left;
       label {
         line-height: 3em;
       }
