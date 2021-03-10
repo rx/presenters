@@ -1,12 +1,74 @@
 import {MDCNotchedOutline} from '@material/notched-outline';
+import {hookupComponentsManually} from './base-component';
+
+export function initMultiSelects(root) {
+  console.debug('\tMultiSelects');
+  hookupComponentsManually(root, '.v-multi-select', function(element) {
+    return new VMultiSelect(root, element);
+  });
+}
+
+export class VMultiSelect {
+
+  constructor(root, element) {
+    this.vComponent = root.vComponent;
+    this.element = element;
+    this.hidden_on_create = null;
+    this.mutationObserver = null;
+    this.setEventListeners();
+    this.setLabelHandlers();
+    // this.setMutationHandler();
+  }
+
+  setEventListeners() {
+    this.element.addEventListener('click', createToggleHandler(this.element));
+    document.addEventListener('click', createCloseHandler(this.element));
+  }
+
+  setLabelHandlers() {
+    createValueDescriptionHandler(this.element);
+    setCurrentValueDescription(this.element);
+    setLabelNotch(this.element);
+  }
+
+  // Attempt to re-render when a hidden component becomes visible
+  // setMutationHandler() {
+  //   this.hidden_on_create = this.element.offsetParent === null;
+  //   if (this.hidden_on_create) {
+  //     this.mutationObserver = new MutationObserver(
+  //       function(mutations) {
+  //         console.log('Run mutation observer');
+  //         if (this.vComponent.hidden_on_create) {
+  //           if (this.vComponent.element.offsetParent !== null) {
+  //             // Parent is now visible.
+  //             this.vComponent.hidden_on_create = false;
+  //             var event = document.createEvent('HTMLEvents');
+  //             event.initEvent('resize', true, false);
+  //             this.vComponent.element.dispatchEvent(event);
+  //             createValueDescriptionHandler(this.vComponent.element);
+  //             setCurrentValueDescription(this.vComponent.element);
+  //             setLabelNotch(this.vComponent.element);
+  //             this.disconnect();
+  //           }
+  //         }
+  //       });
+  //     this.mutationObserver.vComponent = this;
+  //     this.mutationObserver.observe(this.vComponent.root.documentElement || this.vComponent.root.host,
+  //       {
+  //         attributes: true,
+  //         subtree: true,
+  //       });
+  //   }
+  // }
+}
 
 function createToggleHandler(component) {
-    return function (event) {
-      if (!event.target.classList.contains('v-multi-select--option')) {
-        component.querySelector('.v-multi-select--options-list').classList.toggle('v-hidden');
-        component.classList.toggle('mdc-select--focused');
-      }
+  return function (event) {
+    if (!event.target.classList.contains('v-multi-select--option')) {
+      component.querySelector('.v-multi-select--options-list').classList.toggle('v-hidden');
+      component.classList.toggle('mdc-select--focused');
     }
+  }
 }
 
 function createCloseHandler(component) {
@@ -37,30 +99,11 @@ function setCurrentValueDescription(component) {
 }
 
 function setLabelNotch(component) {
+  console.log('set label notch');
   const labelWidth = component.querySelector('.mdc-floating-label').offsetWidth * .75;
   const notchedOutline = new MDCNotchedOutline(component.querySelector('.mdc-notched-outline'));
   notchedOutline.notch(labelWidth);
 }
 
-
-export function initMultiSelects(e) {
-  console.debug('\tMultiSelects');
-  let components = e.querySelectorAll('.v-multi-select');
-  if (components.length === 0 && e.offsetParent && e.offsetParent.vComponent !== undefined) {
-    components = document.querySelectorAll('.v-multi-select');
-  }
-  if (components) {
-    for (let component of components) {
-      // toggle handler
-      component.addEventListener('click', createToggleHandler(component));
-      document.addEventListener('click', createCloseHandler(component));
-      // label handler
-      createValueDescriptionHandler(component);
-      setCurrentValueDescription(component);
-      // field label notch
-      setLabelNotch(component);
-    }
-  }
-}
 
 

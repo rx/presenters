@@ -45455,8 +45455,84 @@ var MDCLinearProgress = /** @class */function (_super) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initMultiSelects;
+/* unused harmony export VMultiSelect */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_notched_outline__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(1);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+function initMultiSelects(root) {
+  console.debug('\tMultiSelects');
+  Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["d" /* hookupComponentsManually */])(root, '.v-multi-select', function (element) {
+    return new VMultiSelect(root, element);
+  });
+}
+
+var VMultiSelect = function () {
+  function VMultiSelect(root, element) {
+    _classCallCheck(this, VMultiSelect);
+
+    this.vComponent = root.vComponent;
+    this.element = element;
+    this.hidden_on_create = null;
+    this.mutationObserver = null;
+    this.setEventListeners();
+    this.setLabelHandlers();
+    // this.setMutationHandler();
+  }
+
+  _createClass(VMultiSelect, [{
+    key: 'setEventListeners',
+    value: function setEventListeners() {
+      this.element.addEventListener('click', createToggleHandler(this.element));
+      document.addEventListener('click', createCloseHandler(this.element));
+    }
+  }, {
+    key: 'setLabelHandlers',
+    value: function setLabelHandlers() {
+      createValueDescriptionHandler(this.element);
+      setCurrentValueDescription(this.element);
+      setLabelNotch(this.element);
+    }
+
+    // Attempt to re-render when a hidden component becomes visible
+    // setMutationHandler() {
+    //   this.hidden_on_create = this.element.offsetParent === null;
+    //   if (this.hidden_on_create) {
+    //     this.mutationObserver = new MutationObserver(
+    //       function(mutations) {
+    //         console.log('Run mutation observer');
+    //         if (this.vComponent.hidden_on_create) {
+    //           if (this.vComponent.element.offsetParent !== null) {
+    //             // Parent is now visible.
+    //             this.vComponent.hidden_on_create = false;
+    //             var event = document.createEvent('HTMLEvents');
+    //             event.initEvent('resize', true, false);
+    //             this.vComponent.element.dispatchEvent(event);
+    //             createValueDescriptionHandler(this.vComponent.element);
+    //             setCurrentValueDescription(this.vComponent.element);
+    //             setLabelNotch(this.vComponent.element);
+    //             this.disconnect();
+    //           }
+    //         }
+    //       });
+    //     this.mutationObserver.vComponent = this;
+    //     this.mutationObserver.observe(this.vComponent.root.documentElement || this.vComponent.root.host,
+    //       {
+    //         attributes: true,
+    //         subtree: true,
+    //       });
+    //   }
+    // }
+
+  }]);
+
+  return VMultiSelect;
+}();
 
 function createToggleHandler(component) {
   return function (event) {
@@ -45518,50 +45594,10 @@ function setCurrentValueDescription(component) {
 }
 
 function setLabelNotch(component) {
+  console.log('set label notch');
   var labelWidth = component.querySelector('.mdc-floating-label').offsetWidth * .75;
   var notchedOutline = new __WEBPACK_IMPORTED_MODULE_0__material_notched_outline__["a" /* MDCNotchedOutline */](component.querySelector('.mdc-notched-outline'));
   notchedOutline.notch(labelWidth);
-}
-
-function initMultiSelects(e) {
-  console.debug('\tMultiSelects');
-  var components = e.querySelectorAll('.v-multi-select');
-  if (components.length === 0 && e.offsetParent && e.offsetParent.vComponent !== undefined) {
-    components = document.querySelectorAll('.v-multi-select');
-  }
-  if (components) {
-    var _iteratorNormalCompletion2 = true;
-    var _didIteratorError2 = false;
-    var _iteratorError2 = undefined;
-
-    try {
-      for (var _iterator2 = components[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-        var component = _step2.value;
-
-        // toggle handler
-        component.addEventListener('click', createToggleHandler(component));
-        document.addEventListener('click', createCloseHandler(component));
-        // label handler
-        createValueDescriptionHandler(component);
-        setCurrentValueDescription(component);
-        // field label notch
-        setLabelNotch(component);
-      }
-    } catch (err) {
-      _didIteratorError2 = true;
-      _iteratorError2 = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion2 && _iterator2.return) {
-          _iterator2.return();
-        }
-      } finally {
-        if (_didIteratorError2) {
-          throw _iteratorError2;
-        }
-      }
-    }
-  }
 }
 
 /***/ }),
