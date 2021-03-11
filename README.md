@@ -50,7 +50,12 @@ Or to run locally:
 
     open http://localhost:9292
    
-> Note: Demo defaults to Ruby version 3.0.0 in the .ruby-version file. If you want to run a different version .. set RBENV_VERSION to your desired version.
+> Note: Demo defaults to Ruby version 2.7.3 in the .ruby-version file. If you want to run a different version 
+> -- set RBENV_VERSION to your desired version. 
+> For example: 
+> ```
+> RBENV_VERSION=2.5.5 bundle insatall
+> RBENV_VERSION=2.5.5 bundle exec rackup```
     
 To see the POM:
 
