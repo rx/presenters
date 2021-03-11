@@ -49,6 +49,8 @@ Or to run locally:
     bundle exec rackup
 
     open http://localhost:9292
+   
+> Note: Demo defaults to Ruby version 3.0.0 in the .ruby-version file. If you want to run a different version .. set RBENV_VERSION to your desired version.
     
 To see the POM:
 

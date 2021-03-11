@@ -132,7 +132,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.13)
+  bundler (>= 1.13)
   chart_presenter_plugin!
   foo_presenter_plugin!
   gem-release (~> 2.0)
@@ -154,7 +154,7 @@ DEPENDENCIES
   webdrivers (~> 4.1)
 
 RUBY VERSION
-   ruby 2.5.5p157
+   ruby 3.0.0p0
 
 BUNDLED WITH
-   1.17.3
+   2.2.3
