@@ -17,7 +17,7 @@ module Voom
             @options << CheckOption.new(parent: self,
                                     name: @name,
                                     tag: @tag,
-                                    **attribs.except(:tag, :name), &block)
+                                    **attribs.delete_if{ |k,v| [:tag, :name].include?(k) }, &block)
           end
 
           class CheckOption < EventBase
@@ -47,9 +47,6 @@ module Voom
                                                    &block)
             end
 
-            def _selected?
-              @selected
-            end
           end
 
         end

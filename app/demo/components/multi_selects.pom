@@ -10,16 +10,16 @@ Voom::Presenters.define(:multi_selects) do
     content do
       multi_select do
         label 'Multi Select Field'
-        option value: 'value1', text: 'First value', selected: true
-        option value: 'value2', text: 'Second value', selected: true
-        option value: 'value3', text: 'Third value', selected: true
+        check_option value: 'value1', text: 'First value', selected: true
+        check_option value: 'value2', text: 'Second value', selected: true
+        check_option value: 'value3', text: 'Third value', selected: true
       end
 
       multi_select do
         label 'One Selection'
-        option value: 'value1', text: 'First value', selected: true
-        option value: 'value2', text: 'Second value', selected: false
-        option value: 'value3', text: 'Third value', selected: false
+        check_option value: 'value1', text: 'First value', selected: true
+        check_option value: 'value2', text: 'Second value', selected: false
+        check_option value: 'value3', text: 'Third value', selected: false
       end
 
     end

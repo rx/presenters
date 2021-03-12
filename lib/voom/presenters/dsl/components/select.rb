@@ -63,9 +63,6 @@ module Voom
               @text = text
             end
 
-            def _selected?
-              @selected
-            end
           end
         end
       end

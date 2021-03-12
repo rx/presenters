@@ -17,7 +17,6 @@ export class VMultiSelect {
     this.mutationObserver = null;
     this.setEventListeners();
     this.setLabelHandlers();
-    // this.setMutationHandler();
   }
 
   setEventListeners() {
@@ -30,36 +29,6 @@ export class VMultiSelect {
     setCurrentValueDescription(this.element);
     setLabelNotch(this.element);
   }
-
-  // Attempt to re-render when a hidden component becomes visible
-  // setMutationHandler() {
-  //   this.hidden_on_create = this.element.offsetParent === null;
-  //   if (this.hidden_on_create) {
-  //     this.mutationObserver = new MutationObserver(
-  //       function(mutations) {
-  //         console.log('Run mutation observer');
-  //         if (this.vComponent.hidden_on_create) {
-  //           if (this.vComponent.element.offsetParent !== null) {
-  //             // Parent is now visible.
-  //             this.vComponent.hidden_on_create = false;
-  //             var event = document.createEvent('HTMLEvents');
-  //             event.initEvent('resize', true, false);
-  //             this.vComponent.element.dispatchEvent(event);
-  //             createValueDescriptionHandler(this.vComponent.element);
-  //             setCurrentValueDescription(this.vComponent.element);
-  //             setLabelNotch(this.vComponent.element);
-  //             this.disconnect();
-  //           }
-  //         }
-  //       });
-  //     this.mutationObserver.vComponent = this;
-  //     this.mutationObserver.observe(this.vComponent.root.documentElement || this.vComponent.root.host,
-  //       {
-  //         attributes: true,
-  //         subtree: true,
-  //       });
-  //   }
-  // }
 }
 
 function createToggleHandler(component) {
