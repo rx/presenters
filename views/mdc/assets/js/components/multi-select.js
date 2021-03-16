@@ -3,7 +3,7 @@ import {hookupComponentsManually} from './base-component';
 
 export function initMultiSelects(root) {
   console.debug('\tMultiSelects');
-  hookupComponentsManually(root, '.v-multi-select', function(element) {
+  hookupComponentsManually(root, '.v-multi-select-container', function(element) {
     return new VMultiSelect(root, element);
   });
 }
@@ -13,8 +13,6 @@ export class VMultiSelect {
   constructor(root, element) {
     this.vComponent = root.vComponent;
     this.element = element;
-    this.hidden_on_create = null;
-    this.mutationObserver = null;
     this.setEventListeners();
     this.setLabelHandlers();
   }
@@ -68,7 +66,6 @@ function setCurrentValueDescription(component) {
 }
 
 function setLabelNotch(component) {
-  console.log('set label notch');
   const labelWidth = component.querySelector('.mdc-floating-label').offsetWidth * .75;
   const notchedOutline = new MDCNotchedOutline(component.querySelector('.mdc-notched-outline'));
   notchedOutline.notch(labelWidth);

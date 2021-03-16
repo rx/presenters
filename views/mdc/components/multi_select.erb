@@ -1,31 +1,33 @@
 <% if comp
      float_label = comp.options.select{|o| o.selected }.any?
 %>
-  <div class="mdc-select v-multi-select v-input
-              <%= 'mdc-select--outlined' if comp.outlined %>
-              <% if comp.disabled %>mdc-select--disabled<% end %>"
+  <div class="v-multi-select-container"
        <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
-       <% if comp.dirtyable %>data-dirtyable<% end %>
-       <%= 'style="width: 100%;"' if comp.full_width %>
-       <%= erb(:"components/event", locals: {comp: comp,
-                                             events: comp.events,
-                                             parent_id: "#{comp.id}-input"}) %>>
-    <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-select__icon', parent_id: "#{comp.id}-input", size_class: '', position: []} %>
-    <div class="v-multi-select--current-values"></div>
-    <i class="mdc-select__dropdown-icon v-multi-select--options-toggle"></i>
+       <% if comp.dirtyable %>data-dirtyable<% end %>>
     <div class="v-multi-select--options-list v-hidden">
       <% comp.options.each do |option| %>
         <%= erb :"components/checkbox", :locals => {comp: option.checkbox, class_name: 'v-multi-select--option'} %>
       <% end %>
     </div>
-    <div class="mdc-notched-outline mdc-notched-outline--upgraded mdc-notched-outline--notched">
-      <div class="mdc-notched-outline__leading"></div>
-      <div class="mdc-notched-outline__notch">
-        <label class="mdc-floating-label <%= 'mdc-floating-label--float-above' if float_label %>"><%= comp.label %></label>
+    <div class="mdc-select v-multi-select v-input
+                <%= 'mdc-select--outlined' if comp.outlined %>
+                <% if comp.disabled %>mdc-select--disabled<% end %>"
+         <%= 'style="width: 100%;"' if comp.full_width %>
+         <%= erb(:"components/event", locals: {comp: comp,
+                                               events: comp.events,
+                                               parent_id: "#{comp.id}-input"}) %>>
+      <%= erb :"components/icon", :locals => {comp: comp.icon, class_name: 'mdc-select__icon', parent_id: "#{comp.id}-input", size_class: '', position: []} %>
+      <div class="v-multi-select--current-values"></div>
+      <i class="mdc-select__dropdown-icon v-multi-select--options-toggle"></i>
+      <div class="mdc-notched-outline mdc-notched-outline--upgraded mdc-notched-outline--notched">
+        <div class="mdc-notched-outline__leading"></div>
+        <div class="mdc-notched-outline__notch">
+          <label class="mdc-floating-label <%= 'mdc-floating-label--float-above' if float_label %>"><%= comp.label %></label>
+        </div>
+        <div class="mdc-notched-outline__trailing"></div>
       </div>
-      <div class="mdc-notched-outline__trailing"></div>
     </div>
+    <%= erb :"components/shared/hint_error_display", :locals => {comp: comp} %>
+    <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
   </div>
-  <%= erb :"components/shared/hint_error_display", :locals => {comp: comp} %>
-  <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
 <% end %>

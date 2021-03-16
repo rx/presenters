@@ -59966,7 +59966,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function initMultiSelects(root) {
   console.debug('\tMultiSelects');
-  Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["d" /* hookupComponentsManually */])(root, '.v-multi-select', function (element) {
+  Object(__WEBPACK_IMPORTED_MODULE_1__base_component__["d" /* hookupComponentsManually */])(root, '.v-multi-select-container', function (element) {
     return new VMultiSelect(root, element);
   });
 }
@@ -59977,8 +59977,6 @@ var VMultiSelect = function () {
 
     this.vComponent = root.vComponent;
     this.element = element;
-    this.hidden_on_create = null;
-    this.mutationObserver = null;
     this.setEventListeners();
     this.setLabelHandlers();
   }
@@ -60061,7 +60059,6 @@ function setCurrentValueDescription(component) {
 }
 
 function setLabelNotch(component) {
-  console.log('set label notch');
   var labelWidth = component.querySelector('.mdc-floating-label').offsetWidth * .75;
   var notchedOutline = new __WEBPACK_IMPORTED_MODULE_0__material_notched_outline__["a" /* MDCNotchedOutline */](component.querySelector('.mdc-notched-outline'));
   notchedOutline.notch(labelWidth);
