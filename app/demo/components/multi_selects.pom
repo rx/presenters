@@ -1,0 +1,29 @@
+require_relative '../helpers/indented_grid'
+
+Voom::Presenters.define(:multi_selects) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :component_drawer
+  page_title 'Multi Select Fields'
+
+  indented_grid do
+    content do
+      multi_select do
+        label 'Multi Select Field'
+        check_option value: 'value1', text: 'First value', selected: true
+        check_option value: 'value2', text: 'Second value', selected: true
+        check_option value: 'value3', text: 'Third value', selected: true
+      end
+
+      multi_select do
+        label 'One Selection'
+        check_option value: 'value1', text: 'First value', selected: true
+        check_option value: 'value2', text: 'Second value', selected: false
+        check_option value: 'value3', text: 'Third value', selected: false
+      end
+
+    end
+
+    attach :code, file: __FILE__
+  end
+end

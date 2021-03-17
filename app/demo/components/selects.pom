@@ -26,7 +26,8 @@ Voom::Presenters.define(:selects) do
 
       select outlined: false do
         label 'Alternate style ...'
-        option do
+        option
+        option selected: true do
           value 'value1'
           text 'First value'
         end

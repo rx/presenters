@@ -32,6 +32,7 @@ import {initTooltips} from './tooltip';
 import {initPlugins} from './plugins';
 import {initProgress} from './progress';
 import {initDragAndDrop} from './drag_n_drop';
+import {initMultiSelects} from "./multi-select";
 
 export function initialize(root, setRoot) {
     console.debug('Initializing components');
@@ -71,6 +72,7 @@ export function initialize(root, setRoot) {
     initTooltips(root);
     initPlugins(root);
     initDragAndDrop(root);
+    initMultiSelects(root);
 
     // This needs to be last, because it relies on the components installed above.
     initEvents(root);
