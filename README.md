@@ -1,7 +1,7 @@
-# Voom::Presenters
+```# COmmon PResenter Language (COPRL)
 
 ## TLDR;
-Do you wish you could write a modern user interface in pure Ruby?
+Do you wish you could write a modern user interface in Ruby or any other language?
 
 Now you can. Presenters are a Ruby DSL for rendering user interfaces. 
 The semantics are adopted from [Material Design](https://material.io/).
