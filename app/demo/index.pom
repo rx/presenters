@@ -5,8 +5,8 @@ Voom::Presenters.define(:index) do
   attach :top_nav
 
   indented_grid do
-    headline 'Presenters', id: :headline
-    subheading 'Presenters are to HTML what C is to assembly'
+    headline 'COmmon PResenter Language (COPRL) - AKA Presenters)', id: :headline
+    subheading 'COPRL/Presenters are to HTML what C is to assembly'
 
     body ['A presenter describes a user interface using a ruby DSL.',
           'The presenter is evaluated and a presenter object model (POM) is generated.',
