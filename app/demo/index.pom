@@ -5,16 +5,16 @@ Voom::Presenters.define(:index) do
   attach :top_nav
 
   indented_grid do
-    headline 'COmmon PResenter Language (COPRL) - AKA Presenters)', id: :headline
-    subheading 'COPRL/Presenters are to HTML what C is to assembly'
+    headline 'COmmon PResenter Language (COPRL) Ruby Demo - AKA Presenters', id: :headline
+    subheading 'COPRL is to HTML what C is to assembly'
 
-    body ['A presenter describes a user interface using a ruby DSL.',
-          'The presenter is evaluated and a presenter object model (POM) is generated.',
+    body ['A presenter describes a user interface using DSL.',
+          'The presenter is evaluated and a presenter object model (POM) is generated. The POM can be serialized as JSON.',
           'A client that renders POM can display the given user interface.']
 
     body 'To get started checkout the components and events.'
 
-    subheading 'For example this is the presenter dsl for this page:', level: 2
+    subheading 'For example this is the complete presenter DSL for this page:', level: 2
 
     source = File.read(__FILE__)
     body <<~HEREDOC

@@ -56,15 +56,22 @@ GEM
     ice_nine (0.11.2)
     json (2.3.1)
     method_source (0.9.0)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.5.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
-    nokogiri (1.10.9)
-      mini_portile2 (~> 2.4.0)
+    nio4r (2.5.7)
+    nokogiri (1.11.2)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
+    nokogiri (1.11.2-x86_64-darwin)
+      racc (~> 1.4)
     optimist (3.0.1)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    puma (5.2.2)
+      nio4r (~> 2.0)
+    racc (1.5.2)
     rack (2.2.3)
     rack-cors (1.1.0)
       rack (>= 2.0.0)
@@ -130,14 +137,16 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-darwin-19
 
 DEPENDENCIES
-  bundler (~> 1.13)
+  bundler (>= 1.13)
   chart_presenter_plugin!
   foo_presenter_plugin!
   gem-release (~> 2.0)
   image_crop_presenter_plugin!
   pry
+  puma
   rack (>= 2.0.6)
   rack-cors
   rack-test (~> 0.8)
@@ -154,7 +163,7 @@ DEPENDENCIES
   webdrivers (~> 4.1)
 
 RUBY VERSION
-   ruby 2.5.5p157
+   ruby 2.7.2p137
 
 BUNDLED WITH
-   1.17.3
+   2.2.3
