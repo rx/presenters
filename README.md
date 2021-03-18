@@ -39,7 +39,7 @@ This concept was initially inspired by the Presenters concepts of Ivar Jacobson 
 
 ## Demo
 
-[Demo]
+[Demo](https://coprl-ruby.herokuapp.com/)
 
 Or to run locally:
 
@@ -49,6 +49,13 @@ Or to run locally:
     bundle exec rackup
 
     open http://localhost:9292
+   
+> Note: Demo defaults to Ruby version 2.7.3 in the .ruby-version file. If you want to run a different version 
+> -- set RBENV_VERSION to your desired version. 
+> For example: 
+> ```
+> RBENV_VERSION=2.5.5 bundle insatall
+> RBENV_VERSION=2.5.5 bundle exec rackup```
     
 To see the POM:
 

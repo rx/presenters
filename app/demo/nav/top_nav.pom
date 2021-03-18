@@ -1,9 +1,10 @@
 Voom::Presenters.define('top_nav') do
+  TITLE = 'COmmon PResenters Language (COPRL) Ruby Demo'
   page do
-    title 'Presenters Demo'
+    title TITLE
   end
 
-  header 'Presenters Demo' do
+  header TITLE do
     nav do
       item 'About' do
         event :click do
@@ -52,13 +53,6 @@ Voom::Presenters.define('top_nav') do
           loads :plugins
         end
       end
-
-      item 'Status' do
-        event :click do
-          loads :component_status
-        end
-      end
-
     end
   end
 end
