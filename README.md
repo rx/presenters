@@ -1,4 +1,4 @@
-```# COmmon PResenter Language (COPRL)
+# COmmon PResenter Language (COPRL)
 
 ## TLDR;
 Do you wish you could write a modern user interface in Ruby or any other language?
