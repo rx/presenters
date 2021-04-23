@@ -1,10 +1,11 @@
 <%
   time_val = comp.value ? Array([comp.value]).join(', ') : nil
+  type_class = comp.picker ? 'v-datetime' : 'v-date-text'
 %>
 <div id="<%= comp.id %>"
      <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
      <% if comp.dirtyable %>data-dirtyable<% end %>
-     class="v-input v-datetime mdc-text-field mdc-text-field--outlined
+     class="v-input <%= type_class %> mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-trailing-icon' if comp.clear_icon %>
             <%= 'mdc-text-field--disabled' if comp.disabled %>"
      data-config='<%= snake_to_camel(to_hash(comp.config), except: %i(time_24hr)).to_json %>'
@@ -21,10 +22,12 @@
          <%= "pattern='#{comp.pattern}'" if comp.pattern %>
          list="<%= comp.id %>-list"
          <%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id:  "#{comp.id}-input"} %>>
-  <%= erb :"components/icon", :locals => {comp: comp.clear_icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"} %>
+  <%= erb :"components/icon", :locals => {comp: comp.clear_icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"}  if comp.picker %>
   <%= erb :"components/shared/input_label", :locals => {comp: comp} %>
-  <datalist id="<%= comp.id %>-list">
-  </datalist>
+  <% if comp.picker %>
+    <datalist id="<%= comp.id %>-list">
+    </datalist>
+    <% end %>
 </div>
 <%= erb :"components/shared/hint_error_display", :locals => {comp: comp} %>
 <%= erb :"components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
