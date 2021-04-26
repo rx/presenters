@@ -30614,6 +30614,46 @@ var VDateText = function (_VTextField2) {
             };
         }
     }, {
+        key: 'validate',
+        value: function validate(formData) {
+            var input = this.element.vComponent.value();
+            if (this.isValidDate(input)) {
+                return true;
+            }
+
+            var message = this.helperDisplay.dataset.validationError ? this.helperDisplay.dataset.validationError : this.input.validationMessage;
+            var errorMessage = {};
+            errorMessage[this.element.id] = [message];
+            return errorMessage;
+        }
+    }, {
+        key: 'isValidDate',
+        value: function isValidDate(dateString) {
+            dateString = dateString.replace(/\s+/g, '');
+            if (dateString === '' && !this.input.required) {
+                return true;
+            }
+            if (!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString)) {
+                return false;
+            }
+
+            var parts = dateString.split("/");
+            var day = parseInt(parts[1], 10);
+            var month = parseInt(parts[0], 10);
+            var year = parseInt(parts[2], 10);
+
+            if (year < 1000 || year > 3000 || month === 0 || month > 12) {
+                return false;
+            }
+
+            var monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            if (year % 400 === 0 || year % 100 !== 0 && year % 4 === 0) {
+                monthLength[1] = 29;
+            }
+
+            return day > 0 && day <= monthLength[month - 1];
+        }
+    }, {
         key: 'isDirty',
         value: function isDirty() {
             if (!this.dirtyable) {
@@ -30629,13 +30669,13 @@ var VDateText = function (_VTextField2) {
 }(__WEBPACK_IMPORTED_MODULE_2__text_fields__["a" /* VTextField */]);
 
 function checkValue(str, max) {
-    if (str.charAt(0) !== '0' || str == '00') {
+    if (str.charAt(0) !== '0' || str === '00') {
         var num = parseInt(str);
         if (isNaN(num) || num <= 0 || num > max) num = 1;
         str = num > parseInt(max.toString().charAt(0)) && num.toString().length === 1 ? '0' + num : num.toString();
-    };
+    }
     return str;
-};
+}
 
 /***/ }),
 /* 181 */

@@ -128,6 +128,46 @@ export class VDateText extends VTextField {
         };
     }
 
+    validate(formData) {
+        const input = this.element.vComponent.value();
+        if (this.isValidDate(input)) {
+            return true;
+        }
+
+        const message = this.helperDisplay.dataset.validationError ?
+          this.helperDisplay.dataset.validationError :
+          this.input.validationMessage;
+        const errorMessage = {};
+        errorMessage[this.element.id] = [message];
+        return errorMessage;
+    }
+
+    isValidDate(dateString) {
+        dateString = dateString.replace(/\s+/g, '');
+        if (dateString === '' && !this.input.required) {
+            return true
+        }
+        if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString)) {
+            return false;
+        }
+
+        const parts = dateString.split("/");
+        const day = parseInt(parts[1], 10);
+        const month = parseInt(parts[0], 10);
+        const year = parseInt(parts[2], 10);
+
+        if (year < 1000 || year > 3000 || month === 0 || month > 12) {
+            return false;
+        }
+
+        const monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+        if(year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)) {
+            monthLength[1] = 29;
+        }
+
+        return day > 0 && day <= monthLength[month - 1];
+    };
+
     isDirty() {
         if (!this.dirtyable) {
             return false;
@@ -139,11 +179,12 @@ export class VDateText extends VTextField {
 }
 
 function checkValue(str, max) {
-    if (str.charAt(0) !== '0' || str == '00') {
+    if (str.charAt(0) !== '0' || str === '00') {
         let num = parseInt(str);
         if (isNaN(num) || num <= 0 || num > max) num = 1;
         str = num > parseInt(max.toString().charAt(0)) && num.toString().length === 1 ? '0' + num : num.toString();
-    };
+    }
     return str;
-};
+}
+
 
