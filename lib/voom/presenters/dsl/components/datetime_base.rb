@@ -3,7 +3,7 @@ module Voom
     module DSL
       module Components
         class DatetimeBase < TextField
-          attr_reader :config
+          attr_reader :config, :picker
 
           def initialize(**attribs_, &block)
             super(**attribs_, &block)
@@ -12,6 +12,7 @@ module Voom
             merge_config(:disable)
             merge_config(:enable)
             merge_config(:mode)
+            @picker = attribs_.delete(:picker){ true }
 
             my_id = self.id
             clear_icon(:clear) do
