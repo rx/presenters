@@ -48509,6 +48509,7 @@ var VUrls = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__action_parameter__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__encode__ = __webpack_require__(534);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__get_event_target__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_form_data__ = __webpack_require__(635);
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -48518,6 +48519,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -48598,35 +48600,7 @@ var VPosts = function (_VBase) {
             }
 
             if (eventParams) {
-                var _iteratorNormalCompletion2 = true;
-                var _didIteratorError2 = false;
-                var _iteratorError2 = undefined;
-
-                try {
-                    for (var _iterator2 = Object.entries(eventParams)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                        var _ref3 = _step2.value;
-
-                        var _ref4 = _slicedToArray(_ref3, 2);
-
-                        var _name = _ref4[0];
-                        var _value = _ref4[1];
-
-                        formData.append(_name, _value);
-                    }
-                } catch (err) {
-                    _didIteratorError2 = true;
-                    _iteratorError2 = err;
-                } finally {
-                    try {
-                        if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                            _iterator2.return();
-                        }
-                    } finally {
-                        if (_didIteratorError2) {
-                            throw _iteratorError2;
-                        }
-                    }
-                }
+                Object(__WEBPACK_IMPORTED_MODULE_5__utils_form_data__["a" /* buildFormData */])(formData, eventParams);
             }
 
             // Add CSRF authenticity token if present
@@ -48639,32 +48613,32 @@ var VPosts = function (_VBase) {
             // Add params from presenter:
             var expandedParams = Object(__WEBPACK_IMPORTED_MODULE_2__action_parameter__["b" /* expandParams */])(results, this.params);
 
-            var _iteratorNormalCompletion3 = true;
-            var _didIteratorError3 = false;
-            var _iteratorError3 = undefined;
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
 
             try {
-                for (var _iterator3 = Object.entries(expandedParams)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                    var _ref5 = _step3.value;
+                for (var _iterator2 = Object.entries(expandedParams)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var _ref3 = _step2.value;
 
-                    var _ref6 = _slicedToArray(_ref5, 2);
+                    var _ref4 = _slicedToArray(_ref3, 2);
 
-                    var _name2 = _ref6[0];
-                    var _value2 = _ref6[1];
+                    var _name = _ref4[0];
+                    var _value = _ref4[1];
 
-                    formData.append(_name2, Object(__WEBPACK_IMPORTED_MODULE_3__encode__["a" /* encode */])(_value2));
+                    formData.append(_name, Object(__WEBPACK_IMPORTED_MODULE_3__encode__["a" /* encode */])(_value));
                 }
             } catch (err) {
-                _didIteratorError3 = true;
-                _iteratorError3 = err;
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                        _iterator3.return();
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
                     }
                 } finally {
-                    if (_didIteratorError3) {
-                        throw _iteratorError3;
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
                     }
                 }
             }
@@ -48676,8 +48650,6 @@ var VPosts = function (_VBase) {
             }
 
             var errors = this.validate(formData);
-            console.log('Validation errors');
-            console.dir(errors);
             if (errors.length > 0) {
                 return new Promise(function (_, reject) {
                     results.push({
@@ -48779,63 +48751,63 @@ var VPosts = function (_VBase) {
 
                 var configHeaders = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].get('request.headers.POST', {});
 
-                var _iteratorNormalCompletion4 = true;
-                var _didIteratorError4 = false;
-                var _iteratorError4 = undefined;
+                var _iteratorNormalCompletion3 = true;
+                var _didIteratorError3 = false;
+                var _iteratorError3 = undefined;
 
                 try {
-                    for (var _iterator4 = Object.entries(configHeaders)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                        var _ref7 = _step4.value;
+                    for (var _iterator3 = Object.entries(configHeaders)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                        var _ref5 = _step3.value;
 
-                        var _ref8 = _slicedToArray(_ref7, 2);
+                        var _ref6 = _slicedToArray(_ref5, 2);
 
-                        var key = _ref8[0];
-                        var _value3 = _ref8[1];
+                        var key = _ref6[0];
+                        var _value2 = _ref6[1];
 
-                        httpRequest.setRequestHeader(key, _value3);
+                        httpRequest.setRequestHeader(key, _value2);
                     }
                 } catch (err) {
-                    _didIteratorError4 = true;
-                    _iteratorError4 = err;
+                    _didIteratorError3 = true;
+                    _iteratorError3 = err;
                 } finally {
                     try {
-                        if (!_iteratorNormalCompletion4 && _iterator4.return) {
-                            _iterator4.return();
+                        if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                            _iterator3.return();
                         }
                     } finally {
-                        if (_didIteratorError4) {
-                            throw _iteratorError4;
+                        if (_didIteratorError3) {
+                            throw _iteratorError3;
                         }
                     }
                 }
 
                 if (callHeaders) {
-                    var _iteratorNormalCompletion5 = true;
-                    var _didIteratorError5 = false;
-                    var _iteratorError5 = undefined;
+                    var _iteratorNormalCompletion4 = true;
+                    var _didIteratorError4 = false;
+                    var _iteratorError4 = undefined;
 
                     try {
-                        for (var _iterator5 = Object.entries(callHeaders)[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-                            var _ref9 = _step5.value;
+                        for (var _iterator4 = Object.entries(callHeaders)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                            var _ref7 = _step4.value;
 
-                            var _ref10 = _slicedToArray(_ref9, 2);
+                            var _ref8 = _slicedToArray(_ref7, 2);
 
-                            var _key = _ref10[0];
-                            var _value4 = _ref10[1];
+                            var _key = _ref8[0];
+                            var _value3 = _ref8[1];
 
-                            httpRequest.setRequestHeader(_key, _value4);
+                            httpRequest.setRequestHeader(_key, _value3);
                         }
                     } catch (err) {
-                        _didIteratorError5 = true;
-                        _iteratorError5 = err;
+                        _didIteratorError4 = true;
+                        _iteratorError4 = err;
                     } finally {
                         try {
-                            if (!_iteratorNormalCompletion5 && _iterator5.return) {
-                                _iterator5.return();
+                            if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                                _iterator4.return();
                             }
                         } finally {
-                            if (_didIteratorError5) {
-                                throw _iteratorError5;
+                            if (_didIteratorError4) {
+                                throw _iteratorError4;
                             }
                         }
                     }
@@ -60101,6 +60073,27 @@ function setLabelNotch(component) {
 
 
 //# sourceMappingURL=index.js.map
+
+/***/ }),
+/* 635 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = buildFormData;
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+// Turns an Object into FormData. Note that a nested array will come out as a hash with numeric keys
+// and will need to be handled accordingly server-side.
+function buildFormData(formData, data, parentKey) {
+  if (data && (typeof data === 'undefined' ? 'undefined' : _typeof(data)) === 'object' && !(data instanceof Date) && !(data instanceof File) && !(data instanceof Blob)) {
+    Object.keys(data).forEach(function (key) {
+      buildFormData(formData, data[key], parentKey ? parentKey + '[' + key + ']' : key);
+    });
+  } else {
+    var value = data == null ? '' : data;
+    formData.append(parentKey, value);
+  }
+}
 
 /***/ })
 /******/ ]);

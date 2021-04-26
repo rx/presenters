@@ -3,6 +3,7 @@ import appConfig from '../../config';
 import {expandParams} from './action_parameter';
 import {encode} from './encode';
 import {getEventTarget} from '../get_event_target';
+import {buildFormData} from '../../utils/form-data'
 
 // Replaces a given element with the contents of the call to the url.
 // parameters are appended.
@@ -41,9 +42,7 @@ export class VPosts extends VBase {
         }
 
         if (eventParams){
-            for (const [name, value] of Object.entries(eventParams)) {
-                formData.append(name, value);
-            }
+            buildFormData(formData, eventParams);
         }
 
         // Add CSRF authenticity token if present
@@ -70,8 +69,6 @@ export class VPosts extends VBase {
         }
 
         let errors = this.validate(formData);
-        console.log('Validation errors');
-        console.dir(errors);
         if (errors.length > 0) {
             return new Promise(function(_, reject) {
                 results.push({
