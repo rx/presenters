@@ -91,6 +91,16 @@ Voom::Presenters.define(:date_fields) do
       end
     end
 
+    grid do
+      column 6 do
+        title 'As a simple text field'
+        text 'You can use the date field without a picker and get a simple auto-formatting text input.'
+        date_field picker: false do
+          label 'Birthdate'
+        end
+      end
+    end
+
   end
   attach :code, file: __FILE__
 end

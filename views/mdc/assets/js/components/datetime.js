@@ -7,6 +7,7 @@ import appConfig from '../config';
 export function initDateTime(e) {
     console.debug('\tDateTime');
     hookupComponents(e, '.v-datetime', VDateTime, MDCTextField);
+    hookupComponents(e, '.v-date-text', VDateText, MDCTextField);
 }
 
 export class VDateTime extends VTextField {
@@ -71,33 +72,78 @@ export class VDateTime extends VTextField {
         this.fp.toggle();
     }
 
-    // checkDefaults() {
-    //     if(this.fp.config.mode = 'range'){
-    //         if(this.fp.selectedDates[1]){
-    //             // If we are in range mode and the endDate is defined as the beginning of the day, default it to be the
-    //             // end of the day.
-    //             let endDate = this.fp.selectedDates[1];
-    //             if(endDate.getHours() == 0 && endDate.getMinutes() == 0 && endDate.getSeconds() == 0 && endDate.getMilliseconds() == 0){
-    //                 endDate.setHours(23);
-    //                 endDate.setMinutes(59);
-    //                 endDate.setSeconds(59);
-    //                 endDate.getMilliseconds(9999);
-    //                 this.fp.setDate(this.fp.selectedDates)
-    //             }
-    //         }
-    //     }
-    // }
+    isDirty() {
+        if (!this.dirtyable) {
+            return false;
+        }
+        const currVal = new Date(this.fp.input.value);
+        const prevVal = new Date(this.originalValue);
+        return currVal.getTime() !== prevVal.getTime();
+    }
+}
+
+export class VDateText extends VTextField {
+    constructor(element, mdcComponent) {
+        super(element, mdcComponent);
+        element.addEventListener('input', this.createInputHandler(element.vComponent));
+        element.addEventListener('blur', this.createBlurHandler(element.vComponent));
+    }
+
+    createInputHandler(component) {
+        return function(e) {
+            let input = component.value();
+            if (/\D\/$/.test(input)) input = input.substr(0, input.length - 3);
+            let values = input.split('/').map(function(v) {
+                return v.replace(/\D/g, '')
+            });
+            if (values[0]) values[0] = checkValue(values[0], 12);
+            if (values[1]) values[1] = checkValue(values[1], 31);
+            const output = values.map(function(v, i) {
+                return v.length === 2 && i < 2 ? v + ' / ' : v;
+            });
+            component.setValue(output.join('').substr(0, 14));
+        }
+    }
+
+    createBlurHandler(component) {
+        return function(e) {
+            let input = component.value();
+            let values = input.split('/').map(function (v, i) {
+                return v.replace(/\D/g, '')
+            });
+            let output = '';
+            if (values.length === 3) {
+                const year = values[2].length !== 4 ? parseInt(values[2]) + 2000 : parseInt(values[2]);
+                const month = parseInt(values[0]) - 1;
+                const day = parseInt(values[1]);
+                const d = new Date(year, month, day);
+                if (!isNaN(d)) {
+                    output = [d.getMonth() + 1, d.getDate(), d.getFullYear()].map(function (v) {
+                        v = v.toString();
+                        return v.length === 1 ? '0' + v : v;
+                    }).join(' / ');
+                }
+            }
+            component.setValue(output);
+        };
+    }
 
     isDirty() {
         if (!this.dirtyable) {
             return false;
         }
-
         const currVal = new Date(this.fp.input.value);
         const prevVal = new Date(this.originalValue);
-
         return currVal.getTime() !== prevVal.getTime();
     }
 }
 
+function checkValue(str, max) {
+    if (str.charAt(0) !== '0' || str == '00') {
+        let num = parseInt(str);
+        if (isNaN(num) || num <= 0 || num > max) num = 1;
+        str = num > parseInt(max.toString().charAt(0)) && num.toString().length === 1 ? '0' + num : num.toString();
+    };
+    return str;
+};
 
