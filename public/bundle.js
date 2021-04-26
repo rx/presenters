@@ -45196,7 +45196,9 @@ var VDateText = function (_VTextField2) {
         var _this2 = _possibleConstructorReturn(this, (VDateText.__proto__ || Object.getPrototypeOf(VDateText)).call(this, element, mdcComponent));
 
         element.addEventListener('input', _this2.createInputHandler(element.vComponent));
-        element.addEventListener('blur', _this2.createBlurHandler(element.vComponent));
+        element.vComponent.input.addEventListener('blur', function () {
+            return _this2.validate(null);
+        });
         return _this2;
     }
 
@@ -45205,6 +45207,12 @@ var VDateText = function (_VTextField2) {
         value: function createInputHandler(component) {
             return function (e) {
                 var input = component.value();
+
+                // Add a leading zero if input is like 1/ or 01 / 1/
+                if (/^\d\/$/.test(input)) input = '0' + input;
+                if (/^\d{2}\s\/\s\d\/$/.test(input)) input = input.slice(0, 4) + '0' + input.slice(5, 6);
+
+                // Parse and format input
                 if (/\D\/$/.test(input)) input = input.substr(0, input.length - 3);
                 var values = input.split('/').map(function (v) {
                     return v.replace(/\D/g, '');
@@ -45218,38 +45226,26 @@ var VDateText = function (_VTextField2) {
             };
         }
     }, {
-        key: 'createBlurHandler',
-        value: function createBlurHandler(component) {
-            return function (e) {
-                var input = component.value();
-                var values = input.split('/').map(function (v, i) {
-                    return v.replace(/\D/g, '');
-                });
-                var output = '';
-                if (values.length === 3) {
-                    var year = values[2].length !== 4 ? parseInt(values[2]) + 2000 : parseInt(values[2]);
-                    var month = parseInt(values[0]) - 1;
-                    var day = parseInt(values[1]);
-                    var d = new Date(year, month, day);
-                    if (!isNaN(d)) {
-                        output = [d.getMonth() + 1, d.getDate(), d.getFullYear()].map(function (v) {
-                            v = v.toString();
-                            return v.length === 1 ? '0' + v : v;
-                        }).join(' / ');
-                    }
-                }
-                component.setValue(output);
-            };
-        }
-    }, {
         key: 'validate',
         value: function validate(formData) {
             var input = this.element.vComponent.value();
             if (this.isValidDate(input)) {
+                if (this.origHelperText !== '') {
+                    this.helperDisplay.innerHTML = this.origHelperText;
+                    this.helperDisplay.classList.remove('mdc-text-field-helper-text--validation-msg');
+                    this.element.classList.remove('mdc-text-field--invalid');
+                } else {
+                    this.helperDisplay.classList.add('v-hidden');
+                }
                 return true;
             }
 
             var message = this.helperDisplay.dataset.validationError ? this.helperDisplay.dataset.validationError : this.input.validationMessage;
+
+            this.helperDisplay.innerHTML = message;
+            this.helperDisplay.classList.add('mdc-text-field-helper-text--validation-msg');
+            this.element.classList.add('mdc-text-field--invalid');
+
             var errorMessage = {};
             errorMessage[this.element.id] = [message];
             return errorMessage;

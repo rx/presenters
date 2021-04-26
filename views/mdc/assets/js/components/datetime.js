@@ -86,12 +86,18 @@ export class VDateText extends VTextField {
     constructor(element, mdcComponent) {
         super(element, mdcComponent);
         element.addEventListener('input', this.createInputHandler(element.vComponent));
-        element.addEventListener('blur', this.createBlurHandler(element.vComponent));
+        element.vComponent.input.addEventListener('blur', () => this.validate(null));
     }
 
     createInputHandler(component) {
         return function(e) {
             let input = component.value();
+
+            // Add a leading zero if input is like 1/ or 01 / 1/
+            if (/^\d\/$/.test(input)) input = '0' + input;
+            if (/^\d{2}\s\/\s\d\/$/.test(input)) input = input.slice(0,4) + '0' + input.slice(5,6);
+
+            // Parse and format input
             if (/\D\/$/.test(input)) input = input.substr(0, input.length - 3);
             let values = input.split('/').map(function(v) {
                 return v.replace(/\D/g, '')
@@ -105,38 +111,28 @@ export class VDateText extends VTextField {
         }
     }
 
-    createBlurHandler(component) {
-        return function(e) {
-            let input = component.value();
-            let values = input.split('/').map(function (v, i) {
-                return v.replace(/\D/g, '')
-            });
-            let output = '';
-            if (values.length === 3) {
-                const year = values[2].length !== 4 ? parseInt(values[2]) + 2000 : parseInt(values[2]);
-                const month = parseInt(values[0]) - 1;
-                const day = parseInt(values[1]);
-                const d = new Date(year, month, day);
-                if (!isNaN(d)) {
-                    output = [d.getMonth() + 1, d.getDate(), d.getFullYear()].map(function (v) {
-                        v = v.toString();
-                        return v.length === 1 ? '0' + v : v;
-                    }).join(' / ');
-                }
-            }
-            component.setValue(output);
-        };
-    }
-
     validate(formData) {
         const input = this.element.vComponent.value();
         if (this.isValidDate(input)) {
+            if (this.origHelperText !== '') {
+                this.helperDisplay.innerHTML = this.origHelperText;
+                this.helperDisplay.classList.remove('mdc-text-field-helper-text--validation-msg');
+                this.element.classList.remove('mdc-text-field--invalid');
+            }
+            else {
+                this.helperDisplay.classList.add('v-hidden');
+            }
             return true;
         }
 
         const message = this.helperDisplay.dataset.validationError ?
           this.helperDisplay.dataset.validationError :
           this.input.validationMessage;
+
+        this.helperDisplay.innerHTML = message;
+        this.helperDisplay.classList.add('mdc-text-field-helper-text--validation-msg');
+        this.element.classList.add('mdc-text-field--invalid');
+
         const errorMessage = {};
         errorMessage[this.element.id] = [message];
         return errorMessage;
