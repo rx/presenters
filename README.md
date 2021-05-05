@@ -1,5 +1,7 @@
 # COmmon PResenter Language (COPRL)
 
+![alt text](https://media.giphy.com/media/13LEyaRbQbiWdi/giphy.gif "Power Washer for Building User Interfaces")
+
 ## TLDR;
 Do you wish you could write a modern user interface in Ruby or any other language?
 
