@@ -5,6 +5,7 @@ module Voom
       # It looks for public/presenters/global.css first
       # It then looks for public/presenters/#{env['REQUEST_PATH']}.css
       class CustomCss
+        include Voom::Presenters::WebClient::Helpers::HtmlSafe
 
         attr_reader :path, :root, :host
         private :path, :root, :host
@@ -55,7 +56,7 @@ module Voom
         end
 
         def _build_css_link_(path)
-          (<<~CSS)
+          html_safe (<<~CSS)
             <link rel="stylesheet" type="text/css" href="#{host}/#{path.sub('public/', '')}">
           CSS
         end

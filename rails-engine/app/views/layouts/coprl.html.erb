@@ -1,0 +1,21 @@
+<!doctype html>
+<html class="no-js incompatible-browser" lang="en">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title><%= @pom.page.title if @pom.page %></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= coprl_headers(@base_url, request, @pom) %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+</head>
+<body>
+<%= partial "body/preamble", :locals => {pom:@pom} %>
+<%= yield %>
+<%= partial "body/postamble", :locals => {pom:@pom} %>
+<noscript><p>JavaScript must be enabled to continue.</p></noscript>
+</body>
+</html>
+

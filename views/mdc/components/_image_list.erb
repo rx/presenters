@@ -1,0 +1,38 @@
+<%
+  types = {
+      'standard' => '',
+      'text-protection' => 'mdc-image-list--with-text-protection',
+      'masonry' => 'mdc-image-list--masonry'
+  }
+%>
+
+<ul class="mdc-image-list <%= types[comp.list_type] %> v-image-list-<%= comp.list_type %>-<%= comp.columns %>">
+  <% for image in comp.images %>
+    <%
+      styles = {
+        'border-width' => ("#{image.border}" if image.border),
+        'border-style' => ('solid' if image.border),
+        'border-radius' => (image.border_radius if image.border_radius)
+      }.compact
+    %>
+    <li class="mdc-image-list__item" <%= "style='margin: #{comp.spacing}'" if comp.spacing %>>
+      <% if comp.list_type != 'masonry' %><div class="mdc-image-list__image-aspect-container"><% end %>
+        <img id="<%= image.id %>"
+             class="mdc-image-list__image
+                    <%= 'v-actionable' if image.events %>
+                    <%= "v-image-list__border-#{image.border_color}"  if image.border_color %>"
+             src="<%= image.url %>"
+             <% if image.description %>alt="<%= image.description %>"<% end %>
+             style="<%= styles.map { |k, v| "#{k}: #{v}" }.join('; ') %>"
+             draggable="false"
+             <%= partial "components/event", :locals => {comp: image, events: image.events, parent_id: image.event_parent_id} %>>
+        <%= partial "components/tooltip" , :locals => {comp: image.tooltip, parent_id: image.id} %>
+      <% if comp.list_type != 'masonry' %></div><% end %>
+      <% if image.label %>
+        <div class="mdc-image-list__supporting">
+          <span class="mdc-image-list__label"><%= image.label %></span>
+        </div>
+      <% end %>
+    </li>
+    <% end %>
+</ul>

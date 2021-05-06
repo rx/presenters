@@ -1,6 +1,0 @@
-<%if line.icon%>
-  <span class="mdc-list-item__graphic"
-        <%= erb :"components/event", :locals => {comp: line, events: line.events, parent_id: line.event_parent_id} %>>
-  <%= erb :"components/icon", :locals => {comp: line.icon} %>
-  </span>
-<%end%>

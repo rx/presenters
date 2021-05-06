@@ -1,0 +1,43 @@
+<div id="<%= comp.id %>"
+     <% if comp.tag %>
+     data-input-tag="<%= comp.tag %>"
+     <% end %>
+    class="v-slider v-input mdc-slider
+      <%= 'mdc-slider--discrete' if comp.discrete %>
+      <%= 'mdc-slider--display-markers' if comp.show_tracker_marks %>"
+     tabindex="0"
+     role="slider"
+     data-name="<%= comp.name %>"
+     <% if comp.step %>
+     data-step="<%= comp.step %>"
+     <% end %>
+     <% if comp.dirtyable %>data-dirtyable<% end %>
+     aria-valuemin="<%= comp.value_min %>"
+     aria-valuemax="<%= comp.value_max %>"
+     aria-valuenow="<%= comp.value unless comp.value.nil? %>"
+     <% if comp.disabled %>aria-disabled<% end %>
+     aria-label="Select Value"
+    <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: "#{comp.id}-input"} %>>
+<div class="mdc-slider__track-container">
+    <div class="mdc-slider__track"></div>
+
+    <% if comp.show_tracker_marks %>
+    <div class="mdc-slider__track-marker-container"></div>
+    <% end %>
+
+  </div>
+  <div class="mdc-slider__thumb-container">
+
+    <% if comp.discrete %>
+    <div class="mdc-slider__pin">
+      <span class="mdc-slider__pin-value-marker"></span>
+    </div>
+    <% end %>
+
+    <svg class="mdc-slider__thumb" width="21" height="21">
+      <circle cx="10.5" cy="10.5" r="7.875"></circle>
+    </svg>
+    <div class="mdc-slider__focus-ring"></div>
+  </div>
+</div>
+

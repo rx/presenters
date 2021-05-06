@@ -1,0 +1,26 @@
+<%
+  header = pom.header
+  drawer = pom.drawer
+  footer = pom.footer
+
+  root_classes = []
+  root_classes << 'v-root--header-present' if header
+  root_classes << 'v-root--drawer-present' if drawer
+  root_classes << 'v-root--footer-present' if footer
+%>
+<div class="v-root compatibility-wrapper mdc-typography <%= root_classes.join(' ') %>">
+
+  <% if drawer %>
+    <div class="drawer-frame-root">
+      <%= partial "body/dismissable-drawer", :locals => {drawer: drawer} %>
+      <div class="mdc-drawer-app-content">
+  <% end %>
+  <% if header %>
+    <%= partial "body/header", :locals => {header:header, drawer: drawer} %>
+  <% end %>
+  <% if drawer %>
+    <div class="drawer-main-content">
+      <%= partial "body/modal-drawer", :locals => {drawer: drawer} %>
+  <% end %>
+  <div class="v-page-content page-content">
+    <div class="v-errors">

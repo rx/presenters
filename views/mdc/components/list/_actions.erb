@@ -1,0 +1,6 @@
+<span class="mdc-list-item__meta">
+  <%= partial "components/list/info", :locals => {:line => line} %>
+<% line.actions.each do |action| %>
+    <%= partial "components/list/actions/#{action.action_type}", :locals => {action: action} %>
+<% end %>
+</span>

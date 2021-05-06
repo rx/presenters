@@ -1,0 +1,43 @@
+<%
+  @grid_nesting ||= 0
+  @grid_nesting += 1
+   @gutters ||= [true]
+   # gutters once turned off are turned off for all nested grids
+   @gutters.push comp.gutter.nil? ? @gutters.last : comp.gutter
+%>
+<div id="<%= comp.id %>"
+     <% if comp.tag %>
+     data-input-tag="<%= comp.tag %>"
+     <% end %>
+     class="v-grid mdc-layout-grid
+            <%= _padding_classes_(comp.padding, @grid_nesting) %>
+            <%= 'v-grid__wide' if comp.wide %>
+            <%= comp.css_class.join(' ') %>"
+     style="<%= "background-color: #{comp.color};" if comp.color %><%= "height:#{comp.height};" if comp.height %>"
+     <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
+  <%= partial("components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(top both))%>
+
+  <div class="<%= @gutters.last ? nil : 'v-gutter-none' %> mdc-layout-grid__inner"
+       style="<%= "height:#{comp.height};" if comp.height %>">
+    <% comp.columns.each do |col|
+      span = "mdc-layout-grid__cell--span-#{col.size}"
+      %i(desktop tablet phone).each do |device|
+        span << " mdc-layout-grid__cell--span-#{col.send(device)}-#{device}" if col.send(device)
+      end
+     %>
+      <div id="<%= col.id %>" class="v-column mdc-layout-grid__cell <%= span %>
+                          <%= col.overflow ? nil : 'v-column-hide-overflow' %>
+                          <%= _padding_classes_(col.padding) %> v-column--relative <%= _alignment_class_(col.align) %> <%= col.css_class.join(' ') %>"
+           style="<%= "background-color: #{col.color};" if col.color %><%= "height:#{comp.height};" if comp.height %>"
+           <%= partial "components/event", :locals => {comp: col, events: col.events, parent_id: col.event_parent_id} %>>
+        <%= partial("components/progress", :locals => {:comp => col.progress}) if col.progress && includes_one?(Array(col.progress.position), %i(top both))%>
+        <%= partial "components/render", :locals => {:components => col.components, :scope => nil} %>
+        <%= partial("components/progress", :locals => {:comp => col.progress}) if col.progress && includes_one?(Array(col.progress.position), %i(bottom both))%>
+      </div>
+    <% end %>
+  </div>
+  <%= partial("components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(bottom both))%>
+</div>
+<% @grid_nesting -= 1
+   @gutters.pop
+%>

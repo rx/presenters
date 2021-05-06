@@ -1,0 +1,8 @@
+<tr
+  style="<%= "background-color: #{row.color};" if row.color %>">
+  <%= partial "components/table/checkbox", :locals => {:row=> row, :type=> 'footer'} %>
+  <% row.columns.each do |col| %>
+    <%= partial "components/table/column", :locals => {:col=> col, :type=> 'footer'} %>
+    <%= partial "components/tooltip", :locals => {comp: col.tooltip, parent_id: col.id} %>
+  <% end %>
+</tr>

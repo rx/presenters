@@ -1,0 +1,2 @@
+# intentionally left blank the CoprlTemplateHandler handles this,
+# we need this file to allow the rails template loader only

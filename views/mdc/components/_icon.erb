@@ -1,0 +1,35 @@
+<% class_name = '' unless bound_locals_include?(:class_name, binding)
+   data = nil unless bound_locals_include?(:data, binding)
+%>
+<% if comp
+     parent_id = comp.event_parent_id unless bound_locals_include?(:parent_id, binding)
+     icon_name = comp.icon unless bound_locals_include?(:icon_name, binding)
+     events = comp.events unless bound_locals_include?(:events, binding)
+     position = comp.position unless bound_locals_include?(:position, binding)
+     position ||= []
+     position_classes = position.map {|p| "v-icon-position-#{p}"}.join(' ')
+     class_name= "#{class_name} #{position_classes}"
+     if icon_name =~ /^(fa[srlb]\s)*fa-/
+       icon_class_name = "#{icon_name} v-icon__fa"
+       icon_class_name = "fas #{icon_class_name}" unless icon_class_name=~ /^(fas)|(fal)|(fab)/
+       icon = ''
+     else
+       icon_class_name = "material-icons"
+       icon = icon_name
+     end
+     size_class = "v-icon-size-#{comp.size}" unless bound_locals_include?(:size_class, binding)
+%>
+  <i id="<%= comp.id %>"
+     class="<%= class_name %> <%= icon_class_name %> <%= size_class %>
+            <%= 'v-hidden' if comp.respond_to?(:hidden) && comp.hidden %>
+            <%= 'v-actionable' if comp.events %>
+            <%= color_classname(comp) %>"
+      <%= "data-#{data}" if data %>
+      style="<%= color_style(comp) %>"
+      <%= 'tabindex="0"' if comp.events %>
+      <%= partial "components/event", :locals => {comp: comp, events: events, parent_id: parent_id} %>>
+    <%= icon %>
+  </i>
+  <%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+  <%= expand_text(comp.text) if comp.respond_to?(:text) %>
+<% end %>

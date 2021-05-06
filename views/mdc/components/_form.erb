@@ -1,0 +1,14 @@
+<form role="form"
+      <% if comp.tag %>
+      data-input-tag="<%= comp.tag %>"
+      <% end %>
+      id="<%= comp.id %>"
+      class="v-form"
+      style='width: 100%'
+      onsubmit="javascript:void(0);return false;"
+      <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id} %>
+      data-is-container>
+  <div class="v-errors">
+    <%= partial "components/render", :locals => {:components => comp.components, :scope => nil} %>
+  </div>
+</form>

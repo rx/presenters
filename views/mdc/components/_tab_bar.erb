@@ -1,0 +1,35 @@
+<div id="<%= comp.id %>"
+  class="v-tab-bar mdc-tab-bar" role="tablist">
+  <div class="mdc-tab-scroller">
+    <div class="mdc-tab-scroller__scroll-area">
+      <div class="mdc-tab-scroller__scroll-content">
+
+        <% for tab in comp.tabs %>
+          <button class="mdc-tab
+                    <%= 'mdc-tab--active' if tab.selected %>
+                    <%= 'mdc-tab--stacked' if tab.stacked %>"
+                  role="tab" aria-selected="<%= tab.selected %>" tabindex="0"
+                  <%= partial "components/event", :locals => {comp: tab, events: tab.events, parent_id: tab.event_parent_id}%>>
+          <span class="mdc-tab__content">
+           <% if tab.icon %>
+            <span class="mdc-tab__icon material-icons"><%= tab.icon %></span>
+            <% end %>
+            <span class="mdc-tab__text-label"><%= tab.label %></span>
+          </span>
+            <span class="mdc-tab-indicator
+                    <%= 'mdc-tab-indicator--active' if tab.selected %>">
+            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+          </span>
+            <span class="mdc-tab__ripple"></span>
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% comp.tabs.each_with_index do |tab, index|
+  next unless tab.components.any? %>
+  <div class="v-tab-content <%=tab.selected ? nil : 'v-hidden' %>" data-tab-id="<%=index%>">
+    <%= partial "components/render", :locals => {:components => tab.components, :scope=> nil} if tab.components.any? %>
+  </div>
+<% end %>

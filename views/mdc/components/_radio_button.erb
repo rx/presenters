@@ -1,0 +1,20 @@
+<div class="v-form-field mdc-form-field">
+  <div id="<%= comp.id %>"
+       <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+       <% if comp.dirtyable %>data-dirtyable<% end %>
+       class="v-radio mdc-radio v-input">
+    <input class="mdc-radio__native-control"
+           type="radio"
+           id="<%= comp.id %>-input"
+           <% if comp.value %>value="<%= comp.value %>"<% end %>
+           name="<%= comp.name %>"
+           <%if comp.checked%> checked<%end%><%if comp.disabled%> disabled<%end%>
+           <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id}%>>
+    <div class="mdc-radio__background">
+      <div class="mdc-radio__outer-circle"></div>
+      <div class="mdc-radio__inner-circle"></div>
+    </div>
+  </div>
+  <label for="<%=comp.id%>-input"><%=comp.text%></label>
+  <%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id }%>
+</div>

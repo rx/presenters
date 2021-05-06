@@ -22,4 +22,5 @@ end
 if defined?(::Rails)
   # We need this class's file to be parsed, but we want to let Zeitwerk load it
   Voom::Railtie
+  Voom::Presenters::Rails::Engine
 end

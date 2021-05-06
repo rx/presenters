@@ -1,0 +1,33 @@
+<li id="<%= comp.id %>"
+  class="v-step mdl-step
+      <%= ' mdl-step--editable' if comp.editable %>
+      <%= ' mdl-step--optional' if comp.optional %>
+      <%= ' is-active' if comp.selected %>">
+  <span class="mdl-step__label">
+    <span class="mdl-step__title">
+      <span class="mdl-step__title-text"><%= comp.label %></span>
+      <span class="mdl-step__title-message"></span>
+    </span>
+  </span>
+
+  <% if vertical %>
+    <div id="<%= comp.id %>-content"
+      class="mdl-step__content v-content">
+        <%= partial "components/render", :locals => {:components => comp.components, :scope => nil} %>
+    </div>
+  <% end %>
+
+  <div class="mdl-step__actions">
+    <!--    This needs to be here for the existing mdl-stepper styling to work - cleanup later -->
+    <% if vertical %>
+      <% if comp.actions&.buttons %>
+        <% comp.actions.buttons.each do |button| %>
+          <%= partial "components/button", :locals => {:comp => button,
+                                                    data_attributes: "data-stepper-#{button.stepper_type}",
+                                                    event_parent_id: "#{comp.id}-content" }
+          %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</li>

@@ -33,7 +33,7 @@ module Voom
                       index: @index,
                       render: @render) if respond_to?(:"render_#{@comp.type}")
 
-          @render.call :erb, :"components#{@scope ? "/#{@scope}" : nil}/#{@comp.type}",
+          @render.call :erb, "components#{@scope ? "/#{@scope}" : nil}/#{@comp.type}",
                        :locals => {comp: comp,
                                    components: components, index: @index}
         end

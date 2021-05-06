@@ -1,0 +1,28 @@
+<div id="<%= comp.id %>"
+      class="mdc-menu v-menu"
+      <%= 'data-hoist="false"' if !comp.hoisted %>
+      data-placement="contextual"
+      style="position: absolute;"
+      tabindex="-1">
+  <ul class="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
+    <% comp.items.each do |item| %>
+      <% unless eq(item.type, :divider) %>
+        <li class="mdc-list-item" role="menuitem" tabindex="0"
+            <%= 'disabled' if item.disabled %>>
+          <% unless item.disabled %>
+            <a class="v-menu-link"
+               id="<%= item.id %>"
+               href="javascript:void(0)"
+               <%= partial "components/event", :locals => {comp: item, events: item.events, parent_id: item.event_parent_id} %>>
+          <% end %>
+          <%= item.text %>
+          <% unless item.disabled %>
+            </a>
+          <% end %>
+        </li>
+      <% else %>
+        <li class="mdc-list-divider" role="separator"></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

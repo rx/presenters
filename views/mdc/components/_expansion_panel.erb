@@ -1,0 +1,13 @@
+<details id = '<%= comp.id %>' class="v-expansion mdc-elevation--z3"<% if comp.open %> open<% end %>>
+  <summary class="v-expansion__summary">
+    <% if comp.text&.text %>
+      <%= partial "components/typography", :locals => {comp: comp.text, class_name: 'v-expansion__header', type: 'text', inline: comp.text&.inline} %>
+    <% end %>
+    <% if comp.secondary_text&.text %>
+      <%= partial "components/typography", :locals => {comp: comp.secondary_text, class_name: 'v-expansion__secondary-content', type: 'text', inline: comp.secondary_text&.inline} %>
+    <% end %>
+  </summary>
+  <div class="v-expansion__content">
+    <%= partial "components/render", :locals => {:components => comp.content.components, :scope=> nil} if comp.content %>
+  </div>
+</details>
