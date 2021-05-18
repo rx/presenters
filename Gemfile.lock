@@ -5,15 +5,16 @@ GIT
     chart_presenter_plugin (0.1.0)
 
 GIT
+  remote: https://github.com/rx/foo_presenter_plugin.git
+  revision: 1a0efb3a945597e0733ebe04c59ffb3c5a081718
+  specs:
+    foo_presenter_plugin (0.0.1)
+
+GIT
   remote: https://github.com/rx/image_crop_presenter_plugin.git
   revision: c0814ffa5a0f40fd15d697e72a5bd4c9e4117d1e
   specs:
     image_crop_presenter_plugin (0.1.0)
-
-PATH
-  remote: ../foo_presenter_plugin
-  specs:
-    foo_presenter_plugin (0.0.1)
 
 PATH
   remote: .
