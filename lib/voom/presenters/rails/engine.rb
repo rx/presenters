@@ -9,6 +9,7 @@ module Voom
 
         initializer 'voom_presenters.middleware' do |app|
           # adds the public directory to the middleware so that the bundle.css and bundle.js are picked up
+          # TODO: should rename these since they are common names that are likely going to collide
           app.middleware.use ::ActionDispatch::Static, File.join(root, '..', 'public')
         end
       end

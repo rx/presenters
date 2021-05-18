@@ -39,7 +39,7 @@ This concept was initially inspired by the Presenters concepts of Ivar Jacobson 
 
 ## Demo
 
-[Demo](https://coprl-ruby.herokuapp.com/)
+[Demo]
 
 Or to run locally:
 
@@ -63,37 +63,54 @@ To see the POM:
       
 ## Usage
 
-To use it, add this line to your Gemfile:
+### Rails
+Presenters works as an additional templating language in Rails, 
+you can mix and match presenters with your existing views, 
+use them as new views, or call them as partails in existing views.
 
-    gem 'voom-presenters', github('rx/presenters'), require: false
+#### 1) Add presenters to Gemfile    
+    gem 'voom-presenters', path: '../presenters'
 
-Create the file app/presenters/index.pom with the contents:
-    
+#### 2) Require voom in config/application.rb
+    require 'voom'
+
+#### 3) Mount presenters in config/routes.rb
+
+    mount Voom::Presenters::Rails::Engine => "/"
+
+#### 4) Create the file app/view/hello_world.html.pom with the contents
+
     Voom::Presenters.define(:hello_world) do
       heading 'hello world'
     end   
 
-### Rails
-For rails: Mount the web-client in your rails config/routes.rb
+Navigate to [locahost:3000/hello_world](http://127.0.0.1:3000/hello_world)
 
-    mount ::Voom::Presenters::WebClient::App, at: '/'
-    # the api is optional
-    # mount ::Voom::Presenters::Api::App,       at: '/'
-    
-Create an initializer `config/initializers/presenters.rb` with the following:
-    
-    require 'voom'
+Use the [Demo] to get example code to drop into your presenters.
+
+#### 5) Optionally -- use presenters as partials from ERB/HAML
+You can render a presenter as a partial from other templating laguages (erb, haml):
+    <%= render 'show', presenter: 'hello_world' %> 
 
 ### Rack
-Presenters are rack based. If your framework uses a rack config file add the following:
+#### 1) To use it, add this line to your Gemfile:
 
+    gem 'voom-presenters', github('rx/presenters'), require: false
+
+#### 2) Create the file app/presenters/index.pom with the contents:
+
+    Voom::Presenters.define(:hello_world) do
+      heading 'hello world'
+    end   
+
+Presenters are rack based. If your framework uses a rack config file add the following:
     use Voom::Presenters::WebClient::App
     # the api is optional        
     # use Voom::Presenters::Api::App
 
 Start your app and goto [/hello_world](http://127.0.0.1:3000/hello_world)
 
-Use the [Demo] to get example code to drop into your presetners.
+Use the [Demo] to get example code to drop into your presenters.
 
 ## Status
 This project is in a released status. 
@@ -114,4 +131,4 @@ The gem is available as open source under the terms of the [MIT License](http://
 Everyone interacting in the Voom::Presenters project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/rx/presenters/blob/master/CODE-OF-CONDUCT.md).
 
 
-[Demo]:https://powerful-bastion-96181.herokuapp.com
+[Demo]:https://coprl-ruby.herokuapp.com/
