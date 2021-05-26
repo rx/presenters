@@ -7,14 +7,14 @@
   <title><%= @pom.page.title if @pom.page %></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= puts 'rendering-header'; coprl_headers(@base_url, request, @pom) %>
+  <%= coprl_headers(@base_url, request, @pom) %>
   <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+  <%= csp_meta_tag if defined?(csp_meta_tag) %>
 </head>
 <body>
-<%= puts 'calling preamble'; partial "body/preamble", :locals => {pom:@pom} %>
+<%= partial "body/preamble", :locals => {pom:@pom} %>
 <%= yield %>
-<%= puts 'calling postamble'; partial "body/postamble", :locals => {pom:@pom} %>
+<%= partial "body/postamble", :locals => {pom:@pom} %>
 <noscript><p>JavaScript must be enabled to continue.</p></noscript>
 </body>
 </html>

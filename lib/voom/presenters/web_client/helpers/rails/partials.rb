@@ -9,7 +9,6 @@ module Voom::Presenters::WebClient::Helpers::Rails
 
     # Called by plugins
     def render_partial(_engine, template, options = {}, locals = {}, &block)
-      puts _engine, template, options.keys, locals.keys
       view_dir = options.fetch(:views, nil)
       if view_dir
         controller.class.append_view_path view_dir # controller.class.view_paths.find_all view_dir
