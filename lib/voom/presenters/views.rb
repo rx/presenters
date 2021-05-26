@@ -6,7 +6,11 @@ module Voom
       end
 
       def self.web_erb_path
-        File.join(view_path, 'web.erb')
+        File.join(view_path, web_erb)
+      end
+
+      def self.web_erb
+        'web.erb'
       end
     end
   end
