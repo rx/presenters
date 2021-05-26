@@ -1,2 +1,2 @@
 <% class_name = '' unless bound_locals_include?(:class_name, binding) %>
-<%= partial "components/typography", :locals => {comp: comp, type: comp.type, class_name: class_name} %>
+<%= partial "components/typography", :locals => {comp: comp, type: comp.type, class_name: class_name} if comp %>

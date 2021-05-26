@@ -17,7 +17,7 @@
            <% if comp.checked %>checked<% end %>
            <% if comp.disabled %>disabled<% end %>
            data-off="<%= comp.off_value %>"
-           <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>>
+           <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} if comp.events&.any? %>>
     <div class="mdc-checkbox__background">
       <svg class="mdc-checkbox__checkmark"
            viewBox="0 0 24 24">
@@ -31,4 +31,4 @@
   </div>
   <label id="<%= comp.id %>-label" for="<%= comp.id %>-input" style="<%= "color: #{comp.text_color};" if comp.text_color %>"><%= comp.text %></label>
 </div>
-<%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+<%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} if comp.tooltip %>

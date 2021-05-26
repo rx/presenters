@@ -21,13 +21,13 @@
          <%= 'required' if comp.required %>
          <%= "pattern='#{comp.pattern}'" if comp.pattern %>
          list="<%= comp.id %>-list"
-         <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id:  "#{comp.id}-input"} %>>
-  <%= partial "components/icon", :locals => {comp: comp.clear_icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"}  if comp.picker %>
-  <%= partial "components/shared/input_label", :locals => {comp: comp} %>
+         <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id:  "#{comp.id}-input"} if comp.events&.any? %>>
+  <%= partial "components/icon", :locals => {comp: comp.clear_icon, class_name: 'mdc-text-field__icon', parent_id: "#{comp.id}-input"}  if comp.picker && comp.clear_icon%>
+  <%= partial "components/shared/input_label", :locals => {comp: comp} if comp %>
   <% if comp.picker %>
     <datalist id="<%= comp.id %>-list">
     </datalist>
     <% end %>
 </div>
-<%= partial "components/shared/hint_error_display", :locals => {comp: comp} %>
-<%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+<%= partial "components/shared/hint_error_display", :locals => {comp: comp} if comp %>
+<%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} if comp.tooltip%>

@@ -2,4 +2,4 @@
 <div style='display: none;'
      <%= partial "components/event", :locals => {comp: @pom, events: @pom.events, parent_id: nil} %>></div>
 <% end %>
-<%= partial "components/render", :locals => {:components => @pom.components, :scope=> nil} %>
+<%= partial "components/render", :locals => {:components => @pom.components, :scope=> nil} if @pom.components.any? %>

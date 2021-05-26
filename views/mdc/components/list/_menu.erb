@@ -13,7 +13,7 @@
             <a class="v-menu-link"
                id="<%= item.id %>"
                href="javascript:void(0)"
-               <%= partial "components/event", :locals => {comp: item, events: item.events, parent_id: item.event_parent_id} %>>
+               <%= partial "components/event", :locals => {comp: item, events: item.events, parent_id: item.event_parent_id} if item.events&.any? %>>
           <% end %>
           <%= item.text %>
           <% unless item.disabled %>

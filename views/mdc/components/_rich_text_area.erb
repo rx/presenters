@@ -18,5 +18,5 @@
     <%= comp.hint %>
   </p>
   <div class="v-hidden v-rich-text-area--fixed-up-content" hidden aria-hidden="true"></div>
-  <%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+  <%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} if comp.tooltip %>
 </div>

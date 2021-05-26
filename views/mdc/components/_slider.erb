@@ -17,7 +17,7 @@
      aria-valuenow="<%= comp.value unless comp.value.nil? %>"
      <% if comp.disabled %>aria-disabled<% end %>
      aria-label="Select Value"
-    <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: "#{comp.id}-input"} %>>
+    <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: "#{comp.id}-input"} if comp.events&.any? %>>
 <div class="mdc-slider__track-container">
     <div class="mdc-slider__track"></div>
 

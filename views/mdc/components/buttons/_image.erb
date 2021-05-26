@@ -18,8 +18,8 @@
   data-disabled-on-post-finished="<%= comp.disabled_on_post_finished %>"
   <%= 'disabled' if comp.disabled %>
   <%= "type='#{eq(comp.button_type, :raised) ? 'submit' : 'button'}'" %>
-  <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} %>>
-  <%= partial "components/icon", :locals => {comp: comp.icon, class_name: 'mdc-button__icon', position: [:right, :center]} %>
+  <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} if comp.events&.any? %>>
+  <%= partial "components/icon", :locals => {comp: comp.icon, class_name: 'mdc-button__icon', position: [:right, :center]} if comp.icon %>
 </button>
-<%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
-<%= partial "components/menu", :locals => {comp: comp.menu, parent_id: comp.id} %>
+<%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} if comp.tooltip %>
+<%= partial "components/menu", :locals => {comp: comp.menu, parent_id: comp.id} if comp.menus %>

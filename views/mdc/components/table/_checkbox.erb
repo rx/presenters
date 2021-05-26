@@ -9,7 +9,7 @@
       <%= partial "components/checkbox",
               :locals => {comp: row.checkbox,
                           class_name: (type == 'header' ? 'v-checkbox--select-control' : 'v-table-item--selectable-checkbox'),
-                          data_table_class_name: (type == 'header' ? 'mdc-data-table__header-row-checkbox' : 'mdc-data-table__row-checkbox')}  %>
+                          data_table_class_name: (type == 'header' ? 'mdc-data-table__header-row-checkbox' : 'mdc-data-table__row-checkbox')} if row.checkbox %>
     </span>
   <% end %>
   <% if type == 'header' %>

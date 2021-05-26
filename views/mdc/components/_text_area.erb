@@ -11,8 +11,8 @@
             rows="<%= comp.rows %>"
             cols="<%= comp.cols %>"
             <% if comp.disabled %>disabled<% end %>><%= comp.value %></textarea>
-  <%= partial "components/shared/input_label", :locals => {comp: comp} %>
+  <%= partial "components/shared/input_label", :locals => {comp: comp} if comp %>
 </div>
-<%= partial "components/shared/hint_error_display", :locals => {comp: comp} %>
-<%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+<%= partial "components/shared/hint_error_display", :locals => {comp: comp} if comp %>
+<%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} if comp.tooltip%>
 

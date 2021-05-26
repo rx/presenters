@@ -25,14 +25,14 @@
             <%= ' is-active' if step.selected %>
             <%= ' v-step--horizontal' if horizontal %>">
 
-        <%= partial "components/render", :locals => {:components => step.components, :scope => nil} %>
+        <%= partial "components/render", :locals => {:components => step.components, :scope => nil} if step.components.any? %>
 
         <% if step.actions&.buttons %>
           <div class="v-step__actions v-step__actions-<%= step.id %>">
             <% step.actions.buttons.each do |button| %>
               <%= partial "components/button", :locals => {:comp => button,
                                                         data_attributes: "data-stepper-#{button.stepper_type}",
-                                                        event_parent_id: "#{step.id}-content"}
+                                                        event_parent_id: "#{step.id}-content"} if button
               %>
             <% end %>
           </div>

@@ -7,12 +7,12 @@
             <%= 'v-list__border' if comp.border %>"
       style="<%= "background-color: #{comp.color};" if comp.color %>"
       data-total-lines="<%= comp.total_lines %>"
-      <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id}%>>
+      <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id} if comp.events&.any? %>>
 <% end %>
 <% for line in comp.lines %>
   <%= partial "components/list/#{line.type}", :locals => {:list => comp, :line => line} %>
 <% end %>
-<%= partial "components/render", :locals => {:components => comp.components, :scope => nil} %>
+<%= partial "components/render", :locals => {:components => comp.components, :scope => nil} if comp.components.any? %>
 <% unless comp.lines_only %>
   </ul>
 <% end %>

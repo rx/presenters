@@ -30,10 +30,10 @@
           tabindex="0"
           <%= partial("components/event", locals: {comp: comp,
                                                 events: comp.events,
-                                                parent_id: comp.id}) %>>
+                                                parent_id: comp.id}) if comp.events&.any? %>>
     <%= partial("components/icon", :locals => {comp: leading_icon,
                                             class_name: 'mdc-chip__icon mdc-chip__icon--leading',
-                                            events: child_events ? (leading_icon&.events || comp.events) : nil}) %>
+                                            events: child_events ? (leading_icon&.events || comp.events) : nil}) if leading_icon %>
     <% if comp.chipset_variant == 'filter' %>
     <span class="mdc-chip__checkmark">
       <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
@@ -43,14 +43,14 @@
     </span>
     <% end %>
 
-    <%= partial "components/typography", :locals => {comp: comp.text, type: 'chip-text', class_name: 'mdc-chip__text'} %>
+    <%= partial "components/typography", :locals => {comp: comp.text, type: 'chip-text', class_name: 'mdc-chip__text'} if comp.text  %>
     <%= partial("components/icon", locals: {comp: trailing_icon,
                                          class_name: 'mdc-chip__icon mdc-chip__icon--trailing',
-                                         events: child_events ? (trailing_icon&.events || comp.events) : nil}) %>
+                                         events: child_events ? (trailing_icon&.events || comp.events) : nil}) if trailing_icon %>
   </button>
   <% if comp.menu %>
     <%= partial "components/list/menu", :locals => {:comp => comp.menu} %>
     </div>
   <% end %>
-  <%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+  <%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} if comp.tooltip %>
 <% end %>

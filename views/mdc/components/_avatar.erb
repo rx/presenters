@@ -12,7 +12,6 @@
     position ||= []
     position_classes = position.map {|p| "v-avatar-position-#{p}"}.join(' ')
     size_class = "v-avatar-size-#{comp.size}" unless bound_locals_include?(:size_class, binding)
-    puts "avatar: size_class: #{size_class}, class_name: #{class_name}, position_classes: #{position_classes}"
 %>
   <% if %w(jpg gif png).include?(comp.avatar&.to_s.split('.').last) %>
     <span class="<%=class_name%> <%=position_classes%> <%= size_class %>">
@@ -20,12 +19,12 @@
            class="v-avatar
                <%= 'v-actionable' if events %>"
          src="<%= comp.avatar %>"
-         <%= partial "components/event", :locals => {comp: comp, events: events, parent_id: comp.event_parent_id} %> />
-      <%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+         <%= partial "components/event", :locals => {comp: comp, events: events, parent_id: comp.event_parent_id} if events&.any? %> />
+      <%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} if comp.tooltip %>
     </span>
   <% else %>
     <span class="v-avatar <%=position_classes%> <%= size_class %>">
-    <%= partial "components/icon", :locals => {comp: comp, icon_name: comp.avatar, parent_id: comp.event_parent_id, position: []} %>
+    <%= partial "components/icon", :locals => {comp: comp, icon_name: comp.avatar, parent_id: comp.event_parent_id, position: []} if comp.avatar %>
     </span>
   <% end %>
 

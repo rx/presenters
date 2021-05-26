@@ -14,7 +14,7 @@
   style="<%= "width: #{comp.width};" if comp.width%>
     <%= "height: #{comp.height};" if comp.height %>
     <%= color_style(comp, 'background-', :background_color) %>"
-  <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
+  <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} if comp %>
   data-is-container>
     <%= partial("components/progress", :locals => {:comp => comp.progress}) if comp.progress && includes_one?(Array(comp.progress.position), %i(top both)) %>
     <% if comp.media %>
@@ -26,12 +26,12 @@
              style="<%= "width: #{comp.media.width};" if comp.media.width%>
                  <%= "height: #{comp.media.height};" if comp.media.height  %>
                <%= "background-color: #{comp.media.color};" if comp.media.color %>">
-          <%= partial "components/render", :locals => {:components => comp.media.components, :scope => nil} %>
-          <%= partial "components/button", :locals => {:comp => comp.media.button, class_name: "v-card__media-menu"} %>
-          <%= partial "components/image", :locals => {:comp => comp.media.image, class_name: 'v-card-media-image'} %>
-          <%= partial "components/avatar", :locals => {:comp => comp.media.avatar, class_name: 'v-card-media-avatar'} %>
-          <%= partial "components/headline", :locals => {:comp => comp.media.title, class_name: "v-card-title"} %>
-          <%= partial "components/headline", :locals => {:comp => comp.media.subtitle, class_name: "v-card-title"} %>
+          <%= partial "components/render", :locals => {:components => comp.media.components, :scope => nil} if comp.media.components.any? %>
+          <%= partial "components/button", :locals => {:comp => comp.media.button, class_name: "v-card__media-menu"} if comp.media.button %>
+          <%= partial "components/image", :locals => {:comp => comp.media.image, class_name: 'v-card-media-image'} if comp.media.image %>
+          <%= partial "components/avatar", :locals => {:comp => comp.media.avatar, class_name: 'v-card-media-avatar'} if comp.media.avatar %>
+          <%= partial "components/headline", :locals => {:comp => comp.media.title, class_name: "v-card-title"} if comp.media.title %>
+          <%= partial "components/headline", :locals => {:comp => comp.media.subtitle, class_name: "v-card-title"} if comp.media.subtitle %>
         </div>
       </div>
     <% end %>
@@ -40,7 +40,7 @@
         <div class="v-card-content
                   <%= _padding_classes_(comp.padding, subclass: :col) %>"
              style="<%= "height: #{comp.height};" if comp.height %>">
-          <%= partial "components/render", :locals => {:components => comp.components, :scope => nil} %>
+          <%= partial "components/render", :locals => {:components => comp.components, :scope => nil} if comp.components.any? %>
         </div>
       <% end %>
 
@@ -51,15 +51,15 @@
         <div class="mdc-card__actions v-card--actions">
           <div class="mdc-card__action-buttons">
             <% action_buttons.each do |button| %>
-              <%= partial "components/button", :locals => {:comp => button, class_name: 'mdc-card__action mdc-card__action--button'} %>
+              <%= partial "components/button", :locals => {:comp => button, class_name: 'mdc-card__action mdc-card__action--button'} if button %>
             <% end %>
           </div>
           <div class="mdc-card__action-icons">
             <% action_icons.each do |button| %>
-              <%= partial "components/button", :locals => {:comp => button, class_name: 'mdc-card__action mdc-card__action--icon'} %>
+              <%= partial "components/button", :locals => {:comp => button, class_name: 'mdc-card__action mdc-card__action--icon'} if button %>
             <% end %>
             <% comp.actions.switches.each do |switch| %>
-              <%= partial "components/switch", :locals => {:comp => switch, class_name: 'mdc-card__action'} %>
+              <%= partial "components/switch", :locals => {:comp => switch, class_name: 'mdc-card__action'} if switch %>
             <% end %>
           </div>
         </div>

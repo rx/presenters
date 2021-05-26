@@ -11,13 +11,13 @@
   <% end %>
   <% case comp.button_type.to_sym
         when :fab %>
-            <%= partial "components/buttons/fab", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} %>
+            <%= partial "components/buttons/fab", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} if comp %>
      <% when :icon %>
-            <%= partial "components/buttons/icon", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} %>
+            <%= partial "components/buttons/icon", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} if comp %>
     <% when :image %>
-            <%= partial "components/buttons/image", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} %>
+            <%= partial "components/buttons/image", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} if comp %>
     <% else  %>
-            <%= partial "components/buttons/button", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} %>
+            <%= partial "components/buttons/button", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} if comp %>
   <% end %>
   <% if comp.menu %>
     </div>

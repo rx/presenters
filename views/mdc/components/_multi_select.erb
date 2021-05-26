@@ -6,7 +6,7 @@
        <% if comp.dirtyable %>data-dirtyable<% end %>>
     <div class="v-multi-select--options-list v-hidden">
       <% comp.options.each do |option| %>
-        <%= partial "components/checkbox", :locals => {comp: option.checkbox, class_name: 'v-multi-select--option'} %>
+        <%= partial "components/checkbox", :locals => {comp: option.checkbox, class_name: 'v-multi-select--option'} if option.checkbox %>
       <% end %>
     </div>
     <div class="mdc-select v-multi-select v-input
@@ -15,8 +15,8 @@
          <%= 'style="width: 100%;"' if comp.full_width %>
          <%= partial("components/event", locals: {comp: comp,
                                                events: comp.events,
-                                               parent_id: "#{comp.id}-input"}) %>>
-      <%= partial "components/icon", :locals => {comp: comp.icon, class_name: 'mdc-select__icon', parent_id: "#{comp.id}-input", size_class: '', position: []} %>
+                                               parent_id: "#{comp.id}-input"}) if comp.events&.any? %>>
+      <%= partial "components/icon", :locals => {comp: comp.icon, class_name: 'mdc-select__icon', parent_id: "#{comp.id}-input", size_class: '', position: []} if comp.icon %>
       <div class="v-multi-select--current-values"></div>
       <i class="mdc-select__dropdown-icon v-multi-select--options-toggle"></i>
       <div class="mdc-notched-outline mdc-notched-outline--upgraded mdc-notched-outline--notched">
@@ -28,6 +28,6 @@
       </div>
     </div>
     <%= partial "components/shared/hint_error_display", :locals => {comp: comp} %>
-    <%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+    <%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} if comp.tooltip %>
   </div>
 <% end %>

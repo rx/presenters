@@ -6,11 +6,11 @@
     id="<%= col.id%>"
     class="<%= 'mdl-data-table__cell--non-numeric' unless col.numeric? %>
                <%= 'v-actionable' if col.events %>"
-    <%= partial "components/event", :locals => {comp: col, events: col.events, parent_id: col.event_parent_id}%>
+    <%= partial "components/event", :locals => {comp: col, events: col.events, parent_id: col.event_parent_id} if col.events&.any? %>
     style="<%= "background-color: #{col.color};" if col.color %>"
     <%= " colspan=#{col.colspan}" if col.colspan %>>
   <%= expand_text(col.value&.text) %>
-  <%= partial "components/render", :locals => {:components => col.components, :scope => nil} %>
+  <%= partial "components/render", :locals => {:components => col.components, :scope => nil} if col.components.any? %>
 <% if type == 'header' %>
   </th>
 <% else %>

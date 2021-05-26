@@ -16,7 +16,7 @@
             <%= comp.float  ? 'v-content--float' : 'v-content--relative'%>
             <%= comp.css_class.join(' ') %>
             <%= color_classname(comp, 'background-', :background_color)%>"
-     <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>
+     <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} if comp.events&.any? %>
        style="text-align: <%= comp.text_align %>;
              <%= "display: inline-block;" if comp.inline %>
              <%= "width: #{comp.width};" if comp.width %>
@@ -27,7 +27,7 @@
     <% if comp.shows_errors %>
       <div class="v-errors">
     <% end %>
-    <%= partial "components/render", :locals => {:components => comp.components, :scope => nil} %>
+    <%= partial "components/render", :locals => {:components => comp.components, :scope => nil} if comp.components.any? %>
     <% if comp.shows_errors %>
       </div>
     <% end %>

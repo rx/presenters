@@ -7,7 +7,7 @@
        <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
        <% if comp.dirtyable %>data-dirtyable<% end %>
        <%= 'style="width: 100%;"' if comp.full_width %>>
-    <%= partial "components/icon", :locals => {comp: comp.icon, class_name: 'mdc-select__icon', parent_id: "#{comp.id}-input", size_class: '', position: []} %>
+    <%= partial "components/icon", :locals => {comp: comp.icon, class_name: 'mdc-select__icon', parent_id: "#{comp.id}-input", size_class: '', position: []} if comp.icon %>
     <i class="mdc-select__dropdown-icon"></i>
     <select id="<%= comp.id %>-input"
             <% if comp.name %> name="<%= comp.name %>" <% end %>
@@ -16,7 +16,7 @@
             class="mdc-select__native-control"
             <%= partial("components/event", locals: {comp: comp,
                                                   events: comp.events,
-                                                  parent_id: "#{comp.id}-input"}) %>>
+                                                  parent_id: "#{comp.id}-input"}) if comp.events&.any? %>>
       <% comp.options.each do |option| %>
         <option value="<%= option.value %>"
                 <%= 'disabled' if option.disabled %>
@@ -39,5 +39,5 @@
     <% end %>
   </div>
   <%= partial "components/shared/hint_error_display", :locals => {comp: comp} %>
-  <%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+  <%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} if comp.tooltip %>
 <% end %>

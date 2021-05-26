@@ -13,7 +13,7 @@
   <% if vertical %>
     <div id="<%= comp.id %>-content"
       class="mdl-step__content v-content">
-        <%= partial "components/render", :locals => {:components => comp.components, :scope => nil} %>
+        <%= partial "components/render", :locals => {:components => comp.components, :scope => nil} if comp.components.any? %>
     </div>
   <% end %>
 

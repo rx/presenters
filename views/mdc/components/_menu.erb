@@ -6,7 +6,7 @@
     <div class="mdc-menu-anchor">
       <span class="v-menu-click">
         <%= expand_text(comp.label.text) %>
-        <%= partial("components/icon", locals: {comp: comp.label.icon}) %>
+        <%= partial("components/icon", locals: {comp: comp.label.icon}) if comp.label.icon %>
       </span>
   <% end %>
   <div id="<%= comp.id %>"
@@ -24,13 +24,13 @@
               role="menuitem"
               tabindex="0"
               <%= 'disabled' if item.disabled %>
-              <%= partial "components/event", :locals => {comp: item, events: item.events, parent_id: item.event_parent_id} unless item.disabled %>>
+              <%= partial "components/event", :locals => {comp: item, events: item.events, parent_id: item.event_parent_id} if !item.disabled && item.events&.any? %>>
             <a class="v-menu-link"
                              id="<%= item.id %>"
                              href="javascript:void(0)">
             <%= expand_text(item.text) %>
             </a>
-            <%= partial("components/icon", locals: {comp: item.icon, position: [:right, :center]}) %>
+            <%= partial("components/icon", locals: {comp: item.icon, position: [:right, :center]}) if item.icon %>
           </li>
         <% else %>
           <li class="mdc-list-divider" role="separator"></li>

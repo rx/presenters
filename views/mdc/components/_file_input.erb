@@ -5,13 +5,13 @@
        <% if comp.dirtyable %>data-dirtyable<% end %>
 
 
-       <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id} %>>
+       <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id} if comp.events&.any? %>>
     <input id="<%= comp.id %>-input"
            name="<%= comp.name %>"
            type="file"
            accept="<%= comp.accept %>"
            <% if comp.disabled %>disabled<% end %>
     >
-    <%= partial "components/render", :locals => {:components => comp.components, :scope => nil} %>
+    <%= partial "components/render", :locals => {:components => comp.components, :scope => nil} if comp.components.any? %>
   </div>
 <% end %>

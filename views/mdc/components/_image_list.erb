@@ -25,8 +25,8 @@
              <% if image.description %>alt="<%= image.description %>"<% end %>
              style="<%= styles.map { |k, v| "#{k}: #{v}" }.join('; ') %>"
              draggable="false"
-             <%= partial "components/event", :locals => {comp: image, events: image.events, parent_id: image.event_parent_id} %>>
-        <%= partial "components/tooltip" , :locals => {comp: image.tooltip, parent_id: image.id} %>
+             <%= partial "components/event", :locals => {comp: image, events: image.events, parent_id: image.event_parent_id} if image.events&.any? %>>
+        <%= partial "components/tooltip" , :locals => {comp: image.tooltip, parent_id: image.id} if image.tooltip %>
       <% if comp.list_type != 'masonry' %></div><% end %>
       <% if image.label %>
         <div class="mdc-image-list__supporting">

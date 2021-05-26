@@ -20,10 +20,10 @@
                data-off="<%= comp.off_value %>"
                <%= ' checked ' if comp.checked %>
                <%= ' disabled ' if comp.disabled %>
-               <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} %>/>
+               <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} if comp.events&.any? %>/>
       </div>
     </div>
   </div>
   <label class="v-switch__label" for="<%= comp.id %>-input"><%= comp.text %></label>
 </div>
-<%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+<%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} if comp.tooltip %>

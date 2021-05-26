@@ -15,10 +15,10 @@
         style = "<%= color_style(comp) %>"
         <%= 'disabled' if comp.disabled %>
         <%= "type='#{eq(comp.button_type, :raised) ? 'submit' : 'button'}'" %>
-        <%= partial 'components/event', :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} %>>
-  <%= partial 'components/icon', :locals => {comp: comp.icon} %>
+        <%= partial 'components/event', :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} if comp.events&.any? %>>
+  <%= partial 'components/icon', :locals => {comp: comp.icon} if comp.icon %>
   <%= comp.text %>
-  <%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} %>
+  <%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} if comp.tooltip %>
 </button>
-<%= partial "components/menu", :locals => {comp: comp.menu, parent_id: comp.id} %>
+<%= partial "components/menu", :locals => {comp: comp.menu, parent_id: comp.id} if comp.menu %>
 

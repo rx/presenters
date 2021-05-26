@@ -1,3 +1,2 @@
-<%if list_item.icon%>
-  <%= partial "components/icon", :locals => {comp: list_item.icon, class_name: 'icon-li'} %>
-<%end%>
+<%= partial "components/icon", :locals => {comp: list_item.icon, class_name: 'icon-li'} if list_item.icon %>
+
