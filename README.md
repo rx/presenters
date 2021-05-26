@@ -11,7 +11,7 @@ The semantics are adopted from [Material Design](https://material.io/).
 * A POM fully describes a user interface
 * A POM client can fully render user interface from POM
 
-## What are voom-presenters?
+## What is Presenter?
 
 * A Ruby user interface abstraction
 * A Ruby DSL to build a user interface
@@ -33,7 +33,7 @@ We didn't even add any popular extras like coffeescript, haml, sass, and we left
 What if you could write all my user interface in Ruby and have it rendered natively in ANY client? The voom-presenters _enable_ that. It is a Ruby DSL that describes a user interface.
 It generates an intermediate Presenter Object Model (POM). 
 The POM is a declarative user interface that can be rendered by a POM client. 
-The core presenters gem provides a Web client as a fully functional reference implementation.
+The presenters gem provides a web client as a fully functional implementation that both renders natively as a Rails templating engine and as a Rack app.
 
 This concept was initially inspired by the Presenters concepts of Ivar Jacobson as presented by Robert Martin.
 
@@ -64,12 +64,12 @@ To see the POM:
 ## Usage
 
 ### Rails
-Presenters works as an additional templating language in Rails, 
-you can mix and match presenters with your existing views, 
+Presenters are a view templating language in Rails. 
+You can mix and match presenters with your existing views, 
 use them as new views, or call them as partails in existing views.
 
 #### 1) Add presenters to Gemfile    
-    gem 'voom-presenters', path: '../presenters'
+    gem 'voom-presenters'
 
 #### 2) Require voom in config/application.rb
     require 'voom'
@@ -90,12 +90,26 @@ Use the [Demo] to get example code to drop into your presenters.
 
 #### 5) Optionally -- use presenters as partials from ERB/HAML
 You can render a presenter as a partial from other templating laguages (erb, haml):
+
     <%= render 'show', presenter: 'hello_world' %> 
+
+You need to add the following to your layout to use presenters as a partial alongside other erb's, haml or any other rails templating language.
+
+##### Inside the &lt;head&gt; tag add the following:
+
+      <title><%= @pom.page.title if @pom.page %></title>
+      <%= coprl_headers(@base_url, request, @pom) %> 
+
+##### Inside the &lt;body&gt; tag, around you existing yield add the following:
+
+    <%= partial "body/preamble", :locals => {pom:@pom} %>
+    <%= yield %>
+    <%= partial "body/postamble", :locals => {pom:@pom} %>
 
 ### Rack
 #### 1) To use it, add this line to your Gemfile:
 
-    gem 'voom-presenters', github('rx/presenters'), require: false
+    gem 'voom-presenters'
 
 #### 2) Create the file app/presenters/index.pom with the contents:
 
@@ -129,6 +143,5 @@ The gem is available as open source under the terms of the [MIT License](http://
 ## Code of Conduct
 
 Everyone interacting in the Voom::Presenters project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/rx/presenters/blob/master/CODE-OF-CONDUCT.md).
-
 
 [Demo]:https://coprl-ruby.herokuapp.com/
