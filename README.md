@@ -28,7 +28,7 @@ That is 5 technologies/languages.
 Now lets talk about a new client like an iOS or Android client. If we go native, we can now add Java and Swift to that list. We are up to 7 technologies/languages!
 We didn't even add any popular extras like coffeescript, haml, sass, and we left out frameworks.
 
-What if you could write all my user interface in Ruby and have it rendered natively in ANY client? The COPRL _enable_ that. It is a Ruby DSL that describes a user interface.
+What if you could write all your user interface in Ruby and have it rendered natively in ANY client? The COPRL _enable_ that. It is a Ruby DSL that describes a user interface.
 It generates an intermediate Presenter Object Model (POM). 
 The POM is a declarative user interface that can be rendered by a POM client. 
 The presenters gem provides a web client as a fully functional implementation that both renders natively as a Rails templating engine and as a Rack app.
