@@ -6,18 +6,14 @@
 Do you wish you could write a modern user interface in Ruby or any other language?
 
 Now you can. Presenters are a Ruby DSL for rendering user interfaces. 
-The semantics are adopted from [Material Design](https://material.io/).
 
+* Presenters are a power washer for building user interfaces
 * Presenters are to HTML/User Interfaces what C is to assembly
 * A presenter generates a Presenter Object Model (POM) 
 * A POM fully describes a user interface
 * A POM client can fully render user interface from POM
 
-## What are voom-presenters?
-
-* A Ruby user interface abstraction
-* A Ruby DSL to build a user interface
-* A power washer for building user interfaces
+The semantics are adopted from [Material Design](https://material.io/).
 
 ## Why?
 
