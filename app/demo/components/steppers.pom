@@ -1,6 +1,6 @@
 require_relative '../helpers/indented_grid'
 
-Voom::Presenters.define(:steppers) do
+Coprl::Presenters.define(:steppers) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
@@ -153,14 +153,14 @@ Voom::Presenters.define(:steppers) do
   attach :code, file: __FILE__
 end
 
-Voom::Presenters.define(:step2_form) do
+Coprl::Presenters.define(:step2_form) do
   content id: :step2_content do
     type = context.fetch('step_type') {context.fetch(:step_type) {nil}}
     attach "step2_#{type}_form" if type
   end
 end
 
-Voom::Presenters.define(:step2_type1_form) do
+Coprl::Presenters.define(:step2_type1_form) do
   helpers Demo::Helpers::IndentedGrid
   indented_grid do
     headline 'Form of Type1'
@@ -171,7 +171,7 @@ Voom::Presenters.define(:step2_type1_form) do
   end
 end
 
-Voom::Presenters.define(:step2_type2_form) do
+Coprl::Presenters.define(:step2_type2_form) do
   headline 'Form of Type2'
 end
 

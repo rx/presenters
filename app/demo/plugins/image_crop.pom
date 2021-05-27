@@ -1,4 +1,4 @@
-Voom::Presenters.define(:image_crop, namespace: :plugins) do
+Coprl::Presenters.define(:image_crop, namespace: :plugins) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :plugin_drawer

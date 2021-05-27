@@ -22,7 +22,7 @@ export function initChips(e) {
     // call for chips is not needed.
 
     hookupComponentsManually(e, '.v-chip-set', function(element) {
-        const chipFactory = voomChipFactoryFactory(CHIP_BEHAVIOR_NO_AUTO_REMOVE);
+        const chipFactory = CoprlChipFactoryFactory(CHIP_BEHAVIOR_NO_AUTO_REMOVE);
         const mdcComponent = new MDCChipSet(element, undefined, chipFactory);
 
         return new VChipSet(element, mdcComponent);
@@ -91,7 +91,7 @@ export class VChip extends eventHandlerMixin(VBaseComponent) {
 }
 
 // Returns a function which constructs VChip components.
-function voomChipFactoryFactory(behavior = CHIP_BEHAVIOR_AUTO_REMOVE) {
+function CoprlChipFactoryFactory(behavior = CHIP_BEHAVIOR_AUTO_REMOVE) {
     const autoRemove = behavior === CHIP_BEHAVIOR_AUTO_REMOVE;
 
     return function(element) {

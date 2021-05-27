@@ -1,4 +1,4 @@
-Voom::Presenters.define('menu') do
+Coprl::Presenters.define('menu') do
   menu do
     item 'home' do
       event :click do

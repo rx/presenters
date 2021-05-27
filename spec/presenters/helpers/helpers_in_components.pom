@@ -1,4 +1,4 @@
-Voom::Presenters.define(:helpers_in_components) do
+Coprl::Presenters.define(:helpers_in_components) do
   helpers do
     def small_card
       card do

@@ -1,4 +1,4 @@
-Voom::Presenters.define(:chart, namespace: :plugins) do
+Coprl::Presenters.define(:chart, namespace: :plugins) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :plugin_drawer

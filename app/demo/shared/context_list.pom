@@ -1,4 +1,4 @@
-Voom::Presenters.define(:context_list) do
+Coprl::Presenters.define(:context_list) do
   helpers do
     def title
       context.fetch(:title) {'Context'}

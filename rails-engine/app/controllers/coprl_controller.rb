@@ -6,9 +6,9 @@ class CoprlController < ApplicationController
   private
   def load_pom
     presenter_name = namespaced_presenter(params)
-    presenter = Voom::Presenters::App[presenter_name].call
+    presenter = Coprl::Presenters::App[presenter_name].call
     context = params.dup
-    router = Voom::Presenters::WebClient::Router.new(base_url: request.base_url)
+    router = Coprl::Presenters::WebClient::Router.new(base_url: request.base_url)
     @pom = presenter.expand(router: router, context: context)
   end
 end

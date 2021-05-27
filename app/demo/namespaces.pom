@@ -1,6 +1,6 @@
 require_relative 'helpers/indented_grid'
 
-Voom::Presenters.define(:namespaces) do
+Coprl::Presenters.define(:namespaces) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   page_title 'Namespaces' do
@@ -52,14 +52,14 @@ Voom::Presenters.define(:namespaces) do
   attach :code, file: __FILE__
 end
 
-Voom::Presenters.define(:attach_with_namespace, namespace: :namespace1) do
+Coprl::Presenters.define(:attach_with_namespace, namespace: :namespace1) do
   content id: :attach_with_namespace_id do
     body "For example: `attach 'namespace1:mypresenter'` to insert/attach a presenter in a different namespace."
     attach :replaced # Demonstrates calling top level presenters from a namespaced presenter
   end
 end
 
-Voom::Presenters.define(:nested_namespaces, namespace: [:namespace1, :namespace2]) do
+Coprl::Presenters.define(:nested_namespaces, namespace: [:namespace1, :namespace2]) do
   content id: :nested_namespaces_id do
     body %(Namespaces can be nested two levels deep by passing an array of namespaces:
               `Voom::Presenters.define(:mypresenter, namespace: [:foo,:bar])`)
@@ -67,20 +67,20 @@ Voom::Presenters.define(:nested_namespaces, namespace: [:namespace1, :namespace2
   end
 end
 
-Voom::Presenters.define(:replaced) do
+Coprl::Presenters.define(:replaced) do
   body "#{context[:replaced]}"
 end
 
-Voom::Presenters.define('namespace2:alternate_namespacing') do
+Coprl::Presenters.define('namespace2:alternate_namespacing') do
     body "`Voom::Presenters.define('namespace1:mypresenter')`"
     attach :blank_line # demonstrates attaching a presenter in the same namespace mixing alternate naming
 end
 
-Voom::Presenters.define(:blank_line, namespace: :namespace2) do
+Coprl::Presenters.define(:blank_line, namespace: :namespace2) do
   blank
 end
 
-Voom::Presenters.define('namespace2:notes', namespace: :namespace1) do
+Coprl::Presenters.define('namespace2:notes', namespace: :namespace1) do
   body <<~HEREDOC
     * You can mix the two syntax's. `Voom::Presenters.define('namespace2:mypresenter', namespace: 'namespace1')`
       * With this syntax attach/loads and replaces will operate in namespace1, unless fully qualified    

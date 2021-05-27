@@ -1,3 +1,0 @@
-#!/usr/bin/env ruby
-require_relative '../lib/voom/presenters/cli'
-Voom::Presenters::Cli.start(ARGV)

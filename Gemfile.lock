@@ -1,25 +1,22 @@
-GIT
-  remote: https://github.com/rx/chart_presenter_plugin.git
-  revision: e2afb1cf0292ea92371cfc83be16b2ad95dee26d
+PATH
+  remote: ../../coprl/chart_presenter_plugin
   specs:
     chart_presenter_plugin (0.1.0)
 
-GIT
-  remote: https://github.com/rx/foo_presenter_plugin.git
-  revision: 1a0efb3a945597e0733ebe04c59ffb3c5a081718
+PATH
+  remote: ../../coprl/foo_presenter_plugin
   specs:
     foo_presenter_plugin (0.0.1)
 
-GIT
-  remote: https://github.com/rx/image_crop_presenter_plugin.git
-  revision: c0814ffa5a0f40fd15d697e72a5bd4c9e4117d1e
+PATH
+  remote: ../../coprl/image_crop_presenter_plugin
   specs:
     image_crop_presenter_plugin (0.1.0)
 
 PATH
   remote: .
   specs:
-    voom-presenters (1.0.0)
+    coprl (1.0.0)
       dry-configurable (> 0.1, <= 7.0)
       dry-container (~> 0.6)
       dry-inflector (~> 0.1)
@@ -36,19 +33,17 @@ GEM
   specs:
     childprocess (3.0.0)
     coderay (1.1.2)
-    concurrent-ruby (1.1.7)
+    concurrent-ruby (1.1.8)
     diff-lcs (1.3)
     docile (1.3.1)
-    dry-configurable (0.11.6)
+    dry-configurable (0.12.1)
       concurrent-ruby (~> 1.0)
-      dry-core (~> 0.4, >= 0.4.7)
-      dry-equalizer (~> 0.2)
+      dry-core (~> 0.5, >= 0.5.0)
     dry-container (0.7.2)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1, >= 0.1.3)
     dry-core (0.5.0)
       concurrent-ruby (~> 1.0)
-    dry-equalizer (0.3.0)
     dry-inflector (0.2.0)
     filewatcher (1.1.1)
       optimist (~> 3.0)
@@ -100,7 +95,7 @@ GEM
     rspec-support (3.8.2)
     rspec_junit_formatter (0.4.1)
       rspec-core (>= 2, < 4, != 2.12.0)
-    ruby2_keywords (0.0.2)
+    ruby2_keywords (0.0.4)
     rubyzip (1.3.0)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
@@ -117,11 +112,11 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.1.0)
       tilt (~> 2.0)
-    thor (1.0.1)
+    thor (1.1.0)
     tilt (2.0.10)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2020.4)
+    tzinfo-data (1.2021.1)
       tzinfo (>= 1.0.0)
     watir (6.16.5)
       regexp_parser (~> 1.2)
@@ -142,6 +137,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (>= 1.13)
   chart_presenter_plugin!
+  coprl!
   foo_presenter_plugin!
   gem-release (~> 2.0)
   image_crop_presenter_plugin!
@@ -156,8 +152,7 @@ DEPENDENCIES
   rspec_junit_formatter
   shotgun (~> 0.9)
   simplecov
-  thor (~> 1.0.1)
-  voom-presenters!
+  thor (~> 1.1.0)
   watir (~> 6.16)
   watir-rspec (~> 3.0)
   webdrivers (~> 4.1)

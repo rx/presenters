@@ -30,7 +30,7 @@ That is 5 technologies/languages.
 Now lets talk about a new client like an iOS or Android client. If we go native, we can now add Java and Swift to that list. We are up to 7 technologies/languages!
 We didn't even add any popular extras like coffeescript, haml, sass, and we left out frameworks.
 
-What if you could write all my user interface in Ruby and have it rendered natively in ANY client? The voom-presenters _enable_ that. It is a Ruby DSL that describes a user interface.
+What if you could write all my user interface in Ruby and have it rendered natively in ANY client? The COPRL _enable_ that. It is a Ruby DSL that describes a user interface.
 It generates an intermediate Presenter Object Model (POM). 
 The POM is a declarative user interface that can be rendered by a POM client. 
 The presenters gem provides a web client as a fully functional implementation that both renders natively as a Rails templating engine and as a Rack app.
@@ -69,18 +69,18 @@ You can mix and match presenters with your existing views,
 use them as new views, or call them as partails in existing views.
 
 #### 1) Add presenters to Gemfile    
-    gem 'voom-presenters'
+    gem 'coprl'
 
-#### 2) Require voom in config/application.rb
-    require 'voom'
+#### 2) Require coprl in config/application.rb
+    require 'coprl'
 
 #### 3) Mount presenters in config/routes.rb
 
-    mount Voom::Presenters::Rails::Engine => "/"
+    mount Coprl::Presenters::Rails::Engine => "/"
 
 #### 4) Create the file app/view/hello_world.html.pom with the contents
 
-    Voom::Presenters.define(:hello_world) do
+    Coprl::Presenters.define(:hello_world) do
       heading 'hello world'
     end   
 
@@ -109,7 +109,7 @@ You need to add the following to your layout to use presenters as a partial alon
 ### Rack
 #### 1) To use it, add this line to your Gemfile:
 
-    gem 'voom-presenters'
+    gem 'coprl'
 
 #### 2) Create the file app/presenters/index.pom with the contents:
 
@@ -118,9 +118,9 @@ You need to add the following to your layout to use presenters as a partial alon
     end   
 
 Presenters are rack based. If your framework uses a rack config file add the following:
-    use Voom::Presenters::WebClient::App
+    use Coprl::Presenters::WebClient::App
     # the api is optional        
-    # use Voom::Presenters::Api::App
+    # use Coprl::Presenters::Api::App
 
 Start your app and goto [/hello_world](http://127.0.0.1:3000/hello_world)
 

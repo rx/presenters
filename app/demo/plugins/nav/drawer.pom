@@ -1,5 +1,5 @@
-Voom::Presenters.define(:plugin_drawer, namespace: :plugins) do
-  helpers Voom::Presenters::Helpers::Inflector
+Coprl::Presenters.define(:plugin_drawer, namespace: :plugins) do
+  helpers Coprl::Presenters::Helpers::Inflector
   drawer 'Plugins' do
     menu do
       item 'Sample Plugin' do

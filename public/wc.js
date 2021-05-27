@@ -10817,8 +10817,8 @@ var VDialog = function () {
 
 var EVENT_DROPPED = 'dropped';
 
-var DRAG_DATA_MIME_TYPE = 'application/x.voom-drag-data+json';
-var ELEMENT_ID_MIME_TYPE = 'text/x.voom-element-id';
+var DRAG_DATA_MIME_TYPE = 'application/x.coprl-drag-data+json';
+var ELEMENT_ID_MIME_TYPE = 'text/x.coprl-element-id';
 
 function createDragStartHandler(root, element) {
     return function (event) {
@@ -37625,7 +37625,7 @@ function initChips(e) {
     // call for chips is not needed.
 
     Object(__WEBPACK_IMPORTED_MODULE_2__base_component__["d" /* hookupComponentsManually */])(e, '.v-chip-set', function (element) {
-        var chipFactory = voomChipFactoryFactory(CHIP_BEHAVIOR_NO_AUTO_REMOVE);
+        var chipFactory = CoprlChipFactoryFactory(CHIP_BEHAVIOR_NO_AUTO_REMOVE);
         var mdcComponent = new __WEBPACK_IMPORTED_MODULE_0__material_chips__["b" /* MDCChipSet */](element, undefined, chipFactory);
 
         return new VChipSet(element, mdcComponent);
@@ -37706,7 +37706,7 @@ var VChip = function (_eventHandlerMixin) {
 }(Object(__WEBPACK_IMPORTED_MODULE_1__mixins_event_handler__["a" /* eventHandlerMixin */])(__WEBPACK_IMPORTED_MODULE_2__base_component__["a" /* VBaseComponent */]));
 
 // Returns a function which constructs VChip components.
-function voomChipFactoryFactory() {
+function CoprlChipFactoryFactory() {
     var behavior = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : CHIP_BEHAVIOR_AUTO_REMOVE;
 
     var autoRemove = behavior === CHIP_BEHAVIOR_AUTO_REMOVE;

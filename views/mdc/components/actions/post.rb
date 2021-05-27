@@ -1,7 +1,7 @@
 module WebClient
   module Actions
     class Post
-      include Voom::Presenters::WebClient::Helpers::ExpandHash
+      include Coprl::Presenters::WebClient::Helpers::ExpandHash
 
       def call(action, parent_id, *)
         # Type, URL, Options, Params (passed into javascript event/action classes)

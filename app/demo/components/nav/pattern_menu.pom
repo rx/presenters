@@ -1,5 +1,5 @@
-Voom::Presenters.define('pattern_menu') do
-  helpers Voom::Presenters::Helpers::Inflector
+Coprl::Presenters.define('pattern_menu') do
+  helpers Coprl::Presenters::Helpers::Inflector
   menu side: :left do
     %i(search_select floating_card drag_drop).sort.each do |pattern|
       item titleize(pattern)  do

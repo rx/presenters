@@ -1,6 +1,6 @@
 require_relative 'helpers/indented_grid'
 
-Voom::Presenters.define(:custom_css) do
+Coprl::Presenters.define(:custom_css) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
 

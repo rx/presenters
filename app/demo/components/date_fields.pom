@@ -1,6 +1,6 @@
 require 'date'
 
-Voom::Presenters.define(:date_fields) do
+Coprl::Presenters.define(:date_fields) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer

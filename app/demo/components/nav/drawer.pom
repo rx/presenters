@@ -1,4 +1,4 @@
-Voom::Presenters.define(:component_drawer) do
+Coprl::Presenters.define(:component_drawer) do
   drawer 'Components' do
     attach :component_menu
   end

@@ -1,4 +1,4 @@
-Voom::Presenters.define('list') do
+Coprl::Presenters.define('list') do
   list do
     line do
       subtitle 'subtitle 9000'

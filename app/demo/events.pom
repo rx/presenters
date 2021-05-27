@@ -1,4 +1,4 @@
-Voom::Presenters.define(:events) do
+Coprl::Presenters.define(:events) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :events_drawer

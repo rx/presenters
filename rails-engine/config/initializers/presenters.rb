@@ -1,18 +1,18 @@
-require 'voom/presenters/views'
+require 'coprl/presenters/views'
 
 class CoprlTemplateHandler
   if Rails.version.starts_with?('5')
     def call(template)
       erb = ActionView::Template.registered_template_handler(:erb)
-      web_erb = File.read(Voom::Presenters::Views.web_erb_path)
-      template = ActionView::Template.new(web_erb, Voom::Presenters::Views.web_erb, erb, {})
+      web_erb = File.read(Coprl::Presenters::Views.web_erb_path)
+      template = ActionView::Template.new(web_erb, Coprl::Presenters::Views.web_erb, erb, {})
       source = erb.call(template)
       presenter_template(source)
     end
   else ## Rails 6 and greater
     def call(template, _source)
       erb = ActionView::Template.registered_template_handler(:erb)
-      web_erb = File.read(Voom::Presenters::Views.web_erb_path)
+      web_erb = File.read(Coprl::Presenters::Views.web_erb_path)
       source = erb.call(template, web_erb)
       presenter_template(source)
     end
@@ -38,5 +38,5 @@ class CoprlTemplateHandler
   end
 end
 
-ActiveSupport.on_load(:action_controller){ append_view_path(Voom::Presenters::Views.view_path) if respond_to?(:append_view_path) }
+ActiveSupport.on_load(:action_controller){ append_view_path(Coprl::Presenters::Views.view_path) if respond_to?(:append_view_path) }
 ActionView::Template.register_template_handler(:pom, CoprlTemplateHandler.new)

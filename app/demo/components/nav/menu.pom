@@ -1,5 +1,5 @@
-Voom::Presenters.define('component_menu') do
-  helpers Voom::Presenters::Helpers::Inflector
+Coprl::Presenters.define('component_menu') do
+  helpers Coprl::Presenters::Helpers::Inflector
   menu side: :left do
     %i(
       avatars

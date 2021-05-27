@@ -1,6 +1,6 @@
 require_relative '../helpers/indented_grid'
 
-Voom::Presenters.define(:hidden_fields) do
+Coprl::Presenters.define(:hidden_fields) do
   helpers Demo::Helpers::IndentedGrid
   
   attach :top_nav

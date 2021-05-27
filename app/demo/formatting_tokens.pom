@@ -1,4 +1,4 @@
-Voom::Presenters.define(:formatting_tokens) do
+Coprl::Presenters.define(:formatting_tokens) do
   helpers Demo::Helpers::IndentedGrid
   indented_grid do
     display 'Date Formatting Tokens', id: :date

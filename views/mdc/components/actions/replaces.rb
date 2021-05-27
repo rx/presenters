@@ -1,7 +1,7 @@
 module WebClient
   module Actions
     class Replaces
-      include Voom::Presenters::WebClient::Helpers::ExpandHash
+      include Coprl::Presenters::WebClient::Helpers::ExpandHash
 
       def call(action, parent_id, grid_nesting, *)
         # Type, URL, Options, Params (passed into javascript event/action classes)

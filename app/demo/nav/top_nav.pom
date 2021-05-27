@@ -1,4 +1,4 @@
-Voom::Presenters.define('top_nav') do
+Coprl::Presenters.define('top_nav') do
   TITLE = 'COmmon PResenters Language (COPRL) Ruby Demo' unless defined?(TITLE)
   page do
     title TITLE

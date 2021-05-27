@@ -1,7 +1,7 @@
 module WebClient
   module Actions
     class Snackbar
-      include Voom::Presenters::WebClient::Helpers::ExpandHash
+      include Coprl::Presenters::WebClient::Helpers::ExpandHash
 
       def call(action, *)
         # Type, URL, Options, Params (passed into javascript event/action classes)

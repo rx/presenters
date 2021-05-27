@@ -1,4 +1,4 @@
-Voom::Presenters.define(:deletes_action) do
+Coprl::Presenters.define(:deletes_action) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :events_drawer

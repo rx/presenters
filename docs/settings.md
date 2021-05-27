@@ -5,7 +5,7 @@ Presenters can be configured via settings set in e.g. Rails initializers.
 Configuration is handled via [dry-configurable](https://github.com/dry-rb/dry-configurable).
 
 ```ruby
-Voom::Presenters::Settings.configure do |config|
+Coprl::Presenters::Settings.configure do |config|
   config.presenters.helpers << SomeHelperClass
 end
 ```
@@ -26,7 +26,7 @@ instead of the Presenter that was about to be rendered. In this case, subsequent
 ```ruby
 # request: /foos/foo?id=1
 
-Voom::Presenters::Settings.configure do |config|
+Coprl::Presenters::Settings.configure do |config|
   config.presenters.before_render << lambda do |req|
     if some_predicate?
       return :render_me_instead
@@ -75,7 +75,7 @@ class AuthenticationCheck
   end
 end
 
-Voom::Presenters::Settings.configure do |config|
+Coprl::Presenters::Settings.configure do |config|
   config.presenters.before_render << AuthenticationCheck.new
 end
 ```

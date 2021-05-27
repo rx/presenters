@@ -1,4 +1,4 @@
-Voom::Presenters.define(:index, namespace: :plugins) do
+Coprl::Presenters.define(:index, namespace: :plugins) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :plugin_drawer
@@ -20,7 +20,7 @@ Voom::Presenters.define(:index, namespace: :plugins) do
     foo(random_fact)
     button 'New Random Fact' do
       event :click do
-        bar 'Showing new random fact!'
+        foo_action 'Showing new random fact!'
         snackbar last_response.data
       end
     end

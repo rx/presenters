@@ -1,4 +1,4 @@
-Voom::Presenters.define(:avatars) do
+Coprl::Presenters.define(:avatars) do
   attach :top_nav
   attach :component_drawer
   page_title 'Avatars'

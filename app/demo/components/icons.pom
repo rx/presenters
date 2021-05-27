@@ -1,4 +1,4 @@
-Voom::Presenters.define(:icons) do
+Coprl::Presenters.define(:icons) do
   attach :top_nav
   attach :component_drawer
   page_title 'Icons'

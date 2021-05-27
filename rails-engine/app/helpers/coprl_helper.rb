@@ -1,3 +1,3 @@
 module CoprlHelper
-  include Voom::Presenters::WebClient::Helpers::Rails
+  include Coprl::Presenters::WebClient::Helpers::Rails
 end

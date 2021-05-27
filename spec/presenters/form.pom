@@ -1,4 +1,4 @@
-Voom::Presenters.define('form1') do
+Coprl::Presenters.define('form1') do
   form id: 'greeting-form' do
     text_field id: :firstname, label: 'First Name'
     text_field id: :ssn, type: :hidden
