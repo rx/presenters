@@ -28,7 +28,7 @@ class CoprlTemplateHandler
         # otherwise we need to get the presenter name built from params
         presenter_name = local_assigns[:presenter] ? presenter : namespaced_presenter(params)
         presenter = Coprl::Presenters::App[presenter_name].call
-        context = params.dup
+        context = params.dup.to_unsafe_hash
         router = Coprl::Presenters::WebClient::Router.new(base_url: request.base_url)
         @pom = presenter.expand(router: router, context: context)
       end
@@ -40,3 +40,4 @@ end
 
 ActiveSupport.on_load(:action_controller){ append_view_path(Coprl::Presenters::Views.view_path) if respond_to?(:append_view_path) }
 ActionView::Template.register_template_handler(:pom, CoprlTemplateHandler.new)
+
