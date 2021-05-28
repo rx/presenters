@@ -14,7 +14,7 @@ Coprl::Presenters.define(:avatars) do
           body '**With an Icon**'
           avatar :thumb_up
           body '**With an Image**'
-          avatar 'img/demo/avatar.jpg'
+          avatar 'img/demo/grace-hopper-headshot.png'
         end
       end
 
@@ -24,13 +24,13 @@ Coprl::Presenters.define(:avatars) do
           body '**small**'
           avatar :person, size: :small
           body '**medium** (default)'
-          avatar 'img/demo/image_card.jpg', size: :medium
+          avatar 'img/demo/grace-hopper-headshot.png', size: :medium
           body '**large**'
           avatar :cake, size: :large
           body '**x-large**'
           avatar :golf_course, size: 'x-large'
           body '**xx-large**'
-          avatar 'img/demo/avatar.jpg', size: 'xx-large'
+          avatar 'img/demo/grace-hopper-headshot.png', size: 'xx-large'
         end
       end
 
