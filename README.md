@@ -113,7 +113,7 @@ You need to add the following to your layout to use presenters as a partial alon
 
 #### 2) Create the file app/presenters/index.pom with the contents:
 
-    Voom::Presenters.define(:hello_world) do
+    Coprl::Presenters.define(:hello_world) do
       heading 'hello world'
     end   
 
@@ -142,6 +142,6 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## Code of Conduct
 
-Everyone interacting in the Voom::Presenters project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/rx/presenters/blob/master/CODE-OF-CONDUCT.md).
+Everyone interacting in the COPRL project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/coprl/coprl/blob/master/CODE-OF-CONDUCT.md).
 
 [Demo]:https://coprl-ruby.herokuapp.com/

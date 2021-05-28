@@ -1,4 +1,4 @@
-#include Voom::Trace
+#include Coprl::Trace
 #trace {"Loading Presenters Settings"}
 require 'dry-configurable'
 
@@ -11,7 +11,7 @@ unless defined?(Coprl::Presenters::Settings)
           setting :root, []
           # You can add helpers that will automatically be included
           # For example:
-          # Voom::Presenters::Settings.configure do |config|
+          # Coprl::Presenters::Settings.configure do |config|
           #   config.presenters.helpers << YourHelperModule # Passing a module
           #   config.presenters.helpers << &->{ def foo; :foo; end } # Passing a block
           # end
@@ -21,7 +21,7 @@ unless defined?(Coprl::Presenters::Settings)
           setting :web_client do
             # Add lambda's to modify the context for the presenters
             # For example:
-            # Voom::Presenters::Settings.configure do |config|
+            # Coprl::Presenters::Settings.configure do |config|
             #   config.presenters.web_client.prepare_context << ->(context, session, _env){
             #     identity_id = session[:aaa_identity]
             #     context.merge(aaa_identity: identity_id)

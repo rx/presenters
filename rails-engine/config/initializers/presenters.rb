@@ -27,9 +27,9 @@ class CoprlTemplateHandler
         # if we are called as a partial fetch the presenter name passed 
         # otherwise we need to get the presenter name built from params
         presenter_name = local_assigns[:presenter] ? presenter : namespaced_presenter(params)
-        presenter = Voom::Presenters::App[presenter_name].call
+        presenter = Coprl::Presenters::App[presenter_name].call
         context = params.dup
-        router = Voom::Presenters::WebClient::Router.new(base_url: request.base_url)
+        router = Coprl::Presenters::WebClient::Router.new(base_url: request.base_url)
         @pom = presenter.expand(router: router, context: context)
       end
       #{source}

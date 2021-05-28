@@ -13,7 +13,7 @@ Coprl::Presenters.define(:time_fields) do
       The default time user display [format](/formatting_tokens#time) can be configured globally using the following:      
       
       ````
-      Voom::Presenters::Settings.configure do |config|
+      Coprl::Presenters::Settings.configure do |config|
         config.presenters.components.defaults.time.format = 'h:i K'
       end
       ````

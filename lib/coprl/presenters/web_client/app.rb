@@ -59,7 +59,7 @@ module Coprl
 
         private
 
-        # analogous to Voom::Presenters::Api::App#render_presenter
+        # analogous to Coprl::Presenters::Api::App#render_presenter
         def render_presenter(presenter)
           @grid_nesting = Integer(params[:grid_nesting] || 0)
 

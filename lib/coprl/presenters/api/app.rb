@@ -30,7 +30,7 @@ module Coprl
 
         private
 
-        # analogous to Voom::Presenters::WebClient::App#render_presenter
+        # analogous to Coprl::Presenters::WebClient::App#render_presenter
         def render_presenter(presenter)
           begin
             before_render = Presenters::Settings.config.presenters.before_render

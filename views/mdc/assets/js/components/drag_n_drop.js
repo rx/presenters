@@ -81,7 +81,7 @@ function createDragLeaveHandler(root, element) {
 }
 
 function createDropHandler(root, element) {
-    // When an element is upgraded to a Voom component after being replaced via
+    // When an element is upgraded to a Coprl component after being replaced via
     // `replaces`, root may refer to the replaced element itself instead of the
     // element's root node.
     // Since a valid drop zone may exist anywhere on the page, it is not

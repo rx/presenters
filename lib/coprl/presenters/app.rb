@@ -19,7 +19,7 @@ module Coprl
             No root defined to load presenters!
             Add the following to your initializer/boot process:
 
-              Voom::Presenters::Settings.configure do |config|
+              Coprl::Presenters::Settings.configure do |config|
                 config.presenters.root = Rails.root.join('app')
               end
           MESSAGE
