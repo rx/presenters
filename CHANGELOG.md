@@ -23,9 +23,7 @@ Plugin's are incompatible with this version due to Rails render rules requiring 
 
 Added more instructions on rails partials and general cleanup.
 
-# Changelog
-
-## [1.0.0](https://github.com/rx/presenters/tree/1.0.0) (2020-12-20)
+# [1.0.0](https://github.com/rx/presenters/tree/1.0.0) (2020-12-20)
 
 [Full Changelog](https://github.com/rx/presenters/compare/v0.5.0...1.0.0)
 
