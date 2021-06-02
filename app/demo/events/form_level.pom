@@ -1,4 +1,4 @@
-Voom::Presenters.define(:form_level_events) do
+Coprl::Presenters.define(:form_level_events) do
   helpers Demo::Helpers::IndentedGrid
 
   attach :top_nav

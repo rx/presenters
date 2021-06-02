@@ -1,6 +1,0 @@
-<span class="mdc-list-item__meta">
-  <%= erb :"components/list/info", :locals => {:line => line} %>
-<% line.actions.each do |action| %>
-    <%= erb :"components/list/actions/#{action.action_type}", :locals => {action: action} %>
-<% end %>
-</span>

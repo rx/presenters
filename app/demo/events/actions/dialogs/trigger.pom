@@ -1,4 +1,4 @@
-Voom::Presenters.define(:trigger_dialog) do
+Coprl::Presenters.define(:trigger_dialog) do
   attach :top_nav
   attach :events_drawer
 

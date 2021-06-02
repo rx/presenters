@@ -1,0 +1,29 @@
+<% class_name = '' unless bound_locals_include?(:class_name, binding)
+%>
+
+<div class="v-form-field mdc-form-field">
+  <div id="<%= comp.id %>"
+       <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+       <% if comp.dirtyable %>data-dirtyable<% end %>
+       class="v-switch v-input mdc-switch
+      <%= 'mdc-switch--disabled' if comp.disabled %>
+      <%= class_name %>">
+    <div class="mdc-switch__track"></div>
+    <div class="mdc-switch__thumb-underlay">
+      <div class="mdc-switch__thumb">
+        <input id="<%= comp.id %>-input"
+               name="<%= comp.name %>"
+               type="checkbox"
+               class="mdc-switch__native-control"
+               role="switch"
+               <% if comp.value %>value="<%= comp.value %>"<% end %>
+               data-off="<%= comp.off_value %>"
+               <%= ' checked ' if comp.checked %>
+               <%= ' disabled ' if comp.disabled %>
+               <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} if comp.events&.any? %>/>
+      </div>
+    </div>
+  </div>
+  <label class="v-switch__label" for="<%= comp.id %>-input"><%= comp.text %></label>
+</div>
+<%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} if comp.tooltip %>

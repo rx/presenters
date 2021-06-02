@@ -1,4 +1,4 @@
-Voom::Presenters.define(:image_lists) do
+Coprl::Presenters.define(:image_lists) do
   attach :top_nav
   attach :component_drawer
   page_title 'Image Lists'

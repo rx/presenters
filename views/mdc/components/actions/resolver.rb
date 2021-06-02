@@ -6,7 +6,7 @@ module WebClient
     # First it looks for plugins that override default behavior
     # If they don't exist then it renders the base components
     class Resolver
-      extend Voom::Presenters::Pluggable
+      extend Coprl::Presenters::Pluggable
       include_plugins(:WebClientActions)
 
       def initialize(comp, action)

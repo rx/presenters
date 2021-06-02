@@ -1,6 +1,6 @@
 require_relative '../helpers/indented_grid'
 
-Voom::Presenters.define(:dialogs) do
+Coprl::Presenters.define(:dialogs) do
   helpers Demo::Helpers::IndentedGrid
   helpers do
     def dlg_form

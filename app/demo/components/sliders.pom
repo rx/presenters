@@ -1,6 +1,6 @@
 require_relative '../helpers/indented_grid'
 
-Voom::Presenters.define(:sliders) do
+Coprl::Presenters.define(:sliders) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer

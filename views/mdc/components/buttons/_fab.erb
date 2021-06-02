@@ -1,0 +1,23 @@
+<% class_name = '' unless bound_locals_include?(:class_name, binding)
+   position_classes = comp.position.map {|p| "v-button-fab-position-#{p}"}.join(' ')
+   event_parent_id = nil unless bound_locals_include?(:event_parent_id, binding)
+   data_attributes = '' unless bound_locals_include?(:data_attributes, binding)
+%>
+
+<button id="<%= comp.id %>"
+        <%= data_attributes %>
+        data-disabled-on-post-finished="<%= comp.disabled_on_post_finished %>"
+        class="v-button v-button--fab mdc-fab material-icons v-fab--absolute
+          <%= 'v-hidden' if comp.hidden %>
+          <%= class_name %>
+          <%= position_classes %>
+          <%= 'mdc-fab--mini' if eq(comp.size, :small) %>"
+        aria-label="<%= inflector.humanize(comp.icon.icon) %>"
+        <%= 'disabled' if comp.disabled %>
+        <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: event_parent_id || comp.event_parent_id} if comp.events&.any? %>>
+  <span class="mdc-fab__icon">
+  <%= comp.icon.icon %>
+  </span>
+</button>
+<%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} if comp.tooltip %>
+<%= partial "components/menu", :locals => {comp: comp.menu, parent_id: comp.id} if comp.menu %>

@@ -1,4 +1,4 @@
-Voom::Presenters.define(:debug) do
+Coprl::Presenters.define(:debug) do
   if context[:debug]
     grid do
       column 1

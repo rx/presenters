@@ -1,4 +1,4 @@
-Voom::Presenters.define(:helpers1) do
+Coprl::Presenters.define(:helpers1) do
   helpers do
     def bar
       :bar

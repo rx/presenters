@@ -1,21 +1,19 @@
 # COmmon PResenter Language (COPRL)
 
+![alt text](https://media.giphy.com/media/13LEyaRbQbiWdi/giphy.gif "Power Washer for Building User Interfaces")
+
 ## TLDR;
-Do you wish you could write a modern user interface in Ruby or any other language?
+Do you wish you could write a modern user interface in Ruby?
 
 Now you can. Presenters are a Ruby DSL for rendering user interfaces. 
-The semantics are adopted from [Material Design](https://material.io/).
 
+* Presenters are a power washer for building user interfaces
 * Presenters are to HTML/User Interfaces what C is to assembly
 * A presenter generates a Presenter Object Model (POM) 
 * A POM fully describes a user interface
 * A POM client can fully render user interface from POM
 
-## What are voom-presenters?
-
-* A Ruby user interface abstraction
-* A Ruby DSL to build a user interface
-* A power washer for building user interfaces
+The semantics are adopted from [Material Design](https://material.io/).
 
 ## Why?
 
@@ -30,16 +28,16 @@ That is 5 technologies/languages.
 Now lets talk about a new client like an iOS or Android client. If we go native, we can now add Java and Swift to that list. We are up to 7 technologies/languages!
 We didn't even add any popular extras like coffeescript, haml, sass, and we left out frameworks.
 
-What if you could write all my user interface in Ruby and have it rendered natively in ANY client? The voom-presenters _enable_ that. It is a Ruby DSL that describes a user interface.
+What if you could write all your user interface in Ruby and have it rendered natively in ANY client? The COPRL _enable_ that. It is a Ruby DSL that describes a user interface.
 It generates an intermediate Presenter Object Model (POM). 
 The POM is a declarative user interface that can be rendered by a POM client. 
-The core presenters gem provides a Web client as a fully functional reference implementation.
+The presenters gem provides a web client as a fully functional implementation that both renders natively as a Rails templating engine and as a Rack app.
 
 This concept was initially inspired by the Presenters concepts of Ivar Jacobson as presented by Robert Martin.
 
 ## Demo
 
-[Demo](https://coprl-ruby.herokuapp.com/)
+[Demo]
 
 Or to run locally:
 
@@ -63,37 +61,68 @@ To see the POM:
       
 ## Usage
 
-To use it, add this line to your Gemfile:
+### Rails
+Presenters are a view templating language in Rails. 
+You can mix and match presenters with your existing views, 
+use them as new views, or call them as partails in existing views.
 
-    gem 'voom-presenters', github('rx/presenters'), require: false
+#### 1) Add presenters to Gemfile    
+    gem 'coprl'
 
-Create the file app/presenters/index.pom with the contents:
-    
-    Voom::Presenters.define(:hello_world) do
+#### 2) Require coprl in config/application.rb
+    require 'coprl'
+
+#### 3) Mount presenters in config/routes.rb
+
+    mount Coprl::Presenters::Rails::Engine => "/"
+
+#### 4) Create the file app/view/hello_world.html.pom with the contents
+
+    Coprl::Presenters.define(:hello_world) do
       heading 'hello world'
     end   
 
-### Rails
-For rails: Mount the web-client in your rails config/routes.rb
+Navigate to [locahost:3000/hello_world](http://127.0.0.1:3000/hello_world)
 
-    mount ::Voom::Presenters::WebClient::App, at: '/'
-    # the api is optional
-    # mount ::Voom::Presenters::Api::App,       at: '/'
-    
-Create an initializer `config/initializers/presenters.rb` with the following:
-    
-    require 'voom'
+Use the [Demo] to get example code to drop into your presenters.
+
+#### 5) Optionally -- use presenters as partials from ERB/HAML
+You can render a presenter as a partial from other templating laguages (erb, haml):
+
+    <%= render 'show', presenter: 'hello_world' %> 
+
+You need to add the following to your layout to use presenters as a partial alongside other erb's, haml or any other rails templating language.
+
+##### Inside the &lt;head&gt; tag add the following:
+
+      <title><%= @pom.page.title if @pom.page %></title>
+      <%= coprl_headers(@base_url, request, @pom) %> 
+
+##### Inside the &lt;body&gt; tag, around you existing yield add the following:
+
+    <%= partial "body/preamble", :locals => {pom:@pom} %>
+    <%= yield %>
+    <%= partial "body/postamble", :locals => {pom:@pom} %>
 
 ### Rack
-Presenters are rack based. If your framework uses a rack config file add the following:
+#### 1) To use it, add this line to your Gemfile:
 
-    use Voom::Presenters::WebClient::App
+    gem 'coprl'
+
+#### 2) Create the file app/presenters/index.pom with the contents:
+
+    Coprl::Presenters.define(:hello_world) do
+      heading 'hello world'
+    end   
+
+Presenters are rack based. If your framework uses a rack config file add the following:
+    use Coprl::Presenters::WebClient::App
     # the api is optional        
-    # use Voom::Presenters::Api::App
+    # use Coprl::Presenters::Api::App
 
 Start your app and goto [/hello_world](http://127.0.0.1:3000/hello_world)
 
-Use the [Demo] to get example code to drop into your presetners.
+Use the [Demo] to get example code to drop into your presenters.
 
 ## Status
 This project is in a released status. 
@@ -111,7 +140,6 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## Code of Conduct
 
-Everyone interacting in the Voom::Presenters project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/rx/presenters/blob/master/CODE-OF-CONDUCT.md).
+Everyone interacting in the COPRL project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/coprl/coprl/blob/master/CODE-OF-CONDUCT.md).
 
-
-[Demo]:https://powerful-bastion-96181.herokuapp.com
+[Demo]:https://coprl-ruby.herokuapp.com/

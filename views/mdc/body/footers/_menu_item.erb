@@ -1,0 +1,6 @@
+<li class="<%= 'v-actionable' if item.events %>"
+    id="<%=item.id%>"
+    <%= partial "components/event", :locals => {comp: item, events: item.events, parent_id: item.event_parent_id} %>>
+  <%= partial "components/icon", :locals => {comp: item.icon, class_name: nil} %>
+  <%= item.text %>
+</li>

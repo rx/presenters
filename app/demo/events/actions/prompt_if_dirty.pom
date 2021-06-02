@@ -1,4 +1,4 @@
-Voom::Presenters.define(:dirtyable_container) do
+Coprl::Presenters.define(:dirtyable_container) do
   content id: :dirtyable_container do
     grid do
       column 6 do
@@ -24,7 +24,7 @@ Voom::Presenters.define(:dirtyable_container) do
   end
 end
 
-Voom::Presenters.define(:prompt_if_dirty_action) do
+Coprl::Presenters.define(:prompt_if_dirty_action) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :events_drawer

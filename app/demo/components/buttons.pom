@@ -1,6 +1,6 @@
 require_relative '../helpers/indented_grid'
 
-Voom::Presenters.define(:buttons) do
+Coprl::Presenters.define(:buttons) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
@@ -49,12 +49,12 @@ Voom::Presenters.define(:buttons) do
 
     headline 'Image button'
     button type: :image do
-      image 'http://geotix.com/application/files/3514/5564/7308/MyNorthTicketsLogo.png'
+      image 'img/demo/grace-hopper-wide.png'
     end
 
     subheading 'with icon'
     button type: :image do
-      image 'http://geotix.com/application/files/3514/5564/7308/MyNorthTicketsLogo.png'
+      image 'img/demo/grace-hopper-wide.png'
       icon :link
     end
 

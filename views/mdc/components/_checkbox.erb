@@ -1,0 +1,34 @@
+<% class_name = '' unless bound_locals_include?(:class_name, binding)
+   data_table_class_name = '' unless bound_locals_include?(:data_table_class_name, binding)
+%>
+<div class="v-form-field mdc-form-field">
+  <div id="<%= comp.id %>"
+       <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+       <% if comp.dirtyable %>data-dirtyable<% end %>
+       class="v-checkbox mdc-checkbox v-input
+              <%= data_table_class_name %>">
+    <input type="checkbox"
+           id="<%= comp.id %>-input"
+           name="<%= comp.name %>"
+           data-indeterminate="<%=comp.indeterminate%>"
+           <% if comp.value %>value="<%= comp.value %>"<% end %>
+           class="mdc-checkbox__native-control
+                 <%= class_name %>"
+           <% if comp.checked %>checked<% end %>
+           <% if comp.disabled %>disabled<% end %>
+           data-off="<%= comp.off_value %>"
+           <%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.event_parent_id} if comp.events&.any? %>>
+    <div class="mdc-checkbox__background">
+      <svg class="mdc-checkbox__checkmark"
+           viewBox="0 0 24 24">
+        <path class="mdc-checkbox__checkmark-path"
+              fill="none"
+              stroke="white"
+              d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+      </svg>
+      <div class="mdc-checkbox__mixedmark"></div>
+    </div>
+  </div>
+  <label id="<%= comp.id %>-label" for="<%= comp.id %>-input" style="<%= "color: #{comp.text_color};" if comp.text_color %>"><%= comp.text %></label>
+</div>
+<%= partial "components/tooltip", :locals => {comp: comp.tooltip, parent_id: comp.id} if comp.tooltip %>

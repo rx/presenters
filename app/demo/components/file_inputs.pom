@@ -1,6 +1,6 @@
 require_relative '../helpers/indented_grid'
 
-Voom::Presenters.define(:file_inputs) do
+Coprl::Presenters.define(:file_inputs) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
@@ -12,8 +12,8 @@ Voom::Presenters.define(:file_inputs) do
       grid do
         column 6 do
           card do
-            image width: 200, id: :preview_id
-              text id: :filename
+            image 'https://dev-doc-images.s3.amazonaws.com/grace-hopper.png', id: :preview_id, width: 512, height: 176
+            text id: :filename
             text 'Drag and drop or click this button to upload'
             button icon: :cloud_upload
           end
@@ -29,12 +29,12 @@ Voom::Presenters.define(:file_inputs) do
 
     title 'With image preview'
     file_input preview: :image_id, accept: 'image/png, image/jpeg, image/gif, image/svg+xml'
-    image 'http://geotix.com/application/files/3514/5564/7308/MyNorthTicketsLogo.png', width: 100, id: :image_id
+    image 'img/demo/grace-hopper.png', height: 100, width: 100, id: :image_id
 
     title 'With image button preview'
     file_input preview: :button_id, accept: 'image/png, image/jpeg, image/gif, image/svg+xml'
     button type: :image, id: :button_id do
-      image 'http://geotix.com/application/files/3514/5564/7308/MyNorthTicketsLogo.png'
+      image 'img/demo/grace-hopper-wide.png'
     end
     text 'Note: it binds to the button id, not the nested image id.'
 

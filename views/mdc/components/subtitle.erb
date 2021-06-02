@@ -1,4 +1,0 @@
-<% class_name = '' unless local_variables.include? :class_name %>
-<% if comp %>
-<%= erb :"components/typography", :locals => {comp: comp, type: comp.type, class_name: class_name} %>
-<% end %>

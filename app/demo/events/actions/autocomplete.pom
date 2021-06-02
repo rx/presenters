@@ -1,4 +1,4 @@
-Voom::Presenters.define(:autocomplete_action) do
+Coprl::Presenters.define(:autocomplete_action) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :events_drawer

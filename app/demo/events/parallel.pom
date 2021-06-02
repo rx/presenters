@@ -1,10 +1,10 @@
-Voom::Presenters.define(:parallel_content) do
+Coprl::Presenters.define(:parallel_content) do
   content id: context['id'] do
     heading6 Time.now
   end
 end
 
-Voom::Presenters.define(:parallel_events) do
+Coprl::Presenters.define(:parallel_events) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
    attach :events_drawer

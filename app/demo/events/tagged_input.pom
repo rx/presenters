@@ -1,4 +1,4 @@
-Voom::Presenters.define(:tagged_input) do
+Coprl::Presenters.define(:tagged_input) do
   helpers Demo::Helpers::IndentedGrid
 
   attach :top_nav

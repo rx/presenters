@@ -1,6 +1,6 @@
 require_relative '../helpers/indented_grid'
 
-Voom::Presenters.define(:static_header, namespace: :headers) do
+Coprl::Presenters.define(:static_header, namespace: :headers) do
   helpers Demo::Helpers::IndentedGrid
 
   attach :component_drawer
@@ -28,7 +28,7 @@ Voom::Presenters.define(:static_header, namespace: :headers) do
   end
 end
 
-Voom::Presenters.define(:fixed_header, namespace: :headers) do
+Coprl::Presenters.define(:fixed_header, namespace: :headers) do
   helpers Demo::Helpers::IndentedGrid
 
   attach :component_drawer
@@ -56,7 +56,7 @@ Voom::Presenters.define(:fixed_header, namespace: :headers) do
   end
 end
 
-Voom::Presenters.define(:headers) do
+Coprl::Presenters.define(:headers) do
   helpers Demo::Helpers::IndentedGrid
   
   attach :top_nav

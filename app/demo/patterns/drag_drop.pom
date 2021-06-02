@@ -3,7 +3,7 @@ require 'net/http'
 require 'json'
 require 'ostruct'
 
-Voom::Presenters.define(:drag_drop) do
+Coprl::Presenters.define(:drag_drop) do
   helpers Demo::Helpers::IndentedGrid
 
   attach :top_nav
@@ -70,7 +70,7 @@ Voom::Presenters.define(:drag_drop) do
   end
 end
 
-Voom::Presenters.define(:drop_zone) do
+Coprl::Presenters.define(:drop_zone) do
 
   content id: :drop_zone, drop_zone: {zone: 'drag_zone_1'} do
     card do

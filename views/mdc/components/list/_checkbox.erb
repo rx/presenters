@@ -1,0 +1,5 @@
+<% if line.checkbox %>
+  <span class="mdc-list-item__graphic">
+    <%= partial "components/checkbox", :locals => {comp: line.checkbox, class_name: 'v-list-item--selectable-checkbox'} if line.checkbox %>
+  </span>
+<%end%>

@@ -33,8 +33,8 @@ import {getRootNode} from './base-component';
 
 export const EVENT_DROPPED = 'dropped';
 
-const DRAG_DATA_MIME_TYPE = 'application/x.voom-drag-data+json';
-const ELEMENT_ID_MIME_TYPE = 'text/x.voom-element-id';
+const DRAG_DATA_MIME_TYPE = 'application/x.coprl-drag-data+json';
+const ELEMENT_ID_MIME_TYPE = 'text/x.coprl-element-id';
 
 function createDragStartHandler(root, element) {
     return function(event) {
@@ -81,7 +81,7 @@ function createDragLeaveHandler(root, element) {
 }
 
 function createDropHandler(root, element) {
-    // When an element is upgraded to a Voom component after being replaced via
+    // When an element is upgraded to a Coprl component after being replaced via
     // `replaces`, root may refer to the replaced element itself instead of the
     // element's root node.
     // Since a valid drop zone may exist anywhere on the page, it is not

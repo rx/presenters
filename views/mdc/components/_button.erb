@@ -1,0 +1,28 @@
+<%
+  class_name = '' unless bound_locals_include?(:class_name, binding)
+  event_parent_id = nil unless bound_locals_include?(:event_parent_id, binding)
+  data_attributes = '' unless bound_locals_include?(:data_attributes, binding)
+%>
+<% if comp
+     class_name = "#{class_name} #{comp.full_width ? 'v-button-full-width' : nil}"
+%>
+  <% if comp.menu %>
+    <div class="mdc-menu-anchor">
+  <% end %>
+  <% case comp.button_type.to_sym
+        when :fab %>
+            <%= partial "components/buttons/fab", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} if comp %>
+     <% when :icon %>
+            <%= partial "components/buttons/icon", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} if comp %>
+    <% when :image %>
+            <%= partial "components/buttons/image", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} if comp %>
+    <% else  %>
+            <%= partial "components/buttons/button", :locals => {:comp => comp, class_name: class_name, event_parent_id: event_parent_id, data_attributes: data_attributes} if comp %>
+  <% end %>
+  <% if comp.menu %>
+    </div>
+  <% end %>
+<% end %>
+
+
+

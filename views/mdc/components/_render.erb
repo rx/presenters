@@ -1,0 +1,3 @@
+<% components.each_with_index do |comp, index| %>
+  <%= render_component(scope, comp, components, index) if comp %>
+<% end %>

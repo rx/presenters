@@ -14,7 +14,7 @@ module Demo
 end
 
 
-Voom::Presenters.define(:search_select) do
+Coprl::Presenters.define(:search_select) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :pattern_drawer
@@ -50,7 +50,7 @@ Voom::Presenters.define(:search_select) do
   end
 end
 
-Voom::Presenters.define(:ticket_list) do
+Coprl::Presenters.define(:ticket_list) do
   helpers Demo::Helpers::SearchSelectDemo
   helpers do
     def ticket_data
@@ -85,7 +85,7 @@ Voom::Presenters.define(:ticket_list) do
   end
 end
 
-Voom::Presenters.define(:completed_searches) do
+Coprl::Presenters.define(:completed_searches) do
   helpers Demo::Helpers::SearchSelectDemo
   content id: :completed_searches do
     chipset do

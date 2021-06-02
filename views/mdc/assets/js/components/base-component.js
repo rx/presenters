@@ -126,14 +126,14 @@ export function hookupComponentsManually(root, selector, fn) {
     }
 }
 
-export function hookupComponents(root, selector, VoomClass, MDCClass) {
-    const ctor = componentFactory(VoomClass, MDCClass);
+export function hookupComponents(root, selector, CoprlClass, MDCClass) {
+    const ctor = componentFactory(CoprlClass, MDCClass);
     hookupComponentsManually(root, selector, ctor);
 }
 
-// Returns a function capable of constructing a Voom component.
-function componentFactory(VoomClass, MDCClass) {
-    return (element) => new VoomClass(
+// Returns a function capable of constructing a Coprl component.
+function componentFactory(CoprlClass, MDCClass) {
+    return (element) => new CoprlClass(
         element,
         typeof MDCClass === 'function' ? new MDCClass(element) : null
     );

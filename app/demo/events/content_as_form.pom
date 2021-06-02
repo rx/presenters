@@ -1,4 +1,4 @@
-Voom::Presenters.define(:response_content) do
+Coprl::Presenters.define(:response_content) do
   helpers do
     def params
       return {} unless context[:id]
@@ -12,7 +12,7 @@ Voom::Presenters.define(:response_content) do
   end
 end
 
-Voom::Presenters.define(:content_as_form) do
+Coprl::Presenters.define(:content_as_form) do
   helpers Demo::Helpers::IndentedGrid
 
   attach :top_nav
@@ -239,7 +239,7 @@ Voom::Presenters.define(:content_as_form) do
   end
 end
 
-Voom::Presenters.define(:dialog_a) do
+Coprl::Presenters.define(:dialog_a) do
   dialog id: :dialog_a do
     form do
       text_field name: :dialog_text_field do
@@ -256,7 +256,7 @@ Voom::Presenters.define(:dialog_a) do
   end
 end
 
-Voom::Presenters.define(:dialog_b) do
+Coprl::Presenters.define(:dialog_b) do
   dialog id: :dialog_b do
     content do
       text_field name: :dialog_text_field do
@@ -273,7 +273,7 @@ Voom::Presenters.define(:dialog_b) do
   end
 end
 
-Voom::Presenters.define(:dialog_c) do
+Coprl::Presenters.define(:dialog_c) do
   dialog id: :dialog_c do
     content tag: :some_dialog_tag do
       text_field name: :dialog_text_field do
@@ -292,7 +292,7 @@ Voom::Presenters.define(:dialog_c) do
   end
 end
 
-Voom::Presenters.define(:dialog_d) do
+Coprl::Presenters.define(:dialog_d) do
   dialog id: :dialog_d do
     grid do
       column 12 do

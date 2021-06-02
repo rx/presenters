@@ -1,6 +1,6 @@
 require_relative 'helpers/indented_grid'
 
-Voom::Presenters.define(:custom_css) do
+Coprl::Presenters.define(:custom_css) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
 
@@ -26,7 +26,7 @@ Voom::Presenters.define(:custom_css) do
     body 'You can set the default path to load css from using the following:'
     body <<-HTML
       ```
-        Voom::Presenters::Settings.configure do |config|
+        Coprl::Presenters::Settings.configure do |config|
           config.presenters.web_client.custom_css = 'public/presenters'
         end
     ```

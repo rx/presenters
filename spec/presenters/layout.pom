@@ -1,4 +1,4 @@
-Voom::Presenters.define 'layouts.default' do
+Coprl::Presenters.define 'layouts.default' do
   header do
     menu do
       item 'Top'

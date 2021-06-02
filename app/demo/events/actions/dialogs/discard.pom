@@ -1,4 +1,4 @@
-Voom::Presenters.define(:discard_dialog) do
+Coprl::Presenters.define(:discard_dialog) do
   dialog id: :discard_dialog do
     title 'Discard unsaved changes?'
     actions do

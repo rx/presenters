@@ -1,6 +1,6 @@
 require 'date'
 
-Voom::Presenters.define(:datetime_fields) do
+Coprl::Presenters.define(:datetime_fields) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
   attach :component_drawer
@@ -13,7 +13,7 @@ Voom::Presenters.define(:datetime_fields) do
       The default date time user display [format](/formatting_tokens#date) can be configured globally using the following:      
       
       ````
-      Voom::Presenters::Settings.configure do |config|
+      Coprl::Presenters::Settings.configure do |config|
         config.presenters.components.defaults.datetime.format = 'F j, Y H:i'
       end
       ````
