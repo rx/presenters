@@ -5,5 +5,6 @@ module Coprl::Presenters::WebClient::Helpers
     include LocalVariables
     include Partials
     include SafeMarkdown
+    include Raw
   end
 end
