@@ -6,5 +6,6 @@ module Coprl::Presenters::WebClient::Helpers
     include Partials
     include SafeMarkdown
     include Raw
+    include EscapeHtml
   end
 end

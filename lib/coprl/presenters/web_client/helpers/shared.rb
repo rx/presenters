@@ -9,7 +9,6 @@ module Coprl::Presenters::WebClient::Helpers
     include Color
     include Headers
     include Equal
-    include EscapeHtml
     include Includes
     include UniqueId
     include SnakeToCamel
