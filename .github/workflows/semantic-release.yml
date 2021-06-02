@@ -32,6 +32,7 @@ jobs:
         uses: cycjimmy/semantic-release-action@v2
         with:
           extra_plugins: |
+            @semantic-release/git
             @semantic-release/changelog
             @semantic-release/github
             semantic-release-rubygem

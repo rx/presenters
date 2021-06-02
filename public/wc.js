@@ -579,15 +579,15 @@ function hookupComponentsManually(root, selector, fn) {
     }
 }
 
-function hookupComponents(root, selector, VoomClass, MDCClass) {
-    var ctor = componentFactory(VoomClass, MDCClass);
+function hookupComponents(root, selector, CoprlClass, MDCClass) {
+    var ctor = componentFactory(CoprlClass, MDCClass);
     hookupComponentsManually(root, selector, ctor);
 }
 
-// Returns a function capable of constructing a Voom component.
-function componentFactory(VoomClass, MDCClass) {
+// Returns a function capable of constructing a Coprl component.
+function componentFactory(CoprlClass, MDCClass) {
     return function (element) {
-        return new VoomClass(element, typeof MDCClass === 'function' ? new MDCClass(element) : null);
+        return new CoprlClass(element, typeof MDCClass === 'function' ? new MDCClass(element) : null);
     };
 }
 
@@ -10864,7 +10864,7 @@ function createDragLeaveHandler(root, element) {
 }
 
 function createDropHandler(root, element) {
-    // When an element is upgraded to a Voom component after being replaced via
+    // When an element is upgraded to a Coprl component after being replaced via
     // `replaces`, root may refer to the replaced element itself instead of the
     // element's root node.
     // Since a valid drop zone may exist anywhere on the page, it is not
