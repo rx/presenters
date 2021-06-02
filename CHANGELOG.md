@@ -1,27 +1,70 @@
 # [3.0.0-beta.1](https://github.com/rx/presenters/compare/v2.1.1...v3.0.0-beta.1) (2021-06-02)
 
-
-* Coprl rename (#318) ([8acafd5](https://github.com/rx/presenters/commit/8acafd5e1a1f116c881ae79c59d069161d7ec2e6)), closes [#318](https://github.com/rx/presenters/issues/318) [#309](https://github.com/rx/presenters/issues/309) [#317](https://github.com/rx/presenters/issues/317) [#316](https://github.com/rx/presenters/issues/316) [#315](https://github.com/rx/presenters/issues/315) [#314](https://github.com/rx/presenters/issues/314) [#313](https://github.com/rx/presenters/issues/313) [#312](https://github.com/rx/presenters/issues/312) [#311](https://github.com/rx/presenters/issues/311) [#310](https://github.com/rx/presenters/issues/310) [#316](https://github.com/rx/presenters/issues/316) [#315](https://github.com/rx/presenters/issues/315) [#314](https://github.com/rx/presenters/issues/314) [#313](https://github.com/rx/presenters/issues/313) [#312](https://github.com/rx/presenters/issues/312) [#311](https://github.com/rx/presenters/issues/311) [#310](https://github.com/rx/presenters/issues/310)
-
+* Coprl module rename and Rails 5 and 6 native views (#318) ([8acafd5](https://github.com/rx/presenters/commit/8acafd5e1a1f116c881ae79c59d069161d7ec2e6)), closes [#318](https://github.com/rx/presenters/issues/318) [#309](https://github.com/rx/presenters/issues/309) [#317](https://github.com/rx/presenters/issues/317) [#316](https://github.com/rx/presenters/issues/316) [#315](https://github.com/rx/presenters/issues/315) [#314](https://github.com/rx/presenters/issues/314) [#313](https://github.com/rx/presenters/issues/313) [#312](https://github.com/rx/presenters/issues/312) [#311](https://github.com/rx/presenters/issues/311) [#310](https://github.com/rx/presenters/issues/310) [#316](https://github.com/rx/presenters/issues/316) [#315](https://github.com/rx/presenters/issues/315) [#314](https://github.com/rx/presenters/issues/314) [#313](https://github.com/rx/presenters/issues/313) [#312](https://github.com/rx/presenters/issues/312) [#311](https://github.com/rx/presenters/issues/311) [#310](https://github.com/rx/presenters/issues/310)
 
 ### BREAKING CHANGES
 
-* Rails Engine supporting native rails template views and partials.
-Plugin's are incompatible with this version due to Rails render rules requiring leading '_' and application directory.
+#### Migrating from Presenters v2 to COPRL Presenters v3
 
-* Rails 5 work in progress. Not rending templates currently. Use Rails 6 until resoved.
+##### Clients
+* Refactor module Voom => Coprl
+* Replace in requires in app and lib files 'voom' => 'coprl'
 
-* Fixed local path gemfile entry.
+##### Plugins
 
-* Removed puts debugging statements.
+The plugins have been modified to support Rails native views.
+There is a generator that you can also use to generate a new plugin: `coprl generate plugin PLUGIN_NAME`.
+In some cases generating a new plugin and moving over the code may be the preferred option.
 
-* Rails 5 changes to get template handlers to render correctly.  Note: If you don't like the load speeds in dev mode, use Rails 6 instead. Rails 6 template speeds are 5 times faster in development.
+The rest of this guide assumes you are going to migrate it over manualy.
 
-* Rendering templates even when empty is significantly slower in Rails than in Sinatra. So we prevent render calls a practice across all component templates. Only render what you are using is the rule of thumb, even if the calling template is wrapped with a `if comp` check.
+###### Module Rename
+* Rename library directory `lib/voom` => 'lib/coprl'
+* Refactor module `Voom` => `Coprl`
+* Replace in `lib` files  'voom/' => `coprl/`
 
-* docs: Updated README
+###### View Changes
 
-Added more instructions on rails partials and general cleanup.
+In the Coprl::Presenters::Plugins::PLUGIN_NAME::WebClientComponents
+Add the following callback that points to your views directory
+
+    def view_dir_PLUGIN_NAME(pom)
+        File.join(__dir__, '../../../../../../..', 'views', 'components')
+    end
+
+* Add an `application` directory under your view directory returned above.
+* Add a `_` prefix to your templates.
+* Change erb render calls in your templates `erb :"components/event"` => `partial "components/event"`
+* Add raw calls to any javascript/css that you emitt from your templates, e.g., `<%= raw File.read(File.expand_path('../../../../../../public/c3.min.css', __dir__)  ) %>`
+
+**Recommended**
+
+Move templates, javascript and css files into their own view directory at the root of the presenter.
+This makes it easier to reason and find the appropriate parts of the plugin
+
+# [2.1.1](https://github.com/rx/presenters/tree/2.1.1) (2021-04-26)
+
+[Full Changelog](https://github.com/rx/presenters/compare/v2.1.1...2.1.0)
+
+# [2.1.0](https://github.com/rx/presenters/tree/2.1.0) (2021-03-17)
+
+[Full Changelog](https://github.com/rx/presenters/compare/v2.1.0...2.0.3)
+
+# [2.0.3](https://github.com/rx/presenters/tree/2.0.3) (2021-03-11)
+
+[Full Changelog](https://github.com/rx/presenters/compare/v2.0.3...2.0.2)
+
+# [2.0.2](https://github.com/rx/presenters/tree/2.0.2) (2021-02-18)
+
+[Full Changelog](https://github.com/rx/presenters/compare/v2.0.2...2.0.1)
+
+# [2.0.1](https://github.com/rx/presenters/tree/2.0.1) (2020-12-23)
+
+[Full Changelog](https://github.com/rx/presenters/compare/v2.0.1...2.0.0)
+
+# [v2.0.0](https://github.com/rx/presenters/tree/v2.0.0) (2020-12-22)
+
+[Full Changelog](https://github.com/rx/presenters/compare/2.0.0...v1.0.0)
 
 # [1.0.0](https://github.com/rx/presenters/tree/1.0.0) (2020-12-20)
 
