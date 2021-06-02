@@ -16,7 +16,7 @@ module Coprl::Presenters::WebClient::Helpers
     end
 
     def plugin_headers(pom)
-      Coprl::Presenters::WebClient::PluginHeaders.new(pom: pom, render: method(:render)).render
+      Coprl::Presenters::WebClient::PluginHeaders.new(pom: pom, render: method(:render_partial)).render
     end
 
     def custom_css(path, host=nil)
