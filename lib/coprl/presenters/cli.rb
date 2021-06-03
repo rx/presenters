@@ -1,5 +1,6 @@
 require 'thor'
 require_relative 'generators/plugin'
+require_relative 'version'
 
 module Coprl
   module Presenters
@@ -20,6 +21,15 @@ module Coprl
         end
       end
       class Cli < Thor
+        def self.exit_on_failure?
+          true
+        end
+        map %w[--version -v] => :__print_version
+
+        desc "--version, -v", "print the version"
+        def __print_version
+          puts Coprl::Presenters::Version::VERSION
+        end
         desc "generate", "generate a plugin"
         subcommand "generate", Generate
       end
