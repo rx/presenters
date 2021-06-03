@@ -32,13 +32,13 @@ module Coprl
 
           def template_file(template, target_filename=template, source_path=nil, target_path=source_path)
             source = join_path(TEMPLATES_ROOT, source_path, "#{template}.tt")
-            destination = join_path(plusin_name, target_path, target_filename)
+            destination = join_path(plugin_name, target_path, target_filename)
             template source, destination
           end
 
           def file(file, target_filename=file, source_path=nil, target_path=nil)
             source = join_path(TEMPLATES_ROOT, source_path, file)
-            destination = join_path(plusin_name, target_path, target_filename)
+            destination = join_path(plugin_name, target_path, target_filename)
 
             copy_file source, destination
           end
@@ -59,9 +59,13 @@ module Coprl
             underscore(name)
           end
 
-          def plusin_name
+          def plugin_name
             "#{underscored_name}_presenter_plugin"
           end
+        end
+
+        def create_version
+          template_file('version.rb', "version.rb", LIB_ROOT, "lib/#{underscored_name}_presenter_plugin")
         end
 
         def create_root_files
