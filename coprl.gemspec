@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors = ['Russell Edens']
   spec.email = ["rx@russelledens.net\n"]
 
-  spec.summary = 'COPRL Presenters Gem'
+  spec.summary = 'COmmon PResenter Language - A Ruby gem for joyfully writing modern user interfaces in Rack and Rails.'
   spec.homepage = 'http://github.com/rx/presenters'
   spec.license = 'MIT'
 
