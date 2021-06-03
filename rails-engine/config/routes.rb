@@ -4,7 +4,8 @@ Coprl::Presenters::Rails::Engine.routes.draw do
       extend Coprl::Presenters::WebClient::Helpers::Rails::Namespaced
       def self.matches?(request)
         presenter = namespaced_presenter(request.params)
-        presenter ? Coprl::Presenters::App.keys.include?(presenter) : false
+        fq_presenter = [presenter, 'index'].join(':')
+        presenter ? Coprl::Presenters::App.keys.include?(presenter) || Coprl::Presenters::App.registered?(fq_presenter) : false
       end
     end
     get ':namespace1/:namespace2/:presenter' => "coprl#show", constraints: PomExists
