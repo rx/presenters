@@ -1,0 +1,26 @@
+require_relative '../helpers/indented_grid'
+
+Coprl::Presenters.define(:google_maps, namespace: :plugins) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :component_drawer
+  plugin :google_maps
+  page_title 'Maps'
+
+  indented_grid do
+    unless ENV['GOOGLE_API_KEY']
+      headline 'You must define the ENV variable GOOGLE_API_KEY for this to render a map'
+      subtitle 'Dev hint: Create an .env file with a `GOOGLE_API_KEY=yourkey` and restart. Goto [Google Using API Keys](https://developers.google.com/maps/documentation/javascript/get-api-key) to create a key.'
+    end
+    subheading 'Static Maps'
+    address = '125 Park Street, Traverse City, MI'
+    google_map address: address, height: "300px", width: "400px"  do
+      event :click do
+        loads "https://www.google.com/maps/place/#{address}"
+      end
+    end
+
+    attach :code, file: __FILE__
+  end
+
+end

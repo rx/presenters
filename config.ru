@@ -9,7 +9,7 @@ if ENV['VOOM_ENV'] == 'integration_testing'
 end
 
 ENV['VOOM_ROOT'] = File.expand_path(__dir__)
-ENV['GOOGLE_API_KEY'] = 'AIzaSyDhSgj9XSBLY5E9Rx5pP2ILQ7IXnD4uX2Q'
+require 'dotenv/load'
 require 'coprl'
 
 require 'rack/cors'

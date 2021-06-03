@@ -24,7 +24,9 @@ end
 gem 'foo_presenter_plugin',  github: 'coprl/foo_presenter_plugin', require: false
 gem 'image_crop_presenter_plugin',  github: 'coprl/image_crop_presenter_plugin', require: false
 gem 'chart_presenter_plugin',  github: 'coprl/chart_presenter_plugin', require: false
+gem 'google_maps_presenter_plugin',  github: 'coprl/google_maps_presenter_plugin', branch: :main, require: false
 
 gem 'rack-cors'
 gem 'honeybadger' if ENV.fetch('HONEYBADGER_API_KEY'){false}
 gem 'puma'
+gem 'dotenv'

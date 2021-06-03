@@ -32,7 +32,7 @@ unless defined?(Coprl::Presenters::Settings)
             setting :custom_css, '../public/presenters'
             setting :protect_from_forgery, false
           end
-          setting :plugins, [:google_maps]
+          setting :plugins, []
           setting :components do
             setting :defaults do
               setting :datetime do
