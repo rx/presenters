@@ -94,7 +94,7 @@ module Coprl
                         dir('views', 'assets', 'css', 'components'))
           template_file('component.js', "#{underscored_name}.js",
                         dir('views', 'assets', 'js', 'components'))
-          template_file('component.erb', "#{underscored_name}.erb",
+          template_file('component.erb', "_#{underscored_name}.erb",
                         dir('views', 'components', 'application'))
           template_file('component_header.erb', "#{underscored_name}_header.erb",
                         dir('views', 'components', 'application'))

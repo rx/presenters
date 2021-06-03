@@ -11,4 +11,4 @@ Any additional data you want to pass to your component javascript should be setu
 -->
 <iframe id="random_fact" class='v-plugin v-input' data-plugin-callback='RandomFacts'
         src="<%%= comp.random_fact %>" height=512
-        <%%= erb :"components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id} %>></iframe>
+        <%%= partial "components/event", :locals => {comp: comp, events: comp.events, parent_id: comp.id} %>></iframe>
