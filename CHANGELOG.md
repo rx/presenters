@@ -1,3 +1,10 @@
+# [3.0.0-beta.2](https://github.com/rx/presenters/compare/v3.0.0-beta.1...v3.0.0-beta.2) (2021-06-03)
+
+
+### Bug Fixes
+
+* support for index presenters within Rails ([06b5fb9](https://github.com/rx/presenters/commit/06b5fb97e049db3f8670eef87979959d8bb1e63b))
+
 # [3.0.0-beta.1](https://github.com/rx/presenters/compare/v2.1.1...v3.0.0-beta.1) (2021-06-02)
 
 * Coprl module rename and Rails 5 and 6 native views (#318) ([8acafd5](https://github.com/rx/presenters/commit/8acafd5e1a1f116c881ae79c59d069161d7ec2e6)), closes [#318](https://github.com/rx/presenters/issues/318) [#309](https://github.com/rx/presenters/issues/309) [#317](https://github.com/rx/presenters/issues/317) [#316](https://github.com/rx/presenters/issues/316) [#315](https://github.com/rx/presenters/issues/315) [#314](https://github.com/rx/presenters/issues/314) [#313](https://github.com/rx/presenters/issues/313) [#312](https://github.com/rx/presenters/issues/312) [#311](https://github.com/rx/presenters/issues/311) [#310](https://github.com/rx/presenters/issues/310) [#316](https://github.com/rx/presenters/issues/316) [#315](https://github.com/rx/presenters/issues/315) [#314](https://github.com/rx/presenters/issues/314) [#313](https://github.com/rx/presenters/issues/313) [#312](https://github.com/rx/presenters/issues/312) [#311](https://github.com/rx/presenters/issues/311) [#310](https://github.com/rx/presenters/issues/310)
