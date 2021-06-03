@@ -1,0 +1,3 @@
+module <%= classify(name) %>PresenterPlugin
+  VERSION = "0.0.1"
+end

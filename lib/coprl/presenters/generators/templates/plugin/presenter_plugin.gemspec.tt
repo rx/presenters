@@ -1,21 +1,22 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require '<%= name %>_presenter_plugin/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "<%= name %>_presenter_plugin"
-  spec.version       = '0.0.1'
+  spec.name          = '<%= name %>_presenter_plugin'
+  spec.version       = <%= classify(name) %>PresenterPlugin::VERSION
   spec.authors       = ["<%= `git config user.name`.strip %>"]
   spec.email         = ["<%= `git config user.email`.strip %>"]
 
   spec.summary       = %q{<%= name %> presenter plugin.}
   spec.homepage      = 'http://github.com/<%= `git config user.name`.strip %>/<%= name %>_presenters_plugin'
-  spec.license       = "MIT"
+  spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
   end
-  spec.require_paths = ["lib"]
+  spec.require_paths = ['lib']
 
-  spec.add_development_dependency "bundler", "~> 1.16"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency 'bundler', "~> 1.16"
+  spec.add_development_dependency 'rake', "~> 10.0"
 end
