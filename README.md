@@ -64,7 +64,7 @@ To see the POM:
 ### Rails
 Presenters are a view templating language in Rails. 
 You can mix and match presenters with your existing views, 
-use them as new views, or call them as partails in existing views.
+use them as new views, or call them as partials in existing views.
 
 #### 1) Add presenters to Gemfile    
     gem 'coprl'
@@ -86,12 +86,17 @@ Navigate to [locahost:3000/hello_world](http://127.0.0.1:3000/hello_world)
 
 Use the [Demo] to get example code to drop into your presenters.
 
-#### 5) Optionally -- use presenters as partials from ERB/HAML
+#### Optionally -- use presenters as partials from ERB/HAML
 You can render a presenter as a partial from other templating laguages (erb, haml):
 
     <%= render 'show', presenter: 'hello_world' %> 
 
 You need to add the following to your layout to use presenters as a partial alongside other erb's, haml or any other rails templating language.
+
+#### Setting the root route
+If you name a presenter :index and want the root of the app to serve up that presenter add the following to your `config/initializers/routes.rb`
+
+    root 'coprl#show'
 
 ##### Inside the &lt;head&gt; tag add the following:
 
