@@ -27,6 +27,7 @@ module Coprl
                                        wait_for_download: wait_for_download,
                                        params: params, &block)
           end
+          alias load loads
 
           def replaces(target, presenter, input_tag: nil, ignore_input_values: [], **params, &block)
             self << Actions::Replaces.new(parent: self,
@@ -36,6 +37,7 @@ module Coprl
                                           ignore_input_values: Array(ignore_input_values),
                                           params: params, &block)
           end
+          alias replace replaces
 
           # Method can be one of :post, :put, :delete or :patch
           def posts(path, input_tag: nil, headers: nil, **params, &block)
@@ -45,8 +47,10 @@ module Coprl
                                        headers: headers,
                                        params: params, &block)
           end
-
+          alias post posts
           alias creates posts
+          alias create posts
+
 
           def updates(path, input_tag: nil, headers: nil, **params, &block)
             self << Actions::Updates.new(parent: self,
@@ -63,6 +67,7 @@ module Coprl
                                          headers: headers,
                                          params: params, &block)
           end
+          alias delete deletes
 
           def dialog(dialog_id, **params, &block)
             self << Actions::Dialog.new(parent: self,
