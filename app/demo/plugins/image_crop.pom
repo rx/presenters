@@ -20,7 +20,7 @@ Coprl::Presenters.define(:image_crop, namespace: :plugins) do
           grid do
             column 12 do
               card do
-                text 'Drop it here'
+                text 'Drop an image or click'
                 button icon: :cloud_upload
               end
             end
