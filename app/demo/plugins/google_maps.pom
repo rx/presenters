@@ -1,9 +1,7 @@
-require_relative '../helpers/indented_grid'
-
 Coprl::Presenters.define(:google_maps, namespace: :plugins) do
   helpers Demo::Helpers::IndentedGrid
   attach :top_nav
-  attach :component_drawer
+  attach :plugin_drawer
   plugin :google_maps
   page_title 'Maps'
 
