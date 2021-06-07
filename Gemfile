@@ -27,6 +27,7 @@ gem 'chart_presenter_plugin',  github: 'coprl/chart_presenter_plugin', require: 
 gem 'google_maps_presenter_plugin',  github: 'coprl/google_maps_presenter_plugin', branch: :main, require: false
 gem 'cacheable_presenter_plugin', github: 'coprl/cacheable_presenter_plugin', require: false
 gem 'script_presenter_plugin', github: 'coprl/script_presenter_plugin', require: false
+gem 'scroll_to_presenter_plugin', github: 'coprl/scroll_to_presenter_plugin', require: false
 
 gem 'rack-cors'
 gem 'honeybadger' if ENV.fetch('HONEYBADGER_API_KEY'){false}

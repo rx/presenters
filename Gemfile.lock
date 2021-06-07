@@ -35,6 +35,12 @@ GIT
   specs:
     script_presenter_plugin (0.0.2)
 
+GIT
+  remote: https://github.com/coprl/scroll_to_presenter_plugin.git
+  revision: e1dd957723561117ee45743ac9e27a4fd91a4a97
+  specs:
+    scroll_to_presenter_plugin (0.0.2)
+
 PATH
   remote: .
   specs:
@@ -182,6 +188,7 @@ DEPENDENCIES
   rspec-html-matchers
   rspec_junit_formatter
   script_presenter_plugin!
+  scroll_to_presenter_plugin!
   shotgun (~> 0.9)
   simplecov
   thor (~> 1.1.0)

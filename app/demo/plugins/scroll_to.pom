@@ -1,0 +1,22 @@
+Coprl::Presenters.define(:scroll_to, namespace: :plugins) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :plugin_drawer
+  plugin :scroll_to
+  page_title 'Scroll to'
+
+  indented_grid do
+    subheading 'Sometimes you need to scroll to find content after some action. This is what the scroll to plugin is for.'
+    button :scroll do
+      event :click do
+        scroll_to :scroll_target #, smooth: true, offset: 100
+      end
+    end
+    (1..100).each do
+      body '.'
+    end
+    title 'Thanks for scrolling here', id: :scroll_target
+
+    attach :code, file: __FILE__
+  end
+end
