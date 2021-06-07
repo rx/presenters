@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/coprl/cacheable_presenter_plugin.git
+  revision: 262ac076d70d94b111b9ccb692dfc9225c7cc6c6
+  specs:
+    cacheable_presenter_plugin (0.0.3)
+
+GIT
   remote: https://github.com/coprl/chart_presenter_plugin.git
   revision: ae9a8bb805570dbf2c1156e3c81f07e3a24807e2
   specs:
@@ -22,6 +28,12 @@ GIT
   revision: 33452c5d3b232e93a942280f8429be2707c992ab
   specs:
     image_crop_presenter_plugin (0.1.0)
+
+GIT
+  remote: https://github.com/coprl/script_presenter_plugin.git
+  revision: c7cea03e73f4752a3df99e4b3ab0d4030f141f4d
+  specs:
+    script_presenter_plugin (0.0.2)
 
 PATH
   remote: .
@@ -151,6 +163,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (>= 1.13)
+  cacheable_presenter_plugin!
   chart_presenter_plugin!
   coprl!
   dotenv
@@ -168,6 +181,7 @@ DEPENDENCIES
   rspec
   rspec-html-matchers
   rspec_junit_formatter
+  script_presenter_plugin!
   shotgun (~> 0.9)
   simplecov
   thor (~> 1.1.0)
