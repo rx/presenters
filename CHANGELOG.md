@@ -1,3 +1,23 @@
+# [3.0.0-beta.3](https://github.com/rx/presenters/compare/v3.0.0-beta.2...v3.0.0-beta.3) (2021-06-07)
+
+
+### Bug Fixes
+
+* added cli --version ([4c5b10e](https://github.com/rx/presenters/commit/4c5b10e0707bcdeecfb29908eb3284b692cbcd41))
+* added missing prepare context callbacks to Rails Engine ([bafa36d](https://github.com/rx/presenters/commit/bafa36d6e95ad9863eb93cb44cc894163c147c4f))
+* added prepare context for Rails native views engine that sets the request and session automatically ([a09f3c6](https://github.com/rx/presenters/commit/a09f3c637102e640fe0b91894ae89b5a07288846))
+* Added version.rb to plugin generator ([f1f2092](https://github.com/rx/presenters/commit/f1f20925dfd326fb5a47910952e21b34b762c31d))
+* Added version.rb to plugin generator ([35187bf](https://github.com/rx/presenters/commit/35187bf188957e2ca93e2bf07963e958452f27fe))
+* expanded plugin generator to include github semantic release, demo pom and sample README ([06de7a2](https://github.com/rx/presenters/commit/06de7a237f8a417a11776d1994915c32253a981d))
+* fixed unordered list partial rendering error ([014f1d1](https://github.com/rx/presenters/commit/014f1d19926d7e9d39618fbe68c8068db316ac4b))
+* generator not compatible with COPRL 3 Rails templating naming conventions ([f6d80f0](https://github.com/rx/presenters/commit/f6d80f0a44f6305b9339bc2bd6db8487eefc68cc))
+* removed google_map built in plugin to its own plugin ([a34290d](https://github.com/rx/presenters/commit/a34290de890e2fdf7e6c2c7b1714854d454c82a4))
+
+
+### Features
+
+* Added singular alias for common actions: load, replace, post, create, and delete ([b57c305](https://github.com/rx/presenters/commit/b57c305bd4dbf95b8a9662ad747020683bf74c8d))
+
 # [3.0.0-beta.2](https://github.com/rx/presenters/compare/v3.0.0-beta.1...v3.0.0-beta.2) (2021-06-03)
 
 
