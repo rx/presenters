@@ -1,7 +1,7 @@
 <li class="<%= 'icon-li' if list_item.icon %>">
-  <%= erb :"components/unordered_list/icon", :locals => {:list_item => list_item} %>
+  <%= partial "components/unordered_list/icon", :locals => {:list_item => list_item} %>
   <%= expand_text(list_item.text&.text) %>
   <% if list_item.unordered_list %>
-    <%= erb :"components/unordered_list", :locals => {:comp => list_item.unordered_list} %>
+    <%= partial "components/unordered_list", :locals => {:comp => list_item.unordered_list} %>
   <% end %>
 </li>
