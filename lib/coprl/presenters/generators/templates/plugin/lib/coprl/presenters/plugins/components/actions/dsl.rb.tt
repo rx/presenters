@@ -1,4 +1,4 @@
-require_relative '<%= classify(name) %>_action'
+require_relative '<%= underscore(name) %>_action'
 
 module Coprl
   module Presenters

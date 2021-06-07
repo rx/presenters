@@ -73,7 +73,13 @@ module Coprl
           template_file('Gemfile')
           template_file('LICENSE.txt')
           template_file('presenter_plugin.gemspec', "#{underscored_name}_presenter_plugin.gemspec")
-          file 'README.md'
+          template_file 'README.md'
+        end
+
+        def create_semantic_release_github_action
+          file('.releaserc')
+          file('.ruby-version')
+          file('semantic-release.yml', 'semantic-release.yml', dir('.github', 'workflows'))
         end
 
         def create_plugin
@@ -96,7 +102,7 @@ module Coprl
                         dir('views', 'assets', 'js', 'components'))
           template_file('component.erb', "_#{underscored_name}.erb",
                         dir('views', 'components', 'application'))
-          template_file('component_header.erb', "#{underscored_name}_header.erb",
+          template_file('component_header.erb', "_#{underscored_name}_header.erb",
                         dir('views', 'components', 'application'))
         end
 
@@ -118,6 +124,10 @@ module Coprl
           template_file('helper.rb', "#{underscored_name}_helper.rb",
                         lib_dir('helpers'),
                         named_dir('helpers'))
+        end
+
+        def create_demo_pom
+          template_file('plugin.pom', "#{underscored_name}.pom", dir('demo'))
         end
       end
     end

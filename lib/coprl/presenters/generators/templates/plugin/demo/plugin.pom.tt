@@ -1,0 +1,15 @@
+Coprl::Presenters.define(:<%= name %>, namespace: :plugins) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :plugin_drawer
+  plugin :<%= name %>
+  page_title '<%= humanize(name) %>'
+
+  <%= name %> # TODO Add your demo code here
+
+  indented_grid do
+    subheading 'TODO describe how to use your plugin'
+
+    attach :code, file: __FILE__
+  end
+end

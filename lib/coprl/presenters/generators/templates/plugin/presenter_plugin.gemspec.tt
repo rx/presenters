@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["<%= `git config user.name`.strip %>"]
   spec.email         = ["<%= `git config user.email`.strip %>"]
 
-  spec.summary       = %q{<%= name %> presenter plugin.}
+  spec.summary       = %q{A COPRL presenter plugin for <%= name %>}
   spec.homepage      = 'http://github.com/<%= `git config user.name`.strip %>/<%= name %>_presenters_plugin'
   spec.license       = 'MIT'
 
@@ -17,6 +17,6 @@ Gem::Specification.new do |spec|
   end
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', "~> 1.16"
+  spec.add_development_dependency 'bundler', "~> 2.0"
   spec.add_development_dependency 'rake', "~> 10.0"
 end
