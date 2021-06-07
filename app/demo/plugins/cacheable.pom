@@ -1,0 +1,64 @@
+require 'ostruct'
+
+Coprl::Presenters.define(:cacheable, namespace: :plugins) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :plugin_drawer
+  plugin :cacheable
+
+  page_title 'Cacheable'
+
+  helpers do
+    def cache_object
+      OpenStruct.new(cache_key: 'wild')
+    end
+
+    def cache_objects
+      [
+        OpenStruct.new(cache_key: 'abc'),
+        OpenStruct.new(cache_key: '123'),
+      ]
+    end
+  end
+
+  indented_grid do
+    body <<~DOC
+      The caching plugin provides russian doll caching support.
+      Declare the plugin in your pom, `plugin :cacheable`, or configure it globally:
+
+      ```
+      Coprl::Presenters::Settings.configure do |config|
+        config.presenters.plugins.push(:cacheable)
+      end
+      ```
+
+      For Rails it automatically uses the Rails::Cache. For other Rack apps you need to configure it with a block:
+
+      ```
+      Coprl::Presenters::Plugins::Cacheable::Settings.configure do |config|
+        # A cache needs to respond to fetch(key, &block) and exist?(key) or has_key?(key)
+        config.cache=cache_store
+      end
+      ```
+      Simply wrap your POM with the cache directive. 
+      Complex keys are supported.  If an object responds to `cache_key` then that will be used for it.  
+      An object that responds to `map` will be expanded.  As a last resort `to_s` is used.
+               
+      Examples (refresh your browser to observe cached values):
+    DOC
+    title "Not cached at #{DateTime.now}"
+    cache :remember_me do
+      title "Simple Cache Key - cached at #{DateTime.now}"
+    end
+
+    cache [:title, cache_object, cache_objects] do
+      title "Complex Cache Key - cached at #{DateTime.now}"
+    end
+    blank
+    body <<~DOC
+      Note: Confusion alert ... if you are using shotgun for the demo, it **will not cache**, since the demo uses an in memory cache and shotgun reloads its entire process with each refresh.
+    DOC
+
+  end
+  attach :code, file: __FILE__
+end

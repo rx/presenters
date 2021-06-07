@@ -1,0 +1,17 @@
+Coprl::Presenters.define(:script, namespace: :plugins) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :plugin_drawer
+  plugin :script
+  page_title 'Script'
+
+  script inline: <<~JAVASCRIPT
+      alert( 'Hello, world!' );
+  JAVASCRIPT
+  indented_grid do
+    subheading 'You can write arbitrary javascript using the script component. For example, the alert you just dismissed.'
+
+    attach :code, file: __FILE__
+  end
+
+end
