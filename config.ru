@@ -27,6 +27,20 @@ Coprl::Presenters::Settings.configure do |config|
   }
 end
 
+require 'pry'
+require 'coprl/presenters/plugins/cacheable'
+cache_store = Concurrent::Hash.new
+# Quick and dirty demo always growing memory cache -- DONT DO THIS IN PRODUCTION!
+def cache_store.fetch(key, options=nil, &block)
+  result = super(key, &block)
+  store(key, result) unless has_key?(key)
+  result
+end
+
+Coprl::Presenters::Plugins::Cacheable::Settings.configure do |config|
+  config.cache=cache_store
+end
+
 use Coprl::Presenters::Demo::Search
 use Coprl::Presenters::Demo::Echo
 use Coprl::Presenters::Demo::Slow
