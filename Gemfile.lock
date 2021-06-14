@@ -36,6 +36,12 @@ GIT
     image_crop_presenter_plugin (0.1.0)
 
 GIT
+  remote: https://github.com/coprl/markup_presenter_plugin.git
+  revision: a02e7ec5878d73f1263d3d8e7c82ea10e67df02b
+  specs:
+    markup_presenter_plugin (0.0.2)
+
+GIT
   remote: https://github.com/coprl/script_presenter_plugin.git
   revision: c7cea03e73f4752a3df99e4b3ab0d4030f141f4d
   specs:
@@ -184,6 +190,7 @@ DEPENDENCIES
   gem-release (~> 2.0)
   google_maps_presenter_plugin!
   image_crop_presenter_plugin!
+  markup_presenter_plugin!
   pry
   pry-byebug
   puma

@@ -1,0 +1,14 @@
+Coprl::Presenters.define(:markup, namespace: :plugins) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :plugin_drawer
+  plugin :markup
+  page_title 'Markup'
+
+
+  indented_grid do
+    markup "<h1>Hello Cruel World</h1>"
+
+    attach :code, file: __FILE__
+  end
+end
