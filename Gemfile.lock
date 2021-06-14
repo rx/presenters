@@ -11,6 +11,12 @@ GIT
     chart_presenter_plugin (0.1.0)
 
 GIT
+  remote: https://github.com/coprl/clipboard_presenter_plugin.git
+  revision: 3de13cd7b858d68f4d2060bcbd44683b5ea755f8
+  specs:
+    clipboard_presenter_plugin (0.1.0)
+
+GIT
   remote: https://github.com/coprl/foo_presenter_plugin.git
   revision: f9c92ab98388aeb150c9b523e97042c1386aff10
   specs:
@@ -171,6 +177,7 @@ DEPENDENCIES
   bundler (>= 1.13)
   cacheable_presenter_plugin!
   chart_presenter_plugin!
+  clipboard_presenter_plugin!
   coprl!
   dotenv
   foo_presenter_plugin!
@@ -200,4 +207,4 @@ RUBY VERSION
    ruby 2.7.2p137
 
 BUNDLED WITH
-   2.2.3
+   2.2.20

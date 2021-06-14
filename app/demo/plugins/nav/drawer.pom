@@ -7,7 +7,7 @@ Coprl::Presenters.define(:plugin_drawer, namespace: :plugins) do
           loads :index
         end
       end
-      %i(image_crop chart google_maps cacheable script scroll_to).sort.each do |comp|
+      %i(image_crop chart google_maps cacheable script scroll_to clipboard).sort.each do |comp|
         item titleize(comp) do
           event :click do
             loads comp

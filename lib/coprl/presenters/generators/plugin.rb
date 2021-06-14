@@ -79,7 +79,8 @@ module Coprl
         def create_semantic_release_github_action
           file('.releaserc')
           file('.ruby-version')
-          file('semantic-release.yml', 'semantic-release.yml', dir('.github', 'workflows'))
+          file('semantic-release.yml', 'semantic-release.yml',
+               dir('.github', 'workflows'), dir('.github', 'workflows'))
         end
 
         def create_plugin
