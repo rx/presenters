@@ -17,6 +17,12 @@ GIT
     clipboard_presenter_plugin (0.1.0)
 
 GIT
+  remote: https://github.com/coprl/color_picker_presenter_plugin.git
+  revision: 73807e71d3c9410ff76437323b3f480784f98b47
+  specs:
+    color_picker_presenter_plugin (0.0.1)
+
+GIT
   remote: https://github.com/coprl/foo_presenter_plugin.git
   revision: f9c92ab98388aeb150c9b523e97042c1386aff10
   specs:
@@ -190,6 +196,7 @@ DEPENDENCIES
   cacheable_presenter_plugin!
   chart_presenter_plugin!
   clipboard_presenter_plugin!
+  color_picker_presenter_plugin!
   coprl!
   dotenv
   foo_presenter_plugin!
