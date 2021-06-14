@@ -30,6 +30,12 @@ GIT
     google_maps_presenter_plugin (0.1.0)
 
 GIT
+  remote: https://github.com/coprl/iframe_presenter_plugin.git
+  revision: 7b460d23a277e85e89cb8547538c7af484a873f7
+  specs:
+    iframe_presenter_plugin (0.0.1)
+
+GIT
   remote: https://github.com/coprl/image_crop_presenter_plugin.git
   revision: 33452c5d3b232e93a942280f8429be2707c992ab
   specs:
@@ -189,6 +195,7 @@ DEPENDENCIES
   foo_presenter_plugin!
   gem-release (~> 2.0)
   google_maps_presenter_plugin!
+  iframe_presenter_plugin!
   image_crop_presenter_plugin!
   markup_presenter_plugin!
   pry

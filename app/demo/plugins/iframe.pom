@@ -1,0 +1,14 @@
+Coprl::Presenters.define(:iframe, namespace: :plugins) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :plugin_drawer
+  plugin :iframe
+  page_title 'Iframe'
+
+
+  indented_grid do
+    subheading 'Embed an iFrame'
+    iframe 'https://en.wikipedia.org/wiki/Special:Random', height: "500px",scrolling: :yes # | :no (default)
+    attach :code, file: __FILE__
+  end
+end
