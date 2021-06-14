@@ -65,6 +65,12 @@ GIT
   specs:
     scroll_to_presenter_plugin (0.0.2)
 
+GIT
+  remote: https://github.com/coprl/timer_presenter_plugin.git
+  revision: 319392281f17875cbe69aaeb8b5ac26ec78fc7bf
+  specs:
+    timer_presenter_plugin (0.0.1)
+
 PATH
   remote: .
   specs:
@@ -220,6 +226,7 @@ DEPENDENCIES
   shotgun (~> 0.9)
   simplecov
   thor (~> 1.1.0)
+  timer_presenter_plugin!
   watir (~> 6.16)
   watir-rspec (~> 3.0)
   webdrivers (~> 4.1)

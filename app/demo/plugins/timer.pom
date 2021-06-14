@@ -1,0 +1,24 @@
+Coprl::Presenters.define(:timer, namespace: :plugins) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :plugin_drawer
+  plugin :timer
+  page_title 'Timer'
+
+  indented_grid do
+    subheading 'Using an expiration timer'
+
+    count_down_timer DateTime.now + + Rational(130, 60 * 60 * 24), # add 2 minutes and 10 seconds
+                     expired_message: 'Something important (shoping cart for example) has Expired',
+                     safe_color: 'green',
+                     warn_color: 'red',
+                     delete_url: 'TODO', # TODO URL to delete something on expiration
+                     delete_params: {}, # parmeters to pass on expiration
+                     redirect_url: 'TODO', # Where to redirect after delete?
+                     redirect_params: {} do
+      icon 'fas fa-stopwatch', color: :white
+    end
+
+    attach :code, file: __FILE__
+  end
+end
