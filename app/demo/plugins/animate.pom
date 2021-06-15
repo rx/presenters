@@ -1,0 +1,144 @@
+Coprl::Presenters.define(:animate, namespace: :plugins) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :plugin_drawer
+  plugin :animate, :scroll_to
+  page_title 'Animate', id: :page_title
+
+  indented_grid do
+    grid do
+      column 4 do
+        heading "Animations plugin", id: :animate_heading
+        subheading "Just-add-POM CSS animations"
+        body "It is based on [animate.css](https://animate.style/)."
+      end
+      column 8 do
+        [["Attention seekers",
+          %i( bounce
+              flash
+              pulse
+              rubber_band
+              shake_x
+              shake_y
+              head_shake
+              swing
+              tada
+              wobble
+              jello
+              heart_beat)],
+         ["Back entrances",
+          %i( back_in_down
+              back_in_left
+              back_in_right
+              back_in_up)],
+         ["Back exits",
+          %i( back_out_down
+              back_out_left
+              back_out_right
+              back_out_up)],
+         ["Bouncing entrances",
+          %i( bounce_in
+              bounce_in_down
+              bounce_in_left
+              bounce_in_right
+              bounce_in_up)],
+         ["Bouncing exits",
+          %i( bounce_out
+              bounce_out_down
+              bounce_out_left
+              bounce_out_right
+              bounce_out_up)],
+         ["Fading entrances",
+          %i( fade_in
+              fade_in_down
+              fade_in_down_big
+              fade_in_left
+              fade_in_left_big
+              fade_in_right
+              fade_in_right_big
+              fade_in_up
+              fade_in_up_big
+              fade_in_top_left
+              fade_in_top_right
+              fade_in_bottom_left
+              fade_in_bottom_right)],
+         ["Fading exits",
+          %i( fade_out
+              fade_out_down
+              fade_out_down_big
+              fade_out_left
+              fade_out_left_big
+              fade_out_right
+              fade_out_right_big
+              fade_out_up
+              fade_out_up_big
+              fade_out_top_left
+              fade_out_top_right
+              fade_out_bottom_right
+              fade_out_bottom_left)],
+         ["Flippers",
+          %i( flip
+              flip_in_x
+              flip_in_y
+              flip_out_x
+              flip_out_y)],
+         ["lightspeed",
+          %i(  light_speed_in_right
+              light_speed_in_left
+              light_speed_out_right
+              light_speed_out_left)],
+         ["Rotating entrances",
+          %i( rotate_in
+              rotate_in_down_left
+              rotate_in_down_right
+              rotate_in_up_left
+              rotate_in_up_right)],
+         ["Rotating exits",
+          %i( rotate_out
+              rotate_out_down_left
+              rotate_out_down_right
+              rotate_out_up_left
+              rotate_out_up_right)],
+         ["Specials",
+          %i( hinge
+              jack_in_the_box
+              roll_in
+              roll_out)],
+         ["Zooming entrances",
+          %i( zoom_in
+              zoom_in_down
+              zoom_in_left
+              zoom_in_right
+              zoom_in_up)],
+         ["Zooming exits",
+          %i( zoom_out
+              zoom_out_down
+              zoom_out_left
+              zoom_out_right
+              zoom_out_up)],
+         ["Sliding entrances",
+          %i( slide_in_down
+              slide_in_left
+              slide_in_right
+              slide_in_up)],
+         ["Sliding exits",
+          %i( slide_out_down
+              slide_out_left
+              slide_out_right
+              slide_out_up)]].each do |animiation_title, animiations|
+          subtitle animiation_title
+          animiations.each do |animation|
+            button animation do
+              event :click do
+                scroll_to :page_title
+                animate :animate_heading, animation, wait: true
+              end
+            end
+          end
+        end
+      end
+    end
+
+    attach :code, file: __FILE__
+  end
+end

@@ -33,6 +33,7 @@ gem 'markup_presenter_plugin', github: 'coprl/markup_presenter_plugin', require:
 gem 'iframe_presenter_plugin', github: 'coprl/iframe_presenter_plugin', require: false
 gem 'color_picker_presenter_plugin', github: 'coprl/color_picker_presenter_plugin', require: false
 gem 'timer_presenter_plugin',  github: 'coprl/timer_presenter_plugin', require: false
+gem 'animate_presenter_plugin', github: 'coprl/animate_presenter_plugin', require: false
 
 gem 'rack-cors'
 gem 'honeybadger' if ENV.fetch('HONEYBADGER_API_KEY'){false}

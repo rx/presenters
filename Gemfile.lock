@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/coprl/animate_presenter_plugin.git
+  revision: 1eb21032ea4bd44113bb4d887df2472d5cd10a8f
+  specs:
+    animate_presenter_plugin (0.0.1)
+
+GIT
   remote: https://github.com/coprl/cacheable_presenter_plugin.git
   revision: 262ac076d70d94b111b9ccb692dfc9225c7cc6c6
   specs:
@@ -198,6 +204,7 @@ PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
+  animate_presenter_plugin!
   bundler (>= 1.13)
   cacheable_presenter_plugin!
   chart_presenter_plugin!
