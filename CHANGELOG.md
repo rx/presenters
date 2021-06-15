@@ -1,3 +1,10 @@
+# [3.0.0-beta.4](https://github.com/rx/presenters/compare/v3.0.0-beta.3...v3.0.0-beta.4) (2021-06-15)
+
+
+### Bug Fixes
+
+* Updated generator to use secure version of Rake ([5e0761f](https://github.com/rx/presenters/commit/5e0761f7c13139e68da38ea4dfaae4b40c010e71))
+
 # [3.0.0-beta.3](https://github.com/rx/presenters/compare/v3.0.0-beta.2...v3.0.0-beta.3) (2021-06-07)
 
 
