@@ -1,25 +1,86 @@
 GIT
-  remote: https://github.com/rx/chart_presenter_plugin.git
-  revision: e2afb1cf0292ea92371cfc83be16b2ad95dee26d
+  remote: https://github.com/coprl/animate_presenter_plugin.git
+  revision: 1eb21032ea4bd44113bb4d887df2472d5cd10a8f
+  specs:
+    animate_presenter_plugin (0.0.1)
+
+GIT
+  remote: https://github.com/coprl/cacheable_presenter_plugin.git
+  revision: 262ac076d70d94b111b9ccb692dfc9225c7cc6c6
+  specs:
+    cacheable_presenter_plugin (0.0.3)
+
+GIT
+  remote: https://github.com/coprl/chart_presenter_plugin.git
+  revision: 6b93c7a1b04356987cbe962841f564f4afc744c4
   specs:
     chart_presenter_plugin (0.1.0)
 
 GIT
-  remote: https://github.com/rx/foo_presenter_plugin.git
-  revision: 313dddfef05f740990c509b89831b69730b4ce12
+  remote: https://github.com/coprl/clipboard_presenter_plugin.git
+  revision: 3de13cd7b858d68f4d2060bcbd44683b5ea755f8
   specs:
-    foo_presenter_plugin (0.0.1)
+    clipboard_presenter_plugin (0.1.0)
 
 GIT
-  remote: https://github.com/rx/image_crop_presenter_plugin.git
-  revision: c0814ffa5a0f40fd15d697e72a5bd4c9e4117d1e
+  remote: https://github.com/coprl/color_picker_presenter_plugin.git
+  revision: 10bdc8b555b2c168ee1d93316c7b10e961a7f5b5
+  specs:
+    color_picker_presenter_plugin (0.0.1)
+
+GIT
+  remote: https://github.com/coprl/foo_presenter_plugin.git
+  revision: 7b05a88ac5d34a18401d8dbbb73758927be39cdd
+  specs:
+    foo_presenter_plugin (0.0.2)
+
+GIT
+  remote: https://github.com/coprl/google_maps_presenter_plugin.git
+  revision: 53d8d4d778fcc0295980aaae29bbc3fdb3a947d4
+  branch: main
+  specs:
+    google_maps_presenter_plugin (0.1.0)
+
+GIT
+  remote: https://github.com/coprl/iframe_presenter_plugin.git
+  revision: d0bc691adba4807499af30ee375e9b6dd1426732
+  specs:
+    iframe_presenter_plugin (0.0.1)
+
+GIT
+  remote: https://github.com/coprl/image_crop_presenter_plugin.git
+  revision: 586ef47bd6132f94810cfb04d02fcf7c9df1ae10
   specs:
     image_crop_presenter_plugin (0.1.0)
+
+GIT
+  remote: https://github.com/coprl/markup_presenter_plugin.git
+  revision: a02e7ec5878d73f1263d3d8e7c82ea10e67df02b
+  specs:
+    markup_presenter_plugin (0.0.2)
+
+GIT
+  remote: https://github.com/coprl/script_presenter_plugin.git
+  revision: c7cea03e73f4752a3df99e4b3ab0d4030f141f4d
+  specs:
+    script_presenter_plugin (0.0.2)
+
+GIT
+  remote: https://github.com/coprl/scroll_to_presenter_plugin.git
+  revision: e1dd957723561117ee45743ac9e27a4fd91a4a97
+  specs:
+    scroll_to_presenter_plugin (0.0.2)
+
+GIT
+  remote: https://github.com/coprl/timer_presenter_plugin.git
+  revision: 227358019923132b46c3f4a6c34e956f0293aaa3
+  specs:
+    timer_presenter_plugin (0.0.1)
 
 PATH
   remote: .
   specs:
-    voom-presenters (1.0.0)
+    coprl (1.0.0)
       dry-configurable (> 0.1, <= 7.0)
       dry-container (~> 0.6)
       dry-inflector (~> 0.1)
@@ -34,21 +95,21 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    byebug (11.1.3)
     childprocess (3.0.0)
     coderay (1.1.2)
-    concurrent-ruby (1.1.7)
+    concurrent-ruby (1.1.9)
     diff-lcs (1.3)
     docile (1.3.1)
-    dry-configurable (0.11.6)
+    dotenv (2.7.6)
+    dry-configurable (0.12.1)
       concurrent-ruby (~> 1.0)
-      dry-core (~> 0.4, >= 0.4.7)
-      dry-equalizer (~> 0.2)
-    dry-container (0.7.2)
+      dry-core (~> 0.5, >= 0.5.0)
+    dry-container (0.8.0)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1, >= 0.1.3)
-    dry-core (0.5.0)
+    dry-core (0.6.0)
       concurrent-ruby (~> 1.0)
-    dry-equalizer (0.3.0)
     dry-inflector (0.2.0)
     filewatcher (1.1.1)
       optimist (~> 3.0)
@@ -69,6 +130,9 @@ GEM
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    pry-byebug (3.8.0)
+      byebug (~> 11.0)
+      pry (~> 0.10)
     puma (5.3.1)
       nio4r (~> 2.0)
     racc (1.5.2)
@@ -100,7 +164,7 @@ GEM
     rspec-support (3.8.2)
     rspec_junit_formatter (0.4.1)
       rspec-core (>= 2, < 4, != 2.12.0)
-    ruby2_keywords (0.0.2)
+    ruby2_keywords (0.0.4)
     rubyzip (1.3.0)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
@@ -117,11 +181,11 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.1.0)
       tilt (~> 2.0)
-    thor (1.0.1)
+    thor (1.1.0)
     tilt (2.0.10)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2020.4)
+    tzinfo-data (1.2021.1)
       tzinfo (>= 1.0.0)
     watir (6.16.5)
       regexp_parser (~> 1.2)
@@ -140,12 +204,22 @@ PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
+  animate_presenter_plugin!
   bundler (>= 1.13)
+  cacheable_presenter_plugin!
   chart_presenter_plugin!
+  clipboard_presenter_plugin!
+  color_picker_presenter_plugin!
+  coprl!
+  dotenv
   foo_presenter_plugin!
   gem-release (~> 2.0)
+  google_maps_presenter_plugin!
+  iframe_presenter_plugin!
   image_crop_presenter_plugin!
+  markup_presenter_plugin!
   pry
+  pry-byebug
   puma
   rack (>= 2.0.6)
   rack-cors
@@ -154,10 +228,12 @@ DEPENDENCIES
   rspec
   rspec-html-matchers
   rspec_junit_formatter
+  script_presenter_plugin!
+  scroll_to_presenter_plugin!
   shotgun (~> 0.9)
   simplecov
-  thor (~> 1.0.1)
-  voom-presenters!
+  thor (~> 1.1.0)
+  timer_presenter_plugin!
   watir (~> 6.16)
   watir-rspec (~> 3.0)
   webdrivers (~> 4.1)
