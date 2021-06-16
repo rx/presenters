@@ -34213,9 +34213,7 @@ var VPosts = function (_VBase) {
                 }
             }
 
-            var paramCount = Array.from(formData).length;
-
-            if (paramCount < 1) {
+            if (this.paramCount(formData) < 1) {
                 console.warn('Creating request with no data!' + ' Are you sure you\'ve hooked everything up correctly?');
             }
 
@@ -34384,8 +34382,16 @@ var VPosts = function (_VBase) {
                 }
 
                 // Send our FormData object; HTTP headers are set automatically
-                httpRequest.send(formData);
+                // Rack 2.2 will throw an exception https://github.com/rack/rack/issues/1603
+                // if we set the header as multi-part form data with no data in the body
+                // So we set the body to null in this case.
+                httpRequest.send(_this2.paramCount(formData) < 1 ? null : formData);
             });
+        }
+    }, {
+        key: 'paramCount',
+        value: function paramCount(formData) {
+            return Array.from(formData).length;
         }
     }, {
         key: 'isForm',
