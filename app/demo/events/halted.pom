@@ -1,0 +1,23 @@
+Voom::Presenters.define(:halted) do
+  helpers Demo::Helpers::IndentedGrid
+  attach :top_nav
+  attach :events_drawer
+
+  indented_grid do
+    display 'Halted Events'
+    body 'This demonstrates how to respond to failed, or halted events'
+
+    content do
+      button :failed_post do
+        event :click do
+          posts '_echo_', status: 500
+        end
+        event 'V:eventsHalted' do
+          snackbar 'That did not work! Please try again later.'
+        end
+      end
+
+    end
+  end
+  attach :code, file: __FILE__
+end
