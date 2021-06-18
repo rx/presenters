@@ -105,9 +105,9 @@ You need to add the following to your layout to use presenters as a partial alon
 
 ##### Inside the &lt;body&gt; tag, around you existing yield add the following:
 
-    <%= partial "body/preamble", :locals => {pom:@pom} %>
+    <%= with_presenters_wrapper do %>
     <%= yield %>
-    <%= partial "body/postamble", :locals => {pom:@pom} %>
+    <%= end %>
 
 ### Rack
 #### 1) To use it, add this line to your Gemfile:

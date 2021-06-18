@@ -1,7 +1,9 @@
 <%
-  header = pom.header
-  drawer = pom.drawer
-  footer = pom.footer
+  if @pom
+    header = @pom.header
+    drawer = @pom.drawer
+    footer = @pom.footer
+  end
 
   root_classes = []
   root_classes << 'v-root--header-present' if header
@@ -22,5 +24,27 @@
     <div class="drawer-main-content">
       <%= partial "body/modal-drawer", :locals => {drawer: drawer} %>
   <% end %>
+
+  <%= content %>
+
   <div class="v-page-content page-content">
     <div class="v-errors">
+      <%
+        if @pom
+          drawer = @pom.drawer
+          footer = @pom.footer
+        end
+      %>
+    </div>
+  </div>
+  <% if drawer %>
+    </div>
+    </div>
+    </div>
+  <% end %>
+
+  <%= partial "body/snackbar" %>
+  <% if footer %>
+    <%= partial "body/footer", :locals => {:footer => footer} %>
+  <% end %>
+</div>
