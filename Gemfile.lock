@@ -67,13 +67,13 @@ GIT
 
 GIT
   remote: https://github.com/coprl/scroll_to_presenter_plugin.git
-  revision: e1dd957723561117ee45743ac9e27a4fd91a4a97
+  revision: c34ab770665a16b81b8274357dd9cc77dbd0a566
   specs:
     scroll_to_presenter_plugin (0.0.2)
 
 GIT
   remote: https://github.com/coprl/timer_presenter_plugin.git
-  revision: 227358019923132b46c3f4a6c34e956f0293aaa3
+  revision: 5901fd1a368ae7b293c0b87f58ebd01a24a38573
   specs:
     timer_presenter_plugin (0.0.1)
 
