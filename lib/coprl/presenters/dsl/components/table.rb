@@ -58,10 +58,10 @@ module Coprl
             def checkbox(**attributes, &block)
               return @checkbox if locked?
               field_name = @type == :header ? 'all' : "#{attributes.delete(:name)}[]"
-              tag = @type == :header ? '' : @parent.tag
+              tag = @type == :header ? '' : @parent.input_tag
               @checkbox = Components::Checkbox.new(parent: self,
                                                    name: field_name,
-                                                   tag: tag,
+                                                   input_tag: tag,
                                                    **attributes,
                                                    &block)
             end

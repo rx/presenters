@@ -2,7 +2,7 @@
      float_label = comp.options.select{|o| o.selected }.any?
 %>
   <div class="v-multi-select-container"
-       <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+       <% if comp.input_tag %>data-input-tag="<%= comp.input_tag %>"<% end %>
        <% if comp.dirtyable %>data-dirtyable<% end %>>
     <div class="v-multi-select--options-list v-hidden">
       <% comp.options.each do |option| %>

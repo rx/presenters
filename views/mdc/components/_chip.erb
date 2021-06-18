@@ -9,8 +9,8 @@
   <% end %>
 
   <button id="<%= comp.id %>"
-          <% if comp.tag %>
-          data-input-tag="<%= comp.tag %>"
+          <% if comp.input_tag %>
+          data-input-tag="<%= comp.input_tag %>"
           <% end %>
           class="v-chip v-input mdc-chip
               <%= color_classname(comp) %>

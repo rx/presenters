@@ -21,7 +21,7 @@ Coprl::Presenters.define(:search_select) do
 
   page_title 'Search and Select Pattern'
   indented_grid do
-    grid tag: :input_data_container do
+    grid input_tag: :input_data_container do
       column 6 do
         grid do
           column 4 do

@@ -6,8 +6,8 @@
    @gutters.push comp.gutter.nil? ? @gutters.last : comp.gutter
 %>
 <div id="<%= comp.id %>"
-     <% if comp.tag %>
-     data-input-tag="<%= comp.tag %>"
+     <% if comp.input_tag %>
+     data-input-tag="<%= comp.input_tag %>"
      <% end %>
      class="v-grid mdc-layout-grid
             <%= _padding_classes_(comp.padding, @grid_nesting) %>

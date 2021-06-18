@@ -3,8 +3,8 @@
      position_classes = comp.position.map {|p| "v-content-position-#{p}"}.join(' ')
 %>
   <div id="<%= comp.id %>"
-       <% if comp.tag %>
-       data-input-tag="<%= comp.tag %>"
+       <% if comp.input_tag %>
+       data-input-tag="<%= comp.input_tag %>"
        <% end %>
        <%= draggable_attributes(comp) %>
        <%= drop_zone_attributes(comp) %>

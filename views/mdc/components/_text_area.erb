@@ -1,6 +1,6 @@
 <div id="<%= comp.id %>" class="v-input v-text-field mdc-text-field mdc-text-field--textarea
             <% if comp.disabled %>mdc-text-field--disabled<% end %>"
-     <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+     <% if comp.input_tag %>data-input-tag="<%= comp.input_tag %>"<% end %>
      <% if comp.dirtyable %>data-dirtyable<% end %>
      style="<%= 'width:100%' if comp.full_width %>">
   <textarea id="<%= comp.id %>-input"

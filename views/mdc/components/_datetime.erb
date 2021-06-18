@@ -3,7 +3,7 @@
   type_class = comp.picker ? 'v-datetime' : 'v-date-text'
 %>
 <div id="<%= comp.id %>"
-     <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+     <% if comp.input_tag %>data-input-tag="<%= comp.input_tag %>"<% end %>
      <% if comp.dirtyable %>data-dirtyable<% end %>
      class="v-input <%= type_class %> mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-trailing-icon' if comp.clear_icon %>

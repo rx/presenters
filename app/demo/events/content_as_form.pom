@@ -118,7 +118,7 @@ Coprl::Presenters.define(:content_as_form) do
 
   grid do
     column 12 do
-      text_field id: :input_tag_extra, name: :whatever, tag: :test_input_tag do
+      text_field id: :input_tag_extra, name: :whatever, input_tag: :test_input_tag do
         value 'foo bar'
       end
     end
@@ -127,7 +127,7 @@ Coprl::Presenters.define(:content_as_form) do
   indented_grid do
     card do
       title 'Content with input_tag'
-      content id: :content_2, tag: :test_input_tag do
+      content id: :content_2, input_tag: :test_input_tag do
         text_field name: :text1 do
           label 'Text 1'
         end
@@ -275,7 +275,7 @@ end
 
 Coprl::Presenters.define(:dialog_c) do
   dialog id: :dialog_c do
-    content tag: :some_dialog_tag do
+    content input_tag: :some_dialog_tag do
       text_field name: :dialog_text_field do
         value 'whatever'
       end

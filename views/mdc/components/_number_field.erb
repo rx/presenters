@@ -4,7 +4,7 @@
      auto_complete = comp.auto_complete&.to_sym == :off ? 'extra-off' : comp.auto_complete
 %>
   <div id="<%= comp.id %>"
-       <%= "data-input-tag='#{comp.tag}'" if comp.tag %>
+       <%= "data-input-tag='#{comp.input_tag}'" if comp.input_tag %>
        <%= 'data-dirtyable' if comp.dirtyable %>
        class="v-input v-text-field v-focusable mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-leading-icon' if leading_icon %>

@@ -5,7 +5,7 @@
      behavior = comp.behavior || 'text'
 %>
   <div id="<%= comp.id %>"
-       <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+       <% if comp.input_tag %>data-input-tag="<%= comp.input_tag %>"<% end %>
        <% if comp.dirtyable %>data-dirtyable<% end %>
        class="v-input v-text-field v-focusable mdc-text-field mdc-text-field--outlined
             <%= 'mdc-text-field--with-leading-icon' if leading_icon %>
