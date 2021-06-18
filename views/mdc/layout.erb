@@ -7,12 +7,12 @@
   <title><%= @pom.page.title if @pom.page %></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= coprl_headers(@base_url, request, @pom) %>
+  <%= coprl_headers %>
 </head>
 <body class="mdc-typography">
-    <%= partial "body/preamble", :locals => {pom:@pom} %>
-    <%= yield %>
-    <%= partial "body/postamble", :locals => {pom:@pom} %>
+    <%= with_presenters_wrapper do %>
+      <%= yield %>
+    <% end %>
 <noscript><p>JavaScript must be enabled to continue.</p></noscript>
 </body>
 </html>

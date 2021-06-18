@@ -101,7 +101,7 @@ You need to add the following to your layout to use presenters as a partial alon
 ##### Inside the &lt;head&gt; tag add the following:
 
       <title><%= @pom.page.title if @pom.page %></title>
-      <%= coprl_headers(@base_url, request, @pom) %> 
+      <%= coprl_headers %> 
 
 ##### Inside the &lt;body&gt; tag, around you existing yield add the following:
 
