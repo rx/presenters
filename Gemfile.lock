@@ -113,7 +113,6 @@ GEM
     dry-inflector (0.2.0)
     filewatcher (1.1.1)
       optimist (~> 3.0)
-    gem-release (2.0.1)
     ice_nine (0.11.2)
     json (2.3.1)
     method_source (0.9.0)
@@ -183,6 +182,7 @@ GEM
       tilt (~> 2.0)
     thor (1.1.0)
     tilt (2.0.10)
+    timecop (0.9.4)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2021.1)
@@ -213,7 +213,6 @@ DEPENDENCIES
   coprl!
   dotenv
   foo_presenter_plugin!
-  gem-release (~> 2.0)
   google_maps_presenter_plugin!
   iframe_presenter_plugin!
   image_crop_presenter_plugin!
@@ -233,6 +232,7 @@ DEPENDENCIES
   shotgun (~> 0.9)
   simplecov
   thor (~> 1.1.0)
+  timecop (~> 0.9.4)
   timer_presenter_plugin!
   watir (~> 6.16)
   watir-rspec (~> 3.0)

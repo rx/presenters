@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'rack/test'
 require 'coprl/presenters/web_client/app'
+require 'timecop'
 
 describe Coprl::Presenters::WebClient::App do
   include Rack::Test::Methods
@@ -63,11 +64,12 @@ describe Coprl::Presenters::WebClient::App do
             "id-#{id}"
           }
         end
+        Timecop.freeze(Time.now)
       end
-      # DO NOT ADD a presenter here because it fails.
-      # This is for exceptions that MUST be here.
-      # For examnple the cacheable plugin is a heisenspec that will fail based on time sensitivity due to caching
-      let(:exclude_presenters) { %w( plugins:cacheable) }
+
+      after do
+        Timecop.return
+      end
       it "render from pom" do
         keys = Coprl::Presenters::App.keys
         keys.each do |key|
@@ -87,10 +89,8 @@ describe Coprl::Presenters::WebClient::App do
           expect(response_get.status).to eq(200), get
           puts key
 
-          unless exclude_presenters.include?(key)
-            error_message = "POST json failed on #{key}: #{pom}\nThe file contains details:#{get}"
-            expect(response_pom.body).to eq(response_get.body), error_message
-          end
+          error_message = "POST json failed on #{key}: #{pom}\nThe file contains details:#{get}"
+          expect(response_pom.body).to eq(response_get.body), error_message
         end
       end
     end
