@@ -1,3 +1,9 @@
+<%
+  root_classes = []
+  root_classes << 'v-root--header-present' if header
+  root_classes << 'v-root--drawer-present' if drawer
+  root_classes << 'v-root--footer-present' if footer
+%>
 <div class="v-root compatibility-wrapper mdc-typography <%= root_classes.join(' ') %>">
   <% if drawer %>
     <div class="drawer-frame-root">

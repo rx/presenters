@@ -8,5 +8,6 @@ module Coprl::Presenters::WebClient::Helpers
     include Namespaced
     include Raw
     include EscapeHtml
+    include TemplateHelper
   end
 end
