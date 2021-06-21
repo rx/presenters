@@ -25,10 +25,14 @@ module Coprl
             private
 
             def extract_options!
-              %i(path presenter target input_tag headers).each do |option|
+              %i(path presenter target headers).each do |option|
                 option_value = attribs.delete(option){:not_found}
                 @options.merge!({option => option_value}) unless option_value==:not_found
               end
+              # Special case ... the input tag is defined at the component base level for all components
+              # By the time we get here we have put it into its accessor via the super call
+              # So we manually move it to the options for all actions
+              @options.merge!(input_tag: self.input_tag) if self.input_tag
             end
 
             def extract_dynamic_params(hash)

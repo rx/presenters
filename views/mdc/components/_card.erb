@@ -1,7 +1,7 @@
 <div id="<%= comp.id %>" class="<%= 'v-hidden' if comp.hidden %>">
   <div
-  <% if comp.tag %>
-  data-input-tag="<%= comp.tag %>"
+  <% if comp.input_tag %>
+  data-input-tag="<%= comp.input_tag %>"
   <% end %>
   <%= draggable_attributes(comp) %>
   <%= drop_zone_attributes(comp) %>

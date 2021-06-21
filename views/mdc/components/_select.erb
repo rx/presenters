@@ -4,7 +4,7 @@
   <div class="mdc-select v-select v-input
               <%= 'mdc-select--outlined' if comp.outlined %>
               <% if comp.disabled %>mdc-select--disabled<% end %>"
-       <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
+       <% if comp.input_tag %>data-input-tag="<%= comp.input_tag %>"<% end %>
        <% if comp.dirtyable %>data-dirtyable<% end %>
        <%= 'style="width: 100%;"' if comp.full_width %>>
     <%= partial "components/icon", :locals => {comp: comp.icon, class_name: 'mdc-select__icon', parent_id: "#{comp.id}-input", size_class: '', position: []} if comp.icon %>

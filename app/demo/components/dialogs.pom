@@ -170,7 +170,7 @@ Coprl::Presenters.define(:dialogs) do
         end
       end
       separator
-      content tag: :second_form_input do
+      content input_tag: :second_form_input do
         dlg_form
       end
       subtitle 'The buttons below are Dialog Action buttons. When clicked, they will process any configured actions, then automatically clsoe the dialog.'

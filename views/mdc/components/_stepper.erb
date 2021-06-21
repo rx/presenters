@@ -3,8 +3,8 @@
 %>
 <div class="v-errors">
   <ul id="<%= comp.id %>"
-      <% if comp.tag %>
-      data-input-tag="<%= comp.tag %>"
+      <% if comp.input_tag %>
+      data-input-tag="<%= comp.input_tag %>"
       <% end %>
       class="mdl-stepper v-stepper
             <%= ' mdl-stepper--horizontal' if horizontal %>
@@ -18,8 +18,8 @@
   <div id="<%= comp.id %>-content">
     <% for step in comp.steps %>
       <div id="<%= step.id %>-content"
-           <% if step.tag %>
-           data-input-tag="<%= step.tag %>"
+           <% if step.input_tag %>
+           data-input-tag="<%= step.input_tag %>"
            <% end %>
            class="v-content v-step__content v-step__content-<%= step.id %>
             <%= ' is-active' if step.selected %>

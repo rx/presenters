@@ -16,8 +16,8 @@ module Coprl
           def check_option(**attribs, &block)
             @options << CheckOption.new(parent: self,
                                     name: @name,
-                                    tag: @tag,
-                                    **attribs.delete_if{ |k,v| [:tag, :name].include?(k) }, &block)
+                                    input_tag: @input_tag,
+                                    **attribs.delete_if{ |k,v| [:tag, :name, :input_tag].include?(k) }, &block)
           end
 
           class CheckOption < EventBase
@@ -33,7 +33,7 @@ module Coprl
               self.checkbox(name: "#{attribs[:name]}[]",
                             value: @value,
                             text: @text,
-                            tag: tag,
+                            input_tag: self.input_tag,
                             checked: @selected,
                             disabled: @disabled,
                             &block)

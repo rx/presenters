@@ -2,8 +2,8 @@
   dialog_action_buttons = Array(comp&.actions&.buttons)
 %>
 <div id="<%= comp.id %>"
-     <% if comp.tag %>
-     data-input-tag="<%= comp.tag %>"
+     <% if comp.input_tag %>
+     data-input-tag="<%= comp.input_tag %>"
      <% end %>
      class="v-dialog mdc-dialog"
      role="alertdialog"

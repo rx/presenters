@@ -15,16 +15,19 @@ module Coprl
           include Mixins::YieldTo
           extend Pluggable
 
-          attr_reader :type, :id, :tag, :attributes, :draggable, :drop_zone, :css_class
+          attr_reader :type, :id, :input_tag, :attributes, :draggable, :drop_zone, :css_class
 
           alias attribs attributes
 
-          def initialize(type:, parent:, id: nil, tag: nil, **attributes, &block)
+          def initialize(type:, parent:, id: nil, tag: nil, input_tag: nil,  **attributes, &block)
             @draggable = attributes.delete(:draggable) {nil}
             @drop_zone = attributes.delete(:drop_zone) {nil}
             @css_class = Array(attributes.delete(:class) {nil})
             @id = id || generate_id
-            @tag = tag
+            @input_tag = input_tag || tag
+            logger.warn(
+                'The `tag` attribute is deprecated. ' \
+                'Please use `input_tag` instead. This will change in a future feature release.') unless tag.nil?
             @type = type
             @parent = parent
             @attributes = attributes

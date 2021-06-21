@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/coprl/chart_presenter_plugin.git
-  revision: ae9a8bb805570dbf2c1156e3c81f07e3a24807e2
+  revision: 6b93c7a1b04356987cbe962841f564f4afc744c4
   specs:
     chart_presenter_plugin (0.1.0)
 
@@ -24,32 +24,32 @@ GIT
 
 GIT
   remote: https://github.com/coprl/color_picker_presenter_plugin.git
-  revision: 73807e71d3c9410ff76437323b3f480784f98b47
+  revision: 10bdc8b555b2c168ee1d93316c7b10e961a7f5b5
   specs:
     color_picker_presenter_plugin (0.0.1)
 
 GIT
   remote: https://github.com/coprl/foo_presenter_plugin.git
-  revision: f9c92ab98388aeb150c9b523e97042c1386aff10
+  revision: 7b05a88ac5d34a18401d8dbbb73758927be39cdd
   specs:
     foo_presenter_plugin (0.0.2)
 
 GIT
   remote: https://github.com/coprl/google_maps_presenter_plugin.git
-  revision: 237d956ce36b6c9945080088e4d9e5a2f042ee5b
+  revision: 53d8d4d778fcc0295980aaae29bbc3fdb3a947d4
   branch: main
   specs:
     google_maps_presenter_plugin (0.1.0)
 
 GIT
   remote: https://github.com/coprl/iframe_presenter_plugin.git
-  revision: 7b460d23a277e85e89cb8547538c7af484a873f7
+  revision: d0bc691adba4807499af30ee375e9b6dd1426732
   specs:
     iframe_presenter_plugin (0.0.1)
 
 GIT
   remote: https://github.com/coprl/image_crop_presenter_plugin.git
-  revision: 33452c5d3b232e93a942280f8429be2707c992ab
+  revision: 586ef47bd6132f94810cfb04d02fcf7c9df1ae10
   specs:
     image_crop_presenter_plugin (0.1.0)
 
@@ -67,13 +67,13 @@ GIT
 
 GIT
   remote: https://github.com/coprl/scroll_to_presenter_plugin.git
-  revision: e1dd957723561117ee45743ac9e27a4fd91a4a97
+  revision: c34ab770665a16b81b8274357dd9cc77dbd0a566
   specs:
     scroll_to_presenter_plugin (0.0.2)
 
 GIT
   remote: https://github.com/coprl/timer_presenter_plugin.git
-  revision: 319392281f17875cbe69aaeb8b5ac26ec78fc7bf
+  revision: 5901fd1a368ae7b293c0b87f58ebd01a24a38573
   specs:
     timer_presenter_plugin (0.0.1)
 
@@ -98,17 +98,17 @@ GEM
     byebug (11.1.3)
     childprocess (3.0.0)
     coderay (1.1.2)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     diff-lcs (1.3)
     docile (1.3.1)
     dotenv (2.7.6)
     dry-configurable (0.12.1)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.5, >= 0.5.0)
-    dry-container (0.7.2)
+    dry-container (0.8.0)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1, >= 0.1.3)
-    dry-core (0.5.0)
+    dry-core (0.6.0)
       concurrent-ruby (~> 1.0)
     dry-inflector (0.2.0)
     filewatcher (1.1.1)
