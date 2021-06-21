@@ -6,6 +6,7 @@ describe Coprl::Presenters::WebClient::App do
   include Rack::Test::Methods
 
   require 'tmpdir'
+
   def write_file(contents, basename)
     filename = File.join(Dir.tmpdir, basename)
     File.open(filename, 'w') { |file| file.write(contents) }
@@ -20,7 +21,7 @@ describe Coprl::Presenters::WebClient::App do
     reset_presenters!
   end
 
-  let(:app) {described_class.new}
+  let(:app) { described_class.new }
 
   describe 'GET' do
     describe 'all pages' do
@@ -29,7 +30,7 @@ describe Coprl::Presenters::WebClient::App do
         keys = Coprl::Presenters::App.keys
         keys.each do |key|
           response = get "/#{key}"
-          unless response.status==200
+          unless response.status == 200
             get = write_file(response.body, 'response_get.html')
             puts "#{key}: #{get}"
           end
@@ -39,7 +40,7 @@ describe Coprl::Presenters::WebClient::App do
     end
 
     describe '/' do
-      let(:response) {get "/"}
+      let(:response) { get "/" }
       it 'renders' do
         expect(response.status).to eq 200
       end
@@ -55,40 +56,43 @@ describe Coprl::Presenters::WebClient::App do
       before do
         @ids = {}
         Coprl::Presenters::Settings.configure do |config|
-          config.presenters.web_client.prepare_context =[]
+          config.presenters.web_client.prepare_context = []
           config.presenters.id_generator = ->(node) {
-            id = @ids[node.type]||0
+            id = @ids[node.type] || 0
             @ids[node.type] = id + 1
             "id-#{id}"
           }
         end
       end
-      
+      # DO NOT ADD a presenter here because it fails.
+      # This is for exceptions that MUST be here.
+      # For examnple the cacheable plugin is a heisenspec that will fail based on time sensitivity due to caching
+      let(:exclude_presenters) { %w( plugins:cacheable) }
       it "render from pom" do
         keys = Coprl::Presenters::App.keys
         keys.each do |key|
           @ids.clear
           presenter = Coprl::Presenters::App[key].call
-          pom = presenter.expand(router: Coprl::Presenters::WebClient::Router.new(base_url: ""), context: { 'testing'=>true})
+          pom = presenter.expand(router: Coprl::Presenters::WebClient::Router.new(base_url: ""), context: { 'testing' => true })
 
           pom_json = JSON.dump(pom.to_hash)
           @ids.clear
-          response_pom = post("__post__/#{key}", pom_json, {"CONTENT_TYPE" => "application/json"})
+          response_pom = post("__post__/#{key}", pom_json, { "CONTENT_TYPE" => "application/json" })
           pom = write_file(response_pom.body, 'response_pom.html')
-          expect(response_pom.status).to eq(200),pom
+          expect(response_pom.status).to eq(200), pom
 
           @ids.clear
-          response_get = get "/#{key}", 'testing'=>true
+          response_get = get "/#{key}", 'testing' => true
           get = write_file(response_get.body, 'response_get.html')
-          expect(response_get.status).to eq(200),get
+          expect(response_get.status).to eq(200), get
           puts key
 
-
-          expect(response_pom.body).to eq(response_get.body), "#{key}: #{pom}\n#{get}"
+          unless exclude_presenters.include?(key)
+            error_message = "POST json failed on #{key}: #{pom}\nThe file contains details:#{get}"
+            expect(response_pom.body).to eq(response_get.body), error_message
+          end
         end
       end
-
     end
   end
-
 end
