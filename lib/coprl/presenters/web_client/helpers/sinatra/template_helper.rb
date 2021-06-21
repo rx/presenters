@@ -1,9 +1,8 @@
 module Coprl::Presenters::WebClient::Helpers::Sinatra
   module TemplateHelper
-
     def with_presenters_wrapper(&block)
       buffer << partial("body/wrapper", locals: {
-        header: @pom&.header, drawer: @pom&.drawer, body_content: capture(buffer, &block),
+        body_content: capture(buffer, &block), header: @pom&.header, drawer: @pom&.drawer,
         footer: @pom&.footer
       })
     end
@@ -17,6 +16,5 @@ module Coprl::Presenters::WebClient::Helpers::Sinatra
       yield
       buffer.slice!(pos..buffer.size)
     end
-
   end
 end
