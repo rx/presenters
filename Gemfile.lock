@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/coprl/foo_presenter_plugin.git
-  revision: 7b05a88ac5d34a18401d8dbbb73758927be39cdd
+  revision: 6f1d796bf030bf69fca87777d28bdee63e9880d8
   specs:
     foo_presenter_plugin (0.0.2)
 
