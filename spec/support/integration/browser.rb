@@ -1,7 +1,7 @@
 module Support
   module Browser
     def b
-      @browser
+      browser
     end
   end
 end

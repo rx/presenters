@@ -1,4 +1,4 @@
-require 'watir_helper'
+require "spec_helper"
 
 shared_examples 'displays all input parameters' do
   before do
