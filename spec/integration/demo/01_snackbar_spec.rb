@@ -1,4 +1,4 @@
-require "watir_helper"
+require "spec_helper"
 
 describe "Demo - Snackbars", :integration do
   before do

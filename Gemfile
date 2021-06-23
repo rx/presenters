@@ -13,7 +13,7 @@ end
 group :test do
   gem 'rspec'
   gem 'rspec-html-matchers'
-  gem 'watir', '~> 6.16'
+  gem 'watir', '~> 6.19'
   gem 'webdrivers', '~> 4.1'
   gem 'watir-rspec', '~> 3.0'
   gem 'rspec_junit_formatter'

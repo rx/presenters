@@ -1,4 +1,4 @@
-require "watir_helper"
+require "spec_helper"
 
 describe "Demo Index", :integration do
   before do

@@ -33,7 +33,7 @@ jobs:
       - run:
           name: 'start integration testing server'
           command: |
-            rackup
+            bundle exec rackup
           background: true
 
       # run tests!

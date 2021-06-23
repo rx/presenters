@@ -13,8 +13,9 @@ module Support
 
     def startup_instructions
       <<~INSTRUCTIONS
+        ******** WARNING INTEGRATION TESTS NOT RUN ************************
         Integration Server was not started/located.
-        To run integration tests run 'shotgun' or 'rackup' in the root director.
+        To run integration tests run 'bundle exec rackup' in the root director.
         To point to another server set the INTEGRATION_HOST environment variable.
       INSTRUCTIONS
     end
