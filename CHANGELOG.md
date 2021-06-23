@@ -1,3 +1,11 @@
+# [3.0.0-beta.6](https://github.com/rx/presenters/compare/v3.0.0-beta.5...v3.0.0-beta.6) (2021-06-23)
+
+
+### Bug Fixes
+
+* fixed typo on if check ([95b3091](https://github.com/rx/presenters/commit/95b3091365a853eee24e4bce0e37b182da1fdc3d))
+* small tweaks to simplify the presenters wrappers ([#319](https://github.com/rx/presenters/issues/319)) ([cbf0c7c](https://github.com/rx/presenters/commit/cbf0c7c4c80d68ecc84a2989934d2d02e8a1a928))
+
 # [3.0.0-beta.5](https://github.com/rx/presenters/compare/v3.0.0-beta.4...v3.0.0-beta.5) (2021-06-18)
 
 
