@@ -9,7 +9,7 @@ describe "Demo - Snackbars", :integration do
   end
   
   it "has snacktext" do
-    b.wait_until(timeout: 1) {
+    b.wait_until(timeout: 2) {
       b.text.include? "Top Level Important Information!"
     }
     button(id: 'show_snackbar').click
