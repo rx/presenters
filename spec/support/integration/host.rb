@@ -23,10 +23,9 @@ module Support
     def check_for_server(address)
       # For systems that have lsof we will check to see that server is running
       # Circle images don't have lsof installed, so this is to work around that
-      if system("command -v lsof >/dev/null 2>&1")
-        _, port = address.split(':')
-        system("lsof -i :#{port} > /dev/null")
-      end
+      return true unless system("command -v lsof >/dev/null 2>&1")
+      _, port = address.split(':')
+      system("lsof -i :#{port} > /dev/null")
     end
 
   end
