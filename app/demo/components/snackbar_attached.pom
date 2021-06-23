@@ -1,6 +1,0 @@
-
-Coprl::Presenters.define(:snackbar_attached) do
-  title 'In Attached'
-  body  'This can be done in an attached presenter as well'
-  snackbar 'Attached Snackbar Displayed!'
-end

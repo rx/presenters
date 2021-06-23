@@ -8,10 +8,10 @@ Coprl::Presenters.define(:snackbar) do
 
   indented_grid do
     title 'On Page'
-    body 'You can attach a snackbar on the server side and will render after load.'
+    body 'You can invoke or attach a snackbar on the server side and will render after load.'
     snackbar 'Top Level Important Information!'
-
-    attach :snackbar_attached
+    # This is the same as above -- see POM at end of file
+    # attach :snackbar_attached
 
     title 'As Event'
     button 'Show Snackbar', id: :show_snackbar do
@@ -33,3 +33,9 @@ Coprl::Presenters.define(:snackbar) do
 
   attach :code, file: __FILE__
 end
+
+# Coprl::Presenters.define(:snackbar_attached) do
+#   title 'In Attached'
+#   body  'This can be done in an attached presenter as well'
+#   snackbar 'Attached Snackbar Displayed!'
+# end
