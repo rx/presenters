@@ -12,8 +12,10 @@ module Coprl
         } unless defined?(BOOT)
 
         WATCH = -> {
-          paths = ::Rails.root.join('app', '**', '*.pom')
-          file_watcher = ActiveSupport::FileUpdateChecker.new(Dir[paths]) do
+          return unless ::Rails.env.development?
+
+          path = ::Rails.root.join('app', '**', '*.pom')
+          file_watcher = ActiveSupport::FileUpdateChecker.new(Dir[path]) do
             BOOT.call
           end
 
