@@ -7,7 +7,6 @@ module Coprl
         end
 
         def updated?
-          puts "yep, changedd"
           @file_watcher.execute_if_updated
         end
       end
