@@ -30,7 +30,8 @@ class CoprlTemplateHandler
         presenter = Coprl::Presenters::App[presenter_name].call
         context = params.dup.to_unsafe_hash
         router = Coprl::Presenters::WebClient::Router.new(base_url: request.base_url)
-        @pom = presenter.expand(router: router, context: context)
+        plugins = self.controller.class.plugins
+        @pom = presenter.expand(router: router, context: context, plugins: plugins)
       end
       #{source}
       end

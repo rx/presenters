@@ -17,8 +17,8 @@ module Coprl
           self
         end
 
-        def expand(router: , context:{}, &block)
-          presenter = UserInterface.new(router: router, context: context,  name: @name, namespace: @namespace, &@block)
+        def expand(router: , context:{}, plugins: [], &block)
+          presenter = UserInterface.new(router: router, context: context, plugins: plugins, name: @name, namespace: @namespace, &@block)
           yield(presenter) if block
           presenter.expand_instance
         end
