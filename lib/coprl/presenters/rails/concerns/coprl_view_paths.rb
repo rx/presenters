@@ -8,8 +8,7 @@ module Coprl
           included do
             before_action :set_view_path
           end
-
-
+          
           module ClassMethods
             def presenter_plugin(*plugins)
               @plugins = Array(plugins)
