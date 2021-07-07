@@ -42,6 +42,10 @@ module Coprl
 
           private
 
+          def default_url_options
+            {}
+          end
+
           def initialize_plugins
             self.class.include_plugins(:DSLComponents, :DSLHelpers, plugins: _plugins_)
           end
