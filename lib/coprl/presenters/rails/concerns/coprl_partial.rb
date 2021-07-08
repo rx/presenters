@@ -10,12 +10,13 @@ module Coprl
           end
           
           module ClassMethods
+            @plugins = []
             def presenter_plugin(*plugins)
-              @plugins = Array(plugins)
+              @plugins += Array(plugins)
             end
 
             def plugins
-              @plugins || []
+              @plugins
             end
           end
 
