@@ -26,7 +26,7 @@ module Coprl
         private
 
         def initialize_plugins
-          @plugins << @pom.send(:plugins) if @pom
+          @plugins += @pom.send(:plugins) if @pom
           self.class.include_plugins(:WebClientComponents, plugins: @plugins)
         end
       end
