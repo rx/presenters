@@ -1,5 +1,3 @@
-require 'filewatcher'
-
 module Coprl
   module Presenters
     module Rails
@@ -15,20 +13,14 @@ module Coprl
 
         WATCH = -> {
           return unless ::Rails.env.development?
+
           path = ::Rails.root.join('app', '**', '*.pom')
-          puts "Watching #{path} for changes..."
-          filewatcher = Filewatcher.new(path)
-          Thread.new(filewatcher) do |fw|
-            fw.watch do |f|
-              puts "Detected updated POM file: #{f}"
-              begin
-                BOOT.call
-              rescue Exception => exc
-                puts exc.backtrace
-                puts exc.message
-              end
-            end
+          file_watcher = ActiveSupport::FileUpdateChecker.new(Dir[path]) do
+            BOOT.call
           end
+
+          ::Rails.application.reloaders << Reloader.new(file_watcher)
+
         } unless defined?(WATCH)
 
         config.after_initialize do
