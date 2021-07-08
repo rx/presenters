@@ -75,7 +75,6 @@ module Coprl
 
           alias params context
 
-
           def yield_block
             return @_yield_block_ if @_yield_block_
             @parent.send(:yield_block)

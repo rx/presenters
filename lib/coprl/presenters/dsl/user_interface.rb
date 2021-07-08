@@ -25,7 +25,7 @@ module Coprl
         private :context, :router, :namespace
         alias params context
 
-        def initialize(context:, parent: nil, router: nil, name: nil, namespace: [], &block)
+        def initialize(context:, parent: nil, router: nil, name: nil, plugins: [], namespace: [], &block)
           @parent = parent
           @router = router || @parent&.send(:router)
           @context = context || {}
@@ -36,7 +36,7 @@ module Coprl
           @footer = nil
           @name = name
           @namespace = namespace
-          @plugins = []
+          @plugins = plugins || []
           @csrf_meta_tags = authenticity_token_meta_tags(@context.fetch(:session, nil))
           add_global_helpers
           initialize_plugins

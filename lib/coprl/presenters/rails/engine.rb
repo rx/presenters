@@ -12,6 +12,11 @@ module Coprl
           # TODO: should rename these since they are common names that are likely going to collide
           app.middleware.use ::ActionDispatch::Static, File.join(root, '..', 'public')
         end
+
+        ActiveSupport.on_load(:action_controller) do
+          include Concerns::CoprlViewPaths
+        end
+
       end
     end
   end
