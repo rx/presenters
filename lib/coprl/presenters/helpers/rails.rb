@@ -6,11 +6,8 @@ if defined?(Rails)
           include ActionView::Helpers::AssetUrlHelper
           include Coprl::Presenters::Helpers::Rails::Currency
           include Coprl::Presenters::Helpers::Rails::ModelTable
+          include Coprl::Presenters::Helpers::Rails::Routes
           include Namespace
-
-          def default_url_options
-            {}
-          end
 
           def presenters_path(presenter, host: false, **params)
             presenter = _expand_namespace_(presenter, namespace)
