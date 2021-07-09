@@ -23,21 +23,4 @@ class CoprlController < ApplicationController
       prepend_view_path path
     end
   end
-
-  def prepare_context(base_params = params)
-    prepare_context = Coprl::Presenters::Settings.config.presenters.web_client.prepare_context.dup
-    prepare_context.push(method(:scrub_context))
-    context = base_params.dup.to_unsafe_hash
-    prepare_context.reduce(context) do |params, context_proc|
-      context = context_proc.call(params, session, request.env)
-    end
-    context
-  end
-
-  def scrub_context(params, _session, _env)
-    %i(grid_nesting input_tag).each do |key|
-      params.delete(key) {params.delete(key.to_s)}
-    end
-    params
-  end
 end

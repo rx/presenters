@@ -28,9 +28,10 @@ class CoprlTemplateHandler
         # otherwise we need to get the presenter name built from params
         presenter_name = local_assigns[:presenter] ? presenter : namespaced_presenter(params)
         presenter = Coprl::Presenters::App[presenter_name].call
-        context = params.dup.to_unsafe_hash
+        context = self.controller.prepare_context(params)
         router = Coprl::Presenters::WebClient::Router.new(base_url: request.base_url)
         plugins = self.controller.class.plugins
+      
         @pom = presenter.expand(router: router, context: context, plugins: plugins)
       end
       #{source}

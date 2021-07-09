@@ -14,7 +14,7 @@ module Coprl
         end
 
         ActiveSupport.on_load(:action_controller) do
-          include Concerns::CoprlViewPaths
+          include Concerns::CoprlPartial
         end
 
       end
