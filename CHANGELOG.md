@@ -1,3 +1,16 @@
+# [3.0.0-beta.7](https://github.com/rx/presenters/compare/v3.0.0-beta.6...v3.0.0-beta.7) (2021-07-09)
+
+
+### Bug Fixes
+
+* Rails routes automatically made available as helpers ([#322](https://github.com/rx/presenters/issues/322)) ([abb0031](https://github.com/rx/presenters/commit/abb00311940fda8741459f8aafe29cd7bf074b88))
+* view paths issue when using partials with Rails Engine ([#321](https://github.com/rx/presenters/issues/321)) ([2a917e7](https://github.com/rx/presenters/commit/2a917e7076895037e5a069e77525ef53d2ca45f1))
+
+
+### Features
+
+* switch to use Rails built-in watchers and reloader ([#320](https://github.com/rx/presenters/issues/320)) ([53e0ee4](https://github.com/rx/presenters/commit/53e0ee49caa663ce93ff731c280bcd754da73fc1))
+
 # [3.0.0-beta.6](https://github.com/rx/presenters/compare/v3.0.0-beta.5...v3.0.0-beta.6) (2021-06-23)
 
 
