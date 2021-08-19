@@ -5,7 +5,7 @@
 <div id="<%= comp.id %>"
      <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
      <% if comp.dirtyable %>data-dirtyable<% end %>
-     class="v-input <%= type_class %> mdc-text-field mdc-text-field--outlined
+     class="v-input <%= type_class %> mdc-text-field v-focusable mdc-text-field--outlined
             <%= 'mdc-text-field--with-trailing-icon' if comp.clear_icon %>
             <%= 'mdc-text-field--disabled' if comp.disabled %>"
      data-config='<%= snake_to_camel(to_hash(comp.config), except: %i(time_24hr)).to_json %>'

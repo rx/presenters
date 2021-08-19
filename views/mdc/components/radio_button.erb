@@ -2,7 +2,7 @@
   <div id="<%= comp.id %>"
        <% if comp.tag %>data-input-tag="<%= comp.tag %>"<% end %>
        <% if comp.dirtyable %>data-dirtyable<% end %>
-       class="v-radio mdc-radio v-input">
+       class="v-radio mdc-radio v-input v-focusable">
     <input class="mdc-radio__native-control"
            type="radio"
            id="<%= comp.id %>-input"
