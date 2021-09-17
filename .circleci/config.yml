@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-       - image: circleci/ruby:2.7.2-node-browsers
+       - image: circleci/ruby:2.7.4-node-browsers
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -24,6 +24,7 @@ jobs:
             - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
             - v1-gem-cache-{{ arch }}-{{ .Branch }}-
             - v1-gem-cache-{{ arch }}-
+      - run: gem install bundler:2.2.20
       - run: bundle install
       - run: bundle clean --force
       - save_cache:
