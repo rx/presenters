@@ -1,3 +1,10 @@
+# [3.0.0-beta.8](https://github.com/rx/presenters/compare/v3.0.0-beta.7...v3.0.0-beta.8) (2021-09-17)
+
+
+### Bug Fixes
+
+* added check for engine coprl_presenters_rails_engine_url ([d2ee7b5](https://github.com/rx/presenters/commit/d2ee7b5900a256c30e6715d1246639dec682ff08))
+
 # [3.0.0-beta.7](https://github.com/rx/presenters/compare/v3.0.0-beta.6...v3.0.0-beta.7) (2021-07-09)
 
 
