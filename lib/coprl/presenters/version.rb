@@ -1,7 +1,7 @@
 module Coprl
   module Presenters
     module Version
-      VERSION = '1.0.0'
+      VERSION = '3.0.0.beta.8'
     end
   end
 end
