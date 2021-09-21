@@ -1,0 +1,17 @@
+Coprl::Presenters.define(:new, namespace: :<%= plural_table_name %>) do
+  grid do
+    column 1
+    column 5 do
+      heading 'New <%= human_name %>'
+      content do
+      attach '_form'
+      button 'Create' do
+        event :click do
+          creates <%= index_helper %>_path
+        end
+      end
+      end
+      link 'Back', presenter_path(:index)
+    end
+  end
+end

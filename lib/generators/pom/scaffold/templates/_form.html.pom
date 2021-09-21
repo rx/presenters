@@ -1,0 +1,10 @@
+Coprl::Presenters.define("_form", namespace: :<%= plural_table_name %>) do
+  helpers  <%= controller_class_name %>Helper
+
+<% attributes.each do |attribute| -%>
+  text_field name: :<%= attribute.name %> do
+    label :<%= attribute.name %>
+    value <%= singular_table_name %>.<%= attribute.name %> if params[:<%= singular_table_name %>_id]
+  end
+<% end -%>
+end

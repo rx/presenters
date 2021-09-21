@@ -1,0 +1,19 @@
+Coprl::Presenters.define(:edit, namespace: :<%= plural_table_name %>) do
+  helpers  <%= controller_class_name %>Helper
+  grid do
+    column 1
+    column 5 do
+      heading 'Editing <%= human_name %>'
+      content do
+        attach '_form'
+        button 'Update' do
+          event :click do
+            updates <%= url_helper_prefix %>_path(<%= singular_table_name %>)
+          end
+        end
+      end
+      link 'Show', presenter_path(:show, <%= singular_table_name %>_id: <%= singular_table_name %>.id)
+      link 'Back', presenter_path(:index)
+    end
+  end
+end

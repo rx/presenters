@@ -1,0 +1,33 @@
+Coprl::Presenters.define(:index, namespace: :<%= plural_table_name %>) do
+  helpers  <%= controller_class_name %>Helper
+  snackbar params[:notice] if params[:notice]
+  grid do
+    column 1
+    column 5 do
+      heading '<%= human_name %>'
+      list do
+        <%= plural_table_name %>.each do |<%= singular_table_name %>|
+          line <%= attributes.first ? "#{singular_table_name}.#{attributes.first.name}" : "\"#{human_name}\"" %> do
+            actions do
+              icon :edit do
+                event :click do
+                  loads :edit, <%= singular_table_name %>_id: <%= singular_table_name %>.id
+                end
+              end
+              icon :delete do
+                event :click do
+                  dialog "are_you_sure#{<%= singular_table_name %>.id}"
+                end
+              end
+            end
+            event :click do
+              loads :show, <%= singular_table_name %>_id: <%= singular_table_name %>.id
+            end
+          end
+        end
+      end
+      link 'New <%= human_name %>', presenter_path(:new)
+    end
+  end
+  confirm_delete_dialog
+end
