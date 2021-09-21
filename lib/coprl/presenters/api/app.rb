@@ -66,9 +66,9 @@ module Coprl
 
         def prepare_context(base_params = params)
           prepare_context = Presenters::Settings.config.presenters.web_client.prepare_context.dup
-          prepare_context.push(method(:scrub_context))
+          prepare_context.push(method(:scrub_context)).push(method(:base_url_context))
           context = base_params.dup
-          prepare_context.reduce(context) do |params, context_proc|
+          context = prepare_context.reduce(context) do |params, context_proc|
             context_proc.call(params, session, env)
           end
           context
@@ -78,6 +78,11 @@ module Coprl
           %i(splat captures _presenter_ grid_nesting).each do |key|
             params.delete(key)
           end
+          params
+        end
+
+        def base_url_context(params, _session, env)
+          params[:base_url] = "#{request.base_url}#{env['SCRIPT_NAME']}"
           params
         end
       end
