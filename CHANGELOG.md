@@ -1,3 +1,10 @@
+# [3.0.0-beta.11](https://github.com/rx/presenters/compare/v3.0.0-beta.10...v3.0.0-beta.11) (2021-09-21)
+
+
+### Bug Fixes
+
+* forced release bump ([6c22e06](https://github.com/rx/presenters/commit/6c22e061acc2e714b5b87be8994b2eb0d488ac2d))
+
 # [3.0.0-beta.10](https://github.com/rx/presenters/compare/v3.0.0-beta.9...v3.0.0-beta.10) (2021-09-21)
 
 ### Bug Fixes
