@@ -1,0 +1,21 @@
+Coprl::Presenters.define(:show, namespace: :<%= plural_table_name %>) do
+  helpers  <%= controller_class_name %>Helper
+
+  snackbar params[:notice] if params[:notice]
+  grid do
+    column 1
+    column 5 do
+      card do
+      <% attributes.each_with_index do |attribute,index| -%>
+        <% if index == 0 -%>
+          heading <%= singular_table_name %>.<%= attribute.name %>
+      <% else -%>
+          body <%= singular_table_name %>.<%= attribute.name %>
+      <%  end -%>
+      <% end -%>
+      end
+      link 'Edit', presenter_path(:edit,<%= singular_table_name %>_id: params[:<%= singular_table_name %>_id])
+      link 'Back', presenter_path(:index)
+    end
+  end
+end
