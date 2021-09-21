@@ -1,3 +1,11 @@
+# [3.0.0-beta.9](https://github.com/rx/presenters/compare/v3.0.0-beta.8...v3.0.0-beta.9) (2021-09-21)
+
+
+### Bug Fixes
+
+* added support for api base base_url ([8f69979](https://github.com/rx/presenters/commit/8f699793de899a450df5cfb8b95015a832200178))
+* fixed bug in context prep for api client ([d0558cf](https://github.com/rx/presenters/commit/d0558cf3966a9bdc91bd9d106dcb0a7ab6f56c34))
+
 # [3.0.0-beta.8](https://github.com/rx/presenters/compare/v3.0.0-beta.7...v3.0.0-beta.8) (2021-09-17)
 
 
