@@ -1,6 +1,5 @@
 # [3.0.0-beta.10](https://github.com/rx/presenters/compare/v3.0.0-beta.9...v3.0.0-beta.10) (2021-09-21)
 
-
 ### Bug Fixes
 
 * added POM scaffolding generators ([1323b32](https://github.com/rx/presenters/commit/1323b322f83fd9e9519740d9aa7ace4ef8d63b61))
