@@ -2,6 +2,11 @@ module Coprl
   module Presenters
     module Rails
       class Railtie < ::Rails::Railtie
+        # Use pom as the default scaffolding templating engine
+        config.app_generators.generators do |g|
+          g.template_engine :pom
+        end
+
         BOOT = -> {
           Coprl::Presenters::App.reset!
           Coprl::Presenters::Settings.configure do |config|
