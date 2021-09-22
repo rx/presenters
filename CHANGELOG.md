@@ -1,3 +1,11 @@
+# [3.0.0-beta.12](https://github.com/rx/presenters/compare/v3.0.0-beta.11...v3.0.0-beta.12) (2021-09-22)
+
+
+### Bug Fixes
+
+* defaulted :pom as the rails scaffolding template when the copral gem is included inside Rails ([7179a6f](https://github.com/rx/presenters/commit/7179a6fddd37c1b1d735469c4a79cf0a960c7d92))
+* when generating scaffolding creates proper routes that ignore the pom files ([63d6c49](https://github.com/rx/presenters/commit/63d6c49af151fd409293c4eb46ee200c0c58855b))
+
 # [3.0.0-beta.11](https://github.com/rx/presenters/compare/v3.0.0-beta.10...v3.0.0-beta.11) (2021-09-21)
 
 
