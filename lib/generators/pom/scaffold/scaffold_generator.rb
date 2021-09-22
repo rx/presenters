@@ -12,6 +12,10 @@ module Pom
         end
       end
 
+      def resource_route
+        route "resources :#{file_name.pluralize}, only: [:create, :destroy, :update]", namespace: regular_class_path
+      end
+
       hook_for :form_builder, as: :scaffold
 
       protected
