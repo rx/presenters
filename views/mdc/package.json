@@ -68,7 +68,7 @@
     "mdl-stepper": "^1.1.6",
     "npm": "^6.14.6",
     "quill": "^1.3.7",
-    "url-parse": "^1.5.0"
+    "url-parse": "^1.5.2"
   },
   "bundleDependencies": [
     "@material/image-list"
