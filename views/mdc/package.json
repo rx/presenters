@@ -19,7 +19,7 @@
     "hoek": "^5.0.4",
     "jest": "^23.6.0",
     "l": "^0.6.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "sass-loader": "^7.1.0",
     "webpack": "^3.12.0",
     "webpack-dev-server": "^3.2.0"
