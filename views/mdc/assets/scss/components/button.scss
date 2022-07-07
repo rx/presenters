@@ -48,7 +48,6 @@
   bottom: 0;
 }
 
-
 .v-card-title-position-left {
   position: absolute;
   left: 0;
@@ -67,7 +66,11 @@
 .v-button-icon-position-bottom {
   position: absolute;
   bottom: 0;
+}
 
+.v-button-icon-position-center {
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .v-button-full-width {
