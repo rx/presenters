@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'dry-container', '~>0.6'
   spec.add_runtime_dependency 'dry-configurable', '>0.1', '<= 7.0'
   spec.add_runtime_dependency 'dry-inflector', '~>0.1'
-  spec.add_runtime_dependency 'sinatra', '>=1.4', '< 3.0'
+  spec.add_runtime_dependency 'sinatra', '>=1.4', '<4.0'
   spec.add_runtime_dependency 'tzinfo', '>=1.1', '< 3.0'
   spec.add_runtime_dependency 'tzinfo-data', '~>1.2018'
   spec.add_runtime_dependency 'redcarpet', '~>3.4'
